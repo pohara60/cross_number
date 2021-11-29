@@ -12,6 +12,15 @@
             "args": [
                 "dicenets"
             ]
+        },
+        {
+            "name": "primecuts",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "primecuts"
+            ]
         }
     ]
 }

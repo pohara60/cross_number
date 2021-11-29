@@ -1,166 +1,191 @@
 import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/puzzle.dart';
+import 'package:crossnumber/dicenets/clue.dart';
+import 'package:crossnumber/dicenets/puzzle.dart';
 
 class DiceNets extends Crossnumber {
-  late final Clue a1;
-  late final Clue a4;
-  late final Clue a8;
-  late final Clue a10;
-  late final Clue a12;
-  late final Clue a14;
-  late final Clue a16;
-  late final Clue a17;
-  late final Clue a18;
-  late final Clue a19;
-  late final Clue a21;
-  late final Clue a23;
-  late final Clue a25;
-  late final Clue a27;
-  late final Clue a29;
-  late final Clue a30;
-  late final Clue a31;
-  late final Clue a33;
-  late final Clue a35;
-  late final Clue a36;
+  late DiceNetsPuzzle puzzle;
 
-  late final Clue d1;
-  late final Clue d2;
-  late final Clue d3;
-  late final Clue d5;
-  late final Clue d6;
-  late final Clue d7;
-  late final Clue d9;
-  late final Clue d11;
-  late final Clue d13;
-  late final Clue d15;
-  late final Clue d18;
-  late final Clue d20;
-  late final Clue d22;
-  late final Clue d24;
-  late final Clue d26;
-  late final Clue d28;
-  late final Clue d32;
-  late final Clue d34;
+  DiceNets() {
+    puzzle = DiceNetsPuzzle();
+    initCrossnumber();
+  }
+
+  late final DiceNetsClue a1;
+  late final DiceNetsClue a4;
+  late final DiceNetsClue a8;
+  late final DiceNetsClue a10;
+  late final DiceNetsClue a12;
+  late final DiceNetsClue a14;
+  late final DiceNetsClue a16;
+  late final DiceNetsClue a17;
+  late final DiceNetsClue a18;
+  late final DiceNetsClue a19;
+  late final DiceNetsClue a21;
+  late final DiceNetsClue a23;
+  late final DiceNetsClue a25;
+  late final DiceNetsClue a27;
+  late final DiceNetsClue a29;
+  late final DiceNetsClue a30;
+  late final DiceNetsClue a31;
+  late final DiceNetsClue a33;
+  late final DiceNetsClue a35;
+  late final DiceNetsClue a36;
+
+  late final DiceNetsClue d1;
+  late final DiceNetsClue d2;
+  late final DiceNetsClue d3;
+  late final DiceNetsClue d5;
+  late final DiceNetsClue d6;
+  late final DiceNetsClue d7;
+  late final DiceNetsClue d9;
+  late final DiceNetsClue d11;
+  late final DiceNetsClue d13;
+  late final DiceNetsClue d15;
+  late final DiceNetsClue d18;
+  late final DiceNetsClue d20;
+  late final DiceNetsClue d22;
+  late final DiceNetsClue d24;
+  late final DiceNetsClue d26;
+  late final DiceNetsClue d28;
+  late final DiceNetsClue d32;
+  late final DiceNetsClue d34;
 
   void initCrossnumber() {
-    a1 = Clue(name: 'A1', length: 4, valueDesc: 'Prime', solve: solveA1);
+    puzzle.clues = {};
+    a1 =
+        DiceNetsClue(name: 'A1', length: 4, valueDesc: 'Prime', solve: solveA1);
     puzzle.addClue(a1);
-    a4 = Clue(name: 'A4', length: 4, valueDesc: 'Power', solve: solveA4);
+    a4 =
+        DiceNetsClue(name: 'A4', length: 4, valueDesc: 'Power', solve: solveA4);
     puzzle.addClue(a4);
-    a8 = Clue(
+    a8 = DiceNetsClue(
         name: 'A8', length: 4, valueDesc: 'Triangular - A18', solve: solveA8);
     puzzle.addClue(a8);
-    a10 = Clue(
+    a10 = DiceNetsClue(
         name: 'A10', length: 3, valueDesc: 'Multiple of D34', solve: solveA10);
     puzzle.addClue(a10);
-    a12 =
-        Clue(name: 'A12', length: 3, valueDesc: 'Even Square', solve: solveA12);
+    a12 = DiceNetsClue(
+        name: 'A12', length: 3, valueDesc: 'Even Square', solve: solveA12);
     puzzle.addClue(a12);
-    a14 =
-        Clue(name: 'A14', length: 2, valueDesc: 'Triangular', solve: solveA14);
+    a14 = DiceNetsClue(
+        name: 'A14', length: 2, valueDesc: 'Triangular', solve: solveA14);
     puzzle.addClue(a14);
-    a16 = Clue(
+    a16 = DiceNetsClue(
         name: 'A16', length: 3, valueDesc: 'Triangular - A31', solve: solveA16);
     puzzle.addClue(a16);
-    a17 = Clue(
+    a17 = DiceNetsClue(
         name: 'A17', length: 4, valueDesc: 'Multiple of D7', solve: solveA17);
     puzzle.addClue(a17);
-    a18 =
-        Clue(name: 'A18', length: 5, valueDesc: 'Triangular', solve: solveA18);
+    a18 = DiceNetsClue(
+        name: 'A18', length: 5, valueDesc: 'Triangular', solve: solveA18);
     puzzle.addClue(a18);
-    a19 = Clue(
+    a19 = DiceNetsClue(
         name: 'A19', length: 2, valueDesc: 'Triangular - A29', solve: solveA19);
     puzzle.addClue(a19);
-    a21 = Clue(name: 'A21', length: 2, valueDesc: 'Power', solve: solveA21);
+    a21 = DiceNetsClue(
+        name: 'A21', length: 2, valueDesc: 'Power', solve: solveA21);
     puzzle.addClue(a21);
-    a23 = Clue(
+    a23 = DiceNetsClue(
         name: 'A23', length: 5, valueDesc: 'Multiple of D32', solve: solveA23);
     puzzle.addClue(a23);
-    a25 = Clue(name: 'A25', length: 4, valueDesc: 'Prime', solve: solveA25);
+    a25 = DiceNetsClue(
+        name: 'A25', length: 4, valueDesc: 'Prime', solve: solveA25);
     puzzle.addClue(a25);
-    a27 = Clue(
+    a27 = DiceNetsClue(
         name: 'A27', length: 3, valueDesc: 'Square - A16', solve: solveA27);
     puzzle.addClue(a27);
-    a29 = Clue(
+    a29 = DiceNetsClue(
         name: 'A29',
         length: 2,
         valueDesc: 'Multiple of a Power',
         solve: solveA29);
     puzzle.addClue(a29);
-    a30 = Clue(
+    a30 = DiceNetsClue(
         name: 'A30', length: 3, valueDesc: 'Square + D24', solve: solveA30);
     puzzle.addClue(a30);
-    a31 = Clue(
+    a31 = DiceNetsClue(
         name: 'A31', length: 3, valueDesc: 'Square - A16', solve: solveA31);
     puzzle.addClue(a31);
-    a33 = Clue(
+    a33 = DiceNetsClue(
         name: 'A33', length: 4, valueDesc: 'Multiple of A30', solve: solveA33);
     puzzle.addClue(a33);
-    a35 =
-        Clue(name: 'A35', length: 4, valueDesc: 'Triangular', solve: solveA35);
+    a35 = DiceNetsClue(
+        name: 'A35', length: 4, valueDesc: 'Triangular', solve: solveA35);
     puzzle.addClue(a35);
-    a36 = Clue(
+    a36 = DiceNetsClue(
         name: 'A36', length: 4, valueDesc: 'Jumble of D1', solve: solveA36);
     puzzle.addClue(a36);
 
-    d1 = Clue(name: 'D1', length: 4, valueDesc: 'Square', solve: solveD1);
+    d1 = DiceNetsClue(
+        name: 'D1', length: 4, valueDesc: 'Square', solve: solveD1);
     puzzle.addClue(d1);
-    d2 = Clue(name: 'D2', length: 6, valueDesc: 'Square', solve: solveD2);
+    d2 = DiceNetsClue(
+        name: 'D2', length: 6, valueDesc: 'Square', solve: solveD2);
     puzzle.addClue(d2);
-    d3 = Clue(
+    d3 = DiceNetsClue(
         name: 'D3',
         length: 2,
         valueDesc: 'Product 3 distinct Primes',
         solve: solveD3);
     puzzle.addClue(d3);
-    d5 = Clue(
+    d5 = DiceNetsClue(
         name: 'D5',
         length: 5,
         valueDesc: 'Product 3 distinct Primes',
         solve: solveD5);
     puzzle.addClue(d5);
-    d6 = Clue(name: 'D6', length: 4, valueDesc: 'D7 + D18', solve: solveD6);
+    d6 = DiceNetsClue(
+        name: 'D6', length: 4, valueDesc: 'D7 + D18', solve: solveD6);
     puzzle.addClue(d6);
-    d7 = Clue(name: 'D7', length: 2, valueDesc: 'Power', solve: solveD7);
+    d7 =
+        DiceNetsClue(name: 'D7', length: 2, valueDesc: 'Power', solve: solveD7);
     puzzle.addClue(d7);
-    d9 = Clue(name: 'D9', length: 7, valueDesc: 'Triangular', solve: solveD9);
+    d9 = DiceNetsClue(
+        name: 'D9', length: 7, valueDesc: 'Triangular', solve: solveD9);
     puzzle.addClue(d9);
-    d11 = Clue(
+    d11 = DiceNetsClue(
         name: 'D11', length: 3, valueDesc: 'Twice a Square', solve: solveD11);
     puzzle.addClue(d11);
-    d13 = Clue(name: 'D13', length: 7, valueDesc: 'Square', solve: solveD13);
+    d13 = DiceNetsClue(
+        name: 'D13', length: 7, valueDesc: 'Square', solve: solveD13);
     puzzle.addClue(d13);
-    d15 = Clue(name: 'D15', length: 4, valueDesc: 'Square', solve: solveD15);
+    d15 = DiceNetsClue(
+        name: 'D15', length: 4, valueDesc: 'Square', solve: solveD15);
     puzzle.addClue(d15);
-    d18 = Clue(name: 'D18', length: 4, valueDesc: 'Power', solve: solveD18);
+    d18 = DiceNetsClue(
+        name: 'D18', length: 4, valueDesc: 'Power', solve: solveD18);
     puzzle.addClue(d18);
-    d20 = Clue(name: 'D20', length: 6, valueDesc: 'Square', solve: solveD20);
+    d20 = DiceNetsClue(
+        name: 'D20', length: 6, valueDesc: 'Square', solve: solveD20);
     puzzle.addClue(d20);
-    d22 = Clue(
+    d22 = DiceNetsClue(
         name: 'D22',
         length: 5,
         valueDesc: 'Multiple of Square of D32',
         solve: solveD22);
     puzzle.addClue(d22);
-    d24 = Clue(
+    d24 = DiceNetsClue(
         name: 'D24',
         length: 3,
         valueDesc: 'Sum of 2 consecutive Squares',
         solve: solveD24);
     puzzle.addClue(d24);
-    d26 = Clue(
+    d26 = DiceNetsClue(
         name: 'D26',
         length: 4,
         valueDesc: 'Half of a Triangular',
         solve: solveD26);
     puzzle.addClue(d26);
-    d28 = Clue(name: 'D28', length: 4, valueDesc: 'Square', solve: solveD28);
+    d28 = DiceNetsClue(
+        name: 'D28', length: 4, valueDesc: 'Square', solve: solveD28);
     puzzle.addClue(d28);
-    d32 = Clue(name: 'D32', length: 2, valueDesc: 'A19 - D7', solve: solveD32);
+    d32 = DiceNetsClue(
+        name: 'D32', length: 2, valueDesc: 'A19 - D7', solve: solveD32);
     puzzle.addClue(d32);
-    d34 = Clue(name: 'D34', length: 2, valueDesc: 'Prime', solve: solveD34);
+    d34 = DiceNetsClue(
+        name: 'D34', length: 2, valueDesc: 'Prime', solve: solveD34);
     puzzle.addClue(d34);
 
     puzzle.addDigitIdentity(a1, 1, d1, 1);
@@ -261,7 +286,7 @@ class DiceNets extends Crossnumber {
   }
 
   static void filterDigits(
-      Clue clue, List<int> values, Set<int> possibleValue) {
+      DiceNetsClue clue, List<int> values, Set<int> possibleValue) {
     for (var value in values) {
       if (clue.digitsMatch(value)) {
         possibleValue.add(value);
@@ -270,47 +295,44 @@ class DiceNets extends Crossnumber {
   }
 
   static void filterDiceDigits(
-      Clue clue, List<int> values, Set<int> possibleValue) {
+      DiceNetsClue clue, List<int> values, Set<int> possibleValue) {
     filterDigits(clue, filterDice(values), possibleValue);
   }
 
-  bool solveA1(Clue clue, Set<int> possibleValue) {
+  bool solveA1(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitPrimes(), possibleValue);
     return false;
   }
 
-  bool solveA4(Clue clue, Set<int> possibleValue) {
+  bool solveA4(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitPowers(), possibleValue);
     return false;
   }
 
-  bool solveA8(Clue clue, Set<int> possibleValue) {
+  bool solveA8(DiceNetsClue clue, Set<int> possibleValue) {
     findTriangularsLessClue(clue, a18, possibleValue);
     return false;
   }
 
-  bool solveA10(Clue clue, Set<int> possibleValue) {
+  bool solveA10(DiceNetsClue clue, Set<int> possibleValue) {
     findMultiplesOfClue(clue, d34, possibleValue);
     return false;
   }
 
-  bool solveA12(Clue clue, Set<int> possibleValue) {
+  bool solveA12(DiceNetsClue clue, Set<int> possibleValue) {
     var values = filterDice(getThreeDigitSquares());
     values.removeWhere((value) => value % 2 == 1);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveA14(Clue clue, Set<int> possibleValue) {
+  bool solveA14(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getTwoDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveA16(Clue clue, Set<int> possibleValue) {
+  bool solveA16(DiceNetsClue clue, Set<int> possibleValue) {
     if (a31.values != null) {
-      if (a31.values!.length == 13) {
-        var b = true;
-      }
       findTriangularsLessClue(clue, a31, possibleValue);
     } else {
       // A16 and A31 are mutually referential, so need a way to get started
@@ -322,7 +344,7 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  Set<int>? getValuesFromClueDigits(Clue clue) {
+  Set<int>? getValuesFromClueDigits(DiceNetsClue clue) {
     var numValues = 1;
     for (var d = 0; d < clue.length; d++) {
       numValues *= clue.digits[d].length;
@@ -340,52 +362,52 @@ class DiceNets extends Crossnumber {
     return values;
   }
 
-  bool solveA17(Clue clue, Set<int> possibleValue) {
+  bool solveA17(DiceNetsClue clue, Set<int> possibleValue) {
     findMultiplesOfClue(clue, d7, possibleValue);
     return false;
   }
 
-  bool solveA18(Clue clue, Set<int> possibleValue) {
+  bool solveA18(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFiveDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveA19(Clue clue, Set<int> possibleValue) {
+  bool solveA19(DiceNetsClue clue, Set<int> possibleValue) {
     findTriangularsLessClue(clue, a29, possibleValue);
     return false;
   }
 
-  bool solveA21(Clue clue, Set<int> possibleValue) {
+  bool solveA21(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getTwoDigitPowers(), possibleValue);
     return false;
   }
 
-  bool solveA23(Clue clue, Set<int> possibleValue) {
+  bool solveA23(DiceNetsClue clue, Set<int> possibleValue) {
     findMultiplesOfClue(clue, d32, possibleValue);
     return false;
   }
 
-  bool solveA25(Clue clue, Set<int> possibleValue) {
+  bool solveA25(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitPrimes(), possibleValue);
     return false;
   }
 
-  bool solveA27(Clue clue, Set<int> possibleValue) {
+  bool solveA27(DiceNetsClue clue, Set<int> possibleValue) {
     findSquarePlusOrMinusClue(clue, a16, possibleValue, false);
     return false;
   }
 
-  bool solveA29(Clue clue, Set<int> possibleValue) {
+  bool solveA29(DiceNetsClue clue, Set<int> possibleValue) {
     findMultiplesOfPower(clue, possibleValue);
     return false;
   }
 
-  bool solveA30(Clue clue, Set<int> possibleValue) {
+  bool solveA30(DiceNetsClue clue, Set<int> possibleValue) {
     findSquarePlusOrMinusClue(clue, d24, possibleValue, true);
     return false;
   }
 
-  bool solveA31(Clue clue, Set<int> possibleValue) {
+  bool solveA31(DiceNetsClue clue, Set<int> possibleValue) {
     if (a16.values != null) {
       findTriangularsLessClue(clue, a16, possibleValue);
     } else {
@@ -398,17 +420,17 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  bool solveA33(Clue clue, Set<int> possibleValue) {
+  bool solveA33(DiceNetsClue clue, Set<int> possibleValue) {
     findMultiplesOfClue(clue, a30, possibleValue);
     return false;
   }
 
-  bool solveA35(Clue clue, Set<int> possibleValue) {
+  bool solveA35(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveA36(Clue clue, Set<int> possibleValue) {
+  bool solveA36(DiceNetsClue clue, Set<int> possibleValue) {
     // A36 is Jumble of D1
     if (d1.values != null) {
       // Construct Jumbles of all values
@@ -439,12 +461,12 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  static bool solveFourDigitSquares(Clue clue, Set<int> possibleValue) {
+  static bool solveFourDigitSquares(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitSquares(), possibleValue);
     return false;
   }
 
-  bool solveD1(Clue clue, Set<int> possibleValue) {
+  bool solveD1(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitSquares(), possibleValue);
     // A36 is Jumble of D1, so check for illegal values
     if (possibleValue.length > 0) {
@@ -484,39 +506,39 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  static bool solveSixDigitSquares(Clue clue, Set<int> possibleValue) {
+  static bool solveSixDigitSquares(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getSixDigitSquares(), possibleValue);
     return false;
   }
 
   var solveD2 = solveSixDigitSquares;
 
-  bool solveD3(Clue clue, Set<int> possibleValue) {
+  bool solveD3(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getTwoDigitMultipleThreePrimes(), possibleValue);
     return false;
   }
 
-  bool solveD5(Clue clue, Set<int> possibleValue) {
+  bool solveD5(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFiveDigitMultipleThreePrimes(), possibleValue);
     return false;
   }
 
-  bool solveD6(Clue clue, Set<int> possibleValue) {
+  bool solveD6(DiceNetsClue clue, Set<int> possibleValue) {
     findPlusOrMinusClues(clue, d7, d18, possibleValue, true);
     return false;
   }
 
-  bool solveD7(Clue clue, Set<int> possibleValue) {
+  bool solveD7(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getTwoDigitPowers(), possibleValue);
     return false;
   }
 
-  bool solveD9(Clue clue, Set<int> possibleValue) {
+  bool solveD9(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getSevenDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveD11(Clue clue, Set<int> possibleValue) {
+  bool solveD11(DiceNetsClue clue, Set<int> possibleValue) {
     var squares = getTwoDigitSquares().where((value) => value >= 50).toList();
     squares.addAll(getThreeDigitSquares().where((value) => value < 500));
     var values = squares.map((value) => 2 * value).toList();
@@ -524,27 +546,28 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  static bool solveSevenDigitSquares(Clue clue, Set<int> possibleValue) {
+  static bool solveSevenDigitSquares(
+      DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getSevenDigitSquares(), possibleValue);
     return false;
   }
 
   var solveD13 = solveSevenDigitSquares;
 
-  bool solveD15(Clue clue, Set<int> possibleValue) {
+  bool solveD15(DiceNetsClue clue, Set<int> possibleValue) {
     var values = filterDice(getFourDigitSquares());
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveD18(Clue clue, Set<int> possibleValue) {
+  bool solveD18(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitPowers(), possibleValue);
     return false;
   }
 
   var solveD20 = solveSixDigitSquares;
 
-  bool solveD22(Clue clue, Set<int> possibleValue) {
+  bool solveD22(DiceNetsClue clue, Set<int> possibleValue) {
     if (d32.values != null) {
       var values = d32.values!.map((value) => value * value).toList();
       findMultiplesOfValues(clue, values, possibleValue);
@@ -552,7 +575,7 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  bool solveD24(Clue clue, Set<int> possibleValue) {
+  bool solveD24(DiceNetsClue clue, Set<int> possibleValue) {
     // Sum of two consecutive squares
     var squares = getSquaresRange(49, 999);
     int previous = 0;
@@ -570,7 +593,7 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  bool solveD26(Clue clue, Set<int> possibleValue) {
+  bool solveD26(DiceNetsClue clue, Set<int> possibleValue) {
     var triangles = getFourDigitTriangles()
         .where((value) => value >= 2000 && value % 2 == 0)
         .toList();
@@ -581,30 +604,30 @@ class DiceNets extends Crossnumber {
     return false;
   }
 
-  bool solveD28(Clue clue, Set<int> possibleValue) {
+  bool solveD28(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitSquares(), possibleValue);
     return false;
   }
 
-  bool solveD32(Clue clue, Set<int> possibleValue) {
+  bool solveD32(DiceNetsClue clue, Set<int> possibleValue) {
     findPlusOrMinusClues(clue, a19, d7, possibleValue, false);
     return false;
   }
 
-  bool solveD34(Clue clue, Set<int> possibleValue) {
+  bool solveD34(DiceNetsClue clue, Set<int> possibleValue) {
     filterDiceDigits(clue, twoDigitPrimes, possibleValue);
     return false;
   }
 
   static void findTriangularsLessClue(
-      Clue output, Clue input, Set<int> possibleValue) {
+      DiceNetsClue output, DiceNetsClue input, Set<int> possibleValue) {
     if (input.values != null) {
       findTriangularsLessValues(output, input.values!, possibleValue);
     }
   }
 
   static void findTriangularsLessValues(
-      Clue output, Set<int> values, Set<int> possibleValue) {
+      DiceNetsClue output, Set<int> values, Set<int> possibleValue) {
     var minInput =
         values.reduce((value, element) => element < value ? element : value);
     var maxInput =
@@ -628,8 +651,8 @@ class DiceNets extends Crossnumber {
     }
   }
 
-  static void findPlusOrMinusClues(
-      Clue output, Clue input1, Clue input2, possibleValue,
+  static void findPlusOrMinusClues(DiceNetsClue output, DiceNetsClue input1,
+      DiceNetsClue input2, possibleValue,
       [bool plus = false]) {
     if (input1.values != null && input2.values != null) {
       var lo = 10.pow(output.length - 1) as int;
@@ -649,7 +672,8 @@ class DiceNets extends Crossnumber {
     }
   }
 
-  static void findSquarePlusOrMinusClue(Clue output, Clue input, possibleValue,
+  static void findSquarePlusOrMinusClue(
+      DiceNetsClue output, DiceNetsClue input, possibleValue,
       [bool plus = false]) {
     if (input.values != null) {
       var minInput = input.values!
@@ -683,21 +707,21 @@ class DiceNets extends Crossnumber {
     }
   }
 
-  static void findMultiplesOfPower(Clue clue, Set<int> possibleValue) {
+  static void findMultiplesOfPower(DiceNetsClue clue, Set<int> possibleValue) {
     var hi = (10.pow(clue.length) as int) - 1;
     var squares = getPowersInRange(1, hi);
     findMultiplesOfValues(clue, squares, possibleValue);
   }
 
   static void findMultiplesOfClue(
-      Clue output, Clue input, Set<int> possibleValue) {
+      DiceNetsClue output, DiceNetsClue input, Set<int> possibleValue) {
     if (input.values != null) {
       findMultiplesOfValues(output, input.values!.toList(), possibleValue);
     }
   }
 
   static void findMultiplesOfValues(
-      Clue clue, List<int> values, Set<int> possibleValue) {
+      DiceNetsClue clue, List<int> values, Set<int> possibleValue) {
     var loResult = 10.pow(clue.length - 1) as int;
     var hiResult = (10.pow(clue.length) as int) - 1;
     for (var value in values) {

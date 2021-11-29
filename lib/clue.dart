@@ -44,10 +44,15 @@ class Clue {
   }) {
     digitIdentities = List.filled(length, null);
     referrers = <Clue>[];
-    // possible digits are 1..6
+    initDigits();
+  }
+
+  void initDigits() {
+    // possible digits are 0..9, except cannot have leading 0
     digits = [];
     for (var d = 0; d < this.length; d++) {
-      digits.add(Set.from(List.generate(6, (index) => index + 1)));
+      digits.add(Set.from(List.generate(10, (index) => index)));
+      if (d == 0) digits[d].remove(0);
     }
   }
 

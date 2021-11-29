@@ -10,18 +10,12 @@ import 'package:crossnumber/puzzle.dart';
 
 /// Provide access to the Cross Number API.
 class Crossnumber {
-  Puzzle puzzle = Puzzle();
+  covariant late Puzzle puzzle;
 
   static const bool traceInit = true;
   static const bool traceSolve = true;
 
-  Crossnumber() {
-    try {
-      initCrossnumber();
-    } catch (e, stack) {
-      print('error=$e, stack=$stack');
-    }
-  }
+  Crossnumber();
 
   void initCrossnumber() {
     if (traceInit) {
@@ -60,20 +54,11 @@ class Crossnumber {
     }
     print('Clue iterations=$iterations');
 
-    if (traceSolve) {
-      print("PARTIAL SOLUTION-----------------------------");
-      print(puzzle.toSummary());
-      // print(puzzle.toString());
-    }
-
-    print("ITERATE SOLUTIONS-----------------------------");
-    var count = puzzle.iterate();
-    print('Solution count=$count');
+    puzzle.postProcessing();
 
     if (traceSolve) {
       print("SOLUTION-----------------------------");
-      print(puzzle.lastSolutionToString());
-      // print(puzzle.toString());
+      print(puzzle.toString());
     }
   }
 
