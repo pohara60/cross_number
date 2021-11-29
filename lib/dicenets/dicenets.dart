@@ -1,6 +1,5 @@
 import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/dicenets/clue.dart';
 import 'package:crossnumber/dicenets/puzzle.dart';
 

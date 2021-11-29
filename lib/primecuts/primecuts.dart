@@ -1061,19 +1061,6 @@ List<int> getTwoDigitSquaresLessA1(int? d1) {
   return squares;
 }
 
-List<int> getFiveDigitPalindromes() {
-  var palindromes = <int>[];
-  for (var d1 = 1; d1 < 10; d1++) {
-    for (var d2 = 0; d2 < 10; d2++) {
-      for (var d3 = 0; d3 < 10; d3++) {
-        var preValue = d1 * 10000 + d2 * 1000 + d3 * 100 + d2 * 10 + d1;
-        palindromes.add(preValue);
-      }
-    }
-  }
-  return palindromes;
-}
-
 Map<int, Map<String, int>> getThreeDigitPrimeMultiples() {
   var multiples = <int, Map<String, int>>{};
   outer:
