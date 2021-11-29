@@ -3,9 +3,7 @@ import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/dicenets/clue.dart';
 import 'package:crossnumber/dicenets/puzzle.dart';
 
-class DiceNets extends Crossnumber {
-  late DiceNetsPuzzle puzzle;
-
+class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   DiceNets() {
     puzzle = DiceNetsPuzzle();
     initCrossnumber();

@@ -3,8 +3,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
 
-class PrimeCutsPuzzle extends Puzzle {
-  late Map<String, PrimeCutsClue> clues;
+class PrimeCutsPuzzle extends Puzzle<PrimeCutsClue> {
   final Map<String, Set<int>> primes = {};
   final List<int> remainingPrimes = List.from(twoDigitPrimes);
 

@@ -3,9 +3,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
 
-class DiceNetsPuzzle extends Puzzle {
-  late Map<String, DiceNetsClue> clues;
-
+class DiceNetsPuzzle extends Puzzle<DiceNetsClue> {
   DiceNetsPuzzle();
 
   postProcessing() {
@@ -143,6 +141,16 @@ class DiceNetsPuzzle extends Puzzle {
       return lastSolutionToString();
     } else {
       return super.toString();
+    }
+  }
+}
+
+class Answer {
+  List<int> possible;
+  int? value;
+  Answer(this.possible) {
+    if (this.possible.length == 1) {
+      this.value = this.possible[0];
     }
   }
 }

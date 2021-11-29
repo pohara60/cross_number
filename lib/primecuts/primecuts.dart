@@ -10,9 +10,7 @@ import 'package:crossnumber/primecuts/clue.dart';
 import 'package:crossnumber/primecuts/puzzle.dart';
 
 /// Provide access to the Prime Cuts API.
-class PrimeCuts extends Crossnumber {
-  late PrimeCutsPuzzle puzzle;
-
+class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   PrimeCuts() {
     puzzle = PrimeCutsPuzzle();
     initCrossnumber();

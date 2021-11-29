@@ -9,8 +9,8 @@ import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/puzzle.dart';
 
 /// Provide access to the Cross Number API.
-class Crossnumber {
-  covariant late Puzzle puzzle;
+class Crossnumber<PuzzleKind extends Puzzle> {
+  late PuzzleKind puzzle;
 
   static const bool traceInit = true;
   static const bool traceSolve = true;
