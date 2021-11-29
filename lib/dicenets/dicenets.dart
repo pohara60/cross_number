@@ -636,7 +636,7 @@ class DiceNets extends Crossnumber {
     var hi = (10.pow(output.length) as int) - 1;
     var minTriangle = lo + minInput;
     var maxTriangle = hi + maxInput;
-    var triangles = getTrianglesRange(minTriangle, maxTriangle);
+    var triangles = getTrianglesInRange(minTriangle, maxTriangle);
     for (var value in values) {
       var values = <int>[];
       for (var triangle in triangles) {

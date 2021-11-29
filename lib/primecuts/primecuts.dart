@@ -608,11 +608,8 @@ class PrimeCuts extends Crossnumber {
   bool solveA12(
       PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
-    var triangles = getTriangles();
-    var fourDigitTriangles =
-        triangles.where((element) => element > 999 && element < 10000);
-    var twoDigitTriangles =
-        triangles.where((element) => element > 9 && element < 100);
+    var fourDigitTriangles = getFourDigitTriangles();
+    var twoDigitTriangles = getTwoDigitTriangles();
     var possibleH = <int>{};
     for (var preValue in fourDigitTriangles) {
       for (var h in puzzle.primes['H']!) {
@@ -636,9 +633,7 @@ class PrimeCuts extends Crossnumber {
   bool solveA14(
       PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
-    var triangles = getTriangles();
-    var fourDigitTriangles =
-        triangles.where((element) => element > 999 && element < 10000);
+    var fourDigitTriangles = getFourDigitTriangles();
     var possibleK = <int>{};
     for (var preValue in fourDigitTriangles) {
       for (var k in puzzle.primes['K']!) {
@@ -1021,7 +1016,7 @@ Map<int, Set<int>> getSumTwoPrimes() {
 }
 
 Map<int, Map<String, int>> getTriangleSumTwoPrimes() {
-  var triangles = getTriangles();
+  var triangles = getTrianglesInRange(20, 198);
   var triangleSums = <int, Map<String, int>>{};
   for (var p1 in twoDigitPrimes) {
     for (var p2 in twoDigitPrimes.where((element) => element > p1)) {
@@ -1035,7 +1030,7 @@ Map<int, Map<String, int>> getTriangleSumTwoPrimes() {
 }
 
 Map<int, List<int>> getPrimesInTriangleSumTwoPrimes() {
-  var triangles = getTriangles();
+  var triangles = getTrianglesInRange(20, 198);
   var primes = <int, List<int>>{};
   for (var p1 in twoDigitPrimes) {
     var p2s = <int>[];
@@ -1052,18 +1047,6 @@ Map<int, List<int>> getPrimesInTriangleSumTwoPrimes() {
   return primes;
 }
 
-List<int> getTriangles() {
-  var triangles = <int>[];
-  int index = 1;
-  int next = 1;
-  while (next < 10000) {
-    triangles.add(next);
-    index++;
-    next += index;
-  }
-  return triangles;
-}
-
 List<int> getTwoDigitSquaresLessA1(int? d1) {
   var squares = <int>[];
   int minA1 = d1 != null ? d1 : 10;
@@ -1076,34 +1059,6 @@ List<int> getTwoDigitSquaresLessA1(int? d1) {
   }
 
   return squares;
-}
-
-List<int> getFourDigitSquares() {
-  var squares = <int>[];
-  for (var d1 = 1; d1 < 100; d1++) {
-    var preValue = d1 * d1;
-    if (preValue.toString().length == 4) {
-      squares.add(preValue);
-    }
-  }
-
-  return squares;
-}
-
-List<int> getFourDigitPrimes() {
-  const limit = 4999;
-  List<int> sieve = List.generate(limit, (i) => 2 * i + 3);
-  for (var i = 0; i < limit; i++) {
-    if (sieve[i] != 0) {
-      for (var j = i + 1; j < limit; j++) {
-        if (sieve[j] % sieve[i] == 0) {
-          sieve[j] = 0;
-        }
-      }
-    }
-  }
-  var primes = sieve.where((element) => element != 0 && element > 999).toList();
-  return primes;
 }
 
 List<int> getFiveDigitPalindromes() {

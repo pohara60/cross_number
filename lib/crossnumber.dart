@@ -144,10 +144,10 @@ List<int> getSevenDigitTriangles() {
 List<int> getNDigitTriangles(int n) {
   var lo = 10.pow(n - 1) as int;
   var hi = (10.pow(n) as int) - 1;
-  return getTrianglesRange(lo, hi);
+  return getTrianglesInRange(lo, hi);
 }
 
-List<int> getTrianglesRange(int lo, int hi) {
+List<int> getTrianglesInRange(int lo, int hi) {
   var triangles = <int>[];
   int index = 1;
   int next = 1;
