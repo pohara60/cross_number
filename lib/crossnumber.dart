@@ -12,7 +12,7 @@ import 'package:crossnumber/puzzle.dart';
 class Crossnumber<PuzzleKind extends Puzzle> {
   late PuzzleKind puzzle;
 
-  static const bool traceInit = true;
+  static const bool traceInit = false;
   static const bool traceSolve = true;
 
   Crossnumber();

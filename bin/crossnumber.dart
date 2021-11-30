@@ -4,6 +4,7 @@ import 'package:args/command_runner.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
+import 'package:crossnumber/letters/letters.dart';
 
 const help = 'help';
 const program = 'crossnumber';
@@ -13,7 +14,8 @@ void main(List<String> arguments) async {
 
   var runner = CommandRunner('crossnumber', 'Cross Number helper.')
     ..addCommand(DiceNetsCommand())
-    ..addCommand(PrimeCutsCommand());
+    ..addCommand(PrimeCutsCommand())
+    ..addCommand(LettersCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -50,6 +52,20 @@ class PrimeCutsCommand extends Command {
   void run() {
     // Get and print solve
     final pc = PrimeCuts();
+    pc.solve();
+  }
+}
+
+class LettersCommand extends Command {
+  @override
+  final name = 'letters';
+  @override
+  final description = 'solve hardcoded letters puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Letters();
     pc.solve();
   }
 }

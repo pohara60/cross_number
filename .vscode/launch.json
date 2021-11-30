@@ -21,6 +21,24 @@
             "args": [
                 "primecuts"
             ]
+        },
+        {
+            "name": "letters",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "letters"
+            ]
+        },
+        {
+            "name": "cartesian",
+            "program": "lib/letters/cartesian.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "cartesian"
+            ]
         }
     ]
 }
