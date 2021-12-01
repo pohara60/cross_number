@@ -5,6 +5,7 @@ import 'package:args/command_runner.dart';
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
+import 'package:crossnumber/distancing/distancing.dart';
 
 const help = 'help';
 const program = 'crossnumber';
@@ -15,7 +16,8 @@ void main(List<String> arguments) async {
   var runner = CommandRunner('crossnumber', 'Cross Number helper.')
     ..addCommand(DiceNetsCommand())
     ..addCommand(PrimeCutsCommand())
-    ..addCommand(LettersCommand());
+    ..addCommand(LettersCommand())
+    ..addCommand(DistancingCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -66,6 +68,20 @@ class LettersCommand extends Command {
   void run() {
     // Get and print solve
     final pc = Letters();
+    pc.solve();
+  }
+}
+
+class DistancingCommand extends Command {
+  @override
+  final name = 'distancing';
+  @override
+  final description = 'solve hardcoded distancing puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Distancing();
     pc.solve();
   }
 }

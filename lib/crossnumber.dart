@@ -129,6 +129,10 @@ List<int> getTwoDigitTriangles() {
   return getNDigitTriangles(2);
 }
 
+List<int> getThreeDigitTriangles() {
+  return getNDigitTriangles(3);
+}
+
 List<int> getFourDigitTriangles() {
   return getNDigitTriangles(4);
 }
@@ -196,16 +200,48 @@ List<int> getSquaresRange(int lo, int hi) {
   return squares;
 }
 
+List<int> getTwoDigitCubes() {
+  return getNDigitCubes(2);
+}
+
+List<int> getNDigitCubes(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return getCubesRange(lo, hi);
+}
+
+List<int> getCubesRange(int lo, int hi) {
+  var cubes = <int>[];
+  var loRoot = lo.root(3).ceil();
+  var hiRoot = hi.root(3).floor();
+  for (var d1 = loRoot; d1 <= hiRoot; d1++) {
+    var value = d1 * d1 * d1;
+    cubes.add(value);
+  }
+  return cubes;
+}
+
+List<int> getTwoDigitPrimes() {
+  return getNDigitPrimes(2);
+}
+
+List<int> getThreeDigitPrimes() {
+  return getNDigitPrimes(3);
+}
+
 List<int> getFourDigitPrimes() {
   return getNDigitPrimes(4);
 }
 
 List<int> getNDigitPrimes(n) {
-  var lo = 10.pow(n - 1);
-  var limit = 10.pow(n) - 1;
-  var primes = getPrimesUpto(limit)
-      .where((element) => element >= lo && element <= limit)
-      .toList();
+  var lo = 10.pow(n - 1) as int;
+  var limit = (10.pow(n) as int) - 1;
+  var primes = getPrimesInRange(lo, limit);
+  return primes;
+}
+
+List<int> getPrimesInRange(int lo, int hi) {
+  var primes = getPrimesUpto(hi).where((element) => element >= lo).toList();
   return primes;
 }
 
@@ -281,6 +317,27 @@ List<int> getPowersInRange(int lo, int hi) {
   }
   var result = powers.toList();
   result.sort();
+  return result;
+}
+
+List<int> getTwoDigitLucas() {
+  return getNDigitLucas(2);
+}
+
+List<int> getNDigitLucas(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return getLucasInRange(lo, hi);
+}
+
+List<int> getLucasInRange(int lo, int hi) {
+  var lucas = <int>[2, 1];
+  while (true) {
+    var value = lucas[lucas.length - 2] + lucas[lucas.length - 1];
+    if (value > hi) break;
+    lucas.add(value);
+  }
+  var result = lucas.where((element) => element >= lo).toList();
   return result;
 }
 
