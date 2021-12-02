@@ -18,10 +18,6 @@ class DiceNetsPuzzle extends Puzzle<DiceNetsClue> {
     print('Solution count=$count');
   }
 
-  Map<Clue, Answer> solution = {};
-  Map<Clue, int>? lastSolution;
-  List<Clue> order = [];
-
   int iterate() {
     for (var clue in this.clues.values) {
       var values = clue.values!.toList();
@@ -53,11 +49,7 @@ class DiceNetsPuzzle extends Puzzle<DiceNetsClue> {
     }
     if (next == keys.length) {
       if (checkSolution()) {
-        //print(this.solutionToString());
-        lastSolution = {};
-        for (var clue in solution.keys) {
-          lastSolution![clue] = solution[clue]!.value!;
-        }
+        print(this.solutionToString());
         count++;
       }
     } else {
@@ -122,35 +114,5 @@ class DiceNetsPuzzle extends Puzzle<DiceNetsClue> {
           '${clue.name}=${solution[clue]!.value ?? solution[clue]!.possible}\n';
     }
     return text;
-  }
-
-  String lastSolutionToString() {
-    var text = "Solution\n";
-    if (lastSolution != null) {
-      var keys = lastSolution!.keys.toList();
-      //keys.sort((c1,c2) => c1.name[0] == c2.name[0] ? int.parse(c1.name.substring(1)).compareTo(int.parse(c2.name.substring(1))) : c1.name[0].compareTo(c2.name[0]));
-      for (var clue in keys) {
-        text += '${clue.name}=${lastSolution![clue]!}\n';
-      }
-    }
-    return text;
-  }
-
-  String toString() {
-    if (lastSolution != null) {
-      return lastSolutionToString();
-    } else {
-      return super.toString();
-    }
-  }
-}
-
-class Answer {
-  List<int> possible;
-  int? value;
-  Answer(this.possible) {
-    if (this.possible.length == 1) {
-      this.value = this.possible[0];
-    }
   }
 }

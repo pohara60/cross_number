@@ -1,4 +1,5 @@
 import 'package:crossnumber/clue.dart';
+import 'package:crossnumber/crossnumber.dart';
 
 class Puzzle<ClueKind extends Clue> {
   covariant late Map<String, ClueKind> clues;
@@ -55,5 +56,129 @@ class Puzzle<ClueKind extends Clue> {
     return updated;
   }
 
-  postProcessing() {}
+  bool uniqueSolution() {
+    return !this
+        .clues
+        .values
+        .any((clue) => clue.values == null || clue.values!.length != 1);
+  }
+
+  postProcessing() {
+    if (Crossnumber.traceSolve) {
+      print("PARTIAL SOLUTION-----------------------------");
+      print(toSummary());
+      // print(puzzle.toString());
+    }
+
+    print("ITERATE SOLUTIONS-----------------------------");
+    var count = iterate();
+    print('Solution count=$count');
+  }
+
+  Map<Clue, Answer> solution = {};
+  List<Clue> order = [];
+
+  int iterate() {
+    for (var clue in this.clues.values) {
+      var values = clue.values!.toList();
+      values.sort();
+      solution[clue] = Answer(values);
+      if (!order.contains(clue)) {
+        // Add clue and its dependents
+        order.add(clue);
+        for (var clue2 in clue.referrers) {
+          if (!order.contains(clue2)) {
+            // Add clue and its dependents
+            order.add(clue2);
+          }
+        }
+      }
+    }
+    var count = 0;
+    count = findSolutions(order, 0, count);
+    return count;
+  }
+
+  int findSolutions(List<Clue> order, int next, int count) {
+    while (next < order.length && solution[order[next]]!.value != null) {
+      next++;
+    }
+    if (next == order.length) {
+      if (checkSolution()) {
+        print(solutionToString());
+        count++;
+      }
+    } else {
+      var clue = order[next];
+      // Try each of the possible values for this clue
+      value:
+      for (var value in solution[clue]!.possible) {
+        // Check that this value is consistent with other clues
+        for (var d = 0; d < clue.length; d++) {
+          if (clue.digitIdentities[d] != null) {
+            var clue2 = clue.digitIdentities[d]!.clue;
+            var d2 = clue.digitIdentities[d]!.digit;
+            var value2 = solution[clue2]!.value;
+            if (value2 != null) {
+              if (value.toString()[d] != value2.toString()[d2]) {
+                // Inconsistent values
+                continue value;
+              }
+            }
+          }
+        }
+        // Consistent, try this value
+        solution[clue]!.value = value;
+        count = findSolutions(order, next + 1, count);
+        solution[clue]!.value = null;
+      }
+    }
+    //return count;
+    return count;
+  }
+
+  bool checkSolution() {
+    var ok = true;
+    for (var clue in solution.keys) {
+      var value = solution[clue]!.value;
+      clue.tryValue = value;
+    }
+    for (var clue in solution.keys) {
+      var value = solution[clue]!.value;
+      var possibleValue = <int>{};
+      clue.solve!(clue, possibleValue);
+      if (possibleValue.isEmpty || !possibleValue.contains(value)) {
+        // Failed
+        ok = false;
+        break;
+      }
+    }
+    for (var clue in solution.keys) {
+      clue.tryValue = null;
+    }
+
+    return ok;
+  }
+
+  String solutionToString() {
+    var text = "Solution\n";
+    var keys = solution.keys.toList();
+    //keys.sort((c1,c2) => c1.name[0] == c2.name[0] ? int.parse(c1.name.substring(1)).compareTo(int.parse(c2.name.substring(1))) : c1.name[0].compareTo(c2.name[0]));
+    for (var clue in keys) {
+      text +=
+          '${clue.name}=${solution[clue]!.value ?? solution[clue]!.possible}\n';
+    }
+    return text;
+  }
+}
+
+class Answer {
+  List<int> possible;
+  int? value;
+  Answer(this.possible) {
+    if (this.possible.length == 1) {
+      this.value = this.possible[0];
+    }
+  }
+  Answer.value(int this.value) : this.possible = [value];
 }

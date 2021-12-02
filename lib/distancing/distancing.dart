@@ -1,5 +1,7 @@
 import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
+import 'package:crossnumber/clue.dart';
+import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/distancing/clue.dart';
 import 'package:crossnumber/distancing/puzzle.dart';
 
@@ -112,6 +114,22 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     puzzle.addReference(d8, d9, false);
     puzzle.addReference(d8, d10, false);
     puzzle.addReference(d8, d11, false);
+
+    // D11 references all other cells!
+    puzzle.addReference(d11, a1, false);
+    puzzle.addReference(d11, a3, false);
+    puzzle.addReference(d11, a6, false);
+    puzzle.addReference(d11, a9, false);
+    puzzle.addReference(d11, a12, false);
+    puzzle.addReference(d11, a13, false);
+    puzzle.addReference(d11, d1, false);
+    puzzle.addReference(d11, d2, false);
+    puzzle.addReference(d11, d4, false);
+    puzzle.addReference(d11, d5, false);
+    puzzle.addReference(d11, d7, false);
+    puzzle.addReference(d11, d9, false);
+    puzzle.addReference(d11, d10, false);
+    puzzle.addReference(d11, d11, false);
 
     super.initCrossnumber();
   }
@@ -236,16 +254,67 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
   }
 
   bool solveD11(DistancingClue clue, Set<int> possibleValue) {
-    // var primes = getPrimesInRange(1, 18);
-    // // Check sum of digits is prime
-    // var values = List.generate(90, (index) => index + 10);
-    // values.removeWhere((value) {
-    //   var str = value.toString();
-    //   var sum = int.parse(str[0]) + int.parse(str[1]);
-    //   return !primes.contains(sum);
-    // });
     var values = getTwoDigitPrimes();
+    // Check Digit Sum = Sum of Digits in whole grid
+    var otherValues = <List<int>>[];
+    var otherClues = <Clue>[];
+    var incomplete = false;
+    var productSize = 1;
+    const productSizeLimit = 32;
+    for (var other in puzzle.clues.values.where((element) => element != clue)) {
+      if (other.values == null) {
+        incomplete = true;
+        break;
+      }
+      productSize *= other.values!.length;
+      if (productSize > productSizeLimit) break;
+      otherClues.add(other);
+      otherValues.add(other.values!.toList());
+    }
+    if (!incomplete && productSize <= productSizeLimit) {
+      var sums = <int>{};
+      for (var product in cartesian(otherValues)) {
+        var sum = sumClueDigits(clue, otherClues, product);
+        sums.add(sum);
+      }
+      values.removeWhere(
+          (value) => !sums.any((sum) => value == sum + sumDigits(value)));
+    }
     filterDigits(clue, values, possibleValue);
     return false;
+  }
+
+  int sumDigits(int value) {
+    var str = value.toString();
+    var sum = 0;
+    for (var i = 0; i < str.length; i++) {
+      sum += int.parse(str[i]);
+    }
+    return sum;
+  }
+
+  int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
+    var sum = 0;
+    // Sum all otherClues that do not interset with Clue
+    // Do not double count digits that appear in Across and Down clues
+    var index = 0;
+    for (var otherClue in otherClues) {
+      var value = otherValues[index].toString();
+      // Sum all digitd of Across clues
+      for (var d = 0; d < otherClue.length; d++) {
+        var digit = int.parse(value[d]);
+        // Exclude digitd that intersect with the Clue
+        if (otherClue.digitIdentities[d] != null) {
+          if (otherClue.digitIdentities[d]!.clue == clue) digit = 0;
+        }
+        // Exclude digits of Down clues that intersect with Across clues
+        if (otherClue.name[0] == 'D') {
+          if (otherClue.digitIdentities[d] != null) digit = 0;
+        }
+        sum += digit;
+      }
+      index++;
+    }
+    return sum;
   }
 }

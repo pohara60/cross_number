@@ -1,5 +1,5 @@
 Exited (1)
-Connecting to VM Service at http://127.0.0.1:54171/HVufvBMg4-A=/
+Connecting to VM Service at http://127.0.0.1:60455/6cXnhIJvEQY=/
 UPDATES-----------------------------
 solve: Clue(name=A1,length=2,value: R(A+P),
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
@@ -215,7 +215,7 @@ solve: Clue(name=D13,length=3,value: ERR,
 	identities=[D13[0]=A12[1],D13[1]=A17[1],D13[2]=A20[0]],referrers=[A12,A17,A20],
 	values={more than 20},
 	digits=[{1..6},{0, 1, 2, 4, 5, 6, 7, 8, 9},{1..7}]
-E={3..9}, R={4..9}, 
+E={3..9}, R={4..9},
 solve: Clue(name=A1,length=2,value: R(A+P),
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
 	values={more than 20},
@@ -235,7 +235,7 @@ solve: Clue(name=A11,length=2,value: ASP,
 	identities=[A11[0]=D5[2],A11[1]=D6[2]],referrers=[D5,D6],
 	values={more than 20},
 	digits=[{1..9},{0, 1, 2, 4, 5, 6, 7, 8}]
-A={4..9}, P={1, 2}, S={2..6}, 
+A={4..9}, P={1, 2}, S={2..6},
 solve: Clue(name=A12,length=2,value: PUPPY,
 	identities=[A12[0]=D12[0],A12[1]=D13[0]],referrers=[D12,D13],
 	values={more than 20},
@@ -360,7 +360,7 @@ solve: Clue(name=A8,length=2,value: PUPAS,
 	identities=[A8[0]=D5[1],A8[1]=D6[1]],referrers=[D5,D6],
 	values={24, 30, 36, 42, 48, 54, 40, 56, 64, 72, 60, 70, 80, 90, 84, 96},
 	digits=[{2..9},{0, 2, 4, 6, 8}]
-A={4..9}, P={1, 2}, S={2..6}, U={1..9},
+A={4..9}, P={1, 2}, S={2..6}, U={1..9}, 
 solve: Clue(name=A11,length=2,value: ASP,
 	identities=[A11[0]=D5[2],A11[1]=D6[2]],referrers=[D5,D6],
 	values={more than 20},
@@ -393,10 +393,7 @@ D13, ERR, values={more than 20}
 D15, RAT+ES, values={more than 20}
 D16, DREY-TU+P, values={more than 20}
 D19, RAP, values={more than 20}
-
 ITERATE SOLUTIONS-----------------------------
-Solution count=1
-SOLUTION-----------------------------
 Solution
 A1=63
 A4=21
@@ -422,14 +419,5 @@ D13=245
 D15=524
 D16=613
 D19=56
-Letters
-A=8
-D=3
-E=5
-P=1
-R=7
-S=4
-T=9
-U=2
-Y=6
+Solution count=1
 Exited

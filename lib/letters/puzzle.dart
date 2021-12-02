@@ -1,5 +1,5 @@
 import 'package:crossnumber/letters/clue.dart';
-import 'package:crossnumber/letters/cartesian.dart';
+import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/clue.dart';
@@ -58,10 +58,6 @@ class LettersPuzzle extends Puzzle<LettersClue> {
   }
 
   String toString() {
-    if (lastSolution != null) {
-      return lastSolutionToString();
-    }
-
     var text = 'Puzzle\n';
     for (var clue in clues.values) {
       text += clue.toString() + '\n';
@@ -74,22 +70,7 @@ class LettersPuzzle extends Puzzle<LettersClue> {
     return text;
   }
 
-  postProcessing() {
-    if (Crossnumber.traceSolve) {
-      print("PARTIAL SOLUTION-----------------------------");
-      print(toSummary());
-      // print(puzzle.toString());
-    }
-
-    print("ITERATE SOLUTIONS-----------------------------");
-    var count = iterate();
-    print('Solution count=$count');
-  }
-
-  Map<Clue, int>? solution;
-  Map<Clue, int>? lastSolution;
   Map<String, int>? lastLetters;
-  List<Clue> order = [];
 
   int iterate() {
     // Iterate ove possible letter values
@@ -100,10 +81,10 @@ class LettersPuzzle extends Puzzle<LettersClue> {
       letterValues.add(this.letters[letter]!.values.toList());
     }
     var count = 0;
-    for (var product in cartesian(letterValues)) {
-      // for (var product in [
-      //   [9, 8, 7, 2, 6, 5, 3, 1, 4]
-      // ]) {
+    // for (var product in cartesian(letterValues)) {
+    for (var product in [
+      [8, 3, 5, 1, 7, 4, 9, 2, 6]
+    ]) {
       for (var i = 0; i < product.length; i++) {
         this.letters[letterNames[i]]!.tryValue(product[i]);
       }
@@ -124,9 +105,9 @@ class LettersPuzzle extends Puzzle<LettersClue> {
             if (clue.digitIdentities[d] != null) {
               var clue2 = clue.digitIdentities[d]!.clue;
               var d2 = clue.digitIdentities[d]!.digit;
-              var value2 = solution![clue2];
+              var value2 = solution[clue2];
               if (value2 != null) {
-                if (value.toString()[d] != value2.toString()[d2]) {
+                if (value.toString()[d] != value2.value.toString()[d2]) {
                   // Inconsistent values
                   found = false;
                 }
@@ -134,7 +115,7 @@ class LettersPuzzle extends Puzzle<LettersClue> {
             }
           }
           if (found) {
-            solution![clue] = value;
+            solution[clue] = Answer.value(value);
           }
         } else {
           found = false;
@@ -142,30 +123,10 @@ class LettersPuzzle extends Puzzle<LettersClue> {
         if (!found) break;
       }
       if (found) {
+        print(solutionToString());
         count++;
-        lastSolution = Map.from(solution!);
-        lastLetters = <String, int>{};
-        for (var letter in this.letters.keys) {
-          lastLetters![letter] = this.letters[letter]!._value!;
-        }
       }
     }
     return count;
-  }
-
-  String lastSolutionToString() {
-    var text = "Solution\n";
-    if (lastSolution != null) {
-      var keys = lastSolution!.keys.toList();
-      //keys.sort((c1,c2) => c1.name[0] == c2.name[0] ? int.parse(c1.name.substring(1)).compareTo(int.parse(c2.name.substring(1))) : c1.name[0].compareTo(c2.name[0]));
-      for (var clue in keys) {
-        text += '${clue.name}=${lastSolution![clue]!}\n';
-      }
-      text += 'Letters\n';
-      for (var letter in lastLetters!.keys) {
-        text += '$letter=${lastLetters![letter]!}\n';
-      }
-    }
-    return text;
   }
 }

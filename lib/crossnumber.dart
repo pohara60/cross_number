@@ -52,11 +52,14 @@ class Crossnumber<PuzzleKind extends Puzzle> {
         }
       }
     }
-    print('Clue iterations=$iterations');
-
-    puzzle.postProcessing();
-
     if (traceSolve) {
+      print('Clue iterations=$iterations');
+    }
+
+    // Unique solution?
+    if (!puzzle.uniqueSolution()) {
+      puzzle.postProcessing();
+    } else {
       print("SOLUTION-----------------------------");
       print(puzzle.toString());
     }
