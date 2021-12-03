@@ -319,7 +319,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var updated = false;
     var maxD = 100000.cbrt().floor();
     var minD = 10000.cbrt().ceil();
-    var allD = puzzle.primes['D']!
+    var allD = puzzle.primes['D']!.values
         .where((element) => element <= maxD && element >= minD)
         .toList();
     var fiveDigitCubedPrimes = allD.map((e) => e * e * e).toList();
@@ -330,7 +330,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     for (var index = 0; index < fiveDigitCubedPrimes.length; index++) {
       var preValue = fiveDigitCubedPrimes[index];
       var d = allD[index];
-      for (var l in puzzle.primes['L']!.where((element) => element != d)) {
+      for (var l
+          in puzzle.primes['L']!.values.where((element) => element != d)) {
         for (var value in ValueIterator(preValue, l)) {
           var sIndex = twoDigitPrimesSquared.indexOf(value!);
           if (sIndex != -1 && clue.digitsMatch(value)) {
@@ -363,7 +364,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleK = <int>{};
     var possibleT = <int>{};
     for (var preValue in fiveDigitPalindromes) {
-      for (var s in puzzle.primes['S']!) {
+      for (var s in puzzle.primes['S']!.values) {
         for (var value in ValueIterator(preValue, s)) {
           if (threeDigitPrimeMultiples.containsKey(value) &&
               clue.digitsMatch(value!)) {
@@ -397,8 +398,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleM = <int>{};
     var possibleC = <int>{};
     for (var preValue in fourDigitSquares) {
-      for (var m
-          in puzzle.primes['M']!.where((element) => primeHasReverse(element))) {
+      for (var m in puzzle.primes['M']!.values
+          .where((element) => primeHasReverse(element))) {
         for (var value in ValueIterator(preValue, m)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -423,8 +424,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleY = <int>{};
     var possibleQ = <int>{};
     for (var preValue in fourDigitSquares) {
-      for (var y
-          in puzzle.primes['Y']!.where((element) => primeHasReverse(element))) {
+      for (var y in puzzle.primes['Y']!.values
+          .where((element) => primeHasReverse(element))) {
         for (var value in ValueIterator(preValue, y)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -449,8 +450,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleQ = <int>{};
     var possibleY = <int>{};
     for (var preValue in fourDigitSquares) {
-      for (var q
-          in puzzle.primes['Q']!.where((element) => primeHasReverse(element))) {
+      for (var q in puzzle.primes['Q']!.values
+          .where((element) => primeHasReverse(element))) {
         for (var value in ValueIterator(preValue, q)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -475,8 +476,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleC = <int>{};
     var possibleM = <int>{};
     for (var preValue in fourDigitSquares) {
-      for (var c
-          in puzzle.primes['C']!.where((element) => primeHasReverse(element))) {
+      for (var c in puzzle.primes['C']!.values
+          .where((element) => primeHasReverse(element))) {
         for (var value in ValueIterator(preValue, c)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -500,7 +501,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var fourDigitPrimes = getFourDigitPrimes();
     var possibleJ = <int>{};
     for (var preValue in fourDigitPrimes) {
-      for (var j in puzzle.primes['J']!) {
+      for (var j in puzzle.primes['J']!.values) {
         for (var value in ValueIterator(preValue, j)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -523,7 +524,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     Set<int>? valueD1 = puzzle.clues['D1']!.values;
     var possibleZ = <int>{};
     var possibleD1 = <int>{};
-    for (var z in puzzle.primes['Z']!) {
+    for (var z in puzzle.primes['Z']!.values) {
       var multiples = multiple(z, requireMultiple: false);
       for (var value in multiples) {
         if (clue.digitsMatch(value)) {
@@ -553,7 +554,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
       PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleD = <int>{};
-    for (var d in puzzle.primes['D']!) {
+    for (var d in puzzle.primes['D']!.values) {
       var multiples = multiple(d, digits: 5, requireMultiple: true);
       for (var value in multiples) {
         if (clue.digitsMatch(value)) {
@@ -574,11 +575,11 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var triangleSumTwoPrimes = getPrimesInTriangleSumTwoPrimes();
     var possibleP = <int>{};
     var possibleZ = SplayTreeSet<int>();
-    for (var p in puzzle.primes['P']!) {
+    for (var p in puzzle.primes['P']!.values) {
       var updatedP = false;
       if (triangleSumTwoPrimes.containsKey(p) &&
           triangleSumTwoPrimes[p]!
-              .any((element) => puzzle.primes['Z']!.contains(element))) {
+              .any((element) => puzzle.primes['Z']!.values.contains(element))) {
         var multiples = multiple(p, requireMultiple: false);
         for (var value in multiples) {
           if (clue.digitsMatch(value)) {
@@ -590,7 +591,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
       }
       if (updatedP) {
         triangleSumTwoPrimes[p]!.forEach((element) {
-          if (puzzle.primes['Z']!.contains(element)) {
+          if (puzzle.primes['Z']!.values.contains(element)) {
             possibleZ.add(element);
           }
         });
@@ -610,7 +611,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var twoDigitTriangles = getTwoDigitTriangles();
     var possibleH = <int>{};
     for (var preValue in fourDigitTriangles) {
-      for (var h in puzzle.primes['H']!) {
+      for (var h in puzzle.primes['H']!.values) {
         for (var value in ValueIterator(preValue, h)) {
           if (twoDigitTriangles.contains(value!)) {
             if (clue.digitsMatch(value)) {
@@ -634,7 +635,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var fourDigitTriangles = getFourDigitTriangles();
     var possibleK = <int>{};
     for (var preValue in fourDigitTriangles) {
-      for (var k in puzzle.primes['K']!) {
+      for (var k in puzzle.primes['K']!.values) {
         for (var value in ValueIterator(preValue, k)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -666,11 +667,11 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
             for (var d5 in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                 .where((element) => element > d4)) {
               var preValue = d1 * 10000 + d2 * 1000 + d3 * 100 + d4 * 10 + d5;
-              for (var w in puzzle.primes['W']!) {
+              for (var w in puzzle.primes['W']!.values) {
                 for (var value in ValueIterator(preValue, w)) {
                   if (sumTwoPrimes.containsKey(value) &&
                       sumTwoPrimes[value]!.contains(w) &&
-                      puzzle.primes['G']!.contains(value! - w) &&
+                      puzzle.primes['G']!.values.contains(value! - w) &&
                       clue.digitsMatch(value)) {
                     possiblePreValue.add(preValue);
                     possibleValue.add(value);
@@ -707,7 +708,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
               var preValue = d1 * 10000 + d2 * 1000 + d3 * 100 + d4 * 10 + d5;
               var sum = d1 + d2 + d3 + d4 + d5;
               if (preValue % sum == 0) {
-                for (var v in puzzle.primes['V']!) {
+                for (var v in puzzle.primes['V']!.values) {
                   for (var value in ValueIterator(preValue, v)) {
                     if (clue.digitsMatch(value!)) {
                       possiblePreValue.add(preValue);
@@ -733,7 +734,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var updated = false;
     var possibleB = <int>{};
     for (var preValue = 10000; preValue < 100000; preValue++) {
-      for (var b in puzzle.primes['B']!) {
+      for (var b in puzzle.primes['B']!.values) {
         for (var value in ValueIterator(preValue, b)) {
           if (preValue % value! == 0 && clue.digitsMatch(value)) {
             possiblePreValue.add(preValue);
@@ -767,7 +768,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
           for (var d4 in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
               .where((element) => element > d3)) {
             var preValue = d1 * 1000 + d2 * 100 + d3 * 10 + d4;
-            for (var g in puzzle.primes['G']!) {
+            for (var g in puzzle.primes['G']!.values) {
               for (var value in ValueIterator(preValue, g)) {
                 for (var d11 in allD11) {
                   if (d11 % value! == 0 && clue.digitsMatch(value)) {
@@ -796,15 +797,15 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleN = <int>{};
     var possibleH = <int>{};
     var possibleW = <int>{};
-    for (var h in puzzle.primes['H']!) {
+    for (var h in puzzle.primes['H']!.values) {
       var preValue = h;
       while (preValue < 100000) {
         if (preValue > 9999) {
-          for (var n in puzzle.primes['N']!
+          for (var n in puzzle.primes['N']!.values
               .where((element) => element != h && ascending(element))) {
             for (var value in ValueIterator(preValue, n)) {
               if (clue.digitsMatch(value!)) {
-                for (var w in puzzle.primes['W']!
+                for (var w in puzzle.primes['W']!.values
                     .where((element) => element != h && element != n)) {
                   if (value % w == 0) {
                     possiblePreValue.add(preValue);
@@ -852,7 +853,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         var preValue = 10000;
         while (preValue < 100000) {
           if (sum == sumDigits(preValue)) {
-            for (var x in puzzle.primes['X']!) {
+            for (var x in puzzle.primes['X']!.values) {
               for (var value in ValueIterator(preValue, x)) {
                 if (isJumble(gA18, value!) && clue.digitsMatch(value)) {
                   possiblePreValue.add(preValue);
@@ -885,7 +886,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
             for (var d1 in [1, 2, 3, 4, 5, 6, 7, 8, 9]
                 .where((element) => element > d2)) {
               var preValue = d1 * 10000 + d2 * 1000 + d3 * 100 + d4 * 10 + d5;
-              for (var t in puzzle.primes['T']!) {
+              for (var t in puzzle.primes['T']!.values) {
                 for (var value in ValueIterator(preValue, t)) {
                   if (clue.digitsMatch(value!)) {
                     possiblePreValue.add(preValue);
@@ -909,11 +910,12 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var updated = false;
     var possibleR = <int>{};
     var possibleB = <int>{};
-    for (var b in puzzle.primes['B']!) {
+    for (var b in puzzle.primes['B']!.values) {
       var preValue = b;
       while (preValue < 100000) {
         if (preValue > 9999) {
-          for (var r in puzzle.primes['R']!.where((element) => element != b)) {
+          for (var r
+              in puzzle.primes['R']!.values.where((element) => element != b)) {
             for (var value in ValueIterator(preValue, r)) {
               if (clue.digitsMatch(value!)) {
                 possiblePreValue.add(preValue);
@@ -946,11 +948,12 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
     var possibleR = <int>{};
     var possibleF = <int>{};
-    for (var r in puzzle.primes['R']!) {
+    for (var r in puzzle.primes['R']!.values) {
       var preValue = r;
       while (preValue < 10000) {
         if (preValue > 999) {
-          for (var f in puzzle.primes['F']!.where((element) => element != r)) {
+          for (var f
+              in puzzle.primes['F']!.values.where((element) => element != r)) {
             for (var value in ValueIterator(preValue, f)) {
               if (otherEntry.contains(reverse(value!)) &&
                   clue.digitsMatch(value)) {

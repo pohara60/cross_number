@@ -1,7 +1,5 @@
 import 'package:crossnumber/letters/clue.dart';
-import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/set.dart';
 

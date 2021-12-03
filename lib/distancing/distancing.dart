@@ -1,4 +1,3 @@
-import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/cartesian.dart';
@@ -141,7 +140,6 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     while (remaining > 0) {
       var digit = remaining % 10;
       if (last != -1) {
-        var diff = digit - last;
         if (digit >= last && (digit - last) < 2 ||
             digit < last && (last - digit) < 2) {
           ok = false;

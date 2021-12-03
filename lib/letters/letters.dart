@@ -245,9 +245,7 @@ class Letters extends Crossnumber<LettersPuzzle> {
                 element != p && element != e && element != r && element != s)) {
               var mul = (e - y + e);
               var div = (mul ~/ s);
-              if (mul != div * s) {
-                var notInteger = true;
-              } else {
+              if (mul == div * s) {
                 var value = p * e * e * p * e - r + s + div;
                 if (value >= 100 && value < 1000) {
                   possibleValue.add(value);
