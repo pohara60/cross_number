@@ -261,6 +261,18 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     }
     return count;
   }
+
+  String toString() {
+    var text = super.toString();
+    text += this.variableList.toString();
+    return text;
+  }
+
+  String toSummary() {
+    var text = super.toSummary();
+    text += this.variableList.toSummary();
+    return text;
+  }
 }
 
 class Answer {

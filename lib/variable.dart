@@ -63,4 +63,17 @@ class VariableList<VariableKind extends Variable> {
     }
     return updatedVariables;
   }
+
+  String toString() {
+    var text = 'Variables:\n';
+    for (var entry in variables.entries) {
+      text += '${entry.key}=${entry.value.values}\n';
+    }
+    text += 'RemainingValues: ${remainingValues.toString()}\n';
+    return text;
+  }
+
+  String toSummary() {
+    return this.toString();
+  }
 }

@@ -1,3 +1,5 @@
+import 'package:crossnumber/set.dart';
+
 /// A [Puzzle] clue
 class Clue {
   /// Name
@@ -125,7 +127,7 @@ class Clue {
         : values!.length > kLimit
             ? '{more than $kLimit}'
             : values.toString();
-    return 'Clue(name=$name,length=$length,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=$digits';
+    return 'Clue(name=$name,length=$length,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
   }
 
   String toSummary() {

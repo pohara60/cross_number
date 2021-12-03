@@ -1,6 +1,5 @@
 import 'package:crossnumber/letters/clue.dart';
 import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/set.dart';
 import 'package:crossnumber/variable.dart';
 
 class LetterVariable extends Variable {
@@ -19,14 +18,4 @@ class LettersPuzzle extends VariablePuzzle<LettersClue, LetterVariable> {
   List<int> get remainingDigits => variableList.remainingValues;
   Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
-
-  String toString() {
-    var text = super.toString();
-    text += 'Letters:\n';
-    for (var entry in letters.entries) {
-      text += '${entry.key}=${entry.value}\n';
-    }
-    text += 'RemainingDigits: ${remainingDigits.toShortString()}\n';
-    return text;
-  }
 }

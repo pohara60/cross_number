@@ -269,6 +269,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     }
   }
 
+  // Override solveClue to manage preValues
   bool solveClue(Clue inputClue) {
     var clue = inputClue as PrimeCutsClue;
     // If clue solved already then skip it
@@ -301,17 +302,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     return updated;
   }
 
-  bool updatePrimes(String prime, Set<int> possibleDigits) {
-    var updatedPrimes = puzzle.updatePrimes(prime, possibleDigits);
-    // Schedule referencing clues for update
-    for (var clue in puzzle.clues.values) {
-      if (clue.primeReferences
-          .any((element) => updatedPrimes.contains(element))) {
-        addToUpdateQueue(clue);
-      }
-    }
-    return updatedPrimes.length > 0;
-  }
+  bool updatePrimes(String prime, Set<int> possibleValues) =>
+      updateVariables(prime, possibleValues);
 
   // A15 - PreValue 5 digits D^3, Removed prime L, Value entry S^2
   bool solveA15(

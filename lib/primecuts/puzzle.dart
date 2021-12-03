@@ -25,19 +25,4 @@ class PrimeCutsPuzzle extends VariablePuzzle<PrimeCutsClue, PrimeVariable> {
     super.addClue(inputClue);
     primes[clue.prime] = PrimeVariable(clue.prime);
   }
-
-  String toString() {
-    var text = 'Puzzle\n';
-    for (var clue in clues.values) {
-      text += clue.toString() + '\n';
-    }
-    text += 'Primes:\n';
-    for (var entry in primes.entries) {
-      text += '${entry.key}=${entry.value.values}\n';
-    }
-    text += 'RemainingPrimes: ${remainingPrimes.toString()}\n';
-    return text;
-  }
-
-  // postProcessing() {}
 }
