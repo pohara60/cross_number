@@ -1,59 +1,26 @@
+import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/letters/clue.dart';
 import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/set.dart';
+import 'package:crossnumber/variable.dart';
 
-class Letter {
-  final String letter;
-  late Set<int> _values;
-  int? _value;
-  Letter(this.letter) {
-    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+class Letter extends Variable {
+  Letter(letter) : super(letter) {
+    this.values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
   }
-  tryValue(int value) => _value = value;
-  Set<int> get values => _value != null ? {_value!} : _values;
-  set values(Set<int> values) => _values = values;
-  String toString() {
-    return values.toShortString();
-  }
+  String get letter => this.name;
 }
 
 class LettersPuzzle extends Puzzle<LettersClue> {
-  final Map<String, Letter> letters = {};
-  final List<int> remainingDigits = List<int>.generate(9, (i) => i + 1);
-
-  LettersPuzzle();
-
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) {
-    var updatedLetters = <String>{};
-    var possibleLetterValues = this.letters[letter]!.values;
-    var updated = updatePossible(possibleLetterValues, possibleDigits);
-    if (updated) {
-      updatedLetters.add(letter);
-      if (possibleLetterValues.length == 1) {
-        List<String> knownLetters = [letter];
-        int index = 0;
-        while (index < knownLetters.length) {
-          String letterKey = knownLetters[index];
-          int letterValue = this.letters[letterKey]!.values.first;
-          // Remove the known letter from all other letter possible values
-          remainingDigits.remove(letterValue);
-          for (var entry in this.letters.entries) {
-            if (entry.key != letterKey) {
-              if (entry.value.values.remove(letterValue)) {
-                updatedLetters.add(entry.key);
-                if (entry.value.values.length == 1) {
-                  knownLetters.add(entry.key);
-                }
-              }
-            }
-          }
-          index++;
-        }
-      }
-    }
-    return updatedLetters;
+  // Puzzle has Letter variables that are restricted to values 1..9
+  late final VariableList variableList;
+  LettersPuzzle() {
+    variableList = VariableList<Letter>([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   }
+  Map<String, Variable> get letters => variableList.variables;
+  List<int> get remainingDigits => variableList.remainingValues;
+  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
+      variableList.updateVariables(letter, possibleDigits);
 
   String toString() {
     var text = super.toString();
@@ -65,8 +32,6 @@ class LettersPuzzle extends Puzzle<LettersClue> {
     return text;
   }
 
-  Map<String, int>? lastLetters;
-
   int iterate() {
     // Iterate ove possible letter values
     var letterValues = <List<int>>[];
@@ -76,10 +41,8 @@ class LettersPuzzle extends Puzzle<LettersClue> {
       letterValues.add(this.letters[letter]!.values.toList());
     }
     var count = 0;
-    for (var product in [
-      [8, 3, 5, 1, 7, 4, 9, 2, 6]
-    ]) {
-      //for (var product in cartesian(letterValues)) {
+    //for (var product in [      [8, 3, 5, 1, 7, 4, 9, 2, 6]    ]) {
+    for (var product in cartesian(letterValues)) {
       for (var i = 0; i < product.length; i++) {
         this.letters[letterNames[i]]!.tryValue(product[i]);
       }

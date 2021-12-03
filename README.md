@@ -9,6 +9,11 @@ Cross Number puzzles have these features:
 -   The Values are distinct
 -   Grid entries cannot start with 0
 
+Many puzzles use Variables in the clues, with these features:
+
+-   The variables have names
+-   They have distinct values from a set of possible values
+
 There are different types of puzzle, each has a subdirectory with its specific implementation.
 
 ## Generic Solution
@@ -28,8 +33,17 @@ In order to make a general puzzle solver, we do the following:
    b. Process list clues in turn, invoke clue solution function, updating the clue and puzzle state
    c. If clue updated add referring cells to list to update
    b. Loop until no more clues to update - puzzle solved
-4. Post-processing hook
-   a. To allow for specific puzzles to continue after the general solution algorithm
+4. Post-processing
+   a. If no unique solution has been found, then iterate over the clue possible values checking for solutions
+
+The implementation of a specific puzzle includes these steps:
+
+-   Create a folder for the puzzle
+-   Create a main class for the puzzle, this must be added to the command line in bin/crossnumber.dart
+-   Extend the Clue class, and initialize the puzzle clue to its possible values
+-   Extend the Puzzle class
+    -   Specify the puzzle Clue class
+    -   If the puzzle has variables then extend the Variable class and define a VariableList
 
 ## Generic Puzzle (Future)
 

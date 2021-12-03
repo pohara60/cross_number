@@ -139,9 +139,9 @@ class Clue {
   }
 }
 
-bool updatePossible(Set<int> digits, Set<int> possibleDigits) {
-  var updated = digits.any((element) => !possibleDigits.contains(element));
-  digits.removeWhere((element) => !possibleDigits.contains(element));
+bool updatePossible(Set<int> possible, Set<int> possibleValues) {
+  var updated = possible.any((element) => !possibleValues.contains(element));
+  possible.removeWhere((element) => !possibleValues.contains(element));
   return updated;
 }
 
