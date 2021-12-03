@@ -58,10 +58,7 @@ class LettersPuzzle extends Puzzle<LettersClue> {
   }
 
   String toString() {
-    var text = 'Puzzle\n';
-    for (var clue in clues.values) {
-      text += clue.toString() + '\n';
-    }
+    var text = super.toString();
     text += 'Letters:\n';
     for (var entry in letters.entries) {
       text += '${entry.key}=${entry.value}\n';
@@ -81,10 +78,10 @@ class LettersPuzzle extends Puzzle<LettersClue> {
       letterValues.add(this.letters[letter]!.values.toList());
     }
     var count = 0;
-    // for (var product in cartesian(letterValues)) {
     for (var product in [
       [8, 3, 5, 1, 7, 4, 9, 2, 6]
     ]) {
+      //for (var product in cartesian(letterValues)) {
       for (var i = 0; i < product.length; i++) {
         this.letters[letterNames[i]]!.tryValue(product[i]);
       }
@@ -101,19 +98,7 @@ class LettersPuzzle extends Puzzle<LettersClue> {
         if (possibleValue.length == 1) {
           // Check that this value is consistent with other clues
           var value = possibleValue.first;
-          for (var d = 0; d < clue.length && found; d++) {
-            if (clue.digitIdentities[d] != null) {
-              var clue2 = clue.digitIdentities[d]!.clue;
-              var d2 = clue.digitIdentities[d]!.digit;
-              var value2 = solution[clue2];
-              if (value2 != null) {
-                if (value.toString()[d] != value2.value.toString()[d2]) {
-                  // Inconsistent values
-                  found = false;
-                }
-              }
-            }
-          }
+          found = clueValuesMatch(clue, value);
           if (found) {
             solution[clue] = Answer.value(value);
           }

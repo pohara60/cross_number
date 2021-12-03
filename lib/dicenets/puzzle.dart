@@ -55,26 +55,16 @@ class DiceNetsPuzzle extends Puzzle<DiceNetsClue> {
     } else {
       var clue = keys[next];
       // Try each of the possible values for this clue
-      value:
       for (var value in solution[clue]!.possible) {
         // Check that this value is consistent with other clues
-        for (var d = 0; d < clue.length; d++) {
-          if (clue.digitIdentities[d] != null) {
-            var clue2 = clue.digitIdentities[d]!.clue;
-            var d2 = clue.digitIdentities[d]!.digit;
-            var value2 = solution[clue2]!.value;
-            if (value2 != null) {
-              if (value.toString()[d] != value2.toString()[d2]) {
-                // Inconsistent values
-                continue value;
-              }
-            }
-          }
+        if (!clueValuesMatch(clue, value)) {
+          // Inconsistent values
+          continue;
         }
         // Consistent, try this value
         solution[clue]!.value = value;
-        //count = findSolutions(keys, next + 1, count, depth);
         count = findSolutions(keys, next + 1, count);
+        // Clear value for subsequent processing
         solution[clue]!.value = null;
       }
     }

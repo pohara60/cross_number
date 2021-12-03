@@ -118,11 +118,13 @@ class Puzzle<ClueKind extends Clue> {
           if (clue.digitIdentities[d] != null) {
             var clue2 = clue.digitIdentities[d]!.clue;
             var d2 = clue.digitIdentities[d]!.digit;
-            var value2 = solution[clue2]!.value;
-            if (value2 != null) {
-              if (value.toString()[d] != value2.toString()[d2]) {
-                // Inconsistent values
-                continue value;
+            if (solution[clue2] != null) {
+              var value2 = solution[clue2]!.value;
+              if (value2 != null) {
+                if (value.toString()[d] != value2.toString()[d2]) {
+                  // Inconsistent values
+                  continue value;
+                }
               }
             }
           }
@@ -158,6 +160,26 @@ class Puzzle<ClueKind extends Clue> {
     }
 
     return ok;
+  }
+
+  bool clueValuesMatch(Clue clue, int value) {
+    var match = true;
+    for (var d = 0; d < clue.length && match; d++) {
+      if (clue.digitIdentities[d] != null) {
+        var clue2 = clue.digitIdentities[d]!.clue;
+        var d2 = clue.digitIdentities[d]!.digit;
+        if (solution[clue2] != null) {
+          var value2 = solution[clue2]!.value;
+          if (value2 != null) {
+            if (value.toString()[d] != value2.toString()[d2]) {
+              // Inconsistent values
+              match = false;
+            }
+          }
+        }
+      }
+    }
+    return match;
   }
 
   String solutionToString() {
