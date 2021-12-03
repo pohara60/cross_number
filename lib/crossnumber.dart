@@ -74,11 +74,25 @@ class Crossnumber<PuzzleKind extends Puzzle> {
 
     if (clue.solve != null) {
       var possibleValue = <int>{};
-      if (clue.solve!(clue, possibleValue)) updated = true;
+      var possibleVariables = <String, Set<int>>{};
+      if (clue is VariableClue) {
+        for (var variable in clue.variableReferences) {
+          possibleVariables[variable] = <int>{};
+        }
+        if (clue.solve!(clue, possibleValue, possibleVariables)) updated = true;
+      } else {
+        if (clue.solve!(clue, possibleValue)) updated = true;
+      }
       // If no Values returned then Solve function could not solve
       if (possibleValue.isNotEmpty) {
         if (puzzle.updateValues(clue, possibleValue)) updated = true;
         if (clue.finalise()) updated = true;
+        if (clue is VariableClue) {
+          for (var variable in clue.variableReferences) {
+            if (updateVariables(variable, possibleVariables[variable]!))
+              updated = true;
+          }
+        }
       }
     }
 
@@ -86,6 +100,25 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       print("solve: ${clue.toSummary()}");
     }
     return updated;
+  }
+
+  bool updateVariables(String variable, Set<int> possibleValues) {
+    if (puzzle is VariablePuzzle) {
+      var variablePuzzle = puzzle as VariablePuzzle;
+      var updatedVariables =
+          variablePuzzle.updateVariables(variable, possibleValues);
+      // Schedule referencing clues for update
+      for (var clue in puzzle.clues.values) {
+        if (clue is VariableClue) {
+          if (clue.variableReferences
+              .any((element) => updatedVariables.contains(element))) {
+            addToUpdateQueue(clue);
+          }
+        }
+      }
+      return updatedVariables.length > 0;
+    }
+    return false;
   }
 }
 

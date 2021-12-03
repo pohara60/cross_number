@@ -1,8 +1,9 @@
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
+import 'package:crossnumber/variable.dart';
 
 class Puzzle<ClueKind extends Clue> {
-  covariant late Map<String, ClueKind> clues;
+  late Map<String, ClueKind> clues;
 
   Puzzle() {}
 
@@ -192,6 +193,19 @@ class Puzzle<ClueKind extends Clue> {
     }
     return text;
   }
+}
+
+class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
+    extends Puzzle<ClueKind> {
+  late final VariableList variableList;
+  VariablePuzzle(List<int> possibleValues) {
+    variableList = VariableList<VariableKind>(possibleValues);
+  }
+
+  Map<String, Variable> get variables => variableList.variables;
+  List<int> get remainingValues => variableList.remainingValues;
+  Set<String> updateVariables(String variable, Set<int> possibleValues) =>
+      variableList.updateVariables(variable, possibleValues);
 }
 
 class Answer {

@@ -4,19 +4,16 @@ import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/variable.dart';
 
-class Prime extends Variable {
-  Prime(prime) : super(prime) {
+class PrimeVariable extends Variable {
+  PrimeVariable(prime) : super(prime) {
     this.values = Set.from(twoDigitPrimes);
   }
   String get prime => this.name;
 }
 
-class PrimeCutsPuzzle extends Puzzle<PrimeCutsClue> {
+class PrimeCutsPuzzle extends VariablePuzzle<PrimeCutsClue, PrimeVariable> {
   // Puzzle has Prime variables that are restricted to two digit primes
-  late final VariableList variableList;
-  PrimeCutsPuzzle() {
-    variableList = VariableList<Prime>(List.from(twoDigitPrimes));
-  }
+  PrimeCutsPuzzle() : super(List.from(twoDigitPrimes));
 
   Map<String, Variable> get primes => variableList.variables;
   List<int> get remainingPrimes => variableList.remainingValues;
@@ -26,7 +23,7 @@ class PrimeCutsPuzzle extends Puzzle<PrimeCutsClue> {
   void addClue(Clue inputClue) {
     var clue = inputClue as PrimeCutsClue;
     super.addClue(inputClue);
-    primes[clue.prime] = Prime(clue.prime);
+    primes[clue.prime] = PrimeVariable(clue.prime);
   }
 
   String toString() {

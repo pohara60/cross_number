@@ -3,8 +3,6 @@ library letters;
 
 import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/set.dart';
 import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/letters/clue.dart';
 import 'package:crossnumber/letters/puzzle.dart';
@@ -127,7 +125,7 @@ class Letters extends Crossnumber<LettersPuzzle> {
     // Add letter references from descriptions
     var letters = ['A', 'D', 'E', 'P', 'R', 'S', 'T', 'U', 'Y'];
     for (var letter in letters) {
-      puzzle.letters[letter] = Letter(letter);
+      puzzle.letters[letter] = LetterVariable(letter);
       for (var clue in puzzle.clues.values) {
         if (clue.valueDesc!.contains(letter)) {
           clue.addLetterReference(letter);
@@ -138,55 +136,6 @@ class Letters extends Crossnumber<LettersPuzzle> {
     if (Crossnumber.traceInit) {
       print(puzzle.toString());
     }
-  }
-
-  bool solveClue(Clue inputClue) {
-    var clue = inputClue as LettersClue;
-    // If clue solved already then skip it
-    if (clue.values != null && clue.values!.length == 1) return false;
-
-    var updated = false;
-    if (clue.initialise()) updated = true;
-
-    if (clue.solve != null) {
-      var possibleValue = <int>{};
-      var possibleLetters = <String, Set<int>>{};
-      for (var letter in clue.letterReferences) {
-        possibleLetters[letter] = <int>{};
-      }
-      if (clue.solve!(clue, possibleValue, possibleLetters)) updated = true;
-      // If no Values returned then Solve function could not solve
-      if (possibleValue.isNotEmpty) {
-        if (clue.updateValues(possibleValue)) updated = true;
-        if (clue.finalise()) updated = true;
-        for (var letter in clue.letterReferences) {
-          if (updateLetters(letter, possibleLetters[letter]!)) updated = true;
-        }
-      }
-    }
-
-    if (Crossnumber.traceSolve) {
-      print("solve: $clue");
-      var text = '';
-      for (var letter in clue.letterReferences) {
-        text = text +
-            "$letter=${puzzle.letters[letter]!.values.toShortString()}, ";
-      }
-      print(text);
-    }
-    return updated;
-  }
-
-  bool updateLetters(String letter, Set<int> possibleDigits) {
-    var updatedLetters = puzzle.updateLetters(letter, possibleDigits);
-    // Schedule referencing clues for update
-    for (var clue in puzzle.clues.values) {
-      if (clue.letterReferences
-          .any((element) => updatedLetters.contains(element))) {
-        addToUpdateQueue(clue);
-      }
-    }
-    return updatedLetters.length > 0;
   }
 
   bool solveA1(LettersClue clue, Set<int> possibleValue,
