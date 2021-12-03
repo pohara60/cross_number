@@ -1,7 +1,7 @@
 import 'package:crossnumber/clue.dart';
 
 /// A [Puzzle] clue
-class PrimeCutsClue extends Clue {
+class PrimeCutsClue extends VariableClue {
   /// Name of Prime
   final String prime;
 
@@ -9,11 +9,12 @@ class PrimeCutsClue extends Clue {
   final String? primeDesc;
   final String? preValueDesc;
 
-  /// List of referenced primes
-  late final List<String> primeReferences;
-
   /// Computed - Possible Values before Prime
   Set<int>? preValues;
+
+  /// List of referenced primes
+  List<String> get primeReferences => this.variableReferences;
+  addPrimeReference(String prime) => this.addVariableReference(prime);
 
   PrimeCutsClue({
     required name,
@@ -23,13 +24,7 @@ class PrimeCutsClue extends Clue {
     this.primeDesc,
     this.preValueDesc,
     solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    this.primeReferences = <String>[];
-  }
-
-  addPrimeReference(String prime) {
-    this.primeReferences.add(prime);
-  }
+  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 
   bool updatePreValues(Set<int> possiblePreValue) {
     var updated = false;

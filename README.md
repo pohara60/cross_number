@@ -40,6 +40,8 @@ The implementation of a specific puzzle includes these steps:
 
 -   Create a folder for the puzzle
 -   Create a main class for the puzzle, this must be added to the command line in bin/crossnumber.dart
+    -   Initialize the puzzle, creating the clues and references between them
+    -   Define solve functions for each clue, implementing the clue logic
 -   Extend the Clue class, and initialize the puzzle clue to its possible values
 -   Extend the Puzzle class
     -   Specify the puzzle Clue class

@@ -145,6 +145,19 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
   return updated;
 }
 
+class VariableClue extends Clue {
+  late final List<String> variableReferences;
+
+  VariableClue({required name, required length, valueDesc, solve})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    this.variableReferences = <String>[];
+  }
+
+  addVariableReference(String variable) {
+    this.variableReferences.add(variable);
+  }
+}
+
 /// A reference to [Clue]
 class ClueReference {
   // The referenced clue
