@@ -1,3 +1,4 @@
+import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/variable.dart';
@@ -80,6 +81,14 @@ class Puzzle<ClueKind extends Clue> {
   List<Clue> order = [];
 
   int iterate() {
+    if (this is VariablePuzzle) {
+      var puzzle = this as VariablePuzzle;
+      return puzzle.iterateVariables();
+    }
+    return iterateValues();
+  }
+
+  int iterateValues() {
     for (var clue in this.clues.values) {
       var values = clue.values!.toList();
       values.sort();
@@ -206,6 +215,52 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
   List<int> get remainingValues => variableList.remainingValues;
   Set<String> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
+
+  int iterateVariables() {
+    // Iterate over possible variable values
+    var variableValues = <List<int>>[];
+    var variableNames = <String>[];
+    for (var variable in this.variables.keys) {
+      variableNames.add(variable);
+      variableValues.add(this.variables[variable]!.values.toList());
+    }
+    var count = 0;
+    //for (var product in [      [8, 3, 5, 1, 7, 4, 9, 2, 6]    ]) {
+    for (var product in cartesian(variableValues)) {
+      for (var i = 0; i < product.length; i++) {
+        this.variables[variableNames[i]]!.tryValue(product[i]);
+      }
+      // Check all clues
+      var found = true;
+      solution = {};
+      for (var clue in this.clues.values) {
+        if (clue is VariableClue) {
+          var possibleValue = <int>{};
+          Map<String, Set<int>> possibleLetters = {};
+          for (var variable in clue.variableReferences) {
+            possibleLetters[variable] = <int>{};
+          }
+          clue.solve!(clue, possibleValue, possibleLetters);
+          if (possibleValue.length == 1) {
+            // Check that this value is consistent with other clues
+            var value = possibleValue.first;
+            found = clueValuesMatch(clue, value);
+            if (found) {
+              solution[clue] = Answer.value(value);
+            }
+          } else {
+            found = false;
+          }
+          if (!found) break;
+        }
+      }
+      if (found) {
+        print(solutionToString());
+        count++;
+      }
+    }
+    return count;
+  }
 }
 
 class Answer {
