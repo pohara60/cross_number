@@ -1,0 +1,204 @@
+Connecting to VM Service at http://127.0.0.1:61066/7CzMyK8J6rU=/
+UPDATES-----------------------------
+solve: Clue(name=A1,length=3,value: Palindrome,
+	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
+	values={111,121,131,141,151,161,171,181,191,212,222,232,242,252,262,272,282,292,313,323 and 61 more},
+	digits=[{1..9},{1..9},{1..9}]
+solve: Clue(name=A7,length=2,value: Factor of D4,
+	identities=[A7[0]=D5[1],A7[1]=D8[0]],referrers=[D5,D8,D4,D4,D8],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+solve: Clue(name=A10,length=3,value: Triangular,
+	identities=[A10[0]=D8[1],A10[1]=D9[1]],referrers=[D8,D9,D8],
+	values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561 and 11 more},
+	digits=[{1..9},{0..9},{0,1,3,5,6,8}]
+solve: Clue(name=D2,length=2,value: Triangular,
+	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,A5,A9,D8],
+	values={10,15,21,28,36,45,55,66,78,91},
+	digits=[{1,2,3,4,5,6,7,9},{0,1,5,6,8}]
+solve: Clue(name=D3,length=2,value: Digit sum is square,
+	identities=[D3[0]=A1[2],D3[1]=A6[0]],referrers=[A1,A6,D8],
+	values={13,18,22,27,31,36,45,54,63,72,79,81,88,97},
+	digits=[{1..9},{1..9}]
+solve: Clue(name=D4,length=3,value: Multiple of A7,
+	identities=[D4[1]=A6[1],D4[2]=A9[1]],referrers=[A6,A9,A7,A7,D8],
+	values={100,102,104,105,106,108,110,111,112,114,115,116,117,118,119,120,121,122,123,124 and 545 more},
+	digits=[{1..9},{0..9},{0..9}]
+solve: Clue(name=D5,length=3,value: Same digit product as A1,
+	identities=[D5[0]=A5[0],D5[1]=A7[0]],referrers=[A5,A7,A1,D8],
+	values={111,112,113,114,115,116,117,118,119,121,122,123,124,126,128,129,131,132,133,134 and 457 more},
+	digits=[{1..9},{1..9},{1..9}]
+solve: Clue(name=D8,length=2,value: Cube + sum all digits,
+	identities=[D8[0]=A7[1],D8[1]=A10[0]],referrers=[A7,A10],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+solve: Clue(name=D9,length=2,value: Triangular,
+	identities=[D9[0]=A9[0],D9[1]=A10[1]],referrers=[A9,A10,A6,D8],
+	values={10,15,21,28,36,45,55,66,78,91},
+	digits=[{1,2,3,4,5,6,7,9},{0,1,5,6,8}]
+solve: Clue(name=A1,length=3,value: Palindrome,
+	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
+	values={111,121,131,141,151,161,171,191,212,222,232,242,252,262,272,292,313,323,333,343 and 52 more},
+	digits=[{1..9},{1,2,3,4,5,6,7,9},{1..9}]
+solve: Clue(name=A5,length=2,value: Digit product = D2,
+	identities=[A5[0]=D5[0],A5[1]=D2[1]],referrers=[D5,D2,D2,D8],
+	values={25,35,66,95},
+	digits=[{2,3,6,9},{5,6}]
+solve: Clue(name=A9,length=2,value: Reverse of D2,
+	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,D2,D8],
+	values={12,19,51,54,55,63,66},
+	digits=[{1,5,6},{1,2,3,4,5,6,9}]
+solve: Clue(name=A6,length=2,value: Factor of D9,
+	identities=[A6[0]=D3[1],A6[1]=D4[1]],referrers=[D3,D4,D9,D8],
+	values={11,12,13,14,15,18,22,26,33,39},
+	digits=[{1..3},{1,2,3,4,5,6,8,9}]
+solve: Clue(name=A7,length=2,value: Factor of D4,
+	identities=[A7[0]=D5[1],A7[1]=D8[0]],referrers=[D5,D8,D4,D4,D8],
+	values={11,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,31,32 and 61 more},
+	digits=[{1..9},{1..9}]
+solve: Clue(name=A10,length=3,value: Triangular,
+	identities=[A10[0]=D8[1],A10[1]=D9[1]],referrers=[D8,D9,D8],
+	values={105,153,210,253,300,351,406,465,561,666,703,780,861,903},
+	digits=[{1..9},{0,1,5,6,8},{0,1,3,5,6}]
+solve: Clue(name=D2,length=2,value: Triangular,
+	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,A5,A9,D8],
+	values={15,36,45},
+	digits=[{1,3,4},{5,6}]
+solve: Clue(name=D3,length=2,value: Digit sum is square,
+	identities=[D3[0]=A1[2],D3[1]=A6[0]],referrers=[A1,A6,D8],
+	values={13,22,31,63,72,81},
+	digits=[{1,2,3,6,7,8},{1..3}]
+solve: Clue(name=D5,length=3,value: Same digit product as A1,
+	identities=[D5[0]=A5[0],D5[1]=A7[0]],referrers=[A5,A7,A1,D8],
+	values={211,212,213,214,216,218,219,221,222,223,224,225,226,227,228,229,231,232,233,234 and 202 more},
+	digits=[{2,3,6,9},{1..9},{1..9}]
+solve: Clue(name=D9,length=2,value: Triangular,
+	identities=[D9[0]=A9[0],D9[1]=A10[1]],referrers=[A9,A10,A6,D8],
+	values={55,66},
+	digits=[{5,6},{5,6}]
+solve: Clue(name=D4,length=3,value: Multiple of A7,
+	identities=[D4[1]=A6[1],D4[2]=A9[1]],referrers=[A6,A9,A7,A7,D8],
+	values={111,112,114,115,116,119,121,122,123,124,125,126,129,132,133,134,135,136,141,142 and 278 more},
+	digits=[{1..9},{1,2,3,4,5,6,8,9},{1,2,3,4,5,6,9}]
+solve: Clue(name=A1,length=3,value: Palindrome,
+	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
+	values={131,141,212,232,242,313,333,343,616,636,646,737,818,838},
+	digits=[{1,2,3,6,7,8},{1,3,4},{1,2,3,6,7,8}]
+solve: Clue(name=A5,length=2,value: Digit product = D2,
+	identities=[A5[0]=D5[0],A5[1]=D2[1]],referrers=[D5,D2,D2,D8],
+	values={35,66,95},
+	digits=[{3,6,9},{5,6}]
+solve: Clue(name=A9,length=2,value: Reverse of D2,
+	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,D2,D8],
+	values={51,54,63},
+	digits=[{5,6},{1,3,4}]
+solve: Clue(name=A6,length=2,value: Factor of D9,
+	identities=[A6[0]=D3[1],A6[1]=D4[1]],referrers=[D3,D4,D9,D8],
+	values={11,22,33},
+	digits=[{1..3},{1..3}]
+solve: Clue(name=A10,length=3,value: Triangular,
+	identities=[A10[0]=D8[1],A10[1]=D9[1]],referrers=[D8,D9,D8],
+	values={153,253,351,465,561,666,861},
+	digits=[{1,2,3,4,5,6,8},{5,6},{1,3,5,6}]
+solve: Clue(name=D5,length=3,value: Same digit product as A1,
+	identities=[D5[0]=A5[0],D5[1]=A7[0]],referrers=[A5,A7,A1,D8],
+	values={311,313,314,319,322,326,331,333,334,341,343,349,362,366,368,377,386,388,391,394 and 29 more},
+	digits=[{3,6,9},{1,2,3,4,6,7,8,9},{1,2,3,4,6,7,8,9}]
+solve: Clue(name=D4,length=3,value: Multiple of A7,
+	identities=[D4[1]=A6[1],D4[2]=A9[1]],referrers=[A6,A9,A7,A7,D8],
+	values={111,114,121,123,124,133,134,213,221,224,231,234,323,324,333,413,414,423,424,434 and 19 more},
+	digits=[{1..9},{1..3},{1,3,4}]
+solve: Clue(name=D8,length=2,value: Cube + sum all digits,
+	identities=[D8[0]=A7[1],D8[1]=A10[0]],referrers=[A7,A10],
+	values={unknown},
+	digits=[{1..9},{1,2,3,4,5,6,8}]
+solve: Clue(name=A7,length=2,value: Factor of D4,
+	identities=[A7[0]=D5[1],A7[1]=D8[0]],referrers=[D5,D8,D4,D4,D8],
+	values={11,12,13,14,16,17,18,19,21,22,23,24,26,27,28,31,32,33,34,36 and 25 more},
+	digits=[{1,2,3,4,6,7,8},{1,2,3,4,6,7,8,9}]
+solve: Clue(name=A1,length=3,value: Palindrome,
+	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
+	values={131,232,313,333,343,616,636,646,737,838},
+	digits=[{1,2,3,6,7,8},{1,3,4},{1,2,3,6,7,8}]
+solve: Clue(name=D5,length=3,value: Same digit product as A1,
+	identities=[D5[0]=A5[0],D5[1]=A7[0]],referrers=[A5,A7,A1,D8],
+	values={311,313,314,319,322,326,331,333,334,341,343,349,362,366,368,377,386,388,612,616 and 26 more},
+	digits=[{3,6,9},{1,2,3,4,6,7,8},{1,2,3,4,6,7,8,9}]
+solve: Clue(name=D8,length=2,value: Cube + sum all digits,
+	identities=[D8[0]=A7[1],D8[1]=A10[0]],referrers=[A7,A10],
+	values={unknown},
+	digits=[{1,2,3,4,6,7,8,9},{1,2,3,4,5,6,8}]
+solve: Clue(name=D4,length=3,value: Multiple of A7,
+	identities=[D4[1]=A6[1],D4[2]=A9[1]],referrers=[A6,A9,A7,A7,D8],
+	values={111,114,121,123,124,133,134,213,221,224,231,234,323,324,333,414,423,434,511,513 and 16 more},
+	digits=[{1..9},{1..3},{1,3,4}]
+Clue iterations=55
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, Palindrome, values={131,232,313,333,343,616,636,646,737,838}
+A5, Digit product = D2, values={35,66,95}
+A6, Factor of D9, values={11,22,33}
+A7, Factor of D4, values={11,12,13,14,16,17,18,19,21,22,23,24,26,27,28,31,32,33,34,36 and 25 more}
+A9, Reverse of D2, values={51,54,63}
+A10, Triangular, values={153,253,351,465,561,666,861}
+D2, Triangular, values={15,36,45}
+D3, Digit sum is square, values={13,22,31,63,72,81}
+D4, Multiple of A7, values={111,114,121,123,124,133,134,213,221,224,231,234,323,324,333,414,423,434,511,513 and 16 more}
+D5, Same digit product as A1, values={311,313,314,319,322,326,331,333,334,341,343,349,362,366,368,377,386,388,612,616 and 26 more}
+D8, Cube + sum all digits, values={unknown}
+D9, Triangular, values={55,66}
+ITERATE SOLUTIONS-----------------------------
+Solution
+A1=313
+A5=35
+A6=11
+A7=37
+A9=51
+A10=153
+D2=15
+D3=31
+D4=111
+D5=331
+D9=55
+D8=71
+Solution
+A1=313
+A5=35
+A6=11
+A7=37
+A9=51
+A10=253
+D2=15
+D3=31
+D4=111
+D5=331
+D9=55
+D8=72
+Solution
+A1=343
+A5=95
+A6=11
+A7=17
+A9=54
+A10=153
+D2=45
+D3=31
+D4=714
+D5=914
+D9=55
+D8=71
+Solution
+A1=343
+A5=95
+A6=11
+A7=17
+A9=54
+A10=253
+D2=45
+D3=31
+D4=714
+D5=914
+D9=55
+D8=72
+Solution count=4
+Exited

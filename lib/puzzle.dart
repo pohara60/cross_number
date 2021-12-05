@@ -89,28 +89,44 @@ class Puzzle<ClueKind extends Clue> {
   }
 
   int iterateValues() {
+    var unknownClues = <Clue>[];
     for (var clue in this.clues.values) {
-      var values = clue.values!.toList();
-      values.sort();
-      solution[clue] = Answer(values);
-      if (!order.contains(clue)) {
-        // Add clue and its dependents
-        order.add(clue);
-        for (var clue2 in clue.referrers) {
-          if (!order.contains(clue2)) {
-            // Add clue and its dependents
-            order.add(clue2);
+      if (clue.values == null) {
+        if (!unknownClues.contains(clue)) {
+          unknownClues.add(clue);
+        }
+      } else {
+        var values = clue.values!.toList();
+        values.sort();
+        solution[clue] = Answer(values);
+        if (!order.contains(clue)) {
+          // Add clue and its dependents
+          order.add(clue);
+          for (var clue2 in clue.referrers) {
+            if (!order.contains(clue2)) {
+              if (clue2.values == null) {
+                if (!unknownClues.contains(clue2)) {
+                  unknownClues.add(clue2);
+                }
+              } else {
+                // Add clue
+                order.add(clue2);
+              }
+            }
           }
         }
       }
     }
+    order.addAll(unknownClues);
     var count = 0;
     count = findSolutions(order, 0, count);
     return count;
   }
 
   int findSolutions(List<Clue> order, int next, int count) {
-    while (next < order.length && solution[order[next]]!.value != null) {
+    while (next < order.length &&
+        solution[order[next]] != null &&
+        solution[order[next]]!.value != null) {
       next++;
     }
     if (next == order.length) {
@@ -120,29 +136,33 @@ class Puzzle<ClueKind extends Clue> {
       }
     } else {
       var clue = order[next];
+      if (clue.values == null) {
+        //checkSolution();
+        var possibleValue = <int>{};
+        var possibleVariables = <String, Set<int>>{};
+        if (clue is VariableClue) {
+          for (var variable in clue.variableReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(clue, possibleValue, possibleVariables);
+        } else {
+          clue.solve!(clue, possibleValue);
+        }
+        if (possibleValue.isEmpty) {
+          return count;
+        }
+        solution[clue] = Answer(List.from(possibleValue));
+      }
       // Try each of the possible values for this clue
-      value:
       for (var value in solution[clue]!.possible) {
         // Check that this value is consistent with other clues
-        for (var d = 0; d < clue.length; d++) {
-          if (clue.digitIdentities[d] != null) {
-            var clue2 = clue.digitIdentities[d]!.clue;
-            var d2 = clue.digitIdentities[d]!.digit;
-            if (solution[clue2] != null) {
-              var value2 = solution[clue2]!.value;
-              if (value2 != null) {
-                if (value.toString()[d] != value2.toString()[d2]) {
-                  // Inconsistent values
-                  continue value;
-                }
-              }
-            }
-          }
-        }
+        if (!clueValuesMatch(clue, value)) continue;
         // Consistent, try this value
         solution[clue]!.value = value;
+        clue.tryValue = value;
         count = findSolutions(order, next + 1, count);
         solution[clue]!.value = null;
+        clue.tryValue = null;
       }
     }
     //return count;
@@ -151,24 +171,21 @@ class Puzzle<ClueKind extends Clue> {
 
   bool checkSolution() {
     var ok = true;
+    var failedClues = <Clue>[];
     for (var clue in solution.keys) {
-      var value = solution[clue]!.value;
-      clue.tryValue = value;
-    }
-    for (var clue in solution.keys) {
-      var value = solution[clue]!.value;
-      var possibleValue = <int>{};
-      clue.solve!(clue, possibleValue);
-      if (possibleValue.isEmpty || !possibleValue.contains(value)) {
-        // Failed
-        ok = false;
-        break;
+      if (solution[clue] != null) {
+        var value = solution[clue]!.value;
+        var possibleValue = <int>{};
+        clue.solve!(clue, possibleValue);
+        if (possibleValue.isEmpty || !possibleValue.contains(value)) {
+          // Failed
+          failedClues.add(clue);
+          ok = false;
+        }
       }
     }
-    for (var clue in solution.keys) {
-      clue.tryValue = null;
-    }
 
+    //print('Check $ok ${failedClues.map((e) => e.name)} ${solutionToString()}');
     return ok;
   }
 

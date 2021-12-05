@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
+import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
@@ -17,7 +18,8 @@ void main(List<String> arguments) async {
     ..addCommand(DiceNetsCommand())
     ..addCommand(PrimeCutsCommand())
     ..addCommand(LettersCommand())
-    ..addCommand(DistancingCommand());
+    ..addCommand(DistancingCommand())
+    ..addCommand(FrequencyCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -82,6 +84,20 @@ class DistancingCommand extends Command {
   void run() {
     // Get and print solve
     final pc = Distancing();
+    pc.solve();
+  }
+}
+
+class FrequencyCommand extends Command {
+  @override
+  final name = 'frequency';
+  @override
+  final description = 'solve hardcoded frequency puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Frequency();
     pc.solve();
   }
 }

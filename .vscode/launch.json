@@ -41,6 +41,15 @@
             ]
         },
         {
+            "name": "frequency",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "frequency"
+            ]
+        },
+        {
             "name": "cartesian",
             "program": "lib/letters/cartesian.dart",
             "request": "launch",

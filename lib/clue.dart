@@ -121,22 +121,12 @@ class Clue {
         .where((element) => element != '')
         .join(',');
     var referrersStr = referrers.map((e) => e.name).join(',');
-    const kLimit = 20;
-    var valueStr = values == null
-        ? '{unknown}'
-        : values!.length > kLimit
-            ? '{more than $kLimit}'
-            : values.toString();
+    var valueStr = values == null ? '{unknown}' : values!.toShortString();
     return 'Clue(name=$name,length=$length,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
   }
 
   String toSummary() {
-    const kLimit = 20;
-    var valueStr = values == null
-        ? '{unknown}'
-        : values!.length > kLimit
-            ? '{more than $kLimit}'
-            : values.toString();
+    var valueStr = values == null ? '{unknown}' : values!.toShortString();
     return '$name, $valueDesc, values=$valueStr';
   }
 }

@@ -97,7 +97,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
     }
 
     if (traceSolve && updated) {
-      print("solve: ${clue.toSummary()}");
+      print("solve: ${clue.toString()}");
     }
     return updated;
   }
@@ -375,6 +375,17 @@ List<int> getLucasInRange(int lo, int hi) {
   }
   var result = lucas.where((element) => element >= lo).toList();
   return result;
+}
+
+List<int> getThreeDigitPalindromes() {
+  var palindromes = <int>[];
+  for (var d1 = 1; d1 < 10; d1++) {
+    for (var d2 = 0; d2 < 10; d2++) {
+      var value = d1 * 100 + d2 * 10 + d1;
+      palindromes.add(value);
+    }
+  }
+  return palindromes;
 }
 
 List<int> getFiveDigitPalindromes() {
