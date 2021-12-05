@@ -1,4 +1,4 @@
-Connecting to VM Service at http://127.0.0.1:61066/7CzMyK8J6rU=/
+Connecting to VM Service at http://127.0.0.1:56300/bkmAsuj_xCs=/
 UPDATES-----------------------------
 solve: Clue(name=A1,length=3,value: Palindrome,
 	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
@@ -161,44 +161,5 @@ D4=111
 D5=331
 D9=55
 D8=71
-Solution
-A1=313
-A5=35
-A6=11
-A7=37
-A9=51
-A10=253
-D2=15
-D3=31
-D4=111
-D5=331
-D9=55
-D8=72
-Solution
-A1=343
-A5=95
-A6=11
-A7=17
-A9=54
-A10=153
-D2=45
-D3=31
-D4=714
-D5=914
-D9=55
-D8=71
-Solution
-A1=343
-A5=95
-A6=11
-A7=17
-A9=54
-A10=253
-D2=45
-D3=31
-D4=714
-D5=914
-D9=55
-D8=72
-Solution count=4
+Solution count=1
 Exited
