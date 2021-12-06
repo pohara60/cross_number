@@ -34,6 +34,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
   void solve() {
     bool updated;
     var iterations = 0;
+    var updates = 0;
     var allClue = List<Clue>.from(puzzle.clues.values).toList();
     updateQueue
         .addAll(allClue.where((element) => !updateQueue.contains(element)));
@@ -50,10 +51,11 @@ class Crossnumber<PuzzleKind extends Puzzle> {
         for (var referrer in clue.referrers) {
           addToUpdateQueue(referrer);
         }
+        updates++;
       }
     }
     if (traceSolve) {
-      print('Clue iterations=$iterations');
+      print('Clue iterations=$iterations, updates=$updates');
     }
 
     // Unique solution?

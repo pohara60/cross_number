@@ -122,11 +122,9 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   }
 
   bool solveA1(FrequencyClue clue, Set<int> possibleValue) {
-    List<int>? values;
-    if (clue.values != null)
-      values = List.from(clue.values!);
-    else
-      values = getThreeDigitPalindromes();
+    var values = clue.values != null
+        ? List<int>.from(clue.values!)
+        : getThreeDigitPalindromes();
     var values2 = getDigitProductEqualsOtherClueProduct(clue, d5);
     if (values2 != null) {
       values.removeWhere((value) => !values2.contains(value));
@@ -229,16 +227,17 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   }
 
   bool solveA10(FrequencyClue clue, Set<int> possibleValue) {
-    filterDigits(clue, getThreeDigitTriangles(), possibleValue);
+    var values = clue.values != null
+        ? List<int>.from(clue.values!)
+        : getThreeDigitTriangles();
+    filterDigits(clue, values, possibleValue);
     return false;
   }
 
   bool solveD2(FrequencyClue clue, Set<int> possibleValue) {
-    List<int>? values;
-    if (clue.values != null)
-      values = List.from(clue.values!);
-    else
-      values = getTwoDigitTriangles();
+    var values = clue.values != null
+        ? List<int>.from(clue.values!)
+        : getTwoDigitTriangles();
     var values2 = getDigitProductOtherClue(clue, a5);
     if (values2 != null) {
       values.removeWhere((value) => !values2.contains(value));
@@ -268,13 +267,18 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   }
 
   bool solveD3(FrequencyClue clue, Set<int> possibleValue) {
-    var squares = getSquaresRange(1, 17);
-    var values = <int>[];
-    for (var d1 = 1; d1 < 10; d1++) {
-      for (var d2 = 0; d2 < 10; d2++) {
-        var sum = d1 + d2;
-        if (squares.contains(sum)) {
-          values.add(d1 * 10 + d2);
+    List<int>? values;
+    if (clue.values != null)
+      values = List.from(clue.values!);
+    else {
+      var squares = getSquaresRange(1, 17);
+      values = <int>[];
+      for (var d1 = 1; d1 < 10; d1++) {
+        for (var d2 = 0; d2 < 10; d2++) {
+          var sum = d1 + d2;
+          if (squares.contains(sum)) {
+            values.add(d1 * 10 + d2);
+          }
         }
       }
     }
@@ -287,15 +291,19 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     if (a7.values != null) {
       values = getMultipleOfOtherClue(clue, a7)!;
     } else {
-      // Need to get started with mutually recursive clues
-      var setValues = <int>{};
-      for (var a7value = 10; a7value < 100; a7value++) {
-        int hi = 999 ~/ a7value;
-        for (var i = 2; i <= hi; i++) {
-          var multiple = i * a7value;
-          setValues.add(multiple);
+      if (clue.values != null)
+        values = List.from(clue.values!);
+      else {
+        // Need to get started with mutually recursive clues
+        var setValues = <int>{};
+        for (var a7value = 10; a7value < 100; a7value++) {
+          int hi = 999 ~/ a7value;
+          for (var i = 2; i <= hi; i++) {
+            var multiple = i * a7value;
+            setValues.add(multiple);
+          }
+          values = List.from(setValues);
         }
-        values = List.from(setValues);
       }
     }
     filterDigits(clue, values, possibleValue);
@@ -444,7 +452,9 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   }
 
   bool solveD9(FrequencyClue clue, Set<int> possibleValue) {
-    var values = getTwoDigitTriangles();
+    var values = clue.values != null
+        ? List<int>.from(clue.values!)
+        : getTwoDigitTriangles();
     var values2 = getMultipleOfOtherClue(clue, a6);
     if (values2 != null) {
       values.removeWhere((value) => !values2.contains(value));
