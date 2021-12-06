@@ -391,7 +391,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleC = <int>{};
     for (var preValue in fourDigitSquares) {
       for (var m in puzzle.primes['M']!.values
-          .where((element) => primeHasReverse(element))) {
+          .where((element) => primeHasReverse(element, twoDigitPrimes))) {
         for (var value in ValueIterator(preValue, m)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -417,7 +417,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleQ = <int>{};
     for (var preValue in fourDigitSquares) {
       for (var y in puzzle.primes['Y']!.values
-          .where((element) => primeHasReverse(element))) {
+          .where((element) => twoDigitPrimeHasReverse(element))) {
         for (var value in ValueIterator(preValue, y)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -443,7 +443,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleY = <int>{};
     for (var preValue in fourDigitSquares) {
       for (var q in puzzle.primes['Q']!.values
-          .where((element) => primeHasReverse(element))) {
+          .where((element) => twoDigitPrimeHasReverse(element))) {
         for (var value in ValueIterator(preValue, q)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -469,7 +469,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     var possibleM = <int>{};
     for (var preValue in fourDigitSquares) {
       for (var c in puzzle.primes['C']!.values
-          .where((element) => primeHasReverse(element))) {
+          .where((element) => twoDigitPrimeHasReverse(element))) {
         for (var value in ValueIterator(preValue, c)) {
           if (clue.digitsMatch(value!)) {
             possiblePreValue.add(preValue);
@@ -1110,45 +1110,4 @@ class ValueIterator extends Iterable<int?> with Iterator<int?> {
 
   @override
   Iterator<int?> get iterator => this;
-}
-
-int reverse(int prime) {
-  var primeStr = prime.toString();
-  var reverse = primeStr[1] + primeStr[0];
-  return int.parse(reverse);
-}
-
-bool primeHasReverse(int prime) {
-  var other = reverse(prime);
-  return twoDigitPrimes.contains(other) && other != prime;
-}
-
-bool ascending(int preValue) {
-  var preValueStr = preValue.toString();
-  var last = 0;
-  for (var index = 0; index < preValueStr.length; index++) {
-    var next = int.parse(preValueStr[index]);
-    if (next <= last) return false;
-    last = next;
-  }
-  return true;
-}
-
-int sumDigits(int preValue) {
-  var preValueStr = preValue.toString();
-  var sum = 0;
-  for (var index = 0; index < preValueStr.length; index++) {
-    sum += int.parse(preValueStr[index]);
-  }
-  return sum;
-}
-
-bool isJumble(int preValue, int jumble) {
-  var preValueStr = preValue.toString();
-  var jumbleStr = jumble.toString();
-  for (var index = 0; index < preValueStr.length; index++) {
-    if (!jumbleStr.contains(preValueStr[index])) return false;
-    jumbleStr.replaceFirst(RegExp(preValueStr[index]), '');
-  }
-  return true;
 }

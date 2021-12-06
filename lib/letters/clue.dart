@@ -1,5 +1,4 @@
 import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/set.dart';
 
 /// A [LettersPuzzle] clue
 class LettersClue extends VariableClue {

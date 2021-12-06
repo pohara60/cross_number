@@ -281,38 +281,4 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     filterDigits(clue, values, possibleValue);
     return false;
   }
-
-  int sumDigits(int value) {
-    var str = value.toString();
-    var sum = 0;
-    for (var i = 0; i < str.length; i++) {
-      sum += int.parse(str[i]);
-    }
-    return sum;
-  }
-
-  int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
-    var sum = 0;
-    // Sum all otherClues that do not interset with Clue
-    // Do not double count digits that appear in Across and Down clues
-    var index = 0;
-    for (var otherClue in otherClues) {
-      var value = otherValues[index].toString();
-      // Sum all digitd of Across clues
-      for (var d = 0; d < otherClue.length; d++) {
-        var digit = int.parse(value[d]);
-        // Exclude digitd that intersect with the Clue
-        if (otherClue.digitIdentities[d] != null) {
-          if (otherClue.digitIdentities[d]!.clue == clue) digit = 0;
-        }
-        // Exclude digits of Down clues that intersect with Across clues
-        if (otherClue.name[0] == 'D') {
-          if (otherClue.digitIdentities[d] != null) digit = 0;
-        }
-        sum += digit;
-      }
-      index++;
-    }
-    return sum;
-  }
 }

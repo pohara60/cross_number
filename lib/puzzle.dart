@@ -2,6 +2,7 @@ import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/variable.dart';
+import 'package:powers/src/powers.dart';
 
 class Puzzle<ClueKind extends Clue> {
   late Map<String, ClueKind> clues;
@@ -232,6 +233,27 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
   List<int> get remainingValues => variableList.remainingValues;
   Set<String> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
+
+  void solveVariableExpression(
+      VariableClue clue,
+      Set<int> possibleValue,
+      Map<String, Set<int>> possibleVariables,
+      int expression(List<int> variables)) {
+    var variableValues = <List<int>>[];
+    for (var variable in clue.variableReferences) {
+      variableValues.add(this.variables[variable]!.values.toList());
+    }
+    for (var product in cartesian(variableValues)) {
+      var value = expression(product);
+      if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
+        possibleValue.add(value);
+        var index = 0;
+        for (var variable in clue.variableReferences) {
+          possibleVariables[variable]!.add(product[index++]);
+        }
+      }
+    }
+  }
 
   int iterateVariables() {
     // Iterate over possible variable values

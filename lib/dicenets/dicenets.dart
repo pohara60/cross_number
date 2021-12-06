@@ -341,24 +341,6 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
     return false;
   }
 
-  Set<int>? getValuesFromClueDigits(DiceNetsClue clue) {
-    var numValues = 1;
-    for (var d = 0; d < clue.length; d++) {
-      numValues *= clue.digits[d].length;
-    }
-    if (numValues >= 100) return null;
-    var values = <int>{};
-    for (var d1 in clue.digits[0]) {
-      for (var d2 in clue.digits[1]) {
-        for (var d3 in clue.digits[2]) {
-          var value = d3 + 10 * (d2 + 10 * d1);
-          values.add(value);
-        }
-      }
-    }
-    return values;
-  }
-
   bool solveA17(DiceNetsClue clue, Set<int> possibleValue) {
     findMultiplesOfClue(clue, d7, possibleValue);
     return false;
@@ -624,26 +606,11 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   }
 
   static void findTriangularsLessValues(
-      DiceNetsClue output, Set<int> values, Set<int> possibleValue) {
-    var minInput =
-        values.reduce((value, element) => element < value ? element : value);
-    var maxInput =
-        values.reduce((value, element) => element > value ? element : value);
-    var lo = 10.pow(output.length - 1) as int;
-    var hi = (10.pow(output.length) as int) - 1;
-    var minTriangle = lo + minInput;
-    var maxTriangle = hi + maxInput;
-    var triangles = getTrianglesInRange(minTriangle, maxTriangle);
-    for (var value in values) {
-      var values = <int>[];
-      for (var triangle in triangles) {
-        var difference = triangle - value;
-        if (difference < lo) continue;
-        if (difference >= hi) continue;
-        values.add(difference);
-      }
+      DiceNetsClue clue, Set<int> values, Set<int> possibleValue) {
+    var result = getTriangularsLessValues(clue, values);
+    if (result != null) {
       var possible = <int>{};
-      filterDiceDigits(output, values, possible);
+      filterDiceDigits(clue, result, possible);
       possibleValue.addAll(possible);
     }
   }
@@ -719,21 +686,8 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
 
   static void findMultiplesOfValues(
       DiceNetsClue clue, List<int> values, Set<int> possibleValue) {
-    var loResult = 10.pow(clue.length - 1) as int;
-    var hiResult = (10.pow(clue.length) as int) - 1;
-    for (var value in values) {
-      var loMultiplier = loResult ~/ value;
-      if (loMultiplier < 2) loMultiplier = 2;
-      var hiMultiplier = hiResult ~/ value;
-      var values = <int>[];
-      for (var multiplier = loMultiplier;
-          multiplier <= hiMultiplier;
-          multiplier++) {
-        var multiple = multiplier * value;
-        if (multiple < loResult) continue;
-        if (multiple >= hiResult) continue;
-        values.add(multiple);
-      }
+    var multiples = getMultiplesOfValues(clue, values);
+    if (multiples != null) {
       var possible = <int>{};
       filterDiceDigits(clue, values, possible);
       possibleValue.addAll(possible);

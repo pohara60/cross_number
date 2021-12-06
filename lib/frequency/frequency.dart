@@ -141,53 +141,12 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     return false;
   }
 
-  List<int>? getDigitProductEqualsOtherClue(
-      FrequencyClue clue, FrequencyClue other) {
-    if (other.values != null) {
-      var values = <int>{};
-      for (var value in other.values!) {
-        for (var factor = 2; factor <= value.sqrt().floor(); factor++) {
-          if (value % factor == 0) {
-            var factor2 = value ~/ factor;
-            if (factor2 < 10) {
-              values.add(factor * 10 + factor2);
-              values.add(factor2 * 10 + factor);
-            }
-          }
-        }
-      }
-      return List.from(values);
-    }
-    return null;
-  }
-
   bool solveA6(FrequencyClue clue, Set<int> possibleValue) {
     var values = getFactorsOfOtherClue(clue, d9);
     if (values != null) {
       filterDigits(clue, values, possibleValue);
     }
     return false;
-  }
-
-  List<int>? getFactorsOfOtherClue(FrequencyClue clue, FrequencyClue other) {
-    if (other.values != null) {
-      var values = <int>{};
-      int loLimit = 10.pow(clue.length - 1) as int;
-      if (loLimit < 2) loLimit = 2;
-      int hiLimit = (10.pow(clue.length) as int) - 1;
-      for (var value in other.values!) {
-        int lo = loLimit;
-        int hi = value ~/ 2;
-        if (hi > hiLimit) hi = hiLimit;
-        for (var factor = lo; factor <= hi; factor++) {
-          if (value % factor == 0) {
-            values.add(factor);
-          }
-        }
-      }
-      return List.from(values);
-    }
-    return null;
   }
 
   bool solveA7(FrequencyClue clue, Set<int> possibleValue) {
@@ -204,26 +163,6 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
       filterDigits(clue, values, possibleValue);
     }
     return false;
-  }
-
-  List<int>? getReverseOfOtherClue(FrequencyClue clue, FrequencyClue other) {
-    if (other.values != null) {
-      var values = <int>[];
-      for (var value in other.values!) {
-        var reverse = 0;
-        while (value > 0) {
-          reverse = reverse * 10 + value % 10;
-          // First digit cannot be 0
-          if (reverse == 0) break;
-          value = value ~/ 10;
-        }
-        if (reverse != 0) {
-          values.add(reverse);
-        }
-      }
-      return values;
-    }
-    return null;
   }
 
   bool solveA10(FrequencyClue clue, Set<int> possibleValue) {
@@ -248,22 +187,6 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     }
     filterDigits(clue, values, possibleValue);
     return false;
-  }
-
-  List<int>? getDigitProductOtherClue(FrequencyClue clue, FrequencyClue other) {
-    if (other.values != null) {
-      var values = <int>{};
-      for (var value in other.values!) {
-        var product = 1;
-        while (value > 0) {
-          product *= value % 10;
-          value = value ~/ 10;
-        }
-        values.add(product);
-      }
-      return List.from(values);
-    }
-    return null;
   }
 
   bool solveD3(FrequencyClue clue, Set<int> possibleValue) {
@@ -310,63 +233,12 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     return false;
   }
 
-  List<int>? getMultipleOfOtherClue(FrequencyClue clue, FrequencyClue other) {
-    if (other.values != null) {
-      var values = <int>[];
-      for (var value in other.values!) {
-        var hi = ((10.pow(clue.length) as int) - 1) ~/ value;
-        for (var i = 2; i <= hi; i++) {
-          var multiple = i * value;
-          values.add(multiple);
-        }
-      }
-      return values;
-    }
-    return null;
-  }
-
   bool solveD5(FrequencyClue clue, Set<int> possibleValue) {
     var values = getDigitProductEqualsOtherClueProduct(clue, a1);
     if (values != null) {
       filterDigits(clue, values, possibleValue);
     }
     return false;
-  }
-
-  List<int>? getDigitProductEqualsOtherClueProduct(
-      FrequencyClue clue, FrequencyClue other) {
-    if (other.values != null) {
-      var values = <int>{};
-      for (var value in other.values!) {
-        var product = 1;
-        while (value > 0) {
-          product *= value % 10;
-          value = value ~/ 10;
-        }
-        for (var factor = 1; factor <= product.sqrt().floor(); factor++) {
-          if (factor < 10 && product % factor == 0) {
-            for (var factor2 = 1;
-                factor2 <= product.sqrt().floor();
-                factor2++) {
-              var prod2 = factor * factor2;
-              if (factor2 < 10 && product % prod2 == 0) {
-                var factor3 = product ~/ prod2;
-                if (factor3 < 10) {
-                  values.add(factor * 100 + factor2 * 10 + factor3);
-                  values.add(factor * 100 + factor3 * 10 + factor2);
-                  values.add(factor2 * 100 + factor * 10 + factor3);
-                  values.add(factor2 * 100 + factor3 * 10 + factor);
-                  values.add(factor3 * 100 + factor2 * 10 + factor);
-                  values.add(factor3 * 100 + factor * 10 + factor2);
-                }
-              }
-            }
-          }
-        }
-      }
-      return List.from(values);
-    }
-    return null;
   }
 
   bool solveD8(FrequencyClue clue, Set<int> possibleValue) {
@@ -415,40 +287,6 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
       filterDigits(clue, List.from(values), possibleValue);
     }
     return false;
-  }
-
-  int sumDigits(int value) {
-    var str = value.toString();
-    var sum = 0;
-    for (var i = 0; i < str.length; i++) {
-      sum += int.parse(str[i]);
-    }
-    return sum;
-  }
-
-  int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
-    var sum = 0;
-    // Sum all otherClues that do not interset with Clue
-    // Do not double count digits that appear in Across and Down clues
-    var index = 0;
-    for (var otherClue in otherClues) {
-      var value = otherValues[index].toString();
-      // Sum all digitd of Across clues
-      for (var d = 0; d < otherClue.length; d++) {
-        var digit = int.parse(value[d]);
-        // Exclude digits that intersect with the Clue
-        if (otherClue.digitIdentities[d] != null) {
-          if (otherClue.digitIdentities[d]!.clue == clue) digit = 0;
-        }
-        // Exclude digits of Down clues that intersect with Across clues
-        if (otherClue.name[0] == 'D') {
-          if (otherClue.digitIdentities[d] != null) digit = 0;
-        }
-        sum += digit;
-      }
-      index++;
-    }
-    return sum;
   }
 
   bool solveD9(FrequencyClue clue, Set<int> possibleValue) {
