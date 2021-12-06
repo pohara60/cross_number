@@ -28,7 +28,6 @@ class FrequencyPuzzle extends Puzzle<FrequencyClue> {
   List<int>? getAllDigits() {
     var digits = <int>[];
     // Do not double count digits that appear in Across and Down clues
-    var index = 0;
     for (var clue in this.clues.values) {
       if (clues.values == null || clue.values!.length != 1) return null;
       var value = clue.values!.first.toString();
@@ -37,11 +36,10 @@ class FrequencyPuzzle extends Puzzle<FrequencyClue> {
         var digit = int.parse(value[d]);
         // Exclude digits of Down clues that intersect with Across clues
         if (clue.name[0] == 'D') {
-          if (clue.digitIdentities[d] != null) digit = 0;
+          if (clue.digitIdentities[d] != null) continue;
         }
         digits.add(digit);
       }
-      index++;
     }
     return digits;
   }
