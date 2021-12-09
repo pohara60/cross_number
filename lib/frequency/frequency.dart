@@ -6,8 +6,20 @@ import 'package:crossnumber/frequency/clue.dart';
 import 'package:crossnumber/frequency/puzzle.dart';
 
 class Frequency extends Crossnumber<FrequencyPuzzle> {
+  var gridString = [
+    '+--+--+--+--+',
+    '|1 :2 :3 |4 |',
+    '+--:::::::::+',
+    '|5 :  |6 :  |',
+    '+:::--+--:::+',
+    '|7 :8 |9 :  |',
+    '+:::::::::--+',
+    '|  |10:  :  |',
+    '+--+--+--+--+',
+  ];
+
   Frequency() {
-    puzzle = FrequencyPuzzle();
+    puzzle = FrequencyPuzzle.grid(gridString);
     initCrossnumber();
   }
 

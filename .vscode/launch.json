@@ -57,6 +57,15 @@
             "args": [
                 "cartesian"
             ]
+        },
+        {
+            "name": "grid",
+            "program": "lib/grid.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "grid"
+            ]
         }
     ]
 }

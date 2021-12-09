@@ -3,6 +3,7 @@ import 'package:crossnumber/puzzle.dart';
 
 class FrequencyPuzzle extends Puzzle<FrequencyClue> {
   FrequencyPuzzle();
+  FrequencyPuzzle.grid(List<String> gridString) : super.grid(gridString);
 
   bool checkSolution() {
     if (!super.checkSolution()) return false;
@@ -29,7 +30,7 @@ class FrequencyPuzzle extends Puzzle<FrequencyClue> {
     var digits = <int>[];
     // Do not double count digits that appear in Across and Down clues
     for (var clue in this.clues.values) {
-      if (clues.values == null || clue.values!.length != 1) return null;
+      if (clue.values == null || clue.values!.length != 1) return null;
       var value = clue.values!.first.toString();
       // Get all digits of Across clues
       for (var d = 0; d < clue.length; d++) {

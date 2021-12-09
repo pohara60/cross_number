@@ -1,13 +1,18 @@
 import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
+import 'package:crossnumber/grid.dart';
 import 'package:crossnumber/variable.dart';
 import 'package:powers/src/powers.dart';
 
 class Puzzle<ClueKind extends Clue> {
   late Map<String, ClueKind> clues;
+  Grid? grid;
 
   Puzzle() {}
+  Puzzle.grid(List<String> gridString) {
+    this.grid = Grid(gridString);
+  }
 
   void addClue(ClueKind clue) {
     clues[clue.name] = clue;
@@ -213,10 +218,19 @@ class Puzzle<ClueKind extends Clue> {
   String solutionToString() {
     var text = "Solution\n";
     var keys = solution.keys.toList();
-    //keys.sort((c1,c2) => c1.name[0] == c2.name[0] ? int.parse(c1.name.substring(1)).compareTo(int.parse(c2.name.substring(1))) : c1.name[0].compareTo(c2.name[0]));
+    var clueValues = <String, int>{};
+    var unique = true;
     for (var clue in keys) {
       text +=
           '${clue.name}=${solution[clue]!.value ?? solution[clue]!.possible}\n';
+      if (solution[clue]!.value == null) {
+        unique = false;
+      } else {
+        clueValues[clue.name] = solution[clue]!.value!;
+      }
+    }
+    if (unique && this.grid != null) {
+      text += '\n${grid!.solutionToString(clueValues)}';
     }
     return text;
   }
