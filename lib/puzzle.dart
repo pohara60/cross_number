@@ -251,6 +251,10 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
   VariablePuzzle(List<int> possibleValues) {
     variableList = VariableList<VariableKind>(possibleValues);
   }
+  VariablePuzzle.grid(List<int> possibleValues, List<String> gridString)
+      : super.grid(gridString) {
+    variableList = VariableList<VariableKind>(possibleValues);
+  }
 
   Map<String, Variable> get variables => variableList.variables;
   List<int> get remainingValues => variableList.remainingValues;
