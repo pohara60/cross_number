@@ -131,6 +131,23 @@ class Grid {
     }
   }
 
+  List<Map<String, dynamic>> getIdentities() {
+    List<Map<String, dynamic>> identities = [];
+    for (var row in this.cells) {
+      for (var cell in row) {
+        if (cell!.across != null && cell.down != null) {
+          identities.add({
+            'clue1': cell.across!.name,
+            'digit1': cell.acrossDigit! + 1,
+            'clue2': cell.down!.name,
+            'digit2': cell.downDigit! + 1,
+          });
+        }
+      }
+    }
+    return identities;
+  }
+
   String toString() {
     var identities = '';
     for (var row in this.cells) {

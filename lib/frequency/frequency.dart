@@ -87,18 +87,19 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
         name: 'D9', length: 2, valueDesc: 'Triangular', solve: solveD9);
     puzzle.addClue(d9);
 
-    puzzle.addDigitIdentity(a1, 2, d2, 1);
-    puzzle.addDigitIdentity(a1, 3, d3, 1);
-    puzzle.addDigitIdentity(a5, 1, d5, 1);
-    puzzle.addDigitIdentity(a5, 2, d2, 2);
-    puzzle.addDigitIdentity(a6, 1, d3, 2);
-    puzzle.addDigitIdentity(a6, 2, d4, 2);
-    puzzle.addDigitIdentity(a7, 1, d5, 2);
-    puzzle.addDigitIdentity(a7, 2, d8, 1);
-    puzzle.addDigitIdentity(a9, 1, d9, 1);
-    puzzle.addDigitIdentity(a9, 2, d4, 3);
-    puzzle.addDigitIdentity(a10, 1, d8, 2);
-    puzzle.addDigitIdentity(a10, 2, d9, 2);
+    puzzle.addDigitIdentityFromGrid();
+    // puzzle.addDigitIdentity(a1, 2, d2, 1);
+    // puzzle.addDigitIdentity(a1, 3, d3, 1);
+    // puzzle.addDigitIdentity(a5, 1, d5, 1);
+    // puzzle.addDigitIdentity(a5, 2, d2, 2);
+    // puzzle.addDigitIdentity(a6, 1, d3, 2);
+    // puzzle.addDigitIdentity(a6, 2, d4, 2);
+    // puzzle.addDigitIdentity(a7, 1, d5, 2);
+    // puzzle.addDigitIdentity(a7, 2, d8, 1);
+    // puzzle.addDigitIdentity(a9, 1, d9, 1);
+    // puzzle.addDigitIdentity(a9, 2, d4, 3);
+    // puzzle.addDigitIdentity(a10, 1, d8, 2);
+    // puzzle.addDigitIdentity(a10, 2, d9, 2);
 
     puzzle.addReference(a5, d2, true);
     puzzle.addReference(a6, d9, true);

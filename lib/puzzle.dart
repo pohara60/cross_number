@@ -29,6 +29,15 @@ class Puzzle<ClueKind extends Clue> {
     clue1.addReferrer(clue2);
   }
 
+  void addDigitIdentityFromGrid() {
+    assert(this.grid != null);
+    for (var identity in this.grid!.getIdentities()) {
+      var clue1 = this.clues[identity['clue1']]!;
+      var clue2 = this.clues[identity['clue2']]!;
+      addDigitIdentity(clue1, identity['digit1'], clue2, identity['digit2']);
+    }
+  }
+
   /// clue1 refers to clue2
   void addReference(ClueKind clue1, ClueKind clue2, [bool symmetric = false]) {
     clue2.addReferrer(clue1);
