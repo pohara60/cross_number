@@ -166,8 +166,10 @@ class Grid {
     var text = border + '\n';
     var rowSeparator = '';
     for (var row in this.cells) {
+      var prevRowSeparator = rowSeparator;
       if (rowSeparator != '') text += rowSeparator + '\n';
       rowSeparator = '+';
+      var lastRowSeparatorChar = rowSeparator;
       var separator = '|';
       for (var cell in row) {
         text += separator;
@@ -189,17 +191,27 @@ class Grid {
         } else {
           separator = ' ';
         }
-        if (rowSeparator != '+') rowSeparator += ' ';
+        var rowSeparatorChar = ' ';
+        var nextRowSeparatorChar = ' ';
         if (cell.down == null) {
-          rowSeparator += '-';
+          rowSeparatorChar = '-';
         } else if (cell.downDigit! == cell.down!.length - 1) {
-          rowSeparator += '-';
-        } else {
-          rowSeparator += ' ';
+          rowSeparatorChar = '-';
+          nextRowSeparatorChar = '+';
         }
+        if (separator == '|') {
+          nextRowSeparatorChar = '+';
+        }
+        if (rowSeparator != '+') {
+          if (lastRowSeparatorChar == '-' || nextRowSeparatorChar == '-') {
+            rowSeparatorChar = '+';
+          }
+        }
+        rowSeparator += rowSeparatorChar;
+        rowSeparator += nextRowSeparatorChar;
+        lastRowSeparatorChar = nextRowSeparatorChar;
       }
       text += '|\n';
-      rowSeparator += '+';
     }
     text += border + '\n';
     return text;
