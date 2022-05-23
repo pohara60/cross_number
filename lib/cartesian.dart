@@ -1,3 +1,8 @@
+int cartesianCount<T>(List<List<T>> inputs) {
+  return inputs.fold(
+      1, (previousValue, element) => previousValue * element.length);
+}
+
 Iterable<List<T>> cartesian<T>(List<List<T>> inputs) sync* {
   if (inputs.isEmpty) {
     yield <T>[];

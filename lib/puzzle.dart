@@ -245,6 +245,10 @@ class Puzzle<ClueKind extends Clue> {
   }
 }
 
+class SolveException implements Exception {
+  SolveException();
+}
+
 class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     extends Puzzle<ClueKind> {
   late final VariableList variableList;
@@ -269,6 +273,10 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
       variableValues.add(this.variables[variable]!.values.toList());
+    }
+    var count = cartesianCount(variableValues);
+    if (count > 1000000) {
+      throw new SolveException();
     }
     for (var product in cartesian(variableValues)) {
       var value = expression(product);

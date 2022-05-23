@@ -50,6 +50,15 @@
             ]
         },
         {
+            "name": "sequences",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "sequences"
+            ]
+        },
+        {
             "name": "cartesian",
             "program": "lib/letters/cartesian.dart",
             "request": "launch",

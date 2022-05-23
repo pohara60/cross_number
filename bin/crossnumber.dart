@@ -7,6 +7,7 @@ import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
+import 'package:crossnumber/sequences/sequences.dart';
 
 const help = 'help';
 const program = 'crossnumber';
@@ -19,7 +20,8 @@ void main(List<String> arguments) async {
     ..addCommand(PrimeCutsCommand())
     ..addCommand(LettersCommand())
     ..addCommand(DistancingCommand())
-    ..addCommand(FrequencyCommand());
+    ..addCommand(FrequencyCommand())
+    ..addCommand(SequencesCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -98,6 +100,20 @@ class FrequencyCommand extends Command {
   void run() {
     // Get and print solve
     final pc = Frequency();
+    pc.solve();
+  }
+}
+
+class SequencesCommand extends Command {
+  @override
+  final name = 'sequences';
+  @override
+  final description = 'solve hardcoded sequences puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Sequences();
     pc.solve();
   }
 }

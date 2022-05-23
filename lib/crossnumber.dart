@@ -12,7 +12,7 @@ import 'package:crossnumber/puzzle.dart';
 class Crossnumber<PuzzleKind extends Puzzle> {
   late PuzzleKind puzzle;
 
-  static const bool traceInit = false;
+  static const bool traceInit = true;
   static const bool traceSolve = true;
 
   Crossnumber();
@@ -46,12 +46,17 @@ class Crossnumber<PuzzleKind extends Puzzle> {
     while (updateQueue.length > 0) {
       Clue clue = updateQueue.removeAt(0);
       iterations++;
-      updated = solveClue(clue);
-      if (updated) {
-        for (var referrer in clue.referrers) {
-          addToUpdateQueue(referrer);
+      try {
+        updated = solveClue(clue);
+        if (updated) {
+          for (var referrer in clue.referrers) {
+            addToUpdateQueue(referrer);
+          }
+          updates++;
         }
-        updates++;
+      } on SolveException {
+        // Put clue back at end of queue
+        updateQueue.add(clue);
       }
     }
     if (traceSolve) {
@@ -100,6 +105,13 @@ class Crossnumber<PuzzleKind extends Puzzle> {
 
     if (traceSolve && updated) {
       print("solve: ${clue.toString()}");
+      if (clue is VariableClue) {
+        var variableList = (puzzle as VariablePuzzle).variableList;
+        for (var variable in clue.variableReferences) {
+          print(
+              '$variable=${variableList.variables[variable]!.values.toString()}');
+        }
+      }
     }
     return updated;
   }
