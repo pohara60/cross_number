@@ -52,7 +52,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
         solve: solveA11);
     puzzle.addClue(a11);
     var a12 = SequencesClue(
-        name: 'A12', length: 3, valueDesc: 'F + o + r - TY', solve: solveA12);
+        name: 'A12', length: 3, valueDesc: 'F + o - r - TY', solve: solveA12);
     puzzle.addClue(a12);
     var a13 = SequencesClue(
         name: 'A13',
@@ -79,7 +79,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
         solve: solveA20);
     puzzle.addClue(a20);
     var a22 = SequencesClue(
-        name: 'A22', length: 3, valueDesc: 'Ser - I + e + S', solve: solveA22);
+        name: 'A22', length: 3, valueDesc: 'SEr - I + e + S', solve: solveA22);
     puzzle.addClue(a22);
     var a23 = SequencesClue(
         name: 'A23', length: 3, valueDesc: 'M + E + NUS', solve: solveA23);
@@ -176,50 +176,51 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
         name: 'D29', length: 2, valueDesc: 'N + U + m + S', solve: solveD29);
     puzzle.addClue(d29);
 
-    puzzle.addDigitIdentity(a2, 1, d2, 1);
-    puzzle.addDigitIdentity(a2, 3, d3, 1);
-    puzzle.addDigitIdentity(a2, 4, d4, 1);
-    puzzle.addDigitIdentity(a5, 1, d5, 1);
-    puzzle.addDigitIdentity(a5, 2, d6, 1);
-    puzzle.addDigitIdentity(a5, 2, d7, 1);
-    puzzle.addDigitIdentity(a8, 1, d2, 2);
-    puzzle.addDigitIdentity(a8, 2, d2, 2);
-    puzzle.addDigitIdentity(a10, 1, d3, 2);
-    puzzle.addDigitIdentity(a10, 2, d4, 2);
-    puzzle.addDigitIdentity(a11, 1, d5, 2);
-    puzzle.addDigitIdentity(a11, 2, d6, 2);
-    puzzle.addDigitIdentity(a11, 3, d7, 2);
-    puzzle.addDigitIdentity(a12, 1, d12, 1);
-    puzzle.addDigitIdentity(a12, 2, d2, 3);
-    puzzle.addDigitIdentity(a12, 3, d9, 2);
-    puzzle.addDigitIdentity(a13, 1, d13, 1);
-    puzzle.addDigitIdentity(a13, 2, d14, 1);
-    puzzle.addDigitIdentity(a13, 3, d5, 3);
-    puzzle.addDigitIdentity(a16, 1, d12, 2);
-    puzzle.addDigitIdentity(a17, 1, d9, 3);
-    puzzle.addDigitIdentity(a17, 2, d13, 2);
-    puzzle.addDigitIdentity(a18, 1, d14, 2);
-    puzzle.addDigitIdentity(a18, 2, d19, 1);
-    puzzle.addDigitIdentity(a20, 2, d15, 2);
-    puzzle.addDigitIdentity(a22, 1, d22, 1);
-    puzzle.addDigitIdentity(a22, 2, d13, 3);
-    puzzle.addDigitIdentity(a22, 3, d14, 3);
-    puzzle.addDigitIdentity(a23, 1, d19, 2);
-    puzzle.addDigitIdentity(a23, 2, d24, 1);
-    puzzle.addDigitIdentity(a23, 3, d15, 3);
-    puzzle.addDigitIdentity(a25, 1, d25, 1);
-    puzzle.addDigitIdentity(a25, 2, d21, 2);
-    puzzle.addDigitIdentity(a25, 3, d22, 2);
-    puzzle.addDigitIdentity(a26, 1, d26, 1);
-    puzzle.addDigitIdentity(a26, 2, d27, 1);
-    puzzle.addDigitIdentity(a28, 1, d24, 2);
-    puzzle.addDigitIdentity(a28, 2, d29, 1);
-    puzzle.addDigitIdentity(a30, 1, d25, 2);
-    puzzle.addDigitIdentity(a30, 2, d21, 3);
-    puzzle.addDigitIdentity(a30, 3, d22, 3);
-    puzzle.addDigitIdentity(a31, 1, d26, 2);
-    puzzle.addDigitIdentity(a31, 2, d27, 2);
-    puzzle.addDigitIdentity(a31, 4, d24, 3);
+    puzzle.addDigitIdentityFromGrid();
+    // puzzle.addDigitIdentity(a2, 1, d2, 1);
+    // puzzle.addDigitIdentity(a2, 3, d3, 1);
+    // puzzle.addDigitIdentity(a2, 4, d4, 1);
+    // puzzle.addDigitIdentity(a5, 1, d5, 1);
+    // puzzle.addDigitIdentity(a5, 2, d6, 1);
+    // puzzle.addDigitIdentity(a5, 2, d7, 1);
+    // puzzle.addDigitIdentity(a8, 1, d2, 2);
+    // puzzle.addDigitIdentity(a8, 2, d2, 2);
+    // puzzle.addDigitIdentity(a10, 1, d3, 2);
+    // puzzle.addDigitIdentity(a10, 2, d4, 2);
+    // puzzle.addDigitIdentity(a11, 1, d5, 2);
+    // puzzle.addDigitIdentity(a11, 2, d6, 2);
+    // puzzle.addDigitIdentity(a11, 3, d7, 2);
+    // puzzle.addDigitIdentity(a12, 1, d12, 1);
+    // puzzle.addDigitIdentity(a12, 2, d2, 3);
+    // puzzle.addDigitIdentity(a12, 3, d9, 2);
+    // puzzle.addDigitIdentity(a13, 1, d13, 1);
+    // puzzle.addDigitIdentity(a13, 2, d14, 1);
+    // puzzle.addDigitIdentity(a13, 3, d5, 3);
+    // puzzle.addDigitIdentity(a16, 1, d12, 2);
+    // puzzle.addDigitIdentity(a17, 1, d9, 3);
+    // puzzle.addDigitIdentity(a17, 2, d13, 2);
+    // puzzle.addDigitIdentity(a18, 1, d14, 2);
+    // puzzle.addDigitIdentity(a18, 2, d19, 1);
+    // puzzle.addDigitIdentity(a20, 2, d15, 2);
+    // puzzle.addDigitIdentity(a22, 1, d22, 1);
+    // puzzle.addDigitIdentity(a22, 2, d13, 3);
+    // puzzle.addDigitIdentity(a22, 3, d14, 3);
+    // puzzle.addDigitIdentity(a23, 1, d19, 2);
+    // puzzle.addDigitIdentity(a23, 2, d24, 1);
+    // puzzle.addDigitIdentity(a23, 3, d15, 3);
+    // puzzle.addDigitIdentity(a25, 1, d25, 1);
+    // puzzle.addDigitIdentity(a25, 2, d21, 2);
+    // puzzle.addDigitIdentity(a25, 3, d22, 2);
+    // puzzle.addDigitIdentity(a26, 1, d26, 1);
+    // puzzle.addDigitIdentity(a26, 2, d27, 1);
+    // puzzle.addDigitIdentity(a28, 1, d24, 2);
+    // puzzle.addDigitIdentity(a28, 2, d29, 1);
+    // puzzle.addDigitIdentity(a30, 1, d25, 2);
+    // puzzle.addDigitIdentity(a30, 2, d21, 3);
+    // puzzle.addDigitIdentity(a30, 3, d22, 3);
+    // puzzle.addDigitIdentity(a31, 1, d26, 2);
+    // puzzle.addDigitIdentity(a31, 2, d27, 2);
+    // puzzle.addDigitIdentity(a31, 4, d24, 3);
 
     // Add letter references from descriptions
     var letters = [
@@ -349,7 +350,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       var Y = letters[index++];
       var o = letters[index++];
       var r = letters[index++];
-      return F + o + r - T * Y;
+      return F + o - r - T * Y;
     });
     return updated;
   }
@@ -439,11 +440,12 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
       var index = 0;
+      var E = letters[index++];
       var I = letters[index++];
       var S = letters[index++];
       var e = letters[index++];
       var r = letters[index++];
-      return S * e * r - I + e + S;
+      return S * E * r - I + e + S;
     });
     return updated;
   }
@@ -581,8 +583,8 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
         (letters) {
       var index = 0;
       var S = letters[index++];
-      var U = letters[index++];
       var M = letters[index++];
+      var U = letters[index++];
       return S + U + M;
     });
     return updated;
@@ -857,28 +859,6 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     return updated;
   }
 
-  bool solveD26(SequencesClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
-    var updated = false;
-    for (var S
-        in puzzle.letters['S']!.values.where((element) => element < 10)) {
-      for (var Y in puzzle.letters['Y']!.values
-          .where((element) => element < 100 && element != S)) {
-        for (var I in puzzle.letters['I']!.values.where(
-            (element) => element < 100 && element != S && element != Y)) {
-          var value = S * Y * S;
-          if (value >= 10 && value < 100 && value == S * (I - S)) {
-            possibleValue.add(value);
-            possibleLetters['S']!.add(S);
-            possibleLetters['Y']!.add(Y);
-            possibleLetters['I']!.add(I);
-          }
-        }
-      }
-    }
-    return updated;
-  }
-
   bool solveD25(SequencesClue clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleLetters) {
     var updated = false;
@@ -890,10 +870,36 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
             .where((element) => element != S && element != Y)) {
           var value = Y * Y + Y;
           if (value >= 10 && value < 100 && value == (I - S)) {
-            possibleValue.add(value);
-            possibleLetters['S']!.add(S);
-            possibleLetters['Y']!.add(Y);
-            possibleLetters['I']!.add(I);
+            if (clue.digitsMatch(value)) {
+              possibleValue.add(value);
+              possibleLetters['S']!.add(S);
+              possibleLetters['Y']!.add(Y);
+              possibleLetters['I']!.add(I);
+            }
+          }
+        }
+      }
+    }
+    return updated;
+  }
+
+  bool solveD26(SequencesClue clue, Set<int> possibleValue,
+      Map<String, Set<int>> possibleLetters) {
+    var updated = false;
+    for (var S
+        in puzzle.letters['S']!.values.where((element) => element < 10)) {
+      for (var Y in puzzle.letters['Y']!.values
+          .where((element) => element < 100 && element != S)) {
+        for (var I in puzzle.letters['I']!.values.where(
+            (element) => element < 100 && element != S && element != Y)) {
+          var value = S * Y * S;
+          if (value >= 10 && value < 100 && value == S * (I - S)) {
+            if (clue.digitsMatch(value)) {
+              possibleValue.add(value);
+              possibleLetters['S']!.add(S);
+              possibleLetters['Y']!.add(Y);
+              possibleLetters['I']!.add(I);
+            }
           }
         }
       }

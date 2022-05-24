@@ -43,6 +43,8 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       print("UPDATES-----------------------------");
     }
 
+    Clue? firstExceptionClue;
+    bool skipExceptionClues = false;
     while (updateQueue.length > 0) {
       Clue clue = updateQueue.removeAt(0);
       iterations++;
@@ -53,10 +55,21 @@ class Crossnumber<PuzzleKind extends Puzzle> {
             addToUpdateQueue(referrer);
           }
           updates++;
+          firstExceptionClue = null;
+          skipExceptionClues = false;
         }
       } on SolveException {
-        // Put clue back at end of queue
-        updateQueue.add(clue);
+        // Put clue back at end of queue until no update since this clue
+        if (firstExceptionClue == clue) {
+          skipExceptionClues = true;
+        } else {
+          if (!skipExceptionClues) {
+            updateQueue.add(clue);
+            if (firstExceptionClue == null) {
+              firstExceptionClue = clue;
+            }
+          }
+        }
       }
     }
     if (traceSolve) {
@@ -91,14 +104,16 @@ class Crossnumber<PuzzleKind extends Puzzle> {
         if (clue.solve!(clue, possibleValue)) updated = true;
       }
       // If no Values returned then Solve function could not solve
-      if (possibleValue.isNotEmpty) {
-        if (puzzle.updateValues(clue, possibleValue)) updated = true;
-        if (clue.finalise()) updated = true;
-        if (clue is VariableClue) {
-          for (var variable in clue.variableReferences) {
-            if (updateVariables(variable, possibleVariables[variable]!))
-              updated = true;
-          }
+      if (possibleValue.isEmpty) {
+        print('Solve Error: clue ${clue.name} no solution!');
+        throw SolveException();
+      }
+      if (puzzle.updateValues(clue, possibleValue)) updated = true;
+      if (clue.finalise()) updated = true;
+      if (clue is VariableClue) {
+        for (var variable in clue.variableReferences) {
+          if (updateVariables(variable, possibleVariables[variable]!))
+            updated = true;
         }
       }
     }

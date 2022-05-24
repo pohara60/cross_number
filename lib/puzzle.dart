@@ -281,10 +281,12 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     for (var product in cartesian(variableValues)) {
       var value = expression(product);
       if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
-        possibleValue.add(value);
-        var index = 0;
-        for (var variable in clue.variableReferences) {
-          possibleVariables[variable]!.add(product[index++]);
+        if (clue.digitsMatch(value)) {
+          possibleValue.add(value);
+          var index = 0;
+          for (var variable in clue.variableReferences) {
+            possibleVariables[variable]!.add(product[index++]);
+          }
         }
       }
     }
