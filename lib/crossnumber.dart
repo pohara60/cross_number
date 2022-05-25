@@ -1,7 +1,7 @@
 /// An API for solving Cross Number puzzles.
 library crossnumber;
 
-//import 'dart:collection';
+import 'package:collection/collection.dart';
 import 'dart:math';
 import 'package:powers/powers.dart';
 
@@ -23,12 +23,37 @@ class Crossnumber<PuzzleKind extends Puzzle> {
     }
   }
 
-  List<Clue> updateQueue = [];
+  var updateQueue = <Clue>[];
+  var priorityQueue =
+      PriorityQueue<VariableClue>((a, b) => -b.count.compareTo(a.count));
 
   void addToUpdateQueue(Clue clue) {
-    if (!updateQueue.contains(clue)) {
-      updateQueue.add(clue);
+    if (clue is VariableClue) {
+      (puzzle as VariablePuzzle).updateClueCount(clue);
+      if (priorityQueue.contains(clue)) {
+        priorityQueue.remove(clue);
+      }
+      //print('addToUpdateQueue(${clue.name}), count=${clue.count}');
+      priorityQueue.add(clue);
+    } else {
+      if (!updateQueue.contains(clue)) {
+        updateQueue.add(clue);
+      }
     }
+  }
+
+  Clue takeFromUpdateQueue() {
+    if (priorityQueue.isNotEmpty) {
+      var clue = priorityQueue.removeFirst();
+      //print('takeFromUpdateQueue()=${clue.name}), count=${clue.count}');
+      return clue;
+    } else {
+      return updateQueue.removeAt(0);
+    }
+  }
+
+  bool updateQueueIsNotEmpty() {
+    return priorityQueue.isNotEmpty || updateQueue.isNotEmpty;
   }
 
   void solve() {
@@ -36,8 +61,9 @@ class Crossnumber<PuzzleKind extends Puzzle> {
     var iterations = 0;
     var updates = 0;
     var allClue = List<Clue>.from(puzzle.clues.values).toList();
-    updateQueue
-        .addAll(allClue.where((element) => !updateQueue.contains(element)));
+    allClue.forEach((clue) {
+      addToUpdateQueue(clue);
+    });
 
     if (traceSolve) {
       print("UPDATES-----------------------------");
@@ -46,8 +72,8 @@ class Crossnumber<PuzzleKind extends Puzzle> {
     final stopwatch = Stopwatch()..start();
     Clue? firstExceptionClue;
     bool skipExceptionClues = false;
-    while (updateQueue.length > 0) {
-      Clue clue = updateQueue.removeAt(0);
+    while (updateQueueIsNotEmpty()) {
+      Clue clue = takeFromUpdateQueue();
       iterations++;
       try {
         updated = solveClue(clue);
@@ -65,7 +91,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
           skipExceptionClues = true;
         } else {
           if (!skipExceptionClues) {
-            updateQueue.add(clue);
+            addToUpdateQueue(clue);
             if (firstExceptionClue == null) {
               firstExceptionClue = clue;
             }

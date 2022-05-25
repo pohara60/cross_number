@@ -266,17 +266,30 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
   Set<String> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
 
+  int getClueCount(VariableClue clue, List<List<int>> variableValues) {
+    for (var variable in clue.variableReferences) {
+      variableValues.add(this.variables[variable]!.values.toList());
+    }
+    return cartesianCount(variableValues);
+  }
+
+  void updateClueCount(VariableClue clue) {
+    var variableValues = <List<int>>[];
+    clue.count = getClueCount(clue, variableValues);
+  }
+
   void solveVariableExpression(
       VariableClue clue,
       Set<int> possibleValue,
       Map<String, Set<int>> possibleVariables,
       int expression(List<int> variables)) {
+    final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
-    for (var variable in clue.variableReferences) {
-      variableValues.add(this.variables[variable]!.values.toList());
-    }
-    var count = cartesianCount(variableValues);
+    var count = getClueCount(clue, variableValues);
     if (count > 1000000) {
+      if (Crossnumber.traceSolve) {
+        print('Func ${clue.name} cartesianCount=$count Exception');
+      }
       throw new SolveException();
     }
     for (var product in cartesian(variableValues)) {
@@ -291,23 +304,29 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
         }
       }
     }
+    if (Crossnumber.traceSolve) {
+      print(
+          'Func ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+    }
   }
 
   bool solveVariableExpressionEvaluator(VariableClue clue,
       Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
+    final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
       variableValues.add(this.variables[variable]!.values.toList());
     }
     var count = cartesianCount(variableValues);
     if (count > 1000000) {
+      if (Crossnumber.traceSolve) {
+        print('Eval ${clue.name} cartesianCount=$count Exception');
+      }
       throw new SolveException();
     }
     for (var product in cartesian(variableValues)) {
       try {
-        var exp = ExpressionEvaluator(
-            clue.valueDesc!, clue.variableReferences, product);
-        var value = exp.evaluate();
+        var value = clue.exp.evaluate(clue.variableReferences, product);
         if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
           if (clue.digitsMatch(value)) {
             possibleValue.add(value);
@@ -320,6 +339,10 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
       } on ExpressionInvalid {
         // Illegal values
       }
+    }
+    if (Crossnumber.traceSolve) {
+      print(
+          'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
     }
     return false;
   }

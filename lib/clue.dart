@@ -1,3 +1,4 @@
+import 'package:crossnumber/expression.dart';
 import 'package:crossnumber/set.dart';
 
 /// A [Puzzle] clue
@@ -139,10 +140,15 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 
 class VariableClue extends Clue {
   late final List<String> variableReferences;
+  late final ExpressionEvaluator exp;
+
+  /// Computed - Count of combinations of variable values
+  int count = 0;
 
   VariableClue({required name, required length, valueDesc, solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     this.variableReferences = <String>[];
+    this.exp = ExpressionEvaluator(valueDesc);
   }
 
   addVariableReference(String variable) {
