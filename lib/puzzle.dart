@@ -1,6 +1,7 @@
 import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
+import 'package:crossnumber/expression.dart';
 import 'package:crossnumber/grid.dart';
 import 'package:crossnumber/variable.dart';
 import 'package:powers/src/powers.dart';
@@ -290,6 +291,37 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
         }
       }
     }
+  }
+
+  bool solveVariableExpressionEvaluator(VariableClue clue,
+      Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
+    var variableValues = <List<int>>[];
+    for (var variable in clue.variableReferences) {
+      variableValues.add(this.variables[variable]!.values.toList());
+    }
+    var count = cartesianCount(variableValues);
+    if (count > 1000000) {
+      throw new SolveException();
+    }
+    for (var product in cartesian(variableValues)) {
+      try {
+        var exp = ExpressionEvaluator(
+            clue.valueDesc!, clue.variableReferences, product);
+        var value = exp.evaluate();
+        if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
+          if (clue.digitsMatch(value)) {
+            possibleValue.add(value);
+            var index = 0;
+            for (var variable in clue.variableReferences) {
+              possibleVariables[variable]!.add(product[index++]);
+            }
+          }
+        }
+      } on ExpressionInvalid {
+        // Illegal values
+      }
+    }
+    return false;
   }
 
   int iterateVariables() {

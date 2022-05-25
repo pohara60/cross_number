@@ -43,6 +43,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       print("UPDATES-----------------------------");
     }
 
+    final stopwatch = Stopwatch()..start();
     Clue? firstExceptionClue;
     bool skipExceptionClues = false;
     while (updateQueue.length > 0) {
@@ -73,7 +74,8 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       }
     }
     if (traceSolve) {
-      print('Clue iterations=$iterations, updates=$updates');
+      print(
+          'Clue iterations=$iterations, updates=$updates, elapsed ${stopwatch.elapsed}');
     }
 
     // Unique solution?
