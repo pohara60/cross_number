@@ -909,6 +909,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
 
   void solve() {
     print("SOLVE------------");
+    // Manual sequencing of solution saves 20 iterations
     solveClue(this.puzzle.clues['D26']!);
     solveClue(this.puzzle.clues['D25']!);
     solveClue(this.puzzle.clues['D26']!);
@@ -920,9 +921,6 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     solveClue(this.puzzle.clues['A8']!);
     solveClue(this.puzzle.clues['A25']!);
     solveClue(this.puzzle.clues['A26']!);
-    solveClue(this.puzzle.clues['A17']!);
-    solveClue(this.puzzle.clues['A18']!);
-    solveClue(this.puzzle.clues['D4']!);
     super.solve();
   }
 }
