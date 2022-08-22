@@ -5,7 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Dart",
+            "name": "carteblanche",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/carteblanche.dart"
+        },
+        {
+            "name": "expression",
             "type": "dart",
             "request": "launch",
             "program": "lib/expression.dart"
