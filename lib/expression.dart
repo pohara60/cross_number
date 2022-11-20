@@ -146,6 +146,14 @@ class ExpressionEvaluator {
     return false;
   }
 
+  bool _peek(toktype) {
+    // Test the next token if it matches toktype
+    if (this.nexttok?.type == toktype) {
+      return true;
+    }
+    return false;
+  }
+
   void _expect(toktype) {
     // Consume next token if it matches toktype or throw SyntaxError
     if (!this._accept(toktype)) {
@@ -191,20 +199,35 @@ class ExpressionEvaluator {
   }
 
   Node unary() {
-    // term ::= { '-' } factor
+    // term ::= { '-' } multiplication
     if (this._accept('MINUS')) {
       var token = this.tok!;
       var left = Node(Token('NUM', value: 0));
-      var right = this.factor();
+      var right = this.multiplication();
       var node = Node(token, [left, right]);
       return node;
     }
-    return this.factor();
+    return this.multiplication();
   }
 
-  Node factor() {
-    // factor ::= NUM | VAR | ( expr )
-    if (this._accept('NUM') || this._accept('VAR')) {
+  Node multiplication() {
+    // multiplication ::= factor { factor }*
+    var node = this.factor();
+    if (node != null) {
+      while (true) {
+        var node2 = this.factor();
+        if (node2 == null) return node!;
+        var token = Token('TIMES');
+        node = Node(token, [node!, node2]);
+      }
+    } else {
+      throw ExpressionError('Expected NUMBER, VARIABLE or LPAREN');
+    }
+  }
+
+  Node? factor() {
+    // factor ::= VAR | NUM | ( expr )
+    if (this._accept('VAR') || this._accept('NUM')) {
       var token = this.tok!;
       return Node(token);
     } else if (this._accept('LPAREN')) {
@@ -212,7 +235,7 @@ class ExpressionEvaluator {
       this._expect('RPAREN');
       return node;
     } else {
-      throw ExpressionError('Expected NUMBER, VARIABLE or LPAREN');
+      return null;
     }
   }
 

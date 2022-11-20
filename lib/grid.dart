@@ -76,7 +76,8 @@ class Grid {
           }
 
           // Process cell
-          assert(isDigit(array[c]) || array[c] == ' ');
+          assert(isDigit(array[c]) || array[c] == ' ',
+              'Invalid cell character ${array[c]}');
           var cStart = c;
           var number = 0;
           while (isDigit(array[c]) || array[c] == ' ') {
