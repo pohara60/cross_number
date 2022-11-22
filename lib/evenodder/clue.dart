@@ -1,4 +1,5 @@
-import 'package:crossnumber/clue.dart';
+import '../clue.dart';
+import '../expression.dart';
 
 /// A [LettersPuzzle] clue
 class EvenOdderClue extends VariableClue {
@@ -11,5 +12,8 @@ class EvenOdderClue extends VariableClue {
     required length,
     valueDesc,
     solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    // Re-parse expression adding variable prefix for Across and Down
+    this.exp = ExpressionEvaluator(valueDesc, name[0]);
+  }
 }

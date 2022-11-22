@@ -30,6 +30,9 @@ class Clue {
   /// Try possible value
   int? _tryValue;
 
+  bool get isAcross => this.name[0] == 'A';
+  bool get isDown => this.name[0] == 'D';
+
   set tryValue(int? value) {
     _tryValue = value;
   }
@@ -140,7 +143,7 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 
 class VariableClue extends Clue {
   late final List<String> variableReferences;
-  late final ExpressionEvaluator exp;
+  late ExpressionEvaluator exp;
 
   /// Computed - Count of combinations of variable values
   int count = 0;

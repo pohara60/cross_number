@@ -12,14 +12,21 @@ The EvenOdder puzzle has these features:
 
 ## Notes
 
-The first solution to the puzzle used hand-written solution functions using solveVariableExpression, and two optimised functions for solveD25 and solveD26. These two latter functions were manually invoked before using the normal solution loop.
+Just used the automatic solveVariableExpressionEvaluator to solve the puzzle, i.e. no hand-written solution functions for slow clues.
 
-We then developed the automatic clue expression evalator, and changed to use solveVariableExpressionEvaluator, which is an order of magnitude slower than hand-written solveVariableExpression!
+See [link](../sequences/README.md) for more discussion.
 
-So we then changed to using a PriorityQueue for the clue solution loop, examining clues in ascending order of the number of combinations of clue variable values. This increased the number of loop iterations, but reduced the execution time.
+## Notes
 
-Examining the elasped time for clue solution lead to reinstating the hand-written solution functions for solveD26 and solveA18, which reduced the execution time to less than a second.
+May need refactoring...
 
-## Guidance for Variable Puzzles
+CrossNumber.solveClue(clue)
+CrossNumber.updateVariables(variable, values)
+VariablePuzzle.updateVariables(variable, possibleValues)
+VariableList.updateVariables(variable, possibleValues)
 
-Start with the automatic solveVariableExpressionEvaluator, which should solve the puzzle, albeit slowly. To improve the execution time hand-write solution functions for the slowest clues.
+VariablePuzzle.solveVariableExpressionEvaluator
+VariableClue.ExpressionEvaluator.evaluate(clue.variableReferences, product)
+
+VariableClue()
+ExpressionEvaluator()

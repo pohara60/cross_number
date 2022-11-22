@@ -39,10 +39,32 @@ const variableValues = [
 ];
 
 class EvenOdderVariable extends Variable {
+  late EvenOdderVariable _link;
   EvenOdderVariable(letter) : super(letter) {
     this.values = Set.from(variableValues);
   }
   String get letter => this.name;
+
+  @override
+  bool updatePossible(Set<int> possibleValues) {
+    var updated = super.updatePossible(possibleValues);
+    if (updated) {
+      // Update corresponding Across/Down variable
+      var otherValues = <int>{};
+      for (var value in this.values) {
+        // Even add one, odd sutract one
+        var otherValue = value + (value % 2 == 0 ? 1 : -1);
+        otherValues.add(otherValue);
+      }
+      this._link.updatePossible(otherValues);
+    }
+    return updated;
+  }
+
+  static void link(EvenOdderVariable letter, EvenOdderVariable letter2) {
+    letter._link = letter2;
+    letter2._link = letter;
+  }
 }
 
 class EvenOdderPuzzle extends VariablePuzzle<EvenOdderClue, EvenOdderVariable> {

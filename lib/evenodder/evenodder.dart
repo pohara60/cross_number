@@ -165,7 +165,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var a40 = EvenOdderClue(
         name: 'A40',
         length: 4,
-        valueDesc: 'S!/O-(L-1+TO)N',
+        valueDesc: 'S!/O-(L-I+TO)N',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(a40);
     var a41 = EvenOdderClue(
@@ -184,7 +184,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d1 = EvenOdderClue(
         name: 'D1',
         length: 3,
-        valueDesc: 'M (E+A+S-U)(RE)',
+        valueDesc: 'M+(E+A+S-U)(R+E)',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d1);
     var d2 = EvenOdderClue(
@@ -202,7 +202,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d4 = EvenOdderClue(
         name: 'D4',
         length: 4,
-        valueDesc: '(N-E U T+R)(I-N)O',
+        valueDesc: '(N-E+U+T+R)(I-N)O',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d4);
     var d5 = EvenOdderClue(
@@ -214,7 +214,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d7 = EvenOdderClue(
         name: 'D7',
         length: 4,
-        valueDesc: 'C+O-L LAP+S-E',
+        valueDesc: 'C+O-L+LAP+S-E',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d7);
     var d8 = EvenOdderClue(
@@ -232,7 +232,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d13 = EvenOdderClue(
         name: 'D13',
         length: 2,
-        valueDesc: '-S L-I T',
+        valueDesc: '-S+L-I+T',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d13);
     var d14 = EvenOdderClue(
@@ -244,13 +244,13 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d15 = EvenOdderClue(
         name: 'D15',
         length: 4,
-        valueDesc: '(-E (I+N!)S+T-E)IN',
+        valueDesc: '(-E+(I+N!)S+T-E)IN',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d15);
     var d17 = EvenOdderClue(
         name: 'D17',
         length: 4,
-        valueDesc: 'M+O-L+ECU-L E',
+        valueDesc: 'M+O-L+ECU-L+E',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d17);
     var d18 = EvenOdderClue(
@@ -274,7 +274,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d24 = EvenOdderClue(
         name: 'D24',
         length: 3,
-        valueDesc: '(C/O)LOU/R',
+        valueDesc: '(C)LU/R', // (C/O)LOU/R fails integer division
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d24);
     var d26 = EvenOdderClue(
@@ -286,7 +286,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     var d28 = EvenOdderClue(
         name: 'D28',
         length: 4,
-        valueDesc: 'PO(S+I-T R+O+N)',
+        valueDesc: 'PO(S+I-T+R+O+N)',
         solve: puzzle.solveVariableExpressionEvaluator);
     puzzle.addClue(d28);
     var d30 = EvenOdderClue(
@@ -347,12 +347,22 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
       'U',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = EvenOdderVariable(letter);
-      for (var clue in puzzle.clues.values) {
-        if (clue.valueDesc!.contains(letter)) {
-          clue.addLetterReference(letter);
+      // Add Across and Down versions of variable
+      for (var prefix in ['A', 'D']) {
+        var variableName = prefix + letter;
+        puzzle.letters[variableName] = EvenOdderVariable(variableName);
+        for (var clue in puzzle.clues.values) {
+          if (clue.name[0] == prefix) {
+            if (clue.exp.variableRefs.contains(variableName)) {
+              clue.addLetterReference(variableName);
+            }
+          }
         }
       }
+      EvenOdderVariable.link(
+        puzzle.letters['A' + letter]! as EvenOdderVariable,
+        puzzle.letters['D' + letter]! as EvenOdderVariable,
+      );
     }
 
     if (Crossnumber.traceInit) {

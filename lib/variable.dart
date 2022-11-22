@@ -22,6 +22,18 @@ class Variable {
   String toString() {
     return values.toShortString();
   }
+
+  bool updatePossible(Set<int> possibleValues) {
+    var updated =
+        this.values.any((element) => !possibleValues.contains(element));
+    this.values.removeWhere((element) => !possibleValues.contains(element));
+    // if (this.values.length == 1) {
+    //   this._value = this.values.first;
+    // }
+    return updated;
+  }
+
+  bool get isSet => this.values.length == 1;
 }
 
 /// A collection of [Variable]s, with a set of values
@@ -33,25 +45,31 @@ class VariableList<VariableKind extends Variable> {
   // Subclass constructor initializes remaining values
   VariableList(this.remainingValues);
 
-  Set<String> updateVariables(String variable, Set<int> possibleValues) {
+  Set<String> updateVariables(String variableName, Set<int> possibleValues) {
     var updatedVariables = <String>{};
-    var possibleVariableValues = variables[variable]!.values;
-    var updated = updatePossible(possibleVariableValues, possibleValues);
+    // Get unknown variables before update this variable, in case of side effects
+    // (EvenOdderVariable can set linked variable)
+    var unknownVariableEntries =
+        variables.entries.where((entry) => !entry.value.isSet).toList();
+    var variable = variables[variableName]!;
+    var updated = variable.updatePossible(possibleValues);
     if (updated) {
-      updatedVariables.add(variable);
-      if (possibleVariableValues.length == 1) {
-        List<String> knownLetters = [variable];
+      updatedVariables.add(variableName);
+      if (variable.isSet) {
+        List<String> knownLetters = [variableName];
         int index = 0;
         while (index < knownLetters.length) {
           String letterKey = knownLetters[index];
           int letterValue = variables[letterKey]!.values.first;
           // Remove the known variable from all other variable possible values
           remainingValues.remove(letterValue);
-          for (var entry in variables.entries) {
-            if (entry.key != letterKey) {
-              if (entry.value.values.remove(letterValue)) {
+          for (var entry in unknownVariableEntries) {
+            if (!knownLetters.contains(entry.key)) {
+              var entryVariable = entry.value;
+              if (entryVariable.values.remove(letterValue) ||
+                  entryVariable.isSet) {
                 updatedVariables.add(entry.key);
-                if (entry.value.values.length == 1) {
+                if (entryVariable.isSet) {
                   knownLetters.add(entry.key);
                 }
               }

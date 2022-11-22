@@ -1,72 +1,93 @@
 // Evaluate expression strings, with variable references
 
 // Token specification
+import 'dart:math';
+
 var NUM = r'(?<NUM>\d+)';
 var PLUS = r'(?<PLUS>\+)';
 var MINUS = r'(?<MINUS>-)';
 var TIMES = r'(?<TIMES>\*)';
 var DIVIDE = r'(?<DIVIDE>/)';
+var FACTORIAL = r'(?<FACTORIAL>!)';
+var EXPONENT = r'(?<EXPONENT>\^)';
 var LPAREN = r'(?<LPAREN>\()';
 var RPAREN = r'(?<RPAREN>\))';
 var EQUAL = r'(?<EQUAL>=)';
 var VAR = r'(?<VAR>\w)';
 var WS = r'(?<WS>\s+)';
+var ERROR = r'(?<ERROR>.)';
 var regExp = RegExp([
   NUM,
   PLUS,
   MINUS,
   TIMES,
   DIVIDE,
+  FACTORIAL,
+  EXPONENT,
   LPAREN,
   RPAREN,
   EQUAL,
   VAR,
-  WS
+  WS,
+  ERROR,
 ].join('|'));
 
 class Token {
   final String type;
+  final String str;
   final int value;
   final String name;
-  Token(this.type, {this.value = 0, this.name = ''});
-  String toString() {
+  Token(this.str, this.type, {this.value = 0, this.name = ''});
+  String toLongString() {
     return '$type' +
         (value != 0 ? '=${value.toString()}' : '') +
         (name != '' ? '=$name' : '');
   }
+
+  String toString() => this.str;
 }
 
 // Token Scanner
-Iterable<Token?> generateTokens(String text) sync* {
+Iterable<Token?> generateTokens(String text,
+    [String variablePrefix = '']) sync* {
   Iterable<RegExpMatch> matches = regExp.allMatches(text);
   for (final m in matches) {
     var match = m[0];
     if (m.namedGroup('NUM') != null) {
-      yield Token('NUM', value: int.parse(match!));
+      yield Token(match!, 'NUM', value: int.parse(match));
     }
     if (m.namedGroup('VAR') != null) {
-      yield Token('VAR', name: match!);
+      yield Token(match!, 'VAR', name: variablePrefix + match);
     }
     if (m.namedGroup('PLUS') != null) {
-      yield Token('PLUS');
+      yield Token(match!, 'PLUS');
     }
     if (m.namedGroup('TIMES') != null) {
-      yield Token('TIMES');
+      yield Token(match!, 'TIMES');
     }
     if (m.namedGroup('MINUS') != null) {
-      yield Token('MINUS');
+      yield Token(match!, 'MINUS');
     }
     if (m.namedGroup('DIVIDE') != null) {
-      yield Token('DIVIDE');
+      yield Token(match!, 'DIVIDE');
+    }
+    if (m.namedGroup('FACTORIAL') != null) {
+      yield Token(match!, 'FACTORIAL');
+    }
+    if (m.namedGroup('EXPONENT') != null) {
+      yield Token(match!, 'EXPONENT');
     }
     if (m.namedGroup('LPAREN') != null) {
-      yield Token('LPAREN');
+      yield Token(match!, 'LPAREN');
     }
     if (m.namedGroup('RPAREN') != null) {
-      yield Token('RPAREN');
+      yield Token(match!, 'RPAREN');
     }
     if (m.namedGroup('EQUAL') != null) {
-      yield Token('EQUAL');
+      yield Token(match!, 'EQUAL');
+    }
+    if (m.namedGroup('ERROR') != null) {
+      throw ExpressionInvalid('Invalid character ${text[m.start]}');
     }
   }
 }
@@ -76,6 +97,12 @@ class Node {
   final Token token;
   List<Node>? operands;
   Node(this.token, [this.operands]);
+  String toString() => operands == null
+      ? '$token'
+      : operands!.length == 1
+          ? '$token${operands![0]}'
+          : '(${operands![0]}$token${operands![1]})';
+//      '($token${operands == null ? '' : operands!.map<String>((e) => ' $e')})';
 }
 
 class ExpressionError implements Exception {
@@ -97,21 +124,27 @@ class ExpressionEvaluator {
   // (or throw a SyntaxError if it doesn't match).
 
   final String text;
-  List<String>? variableNames;
-  List<int>? variableValues;
+  final String variablePrefix;
+  List<String> variableRefs = [];
   late final Iterator tokenIterator;
   Token? tok;
   Token? nexttok;
   Node? tree;
 
-  ExpressionEvaluator(this.text) {
-    var tokenIterable = generateTokens(text);
+  // Evaluation context
+  List<String>? variableNames;
+  List<int>? variableValues;
+
+  ExpressionEvaluator(this.text, [this.variablePrefix = '']) {
+    var tokenIterable = generateTokens(text, variablePrefix);
     this.tokenIterator = tokenIterable.iterator;
     this.tok = null; // Last symbol consumed
     this.nexttok = null; // Next symbol tokenized
     this._advance(); // Load first lookahead token
     this._parse(); // Build tree
   }
+
+  String toString() => this.tree == null ? '' : this.tree.toString();
 
   void _parse() {
     this.tree = this.logical();
@@ -141,14 +174,6 @@ class ExpressionEvaluator {
     // Test and consume the next token if it matches toktype
     if (this.nexttok?.type == toktype) {
       this._advance();
-      return true;
-    }
-    return false;
-  }
-
-  bool _peek(toktype) {
-    // Test the next token if it matches toktype
-    if (this.nexttok?.type == toktype) {
       return true;
     }
     return false;
@@ -188,9 +213,20 @@ class ExpressionEvaluator {
   }
 
   Node term() {
-    // term ::= unary { ('*'|'/') unary }*
-    var node = this.unary();
+    // term ::= exponent { ('*'|'/') exponent }*
+    var node = this.exponent();
     while (this._accept('TIMES') || this._accept('DIVIDE')) {
+      var token = this.tok!;
+      var right = this.exponent();
+      node = Node(token, [node, right]);
+    }
+    return node;
+  }
+
+  Node exponent() {
+    // exponent ::= unary { '^') unary }*
+    var node = this.unary();
+    while (this._accept('EXPONENT')) {
       var token = this.tok!;
       var right = this.unary();
       node = Node(token, [node, right]);
@@ -202,7 +238,7 @@ class ExpressionEvaluator {
     // term ::= { '-' } multiplication
     if (this._accept('MINUS')) {
       var token = this.tok!;
-      var left = Node(Token('NUM', value: 0));
+      var left = Node(Token('', 'NUM', value: 0));
       var right = this.multiplication();
       var node = Node(token, [left, right]);
       return node;
@@ -211,13 +247,13 @@ class ExpressionEvaluator {
   }
 
   Node multiplication() {
-    // multiplication ::= factor { factor }*
-    var node = this.factor();
+    // multiplication ::= factorial { factorial }*
+    var node = this.factorial();
     if (node != null) {
       while (true) {
-        var node2 = this.factor();
+        var node2 = this.factorial();
         if (node2 == null) return node!;
-        var token = Token('TIMES');
+        var token = Token('', 'TIMES');
         node = Node(token, [node!, node2]);
       }
     } else {
@@ -225,10 +261,23 @@ class ExpressionEvaluator {
     }
   }
 
+  Node? factorial() {
+    // factorial ::= factor { '!' }
+    var node = this.factor();
+    if (node != null && this._accept('FACTORIAL')) {
+      var token = this.tok!;
+      node = Node(token, [node]);
+    }
+    return node;
+  }
+
   Node? factor() {
     // factor ::= VAR | NUM | ( expr )
     if (this._accept('VAR') || this._accept('NUM')) {
       var token = this.tok!;
+      if (token.type == 'VAR') {
+        this.variableRefs.add(token.name);
+      }
       return Node(token);
     } else if (this._accept('LPAREN')) {
       var node = this.expr();
@@ -264,6 +313,14 @@ class ExpressionEvaluator {
           throw ExpressionInvalid('Non-integer division');
         }
         return left ~/ right;
+      case 'FACTORIAL':
+        var left = eval(node.operands![0]);
+        int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
+        return factorial(left);
+      case 'EXPONENT':
+        var left = eval(node.operands![0]);
+        var right = eval(node.operands![1]);
+        return pow(left, right) as int;
       case 'EQUAL':
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
