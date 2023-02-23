@@ -56,7 +56,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
     return priorityQueue.isNotEmpty || updateQueue.isNotEmpty;
   }
 
-  void solve() {
+  void solve([bool iteration = true]) {
     bool updated;
     var iterations = 0;
     var updates = 0;
@@ -106,10 +106,15 @@ class Crossnumber<PuzzleKind extends Puzzle> {
 
     // Unique solution?
     if (!puzzle.uniqueSolution()) {
-      puzzle.postProcessing();
+      if (Crossnumber.traceSolve) {
+        print("PARTIAL SOLUTION-----------------------------");
+        print(puzzle.toSummary());
+        // print(puzzle.toString());
+      }
+      puzzle.postProcessing(iteration);
     } else {
       print("SOLUTION-----------------------------");
-      print(puzzle.toString());
+      print(puzzle.toSummary());
     }
   }
 
@@ -133,7 +138,8 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       }
       // If no Values returned then Solve function could not solve
       if (possibleValue.isEmpty) {
-        print('Solve Error: clue ${clue.name} no solution!');
+        print(
+            'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
       if (puzzle.updateValues(clue, possibleValue)) updated = true;
@@ -218,6 +224,24 @@ Map<int, Set<int>> getSumTwoPrimes() {
   return primes;
 }
 
+List<int> getTwoDigitNumbers() {
+  return getNDigitNumbers(2);
+}
+
+List<int> getThreeDigitNumbers() {
+  return getNDigitNumbers(3);
+}
+
+List<int> getFourDigitNumbers() {
+  return getNDigitNumbers(4);
+}
+
+List<int> getNDigitNumbers(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return List.generate(hi - lo + 1, (index) => lo + index);
+}
+
 List<int> getTwoDigitTriangles() {
   return getNDigitTriangles(2);
 }
@@ -256,6 +280,44 @@ List<int> getTrianglesInRange(int lo, int hi) {
   return triangles;
 }
 
+List<int> getTwoDigitPyramidal() {
+  return getNDigitPyramidal(2);
+}
+
+List<int> getThreeDigitPyramidal() {
+  return getNDigitPyramidal(3);
+}
+
+List<int> getFourDigitPyramidal() {
+  return getNDigitPyramidal(4);
+}
+
+List<int> getFiveDigitPyramidal() {
+  return getNDigitPyramidal(5);
+}
+
+List<int> getSevenDigitPyramidal() {
+  return getNDigitPyramidal(7);
+}
+
+List<int> getNDigitPyramidal(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return getPyramidalInRange(lo, hi);
+}
+
+List<int> getPyramidalInRange(int lo, int hi) {
+  var pyramidals = <int>[];
+  int index = 1;
+  int next = 1;
+  while (next <= hi) {
+    if (next >= lo) pyramidals.add(next);
+    index++;
+    next += index * index;
+  }
+  return pyramidals;
+}
+
 List<int> getTwoDigitSquares() {
   return getNDigitSquares(2);
 }
@@ -279,10 +341,10 @@ List<int> getSevenDigitSquares() {
 List<int> getNDigitSquares(int n) {
   var lo = 10.pow(n - 1) as int;
   var hi = (10.pow(n) as int) - 1;
-  return getSquaresRange(lo, hi);
+  return getSquaresInRange(lo, hi);
 }
 
-List<int> getSquaresRange(int lo, int hi) {
+List<int> getSquaresInRange(int lo, int hi) {
   var squares = <int>[];
   var loSq = sqrt(lo).ceil();
   var hiSq = sqrt(hi).floor();
@@ -300,10 +362,10 @@ List<int> getTwoDigitCubes() {
 List<int> getNDigitCubes(int n) {
   var lo = 10.pow(n - 1) as int;
   var hi = (10.pow(n) as int) - 1;
-  return getCubesRange(lo, hi);
+  return getCubesInRange(lo, hi);
 }
 
-List<int> getCubesRange(int lo, int hi) {
+List<int> getCubesInRange(int lo, int hi) {
   var cubes = <int>[];
   var loRoot = lo.root(3).ceil();
   var hiRoot = hi.root(3).floor();
@@ -356,6 +418,43 @@ List<int> getPrimesUpto(limit) {
   return primes;
 }
 
+List<int> getTwoDigitFibonacci() {
+  return getNDigitFibonacci(2);
+}
+
+List<int> getThreeDigitFibonacci() {
+  return getNDigitFibonacci(3);
+}
+
+List<int> getFourDigitFibonacci() {
+  return getNDigitFibonacci(4);
+}
+
+List<int> getNDigitFibonacci(n) {
+  var lo = 10.pow(n - 1) as int;
+  var limit = (10.pow(n) as int) - 1;
+  var primes = getFibonacciInRange(lo, limit);
+  return primes;
+}
+
+List<int> getFibonacciInRange(int lo, int hi) {
+  var primes = getFibonacciUpto(hi).where((element) => element >= lo).toList();
+  return primes;
+}
+
+List<int> getFibonacciUpto(limit) {
+  var first = 0;
+  var second = 1;
+  var fibonacci = <int>[];
+  var next = 0;
+  while ((next = first + second) <= limit) {
+    fibonacci.add(next);
+    first = second;
+    second = next;
+  }
+  return fibonacci;
+}
+
 List<int> getTwoDigitMultipleThreePrimes() {
   return getNDigitMultipleThreePrimes(2);
 }
@@ -395,17 +494,17 @@ List<int> getNDigitPowers(n) {
   return getPowersInRange(lo, hi);
 }
 
-List<int> getPowersInRange(int lo, int hi) {
+List<int> getPowersInRange(int lo, int hi, [int? n, int? minPower]) {
   var powers = <int>{};
   var any = true;
-  for (var power = 3; any; power++) {
+  for (var power = minPower ?? 3; any; power++) {
     any = false;
-    for (var n = 2;; n++) {
-      var value = n.pow(power) as int;
+    for (var x = n ?? 2;; x++) {
+      var value = x.pow(power) as int;
       if (value > hi) break;
-      if (value < lo) continue;
       any = true;
-      powers.add(value);
+      if (value >= lo) powers.add(value);
+      if (n != null) break;
     }
   }
   var result = powers.toList();
@@ -432,6 +531,15 @@ List<int> getLucasInRange(int lo, int hi) {
   }
   var result = lucas.where((element) => element >= lo).toList();
   return result;
+}
+
+List<int> getTwoDigitPalindromes() {
+  var palindromes = <int>[];
+  for (var d1 = 1; d1 < 10; d1++) {
+    var value = d1 * 10 + d1;
+    palindromes.add(value);
+  }
+  return palindromes;
 }
 
 List<int> getThreeDigitPalindromes() {

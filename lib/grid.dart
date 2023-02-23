@@ -167,7 +167,6 @@ class Grid {
     var text = border + '\n';
     var rowSeparator = '';
     for (var row in this.cells) {
-      var prevRowSeparator = rowSeparator;
       if (rowSeparator != '') text += rowSeparator + '\n';
       rowSeparator = '+';
       var lastRowSeparatorChar = rowSeparator;

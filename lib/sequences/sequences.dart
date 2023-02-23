@@ -1036,7 +1036,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     return updated;
   }
 
-  void solve() {
+  void solve([bool iteration = true]) {
     print("SOLVE------------");
     // Manual sequencing of solution saves 20 iterations
     // solveClue(this.puzzle.clues['D26']!);
@@ -1050,6 +1050,6 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     // solveClue(this.puzzle.clues['A8']!);
     // solveClue(this.puzzle.clues['A25']!);
     // solveClue(this.puzzle.clues['A26']!);
-    super.solve();
+    super.solve(iteration);
   }
 }

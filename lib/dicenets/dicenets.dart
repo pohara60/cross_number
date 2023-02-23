@@ -556,7 +556,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
 
   bool solveD24(DiceNetsClue clue, Set<int> possibleValue) {
     // Sum of two consecutive squares
-    var squares = getSquaresRange(49, 999);
+    var squares = getSquaresInRange(49, 999);
     int previous = 0;
     var values = <int>[];
     for (var square in squares) {
@@ -655,7 +655,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
         minSquare = lo + minInput;
         maxSquare = hi + maxInput;
       }
-      var squares = getSquaresRange(minSquare, maxSquare);
+      var squares = getSquaresInRange(minSquare, maxSquare);
       for (var value in input.values!) {
         var values = <int>[];
         for (var square in squares) {

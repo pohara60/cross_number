@@ -57,9 +57,16 @@ class Puzzle<ClueKind extends Clue> {
 
   String toSummary() {
     var text = 'Puzzle Summary\n';
+    var clueValues = <String, int>{};
+    var unique = true;
     for (var clue in clues.values) {
       text += clue.toSummary() + '\n';
+      if (clue.values == null || clue.values!.length > 1)
+        unique = false;
+      else
+        clueValues[clue.name] = clue.values!.first;
     }
+    if (unique) text += '${grid!.solutionToString(clueValues)}';
     return text;
   }
 
@@ -74,6 +81,24 @@ class Puzzle<ClueKind extends Clue> {
     return updated;
   }
 
+  void fixClue(String clueName, int value) {
+    var clue = this.clues[clueName];
+    if (clue != null) {
+      updateValues(clue, {value});
+      clue.finalise();
+      if (Crossnumber.traceSolve) {
+        print('Fix clue $clueName=$value');
+      }
+    }
+  }
+
+  void resetSolution() {
+    knownValues = [];
+    for (var clue in this.clues.values) {
+      clue.reset();
+    }
+  }
+
   bool uniqueSolution() {
     return !this
         .clues
@@ -81,16 +106,12 @@ class Puzzle<ClueKind extends Clue> {
         .any((clue) => clue.values == null || clue.values!.length != 1);
   }
 
-  postProcessing() {
-    if (Crossnumber.traceSolve) {
-      print("PARTIAL SOLUTION-----------------------------");
-      print(toSummary());
-      // print(puzzle.toString());
+  postProcessing([bool iteration = true]) {
+    if (iteration) {
+      print("ITERATE SOLUTIONS-----------------------------");
+      var count = iterate();
+      print('Solution count=$count');
     }
-
-    print("ITERATE SOLUTIONS-----------------------------");
-    var count = iterate();
-    print('Solution count=$count');
   }
 
   Map<Clue, Answer> solution = {};
@@ -106,7 +127,16 @@ class Puzzle<ClueKind extends Clue> {
 
   int iterateValues() {
     var unknownClues = <Clue>[];
-    for (var clue in this.clues.values) {
+    var clues = this.clues.values.toList();
+    clues.sort((c1, c2) {
+      if (c1.values == null) {
+        if (c2.values == null) return 0;
+        return 1;
+      }
+      if (c2.values == null) return -1;
+      return c1.values!.length.compareTo(c2.values!.length);
+    });
+    for (var clue in clues) {
       if (clue.values == null) {
         if (!unknownClues.contains(clue)) {
           unknownClues.add(clue);
@@ -118,18 +148,18 @@ class Puzzle<ClueKind extends Clue> {
         if (!order.contains(clue)) {
           // Add clue and its dependents
           order.add(clue);
-          for (var clue2 in clue.referrers) {
-            if (!order.contains(clue2)) {
-              if (clue2.values == null) {
-                if (!unknownClues.contains(clue2)) {
-                  unknownClues.add(clue2);
-                }
-              } else {
-                // Add clue
-                order.add(clue2);
-              }
-            }
-          }
+          // for (var clue2 in clue.referrers) {
+          //   if (!order.contains(clue2)) {
+          //     if (clue2.values == null) {
+          //       if (!unknownClues.contains(clue2)) {
+          //         unknownClues.add(clue2);
+          //       }
+          //     } else {
+          //       // Add clue
+          //       order.add(clue2);
+          //     }
+          //   }
+          // }
         }
       }
     }
@@ -143,12 +173,17 @@ class Puzzle<ClueKind extends Clue> {
     while (next < order.length &&
         solution[order[next]] != null &&
         solution[order[next]]!.value != null) {
+      // print(
+      // 'findSolutions: next=$next, skip ${order[next].name}=${solution[order[next]]!.value} next=${next + 1}');
       next++;
     }
     if (next == order.length) {
       if (checkSolution()) {
         print(solutionToString());
         count++;
+        // print('findSolutions: end of clues, solution $count!');
+      } else {
+        // print('findSolutions: end of clues, no solution');
       }
     } else {
       var clue = order[next];
@@ -165,17 +200,29 @@ class Puzzle<ClueKind extends Clue> {
           clue.solve!(clue, possibleValue);
         }
         if (possibleValue.isEmpty) {
+          // print(
+          //     'findSolutions: next=$next, clue=${clue.name}, no values, none found');
           return count;
         }
+        // print(
+        //     'findSolutions: next=$next, clue=${clue.name}, no values, found ${possibleValue.toShortString()}');
         solution[clue] = Answer(List.from(possibleValue));
+      } else {
+        // print(
+        //     'findSolutions: next=$next, clue=${clue.name}, values ${clue.values!.toShortString()}');
       }
       // Try each of the possible values for this clue
       for (var value in solution[clue]!.possible) {
         // Check that this value is consistent with other clues
-        if (!clueValuesMatch(clue, value)) continue;
+        if (!clueValuesMatch(clue, value)) {
+          // print(
+          //     'findSolutions: next=$next, clue=${clue.name}, value $value does not match');
+          continue;
+        }
         // Consistent, try this value
         solution[clue]!.value = value;
         clue.tryValue = value;
+        //print('findSolutions: next=$next, clue=${clue.name}, try value $value');
         count = findSolutions(order, next + 1, count);
         solution[clue]!.value = null;
         clue.tryValue = null;
@@ -228,6 +275,7 @@ class Puzzle<ClueKind extends Clue> {
   String solutionToString() {
     var text = "Solution\n";
     var keys = solution.keys.toList();
+    keys.sort((c1, c2) => c1.compareTo(c2));
     var clueValues = <String, int>{};
     var unique = true;
     for (var clue in keys) {

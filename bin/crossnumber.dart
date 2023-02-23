@@ -5,6 +5,7 @@ import 'package:args/command_runner.dart';
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
+import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
@@ -23,7 +24,8 @@ void main(List<String> arguments) async {
     ..addCommand(DistancingCommand())
     ..addCommand(FrequencyCommand())
     ..addCommand(SequencesCommand())
-    ..addCommand(EvenOdderCommand());
+    ..addCommand(EvenOdderCommand())
+    ..addCommand(InstructionCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -130,6 +132,20 @@ class EvenOdderCommand extends Command {
   void run() {
     // Get and print solve
     final pc = EvenOdder();
+    pc.solve();
+  }
+}
+
+class InstructionCommand extends Command {
+  @override
+  final name = 'instruction';
+  @override
+  final description = 'solve hardcoded instruction puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Instruction();
     pc.solve();
   }
 }

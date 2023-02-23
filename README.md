@@ -47,6 +47,22 @@ The implementation of a specific puzzle includes these steps:
     -   Specify the puzzle Clue class
     -   If the puzzle has variables then extend the Variable class and define a VariableList
 
+## Puzle Types
+
+| Puzzle | Type | Notes |
+|--------|------|-------|
+| DiceNets | Simple | Manual Solvers |
+| Distancing | Simple | Manual Solvers |
+| EvenOdder | Variable | Expression Solvers |
+| Frequency | Simple | Manual Solvers, post-processing |
+| Letters | Variable | Variable Solvers |
+| Letters | Variable | Variable Solvers |
+| PrimeCuts | Variable | Manual Solvers, 2 values per clue |
+| Sequences | Variable | Expression Solvers |
+| CarteBlanche | Custom |  |
+
+
+
 ## Generic Puzzle (Future)
 
 A bigger feature is to allow generic specification of a puzzle, with:

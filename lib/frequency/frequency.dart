@@ -207,7 +207,7 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     if (clue.values != null)
       values = List.from(clue.values!);
     else {
-      var squares = getSquaresRange(1, 17);
+      var squares = getSquaresInRange(1, 17);
       values = <int>[];
       for (var d1 = 1; d1 < 10; d1++) {
         for (var d2 = 0; d2 < 10; d2++) {
@@ -255,7 +255,7 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   }
 
   bool solveD8(FrequencyClue clue, Set<int> possibleValue) {
-    var cubes = getCubesRange(1, 99);
+    var cubes = getCubesInRange(1, 99);
     // Check Value = Cube plus Sum of Digits in whole grid
     var otherValues = <List<int>>[];
     var otherClues = <Clue>[];

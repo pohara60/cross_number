@@ -418,10 +418,10 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   //   return updated;
   // }
 
-  void solve() {
+  void solve([bool iteration = true]) {
     print("SOLVE------------");
     // Manual sequencing of solution may save iterations
     // solveClue(this.puzzle.clues['D26']!);
-    super.solve();
+    super.solve(iteration);
   }
 }

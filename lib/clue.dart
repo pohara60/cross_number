@@ -1,5 +1,6 @@
 import 'package:crossnumber/expression.dart';
 import 'package:crossnumber/set.dart';
+import 'package:powers/powers.dart';
 
 /// A [Puzzle] clue
 class Clue {
@@ -42,6 +43,11 @@ class Clue {
     _values = values;
   }
 
+  int get lo => 10.pow(length - 1) as int;
+  int get hi => (10.pow(length) as int) - 1;
+  Iterable<int> get range =>
+      Iterable<int>.generate(hi - lo + 1, (index) => lo + index);
+
   Clue({
     required this.name,
     required this.length,
@@ -50,12 +56,18 @@ class Clue {
   }) {
     digitIdentities = List.filled(length, null);
     referrers = <Clue>[];
+    digits = [];
+    this.reset();
+  }
+
+  void reset() {
     initDigits();
+    _values = null;
   }
 
   void initDigits() {
+    digits.clear(); // Clear for reset
     // possible digits are 0..9, except cannot have leading 0
-    digits = [];
     for (var d = 0; d < this.length; d++) {
       digits.add(Set.from(List.generate(10, (index) => index)));
       if (d == 0) digits[d].remove(0);
@@ -132,6 +144,13 @@ class Clue {
   String toSummary() {
     var valueStr = values == null ? '{unknown}' : values!.toShortString();
     return '$name, $valueDesc, values=$valueStr';
+  }
+
+  compareTo(Clue other) {
+    if (name[0] != other.name[0]) return name.compareTo(other.name);
+    var n1 = int.parse(name.substring(1));
+    var n2 = int.parse(other.name.substring(1));
+    return n1.compareTo(n2);
   }
 }
 
