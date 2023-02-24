@@ -339,7 +339,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
       int Function(int) getConstraintValue,
       List<int> Function(int, int) getConstraintValues) {
     var values = <int>[];
-    var possible = getValues();
+    var possible = clue.getValues(getValues);
     var possibleConstraintValue =
         possible.map((e) => getConstraintValue(e)).toList();
     var constraintValueValues = getConstraintValues(
@@ -392,7 +392,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
       InstructionClue clue, Set<int> possibleValue, bool Function(int) valueOK,
       [Iterable<int>? clueValues]) {
     var values = <int>[];
-    for (var value in clueValues ?? clue.range) {
+    for (var value in clue.getValues(() => clueValues ?? clue.range)) {
       if (valueOK(value)) {
         values.add(value);
       }
@@ -413,12 +413,11 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
       InstructionClue otherClue,
       Set<int> possibleValue,
       List<int> Function(int) getOtherValues,
-      Set<int> validOtherValues,
       [Iterable<int>? clueValues]) {
     if (otherClue.values != null) {
       var values = <int>[];
-      validOtherValues.clear();
-      for (var value in clueValues ?? clue.range) {
+      var validOtherValues = <int>{};
+      for (var value in clue.getValues(() => clueValues ?? clue.range)) {
         var otherValues = getOtherValues(value);
         if (otherValues
             .any((otherValue) => otherClue.values!.contains(otherValue))) {
@@ -432,21 +431,18 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
           }
         }
       }
+      otherClue.restrictedValues = validOtherValues;
       return values;
     }
     return <int>[];
   }
 
-  bool solveOtherClueValue(
-      InstructionClue clue,
-      InstructionClue otherClue,
-      Set<int> possibleValue,
-      List<int> Function(int) otherValues,
-      Set<int> validOtherValues,
+  bool solveOtherClueValue(InstructionClue clue, InstructionClue otherClue,
+      Set<int> possibleValue, List<int> Function(int) otherValues,
       [Iterable<int>? clueValues]) {
     if (otherClue.values != null) {
-      var values = solveOtherClueValues(clue, otherClue, possibleValue,
-          otherValues, validOtherValues, clueValues);
+      var values = solveOtherClueValues(
+          clue, otherClue, possibleValue, otherValues, clueValues);
       filterDigits(clue, values, possibleValue);
     }
     return false;
@@ -490,53 +486,42 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveA3(InstructionClue clue, Set<int> possibleValue) {
     /* Square number with a square DS, 3 digits */
-    var values = getThreeDigitSquares();
-    if (validA3forD3.isNotEmpty) {
-      var set = values.toSet();
-      set = set.intersection(validA3forD3);
-      // if (set.length != values.length)
-      //   print(
-      //       '${clue.name} reference removed ${values.length - set.length} values');
-      values = set.toList();
-    }
+    var values = clue.getValues(getThreeDigitSquares);
     return solveDSConstraint(
         clue, possibleValue, () => values, getSquaresInRange);
   }
 
-  var validD21forA7 = <int>{};
   bool solveA7(InstructionClue clue, Set<int> possibleValue) {
     /* DS is half of D21, 2 digits */
     return solveOtherClueValue(
-        clue, d21, possibleValue, (value) => [ds(value) * 2], validD21forA7);
+        clue, d21, possibleValue, (value) => [ds(value) * 2]);
   }
 
-  var validD18forA9 = <int>{};
   bool solveA9(InstructionClue clue, Set<int> possibleValue) {
     /* D18+26, 2 digits */
     return solveOtherClueValue(
-        clue, d18, possibleValue, (value) => [value - 26], validD18forA9);
+        clue, d18, possibleValue, (value) => [value - 26]);
   }
 
   bool solveA10(InstructionClue clue, Set<int> possibleValue) {
     /* Palindrome, 2 digits */
-    var values = getTwoDigitPalindromes();
+    var values = clue.getValues(getTwoDigitPalindromes);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  var validD21forA11 = <int>{};
   bool solveA11(InstructionClue clue, Set<int> possibleValue) {
     /* DS equals D21, 4 digits */
     return solveOtherClueValue(
-        clue, d21, possibleValue, (value) => [ds(value)], validD21forA11);
+        clue, d21, possibleValue, (value) => [ds(value)]);
   }
 
   bool solveA13(InstructionClue clue, Set<int> possibleValue) {
     /* Digits have opposite parity and DP equals another entry, 2 digits */
     // Check parity first
-    var values = clue.range
+    var values = clue.getValues(() => clue.range
         .where((value) => (value ~/ 10 % 2 + value % 10 % 2) == 1)
-        .toList();
+        .toList());
     filterDigits(clue, values, possibleValue);
     // Check other entries (if possible)
     return solveDPOtherClueValue(clue, possibleValue, possibleValue);
@@ -544,16 +529,16 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveA14(InstructionClue clue, Set<int> possibleValue) {
     /* Consecutive odd digits in ascending or descending order, with triangular DP, 3 digits */
-    var values = clue.range.where((value) {
-      var d1 = value ~/ 100;
-      var d2 = value ~/ 10 % 10;
-      var d3 = value % 10;
-      if (d1 < d2) {
-        return d1 % 2 == 1 && d2 == (d1 + 2) && d3 == (d2 + 2);
-      } else {
-        return d1 % 2 == 1 && d2 == (d3 + 2) && d1 == (d2 + 2);
-      }
-    }).toList();
+    var values = clue.getValues(() => clue.range.where((value) {
+          var d1 = value ~/ 100;
+          var d2 = value ~/ 10 % 10;
+          var d3 = value % 10;
+          if (d1 < d2) {
+            return d1 % 2 == 1 && d2 == (d1 + 2) && d3 == (d2 + 2);
+          } else {
+            return d1 % 2 == 1 && d2 == (d3 + 2) && d1 == (d2 + 2);
+          }
+        }).toList());
     return solveDPConstraint(
         clue, possibleValue, () => values, getTrianglesInRange);
   }
@@ -564,22 +549,20 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
         clue, possibleValue, getThreeDigitNumbers, getTrianglesInRange);
   }
 
-  var validD21forA19 = <int>{};
   bool solveA19(InstructionClue clue, Set<int> possibleValue) {
     /* DP equals D21, 2 digits */
     return solveOtherClueValue(
-        clue, d21, possibleValue, (value) => [dp(value)], validD21forA19);
+        clue, d21, possibleValue, (value) => [dp(value)]);
   }
 
-  var validD13forA20 = <int>{};
   bool solveA20(InstructionClue clue, Set<int> possibleValue) {
     /* Prime whose DP is square and DS is a factor of D13, 4 digits */
     // Check parity first
     var values = solveConstraintValues(
         clue, possibleValue, getFourDigitPrimes, dp, getSquaresInRange);
     if (d13.values != null) {
-      validD13forA20.clear();
-      return solveClueValue(clue, possibleValue, (value) {
+      var validD13forA20 = <int>{};
+      var result = solveClueValue(clue, possibleValue, (value) {
         if (!clue.digitsMatch(value)) return false;
         var valueDS = ds(value);
         var otherValues = d13.values!.where((value) => value % valueDS == 0);
@@ -589,6 +572,8 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
         }
         return true;
       }, values);
+      d13.restrictedValues = validD13forA20;
+      return result;
     }
     // Progress with these values
     filterDigits(clue, values, possibleValue);
@@ -604,7 +589,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveA25(InstructionClue clue, Set<int> possibleValue) {
     /* Prime, 2 digits */
-    var values = getTwoDigitPrimes();
+    var values = clue.getValues(getTwoDigitPrimes);
     filterDigits(clue, values, possibleValue);
     return false;
   }
@@ -621,14 +606,13 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
         clue, possibleValue, getThreeDigitNumbers, (lo, hi) => [180]);
   }
 
-  var validD21forA29 = <int>{};
   bool solveA29(InstructionClue clue, Set<int> possibleValue) {
     /* DS equals D21 and DP is a cube, 3 digits */
     var values = solveConstraintValues(
         clue, possibleValue, getThreeDigitNumbers, dp, getCubesInRange);
     if (d21.values != null) {
-      return solveOtherClueValue(clue, d21, possibleValue,
-          (value) => [ds(value)], validD21forA29, values);
+      return solveOtherClueValue(
+          clue, d21, possibleValue, (value) => [ds(value)], values);
     }
     filterDigits(clue, values, possibleValue);
     return false;
@@ -648,22 +632,21 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD2(InstructionClue clue, Set<int> possibleValue) {
     /* Palindrome and multiple of 5 with MP of 2, 3 digits */
+    var values = clue.getValues(getThreeDigitPalindromes);
     return solveClueValue(
       clue,
       possibleValue,
       (value) => (value % 5) == 0 && mp(value) == 2,
-      getThreeDigitPalindromes(),
+      values,
     );
   }
 
-  var validA3forD3 = <int>{};
   bool solveD3(InstructionClue clue, Set<int> possibleValue) {
     /* A3 plus or minus 3, 3 digits */
-    return solveOtherClueValue(clue, a3, possibleValue,
-        (value) => [value - 3, value + 3], validA3forD3);
+    return solveOtherClueValue(
+        clue, a3, possibleValue, (value) => [value - 3, value + 3]);
   }
 
-  var validD8forD4 = <int>{};
   bool solveD4(InstructionClue clue, Set<int> possibleValue) {
     /* Greater than D8 and DS equals another entry, 2 digits */
     if (d8.values != null) {
@@ -673,7 +656,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
         filterDigits(clue, values, possibleValue);
         var result = solveDSOtherClueValue(clue, possibleValue, possibleValue);
         var maxValue = possibleValue.reduce(max);
-        validD8forD4 =
+        d8.restrictedValues =
             d8.values!.where((element) => element < maxValue).toSet();
         return result;
       }
@@ -683,7 +666,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD5(InstructionClue clue, Set<int> possibleValue) {
     /* 2 times a square, 2 digits */
-    var values = <int>[18, 32, 50, 72, 98];
+    var values = clue.getValues(() => <int>[18, 32, 50, 72, 98]);
     filterDigits(clue, values, possibleValue);
     return false;
   }
@@ -706,15 +689,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD8(InstructionClue clue, Set<int> possibleValue) {
     /* Square pyramidal number (ie, sum of the first n squares), 2 digits */
-    var values = getTwoDigitPyramidal();
-    if (validD8forD4.isNotEmpty) {
-      var set = values.toSet();
-      set = set.intersection(validD8forD4);
-      // if (set.length != values.length)
-      //   print(
-      //       '${clue.name} reference removed ${values.length - set.length} values');
-      values = set.toList();
-    }
+    var values = clue.getValues(getTwoDigitPyramidal);
     filterDigits(clue, values, possibleValue);
     return false;
     // puzzle.addReference(d4, d8, true);
@@ -722,7 +697,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD11(InstructionClue clue, Set<int> possibleValue) {
     /* Square, 2 digits */
-    var values = getTwoDigitSquares();
+    var values = clue.getValues(getTwoDigitSquares);
     filterDigits(clue, values, possibleValue);
     return false;
   }
@@ -741,15 +716,8 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD13(InstructionClue clue, Set<int> possibleValue) {
     /* Multiple of 7, 2 digits */
-    var values = clue.range.where((value) => (value % 7) == 0).toList();
-    if (validD13forA20.isNotEmpty) {
-      var set = values.toSet();
-      set = set.intersection(validD13forA20);
-      // if (set.length != values.length)
-      //   print(
-      //       '${clue.name} reference removed ${values.length - set.length} values');
-      values = set.toList();
-    }
+    var values = clue.getValues(
+        () => clue.range.where((value) => (value % 7) == 0).toList());
     filterDigits(clue, values, possibleValue);
     return false;
   }
@@ -761,23 +729,16 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD16(InstructionClue clue, Set<int> possibleValue) {
     /* Prime, 2 digits */
-    var values = getTwoDigitPrimes();
+    var values = clue.getValues(getTwoDigitPrimes);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
   bool solveD18(InstructionClue clue, Set<int> possibleValue) {
     /* Lucky and happy number, 2 digits */
-    var values = LuckyNumbers.where((element) => HappyNumbers.contains(element))
-        .toList();
-    if (validD18forA9.isNotEmpty) {
-      var set = values.toSet();
-      set = set.intersection(validD18forA9);
-      // if (set.length != values.length)
-      //   print(
-      //       '${clue.name} reference removed ${values.length - set.length} values');
-      values = set.toList();
-    }
+    var values = clue.getValues(() =>
+        LuckyNumbers.where((element) => HappyNumbers.contains(element))
+            .toList());
     filterDigits(clue, values, possibleValue);
     return false;
     // puzzle.addReference(a9, d18, true);
@@ -807,17 +768,8 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD21(InstructionClue clue, Set<int> possibleValue) {
     // Multiple of 10, 2 digits
-    var values = <int>[10, 20, 30, 40, 50, 60, 70, 80, 90];
-    // Check referring cells
-    var set = values.toSet();
-    if (validD21forA7.isNotEmpty) set = set.intersection(validD21forA7);
-    if (validD21forA11.isNotEmpty) set = set.intersection(validD21forA11);
-    if (validD21forA19.isNotEmpty) set = set.intersection(validD21forA19);
-    if (validD21forA29.isNotEmpty) set = set.intersection(validD21forA29);
-    // if (set.length != values.length)
-    //   print(
-    //       '${clue.name} reference removed ${values.length - set.length} values');
-    values = set.toList();
+    var values =
+        clue.getValues(() => <int>[10, 20, 30, 40, 50, 60, 70, 80, 90]);
     filterDigits(clue, values, possibleValue);
     return false;
   }
@@ -837,28 +789,20 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD25(InstructionClue clue, Set<int> possibleValue) {
     /* Lucky number, 2 digits */
-    var values = LuckyNumbers;
+    var values = clue.getValues(() => LuckyNumbers);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
   bool solveD27(InstructionClue clue, Set<int> possibleValue) {
     /* Fibonacci number, 2 digits */
-    var values = getTwoDigitFibonacci();
+    var values = clue.getValues(getTwoDigitFibonacci);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
   void resetSolution() {
     puzzle.resetSolution();
-    validA3forD3 = {};
-    validD13forA20 = {};
-    validD18forA9 = {};
-    validD21forA11 = {};
-    validD21forA19 = {};
-    validD21forA29 = {};
-    validD21forA7 = {};
-    validD8forD4 = {};
   }
 
   void solve([bool iteration = true]) {

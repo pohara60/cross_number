@@ -13,4 +13,4 @@ Instruction puzzles have these features:
 
 ## Lessons Learned
 
-It is important to evaluate clue dependencies in both directions, i.e. if clue A depends on clue B, then clue B values may be restricted by clue A. I should add a general mechanism for this.
+It is important to evaluate clue dependencies in both directions, i.e. if clue A depends on clue B, then clue B values may be restricted by clue A. (Added a general mechanism to support this.)

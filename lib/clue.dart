@@ -43,10 +43,21 @@ class Clue {
     _values = values;
   }
 
+  /// Computed - Range of possible values
   int get lo => 10.pow(length - 1) as int;
   int get hi => (10.pow(length) as int) - 1;
   Iterable<int> get range =>
       Iterable<int>.generate(hi - lo + 1, (index) => lo + index);
+
+  /// Computed - Values
+  Set<int>? _restrictedValues;
+  set restrictedValues(Set<int> values) {
+    if (_restrictedValues == null) {
+      _restrictedValues = values;
+    } else {
+      _restrictedValues = _restrictedValues!.intersection(values);
+    }
+  }
 
   Clue({
     required this.name,
@@ -63,6 +74,7 @@ class Clue {
   void reset() {
     initDigits();
     _values = null;
+    _restrictedValues = null;
   }
 
   void initDigits() {
@@ -90,6 +102,19 @@ class Clue {
       }
     }
     return updated;
+  }
+
+  List<int> getValues(Iterable<int> Function() getInitialValues) {
+    if (_values == null) {
+      return getInitialValues().toList();
+    }
+    if (_restrictedValues != null &&
+        _restrictedValues!.length != _values!.length) {
+      //   print(
+      //       '${this.name} reference removed ${_values.length - _restrictedValues.length} values');
+      return _values!.intersection(_restrictedValues!).toList();
+    }
+    return _values!.toList();
   }
 
   bool finalise() {
