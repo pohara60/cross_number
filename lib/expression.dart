@@ -8,6 +8,7 @@ var PLUS = r'(?<PLUS>\+)';
 var MINUS = r'(?<MINUS>-)';
 var TIMES = r'(?<TIMES>\*)';
 var DIVIDE = r'(?<DIVIDE>/)';
+var ROOT = r'(?<ROOT>√)';
 var FACTORIAL = r'(?<FACTORIAL>!)';
 var EXPONENT = r'(?<EXPONENT>\^)';
 var LPAREN = r'(?<LPAREN>\()';
@@ -22,6 +23,7 @@ var regExp = RegExp([
   MINUS,
   TIMES,
   DIVIDE,
+  ROOT,
   FACTORIAL,
   EXPONENT,
   LPAREN,
@@ -70,6 +72,9 @@ Iterable<Token?> generateTokens(String text,
     }
     if (m.namedGroup('DIVIDE') != null) {
       yield Token(match!, 'DIVIDE');
+    }
+    if (m.namedGroup('ROOT') != null) {
+      yield Token(match!, 'ROOT');
     }
     if (m.namedGroup('FACTORIAL') != null) {
       yield Token(match!, 'FACTORIAL');
@@ -235,12 +240,18 @@ class ExpressionEvaluator {
   }
 
   Node unary() {
-    // term ::= { '-' } multiplication
+    // term ::= { '-' | '√' } multiplication
     if (this._accept('MINUS')) {
       var token = this.tok!;
       var left = Node(Token('', 'NUM', value: 0));
       var right = this.multiplication();
       var node = Node(token, [left, right]);
+      return node;
+    }
+    if (this._accept('ROOT')) {
+      var token = this.tok!;
+      var right = this.multiplication();
+      var node = Node(token, [right]);
       return node;
     }
     return this.multiplication();
@@ -313,6 +324,13 @@ class ExpressionEvaluator {
           throw ExpressionInvalid('Non-integer division');
         }
         return left ~/ right;
+      case 'ROOT':
+        var square = eval(node.operands![0]);
+        var root = sqrt(square).toInt();
+        if (root * root != square) {
+          throw ExpressionInvalid('Non-integer root');
+        }
+        return root;
       case 'FACTORIAL':
         var left = eval(node.operands![0]);
         int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
@@ -320,7 +338,9 @@ class ExpressionEvaluator {
       case 'EXPONENT':
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
-        return pow(left, right) as int;
+        var exp = pow(left, right);
+        var result = exp.toInt();
+        return result;
       case 'EQUAL':
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);

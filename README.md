@@ -51,15 +51,15 @@ The implementation of a specific puzzle includes these steps:
 
 | Puzzle | Type | Notes |
 |--------|------|-------|
-| DiceNets | Simple | Manual Solvers |
-| Distancing | Simple | Manual Solvers |
-| EvenOdder | Variable | Expression Solvers |
-| Frequency | Simple | Manual Solvers, post-processing |
-| Letters | Variable | Variable Solvers |
-| Letters | Variable | Variable Solvers |
-| PrimeCuts | Variable | Manual Solvers, 2 values per clue |
-| Sequences | Variable | Expression Solvers |
-| CarteBlanche | Custom |  |
+| [DiceNets](lib/dicenets/README.md) | Simple | Manual Solvers |
+| [Distancing](lib/distancing/README.md) | Simple | Manual Solvers |
+| [EvenOdder](lib/evenodder/README.md) | Variable | Expression Solvers |
+| [Frequency](lib/frequency/README.md) | Simple | Manual Solvers, post-processing |
+| [Letters](lib/letters/README.md) | Variable | Variable Solvers |
+| [PrimeCuts](lib/primecuts/README.md) | Variable | Manual Solvers, 2 values per clue |
+| [Sequences](lib/sequences/README.md) | Variable | Expression Solvers |
+| [CarteBlanche](lib/carteblanche.dart) | Custom | Custom |
+| [Instruction](lib/instruction/README.md) |  | Manual Solvers |
 
 
 

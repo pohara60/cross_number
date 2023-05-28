@@ -9,7 +9,7 @@ Instruction puzzles have these features:
 -   The Values are distinct
 -   The puzzle is ambiguous! The ambiguity is resolved by guessing a phrase that is formed from the last digits of the Down clues "Reverse Across Entries"
 -   This disambiguates the Down clues, and leads to a puzzle with two solutions
--   Reversing the Across Entries and fixing the reulting entries results in another valid solution
+-   Reversing the Across Entries and fixing the resulting entries results in another valid solution
 
 ## Lessons Learned
 

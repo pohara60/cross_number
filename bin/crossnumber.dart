@@ -9,6 +9,7 @@ import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
+import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 
 const help = 'help';
@@ -25,7 +26,8 @@ void main(List<String> arguments) async {
     ..addCommand(FrequencyCommand())
     ..addCommand(SequencesCommand())
     ..addCommand(EvenOdderCommand())
-    ..addCommand(InstructionCommand());
+    ..addCommand(InstructionCommand())
+    ..addCommand(Root66Command());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -146,6 +148,20 @@ class InstructionCommand extends Command {
   void run() {
     // Get and print solve
     final pc = Instruction();
+    pc.solve();
+  }
+}
+
+class Root66Command extends Command {
+  @override
+  final name = 'root66';
+  @override
+  final description = 'solve hardcoded root66 puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Root66();
     pc.solve();
   }
 }

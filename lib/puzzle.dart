@@ -358,15 +358,18 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     }
   }
 
-  bool solveVariableExpressionEvaluator(VariableClue clue,
-      Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
+  bool solveVariableExpressionEvaluator(
+      VariableClue clue,
+      Set<int> possibleValue,
+      Map<String, Set<int>> possibleVariables,
+      bool Function(VariableClue, int, List<String>, List<int>)? validValue) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
       variableValues.add(this.variables[variable]!.values.toList());
     }
     var count = cartesianCount(variableValues);
-    if (count > 1000000) {
+    if (count > 500000000) {
       if (Crossnumber.traceSolve) {
         print('Eval ${clue.name} cartesianCount=$count Exception');
       }
@@ -376,12 +379,18 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
       try {
         var value = clue.exp.evaluate(clue.variableReferences, product);
         if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
-          if (clue.digitsMatch(value)) {
+          var valid = validValue == null
+              ? clue.digitsMatch(value)
+              : validValue(clue, value, clue.variableReferences, product);
+          if (valid) {
             possibleValue.add(value);
             var index = 0;
             for (var variable in clue.variableReferences) {
               possibleVariables[variable]!.add(product[index++]);
             }
+            // if (Crossnumber.traceSolve) {
+            //   print('${clue.name}=$value, ${clue.variableReferences}=$product');
+            // }
           }
         }
       } on ExpressionInvalid {

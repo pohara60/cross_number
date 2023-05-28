@@ -195,7 +195,9 @@ class VariableClue extends Clue {
   VariableClue({required name, required length, valueDesc, solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     this.variableReferences = <String>[];
-    this.exp = ExpressionEvaluator(valueDesc);
+    if (valueDesc != '') {
+      this.exp = ExpressionEvaluator(valueDesc);
+    }
   }
 
   addVariableReference(String variable) {
