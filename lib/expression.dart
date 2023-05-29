@@ -162,7 +162,14 @@ class ExpressionEvaluator {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
     var value = this.eval(this.tree);
-    return value;
+    if (!isIntegerValue(value)) {
+      throw ExpressionInvalid('Non-integer expression');
+    }
+    return value.toInt();
+  }
+
+  bool isIntegerValue(num value) {
+    return value is int || value == value.roundToDouble();
   }
 
   void _advance() {
@@ -299,7 +306,7 @@ class ExpressionEvaluator {
     }
   }
 
-  int eval(Node? node) {
+  num eval(Node? node) {
     if (node == null) return 0;
     switch (node.token.type) {
       case 'NUM':
@@ -320,10 +327,10 @@ class ExpressionEvaluator {
         // Require exact integer result
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
-        if (left % right != 0) {
-          throw ExpressionInvalid('Non-integer division');
-        }
-        return left ~/ right;
+        // if (left % right != 0) {
+        //   throw ExpressionInvalid('Non-integer division');
+        // }
+        return left / right;
       case 'ROOT':
         var square = eval(node.operands![0]);
         var root = sqrt(square).toInt();
@@ -334,7 +341,10 @@ class ExpressionEvaluator {
       case 'FACTORIAL':
         var left = eval(node.operands![0]);
         int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
-        return factorial(left);
+        if (!isIntegerValue(left)) {
+          throw ExpressionInvalid('Non-integer expression');
+        }
+        return factorial(left.toInt());
       case 'EXPONENT':
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);

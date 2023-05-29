@@ -316,6 +316,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     }
 
     // T is a multiple of R, which limits R
+    // Puzzle actually allows non-integer division
     // puzzle.letters['R']!.updatePossible({1, 2, 3, 4});
 
     // G = BE+66*CF, so 17<=CF<=72 and 1234<=G<=4794
@@ -338,8 +339,8 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     solveClue(this.puzzle.clues['A2']!);
     solveClue(this.puzzle.clues['A12']!);
     solveClue(this.puzzle.clues['D4']!);
-    solveClue(this.puzzle.clues['A12']!);
-    solveClue(this.puzzle.clues['A12']!);
+    // solveClue(this.puzzle.clues['A12']!);
+    // solveClue(this.puzzle.clues['A12']!);
     super.solve(iteration);
 
     // Find solution BCEFG
