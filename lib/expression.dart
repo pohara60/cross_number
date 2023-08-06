@@ -349,7 +349,7 @@ class ExpressionEvaluator {
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
         var exp = pow(left, right);
-        var result = exp.toInt();
+        var result = exp;
         return result;
       case 'EQUAL':
         var left = eval(node.operands![0]);

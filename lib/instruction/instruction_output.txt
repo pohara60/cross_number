@@ -1,4 +1,3 @@
-Connecting to VM Service at http://127.0.0.1:51181/IuMRXK6iDK0=/
 Puzzle
 Clue(name=A1,length=3,value: Triangular number with a triangular DP,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
@@ -144,6 +143,7 @@ Clue(name=D27,length=2,value: Fibonacci number,
 	identities=[D27[0]=A26[1],D27[1]=A29[2]],referrers=[A26,A29],
 	values={unknown},
 	digits=[{1..9},{0..9}]
+
 SOLVE------------
 UPDATES-----------------------------
 solve: Clue(name=A1,length=3,value: Triangular number with a triangular DP,
@@ -563,6 +563,7 @@ D22, DP is a power of 2, values={218,288}
 D24, DP is square, values={14,19}
 D25, Lucky number, values={15,49,69,75,79,99}
 D27, Fibonacci number, values={13,89}
+
 Fix clue D8=55
 Fix clue D1=38
 Fix clue D3=172
@@ -791,6 +792,7 @@ D22, DP is a power of 2, values={218}
 D24, DP is square, values={19}
 D25, Lucky number, values={15}
 D27, Fibonacci number, values={89}
+
 ITERATE SOLUTIONS-----------------------------
 Solution
 A1=351
@@ -845,6 +847,7 @@ D27=89
 +   +   +-+   +
 |5|9 5 4|3 8 9|
 +-+-+-+-+-+-+-+
+
 Solution
 A1=351
 A3=169
@@ -898,6 +901,7 @@ D27=89
 +   +   +-+   +
 |5|9 5 4|3 8 9|
 +-+-+-+-+-+-+-+
+
 Solution count=2
 Fix clue A1=153
 Fix clue A3=961
@@ -990,4 +994,4 @@ D27, Fibonacci number, values={13}
 +   +   +-+   +
 |5|4 5 9|9 8 3|
 +-+-+-+-+-+-+-+
-Exited
+

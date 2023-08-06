@@ -358,11 +358,9 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     }
   }
 
-  bool solveVariableExpressionEvaluator(
-      VariableClue clue,
-      Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables,
-      bool Function(VariableClue, int, List<String>, List<int>)? validValue) {
+  bool solveVariableExpressionEvaluator(VariableClue clue,
+      Set<int> possibleValue, Map<String, Set<int>> possibleVariables,
+      [bool Function(VariableClue, int, List<String>, List<int>)? validValue]) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
