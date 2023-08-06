@@ -1,4 +1,3 @@
-Connecting to VM Service at http://127.0.0.1:62983/XTeDNJADcd8=/
 Puzzle
 Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
@@ -131,6 +130,7 @@ S={1, 2, 3, 4, 5, 6, 7, 8, 9}
 T={1, 2, 3, 4, 5, 6, 7, 8, 9}
 U={1, 2, 3, 4, 5, 6, 7, 8, 9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 SOLVE------------
 Eval D14 cartesianCount=14348907, elapsed 0:00:23.198208
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
@@ -705,9 +705,9 @@ S={8}
 T={3}
 U={6}
 RemainingValues: []
+
 ITERATE SOLUTIONS-----------------------------
 Ambiguous clue D1={76193571, 86193572}
 Disambiguated clue D1=86193572
 Solution
 Root 66 Solution 2759 4168: ROADINUS
-Exited

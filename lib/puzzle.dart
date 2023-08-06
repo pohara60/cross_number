@@ -370,6 +370,7 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     }
     var count = cartesianCount(variableValues);
     if (count > 500000000) {
+      //if (count > 1000000) {
       if (Crossnumber.traceSolve) {
         print('Eval ${clue.name} cartesianCount=$count Exception');
       }

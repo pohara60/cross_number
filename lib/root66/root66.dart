@@ -334,13 +334,15 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     }
 
     // Manual sequencing of solution for debugging
-    solveClue(this.puzzle.clues['D14']!);
-    solveClue(this.puzzle.clues['D2']!);
-    solveClue(this.puzzle.clues['A2']!);
-    solveClue(this.puzzle.clues['A12']!);
-    solveClue(this.puzzle.clues['D4']!);
-    // solveClue(this.puzzle.clues['A12']!);
-    // solveClue(this.puzzle.clues['A12']!);
+    try {
+      solveClue(this.puzzle.clues['D14']!);
+      solveClue(this.puzzle.clues['D2']!);
+      solveClue(this.puzzle.clues['A2']!);
+      solveClue(this.puzzle.clues['A12']!);
+      solveClue(this.puzzle.clues['D4']!);
+      // solveClue(this.puzzle.clues['A12']!);
+      // solveClue(this.puzzle.clues['A12']!);
+    } catch (e) {}
     super.solve(iteration);
 
     // Find solution BCEFG
