@@ -83,6 +83,7 @@ The expression syntax currently includes these tokens:
 Enhancements:
 - Value generating functions #primes, #squares etc
 - Monadic functions $dp, $ds
+- Need to add other clue values as variables in expressions.
 
 ## Clue Solution
 
@@ -105,10 +106,17 @@ Process
 ### Enhancements
 
 Generating functions return multiple values, so expression evaluator is a generator.
+- Logical functions do not return invalid values.
+- Many puzzles do not have generators, just simple expressions, so could optimise this? At whole expression or sub-expression?
 
-Logical functions do not return invalid values.
+When stop calling generator? 
+- When expression is too high? Normally assume generator produces increasing values, so can abort generation. But what about decreasing sub-expressions like minus/divide?
+- Have limits applied to every sub-expression, to filter values in desired range. 
+  - Need to increase limits for decreasing operators.
+  - Difficult if both sides of operator are generators. 
+  - Possible if only one generator and have limits for other sub-expression.
 
-When stop calling generator? When expression is too high? Need limits applied to every sub-expression, to filter values in desired range
+Need to add other clues as variables in expressions.
 
 ## Specific Puzzle
 

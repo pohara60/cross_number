@@ -3,6 +3,9 @@
 // Token specification
 import 'dart:math';
 
+import 'generators.dart';
+import 'monadic.dart';
+
 var NUM = r'(?<NUM>\d+)';
 var PLUS = r'(?<PLUS>\+)';
 var MINUS = r'(?<MINUS>-)';
@@ -14,7 +17,10 @@ var EXPONENT = r'(?<EXPONENT>\^)';
 var LPAREN = r'(?<LPAREN>\()';
 var RPAREN = r'(?<RPAREN>\))';
 var EQUAL = r'(?<EQUAL>=)';
+var CLUE = r'(?<CLUE>[adAD]\d+)';
 var VAR = r'(?<VAR>\w)';
+var GENERATOR = r'(?<GENERATOR>\#\w+)';
+var MONADIC = r'(?<MONADIC>\$\w+)';
 var WS = r'(?<WS>\s+)';
 var ERROR = r'(?<ERROR>.)';
 var regExp = RegExp([
@@ -29,10 +35,32 @@ var regExp = RegExp([
   LPAREN,
   RPAREN,
   EQUAL,
+  CLUE,
   VAR,
+  GENERATOR,
+  MONADIC,
   WS,
   ERROR,
 ].join('|'));
+
+typedef GeneratorFunc = Iterable<int> Function(num min, num max);
+
+class Generator {
+  String name;
+  GeneratorFunc func;
+  Generator(this.name, this.func);
+}
+
+typedef MonadicFunc = int Function(int arg);
+
+class Monadic {
+  String name;
+  MonadicFunc func;
+  Monadic(this.name, this.func);
+}
+
+var generators = <String, Generator>{};
+var monadics = <String, Monadic>{};
 
 class Token {
   final String type;
@@ -49,50 +77,83 @@ class Token {
   String toString() => this.str;
 }
 
+class Scanner {
 // Token Scanner
-Iterable<Token?> generateTokens(String text,
-    [String variablePrefix = '']) sync* {
-  Iterable<RegExpMatch> matches = regExp.allMatches(text);
-  for (final m in matches) {
-    var match = m[0];
-    if (m.namedGroup('NUM') != null) {
-      yield Token(match!, 'NUM', value: int.parse(match));
-    }
-    if (m.namedGroup('VAR') != null) {
-      yield Token(match!, 'VAR', name: variablePrefix + match);
-    }
-    if (m.namedGroup('PLUS') != null) {
-      yield Token(match!, 'PLUS');
-    }
-    if (m.namedGroup('TIMES') != null) {
-      yield Token(match!, 'TIMES');
-    }
-    if (m.namedGroup('MINUS') != null) {
-      yield Token(match!, 'MINUS');
-    }
-    if (m.namedGroup('DIVIDE') != null) {
-      yield Token(match!, 'DIVIDE');
-    }
-    if (m.namedGroup('ROOT') != null) {
-      yield Token(match!, 'ROOT');
-    }
-    if (m.namedGroup('FACTORIAL') != null) {
-      yield Token(match!, 'FACTORIAL');
-    }
-    if (m.namedGroup('EXPONENT') != null) {
-      yield Token(match!, 'EXPONENT');
-    }
-    if (m.namedGroup('LPAREN') != null) {
-      yield Token(match!, 'LPAREN');
-    }
-    if (m.namedGroup('RPAREN') != null) {
-      yield Token(match!, 'RPAREN');
-    }
-    if (m.namedGroup('EQUAL') != null) {
-      yield Token(match!, 'EQUAL');
-    }
-    if (m.namedGroup('ERROR') != null) {
-      throw ExpressionInvalid('Invalid character ${text[m.start]}');
+
+  static var initialized = false;
+
+  static void initialize() {
+    generators['prime'] = Generator('prime', generatePrimes);
+    monadics['DS'] = Monadic('DS', digitSum);
+    monadics['DP'] = Monadic('DP', digitProduct);
+    monadics['MP'] = Monadic('MP', multiplicativePersistence);
+    initialized = true;
+  }
+
+  static Iterable<Token?> generateTokens(String text,
+      [String variablePrefix = '']) sync* {
+    if (!initialized) initialize();
+    Iterable<RegExpMatch> matches = regExp.allMatches(text);
+    for (final m in matches) {
+      var match = m[0];
+      if (m.namedGroup('NUM') != null) {
+        yield Token(match!, 'NUM', value: int.parse(match));
+      }
+      if (m.namedGroup('CLUE') != null) {
+        yield Token(match!, 'CLUE', name: match.toUpperCase());
+      }
+      if (m.namedGroup('VAR') != null) {
+        yield Token(match!, 'VAR', name: variablePrefix + match);
+      }
+      if (m.namedGroup('GENERATOR') != null) {
+        var name = match!.substring(1);
+        if (generators.containsKey(name)) {
+          yield Token(match, 'GENERATOR', name: name);
+        } else {
+          yield Token(match, 'ERROR');
+        }
+      }
+      if (m.namedGroup('MONADIC') != null) {
+        var name = match!.substring(1);
+        if (monadics.containsKey(name)) {
+          yield Token(match, 'MONADIC', name: name);
+        } else {
+          yield Token(match, 'ERROR');
+        }
+      }
+      if (m.namedGroup('PLUS') != null) {
+        yield Token(match!, 'PLUS');
+      }
+      if (m.namedGroup('TIMES') != null) {
+        yield Token(match!, 'TIMES');
+      }
+      if (m.namedGroup('MINUS') != null) {
+        yield Token(match!, 'MINUS');
+      }
+      if (m.namedGroup('DIVIDE') != null) {
+        yield Token(match!, 'DIVIDE');
+      }
+      if (m.namedGroup('ROOT') != null) {
+        yield Token(match!, 'ROOT');
+      }
+      if (m.namedGroup('FACTORIAL') != null) {
+        yield Token(match!, 'FACTORIAL');
+      }
+      if (m.namedGroup('EXPONENT') != null) {
+        yield Token(match!, 'EXPONENT');
+      }
+      if (m.namedGroup('LPAREN') != null) {
+        yield Token(match!, 'LPAREN');
+      }
+      if (m.namedGroup('RPAREN') != null) {
+        yield Token(match!, 'RPAREN');
+      }
+      if (m.namedGroup('EQUAL') != null) {
+        yield Token(match!, 'EQUAL');
+      }
+      if (m.namedGroup('ERROR') != null) {
+        throw ExpressionInvalid('Invalid character ${text[m.start]}');
+      }
     }
   }
 }
@@ -141,7 +202,7 @@ class ExpressionEvaluator {
   List<int>? variableValues;
 
   ExpressionEvaluator(this.text, [this.variablePrefix = '']) {
-    var tokenIterable = generateTokens(text, variablePrefix);
+    var tokenIterable = Scanner.generateTokens(text, variablePrefix);
     this.tokenIterator = tokenIterable.iterator;
     this.tok = null; // Last symbol consumed
     this.nexttok = null; // Next symbol tokenized
@@ -158,14 +219,31 @@ class ExpressionEvaluator {
     }
   }
 
+  void integerException() {
+    throw ExpressionInvalid('Non-integer expression');
+  }
+
+  void checkInteger(num value) {
+    if (!isIntegerValue(value)) {
+      integerException();
+    }
+  }
+
   int evaluate([List<String>? variableNames, List<int>? variableValues]) {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
     var value = this.eval(this.tree);
-    if (!isIntegerValue(value)) {
-      throw ExpressionInvalid('Non-integer expression');
-    }
+    checkInteger(value);
     return value.toInt();
+  }
+
+  Iterable<num> generate(num min, num max,
+      [List<String>? variableNames, List<int>? variableValues]) sync* {
+    this.variableNames = variableNames;
+    this.variableValues = variableValues;
+    for (var value in this.gen(min, max, this.tree)) {
+      if (isIntegerValue(value)) yield value.toInt();
+    }
   }
 
   bool isIntegerValue(num value) {
@@ -247,7 +325,7 @@ class ExpressionEvaluator {
   }
 
   Node unary() {
-    // term ::= { '-' | '√' } multiplication
+    // term ::= { '-' | '√' | MONADIC } multiplication
     if (this._accept('MINUS')) {
       var token = this.tok!;
       var left = Node(Token('', 'NUM', value: 0));
@@ -255,7 +333,7 @@ class ExpressionEvaluator {
       var node = Node(token, [left, right]);
       return node;
     }
-    if (this._accept('ROOT')) {
+    if (this._accept('ROOT') || this._accept('MONADIC')) {
       var token = this.tok!;
       var right = this.multiplication();
       var node = Node(token, [right]);
@@ -275,7 +353,7 @@ class ExpressionEvaluator {
         node = Node(token, [node!, node2]);
       }
     } else {
-      throw ExpressionError('Expected NUMBER, VARIABLE or LPAREN');
+      throw ExpressionError('Expected NUMBER, VARIABLE, GENERATOR or LPAREN');
     }
   }
 
@@ -290,8 +368,10 @@ class ExpressionEvaluator {
   }
 
   Node? factor() {
-    // factor ::= VAR | NUM | ( expr )
-    if (this._accept('VAR') || this._accept('NUM')) {
+    // factor ::= VAR | NUM | GENERATOR| ( expr )
+    if (this._accept('VAR') ||
+        this._accept('NUM') ||
+        this._accept('GENERATOR')) {
       var token = this.tok!;
       if (token.type == 'VAR') {
         this.variableRefs.add(token.name);
@@ -341,9 +421,7 @@ class ExpressionEvaluator {
       case 'FACTORIAL':
         var left = eval(node.operands![0]);
         int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
-        if (!isIntegerValue(left)) {
-          throw ExpressionInvalid('Non-integer expression');
-        }
+        checkInteger(left);
         return factorial(left.toInt());
       case 'EXPONENT':
         var left = eval(node.operands![0]);
@@ -365,6 +443,162 @@ class ExpressionEvaluator {
           throw ExpressionError('Unknown variable $name');
         }
         return this.variableValues![index];
+      case 'GENERATOR':
+        var name = node.token.name;
+        var generator = generators[name];
+        if (generator == null) {
+          throw ExpressionError('Unknown generator $name');
+        }
+        // TODO multiple values
+        // TODO min/max
+        return generator.func(10, 99).first;
+      case 'MONADIC':
+        var name = node.token.name;
+        var monadic = monadics[name];
+        if (monadic == null) {
+          throw ExpressionError('Unknown monadic $name');
+        }
+        var left = eval(node.operands![0]);
+        checkInteger(left);
+        return monadic.func(left.toInt());
+      default:
+        throw ExpressionError('Invalid AST');
+    }
+  }
+
+  Iterable<num> gen(num min, num max, Node? node) sync* {
+    if (node == null) return;
+    switch (node.token.type) {
+      case 'NUM':
+        var result = node.token.value;
+        if (result >= min && result <= max) yield result;
+        break;
+      case 'PLUS':
+        for (var left in gen(min, max, node.operands![0])) {
+          if (left > max) break;
+          for (var right in gen(min, max, node.operands![1])) {
+            var result = left + right;
+            if (result > max) break;
+            if (result >= min && result <= max) yield result;
+          }
+        }
+        break;
+      case 'MINUS':
+        for (var left in gen(min, max, node.operands![0])) {
+          if (left < min) break;
+          for (var right in gen(min, max, node.operands![1])) {
+            var result = left - right;
+            if (result < min) break;
+            if (result >= min && result <= max) yield result;
+          }
+        }
+        break;
+      case 'TIMES':
+        for (var left in gen(min, max, node.operands![0])) {
+          if (left > max) break;
+          for (var right in gen(min, max, node.operands![1])) {
+            var result = left * right;
+            if (result > max) break;
+            if (result >= min && result <= max) yield result;
+          }
+        }
+        break;
+      case 'DIVIDE':
+        // Require exact integer result
+        for (var left in gen(min, max, node.operands![0])) {
+          if (left < min) break;
+          for (var right in gen(min, max, node.operands![1])) {
+            var result = left / right;
+            if (result < min) break;
+            if (result >= min && result <= max) yield result;
+          }
+        }
+        break;
+      case 'ROOT':
+        for (var square in gen(min, max, node.operands![0])) {
+          var root = sqrt(square).toInt();
+          if (root * root == square) {
+            var result = root;
+            if (result >= min && result <= max) yield result;
+          }
+          if (root > max) break;
+        }
+        break;
+      case 'FACTORIAL':
+        for (var left in gen(min, max, node.operands![0])) {
+          int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
+          if (isIntegerValue(left)) {
+            var result = factorial(left.toInt());
+            if (result > max) break;
+            if (result >= min && result <= max) yield result;
+          }
+        }
+        break;
+      case 'EXPONENT':
+        exp1:
+        for (var left in gen(min, max, node.operands![0])) {
+          if (left == 0 || left == 1) {
+            yield left;
+          } else {
+            if (left > max) break;
+            exp2:
+            for (var right in gen(min, max, node.operands![1])) {
+              var any = false;
+              var result = pow(left, right);
+              if (result > max) {
+                if (!any) break exp1;
+                break exp2;
+              }
+              if (result >= min && result <= max) {
+                any = true;
+                yield result;
+              }
+            }
+          }
+        }
+        break;
+      case 'EQUAL':
+        for (var left in gen(min, max, node.operands![0])) {
+          if (left > max) break;
+          for (var right in gen(min, max, node.operands![1])) {
+            if (left == right) {
+              var result = left;
+              if (result >= min && result <= max) yield result;
+            } else if (right > left) break;
+          }
+        }
+        break;
+      case 'VAR':
+        var name = node.token.name;
+        var index = this.variableNames!.indexOf(name);
+        if (index < 0) {
+          throw ExpressionError('Unknown variable $name');
+        }
+        var result = this.variableValues![index];
+        if (result >= min && result <= max) yield result;
+        break;
+      case 'GENERATOR':
+        var name = node.token.name;
+        var generator = generators[name];
+        if (generator == null) {
+          throw ExpressionError('Unknown generator $name');
+        }
+        for (var result in generator.func(min, max)) {
+          if (result >= min && result <= max) yield result;
+        }
+        break;
+      case 'MONADIC':
+        var name = node.token.name;
+        var monadic = monadics[name];
+        if (monadic == null) {
+          throw ExpressionError('Unknown monadic $name');
+        }
+        for (var left in gen(min, max, node.operands![0])) {
+          checkInteger(left);
+          var result = monadic.func(left.toInt());
+          if (result >= min && result <= max) yield result;
+        }
+        break;
       default:
         throw ExpressionError('Invalid AST');
     }
