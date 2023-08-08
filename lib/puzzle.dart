@@ -66,7 +66,7 @@ class Puzzle<ClueKind extends Clue> {
       else
         clueValues[clue.name] = clue.values!.first;
     }
-    if (unique) text += '${grid!.solutionToString(clueValues)}';
+    if (unique && grid != null) text += '${grid!.solutionToString(clueValues)}';
     return text;
   }
 
@@ -353,8 +353,10 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
       }
     }
     if (Crossnumber.traceSolve) {
-      print(
-          'Func ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+      if (count != 1) {
+        print(
+            'Func ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+      }
     }
   }
 

@@ -689,7 +689,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
     var multiples = getMultiplesOfValues(clue, values);
     if (multiples != null) {
       var possible = <int>{};
-      filterDiceDigits(clue, values, possible);
+      filterDiceDigits(clue, multiples, possible);
       possibleValue.addAll(possible);
     }
   }

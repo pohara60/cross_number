@@ -4,6 +4,9 @@ import 'package:powers/powers.dart';
 
 /// A [Puzzle] clue
 class Clue {
+  /// Max digit value
+  static var maxDigit = 9;
+
   /// Name
   final String name;
 
@@ -81,7 +84,7 @@ class Clue {
     digits.clear(); // Clear for reset
     // possible digits are 0..9, except cannot have leading 0
     for (var d = 0; d < this.length; d++) {
-      digits.add(Set.from(List.generate(10, (index) => index)));
+      digits.add(Set.from(List.generate(maxDigit + 1, (index) => index)));
       if (d == 0) digits[d].remove(0);
     }
   }

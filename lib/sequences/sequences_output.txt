@@ -1,4 +1,3 @@
-Connecting to VM Service at http://127.0.0.1:60406/lO39oyBA4PI=/
 Puzzle
 Clue(name=A2,length=4,value: P*o + W*E + r,
 	identities=[A2[0]=D2[0],A2[2]=D3[0],A2[3]=D4[0]],referrers=[D2,D3,D4],
@@ -176,6 +175,7 @@ m={1, 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 4
 o={1, 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 43, 47, 49, 53, 59, 61, 64, 67, 71, 73, 79, 81, 83, 89, 97, 101, 103, 107, 109, 113, 121, 125, 127, 128, 131, 137, 139, 149, 151, 157, 163, 167, 169, 173, 179, 181, 191, 193, 197, 199}
 r={1, 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 43, 47, 49, 53, 59, 61, 64, 67, 71, 73, 79, 81, 83, 89, 97, 101, 103, 107, 109, 113, 121, 125, 127, 128, 131, 137, 139, 149, 151, 157, 163, 167, 169, 173, 179, 181, 191, 193, 197, 199}
 RemainingValues: [1, 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 43, 47, 49, 53, 59, 61, 64, 67, 71, 73, 79, 81, 83, 89, 97, 101, 103, 107, 109, 113, 121, 125, 127, 128, 131, 137, 139, 149, 151, 157, 163, 167, 169, 173, 179, 181, 191, 193, 197, 199]
+
 SOLVE------------
 UPDATES-----------------------------
 Solve D26 iterations=9520, elapsed 0:00:00.004284
@@ -912,7 +912,6 @@ A={43}
 C={107}
 N={19}
 r={2}
-Func A18 cartesianCount=1, elapsed 0:00:00.000007
 solve: Clue(name=A18,length=2,value: S + I*G/M + A,
 	identities=[A18[0]=D14[1],A18[1]=D19[0]],referrers=[D14,D19],
 	values={95},
@@ -1316,159 +1315,60 @@ W={53}
 e={61}
 Clue iterations=316, updates=113, elapsed 0:00:00.618180
 SOLUTION-----------------------------
-Puzzle
-Clue(name=A2,length=4,value: P*o + W*E + r,
-	identities=[A2[0]=D2[0],A2[2]=D3[0],A2[3]=D4[0]],referrers=[D2,D3,D4],
-	values={8114},
-	digits=[{8},{1},{1},{4}]
-Clue(name=A5,length=3,value: S + E + r*I*e/S,
-	identities=[A5[0]=D5[0],A5[1]=D6[0],A5[2]=D7[0]],referrers=[D5,D6,D7],
-	values={575},
-	digits=[{5},{7},{5}]
-Clue(name=A8,length=2,value: S + U*m/S,
-	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2],
-	values={14},
-	digits=[{1},{4}]
-Clue(name=A10,length=2,value: T + a - U,
-	identities=[A10[0]=D3[1],A10[1]=D4[1]],referrers=[D3,D4],
-	values={85},
-	digits=[{8},{5}]
-Clue(name=A11,length=3,value: P + r + I + m + e,
-	identities=[A11[0]=D5[1],A11[1]=D6[1],A11[2]=D7[1]],referrers=[D5,D6,D7],
-	values={134},
-	digits=[{1},{3},{4}]
-Clue(name=A12,length=3,value: F + o - r - T*Y,
-	identities=[A12[0]=D12[0],A12[1]=D2[2],A12[2]=D9[1]],referrers=[D12,D2,D9],
-	values={155},
-	digits=[{1},{5},{5}]
-Clue(name=A13,length=3,value: S + P + H + e + r + e,
-	identities=[A13[0]=D13[0],A13[1]=D14[0],A13[2]=D5[2]],referrers=[D13,D14,D5],
-	values={344},
-	digits=[{3},{4},{4}]
-Clue(name=A16,length=2,value: P + O + W - E + r,
-	identities=[A16[0]=D12[1]],referrers=[D12],
-	values={68},
-	digits=[{6},{8}]
-Clue(name=A17,length=2,value: S + U + m,
-	identities=[A17[0]=D9[2],A17[1]=D13[1]],referrers=[D9,D13],
-	values={17},
-	digits=[{1},{7}]
-Clue(name=A18,length=2,value: S + I*G/M + A,
-	identities=[A18[0]=D14[1],A18[1]=D19[0]],referrers=[D14,D19],
-	values={95},
-	digits=[{9},{5}]
-Clue(name=A20,length=2,value: S + I + G + m + A,
-	identities=[A20[1]=D15[1]],referrers=[D15],
-	values={98},
-	digits=[{9},{8}]
-Clue(name=A22,length=3,value: S*E*r - I + e + S,
-	identities=[A22[0]=D22[0],A22[1]=D13[2],A22[2]=D14[2]],referrers=[D22,D13,D14],
-	values={713},
-	digits=[{7},{1},{3}]
-Clue(name=A23,length=3,value: M + E + N*U*S,
-	identities=[A23[0]=D19[1],A23[1]=D24[0],A23[2]=D15[2]],referrers=[D19,D24,D15],
-	values={472},
-	digits=[{4},{7},{2}]
-Clue(name=A25,length=3,value: S*U*m,
-	identities=[A25[0]=D25[0],A25[1]=D21[1],A25[2]=D22[1]],referrers=[D25,D21,D22],
-	values={160},
-	digits=[{1},{6},{0}]
-Clue(name=A26,length=2,value: S + U*M = O,
-	identities=[A26[0]=D26[0],A26[1]=D27[0]],referrers=[D26,D27],
-	values={49},
-	digits=[{4},{9}]
-Clue(name=A28,length=2,value: P + R - I + M - e,
-	identities=[A28[0]=D24[1],A28[1]=D29[0]],referrers=[D24,D29],
-	values={43},
-	digits=[{4},{3}]
-Clue(name=A30,length=3,value: T + H + e = T*I*M + E + S,
-	identities=[A30[0]=D25[1],A30[1]=D21[2],A30[2]=D22[2]],referrers=[D25,D21,D22],
-	values={231},
-	digits=[{2},{3},{1}]
-Clue(name=A31,length=4,value: M*I*N*T*Y,
-	identities=[A31[0]=D26[1],A31[1]=D27[1],A31[3]=D24[2]],referrers=[D26,D27,D24],
-	values={8208},
-	digits=[{8},{2},{0},{8}]
-Clue(name=D1,length=2,value: S + U + m*S,
-	identities=[D1[1]=A8[0]],referrers=[A8],
-	values={41},
-	digits=[{4},{1}]
-Clue(name=D2,length=3,value: m*O*r + e,
-	identities=[D2[0]=A2[0],D2[1]=A8[1],D2[2]=A12[1]],referrers=[A2,A8,A12],
-	values={845},
-	digits=[{8},{4},{5}]
-Clue(name=D3,length=2,value: S + U + M,
-	identities=[D3[0]=A2[2],D3[1]=A10[0]],referrers=[A2,A10],
-	values={18},
-	digits=[{1},{8}]
-Clue(name=D4,length=2,value: S - I*G/M + a,
-	identities=[D4[0]=A2[3],D4[1]=A10[1]],referrers=[A2,A10],
-	values={45},
-	digits=[{4},{5}]
-Clue(name=D5,length=3,value: S*E/r + I + E*S,
-	identities=[D5[0]=A5[0],D5[1]=A11[0],D5[2]=A13[2]],referrers=[A5,A11,A13],
-	values={514},
-	digits=[{5},{1},{4}]
-Clue(name=D6,length=3,value: P*R/I + M*e,
-	identities=[D6[0]=A5[1],D6[1]=A11[1]],referrers=[A5,A11],
-	values={737},
-	digits=[{7},{3},{7}]
-Clue(name=D7,length=2,value: F - E + W - e + R,
-	identities=[D7[0]=A5[2],D7[1]=A11[2]],referrers=[A5,A11],
-	values={54},
-	digits=[{5},{4}]
-Clue(name=D9,length=3,value: R*A*T/I + o,
-	identities=[D9[1]=A12[2],D9[2]=A17[0]],referrers=[A12,A17],
-	values={251},
-	digits=[{2},{5},{1}]
-Clue(name=D12,length=3,value: R + A - T - I + o,
-	identities=[D12[0]=A12[0],D12[1]=A16[0]],referrers=[A12,A16],
-	values={169},
-	digits=[{1},{6},{9}]
-Clue(name=D13,length=3,value: S + I + N + E*S,
-	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
-	values={371},
-	digits=[{3},{7},{1}]
-Clue(name=D14,length=3,value: -T*E + R*M,
-	identities=[D14[0]=A13[1],D14[1]=A18[0],D14[2]=A22[2]],referrers=[A13,A18,A22],
-	values={493},
-	digits=[{4},{9},{3}]
-Clue(name=D15,length=3,value: m*a + T + H,
-	identities=[D15[1]=A20[1],D15[2]=A23[2]],referrers=[A20,A23],
-	values={882},
-	digits=[{8},{8},{2}]
-Clue(name=D19,length=3,value: C + O + S + I*N + E,
-	identities=[D19[0]=A18[1],D19[1]=A23[0]],referrers=[A18,A23],
-	values={547},
-	digits=[{5},{4},{7}]
-Clue(name=D21,length=3,value: -T + r*I*G,
-	identities=[D21[1]=A25[1],D21[2]=A30[1]],referrers=[A25,A30],
-	values={863},
-	digits=[{8},{6},{3}]
-Clue(name=D22,length=3,value: S - E + R*I - e*S,
-	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A30[2]],referrers=[A22,A25,A30],
-	values={701},
-	digits=[{7},{0},{1}]
-Clue(name=D24,length=3,value: N*(A + r) - C,
-	identities=[D24[0]=A23[1],D24[1]=A28[0],D24[2]=A31[3]],referrers=[A23,A28,A31],
-	values={748},
-	digits=[{7},{4},{8}]
-Clue(name=D25,length=2,value: Y*Y + Y = I - S,
-	identities=[D25[0]=A25[0],D25[1]=A30[0]],referrers=[A25,A30],
-	values={12},
-	digits=[{1},{2}]
-Clue(name=D26,length=2,value: S*Y*S = S*(I - S),
-	identities=[D26[0]=A26[0],D26[1]=A31[0]],referrers=[A26,A31],
-	values={48},
-	digits=[{4},{8}]
-Clue(name=D27,length=2,value: M + E = T - I + C,
-	identities=[D27[0]=A26[1],D27[1]=A31[1]],referrers=[A26,A31],
-	values={92},
-	digits=[{9},{2}]
-Clue(name=D29,length=2,value: N + U + m + S,
-	identities=[D29[0]=A28[1]],referrers=[A28],
-	values={36},
-	digits=[{3},{6}]
+Puzzle Summary
+A2, P*o + W*E + r, values={8114}
+A5, S + E + r*I*e/S, values={575}
+A8, S + U*m/S, values={14}
+A10, T + a - U, values={85}
+A11, P + r + I + m + e, values={134}
+A12, F + o - r - T*Y, values={155}
+A13, S + P + H + e + r + e, values={344}
+A16, P + O + W - E + r, values={68}
+A17, S + U + m, values={17}
+A18, S + I*G/M + A, values={95}
+A20, S + I + G + m + A, values={98}
+A22, S*E*r - I + e + S, values={713}
+A23, M + E + N*U*S, values={472}
+A25, S*U*m, values={160}
+A26, S + U*M = O, values={49}
+A28, P + R - I + M - e, values={43}
+A30, T + H + e = T*I*M + E + S, values={231}
+A31, M*I*N*T*Y, values={8208}
+D1, S + U + m*S, values={41}
+D2, m*O*r + e, values={845}
+D3, S + U + M, values={18}
+D4, S - I*G/M + a, values={45}
+D5, S*E/r + I + E*S, values={514}
+D6, P*R/I + M*e, values={737}
+D7, F - E + W - e + R, values={54}
+D9, R*A*T/I + o, values={251}
+D12, R + A - T - I + o, values={169}
+D13, S + I + N + E*S, values={371}
+D14, -T*E + R*M, values={493}
+D15, m*a + T + H, values={882}
+D19, C + O + S + I*N + E, values={547}
+D21, -T + r*I*G, values={863}
+D22, S - E + R*I - e*S, values={701}
+D24, N*(A + r) - C, values={748}
+D25, Y*Y + Y = I - S, values={12}
+D26, S*Y*S = S*(I - S), values={48}
+D27, M + E = T - I + C, values={92}
+D29, N + U + m + S, values={36}
++-+-+-+-+-+-+-+-+
+|4|8 1 1 4|5 7 5|
++ +  -    +     +
+|1 4|2|8 5|1 3 4|
++-+ + +-+-+    -+
+|1 5 5|3 4 4|7|8|
++  -+ +    -+-+ +
+|6 8|1 7|9 5|9 8|
++  -+-+ +   +-  +
+|9|8|7 1 3|4 7 2|
++-+ +  -+-+    -+
+|1 6 0|4 9|7|4 3|
++     +   +-+   +
+|2 3 1|8 2 0 8|6|
++-+-+-+-+-+-+-+-+
 Variables:
 A={43}
 C={107}
@@ -1493,4 +1393,4 @@ m={8}
 o={79}
 r={2}
 RemainingValues: [7, 11, 13, 17, 23, 25, 29, 31, 32, 37, 41, 59, 67, 71, 73, 97, 101, 103, 109, 113, 121, 125, 127, 128, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
-Exited
+

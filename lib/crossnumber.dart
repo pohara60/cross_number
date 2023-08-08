@@ -802,7 +802,7 @@ Set<int>? getValuesFromClueDigits(Clue clue) {
 }
 
 List<int>? getMultiplesOfValues(Clue clue, List<int> values) {
-  var values = <int>[];
+  var multiples = <int>[];
   var loResult = 10.pow(clue.length - 1) as int;
   var hiResult = (10.pow(clue.length) as int) - 1;
   for (var value in values) {
@@ -815,10 +815,10 @@ List<int>? getMultiplesOfValues(Clue clue, List<int> values) {
       var multiple = multiplier * value;
       if (multiple < loResult) continue;
       if (multiple >= hiResult) continue;
-      values.add(multiple);
+      multiples.add(multiple);
     }
   }
-  return values;
+  return multiples;
 }
 
 List<int>? getTriangularsLessValues(Clue clue, Set<int> values) {
