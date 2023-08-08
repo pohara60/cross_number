@@ -1,11 +1,7 @@
 /// An API for solving Prime Cuts puzzles.
 library root66;
 
-import 'dart:collection';
-import 'dart:math';
-
 import 'package:crossnumber/puzzle.dart';
-import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/root66/clue.dart';
@@ -352,7 +348,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       var bcefg = bcefgEntry.value;
       if (!duplicateDigit(value)) {
         var g = bcefg['g']!;
-        var bcef = bcefg['bcef']!;
+        // var bcef = bcefg['bcef']!;
         if (g > maxG) {
           maxG = g;
         }

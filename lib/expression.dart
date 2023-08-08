@@ -158,7 +158,7 @@ class ExpressionEvaluator {
     }
   }
 
-  int evaluate(variableNames, variableValues) {
+  int evaluate([List<String>? variableNames, List<int>? variableValues]) {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
     var value = this.eval(this.tree);
@@ -368,29 +368,5 @@ class ExpressionEvaluator {
       default:
         throw ExpressionError('Invalid AST');
     }
-  }
-}
-
-void main(List<String> args) {
-  try {
-    var text = 'S+I*G/M-a';
-    for (var token in generateTokens(text)) {
-      print('$token');
-    }
-    var text2 = '5+4*3/2-1';
-    var exp = ExpressionEvaluator(text2);
-    var value = exp.evaluate(['S', 'I', 'G', 'M', 'a'], [5, 4, 3, 2, 1]);
-    print('$text2=$value');
-
-    final stopwatch = Stopwatch()..start();
-    var value2 = 0;
-    var exp2 = ExpressionEvaluator(text);
-    for (var i = 0; i < 1000000; i++) {
-      value2 = exp2.evaluate(['S', 'I', 'G', 'M', 'a'], [5, 4, 3, 2, 1]);
-    }
-    print(
-        '$text=$value2, elapsed ${stopwatch.elapsed}'); // 15 secs reduced to 0.2 secs with AST
-  } on ExpressionError catch (se) {
-    print('Error ${se.msg}');
   }
 }
