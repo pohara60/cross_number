@@ -43,22 +43,6 @@ var regExp = RegExp([
   ERROR,
 ].join('|'));
 
-typedef GeneratorFunc = Iterable<int> Function(num min, num max);
-
-class Generator {
-  String name;
-  GeneratorFunc func;
-  Generator(this.name, this.func);
-}
-
-typedef MonadicFunc = int Function(int arg);
-
-class Monadic {
-  String name;
-  MonadicFunc func;
-  Monadic(this.name, this.func);
-}
-
 var generators = <String, Generator>{};
 var monadics = <String, Monadic>{};
 
@@ -83,10 +67,8 @@ class Scanner {
   static var initialized = false;
 
   static void initialize() {
-    generators['prime'] = Generator('prime', generatePrimes);
-    monadics['DS'] = Monadic('DS', digitSum);
-    monadics['DP'] = Monadic('DP', digitProduct);
-    monadics['MP'] = Monadic('MP', multiplicativePersistence);
+    initializeGenerators(generators);
+    initializeMonadics(monadics);
     initialized = true;
   }
 
@@ -159,15 +141,113 @@ class Scanner {
 }
 
 // AST
+enum NodeComplexity {
+  SIMPLE, // No generator, so single valued
+  GENERATOR, // This node generates multiple values
+  GENERATOR_CHILD, // One child of this node generates multiple values
+  GENERATOR_CHILDREN, // Multiple childen of this node generates multiple values
+}
+
+enum NodeOrder {
+  SINGLE, // Single value
+  ASCENDING, // Multiple values ascending
+  DESCENDING, // Multiple values descending
+  UNKNOWN, // Unknown order
+}
+
 class Node {
   final Token token;
+  late NodeComplexity complexity;
+  late NodeOrder order;
   List<Node>? operands;
-  Node(this.token, [this.operands]);
+  Node(this.token, [this.operands]) {
+    nodeComplexity();
+    nodeOrder();
+  }
+
+  void nodeOrder() {
+    if (operands == null) {
+      if (token.type == "GENERATOR") {
+        // Assume all generators are ascending
+        order = NodeOrder.ASCENDING;
+      } else {
+        order = NodeOrder.SINGLE;
+      }
+    } else if (operands!.length == 1) {
+      var childOrder = operands!.first.order;
+      //if (operands!.first.token.type=='MINUS')
+      order = childOrder;
+    } else {
+      var childOrder1 = operands![0].order;
+      var childOrder2 = operands![1].order;
+      if (childOrder1 == NodeOrder.SINGLE && childOrder2 == NodeOrder.SINGLE)
+        order = NodeOrder.SINGLE;
+      else if (token.type == 'MINUS' || token.type == 'DIVIDE') {
+        if (childOrder1 == NodeOrder.SINGLE) {
+          if (childOrder2 == NodeOrder.ASCENDING)
+            order = NodeOrder.DESCENDING;
+          else
+            order = NodeOrder.ASCENDING;
+        } else if (childOrder2 == NodeOrder.SINGLE)
+          order = childOrder1;
+        else
+          order = NodeOrder.UNKNOWN;
+      } else {
+        if (childOrder1 == NodeOrder.SINGLE)
+          order = childOrder2;
+        else if (childOrder2 == NodeOrder.SINGLE)
+          order = childOrder1;
+        else
+          order = NodeOrder.UNKNOWN;
+      }
+    }
+  }
+
+  void nodeComplexity() {
+    if (operands == null) {
+      if (token.type == "GENERATOR") {
+        complexity = NodeComplexity.GENERATOR;
+      } else {
+        complexity = NodeComplexity.SIMPLE;
+      }
+    } else if (operands!.length == 1) {
+      var childComplexity = operands!.first.complexity;
+      if (childComplexity == NodeComplexity.GENERATOR_CHILDREN)
+        complexity = NodeComplexity.GENERATOR_CHILDREN;
+      else if (childComplexity == NodeComplexity.GENERATOR_CHILD)
+        complexity = NodeComplexity.GENERATOR_CHILD;
+      else if (childComplexity == NodeComplexity.GENERATOR)
+        complexity = NodeComplexity.GENERATOR_CHILD;
+      else // (childComplexity == NodeComplexity.SIMPLE)
+        complexity = NodeComplexity.SIMPLE;
+    } else {
+      var childComplexity1 = operands![0].complexity;
+      var childComplexity2 = operands![1].complexity;
+      if (childComplexity1 == NodeComplexity.GENERATOR_CHILDREN ||
+          childComplexity2 == NodeComplexity.GENERATOR_CHILDREN)
+        complexity = NodeComplexity.GENERATOR_CHILDREN;
+      else if ((childComplexity1 == NodeComplexity.GENERATOR_CHILD ||
+              childComplexity1 == NodeComplexity.GENERATOR) &&
+          (childComplexity2 == NodeComplexity.GENERATOR_CHILD ||
+              childComplexity2 == NodeComplexity.GENERATOR))
+        complexity = NodeComplexity.GENERATOR_CHILDREN;
+      else if (childComplexity1 == NodeComplexity.GENERATOR_CHILD ||
+          childComplexity2 == NodeComplexity.GENERATOR_CHILD)
+        complexity = NodeComplexity.GENERATOR_CHILD;
+      else if (childComplexity1 == NodeComplexity.GENERATOR ||
+          childComplexity2 == NodeComplexity.GENERATOR)
+        complexity = NodeComplexity.GENERATOR_CHILD;
+      else // (childComplexity == NodeComplexity.SIMPLE)
+        complexity = NodeComplexity.SIMPLE;
+    }
+  }
+
   String toString() => operands == null
       ? '$token'
       : operands!.length == 1
           ? '$token${operands![0]}'
           : '(${operands![0]}$token${operands![1]})';
+
 //      '($token${operands == null ? '' : operands!.map<String>((e) => ' $e')})';
 }
 
@@ -443,15 +523,6 @@ class ExpressionEvaluator {
           throw ExpressionError('Unknown variable $name');
         }
         return this.variableValues![index];
-      case 'GENERATOR':
-        var name = node.token.name;
-        var generator = generators[name];
-        if (generator == null) {
-          throw ExpressionError('Unknown generator $name');
-        }
-        // TODO multiple values
-        // TODO min/max
-        return generator.func(10, 99).first;
       case 'MONADIC':
         var name = node.token.name;
         var monadic = monadics[name];
@@ -461,6 +532,8 @@ class ExpressionEvaluator {
         var left = eval(node.operands![0]);
         checkInteger(left);
         return monadic.func(left.toInt());
+      case 'GENERATOR':
+        throw ExpressionError("GENERATOR should be evaluated using 'gen()'");
       default:
         throw ExpressionError('Invalid AST');
     }
@@ -468,114 +541,236 @@ class ExpressionEvaluator {
 
   Iterable<num> gen(num min, num max, Node? node) sync* {
     if (node == null) return;
+    if (node.complexity == NodeComplexity.SIMPLE) {
+      // Just one value
+      yield eval(node);
+      return;
+    }
     switch (node.token.type) {
-      case 'NUM':
-        var result = node.token.value;
-        if (result >= min && result <= max) yield result;
-        break;
       case 'PLUS':
-        for (var left in gen(min, max, node.operands![0])) {
-          if (left > max) break;
-          for (var right in gen(min, max, node.operands![1])) {
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : min - rvalue,
+                rvalue == 0 ? max : max - rvalue,
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  lvalue == 0 ? 1 : min - lvalue,
+                  lvalue == 0 ? max : max - lvalue,
+                  rnode,
+                )) {
             var result = left + right;
-            if (result > max) break;
-            if (result >= min && result <= max) yield result;
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
           }
         }
         break;
       case 'MINUS':
-        for (var left in gen(min, max, node.operands![0])) {
-          if (left < min) break;
-          for (var right in gen(min, max, node.operands![1])) {
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : min + rvalue,
+                rvalue == 0 ? max : max + rvalue,
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  lvalue == 0 ? 1 : lvalue - max,
+                  lvalue == 0 ? max : lvalue - min,
+                  rnode,
+                )) {
             var result = left - right;
-            if (result < min) break;
-            if (result >= min && result <= max) yield result;
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
           }
         }
         break;
       case 'TIMES':
-        for (var left in gen(min, max, node.operands![0])) {
-          if (left > max) break;
-          for (var right in gen(min, max, node.operands![1])) {
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : min / rvalue,
+                rvalue == 0 ? max : max / rvalue,
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  lvalue == 0 ? 1 : min / lvalue,
+                  lvalue == 0 ? max : max / lvalue,
+                  rnode,
+                )) {
             var result = left * right;
-            if (result > max) break;
-            if (result >= min && result <= max) yield result;
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
           }
         }
         break;
       case 'DIVIDE':
-        // Require exact integer result
-        for (var left in gen(min, max, node.operands![0])) {
-          if (left < min) break;
-          for (var right in gen(min, max, node.operands![1])) {
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : min * rvalue,
+                rvalue == 0 ? max : max * rvalue,
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  lvalue == 0 ? 1 : lvalue / max,
+                  lvalue == 0 ? max : lvalue / min,
+                  rnode,
+                )) {
             var result = left / right;
-            if (result < min) break;
-            if (result >= min && result <= max) yield result;
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
           }
         }
         break;
       case 'ROOT':
-        for (var square in gen(min, max, node.operands![0])) {
-          var root = sqrt(square).toInt();
-          if (root * root == square) {
-            var result = root;
-            if (result >= min && result <= max) yield result;
+        for (var square in gen(min * min, max * max, node.operands![0])) {
+          var result = sqrt(square).toInt();
+          if (result > max) {
+            if (node.order == NodeOrder.ASCENDING) break;
+            continue;
           }
-          if (root > max) break;
+          if (result < min) {
+            if (node.order == NodeOrder.DESCENDING) break;
+            continue;
+          }
+          if (result * result == square) {
+            yield result;
+          }
         }
         break;
       case 'FACTORIAL':
-        for (var left in gen(min, max, node.operands![0])) {
+        for (var left in gen(1, max, node.operands![0])) {
           int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
           if (isIntegerValue(left)) {
             var result = factorial(left.toInt());
-            if (result > max) break;
-            if (result >= min && result <= max) yield result;
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
           }
         }
         break;
       case 'EXPONENT':
-        exp1:
-        for (var left in gen(min, max, node.operands![0])) {
-          if (left == 0 || left == 1) {
-            yield left;
-          } else {
-            if (left > max) break;
-            exp2:
-            for (var right in gen(min, max, node.operands![1])) {
-              var any = false;
-              var result = pow(left, right);
-              if (result > max) {
-                if (!any) break exp1;
-                break exp2;
-              }
-              if (result >= min && result <= max) {
-                any = true;
-                yield result;
-              }
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : pow(min, 1 / rvalue),
+                rvalue == 0 ? max : pow(max, 1 / rvalue),
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  lvalue <= 1 ? 2 : log(min) / log(lvalue),
+                  lvalue <= 1 ? max : log(max) / log(lvalue),
+                  rnode,
+                )) {
+            var result = pow(left, right);
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
             }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
           }
         }
         break;
       case 'EQUAL':
-        for (var left in gen(min, max, node.operands![0])) {
-          if (left > max) break;
-          for (var right in gen(min, max, node.operands![1])) {
-            if (left == right) {
-              var result = left;
-              if (result >= min && result <= max) yield result;
-            } else if (right > left) break;
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? min : rvalue,
+                rvalue == 0 ? max : rvalue,
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  lvalue == 0 ? min : rvalue,
+                  lvalue == 0 ? max : rvalue,
+                  rnode,
+                )) {
+            var result = left;
+            if (result > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            if (left == right) yield result;
           }
         }
-        break;
-      case 'VAR':
-        var name = node.token.name;
-        var index = this.variableNames!.indexOf(name);
-        if (index < 0) {
-          throw ExpressionError('Unknown variable $name');
-        }
-        var result = this.variableValues![index];
-        if (result >= min && result <= max) yield result;
         break;
       case 'GENERATOR':
         var name = node.token.name;
@@ -584,7 +779,15 @@ class ExpressionEvaluator {
           throw ExpressionError('Unknown generator $name');
         }
         for (var result in generator.func(min, max)) {
-          if (result >= min && result <= max) yield result;
+          if (result > max) {
+            if (node.order == NodeOrder.ASCENDING) break;
+            continue;
+          }
+          if (result < min) {
+            if (node.order == NodeOrder.DESCENDING) break;
+            continue;
+          }
+          yield result;
         }
         break;
       case 'MONADIC':
@@ -599,6 +802,9 @@ class ExpressionEvaluator {
           if (result >= min && result <= max) yield result;
         }
         break;
+      case 'NUM':
+      case 'VAR':
+        throw ExpressionError('NUM and VAR should be NodeComplexity.SIMPLE');
       default:
         throw ExpressionError('Invalid AST');
     }

@@ -123,12 +123,91 @@ void main() {
             109,
           ]));
     });
-    var text3 = r'$DS #prime';
+    var text3 = r'41 + #prime + 40';
     test(text3, () {
       var exp = ExpressionEvaluator(text3);
-      //Does not return 4 values because range check applies to DS as well as Prime!
-      //expect(exp.generate(10, 19).toList(), equals([2, 4, 8, 10]));
-      expect(exp.generate(10, 19).toList(), equals([10]));
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(
+          exp.generate(10, 99).toList(), equals([83, 84, 86, 88, 92, 94, 98]));
+    });
+    var text4 = r'#prime - 20';
+    test(text4, () {
+      var exp = ExpressionEvaluator(text4);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 29).toList(), equals([11, 17, 21, 23, 27]));
+    });
+    var text5 = r'111 - #prime + 40';
+    test(text5, () {
+      var exp = ExpressionEvaluator(text5);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.DESCENDING));
+      expect(
+          exp.generate(80, 99).toList(),
+          equals([
+            98,
+            92,
+            90,
+            84,
+            80,
+          ]));
+    });
+    var text6 = r'2 * #prime';
+    test(text6, () {
+      var exp = ExpressionEvaluator(text6);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 29).toList(), equals([10, 14, 22, 26]));
+    });
+    var text7 = r'(#prime+1) / 3';
+    test(text7, () {
+      var exp = ExpressionEvaluator(text7);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 19).toList(), equals([10, 14, 16, 18]));
+    });
+    var text8 = r'330 / #prime';
+    test(text8, () {
+      var exp = ExpressionEvaluator(text8);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.DESCENDING));
+      expect(exp.generate(10, 150).toList(), equals([110, 66, 30]));
+    });
+    var text9 = r'#integer !';
+    test(text9, () {
+      var exp = ExpressionEvaluator(text9);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 150).toList(), equals([24, 120]));
+    });
+    var text10 = r'√ #integer';
+    test(text10, () {
+      var exp = ExpressionEvaluator(text10);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 12).toList(), equals([10, 11, 12]));
+    });
+    var text11 = r'#integer ^ 2';
+    test(text11, () {
+      var exp = ExpressionEvaluator(text11);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 49).toList(), equals([16, 25, 36, 49]));
+    });
+    var text12 = r'2 ^ #integer';
+    test(text12, () {
+      var exp = ExpressionEvaluator(text12);
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 99).toList(), equals([16, 32, 64]));
+    });
+    var text13 = r'#prime = #integer';
+    test(text13, () {
+      var exp = ExpressionEvaluator(text13);
+      // expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
+      // expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
+      expect(exp.generate(10, 19).toList(), equals([11, 13, 17, 19]));
     });
   });
 }

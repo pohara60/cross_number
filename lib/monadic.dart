@@ -1,3 +1,17 @@
+typedef MonadicFunc = int Function(int arg);
+
+class Monadic {
+  String name;
+  MonadicFunc func;
+  Monadic(this.name, this.func);
+}
+
+void initializeMonadics(Map<String, Monadic> monadics) {
+  monadics['DS'] = Monadic('DS', digitSum);
+  monadics['DP'] = Monadic('DP', digitProduct);
+  monadics['MP'] = Monadic('MP', multiplicativePersistence);
+}
+
 int digitSum(int value) {
   var digits = value.toString().split('').map((e) => int.parse(e));
   var result =
