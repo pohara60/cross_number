@@ -1,4 +1,5 @@
 import 'package:crossnumber/generators.dart';
+import 'package:crossnumber/monadic.dart';
 
 import '../lib/expression.dart';
 import 'package:test/test.dart';
@@ -57,7 +58,7 @@ void main() {
       expect(value, equals(6));
     });
   });
-  group('Enhancements', () {
+  group('Scanner Enhancements', () {
     void expectToken(Token token, String name, String type) {
       expect(token.name, equals(name));
       expect(token.type, equals(type));
@@ -73,17 +74,12 @@ void main() {
       expectToken(tokens[4]!, 'C', 'VAR');
       expectToken(tokens[5]!, 'D', 'VAR');
     });
-
-    var text2 = '#prime';
-    test(text2, () {
-      // var exp = ExpressionEvaluator(text2);
-      // expect(exp.evaluate(), equals(2));
-      // expect(exp.evaluate(), equals(3));
-      // expect(exp.evaluate(), equals(5));
-      // expect(exp.evaluate(), equals(7));
+  });
+  group('Generator Enhancements', () {
+    var text1 = '#prime';
+    test(text1, () {
       var primes = generatePrimes(1, 9).toList();
       expect(primes, equals([2, 3, 5, 7]));
-
       primes = generatePrimes(10, 99).toList();
       expect(
           primes,
@@ -123,6 +119,67 @@ void main() {
             109,
           ]));
     });
+    var text2 = '#triangular';
+    test(text2, () {
+      var primes = generateTriangles(1, 9).toList();
+      expect(primes, equals([1, 3, 6]));
+      primes = generateTriangles(10, 99).toList();
+      expect(primes, equals([10, 15, 21, 28, 36, 45, 55, 66, 78, 91]));
+      primes = generateTriangles(80, 110).toList();
+      expect(primes, equals([91, 105]));
+    });
+    var text3 = '#pyramidal';
+    test(text3, () {
+      var primes = generateSquarePyramidals(1, 9).toList();
+      expect(primes, equals([1, 5]));
+      primes = generateSquarePyramidals(10, 99).toList();
+      expect(primes, equals([14, 30, 55, 91]));
+      primes = generateSquarePyramidals(80, 110).toList();
+      expect(primes, equals([91]));
+    });
+    var text4 = '#square';
+    test(text4, () {
+      var primes = generateSquares(1, 9).toList();
+      expect(primes, equals([1, 4, 9]));
+      primes = generateSquares(10, 99).toList();
+      expect(primes, equals([16, 25, 36, 49, 64, 81]));
+      primes = generateSquares(80, 110).toList();
+      expect(primes, equals([81, 100]));
+    });
+    var text5 = '#cube';
+    test(text5, () {
+      var primes = generateCubes(1, 9).toList();
+      expect(primes, equals([1, 8]));
+      primes = generateCubes(10, 99).toList();
+      expect(primes, equals([27, 64]));
+      primes = generateCubes(80, 110).toList();
+      expect(primes, equals([]));
+    });
+    var text6 = '#power';
+    test(text6, () {
+      var primes = generatePowers(1, 9).toList();
+      expect(primes, equals([1, 2, 4, 8, 9]));
+      primes = generatePowers(10, 99).toList();
+      expect(primes, equals([16, 25, 27, 32, 36, 49, 64, 81]));
+      primes = generatePowers(80, 110).toList();
+      expect(primes, equals([81, 100]));
+    });
+    var text7 = '#product2primes';
+    test(text7, () {
+      var primes = generateProduct2Primes(1, 9).toList();
+      expect(primes, equals([6]));
+      primes = generateProduct2Primes(10, 40).toList();
+      expect(primes, equals([10, 14, 15, 21, 22, 26, 33, 34, 35, 38, 39]));
+    });
+  });
+  group('Monadic Enhancements', () {
+    var text1 = '#jumble';
+    test(text1, () {
+      var values = jumble(123).toList();
+      expect(values, equals([123, 132, 213, 231, 312, 321]));
+    });
+  });
+  group('Expression Enhancements', () {
     var text3 = r'41 + #prime + 40';
     test(text3, () {
       var exp = ExpressionEvaluator(text3);
@@ -205,9 +262,31 @@ void main() {
     var text13 = r'#prime = #integer';
     test(text13, () {
       var exp = ExpressionEvaluator(text13);
-      // expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILD));
-      // expect(exp.tree!.order, equals(NodeOrder.ASCENDING));
       expect(exp.generate(10, 19).toList(), equals([11, 13, 17, 19]));
+    });
+    var text14 = r'$square #integer';
+    test(text14, () {
+      var exp = ExpressionEvaluator(text14);
+      expect(exp.generate(10, 49).toList(), equals([16, 25, 36, 49]));
+    });
+    var text15 = r'$even #integer';
+    test(text15, () {
+      var exp = ExpressionEvaluator(text15);
+      expect(exp.generate(10, 19).toList(), equals([10, 12, 14, 16, 18]));
+    });
+    var text16 = r'$even 12';
+    test(text16, () {
+      var exp = ExpressionEvaluator(text16);
+      expect(() => exp.generate(10, 19), throwsException);
+    });
+    var text17 = r'$multiple #prime';
+    test(text17, () {
+      var exp = ExpressionEvaluator(text17);
+      // Note unknown order and duplicates due to nested generators
+      expect(exp.tree!.complexity, equals(NodeComplexity.GENERATOR_CHILDREN));
+      expect(exp.tree!.order, equals(NodeOrder.UNKNOWN));
+      expect(exp.generate(10, 19).toList(),
+          equals([10, 12, 14, 16, 18, 12, 15, 18, 10, 15, 14]));
     });
   });
 }

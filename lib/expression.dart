@@ -177,6 +177,16 @@ class Node {
       var childOrder = operands!.first.order;
       //if (operands!.first.token.type=='MINUS')
       order = childOrder;
+      if (token.type == 'MONADIC') {
+        var name = token.name;
+        var monadic = monadics[name]!;
+        if (monadic.type == Iterable<int>) {
+          if (order == NodeOrder.SINGLE)
+            order = NodeOrder.ASCENDING;
+          else
+            order = NodeOrder.UNKNOWN;
+        }
+      }
     } else {
       var childOrder1 = operands![0].order;
       var childOrder2 = operands![1].order;
@@ -220,6 +230,16 @@ class Node {
         complexity = NodeComplexity.GENERATOR_CHILD;
       else // (childComplexity == NodeComplexity.SIMPLE)
         complexity = NodeComplexity.SIMPLE;
+      if (token.type == 'MONADIC') {
+        var name = token.name;
+        var monadic = monadics[name]!;
+        if (monadic.type == Iterable<int>) {
+          if (complexity == NodeComplexity.SIMPLE)
+            complexity = NodeComplexity.GENERATOR;
+          else
+            complexity = NodeComplexity.GENERATOR_CHILDREN;
+        }
+      }
     } else {
       var childComplexity1 = operands![0].complexity;
       var childComplexity2 = operands![1].complexity;
@@ -531,7 +551,16 @@ class ExpressionEvaluator {
         }
         var left = eval(node.operands![0]);
         checkInteger(left);
-        return monadic.func(left.toInt());
+        var result = monadic.func(left.toInt());
+        if (result is bool) {
+          throw ExpressionError(
+              'Unexpected bool result for monadic $name in simple expression');
+        } else if (result is num) {
+          return result;
+        } else {
+          throw ExpressionError(
+              'Unexpected value type $result for monadic $name');
+        }
       case 'GENERATOR':
         throw ExpressionError("GENERATOR should be evaluated using 'gen()'");
       default:
@@ -562,8 +591,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  lvalue == 0 ? 1 : min - lvalue,
-                  lvalue == 0 ? max : max - lvalue,
+                  min - left,
+                  max - left,
                   rnode,
                 )) {
             var result = left + right;
@@ -594,8 +623,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  lvalue == 0 ? 1 : lvalue - max,
-                  lvalue == 0 ? max : lvalue - min,
+                  left - max,
+                  left - min,
                   rnode,
                 )) {
             var result = left - right;
@@ -626,8 +655,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  lvalue == 0 ? 1 : min / lvalue,
-                  lvalue == 0 ? max : max / lvalue,
+                  min / left,
+                  max / left,
                   rnode,
                 )) {
             var result = left * right;
@@ -658,8 +687,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  lvalue == 0 ? 1 : lvalue / max,
-                  lvalue == 0 ? max : lvalue / min,
+                  left / max,
+                  left / min,
                   rnode,
                 )) {
             var result = left / right;
@@ -723,8 +752,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  lvalue <= 1 ? 2 : log(min) / log(lvalue),
-                  lvalue <= 1 ? max : log(max) / log(lvalue),
+                  left <= 1 ? 2 : log(min) / log(left),
+                  left <= 1 ? max : log(max) / log(left),
                   rnode,
                 )) {
             var result = pow(left, right);
@@ -755,8 +784,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  lvalue == 0 ? min : rvalue,
-                  lvalue == 0 ? max : rvalue,
+                  left,
+                  left,
                   rnode,
                 )) {
             var result = left;
@@ -796,10 +825,50 @@ class ExpressionEvaluator {
         if (monadic == null) {
           throw ExpressionError('Unknown monadic $name');
         }
-        for (var left in gen(min, max, node.operands![0])) {
-          checkInteger(left);
-          var result = monadic.func(left.toInt());
-          if (result >= min && result <= max) yield result;
+        const int intMaxValue =
+            9007199254740991; // Max for dart web, otherwise 9223372036854775807
+        var childNode = node.operands![0];
+        for (var left in gen(1, intMaxValue, childNode)) {
+          if (isIntegerValue(left)) {
+            var result = monadic.func(left.toInt());
+            if (result is bool) {
+              if (!result) continue;
+              // if true then return argument
+              result = left;
+            }
+            if (result is num) {
+              if (result > max) {
+                if (node.order == NodeOrder.ASCENDING) break;
+                continue;
+              }
+              if (result < min) {
+                if (node.order == NodeOrder.DESCENDING) break;
+                continue;
+              }
+              yield result;
+            } else if (result is Iterable<int>) {
+              var breakOuter = true;
+              for (var fresult in result) {
+                if (fresult > max) {
+                  // Assume function increases as argument increases
+                  if (childNode.order == NodeOrder.ASCENDING) break;
+                  breakOuter = false;
+                  continue;
+                }
+                if (fresult < min) {
+                  if (childNode.order == NodeOrder.DESCENDING) break;
+                  breakOuter = false;
+                  continue;
+                }
+                breakOuter = false;
+                yield fresult;
+              }
+              if (breakOuter) break;
+            } else {
+              throw ExpressionError(
+                  'Unexpected value type $result for monadic $name');
+            }
+          }
         }
         break;
       case 'NUM':
