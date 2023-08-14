@@ -20,6 +20,10 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['power'] = Generator('power', generatePowers);
   generators['product2primes'] =
       Generator('product2primes', generateProduct2Primes);
+  generators['product3primes'] =
+      Generator('product3primes', generateProduct3Primes);
+  generators['sumConsecutiveSquares'] =
+      Generator('sumConsecutiveSquares', generateSumConsecutiveSquares);
 }
 
 Iterable<int> generateIntegers(num min, num max) sync* {
@@ -190,12 +194,24 @@ Iterable<int> generatePowerN(int power) sync* {
 
 var product2primes = <int>[6];
 Iterable<int> generateProduct2Primes(num min, num max) sync* {
+  yield* generateProduct(
+      min, max, generatePrimes, generatePrimes, product2primes);
+}
+
+var product3primes = <int>[30];
+Iterable<int> generateProduct3Primes(num min, num max) sync* {
+  yield* generateProduct(
+      min, max, generateProduct2Primes, generatePrimes, product3primes);
+}
+
+Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
+    GeneratorFunc gen2, List<int> products) sync* {
   var index = 0;
-  int length = product2primes.length;
-  if (product2primes.last >= max.toInt()) {
+  int length = products.length;
+  if (products.last >= max.toInt()) {
     // All products pre-computed
     while (index < length) {
-      var element = product2primes[index++];
+      var element = products[index++];
       if (element < min) continue;
       if (element > max) return;
       yield element;
@@ -203,14 +219,19 @@ Iterable<int> generateProduct2Primes(num min, num max) sync* {
     return;
   }
   // Generate from beginning
+
   var productIndex = 0;
   var nextProduct = <List<int>>[];
-  for (var p1 in generatePrimes(3, max)) {
+  var previous = -1;
+  for (var p1 in gen1(3, max)) {
     var index = 0;
     // Add products of p1 to next values
-    for (var p2 in generatePrimes(2, p1 - 1)) {
-      if (index == nextProduct.length) nextProduct.add([]);
-      nextProduct[index].add(p1 * p2);
+    for (var p2 in gen2(2, p1 - 1)) {
+      // Check for non-distict primes
+      if (p1 % p2 != 0) {
+        while (index >= nextProduct.length) nextProduct.add([]);
+        nextProduct[index].add(p1 * p2);
+      }
       index++;
     }
     // Yield values lower than product of 2*p1, in order
@@ -229,13 +250,35 @@ Iterable<int> generateProduct2Primes(num min, num max) sync* {
       if (!found) break;
 
       nextProduct[foundIndex].removeAt(0);
+      // Skip duplicates (occurs when more than 2 primes)
+      if (lowest == previous) continue;
+      previous = lowest;
+
       productIndex++;
       if (productIndex > product2primes.length) {
-        product2primes.add(lowest);
+        products.add(lowest);
       }
       if (lowest < min) continue;
       if (lowest > max) return;
       yield lowest;
     }
+  }
+}
+
+var sumConsecutiveSquares = <int>[5];
+Iterable<int> generateSumConsecutiveSquares(num min, num max) sync* {
+  int length = sumConsecutiveSquares.length;
+  var index = 0;
+  var previousSquare = 1;
+  while (true) {
+    while (index < length) {
+      var element = sumConsecutiveSquares[index++];
+      previousSquare = element - previousSquare;
+      if (element < min) continue;
+      if (element > max) return;
+      yield element;
+    }
+    length++;
+    sumConsecutiveSquares.add(previousSquare + (length + 1) * (length + 1));
   }
 }

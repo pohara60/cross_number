@@ -171,6 +171,24 @@ void main() {
       primes = generateProduct2Primes(10, 40).toList();
       expect(primes, equals([10, 14, 15, 21, 22, 26, 33, 34, 35, 38, 39]));
     });
+    var text8 = '#product3primes';
+    test(text8, () {
+      var primes = generateProduct3Primes(1, 9).toList();
+      expect(primes, equals([]));
+      primes = generateProduct3Primes(10, 40).toList();
+      expect(primes, equals([30]));
+      primes = generateProduct3Primes(10, 99).toList();
+      expect(primes, equals([30, 42, 66, 70, 78]));
+    });
+    var text9 = '#sumConsecutiveSquares';
+    test(text9, () {
+      var primes = generateSumConsecutiveSquares(1, 9).toList();
+      expect(primes, equals([5]));
+      primes = generateSumConsecutiveSquares(10, 40).toList();
+      expect(primes, equals([13, 25]));
+      primes = generateSumConsecutiveSquares(10, 99).toList();
+      expect(primes, equals([13, 25, 41, 61, 85]));
+    });
   });
   group('Monadic Enhancements', () {
     var text1 = '#jumble';
