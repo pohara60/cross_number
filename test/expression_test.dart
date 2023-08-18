@@ -307,4 +307,16 @@ void main() {
           equals([10, 12, 14, 16, 18, 12, 15, 18, 10, 15, 14]));
     });
   });
+  group('Performance', () {
+    var text1 = '#product3primes';
+    test(text1, () {
+      final stopwatch = Stopwatch()..start();
+      for (var prime in generateProduct3Primes(10000, 99999)
+          .skipWhile((value) => value < 100000)) {
+        print('Next prime $prime');
+      }
+      print('#product3primes 99999 elapsed ${stopwatch.elapsed}');
+      // expect(primes, equals([]));
+    });
+  });
 }

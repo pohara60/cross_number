@@ -6,41 +6,41 @@ import 'dart:math';
 import 'generators.dart';
 import 'monadic.dart';
 
-var NUM = r'(?<NUM>\d+)';
-var PLUS = r'(?<PLUS>\+)';
-var MINUS = r'(?<MINUS>-)';
-var TIMES = r'(?<TIMES>\*)';
-var DIVIDE = r'(?<DIVIDE>/)';
-var ROOT = r'(?<ROOT>√)';
-var FACTORIAL = r'(?<FACTORIAL>!)';
-var EXPONENT = r'(?<EXPONENT>\^)';
-var LPAREN = r'(?<LPAREN>\()';
-var RPAREN = r'(?<RPAREN>\))';
-var EQUAL = r'(?<EQUAL>=)';
-var CLUE = r'(?<CLUE>[adAD]\d+)';
-var VAR = r'(?<VAR>\w)';
-var GENERATOR = r'(?<GENERATOR>\#\w+)';
-var MONADIC = r'(?<MONADIC>\$\w+)';
-var WS = r'(?<WS>\s+)';
-var ERROR = r'(?<ERROR>.)';
+const NUM = 'NUM', NUM_RE = r'(?<' + NUM + r'>\d+)';
+const PLUS = 'PLUS', PLUS_RE = r'(?<' + PLUS + r'>\+)';
+const MINUS = 'MINUS', MINUS_RE = r'(?<' + MINUS + r'>-)';
+const TIMES = 'TIMES', TIMES_RE = r'(?<' + TIMES + r'>\*)';
+const DIVIDE = 'DIVIDE', DIVIDE_RE = r'(?<' + DIVIDE + r'>/)';
+const ROOT = 'ROOT', ROOT_RE = r'(?<' + ROOT + r'>√)';
+const FACTORIAL = 'FACTORIAL', FACTORIAL_RE = r'(?<' + FACTORIAL + r'>!)';
+const EXPONENT = 'EXPONENT', EXPONENT_RE = r'(?<' + EXPONENT + r'>\^)';
+const LPAREN = 'LPAREN', LPAREN_RE = r'(?<' + LPAREN + r'>\()';
+const RPAREN = 'RPAREN', RPAREN_RE = r'(?<' + RPAREN + r'>\))';
+const EQUAL = 'EQUAL', EQUAL_RE = r'(?<' + EQUAL + r'>=)';
+const CLUE = 'CLUE', CLUE_RE = r'(?<' + CLUE + r'>[adAD]\d+)';
+const VAR = 'VAR', VAR_RE = r'(?<' + VAR + r'>\w)';
+const GENERATOR = 'GENERATOR', GENERATOR_RE = r'(?<' + GENERATOR + r'>\#\w+)';
+const MONADIC = 'MONADIC', MONADIC_RE = r'(?<' + MONADIC + r'>\$\w+)';
+const WS = 'WS', WS_RE = r'(?<' + WS + r'>\s+)';
+const ERROR = 'ERROR', ERROR_RE = r'(?<' + ERROR + r'>.)';
 var regExp = RegExp([
-  NUM,
-  PLUS,
-  MINUS,
-  TIMES,
-  DIVIDE,
-  ROOT,
-  FACTORIAL,
-  EXPONENT,
-  LPAREN,
-  RPAREN,
-  EQUAL,
-  CLUE,
-  VAR,
-  GENERATOR,
-  MONADIC,
-  WS,
-  ERROR,
+  NUM_RE,
+  PLUS_RE,
+  MINUS_RE,
+  TIMES_RE,
+  DIVIDE_RE,
+  ROOT_RE,
+  FACTORIAL_RE,
+  EXPONENT_RE,
+  LPAREN_RE,
+  RPAREN_RE,
+  EQUAL_RE,
+  CLUE_RE,
+  VAR_RE,
+  GENERATOR_RE,
+  MONADIC_RE,
+  WS_RE,
+  ERROR_RE,
 ].join('|'));
 
 var generators = <String, Generator>{};
@@ -78,62 +78,62 @@ class Scanner {
     Iterable<RegExpMatch> matches = regExp.allMatches(text);
     for (final m in matches) {
       var match = m[0];
-      if (m.namedGroup('NUM') != null) {
-        yield Token(match!, 'NUM', value: int.parse(match));
+      if (m.namedGroup(NUM) != null) {
+        yield Token(match!, NUM, value: int.parse(match));
       }
-      if (m.namedGroup('CLUE') != null) {
-        yield Token(match!, 'CLUE', name: match.toUpperCase());
+      if (m.namedGroup(CLUE) != null) {
+        yield Token(match!, CLUE, name: match.toUpperCase());
       }
-      if (m.namedGroup('VAR') != null) {
-        yield Token(match!, 'VAR', name: variablePrefix + match);
+      if (m.namedGroup(VAR) != null) {
+        yield Token(match!, VAR, name: variablePrefix + match);
       }
-      if (m.namedGroup('GENERATOR') != null) {
-        var name = match!.substring(1);
+      if (m.namedGroup(GENERATOR) != null) {
+        var name = match!.substring(1).toLowerCase();
         if (generators.containsKey(name)) {
-          yield Token(match, 'GENERATOR', name: name);
+          yield Token(match, GENERATOR, name: name);
         } else {
-          yield Token(match, 'ERROR');
+          yield Token(match, ERROR, name: 'Unknown Generator $match');
         }
       }
-      if (m.namedGroup('MONADIC') != null) {
-        var name = match!.substring(1);
+      if (m.namedGroup(MONADIC) != null) {
+        var name = match!.substring(1).toLowerCase();
         if (monadics.containsKey(name)) {
-          yield Token(match, 'MONADIC', name: name);
+          yield Token(match, MONADIC, name: name);
         } else {
-          yield Token(match, 'ERROR');
+          yield Token(match, ERROR, name: 'Unknown Monadic $match');
         }
       }
-      if (m.namedGroup('PLUS') != null) {
-        yield Token(match!, 'PLUS');
+      if (m.namedGroup(PLUS) != null) {
+        yield Token(match!, PLUS);
       }
-      if (m.namedGroup('TIMES') != null) {
-        yield Token(match!, 'TIMES');
+      if (m.namedGroup(TIMES) != null) {
+        yield Token(match!, TIMES);
       }
-      if (m.namedGroup('MINUS') != null) {
-        yield Token(match!, 'MINUS');
+      if (m.namedGroup(MINUS) != null) {
+        yield Token(match!, MINUS);
       }
-      if (m.namedGroup('DIVIDE') != null) {
-        yield Token(match!, 'DIVIDE');
+      if (m.namedGroup(DIVIDE) != null) {
+        yield Token(match!, DIVIDE);
       }
-      if (m.namedGroup('ROOT') != null) {
-        yield Token(match!, 'ROOT');
+      if (m.namedGroup(ROOT) != null) {
+        yield Token(match!, ROOT);
       }
-      if (m.namedGroup('FACTORIAL') != null) {
-        yield Token(match!, 'FACTORIAL');
+      if (m.namedGroup(FACTORIAL) != null) {
+        yield Token(match!, FACTORIAL);
       }
-      if (m.namedGroup('EXPONENT') != null) {
-        yield Token(match!, 'EXPONENT');
+      if (m.namedGroup(EXPONENT) != null) {
+        yield Token(match!, EXPONENT);
       }
-      if (m.namedGroup('LPAREN') != null) {
-        yield Token(match!, 'LPAREN');
+      if (m.namedGroup(LPAREN) != null) {
+        yield Token(match!, LPAREN);
       }
-      if (m.namedGroup('RPAREN') != null) {
-        yield Token(match!, 'RPAREN');
+      if (m.namedGroup(RPAREN) != null) {
+        yield Token(match!, RPAREN);
       }
-      if (m.namedGroup('EQUAL') != null) {
-        yield Token(match!, 'EQUAL');
+      if (m.namedGroup(EQUAL) != null) {
+        yield Token(match!, EQUAL);
       }
-      if (m.namedGroup('ERROR') != null) {
+      if (m.namedGroup(ERROR) != null) {
         throw ExpressionInvalid('Invalid character ${text[m.start]}');
       }
     }
@@ -175,9 +175,9 @@ class Node {
       }
     } else if (operands!.length == 1) {
       var childOrder = operands!.first.order;
-      //if (operands!.first.token.type=='MINUS')
+      //if (operands!.first.token.type==MINUS)
       order = childOrder;
-      if (token.type == 'MONADIC') {
+      if (token.type == MONADIC) {
         var name = token.name;
         var monadic = monadics[name]!;
         if (monadic.type == Iterable<int>) {
@@ -192,7 +192,7 @@ class Node {
       var childOrder2 = operands![1].order;
       if (childOrder1 == NodeOrder.SINGLE && childOrder2 == NodeOrder.SINGLE)
         order = NodeOrder.SINGLE;
-      else if (token.type == 'MINUS' || token.type == 'DIVIDE') {
+      else if (token.type == MINUS || token.type == DIVIDE) {
         if (childOrder1 == NodeOrder.SINGLE) {
           if (childOrder2 == NodeOrder.ASCENDING)
             order = NodeOrder.DESCENDING;
@@ -230,7 +230,7 @@ class Node {
         complexity = NodeComplexity.GENERATOR_CHILD;
       else // (childComplexity == NodeComplexity.SIMPLE)
         complexity = NodeComplexity.SIMPLE;
-      if (token.type == 'MONADIC') {
+      if (token.type == MONADIC) {
         var name = token.name;
         var monadic = monadics[name]!;
         if (monadic.type == Iterable<int>) {
@@ -292,6 +292,7 @@ class ExpressionEvaluator {
   final String text;
   final String variablePrefix;
   List<String> variableRefs = [];
+  List<String> clueRefs = [];
   late final Iterator tokenIterator;
   Token? tok;
   Token? nexttok;
@@ -319,6 +320,11 @@ class ExpressionEvaluator {
     }
   }
 
+  void getVariableReferences(List<String> references, [Node? node]) {
+    if (node == null) node = tree;
+    if (node!.token.type == VAR) {}
+  }
+
   void integerException() {
     throw ExpressionInvalid('Non-integer expression');
   }
@@ -337,7 +343,7 @@ class ExpressionEvaluator {
     return value.toInt();
   }
 
-  Iterable<num> generate(num min, num max,
+  Iterable<int> generate(num min, num max,
       [List<String>? variableNames, List<int>? variableValues]) sync* {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
@@ -382,7 +388,7 @@ class ExpressionEvaluator {
     // logical ::= expr { '=' expr }*
 
     var node = this.expr();
-    while (this._accept('EQUAL')) {
+    while (this._accept(EQUAL)) {
       var token = this.tok!;
       var right = this.expr();
       node = Node(token, [node, right]);
@@ -394,7 +400,7 @@ class ExpressionEvaluator {
     // expression ::= term { ('+'|'-') term }*
 
     var node = this.term();
-    while (this._accept('PLUS') || this._accept('MINUS')) {
+    while (this._accept(PLUS) || this._accept(MINUS)) {
       var token = this.tok!;
       var right = this.term();
       node = Node(token, [node, right]);
@@ -405,7 +411,7 @@ class ExpressionEvaluator {
   Node term() {
     // term ::= exponent { ('*'|'/') exponent }*
     var node = this.exponent();
-    while (this._accept('TIMES') || this._accept('DIVIDE')) {
+    while (this._accept(TIMES) || this._accept(DIVIDE)) {
       var token = this.tok!;
       var right = this.exponent();
       node = Node(token, [node, right]);
@@ -416,7 +422,7 @@ class ExpressionEvaluator {
   Node exponent() {
     // exponent ::= unary { '^') unary }*
     var node = this.unary();
-    while (this._accept('EXPONENT')) {
+    while (this._accept(EXPONENT)) {
       var token = this.tok!;
       var right = this.unary();
       node = Node(token, [node, right]);
@@ -425,17 +431,17 @@ class ExpressionEvaluator {
   }
 
   Node unary() {
-    // term ::= { '-' | '√' | MONADIC } multiplication
-    if (this._accept('MINUS')) {
+    // term ::= { '-' | '√' | MONADIC }* multiplication
+    if (this._accept(MINUS)) {
       var token = this.tok!;
-      var left = Node(Token('', 'NUM', value: 0));
-      var right = this.multiplication();
+      var left = Node(Token('', NUM, value: 0));
+      var right = this.unary();
       var node = Node(token, [left, right]);
       return node;
     }
-    if (this._accept('ROOT') || this._accept('MONADIC')) {
+    if (this._accept(ROOT) || this._accept(MONADIC)) {
       var token = this.tok!;
-      var right = this.multiplication();
+      var right = this.unary();
       var node = Node(token, [right]);
       return node;
     }
@@ -449,7 +455,7 @@ class ExpressionEvaluator {
       while (true) {
         var node2 = this.factorial();
         if (node2 == null) return node!;
-        var token = Token('', 'TIMES');
+        var token = Token('', TIMES);
         node = Node(token, [node!, node2]);
       }
     } else {
@@ -460,7 +466,7 @@ class ExpressionEvaluator {
   Node? factorial() {
     // factorial ::= factor { '!' }
     var node = this.factor();
-    if (node != null && this._accept('FACTORIAL')) {
+    if (node != null && this._accept(FACTORIAL)) {
       var token = this.tok!;
       node = Node(token, [node]);
     }
@@ -468,19 +474,25 @@ class ExpressionEvaluator {
   }
 
   Node? factor() {
-    // factor ::= VAR | NUM | GENERATOR| ( expr )
-    if (this._accept('VAR') ||
-        this._accept('NUM') ||
-        this._accept('GENERATOR')) {
+    // factor ::= VAR | CLUE | NUM | GENERATOR | ( expr ) | ERROR
+    if (this._accept(VAR) ||
+        this._accept(CLUE) ||
+        this._accept(NUM) ||
+        this._accept(GENERATOR)) {
       var token = this.tok!;
-      if (token.type == 'VAR') {
+      if (token.type == VAR) {
         this.variableRefs.add(token.name);
       }
+      if (token.type == CLUE) {
+        this.clueRefs.add(token.name);
+      }
       return Node(token);
-    } else if (this._accept('LPAREN')) {
+    } else if (this._accept(LPAREN)) {
       var node = this.expr();
-      this._expect('RPAREN');
+      this._expect(RPAREN);
       return node;
+    } else if (this._accept(ERROR)) {
+      throw ExpressionError(this.tok!.name);
     } else {
       return null;
     }
@@ -489,21 +501,21 @@ class ExpressionEvaluator {
   num eval(Node? node) {
     if (node == null) return 0;
     switch (node.token.type) {
-      case 'NUM':
+      case NUM:
         return node.token.value;
-      case 'PLUS':
+      case PLUS:
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
         return left + right;
-      case 'MINUS':
+      case MINUS:
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
         return left - right;
-      case 'TIMES':
+      case TIMES:
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
         return left * right;
-      case 'DIVIDE':
+      case DIVIDE:
         // Require exact integer result
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
@@ -511,39 +523,46 @@ class ExpressionEvaluator {
         //   throw ExpressionInvalid('Non-integer division');
         // }
         return left / right;
-      case 'ROOT':
+      case ROOT:
         var square = eval(node.operands![0]);
         var root = sqrt(square).toInt();
         if (root * root != square) {
           throw ExpressionInvalid('Non-integer root');
         }
         return root;
-      case 'FACTORIAL':
+      case FACTORIAL:
         var left = eval(node.operands![0]);
         int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
         checkInteger(left);
         return factorial(left.toInt());
-      case 'EXPONENT':
+      case EXPONENT:
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
         var exp = pow(left, right);
         var result = exp;
         return result;
-      case 'EQUAL':
+      case EQUAL:
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
         if (left != right) {
           throw ExpressionInvalid('Unequal expressions');
         }
         return left;
-      case 'VAR':
+      case CLUE:
+        var name = node.token.name;
+        var index = this.variableNames!.indexOf(name);
+        if (index < 0) {
+          throw ExpressionError('Unknown clue $name');
+        }
+        return this.variableValues![index];
+      case VAR:
         var name = node.token.name;
         var index = this.variableNames!.indexOf(name);
         if (index < 0) {
           throw ExpressionError('Unknown variable $name');
         }
         return this.variableValues![index];
-      case 'MONADIC':
+      case MONADIC:
         var name = node.token.name;
         var monadic = monadics[name];
         if (monadic == null) {
@@ -561,7 +580,7 @@ class ExpressionEvaluator {
           throw ExpressionError(
               'Unexpected value type $result for monadic $name');
         }
-      case 'GENERATOR':
+      case GENERATOR:
         throw ExpressionError("GENERATOR should be evaluated using 'gen()'");
       default:
         throw ExpressionError('Invalid AST');
@@ -576,7 +595,7 @@ class ExpressionEvaluator {
       return;
     }
     switch (node.token.type) {
-      case 'PLUS':
+      case PLUS:
         var lnode = node.operands![0];
         var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
         var rnode = node.operands![1];
@@ -608,7 +627,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'MINUS':
+      case MINUS:
         var lnode = node.operands![0];
         var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
         var rnode = node.operands![1];
@@ -640,7 +659,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'TIMES':
+      case TIMES:
         var lnode = node.operands![0];
         var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
         var rnode = node.operands![1];
@@ -672,7 +691,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'DIVIDE':
+      case DIVIDE:
         var lnode = node.operands![0];
         var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
         var rnode = node.operands![1];
@@ -704,7 +723,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'ROOT':
+      case ROOT:
         for (var square in gen(min * min, max * max, node.operands![0])) {
           var result = sqrt(square).toInt();
           if (result > max) {
@@ -720,7 +739,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'FACTORIAL':
+      case FACTORIAL:
         for (var left in gen(1, max, node.operands![0])) {
           int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
           if (isIntegerValue(left)) {
@@ -737,7 +756,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'EXPONENT':
+      case EXPONENT:
         var lnode = node.operands![0];
         var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
         var rnode = node.operands![1];
@@ -769,7 +788,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'EQUAL':
+      case EQUAL:
         var lnode = node.operands![0];
         var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
         var rnode = node.operands![1];
@@ -801,7 +820,7 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'GENERATOR':
+      case GENERATOR:
         var name = node.token.name;
         var generator = generators[name];
         if (generator == null) {
@@ -819,7 +838,7 @@ class ExpressionEvaluator {
           yield result;
         }
         break;
-      case 'MONADIC':
+      case MONADIC:
         var name = node.token.name;
         var monadic = monadics[name];
         if (monadic == null) {
@@ -838,11 +857,13 @@ class ExpressionEvaluator {
             }
             if (result is num) {
               if (result > max) {
-                if (node.order == NodeOrder.ASCENDING) break;
+                if (node.order == NodeOrder.ASCENDING ||
+                    childNode.order == NodeOrder.SINGLE) break;
                 continue;
               }
               if (result < min) {
-                if (node.order == NodeOrder.DESCENDING) break;
+                if (node.order == NodeOrder.DESCENDING ||
+                    childNode.order == NodeOrder.SINGLE) break;
                 continue;
               }
               yield result;
@@ -851,7 +872,8 @@ class ExpressionEvaluator {
               for (var fresult in result) {
                 if (fresult > max) {
                   // Assume function increases as argument increases
-                  if (childNode.order == NodeOrder.ASCENDING) break;
+                  if (childNode.order == NodeOrder.ASCENDING ||
+                      childNode.order == NodeOrder.SINGLE) break;
                   breakOuter = false;
                   continue;
                 }
@@ -871,9 +893,11 @@ class ExpressionEvaluator {
           }
         }
         break;
-      case 'NUM':
-      case 'VAR':
-        throw ExpressionError('NUM and VAR should be NodeComplexity.SIMPLE');
+      case NUM:
+      case VAR:
+      case CLUE:
+        throw ExpressionError(
+            'NUM, VAR and CLUE should be NodeComplexity.SIMPLE');
       default:
         throw ExpressionError('Invalid AST');
     }

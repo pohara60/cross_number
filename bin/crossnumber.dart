@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
+import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
+import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 
@@ -20,6 +22,7 @@ void main(List<String> arguments) async {
 
   var runner = CommandRunner('crossnumber', 'Cross Number helper.')
     ..addCommand(DiceNetsCommand())
+    ..addCommand(DiceNets2Command())
     ..addCommand(PrimeCutsCommand())
     ..addCommand(LettersCommand())
     ..addCommand(DistancingCommand())
@@ -51,6 +54,24 @@ class DiceNetsCommand extends Command {
     // Get and print solve
     final dn = DiceNets();
     dn.solve();
+  }
+}
+
+class DiceNets2Command extends Command {
+  @override
+  final name = 'dicenets2';
+  @override
+  final description = 'solve hardcoded dicenets puzzle - new version.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final dn = DiceNets2();
+      dn.solve();
+    } on PuzzleException catch (e) {
+      print('${e.msg}');
+    }
   }
 }
 

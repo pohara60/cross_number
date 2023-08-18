@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:math';
 
 import 'merge.dart';
@@ -18,12 +19,13 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['square'] = Generator('square', generateSquares);
   generators['cube'] = Generator('cube', generateCubes);
   generators['power'] = Generator('power', generatePowers);
+  generators['power3'] = Generator('power3', generatePowers3);
   generators['product2primes'] =
       Generator('product2primes', generateProduct2Primes);
   generators['product3primes'] =
       Generator('product3primes', generateProduct3Primes);
-  generators['sumConsecutiveSquares'] =
-      Generator('sumConsecutiveSquares', generateSumConsecutiveSquares);
+  generators['sumconsecutivesquares'] =
+      Generator('sumconsecutivesquares', generateSumConsecutiveSquares);
 }
 
 Iterable<int> generateIntegers(num min, num max) sync* {
@@ -143,8 +145,12 @@ Iterable<int> generateCubes(num min, num max) sync* {
   }
 }
 
+Iterable<int> generatePowers3(num min, num max) sync* {
+  yield* generatePowers(min, max, 3);
+}
+
 var powers = <int>[1, 2, 4, 8, 9];
-Iterable<int> generatePowers(num min, num max) sync* {
+Iterable<int> generatePowers(num min, num max, [int minPower = 2]) sync* {
   var index = 0;
   int length = powers.length;
   if (powers.last >= max.toInt()) {
@@ -159,7 +165,7 @@ Iterable<int> generatePowers(num min, num max) sync* {
   }
   // Generate from beginning
   int previous = 0;
-  for (var element in merge(generatePowerAll())) {
+  for (var element in merge(generatePowerAll(minPower))) {
     // Skip duplicates
     if (element == previous) continue;
     previous = element;
@@ -178,8 +184,8 @@ Iterable<int> generatePowers(num min, num max) sync* {
   }
 }
 
-Iterable<Iterable<int>> generatePowerAll() sync* {
-  int next = 2;
+Iterable<Iterable<int>> generatePowerAll([int minPower = 2]) sync* {
+  int next = minPower;
   while (true) {
     yield generatePowerN(next++);
   }
@@ -221,17 +227,20 @@ Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
   // Generate from beginning
 
   var productIndex = 0;
-  var nextProduct = <List<int>>[];
+  var nextProduct = <ListQueue<int>>[];
   var previous = -1;
-  for (var p1 in gen1(3, max)) {
+  for (var p1 in gen1(3, max / 2)) {
     var index = 0;
     // Add products of p1 to next values
-    for (var p2 in gen2(2, p1 - 1)) {
+    var max2 = max / p1;
+    if (max2 >= p1) max2 = p1 - 1;
+    for (var p2 in gen2(2, max2)) {
       // Check for non-distict primes
       if (p1 % p2 != 0) {
-        while (index >= nextProduct.length) nextProduct.add([]);
+        while (index >= nextProduct.length) nextProduct.add(ListQueue());
         nextProduct[index].add(p1 * p2);
       }
+
       index++;
     }
     // Yield values lower than product of 2*p1, in order
@@ -249,13 +258,13 @@ Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
       }
       if (!found) break;
 
-      nextProduct[foundIndex].removeAt(0);
+      nextProduct[foundIndex].removeFirst();
       // Skip duplicates (occurs when more than 2 primes)
       if (lowest == previous) continue;
       previous = lowest;
 
       productIndex++;
-      if (productIndex > product2primes.length) {
+      if (productIndex > products.length) {
         products.add(lowest);
       }
       if (lowest < min) continue;

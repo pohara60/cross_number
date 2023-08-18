@@ -369,7 +369,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     for (var i = 0; i < strSolutionBCEFG.length; i++) {
       var value = int.parse(strSolutionBCEFG[i]);
       for (var variable in puzzle.variables.values) {
-        if (variable.values.first == value) {
+        if (variable.values!.first == value) {
           strSolution += variable.name;
         }
       }

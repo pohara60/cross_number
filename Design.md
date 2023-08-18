@@ -117,6 +117,8 @@ When stop calling generator?
   - Possible if only one generator and have limits for other sub-expression.
 
 Need to add other clues as variables in expressions.
+- Clues are variables
+- Expression parsing should add clue variable reference, and clue cross-reference
 
 ## Specific Puzzle
 

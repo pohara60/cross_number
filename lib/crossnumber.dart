@@ -28,7 +28,9 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       PriorityQueue<VariableClue>((a, b) => -b.count.compareTo(a.count));
 
   void addToUpdateQueue(Clue clue) {
-    if (clue is VariableClue) {
+    if ((puzzle is VariablePuzzle) &&
+        (puzzle as VariablePuzzle).hasVariables &&
+        clue is VariableClue) {
       (puzzle as VariablePuzzle).updateClueCount(clue);
       if (priorityQueue.contains(clue)) {
         priorityQueue.remove(clue);
@@ -129,7 +131,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
       var possibleValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
       if (clue is VariableClue) {
-        for (var variable in clue.variableReferences) {
+        for (var variable in clue.variableClueReferences) {
           possibleVariables[variable] = <int>{};
         }
         if (clue.solve!(clue, possibleValue, possibleVariables)) updated = true;
@@ -149,6 +151,7 @@ class Crossnumber<PuzzleKind extends Puzzle> {
           if (updateVariables(variable, possibleVariables[variable]!))
             updated = true;
         }
+        // TODO update clue references
       }
     }
 

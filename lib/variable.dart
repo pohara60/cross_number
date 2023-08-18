@@ -7,38 +7,47 @@ class Variable {
   final String name;
 
   /// Current possible values, initialized in subclass
-  late Set<int> _values;
+  late Set<int>? _values;
 
   /// Forced value (when testing porrible solutions)
-  int? _value;
+  int? _tryValue;
 
   Variable(this.name);
 //    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-  tryValue(int value) => _value = value;
-  Set<int> get values => _value != null ? {_value!} : _values;
-  set values(Set<int> values) => _values = values;
+  set tryValue(int? value) {
+    _tryValue = value;
+  }
+
+  Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
+  set values(Set<int>? values) => _values = values;
 
   String toString() {
-    return values.toShortString();
+    return values == null ? '{unknown}' : values!.toShortString();
   }
 
   bool updatePossible(Set<int> possibleValues) {
+    if (values == null) {
+      values = Set.from(possibleValues);
+      return true;
+    }
     var updated =
-        this.values.any((element) => !possibleValues.contains(element));
-    this.values.removeWhere((element) => !possibleValues.contains(element));
+        this.values!.any((element) => !possibleValues.contains(element));
+    this.values!.removeWhere((element) => !possibleValues.contains(element));
     // if (this.values.length == 1) {
     //   this._value = this.values.first;
     // }
     return updated;
   }
 
-  bool get isSet => this.values.length == 1;
+  bool get isSet => values != null && values!.length == 1;
 }
 
 /// A collection of [Variable]s, with a set of values
 class VariableList<VariableKind extends Variable> {
   final Map<String, VariableKind> variables = {};
+  bool get hasVariables => variables.isNotEmpty;
+
   late final List<int> remainingValues;
   // = List<int>.generate(9, (i) => i + 1);
 
@@ -60,14 +69,15 @@ class VariableList<VariableKind extends Variable> {
         int index = 0;
         while (index < knownLetters.length) {
           String letterKey = knownLetters[index];
-          int letterValue = variables[letterKey]!.values.first;
+          int letterValue = variables[letterKey]!.values!.first;
           // Remove the known variable from all other variable possible values
           remainingValues.remove(letterValue);
           for (var entry in unknownVariableEntries) {
             if (!knownLetters.contains(entry.key)) {
               var entryVariable = entry.value;
-              if (entryVariable.values.remove(letterValue) ||
-                  entryVariable.isSet) {
+              if (entryVariable.values != null &&
+                  (entryVariable.values!.remove(letterValue) ||
+                      entryVariable.isSet)) {
                 updatedVariables.add(entry.key);
                 if (entryVariable.isSet) {
                   knownLetters.add(entry.key);
@@ -83,6 +93,8 @@ class VariableList<VariableKind extends Variable> {
   }
 
   String toString() {
+    if (variables.isEmpty) return '';
+
     var text = 'Variables:\n';
     for (var entry in variables.entries) {
       text += '${entry.key}=${entry.value.values}\n';

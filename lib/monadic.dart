@@ -1,5 +1,3 @@
-import 'dart:math';
-
 typedef MonadicFunc = dynamic Function(int arg);
 
 class Monadic {

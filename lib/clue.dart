@@ -2,16 +2,18 @@ import 'package:crossnumber/expression.dart';
 import 'package:crossnumber/set.dart';
 import 'package:powers/powers.dart';
 
+import 'variable.dart';
+
 /// A [Puzzle] clue
-class Clue {
+class Clue extends Variable {
+  /// Inherits: name, values, tryValue
+
   /// Max digit value
   static var maxDigit = 9;
 
-  /// Name
-  final String name;
-
-  /// Number of digits
+  /// Number of digits, min and max values
   final int length;
+  late int min, max;
 
   /// Description of clue
   final String? valueDesc;
@@ -22,29 +24,18 @@ class Clue {
   /// List of clues that need to be examined when this clue is updated
   late final List<Clue> referrers;
 
+  /// List of clue names that are referenced by this clue
+  late final List<String> clueReferences;
+  bool circularClueReference = false;
+
   /// Solve function
   final Function? solve;
 
   /// Computed - Possible digits
   late final List<Set<int>> digits;
 
-  /// Computed - Possible Values
-  Set<int>? _values;
-
-  /// Try possible value
-  int? _tryValue;
-
   bool get isAcross => this.name[0] == 'A';
   bool get isDown => this.name[0] == 'D';
-
-  set tryValue(int? value) {
-    _tryValue = value;
-  }
-
-  Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
-  set values(Set<int>? values) {
-    _values = values;
-  }
 
   /// Computed - Range of possible values
   int get lo => 10.pow(length - 1) as int;
@@ -52,7 +43,7 @@ class Clue {
   Iterable<int> get range =>
       Iterable<int>.generate(hi - lo + 1, (index) => lo + index);
 
-  /// Computed - Values
+  /// Restricted list of values
   Set<int>? _restrictedValues;
   set restrictedValues(Set<int> values) {
     if (_restrictedValues == null) {
@@ -63,20 +54,23 @@ class Clue {
   }
 
   Clue({
-    required this.name,
+    required name,
     required this.length,
     this.valueDesc,
     this.solve,
-  }) {
+  }) : super(name) {
     digitIdentities = List.filled(length, null);
     referrers = <Clue>[];
+    clueReferences = <String>[];
     digits = [];
     this.reset();
+    min = 10.pow(length - 1) as int;
+    max = (10.pow(length) as int) - 1;
   }
 
   void reset() {
     initDigits();
-    _values = null;
+    values = null;
     _restrictedValues = null;
   }
 
@@ -90,7 +84,13 @@ class Clue {
   }
 
   addReferrer(Clue clue) {
-    this.referrers.add(clue);
+    if (!referrers.contains(clue)) referrers.add(clue);
+  }
+
+  addClueReference(String clueName) {
+    if (!clueReferences.contains(clueName)) {
+      clueReferences.add(clueName);
+    }
   }
 
   bool initialise() {
@@ -108,16 +108,16 @@ class Clue {
   }
 
   List<int> getValues(Iterable<int> Function() getInitialValues) {
-    if (_values == null) {
+    if (values == null) {
       return getInitialValues().toList();
     }
     if (_restrictedValues != null &&
-        _restrictedValues!.length != _values!.length) {
+        _restrictedValues!.length != values!.length) {
       //   print(
-      //       '${this.name} reference removed ${_values.length - _restrictedValues.length} values');
-      return _values!.intersection(_restrictedValues!).toList();
+      //       '${this.name} reference removed ${values.length - _restrictedValues.length} values');
+      return values!.intersection(_restrictedValues!).toList();
     }
-    return _values!.toList();
+    return values!.toList();
   }
 
   bool finalise() {
@@ -190,7 +190,12 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 
 class VariableClue extends Clue {
   late final List<String> variableReferences;
+  List<String>? _variableClueReferences;
   late ExpressionEvaluator exp;
+
+  List<String> get variableClueReferences =>
+      _variableClueReferences ??
+      (_variableClueReferences = variableReferences + clueReferences);
 
   /// Computed - Count of combinations of variable values
   int count = 0;
@@ -199,26 +204,22 @@ class VariableClue extends Clue {
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     this.variableReferences = <String>[];
     if (valueDesc != '') {
-      this.exp = ExpressionEvaluator(valueDesc);
+      try {
+        exp = ExpressionEvaluator(valueDesc);
+        for (var variableName in exp.variableRefs) {
+          addVariableReference(variableName);
+        }
+        for (var clueName in exp.clueRefs) {
+          addClueReference(clueName);
+        }
+      } on ExpressionError catch (e) {
+        throw ExpressionError('$name expression $valueDesc error ${e.msg}');
+      }
     }
   }
 
   addVariableReference(String variable) {
     this.variableReferences.add(variable);
-  }
-}
-
-/// A reference to [Clue]
-class ClueReference {
-  // The referenced clue
-  final Clue clue;
-
-  ClueReference({
-    required this.clue,
-  });
-
-  String toString() {
-    return 'clue=$clue';
   }
 }
 

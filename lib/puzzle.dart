@@ -294,6 +294,13 @@ class Puzzle<ClueKind extends Clue> {
   }
 }
 
+/// PuzzleException for puzzle definition
+class PuzzleException implements Exception {
+  final String msg;
+  PuzzleException(this.msg);
+}
+
+/// SolveException for puzzle solution
 class SolveException implements Exception {
   SolveException();
 }
@@ -301,6 +308,8 @@ class SolveException implements Exception {
 class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     extends Puzzle<ClueKind> {
   late final VariableList variableList;
+  bool get hasVariables => variableList.hasVariables;
+
   VariablePuzzle(List<int> possibleValues) {
     variableList = VariableList<VariableKind>(possibleValues);
   }
@@ -314,9 +323,46 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
   Set<String> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
 
+  String checkClueReferences() {
+    var clueError = '';
+    for (var entry in clues.entries) {
+      var clue1 = entry.value;
+      for (var clueName in clue1.clueReferences) {
+        var clue2 = clues[clueName];
+        if (clue2 == null) {
+          clueError +=
+              "Clue ${clue1.name} expression '${clue1.valueDesc}' refers to clue '$clueName' which does not exist\n";
+        } else {
+          addReference(clue1, clue2);
+          // Simple circular reference check
+          if (clue2.clueReferences.contains(clue1.name)) {
+            clue1.circularClueReference = true;
+            clue2.circularClueReference = true;
+          }
+        }
+      }
+    }
+    return clueError;
+  }
+
+  String checkVariableReferences() {
+    var variableError = '';
+    for (var entry in clues.entries) {
+      var clue = entry.value;
+      for (var variableName in (clue as VariableClue).variableReferences) {
+        var variable = variables[variableName];
+        if (variable == null) {
+          variableError +=
+              "Clue ${clue.name} expression '${clue.valueDesc}' refers to variable '$variableName' which does not exist\n";
+        }
+      }
+    }
+    return variableError;
+  }
+
   int getClueCount(VariableClue clue, List<List<int>> variableValues) {
     for (var variable in clue.variableReferences) {
-      variableValues.add(this.variables[variable]!.values.toList());
+      variableValues.add(this.variables[variable]!.values!.toList());
     }
     return cartesianCount(variableValues);
   }
@@ -366,7 +412,7 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
-      variableValues.add(this.variables[variable]!.values.toList());
+      variableValues.add(this.variables[variable]!.values!.toList());
     }
     var count = cartesianCount(variableValues);
     if (count > 500000000) {
@@ -405,19 +451,80 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     return false;
   }
 
+  bool solveExpressionEvaluator(VariableClue clue, Set<int> possibleValue,
+      Map<String, Set<int>> possibleVariables,
+      [bool Function(VariableClue, int, List<String>, List<int>)? validValue]) {
+    final stopwatch = Stopwatch()..start();
+    var variableValues = <List<int>>[];
+    for (var variable in clue.variableReferences) {
+      variableValues.add(this.variables[variable]!.values!.toList());
+    }
+    for (var variable in clue.clueReferences) {
+      var otherClue = this.clues[variable]!;
+      // Clue values may not yet be available
+      var clueValues = otherClue.values;
+      if (clueValues == null) {
+        // Try guessing other clue values for circular reference
+        if (clue.circularClueReference) {
+          clueValues = getValuesFromClueDigits(otherClue);
+        }
+        if (clueValues == null) throw new SolveException();
+      }
+      variableValues.add(clueValues.toList());
+    }
+    var count = cartesianCount(variableValues);
+    if (count > 500000000) {
+      //if (count > 1000000) {
+      if (Crossnumber.traceSolve) {
+        print('Eval ${clue.name} cartesianCount=$count Exception');
+      }
+      throw new SolveException();
+    }
+    for (var product
+        in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
+      try {
+        for (var value in clue.exp.generate(
+            clue.min, clue.max, clue.variableClueReferences, product)) {
+          if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
+            var valid = validValue == null
+                ? clue.digitsMatch(value)
+                : validValue(clue, value, clue.variableClueReferences, product);
+            if (valid) {
+              possibleValue.add(value);
+              var index = 0;
+              for (var variable in clue.variableReferences) {
+                possibleVariables[variable]!.add(product[index++]);
+              }
+              // if (Crossnumber.traceSolve) {
+              //   print('${clue.name}=$value, ${clue.variableReferences}=$product');
+              // }
+            }
+          }
+        }
+      } on ExpressionInvalid {
+        // Illegal values
+      }
+    }
+    if (Crossnumber.traceSolve) {
+      print(
+          'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+    }
+    return false;
+  }
+
   int iterateVariables() {
     // Iterate over possible variable values
     var variableValues = <List<int>>[];
     var variableNames = <String>[];
     for (var variable in this.variables.keys) {
       variableNames.add(variable);
-      variableValues.add(this.variables[variable]!.values.toList());
+      variableValues.add(this.variables[variable]!.values!.toList());
     }
     var count = 0;
     //for (var product in [      [8, 3, 5, 1, 7, 4, 9, 2, 6]    ]) {
     for (var product in cartesian(variableValues)) {
       for (var i = 0; i < product.length; i++) {
-        this.variables[variableNames[i]]!.tryValue(product[i]);
+        this.variables[variableNames[i]]!.tryValue = product[i];
       }
       // Check all clues
       var found = true;

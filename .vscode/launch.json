@@ -53,6 +53,28 @@
             ]
         },
         {
+            "name": "dicenets2",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "dicenets2"
+            ]
+        },
+        {
+            "name": "dicenets2 profile",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "toolArgs": [
+                "--pause-isolates-on-start",
+                "--observe"
+            ],
+            "args": [
+                "dicenets2"
+            ]
+        },
+        {
             "name": "primecuts",
             "program": "bin/crossnumber.dart",
             "request": "launch",
