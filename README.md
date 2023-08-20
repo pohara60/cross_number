@@ -54,7 +54,8 @@ The implementation of a specific puzzle includes these steps:
          - Define solve functions for each clue, implementing the clue logic
 -   Extend the Clue class
     -   Define the puzzle clue, may restict its possible values
-    -   If the puzzle has variables, or using the generic expression solver, extend the VariableClue class
+    -   If the puzzle has variables, extend the VariableClue class
+    -   If the puzzle has the generic expression solver, extend the ExpressionClue class
 -   Extend the Puzzle class
     -   Specify the puzzle Clue class
     -   If the puzzle has variables, or using the generic expression solver, extend the VariablePuzzle class
