@@ -191,7 +191,6 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 class VariableClue extends Clue {
   late final List<String> variableReferences;
   List<String>? _variableClueReferences;
-  late ExpressionEvaluator exp;
 
   List<String> get variableClueReferences =>
       _variableClueReferences ??
@@ -200,26 +199,37 @@ class VariableClue extends Clue {
   /// Computed - Count of combinations of variable values
   int count = 0;
 
-  VariableClue({required name, required length, valueDesc, solve})
+  VariableClue(
+      {required name, required length, valueDesc, solve, variablePrefix = ''})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     this.variableReferences = <String>[];
+  }
+
+  addVariableReference(String variable) {
+    if (!variableReferences.contains(variable))
+      variableReferences.add(variable);
+  }
+}
+
+class ExpressionClue extends VariableClue {
+  late ExpressionEvaluator exp;
+
+  ExpressionClue(
+      {required name, required length, valueDesc, solve, variablePrefix = ''})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     if (valueDesc != '') {
       try {
-        exp = ExpressionEvaluator(valueDesc);
-        for (var variableName in exp.variableRefs) {
+        exp = ExpressionEvaluator(valueDesc, variablePrefix);
+        for (var variableName in exp.variableRefs..sort()) {
           addVariableReference(variableName);
         }
-        for (var clueName in exp.clueRefs) {
+        for (var clueName in exp.clueRefs..sort()) {
           addClueReference(clueName);
         }
       } on ExpressionError catch (e) {
         throw ExpressionError('$name expression $valueDesc error ${e.msg}');
       }
     }
-  }
-
-  addVariableReference(String variable) {
-    this.variableReferences.add(variable);
   }
 }
 

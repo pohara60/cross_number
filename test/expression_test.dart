@@ -67,7 +67,7 @@ void main() {
     var text = r'$DS #prime A1 d23 CD';
     test(text, () {
       var tokens = Scanner.generateTokens(text).toList();
-      expectToken(tokens[0]!, 'DS', 'MONADIC');
+      expectToken(tokens[0]!, 'ds', 'MONADIC');
       expectToken(tokens[1]!, 'prime', 'GENERATOR');
       expectToken(tokens[2]!, 'A1', 'CLUE');
       expectToken(tokens[3]!, 'D23', 'CLUE');

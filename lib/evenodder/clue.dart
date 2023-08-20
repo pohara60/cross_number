@@ -1,8 +1,7 @@
 import '../clue.dart';
-import '../expression.dart';
 
 /// A [LettersPuzzle] clue
-class EvenOdderClue extends VariableClue {
+class EvenOdderClue extends ExpressionClue {
   /// List of referenced primes
   List<String> get letterReferences => this.variableReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
@@ -12,8 +11,10 @@ class EvenOdderClue extends VariableClue {
     required length,
     valueDesc,
     solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    // Re-parse expression adding variable prefix for Across and Down
-    this.exp = ExpressionEvaluator(valueDesc, name[0]);
-  }
+  }) : super(
+            name: name,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve,
+            variablePrefix: name[0]); // Prefix for Across and Down clues
 }

@@ -3,7 +3,7 @@ import 'package:crossnumber/clue.dart';
 enum Root66ClueType { UNKNOWN, BCEF, G, BCEFG }
 
 /// A [Puzzle] clue
-class Root66Clue extends VariableClue {
+class Root66Clue extends ExpressionClue {
   /// Computed - Possible Values before BCEF/G
   Set<int>? preValues;
   Root66ClueType type;

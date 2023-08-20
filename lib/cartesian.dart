@@ -12,12 +12,19 @@ Iterable<List<T>> cartesian<T>(List<List<T>> inputs) sync* {
   int cursor = inputs.length - 1;
   outer:
   do {
-    var result = [
-      for (int i = 0; i < indices.length; i++) inputs[i][indices[i]]
-    ];
+    var set = <T>{};
+    var result = <T>[];
+
+    for (int i = 0; i < indices.length; i++) {
+      var value = inputs[i][indices[i]];
+      if (!set.add(value)) break;
+      result.add(value);
+    }
+
     // Only lists without duplicates
-    if (result.length == Set.from(result).length) {
-      yield [for (int i = 0; i < indices.length; i++) inputs[i][indices[i]]];
+    if (result.length == indices.length) {
+      //yield [for (int i = 0; i < indices.length; i++) inputs[i][indices[i]]];
+      yield result;
     }
     do {
       int next = indices[cursor] += 1;
@@ -30,15 +37,4 @@ Iterable<List<T>> cartesian<T>(List<List<T>> inputs) sync* {
       if (cursor < 0) break outer;
     } while (true);
   } while (true);
-}
-
-void main(List<String> args) {
-  var inputs = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8]
-  ];
-  for (var product in cartesian(inputs)) {
-    print(product);
-  }
 }

@@ -243,9 +243,9 @@ Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
 
       index++;
     }
-    // Yield values lower than product of 2*p1, in order
+    // Yield values lower than product of 2*p1+2, in order
     while (true) {
-      var lowest = 2 * p1;
+      var lowest = 2 * p1 + 2;
       var foundIndex = -1;
       var found = false;
       for (var index = 0; index < nextProduct.length; index++) {

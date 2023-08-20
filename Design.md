@@ -45,7 +45,7 @@ Types of clue:
 Unusual puzzles:
 - Clue numbers also have an expression
 - Clue value has decimals
-- Clue value is fraction with numberatro and denominator
+- Clue value is fraction with numerator and denominator
 - Variables take two values for Across and Down clues
 
 
@@ -68,6 +68,7 @@ In order to make a general puzzle solver, we do the following:
    b. Loop until no more clues to update - puzzle solved
 4. Post-processing
    a. If no unique solution has been found, then iterate over the clue possible values checking for solutions
+   b. There may be custom post-processing logic
 
 ## Clue Expressions
 
@@ -80,37 +81,38 @@ The expression syntax currently includes these tokens:
 - Variables are single letters
 - Sequences of nunbers, variables and parentheses have implicit multiplication
 
-Enhancements:
+Enhancements - implemented:
 - Value generating functions #primes, #squares etc
 - Monadic functions $dp, $ds
-- Need to add other clue values as variables in expressions.
+- Clue values as variables in expressions.
 
 ## Clue Solution
 
 Process
 1. Update digit possibles from overlapping clues
 2. Get clue values
-3. Update clue values
+3. Update clue values, see below
 4. Update digit possibles from values
 5. Update variable possible values
 
-### Get Clue Values Expression
+### Get Clue Values Expression - implemented
 
-1. Get variable values, get cartesian product count, if too high then exit
+1. Get variable (and clue) values, get cartesian product count, if too high then exit
+   a. If clue values not (yet) available, may be able to generate from possible digits, to resolve mutual dependencies between clues
 2. For each combination of variables
    a. Evaluate expression
    b. If value not right length skip
    c. Validate value - digits check or custom function
-   d. If valid save value and variable values
+   d. If valid save clue value and variable values
 
-### Enhancements
+### Enhancement Notes - implemented
 
 Generating functions return multiple values, so expression evaluator is a generator.
 - Logical functions do not return invalid values.
-- Many puzzles do not have generators, just simple expressions, so could optimise this? At whole expression or sub-expression?
+- Many puzzles do not have generators, just simple expressions, so optimise this.
 
 When stop calling generator? 
-- When expression is too high? Normally assume generator produces increasing values, so can abort generation. But what about decreasing sub-expressions like minus/divide?
+- When expression is too high? Normally assume generator produces increasing values, so can abort generation. Need to cope with decreasing sub-expressions like minus/divide.
 - Have limits applied to every sub-expression, to filter values in desired range. 
   - Need to increase limits for decreasing operators.
   - Difficult if both sides of operator are generators. 
@@ -120,16 +122,17 @@ Need to add other clues as variables in expressions.
 - Clues are variables
 - Expression parsing should add clue variable reference, and clue cross-reference
 
-## Specific Puzzle
+## Generic Puzzle (Future)
 
-The implementation of a specific puzzle includes these steps:
+A bigger feature is to allow generic specification of a puzzle, with:
 
--   Create a folder for the puzzle
--   Create a main class for the puzzle, this must be added to the command line in bin/crossnumber.dart
-    -   Initialize the puzzle, creating the clues and references between them
-    -   Define solve functions for each clue, implementing the clue logic
--   Extend the Clue class, and initialize the puzzle clue to its possible values
--   Extend the Puzzle class
-    -   Specify the puzzle Clue class
-    -   If the puzzle has variables then extend the Variable class and define a VariableList
+1. Meta-data to specify each clue
+2. Generic solve function based on meta-data
+3. Input/Ouput of puzzle definition
 
+## GUI (Future)
+
+GUI to:
+
+1. Allow specification of puzzle
+2. Show steps in solution of puzzle

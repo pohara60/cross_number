@@ -1,7 +1,7 @@
 import 'package:crossnumber/clue.dart';
 
 /// A [DiceNetsPuzzle] clue
-class DiceNetsClue extends VariableClue {
+class DiceNetsClue extends ExpressionClue {
   DiceNetsClue({
     required name,
     required length,

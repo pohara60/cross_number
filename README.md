@@ -14,66 +14,53 @@ Many puzzles use Variables in the clues, with these features:
 -   The variables have names
 -   They have distinct values from a set of possible values
 
+See [Design](Design.md) for a full description of puzzles and the solution algorithm.
+
 There are different types of puzzle, each has a subdirectory with its specific implementation.
 
-## Generic Solution
 
-In order to make a general puzzle solver, we do the following:
+## Puzle Types
 
-1. Define a class to encapsulate the state of a clue, including:  
-   a. Number of digits
-   b. Possible Values  
-   c. Common digits with other clues: list of references to clue and digit
-   d. Possible values of each digit
-   e. Specific solution function
-2. Define a class to encapsulate the state of the puzzle, including:  
-   a. The clues
-3. General solution algorithm:
-   a. Maintain a list of clues to update, initialised with all clues
-   b. Process list clues in turn, invoke clue solution function, updating the clue and puzzle state
-   c. If clue updated add referring cells to list to update
-   b. Loop until no more clues to update - puzzle solved
-4. Post-processing
-   a. If no unique solution has been found, then iterate over the clue possible values checking for solutions
+The Notes column in the table below refer to the type of clue solver logic, which has progressed over time:
+- Manual solver, e.g. [solveA15](lib/primecuts/primecuts.dart).
+- Variable solver with callback for expression, e.g. [solveA2 calls solveVariableExpression](lib/sequences/sequences.dart)
+- Expression solver with generic expression logic, e.g. [solveVariableExpressionEvaluator](lib/sequences/sequences.dart)
+- Expression solver with generic expression logic including generated values, e.g. [solveExpressionEvaluator](lib/dicenets2/dicenets2.dart)
+ 
+
+| Puzzle | Type | Notes |
+|--------|------|-------|
+| [CarteBlanche](lib/carteblanche.dart) | Custom | Custom |
+| [DiceNets](lib/dicenets/README.md) | Simple | Manual Solvers |
+| [DiceNets2](lib/dicenets2/README.md) | Simple | Expression Solvers |
+| [Distancing](lib/distancing/README.md) | Simple | Manual Solvers |
+| [EvenOdder](lib/evenodder/README.md) | Variable | Expression Solvers |
+| [Frequency](lib/frequency/README.md) | Simple | Manual Solvers, post-processing |
+| [Instruction](lib/instruction/README.md) | Custom | Manual Solvers, post-processing |
+| [Letters](lib/letters/README.md) | Variable | Variable Solvers |
+| [PrimeCuts](lib/primecuts/README.md) | Variable | Manual Solvers, 2 values per clue |
+| [Sequences](lib/sequences/README.md) | Variable | Expression Solvers |
+
+
+## Specific Puzzle Implementation
 
 The implementation of a specific puzzle includes these steps:
 
 -   Create a folder for the puzzle
 -   Create a main class for the puzzle, this must be added to the command line in bin/crossnumber.dart
-    -   Initialize the puzzle, creating the clues and references between them
-    -   Define solve functions for each clue, implementing the clue logic
--   Extend the Clue class, and initialize the puzzle clue to its possible values
+    -   Initialize the puzzle, defining the clues and references between them
+    -   Either:
+         - Use generic expression solver - this will often need a clue value validation function, or 
+         - Define solve functions for each clue, implementing the clue logic
+-   Extend the Clue class
+    -   Define the puzzle clue, may restict its possible values
+    -   If the puzzle has variables, or using the generic expression solver, extend the VariableClue class
 -   Extend the Puzzle class
     -   Specify the puzzle Clue class
-    -   If the puzzle has variables then extend the Variable class and define a VariableList
+    -   If the puzzle has variables, or using the generic expression solver, extend the VariablePuzzle class
 
-## Puzle Types
-
-| Puzzle | Type | Notes |
-|--------|------|-------|
-| [DiceNets](lib/dicenets/README.md) | Simple | Manual Solvers |
-| [Distancing](lib/distancing/README.md) | Simple | Manual Solvers |
-| [EvenOdder](lib/evenodder/README.md) | Variable | Expression Solvers |
-| [Frequency](lib/frequency/README.md) | Simple | Manual Solvers, post-processing |
-| [Letters](lib/letters/README.md) | Variable | Variable Solvers |
-| [PrimeCuts](lib/primecuts/README.md) | Variable | Manual Solvers, 2 values per clue |
-| [Sequences](lib/sequences/README.md) | Variable | Expression Solvers |
-| [CarteBlanche](lib/carteblanche.dart) | Custom | Custom |
-| [Instruction](lib/instruction/README.md) |  | Manual Solvers |
-
-
-
-## Generic Puzzle (Future)
-
-A bigger feature is to allow generic specification of a puzzle, with:
-
-1. Meta-data to specify each clue
-2. Generic solve function based on meta-data
-3. Input/Ouput of puzzle definition
-
-## GUI (Future)
-
-GUI to:
-
-1. Allow specification of puzzle
-2. Show steps in solution of puzzle
+It is recommended to use the generic expression solver for simple puzzles, with or without variables. Less common puzzles require custom logic, e.g. 
+- Variables take two values for Across and Down clues
+- Clue numbers also have an expression
+- Clue value has decimals
+- Clue value is fraction with numerator and denominator

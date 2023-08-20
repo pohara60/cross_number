@@ -372,6 +372,7 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     clue.count = getClueCount(clue, variableValues);
   }
 
+  // Expression evaluator, supports variables with expression callback
   void solveVariableExpression(
       VariableClue clue,
       Set<int> possibleValue,
@@ -406,9 +407,11 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     }
   }
 
-  bool solveVariableExpressionEvaluator(VariableClue clue,
+  // Generic expression evaluator, supports variables
+  bool solveVariableExpressionEvaluator(ExpressionClue clue,
       Set<int> possibleValue, Map<String, Set<int>> possibleVariables,
-      [bool Function(VariableClue, int, List<String>, List<int>)? validValue]) {
+      [bool Function(ExpressionClue, int, List<String>, List<int>)?
+          validValue]) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
@@ -451,9 +454,11 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     return false;
   }
 
-  bool solveExpressionEvaluator(VariableClue clue, Set<int> possibleValue,
+  // Generic expression evaluator, supports variables, clues, generators and functions
+  bool solveExpressionEvaluator(ExpressionClue clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleVariables,
-      [bool Function(VariableClue, int, List<String>, List<int>)? validValue]) {
+      [bool Function(ExpressionClue, int, List<String>, List<int>)?
+          validValue]) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {

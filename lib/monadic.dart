@@ -8,9 +8,9 @@ class Monadic {
 }
 
 void initializeMonadics(Map<String, Monadic> monadics) {
-  monadics['DS'] = Monadic('DS', digitSum, int);
-  monadics['DP'] = Monadic('DP', digitProduct, int);
-  monadics['MP'] = Monadic('MP', multiplicativePersistence, int);
+  monadics['ds'] = Monadic('ds', digitSum, int);
+  monadics['dp'] = Monadic('dp', digitProduct, int);
+  monadics['mp'] = Monadic('mp', multiplicativePersistence, int);
   monadics['square'] = Monadic('square', square, int);
   monadics['cube'] = Monadic('cube', cube, int);
   monadics['even'] = Monadic('even', isEven, bool);
