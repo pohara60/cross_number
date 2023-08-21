@@ -9,6 +9,8 @@ import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/primecuts/clue.dart';
 import 'package:crossnumber/primecuts/puzzle.dart';
 
+import '../variable.dart';
+
 /// Provide access to the Prime Cuts API.
 class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   PrimeCuts() {
@@ -17,8 +19,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   }
 
   void initCrossnumber() {
-    puzzle.clues = {};
-    var a2 = PrimeCutsClue(
+    var a2 = PrimeCutsEntry(
         name: 'A2',
         length: 3,
         preValueDesc: 'Multiple of gA2',
@@ -26,8 +27,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'B',
         valueDesc: '',
         solve: solveA2);
-    puzzle.addClue(a2);
-    var a5 = PrimeCutsClue(
+    puzzle.addEntry(a2);
+    var a5 = PrimeCutsEntry(
         name: 'A5',
         length: 2,
         preValueDesc: 'Square',
@@ -35,8 +36,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'C',
         valueDesc: '',
         solve: solveA5);
-    puzzle.addClue(a5);
-    var a7 = PrimeCutsClue(
+    puzzle.addEntry(a5);
+    var a7 = PrimeCutsEntry(
         name: 'A7',
         length: 3,
         preValueDesc: 'Multiple of D',
@@ -44,8 +45,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'D',
         valueDesc: 'Multiple of D',
         solve: solveA7);
-    puzzle.addClue(a7);
-    var a9 = PrimeCutsClue(
+    puzzle.addEntry(a7);
+    var a9 = PrimeCutsEntry(
         name: 'A9',
         length: 2,
         preValueDesc: 'Multiple of R',
@@ -53,8 +54,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'F',
         valueDesc: 'Reverse of another entry',
         solve: solveA9);
-    puzzle.addClue(a9);
-    var a11 = PrimeCutsClue(
+    puzzle.addEntry(a9);
+    var a11 = PrimeCutsEntry(
         name: 'A11',
         length: 2,
         preValueDesc: 'Ascending digits',
@@ -62,8 +63,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'G',
         valueDesc: 'Factor of gD11',
         solve: solveA11);
-    puzzle.addClue(a11);
-    var a12 = PrimeCutsClue(
+    puzzle.addEntry(a11);
+    var a12 = PrimeCutsEntry(
         name: 'A12',
         length: 2,
         preValueDesc: 'Triangular ',
@@ -71,8 +72,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'H',
         valueDesc: 'Triangular ',
         solve: solveA12);
-    puzzle.addClue(a12);
-    var a13 = PrimeCutsClue(
+    puzzle.addEntry(a12);
+    var a13 = PrimeCutsEntry(
         name: 'A13',
         length: 2,
         preValueDesc: 'Prime',
@@ -80,8 +81,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'J',
         valueDesc: '',
         solve: solveA13);
-    puzzle.addClue(a13);
-    var a14 = PrimeCutsClue(
+    puzzle.addEntry(a13);
+    var a14 = PrimeCutsEntry(
         name: 'A14',
         length: 2,
         preValueDesc: 'Triangular ',
@@ -89,8 +90,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'K',
         valueDesc: '',
         solve: solveA14);
-    puzzle.addClue(a14);
-    var a15 = PrimeCutsClue(
+    puzzle.addEntry(a14);
+    var a15 = PrimeCutsEntry(
         name: 'A15',
         length: 3,
         preValueDesc: 'Cube of D',
@@ -98,8 +99,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'L',
         valueDesc: 'Square of S',
         solve: solveA15);
-    puzzle.addClue(a15);
-    var a17 = PrimeCutsClue(
+    puzzle.addEntry(a15);
+    var a17 = PrimeCutsEntry(
         name: 'A17',
         length: 2,
         preValueDesc: 'Square',
@@ -107,8 +108,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'M reverse C',
         valueDesc: 'Reverse of gD3',
         solve: solveA17);
-    puzzle.addClue(a17);
-    var a18 = PrimeCutsClue(
+    puzzle.addEntry(a17);
+    var a18 = PrimeCutsEntry(
         name: 'A18',
         length: 3,
         preValueDesc: 'Multiple H',
@@ -116,9 +117,9 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'N ascending ',
         valueDesc: 'Multiple  of W',
         solve: solveA18);
-    puzzle.addClue(a18);
+    puzzle.addEntry(a18);
 
-    var d1 = PrimeCutsClue(
+    var d1 = PrimeCutsEntry(
         name: 'D1',
         length: 2,
         preValueDesc: 'Multiple of P',
@@ -126,8 +127,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'P = Triangular - Z',
         valueDesc: '',
         solve: solveD1);
-    puzzle.addClue(d1);
-    var d3 = PrimeCutsClue(
+    puzzle.addEntry(d1);
+    var d3 = PrimeCutsEntry(
         name: 'D3',
         length: 2,
         preValueDesc: 'Square ',
@@ -135,8 +136,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'Q',
         valueDesc: '',
         solve: solveD3);
-    puzzle.addClue(d3);
-    var d4 = PrimeCutsClue(
+    puzzle.addEntry(d3);
+    var d4 = PrimeCutsEntry(
         name: 'D4',
         length: 3,
         preValueDesc: 'Multiple of B',
@@ -144,8 +145,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'R',
         valueDesc: '',
         solve: solveD4);
-    puzzle.addClue(d4);
-    var d6 = PrimeCutsClue(
+    puzzle.addEntry(d4);
+    var d6 = PrimeCutsEntry(
         name: 'D6',
         length: 3,
         preValueDesc: 'Palindrome',
@@ -153,8 +154,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'S',
         valueDesc: 'K x T',
         solve: solveD6);
-    puzzle.addClue(d6);
-    var d8 = PrimeCutsClue(
+    puzzle.addEntry(d6);
+    var d8 = PrimeCutsEntry(
         name: 'D8',
         length: 3,
         preValueDesc: 'Descending digits',
@@ -162,8 +163,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'T',
         valueDesc: '',
         solve: solveD8);
-    puzzle.addClue(d8);
-    var d10 = PrimeCutsClue(
+    puzzle.addEntry(d8);
+    var d10 = PrimeCutsEntry(
         name: 'D10',
         length: 3,
         preValueDesc: 'Ascending digits, Divisible by sum digits',
@@ -171,8 +172,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'V',
         valueDesc: '',
         solve: solveD10);
-    puzzle.addClue(d10);
-    var d11 = PrimeCutsClue(
+    puzzle.addEntry(d10);
+    var d11 = PrimeCutsEntry(
         name: 'D11',
         length: 3,
         preValueDesc: 'Ascending digits',
@@ -180,8 +181,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'W',
         valueDesc: 'G + W',
         solve: solveD11);
-    puzzle.addClue(d11);
-    var d12 = PrimeCutsClue(
+    puzzle.addEntry(d11);
+    var d12 = PrimeCutsEntry(
         name: 'D12',
         length: 3,
         preValueDesc: 'Same sum digits A18',
@@ -189,8 +190,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'X',
         valueDesc: 'Jumble gA18',
         solve: solveD12);
-    puzzle.addClue(d12);
-    var d15 = PrimeCutsClue(
+    puzzle.addEntry(d12);
+    var d15 = PrimeCutsEntry(
         name: 'D15',
         length: 2,
         preValueDesc: 'Square',
@@ -198,8 +199,8 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'Y = reverse Q',
         valueDesc: '',
         solve: solveD15);
-    puzzle.addClue(d15);
-    var d16 = PrimeCutsClue(
+    puzzle.addEntry(d15);
+    var d16 = PrimeCutsEntry(
         name: 'D16',
         length: 2,
         preValueDesc: 'Multiple of Z',
@@ -207,7 +208,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         primeDesc: 'Z',
         valueDesc: 'Square - gD1',
         solve: solveD16);
-    puzzle.addClue(d16);
+    puzzle.addEntry(d16);
 
     puzzle.addDigitIdentity(a2, 2, d3, 1);
     puzzle.addDigitIdentity(a2, 3, d4, 1);
@@ -231,21 +232,21 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     puzzle.addDigitIdentity(a17, 1, d11, 3);
     puzzle.addDigitIdentity(a18, 1, d12, 3);
     puzzle.addDigitIdentity(a18, 2, d15, 2);
-    puzzle.addReference(a9, d4, false);
-    puzzle.addReference(a11, d11, true);
-    puzzle.addReference(a15, a7, false);
-    puzzle.addReference(a17, a5, true);
-    puzzle.addReference(a17, d3, true);
-    puzzle.addReference(a18, a12, false);
-    puzzle.addReference(a18, d11, false);
-    puzzle.addReference(d1, d16, true);
-    puzzle.addReference(d4, a2, false);
-    puzzle.addReference(d6, a14, true);
-    puzzle.addReference(d6, d8, true);
-    puzzle.addReference(d11, a11, false);
-    puzzle.addReference(d12, a18, true);
-    puzzle.addReference(d15, d3, false);
-    puzzle.addReference(d16, d1, false);
+    puzzle.addClueReference(a9, d4, false);
+    puzzle.addClueReference(a11, d11, true);
+    puzzle.addClueReference(a15, a7, false);
+    puzzle.addClueReference(a17, a5, true);
+    puzzle.addClueReference(a17, d3, true);
+    puzzle.addClueReference(a18, a12, false);
+    puzzle.addClueReference(a18, d11, false);
+    puzzle.addClueReference(d1, d16, true);
+    puzzle.addClueReference(d4, a2, false);
+    puzzle.addClueReference(d6, a14, true);
+    puzzle.addClueReference(d6, d8, true);
+    puzzle.addClueReference(d11, a11, false);
+    puzzle.addClueReference(d12, a18, true);
+    puzzle.addClueReference(d15, d3, false);
+    puzzle.addClueReference(d16, d1, false);
     a9.addPrimeReference('R');
     a15.addPrimeReference('D');
     a15.addPrimeReference('S');
@@ -261,7 +262,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
     // A9 depends on all othe 2 digit entries
     for (var other in getTwoDigitCluesLessA9()) {
-      puzzle.addReference(a9, other, false);
+      puzzle.addClueReference(a9, other, false);
     }
 
     if (Crossnumber.traceInit) {
@@ -271,7 +272,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // Override solveClue to manage preValues
   bool solveClue(Clue inputClue) {
-    var clue = inputClue as PrimeCutsClue;
+    var clue = inputClue as PrimeCutsEntry;
     // If clue solved already then skip it
     if (clue.values != null && clue.values!.length == 1) return false;
 
@@ -307,7 +308,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A15 - PreValue 5 digits D^3, Removed prime L, Value entry S^2
   bool solveA15(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var maxD = 100000.cbrt().floor();
     var minD = 10000.cbrt().ceil();
@@ -348,7 +349,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D6 - PreValue 5 digits palindrome, Removed prime S, Value entry K*T
   bool solveD6(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fiveDigitPalindromes = getFiveDigitPalindromes();
     var threeDigitPrimeMultiples = getThreeDigitPrimeMultiples();
@@ -384,7 +385,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A17 - PreValue 4 digits square, Removed prime M = reverse C
   bool solveA17(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitSquares = getFourDigitSquares();
     var possibleM = <int>{};
@@ -410,7 +411,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D15 - PreValue 4 digits square, Removed prime Y = reverse Q
   bool solveD15(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitSquares = getFourDigitSquares();
     var possibleY = <int>{};
@@ -436,7 +437,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D3 - PreValue 4 digits square, Removed prime Q = reverse Y
   bool solveD3(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitSquares = getFourDigitSquares();
     var possibleQ = <int>{};
@@ -462,7 +463,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A5 - PreValue 4 digits square, Removed prime C = reverse M
   bool solveA5(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitSquares = getFourDigitSquares();
     var possibleC = <int>{};
@@ -488,7 +489,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A13 - PreValue 4 digits prime, Removed prime J
   bool solveA13(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitPrimes = getFourDigitPrimes();
     var possibleJ = <int>{};
@@ -510,7 +511,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D16 - PreValue 4 digits multiple of Z, Removed prime Z, value square - D1
   bool solveD16(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
 
     Set<int>? valueD1 = puzzle.clues['D1']!.values;
@@ -543,7 +544,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A7 - PreValue 5 digits multiple of D, Removed prime D, value multiple of D
   bool solveA7(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleD = <int>{};
     for (var d in puzzle.primes['D']!.values!) {
@@ -562,7 +563,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D1 - PreValue 4 digits multiple of P, Removed prime P = triangular - Z
   bool solveD1(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var triangleSumTwoPrimes = getPrimesInTriangleSumTwoPrimes();
     var possibleP = <int>{};
@@ -597,7 +598,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A12 - 4 digit triangle, removed prime H, value triangle
   bool solveA12(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitTriangles = getFourDigitTriangles();
     var twoDigitTriangles = getTwoDigitTriangles();
@@ -622,7 +623,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A14 - 4 digit triangle, removed prime K
   bool solveA14(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var fourDigitTriangles = getFourDigitTriangles();
     var possibleK = <int>{};
@@ -644,7 +645,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D11 - PreValue 5 ascending digits, Removed prime W, Value G+W
   bool solveD11(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var sumTwoPrimes = getSumTwoPrimes();
     var possibleG = <int>{};
@@ -685,7 +686,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D10 - PreValue 5 ascending digits divisible by sum, Removed prime V
   bool solveD10(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleV = <int>{};
     for (var d1 in [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
@@ -722,7 +723,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A2 - PreValue 5 digits multiple of value, Removed prime B
   bool solveA2(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleB = <int>{};
     for (var preValue = 10000; preValue < 100000; preValue++) {
@@ -743,7 +744,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A11 - PreValue 4 ascending digits, Removed prime G, Value factor of D11
   bool solveA11(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
 
     // Need D11 value to solve
@@ -784,7 +785,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A18 - PreValue 5 digits multiple of H, Removed prime N asc digits, Value multiple W
   bool solveA18(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleN = <int>{};
     var possibleH = <int>{};
@@ -822,11 +823,11 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D12 - PreValue 5 digits same digit sum as A18, Prime X, Value jumble gA18
   bool solveD12(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
 
     // Require A18 preValue and value, do not try if too many possibles
-    var a18 = puzzle.clues['A18']!;
+    var a18 = puzzle.clues['A18']! as PrimeCutsEntry;
     Set<int>? valueA18 = a18.values;
     Set<int>? preValueA18 = a18.preValues;
     if (valueA18 == null ||
@@ -865,7 +866,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D8 PreValue 5 descending digits, Prime T
   bool solveD8(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleT = <int>{};
     for (var d5 in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
@@ -898,7 +899,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // D4 PreValue 5 digits multiple B, Prime R
   bool solveD4(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
     var possibleR = <int>{};
     var possibleB = <int>{};
@@ -928,7 +929,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // A9 PreValue 4 digits multiple R, Prime F, Value reverse of another entry
   bool solveA9(
-      PrimeCutsClue clue, Set<int> possiblePreValue, Set<int> possibleValue) {
+      PrimeCutsEntry clue, Set<int> possiblePreValue, Set<int> possibleValue) {
     var updated = false;
 
     var otherEntry = <int>{};

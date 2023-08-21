@@ -18,21 +18,26 @@ class Clue extends Variable {
   /// Description of clue
   final String? valueDesc;
 
-  /// Common digits with other clues: each digit has optional reference to clue and digit
-  late final List<DigitIdentity?> digitIdentities;
+  // References
+  final _variableRefs = VariableRefList();
+  List<String> get variableReferences => _variableRefs.variableNames;
+  List<String> get clueReferences => _variableRefs.clueNames;
+  List<String> get variableClueReferences => _variableRefs.names;
+
+  // Mutual reference to an other clue
+  bool circularClueReference = false;
 
   /// List of clues that need to be examined when this clue is updated
   late final List<Clue> referrers;
 
-  /// List of clue names that are referenced by this clue
-  late final List<String> clueReferences;
-  bool circularClueReference = false;
+  // Mapped grid entry - Clue with EntryMixin
+  Clue? _entry;
+  Clue? get entry => _entry;
+  List<DigitIdentity?> get digitIdentities => entry!.digitIdentities;
+  List<Set<int>> get digits => entry!.digits;
 
   /// Solve function
   final Function? solve;
-
-  /// Computed - Possible digits
-  late final List<Set<int>> digits;
 
   bool get isAcross => this.name[0] == 'A';
   bool get isDown => this.name[0] == 'D';
@@ -59,28 +64,16 @@ class Clue extends Variable {
     this.valueDesc,
     this.solve,
   }) : super(name) {
-    digitIdentities = List.filled(length, null);
     referrers = <Clue>[];
-    clueReferences = <String>[];
-    digits = [];
     this.reset();
     min = 10.pow(length - 1) as int;
     max = (10.pow(length) as int) - 1;
   }
 
   void reset() {
-    initDigits();
+    if (entry != null) (entry as EntryMixin).initDigits();
     values = null;
     _restrictedValues = null;
-  }
-
-  void initDigits() {
-    digits.clear(); // Clear for reset
-    // possible digits are 0..9, except cannot have leading 0
-    for (var d = 0; d < this.length; d++) {
-      digits.add(Set.from(List.generate(maxDigit + 1, (index) => index)));
-      if (d == 0) digits[d].remove(0);
-    }
   }
 
   addReferrer(Clue clue) {
@@ -88,20 +81,24 @@ class Clue extends Variable {
   }
 
   addClueReference(String clueName) {
-    if (!clueReferences.contains(clueName)) {
-      clueReferences.add(clueName);
-    }
+    _variableRefs.addClueReference(clueName);
+  }
+
+  addVariableReference(String variable) {
+    _variableRefs.addVariableReference(variable);
   }
 
   bool initialise() {
-    // Update digits from digit references
+    // Update entry digits from digit references
     var updated = false;
-    for (var d = 0; d < length; d++) {
-      if (digitIdentities[d] != null) {
-        var clue2 = digitIdentities[d]!.clue;
-        var d2 = digitIdentities[d]!.digit;
-        var possibleDigits = clue2.digits[d2];
-        if (updatePossible(digits[d], possibleDigits)) updated = true;
+    if (entry != null) {
+      for (var d = 0; d < length; d++) {
+        if (digitIdentities[d] != null) {
+          var entry2 = digitIdentities[d]!.entry;
+          var d2 = digitIdentities[d]!.digit;
+          var possibleDigits = entry2.digits[d2];
+          if (updatePossible(digits[d], possibleDigits)) updated = true;
+        }
       }
     }
     return updated;
@@ -124,13 +121,15 @@ class Clue extends Variable {
     // Update digits from values
     if (this.values == null) return false;
     var updated = false;
-    for (var d = 0; d < length; d++) {
-      var possibleDigits = <int>{};
-      for (var value in this.values!) {
-        var digit = int.parse(value.toString()[d]);
-        possibleDigits.add(digit);
+    if (entry != null) {
+      for (var d = 0; d < length; d++) {
+        var possibleDigits = <int>{};
+        for (var value in this.values!) {
+          var digit = int.parse(value.toString()[d]);
+          possibleDigits.add(digit);
+        }
+        if (updatePossible(digits[d], possibleDigits)) updated = true;
       }
-      if (updatePossible(digits[d], possibleDigits)) updated = true;
     }
     return updated;
   }
@@ -147,26 +146,33 @@ class Clue extends Variable {
   }
 
   bool digitsMatch(int value) {
-    for (var d = this.length - 1; d >= 0; d--) {
-      var digit = value % 10;
-      if (!this.digits[d].contains(digit)) return false;
-      value = value ~/ 10;
+    if (entry != null) {
+      for (var d = this.length - 1; d >= 0; d--) {
+        var digit = value % 10;
+        if (!this.digits[d].contains(digit)) return false;
+        value = value ~/ 10;
+      }
     }
     return true;
   }
 
   String toString() {
-    var identityStr = digitIdentities
-        .asMap()
-        .entries
-        .map((e) => e.value == null
-            ? ''
-            : '${this.name}[${e.key}]=${e.value!.clue.name}[${e.value!.digit}]')
-        .where((element) => element != '')
-        .join(',');
+    var identityStr = entry == null
+        ? ''
+        : 'identities=[' +
+            digitIdentities
+                .asMap()
+                .entries
+                .map((e) => e.value == null
+                    ? ''
+                    : '${this.name}[${e.key}]=${e.value!.entry.name}[${e.value!.digit}]')
+                .where((element) => element != '')
+                .join(',') +
+            '],';
     var referrersStr = referrers.map((e) => e.name).join(',');
     var valueStr = values == null ? '{unknown}' : values!.toShortString();
-    return 'Clue(name=$name,length=$length,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
+    // return '$runtimeType(name=$name,length=$length,value: $valueDesc,\n\t${identityStr}referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
+    return 'Clue(name=$name,length=$length,value: $valueDesc,\n\t${identityStr}referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
   }
 
   String toSummary() {
@@ -189,42 +195,26 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 }
 
 class VariableClue extends Clue {
-  late final List<String> variableReferences;
-  List<String>? _variableClueReferences;
-
-  List<String> get variableClueReferences =>
-      _variableClueReferences ??
-      (_variableClueReferences = variableReferences + clueReferences);
-
   /// Computed - Count of combinations of variable values
   int count = 0;
 
-  VariableClue(
-      {required name, required length, valueDesc, solve, variablePrefix = ''})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    this.variableReferences = <String>[];
-  }
-
-  addVariableReference(String variable) {
-    if (!variableReferences.contains(variable))
-      variableReferences.add(variable);
-  }
+  VariableClue({required name, required length, valueDesc, solve})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {}
 }
 
-class ExpressionClue extends VariableClue {
+mixin Expression {
   late ExpressionEvaluator exp;
 
-  ExpressionClue(
-      {required name, required length, valueDesc, solve, variablePrefix = ''})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    if (valueDesc != '') {
+  void initExpression(
+      String? valueDesc, variablePrefix, String name, Clue clue) {
+    if (valueDesc != null && valueDesc != '') {
       try {
         exp = ExpressionEvaluator(valueDesc, variablePrefix);
         for (var variableName in exp.variableRefs..sort()) {
-          addVariableReference(variableName);
+          clue.addVariableReference(variableName);
         }
         for (var clueName in exp.clueRefs..sort()) {
-          addClueReference(clueName);
+          clue.addClueReference(clueName);
         }
       } on ExpressionError catch (e) {
         throw ExpressionError('$name expression $valueDesc error ${e.msg}');
@@ -233,18 +223,92 @@ class ExpressionClue extends VariableClue {
   }
 }
 
-/// A reference to [Clue] digit
+class ExpressionClue extends VariableClue with Expression {
+  late ExpressionEvaluator exp;
+
+  ExpressionClue(
+      {required String name,
+      required int length,
+      String? valueDesc,
+      Function? solve,
+      variablePrefix = ''})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    initExpression(valueDesc, variablePrefix, name, this);
+  }
+}
+
+/// A reference to [Entry] digit
 class DigitIdentity {
   // The referenced clue
-  final Clue clue;
+  final EntryMixin entry;
   final int digit;
 
+  Clue get clue => entry;
+
   DigitIdentity({
-    required this.clue,
+    required this.entry,
     required this.digit,
   });
 
   String toString() {
-    return '$clue[$digit]';
+    return '$entry[$digit]';
+  }
+}
+
+mixin EntryMixin on Clue {
+  /// Common digits with other clues: each digit has optional reference to clue and digit
+  late final List<DigitIdentity?> digitIdentities;
+
+  /// Computed - Possible digits
+  late final List<Set<int>> digits;
+
+  // Mapped Clue
+  Clue? _clue;
+  Clue? get clue => _clue;
+  void initEntry(Clue entry) {
+    digitIdentities = List.filled(entry.length, null);
+    digits = [];
+    initDigits();
+    // Self-reference to make Clue methods work
+    entry._entry = entry;
+  }
+
+  void initDigits() {
+    digits.clear(); // Clear for reset
+    // possible digits are 0..9, except cannot have leading 0
+    for (var d = 0; d < this.length; d++) {
+      digits.add(Set.from(List.generate(Clue.maxDigit + 1, (index) => index)));
+      if (d == 0) digits[d].remove(0);
+    }
+  }
+}
+
+class Entry extends Clue with EntryMixin {
+  Entry({required name, required length, valueDesc, solve})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    initEntry(this);
+  }
+}
+
+class VariableEntry extends VariableClue with EntryMixin {
+  VariableEntry({required name, required length, valueDesc, solve})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    initEntry(this);
+  }
+
+  addVariableReference(String variable) {
+    _variableRefs.addVariableReference(variable);
+  }
+}
+
+class ExpressionEntry extends ExpressionClue with EntryMixin {
+  ExpressionEntry(
+      {required String name,
+      required int length,
+      String? valueDesc,
+      Function? solve,
+      variablePrefix = ''})
+      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    initEntry(this);
   }
 }

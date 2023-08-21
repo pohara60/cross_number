@@ -9,7 +9,7 @@ import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/puzzle.dart';
 
 /// Provide access to the Cross Number API.
-class Crossnumber<PuzzleKind extends Puzzle> {
+class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   late PuzzleKind puzzle;
 
   static const bool traceInit = true;

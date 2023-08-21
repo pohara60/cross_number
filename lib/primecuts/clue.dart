@@ -61,3 +61,24 @@ class PrimeCutsClue extends VariableClue {
     return 'Clue(name=$name,length=$length,value: $valueDesc,\n\tprime=${primeDesc ?? prime},preValue: $preValueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tpreValues=$preValueStr),\n\tdigits=$digits';
   }
 }
+
+class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
+  PrimeCutsEntry({
+    required name,
+    required length,
+    required prime,
+    valueDesc,
+    primeDesc,
+    preValueDesc,
+    solve,
+  }) : super(
+            name: name,
+            length: length,
+            prime: prime,
+            valueDesc: valueDesc,
+            primeDesc: primeDesc,
+            preValueDesc: preValueDesc,
+            solve: solve) {
+    initEntry(this);
+  }
+}

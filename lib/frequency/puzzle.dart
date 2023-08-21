@@ -1,7 +1,7 @@
 import 'package:crossnumber/frequency/clue.dart';
 import 'package:crossnumber/puzzle.dart';
 
-class FrequencyPuzzle extends Puzzle<FrequencyClue> {
+class FrequencyPuzzle extends Puzzle<FrequencyClue, FrequencyEntry> {
   FrequencyPuzzle();
   FrequencyPuzzle.grid(List<String> gridString) : super.grid(gridString);
 

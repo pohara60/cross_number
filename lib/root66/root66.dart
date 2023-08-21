@@ -35,202 +35,201 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     initBCEFG();
   }
 
-  late Root66Clue a2;
-  late Root66Clue a7;
-  late Root66Clue a8;
-  late Root66Clue a9;
-  late Root66Clue a11;
-  late Root66Clue a12;
-  late Root66Clue a13;
-  late Root66Clue a16;
-  late Root66Clue a18;
-  late Root66Clue a19;
-  late Root66Clue a20;
-  late Root66Clue a21;
-  late Root66Clue d1;
-  late Root66Clue d2;
-  late Root66Clue d3;
-  late Root66Clue d4;
-  late Root66Clue d5;
-  late Root66Clue d6;
-  late Root66Clue d8;
-  late Root66Clue d10;
-  late Root66Clue d14;
-  late Root66Clue d15;
-  late Root66Clue d16;
-  late Root66Clue d17;
+  late Root66Entry a2;
+  late Root66Entry a7;
+  late Root66Entry a8;
+  late Root66Entry a9;
+  late Root66Entry a11;
+  late Root66Entry a12;
+  late Root66Entry a13;
+  late Root66Entry a16;
+  late Root66Entry a18;
+  late Root66Entry a19;
+  late Root66Entry a20;
+  late Root66Entry a21;
+  late Root66Entry d1;
+  late Root66Entry d2;
+  late Root66Entry d3;
+  late Root66Entry d4;
+  late Root66Entry d5;
+  late Root66Entry d6;
+  late Root66Entry d8;
+  late Root66Entry d10;
+  late Root66Entry d14;
+  late Root66Entry d15;
+  late Root66Entry d16;
+  late Root66Entry d17;
 
   void initCrossnumber() {
-    puzzle.clues = {};
-    a2 = Root66Clue(
+    a2 = Root66Entry(
         name: 'A2',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '-D+U*R^(A+T)+I+O*N^S',
         solve: solveBCEFG);
-    puzzle.addClue(a2);
-    a7 = Root66Clue(
+    puzzle.addEntry(a2);
+    a7 = Root66Entry(
         name: 'A7',
         length: 8,
         type: Root66ClueType.BCEFG,
         valueDesc: '',
         solve: solveBCEFG);
-    puzzle.addClue(a7);
-    a8 = Root66Clue(
+    puzzle.addEntry(a7);
+    a8 = Root66Entry(
         name: 'A8',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'R+O(TU+N)DA',
         solve: solveBCEFG);
-    puzzle.addClue(a8);
-    a9 = Root66Clue(
+    puzzle.addEntry(a8);
+    a9 = Root66Entry(
         name: 'A9',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(S+I+T^A+RO-U-N)D',
         solve: solveBCEFG);
-    puzzle.addClue(a9);
-    a11 = Root66Clue(
+    puzzle.addEntry(a9);
+    a11 = Root66Entry(
         name: 'A11',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'U((N+I)^T-(A+R)D)S',
         solve: solveBCEFG);
-    puzzle.addClue(a11);
-    a12 = Root66Clue(
+    puzzle.addEntry(a11);
+    a12 = Root66Entry(
         name: 'A12',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(A+S)T(R^O-√(ID))',
         solve: solveBCEFG);
-    puzzle.addClue(a12);
-    a13 = Root66Clue(
+    puzzle.addEntry(a12);
+    a13 = Root66Entry(
         name: 'A13',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'S*U^T+(O+R+I)A+N',
         solve: solveBCEFG);
-    puzzle.addClue(a13);
-    a16 = Root66Clue(
+    puzzle.addEntry(a13);
+    a16 = Root66Entry(
         name: 'A16',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(DI-NO)(S+T)A+R',
         solve: solveBCEFG);
-    puzzle.addClue(a16);
-    a18 = Root66Clue(
+    puzzle.addEntry(a16);
+    a18 = Root66Entry(
         name: 'A18',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(T/R)*I^N*(ODU+S)',
         solve: solveBCEFG);
-    puzzle.addClue(a18);
-    a19 = Root66Clue(
+    puzzle.addEntry(a18);
+    a19 = Root66Entry(
         name: 'A19',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(T*U^N*(D+R)+A)S',
         solve: solveBCEFG);
-    puzzle.addClue(a19);
-    a20 = Root66Clue(
+    puzzle.addEntry(a19);
+    a20 = Root66Entry(
         name: 'A20',
         length: 8,
         type: Root66ClueType.BCEFG,
         valueDesc: '',
         solve: solveBCEFG);
-    puzzle.addClue(a20);
-    a21 = Root66Clue(
+    puzzle.addEntry(a20);
+    a21 = Root66Entry(
         name: 'A21',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '-(√I)N+TRADO+S',
         solve: solveBCEFG);
-    puzzle.addClue(a21);
+    puzzle.addEntry(a21);
 
-    d1 = Root66Clue(
+    d1 = Root66Entry(
         name: 'D1',
         length: 8,
         type: Root66ClueType.BCEFG,
         valueDesc: '',
         solve: solveBCEFG);
-    puzzle.addClue(d1);
-    d2 = Root66Clue(
+    puzzle.addEntry(d1);
+    d2 = Root66Entry(
         name: 'D2',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '-D+U(R+A)(T^I+O*N^S)',
         solve: solveBCEFG);
-    puzzle.addClue(d2);
-    d3 = Root66Clue(
+    puzzle.addEntry(d2);
+    d3 = Root66Entry(
         name: 'D3',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'DI(N^O*S+A+U)R',
         solve: solveBCEFG);
-    puzzle.addClue(d3);
-    d4 = Root66Clue(
+    puzzle.addEntry(d3);
+    d4 = Root66Entry(
         name: 'D4',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(AROU+N)D',
         solve: solveBCEFG);
-    puzzle.addClue(d4);
-    d5 = Root66Clue(
+    puzzle.addEntry(d4);
+    d5 = Root66Entry(
         name: 'D5',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'A(U+D)+(I+T+O)*R^S',
         solve: solveBCEFG);
-    puzzle.addClue(d5);
-    d6 = Root66Clue(
+    puzzle.addEntry(d5);
+    d6 = Root66Entry(
         name: 'D6',
         length: 8,
         type: Root66ClueType.BCEFG,
         valueDesc: '',
         solve: solveBCEFG);
-    puzzle.addClue(d6);
-    d8 = Root66Clue(
+    puzzle.addEntry(d6);
+    d8 = Root66Entry(
         name: 'D8',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'S-A+U^T*(O+I-R)',
         solve: solveBCEFG);
-    puzzle.addClue(d8);
-    d10 = Root66Clue(
+    puzzle.addEntry(d8);
+    d10 = Root66Entry(
         name: 'D10',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '(S(U+D-A)-T)IO+N',
         solve: solveBCEFG);
-    puzzle.addClue(d10);
-    d14 = Root66Clue(
+    puzzle.addEntry(d10);
+    d14 = Root66Entry(
         name: 'D14',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'R-(A+I+N+O-U^T)S',
         solve: solveBCEFG);
-    puzzle.addClue(d14);
-    d15 = Root66Clue(
+    puzzle.addEntry(d14);
+    d15 = Root66Entry(
         name: 'D15',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: '((N+U)^T+RI+S+O+D)A',
         solve: solveBCEFG);
-    puzzle.addClue(d15);
-    d16 = Root66Clue(
+    puzzle.addEntry(d15);
+    d16 = Root66Entry(
         name: 'D16',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'R(O(√D-A+UST)-I+N)',
         solve: solveBCEFG);
-    puzzle.addClue(d16);
-    d17 = Root66Clue(
+    puzzle.addEntry(d16);
+    d17 = Root66Entry(
         name: 'D17',
         length: 4,
         type: Root66ClueType.UNKNOWN,
         valueDesc: 'A(S^T+OU+N)+D',
         solve: solveBCEFG);
-    puzzle.addClue(d17);
+    puzzle.addEntry(d17);
 
     puzzle.addDigitIdentityFromGrid();
 
@@ -318,7 +317,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     // G = BE+66*CF, so 17<=CF<=72 and 1234<=G<=4794
     // C, F >= 2
     for (var clue in puzzle.clues.values) {
-      if (clue.type == Root66ClueType.BCEFG) {
+      if ((clue as Root66Entry).type == Root66ClueType.BCEFG) {
         clue.digits[1].remove(1);
         clue.digits[3].remove(1);
         clue.digits[4].removeAll([5, 6, 7, 8, 9]);
@@ -380,7 +379,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
   // Filter values for BCEF or G values
   bool validValue(VariableClue variableClue, int value, List<String> variables,
       List<int> values) {
-    var clue = variableClue as Root66Clue;
+    var clue = variableClue as Root66Entry;
     var valid = false;
     if (clue.type == Root66ClueType.BCEFG) {
       valid = validBCEFG.containsKey(value);
@@ -410,7 +409,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     Set<int> possibleValue,
     Map<String, Set<int>> possibleVariables,
   ) {
-    var clue = variableClue as Root66Clue;
+    var clue = variableClue as Root66Entry;
     var candidateValues = <int>{};
     // Normal clues have expression
     if (clue.type != Root66ClueType.BCEFG) {
@@ -454,7 +453,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
 
   // Override solveClue to manage preValues
   bool solveClue(Clue inputClue) {
-    var clue = inputClue as Root66Clue;
+    var clue = inputClue as Root66Entry;
     // If clue solved already then skip it
     if (clue.values != null && clue.values!.length == 1) return false;
 

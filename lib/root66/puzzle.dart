@@ -9,7 +9,8 @@ class Root66Variable extends Variable {
   String get letter => this.name;
 }
 
-class Root66Puzzle extends VariablePuzzle<Root66Clue, Root66Variable> {
+class Root66Puzzle
+    extends VariablePuzzle<Root66Clue, Root66Entry, Root66Variable> {
   // Puzzle has Prime variables that are restricted to two digit primes
   Root66Puzzle() : super(List.from({1, 2, 3, 4, 5, 6, 7, 8, 9}));
   Root66Puzzle.grid(List<String> gridString)
@@ -26,7 +27,7 @@ class Root66Puzzle extends VariablePuzzle<Root66Clue, Root66Variable> {
       print("ITERATE SOLUTIONS-----------------------------");
       // Find ambiguous clues
       for (var clue in this.clues.values) {
-        if (clue.type == Root66ClueType.BCEFG &&
+        if ((clue).type == Root66ClueType.BCEFG &&
             clue.values != null &&
             clue.values!.length > 1) {
           var values = clue.values!;

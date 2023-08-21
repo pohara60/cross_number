@@ -9,3 +9,14 @@ class FrequencyClue extends Clue {
     solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 }
+
+class FrequencyEntry extends FrequencyClue with EntryMixin {
+  FrequencyEntry({
+    required name,
+    required length,
+    valueDesc,
+    solve,
+  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    initEntry(this);
+  }
+}

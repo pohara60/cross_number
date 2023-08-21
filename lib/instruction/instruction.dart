@@ -75,226 +75,224 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     99
   ];
 
-  late final InstructionClue a1;
-  late final InstructionClue a3;
-  late final InstructionClue a7;
-  late final InstructionClue a9;
-  late final InstructionClue a10;
-  late final InstructionClue a11;
-  late final InstructionClue a13;
-  late final InstructionClue a14;
-  late final InstructionClue a17;
-  late final InstructionClue a19;
-  late final InstructionClue a20;
-  late final InstructionClue a23;
-  late final InstructionClue a25;
-  late final InstructionClue a26;
-  late final InstructionClue a28;
-  late final InstructionClue a29;
+  late final InstructionEntry a1;
+  late final InstructionEntry a3;
+  late final InstructionEntry a7;
+  late final InstructionEntry a9;
+  late final InstructionEntry a10;
+  late final InstructionEntry a11;
+  late final InstructionEntry a13;
+  late final InstructionEntry a14;
+  late final InstructionEntry a17;
+  late final InstructionEntry a19;
+  late final InstructionEntry a20;
+  late final InstructionEntry a23;
+  late final InstructionEntry a25;
+  late final InstructionEntry a26;
+  late final InstructionEntry a28;
+  late final InstructionEntry a29;
 
-  late final InstructionClue d1;
-  late final InstructionClue d2;
-  late final InstructionClue d3;
-  late final InstructionClue d4;
-  late final InstructionClue d5;
-  late final InstructionClue d6;
-  late final InstructionClue d8;
-  late final InstructionClue d11;
-  late final InstructionClue d12;
-  late final InstructionClue d13;
-  late final InstructionClue d15;
-  late final InstructionClue d16;
-  late final InstructionClue d18;
-  late final InstructionClue d19;
-  late final InstructionClue d20;
-  late final InstructionClue d21;
-  late final InstructionClue d22;
-  late final InstructionClue d24;
-  late final InstructionClue d25;
-  late final InstructionClue d27;
+  late final InstructionEntry d1;
+  late final InstructionEntry d2;
+  late final InstructionEntry d3;
+  late final InstructionEntry d4;
+  late final InstructionEntry d5;
+  late final InstructionEntry d6;
+  late final InstructionEntry d8;
+  late final InstructionEntry d11;
+  late final InstructionEntry d12;
+  late final InstructionEntry d13;
+  late final InstructionEntry d15;
+  late final InstructionEntry d16;
+  late final InstructionEntry d18;
+  late final InstructionEntry d19;
+  late final InstructionEntry d20;
+  late final InstructionEntry d21;
+  late final InstructionEntry d22;
+  late final InstructionEntry d24;
+  late final InstructionEntry d25;
+  late final InstructionEntry d27;
 
   void initCrossnumber() {
-    puzzle.clues = {};
-
-    a1 = InstructionClue(
+    a1 = InstructionEntry(
         name: 'A1',
         length: 3,
         valueDesc: 'Triangular number with a triangular DP',
         solve: solveA1);
-    puzzle.addClue(a1);
-    a3 = InstructionClue(
+    puzzle.addEntry(a1);
+    a3 = InstructionEntry(
         name: 'A3',
         length: 3,
         valueDesc: 'Square number with a square DS',
         solve: solveA3);
-    puzzle.addClue(a3);
-    a7 = InstructionClue(
+    puzzle.addEntry(a3);
+    a7 = InstructionEntry(
         name: 'A7', length: 2, valueDesc: 'DS is half of D21', solve: solveA7);
-    puzzle.addClue(a7);
-    a9 = InstructionClue(
+    puzzle.addEntry(a7);
+    a9 = InstructionEntry(
         name: 'A9', length: 2, valueDesc: 'D18+26', solve: solveA9);
-    puzzle.addClue(a9);
-    a10 = InstructionClue(
+    puzzle.addEntry(a9);
+    a10 = InstructionEntry(
         name: 'A10', length: 2, valueDesc: 'Palindrome', solve: solveA10);
-    puzzle.addClue(a10);
-    a11 = InstructionClue(
+    puzzle.addEntry(a10);
+    a11 = InstructionEntry(
         name: 'A11', length: 4, valueDesc: 'DS equals D21', solve: solveA11);
-    puzzle.addClue(a11);
-    a13 = InstructionClue(
+    puzzle.addEntry(a11);
+    a13 = InstructionEntry(
         name: 'A13',
         length: 2,
         valueDesc: 'Digits have opposite parity and DP equals another entry',
         solve: solveA13);
-    puzzle.addClue(a13);
-    a14 = InstructionClue(
+    puzzle.addEntry(a13);
+    a14 = InstructionEntry(
         name: 'A14',
         length: 3,
         valueDesc:
             'Consecutive odd digits in ascending or descending order, with triangular DP',
         solve: solveA14);
-    puzzle.addClue(a14);
-    a17 = InstructionClue(
+    puzzle.addEntry(a14);
+    a17 = InstructionEntry(
         name: 'A17', length: 3, valueDesc: 'DS is triangular', solve: solveA17);
-    puzzle.addClue(a17);
-    a19 = InstructionClue(
+    puzzle.addEntry(a17);
+    a19 = InstructionEntry(
         name: 'A19', length: 2, valueDesc: 'DP equals D21', solve: solveA19);
-    puzzle.addClue(a19);
-    a20 = InstructionClue(
+    puzzle.addEntry(a19);
+    a20 = InstructionEntry(
         name: 'A20',
         length: 4,
         valueDesc: 'Prime whose DP is square and DS is a factor of D13',
         solve: solveA20);
-    puzzle.addClue(a20);
-    a23 = InstructionClue(
+    puzzle.addEntry(a20);
+    a23 = InstructionEntry(
         name: 'A23',
         length: 2,
         valueDesc: 'Palindromic prime',
         solve: solveA23);
-    puzzle.addClue(a23);
-    a25 = InstructionClue(
+    puzzle.addEntry(a23);
+    a25 = InstructionEntry(
         name: 'A25', length: 2, valueDesc: 'Prime', solve: solveA25);
-    puzzle.addClue(a25);
-    a26 = InstructionClue(
+    puzzle.addEntry(a25);
+    a26 = InstructionEntry(
         name: 'A26', length: 2, valueDesc: 'DP is a cube', solve: solveA26);
-    puzzle.addClue(a26);
-    a28 = InstructionClue(
+    puzzle.addEntry(a26);
+    a28 = InstructionEntry(
         name: 'A28', length: 3, valueDesc: 'DP equals 180', solve: solveA28);
-    puzzle.addClue(a28);
-    a29 = InstructionClue(
+    puzzle.addEntry(a28);
+    a29 = InstructionEntry(
         name: 'A29',
         length: 3,
         valueDesc: 'DS equals D21 and DP is a cube',
         solve: solveA29);
-    puzzle.addClue(a29);
+    puzzle.addEntry(a29);
 
-    d1 = InstructionClue(
+    d1 = InstructionEntry(
         name: 'D1',
         length: 2,
         valueDesc: '(DS+DP) is an odd multiple of 5',
         solve: solveD1);
-    puzzle.addClue(d1);
-    d2 = InstructionClue(
+    puzzle.addEntry(d1);
+    d2 = InstructionEntry(
         name: 'D2',
         length: 3,
         valueDesc: 'Palindrome and multiple of 5 with MP of 2',
         solve: solveD2);
-    puzzle.addClue(d2);
-    d3 = InstructionClue(
+    puzzle.addEntry(d2);
+    d3 = InstructionEntry(
         name: 'D3', length: 3, valueDesc: 'A3 plus or minus 3', solve: solveD3);
-    puzzle.addClue(d3);
-    d4 = InstructionClue(
+    puzzle.addEntry(d3);
+    d4 = InstructionEntry(
         name: 'D4',
         length: 2,
         valueDesc: 'Greater than D8 and DS equals another entry',
         solve: solveD4);
-    puzzle.addClue(d4);
-    d5 = InstructionClue(
+    puzzle.addEntry(d4);
+    d5 = InstructionEntry(
         name: 'D5', length: 2, valueDesc: '2 times a square', solve: solveD5);
-    puzzle.addClue(d5);
-    d6 = InstructionClue(
+    puzzle.addEntry(d5);
+    d6 = InstructionEntry(
         name: 'D6',
         length: 3,
         valueDesc: 'Has 8 factors including 1 and itself',
         solve: solveD6);
-    puzzle.addClue(d6);
-    d8 = InstructionClue(
+    puzzle.addEntry(d6);
+    d8 = InstructionEntry(
         name: 'D8',
         length: 2,
         valueDesc: 'Square pyramidal number (ie, sum of the first n squares)',
         solve: solveD8);
-    puzzle.addClue(d8);
-    d11 = InstructionClue(
+    puzzle.addEntry(d8);
+    d11 = InstructionEntry(
         name: 'D11', length: 2, valueDesc: 'Square', solve: solveD11);
-    puzzle.addClue(d11);
-    d12 = InstructionClue(
+    puzzle.addEntry(d11);
+    d12 = InstructionEntry(
         name: 'D12',
         length: 2,
         valueDesc: 'DP is a single-digit even number',
         solve: solveD12);
-    puzzle.addClue(d12);
-    d13 = InstructionClue(
+    puzzle.addEntry(d12);
+    d13 = InstructionEntry(
         name: 'D13', length: 2, valueDesc: 'Multiple of 7', solve: solveD13);
-    puzzle.addClue(d13);
-    d15 = InstructionClue(
+    puzzle.addEntry(d13);
+    d15 = InstructionEntry(
         name: 'D15',
         length: 2,
         valueDesc: 'DP equals another entry',
         solve: solveD15);
-    puzzle.addClue(d15);
-    d16 = InstructionClue(
+    puzzle.addEntry(d15);
+    d16 = InstructionEntry(
         name: 'D16', length: 2, valueDesc: 'Prime', solve: solveD16);
-    puzzle.addClue(d16);
-    d18 = InstructionClue(
+    puzzle.addEntry(d16);
+    d18 = InstructionEntry(
         name: 'D18',
         length: 2,
         valueDesc: 'Lucky and happy number',
         solve: solveD18);
-    puzzle.addClue(d18);
-    d19 = InstructionClue(
+    puzzle.addEntry(d18);
+    d19 = InstructionEntry(
         name: 'D19',
         length: 3,
         valueDesc: 'DP equals another entry',
         solve: solveD19);
-    puzzle.addClue(d19);
-    d20 = InstructionClue(
+    puzzle.addEntry(d19);
+    d20 = InstructionEntry(
         name: 'D20',
         length: 3,
         valueDesc: '(DS + DP) is a multiple of D21',
         solve: solveD20);
-    puzzle.addClue(d20);
-    d21 = InstructionClue(
+    puzzle.addEntry(d20);
+    d21 = InstructionEntry(
         name: 'D21', length: 2, valueDesc: 'Multiple of 10', solve: solveD21);
-    puzzle.addClue(d21);
-    d22 = InstructionClue(
+    puzzle.addEntry(d21);
+    d22 = InstructionEntry(
         name: 'D22',
         length: 3,
         valueDesc: 'DP is a power of 2',
         solve: solveD22);
-    puzzle.addClue(d22);
-    d24 = InstructionClue(
+    puzzle.addEntry(d22);
+    d24 = InstructionEntry(
         name: 'D24', length: 2, valueDesc: 'DP is square', solve: solveD24);
-    puzzle.addClue(d24);
-    d25 = InstructionClue(
+    puzzle.addEntry(d24);
+    d25 = InstructionEntry(
         name: 'D25', length: 2, valueDesc: 'Lucky number', solve: solveD25);
-    puzzle.addClue(d25);
-    d27 = InstructionClue(
+    puzzle.addEntry(d25);
+    d27 = InstructionEntry(
         name: 'D27', length: 2, valueDesc: 'Fibonacci number', solve: solveD27);
-    puzzle.addClue(d27);
+    puzzle.addEntry(d27);
 
     // D8 references all other cells!
     puzzle.addDigitIdentityFromGrid();
-    puzzle.addReference(a7, d21, true);
-    puzzle.addReference(a9, d18, true);
-    puzzle.addReference(a11, d21, true);
-    puzzle.addReference(a19, d21, true);
-    puzzle.addReference(a20, d13, true);
-    puzzle.addReference(a29, d21, true);
-    puzzle.addReference(d3, a3, true);
-    puzzle.addReference(d4, d8, true);
+    puzzle.addClueReference(a7, d21, true);
+    puzzle.addClueReference(a9, d18, true);
+    puzzle.addClueReference(a11, d21, true);
+    puzzle.addClueReference(a19, d21, true);
+    puzzle.addClueReference(a20, d13, true);
+    puzzle.addClueReference(a29, d21, true);
+    puzzle.addClueReference(d3, a3, true);
+    puzzle.addClueReference(d4, d8, true);
     // d4 refers all
     // d15 refers all
     // d19 refers all
-    puzzle.addReference(d20, d21, false);
+    puzzle.addClueReference(d20, d21, false);
     // printReferences();
 
     super.initCrossnumber();
@@ -316,7 +314,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   static void filterDigits(
-      InstructionClue clue, List<int> values, Set<int> possibleValue) {
+      InstructionEntry clue, List<int> values, Set<int> possibleValue) {
     var filtered = <int>[];
     for (var value in values) {
       // Check digits permissible
@@ -331,7 +329,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   List<int> solveConstraintValues(
-      InstructionClue clue,
+      InstructionEntry clue,
       Set<int> possibleValue,
       List<int> Function() getValues,
       int Function(int) getConstraintValue,
@@ -354,7 +352,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   bool solveConstraint(
-      InstructionClue clue,
+      InstructionEntry clue,
       Set<int> possibleValue,
       List<int> Function() getValues,
       int Function(int) getConstraintValue,
@@ -371,7 +369,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   bool solveDPConstraint(
-      InstructionClue clue,
+      InstructionEntry clue,
       Set<int> possibleValue,
       List<int> Function() getValues,
       List<int> Function(int, int) getDPValues) {
@@ -379,7 +377,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   bool solveDSConstraint(
-      InstructionClue clue,
+      InstructionEntry clue,
       Set<int> possibleValue,
       List<int> Function() getValues,
       List<int> Function(int, int) getDSValues) {
@@ -387,7 +385,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   List<int> solveClueValues(
-      InstructionClue clue, Set<int> possibleValue, bool Function(int) valueOK,
+      InstructionEntry clue, Set<int> possibleValue, bool Function(int) valueOK,
       [Iterable<int>? clueValues]) {
     var values = <int>[];
     for (var value in clue.getValues(() => clueValues ?? clue.range)) {
@@ -399,7 +397,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   bool solveClueValue(
-      InstructionClue clue, Set<int> possibleValue, bool Function(int) valueOK,
+      InstructionEntry clue, Set<int> possibleValue, bool Function(int) valueOK,
       [Iterable<int>? clueValues]) {
     var values = solveClueValues(clue, possibleValue, valueOK, clueValues);
     filterDigits(clue, values, possibleValue);
@@ -407,8 +405,8 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   }
 
   List<int> solveOtherClueValues(
-      InstructionClue clue,
-      InstructionClue otherClue,
+      InstructionEntry clue,
+      InstructionEntry otherClue,
       Set<int> possibleValue,
       List<int> Function(int) getOtherValues,
       [Iterable<int>? clueValues]) {
@@ -435,7 +433,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return <int>[];
   }
 
-  bool solveOtherClueValue(InstructionClue clue, InstructionClue otherClue,
+  bool solveOtherClueValue(InstructionEntry clue, InstructionEntry otherClue,
       Set<int> possibleValue, List<int> Function(int) otherValues,
       [Iterable<int>? clueValues]) {
     if (otherClue.values != null) {
@@ -446,11 +444,11 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool clueLimitedValues(InstructionClue clue) =>
+  bool clueLimitedValues(InstructionEntry clue) =>
       clue.values != null && clue.values!.length <= 10;
 
   bool solveValueOtherClueValue(
-      InstructionClue clue, Set<int> possibleValue, int Function(int) getValue,
+      InstructionEntry clue, Set<int> possibleValue, int Function(int) getValue,
       [Iterable<int>? clueValues]) {
     var otherClues =
         puzzle.clues.values.where((other) => other != clue).toList();
@@ -466,55 +464,55 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     }, clueValues);
   }
 
-  bool solveDPOtherClueValue(InstructionClue clue, Set<int> possibleValue,
+  bool solveDPOtherClueValue(InstructionEntry clue, Set<int> possibleValue,
       [Iterable<int>? clueValues]) {
     return solveValueOtherClueValue(clue, possibleValue, dp, clueValues);
   }
 
-  bool solveDSOtherClueValue(InstructionClue clue, Set<int> possibleValue,
+  bool solveDSOtherClueValue(InstructionEntry clue, Set<int> possibleValue,
       [Iterable<int>? clueValues]) {
     return solveValueOtherClueValue(clue, possibleValue, ds, clueValues);
   }
 
-  bool solveA1(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA1(InstructionEntry clue, Set<int> possibleValue) {
     /* Triangular number with a triangular DP, 3 digits */
     return solveDPConstraint(
         clue, possibleValue, getThreeDigitTriangles, getTrianglesInRange);
   }
 
-  bool solveA3(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA3(InstructionEntry clue, Set<int> possibleValue) {
     /* Square number with a square DS, 3 digits */
     var values = clue.getValues(getThreeDigitSquares);
     return solveDSConstraint(
         clue, possibleValue, () => values, getSquaresInRange);
   }
 
-  bool solveA7(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA7(InstructionEntry clue, Set<int> possibleValue) {
     /* DS is half of D21, 2 digits */
     return solveOtherClueValue(
         clue, d21, possibleValue, (value) => [ds(value) * 2]);
   }
 
-  bool solveA9(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA9(InstructionEntry clue, Set<int> possibleValue) {
     /* D18+26, 2 digits */
     return solveOtherClueValue(
         clue, d18, possibleValue, (value) => [value - 26]);
   }
 
-  bool solveA10(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA10(InstructionEntry clue, Set<int> possibleValue) {
     /* Palindrome, 2 digits */
     var values = clue.getValues(getTwoDigitPalindromes);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveA11(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA11(InstructionEntry clue, Set<int> possibleValue) {
     /* DS equals D21, 4 digits */
     return solveOtherClueValue(
         clue, d21, possibleValue, (value) => [ds(value)]);
   }
 
-  bool solveA13(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA13(InstructionEntry clue, Set<int> possibleValue) {
     /* Digits have opposite parity and DP equals another entry, 2 digits */
     // Check parity first
     var values = clue.getValues(() => clue.range
@@ -525,7 +523,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return solveDPOtherClueValue(clue, possibleValue, possibleValue);
   }
 
-  bool solveA14(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA14(InstructionEntry clue, Set<int> possibleValue) {
     /* Consecutive odd digits in ascending or descending order, with triangular DP, 3 digits */
     var values = clue.getValues(() => clue.range.where((value) {
           var d1 = value ~/ 100;
@@ -541,19 +539,19 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
         clue, possibleValue, () => values, getTrianglesInRange);
   }
 
-  bool solveA17(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA17(InstructionEntry clue, Set<int> possibleValue) {
     /* DS is triangular, 3 digits */
     return solveDSConstraint(
         clue, possibleValue, getThreeDigitNumbers, getTrianglesInRange);
   }
 
-  bool solveA19(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA19(InstructionEntry clue, Set<int> possibleValue) {
     /* DP equals D21, 2 digits */
     return solveOtherClueValue(
         clue, d21, possibleValue, (value) => [dp(value)]);
   }
 
-  bool solveA20(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA20(InstructionEntry clue, Set<int> possibleValue) {
     /* Prime whose DP is square and DS is a factor of D13, 4 digits */
     // Check parity first
     var values = solveConstraintValues(
@@ -578,33 +576,33 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool solveA23(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA23(InstructionEntry clue, Set<int> possibleValue) {
     /* Palindromic prime, 2 digits */
     var values = <int>[11];
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveA25(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA25(InstructionEntry clue, Set<int> possibleValue) {
     /* Prime, 2 digits */
     var values = clue.getValues(getTwoDigitPrimes);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveA26(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA26(InstructionEntry clue, Set<int> possibleValue) {
     /* DP is a cube, 2 digits */
     return solveDPConstraint(
         clue, possibleValue, getTwoDigitNumbers, getCubesInRange);
   }
 
-  bool solveA28(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA28(InstructionEntry clue, Set<int> possibleValue) {
     /* DP equals 180, 3 digits */
     return solveDPConstraint(
         clue, possibleValue, getThreeDigitNumbers, (lo, hi) => [180]);
   }
 
-  bool solveA29(InstructionClue clue, Set<int> possibleValue) {
+  bool solveA29(InstructionEntry clue, Set<int> possibleValue) {
     /* DS equals D21 and DP is a cube, 3 digits */
     var values = solveConstraintValues(
         clue, possibleValue, getThreeDigitNumbers, dp, getCubesInRange);
@@ -616,7 +614,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool solveD1(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD1(InstructionEntry clue, Set<int> possibleValue) {
     /* (DS+DP) is an odd multiple of 5, 2 digits */
     return solveClueValue(
       clue,
@@ -628,7 +626,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     );
   }
 
-  bool solveD2(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD2(InstructionEntry clue, Set<int> possibleValue) {
     /* Palindrome and multiple of 5 with MP of 2, 3 digits */
     var values = clue.getValues(getThreeDigitPalindromes);
     return solveClueValue(
@@ -639,13 +637,13 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     );
   }
 
-  bool solveD3(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD3(InstructionEntry clue, Set<int> possibleValue) {
     /* A3 plus or minus 3, 3 digits */
     return solveOtherClueValue(
         clue, a3, possibleValue, (value) => [value - 3, value + 3]);
   }
 
-  bool solveD4(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD4(InstructionEntry clue, Set<int> possibleValue) {
     /* Greater than D8 and DS equals another entry, 2 digits */
     if (d8.values != null) {
       var minValue = d8.values!.reduce(min) + 1;
@@ -662,14 +660,14 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool solveD5(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD5(InstructionEntry clue, Set<int> possibleValue) {
     /* 2 times a square, 2 digits */
     var values = clue.getValues(() => <int>[18, 32, 50, 72, 98]);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveD6(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD6(InstructionEntry clue, Set<int> possibleValue) {
     /* Has 8 factors including 1 and itself, 3 digits */
     return solveClueValue(
       clue,
@@ -685,7 +683,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     );
   }
 
-  bool solveD8(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD8(InstructionEntry clue, Set<int> possibleValue) {
     /* Square pyramidal number (ie, sum of the first n squares), 2 digits */
     var values = clue.getValues(getTwoDigitPyramidal);
     filterDigits(clue, values, possibleValue);
@@ -693,14 +691,14 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     // puzzle.addReference(d4, d8, true);
   }
 
-  bool solveD11(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD11(InstructionEntry clue, Set<int> possibleValue) {
     /* Square, 2 digits */
     var values = clue.getValues(getTwoDigitSquares);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveD12(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD12(InstructionEntry clue, Set<int> possibleValue) {
     /* DP is a single-digit even number, 2 digits */
     return solveClueValue(
       clue,
@@ -712,7 +710,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     );
   }
 
-  bool solveD13(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD13(InstructionEntry clue, Set<int> possibleValue) {
     /* Multiple of 7, 2 digits */
     var values = clue.getValues(
         () => clue.range.where((value) => (value % 7) == 0).toList());
@@ -720,19 +718,19 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool solveD15(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD15(InstructionEntry clue, Set<int> possibleValue) {
     /* DP equals another entry, 2 digits */
     return solveDPOtherClueValue(clue, possibleValue, clue.values);
   }
 
-  bool solveD16(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD16(InstructionEntry clue, Set<int> possibleValue) {
     /* Prime, 2 digits */
     var values = clue.getValues(getTwoDigitPrimes);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveD18(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD18(InstructionEntry clue, Set<int> possibleValue) {
     /* Lucky and happy number, 2 digits */
     var values = clue.getValues(() =>
         LuckyNumbers.where((element) => HappyNumbers.contains(element))
@@ -742,12 +740,12 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     // puzzle.addReference(a9, d18, true);
   }
 
-  bool solveD19(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD19(InstructionEntry clue, Set<int> possibleValue) {
     /* DP equals another entry, 3 digits */
     return solveDPOtherClueValue(clue, possibleValue, clue.values);
   }
 
-  bool solveD20(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD20(InstructionEntry clue, Set<int> possibleValue) {
     /* (DS + DP) is a multiple of D21, 3 digits */
     if (d21.values != null) {
       return solveClueValue(
@@ -764,7 +762,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool solveD21(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD21(InstructionEntry clue, Set<int> possibleValue) {
     // Multiple of 10, 2 digits
     var values =
         clue.getValues(() => <int>[10, 20, 30, 40, 50, 60, 70, 80, 90]);
@@ -772,27 +770,27 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return false;
   }
 
-  bool solveD22(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD22(InstructionEntry clue, Set<int> possibleValue) {
     /* DP is a power of 2, 3 digits */
     var getPowers = (lo, hi) => getPowersInRange(lo, hi, 2, 0);
     return solveDPConstraint(
         clue, possibleValue, getThreeDigitNumbers, getPowers);
   }
 
-  bool solveD24(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD24(InstructionEntry clue, Set<int> possibleValue) {
     /* DP is square, 2 digits */
     return solveDPConstraint(
         clue, possibleValue, getTwoDigitNumbers, getSquaresInRange);
   }
 
-  bool solveD25(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD25(InstructionEntry clue, Set<int> possibleValue) {
     /* Lucky number, 2 digits */
     var values = clue.getValues(() => LuckyNumbers);
     filterDigits(clue, values, possibleValue);
     return false;
   }
 
-  bool solveD27(InstructionClue clue, Set<int> possibleValue) {
+  bool solveD27(InstructionEntry clue, Set<int> possibleValue) {
     /* Fibonacci number, 2 digits */
     var values = clue.getValues(getTwoDigitFibonacci);
     filterDigits(clue, values, possibleValue);

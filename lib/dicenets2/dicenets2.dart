@@ -38,13 +38,12 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
 
   @override
   void initCrossnumber() {
-    puzzle.clues = {};
     var clueErrors = '';
     void clueWrapper({String? name, int? length, String? valueDesc, solve}) {
       try {
-        var clue = DiceNetsClue(
+        var clue = DiceNetsEntry(
             name: name, length: length, valueDesc: valueDesc, solve: solve);
-        puzzle.addClue(clue);
+        puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
         clueErrors += e.msg + '\n';

@@ -122,6 +122,20 @@ Need to add other clues as variables in expressions.
 - Clues are variables
 - Expression parsing should add clue variable reference, and clue cross-reference
 
+## Unspecified Clue Numbers
+
+The No21 puzzle has these unusual characteristics:
+- The clue numbers are not specified
+- The clues are presented in increasing order of value
+- Some grid cells have two digits, the clue length specifies number of cells (not digits)
+
+Enhancements:
+- Seperate Grid Entry and Clue, with mapping between them
+- This could support separate clue and entry values
+- Grid Entry has length, digits, values
+- Clue has length, min, max, values
+
+
 ## Generic Puzzle (Future)
 
 A bigger feature is to allow generic specification of a puzzle, with:
@@ -136,3 +150,4 @@ GUI to:
 
 1. Allow specification of puzzle
 2. Show steps in solution of puzzle
+

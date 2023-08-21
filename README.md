@@ -52,12 +52,13 @@ The implementation of a specific puzzle includes these steps:
     -   Either:
          - Use generic expression solver - this will often need a clue value validation function, or 
          - Define solve functions for each clue, implementing the clue logic
--   Extend the Clue class
+-   Extend the Clue class to define puzzle-specific Clue and Entry classes
     -   Define the puzzle clue, may restict its possible values
     -   If the puzzle has variables, extend the VariableClue class
     -   If the puzzle has the generic expression solver, extend the ExpressionClue class
+    -   puzzle entry is the clue with EntryMixin
 -   Extend the Puzzle class
-    -   Specify the puzzle Clue class
+    -   Specify the puzzle Clue and Entry classes
     -   If the puzzle has variables, or using the generic expression solver, extend the VariablePuzzle class
 
 It is recommended to use the generic expression solver for simple puzzles, with or without variables. Less common puzzles require custom logic, e.g. 

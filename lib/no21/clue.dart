@@ -1,8 +1,8 @@
 import 'package:crossnumber/clue.dart';
 
-/// A [DiceNetsPuzzle] clue
-class DiceNetsClue extends ExpressionClue {
-  DiceNetsClue({
+/// A [InstructionPuzzle] clue
+class No21Clue extends ExpressionClue {
+  No21Clue({
     required name,
     required length,
     valueDesc,
@@ -10,8 +10,8 @@ class DiceNetsClue extends ExpressionClue {
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 }
 
-class DiceNetsEntry extends DiceNetsClue with EntryMixin {
-  DiceNetsEntry({
+class No21Entry extends No21Clue with EntryMixin {
+  No21Entry({
     required name,
     required length,
     valueDesc,

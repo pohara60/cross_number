@@ -10,78 +10,76 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     initCrossnumber();
   }
 
-  late final DistancingClue a1;
-  late final DistancingClue a3;
-  late final DistancingClue a6;
-  late final DistancingClue a9;
-  late final DistancingClue a12;
-  late final DistancingClue a13;
+  late final DistancingEntry a1;
+  late final DistancingEntry a3;
+  late final DistancingEntry a6;
+  late final DistancingEntry a9;
+  late final DistancingEntry a12;
+  late final DistancingEntry a13;
 
-  late final DistancingClue d1;
-  late final DistancingClue d2;
-  late final DistancingClue d4;
-  late final DistancingClue d5;
-  late final DistancingClue d7;
-  late final DistancingClue d8;
-  late final DistancingClue d9;
-  late final DistancingClue d10;
-  late final DistancingClue d11;
+  late final DistancingEntry d1;
+  late final DistancingEntry d2;
+  late final DistancingEntry d4;
+  late final DistancingEntry d5;
+  late final DistancingEntry d7;
+  late final DistancingEntry d8;
+  late final DistancingEntry d9;
+  late final DistancingEntry d10;
+  late final DistancingEntry d11;
 
   void initCrossnumber() {
-    puzzle.clues = {};
-
-    a1 = DistancingClue(
+    a1 = DistancingEntry(
         name: 'A1', length: 2, valueDesc: 'Square', solve: solveA1);
-    puzzle.addClue(a1);
-    a3 = DistancingClue(
+    puzzle.addEntry(a1);
+    a3 = DistancingEntry(
         name: 'A3', length: 3, valueDesc: 'Square', solve: solveA3);
-    puzzle.addClue(a3);
-    a6 = DistancingClue(
+    puzzle.addEntry(a3);
+    a6 = DistancingEntry(
         name: 'A6', length: 3, valueDesc: 'Prime', solve: solveA6);
-    puzzle.addClue(a6);
-    a9 = DistancingClue(
+    puzzle.addEntry(a6);
+    a9 = DistancingEntry(
         name: 'A9', length: 3, valueDesc: 'Square', solve: solveA9);
-    puzzle.addClue(a9);
-    a12 = DistancingClue(
+    puzzle.addEntry(a9);
+    a12 = DistancingEntry(
         name: 'A12', length: 3, valueDesc: 'Triangular', solve: solveA12);
-    puzzle.addClue(a12);
-    a13 = DistancingClue(
+    puzzle.addEntry(a12);
+    a13 = DistancingEntry(
         name: 'A13', length: 2, valueDesc: 'Lucas', solve: solveA13);
-    puzzle.addClue(a13);
+    puzzle.addEntry(a13);
 
-    d1 = DistancingClue(
+    d1 = DistancingEntry(
         name: 'D1', length: 2, valueDesc: 'Prime', solve: solveD1);
-    puzzle.addClue(d1);
-    d2 = DistancingClue(
+    puzzle.addEntry(d1);
+    d2 = DistancingEntry(
         name: 'D2', length: 2, valueDesc: 'Prime', solve: solveD2);
-    puzzle.addClue(d2);
-    d4 = DistancingClue(
+    puzzle.addEntry(d2);
+    d4 = DistancingEntry(
         name: 'D4', length: 2, valueDesc: 'Cube', solve: solveD4);
-    puzzle.addClue(d4);
-    d5 = DistancingClue(
+    puzzle.addEntry(d4);
+    d5 = DistancingEntry(
         name: 'D5', length: 2, valueDesc: 'Triangular', solve: solveD5);
-    puzzle.addClue(d5);
-    d7 = DistancingClue(
+    puzzle.addEntry(d5);
+    d7 = DistancingEntry(
         name: 'D7', length: 2, valueDesc: 'Lucas', solve: solveD7);
-    puzzle.addClue(d7);
-    d8 = DistancingClue(
+    puzzle.addEntry(d7);
+    d8 = DistancingEntry(
         name: 'D8',
         length: 2,
         valueDesc: 'Prime, digit product = another entry',
         solve: solveD8);
-    puzzle.addClue(d8);
-    d9 = DistancingClue(
+    puzzle.addEntry(d8);
+    d9 = DistancingEntry(
         name: 'D9', length: 2, valueDesc: 'Triangular', solve: solveD9);
-    puzzle.addClue(d9);
-    d10 = DistancingClue(
+    puzzle.addEntry(d9);
+    d10 = DistancingEntry(
         name: 'D10', length: 2, valueDesc: 'Square', solve: solveD10);
-    puzzle.addClue(d10);
-    d11 = DistancingClue(
+    puzzle.addEntry(d10);
+    d11 = DistancingEntry(
         name: 'D11',
         length: 2,
         valueDesc: 'Prime = sum of digits',
         solve: solveD11);
-    puzzle.addClue(d11);
+    puzzle.addEntry(d11);
 
     puzzle.addDigitIdentity(a1, 1, d1, 1);
     puzzle.addDigitIdentity(a1, 2, d2, 1);
@@ -99,36 +97,36 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     puzzle.addDigitIdentity(a13, 2, d11, 2);
 
     // D8 references all other cells!
-    puzzle.addReference(d8, a1, false);
-    puzzle.addReference(d8, a3, false);
-    puzzle.addReference(d8, a6, false);
-    puzzle.addReference(d8, a9, false);
-    puzzle.addReference(d8, a12, false);
-    puzzle.addReference(d8, a13, false);
-    puzzle.addReference(d8, d1, false);
-    puzzle.addReference(d8, d2, false);
-    puzzle.addReference(d8, d4, false);
-    puzzle.addReference(d8, d5, false);
-    puzzle.addReference(d8, d7, false);
-    puzzle.addReference(d8, d9, false);
-    puzzle.addReference(d8, d10, false);
-    puzzle.addReference(d8, d11, false);
+    puzzle.addClueReference(d8, a1, false);
+    puzzle.addClueReference(d8, a3, false);
+    puzzle.addClueReference(d8, a6, false);
+    puzzle.addClueReference(d8, a9, false);
+    puzzle.addClueReference(d8, a12, false);
+    puzzle.addClueReference(d8, a13, false);
+    puzzle.addClueReference(d8, d1, false);
+    puzzle.addClueReference(d8, d2, false);
+    puzzle.addClueReference(d8, d4, false);
+    puzzle.addClueReference(d8, d5, false);
+    puzzle.addClueReference(d8, d7, false);
+    puzzle.addClueReference(d8, d9, false);
+    puzzle.addClueReference(d8, d10, false);
+    puzzle.addClueReference(d8, d11, false);
 
     // D11 references all other cells!
-    puzzle.addReference(d11, a1, false);
-    puzzle.addReference(d11, a3, false);
-    puzzle.addReference(d11, a6, false);
-    puzzle.addReference(d11, a9, false);
-    puzzle.addReference(d11, a12, false);
-    puzzle.addReference(d11, a13, false);
-    puzzle.addReference(d11, d1, false);
-    puzzle.addReference(d11, d2, false);
-    puzzle.addReference(d11, d4, false);
-    puzzle.addReference(d11, d5, false);
-    puzzle.addReference(d11, d7, false);
-    puzzle.addReference(d11, d9, false);
-    puzzle.addReference(d11, d10, false);
-    puzzle.addReference(d11, d11, false);
+    puzzle.addClueReference(d11, a1, false);
+    puzzle.addClueReference(d11, a3, false);
+    puzzle.addClueReference(d11, a6, false);
+    puzzle.addClueReference(d11, a9, false);
+    puzzle.addClueReference(d11, a12, false);
+    puzzle.addClueReference(d11, a13, false);
+    puzzle.addClueReference(d11, d1, false);
+    puzzle.addClueReference(d11, d2, false);
+    puzzle.addClueReference(d11, d4, false);
+    puzzle.addClueReference(d11, d5, false);
+    puzzle.addClueReference(d11, d7, false);
+    puzzle.addClueReference(d11, d9, false);
+    puzzle.addClueReference(d11, d10, false);
+    puzzle.addClueReference(d11, d11, false);
 
     super.initCrossnumber();
   }
@@ -152,7 +150,7 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
   }
 
   static void filterDigits(
-      DistancingClue clue, List<int> values, Set<int> possibleValue) {
+      DistancingEntry clue, List<int> values, Set<int> possibleValue) {
     for (var value in values) {
       // Check digits permissible
       if (clue.digitsMatch(value)) {
@@ -163,62 +161,62 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     }
   }
 
-  bool solveA1(DistancingClue clue, Set<int> possibleValue) {
+  bool solveA1(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitSquares(), possibleValue);
     return false;
   }
 
-  bool solveA3(DistancingClue clue, Set<int> possibleValue) {
+  bool solveA3(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getThreeDigitSquares(), possibleValue);
     return false;
   }
 
-  bool solveA6(DistancingClue clue, Set<int> possibleValue) {
+  bool solveA6(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getThreeDigitPrimes(), possibleValue);
     return false;
   }
 
-  bool solveA9(DistancingClue clue, Set<int> possibleValue) {
+  bool solveA9(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getThreeDigitSquares(), possibleValue);
     return false;
   }
 
-  bool solveA12(DistancingClue clue, Set<int> possibleValue) {
+  bool solveA12(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getThreeDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveA13(DistancingClue clue, Set<int> possibleValue) {
+  bool solveA13(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitLucas(), possibleValue);
     return false;
   }
 
-  bool solveD1(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD1(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitPrimes(), possibleValue);
     return false;
   }
 
-  bool solveD2(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD2(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitPrimes(), possibleValue);
     return false;
   }
 
-  bool solveD4(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD4(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitCubes(), possibleValue);
     return false;
   }
 
-  bool solveD5(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD5(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveD7(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD7(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitLucas(), possibleValue);
     return false;
   }
 
-  bool solveD8(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD8(DistancingEntry clue, Set<int> possibleValue) {
     var values = getTwoDigitPrimes();
     // Check Digit Product = Another (non-Prime) Entry
     var otherValues = <int>{};
@@ -241,17 +239,17 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     return false;
   }
 
-  bool solveD9(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD9(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitTriangles(), possibleValue);
     return false;
   }
 
-  bool solveD10(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD10(DistancingEntry clue, Set<int> possibleValue) {
     filterDigits(clue, getTwoDigitSquares(), possibleValue);
     return false;
   }
 
-  bool solveD11(DistancingClue clue, Set<int> possibleValue) {
+  bool solveD11(DistancingEntry clue, Set<int> possibleValue) {
     var values = getTwoDigitPrimes();
     // Check Digit Sum = Sum of Digits in whole grid
     var otherValues = <List<int>>[];

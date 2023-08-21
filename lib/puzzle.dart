@@ -6,8 +6,12 @@ import 'package:crossnumber/grid.dart';
 import 'package:crossnumber/variable.dart';
 import 'package:powers/src/powers.dart';
 
-class Puzzle<ClueKind extends Clue> {
-  late Map<String, ClueKind> clues;
+class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
+  final _clues = <String, ClueKind>{};
+  final _entries = <String, EntryKind>{};
+  Map<String, ClueKind> get clues => _clues.isNotEmpty ? _clues : _entries;
+  Map<String, EntryKind> get entries => _clues.isNotEmpty ? _entries : {};
+
   Grid? grid;
 
   Puzzle() {}
@@ -16,34 +20,47 @@ class Puzzle<ClueKind extends Clue> {
   }
 
   void addClue(ClueKind clue) {
-    clues[clue.name] = clue;
+    _clues[clue.name] = clue;
+  }
+
+  void addEntry(EntryKind entry) {
+    _entries[entry.name] = entry;
   }
 
   // clue1[digit1-1] = clue2[digit2-1]
   void addDigitIdentity(
-      ClueKind clue1, int digit1, ClueKind clue2, int digit2) {
-    clue1.digitIdentities[digit1 - 1] =
-        DigitIdentity(clue: clue2, digit: digit2 - 1);
-    clue2.digitIdentities[digit2 - 1] =
-        DigitIdentity(clue: clue1, digit: digit1 - 1);
-    clue2.addReferrer(clue1);
-    clue1.addReferrer(clue2);
+      EntryMixin entry1, int digit1, EntryMixin entry2, int digit2) {
+    entry1.digitIdentities[digit1 - 1] =
+        DigitIdentity(entry: entry2, digit: digit2 - 1);
+    entry2.digitIdentities[digit2 - 1] =
+        DigitIdentity(entry: entry1, digit: digit1 - 1);
+    entry2.addReferrer(entry1);
+    entry1.addReferrer(entry2);
   }
 
   void addDigitIdentityFromGrid() {
     assert(this.grid != null);
     for (var identity in this.grid!.getIdentities()) {
-      var clue1 = this.clues[identity['clue1']]!;
-      var clue2 = this.clues[identity['clue2']]!;
-      addDigitIdentity(clue1, identity['digit1'], clue2, identity['digit2']);
+      var entry1 = this._entries[identity['entry1']]!;
+      var entry2 = this._entries[identity['entry2']]!;
+      addDigitIdentity(entry1 as EntryMixin, identity['digit1'],
+          entry2 as EntryMixin, identity['digit2']);
     }
   }
 
   /// clue1 refers to clue2
-  void addReference(ClueKind clue1, ClueKind clue2, [bool symmetric = false]) {
+  void addClueReference(Clue clue1, Clue clue2, [bool symmetric = false]) {
     clue2.addReferrer(clue1);
     if (symmetric) {
       clue1.addReferrer(clue2);
+    }
+  }
+
+  /// entry1 refers to entry2
+  void addEntryReference(Clue entry1, Clue entry2, [bool symmetric = false]) {
+    entry2.addReferrer(entry1);
+    if (symmetric) {
+      entry1.addReferrer(entry2);
     }
   }
 
@@ -51,6 +68,9 @@ class Puzzle<ClueKind extends Clue> {
     var text = 'Puzzle\n';
     for (var clue in clues.values) {
       text += clue.toString() + '\n';
+    }
+    for (var entry in entries.values) {
+      text += entry.toString() + '\n';
     }
     return text;
   }
@@ -72,7 +92,7 @@ class Puzzle<ClueKind extends Clue> {
 
   List<int> knownValues = [];
 
-  bool updateValues(ClueKind clue, Set<int> possibleValue) {
+  bool updateValues(Clue clue, Set<int> possibleValue) {
     possibleValue.removeAll(knownValues);
     var updated = clue.updateValues(possibleValue);
     if (possibleValue.length == 1) {
@@ -305,8 +325,8 @@ class SolveException implements Exception {
   SolveException();
 }
 
-class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
-    extends Puzzle<ClueKind> {
+class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
+    VariableKind extends Variable> extends Puzzle<ClueKind, EntryKind> {
   late final VariableList variableList;
   bool get hasVariables => variableList.hasVariables;
 
@@ -333,7 +353,7 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
           clueError +=
               "Clue ${clue1.name} expression '${clue1.valueDesc}' refers to clue '$clueName' which does not exist\n";
         } else {
-          addReference(clue1, clue2);
+          addClueReference(clue1, clue2);
           // Simple circular reference check
           if (clue2.clueReferences.contains(clue1.name)) {
             clue1.circularClueReference = true;
@@ -367,6 +387,13 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     return cartesianCount(variableValues);
   }
 
+  int getEntryCount(VariableEntry clue, List<List<int>> variableValues) {
+    for (var variable in clue.variableReferences) {
+      variableValues.add(this.variables[variable]!.values!.toList());
+    }
+    return cartesianCount(variableValues);
+  }
+
   void updateClueCount(VariableClue clue) {
     var variableValues = <List<int>>[];
     clue.count = getClueCount(clue, variableValues);
@@ -374,14 +401,18 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
 
   // Expression evaluator, supports variables with expression callback
   void solveVariableExpression(
-      VariableClue clue,
+      Clue clue,
       Set<int> possibleValue,
       Map<String, Set<int>> possibleVariables,
       int expression(List<int> variables)) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
-    var count = getClueCount(clue, variableValues);
-    if (count > 1000000) {
+    var count = clue is VariableClue
+        ? getClueCount(clue, variableValues)
+        : clue is VariableEntry
+            ? getEntryCount(clue, variableValues)
+            : null;
+    if (count! > 1000000) {
       if (Crossnumber.traceSolve) {
         print('Func ${clue.name} cartesianCount=$count Exception');
       }

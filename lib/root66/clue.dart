@@ -3,6 +3,7 @@ import 'package:crossnumber/clue.dart';
 enum Root66ClueType { UNKNOWN, BCEF, G, BCEFG }
 
 /// A [Puzzle] clue
+
 class Root66Clue extends ExpressionClue {
   /// Computed - Possible Values before BCEF/G
   Set<int>? preValues;
@@ -53,5 +54,22 @@ class Root66Clue extends ExpressionClue {
             ? '{more than $kLimit}'
             : preValues.toString();
     return 'Clue(name=$name,length=$length,type=$type,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tpreValues=$preValueStr),\n\tdigits=$digits';
+  }
+}
+
+class Root66Entry extends Root66Clue with EntryMixin {
+  Root66Entry({
+    required name,
+    required length,
+    required type,
+    valueDesc,
+    solve,
+  }) : super(
+            name: name,
+            length: length,
+            type: type,
+            valueDesc: valueDesc,
+            solve: solve) {
+    initEntry(this);
   }
 }

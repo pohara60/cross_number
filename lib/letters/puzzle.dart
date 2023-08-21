@@ -9,7 +9,8 @@ class LetterVariable extends Variable {
   String get letter => this.name;
 }
 
-class LettersPuzzle extends VariablePuzzle<LettersClue, LetterVariable> {
+class LettersPuzzle
+    extends VariablePuzzle<LettersClue, LettersEntry, LetterVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   LettersPuzzle() : super(List.from([1, 2, 3, 4, 5, 6, 7, 8, 9]));

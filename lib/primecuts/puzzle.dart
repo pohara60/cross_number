@@ -11,7 +11,8 @@ class PrimeVariable extends Variable {
   String get prime => this.name;
 }
 
-class PrimeCutsPuzzle extends VariablePuzzle<PrimeCutsClue, PrimeVariable> {
+class PrimeCutsPuzzle
+    extends VariablePuzzle<PrimeCutsClue, PrimeCutsEntry, PrimeVariable> {
   // Puzzle has Prime variables that are restricted to two digit primes
   PrimeCutsPuzzle() : super(List.from(twoDigitPrimes));
 
@@ -20,9 +21,9 @@ class PrimeCutsPuzzle extends VariablePuzzle<PrimeCutsClue, PrimeVariable> {
   Set<String> updatePrimes(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 
-  void addClue(Clue inputClue) {
-    var clue = inputClue as PrimeCutsClue;
-    super.addClue(inputClue);
+  void addEntry(Clue inputClue) {
+    var clue = inputClue as PrimeCutsEntry;
+    super.addEntry(inputClue);
     primes[clue.prime] = PrimeVariable(clue.prime);
   }
 }

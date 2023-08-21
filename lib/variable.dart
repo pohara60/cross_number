@@ -43,6 +43,47 @@ class Variable {
   bool get isSet => values != null && values!.length == 1;
 }
 
+class VariableRef {
+  final String name;
+  final String type;
+  Variable? variable;
+  bool get isVariable => type == 'V';
+  bool get isClue => type == 'C';
+
+  VariableRef(this.name, [this.type = 'V']);
+}
+
+class VariableRefList {
+  final _references = <VariableRef>[];
+  List<String> get names => _references.map((r) => r.name).toList();
+  List<String> get variableNames =>
+      _references.where((r) => r.isVariable).map((r) => r.name).toList();
+  List<String> get clueNames =>
+      _references.where((r) => r.isClue).map((r) => r.name).toList();
+  List<Variable> get variables => _references
+      .where((r) => r.isVariable)
+      .map((r) => r.variable as Variable)
+      .toList();
+  List<Clue> get clues => _references
+      .where((r) => r.isClue)
+      .map((r) => r.variable as Clue)
+      .toList();
+
+  addReference(String name, String type) {
+    if (_references.indexWhere((r) => name == r.name) == -1) {
+      _references.add(VariableRef(name, type));
+    }
+  }
+
+  addVariableReference(String name) {
+    addReference(name, 'V');
+  }
+
+  addClueReference(String name) {
+    addReference(name, 'C');
+  }
+}
+
 /// A collection of [Variable]s, with a set of values
 class VariableList<VariableKind extends Variable> {
   final Map<String, VariableKind> variables = {};

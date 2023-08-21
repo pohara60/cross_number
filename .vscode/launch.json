@@ -120,12 +120,12 @@
             ]
         },
         {
-            "name": "cartesian",
-            "program": "lib/letters/cartesian.dart",
+            "name": "test",
+            "program": "test.dart",
             "request": "launch",
             "type": "dart",
             "args": [
-                "cartesian"
+                "test"
             ]
         },
         {

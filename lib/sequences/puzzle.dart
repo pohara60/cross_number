@@ -74,7 +74,8 @@ class SequenceVariable extends Variable {
   String get letter => this.name;
 }
 
-class SequencesPuzzle extends VariablePuzzle<SequencesClue, SequenceVariable> {
+class SequencesPuzzle
+    extends VariablePuzzle<SequencesClue, SequencesEntry, SequenceVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   SequencesPuzzle() : super(List.from(variableValues));

@@ -35,296 +35,295 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   }
 
   void initCrossnumber() {
-    puzzle.clues = {};
-    var a1 = EvenOdderClue(
+    var a1 = EvenOdderEntry(
         name: 'A1',
         length: 4,
         valueDesc: '-M+AS+S!',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a1);
-    var a4 = EvenOdderClue(
+    puzzle.addEntry(a1);
+    var a4 = EvenOdderEntry(
         name: 'A4',
         length: 2,
         valueDesc: 'S+T+R-A-N-G+E',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a4);
-    var a6 = EvenOdderClue(
+    puzzle.addEntry(a4);
+    var a6 = EvenOdderEntry(
         name: 'A6',
         length: 4,
         valueDesc: 'SPIN-O+R',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a6);
-    var a10 = EvenOdderClue(
+    puzzle.addEntry(a6);
+    var a10 = EvenOdderEntry(
         name: 'A10',
         length: 4,
         valueDesc: '-P+AR+T+ICL+E',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a10);
-    var a11 = EvenOdderClue(
+    puzzle.addEntry(a10);
+    var a11 = EvenOdderEntry(
         name: 'A11',
         length: 5,
         valueDesc: '((P+H)(O-N)/O^N)!',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a11);
-    var a12 = EvenOdderClue(
+    puzzle.addEntry(a11);
+    var a12 = EvenOdderEntry(
         name: 'A12',
         length: 2,
         valueDesc: 'A+T+O!+M-I+C',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a12);
-    var a14 = EvenOdderClue(
+    puzzle.addEntry(a12);
+    var a14 = EvenOdderEntry(
         name: 'A14',
         length: 3,
         valueDesc: 'G(A+U+G+E)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a14);
-    var a16 = EvenOdderClue(
+    puzzle.addEntry(a14);
+    var a16 = EvenOdderEntry(
         name: 'A16',
         length: 2,
         valueDesc: 'IO-NS',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a16);
-    var a18 = EvenOdderClue(
+    puzzle.addEntry(a16);
+    var a18 = EvenOdderEntry(
         name: 'A18',
         length: 3,
         valueDesc: 'H-I+GG+S',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a18);
-    var a19 = EvenOdderClue(
+    puzzle.addEntry(a18);
+    var a19 = EvenOdderEntry(
         name: 'A19',
         length: 3,
         valueDesc: 'B(A-R+N)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a19);
-    var a20 = EvenOdderClue(
+    puzzle.addEntry(a19);
+    var a20 = EvenOdderEntry(
         name: 'A20',
         length: 4,
         valueDesc: '(P+L)(AS+M-O!-N)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a20);
-    var a21 = EvenOdderClue(
+    puzzle.addEntry(a20);
+    var a21 = EvenOdderEntry(
         name: 'A21',
         length: 4,
         valueDesc: '-P-OT-E^N+T+IAL',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a21);
-    var a23 = EvenOdderClue(
+    puzzle.addEntry(a21);
+    var a23 = EvenOdderEntry(
         name: 'A23',
         length: 4,
         valueDesc: 'N+E+U-TR+(O-N)S!',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a23);
-    var a25 = EvenOdderClue(
+    puzzle.addEntry(a23);
+    var a25 = EvenOdderEntry(
         name: 'A25',
         length: 4,
         valueDesc: 'T(O!+P)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a25);
-    var a27 = EvenOdderClue(
+    puzzle.addEntry(a25);
+    var a27 = EvenOdderEntry(
         name: 'A27',
         length: 3,
         valueDesc: 'B(O+S+O+N)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a27);
-    var a29 = EvenOdderClue(
+    puzzle.addEntry(a27);
+    var a29 = EvenOdderEntry(
         name: 'A29',
         length: 3,
         valueDesc: 'TU+N-N+E+L',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a29);
-    var a31 = EvenOdderClue(
+    puzzle.addEntry(a29);
+    var a31 = EvenOdderEntry(
         name: 'A31',
         length: 2,
         valueDesc: 'B-O-S+E',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a31);
-    var a33 = EvenOdderClue(
+    puzzle.addEntry(a31);
+    var a33 = EvenOdderEntry(
         name: 'A33',
         length: 3,
         valueDesc: '(P-I-ON)!',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a33);
-    var a35 = EvenOdderClue(
+    puzzle.addEntry(a33);
+    var a35 = EvenOdderEntry(
         name: 'A35',
         length: 2,
         valueDesc: 'C+H-A-R+M',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a35);
-    var a37 = EvenOdderClue(
+    puzzle.addEntry(a35);
+    var a37 = EvenOdderEntry(
         name: 'A37',
         length: 5,
         valueDesc: 'B+OTTO+M',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a37);
-    var a38 = EvenOdderClue(
+    puzzle.addEntry(a37);
+    var a38 = EvenOdderEntry(
         name: 'A38',
         length: 4,
         valueDesc: 'NI+ELS',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a38);
-    var a40 = EvenOdderClue(
+    puzzle.addEntry(a38);
+    var a40 = EvenOdderEntry(
         name: 'A40',
         length: 4,
         valueDesc: 'S!/O-(L-I+TO)N',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a40);
-    var a41 = EvenOdderClue(
+    puzzle.addEntry(a40);
+    var a41 = EvenOdderEntry(
         name: 'A41',
         length: 2,
         valueDesc: 'B-O+R^N',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a41);
-    var a42 = EvenOdderClue(
+    puzzle.addEntry(a41);
+    var a42 = EvenOdderEntry(
         name: 'A42',
         length: 4,
         valueDesc: 'N+UCL-E+AR',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(a42);
+    puzzle.addEntry(a42);
 
-    var d1 = EvenOdderClue(
+    var d1 = EvenOdderEntry(
         name: 'D1',
         length: 3,
         valueDesc: 'M+(E+A+S-U)(R+E)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d1);
-    var d2 = EvenOdderClue(
+    puzzle.addEntry(d1);
+    var d2 = EvenOdderEntry(
         name: 'D2',
         length: 2,
         valueDesc: 'T+A-U',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d2);
-    var d3 = EvenOdderClue(
+    puzzle.addEntry(d2);
+    var d3 = EvenOdderEntry(
         name: 'D3',
         length: 3,
         valueDesc: '(-S+I)(N-G+L+E+T)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d3);
-    var d4 = EvenOdderClue(
+    puzzle.addEntry(d3);
+    var d4 = EvenOdderEntry(
         name: 'D4',
         length: 4,
         valueDesc: '(N-E+U+T+R)(I-N)O',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d4);
-    var d5 = EvenOdderClue(
+    puzzle.addEntry(d4);
+    var d5 = EvenOdderEntry(
         name: 'D5',
         length: 5,
         valueDesc: 'M+UM-E+S!(O!-N)+S',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d5);
-    var d7 = EvenOdderClue(
+    puzzle.addEntry(d5);
+    var d7 = EvenOdderEntry(
         name: 'D7',
         length: 4,
         valueDesc: 'C+O-L+LAP+S-E',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d7);
-    var d8 = EvenOdderClue(
+    puzzle.addEntry(d7);
+    var d8 = EvenOdderEntry(
         name: 'D8',
         length: 3,
         valueDesc: '(S!/P-I)^N',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d8);
-    var d9 = EvenOdderClue(
+    puzzle.addEntry(d8);
+    var d9 = EvenOdderEntry(
         name: 'D9',
         length: 2,
         valueDesc: '-P+SI-O-N-S',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d9);
-    var d13 = EvenOdderClue(
+    puzzle.addEntry(d9);
+    var d13 = EvenOdderEntry(
         name: 'D13',
         length: 2,
         valueDesc: '-S+L-I+T',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d13);
-    var d14 = EvenOdderClue(
+    puzzle.addEntry(d13);
+    var d14 = EvenOdderEntry(
         name: 'D14',
         length: 3,
         valueDesc: 'UP',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d14);
-    var d15 = EvenOdderClue(
+    puzzle.addEntry(d14);
+    var d15 = EvenOdderEntry(
         name: 'D15',
         length: 4,
         valueDesc: '(-E+(I+N!)S+T-E)IN',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d15);
-    var d17 = EvenOdderClue(
+    puzzle.addEntry(d15);
+    var d17 = EvenOdderEntry(
         name: 'D17',
         length: 4,
         valueDesc: 'M+O-L+ECU-L+E',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d17);
-    var d18 = EvenOdderClue(
+    puzzle.addEntry(d17);
+    var d18 = EvenOdderEntry(
         name: 'D18',
         length: 4,
         valueDesc: '(T+E+NSO)R',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d18);
-    var d19 = EvenOdderClue(
+    puzzle.addEntry(d18);
+    var d19 = EvenOdderEntry(
         name: 'D19',
         length: 4,
         valueDesc: '(C+H+RO)NO-N!-S',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d19);
-    var d22 = EvenOdderClue(
+    puzzle.addEntry(d19);
+    var d22 = EvenOdderEntry(
         name: 'D22',
         length: 5,
         valueDesc: 'I+S+O^S-P+I^N',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d22);
-    var d24 = EvenOdderClue(
+    puzzle.addEntry(d22);
+    var d24 = EvenOdderEntry(
         name: 'D24',
         length: 3,
         valueDesc: '(C)LU/R', // (C/O)LOU/R fails integer division
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d24);
-    var d26 = EvenOdderClue(
+    puzzle.addEntry(d24);
+    var d26 = EvenOdderEntry(
         name: 'D26',
         length: 4,
         valueDesc: 'P+OS!+I+T+I-O-N!',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d26);
-    var d28 = EvenOdderClue(
+    puzzle.addEntry(d26);
+    var d28 = EvenOdderEntry(
         name: 'D28',
         length: 4,
         valueDesc: 'PO(S+I-T+R+O+N)',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d28);
-    var d30 = EvenOdderClue(
+    puzzle.addEntry(d28);
+    var d30 = EvenOdderEntry(
         name: 'D30',
         length: 2,
         valueDesc: '-G-L+UO+N!',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d30);
-    var d32 = EvenOdderClue(
+    puzzle.addEntry(d30);
+    var d32 = EvenOdderEntry(
         name: 'D32',
         length: 3,
         valueDesc: 'P+HA+S+E-S',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d32);
-    var d34 = EvenOdderClue(
+    puzzle.addEntry(d32);
+    var d34 = EvenOdderEntry(
         name: 'D34',
         length: 3,
         valueDesc: '-B-O+HR',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d34);
-    var d36 = EvenOdderClue(
+    puzzle.addEntry(d34);
+    var d36 = EvenOdderEntry(
         name: 'D36',
         length: 3,
         valueDesc: 'EL+E-C+T+R-O+N',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d36);
-    var d37 = EvenOdderClue(
+    puzzle.addEntry(d36);
+    var d37 = EvenOdderEntry(
         name: 'D37',
         length: 2,
         valueDesc: '-M+UO/N',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d37);
-    var d39 = EvenOdderClue(
+    puzzle.addEntry(d37);
+    var d39 = EvenOdderEntry(
         name: 'D39',
         length: 2,
         valueDesc: '-S+T+R+I+N-G',
         solve: puzzle.solveVariableExpressionEvaluator);
-    puzzle.addClue(d39);
+    puzzle.addEntry(d39);
 
     puzzle.addDigitIdentityFromGrid();
     // Add letter references from descriptions
@@ -371,7 +370,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   }
 
   // Semi-Manual solve procedure example
-  // solveA2(EvenOdderClue clue, Set<int> possibleValue,
+  // solveA2(EvenOdderEntry clue, Set<int> possibleValue,
   //     Map<String, Set<int>> possibleLetters) {
   //   var updated = false;
   //   puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
@@ -387,7 +386,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   //   return updated;
   // }
   // Manual solve procedure example
-  // bool solveD25(EvenOdderClue clue, Set<int> possibleValue,
+  // bool solveD25(EvenOdderEntry clue, Set<int> possibleValue,
   //     Map<String, Set<int>> possibleLetters) {
   //   final stopwatch = Stopwatch()..start();
   //   var count = 0;

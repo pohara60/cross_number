@@ -67,7 +67,8 @@ class EvenOdderVariable extends Variable {
   }
 }
 
-class EvenOdderPuzzle extends VariablePuzzle<EvenOdderClue, EvenOdderVariable> {
+class EvenOdderPuzzle
+    extends VariablePuzzle<EvenOdderClue, EvenOdderEntry, EvenOdderVariable> {
   // Puzzle has Letter variables with restricted values
   late final VariableList variableList;
   EvenOdderPuzzle() : super(List.from(variableValues));

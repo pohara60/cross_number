@@ -1,10 +1,10 @@
-class ClueSpec {
+class EntrySpec {
   final int number;
   final bool isAcross;
   late final String name;
   late int length;
 
-  ClueSpec(this.number, this.isAcross) {
+  EntrySpec(this.number, this.isAcross) {
     if (isAcross) {
       this.name = 'A${this.number}';
     } else {
@@ -20,9 +20,9 @@ class ClueSpec {
 
 class Cell {
   int? number;
-  ClueSpec? across;
+  EntrySpec? across;
   int? acrossDigit;
-  ClueSpec? down;
+  EntrySpec? down;
   int? downDigit;
   Cell({this.number, this.across, this.acrossDigit, this.down, this.downDigit});
   String toString() {
@@ -33,13 +33,13 @@ class Cell {
 class Grid {
   final List<String> grid;
   List<List<Cell?>> cells = [];
-  List<ClueSpec> clues = [];
+  List<EntrySpec> entries = [];
 
   Grid(this.grid) {
-    extractClues();
+    extractEntries();
   }
 
-  extractClues() {
+  extractEntries() {
     var rows = 0;
     var cols = 0;
     var row = 0;
@@ -87,9 +87,9 @@ class Grid {
             c++;
           }
 
-          ClueSpec? across;
+          EntrySpec? across;
           int? acrossDigit;
-          ClueSpec? down;
+          EntrySpec? down;
           int? downDigit;
           if (array[cPrev] == ':') {
             // Continuing Across clue
@@ -100,9 +100,9 @@ class Grid {
           } else if (array[c] == ':') {
             if (number != 0) {
               // New Across clue
-              across = ClueSpec(number, true);
+              across = EntrySpec(number, true);
               acrossDigit = 0;
-              clues.add(across);
+              entries.add(across);
             }
           }
           if (prevArray[cStart] == ':') {
@@ -114,9 +114,9 @@ class Grid {
           } else if (nextArray[cStart] == ':') {
             if (number != 0) {
               // New Down clue
-              down = ClueSpec(number, false);
+              down = EntrySpec(number, false);
               downDigit = 0;
-              clues.add(down);
+              entries.add(down);
             }
           }
           cells[row][col] = Cell(
@@ -138,9 +138,9 @@ class Grid {
       for (var cell in row) {
         if (cell!.across != null && cell.down != null) {
           identities.add({
-            'clue1': cell.across!.name,
+            'entry1': cell.across!.name,
             'digit1': cell.acrossDigit! + 1,
-            'clue2': cell.down!.name,
+            'entry2': cell.down!.name,
             'digit2': cell.downDigit! + 1,
           });
         }
@@ -159,10 +159,10 @@ class Grid {
         }
       }
     }
-    return 'Specification: cells=$cells\nclues=$clues\nidentities=[$identities]';
+    return 'Specification: cells=$cells\nentries=$entries\nidentities=[$identities]';
   }
 
-  String solutionToString(Map<String, int> clueValues) {
+  String solutionToString(Map<String, int> entryValues) {
     var border = getBorder();
     var text = border + '\n';
     var rowSeparator = '';
@@ -175,11 +175,11 @@ class Grid {
         text += separator;
         if (cell!.across != null) {
           var valueStr =
-              clueValues[cell.across!.name]!.toString()[cell.acrossDigit!];
+              entryValues[cell.across!.name]!.toString()[cell.acrossDigit!];
           text += '$valueStr';
         } else if (cell.down != null) {
           var valueStr =
-              clueValues[cell.down!.name]!.toString()[cell.downDigit!];
+              entryValues[cell.down!.name]!.toString()[cell.downDigit!];
           text += '$valueStr';
         } else {
           text += ' ';
@@ -225,22 +225,4 @@ class Grid {
 
 bool isDigit(String ch) {
   return '0123456789'.contains(ch);
-}
-
-void main(List<String> args) {
-  var grid = [
-    '+--+--+--+--+',
-    '|1 :2 :3 |4 |',
-    '+--:::::::::+',
-    '|5 :  |6 :  |',
-    '+:::--+--:::+',
-    '|7 :8 |9 :  |',
-    '+:::::::::--+',
-    '|  |10:  :  |',
-    '+--+--+--+--+',
-  ];
-
-  var spec = Grid(grid);
-  spec.extractClues();
-  print(spec);
 }
