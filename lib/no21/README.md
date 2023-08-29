@@ -45,9 +45,5 @@ Down
 33 K'(ND^N-M!) (3)
 34 (square*prime)' (7)
 
-5, 7, 20, 21 => C, L, T, I are two digits
-16, 28, 29 must have two-digit cells
-' operator implies operand is not palindrome or end in zero
-
 ## Lessons Learned
 

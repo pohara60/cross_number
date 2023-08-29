@@ -257,95 +257,81 @@ class No21 extends Crossnumber<No21Puzzle> {
   void solve([bool iteration = true]) {
     print("SOLVE------------");
 
-    // Solve clues
-    super.solve(false);
+    try {
+      // Solve clues
+      super.solve(false);
 
-    // The two double-digits in A16 cause a lot of ambiguity
-    // Attemptimg to solve the puzzle with one double-digit yields
-    // an almost complete solution where A16 has no value.
-    // Then increasing the double-digits in A16 finds its value
-    (puzzle.clues['A16'] as No21Clue).cellsTwoDigits = 2;
-    super.solve(false);
+      // The two double-digits in A16 cause a lot of ambiguity
+      // Attemptimg to solve the puzzle with one double-digit yields
+      // an almost complete solution where A16 has no value.
+      // Then increasing the double-digits in A16 finds its value
+      (puzzle.clues['A16'] as No21Clue).cellsTwoDigits = 2;
+      super.solve(false);
 
-    // Only possible mapping for these clues
-    puzzle.mapClueToEntryByName('A19', 'A15');
-    puzzle.mapClueToEntryByName('D34', 'D4');
+      // Only possible mapping for these clues
+      puzzle.mapClueToEntryByName('A19', 'A15');
+      puzzle.mapClueToEntryByName('D34', 'D4');
 
-    // Partial Solution
-    puzzle.mapClueToEntryByName('A1', 'A22');
-    puzzle.mapClueToEntryByName('A2', 'A3');
-    puzzle.mapClueToEntryByName('A4', 'A29');
-    puzzle.mapClueToEntryByName('A7', 'A1');
-    puzzle.mapClueToEntryByName('A8', 'A12');
-    puzzle.mapClueToEntryByName('A9', 'A9');
-    puzzle.mapClueToEntryByName('A10', 'A10');
-    puzzle.mapClueToEntryByName('A11', 'A30');
-    puzzle.mapClueToEntryByName('A12', 'A13');
-    puzzle.mapClueToEntryByName('A13', 'A28');
-    puzzle.mapClueToEntryByName('A14', 'A7');
-    puzzle.mapClueToEntryByName('A15', 'A5');
-    puzzle.mapClueToEntryByName('A16', 'A24');
-    puzzle.mapClueToEntryByName('A17', 'A26');
-    puzzle.mapClueToEntryByName('A18', 'A18');
-    puzzle.mapClueToEntryByName('D20', 'D2');
-    puzzle.mapClueToEntryByName('D22', 'D14');
-    puzzle.mapClueToEntryByName('D23', 'D15');
-    puzzle.mapClueToEntryByName('D24', 'D17');
-    puzzle.mapClueToEntryByName('D26', 'D3');
-    puzzle.mapClueToEntryByName('D27', 'D6');
-    puzzle.mapClueToEntryByName('D28', 'D27');
-    puzzle.mapClueToEntryByName('D29', 'D16');
-    puzzle.mapClueToEntryByName('D30', 'D21');
-    puzzle.mapClueToEntryByName('D31', 'D1');
-    puzzle.mapClueToEntryByName('D32', 'D23');
-    puzzle.mapClueToEntryByName('D33', 'D19');
+      // Map clues to entries, updates entry values and digits
+      puzzle.mapCluesToEntries(mapCallback);
 
-    // Ambiguities:
-    // A5(51)/A6(59) in A8/A25 no constraint
-    // A3(29)/A6(59) in A20/A25 constraint on 9
-    // D21(13)/D25(16) in D11/D13 constraint on 1
-    puzzle.mapClueToEntryByName('A5', 'A8');
-    puzzle.mapClueToEntryByName('A6', 'A20');
-    puzzle.mapClueToEntryByName('A3', 'A25');
-    puzzle.mapClueToEntryByName('D21', 'D11');
-    puzzle.mapClueToEntryByName('D25', 'D13');
+      // Partial Solution
+      // Ambiguities:
+      // A2(26)/A3(29) in A3/A8 constraint on 2
+      // A3(29))/A6(59) in A8/A25 no constraint
+      // A5(51)/A6(59) in A8/A25 no constraint
+      // D21(13)/D25(16) in D11/D13 constraint on 1
 
-    // Map clues to entries, updates entry values and digits
-    puzzle.mapCluesToEntries(mapCallback);
+      // solve D32 to resolve only possible value and so variable O
+      solveClue(puzzle.clues['D32']!);
 
-    // solve D32 to resolve value and so variable
-    solveClue(puzzle.clues['D32']!);
+      // solve A19 and D34 from the entry values
+      solveClue(puzzle.clues['A19']!);
+      solveClue(puzzle.clues['D34']!);
 
-    // solve A19 and D34 from the enty values
-    solveClue(puzzle.clues['A19']!);
-    solveClue(puzzle.clues['D34']!);
+      // Re-map clues to entries to resolve ambiguity
+      puzzle.mapCluesToEntries(mapCallback);
 
-    print("SOLUTION-----------------------------");
-    print(puzzle.toSummary());
+      // Partial Solution
+      // Ambiguities:
+      // A3(29))/A6(59) in A8/A25 no constraint
 
-    var variableList = puzzle.variableList;
-    var valueMapping = <int, String>{};
-    for (var variable in variableList.variables.values) {
-      var name = variable.name;
-      var value = variable.values?.length == 1 ? variable.values!.first : null;
-      if (value != null) {
-        valueMapping[value] = name;
+      // solve D34 from the entry values
+      solveClue(puzzle.clues['D34']!);
+
+      // Re-map clues to entries to resolve ambiguity
+      puzzle.mapCluesToEntries(mapCallback);
+
+      print("SOLUTION-----------------------------");
+      print(puzzle.toSummary());
+
+      var variableList = puzzle.variableList;
+      var valueMapping = <int, String>{};
+      for (var variable in variableList.variables.values) {
+        var name = variable.name;
+        var value =
+            variable.values?.length == 1 ? variable.values!.first : null;
+        if (value != null) {
+          valueMapping[value] = name;
+        }
       }
-    }
 
-    var entryValues = <String, List<String>>{};
-    for (var entry in puzzle.entries.values) {
-      var e = entry;
-      entryValues[entry.name] = e.digits
-          .map((dl) => dl.length == 1
-              ? valueMapping[dl.first] ?? '?'
-              : dl.length == 0
-                  ? ''
-                  : '?')
-          .toList();
-      ;
+      var entryValues = <String, List<String>>{};
+      for (var entry in puzzle.entries.values) {
+        var e = entry;
+        entryValues[entry.name] = e.digits
+            .map((dl) => dl.length == 1
+                ? valueMapping[dl.first] ?? '?'
+                : dl.length == 0
+                    ? ''
+                    : '?')
+            .toList();
+        ;
+      }
+      print("LETTER GRID-----------------------------");
+      print(puzzle.grid!.solutionToString(entryValues));
+    } on SolveException catch (e) {
+      if (e.msg != null) print(e.msg);
     }
-    print("LETTER GRID-----------------------------");
-    print(puzzle.grid!.solutionToString(entryValues));
   }
 }

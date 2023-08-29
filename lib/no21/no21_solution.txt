@@ -96,33 +96,72 @@ A6, C+FT, min=42, max=60, values={59}
 A19, (#square * #prime)', min=1000000, max=99999999, values={unknown}
 D34, (#square * #prime)', min=1000000, max=99999999, values={unknown}
 
-mapClueToEntryByName('A18', 'A18');
-mapClueToEntryByName('D29', 'D16');
-mapClueToEntryByName('D23', 'D15');
-mapClueToEntryByName('D33', 'D19');
-mapClueToEntryByName('A16', 'A24');
-mapClueToEntryByName('A17', 'A26');
-mapClueToEntryByName('D32', 'D23');
-mapClueToEntryByName('D28', 'D27');
-mapClueToEntryByName('A11', 'A30');
-mapClueToEntryByName('D30', 'D21');
-mapClueToEntryByName('A4', 'A29');
-mapClueToEntryByName('D31', 'D1');
-mapClueToEntryByName('A10', 'A10');
-mapClueToEntryByName('A7', 'A1');
-mapClueToEntryByName('A14', 'A7');
-mapClueToEntryByName('D20', 'D2');
-mapClueToEntryByName('A1', 'A22');
-mapClueToEntryByName('D24', 'D17');
-mapClueToEntryByName('D26', 'D3');
-mapClueToEntryByName('A8', 'A12');
-mapClueToEntryByName('A3', 'A20');
-mapClueToEntryByName('A2', 'A3');
-mapClueToEntryByName('A13', 'A28');
-mapClueToEntryByName('D27', 'D6');
-mapClueToEntryByName('A15', 'A5');
-mapClueToEntryByName('A9', 'A9');
-mapClueToEntryByName('A12', 'A13');
-mapClueToEntryByName('D21', 'D13');
-mapClueToEntryByName('D22', 'D14');
-mapClueToEntryByName('D25', 'D11');
+Clue=Entry
+A1=A22
+A2=A3
+A4=A29
+A7=A1
+A8=A12
+A9=A9
+A10=A10
+A11=A30
+A12=A13
+A13=A28
+A14=A7
+A15=A5
+A16=A24
+A17=A26
+A18=A18
+D20=D2
+D22=D14
+D23=D15
+D24=D17
+D26=D3
+D27=D6
+D28=D27
+D29=D16
+D30=D21
+D31=D1
+D32=D23
+D33=D19
+A5=A8
+A6=A20
+A3=A25
+D21=D11
+D25=D13
+
+Entry=Clue
+A1=A7
+D1=D31
+D2=D20
+A3=A2
+D3=D26
+
+A5=A15
+D6=D27
+A7=A14
+A8=A5
+A9=A9
+A10=A10
+D11=D21
+A12=A8
+A13=A12
+D13=D25
+A18=A18
+A20=A6
+A22=A1
+A24=A16
+A25=A3
+A26=A17
+A28=A13
+A29=A4
+A30=A11
+D14=D22
+D15=D23
+D16=D29
+D17=D24
+D19=D33
+D21=D30
+D23=D32
+D27=D28
+

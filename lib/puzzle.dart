@@ -366,7 +366,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
               ..addAll(clue.values!);
           }
           // make sure digits are updated
-          clue.initialise();
+          // cannot do this way because of side-effects
+          // clue.initialise();
         }
         // Get entry digits
         var digits = entryDigits[e.name];
@@ -378,6 +379,24 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         }
       }
     }
+    // Update digit identities
+    var updated = true;
+    while (updated) {
+      updated = false;
+      for (var entry in entries.values) {
+        var e = entry as EntryMixin;
+        for (var d = 0; d < e.length; d++) {
+          if (e.digitIdentities[d] != null) {
+            var entry2 = e.digitIdentities[d]!.entry;
+            var d2 = e.digitIdentities[d]!.digit;
+            var possibleDigits = entryDigits[entry2.name]![d2];
+            if (updatePossible(entryDigits[e.name]![d], possibleDigits))
+              updated = true;
+          }
+        }
+      }
+    }
+
     // print(entryClues.entries
     //     .map((e) => '${e.key}:${e.value.map((c) => c.name).toList()}')
     //     .toList()
@@ -439,11 +458,6 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   Iterable<bool> mapNextClueToEntry(List<EntryKind> entries, int index) sync* {
-    if (index == entries.length) {
-      yield true;
-      return;
-    }
-
     var entry = entries[index];
     ClueKind? mappedClue = (entry as EntryMixin).clue as ClueKind?;
 
@@ -463,7 +477,11 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       // Update entry from clue
       if (updateEntry(clue)) {
         // Try to map remaining clues
-        yield* mapNextClueToEntry(entries, index + 1);
+        if (index == entries.length - 1) {
+          yield true;
+        } else {
+          yield* mapNextClueToEntry(entries, index + 1);
+        }
       } else if (mappedClue != null) {
         if (Crossnumber.traceSolve) {
           print(
