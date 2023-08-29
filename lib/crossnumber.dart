@@ -62,10 +62,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     bool updated;
     var iterations = 0;
     var updates = 0;
-    var allClue = List<Clue>.from(puzzle.clues.values).toList();
-    allClue.forEach((clue) {
-      addToUpdateQueue(clue);
-    });
+    var remainingClues = List<Clue>.from(puzzle.clues.values).toList();
 
     if (traceSolve) {
       print("UPDATES-----------------------------");
@@ -74,28 +71,49 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     final stopwatch = Stopwatch()..start();
     Clue? firstExceptionClue;
     bool skipExceptionClues = false;
-    while (updateQueueIsNotEmpty()) {
-      Clue clue = takeFromUpdateQueue();
-      iterations++;
-      try {
-        updated = solveClue(clue);
-        if (updated) {
-          for (var referrer in clue.referrers) {
-            addToUpdateQueue(referrer);
-          }
-          updates++;
-          firstExceptionClue = null;
-          skipExceptionClues = false;
+    Clue? previousClue;
+    var exceptionClues = <Clue>[];
+    while (remainingClues.isNotEmpty) {
+      remainingClues.forEach((clue) {
+        addToUpdateQueue(clue);
+      });
+      remainingClues.clear();
+      exceptionClues.forEach((clue) {
+        addToUpdateQueue(clue);
+      });
+      exceptionClues.clear();
+
+      while (updateQueueIsNotEmpty()) {
+        Clue clue = takeFromUpdateQueue();
+        if (clue == previousClue) {
+          remainingClues.add(clue);
+          continue;
         }
-      } on SolveException {
-        // Put clue back at end of queue until no update since this clue
-        if (firstExceptionClue == clue) {
-          skipExceptionClues = true;
-        } else {
-          if (!skipExceptionClues) {
-            addToUpdateQueue(clue);
-            if (firstExceptionClue == null) {
-              firstExceptionClue = clue;
+        previousClue = clue;
+
+        iterations++;
+        try {
+          updated = solveClue(clue);
+          if (updated) {
+            for (var referrer in clue.referrers) {
+              addToUpdateQueue(referrer);
+            }
+            updates++;
+            firstExceptionClue = null;
+            skipExceptionClues = false;
+          }
+        } on SolveException {
+          // Put clue back at end of queue until no update since this clue
+          if (firstExceptionClue == clue) {
+            skipExceptionClues = true;
+          } else {
+            if (!skipExceptionClues) {
+              addToUpdateQueue(clue);
+              if (firstExceptionClue == null) {
+                firstExceptionClue = clue;
+              }
+            } else {
+              exceptionClues.add(clue);
             }
           }
         }
@@ -659,9 +677,9 @@ List<int>? getDigitProductEqualsOtherClue(Clue clue, Clue other) {
 List<int>? getFactorsOfOtherClue(Clue clue, Clue other) {
   if (other.values != null) {
     var values = <int>{};
-    int loLimit = 10.pow(clue.length - 1) as int;
+    int loLimit = clue.min;
     if (loLimit < 2) loLimit = 2;
-    int hiLimit = (10.pow(clue.length) as int) - 1;
+    int hiLimit = clue.max;
     for (var value in other.values!) {
       int lo = loLimit;
       int hi = value ~/ 2;
@@ -717,7 +735,7 @@ List<int>? getMultipleOfOtherClue(Clue clue, Clue other) {
   if (other.values != null) {
     var values = <int>[];
     for (var value in other.values!) {
-      var hi = ((10.pow(clue.length) as int) - 1) ~/ value;
+      var hi = (clue.max) ~/ value;
       for (var i = 2; i <= hi; i++) {
         var multiple = i * value;
         values.add(multiple);
@@ -806,8 +824,8 @@ Set<int>? getValuesFromClueDigits(Clue clue) {
 
 List<int>? getMultiplesOfValues(Clue clue, List<int> values) {
   var multiples = <int>[];
-  var loResult = 10.pow(clue.length - 1) as int;
-  var hiResult = (10.pow(clue.length) as int) - 1;
+  var loResult = clue.min;
+  var hiResult = clue.max;
   for (var value in values) {
     var loMultiplier = loResult ~/ value;
     if (loMultiplier < 2) loMultiplier = 2;
@@ -830,8 +848,8 @@ List<int>? getTriangularsLessValues(Clue clue, Set<int> values) {
       values.reduce((value, element) => element < value ? element : value);
   var maxInput =
       values.reduce((value, element) => element > value ? element : value);
-  var lo = 10.pow(clue.length - 1) as int;
-  var hi = (10.pow(clue.length) as int) - 1;
+  var lo = clue.min;
+  var hi = clue.max;
   var minTriangle = lo + minInput;
   var maxTriangle = hi + maxInput;
   var triangles = getTrianglesInRange(minTriangle, maxTriangle);

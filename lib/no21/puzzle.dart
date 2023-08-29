@@ -2,6 +2,8 @@ import 'package:crossnumber/no21/clue.dart';
 import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/variable.dart';
 
+import '../clue.dart';
+
 const VARIABLE_VALUES = [
   0,
   1,
@@ -20,7 +22,6 @@ const VARIABLE_VALUES = [
   14,
   15,
   16,
-  17
 ];
 
 class No21Variable extends Variable {
@@ -31,11 +32,15 @@ class No21Variable extends Variable {
 }
 
 class No21Puzzle extends VariablePuzzle<No21Clue, No21Entry, No21Variable> {
-  // Puzzle has Letter variables that are restricted to values 0..17
+  // Puzzle has Letter variables that are restricted to values 0..16
   late final VariableList variableList;
-  No21Puzzle() : super(List.from(VARIABLE_VALUES));
+  No21Puzzle() : super(List.from(VARIABLE_VALUES)) {
+    EntryMixin.maxDigit = 16;
+  }
   No21Puzzle.grid(List<String> gridString)
-      : super.grid(List.from(VARIABLE_VALUES), gridString);
+      : super.grid(List.from(VARIABLE_VALUES), gridString) {
+    EntryMixin.maxDigit = 16;
+  }
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingValues => variableList.remainingValues;

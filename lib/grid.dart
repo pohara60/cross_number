@@ -162,7 +162,7 @@ class Grid {
     return 'Specification: cells=$cells\nentries=$entries\nidentities=[$identities]';
   }
 
-  String solutionToString(Map<String, int> entryValues) {
+  String solutionToString(Map<String, List<String>> entryValues) {
     var border = getBorder();
     var text = border + '\n';
     var rowSeparator = '';
@@ -173,16 +173,14 @@ class Grid {
       var separator = '|';
       for (var cell in row) {
         text += separator;
-        if (cell!.across != null) {
-          var valueStr =
-              entryValues[cell.across!.name]!.toString()[cell.acrossDigit!];
-          text += '$valueStr';
-        } else if (cell.down != null) {
-          var valueStr =
-              entryValues[cell.down!.name]!.toString()[cell.downDigit!];
-          text += '$valueStr';
+        if (cell!.across != null && entryValues[cell.across!.name] != null) {
+          var value = entryValues[cell.across!.name]![cell.acrossDigit!];
+          text += value.padLeft(2);
+        } else if (cell.down != null && entryValues[cell.down!.name] != null) {
+          var value = entryValues[cell.down!.name]![cell.downDigit!];
+          text += value.padLeft(2);
         } else {
-          text += ' ';
+          text += '  ';
         }
         if (cell.across == null) {
           separator = '|';
@@ -191,19 +189,19 @@ class Grid {
         } else {
           separator = ' ';
         }
-        var rowSeparatorChar = ' ';
+        var rowSeparatorChar = '  ';
         var nextRowSeparatorChar = ' ';
         if (cell.down == null) {
-          rowSeparatorChar = '-';
+          rowSeparatorChar = '--';
         } else if (cell.downDigit! == cell.down!.length - 1) {
-          rowSeparatorChar = '-';
+          rowSeparatorChar = '--';
           nextRowSeparatorChar = '+';
         }
         if (separator == '|') {
           nextRowSeparatorChar = '+';
         }
         if (rowSeparator != '+') {
-          if (lastRowSeparatorChar == '-' || nextRowSeparatorChar == '-') {
+          if (lastRowSeparatorChar == '--' || nextRowSeparatorChar == '--') {
             rowSeparatorChar = '+';
           }
         }
@@ -218,7 +216,7 @@ class Grid {
   }
 
   String getBorder() {
-    var text = '+' + '-+' * cells[0].length;
+    var text = '+' + '--+' * cells[0].length;
     return text;
   }
 }

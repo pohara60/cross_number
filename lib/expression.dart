@@ -13,6 +13,7 @@ const TIMES = 'TIMES', TIMES_RE = r'(?<' + TIMES + r'>\*)';
 const DIVIDE = 'DIVIDE', DIVIDE_RE = r'(?<' + DIVIDE + r'>/)';
 const ROOT = 'ROOT', ROOT_RE = r'(?<' + ROOT + r'>√)';
 const FACTORIAL = 'FACTORIAL', FACTORIAL_RE = r'(?<' + FACTORIAL + r'>!)';
+const REVERSE = 'REVERSE', REVERSE_RE = r'(?<' + REVERSE + r">')";
 const EXPONENT = 'EXPONENT', EXPONENT_RE = r'(?<' + EXPONENT + r'>\^)';
 const LPAREN = 'LPAREN', LPAREN_RE = r'(?<' + LPAREN + r'>\()';
 const RPAREN = 'RPAREN', RPAREN_RE = r'(?<' + RPAREN + r'>\))';
@@ -31,6 +32,7 @@ var regExp = RegExp([
   DIVIDE_RE,
   ROOT_RE,
   FACTORIAL_RE,
+  REVERSE_RE,
   EXPONENT_RE,
   LPAREN_RE,
   RPAREN_RE,
@@ -121,6 +123,9 @@ class Scanner {
       if (m.namedGroup(FACTORIAL) != null) {
         yield Token(match!, FACTORIAL);
       }
+      if (m.namedGroup(REVERSE) != null) {
+        yield Token(match!, REVERSE);
+      }
       if (m.namedGroup(EXPONENT) != null) {
         yield Token(match!, EXPONENT);
       }
@@ -134,7 +139,7 @@ class Scanner {
         yield Token(match!, EQUAL);
       }
       if (m.namedGroup(ERROR) != null) {
-        throw ExpressionInvalid('Invalid character ${text[m.start]}');
+        throw ExpressionError('Invalid character ${text[m.start]}');
       }
     }
   }
@@ -186,6 +191,8 @@ class Node {
           else
             order = NodeOrder.UNKNOWN;
         }
+      } else if (token.type == REVERSE) {
+        order = NodeOrder.UNKNOWN;
       }
     } else {
       var childOrder1 = operands![0].order;
@@ -464,9 +471,9 @@ class ExpressionEvaluator {
   }
 
   Node? factorial() {
-    // factorial ::= factor { '!' }
+    // factorial ::= factor { '!' | "'"}
     var node = this.factor();
-    if (node != null && this._accept(FACTORIAL)) {
+    if (node != null && (this._accept(FACTORIAL) || this._accept(REVERSE))) {
       var token = this.tok!;
       node = Node(token, [node]);
     }
@@ -535,6 +542,22 @@ class ExpressionEvaluator {
         int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
         checkInteger(left);
         return factorial(left.toInt());
+      case REVERSE:
+        var left = eval(node.operands![0]);
+        int reverse(int value) {
+          var valueStr = value.toString();
+          var reverse = '';
+          for (var index = 0; index < valueStr.length; index++) {
+            reverse = valueStr[index] + reverse;
+          }
+          return int.parse(reverse);
+        }
+        checkInteger(left);
+        var result = reverse(left.toInt());
+        if (result == left || left % 10 == 0) {
+          throw ExpressionInvalid('Invalid reverse value');
+        }
+        return result;
       case EXPONENT:
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
@@ -552,38 +575,38 @@ class ExpressionEvaluator {
         var name = node.token.name;
         var index = this.variableNames!.indexOf(name);
         if (index < 0) {
-          throw ExpressionError('Unknown clue $name');
+          throw ExpressionInvalid('Unknown clue $name');
         }
         return this.variableValues![index];
       case VAR:
         var name = node.token.name;
         var index = this.variableNames!.indexOf(name);
         if (index < 0) {
-          throw ExpressionError('Unknown variable $name');
+          throw ExpressionInvalid('Unknown variable $name');
         }
         return this.variableValues![index];
       case MONADIC:
         var name = node.token.name;
         var monadic = monadics[name];
         if (monadic == null) {
-          throw ExpressionError('Unknown monadic $name');
+          throw ExpressionInvalid('Unknown monadic $name');
         }
         var left = eval(node.operands![0]);
         checkInteger(left);
         var result = monadic.func(left.toInt());
         if (result is bool) {
-          throw ExpressionError(
+          throw ExpressionInvalid(
               'Unexpected bool result for monadic $name in simple expression');
         } else if (result is num) {
           return result;
         } else {
-          throw ExpressionError(
+          throw ExpressionInvalid(
               'Unexpected value type $result for monadic $name');
         }
       case GENERATOR:
-        throw ExpressionError("GENERATOR should be evaluated using 'gen()'");
+        throw ExpressionInvalid("GENERATOR should be evaluated using 'gen()'");
       default:
-        throw ExpressionError('Invalid AST');
+        throw ExpressionInvalid('Invalid AST');
     }
   }
 
@@ -750,6 +773,32 @@ class ExpressionEvaluator {
             }
             if (result < min) {
               if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            yield result;
+          }
+        }
+        break;
+      case REVERSE:
+        for (var left in gen(min, max, node.operands![0])) {
+          int reverse(int value) {
+            var valueStr = value.toString();
+            var reverse = '';
+            for (var index = 0; index < valueStr.length; index++) {
+              reverse = valueStr[index] + reverse;
+            }
+            return int.parse(reverse);
+          }
+
+          if (isIntegerValue(left)) {
+            var result = reverse(left.toInt());
+            if (result == left || left % 10 == 0) continue;
+            if (result > max) {
+              // if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              // if (node.order == NodeOrder.DESCENDING) break;
               continue;
             }
             yield result;

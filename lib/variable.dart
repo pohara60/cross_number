@@ -82,6 +82,8 @@ class VariableRefList {
   addClueReference(String name) {
     addReference(name, 'C');
   }
+
+  toString() => names.toString();
 }
 
 /// A collection of [Variable]s, with a set of values

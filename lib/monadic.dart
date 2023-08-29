@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:powers/powers.dart';
+
 typedef MonadicFunc = dynamic Function(int arg);
 
 class Monadic {
@@ -96,4 +100,25 @@ Iterable<int> jumbleStr(int leftValue, String strValue) sync* {
     var rest = strValue.substring(0, d) + strValue.substring(d + 1);
     yield* jumbleStr(leftValue + chrVal, rest);
   }
+}
+
+List<int> getFactors(int value) {
+  var factors = <int>[];
+  var remaining = value;
+  while (remaining > 1) {
+    var prime = true;
+    for (var factor = 2; factor <= sqrt(remaining); factor++) {
+      var divisor = remaining / factor;
+      if (divisor.isValidInteger) {
+        factors.add(factor);
+        remaining = divisor.toInt();
+        prime = false;
+        break;
+      }
+    }
+    if (prime) break;
+  }
+  if (remaining != 1) factors.add(remaining);
+
+  return factors;
 }

@@ -7,9 +7,9 @@ import '../variable.dart';
 class DiceNetsPuzzle
     extends VariablePuzzle<DiceNetsClue, DiceNetsEntry, Variable> {
   DiceNetsPuzzle() : super([]) {
-    Clue.maxDigit = 6;
+    EntryMixin.maxDigit = 6;
   }
   DiceNetsPuzzle.grid(List<String> gridString) : super.grid([], gridString) {
-    Clue.maxDigit = 6;
+    EntryMixin.maxDigit = 6;
   }
 }

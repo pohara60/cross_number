@@ -33,22 +33,24 @@ Iterable<int> generateIntegers(num min, num max) sync* {
     yield integer;
 }
 
-const CHUNK_SIZE = 100;
-
+const INITIAL_CHUNK_SIZE = 100;
+const CHUNK_SIZE_MULTIPLIER = 10;
+var chunk_size = INITIAL_CHUNK_SIZE;
 List<int> primes = [2, 3, 5, 7];
 Iterable<int> generatePrimes(num min, num max) sync* {
   var limit = max.toInt();
   var next = min.toInt();
   var index = 0;
-  while (next <= limit) {
-    next += CHUNK_SIZE;
-    extendPrimesUpto(next);
+  while (index <= limit) {
     while (index < primes.length) {
       var element = primes[index++];
       if (element < min) continue;
       if (element > max) return;
       yield element;
     }
+    next = primes.last + chunk_size;
+    chunk_size *= CHUNK_SIZE_MULTIPLIER;
+    extendPrimesUpto(next);
   }
 }
 

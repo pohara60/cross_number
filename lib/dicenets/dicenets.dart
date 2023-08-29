@@ -672,7 +672,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   }
 
   static void findMultiplesOfPower(DiceNetsEntry clue, Set<int> possibleValue) {
-    var hi = (10.pow(clue.length) as int) - 1;
+    var hi = clue.max;
     var squares = getPowersInRange(1, hi);
     findMultiplesOfValues(clue, squares, possibleValue);
   }

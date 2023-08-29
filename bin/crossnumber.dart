@@ -7,6 +7,7 @@ import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/instruction/instruction.dart';
+import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
@@ -30,7 +31,8 @@ void main(List<String> arguments) async {
     ..addCommand(SequencesCommand())
     ..addCommand(EvenOdderCommand())
     ..addCommand(InstructionCommand())
-    ..addCommand(Root66Command());
+    ..addCommand(Root66Command())
+    ..addCommand(No21Command());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -184,5 +186,23 @@ class Root66Command extends Command {
     // Get and print solve
     final pc = Root66();
     pc.solve();
+  }
+}
+
+class No21Command extends Command {
+  @override
+  final name = 'no21';
+  @override
+  final description = 'solve hardcoded no21 puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = No21();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    }
   }
 }

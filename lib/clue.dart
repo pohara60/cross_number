@@ -8,9 +8,6 @@ import 'variable.dart';
 class Clue extends Variable {
   /// Inherits: name, values, tryValue
 
-  /// Max digit value
-  static var maxDigit = 9;
-
   /// Number of digits, min and max values
   final int length;
   late int min, max;
@@ -33,6 +30,10 @@ class Clue extends Variable {
   // Mapped grid entry - Clue with EntryMixin
   Clue? _entry;
   Clue? get entry => _entry;
+  void set entry(Clue? entry) {
+    _entry = entry;
+  }
+
   List<DigitIdentity?> get digitIdentities => entry!.digitIdentities;
   List<Set<int>> get digits => entry!.digits;
 
@@ -43,8 +44,8 @@ class Clue extends Variable {
   bool get isDown => this.name[0] == 'D';
 
   /// Computed - Range of possible values
-  int get lo => 10.pow(length - 1) as int;
-  int get hi => (10.pow(length) as int) - 1;
+  int get lo => min;
+  int get hi => max;
   Iterable<int> get range =>
       Iterable<int>.generate(hi - lo + 1, (index) => lo + index);
 
@@ -134,6 +135,20 @@ class Clue extends Variable {
     return updated;
   }
 
+  List<Set<int>> saveDigits() {
+    var result = <Set<int>>[];
+    for (var d = 0; d < length; d++) {
+      result.add(Set.from(digits[d]));
+    }
+    return result;
+  }
+
+  void restoreDigits(List<Set<int>> savedDigits) {
+    for (var d = 0; d < length; d++) {
+      digits[d] = savedDigits[d];
+    }
+  }
+
   bool updateValues(Set<int> possibleValue) {
     var updated = false;
     if (this.values == null) {
@@ -169,10 +184,12 @@ class Clue extends Variable {
                 .where((element) => element != '')
                 .join(',') +
             '],';
+    var digitsStr =
+        entry == null ? '' : ',\n\tdigits=${digits.toShortString()}';
     var referrersStr = referrers.map((e) => e.name).join(',');
     var valueStr = values == null ? '{unknown}' : values!.toShortString();
-    // return '$runtimeType(name=$name,length=$length,value: $valueDesc,\n\t${identityStr}referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
-    return 'Clue(name=$name,length=$length,value: $valueDesc,\n\t${identityStr}referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tdigits=${digits.toShortString()}';
+    // return '$Clue(name=$name,length=$length,value: $valueDesc,\n\t${identityStr}referrers=[$referrersStr],\n\tvalues=$valueStr$digitsStr';
+    return '$runtimeType(name=$name,length=$length,value: $valueDesc,\n\t${identityStr}referrers=[$referrersStr],\n\tvalues=$valueStr$digitsStr';
   }
 
   String toSummary() {
@@ -216,8 +233,8 @@ mixin Expression {
         for (var clueName in exp.clueRefs..sort()) {
           clue.addClueReference(clueName);
         }
-      } on ExpressionError catch (e) {
-        throw ExpressionError('$name expression $valueDesc error ${e.msg}');
+      } on ExpressionInvalid catch (e) {
+        throw ExpressionInvalid('$name expression $valueDesc error ${e.msg}');
       }
     }
   }
@@ -256,6 +273,9 @@ class DigitIdentity {
 }
 
 mixin EntryMixin on Clue {
+  /// Max digit value
+  static var maxDigit = 9;
+
   /// Common digits with other clues: each digit has optional reference to clue and digit
   late final List<DigitIdentity?> digitIdentities;
 
@@ -265,6 +285,10 @@ mixin EntryMixin on Clue {
   // Mapped Clue
   Clue? _clue;
   Clue? get clue => _clue;
+  void set clue(Clue? clue) {
+    _clue = clue;
+  }
+
   void initEntry(Clue entry) {
     digitIdentities = List.filled(entry.length, null);
     digits = [];
@@ -277,7 +301,8 @@ mixin EntryMixin on Clue {
     digits.clear(); // Clear for reset
     // possible digits are 0..9, except cannot have leading 0
     for (var d = 0; d < this.length; d++) {
-      digits.add(Set.from(List.generate(Clue.maxDigit + 1, (index) => index)));
+      digits.add(
+          Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
       if (d == 0) digits[d].remove(0);
     }
   }

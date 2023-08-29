@@ -347,14 +347,6 @@ solve: Clue(name=D15,length=2,value: ,
 	digits=[{2, 3, 6, 9}, {1, 6, 9}]
 primes[Y]={13,31,37,73}
 primes[Q]={13,31,37,73}
-solve: Clue(name=D15,length=2,value: ,
-	prime=Y = reverse Q,preValue: Square,
-	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-primes[Y]={13,31,37,73}
-primes[Q]={13,31,37,73}
 solve: Clue(name=A17,length=2,value: Reverse of gD3,
 	prime=M reverse C,preValue: Square,
 	identities=[A17[0]=D11[2]],referrers=[D11,A5,D3,A9],
@@ -1296,7 +1288,7 @@ solve: Clue(name=A2,length=3,value: ,
 	preValues={59792}),
 	digits=[{5}, {9}, {2}]
 primes[B]={97}
-Clue iterations=201, updates=91, elapsed 0:00:04.321364
+Clue iterations=201, updates=91, elapsed 0:00:02.215909
 SOLUTION-----------------------------
 Puzzle Summary
 A2, , values={592}

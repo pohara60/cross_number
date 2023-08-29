@@ -1,4 +1,3 @@
-import 'package:powers/powers.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/cartesian.dart';
@@ -277,8 +276,8 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
         var sum = sumClueDigits(clue, otherClues, product);
         sums.add(sum);
       }
-      int lo = 10.pow(clue.length - 1) as int;
-      int hi = (10.pow(clue.length) as int) - 1;
+      int lo = clue.min;
+      int hi = clue.max;
       for (var cube in cubes) {
         for (var sum in sums) {
           var valueWithoutDigits = cube + sum;

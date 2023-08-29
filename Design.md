@@ -151,3 +151,63 @@ GUI to:
 1. Allow specification of puzzle
 2. Show steps in solution of puzzle
 
+  bool mapCluesToEntries(Function callback) {
+    return mapNextClueToEntry(_clues.values.toList(), 0, callback);
+  }
+
+  bool mapNextClueToEntry(List<ClueKind> clues, int index, Function callback) {
+    if (index == clues.length) {
+      callback();
+      return true;
+    }
+
+    var clue = clues[index];
+    if (clue.entry != null)
+      return mapNextClueToEntry(clues, index + 1, callback);
+
+    var anyMapping = false;
+    for (var entry in _entries.values.where((e) =>
+        e.isAcross == clue.isAcross &&
+        e.length == clue.length &&
+        (e as EntryMixin).clue == null)) {
+      // Set mapping
+      mapClueToEntry(clue, entry);
+
+      // Update entry digits from other entries
+      var savedDigits = clue.saveDigits();
+      clue.initialise();
+
+      // Check values against permissible digits
+      var oldValues = clue.values;
+      if (clue.values != null && clue.values!.isNotEmpty) {
+        var okValues = <int>{};
+        for (var value in clue.values!) {
+          if (clue.digitsMatch(value)) {
+            okValues.add(value);
+          }
+        }
+        if (okValues.isEmpty) {
+          // Cannot map to entry
+          clue.entry = null;
+          (entry as EntryMixin).clue = null;
+          continue;
+        }
+
+        // Update values and digits, saving old data
+        clue.values = okValues;
+        if (clue.finalise()) {
+          ;
+        }
+      }
+      // Try to map remaining clues
+      if (mapNextClueToEntry(clues, index + 1, callback)) anyMapping = true;
+
+      // Undo mapping
+      clue.values = oldValues;
+      clue.restoreDigits(savedDigits);
+      clue.entry = null;
+      (entry as EntryMixin).clue = null;
+    }
+
+    return anyMapping;
+  }

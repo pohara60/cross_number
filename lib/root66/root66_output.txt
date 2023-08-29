@@ -132,7 +132,7 @@ U={1, 2, 3, 4, 5, 6, 7, 8, 9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 SOLVE------------
-Eval D14 cartesianCount=14348907, elapsed 0:00:23.198208
+Eval D14 cartesianCount=14348907, elapsed 0:00:02.640406
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={more than 20},
@@ -146,7 +146,7 @@ R={1, 2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 6, 7, 8, 9}
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval D2 cartesianCount=29760696, elapsed 0:00:11.056611
+Eval D2 cartesianCount=29760696, elapsed 0:00:04.540507
 solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={more than 20},
@@ -161,7 +161,7 @@ R={2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 8}
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval A2 cartesianCount=6193152, elapsed 0:00:02.420889
+Eval A2 cartesianCount=6193152, elapsed 0:00:01.053419
 solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={4659, 4956, 5649, 5946, 1395, 2643, 3567, 2318, 1436, 1634, 3416, 3614},
@@ -176,7 +176,7 @@ R={2}
 S={1, 8}
 T={3, 5, 6}
 U={6, 7}
-Eval A12 cartesianCount=72, elapsed 0:00:00.000854
+Eval A12 cartesianCount=72, elapsed 0:00:00.000490
 solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={1869, 1968, 2839, 2938, 3829, 3928},
@@ -189,7 +189,7 @@ O={7}
 R={2}
 S={8}
 T={3}
-Eval D4 cartesianCount=1, elapsed 0:00:00.000024
+Eval D4 cartesianCount=1, elapsed 0:00:00.000019
 solve: Clue(name=D4,length=4,type=Root66ClueType.UNKNOWN,value: (AROU+N)D,
 	identities=[D4[0]=A2[2],D4[1]=A7[4],D4[2]=A9[0],D4[3]=A12[0]],referrers=[A2,A7,A9,A12],
 	values={4182},
@@ -202,7 +202,7 @@ O={7}
 R={2}
 U={6}
 UPDATES-----------------------------
-Eval D17 cartesianCount=1, elapsed 0:00:00.000068
+Eval D17 cartesianCount=1, elapsed 0:00:00.000013
 solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
 	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
 	values={1864, 3647, 3746, 4637, 4736},
@@ -215,7 +215,7 @@ O={7}
 S={8}
 T={3}
 U={6}
-Eval A21 cartesianCount=1, elapsed 0:00:00.000038
+Eval A21 cartesianCount=1, elapsed 0:00:00.000015
 solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
 	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
 	values={6487, 6784, 8467, 8764},
@@ -229,7 +229,7 @@ O={7}
 R={2}
 S={8}
 T={3}
-Eval D17 cartesianCount=1, elapsed 0:00:00.000050
+Eval D17 cartesianCount=1, elapsed 0:00:00.000009
 solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
 	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
 	values={1864, 3647, 4637},
@@ -242,9 +242,8 @@ O={7}
 S={8}
 T={3}
 U={6}
-Eval A21 cartesianCount=1, elapsed 0:00:00.000038
-Eval A21 cartesianCount=1, elapsed 0:00:00.000050
-Eval A19 cartesianCount=1, elapsed 0:00:00.000036
+Eval A21 cartesianCount=1, elapsed 0:00:00.000011
+Eval A19 cartesianCount=1, elapsed 0:00:00.000009
 solve: Clue(name=A19,length=4,type=Root66ClueType.UNKNOWN,value: (T*U^N*(D+R)+A)S,
 	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
 	values={5684, 8654},
@@ -257,7 +256,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D10 cartesianCount=1, elapsed 0:00:00.000053
+Eval D10 cartesianCount=1, elapsed 0:00:00.000011
 solve: Clue(name=D10,length=4,type=Root66ClueType.UNKNOWN,value: (S(U+D-A)-T)IO+N,
 	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
 	values={5894, 9854},
@@ -271,7 +270,7 @@ O={7}
 S={8}
 T={3}
 U={6}
-Eval A19 cartesianCount=1, elapsed 0:00:00.000040
+Eval A19 cartesianCount=1, elapsed 0:00:00.000008
 solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
 	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
 	values={more than 20},
@@ -282,7 +281,7 @@ solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
 	values={more than 20},
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3}, {3, 4, 6}, {1, 2, 6, 7, 8, 9}, {1, 2, 4, 5, 6, 7, 8, 9}]
-Eval A12 cartesianCount=1, elapsed 0:00:00.000042
+Eval A12 cartesianCount=1, elapsed 0:00:00.000009
 solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={2938},
@@ -295,9 +294,9 @@ O={7}
 R={2}
 S={8}
 T={3}
-Eval D10 cartesianCount=1, elapsed 0:00:00.000048
-Eval A19 cartesianCount=1, elapsed 0:00:00.000036
-Eval D14 cartesianCount=1, elapsed 0:00:00.000053
+Eval D10 cartesianCount=1, elapsed 0:00:00.000009
+Eval A19 cartesianCount=1, elapsed 0:00:00.000007
+Eval D14 cartesianCount=1, elapsed 0:00:00.000008
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={2358, 2456, 5328, 5426},
@@ -311,7 +310,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A21 cartesianCount=1, elapsed 0:00:00.000071
+Eval A21 cartesianCount=1, elapsed 0:00:00.000024
 solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
 	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
 	values={18231586, 18531589, 18931593, 28131586, 28431592, 28531594, 28631596, 28731598, 48231592, 58131589, 58231594, 68231596, 69731824, 78231598, 79631824, 98131593},
@@ -322,7 +321,7 @@ solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
 	values={more than 20},
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {2, 5}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3}, {3, 4, 6}, {2, 8, 9}, {1, 4, 6, 8, 9}]
-Eval A16 cartesianCount=1, elapsed 0:00:00.000042
+Eval A16 cartesianCount=1, elapsed 0:00:00.000020
 solve: Clue(name=A16,length=4,type=Root66ClueType.UNKNOWN,value: (DI-NO)(S+T)A+R,
 	identities=[A16[0]=D16[0],A16[1]=D17[0],A16[2]=D6[4],A16[3]=D10[2]],referrers=[D16,D17,D6,D10],
 	values={2319},
@@ -336,7 +335,7 @@ O={7}
 R={2}
 S={8}
 T={3}
-Eval D10 cartesianCount=1, elapsed 0:00:00.000039
+Eval D10 cartesianCount=1, elapsed 0:00:00.000019
 solve: Clue(name=D10,length=4,type=Root66ClueType.UNKNOWN,value: (S(U+D-A)-T)IO+N,
 	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
 	values={5894},
@@ -350,8 +349,8 @@ O={7}
 S={8}
 T={3}
 U={6}
-Eval A19 cartesianCount=1, elapsed 0:00:00.000037
-Eval D17 cartesianCount=1, elapsed 0:00:00.000047
+Eval A19 cartesianCount=1, elapsed 0:00:00.000556
+Eval D17 cartesianCount=1, elapsed 0:00:00.000027
 solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
 	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
 	values={3647},
@@ -364,7 +363,7 @@ O={7}
 S={8}
 T={3}
 U={6}
-Eval A21 cartesianCount=1, elapsed 0:00:00.000040
+Eval A21 cartesianCount=1, elapsed 0:00:00.000016
 solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
 	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
 	values={6487, 8467},
@@ -378,7 +377,7 @@ O={7}
 R={2}
 S={8}
 T={3}
-Eval A9 cartesianCount=1, elapsed 0:00:00.000058
+Eval A9 cartesianCount=1, elapsed 0:00:00.000012
 solve: Clue(name=A9,length=4,type=Root66ClueType.UNKNOWN,value: (S+I+T^A+RO-U-N)D,
 	identities=[A9[0]=D4[2],A9[1]=D5[2],A9[2]=D6[2],A9[3]=D10[0]],referrers=[D4,D5,D6,D10],
 	values={8765},
@@ -393,8 +392,8 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D14 cartesianCount=1, elapsed 0:00:00.000054
-Eval D15 cartesianCount=1, elapsed 0:00:00.000063
+Eval D14 cartesianCount=1, elapsed 0:00:00.000128
+Eval D15 cartesianCount=1, elapsed 0:00:00.000017
 solve: Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
 	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
 	values={3794, 9734},
@@ -409,8 +408,8 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A21 cartesianCount=1, elapsed 0:00:00.000041
-Eval A11 cartesianCount=1, elapsed 0:00:00.000041
+Eval A21 cartesianCount=1, elapsed 0:00:00.000012
+Eval A11 cartesianCount=1, elapsed 0:00:00.000011
 solve: Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={3578, 1569, 1965, 2539, 2935},
@@ -424,7 +423,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D3 cartesianCount=1, elapsed 0:00:00.000040
+Eval D3 cartesianCount=1, elapsed 0:00:00.000008
 solve: Clue(name=D3,length=4,type=Root66ClueType.UNKNOWN,value: DI(N^O*S+A+U)R,
 	identities=[D3[0]=A2[1],D3[1]=A7[3],D3[2]=A8[3],D3[3]=A11[3]],referrers=[A2,A7,A8,A11],
 	values={6485},
@@ -438,7 +437,7 @@ O={7}
 R={2}
 S={8}
 U={6}
-Eval A11 cartesianCount=1, elapsed 0:00:00.000052
+Eval A11 cartesianCount=1, elapsed 0:00:00.000018
 solve: Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={1965, 2935},
@@ -452,7 +451,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A8 cartesianCount=1, elapsed 0:00:00.000034
+Eval A8 cartesianCount=1, elapsed 0:00:00.000009
 solve: Clue(name=A8,length=4,type=Root66ClueType.UNKNOWN,value: R+O(TU+N)DA,
 	identities=[A8[0]=D8[0],A8[1]=D1[2],A8[2]=D2[2],A8[3]=D3[2]],referrers=[D8,D1,D2,D3],
 	values={4198},
@@ -465,7 +464,7 @@ O={7}
 R={2}
 T={3}
 U={6}
-Eval A18 cartesianCount=1, elapsed 0:01:37.794139
+Eval A18 cartesianCount=1, elapsed 0:00:00.000643
 solve: Clue(name=A18,length=4,type=Root66ClueType.UNKNOWN,value: (T/R)*I^N*(ODU+S),
 	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
 	values={2537},
@@ -479,8 +478,8 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D15 cartesianCount=1, elapsed 0:00:00.000122
-Eval A11 cartesianCount=1, elapsed 0:00:00.000079
+Eval D15 cartesianCount=1, elapsed 0:00:00.000026
+Eval A11 cartesianCount=1, elapsed 0:00:00.000011
 solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
 	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
 	values={16341587, 16541589, 16841592, 16941593, 26141586, 26541594, 26741598, 36141587, 56141589, 57941893, 67841896, 85941392, 86141592, 87641896, 95841392, 96141593, 97541893},
@@ -501,7 +500,7 @@ solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
 	values={79631824},
 	preValues={unknown}),
 	digits=[{7}, {9}, {6}, {3}, {1}, {8}, {2}, {4}]
-Eval D2 cartesianCount=1, elapsed 0:00:00.000123
+Eval D2 cartesianCount=1, elapsed 0:00:00.000028
 solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={2796},
@@ -516,7 +515,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A11 cartesianCount=1, elapsed 0:00:00.000100
+Eval A11 cartesianCount=1, elapsed 0:00:00.000013
 solve: Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={1965},
@@ -530,7 +529,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D16 cartesianCount=1, elapsed 0:00:00.000138
+Eval D16 cartesianCount=1, elapsed 0:00:00.000025
 solve: Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)-I+N),
 	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
 	values={2516},
@@ -545,7 +544,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A21 cartesianCount=1, elapsed 0:00:00.000166
+Eval A21 cartesianCount=1, elapsed 0:00:00.000013
 solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
 	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
 	values={8467},
@@ -559,7 +558,7 @@ O={7}
 R={2}
 S={8}
 T={3}
-Eval D5 cartesianCount=1, elapsed 0:00:00.000120
+Eval D5 cartesianCount=1, elapsed 0:00:00.000012
 solve: Clue(name=D5,length=4,type=Root66ClueType.UNKNOWN,value: A(U+D)+(I+T+O)*R^S,
 	identities=[D5[0]=A2[3],D5[1]=A7[5],D5[2]=A9[1],D5[3]=A12[1]],referrers=[A2,A7,A9,A12],
 	values={3579},
@@ -573,7 +572,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D15 cartesianCount=1, elapsed 0:00:00.000102
+Eval D15 cartesianCount=1, elapsed 0:00:00.000010
 solve: Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
 	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
 	values={9734},
@@ -588,7 +587,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D14 cartesianCount=1, elapsed 0:00:00.000090
+Eval D14 cartesianCount=1, elapsed 0:00:00.000011
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={2358},
@@ -602,7 +601,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A2 cartesianCount=1, elapsed 0:00:00.000114
+Eval A2 cartesianCount=1, elapsed 0:00:00.000014
 solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={2643},
@@ -617,7 +616,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval A13 cartesianCount=1, elapsed 0:00:00.000076
+Eval A13 cartesianCount=1, elapsed 0:00:00.000012
 solve: Clue(name=A13,length=4,type=Root66ClueType.UNKNOWN,value: S*U^T+(O+R+I)A+N,
 	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
 	values={6329},
@@ -631,7 +630,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Eval D8 cartesianCount=1, elapsed 0:00:00.000076
+Eval D8 cartesianCount=1, elapsed 0:00:00.000011
 solve: Clue(name=D8,length=4,type=Root66ClueType.UNKNOWN,value: S-A+U^T*(O+I-R),
 	identities=[D8[0]=A8[0],D8[1]=A11[0],D8[2]=A13[0],D8[3]=A18[0]],referrers=[A8,A11,A13,A18],
 	values={4162},
@@ -654,7 +653,7 @@ solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
 	values={76193571, 86193572},
 	preValues={unknown}),
 	digits=[{7, 8}, {6}, {1}, {9}, {3}, {5}, {7}, {1, 2}]
-Eval A19 cartesianCount=1, elapsed 0:00:00.000091
+Eval A19 cartesianCount=1, elapsed 0:00:00.000012
 solve: Clue(name=A19,length=4,type=Root66ClueType.UNKNOWN,value: (T*U^N*(D+R)+A)S,
 	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
 	values={5684},
@@ -667,7 +666,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Clue iterations=130, updates=39, elapsed 0:01:45.968195
+Clue iterations=130, updates=39, elapsed 0:00:00.019406
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A2, -D+U*R^(A+T)+I+O*N^S, values={2643}
@@ -694,6 +693,23 @@ D14, R-(A+I+N+O-U^T)S, values={2358}
 D15, ((N+U)^T+RI+S+O+D)A, values={9734}
 D16, R(O(√D-A+UST)-I+N), values={2516}
 D17, A(S^T+OU+N)+D, values={3647}
++--+--+--+--+--+--+--+--+
+|  |  | 2  6  4  3| 7|  |
++--+  +           +  +--+
+| 2  6  7  4  1  5  9  8|
++--                   --+
+| 4  1  9  8| 8  7  6  5|
++           +           +
+| 1  9  6  5| 2  9  3  8|
++      --+--+--+--+     +
+| 6  3  2  9| 2  3  1  9|
++           +           +
+| 2  5  3  7| 5  6  8  4|
++--+        +         --+
+| 8  7  5  3  1  4  2  6|
++--                   --+
+|  |  | 8  4  6  7| 4|  |
++--+--+--+--+--+--+--+--+
 Variables:
 A={5}
 D={9}

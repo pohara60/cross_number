@@ -319,4 +319,21 @@ void main() {
       // expect(primes, equals([]));
     });
   });
+  group('Factors', () {
+    // var text1 = '38619937';
+    var text1 = '242';
+    test(text1, () {
+      final stopwatch = Stopwatch()..start();
+      print('text1=${getFactors(int.parse(text1))}');
+      print('getFactors $text1 elapsed ${stopwatch.elapsed}');
+      // expect(primes, equals([]));
+    });
+    var text2 = '38619937';
+    test(text2, () {
+      final stopwatch = Stopwatch()..start();
+      print('text2=${getFactors(int.parse(text2))}');
+      print('getFactors $text2 elapsed ${stopwatch.elapsed}');
+      // expect(primes, equals([]));
+    });
+  });
 }

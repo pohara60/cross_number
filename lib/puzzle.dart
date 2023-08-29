@@ -4,7 +4,6 @@ import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/expression.dart';
 import 'package:crossnumber/grid.dart';
 import 'package:crossnumber/variable.dart';
-import 'package:powers/src/powers.dart';
 
 class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   final _clues = <String, ClueKind>{};
@@ -36,6 +35,11 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         DigitIdentity(entry: entry1, digit: digit1 - 1);
     entry2.addReferrer(entry1);
     entry1.addReferrer(entry2);
+  }
+
+  List<EntrySpec> getEntriesFromGrid() {
+    assert(this.grid != null);
+    return this.grid!.entries;
   }
 
   void addDigitIdentityFromGrid() {
@@ -77,16 +81,36 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   String toSummary() {
     var text = 'Puzzle Summary\n';
-    var clueValues = <String, int>{};
-    var unique = true;
     for (var clue in clues.values) {
       text += clue.toSummary() + '\n';
+    }
+    if (grid != null) text += toSolution();
+    return text;
+  }
+
+  String toSolution() {
+    var text = '';
+    // ignore: unused_local_variable
+    var unique = true;
+    var anyClue = false;
+    var entryValues = <String, List<String>>{};
+    for (var clue in clues.values) {
       if (clue.values == null || clue.values!.length > 1)
         unique = false;
-      else
-        clueValues[clue.name] = clue.values!.first;
+      else if (clue.entry != null) {
+        var e = clue.entry! as EntryMixin;
+        entryValues[clue.entry!.name] = e.digits
+            .map((dl) => dl.length == 1
+                ? dl.first.toString()
+                : dl.length == 0
+                    ? ''
+                    : '?')
+            .toList();
+        ;
+        anyClue = true;
+      }
     }
-    if (unique && grid != null) text += '${grid!.solutionToString(clueValues)}';
+    if (anyClue) text += '${grid!.solutionToString(entryValues)}';
     return text;
   }
 
@@ -296,7 +320,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     var text = "Solution\n";
     var keys = solution.keys.toList();
     keys.sort((c1, c2) => c1.compareTo(c2));
-    var clueValues = <String, int>{};
+    var clueValues = <String, List<String>>{};
     var unique = true;
     for (var clue in keys) {
       text +=
@@ -304,13 +328,203 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       if (solution[clue]!.value == null) {
         unique = false;
       } else {
-        clueValues[clue.name] = solution[clue]!.value!;
+        clueValues[clue.name] = solution[clue]!.value!.toString().split('');
       }
     }
     if (unique && this.grid != null) {
       text += '\n${grid!.solutionToString(clueValues)}';
     }
     return text;
+  }
+
+  void mapCluesToEntries(Function callback) {
+    var entryClues = <String, Set<Clue>>{};
+    var entryDigits = <String, List<Set<int>>>{};
+    var entryValues = <String, Set<int>>{};
+    var clueEntries = <String, Set<Clue>>{};
+
+    print("POTENTIAL SOLUTIONS-----------------------------");
+    // ignore: unused_local_variable
+    for (var mapped in mapNextClueToEntry(_entries.values.toList(), 0)) {
+      // var mapping =
+      //     "${entries.values.where((e) => (e as EntryMixin).clue != null).map((e) {
+      //   var c = (e as EntryMixin).clue!;
+      //   return '${e.name}=${c.name}${c.values})';
+      // }).join(',')}";
+      // print('Mapping $mapping');
+
+      print(toSolution());
+
+      for (var entry in entries.values) {
+        var e = entry as EntryMixin;
+        var clue = e.clue;
+        if (clue != null) {
+          entryClues[e.name] = (entryClues[e.name] ?? {})..add(clue);
+          clueEntries[clue.name] = (clueEntries[clue.name] ?? {})..add(entry);
+          if (clue.values != null) {
+            entryValues[e.name] = (entryValues[e.name] ?? {})
+              ..addAll(clue.values!);
+          }
+          // make sure digits are updated
+          clue.initialise();
+        }
+        // Get entry digits
+        var digits = entryDigits[e.name];
+        if (digits == null) {
+          entryDigits[e.name] = digits = List.generate(e.length, (index) => {});
+        }
+        for (var d = 0; d < e.length; d++) {
+          digits[d].addAll(e.digits[d]);
+        }
+      }
+    }
+    // print(entryClues.entries
+    //     .map((e) => '${e.key}:${e.value.map((c) => c.name).toList()}')
+    //     .toList()
+    //   ..sort());
+    // print(clueEntries.entries
+    //     .map((e) => '${e.key}:${e.value.map((c) => c.name).toList()}')
+    //     .toList()
+    //   ..sort());
+
+    // Compute entry values and set digits
+    for (var entry in entries.values) {
+      var e = entry as EntryMixin;
+      // Map clue?
+      if (entryClues[e.name] != null && entryClues[e.name]!.length == 1) {
+        var clue = entryClues[e.name]!.first;
+        mapClueToEntry(clue as ClueKind, entry);
+      }
+      if (entryValues[e.name] != null) {
+        entry.values = entryValues[e.name];
+      }
+      // Get entry digits
+      var digits = entryDigits[e.name];
+      var product = 1;
+      if (digits != null) {
+        for (var d = 0; d < e.length; d++) {
+          e.digits[d] = digits[d];
+          product *= digits[d].length;
+        }
+      }
+      // If no values then compute them from digits
+      if (entry.values == null) {
+        if (product < 10000) {
+          var values = <int>{};
+          void addValues(int index, int value) {
+            if (index == e.length) {
+              values.add(value);
+            } else {
+              int nextValue = value * 10;
+              for (var digit in e.digits[index]) {
+                if (digit > 9) nextValue = value * 100;
+                addValues(index + 1, nextValue + digit);
+              }
+            }
+          }
+
+          addValues(0, 0);
+          entry.values = values;
+        }
+      }
+    }
+    // print((entries.values
+    //         .map((e) =>
+    //             '${e.name}:${e.values?.toShortString()}:${e.digits.toShortString()}')
+    //         .toList()
+    //       ..sort())
+    //     .toString()
+    //     .replaceAll(', ', '\n'));
+    //print(toSolution());
+  }
+
+  Iterable<bool> mapNextClueToEntry(List<EntryKind> entries, int index) sync* {
+    if (index == entries.length) {
+      yield true;
+      return;
+    }
+
+    var entry = entries[index];
+    ClueKind? mappedClue = (entry as EntryMixin).clue as ClueKind?;
+
+    for (var clue in mappedClue != null
+        ? [mappedClue]
+        : _clues.values.where((c) =>
+            c.isAcross == entry.isAcross &&
+            c.length == entry.length &&
+            c.entry == null)) {
+      // Set mapping
+      mapClueToEntry(clue, entry);
+
+      // Save values and entry digits
+      var oldValues = clue.values;
+      var savedDigits = clue.saveDigits();
+
+      // Update entry from clue
+      if (updateEntry(clue)) {
+        // Try to map remaining clues
+        yield* mapNextClueToEntry(entries, index + 1);
+      } else if (mappedClue != null) {
+        if (Crossnumber.traceSolve) {
+          print(
+              'Clue ${mappedClue.name} mapping to Entry ${entry.name} is invalid');
+        }
+      }
+
+      // Undo mapping
+      clue.values = oldValues;
+      clue.restoreDigits(savedDigits);
+      clue.entry = null;
+      (entry as EntryMixin).clue = null;
+    }
+
+    if (Crossnumber.traceSolve) {
+      // var mapping =
+      //     "${entries.where((e) => (e as EntryMixin).clue != null).map((e) {
+      //   var c = (e as EntryMixin).clue!;
+      //   return '${e.name}=${c.name}${c.values})';
+      // }).join(',')}";
+      // print('Mapping failed for entry ${entry.name}');
+      // print(mapping);
+      // print(toSolution());
+    }
+    return;
+  }
+
+  bool updateEntry(ClueKind clue) {
+    // Update entry digits from other entries
+    clue.initialise();
+
+    // Check values against permissible digits
+    if (clue.values == null) return true;
+
+    if (clue.values!.isNotEmpty) {
+      var okValues = <int>{};
+      for (var value in clue.values!) {
+        if (clue.digitsMatch(value)) {
+          okValues.add(value);
+        }
+      }
+      if (okValues.isNotEmpty) {
+        // Update values and digits
+        clue.values = okValues;
+        clue.finalise();
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  void mapClueToEntryByName(String clueName, String entryName) {
+    var clue = _clues[clueName]!;
+    var entry = _entries[entryName]!;
+    mapClueToEntry(clue, entry);
+  }
+
+  void mapClueToEntry(ClueKind clue, EntryKind entry) {
+    clue.entry = entry;
+    (entry as EntryMixin).clue = clue;
   }
 }
 
@@ -322,7 +536,8 @@ class PuzzleException implements Exception {
 
 /// SolveException for puzzle solution
 class SolveException implements Exception {
-  SolveException();
+  String? msg;
+  SolveException([this.msg]);
 }
 
 class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
@@ -365,7 +580,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     return clueError;
   }
 
-  String checkVariableReferences() {
+  String checkClueVariableReferences(Map<String, ClueKind> clues) {
     var variableError = '';
     for (var entry in clues.entries) {
       var clue = entry.value;
@@ -373,10 +588,17 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         var variable = variables[variableName];
         if (variable == null) {
           variableError +=
-              "Clue ${clue.name} expression '${clue.valueDesc}' refers to variable '$variableName' which does not exist\n";
+              "$runtimeType ${clue.name} expression '${clue.valueDesc}' refers to variable '$variableName' which does not exist\n";
         }
       }
     }
+    return variableError;
+  }
+
+  String checkVariableReferences() {
+    var variableError = '';
+    variableError += checkClueVariableReferences(_clues);
+    variableError += checkClueVariableReferences(_entries);
     return variableError;
   }
 
@@ -420,7 +642,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     for (var product in cartesian(variableValues)) {
       var value = expression(product);
-      if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
+      if (value >= clue.min && value < clue.max + 1) {
         if (clue.digitsMatch(value)) {
           possibleValue.add(value);
           var index = 0;
@@ -459,7 +681,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     for (var product in cartesian(variableValues)) {
       try {
         var value = clue.exp.evaluate(clue.variableReferences, product);
-        if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
+        if (value >= clue.min && value < clue.max + 1) {
           var valid = validValue == null
               ? clue.digitsMatch(value)
               : validValue(clue, value, clue.variableReferences, product);
@@ -521,7 +743,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       try {
         for (var value in clue.exp.generate(
             clue.min, clue.max, clue.variableClueReferences, product)) {
-          if (value >= 10.pow(clue.length - 1) && value < 10.pow(clue.length)) {
+          if (value >= clue.min && value < clue.max + 1) {
             var valid = validValue == null
                 ? clue.digitsMatch(value)
                 : validValue(clue, value, clue.variableClueReferences, product);
@@ -544,6 +766,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     if (Crossnumber.traceSolve) {
       print(
           'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+      // print('${clue.exp.toString()}');
+      // for (var v in clue.variableReferences) {
+      //   print('$v=${this.variables[v]!.values!.toList()}');
+      // }
     }
     return false;
   }
