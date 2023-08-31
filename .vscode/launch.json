@@ -23,6 +23,15 @@
             ]
         },
         {
+            "name": "root66_2",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "root66_2"
+            ]
+        },
+        {
             "name": "instruction",
             "type": "dart",
             "request": "launch",

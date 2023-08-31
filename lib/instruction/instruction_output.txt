@@ -524,7 +524,7 @@ solve: InstructionEntry(name=D4,length=2,value: Greater than D8 and DS equals an
 	identities=[D4[0]=A3[1],D4[1]=A9[1]],referrers=[A3,A9,D8],
 	values={65,67},
 	digits=[{6},{5,7}]
-Clue iterations=160, updates=92, elapsed 0:00:00.078728
+Clue iterations=160, updates=92, elapsed 0:00:00.067758
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={153,351}
@@ -564,19 +564,19 @@ D24, DP is square, values={14,19}
 D25, Lucky number, values={15,49,69,75,79,99}
 D27, Fibonacci number, values={13,89}
 +--+--+--+--+--+--+--+
-|        |        |  |
+| ?  5  ?| ?  6  ?| ?|
 +      --+        +  +
-|     | 5|     | 8  8|
+| ?  ?| 5| ?  ?| 8  8|
 +--+  +  +   --+--+  +
-|       5   |  |     |
+| ?  5  5  ?| ?| ?  ?|
 +   --+--+--+  +   --+
-|        |  |        |
+| ?  3  ?|  | ?  ?  ?|
 +--+     +--+--+--+  +
-|     |  |    2      |
+| ?  ?| ?| ?  2  2  ?|
 +   --+--+         --+
-| 1  1|     | 0|     |
+| 1  1| ?  ?| 0| ?  ?|
 +     +     +--+     +
-|  |        |        |
+| ?| ?  ?  ?| ?  8  ?|
 +--+--+--+--+--+--+--+
 
 Fix clue D8=55
@@ -768,7 +768,7 @@ solve: InstructionEntry(name=D22,length=3,value: DP is a power of 2,
 	identities=[D22[0]=A20[2],D22[1]=A26[0],D22[2]=A29[1]],referrers=[A20,A26,A29],
 	values={218},
 	digits=[{2},{1},{8}]
-Clue iterations=90, updates=43, elapsed 0:00:00.022592
+Clue iterations=90, updates=43, elapsed 0:00:00.021335
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={351}
@@ -818,7 +818,7 @@ D27, Fibonacci number, values={89}
 +--+     +--+--+--+  +
 | 4  5| 9| 1  2  2  9|
 +   --+--+         --+
-| 1  1| 1   | 0| 1  8|
+| 1  1| 1  ?| 0| 1  8|
 +     +     +--+     +
 | 5| 9  5  4| 3  8  9|
 +--+--+--+--+--+--+--+
@@ -970,7 +970,7 @@ Fix clue D24=14
 Fix clue D25=75
 Fix clue D27=13
 UPDATES-----------------------------
-Clue iterations=36, updates=0, elapsed 0:00:00.000030
+Clue iterations=36, updates=0, elapsed 0:00:00.000026
 SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={153}

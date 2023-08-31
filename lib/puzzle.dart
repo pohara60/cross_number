@@ -35,6 +35,11 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         DigitIdentity(entry: entry1, digit: digit1 - 1);
     entry2.addReferrer(entry1);
     entry1.addReferrer(entry2);
+    if (entry1.clue != null && entry2 != null) {
+      // Entrys are mapped to clues, so add reference betwen them
+      entry2.clue!.addReferrer(entry1.clue!);
+      entry1.clue!.addReferrer(entry2.clue!);
+    }
   }
 
   List<EntrySpec> getEntriesFromGrid() {
@@ -95,9 +100,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     var anyClue = false;
     var entryValues = <String, List<String>>{};
     for (var clue in clues.values) {
-      if (clue.values == null || clue.values!.length > 1)
-        unique = false;
-      else if (clue.entry != null) {
+      var values = clue.values ?? clue.entry?.values;
+      if (values == null || values.length > 1) unique = false;
+      if (clue.entry != null) {
         var e = clue.entry! as EntryMixin;
         entryValues[clue.entry!.name] = e.digits
             .map((dl) => dl.length == 1

@@ -193,7 +193,11 @@ class Clue extends Variable {
   }
 
   String toSummary() {
-    var valueStr = values == null ? '{unknown}' : values!.toShortString();
+    String valueString(Set<int>? values) =>
+        values == null ? '{unknown}' : values.toShortString();
+    var valueStr = valueString(values);
+    if (entry != null && entry != this)
+      valueStr += ', entry=${valueString(entry!.values)}';
     return '$name, $valueDesc, values=$valueStr';
   }
 

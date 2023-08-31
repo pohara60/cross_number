@@ -13,6 +13,7 @@ import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
 import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
+import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 
 const help = 'help';
@@ -32,6 +33,7 @@ void main(List<String> arguments) async {
     ..addCommand(EvenOdderCommand())
     ..addCommand(InstructionCommand())
     ..addCommand(Root66Command())
+    ..addCommand(Root66_2Command())
     ..addCommand(No21Command());
   try {
     await runner.run(arguments);
@@ -185,6 +187,20 @@ class Root66Command extends Command {
   void run() {
     // Get and print solve
     final pc = Root66();
+    pc.solve();
+  }
+}
+
+class Root66_2Command extends Command {
+  @override
+  final name = 'root66_2';
+  @override
+  final description = 'solve hardcoded root66_2 puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Root66_2();
     pc.solve();
   }
 }
