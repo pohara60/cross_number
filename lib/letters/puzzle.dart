@@ -18,7 +18,7 @@ class LettersPuzzle
       : super.grid(List.from([1, 2, 3, 4, 5, 6, 7, 8, 9]), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues;
+  List<int> get remainingDigits => variableList.remainingValues!;
   Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 }

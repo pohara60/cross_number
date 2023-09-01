@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/partners/puzzle.dart';
 

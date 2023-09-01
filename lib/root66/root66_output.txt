@@ -120,19 +120,19 @@ Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Variables:
-A={1, 2, 3, 4, 5, 6, 7, 8, 9}
-D={1, 2, 3, 4, 5, 6, 7, 8, 9}
-I={1, 2, 3, 4, 5, 6, 7, 8, 9}
-N={1, 2, 3, 4, 5, 6, 7, 8, 9}
-O={1, 2, 3, 4, 5, 6, 7, 8, 9}
-R={1, 2, 3, 4, 5, 6, 7, 8, 9}
-S={1, 2, 3, 4, 5, 6, 7, 8, 9}
-T={1, 2, 3, 4, 5, 6, 7, 8, 9}
-U={1, 2, 3, 4, 5, 6, 7, 8, 9}
+A={1..9}
+D={1..9}
+I={1..9}
+N={1..9}
+O={1..9}
+R={1..9}
+S={1..9}
+T={1..9}
+U={1..9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 SOLVE------------
-Eval D14 cartesianCount=14348907, elapsed 0:00:02.716115
+Eval D14 cartesianCount=14348907, elapsed 0:00:02.624852
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={more than 20},
@@ -146,7 +146,7 @@ R={1, 2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 6, 7, 8, 9}
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval D2 cartesianCount=29760696, elapsed 0:00:04.863393
+Eval D2 cartesianCount=29760696, elapsed 0:00:04.781905
 solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={more than 20},
@@ -161,7 +161,7 @@ R={2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 8}
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval A2 cartesianCount=6193152, elapsed 0:00:01.071994
+Eval A2 cartesianCount=6193152, elapsed 0:00:01.080343
 solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={4659, 4956, 5649, 5946, 1395, 2643, 3567, 2318, 1436, 1634, 3416, 3614},
@@ -176,7 +176,7 @@ R={2}
 S={1, 8}
 T={3, 5, 6}
 U={6, 7}
-Eval A12 cartesianCount=72, elapsed 0:00:00.000370
+Eval A12 cartesianCount=72, elapsed 0:00:00.000394
 solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={1869, 1968, 2839, 2938, 3829, 3928},
@@ -626,7 +626,7 @@ R={2}
 S={8}
 T={3}
 U={6}
-Clue iterations=130, updates=39, elapsed 0:00:00.017744
+Clue iterations=130, updates=39, elapsed 0:00:00.019396
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A2, -D+U*R^(A+T)+I+O*N^S, values={2643}

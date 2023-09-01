@@ -26,8 +26,17 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['prime'] = Monadic('prime', isPrime, bool);
   monadics['multiple'] = Monadic('multiple', multiple, Iterable<int>);
   monadics['greaterthan'] = Monadic('greaterthan', greaterthan, Iterable<int>);
+  monadics['greaterthanequal'] =
+      Monadic('greaterthanequal', greaterthanequal, Iterable<int>);
   monadics['lessthan'] = Monadic('lessthan', lessthan, Iterable<int>);
+  monadics['lessthanequal'] =
+      Monadic('lessthanequal', lessthanequal, Iterable<int>);
+  monadics['gt'] = Monadic('gt', greaterthan, Iterable<int>);
+  monadics['gte'] = Monadic('gte', greaterthanequal, Iterable<int>);
+  monadics['lt'] = Monadic('lt', lessthan, Iterable<int>);
+  monadics['lte'] = Monadic('lte', lessthanequal, Iterable<int>);
   monadics['jumble'] = Monadic('jumble', jumble, Iterable<int>);
+  monadics['factor'] = Monadic('factor', factors, Iterable<int>);
 }
 
 int digitSum(int value) {
@@ -108,12 +117,29 @@ Iterable<int> greaterthan(int value) sync* {
   }
 }
 
+Iterable<int> greaterthanequal(int value) sync* {
+  int last = value;
+  while (true) {
+    yield last;
+    last += 1;
+  }
+}
+
 Iterable<int> lessthan(int value) sync* {
   int last = value;
   while (true) {
     last -= 1;
     if (last < 1) break;
     yield last;
+  }
+}
+
+Iterable<int> lessthanequal(int value) sync* {
+  int last = value;
+  while (true) {
+    if (last < 1) break;
+    yield last;
+    last -= 1;
   }
 }
 
@@ -150,15 +176,15 @@ Iterable<int> jumbleStr(int leftValue, String strValue) sync* {
   }
 }
 
-List<int> getFactors(int value) {
-  var factors = <int>[];
+Iterable<int> getFactors(int value) => factors(value);
+Iterable<int> factors(int value) sync* {
   var remaining = value;
   while (remaining > 1) {
     var prime = true;
     for (var factor = 2; factor <= sqrt(remaining); factor++) {
       var divisor = remaining / factor;
       if (divisor.isValidInteger) {
-        factors.add(factor);
+        yield factor;
         remaining = divisor.toInt();
         prime = false;
         break;
@@ -166,7 +192,7 @@ List<int> getFactors(int value) {
     }
     if (prime) break;
   }
-  if (remaining != 1) factors.add(remaining);
+  if (remaining != 1) yield remaining;
 
-  return factors;
+  return;
 }

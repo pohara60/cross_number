@@ -223,27 +223,6 @@ class VariableClue extends Clue {
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {}
 }
 
-mixin Expression {
-  late ExpressionEvaluator exp;
-
-  void initExpression(
-      String? valueDesc, variablePrefix, String name, Clue clue) {
-    if (valueDesc != null && valueDesc != '') {
-      try {
-        exp = ExpressionEvaluator(valueDesc, variablePrefix);
-        for (var variableName in exp.variableRefs..sort()) {
-          clue.addVariableReference(variableName);
-        }
-        for (var clueName in exp.clueRefs..sort()) {
-          clue.addClueReference(clueName);
-        }
-      } on ExpressionInvalid catch (e) {
-        throw ExpressionInvalid('$name expression $valueDesc error ${e.msg}');
-      }
-    }
-  }
-}
-
 class ExpressionClue extends VariableClue with Expression {
   late ExpressionEvaluator exp;
 
@@ -254,7 +233,7 @@ class ExpressionClue extends VariableClue with Expression {
       Function? solve,
       variablePrefix = ''})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    initExpression(valueDesc, variablePrefix, name, this);
+    initExpression(valueDesc, variablePrefix, name, clue: this);
   }
 }
 

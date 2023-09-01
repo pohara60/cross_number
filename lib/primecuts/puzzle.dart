@@ -17,7 +17,7 @@ class PrimeCutsPuzzle
   PrimeCutsPuzzle() : super(List.from(twoDigitPrimes));
 
   Map<String, Variable> get primes => variableList.variables;
-  List<int> get remainingPrimes => variableList.remainingValues;
+  List<int> get remainingPrimes => variableList.remainingValues!;
   Set<String> updatePrimes(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 

@@ -16,6 +16,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
+import 'package:crossnumber/wheels/wheels.dart';
 
 const help = 'help';
 const program = 'crossnumber';
@@ -36,7 +37,8 @@ void main(List<String> arguments) async {
     ..addCommand(Root66Command())
     ..addCommand(Root66_2Command())
     ..addCommand(No21Command())
-    ..addCommand(PartnersCommand());
+    ..addCommand(PartnersCommand())
+    ..addCommand(WheelsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -236,6 +238,26 @@ class PartnersCommand extends Command {
     // Get and print solve
     try {
       final pc = Partners();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class WheelsCommand extends Command {
+  @override
+  final name = 'wheels';
+  @override
+  final description = 'solve hardcoded wheels puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Wheels();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

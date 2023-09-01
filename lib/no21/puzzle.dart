@@ -43,7 +43,7 @@ class No21Puzzle extends VariablePuzzle<No21Clue, No21Entry, No21Variable> {
   }
 
   Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingValues => variableList.remainingValues;
+  List<int> get remainingValues => variableList.remainingValues!;
   Set<String> updateLetters(String letter, Set<int> possibleValues) =>
       variableList.updateVariables(letter, possibleValues);
 }

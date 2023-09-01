@@ -76,7 +76,7 @@ class EvenOdderPuzzle
       : super.grid(List.from(variableValues), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues;
+  List<int> get remainingDigits => variableList.remainingValues!;
   Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 }

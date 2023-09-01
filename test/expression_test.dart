@@ -324,14 +324,14 @@ void main() {
     var text1 = '242';
     test(text1, () {
       final stopwatch = Stopwatch()..start();
-      print('text1=${getFactors(int.parse(text1))}');
+      print('text1=${getFactors(int.parse(text1)).toList()}');
       print('getFactors $text1 elapsed ${stopwatch.elapsed}');
       // expect(primes, equals([]));
     });
     var text2 = '38619937';
     test(text2, () {
       final stopwatch = Stopwatch()..start();
-      print('text2=${getFactors(int.parse(text2))}');
+      print('text2=${getFactors(int.parse(text2)).toList()}');
       print('getFactors $text2 elapsed ${stopwatch.elapsed}');
       // expect(primes, equals([]));
     });

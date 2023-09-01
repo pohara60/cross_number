@@ -3,8 +3,31 @@
 // Token specification
 import 'dart:math';
 
+import 'clue.dart';
 import 'generators.dart';
 import 'monadic.dart';
+import 'variable.dart';
+
+mixin Expression {
+  late ExpressionEvaluator exp;
+
+  void initExpression(String? valueDesc, variablePrefix, String name,
+      {Clue? clue, ExpressionVariable? variable}) {
+    if (valueDesc != null && valueDesc != '') {
+      try {
+        exp = ExpressionEvaluator(valueDesc, variablePrefix);
+        for (var variableName in exp.variableRefs..sort()) {
+          if (clue != null) clue.addVariableReference(variableName);
+        }
+        for (var clueName in exp.clueRefs..sort()) {
+          if (clue != null) clue.addClueReference(clueName);
+        }
+      } on ExpressionInvalid catch (e) {
+        throw ExpressionInvalid('$name expression $valueDesc error ${e.msg}');
+      }
+    }
+  }
+}
 
 const NUM = 'NUM', NUM_RE = r'(?<' + NUM + r'>\d+)';
 const PLUS = 'PLUS', PLUS_RE = r'(?<' + PLUS + r'>\+)';

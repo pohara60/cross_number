@@ -295,9 +295,9 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
     if (Crossnumber.traceSolve) {
       print("solve: $clue");
-      print("primes[${clue.prime}]=${puzzle.primes[clue.prime]}");
+      print("${puzzle.primes[clue.prime]}");
       for (var prime in clue.primeReferences) {
-        print("primes[$prime]=${puzzle.primes[prime]}");
+        print("${puzzle.primes[prime]}");
       }
     }
     return updated;

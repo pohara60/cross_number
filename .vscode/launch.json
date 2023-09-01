@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "wheels",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "wheels"
+            ]
+        },
+        {
             "name": "partners",
             "type": "dart",
             "request": "launch",

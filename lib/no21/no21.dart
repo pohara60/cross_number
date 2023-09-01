@@ -231,7 +231,7 @@ class No21 extends Crossnumber<No21Puzzle> {
     if (clue.entry != null && clue.entry!.values != null) {
       for (var value in clue.entry!.values!) {
         var reversedValue = reverse(value);
-        var factors = getFactors(reversedValue);
+        var factors = getFactors(reversedValue).toList();
         if (factors.length == 3 &&
             (factors[0] == factors[1] || factors[1] == factors[2])) {
           // square * prime

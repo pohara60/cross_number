@@ -593,9 +593,13 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   Map<String, Variable> get variables => variableList.variables;
-  List<int> get remainingValues => variableList.remainingValues;
+  List<int>? get remainingValues => variableList.remainingValues;
   Set<String> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
+
+  void addVariable(VariableKind variable) {
+    variableList.variables[variable.name] = variable;
+  }
 
   Iterable<int> generateSumDigits(num min, num max) sync* {
     // Generate sums of all combinations of entry digits
@@ -673,15 +677,19 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   int getClueCount(VariableClue clue, List<List<int>> variableValues) {
-    for (var variable in clue.variableReferences) {
-      variableValues.add(this.variables[variable]!.values!.toList());
+    for (var variableName in clue.variableReferences) {
+      var variable = this.variables[variableName]!;
+      if (variable.values == null) return 0;
+      variableValues.add(variable.values!.toList());
     }
     return cartesianCount(variableValues);
   }
 
   int getEntryCount(VariableEntry clue, List<List<int>> variableValues) {
-    for (var variable in clue.variableReferences) {
-      variableValues.add(this.variables[variable]!.values!.toList());
+    for (var variableName in clue.variableReferences) {
+      var variable = this.variables[variableName]!;
+      if (variable.values == null) return 0;
+      variableValues.add(variable.values!.toList());
     }
     return cartesianCount(variableValues);
   }
@@ -786,8 +794,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
           validValue]) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
-    for (var variable in clue.variableReferences) {
-      variableValues.add(this.variables[variable]!.values!.toList());
+    for (var variableName in clue.variableReferences) {
+      var variable = this.variables[variableName]!;
+      if (variable.values == null) throw new SolveException();
+      variableValues.add(variable.values!.toList());
     }
     for (var variable in clue.clueReferences) {
       var otherClue = this.clues[variable]!;
@@ -852,9 +862,12 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     // Iterate over possible variable values
     var variableValues = <List<int>>[];
     var variableNames = <String>[];
-    for (var variable in this.variables.keys) {
-      variableNames.add(variable);
-      variableValues.add(this.variables[variable]!.values!.toList());
+    for (var variableName in this.variables.keys) {
+      var variable = this.variables[variableName]!;
+      if (variable.values != null) {
+        variableNames.add(variableName);
+        variableValues.add(variable.values!.toList());
+      }
     }
     var count = 0;
     //for (var product in [      [8, 3, 5, 1, 7, 4, 9, 2, 6]    ]) {
