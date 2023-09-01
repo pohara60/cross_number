@@ -3,7 +3,8 @@ int cartesianCount<T>(List<List<T>> inputs) {
       1, (previousValue, element) => previousValue * element.length);
 }
 
-Iterable<List<T>> cartesian<T>(List<List<T>> inputs) sync* {
+Iterable<List<T>> cartesian<T>(List<List<T>> inputs,
+    [bool duplicates = false]) sync* {
   if (inputs.isEmpty) {
     yield <T>[];
     return;
@@ -17,11 +18,11 @@ Iterable<List<T>> cartesian<T>(List<List<T>> inputs) sync* {
 
     for (int i = 0; i < indices.length; i++) {
       var value = inputs[i][indices[i]];
-      if (!set.add(value)) break;
+      if (!duplicates && !set.add(value)) break;
       result.add(value);
     }
 
-    // Only lists without duplicates
+    // Short results are because of duplicate detection
     if (result.length == indices.length) {
       //yield [for (int i = 0; i < indices.length; i++) inputs[i][indices[i]]];
       yield result;

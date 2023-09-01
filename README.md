@@ -39,6 +39,7 @@ The Notes column in the table below refer to the type of clue solver logic, whic
 | [Instruction](lib/instruction/README.md) | Custom | Manual Solvers, post-processing |
 | [Letters](lib/letters/README.md) | Variable | Variable Solvers |
 | [No21](lib/no21/README.md) | Variable | Expression Solvers for Clues, post-processing |
+| [Partners](lib/partners/README.md) | Simple | Expression Solvers |
 | [PrimeCuts](lib/primecuts/README.md) | Variable | Manual Solvers, 2 values per clue |
 | [Sequences](lib/sequences/README.md) | Variable | Expression Solvers |
 

@@ -1,12 +1,15 @@
 /// An API for solving Cross Number puzzles.
 library crossnumber;
 
-import 'package:collection/collection.dart';
+import 'package:collection/collection.dart' show PriorityQueue;
 import 'dart:math';
 import 'package:powers/powers.dart';
 
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/puzzle.dart';
+import 'package:crossnumber/monadic.dart';
+
+import 'cartesian.dart';
 
 /// Provide access to the Cross Number API.
 class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
@@ -607,15 +610,6 @@ Map<int, Map<String, int>> getThreeDigitPrimeMultiples() {
   return multiples;
 }
 
-int reverse(int value) {
-  var valueStr = value.toString();
-  var reverse = '';
-  for (var index = 0; index < valueStr.length; index++) {
-    reverse = valueStr[index] + reverse;
-  }
-  return int.parse(reverse);
-}
-
 bool twoDigitPrimeHasReverse(int prime) {
   return primeHasReverse(prime, twoDigitPrimes);
 }
@@ -634,15 +628,6 @@ bool ascending(int value) {
     last = next;
   }
   return true;
-}
-
-int sumDigits(int value) {
-  var valueStr = value.toString();
-  var sum = 0;
-  for (var index = 0; index < valueStr.length; index++) {
-    sum += int.parse(valueStr[index]);
-  }
-  return sum;
 }
 
 bool isJumble(int value, int jumble) {
@@ -805,19 +790,14 @@ int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
 }
 
 Set<int>? getValuesFromClueDigits(Clue clue) {
-  var numValues = 1;
-  for (var d = 0; d < clue.length; d++) {
-    numValues *= clue.digits[d].length;
-  }
-  if (numValues >= 100) return null;
+  var allDigits =
+      List<List<int>>.generate(clue.length, (d) => clue.digits[d].toList());
+  var count = cartesianCount(allDigits);
+  if (count > 1000) return null;
   var values = <int>{};
-  for (var d1 in clue.digits[0]) {
-    for (var d2 in clue.digits[1]) {
-      for (var d3 in clue.digits[2]) {
-        var value = d3 + 10 * (d2 + 10 * d1);
-        values.add(value);
-      }
-    }
+  for (var product in cartesian(allDigits)) {
+    int value = product.reduce((value, element) => value * 10 + element);
+    values.add(value);
   }
   return values;
 }

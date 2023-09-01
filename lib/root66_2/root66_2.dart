@@ -444,10 +444,10 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       if (clue.solve!(
           clue, possibleClueValue, possibleEntryValue, possibleVariables))
         updated = true;
-      // Some Solve functions do not update PreValues
+      // Some Solve functions do not update Clue Values
       if (possibleClueValue.isNotEmpty && clue.updateValues(possibleClueValue))
         updated = true;
-      // If no Values returned then Solve function could not solve
+      // If no Entry Values returned then Solve function could not solve
       if (possibleEntryValue.isEmpty) {
         print(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');

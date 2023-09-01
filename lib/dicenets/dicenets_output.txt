@@ -171,7 +171,10 @@ solve: DiceNetsEntry(name=A14,length=2,value: Triangular,
 	identities=[A14[0]=D6[2],A14[1]=D15[0]],referrers=[D6,D15],
 	values={15,21,36,45,55,66},
 	digits=[{1..6},{1,5,6}]
-Solve Error: clue A16 (Triangular - A31) no solution!
+solve: DiceNetsEntry(name=A16,length=3,value: Triangular - A31,
+	identities=[A16[0]=D1[3],A16[1]=D2[3],A16[2]=D11[1]],referrers=[D1,D2,D11,A27,A31],
+	values={111,112,113,114,115,116,121,122,123,124,125,126,131,132,133,134,135,136,141,142 and 196 more},
+	digits=[{1..6},{1..6},{1..6}]
 Solve Error: clue A17 (Multiple of D7) no solution!
 solve: DiceNetsEntry(name=A18,length=5,value: Triangular,
 	identities=[A18[1]=D2[4],A18[2]=D11[2],A18[3]=D9[3],A18[4]=D13[2]],referrers=[D2,D11,D9,D13,A8],
@@ -187,13 +190,19 @@ solve: DiceNetsEntry(name=A25,length=4,value: Prime,
 	identities=[A25[0]=D18[2],A25[1]=D26[0],A25[2]=D22[1],A25[3]=D9[5]],referrers=[D18,D26,D22,D9],
 	values={1123,1151,1153,1163,1213,1223,1231,1321,1361,1423,1433,1451,1453,1511,1523,1531,1543,1553,1613,1621 and 111 more},
 	digits=[{1..6},{1..6},{1..6},{1,3}]
-Solve Error: clue A27 (Square - A16) no solution!
+solve: DiceNetsEntry(name=A27,length=3,value: Square - A16,
+	identities=[A27[0]=D24[1],A27[1]=D20[2],A27[2]=D28[0]],referrers=[D24,D20,D28],
+	values={111,112,113,114,115,116,121,122,123,124,125,126,131,132,133,134,135,136,141,142 and 196 more},
+	digits=[{1..6},{1..6},{1..6}]
 solve: DiceNetsEntry(name=A29,length=2,value: Multiple of a Power,
 	identities=[A29[0]=D18[3],A29[1]=D26[1]],referrers=[D18,D26,A19],
 	values={16,24,32,54,56,64},
 	digits=[{1,2,3,5,6},{2,4,6}]
 Solve Error: clue A30 (Square + D24) no solution!
-Solve Error: clue A31 (Square - A16) no solution!
+solve: DiceNetsEntry(name=A31,length=3,value: Square - A16,
+	identities=[A31[0]=D24[2],A31[1]=D20[3],A31[2]=D28[1]],referrers=[D24,D20,D28,A16],
+	values={111,112,113,114,115,116,121,122,123,124,125,126,131,132,133,134,135,136,141,142 and 196 more},
+	digits=[{1..6},{1..6},{1..6}]
 Solve Error: clue A33 (Multiple of A30) no solution!
 solve: DiceNetsEntry(name=A35,length=4,value: Triangular,
 	identities=[A35[0]=D32[1],A35[1]=D26[3],A35[2]=D22[4]],referrers=[D32,D26,D22],
@@ -271,7 +280,6 @@ solve: DiceNetsEntry(name=A10,length=3,value: Multiple of D34,
 	identities=[A10[0]=D1[2],A10[1]=D2[2],A10[2]=D11[0]],referrers=[D1,D2,D11],
 	values={115,121,122,132,155,161,165,212,215,221,231,242,265,312,322,325,341,345,351,352 and 12 more},
 	digits=[{1..6},{1..6},{1,2,5}]
-Solve Error: clue A16 (Triangular - A31) no solution!
 solve: DiceNetsEntry(name=A17,length=4,value: Multiple of D7,
 	identities=[A17[0]=D13[1],A17[1]=D5[3],A17[2]=D6[3],A17[3]=D15[1]],referrers=[D13,D5,D6,D15],
 	values={1136,1152,1216,1232,1264,1312,1344,1424,1456,1536,1552,1616,1632,1664,2112,2144,2224,2256,2336,2352 and 61 more},
@@ -281,15 +289,14 @@ solve: DiceNetsEntry(name=A19,length=2,value: Triangular - A29,
 	values={12,13,14,21,22,23,24,31,34,35,41,42,46,51,54,56,62,64,66},
 	digits=[{1..6},{1..6}]
 Solve Error: clue A23 (Multiple of D32) no solution!
-Solve Error: clue A27 (Square - A16) no solution!
 solve: DiceNetsEntry(name=A30,length=3,value: Square + D24,
 	identities=[A30[0]=D22[2],A30[1]=D9[6],A30[2]=D13[5]],referrers=[D22,D9,D13,A33],
 	values={114,154,161,162,213,266,314,362,365,366,413,414,461,465,513,554,561,565,614,654 and 3 more},
 	digits=[{1..6},{1,5,6},{1..6}]
-solve: DiceNetsEntry(name=A31,length=3,value: Square - A16,
-	identities=[A31[0]=D24[2],A31[1]=D20[3],A31[2]=D28[1]],referrers=[D24,D20,D28,A16],
-	values={112,114,115,116,122,124,125,126,131,132,134,135,136,141,142,144,145,146,151,152 and 64 more},
-	digits=[{1,3,5},{1..6},{1,2,4,5,6}]
+solve: DiceNetsEntry(name=A16,length=3,value: Triangular - A31,
+	identities=[A16[0]=D1[3],A16[1]=D2[3],A16[2]=D11[1]],referrers=[D1,D2,D11,A27,A31],
+	values={111,114,116,121,124,126,131,134,136,141,144,146,151,154,156,161,164,166,411,414 and 52 more},
+	digits=[{1,4,5,6},{1..6},{1,4,6}]
 solve: DiceNetsEntry(name=A33,length=4,value: Multiple of A30,
 	identities=[A33[0]=D22[3],A33[2]=D13[6],A33[3]=D34[0]],referrers=[D22,D13,D34],
 	values={1242,1254,1256,1464,1652,1656,1662,2156,2166,2216,2244,2254,2343,2415,2456,2464,2512,2555,2556,2562 and 36 more},
@@ -326,6 +333,14 @@ solve: DiceNetsEntry(name=A29,length=2,value: Multiple of a Power,
 	identities=[A29[0]=D18[3],A29[1]=D26[1]],referrers=[D18,D26,A19],
 	values={54},
 	digits=[{5},{4}]
+solve: DiceNetsEntry(name=A27,length=3,value: Square - A16,
+	identities=[A27[0]=D24[1],A27[1]=D20[2],A27[2]=D28[0]],referrers=[D24,D20,D28],
+	values={111,112,113,114,115,122,123,125,132,133,135,142,143,145,152,153,155,161,162,163 and 79 more},
+	digits=[{1,2,4,6},{1..6},{1..6}]
+solve: DiceNetsEntry(name=A31,length=3,value: Square - A16,
+	identities=[A31[0]=D24[2],A31[1]=D20[3],A31[2]=D28[1]],referrers=[D24,D20,D28,A16],
+	values={112,114,115,116,122,124,125,126,131,132,134,135,136,141,142,144,145,146,151,152 and 64 more},
+	digits=[{1,3,5},{1..6},{1,2,4,5,6}]
 Solve Error: clue D22 (Multiple of Square of D32) no solution!
 solve: DiceNetsEntry(name=A35,length=4,value: Triangular,
 	identities=[A35[0]=D32[1],A35[1]=D26[3],A35[2]=D22[4]],referrers=[D32,D26,D22],
@@ -347,10 +362,6 @@ solve: DiceNetsEntry(name=D2,length=6,value: Square,
 	identities=[D2[0]=A1[1],D2[2]=A10[1],D2[3]=A16[1],D2[4]=A18[1],D2[5]=A21[0]],referrers=[A1,A10,A16,A18,A21],
 	values={111556,234256,266256,443556,512656,614656},
 	digits=[{1,2,4,5,6},{1,3,4,6},{1,2,3,4,6},{2,5,6},{5},{6}]
-solve: DiceNetsEntry(name=A16,length=3,value: Triangular - A31,
-	identities=[A16[0]=D1[3],A16[1]=D2[3],A16[2]=D11[1]],referrers=[D1,D2,D11,A27,A31],
-	values={121,124,151,154,156,161,164,166,421,424,426,451,454,456,461,464,466,521,524,526 and 15 more},
-	digits=[{1,4,5,6},{2,5,6},{1,4,6}]
 solve: DiceNetsEntry(name=D15,length=4,value: Square,
 	identities=[D15[0]=A14[1],D15[1]=A17[3],D15[3]=A23[4]],referrers=[A14,A17,A23],
 	values={5625},
@@ -359,18 +370,14 @@ solve: DiceNetsEntry(name=A23,length=5,value: Multiple of D32,
 	identities=[A23[0]=D9[4],A23[1]=D13[3],A23[2]=D24[0],A23[3]=D20[1],A23[4]=D15[3]],referrers=[D9,D13,D24,D20,D15],
 	values={21125,21135,21165,21225,21245,21255,21315,21325,21345,21425,21435,21455,21465,21525,21555,21615,21625,21645,21665,22125 and 546 more},
 	digits=[{2..6},{1..6},{1..6},{1..6},{5}]
-solve: DiceNetsEntry(name=A27,length=3,value: Square - A16,
-	identities=[A27[0]=D24[1],A27[1]=D20[2],A27[2]=D28[0]],referrers=[D24,D20,D28],
-	values={112,115,122,123,125,132,133,135,152,155,161,163,164,165,212,215,222,223,225,233 and 36 more},
-	digits=[{1,2,4,6},{1..6},{1..6}]
-solve: DiceNetsEntry(name=D28,length=4,value: Square,
-	identities=[D28[0]=A27[2],D28[1]=A31[2],D28[3]=A36[3]],referrers=[A27,A31,A36],
-	values={1156,1225,1444,1521,2116,3136,4225,4624,6241,6561},
-	digits=[{1,2,3,4,6},{1,2,4,5,6},{1..6},{1,4,5,6}]
 solve: DiceNetsEntry(name=D34,length=2,value: Prime,
 	identities=[D34[0]=A33[3],D34[1]=A36[1]],referrers=[A33,A36,A10],
 	values={23,31,41,43,53,61},
 	digits=[{2..6},{1,3}]
+solve: DiceNetsEntry(name=D28,length=4,value: Square,
+	identities=[D28[0]=A27[2],D28[1]=A31[2],D28[3]=A36[3]],referrers=[A27,A31,A36],
+	values={1156,1225,1444,1521,2116,3136,4225,4624,6241,6561},
+	digits=[{1,2,3,4,6},{1,2,4,5,6},{1..6},{1,4,5,6}]
 solve: DiceNetsEntry(name=A8,length=4,value: Triangular - A18,
 	identities=[A8[0]=D3[1],A8[1]=D9[0],A8[3]=D5[1]],referrers=[D3,D9,D5],
 	values={1246,1442,1611,1615,2156,2166,2353,2412,2534,2541,2632,3111,3154,3333,3536,3635,3642,4225,4263,5145 and 4 more},
@@ -391,6 +398,10 @@ solve: DiceNetsEntry(name=A19,length=2,value: Triangular - A29,
 	identities=[A19[0]=D5[4],A19[1]=D20[0]],referrers=[D5,D20,D32],
 	values={12,24,51,66},
 	digits=[{1,2,5,6},{1,2,4,6}]
+solve: DiceNetsEntry(name=A16,length=3,value: Triangular - A31,
+	identities=[A16[0]=D1[3],A16[1]=D2[3],A16[2]=D11[1]],referrers=[D1,D2,D11,A27,A31],
+	values={121,124,151,154,156,161,164,166,421,424,426,451,454,456,461,464,466,521,524,526 and 15 more},
+	digits=[{1,4,5,6},{2,5,6},{1,4,6}]
 solve: DiceNetsEntry(name=D22,length=5,value: Multiple of Square of D32,
 	identities=[D22[0]=A21[1],D22[1]=A25[2],D22[2]=A30[0],D22[3]=A33[0],D22[4]=A35[2]],referrers=[A21,A25,A30,A33,A35],
 	values={41236,41625,42525,43125,43264,43425,44325,44436,44616,45225,45325,45625,46125,46552,46644},
@@ -415,18 +426,6 @@ solve: DiceNetsEntry(name=A10,length=3,value: Multiple of D34,
 	identities=[A10[0]=D1[2],A10[1]=D2[2],A10[2]=D11[0]],referrers=[D1,D2,D11],
 	values={115,122,161,212,215,265,322,341,345,465,615,621,645},
 	digits=[{1,2,3,4,6},{1,2,4,6},{1,2,5}]
-solve: DiceNetsEntry(name=D1,length=4,value: Square,
-	identities=[D1[0]=A1[0],D1[2]=A10[0],D1[3]=A16[0]],referrers=[A1,A10,A16,A36],
-	values={1225,1444,1521,2116,3136,3364,4225,4624,6241,6561},
-	digits=[{1,2,3,4,6},{1..6},{1,2,3,4,6},{1,4,5,6}]
-solve: DiceNetsEntry(name=D2,length=6,value: Square,
-	identities=[D2[0]=A1[1],D2[2]=A10[1],D2[3]=A16[1],D2[4]=A18[1],D2[5]=A21[0]],referrers=[A1,A10,A16,A18,A21],
-	values={111556,234256,266256,512656,614656},
-	digits=[{1,2,5,6},{1,3,6},{1,2,4,6},{2,5,6},{5},{6}]
-solve: DiceNetsEntry(name=A31,length=3,value: Square - A16,
-	identities=[A31[0]=D24[2],A31[1]=D20[3],A31[2]=D28[1]],referrers=[D24,D20,D28,A16],
-	values={112,114,115,116,122,124,125,126,131,132,134,135,136,141,142,144,145,146,152,154 and 45 more},
-	digits=[{1,3,5},{1..6},{1,2,4,5,6}]
 solve: DiceNetsEntry(name=D9,length=7,value: Triangular,
 	identities=[D9[0]=A8[1],D9[1]=A12[0],D9[3]=A18[3],D9[4]=A23[0],D9[5]=A25[3],D9[6]=A30[1]],referrers=[A8,A12,A18,A23,A25,A30],
 	values={1142316,1314631,3242331,3324331,4364535,6232215},
@@ -443,10 +442,10 @@ solve: DiceNetsEntry(name=A27,length=3,value: Square - A16,
 	identities=[A27[0]=D24[1],A27[1]=D20[2],A27[2]=D28[0]],referrers=[D24,D20,D28],
 	values={112,122,123,132,133,152,161,163,164,212,222,223,233,234,236,244,246,252,263,412 and 18 more},
 	digits=[{1,2,4,6},{1..6},{1,2,3,4,6}]
-solve: DiceNetsEntry(name=A36,length=4,value: Jumble of D1,
-	identities=[A36[1]=D34[1],A36[2]=D20[5],A36[3]=D28[3]],referrers=[D34,D20,D28,D1],
-	values={2115,2116,2146,2151,2161,2164,3316,3346,3361,3364,4144,5166,6156,6165},
-	digits=[{2..6},{1,3},{1,4,5,6},{1,4,5,6}]
+solve: DiceNetsEntry(name=A31,length=3,value: Square - A16,
+	identities=[A31[0]=D24[2],A31[1]=D20[3],A31[2]=D28[1]],referrers=[D24,D20,D28,A16],
+	values={112,114,115,116,122,124,125,126,131,132,134,135,136,141,142,144,145,146,152,154 and 45 more},
+	digits=[{1,3,5},{1..6},{1,2,4,5,6}]
 solve: DiceNetsEntry(name=D5,length=5,value: Product 3 distinct Primes,
 	identities=[D5[0]=A4[1],D5[1]=A8[3],D5[2]=A12[2],D5[3]=A17[1],D5[4]=A19[0]],referrers=[A4,A8,A12,A17,A19],
 	values={31421,31422,31426,31441,31442,31445,31461,31462,31466,31621,31622,31641,31642,31645,31646,31661,31665,31666,32421,32426 and 69 more},
@@ -455,6 +454,14 @@ solve: DiceNetsEntry(name=D32,length=2,value: A19 - D7,
 	identities=[D32[1]=A35[0]],referrers=[A35,A23,D22],
 	values={35},
 	digits=[{3},{5}]
+solve: DiceNetsEntry(name=D1,length=4,value: Square,
+	identities=[D1[0]=A1[0],D1[2]=A10[0],D1[3]=A16[0]],referrers=[A1,A10,A16,A36],
+	values={1225,1444,1521,2116,3136,3364,4225,4624,6241,6561},
+	digits=[{1,2,3,4,6},{1..6},{1,2,3,4,6},{1,4,5,6}]
+solve: DiceNetsEntry(name=D2,length=6,value: Square,
+	identities=[D2[0]=A1[1],D2[2]=A10[1],D2[3]=A16[1],D2[4]=A18[1],D2[5]=A21[0]],referrers=[A1,A10,A16,A18,A21],
+	values={111556,234256,266256,512656,614656},
+	digits=[{1,2,5,6},{1,3,6},{1,2,4,6},{2,5,6},{5},{6}]
 solve: DiceNetsEntry(name=D22,length=5,value: Multiple of Square of D32,
 	identities=[D22[0]=A21[1],D22[1]=A25[2],D22[2]=A30[0],D22[3]=A33[0],D22[4]=A35[2]],referrers=[A21,A25,A30,A33,A35],
 	values={45325},
@@ -463,10 +470,6 @@ solve: DiceNetsEntry(name=A8,length=4,value: Triangular - A18,
 	identities=[A8[0]=D3[1],A8[1]=D9[0],A8[3]=D5[1]],referrers=[D3,D9,D5],
 	values={1611,2156,2166,2353,3111},
 	digits=[{1..3},{1,3,6},{1,5,6},{1,3,6}]
-solve: DiceNetsEntry(name=A1,length=4,value: Prime,
-	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
-	values={1123,1151,1153,1163,1213,1223,1231,1511,1523,1531,1543,1553,1613,1621,1663,2111,2113,2131,2141,2143 and 57 more},
-	digits=[{1,2,3,4,6},{1,2,5,6},{1..6},{1,3}]
 solve: DiceNetsEntry(name=A23,length=5,value: Multiple of D32,
 	identities=[A23[0]=D9[4],A23[1]=D13[3],A23[2]=D24[0],A23[3]=D20[1],A23[4]=D15[3]],referrers=[D9,D13,D24,D20,D15],
 	values={22155,22225,22365,22435,22645,23135,23345,23415,23555,23625,26145,26215,26355,26425,26565,26635,32165,32235,32445,32515 and 42 more},
@@ -487,6 +490,14 @@ solve: DiceNetsEntry(name=A35,length=4,value: Triangular,
 	identities=[A35[0]=D32[1],A35[1]=D26[3],A35[2]=D22[4]],referrers=[D32,D26,D22],
 	values={5356},
 	digits=[{5},{3},{5},{6}]
+solve: DiceNetsEntry(name=A1,length=4,value: Prime,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={1123,1151,1153,1163,1213,1223,1231,1511,1523,1531,1543,1553,1613,1621,1663,2111,2113,2131,2141,2143 and 56 more},
+	digits=[{1,2,3,4,6},{1,2,5,6},{1..6},{1,3}]
+solve: DiceNetsEntry(name=A36,length=4,value: Jumble of D1,
+	identities=[A36[1]=D34[1],A36[2]=D20[5],A36[3]=D28[3]],referrers=[D34,D20,D28,D1],
+	values={2115,2116,2146,2151,2161,2164,3316,3346,3361,3364,4144,5166,6156,6165},
+	digits=[{2..6},{1,3},{1,4,5,6},{1,4,5,6}]
 solve: DiceNetsEntry(name=A33,length=4,value: Multiple of A30,
 	identities=[A33[0]=D22[3],A33[2]=D13[6],A33[3]=D34[0]],referrers=[D22,D13,D34],
 	values={2512,2555,2562},
@@ -711,7 +722,7 @@ solve: DiceNetsEntry(name=A36,length=4,value: Jumble of D1,
 	identities=[A36[1]=D34[1],A36[2]=D20[5],A36[3]=D28[3]],referrers=[D34,D20,D28,D1],
 	values={3316,3346,3361},
 	digits=[{3},{3},{1,4,6},{1,6}]
-Clue iterations=284, updates=135, elapsed 0:00:02.528889
+Clue iterations=283, updates=139, elapsed 0:00:02.463638
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Prime, values={3221,3541,3623,3643}

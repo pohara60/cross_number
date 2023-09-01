@@ -4,6 +4,8 @@ import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/frequency/clue.dart';
 import 'package:crossnumber/frequency/puzzle.dart';
 
+import '../monadic.dart';
+
 class Frequency extends Crossnumber<FrequencyPuzzle> {
   var gridString = [
     '+--+--+--+--+',

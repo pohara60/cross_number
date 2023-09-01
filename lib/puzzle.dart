@@ -2,6 +2,7 @@ import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/clue.dart';
 import 'package:crossnumber/crossnumber.dart';
 import 'package:crossnumber/expression.dart';
+import 'package:crossnumber/generators.dart';
 import 'package:crossnumber/grid.dart';
 import 'package:crossnumber/variable.dart';
 
@@ -35,7 +36,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         DigitIdentity(entry: entry1, digit: digit1 - 1);
     entry2.addReferrer(entry1);
     entry1.addReferrer(entry2);
-    if (entry1.clue != null && entry2 != null) {
+    if (entry1.clue != null && entry2.clue != null) {
       // Entrys are mapped to clues, so add reference betwen them
       entry2.clue!.addReferrer(entry1.clue!);
       entry1.clue!.addReferrer(entry2.clue!);
@@ -167,7 +168,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   List<Clue> order = [];
 
   int iterate() {
-    if (this is VariablePuzzle) {
+    if (this is VariablePuzzle && (this as VariablePuzzle).hasVariables) {
       var puzzle = this as VariablePuzzle;
       return puzzle.iterateVariables();
     }
@@ -288,7 +289,15 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       if (solution[clue] != null) {
         var value = solution[clue]!.value;
         var possibleValue = <int>{};
-        clue.solve!(clue, possibleValue);
+        var possibleVariables = <String, Set<int>>{};
+        if (clue is VariableClue) {
+          for (var variable in clue.variableReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(clue, possibleValue, possibleVariables);
+        } else {
+          clue.solve!(clue, possibleValue);
+        }
         if (possibleValue.isEmpty || !possibleValue.contains(value)) {
           // Failed
           failedClues.add(clue);
@@ -568,12 +577,19 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   late final VariableList variableList;
   bool get hasVariables => variableList.hasVariables;
 
-  VariablePuzzle(List<int> possibleValues) {
+  void initVariablePuzzle(List<int> possibleValues) {
+    final puzzleGenerators = [Generator('sumdigits', generateSumDigits)];
     variableList = VariableList<VariableKind>(possibleValues);
+    Scanner.addGenerators(puzzleGenerators);
   }
+
+  VariablePuzzle(List<int> possibleValues) {
+    initVariablePuzzle(possibleValues);
+  }
+
   VariablePuzzle.grid(List<int> possibleValues, List<String> gridString)
       : super.grid(gridString) {
-    variableList = VariableList<VariableKind>(possibleValues);
+    initVariablePuzzle(possibleValues);
   }
 
   Map<String, Variable> get variables => variableList.variables;
@@ -581,10 +597,41 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   Set<String> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
 
+  Iterable<int> generateSumDigits(num min, num max) sync* {
+    // Generate sums of all combinations of entry digits
+    var allDigits = <List<int>>[];
+    for (var entry in _entries.values) {
+      for (var d = 0; d < entry.length; d++) {
+        // Avoid double-counting overlapping digits
+        if (entry.isAcross ||
+            entry.isDown && entry.digitIdentities[d] == null) {
+          allDigits.add(entry.digits[d].toList());
+        }
+      }
+    }
+    var count = cartesianCount(allDigits);
+    if (count > 1000000) {
+      // if (Crossnumber.traceSolve) {
+      //   print('SumDigits cartesianCount=$count Exception');
+      // }
+      throw new ExpressionInvalid('SumDigits cartesianCount=$count Exception');
+    }
+    var allSums = <int>{};
+    for (var product in cartesian(allDigits, true)) {
+      var sum = product.reduce((value, element) => value + element);
+      allSums.add(sum);
+    }
+    var list = allSums.toList()..sort();
+    for (var sum in list) {
+      if (sum < min) continue;
+      if (sum > max) break;
+      yield sum;
+    }
+  }
+
   String checkClueReferences() {
     var clueError = '';
-    for (var entry in clues.entries) {
-      var clue1 = entry.value;
+    for (var clue1 in clues.values) {
       for (var clueName in clue1.clueReferences) {
         var clue2 = clues[clueName];
         if (clue2 == null) {
@@ -724,8 +771,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
     }
     if (Crossnumber.traceSolve) {
-      print(
-          'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+      if (count != 1) {
+        print(
+            'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+      }
     }
     return false;
   }
@@ -787,12 +836,14 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
     }
     if (Crossnumber.traceSolve) {
-      print(
-          'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
-      // print('${clue.exp.toString()}');
-      // for (var v in clue.variableReferences) {
-      //   print('$v=${this.variables[v]!.values!.toList()}');
-      // }
+      if (count != 1) {
+        print(
+            'Eval ${clue.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+        // print('${clue.exp.toString()}');
+        // for (var v in clue.variableReferences) {
+        //   print('$v=${this.variables[v]!.values!.toList()}');
+        // }
+      }
     }
     return false;
   }

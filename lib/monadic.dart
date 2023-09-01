@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:powers/powers.dart';
 
+import 'generators.dart';
+
 typedef MonadicFunc = dynamic Function(int arg);
 
 class Monadic {
@@ -15,10 +17,16 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['ds'] = Monadic('ds', digitSum, int);
   monadics['dp'] = Monadic('dp', digitProduct, int);
   monadics['mp'] = Monadic('mp', multiplicativePersistence, int);
+  monadics['reverse'] = Monadic('reverse', reverse, int);
+  monadics['sumdigits'] = Monadic('sumdigits', sumDigits, int);
   monadics['square'] = Monadic('square', square, int);
   monadics['cube'] = Monadic('cube', cube, int);
   monadics['even'] = Monadic('even', isEven, bool);
+  monadics['odd'] = Monadic('odd', isOdd, bool);
+  monadics['prime'] = Monadic('prime', isPrime, bool);
   monadics['multiple'] = Monadic('multiple', multiple, Iterable<int>);
+  monadics['greaterthan'] = Monadic('greaterthan', greaterthan, Iterable<int>);
+  monadics['lessthan'] = Monadic('lessthan', lessthan, Iterable<int>);
   monadics['jumble'] = Monadic('jumble', jumble, Iterable<int>);
 }
 
@@ -46,6 +54,24 @@ int multiplicativePersistence(int value) {
   return result;
 }
 
+int reverse(int value) {
+  var valueStr = value.toString();
+  var reverse = '';
+  for (var index = 0; index < valueStr.length; index++) {
+    reverse = valueStr[index] + reverse;
+  }
+  return int.parse(reverse);
+}
+
+int sumDigits(int value) {
+  var valueStr = value.toString();
+  var sumDigits = 0;
+  for (var index = 0; index < valueStr.length; index++) {
+    sumDigits += int.parse(valueStr[index]);
+  }
+  return sumDigits;
+}
+
 int square(int value) {
   var result = value * value;
   return result;
@@ -61,10 +87,32 @@ bool isEven(int value) {
   return result;
 }
 
+bool isOdd(int value) {
+  var result = value % 2 == 1;
+  return result;
+}
+
 Iterable<int> multiple(int value) sync* {
   int last = value;
   while (true) {
     last += value;
+    yield last;
+  }
+}
+
+Iterable<int> greaterthan(int value) sync* {
+  int last = value;
+  while (true) {
+    last += 1;
+    yield last;
+  }
+}
+
+Iterable<int> lessthan(int value) sync* {
+  int last = value;
+  while (true) {
+    last -= 1;
+    if (last < 1) break;
     yield last;
   }
 }

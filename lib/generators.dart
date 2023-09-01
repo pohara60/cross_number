@@ -13,6 +13,8 @@ class Generator {
 
 void initializeGenerators(Map<String, Generator> generators) {
   generators['integer'] = Generator('integer', generateIntegers);
+  generators['odd'] = Generator('odd', generateOddIntegers);
+  generators['even'] = Generator('even', generateEvenIntegers);
   generators['prime'] = Generator('prime', generatePrimes);
   generators['triangular'] = Generator('triangular', generateTriangles);
   generators['pyramidal'] = Generator('pyramidal', generateSquarePyramidals);
@@ -31,6 +33,16 @@ void initializeGenerators(Map<String, Generator> generators) {
 Iterable<int> generateIntegers(num min, num max) sync* {
   for (var integer = min.toInt(); integer <= max.toInt(); integer++)
     yield integer;
+}
+
+Iterable<int> generateOddIntegers(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+    if (integer % 2 == 1) yield integer;
+}
+
+Iterable<int> generateEvenIntegers(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+    if (integer % 2 == 0) yield integer;
 }
 
 const INITIAL_CHUNK_SIZE = 100;
@@ -52,6 +64,12 @@ Iterable<int> generatePrimes(num min, num max) sync* {
     chunk_size *= CHUNK_SIZE_MULTIPLIER;
     extendPrimesUpto(next);
   }
+}
+
+bool isPrime(int value) {
+  extendPrimesUpto(value);
+  var result = primes.contains(value);
+  return result;
 }
 
 void extendPrimesUpto(int limit) {

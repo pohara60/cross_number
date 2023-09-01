@@ -74,6 +74,12 @@ class Scanner {
     initialized = true;
   }
 
+  static void addGenerators(List<Generator> generatorList) {
+    generatorList.forEach((generator) {
+      generators[generator.name] = generator;
+    });
+  }
+
   static Iterable<Token?> generateTokens(String text,
       [String variablePrefix = '']) sync* {
     if (!initialized) initialize();
@@ -595,8 +601,9 @@ class ExpressionEvaluator {
         checkInteger(left);
         var result = monadic.func(left.toInt());
         if (result is bool) {
+          if (result) return left;
           throw ExpressionInvalid(
-              'Unexpected bool result for monadic $name in simple expression');
+              'False bool result for monadic $name in simple expression');
         } else if (result is num) {
           return result;
         } else {

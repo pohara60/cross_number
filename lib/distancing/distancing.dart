@@ -4,6 +4,8 @@ import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/distancing/clue.dart';
 import 'package:crossnumber/distancing/puzzle.dart';
 
+import '../monadic.dart';
+
 class Distancing extends Crossnumber<DistancingPuzzle> {
   Distancing() {
     puzzle = DistancingPuzzle();
