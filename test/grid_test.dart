@@ -1,5 +1,5 @@
-import 'package:crossnumber/grid.dart';
 import 'package:test/test.dart';
+import '../lib/grid.dart';
 
 void main() {
   group('Grid tests', () {

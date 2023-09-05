@@ -1,7 +1,6 @@
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/set.dart';
-
+import 'clue.dart';
 import 'expression.dart';
+import 'set.dart';
 
 abstract class PriorityVariable {
   /// Computed - Count of combinations of variable values

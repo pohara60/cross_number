@@ -1,5 +1,5 @@
-import 'package:crossnumber/instruction/clue.dart';
-import 'package:crossnumber/puzzle.dart';
+import '../instruction/clue.dart';
+import '../puzzle.dart';
 
 class InstructionPuzzle extends Puzzle<InstructionClue, InstructionEntry> {
   InstructionPuzzle();

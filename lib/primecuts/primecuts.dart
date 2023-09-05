@@ -4,11 +4,12 @@ library primecuts;
 import 'dart:collection';
 
 import 'package:powers/powers.dart';
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/primecuts/clue.dart';
-import 'package:crossnumber/primecuts/puzzle.dart';
+import '../crossnumber.dart';
+import '../clue.dart';
+import '../primecuts/clue.dart';
+import '../primecuts/puzzle.dart';
 
+import '../generators.dart';
 import '../monadic.dart';
 
 /// Provide access to the Prime Cuts API.

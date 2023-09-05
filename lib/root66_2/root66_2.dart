@@ -1,11 +1,11 @@
 /// An API for solving Prime Cuts puzzles.
 library root66;
 
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/root66_2/clue.dart';
-import 'package:crossnumber/root66_2/puzzle.dart';
+import '../puzzle.dart';
+import '../crossnumber.dart';
+import '../clue.dart';
+import '../root66_2/clue.dart';
+import '../root66_2/puzzle.dart';
 
 import '../expression.dart';
 

@@ -1,6 +1,6 @@
-import 'package:crossnumber/sequences/clue.dart';
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/variable.dart';
+import '../sequences/clue.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 // Numbers < 200 that are a power of a prime number
 const variableValues = [

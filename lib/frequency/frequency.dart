@@ -1,9 +1,10 @@
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/cartesian.dart';
-import 'package:crossnumber/frequency/clue.dart';
-import 'package:crossnumber/frequency/puzzle.dart';
+import '../crossnumber.dart';
+import '../clue.dart';
+import '../cartesian.dart';
+import '../frequency/clue.dart';
+import '../frequency/puzzle.dart';
 
+import '../generators.dart';
 import '../monadic.dart';
 
 class Frequency extends Crossnumber<FrequencyPuzzle> {

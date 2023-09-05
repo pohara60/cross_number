@@ -1,7 +1,7 @@
-import 'package:crossnumber/expression.dart';
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/dicenets2/clue.dart';
-import 'package:crossnumber/dicenets2/puzzle.dart';
+import '../expression.dart';
+import '../crossnumber.dart';
+import '../dicenets2/clue.dart';
+import '../dicenets2/puzzle.dart';
 
 import '../clue.dart';
 import '../puzzle.dart';

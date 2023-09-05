@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/no21/puzzle.dart';
+import '../crossnumber.dart';
+import '../no21/puzzle.dart';
 
 import '../clue.dart';
 import '../expression.dart';

@@ -1,5 +1,5 @@
-import 'package:crossnumber/distancing/clue.dart';
-import 'package:crossnumber/puzzle.dart';
+import '../distancing/clue.dart';
+import '../puzzle.dart';
 
 class DistancingPuzzle extends Puzzle<DistancingClue, DistancingEntry> {
   DistancingPuzzle();

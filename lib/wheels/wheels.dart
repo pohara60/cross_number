@@ -1,5 +1,5 @@
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/wheels/puzzle.dart';
+import '../crossnumber.dart';
+import '../wheels/puzzle.dart';
 
 import '../clue.dart';
 import '../expression.dart';

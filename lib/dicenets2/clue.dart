@@ -1,4 +1,4 @@
-import 'package:crossnumber/clue.dart';
+import '../clue.dart';
 
 /// A [DiceNetsPuzzle] clue
 class DiceNetsClue extends ExpressionClue {

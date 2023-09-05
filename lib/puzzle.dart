@@ -1,10 +1,10 @@
-import 'package:crossnumber/cartesian.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/expression.dart';
-import 'package:crossnumber/generators.dart';
-import 'package:crossnumber/grid.dart';
-import 'package:crossnumber/variable.dart';
+import 'cartesian.dart';
+import 'clue.dart';
+import 'crossnumber.dart';
+import 'expression.dart';
+import 'generators.dart';
+import 'grid.dart';
+import 'variable.dart';
 
 class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   final _clues = <String, ClueKind>{};

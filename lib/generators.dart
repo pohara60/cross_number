@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'dart:math';
 
+import 'package:powers/powers.dart';
+
 import 'merge.dart';
 
 typedef GeneratorFunc = Iterable<int> Function(num min, num max);
@@ -18,6 +20,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['prime'] = Generator('prime', generatePrimes);
   generators['triangular'] = Generator('triangular', generateTriangles);
   generators['pyramidal'] = Generator('pyramidal', generateSquarePyramidals);
+  generators['fibonacci'] = Generator('fibonacci', generateFibonacci);
   generators['square'] = Generator('square', generateSquares);
   generators['cube'] = Generator('cube', generateCubes);
   generators['power'] = Generator('power', generatePowers);
@@ -49,6 +52,11 @@ const INITIAL_CHUNK_SIZE = 100;
 const CHUNK_SIZE_MULTIPLIER = 10;
 var chunk_size = INITIAL_CHUNK_SIZE;
 List<int> primes = [2, 3, 5, 7];
+Iterable<int> generatePrimesWithOne(num max) sync* {
+  yield 1;
+  yield* generatePrimes(2, max);
+}
+
 Iterable<int> generatePrimes(num min, num max) sync* {
   var limit = max.toInt();
   var next = min.toInt();
@@ -98,6 +106,8 @@ void extendPrimesUpto(int limit) {
 }
 
 List<int> triangles = [1, 3, 6];
+List<int> getTrianglesInRange(num min, num max) =>
+    generateTriangles(min, max).toList();
 Iterable<int> generateTriangles(num min, num max) sync* {
   int last = triangles.last;
   int length = triangles.length;
@@ -133,7 +143,30 @@ Iterable<int> generateSquarePyramidals(num min, num max) sync* {
   }
 }
 
+List<int> fibonacci = [1, 2, 3, 5];
+Iterable<int> generateFibonacci(num min, num max) sync* {
+  int last = fibonacci.last;
+  int length = fibonacci.length;
+  int previous = fibonacci[length - 2];
+  var index = 0;
+  while (true) {
+    while (index < length) {
+      var element = fibonacci[index++];
+      if (element < min) continue;
+      if (element > max) return;
+      yield element;
+    }
+    length++;
+    var next = previous + last;
+    previous = last;
+    last = next;
+    fibonacci.add(last);
+  }
+}
+
 var squares = <int>[1, 4, 9];
+List<int> getSquaresInRange(num min, num max) =>
+    generateSquares(min, max).toList();
 Iterable<int> generateSquares(num min, num max) sync* {
   int length = squares.length;
   var index = 0;
@@ -150,6 +183,7 @@ Iterable<int> generateSquares(num min, num max) sync* {
 }
 
 var cubes = <int>[1, 8];
+List<int> getCubesInRange(num min, num max) => generateCubes(min, max).toList();
 Iterable<int> generateCubes(num min, num max) sync* {
   int length = cubes.length;
   var index = 0;
@@ -310,4 +344,268 @@ Iterable<int> generateSumConsecutiveSquares(num min, num max) sync* {
     length++;
     sumConsecutiveSquares.add(previousSquare + (length + 1) * (length + 1));
   }
+}
+
+const List<int> twoDigitPrimes = [
+  11,
+  13,
+  17,
+  19,
+  23,
+  29,
+  31,
+  37,
+  41,
+  43,
+  47,
+  53,
+  59,
+  61,
+  67,
+  71,
+  73,
+  79,
+  83,
+  89,
+  97
+];
+
+Map<int, Set<int>> getSumTwoPrimes() {
+  var primes = <int, Set<int>>{};
+  for (var p1 in twoDigitPrimes) {
+    for (var p2 in twoDigitPrimes) {
+      var sum = p1 + p2;
+      if (!primes.containsKey(sum)) {
+        primes[sum] = <int>{};
+      }
+      primes[sum]!.add(p1);
+      primes[sum]!.add(p2);
+    }
+  }
+  return primes;
+}
+
+List<int> getTwoDigitNumbers() => getNDigitNumbers(2);
+List<int> getThreeDigitNumbers() => getNDigitNumbers(3);
+List<int> getFourDigitNumbers() => getNDigitNumbers(4);
+List<int> getNDigitNumbers(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return generateIntegers(lo, hi).toList();
+}
+
+List<int> getTwoDigitTriangles() => getNDigitTriangles(2);
+List<int> getThreeDigitTriangles() => getNDigitTriangles(3);
+List<int> getFourDigitTriangles() => getNDigitTriangles(4);
+List<int> getFiveDigitTriangles() => getNDigitTriangles(5);
+List<int> getSevenDigitTriangles() => getNDigitTriangles(7);
+List<int> getNDigitTriangles(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return generateTriangles(lo, hi).toList();
+}
+
+List<int> getTwoDigitPyramidal() => getNDigitPyramidal(2);
+List<int> getThreeDigitPyramidal() => getNDigitPyramidal(3);
+List<int> getFourDigitPyramidal() => getNDigitPyramidal(4);
+List<int> getFiveDigitPyramidal() => getNDigitPyramidal(5);
+List<int> getSevenDigitPyramidal() => getNDigitPyramidal(7);
+List<int> getNDigitPyramidal(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return generateSquarePyramidals(lo, hi).toList();
+}
+
+List<int> getTwoDigitSquares() => getNDigitSquares(2);
+List<int> getThreeDigitSquares() => getNDigitSquares(3);
+List<int> getFourDigitSquares() => getNDigitSquares(4);
+List<int> getSixDigitSquares() => getNDigitSquares(6);
+List<int> getSevenDigitSquares() => getNDigitSquares(7);
+List<int> getNDigitSquares(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return generateSquares(lo, hi).toList();
+}
+
+List<int> getTwoDigitCubes() => getNDigitCubes(2);
+List<int> getNDigitCubes(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return generateCubes(lo, hi).toList();
+}
+
+List<int> getTwoDigitPrimes() => getNDigitPrimes(2);
+List<int> getThreeDigitPrimes() => getNDigitPrimes(3);
+List<int> getFourDigitPrimes() => getNDigitPrimes(4);
+List<int> getNDigitPrimes(n) {
+  var lo = 10.pow(n - 1) as int;
+  var limit = (10.pow(n) as int) - 1;
+  return generatePrimes(lo, limit).toList();
+}
+
+List<int> getTwoDigitFibonacci() => getNDigitFibonacci(2);
+List<int> getThreeDigitFibonacci() => getNDigitFibonacci(3);
+List<int> getFourDigitFibonacci() => getNDigitFibonacci(4);
+List<int> getNDigitFibonacci(n) {
+  var lo = 10.pow(n - 1) as int;
+  var limit = (10.pow(n) as int) - 1;
+  return generateFibonacci(lo, limit).toList();
+}
+
+List<int> getTwoDigitMultipleThreePrimes() => getNDigitMultipleThreePrimes(2);
+List<int> getFiveDigitMultipleThreePrimes() => getNDigitMultipleThreePrimes(5);
+List<int> getNDigitMultipleThreePrimes(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = 10.pow(n) as int;
+  var cubeRoot = hi.root(3).toInt();
+  var products = <int>{};
+  for (var p1 in generatePrimesWithOne(cubeRoot)) {
+    var hiP1 = hi / p1;
+    var maxP2 = sqrt(hiP1).toInt();
+    for (var p2 in generatePrimes(p1 + 1, maxP2)) {
+      var maxP3 = hiP1 ~/ p2;
+      var product2 = p1 * p2;
+      for (var p3 in generatePrimes(p2 + 1, maxP3)) {
+        var product = product2 * p3;
+        if (product < lo) continue;
+        products.add(product);
+      }
+    }
+  }
+  return products.toList()..sort();
+}
+
+List<int> getTwoDigitPowers() => getNDigitPowers(2);
+List<int> getFourDigitPowers() => getNDigitPowers(4);
+List<int> getNDigitPowers(n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return getPowersInRange(lo, hi);
+}
+
+// Not yet converted to generator
+List<int> getPowersInRange(int lo, int hi, [int? n, int? minPower]) {
+  var powers = <int>{};
+  var any = true;
+  for (var power = minPower ?? 3; any; power++) {
+    any = false;
+    for (var x = n ?? 2;; x++) {
+      var value = x.pow(power) as int;
+      if (value > hi) break;
+      any = true;
+      if (value >= lo) powers.add(value);
+      if (n != null) break;
+    }
+  }
+  var result = powers.toList();
+  result.sort();
+  return result;
+}
+
+List<int> getTwoDigitLucas() => getNDigitLucas(2);
+List<int> getNDigitLucas(int n) {
+  var lo = 10.pow(n - 1) as int;
+  var hi = (10.pow(n) as int) - 1;
+  return generateLucas(lo, hi).toList();
+}
+
+List<int> getLucasInRange(int lo, int hi) {
+  var lucas = <int>[2, 1];
+  while (true) {
+    var value = lucas[lucas.length - 2] + lucas[lucas.length - 1];
+    if (value > hi) break;
+    lucas.add(value);
+  }
+  var result = lucas.where((element) => element >= lo).toList();
+  return result;
+}
+
+List<int> lucas = [
+  1,
+  2,
+  3,
+  4
+]; // Actually should start 2, 1, but we want in increasing order
+Iterable<int> generateLucas(num min, num max) sync* {
+  int last = lucas.last;
+  int length = lucas.length;
+  int previous = lucas[length - 2];
+  var index = 0;
+  while (true) {
+    while (index < length) {
+      var element = lucas[index++];
+      if (element < min) continue;
+      if (element > max) return;
+      yield element;
+    }
+    length++;
+    var next = previous + last;
+    previous = last;
+    last = next;
+    lucas.add(last);
+  }
+}
+
+List<int> getTwoDigitPalindromes() {
+  var palindromes = <int>[];
+  for (var d1 = 1; d1 < 10; d1++) {
+    var value = d1 * 10 + d1;
+    palindromes.add(value);
+  }
+  return palindromes;
+}
+
+List<int> getThreeDigitPalindromes() {
+  var palindromes = <int>[];
+  for (var d1 = 1; d1 < 10; d1++) {
+    for (var d2 = 0; d2 < 10; d2++) {
+      var value = d1 * 100 + d2 * 10 + d1;
+      palindromes.add(value);
+    }
+  }
+  return palindromes;
+}
+
+List<int> getFourDigitPalindromes() {
+  var palindromes = <int>[];
+  for (var d1 = 1; d1 < 10; d1++) {
+    for (var d2 = 0; d2 < 10; d2++) {
+      var value = d1 * 1000 + d2 * 100 + d2 * 10 + d1;
+      palindromes.add(value);
+    }
+  }
+  return palindromes;
+}
+
+List<int> getFiveDigitPalindromes() {
+  var palindromes = <int>[];
+  for (var d1 = 1; d1 < 10; d1++) {
+    for (var d2 = 0; d2 < 10; d2++) {
+      for (var d3 = 0; d3 < 10; d3++) {
+        var value = d1 * 10000 + d2 * 1000 + d3 * 100 + d2 * 10 + d1;
+        palindromes.add(value);
+      }
+    }
+  }
+  return palindromes;
+}
+
+Map<int, Map<String, int>> getThreeDigitPrimeMultiples() {
+  var multiples = <int, Map<String, int>>{};
+  outer:
+  for (var p1 in twoDigitPrimes) {
+    var finished = true;
+    for (var p2 in twoDigitPrimes.where((element) => element > p1)) {
+      var multiple = p1 * p2;
+      if (multiple >= 1000) {
+        if (finished) break outer;
+        break;
+      }
+      finished = false;
+      if (multiple >= 100) {
+        multiples[multiple] = {'p1': p1, 'p2': p2};
+      }
+    }
+  }
+  return multiples;
 }

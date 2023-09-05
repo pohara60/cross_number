@@ -1,4 +1,4 @@
-import 'package:crossnumber/clue.dart';
+import '../clue.dart';
 
 enum Root66_2EntryType { UNKNOWN, BCEF, G, BCEFG }
 

@@ -1,6 +1,6 @@
-import 'package:crossnumber/no21/clue.dart';
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/variable.dart';
+import '../no21/clue.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 import '../clue.dart';
 

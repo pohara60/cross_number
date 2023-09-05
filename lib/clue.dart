@@ -1,7 +1,7 @@
-import 'package:crossnumber/expression.dart';
-import 'package:crossnumber/set.dart';
 import 'package:powers/powers.dart';
 
+import 'expression.dart';
+import 'set.dart';
 import 'variable.dart';
 
 /// A [Puzzle] clue

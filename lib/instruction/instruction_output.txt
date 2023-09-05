@@ -196,8 +196,8 @@ solve: InstructionEntry(name=A28,length=3,value: DP equals 180,
 	digits=[{4,5,6,9},{4,5,6,9},{4,5,6,9}]
 solve: InstructionEntry(name=A29,length=3,value: DS equals D21 and DP is a cube,
 	identities=[A29[1]=D22[2],A29[2]=D27[1]],referrers=[D22,D27,D21],
-	values={100,101,102,103,104,105,106,107,108,109,110,111,118,120,124,130,139,140,142,150 and 196 more},
-	digits=[{1..9},{0..9},{0..9}]
+	values={111,118,124,139,142,181,188,193,214,222,241,248,284,319,333,389,391,398,412,421 and 25 more},
+	digits=[{1..9},{1..9},{1..9}]
 solve: InstructionEntry(name=D1,length=2,value: (DS+DP) is an odd multiple of 5,
 	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
 	values={12,17,21,33,38,71,76},
@@ -524,7 +524,7 @@ solve: InstructionEntry(name=D4,length=2,value: Greater than D8 and DS equals an
 	identities=[D4[0]=A3[1],D4[1]=A9[1]],referrers=[A3,A9,D8],
 	values={65,67},
 	digits=[{6},{5,7}]
-Clue/Variable iterations=160, updates=92, elapsed 0:00:00.099001
+Clue/Variable iterations=160, updates=92, elapsed 0:00:00.084037
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={153,351}
@@ -641,8 +641,8 @@ solve: InstructionEntry(name=A28,length=3,value: DP equals 180,
 	digits=[{9},{5},{4}]
 solve: InstructionEntry(name=A29,length=3,value: DS equals D21 and DP is a cube,
 	identities=[A29[1]=D22[2],A29[2]=D27[1]],referrers=[D22,D27,D21],
-	values={100,101,102,103,104,105,106,107,108,109,110,111,118,120,124,130,139,140,142,150 and 196 more},
-	digits=[{1..9},{0..9},{0..9}]
+	values={111,118,124,139,142,181,188,193,214,222,241,248,284,319,333,389,391,398,412,421 and 25 more},
+	digits=[{1..9},{1..9},{1..9}]
 solve: InstructionEntry(name=D2,length=3,value: Palindrome and multiple of 5 with MP of 2,
 	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A11[1]],referrers=[A1,A7,A11],
 	values={525,545,565,585},
@@ -772,7 +772,7 @@ solve: InstructionEntry(name=D22,length=3,value: DP is a power of 2,
 	identities=[D22[0]=A20[2],D22[1]=A26[0],D22[2]=A29[1]],referrers=[A20,A26,A29],
 	values={218},
 	digits=[{2},{1},{8}]
-Clue/Variable iterations=92, updates=43, elapsed 0:00:00.027630
+Clue/Variable iterations=92, updates=43, elapsed 0:00:00.010248
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={351}
@@ -974,7 +974,7 @@ Fix clue D24=14
 Fix clue D25=75
 Fix clue D27=13
 UPDATES-----------------------------
-Clue/Variable iterations=36, updates=0, elapsed 0:00:00.000358
+Clue/Variable iterations=36, updates=0, elapsed 0:00:00.000301
 SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={153}

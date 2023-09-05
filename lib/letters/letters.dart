@@ -1,10 +1,10 @@
 /// An API for solving Letters puzzles.
 library letters;
 
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/cartesian.dart';
-import 'package:crossnumber/letters/clue.dart';
-import 'package:crossnumber/letters/puzzle.dart';
+import '../crossnumber.dart';
+import '../cartesian.dart';
+import '../letters/clue.dart';
+import '../letters/puzzle.dart';
 
 /// Provide access to the Prime Cuts API.
 class Letters extends Crossnumber<LettersPuzzle> {

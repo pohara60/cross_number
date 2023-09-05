@@ -1,5 +1,5 @@
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/dicenets2/clue.dart';
+import '../puzzle.dart';
+import '../dicenets2/clue.dart';
 
 import '../clue.dart';
 import '../variable.dart';

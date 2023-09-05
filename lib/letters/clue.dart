@@ -1,4 +1,4 @@
-import 'package:crossnumber/clue.dart';
+import '../clue.dart';
 
 /// A [LettersPuzzle] clue
 class LettersClue extends VariableClue {

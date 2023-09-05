@@ -1,5 +1,5 @@
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/set.dart';
+import '../clue.dart';
+import '../set.dart';
 import 'package:powers/powers.dart';
 
 /// A [InstructionPuzzle] clue

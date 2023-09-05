@@ -1,6 +1,6 @@
-import 'package:crossnumber/letters/clue.dart';
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/variable.dart';
+import '../letters/clue.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 class LetterVariable extends Variable {
   LetterVariable(letter) : super(letter) {

@@ -1,9 +1,10 @@
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/cartesian.dart';
-import 'package:crossnumber/distancing/clue.dart';
-import 'package:crossnumber/distancing/puzzle.dart';
+import '../crossnumber.dart';
+import '../clue.dart';
+import '../cartesian.dart';
+import '../distancing/clue.dart';
+import '../distancing/puzzle.dart';
 
+import '../generators.dart';
 import '../monadic.dart';
 
 class Distancing extends Crossnumber<DistancingPuzzle> {

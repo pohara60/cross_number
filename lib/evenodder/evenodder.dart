@@ -1,9 +1,9 @@
 /// An API for solving Letters puzzles.
 library evenodder;
 
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/evenodder/clue.dart';
-import 'package:crossnumber/evenodder/puzzle.dart';
+import '../crossnumber.dart';
+import '../evenodder/clue.dart';
+import '../evenodder/puzzle.dart';
 
 /// Provide access to the Prime Cuts API.
 class EvenOdder extends Crossnumber<EvenOdderPuzzle> {

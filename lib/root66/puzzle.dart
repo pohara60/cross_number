@@ -1,6 +1,6 @@
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/root66/clue.dart';
-import 'package:crossnumber/variable.dart';
+import '../puzzle.dart';
+import '../root66/clue.dart';
+import '../variable.dart';
 
 class Root66Variable extends Variable {
   Root66Variable(letter) : super(letter) {

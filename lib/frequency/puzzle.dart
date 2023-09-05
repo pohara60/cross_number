@@ -1,5 +1,5 @@
-import 'package:crossnumber/frequency/clue.dart';
-import 'package:crossnumber/puzzle.dart';
+import '../frequency/clue.dart';
+import '../puzzle.dart';
 
 class FrequencyPuzzle extends Puzzle<FrequencyClue, FrequencyEntry> {
   FrequencyPuzzle();

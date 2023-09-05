@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/instruction/clue.dart';
-import 'package:crossnumber/instruction/puzzle.dart';
+import '../crossnumber.dart';
+import '../instruction/clue.dart';
+import '../instruction/puzzle.dart';
+
+import '../generators.dart';
 
 class Instruction extends Crossnumber<InstructionPuzzle> {
   var gridString = [

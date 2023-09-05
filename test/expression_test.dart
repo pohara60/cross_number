@@ -1,8 +1,7 @@
-import 'package:crossnumber/generators.dart';
-import 'package:crossnumber/monadic.dart';
-
-import '../lib/expression.dart';
 import 'package:test/test.dart';
+import '../lib/generators.dart';
+import '../lib/monadic.dart';
+import '../lib/expression.dart';
 
 void main() {
   group('Original tests', () {
@@ -179,6 +178,45 @@ void main() {
       expect(primes, equals([30]));
       primes = generateProduct3Primes(10, 99).toList();
       expect(primes, equals([30, 42, 66, 70, 78]));
+      primes = getTwoDigitMultipleThreePrimes();
+      expect(
+          primes,
+          equals([
+            10,
+            14,
+            15,
+            21,
+            22,
+            26,
+            30,
+            33,
+            34,
+            35,
+            38,
+            39,
+            42,
+            46,
+            51,
+            55,
+            57,
+            58,
+            62,
+            65,
+            66,
+            69,
+            70,
+            74,
+            77,
+            78,
+            82,
+            85,
+            86,
+            87,
+            91,
+            93,
+            94,
+            95
+          ]));
     });
     var text9 = '#sumConsecutiveSquares';
     test(text9, () {
@@ -292,7 +330,7 @@ void main() {
       var exp = ExpressionEvaluator(text15);
       expect(exp.generate(10, 19).toList(), equals([10, 12, 14, 16, 18]));
     });
-    var text16 = r'$even 12';
+    var text16 = r'$even 13';
     test(text16, () {
       var exp = ExpressionEvaluator(text16);
       expect(() => exp.generate(10, 19), throwsException);

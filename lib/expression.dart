@@ -12,7 +12,7 @@ mixin Expression {
   late ExpressionEvaluator exp;
 
   void initExpression(String? valueDesc, variablePrefix, String name,
-      {Clue? clue, ExpressionVariable? variable}) {
+      {ExpressionClue? clue, ExpressionVariable? variable}) {
     if (valueDesc != null && valueDesc != '') {
       try {
         exp = ExpressionEvaluator(valueDesc, variablePrefix);

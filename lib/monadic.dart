@@ -23,6 +23,9 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['cube'] = Monadic('cube', cube, int);
   monadics['even'] = Monadic('even', isEven, bool);
   monadics['odd'] = Monadic('odd', isOdd, bool);
+  monadics['ascending'] = Monadic('ascending', isAscending, bool);
+  monadics['descending'] = Monadic('descending', isDescending, bool);
+  monadics['odd'] = Monadic('odd', isOdd, bool);
   monadics['prime'] = Monadic('prime', isPrime, bool);
   monadics['multiple'] = Monadic('multiple', multiple, Iterable<int>);
   monadics['greaterthan'] = Monadic('greaterthan', greaterthan, Iterable<int>);
@@ -99,6 +102,30 @@ bool isEven(int value) {
 bool isOdd(int value) {
   var result = value % 2 == 1;
   return result;
+}
+
+bool ascending(int value) => isAscending(value);
+bool isAscending(int value) {
+  var valueStr = value.toString();
+  var last = 0;
+  for (var index = 0; index < valueStr.length; index++) {
+    var next = int.parse(valueStr[index]);
+    if (next <= last) return false;
+    last = next;
+  }
+  return true;
+}
+
+bool descending(int value) => isDescending(value);
+bool isDescending(int value) {
+  var valueStr = value.toString();
+  var last = 0;
+  for (var index = 0; index < valueStr.length; index++) {
+    var next = int.parse(valueStr[index]);
+    if (next >= last) return false;
+    last = next;
+  }
+  return true;
 }
 
 Iterable<int> multiple(int value) sync* {
@@ -195,4 +222,23 @@ Iterable<int> factors(int value) sync* {
   if (remaining != 1) yield remaining;
 
   return;
+}
+
+bool twoDigitPrimeHasReverse(int prime) {
+  return primeHasReverse(prime, twoDigitPrimes);
+}
+
+bool primeHasReverse(int prime, List<int> primes) {
+  var other = reverse(prime);
+  return primes.contains(other) && other != prime;
+}
+
+bool isJumble(int value, int jumble) {
+  var valueStr = value.toString();
+  var jumbleStr = jumble.toString();
+  for (var index = 0; index < valueStr.length; index++) {
+    if (!jumbleStr.contains(valueStr[index])) return false;
+    jumbleStr.replaceFirst(RegExp(valueStr[index]), '');
+  }
+  return true;
 }

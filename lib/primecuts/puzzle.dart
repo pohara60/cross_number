@@ -1,8 +1,9 @@
-import 'package:crossnumber/primecuts/clue.dart';
-import 'package:crossnumber/puzzle.dart';
-import 'package:crossnumber/clue.dart';
-import 'package:crossnumber/crossnumber.dart';
-import 'package:crossnumber/variable.dart';
+import '../primecuts/clue.dart';
+import '../puzzle.dart';
+import '../clue.dart';
+import '../variable.dart';
+
+import '../generators.dart';
 
 class PrimeVariable extends Variable {
   PrimeVariable(prime) : super(prime) {
