@@ -587,17 +587,17 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   late final VariableList variableList;
   bool get hasVariables => variableList.hasVariables;
 
-  void initVariablePuzzle(List<int> possibleValues) {
+  void initVariablePuzzle(List<int>? possibleValues) {
     final puzzleGenerators = [Generator('sumdigits', generateSumDigits)];
     variableList = VariableList<VariableKind>(possibleValues);
     Scanner.addGenerators(puzzleGenerators);
   }
 
-  VariablePuzzle(List<int> possibleValues) {
+  VariablePuzzle(List<int>? possibleValues) {
     initVariablePuzzle(possibleValues);
   }
 
-  VariablePuzzle.grid(List<int> possibleValues, List<String> gridString)
+  VariablePuzzle.grid(List<int>? possibleValues, List<String> gridString)
       : super.grid(gridString) {
     initVariablePuzzle(possibleValues);
   }

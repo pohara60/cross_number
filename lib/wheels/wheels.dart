@@ -126,7 +126,10 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
         valueDesc: r"$lte (60-A+b)",
         solve: solveWheelsVariable);
     variableWrapper("T",
-        min: 1, max: 240, valueDesc: "A+B+C+D", solve: solveWheelsVariable);
+        min: 1,
+        max: 240,
+        valueDesc: "A+B+C+D = b+c+d+e",
+        solve: solveWheelsVariable);
     variableWrapper("F",
         min: 1, max: 99, valueDesc: "", solve: solveWheelsVariable);
     variableWrapper("b",
