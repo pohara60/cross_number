@@ -1288,7 +1288,7 @@ solve: Clue(name=A2,length=3,value: ,
 	preValues={59792}),
 	digits=[{5}, {9}, {2}]
 B={97}
-Clue iterations=201, updates=91, elapsed 0:00:02.221515
+Clue/Variable iterations=201, updates=91, elapsed 0:00:02.312359
 SOLUTION-----------------------------
 Puzzle Summary
 A2, , values={592}

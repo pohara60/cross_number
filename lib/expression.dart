@@ -18,6 +18,7 @@ mixin Expression {
         exp = ExpressionEvaluator(valueDesc, variablePrefix);
         for (var variableName in exp.variableRefs..sort()) {
           if (clue != null) clue.addVariableReference(variableName);
+          if (variable != null) variable.addVariableReference(variableName);
         }
         for (var clueName in exp.clueRefs..sort()) {
           if (clue != null) clue.addClueReference(clueName);

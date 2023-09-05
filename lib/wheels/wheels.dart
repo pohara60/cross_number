@@ -49,13 +49,14 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
 
     var variableErrors = '';
     void variableWrapper(String name,
-        {int min = 1, int? max, String valueDesc = ''}) {
+        {int min = 1, int? max, String valueDesc = '', Function? solve}) {
       try {
         var variable = WheelsVariable(
           name,
           min: min,
           max: max,
           valueDesc: valueDesc,
+          solve: solve,
         );
         puzzle.addVariable(variable);
         return;
@@ -119,18 +120,48 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
       throw PuzzleException(clueErrors);
     }
 
-    variableWrapper("B", min: 1, max: 60, valueDesc: r"$lte (60-A+b)");
-    variableWrapper("T", min: 1, valueDesc: "B+C+D");
-    variableWrapper("F", min: 1, valueDesc: "");
-    variableWrapper("b", min: 1, max: 60, valueDesc: r"$lte (A)");
-    variableWrapper("f", min: 1, valueDesc: r"$lt F");
-    variableWrapper("C", min: 1, max: 60, valueDesc: r"$lte (60-A+b-B+c)");
-    variableWrapper("e", min: 1, max: 60, valueDesc: "A+B+C+D-b-c-d");
-    variableWrapper("A", min: 1, max: 60, valueDesc: "");
-    variableWrapper("Y", min: 17, max: 50, valueDesc: "");
-    variableWrapper("c", min: 1, max: 60, valueDesc: r"$lte (A-b+B)");
-    variableWrapper("d", min: 1, max: 60, valueDesc: r"$lte (A-b+B-c+C)");
-    variableWrapper("D", min: 1, max: 60, valueDesc: r"$lte (60-A+b-B+c-C+d)");
+    variableWrapper("B",
+        min: 1,
+        max: 60,
+        valueDesc: r"$lte (60-A+b)",
+        solve: solveWheelsVariable);
+    variableWrapper("T",
+        min: 1, max: 240, valueDesc: "A+B+C+D", solve: solveWheelsVariable);
+    variableWrapper("F",
+        min: 1, max: 99, valueDesc: "", solve: solveWheelsVariable);
+    variableWrapper("b",
+        min: 1, max: 60, valueDesc: r"$lte (A)", solve: solveWheelsVariable);
+    variableWrapper("f",
+        min: 1, max: 99, valueDesc: r"$lt F", solve: solveWheelsVariable);
+    variableWrapper("C",
+        min: 1,
+        max: 60,
+        valueDesc: r"$lte (60-A+b-B+c)",
+        solve: solveWheelsVariable);
+    variableWrapper("e",
+        min: 1,
+        max: 60,
+        valueDesc: "A+B+C+D-b-c-d",
+        solve: solveWheelsVariable);
+    variableWrapper("A",
+        min: 1, max: 60, valueDesc: "", solve: solveWheelsVariable);
+    variableWrapper("Y",
+        min: 17, max: 50, valueDesc: "", solve: solveWheelsVariable);
+    variableWrapper("c",
+        min: 1,
+        max: 60,
+        valueDesc: r"$lte (A-b+B)",
+        solve: solveWheelsVariable);
+    variableWrapper("d",
+        min: 1,
+        max: 60,
+        valueDesc: r"$lte (A-b+B-c+C)",
+        solve: solveWheelsVariable);
+    variableWrapper("D",
+        min: 1,
+        max: 60,
+        valueDesc: r"$lte (60-A+b-B+c-C+d)",
+        solve: solveWheelsVariable);
 
     if (variableErrors != '') {
       throw PuzzleException(variableErrors);
@@ -142,6 +173,9 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
+    var variableError = puzzle.checkVariableVariableReferences();
+    if (variableError != '') throw PuzzleException(variableError);
+
     super.initCrossnumber();
   }
 
@@ -149,6 +183,8 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
     if (!clue.digitsMatch(value)) return false;
+    // Check prior value (maybe set by another clue)
+    if (clue.values != null && !clue.values!.contains(value)) return false;
     return true;
   }
 
@@ -159,6 +195,19 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
           clue, possibleValue, possibleVariables, validClue);
+    }
+    return updated;
+  }
+
+  // Variable solver invokes generic expression evaluator
+  bool solveWheelsVariable(WheelsVariable variable, Set<int> possibleValue,
+      Map<String, Set<int>> possibleVariables) {
+    var updated = false;
+    if (variable.valueDesc != '') {
+      updated = puzzle.solveExpressionVariable(
+          variable, possibleValue, possibleVariables, validVariable);
+    } else {
+      // if (variable.values != null) possibleValue.addAll(variable.values!);
     }
     return updated;
   }

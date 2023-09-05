@@ -3,10 +3,19 @@ import 'package:crossnumber/set.dart';
 
 import 'expression.dart';
 
+abstract class PriorityVariable {
+  /// Computed - Count of combinations of variable values
+  int priority = 0;
+  int get count => priority;
+}
+
 /// A variable, with restricted values, commonly used in [Clue] for a [Puzzle]
 class Variable {
   /// Name
   final String name;
+
+  /// Solve function
+  final Function? solve;
 
   /// Current possible values, initialized in subclass
   Set<int>? _values;
@@ -14,7 +23,7 @@ class Variable {
   /// Forced value (when testing porrible solutions)
   int? _tryValue;
 
-  Variable(String this.name);
+  Variable(String this.name, {Function? this.solve = null});
 //    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   set tryValue(int? value) {
@@ -103,19 +112,17 @@ class VariableList<VariableKind extends Variable> {
   VariableList(this.remainingValues) : distinct = remainingValues != null;
 
   Set<String> updateVariables(String variableName, Set<int> possibleValues) {
-    // Only check for distinct variables when have remainingValues
-    if (!distinct) return {};
-
     // Get unknown variables before update this variable, in case of side effects
     // (EvenOdderVariable can set linked variable)
     var updatedVariables = <String>{};
+    var variable = variables[variableName]!;
     var unknownVariableEntries =
         variables.entries.where((entry) => !entry.value.isSet).toList();
-    var variable = variables[variableName]!;
     var updated = variable.updatePossible(possibleValues);
     if (updated) {
       updatedVariables.add(variableName);
-      if (variable.isSet) {
+      // Only check for distinct variables when have remainingValues
+      if (variable.isSet && distinct) {
         List<String> knownLetters = [variableName];
         int index = 0;
         while (index < knownLetters.length) {
@@ -147,8 +154,8 @@ class VariableList<VariableKind extends Variable> {
     if (variables.isEmpty) return '';
 
     var text = 'Variables:\n';
-    for (var entry in variables.entries) {
-      text += entry.value.toString() + '\n';
+    for (var variableName in variables.keys.toList()..sort()) {
+      text += variables[variableName].toString() + '\n';
     }
     if (remainingValues != null)
       text += 'RemainingValues: ${remainingValues.toString()}\n';
@@ -160,8 +167,10 @@ class VariableList<VariableKind extends Variable> {
   }
 }
 
-class ExpressionVariable extends Variable with Expression {
+class ExpressionVariable extends Variable with Expression, PriorityVariable {
   final String valueDesc;
+  late int _min;
+  late int? _max;
   // References
   final _variableRefs = VariableRefList();
   List<String> get variableReferences => _variableRefs.variableNames;
@@ -169,10 +178,17 @@ class ExpressionVariable extends Variable with Expression {
   /// List of variables that need to be examined when this clue is updated
   late final List<ExpressionVariable> referrers;
   ExpressionVariable(String name, String this.valueDesc,
-      {String variablePrefix = ''})
-      : super(name) {
+      {int min = 1, int? max, String variablePrefix = '', Function? solve})
+      : super(name, solve: solve) {
     initExpression(valueDesc, variablePrefix, name, variable: this);
+    _min = min;
+    _max = max;
+    referrers = [];
   }
+
+  num get min => _min;
+
+  num get max => _max ?? 10000; // Ugh!
 
   addReferrer(ExpressionVariable variable) {
     if (!referrers.contains(variable)) referrers.add(variable);
@@ -182,9 +198,16 @@ class ExpressionVariable extends Variable with Expression {
     _variableRefs.addVariableReference(variable);
   }
 
+  Set<int>? getValuesFromMinMax() {
+    if (_max == null || _max! - _min > 1000) return null;
+    return Set.from(List.generate(_max! - _min + 1, (index) => _min + index));
+  }
+
   String toString() {
     var text = super.toString();
     text += ',valueDesc=${valueDesc}';
+    text += ',min=${min}';
+    text += ',max=${max}';
     return text;
   }
 }

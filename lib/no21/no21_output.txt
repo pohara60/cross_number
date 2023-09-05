@@ -261,737 +261,594 @@ SOLVE------------
 UPDATES-----------------------------
 Solve Error: clue D34 ((#square * #prime)') no solution!
 Solve Error: clue A19 ((#square * #prime)') no solution!
-Eval A5 cartesianCount=17, elapsed 0:00:00.004252
+Eval A5 cartesianCount=17, elapsed 0:00:00.004241
 solve: No21Clue(name=A5,length=2,value: C',
 	referrers=[],
 	values={21,31,41,51,61}, min=11, max=998
-C={12, 13, 14, 15, 16}
-Eval A7 cartesianCount=17, elapsed 0:00:00.000323
+C={12..16}
+Eval A7 cartesianCount=17, elapsed 0:00:00.000302
 solve: No21Clue(name=A7,length=2,value: L',
 	referrers=[],
 	values={31,41,51,61}, min=22, max=998
-L={13, 14, 15, 16}
-Eval D20 cartesianCount=17, elapsed 0:00:00.000091
+L={13..16}
+Eval D20 cartesianCount=17, elapsed 0:00:00.000107
 solve: No21Clue(name=D20,length=2,value: T,
 	referrers=[],
 	values={10..16}, min=10, max=998
-T={10, 11, 12, 13, 14, 15, 16}
-Eval D21 cartesianCount=17, elapsed 0:00:00.000097
+T={10..16}
+Eval D21 cartesianCount=17, elapsed 0:00:00.000090
 solve: No21Clue(name=D21,length=2,value: I,
 	referrers=[],
 	values={11..16}, min=11, max=998
-I={11, 12, 13, 14, 15, 16}
-Eval D26 cartesianCount=68, elapsed 0:00:00.000755
+I={11..16}
+Eval D26 cartesianCount=68, elapsed 0:00:00.000579
 solve: No21Clue(name=D26,length=3,value: (JL')',
 	referrers=[],
 	values={143,154,165,176,201,216,221,237,273,294,321,335,351,366,381,397,402,417,421,442 and 27 more}, min=100, max=998
-J={2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16}
-L={13, 14, 15, 16}
-Eval A12 cartesianCount=84, elapsed 0:00:00.000479
+J={2,3,4,5,6,7,8,9,11,12,13,14,15,16}
+Eval A12 cartesianCount=84, elapsed 0:00:00.000346
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={104,105,108,112,117,120,126,128,132,135,143,144,154,156,165,168,176,180,182,192 and 5 more}, min=100, max=998
-I={11, 12, 13, 14, 15, 16}
-J={7, 8, 9, 11, 12, 13, 14, 15, 16}
-Eval D26 cartesianCount=36, elapsed 0:00:00.000327
+J={7,8,9,11,12,13,14,15,16}
+Eval D26 cartesianCount=36, elapsed 0:00:00.000290
 solve: No21Clue(name=D26,length=3,value: (JL')',
 	referrers=[],
 	values={143,154,165,176,216,237,273,294,335,366,397,417,458,516,519,564,618,694,712,724 and 10 more}, min=100, max=998
-J={7, 8, 9, 11, 12, 13, 14, 15, 16}
-L={13, 14, 15, 16}
-Eval A12 cartesianCount=54, elapsed 0:00:00.000276
-Eval A3 cartesianCount=85, elapsed 0:00:00.000447
+Eval A12 cartesianCount=54, elapsed 0:00:00.000247
+Eval A3 cartesianCount=85, elapsed 0:00:00.000424
 solve: No21Clue(name=A3,length=2,value: C+K,
 	referrers=[],
 	values={12..31}, min=11, max=60
-C={12, 13, 14, 15, 16}
-K={0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
-Eval A12 cartesianCount=54, elapsed 0:00:00.000252
-Eval A2 cartesianCount=102, elapsed 0:00:00.000859
+Eval A12 cartesianCount=54, elapsed 0:00:00.000244
+Eval A2 cartesianCount=102, elapsed 0:00:00.000324
 solve: No21Clue(name=A2,length=2,value: IN,
 	referrers=[],
 	values={11,12,13,14,15,16,22,24,26,28,30}, min=11, max=30
-I={11, 12, 13, 14, 15, 16}
-N={1, 2}
-Eval A9 cartesianCount=34, elapsed 0:00:00.000249
+N={1,2}
+Eval A9 cartesianCount=34, elapsed 0:00:00.000156
 solve: No21Clue(name=A9,length=2,value: N(R^N),
 	referrers=[],
 	values={32,50,72,98,128,162,200}, min=32, max=239
 N={2}
-R={4, 5, 6, 7, 8, 9, 10}
-Eval A2 cartesianCount=6, elapsed 0:00:00.000042
+A={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+B={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+D={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+E={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+F={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+G={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+K={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+M={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+O={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+R={4..10}
+Y={0,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16}
+Eval A2 cartesianCount=6, elapsed 0:00:00.000049
 solve: No21Clue(name=A2,length=2,value: IN,
 	referrers=[],
 	values={22,24,26,28,30}, min=11, max=30
-I={11, 12, 13, 14, 15}
-N={2}
-Eval D21 cartesianCount=5, elapsed 0:00:00.000029
+I={11..15}
+Eval D21 cartesianCount=5, elapsed 0:00:00.000034
 solve: No21Clue(name=D21,length=2,value: I,
 	referrers=[],
 	values={11..15}, min=11, max=971
-I={11, 12, 13, 14, 15}
-Eval A2 cartesianCount=5, elapsed 0:00:00.000032
-Eval A9 cartesianCount=7, elapsed 0:00:00.000044
-Eval A8 cartesianCount=16, elapsed 0:00:00.000086
+Eval A2 cartesianCount=5, elapsed 0:00:00.000042
+Eval A9 cartesianCount=7, elapsed 0:00:00.000043
+Eval A8 cartesianCount=16, elapsed 0:00:00.000217
 solve: No21Clue(name=A8,length=2,value: B^N-N,
 	referrers=[],
 	values={34,47,62,79,98,119,142,167,194}, min=32, max=199
-B={6, 7, 8, 9, 10, 11, 12, 13, 14}
-N={2}
-Eval A12 cartesianCount=45, elapsed 0:00:00.000172
+B={6..14}
+Eval A12 cartesianCount=45, elapsed 0:00:00.000259
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={104,105,108,112,117,120,126,132,135,143,154,156,165,168,176,180,182,192,195,208 and 3 more}, min=100, max=998
-I={11, 12, 13, 14, 15}
-J={7, 8, 9, 11, 12, 13, 14, 15, 16}
-Eval D22 cartesianCount=63, elapsed 0:00:00.000281
+Eval D22 cartesianCount=63, elapsed 0:00:00.000249
 solve: No21Clue(name=D22,length=2,value: BR,
 	referrers=[],
 	values={24,28,30,32,35,36,40,42,44,45,48,50,52,54,55,56,60,63,65,66 and 21 more}, min=12, max=971
-B={6, 7, 8, 9, 10, 11, 12, 13, 14}
-R={4, 5, 6, 7, 8, 9, 10}
-Eval A14 cartesianCount=80, elapsed 0:00:00.000640
+Eval A14 cartesianCount=80, elapsed 0:00:00.000691
 solve: No21Clue(name=A14,length=3,value: I'(N^A)',
 	referrers=[],
 	values={483,713,943,966}, min=105, max=998
-A={5, 6}
-I={12, 13, 14}
-N={2}
-Eval D21 cartesianCount=3, elapsed 0:00:00.000085
+A={5,6}
+I={12..14}
+Eval D21 cartesianCount=3, elapsed 0:00:00.000021
 solve: No21Clue(name=D21,length=2,value: I,
 	referrers=[],
 	values={12..14}, min=11, max=139
-I={12, 13, 14}
-Eval A2 cartesianCount=3, elapsed 0:00:00.000057
+Eval A2 cartesianCount=3, elapsed 0:00:00.000021
 solve: No21Clue(name=A2,length=2,value: IN,
 	referrers=[],
 	values={24,26,28}, min=11, max=30
-I={12, 13, 14}
-N={2}
-Eval A14 cartesianCount=6, elapsed 0:00:00.000102
-Eval A12 cartesianCount=27, elapsed 0:00:00.000217
+Eval A14 cartesianCount=6, elapsed 0:00:00.000048
+Eval A12 cartesianCount=27, elapsed 0:00:00.000097
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={104,108,112,117,126,132,143,154,156,168,180,182,192,195,208,210,224}, min=100, max=965
-I={12, 13, 14}
-J={8, 9, 11, 12, 13, 14, 15, 16}
-Eval D26 cartesianCount=32, elapsed 0:00:00.000496
+J={8,9,11,12,13,14,15,16}
+Eval D26 cartesianCount=32, elapsed 0:00:00.000215
 solve: No21Clue(name=D26,length=3,value: (JL')',
 	referrers=[],
 	values={143,154,165,176,216,237,273,294,335,366,397,417,458,516,519,564,618,694,804,823 and 6 more}, min=100, max=998
-J={8, 9, 11, 12, 13, 14, 15, 16}
-L={13, 14, 15, 16}
-Eval A14 cartesianCount=6, elapsed 0:00:00.000060
-Eval A16 cartesianCount=32, elapsed 0:00:00.000100
+Eval A16 cartesianCount=32, elapsed 0:00:00.000108
 Solve Error: clue A16 (A(E^A)) no solution!
-Eval A10 cartesianCount=42, elapsed 0:00:00.000436
+Eval A10 cartesianCount=42, elapsed 0:00:00.000570
 solve: No21Clue(name=A10,length=2,value: A!-(IR)',
 	referrers=[],
 	values={36,51,55,72,93,95,99,101}, min=35, max=223
-A={5, 6}
-I={12, 13, 14}
-R={4, 6, 7, 8, 9}
-Eval A9 cartesianCount=5, elapsed 0:00:00.000053
+R={4,6,7,8,9}
+Eval A9 cartesianCount=5, elapsed 0:00:00.000057
 solve: No21Clue(name=A9,length=2,value: N(R^N),
 	referrers=[],
 	values={72,98}, min=35, max=100
-N={2}
-R={6, 7}
+R={6,7}
+Eval A14 cartesianCount=6, elapsed 0:00:00.000070
 Eval A10 cartesianCount=12, elapsed 0:00:00.000055
 solve: No21Clue(name=A10,length=2,value: A!-(IR)',
 	referrers=[],
 	values={93,101}, min=73, max=223
 A={5}
-I={12, 13}
-R={6, 7}
-Eval D21 cartesianCount=2, elapsed 0:00:00.000021
+D={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+E={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+F={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+G={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+K={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+M={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+O={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+Y={0,1,3,4,6,7,8,9,10,11,12,13,14,15,16}
+I={12,13}
+Eval D21 cartesianCount=2, elapsed 0:00:00.000018
 solve: No21Clue(name=D21,length=2,value: I,
 	referrers=[],
 	values={12,13}, min=11, max=139
-I={12, 13}
-Eval A14 cartesianCount=2, elapsed 0:00:00.000033
+Eval A14 cartesianCount=2, elapsed 0:00:00.000025
 solve: No21Clue(name=A14,length=3,value: I'(N^A)',
 	referrers=[],
 	values={483,713}, min=105, max=998
-A={5}
-I={12, 13}
-N={2}
-Eval A2 cartesianCount=2, elapsed 0:00:00.000035
+Eval A2 cartesianCount=2, elapsed 0:00:00.000018
 solve: No21Clue(name=A2,length=2,value: IN,
 	referrers=[],
 	values={24,26}, min=11, max=30
-I={12, 13}
-N={2}
-Eval A10 cartesianCount=4, elapsed 0:00:00.000043
-Eval A16 cartesianCount=15, elapsed 0:00:00.000049
+Eval A10 cartesianCount=4, elapsed 0:00:00.000031
+Eval A16 cartesianCount=15, elapsed 0:00:00.000053
 Solve Error: clue A16 (A(E^A)) no solution!
-Eval A12 cartesianCount=16, elapsed 0:00:00.000069
+Eval A12 cartesianCount=16, elapsed 0:00:00.000064
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={104,108,117,132,143,156,168,180,182,192,195,208}, min=100, max=712
-I={12, 13}
-J={8, 9, 11, 12, 13, 14, 15, 16}
-Eval A14 cartesianCount=2, elapsed 0:00:00.000026
-Eval A16 cartesianCount=15, elapsed 0:00:00.000046
-Solve Error: clue A16 (A(E^A)) no solution!
-Eval D22 cartesianCount=18, elapsed 0:00:00.000083
+Eval D22 cartesianCount=18, elapsed 0:00:00.000074
 solve: No21Clue(name=D22,length=2,value: BR,
 	referrers=[],
 	values={42,48,54,56,60,63,66,70,72,77,78,84,91,98}, min=13, max=971
-B={6, 7, 8, 9, 10, 11, 12, 13, 14}
-R={6, 7}
-Eval D31 cartesianCount=28, elapsed 0:00:00.000178
+Eval A16 cartesianCount=15, elapsed 0:00:00.000054
+Solve Error: clue A16 (A(E^A)) no solution!
+Eval D31 cartesianCount=28, elapsed 0:00:00.000162
 solve: No21Clue(name=D31,length=3,value: AL'NT,
 	referrers=[],
 	values={3100,3410,3720,4100,4340,4510,4650,4920,4960,5100,5330,5610,6100,6120,6150,6560,6630,6710,7140,7320 and 4 more}, min=144, max=9998
-A={5}
-L={13, 14, 15, 16}
-N={2}
-T={10, 11, 12, 13, 14, 15, 16}
-Eval A13 cartesianCount=30, elapsed 0:00:00.000366
+Eval A13 cartesianCount=30, elapsed 0:00:00.000409
 solve: No21Clue(name=A13,length=3,value: (AEI)',
 	referrers=[],
 	values={517,554,579,591}, min=105, max=712
-A={5}
-E={3, 7, 11, 15}
+E={3,7,11,15}
 I={13}
+B={6,7,8,9,10,11,12,14}
+C={12,14,15,16}
+D={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
+F={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
+G={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
+J={8,9,11,12,14,15,16}
+K={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
+L={14..16}
+M={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
+O={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
+T={10,11,12,14,15,16}
+Y={0,1,3,4,6,7,8,9,10,11,12,14,15,16}
 solve: No21Clue(name=D21,length=2,value: I,
 	referrers=[],
 	values={13}, min=11, max=97
-I={13}
 solve: No21Clue(name=A14,length=3,value: I'(N^A)',
 	referrers=[],
 	values={713}, min=518, max=998
-A={5}
-I={13}
-N={2}
 solve: No21Clue(name=A2,length=2,value: IN,
 	referrers=[],
 	values={26}, min=11, max=30
-I={13}
-N={2}
-Eval A10 cartesianCount=2, elapsed 0:00:00.000021
+Eval A10 cartesianCount=2, elapsed 0:00:00.000022
 solve: No21Clue(name=A10,length=2,value: A!-(IR)',
 	referrers=[],
 	values={101}, min=73, max=207
-A={5}
-I={13}
 R={7}
+B={6,8,9,10,11,12,14}
+D={0,1,3,4,6,8,9,10,11,12,14,15,16}
+E={3,11,15}
+F={0,1,3,4,6,8,9,10,11,12,14,15,16}
+G={0,1,3,4,6,8,9,10,11,12,14,15,16}
+K={0,1,3,4,6,8,9,10,11,12,14,15,16}
+M={0,1,3,4,6,8,9,10,11,12,14,15,16}
+O={0,1,3,4,6,8,9,10,11,12,14,15,16}
+Y={0,1,3,4,6,8,9,10,11,12,14,15,16}
 solve: No21Clue(name=A9,length=2,value: N(R^N),
 	referrers=[],
 	values={98}, min=35, max=100
-N={2}
-R={7}
-Eval A16 cartesianCount=3, elapsed 0:00:00.000017
+Eval A16 cartesianCount=3, elapsed 0:00:00.000019
 Solve Error: clue A16 (A(E^A)) no solution!
-Eval A13 cartesianCount=3, elapsed 0:00:00.000029
+Eval A13 cartesianCount=3, elapsed 0:00:00.000028
 solve: No21Clue(name=A13,length=3,value: (AEI)',
 	referrers=[],
 	values={517,579,591}, min=105, max=712
-A={5}
-E={3, 11, 15}
-I={13}
-Eval A7 cartesianCount=3, elapsed 0:00:00.000024
+Eval A7 cartesianCount=3, elapsed 0:00:00.000029
 solve: No21Clue(name=A7,length=2,value: L',
 	referrers=[],
 	values={41,51,61}, min=27, max=97
-L={14, 15, 16}
-Eval A5 cartesianCount=4, elapsed 0:00:00.000023
+Eval A5 cartesianCount=4, elapsed 0:00:00.000024
 solve: No21Clue(name=A5,length=2,value: C',
 	referrers=[],
 	values={41,51}, min=27, max=60
-C={14, 15}
-Eval A16 cartesianCount=3, elapsed 0:00:00.000017
-Solve Error: clue A16 (A(E^A)) no solution!
-Eval A13 cartesianCount=3, elapsed 0:00:00.000029
-Eval D28 cartesianCount=6, elapsed 0:00:00.000050
+C={14,15}
+Eval A13 cartesianCount=3, elapsed 0:00:00.000036
+Eval D28 cartesianCount=6, elapsed 0:00:00.000054
 solve: No21Clue(name=D28,length=2,value: (CER)',
 	referrers=[],
 	values={492,513}, min=144, max=998
-C={14, 15}
 E={3}
-R={7}
+D={0,1,4,6,8,9,10,11,12,14,15,16}
+F={0,1,4,6,8,9,10,11,12,14,15,16}
+G={0,1,4,6,8,9,10,11,12,14,15,16}
+K={0,1,4,6,8,9,10,11,12,14,15,16}
+M={0,1,4,6,8,9,10,11,12,14,15,16}
+O={0,1,4,6,8,9,10,11,12,14,15,16}
+Y={0,1,4,6,8,9,10,11,12,14,15,16}
 Solve Error: clue A16 (A(E^A)) no solution!
 solve: No21Clue(name=A13,length=3,value: (AEI)',
 	referrers=[],
 	values={591}, min=105, max=712
-A={5}
-E={3}
-I={13}
-Eval D28 cartesianCount=2, elapsed 0:00:00.000023
-Eval D20 cartesianCount=6, elapsed 0:00:00.000035
+Eval D28 cartesianCount=2, elapsed 0:00:00.000024
+Eval D20 cartesianCount=6, elapsed 0:00:00.000024
 solve: No21Clue(name=D20,length=2,value: T,
 	referrers=[],
 	values={10..12}, min=10, max=12
-T={10, 11, 12}
-Eval D28 cartesianCount=2, elapsed 0:00:00.000029
-Eval D22 cartesianCount=7, elapsed 0:00:00.000051
-solve: No21Clue(name=D22,length=2,value: BR,
-	referrers=[],
-	values={42,56,63,70,77,84}, min=14, max=512
-B={6, 8, 9, 10, 11, 12, 14}
-R={7}
-Eval A8 cartesianCount=7, elapsed 0:00:00.000040
+T={10..12}
+Eval A8 cartesianCount=7, elapsed 0:00:00.000035
 solve: No21Clue(name=A8,length=2,value: B^N-N,
 	referrers=[],
 	values={62,79}, min=42, max=97
-B={8, 9}
-N={2}
-Eval D22 cartesianCount=2, elapsed 0:00:00.000023
+B={8,9}
+Eval D22 cartesianCount=2, elapsed 0:00:00.000018
 solve: No21Clue(name=D22,length=2,value: BR,
 	referrers=[],
 	values={56,63}, min=14, max=512
-B={8, 9}
-R={7}
-Eval A8 cartesianCount=2, elapsed 0:00:00.000028
-Eval A12 cartesianCount=7, elapsed 0:00:00.000052
+Eval A8 cartesianCount=2, elapsed 0:00:00.000019
+Eval D28 cartesianCount=2, elapsed 0:00:00.000022
+Eval A12 cartesianCount=7, elapsed 0:00:00.000035
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={104,117,143,156,182,195,208}, min=102, max=590
-I={13}
-J={8, 9, 11, 12, 14, 15, 16}
-Eval D31 cartesianCount=9, elapsed 0:00:00.000101
+Eval D31 cartesianCount=9, elapsed 0:00:00.000068
 solve: No21Clue(name=D31,length=3,value: AL'NT,
 	referrers=[],
 	values={4100,4510,4920,5100,5610,6100,6120,6710,7320}, min=493, max=9998
-A={5}
-L={14, 15, 16}
-N={2}
-T={10, 11, 12}
-Eval D26 cartesianCount=21, elapsed 0:00:00.000145
+Eval D26 cartesianCount=21, elapsed 0:00:00.000129
 solve: No21Clue(name=D26,length=3,value: (JL')',
 	referrers=[],
 	values={154,165,176,216,237,294,417,458}, min=100, max=512
-J={11, 12, 14}
-L={14, 15, 16}
-Eval A12 cartesianCount=3, elapsed 0:00:00.000025
+J={11,12,14}
+Eval D28 cartesianCount=2, elapsed 0:00:00.000025
+Eval A12 cartesianCount=3, elapsed 0:00:00.000020
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={143,156,182}, min=102, max=590
-I={13}
-J={11, 12, 14}
-Eval D26 cartesianCount=9, elapsed 0:00:00.000068
-Eval A15 cartesianCount=24, elapsed 0:00:00.000218
-solve: No21Clue(name=A15,length=3,value: ((C+K)(N^A))',
-	referrers=[],
-	values={806,829,844,867}, min=714, max=998
-A={5}
-C={14, 15}
-K={0, 4, 9, 10, 14, 15}
-N={2}
-Eval A3 cartesianCount=12, elapsed 0:00:00.000086
+Eval D26 cartesianCount=9, elapsed 0:00:00.000064
+Eval A3 cartesianCount=24, elapsed 0:00:00.000070
 solve: No21Clue(name=A3,length=2,value: C+K,
 	referrers=[],
-	values={29}, min=27, max=50
-C={14, 15}
-K={14, 15}
-Eval A15 cartesianCount=4, elapsed 0:00:00.000047
+	values={27,29,30,31}, min=27, max=50
+K={12,14,15,16}
+Eval A15 cartesianCount=8, elapsed 0:00:00.000066
 solve: No21Clue(name=A15,length=3,value: ((C+K)(N^A))',
 	referrers=[],
 	values={829}, min=714, max=998
-A={5}
-C={14, 15}
-K={14, 15}
-N={2}
-Eval A17 cartesianCount=24, elapsed 0:00:00.000277
+K={14,15}
+Eval A3 cartesianCount=4, elapsed 0:00:00.000021
+solve: No21Clue(name=A3,length=2,value: C+K,
+	referrers=[],
+	values={29}, min=27, max=50
+Eval A1 cartesianCount=24, elapsed 0:00:00.000092
+solve: No21Clue(name=A1,length=2,value: B+Y,
+	referrers=[],
+	values={10,12,14,15,17,18,19,20,21,22,23,24,25}, min=10, max=25
+Y={1,4,6,8,9,10,11,12,14,15,16}
+Eval A3 cartesianCount=4, elapsed 0:00:00.000020
+Eval A1 cartesianCount=22, elapsed 0:00:00.000085
+Eval A17 cartesianCount=24, elapsed 0:00:00.000507
 solve: No21Clue(name=A17,length=3,value: (G!+I'K)',
 	referrers=[],
 	values={854,984,4511,5811}, min=830, max=9998
-G={4, 6}
-I={13}
-K={14, 15}
-Eval D28 cartesianCount=2, elapsed 0:00:00.000027
-Eval A17 cartesianCount=4, elapsed 0:00:00.000040
-Eval A11 cartesianCount=6, elapsed 0:00:00.000033
+G={4,6}
+Eval D28 cartesianCount=2, elapsed 0:00:00.000039
+Eval D22 cartesianCount=2, elapsed 0:00:00.000016
+Eval A15 cartesianCount=4, elapsed 0:00:00.000029
+Eval A17 cartesianCount=4, elapsed 0:00:00.000039
+Eval A11 cartesianCount=6, elapsed 0:00:00.000036
 solve: No21Clue(name=A11,length=2,value: GNT,
 	referrers=[],
 	values={120,132,144}, min=102, max=181
 G={6}
-N={2}
-T={10, 11, 12}
-Eval A17 cartesianCount=2, elapsed 0:00:00.000029
+D={0,1,4,8,9,10,11,12,14,15,16}
+F={0,1,4,8,9,10,11,12,14,15,16}
+M={0,1,4,8,9,10,11,12,14,15,16}
+O={0,1,4,8,9,10,11,12,14,15,16}
+Y={1,4,8,9,10,11,12,14,15,16}
+Solve Error: clue A16 (A(E^A)) no solution!
+Eval A17 cartesianCount=2, elapsed 0:00:00.000030
 solve: No21Clue(name=A17,length=3,value: (G!+I'K)',
 	referrers=[],
-	values={4511,5811}, min=830, max=9998
-G={6}
-I={13}
-K={14, 15}
-Eval A11 cartesianCount=3, elapsed 0:00:00.000025
-Eval A11 cartesianCount=3, elapsed 0:00:00.000029
-Eval D31 cartesianCount=9, elapsed 0:00:00.000077
-Eval D30 cartesianCount=11, elapsed 0:00:00.000063
+	values={4511,5811}, min=831, max=9998
+Eval A11 cartesianCount=3, elapsed 0:00:00.000023
+Eval D31 cartesianCount=9, elapsed 0:00:00.000070
+Eval D30 cartesianCount=11, elapsed 0:00:00.000059
 solve: No21Clue(name=D30,length=3,value: D(D^N-G),
 	referrers=[],
 	values={675,940,1265,1656,2660,3285,4000}, min=493, max=7319
-D={9, 10, 11, 12, 14, 15, 16}
-G={6}
-N={2}
-Eval A17 cartesianCount=2, elapsed 0:00:00.000028
-Eval D30 cartesianCount=7, elapsed 0:00:00.000054
-Eval A1 cartesianCount=22, elapsed 0:00:00.000095
+D={9,10,11,12,14,15,16}
+Eval A1 cartesianCount=20, elapsed 0:00:00.000081
 solve: No21Clue(name=A1,length=2,value: B+Y,
 	referrers=[],
 	values={10,12,17,18,19,20,21,22,23,24,25}, min=10, max=25
-B={8, 9}
-Y={1, 4, 8, 9, 10, 11, 12, 14, 15, 16}
-Eval D27 cartesianCount=33, elapsed 0:00:00.000178
+Eval D27 cartesianCount=33, elapsed 0:00:00.000151
 solve: No21Clue(name=D27,length=3,value: A(AJ-O),
 	referrers=[],
 	values={195,200,205,215,220,225,230,235,245,250,255,260,270,275,280,290,295,300,305,310 and 3 more}, min=155, max=512
-A={5}
-J={11, 12, 14}
-O={0, 1, 4, 8, 9, 10, 11, 12, 14, 15, 16}
-Eval A17 cartesianCount=2, elapsed 0:00:00.000028
-Eval D27 cartesianCount=33, elapsed 0:00:00.000170
-Eval D23 cartesianCount=42, elapsed 0:00:00.000176
+Eval D23 cartesianCount=42, elapsed 0:00:00.000164
 solve: No21Clue(name=D23,length=2,value: (B+D)(J-D)N,
 	referrers=[],
 	values={68,72,76,80,84,102,114,120,144,152,170}, min=57, max=349
-B={8, 9}
-D={9, 10, 11, 12}
-J={11, 12, 14}
-N={2}
-Eval D30 cartesianCount=4, elapsed 0:00:00.000036
+D={9..12}
+Eval D30 cartesianCount=4, elapsed 0:00:00.000032
 solve: No21Clue(name=D30,length=3,value: D(D^N-G),
 	referrers=[],
 	values={675,940,1265,1656}, min=493, max=7319
-D={9, 10, 11, 12}
-G={6}
-N={2}
-Eval D23 cartesianCount=24, elapsed 0:00:00.000112
-Eval A4 cartesianCount=44, elapsed 0:00:00.000177
+Eval D23 cartesianCount=24, elapsed 0:00:00.000101
+Eval D25 cartesianCount=44, elapsed 0:00:00.000095
+solve: No21Clue(name=D25,length=2,value: F(C+K),
+	referrers=[],
+	values={116,232,261,290,319,348}, min=69, max=349
+F={4,8,9,10,11,12}
+Eval A4 cartesianCount=24, elapsed 0:00:00.000067
 solve: No21Clue(name=A4,length=2,value: DF,
 	referrers=[],
 	values={36,40,44,48}, min=30, max=50
-D={9, 10, 11, 12}
 F={4}
-Eval D25 cartesianCount=4, elapsed 0:00:00.000031
+M={0,1,8,9,10,11,12,14,15,16}
+O={0,1,8,9,10,11,12,14,15,16}
+Y={1,8,9,10,11,12,14,15,16}
+Eval D25 cartesianCount=4, elapsed 0:00:00.000021
 solve: No21Clue(name=D25,length=2,value: F(C+K),
 	referrers=[],
 	values={116}, min=69, max=349
-C={14, 15}
-F={4}
-K={14, 15}
-Eval A4 cartesianCount=4, elapsed 0:00:00.000042
-Eval A6 cartesianCount=6, elapsed 0:00:00.000035
+Eval A4 cartesianCount=4, elapsed 0:00:00.000024
+Eval A6 cartesianCount=6, elapsed 0:00:00.000032
 solve: No21Clue(name=A6,length=2,value: C+FT,
 	referrers=[],
 	values={54,55,58,59}, min=42, max=60
-C={14, 15}
-F={4}
-T={10, 11}
-Eval D20 cartesianCount=2, elapsed 0:00:00.000014
+T={10,11}
+Eval D20 cartesianCount=2, elapsed 0:00:00.000015
 solve: No21Clue(name=D20,length=2,value: T,
 	referrers=[],
 	values={10,11}, min=10, max=12
-T={10, 11}
-Eval A11 cartesianCount=2, elapsed 0:00:00.000021
+Eval A11 cartesianCount=2, elapsed 0:00:00.000024
 solve: No21Clue(name=A11,length=2,value: GNT,
 	referrers=[],
 	values={120,132}, min=102, max=181
-G={6}
-N={2}
-T={10, 11}
-Eval A6 cartesianCount=4, elapsed 0:00:00.000029
-Eval A4 cartesianCount=4, elapsed 0:00:00.000026
-Eval D31 cartesianCount=6, elapsed 0:00:00.000050
+Eval A6 cartesianCount=4, elapsed 0:00:00.000026
+Eval D25 cartesianCount=4, elapsed 0:00:00.000018
+Eval A6 cartesianCount=4, elapsed 0:00:00.000024
+Eval A4 cartesianCount=4, elapsed 0:00:00.000022
+Eval A6 cartesianCount=4, elapsed 0:00:00.000025
+Eval D31 cartesianCount=6, elapsed 0:00:00.000045
 solve: No21Clue(name=D31,length=3,value: AL'NT,
 	referrers=[],
 	values={4100,4510,5100,5610,6100,6710}, min=676, max=9998
-A={5}
-L={14, 15, 16}
-N={2}
-T={10, 11}
-Eval D29 cartesianCount=8, elapsed 0:00:00.000049
+Eval D29 cartesianCount=8, elapsed 0:00:00.000046
 solve: No21Clue(name=D29,length=2,value: F^A-DT,
 	referrers=[],
 	values={892,904,914,925,934}, min=493, max=999
-A={5}
-D={9, 10, 11, 12}
-F={4}
-T={10, 11}
-Eval A18 cartesianCount=12, elapsed 0:00:00.000082
+Eval A18 cartesianCount=12, elapsed 0:00:00.000078
 solve: No21Clue(name=A18,length=3,value: D+(E^F)JR,
 	referrers=[],
 	values={6246,6247,6249,6813,6814,6815,7947,7948,7949,7950}, min=4512, max=9999
-D={9, 10, 11, 12}
-E={3}
-F={4}
-J={11, 12, 14}
-R={7}
-Eval A1 cartesianCount=18, elapsed 0:00:00.000086
+Eval A1 cartesianCount=18, elapsed 0:00:00.000072
 solve: No21Clue(name=A1,length=2,value: B+Y,
 	referrers=[],
 	values={10,17,18,19,20,21,22,23,24,25}, min=10, max=25
-B={8, 9}
-Y={1, 8, 9, 10, 11, 12, 14, 15, 16}
-Eval D27 cartesianCount=30, elapsed 0:00:00.000152
+Eval D27 cartesianCount=30, elapsed 0:00:00.000140
 solve: No21Clue(name=D27,length=3,value: A(AJ-O),
 	referrers=[],
 	values={195,200,205,215,220,225,230,235,245,250,255,260,270,275,290,295,300,305,310,345 and 1 more}, min=155, max=512
-A={5}
-J={11, 12, 14}
-O={0, 1, 8, 9, 10, 11, 12, 14, 15, 16}
-Eval D24 cartesianCount=72, elapsed 0:00:00.000102
+Eval D24 cartesianCount=72, elapsed 0:00:00.000205
 solve: No21Clue(name=D24,length=2,value: C+I+J+K+L+T,
 	referrers=[],
 	values={79..81}, min=69, max=115
-C={14, 15}
-I={13}
-J={11, 12}
-K={14, 15}
+J={11,12}
 L={16}
-T={10, 11}
+M={0,1,8,9,10,11,12,14,15}
+O={0,1,8,9,10,11,12,14,15}
+Y={1,8,9,10,11,12,14,15}
 solve: No21Clue(name=A7,length=2,value: L',
 	referrers=[],
 	values={61}, min=55, max=78
-L={16}
-Eval A12 cartesianCount=2, elapsed 0:00:00.000017
+Eval A12 cartesianCount=2, elapsed 0:00:00.000044
 solve: No21Clue(name=A12,length=3,value: IJ,
 	referrers=[],
 	values={143,156}, min=121, max=590
-I={13}
-J={11, 12}
 Eval D26 cartesianCount=2, elapsed 0:00:00.000023
 solve: No21Clue(name=D26,length=3,value: (JL')',
 	referrers=[],
 	values={176,237}, min=117, max=349
-J={11, 12}
-L={16}
-Eval D31 cartesianCount=2, elapsed 0:00:00.000031
+Eval D31 cartesianCount=2, elapsed 0:00:00.000034
 solve: No21Clue(name=D31,length=3,value: AL'NT,
 	referrers=[],
 	values={6100,6710}, min=893, max=9998
-A={5}
-L={16}
-N={2}
-T={10, 11}
-Eval A18 cartesianCount=8, elapsed 0:00:00.000063
+Eval A18 cartesianCount=8, elapsed 0:00:00.000069
 solve: No21Clue(name=A18,length=3,value: D+(E^F)JR,
 	referrers=[],
 	values={6246,6247,6249,6813,6814,6815}, min=4512, max=9999
-D={9, 10, 11, 12}
-E={3}
-F={4}
-J={11, 12}
-R={7}
-Eval D23 cartesianCount=16, elapsed 0:00:00.000058
+Eval A1 cartesianCount=16, elapsed 0:00:00.000076
+solve: No21Clue(name=A1,length=2,value: B+Y,
+	referrers=[],
+	values={10,17,18,19,20,21,22,23,24}, min=10, max=25
+Eval D24 cartesianCount=16, elapsed 0:00:00.000078
+Eval D23 cartesianCount=16, elapsed 0:00:00.000076
 solve: No21Clue(name=D23,length=2,value: (B+D)(J-D)N,
 	referrers=[],
 	values={68,72,76}, min=57, max=80
-B={8, 9}
-D={9, 10}
-J={11, 12}
-N={2}
-Eval D30 cartesianCount=2, elapsed 0:00:00.000025
+D={9,10}
+Eval D30 cartesianCount=2, elapsed 0:00:00.000022
 solve: No21Clue(name=D30,length=3,value: D(D^N-G),
 	referrers=[],
 	values={940}, min=893, max=6709
 D={10}
-G={6}
-N={2}
-solve: No21Clue(name=D31,length=3,value: AL'NT,
-	referrers=[],
-	values={6710}, min=941, max=9998
-A={5}
-L={16}
-N={2}
+M={0,1,8,9,14,15}
+O={0,1,8,9,14,15}
 T={11}
-solve: No21Clue(name=A18,length=3,value: D+(E^F)JR,
-	referrers=[],
-	values={6814}, min=4512, max=9999
-D={10}
-E={3}
-F={4}
+Y={1,8,9,14,15}
 J={12}
-R={7}
-solve: No21Clue(name=A4,length=2,value: DF,
-	referrers=[],
-	values={40}, min=30, max=50
-D={10}
-F={4}
-solve: No21Clue(name=A12,length=3,value: IJ,
-	referrers=[],
-	values={156}, min=121, max=590
-I={13}
-J={12}
-solve: No21Clue(name=A11,length=2,value: GNT,
-	referrers=[],
-	values={132}, min=102, max=155
-G={6}
-N={2}
-T={11}
-solve: No21Clue(name=D29,length=2,value: F^A-DT,
-	referrers=[],
-	values={914}, min=493, max=939
-A={5}
-D={10}
-F={4}
-T={11}
 solve: No21Clue(name=D26,length=3,value: (JL')',
 	referrers=[],
 	values={237}, min=117, max=349
-J={12}
-L={16}
+solve: No21Clue(name=A18,length=3,value: D+(E^F)JR,
+	referrers=[],
+	values={6814}, min=4512, max=9999
+solve: No21Clue(name=A12,length=3,value: IJ,
+	referrers=[],
+	values={156}, min=121, max=590
+solve: No21Clue(name=A4,length=2,value: DF,
+	referrers=[],
+	values={40}, min=30, max=50
+solve: No21Clue(name=D31,length=3,value: AL'NT,
+	referrers=[],
+	values={6710}, min=941, max=9998
+solve: No21Clue(name=A11,length=2,value: GNT,
+	referrers=[],
+	values={132}, min=102, max=155
 solve: No21Clue(name=D20,length=2,value: T,
 	referrers=[],
 	values={11}, min=10, max=12
-T={11}
-Eval D23 cartesianCount=2, elapsed 0:00:00.000046
-solve: No21Clue(name=D23,length=2,value: (B+D)(J-D)N,
+solve: No21Clue(name=D29,length=2,value: F^A-DT,
 	referrers=[],
-	values={72,76}, min=57, max=80
-B={8, 9}
-D={10}
-J={12}
-N={2}
-Eval A6 cartesianCount=2, elapsed 0:00:00.000049
+	values={914}, min=493, max=939
+Eval A6 cartesianCount=2, elapsed 0:00:00.000057
 solve: No21Clue(name=A6,length=2,value: C+FT,
 	referrers=[],
 	values={58,59}, min=42, max=60
-C={14, 15}
-F={4}
-T={11}
-Eval D24 cartesianCount=4, elapsed 0:00:00.000046
+Eval D23 cartesianCount=2, elapsed 0:00:00.000020
+solve: No21Clue(name=D23,length=2,value: (B+D)(J-D)N,
+	referrers=[],
+	values={72,76}, min=57, max=80
+Eval D24 cartesianCount=4, elapsed 0:00:00.000027
 solve: No21Clue(name=D24,length=2,value: C+I+J+K+L+T,
 	referrers=[],
 	values={81}, min=73, max=115
-C={14, 15}
-I={13}
-J={12}
-K={14, 15}
-L={16}
-T={11}
-Eval D27 cartesianCount=6, elapsed 0:00:00.000162
+Eval D27 cartesianCount=6, elapsed 0:00:00.000033
 solve: No21Clue(name=D27,length=3,value: A(AJ-O),
 	referrers=[],
 	values={255,260,295,300}, min=238, max=512
-A={5}
-J={12}
-O={0, 1, 8, 9}
+O={0,1,8,9}
 Eval A1 cartesianCount=10, elapsed 0:00:00.000041
 solve: No21Clue(name=A1,length=2,value: B+Y,
 	referrers=[],
 	values={10,17,22,23,24}, min=10, max=25
-B={8, 9}
-Y={1, 8, 9, 14, 15}
-Eval D33 cartesianCount=12, elapsed 0:00:00.000080
+Eval D33 cartesianCount=12, elapsed 0:00:00.000422
 solve: No21Clue(name=D33,length=3,value: K'(N(D^N)-M!),
 	referrers=[],
 	values={8159}, min=6711, max=9999
-D={10}
 K={14}
-M={0, 1}
-N={2}
-solve: No21Clue(name=A6,length=2,value: C+FT,
-	referrers=[],
-	values={59}, min=42, max=60
 C={15}
-F={4}
-T={11}
-solve: No21Clue(name=A5,length=2,value: C',
-	referrers=[],
-	values={51}, min=41, max=58
-C={15}
-solve: No21Clue(name=A17,length=3,value: (G!+I'K)',
-	referrers=[],
-	values={4511}, min=830, max=6813
-G={6}
-I={13}
-K={14}
+M={0,1}
+Y={1,8,9}
 solve: No21Clue(name=D28,length=2,value: (CER)',
 	referrers=[],
 	values={513}, min=256, max=913
-C={15}
-E={3}
-R={7}
-Eval A1 cartesianCount=6, elapsed 0:00:00.000024
+solve: No21Clue(name=A17,length=3,value: (G!+I'K)',
+	referrers=[],
+	values={4511}, min=831, max=6813
+solve: No21Clue(name=A5,length=2,value: C',
+	referrers=[],
+	values={51}, min=41, max=58
+solve: No21Clue(name=A6,length=2,value: C+FT,
+	referrers=[],
+	values={59}, min=52, max=60
+Eval D33 cartesianCount=2, elapsed 0:00:00.000018
+Eval A1 cartesianCount=6, elapsed 0:00:00.000019
 solve: No21Clue(name=A1,length=2,value: B+Y,
 	referrers=[],
 	values={10,17}, min=10, max=25
-B={8, 9}
-Y={1, 8, 9}
 Eval D32 cartesianCount=12, elapsed 0:00:00.000040
 solve: No21Clue(name=D32,length=3,value: (LY-O)RY,
 	referrers=[],
 	values={7112,7168}, min=6711, max=8158
-L={16}
-O={0, 1}
-R={7}
+O={0,1}
 Y={8}
+B={9}
 solve: No21Clue(name=D23,length=2,value: (B+D)(J-D)N,
 	referrers=[],
 	values={76}, min=57, max=80
-B={9}
-D={10}
-J={12}
-N={2}
 solve: No21Clue(name=D22,length=2,value: BR,
 	referrers=[],
 	values={63}, min=14, max=75
-B={9}
-R={7}
 solve: No21Clue(name=A1,length=2,value: B+Y,
 	referrers=[],
 	values={17}, min=10, max=25
-B={9}
-Y={8}
 solve: No21Clue(name=A8,length=2,value: B^N-N,
 	referrers=[],
 	values={79}, min=62, max=97
-B={9}
-N={2}
-Eval D32 cartesianCount=2, elapsed 0:00:00.000018
-Eval D27 cartesianCount=2, elapsed 0:00:00.000015
+Eval D32 cartesianCount=2, elapsed 0:00:00.000016
+Eval D27 cartesianCount=2, elapsed 0:00:00.000018
 solve: No21Clue(name=D27,length=3,value: A(AJ-O),
 	referrers=[],
 	values={295,300}, min=238, max=512
-A={5}
-J={12}
-O={0, 1}
-Solve Error: clue D34 ((#square * #prime)') no solution!
-Solve Error: clue A16 (A(E^A)) no solution!
 Solve Error: clue A19 ((#square * #prime)') no solution!
+Solve Error: clue A16 (A(E^A)) no solution!
+Solve Error: clue D34 ((#square * #prime)') no solution!
 Eval D27 cartesianCount=2, elapsed 0:00:00.000012
-Solve Error: clue A19 ((#square * #prime)') no solution!
-Solve Error: clue A16 (A(E^A)) no solution!
 Solve Error: clue D34 ((#square * #prime)') no solution!
 Solve Error: clue A16 (A(E^A)) no solution!
 Solve Error: clue A19 ((#square * #prime)') no solution!
-Clue iterations=179, updates=102, elapsed 0:00:00.071218
+Solve Error: clue A16 (A(E^A)) no solution!
+Solve Error: clue D34 ((#square * #prime)') no solution!
+Clue/Variable iterations=181, updates=104, elapsed 0:00:00.071707
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, B+Y, min=10, max=25, values={17}
-A2, IN, min=11, max=30, values={26}
-A3, C+K, min=27, max=50, values={29}
+A2, IN, min=18, max=28, values={26}
+A3, C+K, min=27, max=39, values={29}
 A4, DF, min=30, max=50, values={40}
 A5, C', min=41, max=58, values={51}
-A6, C+FT, min=42, max=60, values={59}
-A7, L', min=55, max=78, values={61}
+A6, C+FT, min=52, max=60, values={59}
+A7, L', min=60, max=78, values={61}
 A8, B^N-N, min=62, max=97, values={79}
-A9, N(R^N), min=35, max=100, values={98}
-A10, A!-(IR)', min=73, max=207, values={101}
+A9, N(R^N), min=80, max=100, values={98}
+A10, A!-(IR)', min=99, max=131, values={101}
 A11, GNT, min=102, max=155, values={132}
-A12, IJ, min=121, max=590, values={156}
-A13, (AEI)', min=105, max=712, values={591}
-A14, I'(N^A)', min=518, max=998, values={713}
+A12, IJ, min=133, max=590, values={156}
+A13, (AEI)', min=144, max=712, values={591}
+A14, I'(N^A)', min=592, max=828, values={713}
 A15, ((C+K)(N^A))', min=714, max=998, values={829}
 A16, A(E^A), min=830, max=999, values={unknown}
-A17, (G!+I'K)', min=830, max=6813, values={4511}
+A17, (G!+I'K)', min=831, max=6813, values={4511}
 A18, D+(E^F)JR, min=4512, max=9999, values={6814}
 A19, (#square * #prime)', min=1000000, max=99999999, values={unknown}
 D20, T, min=10, max=12, values={11}
-D21, I, min=11, max=97, values={13}
+D21, I, min=12, max=62, values={13}
 D22, BR, min=14, max=75, values={63}
-D23, (B+D)(J-D)N, min=57, max=80, values={76}
+D23, (B+D)(J-D)N, min=64, max=80, values={76}
 D24, C+I+J+K+L+T, min=73, max=115, values={81}
-D25, F(C+K), min=69, max=349, values={116}
-D26, (JL')', min=117, max=349, values={237}
+D25, F(C+K), min=82, max=236, values={116}
+D26, (JL')', min=117, max=299, values={237}
 D27, A(AJ-O), min=238, max=512, values={295,300}
 D28, (CER)', min=256, max=913, values={513}
-D29, F^A-DT, min=493, max=939, values={914}
-D30, D(D^N-G), min=893, max=6709, values={940}
-D31, AL'NT, min=941, max=9998, values={6710}
+D29, F^A-DT, min=514, max=939, values={914}
+D30, D(D^N-G), min=915, max=6709, values={940}
+D31, AL'NT, min=941, max=7167, values={6710}
 D32, (LY-O)RY, min=6711, max=8158, values={7112,7168}
 D33, K'(N(D^N)-M!), min=6711, max=9999, values={8159}
 D34, (#square * #prime)', min=1000000, max=99999999, values={unknown}
@@ -1021,50 +878,49 @@ Solve Error: clue A19 ((#square * #prime)') no solution!
 solve: No21Clue(name=A16,length=2,value: A(E^A),
 	referrers=[],
 	values={1215}, min=830, max=4510
-A={5}
-E={3}
-Eval D32 cartesianCount=2, elapsed 0:00:00.000016
-Eval D27 cartesianCount=2, elapsed 0:00:00.000015
+Eval D33 cartesianCount=2, elapsed 0:00:00.000015
+Eval D32 cartesianCount=2, elapsed 0:00:00.000013
+Eval D27 cartesianCount=2, elapsed 0:00:00.000012
 Solve Error: clue A19 ((#square * #prime)') no solution!
 Solve Error: clue D34 ((#square * #prime)') no solution!
 Solve Error: clue A19 ((#square * #prime)') no solution!
 Solve Error: clue D34 ((#square * #prime)') no solution!
-Clue iterations=38, updates=1, elapsed 0:00:00.000626
+Clue/Variable iterations=38, updates=1, elapsed 0:00:00.002613
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, B+Y, min=10, max=25, values={17}
-A2, IN, min=11, max=30, values={26}
-A3, C+K, min=27, max=50, values={29}
+A2, IN, min=18, max=28, values={26}
+A3, C+K, min=27, max=39, values={29}
 A4, DF, min=30, max=50, values={40}
 A5, C', min=41, max=58, values={51}
-A6, C+FT, min=42, max=60, values={59}
-A7, L', min=55, max=78, values={61}
+A6, C+FT, min=52, max=60, values={59}
+A7, L', min=60, max=78, values={61}
 A8, B^N-N, min=62, max=97, values={79}
-A9, N(R^N), min=35, max=100, values={98}
-A10, A!-(IR)', min=73, max=207, values={101}
+A9, N(R^N), min=80, max=100, values={98}
+A10, A!-(IR)', min=99, max=131, values={101}
 A11, GNT, min=102, max=155, values={132}
-A12, IJ, min=121, max=590, values={156}
-A13, (AEI)', min=105, max=712, values={591}
-A14, I'(N^A)', min=518, max=998, values={713}
+A12, IJ, min=133, max=590, values={156}
+A13, (AEI)', min=157, max=712, values={591}
+A14, I'(N^A)', min=592, max=828, values={713}
 A15, ((C+K)(N^A))', min=714, max=998, values={829}
 A16, A(E^A), min=830, max=4510, values={1215}
-A17, (G!+I'K)', min=830, max=6813, values={4511}
+A17, (G!+I'K)', min=831, max=6813, values={4511}
 A18, D+(E^F)JR, min=4512, max=9999, values={6814}
 A19, (#square * #prime)', min=1000000, max=99999999, values={unknown}
 D20, T, min=10, max=12, values={11}
-D21, I, min=11, max=97, values={13}
+D21, I, min=12, max=62, values={13}
 D22, BR, min=14, max=75, values={63}
-D23, (B+D)(J-D)N, min=57, max=80, values={76}
-D24, C+I+J+K+L+T, min=73, max=115, values={81}
-D25, F(C+K), min=69, max=349, values={116}
-D26, (JL')', min=117, max=349, values={237}
+D23, (B+D)(J-D)N, min=64, max=80, values={76}
+D24, C+I+J+K+L+T, min=77, max=115, values={81}
+D25, F(C+K), min=82, max=236, values={116}
+D26, (JL')', min=117, max=299, values={237}
 D27, A(AJ-O), min=238, max=512, values={295,300}
-D28, (CER)', min=256, max=913, values={513}
-D29, F^A-DT, min=493, max=939, values={914}
-D30, D(D^N-G), min=893, max=6709, values={940}
-D31, AL'NT, min=941, max=9998, values={6710}
+D28, (CER)', min=296, max=913, values={513}
+D29, F^A-DT, min=514, max=939, values={914}
+D30, D(D^N-G), min=915, max=6709, values={940}
+D31, AL'NT, min=941, max=7167, values={6710}
 D32, (LY-O)RY, min=6711, max=8158, values={7112,7168}
-D33, K'(N(D^N)-M!), min=6711, max=9999, values={8159}
+D33, K'(N(D^N)-M!), min=7113, max=9999, values={8159}
 D34, (#square * #prime)', min=1000000, max=99999999, values={unknown}
 Variables:
 A={5}
@@ -1279,15 +1135,13 @@ POTENTIAL SOLUTIONS-----------------------------
 | 5  9  1| 4  0|13  2|
 +--+--+--+--+--+--+--+
 
-Eval D32 cartesianCount=2, elapsed 0:00:00.000134
+Eval D32 cartesianCount=2, elapsed 0:00:00.000041
 solve: No21Clue(name=D32,length=3,value: (LY-O)RY,
 	identities=[D32[0]=A22[1],D32[1]=A26[2],D32[2]=A30[1]],referrers=[],
 	values={7112},
 	digits=[{7},{11},{2}], min=6711, max=8158
-L={16}
 O={1}
-R={7}
-Y={8}
+M={0}
 solve: No21Clue(name=A19,length=7,value: (#square * #prime)',
 	identities=[A19[0]=D15[0],A19[1]=D11[1],A19[2]=D16[0],A19[3]=D4[3],A19[4]=D13[1],A19[5]=D17[0],A19[6]=D14[1]],referrers=[],
 	values={73991683},
@@ -1353,38 +1207,38 @@ POTENTIAL SOLUTIONS-----------------------------
 SOLUTION-----------------------------
 Puzzle Summary
 A1, B+Y, min=10, max=25, values={17}
-A2, IN, min=11, max=30, values={26}
-A3, C+K, min=27, max=50, values={29}
+A2, IN, min=18, max=28, values={26}
+A3, C+K, min=27, max=39, values={29}
 A4, DF, min=30, max=50, values={40}
 A5, C', min=41, max=58, values={51}
-A6, C+FT, min=42, max=60, values={59}
-A7, L', min=55, max=78, values={61}
+A6, C+FT, min=52, max=60, values={59}
+A7, L', min=60, max=78, values={61}
 A8, B^N-N, min=62, max=97, values={79}
-A9, N(R^N), min=35, max=100, values={98}
-A10, A!-(IR)', min=73, max=207, values={101}
+A9, N(R^N), min=80, max=100, values={98}
+A10, A!-(IR)', min=99, max=131, values={101}
 A11, GNT, min=102, max=155, values={132}
-A12, IJ, min=121, max=590, values={156}
-A13, (AEI)', min=105, max=712, values={591}
-A14, I'(N^A)', min=518, max=998, values={713}
+A12, IJ, min=133, max=590, values={156}
+A13, (AEI)', min=157, max=712, values={591}
+A14, I'(N^A)', min=592, max=828, values={713}
 A15, ((C+K)(N^A))', min=714, max=998, values={829}
 A16, A(E^A), min=830, max=4510, values={1215}
-A17, (G!+I'K)', min=830, max=6813, values={4511}
+A17, (G!+I'K)', min=831, max=6813, values={4511}
 A18, D+(E^F)JR, min=4512, max=9999, values={6814}
 A19, (#square * #prime)', min=1000000, max=99999999, values={73991683}
 D20, T, min=10, max=12, values={11}
-D21, I, min=11, max=97, values={13}
+D21, I, min=12, max=62, values={13}
 D22, BR, min=14, max=75, values={63}
-D23, (B+D)(J-D)N, min=57, max=80, values={76}
-D24, C+I+J+K+L+T, min=73, max=115, values={81}
-D25, F(C+K), min=69, max=349, values={116}
-D26, (JL')', min=117, max=349, values={237}
+D23, (B+D)(J-D)N, min=64, max=80, values={76}
+D24, C+I+J+K+L+T, min=77, max=115, values={81}
+D25, F(C+K), min=82, max=236, values={116}
+D26, (JL')', min=117, max=299, values={237}
 D27, A(AJ-O), min=238, max=512, values={295,300}
-D28, (CER)', min=256, max=913, values={513}
-D29, F^A-DT, min=493, max=939, values={914}
-D30, D(D^N-G), min=893, max=6709, values={940}
-D31, AL'NT, min=941, max=9998, values={6710}
+D28, (CER)', min=296, max=913, values={513}
+D29, F^A-DT, min=514, max=939, values={914}
+D30, D(D^N-G), min=915, max=6709, values={940}
+D31, AL'NT, min=941, max=7167, values={6710}
 D32, (LY-O)RY, min=6711, max=8158, values={7112}
-D33, K'(N(D^N)-M!), min=6711, max=9999, values={8159}
+D33, K'(N(D^N)-M!), min=7113, max=9999, values={8159}
 D34, (#square * #prime)', min=1000000, max=99999999, values={6599594}
 +--+--+--+--+--+--+--+
 | 6  1| 2  6| 8  2  9|

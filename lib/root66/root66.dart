@@ -464,8 +464,9 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       var possiblePreValue = <int>{};
       var possibleValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
-      for (var variable in clue.variableReferences) {
-        possibleVariables[variable] = <int>{};
+      var updatedVariables = <String>{};
+      for (var variableName in clue.variableReferences) {
+        possibleVariables[variableName] = <int>{};
       }
       if (clue.solve!(clue, possiblePreValue, possibleValue, possibleVariables))
         updated = true;
@@ -480,18 +481,18 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       }
       if (puzzle.updateValues(clue, possibleValue)) updated = true;
       if (clue.finalise()) updated = true;
-      for (var variable in clue.variableReferences) {
-        if (updateVariables(variable, possibleVariables[variable]!))
-          updated = true;
+      for (var variableName in clue.variableReferences) {
+        updateVariables(
+            variableName, possibleVariables[variableName]!, updatedVariables);
       }
-    }
 
-    if (Crossnumber.traceSolve && updated) {
-      print("solve: ${clue.toString()}");
-      var variableList = puzzle.variableList;
-      for (var variable in clue.variableReferences) {
-        print(
-            '$variable=${variableList.variables[variable]!.values.toString()}');
+      if (Crossnumber.traceSolve && updated) {
+        print("solve: ${clue.toString()}");
+        var variableList = puzzle.variableList;
+        for (var variableName in updatedVariables) {
+          print(
+              '$variableName=${variableList.variables[variableName]!.values.toString()}');
+        }
       }
     }
     return updated;

@@ -197,7 +197,7 @@ solve: DistancingEntry(name=D11,length=2,value: Prime = sum of digits,
 	identities=[D11[1]=A13[1]],referrers=[A13,D8,D11],
 	values={97},
 	digits=[{9},{7}]
-Clue iterations=50, updates=34, elapsed 0:00:00.024523
+Clue/Variable iterations=50, updates=34, elapsed 0:00:00.041280
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Square, values={49,81}

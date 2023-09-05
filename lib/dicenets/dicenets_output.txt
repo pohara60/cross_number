@@ -722,7 +722,7 @@ solve: DiceNetsEntry(name=A36,length=4,value: Jumble of D1,
 	identities=[A36[1]=D34[1],A36[2]=D20[5],A36[3]=D28[3]],referrers=[D34,D20,D28,D1],
 	values={3316,3346,3361},
 	digits=[{3},{3},{1,4,6},{1,6}]
-Clue iterations=283, updates=139, elapsed 0:00:02.463638
+Clue/Variable iterations=283, updates=139, elapsed 0:00:02.395095
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Prime, values={3221,3541,3623,3643}

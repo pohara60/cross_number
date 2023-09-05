@@ -37,9 +37,6 @@ class Clue extends Variable {
   List<DigitIdentity?> get digitIdentities => entry!.digitIdentities;
   List<Set<int>> get digits => entry!.digits;
 
-  /// Solve function
-  final Function? solve;
-
   bool get isAcross => this.name[0] == 'A';
   bool get isDown => this.name[0] == 'D';
 
@@ -63,8 +60,8 @@ class Clue extends Variable {
     required name,
     required this.length,
     this.valueDesc,
-    this.solve,
-  }) : super(name) {
+    solve,
+  }) : super(name, solve: solve) {
     referrers = <Clue>[];
     this.reset();
     min = 10.pow(length - 1) as int;
@@ -215,10 +212,8 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
   return updated;
 }
 
-class VariableClue extends Clue {
+class VariableClue extends Clue with PriorityVariable {
   /// Computed - Count of combinations of variable values
-  int count = 0;
-
   VariableClue({required name, required length, valueDesc, solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {}
 }

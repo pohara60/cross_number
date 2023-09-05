@@ -304,7 +304,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   }
 
   bool updatePrimes(String prime, Set<int> possibleValues) =>
-      updateVariables(prime, possibleValues);
+      updateVariables(prime, possibleValues, <String>{});
 
   // A15 - PreValue 5 digits D^3, Removed prime L, Value entry S^2
   bool solveA15(
