@@ -5,6 +5,7 @@ class FrequencyPuzzle extends Puzzle<FrequencyClue, FrequencyEntry> {
   FrequencyPuzzle();
   FrequencyPuzzle.grid(List<String> gridString) : super.grid(gridString);
 
+  @override
   bool checkSolution() {
     if (!super.checkSolution()) return false;
     if (!checkFrequencyAllDigits()) return false;

@@ -198,11 +198,16 @@ class Clue extends Variable {
     return '$name, $valueDesc, values=$valueStr';
   }
 
-  compareTo(Clue other) {
-    if (name[0] != other.name[0]) return name.compareTo(other.name);
-    var n1 = int.parse(name.substring(1));
-    var n2 = int.parse(other.name.substring(1));
-    return n1.compareTo(n2);
+  @override
+  compareTo(Variable other) {
+    if (other is Clue) {
+      if (name[0] != other.name[0]) return name.compareTo(other.name);
+      var n1 = int.parse(name.substring(1));
+      var n2 = int.parse(other.name.substring(1));
+      return n1.compareTo(n2);
+    }
+    // Clues before Variables
+    return -1;
   }
 }
 

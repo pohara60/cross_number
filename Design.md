@@ -122,7 +122,7 @@ Need to add other clues as variables in expressions.
 - Clues are variables
 - Expression parsing should add clue variable reference, and clue cross-reference
 
-## Unspecified Clue Numbers  implemented
+## Unspecified Clue Numbers - implemented
 
 The No21 puzzle has these unusual characteristics:
 - The clue numbers are not specified
@@ -133,6 +133,16 @@ Enhancements:
 - Seperate Grid Entry and Clue, with mapping between them
 - Grid Entry is a subtype of Clue with EntryMixin for digits and digitIdentities
 - Custom solve() procedure must solve Clues, then attempt to map to Entries
+
+## Variable Expressions - implemented
+
+The Wheels puzzle has expressions for variables:
+- The clue expressions refer to other clues and to variables
+- Variable expressions refer to other variables
+
+Enhancements:
+- ExpressionVariables have constraints in terms of expressions involving other variables (not yet clues). The solve queue now consists of Clues and ExpressionVariables (both extend Variable).
+- Solving a Clue/Variable can set other Clues and/or Variables - these must then be "solved" to execute their side effects (other Clue/Variables values, Entry digits).
 
 ## Generic Puzzle (Future)
 

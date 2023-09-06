@@ -38,6 +38,10 @@ class Variable {
     return text;
   }
 
+  compareTo(Variable other) {
+    return name.compareTo(other.name);
+  }
+
   bool updatePossible(Set<int> possibleValues) {
     if (values == null) {
       values = Set.from(possibleValues);

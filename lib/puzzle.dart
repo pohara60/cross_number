@@ -161,6 +161,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         .any((clue) => clue.values == null || clue.values!.length != 1);
   }
 
+  /*-------------------- Post-processing --------------------*/
+
   postProcessing([bool iteration = true]) {
     if (iteration) {
       print("ITERATE SOLUTIONS-----------------------------");
@@ -169,25 +171,35 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     }
   }
 
-  Map<Clue, Answer> solution = {};
-  List<Clue> order = [];
+  Map<Variable, Answer> solution = {};
+  List<Variable> order = [];
 
   int iterate() {
     if (this is VariablePuzzle && (this as VariablePuzzle).hasVariables) {
       var puzzle = this as VariablePuzzle;
       try {
-        return puzzle.iterateVariables();
+        var count = puzzle.iterateVariables();
+        if (count > 0) return count;
       } on SolveException {
         // No variables to iterate, so try values
-        return iterateValues();
       }
     }
     return iterateValues();
   }
 
   int iterateValues() {
-    var unknownClues = <Clue>[];
-    var clues = this.clues.values.toList();
+    var unknownClues = <Variable>[];
+    // ignore: unnecessary_cast
+    List<Variable> clues = this.clues.values.map((c) => c as Variable).toList();
+    if (this is VariablePuzzle) {
+      var variablePuzzle = this as VariablePuzzle;
+      var variables = variablePuzzle.variables.values
+          .where((v) => v is ExpressionVariable)
+          .toList();
+      clues.addAll(variables);
+    }
+
+    // Sort clues with least values first
     clues.sort((c1, c2) {
       if (c1.values == null) {
         if (c2.values == null) return 0;
@@ -206,35 +218,23 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         values.sort();
         solution[clue] = Answer(values);
         if (!order.contains(clue)) {
-          // Add clue and its dependents
           order.add(clue);
-          // for (var clue2 in clue.referrers) {
-          //   if (!order.contains(clue2)) {
-          //     if (clue2.values == null) {
-          //       if (!unknownClues.contains(clue2)) {
-          //         unknownClues.add(clue2);
-          //       }
-          //     } else {
-          //       // Add clue
-          //       order.add(clue2);
-          //     }
-          //   }
-          // }
         }
       }
     }
     order.addAll(unknownClues);
+    // Find solutions in clue order
     var count = 0;
     count = findSolutions(order, 0, count);
     return count;
   }
 
-  int findSolutions(List<Clue> order, int next, int count) {
+  int findSolutions(List<Variable> order, int next, int count) {
     while (next < order.length &&
         solution[order[next]] != null &&
         solution[order[next]]!.value != null) {
       // print(
-      // 'findSolutions: next=$next, skip ${order[next].name}=${solution[order[next]]!.value} next=${next + 1}');
+      //     'findSolutions: next=$next, skip ${order[next].name}=${solution[order[next]]!.value} next=${next + 1}');
       next++;
     }
     if (next == order.length) {
@@ -248,10 +248,16 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     } else {
       var clue = order[next];
       if (clue.values == null) {
+        // Unknown clue - solve to get values
         //checkSolution();
         var possibleValue = <int>{};
         var possibleVariables = <String, Set<int>>{};
-        if (clue is VariableClue) {
+        if (clue is ExpressionVariable) {
+          for (var variable in clue.variableReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(clue, possibleValue, possibleVariables);
+        } else if (clue is VariableClue) {
           for (var variable in clue.variableReferences) {
             possibleVariables[variable] = <int>{};
           }
@@ -260,12 +266,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           clue.solve!(clue, possibleValue);
         }
         if (possibleValue.isEmpty) {
-          // print(
-          //     'findSolutions: next=$next, clue=${clue.name}, no values, none found');
           return count;
         }
-        // print(
-        //     'findSolutions: next=$next, clue=${clue.name}, no values, found ${possibleValue.toShortString()}');
+        // Can iterate over values
         solution[clue] = Answer(List.from(possibleValue));
       } else {
         // print(
@@ -274,15 +277,17 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       // Try each of the possible values for this clue
       for (var value in solution[clue]!.possible) {
         // Check that this value is consistent with other clues
-        if (!clueValuesMatch(clue, value)) {
-          // print(
-          //     'findSolutions: next=$next, clue=${clue.name}, value $value does not match');
-          continue;
+        if (clue is Clue) {
+          if (!clueValuesMatch(clue, value)) {
+            // print(
+            //     'findSolutions: next=$next, clue=${clue.name}, value $value does not match');
+            continue;
+          }
         }
         // Consistent, try this value
         solution[clue]!.value = value;
         clue.tryValue = value;
-        //print('findSolutions: next=$next, clue=${clue.name}, try value $value');
+        // print('findSolutions: next=$next, clue=${clue.name}, try value $value');
         count = findSolutions(order, next + 1, count);
         solution[clue]!.value = null;
         clue.tryValue = null;
@@ -294,14 +299,19 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   bool checkSolution() {
     var ok = true;
-    var failedClues = <Clue>[];
+    var failedClues = <Variable>[];
     for (var clue in solution.keys) {
       if (solution[clue] != null) {
         var value = solution[clue]!.value;
         var possibleValue = <int>{};
         var possibleVariables = <String, Set<int>>{};
-        if (clue is VariableClue) {
+        if (clue is ExpressionVariable) {
           for (var variable in clue.variableReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(clue, possibleValue, possibleVariables);
+        } else if (clue is VariableClue) {
+          for (var variable in clue.variableClueReferences) {
             possibleVariables[variable] = <int>{};
           }
           clue.solve!(clue, possibleValue, possibleVariables);
@@ -346,20 +356,31 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     keys.sort((c1, c2) => c1.compareTo(c2));
     var clueValues = <String, List<String>>{};
     var unique = true;
+    var varText = '';
     for (var clue in keys) {
-      text +=
+      var clueText =
           '${clue.name}=${solution[clue]!.value ?? solution[clue]!.possible}\n';
+      if (clue is Clue)
+        text += clueText;
+      else
+        varText += clueText;
       if (solution[clue]!.value == null) {
         unique = false;
       } else {
-        clueValues[clue.name] = solution[clue]!.value!.toString().split('');
+        if (clue is Clue)
+          clueValues[clue.name] = solution[clue]!.value!.toString().split('');
       }
     }
     if (unique && this.grid != null) {
       text += '\n${grid!.solutionToString(clueValues)}';
+      if (varText != '') {
+        text += 'Variables:\n$varText';
+      }
     }
     return text;
   }
+
+  /*-------------------- Clue/Entry matching --------------------*/
 
   void mapCluesToEntries(Function callback) {
     var entryClues = <String, Set<Clue>>{};
@@ -420,15 +441,6 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         }
       }
     }
-
-    // print(entryClues.entries
-    //     .map((e) => '${e.key}:${e.value.map((c) => c.name).toList()}')
-    //     .toList()
-    //   ..sort());
-    // print(clueEntries.entries
-    //     .map((e) => '${e.key}:${e.value.map((c) => c.name).toList()}')
-    //     .toList()
-    //   ..sort());
 
     // Compute entry values and set digits
     for (var entry in entries.values) {
@@ -570,6 +582,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 }
 
+/*-------------------- Exceptions --------------------*/
+
 /// PuzzleException for puzzle definition
 class PuzzleException implements Exception {
   final String msg;
@@ -582,6 +596,7 @@ class SolveException implements Exception {
   SolveException([this.msg]);
 }
 
+/*-------------------- Variable Puzzle --------------------*/
 class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     VariableKind extends Variable> extends Puzzle<ClueKind, EntryKind> {
   late final VariableList variableList;
@@ -968,6 +983,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     return updated;
   }
 
+  /*-------------------- Variable Puzzle Post-processing --------------------*/
+
   int iterateVariables() {
     // Iterate over possible variable values
     var variableValues = <List<int>>[];
@@ -998,7 +1015,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
           for (var variable in clue.variableClueReferences) {
             possibleVariables[variable] = <int>{};
           }
-          clue.solve!(clue, possibleValue, possibleVariables);
+          try {
+            clue.solve!(clue, possibleValue, possibleVariables);
+          } catch (e) {
+            possibleValue.clear();
+          }
           if (possibleValue.length == 1) {
             // Check that this value is consistent with other clues
             var value = possibleValue.first;
@@ -1017,6 +1038,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         count++;
       }
     }
+    // Clean up
+    for (var i = 0; i < variableNames.length; i++) {
+      this.variables[variableNames[i]]!.tryValue = null;
+    }
+
     return count;
   }
 

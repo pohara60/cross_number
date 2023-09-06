@@ -210,7 +210,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
       updated = puzzle.solveExpressionVariable(
           variable, possibleValue, possibleVariables, validVariable);
     } else {
-      // if (variable.values != null) possibleValue.addAll(variable.values!);
+      if (variable.values != null) possibleValue.addAll(variable.values!);
     }
     return updated;
   }
