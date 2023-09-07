@@ -45,7 +45,7 @@ String _toShortString(List<int> list) {
     last = item;
     str.write(item);
     count++;
-    if (!isRange && count == kLimit) break;
+    if (!isRange && count >= kLimit) break;
   }
   if (isRange && list.length > 2) {
     return '$first..$last';
