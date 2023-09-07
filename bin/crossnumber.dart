@@ -9,6 +9,7 @@ import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/partners/partners.dart';
+import 'package:crossnumber/prime/prime.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
@@ -38,7 +39,8 @@ void main(List<String> arguments) async {
     ..addCommand(Root66_2Command())
     ..addCommand(No21Command())
     ..addCommand(PartnersCommand())
-    ..addCommand(WheelsCommand());
+    ..addCommand(WheelsCommand())
+    ..addCommand(PrimeCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -258,6 +260,26 @@ class WheelsCommand extends Command {
     // Get and print solve
     try {
       final pc = Wheels();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class PrimeCommand extends Command {
+  @override
+  final name = 'prime';
+  @override
+  final description = 'solve hardcoded prime puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Prime();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

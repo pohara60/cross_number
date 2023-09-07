@@ -48,6 +48,20 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     return this.grid!.entries;
   }
 
+  void validateEntriesFromGrid() {
+    var errors = '';
+    for (var entrySpec in getEntriesFromGrid()) {
+      var entry = _entries[entrySpec.name];
+      if (entry == null) {
+        errors += 'Entry ${entrySpec.name} not defined!\n';
+      } else if (entry.length != entrySpec.length) {
+        errors +=
+            'Entry ${entrySpec.name} length is ${entry.length} but should be ${entrySpec.length}!\n';
+      }
+    }
+    if (errors != '') throw PuzzleException(errors);
+  }
+
   void addDigitIdentityFromGrid() {
     assert(this.grid != null);
     for (var identity in this.grid!.getIdentities()) {
@@ -850,7 +864,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       var otherClue = this.clues[otherClueName]!;
       // Clue values may not yet be available
       var otherClueValues = otherClue.values;
-      if (otherClueValues == null && clue.circularClueReference) {
+      //if (otherClueValues == null && clue.circularClueReference) {
+      if (otherClueValues == null) {
         // Try guessing other clue values for circular reference
         otherClueValues = getValuesFromClueDigits(otherClue);
       }
@@ -874,8 +889,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
           "Solve ${clue.name} no values for variable(s) ${unknownVariable}");
     }
     var count = cartesianCount(variableValues);
-    if (count > 500000000) {
-      //if (count > 1000000) {
+    // if (count > 500000000) {
+    if (count > 1000000) {
       if (Crossnumber.traceSolve) {
         print('Eval ${clue.name} cartesianCount=$count Exception');
       }

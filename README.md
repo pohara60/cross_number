@@ -44,6 +44,7 @@ The Clues, Entries and Variables columns refer to whether and how these entities
 | [Letters](lib/letters/README.md) | Variable | Variable Solvers | | Variable | Limited  |
 | [No21](lib/no21/README.md) | Variable | Expression Solvers for Clues, post-processing | Expression | Mapped | Limited |
 | [Partners](lib/partners/README.md) | Simple | Expression Solvers | | Expression | |
+| [Prime](lib/prime/README.md) | Simple | Expression Solvers | | Expression | |
 | [PrimeCuts](lib/primecuts/README.md) | Variable | Manual Solvers, 2 values per clue | | Manual | Manual |
 | [Sequences](lib/sequences/README.md) | Variable | Expression Solvers | | Expression | Limited |
 | [Wheels](lib/wheels/README.md) | Variable | Expression Solvers, including Variables | | Expression | Expression |
