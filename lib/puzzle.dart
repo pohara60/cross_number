@@ -850,6 +850,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     var unknownVariable = <String>[];
+    var impossibleVariable = <String>[];
     for (var variableName in clue.variableReferences) {
       var variable = this.variables[variableName]!;
       var values = variable.values;
@@ -857,6 +858,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         values = variable.getValuesFromMinMax();
       if (values == null) {
         unknownVariable.add(variableName);
+      } else if (values.isEmpty) {
+        impossibleVariable.add(variableName);
       } else
         variableValues.add(values.toList());
     }
@@ -871,6 +874,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
       if (otherClueValues == null)
         unknownVariable.add(otherClueName);
+      else if (otherClueValues.isEmpty)
+        impossibleVariable.add(otherClueName);
       else
         variableValues.add(otherClueValues.toList());
     }
@@ -887,6 +892,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
       throw new SolveException(
           "Solve ${clue.name} no values for variable(s) ${unknownVariable}");
+    }
+    // Impossible variable
+    if (impossibleVariable.isNotEmpty) {
+      throw new SolveException(
+          "Solve ${clue.name} no values for variable(s) ${impossibleVariable}");
     }
     var count = cartesianCount(variableValues);
     // if (count > 500000000) {

@@ -40,6 +40,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['lte'] = Monadic('lte', lessthanequal, Iterable<int>);
   monadics['jumble'] = Monadic('jumble', jumble, Iterable<int>);
   monadics['factor'] = Monadic('factor', factors, Iterable<int>);
+  monadics['divisor'] = Monadic('divisor', divisors, Iterable<int>);
 }
 
 int digitSum(int value) {
@@ -221,6 +222,33 @@ Iterable<int> factors(int value) sync* {
   }
   if (remaining != 1) yield remaining;
 
+  return;
+}
+
+Iterable<int> divisors(int value) sync* {
+  var factor = factors(value).toList();
+  if (factor.length == 1) return; // Prime!
+
+  var divisors = <int>{};
+  void getCombinations(int partial, List<int> numbers, List<bool> taken,
+      int remaining, Set<int> combinations) {
+    for (var index = 0; index < numbers.length; index++) {
+      if (!taken[index]) {
+        int next = partial * numbers[index];
+        combinations.add(next);
+        if (remaining > 2) {
+          taken[index] = true;
+          getCombinations(next, numbers, taken, remaining - 1, combinations);
+          taken[index] = false;
+        }
+      }
+    }
+  }
+
+  var taken = List.filled(factor.length, false);
+  getCombinations(1, factor, taken, factor.length, divisors);
+  var result = divisors.toList()..sort();
+  yield* result;
   return;
 }
 

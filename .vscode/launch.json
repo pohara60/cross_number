@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "chessboard",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "chessboard"
+            ]
+        },
+        {
             "name": "prime",
             "type": "dart",
             "request": "launch",

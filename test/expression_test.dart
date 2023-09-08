@@ -374,4 +374,54 @@ void main() {
       // expect(primes, equals([]));
     });
   });
+  group('Palindromes', () {
+    var text1 = '10..99';
+    test(text1, () {
+      expect(generatePalindromes(10, 99),
+          equals([11, 22, 33, 44, 55, 66, 77, 88, 99]));
+    });
+    var text2 = '50..150';
+    test(text2, () {
+      expect(
+          generatePalindromes(50, 250),
+          equals([
+            55,
+            66,
+            77,
+            88,
+            99,
+            101,
+            111,
+            121,
+            131,
+            141,
+            151,
+            161,
+            171,
+            181,
+            191,
+            202,
+            212,
+            222,
+            232,
+            242
+          ]));
+    });
+  });
+  group('Divisors', () {
+    var text1 = '120';
+    test(text1, () {
+      expect(divisors(60), equals([2, 3, 4, 5, 6, 10, 12, 15, 20, 30]));
+    });
+    var text2 = r'$divisor 120';
+    test(text2, () {
+      var exp = ExpressionEvaluator(text2);
+      expect(exp.generate(10, 19).toList(), equals([10, 12, 15]));
+    });
+    var text3 = r'$divisor 113';
+    test(text3, () {
+      var exp = ExpressionEvaluator(text2);
+      expect(exp.generate(100, 199).toList(), equals([]));
+    });
+  });
 }

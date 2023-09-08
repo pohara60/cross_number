@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:crossnumber/chessboard/chessboard.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
@@ -40,7 +41,8 @@ void main(List<String> arguments) async {
     ..addCommand(No21Command())
     ..addCommand(PartnersCommand())
     ..addCommand(WheelsCommand())
-    ..addCommand(PrimeCommand());
+    ..addCommand(PrimeCommand())
+    ..addCommand(ChessboardCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -280,6 +282,26 @@ class PrimeCommand extends Command {
     // Get and print solve
     try {
       final pc = Prime();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class ChessboardCommand extends Command {
+  @override
+  final name = 'chessboard';
+  @override
+  final description = 'solve hardcoded chessboard puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Chessboard();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

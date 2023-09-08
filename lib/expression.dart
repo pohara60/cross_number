@@ -35,6 +35,7 @@ const PLUS = 'PLUS', PLUS_RE = r'(?<' + PLUS + r'>\+)';
 const MINUS = 'MINUS', MINUS_RE = r'(?<' + MINUS + r'>-)';
 const TIMES = 'TIMES', TIMES_RE = r'(?<' + TIMES + r'>\*)';
 const DIVIDE = 'DIVIDE', DIVIDE_RE = r'(?<' + DIVIDE + r'>/)';
+const MOD = 'MOD', MOD_RE = r'(?<' + MOD + r'>%)';
 const ROOT = 'ROOT', ROOT_RE = r'(?<' + ROOT + r'>√)';
 const FACTORIAL = 'FACTORIAL', FACTORIAL_RE = r'(?<' + FACTORIAL + r'>!)';
 const REVERSE = 'REVERSE', REVERSE_RE = r'(?<' + REVERSE + r">')";
@@ -54,6 +55,7 @@ var regExp = RegExp([
   MINUS_RE,
   TIMES_RE,
   DIVIDE_RE,
+  MOD_RE,
   ROOT_RE,
   FACTORIAL_RE,
   REVERSE_RE,
@@ -147,6 +149,9 @@ class Scanner {
       if (m.namedGroup(DIVIDE) != null) {
         yield Token(match!, DIVIDE);
       }
+      if (m.namedGroup(MOD) != null) {
+        yield Token(match!, MOD);
+      }
       if (m.namedGroup(ROOT) != null) {
         yield Token(match!, ROOT);
       }
@@ -239,6 +244,8 @@ class Node {
           order = childOrder1;
         else
           order = NodeOrder.UNKNOWN;
+      } else if (token.type == MOD) {
+        order = NodeOrder.UNKNOWN;
       } else {
         if (childOrder1 == NodeOrder.SINGLE)
           order = childOrder2;
@@ -339,6 +346,9 @@ class ExpressionEvaluator {
   List<String>? variableNames;
   List<int>? variableValues;
 
+  // Hard-coded result generator
+  int? result;
+
   ExpressionEvaluator(this.text, [this.variablePrefix = '']) {
     var tokenIterable = Scanner.generateTokens(text, variablePrefix);
     this.tokenIterator = tokenIterable.iterator;
@@ -384,8 +394,11 @@ class ExpressionEvaluator {
       [List<String>? variableNames, List<int>? variableValues]) sync* {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
+    this.result = null;
     for (var value in this.gen(min, max, this.tree)) {
-      if (isIntegerValue(value)) yield value.toInt();
+      var result = this.result != null ? this.result! : value;
+      if (isIntegerValue(result)) yield result.toInt();
+      this.result = null;
     }
   }
 
@@ -446,9 +459,9 @@ class ExpressionEvaluator {
   }
 
   Node term() {
-    // term ::= exponent { ('*'|'/') exponent }*
+    // term ::= exponent { ('*'|'/'|'%') exponent }*
     var node = this.exponent();
-    while (this._accept(TIMES) || this._accept(DIVIDE)) {
+    while (this._accept(TIMES) || this._accept(DIVIDE) || this._accept(MOD)) {
       var token = this.tok!;
       var right = this.exponent();
       node = Node(token, [node, right]);
@@ -553,13 +566,17 @@ class ExpressionEvaluator {
         var right = eval(node.operands![1]);
         return left * right;
       case DIVIDE:
-        // Require exact integer result
+        // Require exact integer result - checked later
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
-        // if (left % right != 0) {
-        //   throw ExpressionInvalid('Non-integer division');
-        // }
         return left / right;
+      case MOD:
+        // Require exact integer operands
+        var left = eval(node.operands![0]);
+        var right = eval(node.operands![1]);
+        checkInteger(left);
+        checkInteger(right);
+        return left % right;
       case ROOT:
         var square = eval(node.operands![0]);
         var root = sqrt(square).toInt();
@@ -777,6 +794,38 @@ class ExpressionEvaluator {
           }
         }
         break;
+      case MOD:
+        var lnode = node.operands![0];
+        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var rnode = node.operands![1];
+        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : min,
+                rvalue == 0 ? max : max,
+                lnode,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  2,
+                  left,
+                  rnode,
+                )) {
+            if (isIntegerValue(left) && isIntegerValue(right)) {
+              var result = left % right;
+              if (result > max) {
+                continue;
+              }
+              if (result < min) {
+                continue;
+              }
+              yield result;
+            }
+          }
+        }
+        break;
       case ROOT:
         for (var square in gen(min * min, max * max, node.operands![0])) {
           var result = sqrt(square).toInt();
@@ -915,6 +964,8 @@ class ExpressionEvaluator {
             if (node.order == NodeOrder.DESCENDING) break;
             continue;
           }
+          // Side-efffect
+          if (name == "result") this.result = result;
           yield result;
         }
         break;

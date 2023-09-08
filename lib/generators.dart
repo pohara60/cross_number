@@ -15,6 +15,8 @@ class Generator {
 
 void initializeGenerators(Map<String, Generator> generators) {
   generators['integer'] = Generator('integer', generateIntegers);
+  generators['result'] = Generator('result', generateIntegers);
+  generators['palindrome'] = Generator('palindrome', generatePalindromes);
   generators['odd'] = Generator('odd', generateOddIntegers);
   generators['even'] = Generator('even', generateEvenIntegers);
   generators['prime'] = Generator('prime', generatePrimes);
@@ -36,6 +38,48 @@ void initializeGenerators(Map<String, Generator> generators) {
 Iterable<int> generateIntegers(num min, num max) sync* {
   for (var integer = min.toInt(); integer <= max.toInt(); integer++)
     yield integer;
+}
+
+const powers10 = <int>[
+  1,
+  10,
+  100,
+  1000,
+  10000,
+  100000,
+  1000000,
+  10000000,
+  100000000,
+  1000000000
+];
+Iterable<int> getPalindromes(int digits) sync* {
+  for (var digit = 0; digit < 10; digit++) {
+    if (digits == 1)
+      yield digit;
+    else if (digit != 0) {
+      var head = digit * powers10[digits - 1];
+      var tail = digit;
+      if (digits == 2)
+        yield head + tail;
+      else {
+        for (var middle in getPalindromes(digits - 2)) {
+          yield head + middle * 10 + tail;
+        }
+      }
+    }
+  }
+}
+
+Iterable<int> generatePalindromes(num min, num max) sync* {
+  var minDigits = min.toInt().toString().length;
+  var maxDigits = max.toInt().toString().length;
+  for (var digits = minDigits; digits <= maxDigits; digits++) {
+    for (var palindrome in getPalindromes(digits)) {
+      if (palindrome < min) continue;
+      if (palindrome > max) break;
+      yield palindrome;
+    }
+  }
 }
 
 Iterable<int> generateOddIntegers(num min, num max) sync* {

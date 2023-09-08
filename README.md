@@ -35,6 +35,7 @@ The Clues, Entries and Variables columns refer to whether and how these entities
 | Puzzle | Type | Notes | Clues | Entries | Variables |
 |--------|------|-------|-------|---------|-----------|
 | [CarteBlanche](lib/carteblanche.dart) | Custom | Custom | | | |
+| [Chessboard](lib/chessboard/README.md) | Simple | Expression Solvers | | Expression | |
 | [DiceNets](lib/dicenets/README.md) | Simple | Manual Solvers | | Manual | |
 | [DiceNets2](lib/dicenets2/README.md) | Simple | Expression Solvers | | Expression | |
 | [Distancing](lib/distancing/README.md) | Simple | Manual Solvers | | Manual | |
