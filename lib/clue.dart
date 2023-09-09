@@ -120,14 +120,7 @@ class Clue extends Variable {
     if (this.values == null) return false;
     var updated = false;
     if (entry != null) {
-      for (var d = 0; d < length; d++) {
-        var possibleDigits = <int>{};
-        for (var value in this.values!) {
-          var digit = int.parse(value.toString()[d]);
-          possibleDigits.add(digit);
-        }
-        if (updatePossible(digits[d], possibleDigits)) updated = true;
-      }
+      if ((entry as EntryMixin).updateDigits(this.values!)) updated = true;
     }
     return updated;
   }
@@ -259,6 +252,17 @@ mixin EntryMixin on Clue {
   /// Max digit value
   static var maxDigit = 9;
 
+  /// Optional row/col for start of entry, set by validateEntriesFromGrid
+  int? row;
+  int? col;
+  static const MAXROWS = 100;
+  int cellIndex(int digit) {
+    if (isDown) {
+      return (row! + digit) * MAXROWS + col!;
+    }
+    return row! * MAXROWS + col! + digit;
+  }
+
   /// Common digits with other clues: each digit has optional reference to clue and digit
   late final List<DigitIdentity?> digitIdentities;
 
@@ -288,6 +292,19 @@ mixin EntryMixin on Clue {
           Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
       if (d == 0) digits[d].remove(0);
     }
+  }
+
+  bool updateDigits(Set<int> values) {
+    var updated = false;
+    for (var d = 0; d < length; d++) {
+      var possibleDigits = <int>{};
+      for (var value in this.values!) {
+        var digit = int.parse(value.toString()[d]);
+        possibleDigits.add(digit);
+      }
+      if (updatePossible(digits[d], possibleDigits)) updated = true;
+    }
+    return updated;
   }
 }
 

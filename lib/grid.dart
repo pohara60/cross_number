@@ -4,7 +4,11 @@ class EntrySpec {
   late final String name;
   late int length;
 
-  EntrySpec(this.number, this.isAcross) {
+  /// row/col for start of entry
+  final int row;
+  final int col;
+
+  EntrySpec(this.number, this.isAcross, this.row, this.col) {
     if (isAcross) {
       this.name = 'A${this.number}';
     } else {
@@ -100,7 +104,7 @@ class Grid {
           } else if (array[c] == ':') {
             if (number != 0) {
               // New Across clue
-              across = EntrySpec(number, true);
+              across = EntrySpec(number, true, row, col);
               acrossDigit = 0;
               entries.add(across);
             }
@@ -114,7 +118,7 @@ class Grid {
           } else if (nextArray[cStart] == ':') {
             if (number != 0) {
               // New Down clue
-              down = EntrySpec(number, false);
+              down = EntrySpec(number, false, row, col);
               downDigit = 0;
               entries.add(down);
             }

@@ -66,4 +66,4 @@ I introduced #result as a synonym for #integer that has the side-effect of savin
 
 The puzzle was solved without using the condition:
     No digit can appear in both shaded and unshaded squares
-This condition requires knowing the row/column for entries, which is currently not recorded.
+This condition requires knowing the row/column for entries, which is currently not recorded. Enhancing entry and implementing the check reduced the number of clue iterations slightly.

@@ -138,4 +138,53 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
     }
     return updated;
   }
+
+  // Override solveClue to check chessboard
+  @override
+  bool solveClue(Clue clue) {
+    var updated = super.solveClue(clue);
+    if (updated) {
+      // Check entry digits for chessboard
+      var entry = clue.entry as ChessboardEntry?;
+      if (entry != null) {
+        for (var d = 0; d < entry.length; d++) {
+          if (entry.digits[d].length == 1) {
+            // Chessboard logic
+            // Remove the digit from similarly shaded squares
+            var value = entry.digits[d].first;
+            if (entry.row != null && entry.col != null) {
+              // Is the digit square even or odd?
+              var mod = (entry.row! + entry.col! + d) % 2;
+              var index = entry.cellIndex(d);
+              for (var otherClue
+                  in puzzle.clues.values.where((element) => element != entry)) {
+                var otherEntry = otherClue.entry as ChessboardEntry;
+                var otherUpdated = false;
+                for (var d = 0; d < otherEntry.length; d++) {
+                  var otherMod = (otherEntry.row! + otherEntry.col! + d) % 2;
+                  if (otherMod != mod) {
+                    // Check not the same cell
+                    if (otherEntry.cellIndex(d) != index) {
+                      if (otherEntry.digits[d].remove(value)) {
+                        otherUpdated = true;
+                        if (otherEntry.digits[d].isEmpty) {
+                          throw SolveException(
+                              'Chessboard ${entry.name} removing $value from entry ${otherEntry.name} leaves no valid digits!');
+                        }
+                      }
+                    }
+                  }
+                }
+                if (otherUpdated) {
+                  // Add Entry clue to solve queue
+                  addToUpdateQueue(otherEntry);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return updated;
+  }
 }

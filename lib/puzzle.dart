@@ -57,6 +57,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       } else if (entry.length != entrySpec.length) {
         errors +=
             'Entry ${entrySpec.name} length is ${entry.length} but should be ${entrySpec.length}!\n';
+      } else {
+        (entry as EntryMixin).row = entrySpec.row;
+        (entry as EntryMixin).col = entrySpec.col;
       }
     }
     if (errors != '') throw PuzzleException(errors);
