@@ -9,6 +9,7 @@ import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/no21/no21.dart';
+import 'package:crossnumber/particular/particular.dart';
 import 'package:crossnumber/partners/partners.dart';
 import 'package:crossnumber/prime/prime.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
@@ -42,7 +43,8 @@ void main(List<String> arguments) async {
     ..addCommand(PartnersCommand())
     ..addCommand(WheelsCommand())
     ..addCommand(PrimeCommand())
-    ..addCommand(ChessboardCommand());
+    ..addCommand(ChessboardCommand())
+    ..addCommand(ParticularCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -302,6 +304,26 @@ class ChessboardCommand extends Command {
     // Get and print solve
     try {
       final pc = Chessboard();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class ParticularCommand extends Command {
+  @override
+  final name = 'particular';
+  @override
+  final description = 'solve hardcoded particular puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Particular();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

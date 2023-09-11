@@ -28,30 +28,51 @@ extension ListIntExtensions on List<int> {
 
 const kLimit = 20;
 String _toShortString(List<int> list) {
+  if (list.isEmpty) return '';
+
   int? first = null;
   int? last = null;
-  var isRange = true;
   var count = 0;
   var str = StringBuffer();
+  var str2 = StringBuffer();
   for (var item in list) {
     if (first == null) {
       first = item;
     } else {
-      str.write(',');
+      str2.write(',');
       if (last! + 1 != item) {
-        isRange = false;
+        if (last > first) {
+          if (last > first + 1)
+            str.write('$first..$last,');
+          else
+            str.write('$first,$last,');
+          str2.clear();
+        } else {
+          str.write(str2);
+          str2.clear();
+        }
+        first = item;
       }
     }
     last = item;
-    str.write(item);
+    str2.write(item);
     count++;
-    if (!isRange && count >= kLimit) break;
+    if (count >= kLimit) break;
   }
-  if (isRange && list.length > 2) {
-    return '$first..$last';
+  if (last! > first!) {
+    if (last > first + 1)
+      str.write('$first..$last');
+    else
+      str.write('$first,$last');
+  } else {
+    str.write('$first');
   }
-  if (list.length > kLimit) {
-    str.write(' and ${list.length - count} more');
+  if (list.length > count) {
+    if (list.length > count + 1) {
+      str.write(',${list.length - count} more,${list.last}');
+    } else {
+      str.write(',${list.last}');
+    }
   }
   return str.toString();
 }

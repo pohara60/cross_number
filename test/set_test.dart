@@ -720,7 +720,46 @@ var valueStr =
 void main() {
   group('Set tests', () {
     test('1st test', () {
-      expect(values.toShortString(), equals(valueStr));
+      expect(values.toShortString(), equals('{110..129,691 more,890}'));
+    });
+    var set2 = {1, 3, 4, 5, 7, 8, 9, 11};
+    test(set2.toString(), () {
+      expect(set2.toShortString(), equals('{1,3..5,7..9,11}'));
+    });
+    var set3 = {3, 4, 5, 7, 8, 9, 11};
+    test(set3.toString(), () {
+      expect(set3.toShortString(), equals('{3..5,7..9,11}'));
+    });
+    var set4 = {1, 3, 4, 5, 7, 8, 9};
+    test(set4.toString(), () {
+      expect(set4.toShortString(), equals('{1,3..5,7..9}'));
+    });
+    var set5 = {
+      1,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      21,
+      23,
+      25,
+      26,
+      27,
+      28
+    };
+    test(set5.toString(), () {
+      expect(set5.toShortString(),
+          equals('{1,3..5,7..10,12..16,18,19,21,23,25..27,28}'));
     });
   });
 }
