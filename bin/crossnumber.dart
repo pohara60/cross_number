@@ -9,6 +9,7 @@ import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/no21/no21.dart';
+import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
 import 'package:crossnumber/partners/partners.dart';
 import 'package:crossnumber/prime/prime.dart';
@@ -44,7 +45,8 @@ void main(List<String> arguments) async {
     ..addCommand(WheelsCommand())
     ..addCommand(PrimeCommand())
     ..addCommand(ChessboardCommand())
-    ..addCommand(ParticularCommand());
+    ..addCommand(ParticularCommand())
+    ..addCommand(PandigitalsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -328,6 +330,28 @@ class ParticularCommand extends Command {
     } on PuzzleException catch (e) {
       print(e.msg);
     } on SolveException catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class PandigitalsCommand extends Command {
+  @override
+  final name = 'pandigitals';
+  @override
+  final description = 'solve hardcoded pandigitals puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Pandigitals();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
       print(e.msg);
     }
   }

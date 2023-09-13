@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "pandigitals",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "pandigitals"
+            ]
+        },
+        {
             "name": "particular",
             "type": "dart",
             "request": "launch",

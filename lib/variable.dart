@@ -2,7 +2,7 @@ import 'clue.dart';
 import 'expression.dart';
 import 'set.dart';
 
-abstract class PriorityVariable {
+mixin PriorityVariable {
   /// Computed - Count of combinations of variable values
   int priority = 0;
   int get count => priority;
@@ -183,7 +183,7 @@ class ExpressionVariable extends Variable with Expression, PriorityVariable {
   ExpressionVariable(String name, String this.valueDesc,
       {int min = 1, int? max, String variablePrefix = '', Function? solve})
       : super(name, solve: solve) {
-    initExpression(valueDesc, variablePrefix, name, variable: this);
+    initExpression(valueDesc, variablePrefix, name, _variableRefs);
     _min = min;
     _max = max;
     referrers = [];

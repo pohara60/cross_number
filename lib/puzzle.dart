@@ -613,6 +613,12 @@ class SolveException implements Exception {
   SolveException([this.msg]);
 }
 
+/// SolveError for puzzle solution - impossible situation
+class SolveError implements Exception {
+  String? msg;
+  SolveError([this.msg]);
+}
+
 /*-------------------- Variable Puzzle --------------------*/
 class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     VariableKind extends Variable> extends Puzzle<ClueKind, EntryKind> {

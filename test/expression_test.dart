@@ -229,10 +229,10 @@ void main() {
     });
   });
   group('Monadic Enhancements', () {
-    var text1 = '#jumble';
+    var text1 = r'$jumble';
     test(text1, () {
       var values = jumble(123).toList();
-      expect(values, equals([123, 132, 213, 231, 312, 321]));
+      expect(values, equals([132, 213, 231, 312, 321]));
     });
   });
   group('Expression Enhancements', () {

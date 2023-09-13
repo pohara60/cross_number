@@ -173,7 +173,7 @@ Iterable<int> lessthanequal(int value) sync* {
 
 Iterable<int> jumble(int value) sync* {
   var strValue = value.toString();
-  yield* jumbleStr(0, strValue);
+  yield* jumbleStr(value, 0, strValue);
 }
 
 var tens = [
@@ -188,19 +188,19 @@ var tens = [
   100000000,
   1000000000
 ];
-Iterable<int> jumbleStr(int leftValue, String strValue) sync* {
+Iterable<int> jumbleStr(int value, int leftValue, String strValue) sync* {
   for (var d = 0; d < strValue.length; d++) {
     var chr = strValue[d];
     var chrVal = int.parse(chr);
     if (strValue.length == 1) {
-      yield leftValue + chrVal;
+      if (value != leftValue + chrVal) yield leftValue + chrVal;
       return;
     }
 
     assert(strValue.length <= tens.length);
     chrVal *= tens[strValue.length - 1];
     var rest = strValue.substring(0, d) + strValue.substring(d + 1);
-    yield* jumbleStr(leftValue + chrVal, rest);
+    yield* jumbleStr(value, leftValue + chrVal, rest);
   }
 }
 

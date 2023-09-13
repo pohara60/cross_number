@@ -148,6 +148,11 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
 
     // Unique solution?
+    endSolve(iteration);
+  }
+
+  void endSolve(bool iteration) {
+    // Unique solution?
     if (!puzzle.uniqueSolution()) {
       if (Crossnumber.traceSolve) {
         print("PARTIAL SOLUTION-----------------------------");

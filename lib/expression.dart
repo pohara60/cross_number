@@ -3,7 +3,6 @@
 // Token specification
 import 'dart:math';
 
-import 'clue.dart';
 import 'generators.dart';
 import 'monadic.dart';
 import 'variable.dart';
@@ -12,19 +11,18 @@ mixin Expression {
   late ExpressionEvaluator exp;
 
   void initExpression(String? valueDesc, variablePrefix, String name,
-      {ExpressionClue? clue, ExpressionVariable? variable}) {
+      VariableRefList variableRefs) {
     if (valueDesc != null && valueDesc != '') {
       try {
         exp = ExpressionEvaluator(valueDesc, variablePrefix);
         for (var variableName in exp.variableRefs..sort()) {
-          if (clue != null) clue.addVariableReference(variableName);
-          if (variable != null) variable.addVariableReference(variableName);
+          variableRefs.addVariableReference(variableName);
         }
         for (var clueName in exp.clueRefs..sort()) {
-          if (clue != null) clue.addClueReference(clueName);
+          variableRefs.addClueReference(clueName);
         }
-      } on ExpressionInvalid catch (e) {
-        throw ExpressionInvalid('$name expression $valueDesc error ${e.msg}');
+      } on ExpressionError catch (e) {
+        throw ExpressionError('$name expression $valueDesc error ${e.msg}');
       }
     }
   }
@@ -221,7 +219,7 @@ class Node {
         var name = token.name;
         var monadic = monadics[name]!;
         if (monadic.type == Iterable<int>) {
-          if (order == NodeOrder.SINGLE)
+          if (order == NodeOrder.SINGLE && monadic != 'jumble')
             order = NodeOrder.ASCENDING;
           else
             order = NodeOrder.UNKNOWN;
@@ -569,6 +567,9 @@ class ExpressionEvaluator {
         // Require exact integer result - checked later
         var left = eval(node.operands![0]);
         var right = eval(node.operands![1]);
+        if (right == 0) {
+          throw ExpressionInvalid('Divide by zero');
+        }
         return left / right;
       case MOD:
         // Require exact integer operands
@@ -579,6 +580,9 @@ class ExpressionEvaluator {
         return left % right;
       case ROOT:
         var square = eval(node.operands![0]);
+        if (square < 0) {
+          throw ExpressionInvalid('Negative root');
+        }
         var root = sqrt(square).toInt();
         if (root * root != square) {
           throw ExpressionInvalid('Non-integer root');
@@ -781,6 +785,9 @@ class ExpressionEvaluator {
                   left / min,
                   rnode,
                 )) {
+            if (right == 0) {
+              continue;
+            }
             var result = left / right;
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
@@ -828,6 +835,9 @@ class ExpressionEvaluator {
         break;
       case ROOT:
         for (var square in gen(min * min, max * max, node.operands![0])) {
+          if (square < 0) {
+            continue;
+          }
           var result = sqrt(square).toInt();
           if (result > max) {
             if (node.order == NodeOrder.ASCENDING) break;

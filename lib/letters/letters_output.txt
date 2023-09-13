@@ -108,352 +108,352 @@ Y={1..9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 UPDATES-----------------------------
-Func D13 cartesianCount=81, elapsed 0:00:00.001792
+Func D13 cartesianCount=81, elapsed 0:00:00.002871
 solve: LettersEntry(name=D13,length=3,value: ERR,
 	identities=[D13[0]=A12[1],D13[1]=A17[1],D13[2]=A20[0]],referrers=[A12,A17,A20],
-	values={108,112,128,144,147,162,175,192,196,225,243,245,252,256,288,294,324,384,392,405 and 6 more},
-	digits=[{1..6},{0,1,2,4,5,6,7,8,9},{1..8}]
+	values={108,112,128,144,147,162,175,192,196,225,243,245,252,256,288,294,324,384,392,405,6 more,648},
+	digits=[{1..6},{0..2,4..9},{1..8}]
 E={2..9}
 R={4..9}
-Func D19 cartesianCount=486, elapsed 0:00:00.000966
+Func D19 cartesianCount=486, elapsed 0:00:00.001216
 solve: LettersEntry(name=D19,length=2,value: RAP,
 	identities=[D19[0]=A18[1]],referrers=[A18],
-	values={10,12,14,15,16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54 and 10 more},
+	values={10,12,14..16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54,10 more,96},
 	digits=[{1..9},{0..8}]
-Func D3 cartesianCount=486, elapsed 0:00:00.001223
+Func D3 cartesianCount=486, elapsed 0:00:00.002314
 solve: LettersEntry(name=D3,length=2,value: PRY,
 	identities=[D3[1]=A7[1]],referrers=[A7],
-	values={10,12,14,15,16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54 and 10 more},
+	values={10,12,14..16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54,10 more,96},
 	digits=[{1..9},{0..8}]
 solve: LettersEntry(name=A1,length=2,value: R(A+P),
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={12,15,16,18,20,21,24,25,27,28,30,32,35,36,40,42,44,45,48,49 and 26 more},
+	values={12,15,16,18,20,21,24,25,27,28,30,32,35,36,40,42,44,45,48,49,26 more,99},
 	digits=[{1..9},{1..9}]
-Func A17 cartesianCount=648, elapsed 0:00:00.001582
+Func A17 cartesianCount=648, elapsed 0:00:00.001711
 solve: LettersEntry(name=A17,length=2,value: YE+S,
 	identities=[A17[0]=D12[1],A17[1]=D13[1]],referrers=[D12,D13],
-	values={10,11,12,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31 and 39 more},
-	digits=[{1..7},{0,1,2,4,5,6,7,8,9}]
-Func D13 cartesianCount=48, elapsed 0:00:00.000089
+	values={10..12,14..22,24..31,39 more,79},
+	digits=[{1..7},{0..2,4..9}]
+Func D13 cartesianCount=48, elapsed 0:00:00.000115
 solve: LettersEntry(name=A4,length=2,value: D(U+E),
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
-	values={10,11,12,13,14,15,16,17,18,20,21,22,24,25,26,27,28,30,32,33 and 37 more},
+	values={10..18,20..22,24..28,30,32,33,37 more,99},
 	digits=[{1..9},{1..9}]
-Func A17 cartesianCount=648, elapsed 0:00:00.001920
-Func D19 cartesianCount=486, elapsed 0:00:00.000892
-Func D3 cartesianCount=486, elapsed 0:00:00.000770
-Func A11 cartesianCount=729, elapsed 0:00:00.001152
+Func A17 cartesianCount=648, elapsed 0:00:00.001346
+Func D19 cartesianCount=486, elapsed 0:00:00.000528
+Func D3 cartesianCount=486, elapsed 0:00:00.000516
+Func A11 cartesianCount=729, elapsed 0:00:00.001784
 solve: LettersEntry(name=A11,length=2,value: ASP,
 	identities=[A11[0]=D5[2],A11[1]=D6[2]],referrers=[D5,D6],
-	values={10,12,14,15,16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54 and 10 more},
+	values={10,12,14..16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54,10 more,96},
 	digits=[{1..9},{0..8}]
-Func A12 cartesianCount=729, elapsed 0:00:00.000409
+Func A12 cartesianCount=729, elapsed 0:00:00.000754
 solve: LettersEntry(name=A12,length=2,value: PUPPY,
 	identities=[A12[0]=D12[0],A12[1]=D13[0]],referrers=[D12,D13],
-	values={12,14,15,16,21,24,32,35,36,42,45,54,56,63,64,72,96},
-	digits=[{1,2,3,4,5,6,7,9},{1..6}]
+	values={12,14..16,21,24,32,35,36,42,45,54,56,63,64,72,96},
+	digits=[{1..7,9},{1..6}]
 P={1..3}
-Func D13 cartesianCount=48, elapsed 0:00:00.000048
-Func D19 cartesianCount=162, elapsed 0:00:00.000451
-Func D3 cartesianCount=162, elapsed 0:00:00.000121
+Func D13 cartesianCount=48, elapsed 0:00:00.000051
+Func D19 cartesianCount=162, elapsed 0:00:00.000191
+Func D3 cartesianCount=162, elapsed 0:00:00.000133
 solve: LettersEntry(name=A1,length=2,value: R(A+P),
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={12,15,16,18,20,21,24,25,27,28,30,32,35,36,40,42,44,45,48,49 and 18 more},
+	values={12,15,16,18,20,21,24,25,27,28,30,32,35,36,40,42,44,45,48,49,18 more,99},
 	digits=[{1..9},{1..9}]
-Func A12 cartesianCount=243, elapsed 0:00:00.000130
-Func A11 cartesianCount=243, elapsed 0:00:00.000159
-Func D5 cartesianCount=1296, elapsed 0:00:00.001587
+Func A12 cartesianCount=243, elapsed 0:00:00.000263
+Func A11 cartesianCount=243, elapsed 0:00:00.000199
+Func D5 cartesianCount=1296, elapsed 0:00:00.000936
 solve: LettersEntry(name=D5,length=3,value: PR+Y+EYE,
 	identities=[D5[0]=A4[1],D5[1]=A8[0],D5[2]=A11[0]],referrers=[A4,A8,A11],
-	values={111,112,113,115,116,117,118,119,121,122,123,124,125,126,127,128,129,131,134,135 and 184 more},
+	values={111..113,115..119,121..129,131,134,135,184 more,677},
 	digits=[{1..6},{1..9},{1..9}]
 E={4..9}
 Y={2..9}
-Func D13 cartesianCount=36, elapsed 0:00:00.000034
+Func D13 cartesianCount=36, elapsed 0:00:00.000039
 solve: LettersEntry(name=D13,length=3,value: ERR,
 	identities=[D13[0]=A12[1],D13[1]=A17[1],D13[2]=A20[0]],referrers=[A12,A17,A20],
-	values={112,128,144,175,196,225,245,252,256,288,294,324,384,392,405,441,448,486,567,576 and 1 more},
-	digits=[{1..6},{0,1,2,4,5,6,7,8,9},{1,2,4,5,6,7,8}]
-Func D3 cartesianCount=144, elapsed 0:00:00.000103
-Func A12 cartesianCount=216, elapsed 0:00:00.000092
-Func A11 cartesianCount=243, elapsed 0:00:00.000147
-Func A17 cartesianCount=432, elapsed 0:00:00.000272
+	values={112,128,144,175,196,225,245,252,256,288,294,324,384,392,405,441,448,486,567,576,648},
+	digits=[{1..6},{0..2,4..9},{1,2,4..8}]
+Func D3 cartesianCount=144, elapsed 0:00:00.000121
+Func A12 cartesianCount=216, elapsed 0:00:00.000108
+Func A11 cartesianCount=243, elapsed 0:00:00.000184
+Func A17 cartesianCount=432, elapsed 0:00:00.000334
 solve: LettersEntry(name=A17,length=2,value: YE+S,
 	identities=[A17[0]=D12[1],A17[1]=D13[1]],referrers=[D12,D13],
-	values={11,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31,32,34 and 37 more},
-	digits=[{1..7},{0,1,2,4,5,6,7,8,9}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000032
-Func A17 cartesianCount=432, elapsed 0:00:00.000276
+	values={11,14..22,24..32,34,37 more,79},
+	digits=[{1..7},{0..2,4..9}]
+Func D13 cartesianCount=36, elapsed 0:00:00.000058
+Func A17 cartesianCount=432, elapsed 0:00:00.000451
 solve: LettersEntry(name=A4,length=2,value: D(U+E),
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
-	values={10,11,12,13,14,15,16,17,18,20,21,22,24,25,26,27,28,30,32,33 and 37 more},
+	values={10..18,20..22,24..28,30,32,33,37 more,99},
 	digits=[{1..9},{1..6}]
-Func D5 cartesianCount=864, elapsed 0:00:00.000870
-Func A21 cartesianCount=972, elapsed 0:00:00.000566
+Func D5 cartesianCount=864, elapsed 0:00:00.000681
+Func A21 cartesianCount=972, elapsed 0:00:00.000680
 solve: LettersEntry(name=A21,length=2,value: (PEPP/E+R)E+D,
 	identities=[A21[0]=D15[2],A21[1]=D16[2]],referrers=[D15,D16],
-	values={26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46 and 52 more},
+	values={26..28,30..46,52 more,99},
 	digits=[{2..9},{0..9}]
 P={1,2}
-Func D3 cartesianCount=96, elapsed 0:00:00.000077
-Func D19 cartesianCount=108, elapsed 0:00:00.000086
+Func D3 cartesianCount=96, elapsed 0:00:00.000094
+Func D19 cartesianCount=108, elapsed 0:00:00.000100
 solve: LettersEntry(name=A1,length=2,value: R(A+P),
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={12,15,16,18,20,21,24,25,27,28,30,32,35,36,40,42,44,45,48,49 and 15 more},
+	values={12,15,16,18,20,21,24,25,27,28,30,32,35,36,40,42,44,45,48,49,15 more,90},
 	digits=[{1..9},{1..9}]
-Func A12 cartesianCount=144, elapsed 0:00:00.000071
-Func A11 cartesianCount=162, elapsed 0:00:00.000104
-Func D5 cartesianCount=576, elapsed 0:00:00.000334
+Func A12 cartesianCount=144, elapsed 0:00:00.000096
+Func A11 cartesianCount=162, elapsed 0:00:00.000135
+Func D5 cartesianCount=576, elapsed 0:00:00.000418
 solve: LettersEntry(name=D5,length=3,value: PR+Y+EYE,
 	identities=[D5[0]=A4[1],D5[1]=A8[0],D5[2]=A11[0]],referrers=[A4,A8,A11],
-	values={111,112,113,115,116,118,119,121,122,124,125,127,128,129,131,134,135,136,137,139 and 134 more},
+	values={111..113,115,116,118,119,121,122,124,125,127..129,131,134..137,139,134 more,668},
 	digits=[{1..6},{1..9},{1..9}]
-Func A11 cartesianCount=162, elapsed 0:00:00.000113
-Func A21 cartesianCount=648, elapsed 0:00:00.000401
+Func A11 cartesianCount=162, elapsed 0:00:00.000170
+Func A21 cartesianCount=648, elapsed 0:00:00.000741
 solve: LettersEntry(name=A8,length=2,value: PUPAS,
 	identities=[A8[0]=D5[1],A8[1]=D6[1]],referrers=[D5,D6],
 	values={24,30,36,40,42,48,54,56,60,64,70,72,80,84,90,96},
 	digits=[{2..9},{0,2,4,6,8}]
-Func D5 cartesianCount=576, elapsed 0:00:00.000555
+Func D5 cartesianCount=576, elapsed 0:00:00.000490
 solve: LettersEntry(name=D5,length=3,value: PR+Y+EYE,
 	identities=[D5[0]=A4[1],D5[1]=A8[0],D5[2]=A11[0]],referrers=[A4,A8,A11],
-	values={121,122,124,125,127,128,129,131,134,135,136,137,139,141,142,143,145,146,148,153 and 112 more},
+	values={121,122,124,125,127..129,131,134..137,139,141..143,145,146,148,153,112 more,668},
 	digits=[{1..6},{2..9},{1..9}]
-Func A11 cartesianCount=162, elapsed 0:00:00.000112
-Func A20 cartesianCount=3888, elapsed 0:00:00.003741
+Func A11 cartesianCount=162, elapsed 0:00:00.000143
+Func A20 cartesianCount=3888, elapsed 0:00:00.002577
 solve: LettersEntry(name=A20,length=2,value: TE+(D/D)Y,
 	identities=[A20[0]=D13[2],A20[1]=D10[3]],referrers=[D13,D10],
-	values={10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,41 and 32 more},
-	digits=[{1,2,4,5,6,7},{0..9}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000036
+	values={10..29,33 more,79},
+	digits=[{1,2,4..7},{0..9}]
+Func D13 cartesianCount=36, elapsed 0:00:00.000038
 solve: LettersEntry(name=D13,length=3,value: ERR,
 	identities=[D13[0]=A12[1],D13[1]=A17[1],D13[2]=A20[0]],referrers=[A12,A17,A20],
 	values={112,144,175,196,225,245,252,256,294,324,384,392,405,441,486,567,576},
-	digits=[{1..5},{0,1,2,4,5,6,7,8,9},{1,2,4,5,6,7}]
-Func A12 cartesianCount=144, elapsed 0:00:00.000526
+	digits=[{1..5},{0..2,4..9},{1,2,4..7}]
+Func A12 cartesianCount=144, elapsed 0:00:00.000090
 solve: LettersEntry(name=A12,length=2,value: PUPPY,
 	identities=[A12[0]=D12[0],A12[1]=D13[0]],referrers=[D12,D13],
 	values={12,14,15,21,24,32,35,42,45,54,63,64,72},
 	digits=[{1..7},{1..5}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000029
-Func A17 cartesianCount=432, elapsed 0:00:00.000254
-Func A20 cartesianCount=3888, elapsed 0:00:00.003070
-Func A18 cartesianCount=4374, elapsed 0:00:00.001910
+Func D13 cartesianCount=36, elapsed 0:00:00.000037
+Func A17 cartesianCount=432, elapsed 0:00:00.000345
+Func A20 cartesianCount=3888, elapsed 0:00:00.002932
+Func A18 cartesianCount=4374, elapsed 0:00:00.003069
 solve: LettersEntry(name=A18,length=3,value: S(USSE+D),
 	identities=[A18[0]=D10[2],A18[1]=D19[0],A18[2]=D15[1]],referrers=[D10,D19,D15],
-	values={110,112,114,122,123,126,128,129,132,134,135,136,138,141,146,147,152,153,154,156 and 215 more},
+	values={110,112,114,122,123,126,128,129,132,134..136,138,141,146,147,152..154,156,215 more,996},
 	digits=[{1..9},{1..9},{0..9}]
 S={2..6}
-Func A11 cartesianCount=90, elapsed 0:00:00.000140
+Func A11 cartesianCount=90, elapsed 0:00:00.000059
 solve: LettersEntry(name=A11,length=2,value: ASP,
 	identities=[A11[0]=D5[2],A11[1]=D6[2]],referrers=[D5,D6],
-	values={10,12,14,15,16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54 and 9 more},
-	digits=[{1..9},{0,1,2,4,5,6,7,8}]
-Func D19 cartesianCount=108, elapsed 0:00:00.000089
-Func A17 cartesianCount=240, elapsed 0:00:00.000114
+	values={10,12,14..16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54,9 more,96},
+	digits=[{1..9},{0..2,4..8}]
+Func D19 cartesianCount=108, elapsed 0:00:00.000057
+Func A17 cartesianCount=240, elapsed 0:00:00.000149
 solve: LettersEntry(name=A17,length=2,value: YE+S,
 	identities=[A17[0]=D12[1],A17[1]=D13[1]],referrers=[D12,D13],
-	values={11,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31,32,34 and 32 more},
-	digits=[{1..7},{0,1,2,4,5,6,7,8,9}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000020
-Func D5 cartesianCount=576, elapsed 0:00:00.000411
-Func A18 cartesianCount=2430, elapsed 0:00:00.000838
+	values={11,14..22,24..32,34,32 more,78},
+	digits=[{1..7},{0..2,4..9}]
+Func D13 cartesianCount=36, elapsed 0:00:00.000023
+Func D5 cartesianCount=576, elapsed 0:00:00.000242
+Func A18 cartesianCount=2430, elapsed 0:00:00.000973
 solve: LettersEntry(name=A7,length=3,value: PEEPE-R+S+((E-Y+E)/S),
 	identities=[A7[0]=D2[1],A7[1]=D3[1]],referrers=[D2,D3],
-	values={119,120,121,122,123,124,125,211,212,213,214,215,216,217,218,219,250,251,252,253 and 38 more},
-	digits=[{1,2,3,4,5,7,8},{0..6},{0..9}]
-Func D3 cartesianCount=96, elapsed 0:00:00.000047
+	values={119..125,211..219,250..253,38 more,866},
+	digits=[{1..5,7,8},{0..6},{0..9}]
+Func D3 cartesianCount=96, elapsed 0:00:00.000038
 solve: LettersEntry(name=D3,length=2,value: PRY,
 	identities=[D3[1]=A7[1]],referrers=[A7],
-	values={10,12,14,15,16,20,21,24,30,32,35,36,40,42,45,54,56,60,63,64 and 6 more},
+	values={10,12,14..16,20,21,24,30,32,35,36,40,42,45,54,56,60,63,64,6 more,96},
 	digits=[{1..9},{0..6}]
-Func D4 cartesianCount=3240, elapsed 0:00:00.000854
+Func D4 cartesianCount=3240, elapsed 0:00:00.000830
 solve: LettersEntry(name=D4,length=4,value: YAYA+D+A+D-A+S,
 	identities=[D4[0]=A4[0],D4[3]=A14[0]],referrers=[A4,A14],
-	values={1028,1029,1031,1032,1033,1034,1035,1036,1037,1038,1039,1041,1043,1044,1045,1047,1048,1229,1231,1232 and 153 more},
-	digits=[{1,2,3,5},{0,1,2,3,6,7,9},{0..9},{1..9}]
+	values={1028,1029,1031..1039,1041,1043..1045,1047,1048,1229,1231,1232,153 more,5204},
+	digits=[{1..3,5},{0..3,6,7,9},{0..9},{1..9}]
 A={4..9}
 Y={4..9}
-Func A11 cartesianCount=60, elapsed 0:00:00.000023
-Func D19 cartesianCount=72, elapsed 0:00:00.000023
+Func A11 cartesianCount=60, elapsed 0:00:00.000026
+Func D19 cartesianCount=72, elapsed 0:00:00.000030
 solve: LettersEntry(name=D19,length=2,value: RAP,
 	identities=[D19[0]=A18[1]],referrers=[A18],
-	values={20,24,28,30,32,35,36,40,42,45,48,54,56,60,63,64,70,72,80,84 and 2 more},
-	digits=[{2..9},{0,2,3,4,5,6,8}]
-Func D3 cartesianCount=72, elapsed 0:00:00.000023
+	values={20,24,28,30,32,35,36,40,42,45,48,54,56,60,63,64,70,72,80,84,2 more,96},
+	digits=[{2..9},{0,2..6,8}]
+Func D3 cartesianCount=72, elapsed 0:00:00.000028
 solve: LettersEntry(name=D3,length=2,value: PRY,
 	identities=[D3[1]=A7[1]],referrers=[A7],
 	values={20,24,30,32,35,36,40,42,45,54,56,60,63,64,70,72,80,84,90,96},
-	digits=[{2..9},{0,2,3,4,5,6}]
+	digits=[{2..9},{0,2..6}]
 solve: LettersEntry(name=A1,length=2,value: R(A+P),
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={24,25,28,30,32,35,36,40,42,44,45,48,49,50,54,55,56,60,63,64 and 8 more},
+	values={24,25,28,30,32,35,36,40,42,44,45,48..50,54..56,60,63,64,8 more,90},
 	digits=[{2..9},{1..9}]
-Func A12 cartesianCount=108, elapsed 0:00:00.000025
-Func A17 cartesianCount=180, elapsed 0:00:00.000045
+Func A12 cartesianCount=108, elapsed 0:00:00.000029
+Func A17 cartesianCount=180, elapsed 0:00:00.000051
 solve: LettersEntry(name=A17,length=2,value: YE+S,
 	identities=[A17[0]=D12[1],A17[1]=D13[1]],referrers=[D12,D13],
-	values={22,26,27,29,30,31,32,34,35,37,38,39,41,42,44,45,46,47,48,49 and 20 more},
-	digits=[{2..7},{0,1,2,4,5,6,7,8,9}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000012
-Func D5 cartesianCount=432, elapsed 0:00:00.000143
+	values={22,26,27,29..32,34,35,37..39,41,42,44..49,20 more,78},
+	digits=[{2..7},{0..2,4..9}]
+Func D13 cartesianCount=36, elapsed 0:00:00.000015
+Func D5 cartesianCount=432, elapsed 0:00:00.000172
 solve: LettersEntry(name=D5,length=3,value: PR+Y+EYE,
 	identities=[D5[0]=A4[1],D5[1]=A8[0],D5[2]=A11[0]],referrers=[A4,A8,A11],
-	values={122,124,125,127,128,129,131,135,137,141,142,143,145,146,148,153,154,155,156,157 and 103 more},
+	values={122,124,125,127..129,131,135,137,141..143,145,146,148,153..157,103 more,668},
 	digits=[{1..6},{2..9},{1..9}]
-Func A11 cartesianCount=60, elapsed 0:00:00.000021
+Func A11 cartesianCount=60, elapsed 0:00:00.000024
 solve: LettersEntry(name=A4,length=2,value: D(U+E),
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
-	values={10,11,12,13,14,15,16,17,18,20,21,22,24,25,26,27,28,30,32,33 and 37 more},
-	digits=[{1,2,3,5},{1..6}]
-Func D5 cartesianCount=432, elapsed 0:00:00.000092
-Func D4 cartesianCount=1620, elapsed 0:00:00.000385
+	values={10..18,20..22,24..28,30,32,33,37 more,99},
+	digits=[{1..3,5},{1..6}]
+Func D5 cartesianCount=432, elapsed 0:00:00.000105
+Func D4 cartesianCount=1620, elapsed 0:00:00.000399
 solve: LettersEntry(name=A7,length=3,value: PEEPE-R+S+((E-Y+E)/S),
 	identities=[A7[0]=D2[1],A7[1]=D3[1]],referrers=[D2,D3],
-	values={119,120,121,122,123,124,125,211,212,213,214,215,216,217,218,250,251,252,253,254 and 35 more},
-	digits=[{1,2,3,4,5,7,8},{0,2,3,4,5,6},{0..9}]
-Func D3 cartesianCount=72, elapsed 0:00:00.000045
-Func D2 cartesianCount=2160, elapsed 0:00:00.000613
+	values={119..125,211..218,250..254,35 more,866},
+	digits=[{1..5,7,8},{0,2..6},{0..9}]
+Func D3 cartesianCount=72, elapsed 0:00:00.000060
+Func D2 cartesianCount=2160, elapsed 0:00:00.000680
 solve: LettersEntry(name=D2,length=3,value: SEES-(P+E+A+R)S,
 	identities=[D2[0]=A1[1],D2[1]=A7[0],D2[2]=A9[1]],referrers=[A1,A7,A9],
-	values={112,146,150,152,153,154,156,158,159,171,174,177,210,212,214,216,218,220,249,252 and 58 more},
-	digits=[{1..9},{1,2,3,4,5,7,8},{0..9}]
-Func A18 cartesianCount=2430, elapsed 0:00:00.000471
+	values={112,146,150,152..154,156,158,159,171,174,177,210,212,214,216,218,220,249,252,58 more,944},
+	digits=[{1..9},{1..5,7,8},{0..9}]
+Func A18 cartesianCount=2430, elapsed 0:00:00.000552
 solve: LettersEntry(name=A18,length=3,value: S(USSE+D),
 	identities=[A18[0]=D10[2],A18[1]=D19[0],A18[2]=D15[1]],referrers=[D10,D19,D15],
-	values={122,123,126,128,129,132,134,135,136,138,141,146,147,152,153,154,156,158,159,160 and 194 more},
+	values={122,123,126,128,129,132,134..136,138,141,146,147,152..154,156,158..160,194 more,996},
 	digits=[{1..9},{2..9},{0..9}]
-Func D19 cartesianCount=72, elapsed 0:00:00.000025
-Func A20 cartesianCount=2916, elapsed 0:00:00.000716
+Func D19 cartesianCount=72, elapsed 0:00:00.000028
+Func A20 cartesianCount=2916, elapsed 0:00:00.000805
 solve: LettersEntry(name=A20,length=2,value: TE+(D/D)Y,
 	identities=[A20[0]=D13[2],A20[1]=D10[3]],referrers=[D13,D10],
-	values={10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,41 and 26 more},
-	digits=[{1,2,4,5,6,7},{0..9}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000013
-Func A14 cartesianCount=3240, elapsed 0:00:00.000753
+	values={10..29,27 more,79},
+	digits=[{1,2,4..7},{0..9}]
+Func D13 cartesianCount=36, elapsed 0:00:00.000016
+Func A14 cartesianCount=3240, elapsed 0:00:00.000877
 solve: LettersEntry(name=A14,length=3,value: SY(RU+P+S),
 	identities=[A14[0]=D4[3],A14[1]=D15[0],A14[2]=D16[0]],referrers=[D4,D15,D16],
-	values={132,135,144,156,162,165,168,189,192,195,216,231,234,243,252,264,273,276,288,294 and 89 more},
+	values={132,135,144,156,162,165,168,189,192,195,216,231,234,243,252,264,273,276,288,294,89 more,999},
 	digits=[{1..9},{1..9},{1..9}]
-Func D4 cartesianCount=1620, elapsed 0:00:00.000417
-Func A14 cartesianCount=3240, elapsed 0:00:00.000845
-Func D1 cartesianCount=9720, elapsed 0:00:00.001880
+Func D4 cartesianCount=1620, elapsed 0:00:00.000557
+Func A14 cartesianCount=3240, elapsed 0:00:00.001358
+Func D1 cartesianCount=9720, elapsed 0:00:00.002306
 solve: LettersEntry(name=D1,length=3,value: Y(E+(A+S)T-S),
 	identities=[D1[0]=A1[0],D1[2]=A9[0]],referrers=[A1,A9],
-	values={203,204,205,207,208,212,215,216,217,222,224,225,228,231,232,234,235,236,238,243 and 235 more},
+	values={203..205,207,208,212,215..217,222,224,225,228,231,232,234..236,238,243,235 more,928},
 	digits=[{2..9},{0..9},{1..9}]
 T={2..9}
-Func A20 cartesianCount=2592, elapsed 0:00:00.000492
+Func A20 cartesianCount=2592, elapsed 0:00:00.000540
 solve: LettersEntry(name=A20,length=2,value: TE+(D/D)Y,
 	identities=[A20[0]=D13[2],A20[1]=D10[3]],referrers=[D13,D10],
-	values={13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,41,42,43 and 24 more},
-	digits=[{1,2,4,5,6,7},{0..9}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000011
-Func D1 cartesianCount=8640, elapsed 0:00:00.001794
-Func D15 cartesianCount=8640, elapsed 0:00:00.001677
+	values={13..29,41..43,24 more,79},
+	digits=[{1,2,4..7},{0..9}]
+Func D13 cartesianCount=36, elapsed 0:00:00.000014
+Func D1 cartesianCount=8640, elapsed 0:00:00.001619
+Func D15 cartesianCount=8640, elapsed 0:00:00.001893
 solve: LettersEntry(name=D15,length=3,value: RAT+ES,
 	identities=[D15[0]=A14[1],D15[1]=A18[2],D15[2]=A21[0]],referrers=[A14,A18,A21],
-	values={102,104,106,107,108,109,112,113,114,116,117,118,122,123,124,126,127,128,129,132 and 137 more},
+	values={102,104,106..109,112..114,116..118,122..124,126..129,132,137 more,534},
 	digits=[{1..5},{0..9},{2..9}]
-Func A21 cartesianCount=648, elapsed 0:00:00.000157
-Func A18 cartesianCount=2430, elapsed 0:00:00.000465
-Func A14 cartesianCount=3240, elapsed 0:00:00.000482
+Func A21 cartesianCount=648, elapsed 0:00:00.000370
+Func A18 cartesianCount=2430, elapsed 0:00:00.000426
+Func A14 cartesianCount=3240, elapsed 0:00:00.000766
 solve: LettersEntry(name=A14,length=3,value: SY(RU+P+S),
 	identities=[A14[0]=D4[3],A14[1]=D15[0],A14[2]=D16[0]],referrers=[D4,D15,D16],
-	values={132,135,144,156,216,231,234,243,252,312,322,324,336,344,351,352,414,416,432,435 and 34 more},
-	digits=[{1..9},{1..5},{1,2,3,4,5,6,8}]
-Func D4 cartesianCount=1620, elapsed 0:00:00.000282
-Func D15 cartesianCount=8640, elapsed 0:00:00.001163
-Func D12 cartesianCount=29160, elapsed 0:00:00.004683
+	values={132,135,144,156,216,231,234,243,252,312,322,324,336,344,351,352,414,416,432,435,34 more,945},
+	digits=[{1..9},{1..5},{1..6,8}]
+Func D4 cartesianCount=1620, elapsed 0:00:00.000393
+Func D15 cartesianCount=8640, elapsed 0:00:00.001609
+Func D12 cartesianCount=29160, elapsed 0:00:00.007593
 solve: LettersEntry(name=D12,length=3,value: EYE-SPY+PUD,
 	identities=[D12[0]=A12[0],D12[1]=A17[0]],referrers=[A12,A17],
-	values={120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,220 and 260 more},
+	values={120..139,301 more,674},
 	digits=[{1..6},{2..7},{0..9}]
-Func A12 cartesianCount=108, elapsed 0:00:00.000024
+Func A12 cartesianCount=108, elapsed 0:00:00.000039
 solve: LettersEntry(name=A12,length=2,value: PUPPY,
 	identities=[A12[0]=D12[0],A12[1]=D13[0]],referrers=[D12,D13],
 	values={12,14,15,21,24,32,35,42,45,54,63,64},
 	digits=[{1..6},{1..5}]
-Func D13 cartesianCount=36, elapsed 0:00:00.000011
-Func A17 cartesianCount=180, elapsed 0:00:00.000044
-Func D12 cartesianCount=29160, elapsed 0:00:00.007252
-Func D6 cartesianCount=116640, elapsed 0:00:00.018803
+Func D13 cartesianCount=36, elapsed 0:00:00.000015
+Func A17 cartesianCount=180, elapsed 0:00:00.000058
+Func D12 cartesianCount=29160, elapsed 0:00:00.007974
+Func D6 cartesianCount=116640, elapsed 0:00:00.020780
 solve: LettersEntry(name=D6,length=3,value: DAYS-(T+A)U,
 	identities=[D6[1]=A8[1],D6[2]=A11[1]],referrers=[A8,A11],
-	values={100,101,102,104,105,106,107,108,120,121,122,124,125,126,127,128,140,141,142,144 and 277 more},
-	digits=[{1..9},{0,2,4,6,8},{0,1,2,4,5,6,7,8}]
-Func A11 cartesianCount=60, elapsed 0:00:00.000035
-Func D16 cartesianCount=279936, elapsed 0:00:00.036319
+	values={100..102,104..108,120..122,124..128,140..142,144,277 more,988},
+	digits=[{1..9},{0,2,4,6,8},{0..2,4..8}]
+Func A11 cartesianCount=60, elapsed 0:00:00.000029
+Func D16 cartesianCount=279936, elapsed 0:00:00.039592
 solve: LettersEntry(name=D16,length=3,value: DREY-TU+P,
 	identities=[D16[0]=A14[2],D16[2]=A21[1]],referrers=[A14,A21],
-	values={101,108,115,118,120,124,125,126,130,131,134,135,140,141,143,144,146,149,155,158 and 270 more},
-	digits=[{1,2,3,4,5,6,8},{0..9},{0..9}]
+	values={101,108,115,118,120,124..126,130,131,134,135,140,141,143,144,146,149,155,158,270 more,899},
+	digits=[{1..6,8},{0..9},{0..9}]
 D={1..8}
 solve: LettersEntry(name=A4,length=2,value: D(U+E),
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
-	values={10,11,12,13,14,15,16,17,18,20,21,22,24,25,26,27,28,30,32,33 and 35 more},
-	digits=[{1,2,3,5},{1..6}]
-Func D5 cartesianCount=432, elapsed 0:00:00.000104
-Func A21 cartesianCount=576, elapsed 0:00:00.000143
-Func D4 cartesianCount=1440, elapsed 0:00:00.000309
+	values={10..18,20..22,24..28,30,32,33,35 more,98},
+	digits=[{1..3,5},{1..6}]
+Func D5 cartesianCount=432, elapsed 0:00:00.000106
+Func A21 cartesianCount=576, elapsed 0:00:00.000132
+Func D4 cartesianCount=1440, elapsed 0:00:00.000311
 solve: LettersEntry(name=D4,length=4,value: YAYA+D+A+D-A+S,
 	identities=[D4[0]=A4[0],D4[3]=A14[0]],referrers=[A4,A14],
-	values={1028,1029,1031,1032,1033,1034,1035,1036,1037,1038,1039,1041,1043,1044,1229,1231,1232,1233,1235,1236 and 135 more},
-	digits=[{1,2,3,5},{0,1,2,3,6,7,9},{0..9},{1..9}]
-Func A18 cartesianCount=2160, elapsed 0:00:00.000308
+	values={1028,1029,1031..1039,1041,1043,1044,1229,1231..1233,1235,1236,135 more,5204},
+	digits=[{1..3,5},{0..3,6,7,9},{0..9},{1..9}]
+Func A18 cartesianCount=2160, elapsed 0:00:00.000533
 solve: LettersEntry(name=A18,length=3,value: S(USSE+D),
 	identities=[A18[0]=D10[2],A18[1]=D19[0],A18[2]=D15[1]],referrers=[D10,D19,D15],
-	values={122,123,126,128,129,132,134,136,141,146,147,152,153,154,156,158,159,160,162,166 and 170 more},
+	values={122,123,126,128,129,132,134,136,141,146,147,152..154,156,158..160,162,166,170 more,996},
 	digits=[{1..9},{2..9},{0..9}]
-Func D19 cartesianCount=72, elapsed 0:00:00.000024
-Func A20 cartesianCount=2304, elapsed 0:00:00.000403
-Func A14 cartesianCount=3240, elapsed 0:00:00.000475
-Func D15 cartesianCount=8640, elapsed 0:00:00.001266
-Func D12 cartesianCount=25920, elapsed 0:00:00.005257
-Func D6 cartesianCount=103680, elapsed 0:00:00.012540
-Func D16 cartesianCount=248832, elapsed 0:00:00.033174
-Func D10 cartesianCount=414720, elapsed 0:00:00.053055
+Func D19 cartesianCount=72, elapsed 0:00:00.000029
+Func A20 cartesianCount=2304, elapsed 0:00:00.000440
+Func A14 cartesianCount=3240, elapsed 0:00:00.000580
+Func D15 cartesianCount=8640, elapsed 0:00:00.001437
+Func D12 cartesianCount=25920, elapsed 0:00:00.004598
+Func D6 cartesianCount=103680, elapsed 0:00:00.014430
+Func D16 cartesianCount=248832, elapsed 0:00:00.038859
+Func D10 cartesianCount=414720, elapsed 0:00:00.070726
 solve: LettersEntry(name=D10,length=4,value: YESTE-R(D+A-Y)-S,
 	identities=[D10[0]=A9[2],D10[2]=A18[0],D10[3]=A20[1]],referrers=[A9,A18,A20],
-	values={1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1028,1029,1030,1033,1034,1035 and 2948 more},
+	values={1011..1024,1028..1030,1033..1035,2948 more,9738},
 	digits=[{1..9},{0..9},{1..9},{0..9}]
-Func A18 cartesianCount=2160, elapsed 0:00:00.000413
-Func A20 cartesianCount=2304, elapsed 0:00:00.000561
+Func A18 cartesianCount=2160, elapsed 0:00:00.000440
+Func A20 cartesianCount=2304, elapsed 0:00:00.000570
 solve: LettersEntry(name=A9,length=3,value: (ST-R+A-Y)ED,
 	identities=[A9[0]=D1[2],A9[1]=D2[2],A9[2]=D10[0]],referrers=[D1,D2,D10],
-	values={100,102,104,105,108,110,112,114,115,117,119,120,125,126,128,130,132,133,135,136 and 206 more},
+	values={100,102,104,105,108,110,112,114,115,117,119,120,125,126,128,130,132,133,135,136,206 more,999},
 	digits=[{1..9},{0..9},{1..9}]
-Func D2 cartesianCount=2160, elapsed 0:00:00.000588
-Func D1 cartesianCount=8640, elapsed 0:00:00.001243
-Func D10 cartesianCount=414720, elapsed 0:00:00.049158
-Func D13 cartesianCount=36, elapsed 0:00:00.000019
-Clue/Variable iterations=129, updates=51, elapsed 0:00:00.376930
+Func D2 cartesianCount=2160, elapsed 0:00:00.000711
+Func D1 cartesianCount=8640, elapsed 0:00:00.001421
+Func D10 cartesianCount=414720, elapsed 0:00:00.063831
+Func D13 cartesianCount=36, elapsed 0:00:00.000018
+Clue/Variable iterations=129, updates=51, elapsed 0:00:00.455420
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
-A1, R(A+P), values={24,25,28,30,32,35,36,40,42,44,45,48,49,50,54,55,56,60,63,64 and 8 more}
-A4, D(U+E), values={10,11,12,13,14,15,16,17,18,20,21,22,24,25,26,27,28,30,32,33 and 35 more}
-A7, PEEPE-R+S+((E-Y+E)/S), values={119,120,121,122,123,124,125,211,212,213,214,215,216,217,218,250,251,252,253,254 and 35 more}
+A1, R(A+P), values={24,25,28,30,32,35,36,40,42,44,45,48..50,54..56,60,63,64,8 more,90}
+A4, D(U+E), values={10..18,20..22,24..28,30,32,33,35 more,98}
+A7, PEEPE-R+S+((E-Y+E)/S), values={119..125,211..218,250..254,35 more,866}
 A8, PUPAS, values={24,30,36,40,42,48,54,56,60,64,70,72,80,84,90,96}
-A9, (ST-R+A-Y)ED, values={100,102,104,105,108,110,112,114,115,117,119,120,125,126,128,130,132,133,135,136 and 206 more}
-A11, ASP, values={10,12,14,15,16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54 and 9 more}
+A9, (ST-R+A-Y)ED, values={100,102,104,105,108,110,112,114,115,117,119,120,125,126,128,130,132,133,135,136,206 more,999}
+A11, ASP, values={10,12,14..16,18,20,21,24,27,28,30,32,35,36,40,42,45,48,54,9 more,96}
 A12, PUPPY, values={12,14,15,21,24,32,35,42,45,54,63,64}
-A14, SY(RU+P+S), values={132,135,144,156,216,231,234,243,252,312,322,324,336,344,351,352,414,416,432,435 and 34 more}
-A17, YE+S, values={22,26,27,29,30,31,32,34,35,37,38,39,41,42,44,45,46,47,48,49 and 20 more}
-A18, S(USSE+D), values={122,123,126,128,129,132,134,136,141,146,147,152,153,154,156,158,159,160,162,166 and 170 more}
-A20, TE+(D/D)Y, values={13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,41,42,43 and 24 more}
-A21, (PEPP/E+R)E+D, values={26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46 and 52 more}
-D1, Y(E+(A+S)T-S), values={203,204,205,207,208,212,215,216,217,222,224,225,228,231,232,234,235,236,238,243 and 235 more}
-D2, SEES-(P+E+A+R)S, values={112,146,150,152,153,154,156,158,159,171,174,177,210,212,214,216,218,220,249,252 and 58 more}
+A14, SY(RU+P+S), values={132,135,144,156,216,231,234,243,252,312,322,324,336,344,351,352,414,416,432,435,34 more,945}
+A17, YE+S, values={22,26,27,29..32,34,35,37..39,41,42,44..49,20 more,78}
+A18, S(USSE+D), values={122,123,126,128,129,132,134,136,141,146,147,152..154,156,158..160,162,166,170 more,996}
+A20, TE+(D/D)Y, values={13..29,41..43,24 more,79}
+A21, (PEPP/E+R)E+D, values={26..28,30..46,52 more,99}
+D1, Y(E+(A+S)T-S), values={203..205,207,208,212,215..217,222,224,225,228,231,232,234..236,238,243,235 more,928}
+D2, SEES-(P+E+A+R)S, values={112,146,150,152..154,156,158,159,171,174,177,210,212,214,216,218,220,249,252,58 more,944}
 D3, PRY, values={20,24,30,32,35,36,40,42,45,54,56,60,63,64,70,72,80,84,90,96}
-D4, YAYA+D+A+D-A+S, values={1028,1029,1031,1032,1033,1034,1035,1036,1037,1038,1039,1041,1043,1044,1229,1231,1232,1233,1235,1236 and 135 more}
-D5, PR+Y+EYE, values={122,124,125,127,128,129,131,135,137,141,142,143,145,146,148,153,154,155,156,157 and 103 more}
-D6, DAYS-(T+A)U, values={100,101,102,104,105,106,107,108,120,121,122,124,125,126,127,128,140,141,142,144 and 277 more}
-D10, YESTE-R(D+A-Y)-S, values={1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1028,1029,1030,1033,1034,1035 and 2948 more}
-D12, EYE-SPY+PUD, values={120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,220 and 260 more}
+D4, YAYA+D+A+D-A+S, values={1028,1029,1031..1039,1041,1043,1044,1229,1231..1233,1235,1236,135 more,5204}
+D5, PR+Y+EYE, values={122,124,125,127..129,131,135,137,141..143,145,146,148,153..157,103 more,668}
+D6, DAYS-(T+A)U, values={100..102,104..108,120..122,124..128,140..142,144,277 more,988}
+D10, YESTE-R(D+A-Y)-S, values={1011..1024,1028..1030,1033..1035,2948 more,9738}
+D12, EYE-SPY+PUD, values={120..139,301 more,674}
 D13, ERR, values={112,144,175,196,225,245,252,256,294,324,384,392,405,441,486,567,576}
-D15, RAT+ES, values={102,104,106,107,108,109,112,113,114,116,117,118,122,123,124,126,127,128,129,132 and 137 more}
-D16, DREY-TU+P, values={101,108,115,118,120,124,125,126,130,131,134,135,140,141,143,144,146,149,155,158 and 270 more}
-D19, RAP, values={20,24,28,30,32,35,36,40,42,45,48,54,56,60,63,64,70,72,80,84 and 2 more}
+D15, RAT+ES, values={102,104,106..109,112..114,116..118,122..124,126..129,132,137 more,534}
+D16, DREY-TU+P, values={101,108,115,118,120,124..126,130,131,134,135,140,141,143,144,146,149,155,158,270 more,899}
+D19, RAP, values={20,24,28,30,32,35,36,40,42,45,48,54,56,60,63,64,70,72,80,84,2 more,96}
 +--+--+--+--+--+--+
 | ?  ?| ?| ?  ?| ?|
 +     +  +     +  +

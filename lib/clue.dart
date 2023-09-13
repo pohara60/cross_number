@@ -226,7 +226,7 @@ class ExpressionClue extends VariableClue with Expression {
       Function? solve,
       variablePrefix = ''})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    initExpression(valueDesc, variablePrefix, name, clue: this);
+    initExpression(valueDesc, variablePrefix, name, _variableRefs);
   }
 }
 
@@ -298,7 +298,7 @@ mixin EntryMixin on Clue {
     var updated = false;
     for (var d = 0; d < length; d++) {
       var possibleDigits = <int>{};
-      for (var value in this.values!) {
+      for (var value in values) {
         var digit = int.parse(value.toString()[d]);
         possibleDigits.add(digit);
       }
