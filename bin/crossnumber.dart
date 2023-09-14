@@ -30,7 +30,6 @@ void main(List<String> arguments) async {
 
   var runner = CommandRunner('crossnumber', 'Cross Number helper.')
     ..addCommand(DiceNetsCommand())
-    ..addCommand(DiceNets2Command())
     ..addCommand(PrimeCutsCommand())
     ..addCommand(LettersCommand())
     ..addCommand(DistancingCommand())
@@ -39,8 +38,9 @@ void main(List<String> arguments) async {
     ..addCommand(EvenOdderCommand())
     ..addCommand(InstructionCommand())
     ..addCommand(Root66Command())
-    ..addCommand(Root66_2Command())
+    ..addCommand(DiceNets2Command())
     ..addCommand(No21Command())
+    ..addCommand(Root66_2Command())
     ..addCommand(PartnersCommand())
     ..addCommand(WheelsCommand())
     ..addCommand(PrimeCommand())
@@ -70,24 +70,6 @@ class DiceNetsCommand extends Command {
     // Get and print solve
     final dn = DiceNets();
     dn.solve();
-  }
-}
-
-class DiceNets2Command extends Command {
-  @override
-  final name = 'dicenets2';
-  @override
-  final description = 'solve hardcoded dicenets puzzle - new version.';
-
-  @override
-  void run() {
-    // Get and print solve
-    try {
-      final dn = DiceNets2();
-      dn.solve();
-    } on PuzzleException catch (e) {
-      print('${e.msg}');
-    }
   }
 }
 
@@ -203,17 +185,21 @@ class Root66Command extends Command {
   }
 }
 
-class Root66_2Command extends Command {
+class DiceNets2Command extends Command {
   @override
-  final name = 'root66_2';
+  final name = 'dicenets2';
   @override
-  final description = 'solve hardcoded root66_2 puzzle.';
+  final description = 'solve hardcoded dicenets puzzle - new version.';
 
   @override
   void run() {
     // Get and print solve
-    final pc = Root66_2();
-    pc.solve();
+    try {
+      final dn = DiceNets2();
+      dn.solve();
+    } on PuzzleException catch (e) {
+      print('${e.msg}');
+    }
   }
 }
 
@@ -232,6 +218,20 @@ class No21Command extends Command {
     } on PuzzleException catch (e) {
       print(e.msg);
     }
+  }
+}
+
+class Root66_2Command extends Command {
+  @override
+  final name = 'root66_2';
+  @override
+  final description = 'solve hardcoded root66_2 puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    final pc = Root66_2();
+    pc.solve();
   }
 }
 

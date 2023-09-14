@@ -21,6 +21,8 @@ There are different types of puzzle, each has a subdirectory with its specific i
 
 ## Puzle Types
 
+The puzzles are presented in the order they were developed. Some have been re-developed with later versions of the solver, these have the suffix _2_.
+
 The Notes column in the table below refer to the type of clue solver logic, which has progressed over time:
 - Manual solver, e.g. [solveA15](lib/primecuts/primecuts.dart).
 - Variable solver with callback for expression, e.g. [solveA2 calls solveVariableExpression](lib/sequences/sequences.dart)
@@ -29,26 +31,30 @@ The Notes column in the table below refer to the type of clue solver logic, whic
  
 The Clues, Entries and Variables columns refer to whether and how these entities are processed:
 - Entries may be Manual, Variable or Expression solvers, as defined above
-- Clues refers to Clues separate to Entries
+- Clues refers to Clues separate to Entries, in which case Entries are mapped to Clues, or updated by CLues
 - Variables, if present, may simply be limited or may have Expression solvers
 
 | Puzzle | Type | Notes | Clues | Entries | Variables |
 |--------|------|-------|-------|---------|-----------|
-| [CarteBlanche](lib/carteblanche.dart) | Custom | Custom | | | |
-| [Chessboard](lib/chessboard/README.md) | Simple | Expression Solvers | | Expression | |
 | [DiceNets](lib/dicenets/README.md) | Simple | Manual Solvers | | Manual | |
-| [DiceNets2](lib/dicenets2/README.md) | Simple | Expression Solvers | | Expression | |
-| [Distancing](lib/distancing/README.md) | Simple | Manual Solvers | | Manual | |
-| [EvenOdder](lib/evenodder/README.md) | Variable | Expression Solvers | | Expression | Limited with 2 values |
-| [Frequency](lib/frequency/README.md) | Simple | Manual Solvers, post-processing | | Manual | |
-| [Instruction](lib/instruction/README.md) | Custom | Manual Solvers, post-processing | | Manual | |
-| [Letters](lib/letters/README.md) | Variable | Variable Solvers | | Variable | Limited  |
-| [No21](lib/no21/README.md) | Variable | Expression Solvers for Clues, post-processing | Expression | Mapped | Limited |
-| [Partners](lib/partners/README.md) | Simple | Expression Solvers | | Expression | |
-| [Prime](lib/prime/README.md) | Simple | Expression Solvers | | Expression | |
 | [PrimeCuts](lib/primecuts/README.md) | Variable | Manual Solvers, 2 values per clue | | Manual | Manual |
+| [Letters](lib/letters/README.md) | Variable | Variable Solvers | | Variable | Limited  |
+| [Distancing](lib/distancing/README.md) | Simple | Manual Solvers | | Manual | |
+| [Frequency](lib/frequency/README.md) | Simple | Manual Solvers, post-processing | | Manual | |
 | [Sequences](lib/sequences/README.md) | Variable | Expression Solvers | | Expression | Limited |
+| [CarteBlanche](lib/carteblanche.dart) | Custom | Custom | | | |
+| [EvenOdder](lib/evenodder/README.md) | Variable | Expression Solvers | | Expression | Limited with 2 values |
+| [Instruction](lib/instruction/README.md) | Custom | Manual Solvers, post-processing | | Manual | |
+| [Root66](lib/root66/README.md) | Variable | Expression Solvers, 2 values per clue | | Expression | Limited |
+| [DiceNets2](lib/dicenets2/README.md) | Simple | Expression Solvers | | Expression | |
+| [No21](lib/no21/README.md) | Variable | Expression Solvers for Clues, post-processing | Expression | Mapped to Clues | Limited |
+| [Root66_2](lib/root66_2/README.md) | Variable | Expression Solvers, 2 values per clue | Expression | Updated by Clue | Limited |
+| [Partners](lib/partners/README.md) | Simple | Expression Solvers | | Expression | |
 | [Wheels](lib/wheels/README.md) | Variable | Expression Solvers, including Variables | | Expression | Expression |
+| [Prime](lib/prime/README.md) | Simple | Expression Solvers | | Expression | |
+| [Chessboard](lib/chessboard/README.md) | Simple | Expression Solvers | | Expression | |
+| [Particular](lib/particular/README.md) | Variable | Expression Solvers | | Expression | Limited |
+| [Pandigitals](lib/pandigitals/README.md) | Variable | Custom Solve | | Expression | Variable Group |
 
 
 ## Specific Puzzle Implementation
