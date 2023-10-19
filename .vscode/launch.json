@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "abcd",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "abcd"
+            ]
+        },
+        {
             "name": "primecuts2",
             "program": "bin/crossnumber.dart",
             "request": "launch",

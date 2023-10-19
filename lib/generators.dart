@@ -123,6 +123,12 @@ Iterable<int> generatePrimesWithOne(num max) sync* {
   yield* generatePrimes(2, max);
 }
 
+Iterable<int> generateNDigitPrimes(int n) sync* {
+  num min = 10.pow(n - 1);
+  num max = 10.pow(n) - 1;
+  yield* generatePrimes(min, max);
+}
+
 Iterable<int> generatePrimes(num min, num max) sync* {
   var limit = max.toInt();
   var next = min.toInt();

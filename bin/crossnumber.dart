@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
@@ -48,7 +49,8 @@ void main(List<String> arguments) async {
     ..addCommand(ChessboardCommand())
     ..addCommand(ParticularCommand())
     ..addCommand(PandigitalsCommand())
-    ..addCommand(PrimeCuts2Command());
+    ..addCommand(PrimeCuts2Command())
+    ..addCommand(ABCDCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -370,6 +372,28 @@ class PrimeCuts2Command extends Command {
     // Get and print solve
     try {
       final pc = PrimeCuts2();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class ABCDCommand extends Command {
+  @override
+  final name = 'abcd';
+  @override
+  final description = 'solve hardcoded abcd puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = ABCD();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
