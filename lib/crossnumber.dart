@@ -4,7 +4,6 @@ library crossnumber;
 import 'package:collection/collection.dart' show PriorityQueue;
 import 'package:powers/powers.dart';
 
-import 'cartesian.dart';
 import 'clue.dart';
 import 'generators.dart';
 import 'puzzle.dart';
@@ -71,6 +70,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var iterations = 0;
     var updates = 0;
     var remainingClues = List<Variable>.from(puzzle.clues.values).toList();
+    if (puzzle is VariablePuzzle) {
+      remainingClues.addAll((puzzle as VariablePuzzle)
+          .variables
+          .values
+          .where((v) => (v is ExpressionVariable) && v.valueDesc != ''));
+    }
 
     if (traceSolve) {
       print("UPDATES-----------------------------");
@@ -191,7 +196,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       if (possibleValue.isEmpty) {
         print(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
-        throw SolveException();
+        throw SolveError();
       }
       if (puzzle.updateValues(clue, possibleValue)) updated = true;
       if (clue.finalise()) updated = true;
@@ -493,16 +498,7 @@ int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
 }
 
 Set<int>? getValuesFromClueDigits(Clue clue) {
-  var allDigits =
-      List<List<int>>.generate(clue.length, (d) => clue.digits[d].toList());
-  var count = cartesianCount(allDigits);
-  if (count > 1000) return null;
-  var values = <int>{};
-  for (var product in cartesian(allDigits, true)) {
-    int value = product.reduce((value, element) => value * 10 + element);
-    values.add(value);
-  }
-  return values;
+  return clue.getValuesFromClueDigits();
 }
 
 List<int>? getMultiplesOfValues(Clue clue, List<int> values) {

@@ -65,6 +65,7 @@ class VariableRef {
   Variable? variable;
   bool get isVariable => type == 'V';
   bool get isClue => type == 'C';
+  bool get isEntry => type == 'E';
 
   VariableRef(this.name, [this.type = 'V']);
 }
@@ -76,14 +77,8 @@ class VariableRefList {
       _references.where((r) => r.isVariable).map((r) => r.name).toList();
   List<String> get clueNames =>
       _references.where((r) => r.isClue).map((r) => r.name).toList();
-  List<Variable> get variables => _references
-      .where((r) => r.isVariable)
-      .map((r) => r.variable as Variable)
-      .toList();
-  List<Clue> get clues => _references
-      .where((r) => r.isClue)
-      .map((r) => r.variable as Clue)
-      .toList();
+  List<String> get entryNames =>
+      _references.where((r) => r.isEntry).map((r) => r.name).toList();
 
   addReference(String name, String type) {
     if (_references.indexWhere((r) => name == r.name) == -1) {
@@ -96,7 +91,11 @@ class VariableRefList {
   }
 
   addClueReference(String name) {
-    addReference(name, 'C');
+    // Entry references start with E
+    if (name[0] == 'E')
+      addReference(name, 'E');
+    else
+      addReference(name, 'C');
   }
 
   toString() => names.toString();

@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "primecuts2",
+            "program": "bin/crossnumber.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "primecuts2"
+            ]
+        },
+        {
             "name": "pandigitals",
             "type": "dart",
             "request": "launch",

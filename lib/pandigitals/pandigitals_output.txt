@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:65075/2LloIvLIRoo=/ws
 Puzzle
 PandigitalsClue(name=A1,length=3,value: ,
 	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3],
@@ -149,7 +148,8 @@ P={unknown}
 R={unknown}
 S={unknown}
 T={unknown}
- R = S + T - P
+
+ R = S + T - P 
 887=256+780-149
 233=256+378-401
 617=256+780-419
@@ -209,6 +209,7 @@ solve: PandigitalsClue(name=D8,length=3,value: ,
 	values={105,253,325,351,378,435,465,741,861},
 	digits=[{1..4,7,8},{0,2..7},{1,3,5,8}]
 solve: rstpQueue.length=22
+
 R=[233,617,647,617,557,173,467,587,647,977,557,383,563,191,151,487,457,397,127,199,2 more,569]=[127,151,173,191,199,233,383,397,457,467,487,557,563,569,587,617,647,727,977]
 S=[256,289,289,289,289,289,289,529,529,625,625,625,729,729,729,841,841,841,841,841,2 more,961]=[256,289,529,625,729,841,961]
 T=[378,435,465,465,435,351,741,741,861,741,741,741,435,105,105,253,325,325,253,325,2 more,435]=[105,253,325,351,378,435,465,741,861]
@@ -241,6 +242,7 @@ solve: PandigitalsClue(name=D12,length=2,value: ,
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
 solve: rstpQueue.length=10
+
 R=[233,173,647,347,257,191,151,457,397,199]=[151,173,191,199,233,257,347,397,457,647]
 S=[256,289,529,576,576,729,729,841,841,841]=[256,289,529,576,729,841]
 T=[378,351,861,120,120,105,105,325,325,325]=[105,120,325,351,378,861]
@@ -267,6 +269,7 @@ solve: PandigitalsClue(name=D9,length=3,value: ,
 	values={173,191,199,311,397,431,617},
 	digits=[{1,3,4,6},{1,3,7,9},{1,3,7,9}]
 solve: rstpQueue.length=9
+
 R=[617,617,173,397,191,431,311,397,199]=[173,191,199,311,397,431,617]
 S=[256,289,289,576,729,784,784,841,841]=[256,289,576,729,784,841]
 T=[780,465,351,210,105,210,120,325,325]=[105,120,210,325,351,465,780]
@@ -299,6 +302,7 @@ solve: PandigitalsClue(name=D10,length=3,value: ,
 	values={925},
 	digits=[{9},{2},{5}]
 solve: rstpQueue.length=1
+
 R=[647]=[647]
 S=[529]=[529]
 T=[861]=[861]
@@ -330,6 +334,7 @@ solve: PandigitalsClue(name=D12,length=2,value: ,
 	values={25},
 	digits=[{2},{5}]
 solve: rstpQueue.length=1
+
 R=[977]=[977]
 S=[625]=[625]
 T=[741]=[741]
@@ -356,6 +361,7 @@ solve: PandigitalsClue(name=D8,length=3,value: ,
 	values={253},
 	digits=[{2},{5},{3}]
 solve: rstpQueue.length=1
+
 R=[127]=[127]
 S=[841]=[841]
 T=[253]=[253]
@@ -376,6 +382,7 @@ solve: PandigitalsClue(name=A14,length=3,value: ,
 	values={325},
 	digits=[{3},{2},{5}]
 solve: rstpQueue.length=1
+
 R=[199]=[199]
 S=[841]=[841]
 T=[325]=[325]
@@ -394,6 +401,7 @@ solve: PandigitalsClue(name=D9,length=3,value: ,
 	values={173},
 	digits=[{1},{7},{3}]
 solve: rstpQueue.length=1
+
 R=[173]=[173]
 S=[289]=[289]
 T=[351]=[351]
@@ -413,6 +421,7 @@ solve: PandigitalsClue(name=D3,length=3,value: ,
 	identities=[D3[0]=A1[2],D3[1]=A7[0],D3[2]=A8[2]],referrers=[A1,A7,A8,A6,D4],
 	values={797},
 	digits=[{7},{9},{7}]
+
 R=[647]=[647]
 S=[529]=[529]
 T=[861]=[861]
@@ -428,6 +437,7 @@ solve: PandigitalsClue(name=A6,length=2,value: ,
 	identities=[A6[1]=D2[1]],referrers=[D2,A13,D4,D12,D3],
 	values={37},
 	digits=[{3},{7}]
+
 R=[647]=[647]
 S=[529]=[529]
 T=[861]=[861]
@@ -475,5 +485,3 @@ T={unknown}
  III 289 351 467 173
   IV 529 861 743 647
    V 625 741 389 977
-
-Exited.

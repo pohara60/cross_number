@@ -15,6 +15,8 @@ class Generator {
 
 void initializeGenerators(Map<String, Generator> generators) {
   generators['integer'] = Generator('integer', generateIntegers);
+  generators['ascending'] = Generator('ascending', generateAscending);
+  generators['descending'] = Generator('descending', generateDescending);
   generators['result'] = Generator('result', generateIntegers);
   generators['palindrome'] = Generator('palindrome', generatePalindromes);
   generators['odd'] = Generator('odd', generateOddIntegers);
@@ -38,6 +40,26 @@ void initializeGenerators(Map<String, Generator> generators) {
 Iterable<int> generateIntegers(num min, num max) sync* {
   for (var integer = min.toInt(); integer <= max.toInt(); integer++)
     yield integer;
+}
+
+Iterable<int> generateAscending(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
+    var integerStr = integer.toString();
+    if (integerStr
+            .split('')
+            .reduce((value, char) => char.compareTo(value) > 0 ? char : '?') !=
+        '?') yield integer;
+  }
+}
+
+Iterable<int> generateDescending(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
+    var integerStr = integer.toString();
+    if (integerStr
+            .split('')
+            .reduce((value, char) => char.compareTo(value) < 0 ? char : '!') !=
+        '!') yield integer;
+  }
 }
 
 const powers10 = <int>[

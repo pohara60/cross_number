@@ -1,3 +1,4 @@
+import 'package:crossnumber/cartesian.dart';
 import 'package:powers/powers.dart';
 
 import 'expression.dart';
@@ -19,6 +20,7 @@ class Clue extends Variable {
   final _variableRefs = VariableRefList();
   List<String> get variableReferences => _variableRefs.variableNames;
   List<String> get clueReferences => _variableRefs.clueNames;
+  List<String> get entryReferences => _variableRefs.entryNames;
   List<String> get variableClueReferences => _variableRefs.names;
 
   // Mutual reference to an other clue
@@ -89,16 +91,7 @@ class Clue extends Variable {
   bool initialise() {
     // Update entry digits from digit references
     var updated = false;
-    if (entry != null) {
-      for (var d = 0; d < length; d++) {
-        if (digitIdentities[d] != null) {
-          var entry2 = digitIdentities[d]!.entry;
-          var d2 = digitIdentities[d]!.digit;
-          var possibleDigits = entry2.digits[d2];
-          if (updatePossible(digits[d], possibleDigits)) updated = true;
-        }
-      }
-    }
+    if (entry != null) (entry as EntryMixin).updateDigitsFromOtherEntries();
     return updated;
   }
 
@@ -202,6 +195,19 @@ class Clue extends Variable {
     // Clues before Variables
     return -1;
   }
+
+  Set<int>? getValuesFromClueDigits() {
+    if (entry == null) return null;
+    var allDigits = List<List<int>>.generate(length, (d) => digits[d].toList());
+    var count = cartesianCount(allDigits);
+    if (count > 1000) return null;
+    var values = <int>{};
+    for (var product in cartesian(allDigits, true)) {
+      int value = product.reduce((value, element) => value * 10 + element);
+      values.add(value);
+    }
+    return values;
+  }
 }
 
 bool updatePossible(Set<int> possible, Set<int> possibleValues) {
@@ -303,6 +309,19 @@ mixin EntryMixin on Clue {
         possibleDigits.add(digit);
       }
       if (updatePossible(digits[d], possibleDigits)) updated = true;
+    }
+    return updated;
+  }
+
+  bool updateDigitsFromOtherEntries() {
+    var updated = false;
+    for (var d = 0; d < length; d++) {
+      if (digitIdentities[d] != null) {
+        var entry2 = digitIdentities[d]!.entry;
+        var d2 = digitIdentities[d]!.digit;
+        var possibleDigits = entry2.digits[d2];
+        if (updatePossible(digits[d], possibleDigits)) updated = true;
+      }
     }
     return updated;
   }

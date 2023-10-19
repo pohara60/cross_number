@@ -41,7 +41,7 @@ const EXPONENT = 'EXPONENT', EXPONENT_RE = r'(?<' + EXPONENT + r'>\^)';
 const LPAREN = 'LPAREN', LPAREN_RE = r'(?<' + LPAREN + r'>\()';
 const RPAREN = 'RPAREN', RPAREN_RE = r'(?<' + RPAREN + r'>\))';
 const EQUAL = 'EQUAL', EQUAL_RE = r'(?<' + EQUAL + r'>=)';
-const CLUE = 'CLUE', CLUE_RE = r'(?<' + CLUE + r'>[adAD]\d+)';
+const CLUE = 'CLUE', CLUE_RE = r'(?<' + CLUE + r'>E?[adAD]\d+)';
 const VAR = 'VAR', VAR_RE = r'(?<' + VAR + r'>\w)';
 const GENERATOR = 'GENERATOR', GENERATOR_RE = r'(?<' + GENERATOR + r'>\#\w+)';
 const MONADIC = 'MONADIC', MONADIC_RE = r'(?<' + MONADIC + r'>\$\w+)';
@@ -219,9 +219,14 @@ class Node {
         var name = token.name;
         var monadic = monadics[name]!;
         if (monadic.type == Iterable<int>) {
+          // Ascending generator functions
           if (order == NodeOrder.SINGLE && monadic != 'jumble')
             order = NodeOrder.ASCENDING;
           else
+            order = NodeOrder.UNKNOWN;
+        } else {
+          // Non-generator functions that do not preserver operand order
+          if (order != NodeOrder.SINGLE && ['ds', 'dp', 'mp'].contains(name))
             order = NodeOrder.UNKNOWN;
         }
       } else if (token.type == REVERSE) {
@@ -346,6 +351,9 @@ class ExpressionEvaluator {
 
   // Hard-coded result generator
   int? result;
+  num? minResult;
+  num? maxResult;
+  List<int>? knownResults;
 
   ExpressionEvaluator(this.text, [this.variablePrefix = '']) {
     var tokenIterable = Scanner.generateTokens(text, variablePrefix);
@@ -388,16 +396,29 @@ class ExpressionEvaluator {
     return value.toInt();
   }
 
-  Iterable<int> generate(num min, num max,
-      [List<String>? variableNames, List<int>? variableValues]) sync* {
+  Iterable<int> generate(
+    num min,
+    num max, [
+    List<String>? variableNames,
+    List<int>? variableValues,
+    Set<int>? knownResults,
+  ]) sync* {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
     this.result = null;
+    this.minResult = min;
+    this.maxResult = max;
+    this.knownResults = knownResults?.toList()?..sort();
     for (var value in this.gen(min, max, this.tree)) {
-      var result = this.result != null ? this.result! : value;
+      num result = resultValue(value);
       if (isIntegerValue(result)) yield result.toInt();
       this.result = null;
     }
+  }
+
+  num resultValue(num value) {
+    var result = this.result != null ? this.result! : value;
+    return result;
   }
 
   bool isIntegerValue(num value) {
@@ -935,7 +956,7 @@ class ExpressionEvaluator {
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
-                rvalue == 0 ? min : rvalue,
+                rvalue == 0 ? 0 : rvalue,
                 rvalue == 0 ? max : rvalue,
                 lnode,
               )) {
@@ -946,7 +967,7 @@ class ExpressionEvaluator {
                   left,
                   rnode,
                 )) {
-            var result = left;
+            var result = resultValue(left);
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -964,6 +985,26 @@ class ExpressionEvaluator {
         var generator = generators[name];
         if (generator == null) {
           throw ExpressionError('Unknown generator $name');
+        }
+        if (name == 'result') {
+          // Result generator is constrained to expression min/max
+          min = this.minResult!;
+          max = this.maxResult!;
+          // if previously evaluated want same value
+          if (this.result != null) {
+            if (this.result! >= min && this.result! <= max) yield this.result!;
+            return;
+          }
+          // if have previous known values then no return them
+          if (knownResults != null) {
+            for (var result in knownResults!) {
+              if (result >= min && result <= max) {
+                this.result = result;
+                yield result;
+              }
+            }
+            return;
+          }
         }
         for (var result in generator.func(min, max)) {
           if (result > max) {

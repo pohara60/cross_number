@@ -186,7 +186,7 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
 
     puzzle.addDigitIdentityFromGrid();
 
-    var clueError = puzzle.checkClueReferences();
+    var clueError = puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     var variableError = puzzle.checkVariableReferences();

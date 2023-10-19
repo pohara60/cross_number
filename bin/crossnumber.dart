@@ -16,6 +16,7 @@ import 'package:crossnumber/prime/prime.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
+import 'package:crossnumber/primecuts2/primecuts2.dart';
 import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
@@ -46,7 +47,8 @@ void main(List<String> arguments) async {
     ..addCommand(PrimeCommand())
     ..addCommand(ChessboardCommand())
     ..addCommand(ParticularCommand())
-    ..addCommand(PandigitalsCommand());
+    ..addCommand(PandigitalsCommand())
+    ..addCommand(PrimeCuts2Command());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -346,6 +348,28 @@ class PandigitalsCommand extends Command {
     // Get and print solve
     try {
       final pc = Pandigitals();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class PrimeCuts2Command extends Command {
+  @override
+  final name = 'primecuts2';
+  @override
+  final description = 'solve hardcoded primecuts2 puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = PrimeCuts2();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

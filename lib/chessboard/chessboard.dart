@@ -106,7 +106,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
     puzzle.validateEntriesFromGrid();
     puzzle.addDigitIdentityFromGrid();
 
-    var clueError = puzzle.checkClueReferences();
+    var clueError = puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     if (Crossnumber.traceInit) {
