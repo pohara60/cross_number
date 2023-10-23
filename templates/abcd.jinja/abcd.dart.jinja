@@ -1,0 +1,84 @@
+library {{env['abcd']}};
+
+import '../clue.dart';
+import '../crossnumber.dart';
+import '../expression.dart';
+import '../puzzle.dart';
+import 'clue.dart';
+import 'puzzle.dart';
+
+/// Provide access to the {{env['ABCD']}} API.
+class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
+  var gridString = [{% for line in env['grid'].rstrip().split('\n') %}
+    '{{line}}',{% endfor %}
+  ];
+
+  {{env['ABCD']}}() {
+    puzzle = {{env['ABCD']}}Puzzle.grid(gridString);
+    initCrossnumber();
+  }
+
+  void initCrossnumber() {
+    var clueErrors = '';
+    void clueWrapper(
+        {String? name, int? length, String? valueDesc}) {
+      try {
+        var entry = {{env['ABCD']}}Entry(
+            name: name, length: length, valueDesc: valueDesc, solve: solve{{env['ABCD']}}Clue);
+        puzzle.addEntry(entry);
+        return;
+      } on ExpressionError catch (e) {
+        clueErrors += e.msg + '\n';
+        return;
+      }
+    }
+
+    {{env['clues']}}
+
+    if (clueErrors != '') {
+      throw PuzzleException(clueErrors);
+    }
+
+    puzzle.validateEntriesFromGrid();
+    puzzle.addDigitIdentityFromGrid();
+
+    var letters = [
+      // variables
+    ];
+    for (var letter in letters) {
+      puzzle.letters[letter] = {{env['ABCD']}}Variable(letter);
+    }
+
+    var clueError = puzzle.checkVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
+
+    if (Crossnumber.traceInit) {
+      print(puzzle.toString());
+    }
+  }
+
+  // Validate possible clue value
+  bool validClue(VariableClue clue, int value, List<String> variableReferences,
+      List<int> variableValues) {
+    if (!clue.digitsMatch(value)) return false;
+    return true;
+  }
+
+  // Clue solver invokes generic expression evaluator with validator
+  bool solve{{env['ABCD']}}Clue({{env['ABCD']}}Clue clue, Set<int> possibleValue,
+      Map<String, Set<int>> possibleVariables) {
+    var updated = false;
+    if (clue.valueDesc != '') {
+      updated = puzzle.solveExpressionEvaluator(
+          clue, possibleValue, possibleVariables, validClue);
+    } else {
+      // Values may have been set by other Clue
+      if (clue.values != null) {
+        var values =
+            clue.values!.where((value) => validClue(clue, value, [], []));
+        possibleValue.addAll(values);
+      }
+    }
+    return updated;
+  }
+}

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:powers/powers.dart';
 
 import 'merge.dart';
+import 'monadic.dart';
 
 typedef GeneratorFunc = Iterable<int> Function(num min, num max);
 
@@ -19,6 +20,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['descending'] = Generator('descending', generateDescending);
   generators['result'] = Generator('result', generateIntegers);
   generators['palindrome'] = Generator('palindrome', generatePalindromes);
+  generators['harshad'] = Generator('harshad', generateHarshads);
   generators['odd'] = Generator('odd', generateOddIntegers);
   generators['even'] = Generator('even', generateEvenIntegers);
   generators['prime'] = Generator('prime', generatePrimes);
@@ -33,6 +35,8 @@ void initializeGenerators(Map<String, Generator> generators) {
       Generator('product2primes', generateProduct2Primes);
   generators['product3primes'] =
       Generator('product3primes', generateProduct3Primes);
+  generators['product4primes'] =
+      Generator('product4primes', generateProduct4Primes);
   generators['sumconsecutivesquares'] =
       Generator('sumconsecutivesquares', generateSumConsecutiveSquares);
 }
@@ -104,6 +108,11 @@ Iterable<int> generatePalindromes(num min, num max) sync* {
   }
 }
 
+Iterable<int> generateHarshads(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+    if (integer % digitSum(integer) == 0) yield integer;
+}
+
 Iterable<int> generateOddIntegers(num min, num max) sync* {
   for (var integer = min.toInt(); integer <= max.toInt(); integer++)
     if (integer % 2 == 1) yield integer;
@@ -150,6 +159,15 @@ bool isPrime(int value) {
   extendPrimesUpto(value);
   var result = primes.contains(value);
   return result;
+}
+
+Iterable<int> isAdjacentPrime(int value) sync* {
+  extendPrimesUpto(value * 2);
+  var index = primes.indexOf(value);
+  if (index > 0) {
+    yield primes[index - 1];
+    if (index < primes.length - 1) yield primes[index + 1];
+  }
 }
 
 void extendPrimesUpto(int limit) {
@@ -334,6 +352,12 @@ var product3primes = <int>[30];
 Iterable<int> generateProduct3Primes(num min, num max) sync* {
   yield* generateProduct(
       min, max, generateProduct2Primes, generatePrimes, product3primes);
+}
+
+var product4primes = <int>[210];
+Iterable<int> generateProduct4Primes(num min, num max) sync* {
+  yield* generateProduct(
+      min, max, generateProduct3Primes, generatePrimes, product4primes);
 }
 
 Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,

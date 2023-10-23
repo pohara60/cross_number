@@ -29,6 +29,8 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['notpalindrome'] = Monadic('notpalindrome', isNotPalindrome, bool);
   monadics['odd'] = Monadic('odd', isOdd, bool);
   monadics['prime'] = Monadic('prime', isPrime, bool);
+  monadics['adjacentprime'] =
+      Monadic('adjacentprime', isAdjacentPrime, Iterable<int>);
   monadics['multiple'] = Monadic('multiple', multiple, Iterable<int>);
   monadics['greaterthan'] = Monadic('greaterthan', greaterthan, Iterable<int>);
   monadics['greaterthanequal'] =
@@ -122,7 +124,7 @@ bool isAscending(int value) {
 bool descending(int value) => isDescending(value);
 bool isDescending(int value) {
   var valueStr = value.toString();
-  var last = 0;
+  var last = 10;
   for (var index = 0; index < valueStr.length; index++) {
     var next = int.parse(valueStr[index]);
     if (next >= last) return false;

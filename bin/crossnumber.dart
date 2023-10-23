@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
+import 'package:crossnumber/columns/columns.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
@@ -50,7 +51,8 @@ void main(List<String> arguments) async {
     ..addCommand(ParticularCommand())
     ..addCommand(PandigitalsCommand())
     ..addCommand(PrimeCuts2Command())
-    ..addCommand(ABCDCommand());
+    ..addCommand(ABCDCommand())
+    ..addCommand(ColumnsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -394,6 +396,28 @@ class ABCDCommand extends Command {
     // Get and print solve
     try {
       final pc = ABCD();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class ColumnsCommand extends Command {
+  @override
+  final name = 'columns';
+  @override
+  final description = 'solve hardcoded columns puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Columns();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

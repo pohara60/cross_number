@@ -1029,7 +1029,11 @@ class ExpressionEvaluator {
         const int intMaxValue =
             9007199254740991; // Max for dart web, otherwise 9223372036854775807
         var childNode = node.operands![0];
-        for (var left in gen(1, intMaxValue, childNode)) {
+        // Heuristic for min/max of argument to function
+        var fmin = 1;
+        var fmax = max;
+        if (!(monadic.type is bool)) fmax = maxResult! * maxResult!;
+        for (var left in gen(fmin, fmax, childNode)) {
           if (isIntegerValue(left)) {
             var result = monadic.func(left.toInt());
             if (result is bool) {
