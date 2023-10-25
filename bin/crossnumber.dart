@@ -10,6 +10,7 @@ import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/instruction/instruction.dart';
+import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
@@ -52,7 +53,8 @@ void main(List<String> arguments) async {
     ..addCommand(PandigitalsCommand())
     ..addCommand(PrimeCuts2Command())
     ..addCommand(ABCDCommand())
-    ..addCommand(ColumnsCommand());
+    ..addCommand(ColumnsCommand())
+    ..addCommand(KnightsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -418,6 +420,28 @@ class ColumnsCommand extends Command {
     // Get and print solve
     try {
       final pc = Columns();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class KnightsCommand extends Command {
+  @override
+  final name = 'knights';
+  @override
+  final description = 'solve hardcoded knights puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Knights();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

@@ -153,6 +153,30 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     return updated;
   }
 
+  Iterable<Variable> clueOrVariableValueReferences(
+      Variable clueOrVariable) sync* {
+    if (!clueOrVariable.isSet) return;
+    var value = clueOrVariable.values!.first;
+    var puzzle = this as VariablePuzzle;
+    if (clueOrVariable is Clue) {
+      for (var clue in puzzle.clues.values.where((clue) =>
+          clue != clueOrVariable &&
+          clue.values != null &&
+          clue.values!.contains(value))) {
+        clue.values!.remove(value);
+        yield clue;
+      }
+    } else {
+      for (var variable in puzzle.variables.values.where((variable) =>
+          variable != clueOrVariable &&
+          variable.values != null &&
+          variable.values!.contains(value))) {
+        variable.values!.remove(value);
+        yield variable;
+      }
+    }
+  }
+
   void fixClue(String clueName, int value) {
     var clue = this.clues[clueName];
     if (clue != null) {

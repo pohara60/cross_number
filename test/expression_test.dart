@@ -227,6 +227,11 @@ void main() {
       primes = generateSumConsecutiveSquares(10, 99).toList();
       expect(primes, equals([13, 25, 41, 61, 85]));
     });
+    var text10 = '#product4primes';
+    test(text10, () {
+      var primes = generateProduct4Primes(1000, 9999).toList();
+      print('generateProduct4Primes(1000, 9999)=$primes');
+    });
   });
   group('Monadic Enhancements', () {
     var text1 = r'$jumble';

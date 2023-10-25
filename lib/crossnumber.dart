@@ -126,6 +126,13 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             for (var referrer in referrers) {
               addToUpdateQueue(referrer);
             }
+            if (clueOrVariable.isSet) {
+              // Find other clues/variables that can no longer have the value
+              for (var referrer
+                  in puzzle.clueOrVariableValueReferences(clueOrVariable)) {
+                addToUpdateQueue(referrer);
+              }
+            }
             updates++;
             firstExceptionClue = null;
             skipExceptionClues = false;
@@ -196,7 +203,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       if (possibleValue.isEmpty) {
         print(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
-        throw SolveError();
+        throw SolveException();
       }
       if (puzzle.updateValues(clue, possibleValue)) updated = true;
       if (clue.finalise()) updated = true;
