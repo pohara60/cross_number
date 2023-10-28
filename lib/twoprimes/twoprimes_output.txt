@@ -1,77 +1,77 @@
 Puzzle
-TwoPrimesEntry(name=A1,length=3,value: I,
-	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+TwoPrimesEntry(name=A1,length=2,value: $variablevalue I,
+	identities=[A1[0]=D1[0]],referrers=[D1],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9}]
 TwoPrimesEntry(name=A3,length=3,value: PR,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-TwoPrimesEntry(name=A5,length=5,value: MR,
-	identities=[A5[0]=D5[0],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1],A5[4]=D6[0]],referrers=[D5,D2,D3,D4,D6],
+TwoPrimesEntry(name=A5,length=4,value: $variablevalue M * $variablevalue R,
+	identities=[A5[0]=D5[0],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1]],referrers=[D5,D2,D3,D4],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
-TwoPrimesEntry(name=A7,length=2,value: P,
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TwoPrimesEntry(name=A7,length=2,value: $variablevalue P,
 	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=A8,length=2,value: P,
+TwoPrimesEntry(name=A8,length=2,value: $variablevalue P,
 	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=A10,length=2,value: S,
+TwoPrimesEntry(name=A10,length=2,value: $variablevalue S,
 	identities=[A10[0]=D10[0],A10[1]=D6[1]],referrers=[D10,D6],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=A11,length=5,value: EE,
-	identities=[A11[0]=D11[0],A11[1]=D12[0],A11[2]=D9[1],A11[3]=D10[1],A11[4]=D6[2]],referrers=[D11,D12,D9,D10,D6],
-	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
-TwoPrimesEntry(name=A13,length=4,value: E + R,
-	identities=[A13[0]=D1[4],A13[1]=D11[1],A13[2]=D12[1],A13[3]=D9[2]],referrers=[D1,D11,D12,D9],
+TwoPrimesEntry(name=A11,length=4,value: $variablevalue E * $variablevalue E,
+	identities=[A11[0]=D11[0],A11[1]=D12[0],A11[2]=D9[1],A11[3]=D10[1]],referrers=[D11,D12,D9,D10],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-TwoPrimesEntry(name=A14,length=2,value: E,
-	identities=[A14[0]=D10[2],A14[1]=D6[3]],referrers=[D10,D6],
-	values={unknown},
-	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=D1,length=5,value: IM,
-	identities=[D1[0]=A1[0],D1[2]=A7[0],D1[4]=A13[0]],referrers=[A1,A7,A13],
-	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
-TwoPrimesEntry(name=D2,length=3,value: MR,
-	identities=[D2[0]=A1[2],D2[1]=A5[1],D2[2]=A8[0]],referrers=[A1,A5,A8],
+TwoPrimesEntry(name=A13,length=3,value: $variablevalue E + $variablevalue R,
+	identities=[A13[1]=D11[1],A13[2]=D12[1]],referrers=[D11,D12],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-TwoPrimesEntry(name=D3,length=2,value: MR,
+TwoPrimesEntry(name=A14,length=2,value: $variablevalue E,
+	identities=[A14[1]=D6[3]],referrers=[D6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoPrimesEntry(name=D1,length=4,value: $variablevalue I * $variablevalue M,
+	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TwoPrimesEntry(name=D2,length=3,value: $variablevalue M * $variablevalue R,
+	identities=[D2[1]=A5[1],D2[2]=A8[0]],referrers=[A5,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TwoPrimesEntry(name=D3,length=2,value: $variablevalue M * $variablevalue R,
 	identities=[D3[0]=A3[0],D3[1]=A5[2]],referrers=[A3,A5],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=D4,length=2,value: P - R - S,
+TwoPrimesEntry(name=D4,length=2,value: $variablevalue P - $variablevalue R - $variablevalue S,
 	identities=[D4[0]=A3[1],D4[1]=A5[3]],referrers=[A3,A5],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=D5,length=2,value: R,
+TwoPrimesEntry(name=D5,length=2,value: $variablevalue R,
 	identities=[D5[0]=A5[0],D5[1]=A7[1]],referrers=[A5,A7],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=D6,length=4,value: PS,
-	identities=[D6[0]=A5[4],D6[1]=A10[1],D6[2]=A11[4],D6[3]=A14[1]],referrers=[A5,A10,A11,A14],
+TwoPrimesEntry(name=D6,length=4,value: $variablevalue P * $variablevalue S,
+	identities=[D6[1]=A10[1],D6[3]=A14[1]],referrers=[A10,A14],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-TwoPrimesEntry(name=D9,length=3,value: P + S,
-	identities=[D9[0]=A8[1],D9[1]=A11[2],D9[2]=A13[3]],referrers=[A8,A11,A13],
+TwoPrimesEntry(name=D9,length=3,value: $variablevalue P + $variablevalue S,
+	identities=[D9[0]=A8[1],D9[1]=A11[2]],referrers=[A8,A11],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-TwoPrimesEntry(name=D10,length=3,value: I,
-	identities=[D10[0]=A10[0],D10[1]=A11[3],D10[2]=A14[0]],referrers=[A10,A11,A14],
+TwoPrimesEntry(name=D10,length=2,value: $variablevalue I,
+	identities=[D10[0]=A10[0],D10[1]=A11[3]],referrers=[A10,A11],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
-TwoPrimesEntry(name=D11,length=2,value: E,
+	digits=[{1..9},{0..9}]
+TwoPrimesEntry(name=D11,length=2,value: $variablevalue E,
 	identities=[D11[0]=A11[0],D11[1]=A13[1]],referrers=[A11,A13],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-TwoPrimesEntry(name=D12,length=2,value: P - P,
+TwoPrimesEntry(name=D12,length=2,value: $variablevalue P - $variablevalue P,
 	identities=[D12[0]=A11[1],D12[1]=A13[2]],referrers=[A11,A13],
 	values={unknown},
 	digits=[{1..9},{0..9}]
@@ -83,145 +83,301 @@ P={3,11,17,29,41,47,53,57,59,71,83,89,97}
 R={3,11,17,29,41,47,53,57,59,71,83,89,97}
 S={3,11,17,29,41,47,53,57,59,71,83,89,97}
 UPDATES-----------------------------
-Eval TwoPrimesEntry D12 cartesianCount=13, elapsed 0:00:00.009261
-Solve Error: clue D12 (P - P) no solution!
-Eval TwoPrimesEntry D5 cartesianCount=13, elapsed 0:00:00.000333
-solve: TwoPrimesEntry(name=D5,length=2,value: R,
-	identities=[D5[0]=A5[0],D5[1]=A7[1]],referrers=[A5,A7],
-	values={11,17,29,41,47,53,57,59,71,83,89,97},
+Eval TwoPrimesEntry D12 cartesianCount=13, elapsed 0:00:00.006358
+solve: TwoPrimesEntry(name=D12,length=2,value: $variablevalue P - $variablevalue P,
+	identities=[D12[0]=A11[1],D12[1]=A13[2]],referrers=[A11,A13],
+	values={18,42,66,78,94},
+	digits=[{1,4,6,7,9},{2,4,6,8}]
+P={3,11,17,29,41}
+Eval TwoPrimesEntry A8 cartesianCount=5, elapsed 0:00:00.000266
+solve: TwoPrimesEntry(name=A8,length=2,value: $variablevalue P,
+	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
+	values={11,17,29,41,59,71,83,89,97},
 	digits=[{1,2,4,5,7..9},{1,3,7,9}]
-R={11,17,29,41,47,53,57,59,71,83,89,97}
-Eval TwoPrimesEntry D11 cartesianCount=13, elapsed 0:00:00.000217
-solve: TwoPrimesEntry(name=D11,length=2,value: E,
+Eval TwoPrimesEntry A7 cartesianCount=5, elapsed 0:00:00.000232
+solve: TwoPrimesEntry(name=A7,length=2,value: $variablevalue P,
+	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
+	values={11,17,29,41,59,71,83,89,97},
+	digits=[{1,2,4,5,7..9},{1,3,7,9}]
+Eval TwoPrimesEntry D5 cartesianCount=13, elapsed 0:00:00.000364
+solve: TwoPrimesEntry(name=D5,length=2,value: $variablevalue R,
+	identities=[D5[0]=A5[0],D5[1]=A7[1]],referrers=[A5,A7],
+	values={11,17,29,41,43,47,53,57,59,71,83,89,97},
+	digits=[{1,2,4,5,7..9},{1,3,7,9}]
+Eval TwoPrimesEntry A7 cartesianCount=5, elapsed 0:00:00.000136
+Eval TwoPrimesEntry D11 cartesianCount=13, elapsed 0:00:00.000275
+solve: TwoPrimesEntry(name=D11,length=2,value: $variablevalue E,
 	identities=[D11[0]=A11[0],D11[1]=A13[1]],referrers=[A11,A13],
-	values={11,17,29,41,47,53,57,59,71,83,89,97},
+	values={11,17,29,41,43,47,53,57,59,71,83,89,97},
 	digits=[{1,2,4,5,7..9},{1,3,7,9}]
-E={11,17,29,41,47,53,57,59,71,83,89,97}
-Eval TwoPrimesEntry A11 cartesianCount=12, elapsed 0:00:00.000184
-Solve Error: clue A11 (EE) no solution!
-Eval TwoPrimesEntry A14 cartesianCount=12, elapsed 0:00:00.000209
-solve: TwoPrimesEntry(name=A14,length=2,value: E,
-	identities=[A14[0]=D10[2],A14[1]=D6[3]],referrers=[D10,D6],
-	values={11,17,29,41,47,53,57,59,71,83,89,97},
-	digits=[{1,2,4,5,7..9},{1,3,7,9}]
-Eval TwoPrimesEntry D11 cartesianCount=12, elapsed 0:00:00.000387
-Eval TwoPrimesEntry A14 cartesianCount=12, elapsed 0:00:00.000256
-Eval TwoPrimesEntry A8 cartesianCount=13, elapsed 0:00:00.000156
-solve: TwoPrimesEntry(name=A8,length=2,value: P,
+Eval TwoPrimesEntry A11 cartesianCount=13, elapsed 0:00:00.001531
+solve: TwoPrimesEntry(name=A11,length=4,value: $variablevalue E * $variablevalue E,
+	identities=[A11[0]=D11[0],A11[1]=D12[0],A11[2]=D9[1],A11[3]=D10[1]],referrers=[D11,D12,D9,D10],
+	values={1411,1681,2419,2451,2491,7921,9409},
+	digits=[{1,2,7,9},{4,6,9},{0..2,5,8,9},{1,9}]
+E={3,11,17,41,47,53,57,59,83,89,97}
+Eval TwoPrimesEntry D12 cartesianCount=5, elapsed 0:00:00.000420
+solve: TwoPrimesEntry(name=D12,length=2,value: $variablevalue P - $variablevalue P,
+	identities=[D12[0]=A11[1],D12[1]=A13[2]],referrers=[A11,A13],
+	values={42,66,94},
+	digits=[{4,6,9},{2,4,6}]
+P={3,17,29}
+Eval TwoPrimesEntry A8 cartesianCount=3, elapsed 0:00:00.000117
+solve: TwoPrimesEntry(name=A8,length=2,value: $variablevalue P,
 	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
-	values={11,17,29,41,47,53,57,59,71,83,89,97},
-	digits=[{1,2,4,5,7..9},{1,3,7,9}]
-P={11,17,29,41,47,53,57,59,71,83,89,97}
-Eval TwoPrimesEntry D12 cartesianCount=12, elapsed 0:00:00.000151
-Solve Error: clue D12 (P - P) no solution!
-Eval TwoPrimesEntry A7 cartesianCount=12, elapsed 0:00:00.000229
-solve: TwoPrimesEntry(name=A7,length=2,value: P,
+	values={17,29,71,83,97},
+	digits=[{1,2,7..9},{1,3,7,9}]
+Eval TwoPrimesEntry A7 cartesianCount=3, elapsed 0:00:00.000126
+solve: TwoPrimesEntry(name=A7,length=2,value: $variablevalue P,
 	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
-	values={11,17,29,41,47,53,57,59,71,83,89,97},
-	digits=[{1,2,4,5,7..9},{1,3,7,9}]
-Eval TwoPrimesEntry D5 cartesianCount=12, elapsed 0:00:00.000455
-Eval TwoPrimesEntry A8 cartesianCount=12, elapsed 0:00:00.000176
-Eval TwoPrimesEntry A7 cartesianCount=12, elapsed 0:00:00.000146
-Eval TwoPrimesEntry D10 cartesianCount=13, elapsed 0:00:00.000084
-Solve Error: clue D10 (I) no solution!
-Eval TwoPrimesEntry A10 cartesianCount=13, elapsed 0:00:00.000277
-solve: TwoPrimesEntry(name=A10,length=2,value: S,
+	values={17,29,71,83,97},
+	digits=[{1,2,7..9},{1,3,7,9}]
+Eval TwoPrimesEntry D11 cartesianCount=11, elapsed 0:00:00.000567
+solve: TwoPrimesEntry(name=D11,length=2,value: $variablevalue E,
+	identities=[D11[0]=A11[0],D11[1]=A13[1]],referrers=[A11,A13],
+	values={11,17,97},
+	digits=[{1,9},{1,7}]
+E={3,11,17,83,89,97}
+Eval TwoPrimesEntry A11 cartesianCount=6, elapsed 0:00:00.000218
+solve: TwoPrimesEntry(name=A11,length=4,value: $variablevalue E * $variablevalue E,
+	identities=[A11[0]=D11[0],A11[1]=D12[0],A11[2]=D9[1],A11[3]=D10[1]],referrers=[D11,D12,D9,D10],
+	values={1411,9409},
+	digits=[{1,9},{4},{0,1},{1,9}]
+E={3,17,83,97}
+Eval TwoPrimesEntry D12 cartesianCount=3, elapsed 0:00:00.000116
+solve: TwoPrimesEntry(name=D12,length=2,value: $variablevalue P - $variablevalue P,
+	identities=[D12[0]=A11[1],D12[1]=A13[2]],referrers=[A11,A13],
+	values={42},
+	digits=[{4},{2}]
+P={29}
+solve: TwoPrimesEntry(name=A8,length=2,value: $variablevalue P,
+	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
+	values={29,71},
+	digits=[{2,7},{1,9}]
+solve: TwoPrimesEntry(name=A7,length=2,value: $variablevalue P,
+	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
+	values={29,71},
+	digits=[{2,7},{1,9}]
+Eval TwoPrimesEntry A14 cartesianCount=4, elapsed 0:00:00.000101
+solve: TwoPrimesEntry(name=A14,length=2,value: $variablevalue E,
+	identities=[A14[1]=D6[3]],referrers=[D6],
+	values={17,83,97},
+	digits=[{1,8,9},{3,7}]
+Eval TwoPrimesEntry A11 cartesianCount=4, elapsed 0:00:00.000217
+Eval TwoPrimesEntry D11 cartesianCount=4, elapsed 0:00:00.000110
+solve: TwoPrimesEntry(name=D11,length=2,value: $variablevalue E,
+	identities=[D11[0]=A11[0],D11[1]=A13[1]],referrers=[A11,A13],
+	values={17,97},
+	digits=[{1,9},{7}]
+Eval TwoPrimesEntry A11 cartesianCount=4, elapsed 0:00:00.000312
+Eval TwoPrimesEntry A14 cartesianCount=4, elapsed 0:00:00.000143
+Eval TwoPrimesEntry D10 cartesianCount=13, elapsed 0:00:00.000588
+solve: TwoPrimesEntry(name=D10,length=2,value: $variablevalue I,
+	identities=[D10[0]=A10[0],D10[1]=A11[3]],referrers=[A10,A11],
+	values={11,29,41,59,71,89},
+	digits=[{1,2,4,5,7,8},{1,9}]
+I={11,29,41,59,71,89}
+Eval TwoPrimesEntry A11 cartesianCount=4, elapsed 0:00:00.000173
+Eval TwoPrimesEntry D10 cartesianCount=6, elapsed 0:00:00.000113
+Eval TwoPrimesEntry A1 cartesianCount=6, elapsed 0:00:00.000092
+solve: TwoPrimesEntry(name=A1,length=2,value: $variablevalue I,
+	identities=[A1[0]=D1[0]],referrers=[D1],
+	values={11,29,41,59,71,89},
+	digits=[{1,2,4,5,7,8},{1,9}]
+Eval TwoPrimesEntry A10 cartesianCount=13, elapsed 0:00:00.000246
+solve: TwoPrimesEntry(name=A10,length=2,value: $variablevalue S,
 	identities=[A10[0]=D10[0],A10[1]=D6[1]],referrers=[D10,D6],
-	values={11,17,29,41,47,53,57,59,71,83,89,97},
-	digits=[{1,2,4,5,7..9},{1,3,7,9}]
-S={11,17,29,41,47,53,57,59,71,83,89,97}
-Eval TwoPrimesEntry D10 cartesianCount=13, elapsed 0:00:00.000112
-Solve Error: clue D10 (I) no solution!
-Eval TwoPrimesEntry A1 cartesianCount=13, elapsed 0:00:00.000219
-Solve Error: clue A1 (I) no solution!
-Eval TwoPrimesEntry D6 cartesianCount=144, elapsed 0:00:00.000760
-solve: TwoPrimesEntry(name=D6,length=4,value: PS,
-	identities=[D6[0]=A5[4],D6[1]=A10[1],D6[2]=A11[4],D6[3]=A14[1]],referrers=[A5,A10,A11,A14],
-	values={1189,1363,1711,1927,2173,2337,2773,2911,3127,3337,3363,3763,3901,3977,4183,4189,4399,4717,4731,5141,3 more,7387},
-	digits=[{1..7},{1,3,7,9},{0..4,6..9},{1,3,7,9}]
-P={29,41,47,53,57,59,71,83,89,97}
-S={29,41,47,53,57,59,71,83,89,97}
-Eval TwoPrimesEntry A10 cartesianCount=10, elapsed 0:00:00.000150
-solve: TwoPrimesEntry(name=A10,length=2,value: S,
-	identities=[A10[0]=D10[0],A10[1]=D6[1]],referrers=[D10,D6],
-	values={29,41,47,53,57,59,71,83,89,97},
-	digits=[{2,4,5,7..9},{1,3,7,9}]
-Eval TwoPrimesEntry D12 cartesianCount=10, elapsed 0:00:00.000091
-Solve Error: clue D12 (P - P) no solution!
-Eval TwoPrimesEntry A8 cartesianCount=10, elapsed 0:00:00.000156
-solve: TwoPrimesEntry(name=A8,length=2,value: P,
-	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
-	values={29,41,47,53,57,59,71,83,89,97},
-	digits=[{2,4,5,7..9},{1,3,7,9}]
-Eval TwoPrimesEntry A7 cartesianCount=10, elapsed 0:00:00.000122
-solve: TwoPrimesEntry(name=A7,length=2,value: P,
-	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
-	values={29,41,47,53,57,59,71,83,89,97},
-	digits=[{2,4,5,7..9},{1,3,7,9}]
-Eval TwoPrimesEntry D5 cartesianCount=12, elapsed 0:00:00.000210
-Eval TwoPrimesEntry A14 cartesianCount=12, elapsed 0:00:00.000193
-Eval TwoPrimesEntry A11 cartesianCount=12, elapsed 0:00:00.000095
-Solve Error: clue A11 (EE) no solution!
-Eval TwoPrimesEntry D10 cartesianCount=13, elapsed 0:00:00.000078
-Solve Error: clue D10 (I) no solution!
-Eval TwoPrimesEntry D9 cartesianCount=100, elapsed 0:00:00.001052
-solve: TwoPrimesEntry(name=D9,length=3,value: P + S,
-	identities=[D9[0]=A8[1],D9[1]=A11[2],D9[2]=A13[3]],referrers=[A8,A11,A13],
-	values={100,104,106,110,112,116,118,124,126,128,130,136,138,140,142,144,146,148,150,154,6 more,186},
-	digits=[{1},{0..8},{0,2,4,6,8}]
-Eval TwoPrimesEntry A8 cartesianCount=10, elapsed 0:00:00.000196
-solve: TwoPrimesEntry(name=A8,length=2,value: P,
-	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
-	values={41,71},
-	digits=[{4,7},{1}]
-P={41,71}
-Eval TwoPrimesEntry D12 cartesianCount=2, elapsed 0:00:00.000053
-Solve Error: clue D12 (P - P) no solution!
-Eval TwoPrimesEntry A7 cartesianCount=2, elapsed 0:00:00.000065
-solve: TwoPrimesEntry(name=A7,length=2,value: P,
-	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
-	values={41,71},
-	digits=[{4,7},{1}]
-Eval TwoPrimesEntry A8 cartesianCount=2, elapsed 0:00:00.000094
-Eval TwoPrimesEntry D5 cartesianCount=12, elapsed 0:00:00.000126
-solve: TwoPrimesEntry(name=D5,length=2,value: R,
-	identities=[D5[0]=A5[0],D5[1]=A7[1]],referrers=[A5,A7],
-	values={11,41,71},
-	digits=[{1,4,7},{1}]
-R={11,41,71}
-Eval TwoPrimesEntry A7 cartesianCount=2, elapsed 0:00:00.000044
-Eval TwoPrimesEntry D5 cartesianCount=3, elapsed 0:00:00.000049
-Eval TwoPrimesEntry A3 cartesianCount=6, elapsed 0:00:00.000049
-solve: TwoPrimesEntry(name=A3,length=3,value: PR,
-	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
-	values={451,781},
-	digits=[{4,7},{5,8},{1}]
-R={11}
-solve: TwoPrimesEntry(name=D5,length=2,value: R,
-	identities=[D5[0]=A5[0],D5[1]=A7[1]],referrers=[A5,A7],
-	values={11},
-	digits=[{1},{1}]
-Eval TwoPrimesEntry A7 cartesianCount=2, elapsed 0:00:00.000165
-Eval TwoPrimesEntry A3 cartesianCount=2, elapsed 0:00:00.000052
-Eval TwoPrimesEntry A13 cartesianCount=12, elapsed 0:00:00.000078
-Solve Error: clue A13 (E + R) no solution!
-Eval TwoPrimesEntry A11 cartesianCount=12, elapsed 0:00:00.000109
-Solve Error: clue A11 (EE) no solution!
-Eval TwoPrimesEntry A14 cartesianCount=12, elapsed 0:00:00.000155
-Eval TwoPrimesEntry D11 cartesianCount=12, elapsed 0:00:00.000177
-Eval TwoPrimesEntry D3 cartesianCount=13, elapsed 0:00:00.000107
-Solve Error: clue D3 (MR) no solution!
-Eval TwoPrimesEntry D2 cartesianCount=13, elapsed 0:00:00.000068
-solve: TwoPrimesEntry(name=D2,length=3,value: MR,
-	identities=[D2[0]=A1[2],D2[1]=A5[1],D2[2]=A8[0]],referrers=[A1,A5,A8],
-	values={187,517,627},
-	digits=[{1,5,6},{1,2,8},{7}]
-M={17,47,57}
-Eval TwoPrimesEntry A8 cartesianCount=2, elapsed 0:00:00.000022
-solve: TwoPrimesEntry(name=A8,length=2,value: P,
+	values={11,17,29,41,43,47,53,57,59,71,83,89},
+	digits=[{1,2,4,5,7,8},{1,3,7,9}]
+S={11,17,29,41,47,53,57,59,71,83,89}
+Eval TwoPrimesEntry D10 cartesianCount=6, elapsed 0:00:00.000176
+Eval TwoPrimesEntry D9 cartesianCount=11, elapsed 0:00:00.000355
+solve: TwoPrimesEntry(name=D9,length=3,value: $variablevalue P + $variablevalue S,
+	identities=[D9[0]=A8[1],D9[1]=A11[2]],referrers=[A8,A11],
+	values={100,112,114,118},
+	digits=[{1},{0,1},{0,2,4,8}]
+S={11,17,41,47,53,57,59,71,83,89}
+solve: TwoPrimesEntry(name=A8,length=2,value: $variablevalue P,
 	identities=[A8[0]=D2[2],A8[1]=D9[0]],referrers=[D2,D9],
 	values={71},
 	digits=[{7},{1}]
-P={71}
-crossnumber: 'package:crossnumber/puzzle.dart': Failed assertion: line 145 pos 14: 'possibleValue.contains(clue.values!.first)': is not true.
+solve: TwoPrimesEntry(name=A7,length=2,value: $variablevalue P,
+	identities=[A7[0]=D1[2],A7[1]=D5[1]],referrers=[D1,D5],
+	values={29},
+	digits=[{2},{9}]
+Eval TwoPrimesEntry A11 cartesianCount=4, elapsed 0:00:00.000150
+Eval TwoPrimesEntry D10 cartesianCount=6, elapsed 0:00:00.000166
+solve: TwoPrimesEntry(name=D10,length=2,value: $variablevalue I,
+	identities=[D10[0]=A10[0],D10[1]=A11[3]],referrers=[A10,A11],
+	values={11,41,59,89},
+	digits=[{1,4,5,8},{1,9}]
+Eval TwoPrimesEntry A11 cartesianCount=4, elapsed 0:00:00.000145
+Eval TwoPrimesEntry A1 cartesianCount=6, elapsed 0:00:00.000133
+solve: TwoPrimesEntry(name=A1,length=2,value: $variablevalue I,
+	identities=[A1[0]=D1[0]],referrers=[D1],
+	values={11,41,59,89},
+	digits=[{1,4,5,8},{1,9}]
+Eval TwoPrimesEntry D6 cartesianCount=10, elapsed 0:00:00.000358
+solve: TwoPrimesEntry(name=D6,length=4,value: $variablevalue P * $variablevalue S,
+	identities=[D6[1]=A10[1],D6[3]=A14[1]],referrers=[A10,A14],
+	values={1363,3337,3763},
+	digits=[{1,3},{3,7},{3,6},{3,7}]
+S={47,53}
+Eval TwoPrimesEntry A10 cartesianCount=2, elapsed 0:00:00.000096
+solve: TwoPrimesEntry(name=A10,length=2,value: $variablevalue S,
+	identities=[A10[0]=D10[0],A10[1]=D6[1]],referrers=[D10,D6],
+	values={47,53},
+	digits=[{4,5},{3,7}]
+Eval TwoPrimesEntry D6 cartesianCount=2, elapsed 0:00:00.000140
+Eval TwoPrimesEntry A10 cartesianCount=2, elapsed 0:00:00.000060
+Eval TwoPrimesEntry D9 cartesianCount=2, elapsed 0:00:00.000105
+solve: TwoPrimesEntry(name=D9,length=3,value: $variablevalue P + $variablevalue S,
+	identities=[D9[0]=A8[1],D9[1]=A11[2]],referrers=[A8,A11],
+	values={118},
+	digits=[{1},{1},{8}]
+Eval TwoPrimesEntry D9 cartesianCount=2, elapsed 0:00:00.000115
+Eval TwoPrimesEntry A11 cartesianCount=4, elapsed 0:00:00.000234
+solve: TwoPrimesEntry(name=A11,length=4,value: $variablevalue E * $variablevalue E,
+	identities=[A11[0]=D11[0],A11[1]=D12[0],A11[2]=D9[1],A11[3]=D10[1]],referrers=[D11,D12,D9,D10],
+	values={1411},
+	digits=[{1},{4},{1},{1}]
+E={17,83}
+Eval TwoPrimesEntry D11 cartesianCount=2, elapsed 0:00:00.000041
+solve: TwoPrimesEntry(name=D11,length=2,value: $variablevalue E,
+	identities=[D11[0]=A11[0],D11[1]=A13[1]],referrers=[A11,A13],
+	values={17},
+	digits=[{1},{7}]
+Eval TwoPrimesEntry A14 cartesianCount=2, elapsed 0:00:00.000056
+solve: TwoPrimesEntry(name=A14,length=2,value: $variablevalue E,
+	identities=[A14[1]=D6[3]],referrers=[D6],
+	values={83},
+	digits=[{8},{3}]
+Eval TwoPrimesEntry D6 cartesianCount=2, elapsed 0:00:00.000087
+solve: TwoPrimesEntry(name=D6,length=4,value: $variablevalue P * $variablevalue S,
+	identities=[D6[1]=A10[1],D6[3]=A14[1]],referrers=[A10,A14],
+	values={1363,3763},
+	digits=[{1,3},{3,7},{6},{3}]
+Eval TwoPrimesEntry A14 cartesianCount=2, elapsed 0:00:00.000053
+Eval TwoPrimesEntry A10 cartesianCount=2, elapsed 0:00:00.000062
+Eval TwoPrimesEntry A11 cartesianCount=2, elapsed 0:00:00.000296
+Eval TwoPrimesEntry D9 cartesianCount=2, elapsed 0:00:00.000114
+Eval TwoPrimesEntry D10 cartesianCount=6, elapsed 0:00:00.000126
+solve: TwoPrimesEntry(name=D10,length=2,value: $variablevalue I,
+	identities=[D10[0]=A10[0],D10[1]=A11[3]],referrers=[A10,A11],
+	values={41},
+	digits=[{4},{1}]
+I={41,59}
+Eval TwoPrimesEntry A11 cartesianCount=2, elapsed 0:00:00.000065
+Eval TwoPrimesEntry A10 cartesianCount=2, elapsed 0:00:00.000038
+solve: TwoPrimesEntry(name=A10,length=2,value: $variablevalue S,
+	identities=[A10[0]=D10[0],A10[1]=D6[1]],referrers=[D10,D6],
+	values={47},
+	digits=[{4},{7}]
+Eval TwoPrimesEntry D6 cartesianCount=2, elapsed 0:00:00.000081
+solve: TwoPrimesEntry(name=D6,length=4,value: $variablevalue P * $variablevalue S,
+	identities=[D6[1]=A10[1],D6[3]=A14[1]],referrers=[A10,A14],
+	values={3763},
+	digits=[{3},{7},{6},{3}]
+Eval TwoPrimesEntry A14 cartesianCount=2, elapsed 0:00:00.000047
+Eval TwoPrimesEntry A10 cartesianCount=2, elapsed 0:00:00.000035
+Eval TwoPrimesEntry D10 cartesianCount=2, elapsed 0:00:00.000028
+Eval TwoPrimesEntry A1 cartesianCount=2, elapsed 0:00:00.000098
+solve: TwoPrimesEntry(name=A1,length=2,value: $variablevalue I,
+	identities=[A1[0]=D1[0]],referrers=[D1],
+	values={59},
+	digits=[{5},{9}]
+Eval TwoPrimesEntry D5 cartesianCount=13, elapsed 0:00:00.000308
+solve: TwoPrimesEntry(name=D5,length=2,value: $variablevalue R,
+	identities=[D5[0]=A5[0],D5[1]=A7[1]],referrers=[A5,A7],
+	values={89},
+	digits=[{8},{9}]
+R={11,29,41,59,71,89}
+Eval TwoPrimesEntry D5 cartesianCount=6, elapsed 0:00:00.000174
+Eval TwoPrimesEntry A3 cartesianCount=2, elapsed 0:00:00.000079
+solve: TwoPrimesEntry(name=A3,length=3,value: PR,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={319},
+	digits=[{3},{1},{9}]
+R={11}
+Eval TwoPrimesEntry D4 cartesianCount=2, elapsed 0:00:00.000104
+solve: TwoPrimesEntry(name=D4,length=2,value: $variablevalue P - $variablevalue R - $variablevalue S,
+	identities=[D4[0]=A3[1],D4[1]=A5[3]],referrers=[A3,A5],
+	values={13},
+	digits=[{1},{3}]
+S={47}
+Eval TwoPrimesEntry A13 cartesianCount=2, elapsed 0:00:00.000065
+solve: TwoPrimesEntry(name=A13,length=3,value: $variablevalue E + $variablevalue R,
+	identities=[A13[1]=D11[1],A13[2]=D12[1]],referrers=[D11,D12],
+	values={172},
+	digits=[{1},{7},{2}]
+Eval TwoPrimesEntry D11 cartesianCount=2, elapsed 0:00:00.000054
+Eval TwoPrimesEntry A13 cartesianCount=2, elapsed 0:00:00.000074
+Eval TwoPrimesEntry D3 cartesianCount=13, elapsed 0:00:00.000279
+solve: TwoPrimesEntry(name=D3,length=2,value: $variablevalue M * $variablevalue R,
+	identities=[D3[0]=A3[0],D3[1]=A5[2]],referrers=[A3,A5],
+	values={33},
+	digits=[{3},{3}]
+M={3,97}
+Eval TwoPrimesEntry D3 cartesianCount=2, elapsed 0:00:00.000065
+Eval TwoPrimesEntry D2 cartesianCount=2, elapsed 0:00:00.000064
+solve: TwoPrimesEntry(name=D2,length=3,value: $variablevalue M * $variablevalue R,
+	identities=[D2[1]=A5[1],D2[2]=A8[0]],referrers=[A5,A8],
+	values={267},
+	digits=[{2},{6},{7}]
+Eval TwoPrimesEntry A5 cartesianCount=2, elapsed 0:00:00.000075
+solve: TwoPrimesEntry(name=A5,length=4,value: $variablevalue M * $variablevalue R,
+	identities=[A5[0]=D5[0],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1]],referrers=[D5,D2,D3,D4],
+	values={8633},
+	digits=[{8},{6},{3},{3}]
+Eval TwoPrimesEntry D2 cartesianCount=2, elapsed 0:00:00.000066
+Eval TwoPrimesEntry A5 cartesianCount=2, elapsed 0:00:00.000076
+Eval TwoPrimesEntry D3 cartesianCount=2, elapsed 0:00:00.000084
+Eval TwoPrimesEntry D1 cartesianCount=4, elapsed 0:00:00.000123
+solve: TwoPrimesEntry(name=D1,length=4,value: $variablevalue I * $variablevalue M,
+	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
+	values={5723},
+	digits=[{5},{7},{2},{3}]
+Eval TwoPrimesEntry A1 cartesianCount=2, elapsed 0:00:00.000040
+Eval TwoPrimesEntry A14 cartesianCount=2, elapsed 0:00:00.000022
+Eval TwoPrimesEntry D10 cartesianCount=2, elapsed 0:00:00.000030
+Clue/Variable iterations=92, updates=43, elapsed 0:00:00.062394
+SOLUTION-----------------------------
+Puzzle Summary
+A1, $variablevalue I, values={59}
+A3, PR, values={319}
+A5, $variablevalue M * $variablevalue R, values={8633}
+A7, $variablevalue P, values={29}
+A8, $variablevalue P, values={71}
+A10, $variablevalue S, values={47}
+A11, $variablevalue E * $variablevalue E, values={1411}
+A13, $variablevalue E + $variablevalue R, values={172}
+A14, $variablevalue E, values={83}
+D1, $variablevalue I * $variablevalue M, values={5723}
+D2, $variablevalue M * $variablevalue R, values={267}
+D3, $variablevalue M * $variablevalue R, values={33}
+D4, $variablevalue P - $variablevalue R - $variablevalue S, values={13}
+D5, $variablevalue R, values={89}
+D6, $variablevalue P * $variablevalue S, values={3763}
+D9, $variablevalue P + $variablevalue S, values={118}
+D10, $variablevalue I, values={41}
+D11, $variablevalue E, values={17}
+D12, $variablevalue P - $variablevalue P, values={42}
++--+--+--+--+--+--+
+| 5  9| 2| 3  1  9|
++   --+  +      --+
+| 7| 8  6  3  3| 3|
++  +      --+--+  +
+| 2  9| 7  1| 4  7|
++   --+--+  +     +
+| 3| 1  4  1  1| 6|
++--+         --+  +
+| 1  7  2| 8| 8  3|
++--+--+--+--+--+--+
+Variables:
+E={17,83}
+I={41,59}
+M={3,97}
+P={29}
+R={11}
+S={47}
 

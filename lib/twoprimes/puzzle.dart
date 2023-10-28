@@ -32,7 +32,9 @@ class TwoPrimesPuzzle
     return;
   }
 
+  @override
   void initVariablePuzzle(List<int>? possibleValues) {
+    super.initVariablePuzzle(possibleValues);
     final puzzleMonadics = [
       Monadic('variablevalue', variablevalues, Iterable<int>),
     ];

@@ -18,8 +18,8 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     '|7 :  |8 :9 |10:  |',
     '+::+--+--+::+::+::+',
     '|  |11:12:  :  |  |',
-    '+::+::+::+::+--+::+',
-    '|13:  :  :  |14:  |',
+    '+--+::+::+::+--+::+',
+    '|13:  :  |  |14:  |',
     '+--+--+--+--+--+--+',
   ];
 
@@ -45,25 +45,56 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
       }
     }
 
-    clueWrapper(name: 'A1', length: 3, valueDesc: r'I');
-    clueWrapper(name: 'A3', length: 3, valueDesc: r'PR');
-    clueWrapper(name: 'A5', length: 5, valueDesc: r'MR');
-    clueWrapper(name: 'A7', length: 2, valueDesc: r'P');
-    clueWrapper(name: 'A8', length: 2, valueDesc: r'P');
-    clueWrapper(name: 'A10', length: 2, valueDesc: r'S');
-    clueWrapper(name: 'A11', length: 5, valueDesc: r'EE');
-    clueWrapper(name: 'A13', length: 4, valueDesc: r'E + R');
-    clueWrapper(name: 'A14', length: 2, valueDesc: r'E');
-    clueWrapper(name: 'D1', length: 5, valueDesc: r'IM');
-    clueWrapper(name: 'D2', length: 3, valueDesc: r'MR');
-    clueWrapper(name: 'D3', length: 2, valueDesc: r'MR');
-    clueWrapper(name: 'D4', length: 2, valueDesc: r'P - R - S');
-    clueWrapper(name: 'D5', length: 2, valueDesc: r'R');
-    clueWrapper(name: 'D6', length: 4, valueDesc: r'PS');
-    clueWrapper(name: 'D9', length: 3, valueDesc: r'P + S');
-    clueWrapper(name: 'D10', length: 3, valueDesc: r'I');
-    clueWrapper(name: 'D11', length: 2, valueDesc: r'E');
-    clueWrapper(name: 'D12', length: 2, valueDesc: r'P - P');
+    clueWrapper(name: 'A1', length: 2, valueDesc: r"$variablevalue I");
+    clueWrapper(name: 'A3', length: 3, valueDesc: r"PR");
+    clueWrapper(
+        name: 'A5',
+        length: 4,
+        valueDesc: r"$variablevalue M * $variablevalue R");
+    clueWrapper(name: 'A7', length: 2, valueDesc: r"$variablevalue P");
+    clueWrapper(name: 'A8', length: 2, valueDesc: r"$variablevalue P");
+    clueWrapper(name: 'A10', length: 2, valueDesc: r"$variablevalue S");
+    clueWrapper(
+        name: 'A11',
+        length: 4,
+        valueDesc: r"$variablevalue E * $variablevalue E");
+    clueWrapper(
+        name: 'A13',
+        length: 3,
+        valueDesc: r"$variablevalue E + $variablevalue R");
+    clueWrapper(name: 'A14', length: 2, valueDesc: r"$variablevalue E");
+
+    clueWrapper(
+        name: 'D1',
+        length: 4,
+        valueDesc: r"$variablevalue I * $variablevalue M");
+    clueWrapper(
+        name: 'D2',
+        length: 3,
+        valueDesc: r"$variablevalue M * $variablevalue R");
+    clueWrapper(
+        name: 'D3',
+        length: 2,
+        valueDesc: r"$variablevalue M * $variablevalue R");
+    clueWrapper(
+        name: 'D4',
+        length: 2,
+        valueDesc: r"$variablevalue P - $variablevalue R - $variablevalue S");
+    clueWrapper(name: 'D5', length: 2, valueDesc: r"$variablevalue R");
+    clueWrapper(
+        name: 'D6',
+        length: 4,
+        valueDesc: r"$variablevalue P * $variablevalue S");
+    clueWrapper(
+        name: 'D9',
+        length: 3,
+        valueDesc: r"$variablevalue P + $variablevalue S");
+    clueWrapper(name: 'D10', length: 2, valueDesc: r"$variablevalue I");
+    clueWrapper(name: 'D11', length: 2, valueDesc: r"$variablevalue E");
+    clueWrapper(
+        name: 'D12',
+        length: 2,
+        valueDesc: r"$variablevalue P - $variablevalue P");
 
     if (clueErrors != '') {
       throw PuzzleException(clueErrors);
@@ -72,9 +103,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     puzzle.validateEntriesFromGrid();
     puzzle.addDigitIdentityFromGrid();
 
-    var letters = [
-      // variables
-    ];
+    var letters = ['E', 'I', 'M', 'P', 'R', 'S'];
     for (var letter in letters) {
       puzzle.letters[letter] = TwoPrimesVariable(letter);
     }
