@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "twoprimes",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "twoprimes"
+            ]
+        },
+        {
             "name": "knights",
             "type": "dart",
             "request": "launch",

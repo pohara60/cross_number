@@ -104,6 +104,12 @@ class Scanner {
     });
   }
 
+  static void addMonadics(List<Monadic> monadicList) {
+    monadicList.forEach((monadic) {
+      monadics[monadic.name] = monadic;
+    });
+  }
+
   static Iterable<Token?> generateTokens(String text,
       [String variablePrefix = '']) sync* {
     if (!initialized) initialize();

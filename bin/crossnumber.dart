@@ -24,6 +24,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
+import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/wheels/wheels.dart';
 
 const help = 'help';
@@ -54,7 +55,8 @@ void main(List<String> arguments) async {
     ..addCommand(PrimeCuts2Command())
     ..addCommand(ABCDCommand())
     ..addCommand(ColumnsCommand())
-    ..addCommand(KnightsCommand());
+    ..addCommand(KnightsCommand())
+    ..addCommand(TwoPrimesCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -442,6 +444,28 @@ class KnightsCommand extends Command {
     // Get and print solve
     try {
       final pc = Knights();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class TwoPrimesCommand extends Command {
+  @override
+  final name = 'twoprimes';
+  @override
+  final description = 'solve hardcoded twoprimes puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = TwoPrimes();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
