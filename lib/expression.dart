@@ -11,15 +11,19 @@ mixin Expression {
   late ExpressionEvaluator exp;
 
   void initExpression(String? valueDesc, variablePrefix, String name,
-      VariableRefList variableRefs) {
+      VariableRefList variableRefs,
+      [List<String>? entryNames]) {
     if (valueDesc != null && valueDesc != '') {
       try {
-        exp = ExpressionEvaluator(valueDesc, variablePrefix);
+        exp = ExpressionEvaluator(valueDesc, variablePrefix, entryNames);
         for (var variableName in exp.variableRefs..sort()) {
           variableRefs.addVariableReference(variableName);
         }
         for (var clueName in exp.clueRefs..sort()) {
-          variableRefs.addClueReference(clueName);
+          if (entryNames != null && entryNames.contains(clueName))
+            variableRefs.addEntryReference(clueName);
+          else
+            variableRefs.addClueReference(clueName);
         }
       } on ExpressionError catch (e) {
         throw ExpressionError('$name expression $valueDesc error ${e.msg}');
@@ -111,7 +115,7 @@ class Scanner {
   }
 
   static Iterable<Token?> generateTokens(String text,
-      [String variablePrefix = '']) sync* {
+      [String variablePrefix = '', List<String>? entryNames]) sync* {
     if (!initialized) initialize();
     Iterable<RegExpMatch> matches = regExp.allMatches(text);
     for (final m in matches) {
@@ -123,7 +127,12 @@ class Scanner {
         yield Token(match!, CLUE, name: match.toUpperCase());
       }
       if (m.namedGroup(VAR) != null) {
-        yield Token(match!, VAR, name: variablePrefix + match);
+        if (entryNames != null && entryNames.contains(match)) {
+          // Simple alpha entry names are scanned as variables
+          // The name is case sensitive
+          yield Token(match!, CLUE, name: match);
+        } else
+          yield Token(match!, VAR, name: variablePrefix + match);
       }
       if (m.namedGroup(GENERATOR) != null) {
         var name = match!.substring(1).toLowerCase();
@@ -356,18 +365,23 @@ class ExpressionEvaluator {
   List<int>? variableValues;
 
   // Hard-coded result generator
+  late final bool usesResult;
   int? result;
   num? minResult;
   num? maxResult;
   List<int>? knownResults;
 
-  ExpressionEvaluator(this.text, [this.variablePrefix = '']) {
-    var tokenIterable = Scanner.generateTokens(text, variablePrefix);
+  ExpressionEvaluator(this.text,
+      [this.variablePrefix = '', List<String>? entryNames]) {
+    var tokenIterable =
+        Scanner.generateTokens(text, variablePrefix, entryNames);
     this.tokenIterator = tokenIterable.iterator;
     this.tok = null; // Last symbol consumed
     this.nexttok = null; // Next symbol tokenized
     this._advance(); // Load first lookahead token
     this._parse(); // Build tree
+    this.usesResult =
+        _hasToken(GENERATOR, "result"); // Does not yet use generator result
   }
 
   String toString() => this.tree == null ? '' : this.tree.toString();
@@ -377,6 +391,17 @@ class ExpressionEvaluator {
     if (this.nexttok != null) {
       throw ExpressionError('Parse error at ${this.nexttok.toString()}');
     }
+  }
+
+  bool _hasToken(String token, String name, [Node? node]) {
+    if (node == null) node = this.tree!;
+    if (node.token == token && node.token.name == name) return true;
+    if (node.operands != null) {
+      for (var child in node.operands!) {
+        if (_hasToken(token, name, child)) return true;
+      }
+    }
+    return false;
   }
 
   void getVariableReferences(List<String> references, [Node? node]) {
@@ -403,8 +428,8 @@ class ExpressionEvaluator {
   }
 
   Iterable<int> generate(
-    num min,
-    num max, [
+    num? min,
+    num? max, [
     List<String>? variableNames,
     List<int>? variableValues,
     Set<int>? knownResults,
@@ -412,9 +437,13 @@ class ExpressionEvaluator {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
     this.result = null;
+    if (min == null) min = 1;
+    if (max == null) max = 100000; // Arbitrarily large
     this.minResult = min;
     this.maxResult = max;
-    this.knownResults = knownResults?.toList()?..sort();
+    if (this.usesResult) {
+      this.knownResults = knownResults?.toList()?..sort();
+    }
     for (var value in this.gen(min, max, this.tree)) {
       num result = resultValue(value);
       if (isIntegerValue(result)) yield result.toInt();
@@ -1032,8 +1061,8 @@ class ExpressionEvaluator {
         if (monadic == null) {
           throw ExpressionError('Unknown monadic $name');
         }
-        const int intMaxValue =
-            9007199254740991; // Max for dart web, otherwise 9223372036854775807
+        // const int intMaxValue =
+        //     9007199254740991; // Max for dart web, otherwise 9223372036854775807
         var childNode = node.operands![0];
         // Heuristic for min/max of argument to function
         var fmin = 1;

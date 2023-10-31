@@ -70,6 +70,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var iterations = 0;
     var updates = 0;
     var remainingClues = List<Variable>.from(puzzle.clues.values).toList();
+    remainingClues.addAll(puzzle.entries.values);
     if (puzzle is VariablePuzzle) {
       remainingClues.addAll((puzzle as VariablePuzzle)
           .variables
@@ -88,11 +89,11 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var exceptionClues = <Variable>[];
     while (remainingClues.isNotEmpty) {
       remainingClues.forEach((clue) {
-        addToUpdateQueue(clue);
+        if (clue != previousClue) addToUpdateQueue(clue);
       });
       remainingClues.clear();
       exceptionClues.forEach((clue) {
-        addToUpdateQueue(clue);
+        if (clue != previousClue) addToUpdateQueue(clue);
       });
       exceptionClues.clear();
 
@@ -186,11 +187,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var updated = false;
     if (clue.initialise()) updated = true;
 
+    var updatedVariables = <String>{};
+    var updatedClues = <String>{};
+    var updatedEntries = <String>{};
     if (clue.solve != null) {
       var possibleValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
-      var updatedVariables = <String>{};
-      var updatedClues = <String>{};
       if (clue is VariableClue) {
         for (var variableName in clue.variableClueReferences) {
           possibleVariables[variableName] = <int>{};
@@ -205,7 +207,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
-      if (puzzle.updateValues(clue, possibleValue)) updated = true;
+      if (updateClues(clue.name, possibleValue)) updated = true;
       if (clue.finalise()) updated = true;
       if (clue is VariableClue) {
         for (var variableName in clue.variableReferences) {
@@ -220,20 +222,42 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
               updatedClues.add(clueName);
           }
         }
+        for (var entryName in clue.entryReferences) {
+          if (possibleVariables[entryName] != null) {
+            if (updateEntries(entryName, possibleVariables[entryName]!))
+              updatedEntries.add(entryName);
+          }
+        }
       }
+    } else {
+      // No solve function, but may have been updated elsewhere
+      // Check digits match
+      var values = clue.values;
+      if (values != null) {
+        var possibleValue = <int>{};
+        for (var value in values) {
+          if (clue.digitsMatch(value)) possibleValue.add(value);
+        }
+        // Do not update puzzle known values - need to clean this up
+        if (clue.updateValues(possibleValue)) updated = true;
+        if (clue.finalise()) updated = true;
+      }
+    }
 
-      if (traceSolve && updated) {
-        print("solve: ${clue.toString()}");
-        if (clue is VariableClue) {
-          var variableList = (puzzle as VariablePuzzle).variableList;
-          for (var variableName in updatedVariables) {
-            print(
-                '$variableName=${variableList.variables[variableName]!.values!.toShortString()}');
-          }
-          for (var clueName in updatedClues) {
-            print(
-                '$clueName=${puzzle.clues[clueName]!.values!.toShortString()}');
-          }
+    if (traceSolve && updated) {
+      print("solve: ${clue.toString()}");
+      if (clue is VariableClue) {
+        var variableList = (puzzle as VariablePuzzle).variableList;
+        for (var variableName in updatedVariables) {
+          print(
+              '$variableName=${variableList.variables[variableName]!.values!.toShortString()}');
+        }
+        for (var clueName in updatedClues) {
+          print('$clueName=${puzzle.clues[clueName]!.values!.toShortString()}');
+        }
+        for (var entryName in updatedEntries) {
+          print(
+              '$entryName=${puzzle.entries[entryName]!.values!.toShortString()}');
         }
       }
     }
@@ -276,7 +300,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
   bool updateClues(String clueName, Set<int> possibleValues) {
     var clue = puzzle.clues[clueName]!;
-    var updated = clue.updateValues(possibleValues);
+    var updated = puzzle.updateValues(clue, possibleValues);
     if (updated) {
       // Schedule clue for update (to check digits)
       addToUpdateQueue(clue);
@@ -289,6 +313,32 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         var variablePuzzle = puzzle as VariablePuzzle;
 
         for (var variableName in clue.variableReferences) {
+          var variable = variablePuzzle.variables[variableName]!;
+          if (variable is ExpressionVariable) {
+            addToUpdateQueue(variable);
+          }
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool updateEntries(String entryName, Set<int> possibleValues) {
+    var entry = puzzle.entries[entryName]!;
+    var updated = entry.updateValues(possibleValues);
+    if (updated) {
+      // Do not Schedule entry for update (to check digits)
+      // addToUpdateQueue(entry);
+      // Schedule referencing clues for update
+      for (var referrer in entry.referrers) {
+        addToUpdateQueue(referrer);
+      }
+      // Schedule referenced variables for update
+      if (puzzle is VariablePuzzle) {
+        var variablePuzzle = puzzle as VariablePuzzle;
+
+        for (var variableName in entry.variableReferences) {
           var variable = variablePuzzle.variables[variableName]!;
           if (variable is ExpressionVariable) {
             addToUpdateQueue(variable);
@@ -375,11 +425,11 @@ List<int>? getDigitProductEqualsOtherClue(Clue clue, Clue other) {
 }
 
 List<int>? getFactorsOfOtherClue(Clue clue, Clue other) {
-  if (other.values != null) {
+  if (other.values != null && clue.length != null) {
     var values = <int>{};
-    int loLimit = clue.min;
+    int loLimit = clue.min!;
     if (loLimit < 2) loLimit = 2;
-    int hiLimit = clue.max;
+    int hiLimit = clue.max!;
     for (var value in other.values!) {
       int lo = loLimit;
       int hi = value ~/ 2;
@@ -432,10 +482,10 @@ List<int>? getDigitProductOtherClue(Clue clue, Clue other) {
 }
 
 List<int>? getMultipleOfOtherClue(Clue clue, Clue other) {
-  if (other.values != null) {
+  if (other.values != null && clue.length != null) {
     var values = <int>[];
     for (var value in other.values!) {
-      var hi = (clue.max) ~/ value;
+      var hi = (clue.max!) ~/ value;
       for (var i = 2; i <= hi; i++) {
         var multiple = i * value;
         values.add(multiple);
@@ -487,7 +537,7 @@ int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
   for (var otherClue in otherClues) {
     var value = otherValues[index].toString();
     // Sum all digits of Across clues
-    for (var d = 0; d < otherClue.length; d++) {
+    for (var d = 0; d < otherClue.entry!.length!; d++) {
       var digit = int.parse(value[d]);
       // Exclude digits that intersect with the Clue
       if (otherClue.digitIdentities[d] != null) {
@@ -505,24 +555,26 @@ int sumClueDigits(Clue clue, List<Clue> otherClues, List<int> otherValues) {
 }
 
 Set<int>? getValuesFromClueDigits(Clue clue) {
-  return clue.getValuesFromClueDigits();
+  return clue.getValuesFromDigits();
 }
 
 List<int>? getMultiplesOfValues(Clue clue, List<int> values) {
   var multiples = <int>[];
-  var loResult = clue.min;
-  var hiResult = clue.max;
-  for (var value in values) {
-    var loMultiplier = loResult ~/ value;
-    if (loMultiplier < 2) loMultiplier = 2;
-    var hiMultiplier = hiResult ~/ value;
-    for (var multiplier = loMultiplier;
-        multiplier <= hiMultiplier;
-        multiplier++) {
-      var multiple = multiplier * value;
-      if (multiple < loResult) continue;
-      if (multiple >= hiResult) continue;
-      multiples.add(multiple);
+  if (clue.length != null) {
+    var loResult = clue.min!;
+    var hiResult = clue.max!;
+    for (var value in values) {
+      var loMultiplier = loResult ~/ value;
+      if (loMultiplier < 2) loMultiplier = 2;
+      var hiMultiplier = hiResult ~/ value;
+      for (var multiplier = loMultiplier;
+          multiplier <= hiMultiplier;
+          multiplier++) {
+        var multiple = multiplier * value;
+        if (multiple < loResult) continue;
+        if (multiple >= hiResult) continue;
+        multiples.add(multiple);
+      }
     }
   }
   return multiples;
@@ -530,12 +582,13 @@ List<int>? getMultiplesOfValues(Clue clue, List<int> values) {
 
 List<int>? getTriangularsLessValues(Clue clue, Set<int> values) {
   var result = <int>{};
+  if (clue.length == null) return [];
   var minInput =
       values.reduce((value, element) => element < value ? element : value);
   var maxInput =
       values.reduce((value, element) => element > value ? element : value);
-  var lo = clue.min;
-  var hi = clue.max;
+  var lo = clue.min!;
+  var hi = clue.max!;
   var minTriangle = lo + minInput;
   var maxTriangle = hi + maxInput;
   var triangles = generateTriangles(minTriangle, maxTriangle).toList();

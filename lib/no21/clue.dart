@@ -39,7 +39,7 @@ class No21Clue extends ExpressionClue {
   }
 
   setDoubleDigits() {
-    max = (10.pow(length + _cellsTwoDigits) as int) - 1;
+    max = (10.pow(length! + _cellsTwoDigits) as int) - 1;
   }
 
   @override
@@ -68,7 +68,7 @@ class No21Entry extends No21Clue with EntryMixin {
 
     var value = matchValue;
     if (digitMatches != null) digitMatches.add(<int>[]);
-    for (var d = this.length - 1; d >= 0; d--) {
+    for (var d = this.length! - 1; d >= 0; d--) {
       var digit = value % 10;
       if (!this.digits[d].contains(digit)) {
         if (digitMatches != null) digitMatches.removeLast();
@@ -83,13 +83,13 @@ class No21Entry extends No21Clue with EntryMixin {
   bool twoDigitsMatch(int matchValue, [List<List<int>>? digitMatches]) {
     var strValue = matchValue.toString();
     var anyMatch = false;
-    int numDoubleDigits = strValue.length - this.length;
+    int numDoubleDigits = strValue.length - this.length!;
     if (numDoubleDigits == 1) {
-      for (var dd = this.length - 1; dd >= 0; dd--) {
+      for (var dd = this.length! - 1; dd >= 0; dd--) {
         var match = true;
         var value = matchValue;
         if (digitMatches != null) digitMatches.add(<int>[]);
-        for (var d = this.length - 1; d >= 0; d--) {
+        for (var d = this.length! - 1; d >= 0; d--) {
           var divisor = dd == d ? 100 : 10;
           var minDigit = dd == d ? 10 : 0;
           var digit = value % divisor;
@@ -108,12 +108,12 @@ class No21Entry extends No21Clue with EntryMixin {
         }
       }
     } else if (numDoubleDigits == 2) {
-      for (var dd1 = this.length - 1; dd1 > 0; dd1--) {
+      for (var dd1 = this.length! - 1; dd1 > 0; dd1--) {
         var value = matchValue;
         for (var dd2 = dd1 - 1; dd2 >= 0; dd2--) {
           var match = true;
           if (digitMatches != null) digitMatches.add(<int>[]);
-          for (var d = this.length - 1; d >= 0; d--) {
+          for (var d = this.length! - 1; d >= 0; d--) {
             var divisor = dd1 == d || dd2 == d ? 100 : 10;
             var minDigit = dd1 == d || dd2 == d ? 10 : 0;
             var digit = value % divisor;
@@ -140,11 +140,11 @@ class No21Entry extends No21Clue with EntryMixin {
 
   bool updateDigits(Set<int> values) {
     var updated = false;
-    var possibleDigits = List.generate(length, (_) => <int>{});
+    var possibleDigits = List.generate(length!, (_) => <int>{});
     for (var value in values) {
       var digitMatches = <List<int>>[];
       if (digitsMatch(value, digitMatches)) {
-        for (var d = 0; d < length; d++) {
+        for (var d = 0; d < length!; d++) {
           for (var digitMatch in digitMatches) {
             var digit = digitMatch[d];
             possibleDigits[d].add(digit);
@@ -152,7 +152,7 @@ class No21Entry extends No21Clue with EntryMixin {
         }
       }
     }
-    for (var d = 0; d < length; d++) {
+    for (var d = 0; d < length!; d++) {
       if (updatePossible(digits[d], possibleDigits[d])) updated = true;
     }
 

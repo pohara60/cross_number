@@ -144,6 +144,20 @@ Enhancements:
 - ExpressionVariables have constraints in terms of expressions involving other variables (not yet clues). The solve queue now consists of Clues and ExpressionVariables (both extend Variable).
 - Solving a Clue/Variable can set other Clues and/or Variables - these must then be "solved" to execute their side effects (other Clue/Variables values, Entry digits).
 
+## Alphabetic Entries - implemented
+
+The IncreasingFibonnaci puzzle has these features:
+- Grid entries are labelled with alphabetic characters instead of numbers; uppercase for Across and lowercase for Down entries
+- The clues are labelled with roman numerals, they do not have lengths or map to grid entries, but instead have expressions that refer to the entry labels
+- There are additional constraints on the clue values (from a possible set, increasing)
+
+Enhancements
+- Support alphabetic entry labels
+- Support clues without lengths
+- Clue expression evaluation sets entry values (what about variables evaluation?)
+- Solve entries (as well as clues and variables) to filter values for matching digits
+
+
 ## Generic Puzzle (Future)
 
 A bigger feature is to allow generic specification of a puzzle, with:

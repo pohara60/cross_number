@@ -279,14 +279,14 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
         var sum = sumClueDigits(clue, otherClues, product);
         sums.add(sum);
       }
-      int lo = clue.min;
-      int hi = clue.max;
+      int lo = clue.min!;
+      int hi = clue.max!;
       for (var cube in cubes) {
         for (var sum in sums) {
           var valueWithoutDigits = cube + sum;
           // Iterate ove possible value digit sums
           for (var valueSumDigits = 1;
-              valueSumDigits <= 9 * clue.length;
+              valueSumDigits <= 9 * clue.length!;
               valueSumDigits++) {
             var value = valueWithoutDigits + valueSumDigits;
             if (value >= lo &&

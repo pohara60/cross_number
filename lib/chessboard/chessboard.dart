@@ -147,7 +147,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
       // Check entry digits for chessboard
       var entry = clue.entry as ChessboardEntry?;
       if (entry != null) {
-        for (var d = 0; d < entry.length; d++) {
+        for (var d = 0; d < entry.length!; d++) {
           if (entry.digits[d].length == 1) {
             // Chessboard logic
             // Remove the digit from similarly shaded squares
@@ -160,7 +160,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
                   in puzzle.clues.values.where((element) => element != entry)) {
                 var otherEntry = otherClue.entry as ChessboardEntry;
                 var otherUpdated = false;
-                for (var d = 0; d < otherEntry.length; d++) {
+                for (var d = 0; d < otherEntry.length!; d++) {
                   var otherMod = (otherEntry.row! + otherEntry.col! + d) % 2;
                   if (otherMod != mod) {
                     // Check not the same cell

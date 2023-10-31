@@ -23,4 +23,11 @@ class PrimeCuts2Puzzle
   List<int> get remainingPrimes => variableList.remainingValues!;
   Set<String> updatePrimes(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
+
+  @override
+  postProcessing([bool iteration = true]) {
+    if (iteration) {
+      print("NO ITERATION-----------------------------");
+    }
+  }
 }

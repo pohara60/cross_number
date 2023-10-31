@@ -107,6 +107,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     for (var clue in clues.values) {
       text += clue.toSummary() + '\n';
     }
+    for (var entry in entries.values) {
+      text += entry.toSummary() + '\n';
+    }
     if (grid != null) text += toSolution();
     return text;
   }
@@ -117,7 +120,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     var unique = true;
     var anyClue = false;
     var entryValues = <String, List<String>>{};
-    for (var clue in clues.values) {
+    for (var clue in entries.isNotEmpty ? entries.values : clues.values) {
       var values = clue.values ?? clue.entry?.values;
       if (values == null || values.length > 1) unique = false;
       if (clue.entry != null) {
@@ -157,9 +160,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       Variable clueOrVariable) sync* {
     if (!clueOrVariable.isSet) return;
     var value = clueOrVariable.values!.first;
-    var puzzle = this as VariablePuzzle;
     if (clueOrVariable is Clue) {
-      for (var clue in puzzle.clues.values.where((clue) =>
+      for (var clue in clues.values.where((clue) =>
           clue != clueOrVariable &&
           clue.values != null &&
           clue.values!.contains(value))) {
@@ -167,6 +169,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         yield clue;
       }
     } else {
+      var puzzle = this as VariablePuzzle;
       for (var variable in puzzle.variables.values.where((variable) =>
           variable != clueOrVariable &&
           variable.values != null &&
@@ -373,10 +376,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   bool clueValuesMatch(Clue clue, int value) {
     var match = true;
-    for (var d = 0; d < clue.length && match; d++) {
-      if (clue.digitIdentities[d] != null) {
-        var clue2 = clue.digitIdentities[d]!.clue;
-        var d2 = clue.digitIdentities[d]!.digit;
+    assert(clue.entry != null);
+    var entry = clue.entry!;
+    for (var d = 0; d < entry.length! && match; d++) {
+      if (entry.digitIdentities[d] != null) {
+        var clue2 = entry.digitIdentities[d]!.clue;
+        assert(clue2.entry != null);
+        var d2 = entry.digitIdentities[d]!.digit;
         if (solution[clue2] != null) {
           var value2 = solution[clue2]!.value;
           if (value2 != null) {
@@ -458,9 +464,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         // Get entry digits
         var digits = entryDigits[e.name];
         if (digits == null) {
-          entryDigits[e.name] = digits = List.generate(e.length, (index) => {});
+          entryDigits[e.name] =
+              digits = List.generate(e.length!, (index) => {});
         }
-        for (var d = 0; d < e.length; d++) {
+        for (var d = 0; d < e.length!; d++) {
           digits[d].addAll(e.digits[d]);
         }
       }
@@ -471,7 +478,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       updated = false;
       for (var entry in entries.values) {
         var e = entry as EntryMixin;
-        for (var d = 0; d < e.length; d++) {
+        for (var d = 0; d < e.length!; d++) {
           if (e.digitIdentities[d] != null) {
             var entry2 = e.digitIdentities[d]!.entry;
             var d2 = e.digitIdentities[d]!.digit;
@@ -498,7 +505,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       var digits = entryDigits[e.name];
       var product = 1;
       if (digits != null) {
-        for (var d = 0; d < e.length; d++) {
+        for (var d = 0; d < e.length!; d++) {
           e.digits[d] = digits[d];
           product *= digits[d].length;
         }
@@ -508,7 +515,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         if (product < 10000) {
           var values = <int>{};
           void addValues(int index, int value) {
-            if (index == e.length) {
+            if (index == e.length!) {
               values.add(value);
             } else {
               int nextValue = value * 10;
@@ -680,7 +687,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     // Generate sums of all combinations of entry digits
     var allDigits = <List<int>>[];
     for (var entry in _entries.values) {
-      for (var d = 0; d < entry.length; d++) {
+      for (var d = 0; d < entry.length!; d++) {
         // Avoid double-counting overlapping digits
         if (entry.isAcross ||
             entry.isDown && entry.digitIdentities[d] == null) {
@@ -733,18 +740,20 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
   }
 
-  String checkClueReferences(Map<String, ClueKind> clues) {
+  String checkClueReferences(Map<String, ClueKind> clues,
+      [Map<String, EntryKind>? entries]) {
     var clueError = '';
     for (var clue1 in clues.values) {
-      for (var clueName in clue1.clueReferences) {
-        var clue2 = clues[clueName];
+      for (var clueName
+          in entries != null ? clue1.entryReferences : clue1.clueReferences) {
+        var clue2 = entries != null ? entries[clueName] : clues[clueName];
         if (clue2 == null) {
           clueError +=
-              "Clue ${clue1.name} expression '${clue1.valueDesc}' refers to clue '$clueName' which does not exist\n";
+              "Clue ${clue1.name} expression '${clue1.valueDesc}' refers to clue/entry '$clueName' which does not exist\n";
         } else {
           addClueReference(clue1, clue2);
-          // Simple circular reference check
-          if (clue2.clueReferences.contains(clue1.name)) {
+          // Simple circular reference check for clue/clue
+          if (entries == null && clue2.clueReferences.contains(clue1.name)) {
             clue1.circularClueReference = true;
             clue2.circularClueReference = true;
           }
@@ -756,6 +765,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 
   String checkClueClueReferences() {
     return checkClueReferences(clues);
+  }
+
+  String checkClueEntryReferences() {
+    return checkClueReferences(clues, entries);
   }
 
   String checkEntryClueReferences() {
@@ -844,7 +857,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     for (var product in cartesian(variableValues)) {
       var value = expression(product);
-      if (value >= clue.min && value < clue.max + 1) {
+      if (clue.length == null || value >= clue.min! && value < clue.max! + 1) {
         if (clue.digitsMatch(value)) {
           possibleValue.add(value);
           var index = 0;
@@ -884,7 +897,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     for (var product in cartesian(variableValues)) {
       try {
         var value = clue.exp.evaluate(clue.variableReferences, product);
-        if (value >= clue.min && value < clue.max + 1) {
+        if (clue.length == null ||
+            value >= clue.min! && value < clue.max! + 1) {
           var valid = validValue == null
               ? clue.digitsMatch(value)
               : validValue(clue, value, clue.variableReferences, product);
@@ -927,7 +941,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     // Unknown variable
     if (unknownVariable.isNotEmpty) {
       // Try guessing clue values
-      var clueValues = clue.getValuesFromClueDigits();
+      var clueValues = clue.getValuesFromDigits();
       if (clueValues != null) {
         possibleValue.addAll(clueValues);
         // Cannot update variables
@@ -956,7 +970,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       try {
         for (var value in clue.exp.generate(clue.min, clue.max,
             clue.variableClueReferences, product, clue.values)) {
-          if (value >= clue.min && value < clue.max + 1) {
+          if (clue.length == null ||
+              value >= clue.min! && value < clue.max! + 1) {
             var valid = validValue == null
                 ? clue.digitsMatch(value)
                 : validValue(clue, value, clue.variableClueReferences, product);
@@ -1021,7 +1036,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       List<List<int>> variableValues) {
     for (var otherClueName in clueReferences) {
       var name = otherClueName;
-      if (name[0] == 'E') name = name.substring(1);
+      // Entry names are single alpha or prefixed with E
+      if (name.length > 1 && name[0] == 'E') name = name.substring(1);
       var otherClue = clues[name]!;
       // Clue values may not yet be available
       var otherClueValues = otherClue.values;

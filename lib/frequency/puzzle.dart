@@ -34,7 +34,7 @@ class FrequencyPuzzle extends Puzzle<FrequencyClue, FrequencyEntry> {
       if (clue.values == null || clue.values!.length != 1) return null;
       var value = clue.values!.first.toString();
       // Get all digits of Across clues
-      for (var d = 0; d < clue.length; d++) {
+      for (var d = 0; d < clue.length!; d++) {
         var digit = int.parse(value[d]);
         // Exclude digits of Down clues that intersect with Across clues
         if (clue.name[0] == 'D') {

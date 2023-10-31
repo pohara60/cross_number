@@ -451,7 +451,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       try {
         for (var value in clueExp.exp.generate(
             clue.min, clue.max, clueExp.variableClueReferences, product)) {
-          if (value >= clue.min && value < clue.max + 1) {
+          if (value >= clue.min! && value < clue.max! + 1) {
             var valid = clue.digitsMatch(value);
             if (valid) {
               possibleValue.add(value);

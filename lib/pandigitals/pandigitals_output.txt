@@ -462,6 +462,24 @@ D8, , values={253}, entry={unknown}
 D9, , values={173}, entry={unknown}
 D10, , values={925}, entry={unknown}
 D12, , values={25}, entry={unknown}
+A1, values={unknown}
+D2, values={unknown}
+D3, values={unknown}
+A4, values={unknown}
+D4, values={unknown}
+D5, values={unknown}
+A6, values={unknown}
+A7, values={unknown}
+A8, values={unknown}
+D8, values={unknown}
+A9, values={unknown}
+D9, values={unknown}
+D10, values={unknown}
+A11, values={unknown}
+D12, values={unknown}
+A13, values={unknown}
+A14, values={unknown}
+A15, values={unknown}
 +--+--+--+--+--+--+
 | 4  6  7| 1  4  7|
 +--      +   --   +

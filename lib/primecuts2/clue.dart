@@ -46,10 +46,10 @@ class PrimeCutsClue extends ExpressionClue {
   }
 
   @override
-  Set<int>? getValuesFromClueDigits() {
+  Set<int>? getValuesFromDigits() {
     // Ok for entries
     if (this is EntryMixin) {
-      return super.getValuesFromClueDigits();
+      return super.getValuesFromDigits();
     }
     // Cannot get clue values from entry digits because they have additional prime digits
     return null;

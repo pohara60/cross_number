@@ -454,7 +454,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
       // Find required and forbidden digits in A36, check for D1 values that have them
       var required = <int>{};
       var forbidden = Set.from(List.generate(6, (index) => index + 1));
-      for (var d = 0; d < a36.length; d++) {
+      for (var d = 0; d < a36.length!; d++) {
         if (a36.digits[d].length == 1) {
           required.addAll(a36.digits[d]);
         }
@@ -621,8 +621,8 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
       DiceNetsEntry input2, possibleValue,
       [bool plus = false]) {
     if (input1.values != null && input2.values != null) {
-      var lo = 10.pow(output.length - 1) as int;
-      var hi = (10.pow(output.length) as int) - 1;
+      var lo = 10.pow(output.length! - 1) as int;
+      var hi = (10.pow(output.length!) as int) - 1;
       for (var value1 in input1.values!) {
         var values = <int>[];
         for (var value2 in input2.values!) {
@@ -646,8 +646,8 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
           .reduce((value, element) => element < value ? element : value);
       var maxInput = input.values!
           .reduce((value, element) => element > value ? element : value);
-      var lo = 10.pow(output.length - 1) as int;
-      var hi = (10.pow(output.length) as int) - 1;
+      var lo = 10.pow(output.length! - 1) as int;
+      var hi = (10.pow(output.length!) as int) - 1;
       int minSquare;
       int maxSquare;
       if (plus) {
@@ -674,7 +674,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   }
 
   static void findMultiplesOfPower(DiceNetsEntry clue, Set<int> possibleValue) {
-    var hi = clue.max;
+    var hi = clue.max!;
     var squares = getPowersInRange(1, hi);
     findMultiplesOfValues(clue, squares, possibleValue);
   }

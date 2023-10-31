@@ -228,19 +228,19 @@ RemainingValues: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 SOLVE------------
 UPDATES-----------------------------
-Eval D14 cartesianCount=1024, elapsed 0:00:00.007463
+Eval EvenOdderEntry D14 cartesianCount=1024, elapsed 0:00:00.006642
 solve: EvenOdderEntry(name=D14,length=3,value: UP,
 	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
 	values={100,102,104,105,108,110,112,114..117,119,120,124..126,128,130,132,133,253 more,992},
 	digits=[{1..9},{0..9},{0..9}]
 DP={4..23,10 more,33}
 DU={4..23,10 more,33}
-Eval D2 cartesianCount=30720, elapsed 0:00:00.059753
+Eval EvenOdderEntry D2 cartesianCount=30720, elapsed 0:00:00.059080
 solve: EvenOdderEntry(name=D2,length=2,value: T+A-U,
 	identities=[D2[0]=A1[2],D2[1]=A10[2]],referrers=[A1,A10],
 	values={10..29,32 more,61},
 	digits=[{1..6},{0..9}]
-Eval A1 cartesianCount=32768, elapsed 0:00:00.047528
+Eval EvenOdderEntry A1 cartesianCount=32768, elapsed 0:00:00.045108
 solve: EvenOdderEntry(name=A1,length=4,value: -M+AS+S!,
 	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
 	values={5021..5029,5031..5039,5041,5042,132 more,5269},
@@ -277,18 +277,18 @@ AT={2..5,8..23,10 more,33}
 DT={2..5,8..23,10 more,33}
 AU={4,5,8..25,8 more,33}
 DU={4,5,8..25,8 more,33}
-Eval D14 cartesianCount=784, elapsed 0:00:00.000502
+Eval EvenOdderEntry D14 cartesianCount=784, elapsed 0:00:00.000573
 solve: EvenOdderEntry(name=D14,length=3,value: UP,
 	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
 	values={100,104,105,108,110,112,115..117,120,124..126,128,130,132,135,136,140,143,240 more,992},
 	digits=[{1..9},{0..9},{0..9}]
-Eval A1 cartesianCount=810, elapsed 0:00:00.000571
+Eval EvenOdderEntry A1 cartesianCount=810, elapsed 0:00:00.000686
 solve: EvenOdderEntry(name=A1,length=4,value: -M+AS+S!,
 	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
 	values={5021..5029,5031..5039,5041,5042,131 more,5269},
 	digits=[{5},{0..2},{1..6},{1..9}]
-Eval D2 cartesianCount=22680, elapsed 0:00:00.014113
-Eval A25 cartesianCount=25200, elapsed 0:00:00.015698
+Eval EvenOdderEntry D2 cartesianCount=22680, elapsed 0:00:00.013338
+Eval EvenOdderEntry A25 cartesianCount=25200, elapsed 0:00:00.017639
 solve: EvenOdderEntry(name=A25,length=4,value: T(O!+P),
 	identities=[A25[0]=D18[2],A25[2]=D26[0],A25[3]=D19[2]],referrers=[D18,D26,D19],
 	values={1012,1014,1015,1020,1023..1026,1029,1032,1034..1036,1040,1044,1045,1048,1050,1053,1054,657 more,5016},
@@ -296,94 +296,91 @@ solve: EvenOdderEntry(name=A25,length=4,value: T(O!+P),
 AO={2..5}
 AP={4,8..26,7 more,33}
 AT={8..27,6 more,33}
-Eval A31 cartesianCount=3600, elapsed 0:00:00.002644
-solve: EvenOdderEntry(name=A31,length=2,value: B-O-S+E,
-	identities=[A31[0]=D18[3],A31[1]=D32[0]],referrers=[D18,D32],
-	values={11..19,21..29,31,32,22 more,56},
-	digits=[{1..5},{1..9}]
-Eval A25 cartesianCount=2808, elapsed 0:00:00.001599
-Eval A27 cartesianCount=3600, elapsed 0:00:00.002853
-solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
-	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
-	values={110..112,114..117,120,123..126,128..130,132,135,136,138,140,352 more,999},
-	digits=[{1..9},{1..9},{0..9}]
-AB={3..5,8..24,9 more,33}
-Eval A31 cartesianCount=3480, elapsed 0:00:00.002398
-Eval A27 cartesianCount=3480, elapsed 0:00:00.003332
-Eval A16 cartesianCount=3600, elapsed 0:00:00.001980
+Eval EvenOdderEntry A1 cartesianCount=810, elapsed 0:00:00.000680
+Eval EvenOdderEntry A25 cartesianCount=2808, elapsed 0:00:00.001515
+Eval EvenOdderEntry A16 cartesianCount=3600, elapsed 0:00:00.001786
 solve: EvenOdderEntry(name=A16,length=2,value: IO-NS,
 	identities=[A16[0]=D8[2],A16[1]=D17[0]],referrers=[D8,D17],
 	values={11..19,21..29,31,32,61 more,99},
 	digits=[{1..9},{1..9}]
 AI={8..27,6 more,33}
 AN={2..5,8..22}
-Eval A27 cartesianCount=2204, elapsed 0:00:00.002648
+Eval EvenOdderEntry A27 cartesianCount=2280, elapsed 0:00:00.001795
 solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
 	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
 	values={110..112,114..117,120,124..126,128,130,132,135,136,140,144,145,148,286 more,999},
 	digits=[{1..9},{1..9},{0..9}]
-Eval A16 cartesianCount=1976, elapsed 0:00:00.001458
-Eval A27 cartesianCount=2204, elapsed 0:00:00.002124
-Eval A31 cartesianCount=3480, elapsed 0:00:00.002701
-Eval D8 cartesianCount=13338, elapsed 0:00:00.048399
+AB={3..5,8..24,9 more,33}
+Eval EvenOdderEntry A16 cartesianCount=1976, elapsed 0:00:00.001500
+Eval EvenOdderEntry A27 cartesianCount=2204, elapsed 0:00:00.002165
+Eval EvenOdderEntry A25 cartesianCount=2808, elapsed 0:00:00.001686
+Eval EvenOdderEntry A31 cartesianCount=3480, elapsed 0:00:00.002984
+solve: EvenOdderEntry(name=A31,length=2,value: B-O-S+E,
+	identities=[A31[0]=D18[3],A31[1]=D32[0]],referrers=[D18,D32],
+	values={11..19,21..29,31,32,22 more,56},
+	digits=[{1..5},{1..9}]
+Eval EvenOdderEntry D8 cartesianCount=13338, elapsed 0:00:00.040139
 solve: EvenOdderEntry(name=D8,length=3,value: (S!/P-I)^N,
 	identities=[D8[0]=A6[2],D8[1]=A11[3],D8[2]=A16[0]],referrers=[A6,A11,A16],
 	values={121,125,144,169,196,216,225,243,256,289,324,343,361,441,484,512,529,576,625,676,4 more,961},
 	digits=[{1..9},{1,2,4..9},{1..6,9}]
 DN={2..5,8,9}
 DP={12,15,16,18,20,24,30}
-Eval D14 cartesianCount=196, elapsed 0:00:00.000287
+Eval EvenOdderEntry D14 cartesianCount=196, elapsed 0:00:00.000198
 solve: EvenOdderEntry(name=D14,length=3,value: UP,
 	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
 	values={100,108,120,128,132,135,144,150,156,160,162,165,168,176,180,192,195,198,200,204,98 more,990},
 	digits=[{1..9},{0..9},{0,2,4..6,8}]
-Eval A16 cartesianCount=624, elapsed 0:00:00.001416
+Eval EvenOdderEntry A16 cartesianCount=624, elapsed 0:00:00.000551
 solve: EvenOdderEntry(name=A16,length=2,value: IO-NS,
 	identities=[A16[0]=D8[2],A16[1]=D17[0]],referrers=[D8,D17],
 	values={11..19,21..29,31,32,43 more,99},
 	digits=[{1..6,9},{1..9}]
-Eval D8 cartesianCount=1092, elapsed 0:00:00.001306
-Eval D22 cartesianCount=4368, elapsed 0:00:00.003935
+Eval EvenOdderEntry D8 cartesianCount=1092, elapsed 0:00:00.000980
+Eval EvenOdderEntry A27 cartesianCount=696, elapsed 0:00:00.000787
+solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
+	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
+	values={110,112,115,120,126,128,135,136,140,144,150,152..154,160,162,165,168,170,171,173 more,858},
+	digits=[{1..8},{1..9},{0..9}]
+AB={5,8..26,7 more,33}
+Eval EvenOdderEntry A31 cartesianCount=3240, elapsed 0:00:00.003471
+Eval EvenOdderEntry D22 cartesianCount=4368, elapsed 0:00:00.003694
 solve: EvenOdderEntry(name=D22,length=5,value: I+S+O^S-P+I^N,
 	identities=[D22[0]=A21[3],D22[1]=A27[0],D22[3]=A37[4],D22[4]=A41[0]],referrers=[A21,A27,A37,A41],
-	values={12092,12098,12104,12106,12107,12236,12242,12244,12245,12248,13354,13364,13366,13368,13369,13372,13888,13898,13902,13903,606 more,99157},
-	digits=[{1..6,8,9},{1..9},{0..9},{0..9},{1..9}]
+	values={12092,12098,12104,12106,12107,12236,12242,12244,12245,12248,13354,13364,13366,13368,13369,13372,13888,13898,13902,13903,537 more,84261},
+	digits=[{1..6,8},{1..8},{0..9},{0..9},{1..9}]
 DN={2..5}
-Eval A27 cartesianCount=464, elapsed 0:00:00.000379
+Eval EvenOdderEntry A27 cartesianCount=432, elapsed 0:00:00.000393
 solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
 	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
 	values={112,120,126,128,135,136,140,144,150,152..154,160,162,165,168,170,171,176,180,121 more,693},
 	digits=[{1..6},{1..9},{0..9}]
 AB={8..27,6 more,33}
-Eval D8 cartesianCount=728, elapsed 0:00:00.000553
-Eval D22 cartesianCount=2912, elapsed 0:00:00.003276
-solve: EvenOdderEntry(name=D22,length=5,value: I+S+O^S-P+I^N,
-	identities=[D22[0]=A21[3],D22[1]=A27[0],D22[3]=A37[4],D22[4]=A41[0]],referrers=[A21,A27,A37,A41],
-	values={12092,12098,12104,12106,12107,12236,12242,12244,12245,12248,13354,13364,13366,13368,13369,13372,13888,13898,13902,13903,463 more,84261},
-	digits=[{1..6,8},{1..6},{0..9},{0..9},{1..9}]
-Eval A27 cartesianCount=416, elapsed 0:00:00.000682
-Eval D9 cartesianCount=2912, elapsed 0:00:00.002280
+Eval EvenOdderEntry D8 cartesianCount=728, elapsed 0:00:00.002176
+Eval EvenOdderEntry D9 cartesianCount=2912, elapsed 0:00:00.002066
 solve: EvenOdderEntry(name=D9,length=2,value: -P+SI-O-N-S,
 	identities=[D9[0]=A6[3],D9[1]=A11[4]],referrers=[A6,A11],
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
 DI={8..24}
-Eval D8 cartesianCount=476, elapsed 0:00:00.000294
-Eval D14 cartesianCount=168, elapsed 0:00:00.000086
+Eval EvenOdderEntry D8 cartesianCount=476, elapsed 0:00:00.000564
+Eval EvenOdderEntry D14 cartesianCount=168, elapsed 0:00:00.000120
 solve: EvenOdderEntry(name=D14,length=3,value: UP,
 	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
 	values={100,120,128,135,144,150,160,162,165,176,180,192,195,198,200,208,210,216,220,224,88 more,990},
 	digits=[{1..9},{0..9},{0,2,4..6,8}]
-Eval D8 cartesianCount=408, elapsed 0:00:00.000270
-Eval D22 cartesianCount=1632, elapsed 0:00:00.001099
+Eval EvenOdderEntry D8 cartesianCount=408, elapsed 0:00:00.000315
+Eval EvenOdderEntry D9 cartesianCount=1632, elapsed 0:00:00.001452
+Eval EvenOdderEntry D22 cartesianCount=1632, elapsed 0:00:00.002022
 solve: EvenOdderEntry(name=D22,length=5,value: I+S+O^S-P+I^N,
 	identities=[D22[0]=A21[3],D22[1]=A27[0],D22[3]=A37[4],D22[4]=A41[0]],referrers=[A21,A27,A37,A41],
 	values={12092,12098,12104,12106,12107,12236,12242,12244,12245,13354,13364,13366,13368,13369,13888,13898,13902,13903,14692,14698,260 more,84258},
 	digits=[{1..6,8},{1..6},{0..9},{0..9},{1..9}]
-Eval A27 cartesianCount=416, elapsed 0:00:00.000265
-Eval D9 cartesianCount=1632, elapsed 0:00:00.001260
-Eval A31 cartesianCount=3120, elapsed 0:00:00.002240
-Eval A11 cartesianCount=2880, elapsed 0:00:00.013187
+Eval EvenOdderEntry A27 cartesianCount=416, elapsed 0:00:00.000344
+Eval EvenOdderEntry D22 cartesianCount=1632, elapsed 0:00:00.001244
+Eval EvenOdderEntry D9 cartesianCount=1632, elapsed 0:00:00.001223
+Eval EvenOdderEntry A31 cartesianCount=3120, elapsed 0:00:00.002154
+Eval EvenOdderEntry A11 cartesianCount=2880, elapsed 0:00:00.013195
 solve: EvenOdderEntry(name=A11,length=5,value: ((P+H)(O-N)/O^N)!,
 	identities=[A11[0]=D5[1],A11[2]=D7[1],A11[3]=D8[1],A11[4]=D9[1]],referrers=[D5,D7,D8,D9],
 	values={40320},
@@ -416,18 +413,25 @@ AO={4}
 DO={5}
 AP={31}
 DP={30}
-Eval A33 cartesianCount=17, elapsed 0:00:00.000020
-solve: EvenOdderEntry(name=A33,length=3,value: (P-I-ON)!,
-	identities=[A33[0]=D28[1],A33[1]=D34[0],A33[2]=D24[2]],referrers=[D28,D34,D24],
-	values={120,720},
-	digits=[{1,7},{2},{0}]
-AI={17,18}
-Eval A16 cartesianCount=2, elapsed 0:00:00.000008
-solve: EvenOdderEntry(name=A16,length=2,value: IO-NS,
-	identities=[A16[0]=D8[2],A16[1]=D17[0]],referrers=[D8,D17],
-	values={54,58},
-	digits=[{5},{4,8}]
-Eval D8 cartesianCount=2, elapsed 0:00:00.000035
+Eval EvenOdderEntry D9 cartesianCount=17, elapsed 0:00:00.000035
+solve: EvenOdderEntry(name=D9,length=2,value: -P+SI-O-N-S,
+	identities=[D9[0]=A6[3],D9[1]=A11[4]],referrers=[A6,A11],
+	values={10,40,70},
+	digits=[{1,4,7},{0}]
+DI={9,14,19}
+Eval EvenOdderEntry D22 cartesianCount=3, elapsed 0:00:00.000009
+solve: EvenOdderEntry(name=D22,length=5,value: I+S+O^S-P+I^N,
+	identities=[D22[0]=A21[3],D22[1]=A27[0],D22[3]=A37[4],D22[4]=A41[0]],referrers=[A21,A27,A37,A41],
+	values={16339,22479},
+	digits=[{1,2},{2,6},{3,4},{3,7},{9}]
+DI={9,19}
+Eval EvenOdderEntry D9 cartesianCount=2, elapsed 0:00:00.000007
+solve: EvenOdderEntry(name=D9,length=2,value: -P+SI-O-N-S,
+	identities=[D9[0]=A6[3],D9[1]=A11[4]],referrers=[A6,A11],
+	values={10,70},
+	digits=[{1,7},{0}]
+Eval EvenOdderEntry D9 cartesianCount=2, elapsed 0:00:00.000005
+Eval EvenOdderEntry D8 cartesianCount=2, elapsed 0:00:00.000007
 solve: EvenOdderEntry(name=D8,length=3,value: (S!/P-I)^N,
 	identities=[D8[0]=A6[2],D8[1]=A11[3],D8[2]=A16[0]],referrers=[A6,A11,A16],
 	values={125},
@@ -458,25 +462,29 @@ solve: EvenOdderEntry(name=A16,length=2,value: IO-NS,
 	identities=[A16[0]=D8[2],A16[1]=D17[0]],referrers=[D8,D17],
 	values={58},
 	digits=[{5},{8}]
-solve: EvenOdderEntry(name=D9,length=2,value: -P+SI-O-N-S,
-	identities=[D9[0]=A6[3],D9[1]=A11[4]],referrers=[A6,A11],
-	values={70},
-	digits=[{7},{0}]
 solve: EvenOdderEntry(name=A33,length=3,value: (P-I-ON)!,
 	identities=[A33[0]=D28[1],A33[1]=D34[0],A33[2]=D24[2]],referrers=[D28,D34,D24],
 	values={120},
 	digits=[{1},{2},{0}]
+solve: EvenOdderEntry(name=D9,length=2,value: -P+SI-O-N-S,
+	identities=[D9[0]=A6[3],D9[1]=A11[4]],referrers=[A6,A11],
+	values={70},
+	digits=[{7},{0}]
 solve: EvenOdderEntry(name=D22,length=5,value: I+S+O^S-P+I^N,
 	identities=[D22[0]=A21[3],D22[1]=A27[0],D22[3]=A37[4],D22[4]=A41[0]],referrers=[A21,A27,A37,A41],
 	values={22479},
 	digits=[{2},{2},{4},{7},{9}]
-Eval A18 cartesianCount=20, elapsed 0:00:00.000027
-solve: EvenOdderEntry(name=A18,length=3,value: H-I+GG+S,
-	identities=[A18[0]=D18[0],A18[1]=D13[1],A18[2]=D14[1]],referrers=[D18,D13,D14],
-	values={103,122,143,166,191,218,247,278,311,422,463,506,551,598,647,698,751,806,863},
-	digits=[{1..8},{0..2,4..7,9},{1..3,6..8}]
-AG={9..17,20..29}
-Eval A6 cartesianCount=20, elapsed 0:00:00.000042
+Eval EvenOdderEntry D26 cartesianCount=20, elapsed 0:00:00.000035
+solve: EvenOdderEntry(name=D26,length=4,value: P+OS!+I+T+I-O-N!,
+	identities=[D26[0]=A25[2],D26[2]=A37[2],D26[3]=A40[2]],referrers=[A25,A37,A40],
+	values={3665..3674,3677..3686},
+	digits=[{3},{6},{6..8},{0..9}]
+Eval EvenOdderEntry D14 cartesianCount=20, elapsed 0:00:00.000016
+solve: EvenOdderEntry(name=D14,length=3,value: UP,
+	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
+	values={240,270,300,330,360,390,420,450,480,510,600,630,660,690,720,750,780,810,840,870},
+	digits=[{2..8},{0..9},{0}]
+Eval EvenOdderEntry A6 cartesianCount=20, elapsed 0:00:00.000023
 solve: EvenOdderEntry(name=A6,length=4,value: SPIN-O+R,
 	identities=[A6[1]=D7[0],A6[2]=D8[0],A6[3]=D9[0]],referrers=[D7,D8,D9],
 	values={7817},
@@ -490,6 +498,7 @@ DC={10..17,20..29}
 AE={10..17,20..29}
 DE={10..17,20..29}
 AG={10..17,20..29}
+DG={10..17,20..29}
 AL={10..17,20..29}
 DL={10..17,20..29}
 AM={10..17,20..29}
@@ -500,37 +509,19 @@ DT={10..17,20..29}
 AU={10..17,20..29}
 DU={10..17,20..29}
 AA={11..17,20..23,25..29}
-DG={10..17,20..29}
-Eval A18 cartesianCount=18, elapsed 0:00:00.000024
-solve: EvenOdderEntry(name=A18,length=3,value: H-I+GG+S,
-	identities=[A18[0]=D18[0],A18[1]=D13[1],A18[2]=D14[1]],referrers=[D18,D13,D14],
-	values={122,143,166,191,218,247,278,311,422,463,506,551,598,647,698,751,806,863},
-	digits=[{1..8},{0..2,4..7,9},{1..3,6..8}]
-Eval A41 cartesianCount=18, elapsed 0:00:00.000019
-solve: EvenOdderEntry(name=A41,length=2,value: B-O+R^N,
-	identities=[A41[0]=D22[4],A41[1]=D28[3]],referrers=[D22,D28],
-	values={90..94,97..99},
-	digits=[{9},{0..4,7..9}]
-AB={13..17,20..22}
-Eval A41 cartesianCount=8, elapsed 0:00:00.000011
-Eval A27 cartesianCount=8, elapsed 0:00:00.000012
-solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
-	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
-	values={221,238,255,272,289},
-	digits=[{2},{2,3,5,7,8},{1,2,5,8,9}]
-AB={13..17}
-Eval A41 cartesianCount=5, elapsed 0:00:00.000010
-solve: EvenOdderEntry(name=A41,length=2,value: B-O+R^N,
-	identities=[A41[0]=D22[4],A41[1]=D28[3]],referrers=[D22,D28],
-	values={90..94},
-	digits=[{9},{0..4}]
-Eval A27 cartesianCount=5, elapsed 0:00:00.000008
-Eval D26 cartesianCount=18, elapsed 0:00:00.000031
+Eval EvenOdderEntry D28 cartesianCount=18, elapsed 0:00:00.000025
+solve: EvenOdderEntry(name=D28,length=4,value: PO(S+I-T+R+O+N),
+	identities=[D28[0]=A27[1],D28[1]=A33[0],D28[3]=A41[1]],referrers=[A27,A33,A41],
+	values={2100,3150},
+	digits=[{2,3},{1},{0,5},{0}]
+DT={20,27}
+Eval EvenOdderEntry D28 cartesianCount=2, elapsed 0:00:00.000007
+Eval EvenOdderEntry D26 cartesianCount=2, elapsed 0:00:00.000007
 solve: EvenOdderEntry(name=D26,length=4,value: P+OS!+I+T+I-O-N!,
 	identities=[D26[0]=A25[2],D26[2]=A37[2],D26[3]=A40[2]],referrers=[A25,A37,A40],
-	values={3667..3674,3677..3686},
-	digits=[{3},{6},{6..8},{0..9}]
-Eval A25 cartesianCount=18, elapsed 0:00:00.000012
+	values={3677,3684},
+	digits=[{3},{6},{7,8},{4,7}]
+Eval EvenOdderEntry A25 cartesianCount=2, elapsed 0:00:00.000006
 solve: EvenOdderEntry(name=A25,length=4,value: T(O!+P),
 	identities=[A25[0]=D18[2],A25[2]=D26[0],A25[3]=D19[2]],referrers=[D18,D26,D19],
 	values={1430},
@@ -538,6 +529,8 @@ solve: EvenOdderEntry(name=A25,length=4,value: T(O!+P),
 AT={26}
 AA={11..17,20..23,25,28,29}
 DA={10,12..17,20..24,28,29}
+AB={10..17,20..25,28,29}
+DB={10..17,20..25,28,29}
 AC={10..17,20..25,28,29}
 DC={10..17,20..25,28,29}
 AE={10..17,20..25,28,29}
@@ -559,17 +552,22 @@ solve: EvenOdderEntry(name=D28,length=4,value: PO(S+I-T+R+O+N),
 	identities=[D28[0]=A27[1],D28[1]=A33[0],D28[3]=A41[1]],referrers=[A27,A33,A41],
 	values={2100},
 	digits=[{2},{1},{0},{0}]
-Eval A41 cartesianCount=5, elapsed 0:00:00.000006
-solve: EvenOdderEntry(name=A41,length=2,value: B-O+R^N,
-	identities=[A41[0]=D22[4],A41[1]=D28[3]],referrers=[D22,D28],
-	values={90},
-	digits=[{9},{0}]
+Eval EvenOdderEntry D19 cartesianCount=16, elapsed 0:00:00.000024
+solve: EvenOdderEntry(name=D19,length=4,value: (C+H+RO)NO-N!-S,
+	identities=[D19[0]=A19[0],D19[1]=A21[2],D19[2]=A25[3]],referrers=[A19,A21,A25],
+	values={1308,1503},
+	digits=[{1},{3,5},{0},{3,8}]
+DC={16,29}
+Eval EvenOdderEntry D19 cartesianCount=2, elapsed 0:00:00.000006
+Eval EvenOdderEntry A27 cartesianCount=16, elapsed 0:00:00.000014
+solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
+	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
+	values={221},
+	digits=[{2},{2},{1}]
 AB={13}
 AA={11,14..17,20..23,25,28,29}
 DA={10,14..17,20..24,28,29}
 DB={12}
-AC={10,11,14..17,20..25,28,29}
-DC={10,11,14..17,20..25,28,29}
 AE={10,11,14..17,20..25,28,29}
 DE={10,11,14..17,20..25,28,29}
 AG={10,11,14..17,20..25,28,29}
@@ -584,33 +582,26 @@ solve: EvenOdderEntry(name=D34,length=3,value: -B-O+HR,
 	identities=[D34[0]=A33[1],D34[1]=A38[0],D34[2]=A42[0]],referrers=[A33,A38,A42],
 	values={239},
 	digits=[{2},{3},{9}]
-solve: EvenOdderEntry(name=A27,length=3,value: B(O+S+O+N),
-	identities=[A27[0]=D22[1],A27[1]=D28[0],A27[2]=D15[3]],referrers=[D22,D28,D15],
-	values={221},
-	digits=[{2},{2},{1}]
-Eval A19 cartesianCount=12, elapsed 0:00:00.000014
+solve: EvenOdderEntry(name=A41,length=2,value: B-O+R^N,
+	identities=[A41[0]=D22[4],A41[1]=D28[3]],referrers=[D22,D28],
+	values={90},
+	digits=[{9},{0}]
+Eval EvenOdderEntry D19 cartesianCount=2, elapsed 0:00:00.000012
+Eval EvenOdderEntry A19 cartesianCount=12, elapsed 0:00:00.000013
 solve: EvenOdderEntry(name=A19,length=3,value: B(A-R+N),
 	identities=[A19[0]=D19[0],A19[1]=D4[3],A19[2]=D5[3]],referrers=[D19,D4,D5],
-	values={104,117,130,169,182,195,208,234,273,286},
-	digits=[{1,2},{0,1,3,6..9},{0,2..9}]
-AA={15..17,20..23,25,28,29}
-Eval D15 cartesianCount=14, elapsed 0:00:00.000021
-solve: EvenOdderEntry(name=D15,length=4,value: (-E+(I+N!)S+T-E)IN,
-	identities=[D15[1]=A20[0],D15[2]=A23[1],D15[3]=A27[2]],referrers=[A20,A23,A27],
-	values={7581,8151},
-	digits=[{7,8},{1,5},{5,8},{1}]
-DE={17,22}
-Eval D15 cartesianCount=2, elapsed 0:00:00.000006
-Eval D18 cartesianCount=2, elapsed 0:00:00.000008
+	values={104,117,130,169,182,195},
+	digits=[{1},{0,1,3,6,8,9},{0,2,4,5,7,9}]
+AA={15..17,20..22}
+Eval EvenOdderEntry D19 cartesianCount=2, elapsed 0:00:00.000007
+Eval EvenOdderEntry A19 cartesianCount=6, elapsed 0:00:00.000008
+Eval EvenOdderEntry D18 cartesianCount=14, elapsed 0:00:00.000016
 solve: EvenOdderEntry(name=D18,length=4,value: (T+E+NSO)R,
 	identities=[D18[0]=A18[0],D18[2]=A25[0],D18[3]=A31[0]],referrers=[A18,A25,A31],
 	values={1112},
 	digits=[{1},{1},{1},{2}]
 DE={22}
-AA={15..17,20,21,25,28,29}
-DA={14,16,17,20,21,24,28,29}
-AC={10,11,14..17,20,21,24,25,28,29}
-DC={10,11,14..17,20,21,24,25,28,29}
+AA={15..17,20,21}
 AE={23}
 AG={10,11,14..17,20,21,24,25,28,29}
 DG={10,11,14..17,20,21,24,25,28,29}
@@ -620,6 +611,7 @@ AM={10,11,14..17,20,21,24,25,28,29}
 DM={10,11,14..17,20,21,24,25,28,29}
 AU={10,11,14..17,20,21,24,25,28,29}
 DU={10,11,14..17,20,21,24,25,28,29}
+DA={14,16,17,20,21}
 solve: EvenOdderEntry(name=A31,length=2,value: B-O-S+E,
 	identities=[A31[0]=D18[3],A31[1]=D32[0]],referrers=[D18,D32],
 	values={25},
@@ -628,227 +620,200 @@ solve: EvenOdderEntry(name=D15,length=4,value: (-E+(I+N!)S+T-E)IN,
 	identities=[D15[1]=A20[0],D15[2]=A23[1],D15[3]=A27[2]],referrers=[A20,A23,A27],
 	values={7581},
 	digits=[{7},{5},{8},{1}]
-Eval D32 cartesianCount=8, elapsed 0:00:00.000011
+Eval EvenOdderEntry D32 cartesianCount=5, elapsed 0:00:00.000010
 solve: EvenOdderEntry(name=D32,length=3,value: P+HA+S+E-S,
 	identities=[D32[0]=A31[1],D32[1]=A37[1],D32[2]=A40[1]],referrers=[A31,A37,A40],
 	values={500,564,596},
 	digits=[{5},{0,6,9},{0,4,6}]
 DA={14,16,17}
-Eval D32 cartesianCount=3, elapsed 0:00:00.000006
-Eval A19 cartesianCount=3, elapsed 0:00:00.000005
+Eval EvenOdderEntry D32 cartesianCount=3, elapsed 0:00:00.000007
+Eval EvenOdderEntry A19 cartesianCount=3, elapsed 0:00:00.000005
 solve: EvenOdderEntry(name=A19,length=3,value: B(A-R+N),
 	identities=[A19[0]=D19[0],A19[1]=D4[3],A19[2]=D5[3]],referrers=[D19,D4,D5],
 	values={104,117,130},
 	digits=[{1},{0,1,3},{0,4,7}]
-Eval D19 cartesianCount=12, elapsed 0:00:00.000018
-solve: EvenOdderEntry(name=D19,length=4,value: (C+H+RO)NO-N!-S,
-	identities=[D19[0]=A19[0],D19[1]=A21[2],D19[2]=A25[3]],referrers=[A19,A21,A25],
-	values={1308,1503},
-	digits=[{1},{3,5},{0},{3,8}]
-DC={16,29}
-Eval D19 cartesianCount=2, elapsed 0:00:00.000005
-Eval A19 cartesianCount=3, elapsed 0:00:00.000005
-Eval A18 cartesianCount=12, elapsed 0:00:00.000012
-solve: EvenOdderEntry(name=A18,length=3,value: H-I+GG+S,
-	identities=[A18[0]=D18[0],A18[1]=D13[1],A18[2]=D14[1]],referrers=[D18,D13,D14],
-	values={122,143},
-	digits=[{1},{2,4},{2,3}]
-AG={10,11}
-Eval A18 cartesianCount=2, elapsed 0:00:00.000011
-Eval A4 cartesianCount=6, elapsed 0:00:00.000013
-solve: EvenOdderEntry(name=A4,length=2,value: S+T+R-A-N-G+E,
-	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
-	values={35..38},
-	digits=[{3},{5..8}]
-Eval D14 cartesianCount=12, elapsed 0:00:00.000008
-solve: EvenOdderEntry(name=D14,length=3,value: UP,
-	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
-	values={330,420,630,720},
-	digits=[{3,4,6,7},{2,3},{0}]
-DU={11,14,21,24}
-Eval A18 cartesianCount=2, elapsed 0:00:00.000005
-Eval D4 cartesianCount=4, elapsed 0:00:00.000011
-solve: EvenOdderEntry(name=D4,length=4,value: (N-E+U+T+R)(I-N)O,
-	identities=[D4[0]=A4[0],D4[2]=A14[2],D4[3]=A19[1]],referrers=[A4,A14,A19],
-	values={3200},
-	digits=[{3},{2},{0},{0}]
-DU={24}
-AL={10,11,14..17,20,21,28,29}
-DL={10,11,14..17,20,21,28,29}
-AM={10,11,14..17,20,21,28,29}
-DM={10,11,14..17,20,21,28,29}
-AU={25}
-solve: EvenOdderEntry(name=D14,length=3,value: UP,
-	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
-	values={720},
-	digits=[{7},{2},{0}]
-solve: EvenOdderEntry(name=A23,length=4,value: N+E+U-TR+(O-N)S!,
-	identities=[A23[0]=D5[4],A23[1]=D15[2],A23[2]=D24[0]],referrers=[D5,D15,D24],
-	values={9896},
-	digits=[{9},{8},{9},{6}]
-Eval A18 cartesianCount=2, elapsed 0:00:00.000006
+Eval EvenOdderEntry D19 cartesianCount=2, elapsed 0:00:00.000007
+Eval EvenOdderEntry A19 cartesianCount=3, elapsed 0:00:00.000005
+Eval EvenOdderEntry D32 cartesianCount=3, elapsed 0:00:00.000006
+Eval EvenOdderEntry D13 cartesianCount=12, elapsed 0:00:00.000014
+solve: EvenOdderEntry(name=D13,length=2,value: -S+L-I+T,
+	identities=[D13[0]=A12[1],D13[1]=A18[1]],referrers=[A12,A18],
+	values={12,13,16..19,22,23,26,27,30,31},
+	digits=[{1..3},{0..3,6..9}]
+Eval EvenOdderEntry A18 cartesianCount=12, elapsed 0:00:00.000193
 solve: EvenOdderEntry(name=A18,length=3,value: H-I+GG+S,
 	identities=[A18[0]=D18[0],A18[1]=D13[1],A18[2]=D14[1]],referrers=[D18,D13,D14],
 	values={122},
 	digits=[{1},{2},{2}]
 AG={10}
 DG={11}
-AL={14..17,20,21,28,29}
-DL={14..17,20,21,28,29}
-AM={14..17,20,21,28,29}
-DM={14..17,20,21,28,29}
+AL={14..17,20,21,24,25,28,29}
+DL={14..17,20,21,24,25,28,29}
+AM={14..17,20,21,24,25,28,29}
+DM={14..17,20,21,24,25,28,29}
+AU={14..17,20,21,24,25,28,29}
+DU={14..17,20,21,24,25,28,29}
 solve: EvenOdderEntry(name=D39,length=2,value: -S+T+R+I+N-G,
 	identities=[D39[0]=A38[1],D39[1]=A42[1]],referrers=[A38,A42],
 	values={40},
 	digits=[{4},{0}]
-Eval A14 cartesianCount=3, elapsed 0:00:00.000007
-solve: EvenOdderEntry(name=A14,length=3,value: G(A+U+G+E),
-	identities=[A14[0]=D14[0],A14[1]=D3[2],A14[2]=D4[2]],referrers=[D14,D3,D4],
-	values={730,740,750},
-	digits=[{7},{3..5},{0}]
-Eval A14 cartesianCount=3, elapsed 0:00:00.000022
-Eval A4 cartesianCount=3, elapsed 0:00:00.000010
+Eval EvenOdderEntry A4 cartesianCount=3, elapsed 0:00:00.000008
 solve: EvenOdderEntry(name=A4,length=2,value: S+T+R-A-N-G+E,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
 	values={36..38},
 	digits=[{3},{6..8}]
-Eval A19 cartesianCount=3, elapsed 0:00:00.000006
-solve: EvenOdderEntry(name=A19,length=3,value: B(A-R+N),
-	identities=[A19[0]=D19[0],A19[1]=D4[3],A19[2]=D5[3]],referrers=[D19,D4,D5],
-	values={104},
-	digits=[{1},{0},{4}]
-AA={15}
-DA={14}
-AL={16,17,20,21,28,29}
-DL={16,17,20,21,28,29}
-AM={16,17,20,21,28,29}
-DM={16,17,20,21,28,29}
-solve: EvenOdderEntry(name=A4,length=2,value: S+T+R-A-N-G+E,
-	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
-	values={38},
-	digits=[{3},{8}]
-solve: EvenOdderEntry(name=A14,length=3,value: G(A+U+G+E),
-	identities=[A14[0]=D14[0],A14[1]=D3[2],A14[2]=D4[2]],referrers=[D14,D3,D4],
-	values={730},
-	digits=[{7},{3},{0}]
-solve: EvenOdderEntry(name=D2,length=2,value: T+A-U,
-	identities=[D2[0]=A1[2],D2[1]=A10[2]],referrers=[A1,A10],
-	values={17},
-	digits=[{1},{7}]
-solve: EvenOdderEntry(name=D32,length=3,value: P+HA+S+E-S,
-	identities=[D32[0]=A31[1],D32[1]=A37[1],D32[2]=A40[1]],referrers=[A31,A37,A40],
-	values={500},
-	digits=[{5},{0},{0}]
-Eval D19 cartesianCount=2, elapsed 0:00:00.000007
-Eval A40 cartesianCount=6, elapsed 0:00:00.000012
-solve: EvenOdderEntry(name=A40,length=4,value: S!/O-(L-I+TO)N,
-	identities=[A40[0]=D37[1],A40[1]=D32[2],A40[2]=D26[3]],referrers=[D37,D32,D26],
-	values={1046,1048},
-	digits=[{1},{0},{4},{6,8}]
-AL={20,21}
-Eval A40 cartesianCount=2, elapsed 0:00:00.000006
-Eval A38 cartesianCount=2, elapsed 0:00:00.000006
-solve: EvenOdderEntry(name=A38,length=4,value: NI+ELS,
-	identities=[A38[0]=D34[1],A38[1]=D39[0],A38[3]=D36[1]],referrers=[D34,D39,D36],
-	values={3417},
-	digits=[{3},{4},{1},{7}]
-AL={21}
-DL={20}
-AM={16,17,28,29}
-DM={16,17,28,29}
-solve: EvenOdderEntry(name=A29,length=3,value: TU+N-N+E+L,
-	identities=[A29[0]=D24[1],A29[1]=D30[0],A29[2]=D17[3]],referrers=[D24,D30,D17],
-	values={694},
-	digits=[{6},{9},{4}]
-solve: EvenOdderEntry(name=A40,length=4,value: S!/O-(L-I+TO)N,
-	identities=[A40[0]=D37[1],A40[1]=D32[2],A40[2]=D26[3]],referrers=[D37,D32,D26],
-	values={1046},
-	digits=[{1},{0},{4},{6}]
+Eval EvenOdderEntry D13 cartesianCount=10, elapsed 0:00:00.000009
 solve: EvenOdderEntry(name=D13,length=2,value: -S+L-I+T,
 	identities=[D13[0]=A12[1],D13[1]=A18[1]],referrers=[A12,A18],
 	values={22},
 	digits=[{2},{2}]
-solve: EvenOdderEntry(name=A21,length=4,value: -P-OT-E^N+T+IAL,
-	identities=[A21[1]=D14[2],A21[2]=D19[1],A21[3]=D22[0]],referrers=[D14,D19,D22],
-	values={5032},
-	digits=[{5},{0},{3},{2}]
+DL={20}
+AL={21}
+AM={14..17,24,25,28,29}
+DM={14..17,24,25,28,29}
+AU={14..17,24,25,28,29}
+DU={14..17,24,25,28,29}
 solve: EvenOdderEntry(name=D3,length=3,value: (-S+I)(N-G+L+E+T),
 	identities=[D3[0]=A1[3],D3[1]=A10[3],D3[2]=A14[1]],referrers=[A1,A10,A14],
 	values={793},
 	digits=[{7},{9},{3}]
-solve: EvenOdderEntry(name=D30,length=2,value: -G-L+UO+N!,
-	identities=[D30[0]=A29[1],D30[1]=A35[0]],referrers=[A29,A35],
-	values={95},
-	digits=[{9},{5}]
-Eval D36 cartesianCount=2, elapsed 0:00:00.000006
+solve: EvenOdderEntry(name=A38,length=4,value: NI+ELS,
+	identities=[A38[0]=D34[1],A38[1]=D39[0],A38[3]=D36[1]],referrers=[D34,D39,D36],
+	values={3417},
+	digits=[{3},{4},{1},{7}]
+solve: EvenOdderEntry(name=A40,length=4,value: S!/O-(L-I+TO)N,
+	identities=[A40[0]=D37[1],A40[1]=D32[2],A40[2]=D26[3]],referrers=[D37,D32,D26],
+	values={1046},
+	digits=[{1},{0},{4},{6}]
+Eval EvenOdderEntry D36 cartesianCount=2, elapsed 0:00:00.000006
 solve: EvenOdderEntry(name=D36,length=3,value: EL+E-C+T+R-O+N,
 	identities=[D36[0]=A35[1],D36[1]=A38[3],D36[2]=A42[3]],referrers=[A35,A38,A42],
 	values={479},
 	digits=[{4},{7},{9}]
 DC={16}
+AA={15}
+DA={14}
 AC={17}
-AM={28,29}
-DM={28,29}
-solve: EvenOdderEntry(name=A42,length=4,value: N+UCL-E+AR,
-	identities=[A42[0]=D34[2],A42[1]=D39[1],A42[3]=D36[2]],referrers=[D34,D39,D36],
-	values={9039},
-	digits=[{9},{0},{3},{9}]
-solve: EvenOdderEntry(name=D24,length=3,value: (C)LU/R,
-	identities=[D24[0]=A23[2],D24[1]=A29[0],D24[2]=A33[2]],referrers=[A23,A29,A33],
-	values={960},
-	digits=[{9},{6},{0}]
-solve: EvenOdderEntry(name=D7,length=4,value: C+O-L+LAP+S-E,
-	identities=[D7[0]=A6[1],D7[1]=A11[2],D7[3]=A20[1]],referrers=[A6,A11,A20],
-	values={8385},
-	digits=[{8},{3},{8},{5}]
+AM={24,25,28,29}
+DM={24,25,28,29}
+AU={24,25,28,29}
+DU={24,25,28,29}
+solve: EvenOdderEntry(name=A21,length=4,value: -P-OT-E^N+T+IAL,
+	identities=[A21[1]=D14[2],A21[2]=D19[1],A21[3]=D22[0]],referrers=[D14,D19,D22],
+	values={5032},
+	digits=[{5},{0},{3},{2}]
 solve: EvenOdderEntry(name=D19,length=4,value: (C+H+RO)NO-N!-S,
 	identities=[D19[0]=A19[0],D19[1]=A21[2],D19[2]=A25[3]],referrers=[A19,A21,A25],
 	values={1308},
 	digits=[{1},{3},{0},{8}]
+solve: EvenOdderEntry(name=D32,length=3,value: P+HA+S+E-S,
+	identities=[D32[0]=A31[1],D32[1]=A37[1],D32[2]=A40[1]],referrers=[A31,A37,A40],
+	values={500},
+	digits=[{5},{0},{0}]
+solve: EvenOdderEntry(name=A19,length=3,value: B(A-R+N),
+	identities=[A19[0]=D19[0],A19[1]=D4[3],A19[2]=D5[3]],referrers=[D19,D4,D5],
+	values={104},
+	digits=[{1},{0},{4}]
 solve: EvenOdderEntry(name=A10,length=4,value: -P+AR+T+ICL+E,
 	identities=[A10[0]=D1[1],A10[2]=D2[1],A10[3]=D3[1]],referrers=[D1,D2,D3],
 	values={6579},
 	digits=[{6},{5},{7},{9}]
-Eval A20 cartesianCount=2, elapsed 0:00:00.000009
-solve: EvenOdderEntry(name=A20,length=4,value: (P+L)(AS+M-O!-N),
-	identities=[A20[0]=D15[1],A20[1]=D7[3],A20[3]=D17[1]],referrers=[D15,D7,D17],
-	values={5564},
-	digits=[{5},{5},{6},{4}]
-AM={28}
-DM={29}
-solve: EvenOdderEntry(name=D17,length=4,value: M+O-L+ECU-L+E,
-	identities=[D17[0]=A16[1],D17[1]=A20[3],D17[3]=A29[2]],referrers=[A16,A20,A29],
-	values={8464},
-	digits=[{8},{4},{6},{4}]
-solve: EvenOdderEntry(name=A12,length=2,value: A+T+O!+M-I+C,
-	identities=[A12[0]=D1[2],A12[1]=D13[0]],referrers=[D1,D13],
-	values={92},
-	digits=[{9},{2}]
-solve: EvenOdderEntry(name=A37,length=5,value: B+OTTO+M,
-	identities=[A37[0]=D37[0],A37[1]=D32[1],A37[2]=D26[2],A37[4]=D22[3]],referrers=[D37,D32,D26,D22],
-	values={10857},
-	digits=[{1},{0},{8},{5},{7}]
+solve: EvenOdderEntry(name=D7,length=4,value: C+O-L+LAP+S-E,
+	identities=[D7[0]=A6[1],D7[1]=A11[2],D7[3]=A20[1]],referrers=[A6,A11,A20],
+	values={8385},
+	digits=[{8},{3},{8},{5}]
+solve: EvenOdderEntry(name=A4,length=2,value: S+T+R-A-N-G+E,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
+	values={38},
+	digits=[{3},{8}]
+Eval EvenOdderEntry A23 cartesianCount=4, elapsed 0:00:00.000016
+solve: EvenOdderEntry(name=A23,length=4,value: N+E+U-TR+(O-N)S!,
+	identities=[A23[0]=D5[4],A23[1]=D15[2],A23[2]=D24[0]],referrers=[D5,D15,D24],
+	values={9895,9896,9899},
+	digits=[{9},{8},{9},{5,6,9}]
+AU={24,25,28}
+Eval EvenOdderEntry A23 cartesianCount=3, elapsed 0:00:00.000008
+Eval EvenOdderEntry D24 cartesianCount=3, elapsed 0:00:00.000005
+solve: EvenOdderEntry(name=D24,length=3,value: (C)LU/R,
+	identities=[D24[0]=A23[2],D24[1]=A29[0],D24[2]=A33[2]],referrers=[A23,A29,A33],
+	values={960},
+	digits=[{9},{6},{0}]
+DU={24}
+AM={28,29}
+DM={28,29}
+AU={25}
+solve: EvenOdderEntry(name=D4,length=4,value: (N-E+U+T+R)(I-N)O,
+	identities=[D4[0]=A4[0],D4[2]=A14[2],D4[3]=A19[1]],referrers=[A4,A14,A19],
+	values={3200},
+	digits=[{3},{2},{0},{0}]
+solve: EvenOdderEntry(name=D30,length=2,value: -G-L+UO+N!,
+	identities=[D30[0]=A29[1],D30[1]=A35[0]],referrers=[A29,A35],
+	values={95},
+	digits=[{9},{5}]
+solve: EvenOdderEntry(name=D2,length=2,value: T+A-U,
+	identities=[D2[0]=A1[2],D2[1]=A10[2]],referrers=[A1,A10],
+	values={17},
+	digits=[{1},{7}]
+solve: EvenOdderEntry(name=A23,length=4,value: N+E+U-TR+(O-N)S!,
+	identities=[A23[0]=D5[4],A23[1]=D15[2],A23[2]=D24[0]],referrers=[D5,D15,D24],
+	values={9896},
+	digits=[{9},{8},{9},{6}]
+solve: EvenOdderEntry(name=A14,length=3,value: G(A+U+G+E),
+	identities=[A14[0]=D14[0],A14[1]=D3[2],A14[2]=D4[2]],referrers=[D14,D3,D4],
+	values={730},
+	digits=[{7},{3},{0}]
+solve: EvenOdderEntry(name=D14,length=3,value: UP,
+	identities=[D14[0]=A14[0],D14[1]=A18[2],D14[2]=A21[1]],referrers=[A14,A18,A21],
+	values={720},
+	digits=[{7},{2},{0}]
+solve: EvenOdderEntry(name=A29,length=3,value: TU+N-N+E+L,
+	identities=[A29[0]=D24[1],A29[1]=D30[0],A29[2]=D17[3]],referrers=[D24,D30,D17],
+	values={694},
+	digits=[{6},{9},{4}]
+solve: EvenOdderEntry(name=A42,length=4,value: N+UCL-E+AR,
+	identities=[A42[0]=D34[2],A42[1]=D39[1],A42[3]=D36[2]],referrers=[D34,D39,D36],
+	values={9039},
+	digits=[{9},{0},{3},{9}]
+Eval EvenOdderEntry A1 cartesianCount=2, elapsed 0:00:00.000004
 solve: EvenOdderEntry(name=A1,length=4,value: -M+AS+S!,
 	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
 	values={5117},
 	digits=[{5},{1},{1},{7}]
-solve: EvenOdderEntry(name=D37,length=2,value: -M+UO/N,
-	identities=[D37[0]=A37[0],D37[1]=A40[0]],referrers=[A37,A40],
-	values={11},
-	digits=[{1},{1}]
+AM={28}
+DM={29}
+solve: EvenOdderEntry(name=A20,length=4,value: (P+L)(AS+M-O!-N),
+	identities=[A20[0]=D15[1],A20[1]=D7[3],A20[3]=D17[1]],referrers=[D15,D7,D17],
+	values={5564},
+	digits=[{5},{5},{6},{4}]
+solve: EvenOdderEntry(name=D17,length=4,value: M+O-L+ECU-L+E,
+	identities=[D17[0]=A16[1],D17[1]=A20[3],D17[3]=A29[2]],referrers=[A16,A20,A29],
+	values={8464},
+	digits=[{8},{4},{6},{4}]
+solve: EvenOdderEntry(name=A37,length=5,value: B+OTTO+M,
+	identities=[A37[0]=D37[0],A37[1]=D32[1],A37[2]=D26[2],A37[4]=D22[3]],referrers=[D37,D32,D26,D22],
+	values={10857},
+	digits=[{1},{0},{8},{5},{7}]
 solve: EvenOdderEntry(name=D5,length=5,value: M+UM-E+S!(O!-N)+S,
 	identities=[D5[0]=A4[1],D5[1]=A11[0],D5[3]=A19[2],D5[4]=A23[0]],referrers=[A4,A11,A19,A23],
 	values={84949},
 	digits=[{8},{4},{9},{4},{9}]
+solve: EvenOdderEntry(name=D37,length=2,value: -M+UO/N,
+	identities=[D37[0]=A37[0],D37[1]=A40[0]],referrers=[A37,A40],
+	values={11},
+	digits=[{1},{1}]
 solve: EvenOdderEntry(name=D1,length=3,value: M+(E+A+S-U)(R+E),
 	identities=[D1[0]=A1[0],D1[1]=A10[0],D1[2]=A12[0]],referrers=[A1,A10,A12],
 	values={569},
 	digits=[{5},{6},{9}]
+solve: EvenOdderEntry(name=A12,length=2,value: A+T+O!+M-I+C,
+	identities=[A12[0]=D1[2],A12[1]=D13[0]],referrers=[D1,D13],
+	values={92},
+	digits=[{9},{2}]
 solve: EvenOdderEntry(name=A35,length=2,value: C+H-A-R+M,
 	identities=[A35[0]=D30[1],A35[1]=D36[0]],referrers=[D30,D36],
 	values={54},
 	digits=[{5},{4}]
-Clue/Variable iterations=297, updates=86, elapsed 0:00:00.330057
+Clue/Variable iterations=305, updates=80, elapsed 0:00:00.315781
 SOLUTION-----------------------------
 Puzzle Summary
 A1, -M+AS+S!, values={5117}

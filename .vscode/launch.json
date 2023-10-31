@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "increasingfibonnaci",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "increasingfibonnaci"
+            ]
+        },
+        {
             "name": "twoprimes",
             "type": "dart",
             "request": "launch",
@@ -155,12 +164,6 @@
             "program": "lib/carteblanche.dart"
         },
         {
-            "name": "expression",
-            "type": "dart",
-            "request": "launch",
-            "program": "lib/expression.dart"
-        },
-        {
             "name": "dicenets",
             "program": "bin/crossnumber.dart",
             "request": "launch",
@@ -234,24 +237,6 @@
             "type": "dart",
             "args": [
                 "sequences"
-            ]
-        },
-        {
-            "name": "test",
-            "program": "test.dart",
-            "request": "launch",
-            "type": "dart",
-            "args": [
-                "test"
-            ]
-        },
-        {
-            "name": "grid",
-            "program": "lib/grid.dart",
-            "request": "launch",
-            "type": "dart",
-            "args": [
-                "grid"
             ]
         }
     ]

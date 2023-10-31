@@ -1,5 +1,6 @@
 class EntrySpec {
   final int number;
+  final String label;
   final bool isAcross;
   late final String name;
   late int length;
@@ -8,8 +9,10 @@ class EntrySpec {
   final int row;
   final int col;
 
-  EntrySpec(this.number, this.isAcross, this.row, this.col) {
-    if (isAcross) {
+  EntrySpec(this.number, this.label, this.isAcross, this.row, this.col) {
+    if (label != '') {
+      this.name = label;
+    } else if (isAcross) {
       this.name = 'A${this.number}';
     } else {
       this.name = 'D${this.number}';
@@ -80,13 +83,19 @@ class Grid {
           }
 
           // Process cell
-          assert(isDigit(array[c]) || array[c] == ' ',
+          assert(isDigit(array[c]) || isAlpha(array[c]) || array[c] == ' ',
               'Invalid cell character ${array[c]}');
           var cStart = c;
           var number = 0;
-          while (isDigit(array[c]) || array[c] == ' ') {
+          var acrossLabel = '';
+          var downLabel = '';
+          while (isDigit(array[c]) || isAlpha(array[c]) || array[c] == ' ') {
             if (isDigit(array[c])) {
               number = number * 10 + int.parse(array[c]);
+            } else if (isUpperAlpha(array[c])) {
+              acrossLabel = array[c];
+            } else if (isLowerAlpha(array[c])) {
+              downLabel = array[c];
             }
             c++;
           }
@@ -102,9 +111,9 @@ class Grid {
             acrossDigit = cell.acrossDigit! + 1;
             across!.length++;
           } else if (array[c] == ':') {
-            if (number != 0) {
+            if (number != 0 || acrossLabel != '') {
               // New Across clue
-              across = EntrySpec(number, true, row, col);
+              across = EntrySpec(number, acrossLabel, true, row, col);
               acrossDigit = 0;
               entries.add(across);
             }
@@ -116,9 +125,9 @@ class Grid {
             downDigit = cell.downDigit! + 1;
             down!.length++;
           } else if (nextArray[cStart] == ':') {
-            if (number != 0) {
+            if (number != 0 || downLabel != '') {
               // New Down clue
-              down = EntrySpec(number, false, row, col);
+              down = EntrySpec(number, downLabel, false, row, col);
               downDigit = 0;
               entries.add(down);
             }
@@ -227,4 +236,16 @@ class Grid {
 
 bool isDigit(String ch) {
   return '0123456789'.contains(ch);
+}
+
+bool isAlpha(String ch) {
+  return isUpperAlpha(ch) || isLowerAlpha(ch);
+}
+
+bool isLowerAlpha(String ch) {
+  return 'abcdefghijklmnopqrstuvwxyz'.contains(ch);
+}
+
+bool isUpperAlpha(String ch) {
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.contains(ch);
 }

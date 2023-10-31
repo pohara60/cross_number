@@ -10,8 +10,8 @@ class Clue extends Variable {
   /// Inherits: name, values, tryValue
 
   /// Number of digits, min and max values
-  final int length;
-  late int min, max;
+  final int? length;
+  late int? min, max;
 
   /// Description of clue
   final String? valueDesc;
@@ -36,6 +36,8 @@ class Clue extends Variable {
     _entry = entry;
   }
 
+  EntryMixin? get entryMixin => entry == null ? null : entry as EntryMixin;
+
   List<DigitIdentity?> get digitIdentities => entry!.digitIdentities;
   List<Set<int>> get digits => entry!.digits;
 
@@ -43,10 +45,11 @@ class Clue extends Variable {
   bool get isDown => this.name[0] == 'D';
 
   /// Computed - Range of possible values
-  int get lo => min;
-  int get hi => max;
-  Iterable<int> get range =>
-      Iterable<int>.generate(hi - lo + 1, (index) => lo + index);
+  int? get lo => min;
+  int? get hi => max;
+  Iterable<int> get range => hi == null || lo == null
+      ? []
+      : Iterable<int>.generate(hi! - lo! + 1, (index) => lo! + index);
 
   /// Restricted list of values
   Set<int>? _restrictedValues;
@@ -66,8 +69,13 @@ class Clue extends Variable {
   }) : super(name, solve: solve) {
     referrers = <Clue>[];
     this.reset();
-    min = 10.pow(length - 1) as int;
-    max = (10.pow(length) as int) - 1;
+    if (length != null) {
+      min = 10.pow(length! - 1) as int;
+      max = (10.pow(length!) as int) - 1;
+    } else {
+      min = null;
+      max = null;
+    }
   }
 
   void reset() {
@@ -119,17 +127,14 @@ class Clue extends Variable {
   }
 
   List<Set<int>> saveDigits() {
-    var result = <Set<int>>[];
-    for (var d = 0; d < length; d++) {
-      result.add(Set.from(digits[d]));
-    }
-    return result;
+    assert(entry != null);
+
+    return entry!.saveDigits();
   }
 
   void restoreDigits(List<Set<int>> savedDigits) {
-    for (var d = 0; d < length; d++) {
-      digits[d] = savedDigits[d];
-    }
+    assert(entry != null);
+    entry!.restoreDigits(savedDigits);
   }
 
   bool updateValues(Set<int> possibleValue) {
@@ -144,13 +149,7 @@ class Clue extends Variable {
   }
 
   bool digitsMatch(int value) {
-    if (entry != null) {
-      for (var d = this.length - 1; d >= 0; d--) {
-        var digit = value % 10;
-        if (!this.digits[d].contains(digit)) return false;
-        value = value ~/ 10;
-      }
-    }
+    if (entry != null) return entry!.digitsMatch(value);
     return true;
   }
 
@@ -178,10 +177,11 @@ class Clue extends Variable {
   String toSummary() {
     String valueString(Set<int>? values) =>
         values == null ? '{unknown}' : values.toShortString();
-    var valueStr = valueString(values);
+    var valueStr =
+        '${valueDesc == null ? "" : "$valueDesc, "}values=${valueString(values)}';
     if (entry != null && entry != this)
       valueStr += ', entry=${valueString(entry!.values)}';
-    return '$name, $valueDesc, values=$valueStr';
+    return '$name, $valueStr';
   }
 
   @override
@@ -196,17 +196,9 @@ class Clue extends Variable {
     return -1;
   }
 
-  Set<int>? getValuesFromClueDigits() {
-    if (entry == null) return null;
-    var allDigits = List<List<int>>.generate(length, (d) => digits[d].toList());
-    var count = cartesianCount(allDigits);
-    if (count > 1000) return null;
-    var values = <int>{};
-    for (var product in cartesian(allDigits, true)) {
-      int value = product.reduce((value, element) => value * 10 + element);
-      values.add(value);
-    }
-    return values;
+  Set<int>? getValuesFromDigits() {
+    if (entryMixin == null) return null;
+    return entryMixin!.getValuesFromDigits();
   }
 }
 
@@ -225,14 +217,15 @@ class VariableClue extends Clue with PriorityVariable {
 class ExpressionClue extends VariableClue with Expression {
   late ExpressionEvaluator exp;
 
-  ExpressionClue(
-      {required String name,
-      required int length,
-      String? valueDesc,
-      Function? solve,
-      variablePrefix = ''})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    initExpression(valueDesc, variablePrefix, name, _variableRefs);
+  ExpressionClue({
+    required String name,
+    required int? length,
+    String? valueDesc,
+    Function? solve,
+    variablePrefix = '',
+    List<String>? entryNames,
+  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    initExpression(valueDesc, variablePrefix, name, _variableRefs, entryNames);
   }
 }
 
@@ -283,7 +276,7 @@ mixin EntryMixin on Clue {
   }
 
   void initEntry(Clue entry) {
-    digitIdentities = List.filled(entry.length, null);
+    digitIdentities = List.filled(entry.length!, null);
     digits = [];
     initDigits();
     // Self-reference to make Clue methods work
@@ -293,7 +286,7 @@ mixin EntryMixin on Clue {
   void initDigits() {
     digits.clear(); // Clear for reset
     // possible digits are 0..9, except cannot have leading 0
-    for (var d = 0; d < this.length; d++) {
+    for (var d = 0; d < this.length!; d++) {
       digits.add(
           Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
       if (d == 0) digits[d].remove(0);
@@ -302,7 +295,7 @@ mixin EntryMixin on Clue {
 
   bool updateDigits(Set<int> values) {
     var updated = false;
-    for (var d = 0; d < length; d++) {
+    for (var d = 0; d < length!; d++) {
       var possibleDigits = <int>{};
       for (var value in values) {
         var digit = int.parse(value.toString()[d]);
@@ -315,7 +308,7 @@ mixin EntryMixin on Clue {
 
   bool updateDigitsFromOtherEntries() {
     var updated = false;
-    for (var d = 0; d < length; d++) {
+    for (var d = 0; d < length!; d++) {
       if (digitIdentities[d] != null) {
         var entry2 = digitIdentities[d]!.entry;
         var d2 = digitIdentities[d]!.digit;
@@ -325,11 +318,48 @@ mixin EntryMixin on Clue {
     }
     return updated;
   }
+
+  List<Set<int>> saveDigits() {
+    var result = <Set<int>>[];
+    for (var d = 0; d < length!; d++) {
+      result.add(Set.from(digits[d]));
+    }
+    return result;
+  }
+
+  void restoreDigits(List<Set<int>> savedDigits) {
+    for (var d = 0; d < length!; d++) {
+      digits[d] = savedDigits[d];
+    }
+  }
+
+  bool digitsMatch(int value) {
+    for (var d = this.length! - 1; d >= 0; d--) {
+      var digit = value % 10;
+      if (!this.digits[d].contains(digit)) return false;
+      value = value ~/ 10;
+    }
+    return true;
+  }
+
+  Set<int>? getValuesFromDigits() {
+    var allDigits =
+        List<List<int>>.generate(length!, (d) => digits[d].toList());
+    var count = cartesianCount(allDigits);
+    if (count > 1000) return null;
+    var values = <int>{};
+    for (var product in cartesian(allDigits, true)) {
+      int value = product.reduce((value, element) => value * 10 + element);
+      values.add(value);
+    }
+    return values;
+  }
 }
 
 class Entry extends Clue with EntryMixin {
   Entry({required name, required length, valueDesc, solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    assert(length != null);
     initEntry(this);
   }
 }

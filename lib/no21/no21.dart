@@ -201,7 +201,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         var otherMin = otherClue.values != null
             ? otherClue.values!.reduce(min)
             : otherClue.min;
-        if (otherMin >= clue.min) {
+        if (otherMin! >= clue.min!) {
           clue.min = otherMin + 1;
         }
       }
@@ -210,7 +210,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         var otherMax = otherClue.values != null
             ? otherClue.values!.reduce(max)
             : otherClue.max;
-        if (otherMax <= clue.max) {
+        if (otherMax! <= clue.max!) {
           clue.max = otherMax - 1;
         }
       }

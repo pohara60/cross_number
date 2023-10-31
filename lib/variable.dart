@@ -91,11 +91,15 @@ class VariableRefList {
   }
 
   addClueReference(String name) {
-    // Entry references start with E
+    // Clue references that start with E are entry references
     if (name[0] == 'E')
-      addReference(name, 'E');
+      addEntryReference(name);
     else
       addReference(name, 'C');
+  }
+
+  addEntryReference(String name) {
+    addReference(name, 'E');
   }
 
   toString() => names.toString();
