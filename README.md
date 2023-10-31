@@ -31,7 +31,7 @@ The Notes column in the table below refer to the type of clue solver logic, whic
  
 The Clues, Entries and Variables columns refer to whether and how these entities are processed:
 - Entries may be Manual, Variable or Expression solvers, as defined above
-- Clues refers to Clues separate to Entries, in which case Entries are mapped to Clues, or updated by CLues
+- Clues refers to Clues separate to Entries, in which case Entries are mapped to Clues, or updated by CLues, or referenced by CLues
 - Variables, if present, may simply be limited or may have Expression solvers
 
 | Puzzle | Type | Notes | Clues | Entries | Variables |
@@ -55,6 +55,11 @@ The Clues, Entries and Variables columns refer to whether and how these entities
 | [Chessboard](lib/chessboard/README.md) | Simple | Expression Solvers | | Expression | |
 | [Particular](lib/particular/README.md) | Variable | Expression Solvers | | Expression | Limited |
 | [Pandigitals](lib/pandigitals/README.md) | Variable | Custom Solve | | Expression | Variable Group |
+| [ABCD](lib/abcd/README.md) | Variable | Expression Solvers | | Expression | Ordered |
+| [Columns](lib/columns/README.md) | Simple | Expression Solvers | | Expression | |
+| [Knights](lib/knights/README.md) | Simple | Expression Solvers | | Expression | |
+| [TwoPrimes](lib/twoprimes/README.md) | Variable | Expression Solvers | | Expression | 2 Primes per Variable |
+| [IncreasingFibonnaci](lib/increasingfibonnaci/README.md) | Simple | Expression Solvers | Expression, Constrained | Referenced by Clues |  |
 
 
 ## Specific Puzzle Implementation

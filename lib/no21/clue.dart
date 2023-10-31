@@ -35,7 +35,7 @@ class No21Clue extends ExpressionClue {
   @override
   String toSummary() {
     var valueStr = values == null ? '{unknown}' : values!.toShortString();
-    return '$name, $valueDesc, min=$min, max=$max, values=$valueStr';
+    return '$name, ${valueDesc == null ? "" : "$valueDesc, "}min=$min, max=$max, values=$valueStr';
   }
 
   setDoubleDigits() {

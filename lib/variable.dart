@@ -211,7 +211,9 @@ class ExpressionVariable extends Variable with Expression, PriorityVariable {
 
   String toString() {
     var text = super.toString();
-    text += ',valueDesc=${valueDesc}';
+    if (valueDesc != '') {
+      text += ',valueDesc=${valueDesc}';
+    }
     text += ',min=${min}';
     text += ',max=${max}';
     return text;
