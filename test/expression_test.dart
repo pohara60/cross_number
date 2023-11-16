@@ -429,4 +429,20 @@ void main() {
       expect(exp.generate(100, 199).toList(), equals([]));
     });
   });
+  group('Rearrange', () {
+    var text = [
+      "x-N-y",
+      "C+(N-g)-h",
+      "j(N+c)",
+      "a*(-N)",
+    ];
+    for (var t in text) {
+      test(t, () {
+        var exp = ExpressionEvaluator(t);
+        var tree2 = exp.tree!.rearrangeNode(
+            Token("N", VAR, name: "N"), Token("O", VAR, name: "O"));
+        print('O = $exp => N = ${tree2}');
+      });
+    }
+  });
 }

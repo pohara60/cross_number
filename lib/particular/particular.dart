@@ -238,8 +238,14 @@ class Particular extends Crossnumber<ParticularPuzzle> {
       puzzle.letters[letter] = ParticularVariable(letter);
     }
 
-    var variableError = puzzle.checkVariableReferences();
-    if (variableError != '') throw PuzzleException(variableError);
+    var clueError = '';
+    //clueError = puzzle.checkClueEntryReferences();
+    clueError = puzzle.checkClueClueReferences();
+    // clueError += puzzle.checkEntryClueReferences();
+    // clueError += puzzle.checkEntryEntryReferences();
+    // Check variabes last, as prceeding may update them
+    clueError += puzzle.checkVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
 
     if (Crossnumber.traceInit) {
       print(puzzle.toString());
@@ -259,7 +265,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

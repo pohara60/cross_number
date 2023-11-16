@@ -179,292 +179,293 @@ V={1..20,79 more,99}
 W={1..20,79 more,99}
 Y={1..20,79 more,99}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+
 UPDATES-----------------------------
-Eval ParticularEntry D15 cartesianCount=99, elapsed 0:00:00.004979
+Eval ParticularEntry D15 cartesianCount=99, elapsed 0:00:00.005244
 solve: ParticularEntry(name=D15,length=2,value: I,
 	identities=[D15[1]=A19[0]],referrers=[A19],
 	values={11..19,21..29,31,32,61 more,99},
 	digits=[{1..9},{1..9}]
 I={11..19,21..29,31,32,61 more,99}
-Eval ParticularEntry A19 cartesianCount=8019, elapsed 0:00:00.031354
+Eval ParticularEntry A19 cartesianCount=8019, elapsed 0:00:00.044326
 solve: ParticularEntry(name=A19,length=3,value: IN,
 	identities=[A19[0]=D15[1],A19[1]=D20[0],A19[2]=D16[1]],referrers=[D15,D20,D16],
 	values={110..112,114..120,122..126,128..130,132,133,484 more,999},
 	digits=[{1..9},{1..9},{0..9}]
 N={2..21,69 more,90}
-Eval ParticularEntry D15 cartesianCount=81, elapsed 0:00:00.000286
-Eval ParticularEntry A19 cartesianCount=7209, elapsed 0:00:00.007073
-Eval ParticularEntry A24 cartesianCount=8019, elapsed 0:00:00.012632
+Eval ParticularEntry D15 cartesianCount=81, elapsed 0:00:00.000321
+Eval ParticularEntry A19 cartesianCount=7209, elapsed 0:00:00.009809
+Eval ParticularEntry A24 cartesianCount=8019, elapsed 0:00:00.028178
 solve: ParticularEntry(name=A24,length=2,value: I + F,
 	identities=[A24[0]=D24[0],A24[1]=D20[1]],referrers=[D24,D20],
 	values={12..31,68 more,99},
 	digits=[{1..9},{0..9}]
 F={1..20,68 more,88}
 I={11..19,21..29,31,32,60 more,98}
-Eval ParticularEntry D15 cartesianCount=80, elapsed 0:00:00.000324
+Eval ParticularEntry D15 cartesianCount=80, elapsed 0:00:00.000605
 solve: ParticularEntry(name=D15,length=2,value: I,
 	identities=[D15[1]=A19[0]],referrers=[A19],
 	values={11..19,21..29,31,32,60 more,98},
 	digits=[{1..9},{1..9}]
-Eval ParticularEntry A24 cartesianCount=7040, elapsed 0:00:00.006198
-Eval ParticularEntry A14 cartesianCount=7040, elapsed 0:00:00.006761
+Eval ParticularEntry A24 cartesianCount=7040, elapsed 0:00:00.006052
+Eval ParticularEntry A14 cartesianCount=7040, elapsed 0:00:00.007365
 solve: ParticularEntry(name=A14,length=2,value: I - F,
 	identities=[A14[0]=D8[2],A14[1]=D11[1]],referrers=[D8,D11],
 	values={10..29,68 more,97},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry A19 cartesianCount=7120, elapsed 0:00:00.007640
-Eval ParticularEntry A22 cartesianCount=7920, elapsed 0:00:00.005841
+Eval ParticularEntry A19 cartesianCount=7120, elapsed 0:00:00.010578
+Eval ParticularEntry A22 cartesianCount=7920, elapsed 0:00:00.007278
 solve: ParticularEntry(name=A22,length=3,value: IS,
 	identities=[A22[0]=D7[4],A22[1]=D18[1],A22[2]=D23[0]],referrers=[D7,D18,D23],
 	values={102,104..106,108,111,112,114..119,122..126,128,129,447 more,999},
 	digits=[{1..9},{0..9},{1..9}]
 S={2..9,11..19,21..23,60 more,89}
-Eval ParticularEntry A13 cartesianCount=7920, elapsed 0:00:00.004363
+Eval ParticularEntry A13 cartesianCount=7920, elapsed 0:00:00.006521
 solve: ParticularEntry(name=A13,length=2,value: SH,
 	identities=[A13[0]=D10[1]],referrers=[D10],
 	values={10..29,69 more,99},
 	digits=[{1..9},{0..9}]
 H={1..20,29 more,49}
-Eval ParticularEntry D11 cartesianCount=8712, elapsed 0:00:00.007623
+Eval ParticularEntry D11 cartesianCount=8712, elapsed 0:00:00.006157
 solve: ParticularEntry(name=D11,length=3,value: OFF,
 	identities=[D11[0]=A9[8],D11[1]=A14[1],D11[2]=A18[1]],referrers=[A9,A14,A18],
 	values={100,104,108,112,116,117,120,121,124,126,128,132,135,136,140,144,147,148,150,152,230 more,992},
 	digits=[{1..9},{0..9},{0..9}]
 F={2..21,10 more,31}
-Eval ParticularEntry A14 cartesianCount=2400, elapsed 0:00:00.002814
+Eval ParticularEntry A14 cartesianCount=2400, elapsed 0:00:00.002496
 solve: ParticularEntry(name=A14,length=2,value: I - F,
 	identities=[A14[0]=D8[2],A14[1]=D11[1]],referrers=[D8,D11],
 	values={10..29,67 more,96},
 	digits=[{1..9},{0..9}]
 I={12..19,21..29,31..33,59 more,98}
-Eval ParticularEntry D15 cartesianCount=79, elapsed 0:00:00.000104
+Eval ParticularEntry D15 cartesianCount=79, elapsed 0:00:00.000076
 solve: ParticularEntry(name=D15,length=2,value: I,
 	identities=[D15[1]=A19[0]],referrers=[A19],
 	values={12..19,21..29,31..33,59 more,98},
 	digits=[{1..9},{1..9}]
-Eval ParticularEntry A24 cartesianCount=2370, elapsed 0:00:00.003156
+Eval ParticularEntry A24 cartesianCount=2370, elapsed 0:00:00.001914
 solve: ParticularEntry(name=A24,length=2,value: I + F,
 	identities=[A24[0]=D24[0],A24[1]=D20[1]],referrers=[D24,D20],
 	values={14..33,66 more,99},
 	digits=[{1..9},{0..9}]
 I={12..19,21..29,31..33,58 more,97}
-Eval ParticularEntry D15 cartesianCount=78, elapsed 0:00:00.000222
+Eval ParticularEntry D15 cartesianCount=78, elapsed 0:00:00.000069
 solve: ParticularEntry(name=D15,length=2,value: I,
 	identities=[D15[1]=A19[0]],referrers=[A19],
 	values={12..19,21..29,31..33,58 more,97},
 	digits=[{1..9},{1..9}]
-Eval ParticularEntry A24 cartesianCount=2340, elapsed 0:00:00.002317
-Eval ParticularEntry A14 cartesianCount=2340, elapsed 0:00:00.002860
+Eval ParticularEntry A24 cartesianCount=2340, elapsed 0:00:00.001877
+Eval ParticularEntry A14 cartesianCount=2340, elapsed 0:00:00.001949
 solve: ParticularEntry(name=A14,length=2,value: I - F,
 	identities=[A14[0]=D8[2],A14[1]=D11[1]],referrers=[D8,D11],
 	values={10..29,66 more,95},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D11 cartesianCount=2970, elapsed 0:00:00.001923
-Eval ParticularEntry D20 cartesianCount=2970, elapsed 0:00:00.001894
+Eval ParticularEntry D11 cartesianCount=2970, elapsed 0:00:00.001723
+Eval ParticularEntry D20 cartesianCount=2970, elapsed 0:00:00.001857
 solve: ParticularEntry(name=D20,length=2,value: OF,
 	identities=[D20[0]=A19[1],D20[1]=A24[1]],referrers=[A19,A24],
 	values={10..29,55 more,99},
 	digits=[{1..9},{0..9}]
 O={1..20,29 more,49}
-Eval ParticularEntry D23 cartesianCount=1470, elapsed 0:00:00.001251
+Eval ParticularEntry D23 cartesianCount=1470, elapsed 0:00:00.000834
 solve: ParticularEntry(name=D23,length=2,value: OF + F,
 	identities=[D23[0]=A22[2]],referrers=[A22],
 	values={10,12,14..16,18,20..22,24..28,30,32..36,49 more,99},
 	digits=[{1..9},{0..9}]
 O={1..20,28 more,48}
-Eval ParticularEntry D20 cartesianCount=1440, elapsed 0:00:00.001240
-Eval ParticularEntry D11 cartesianCount=1440, elapsed 0:00:00.002319
+Eval ParticularEntry D20 cartesianCount=1440, elapsed 0:00:00.000815
+Eval ParticularEntry D11 cartesianCount=1440, elapsed 0:00:00.001025
 solve: ParticularEntry(name=D11,length=3,value: OFF,
 	identities=[D11[0]=A9[8],D11[1]=A14[1],D11[2]=A18[1]],referrers=[A9,A14,A18],
 	values={100,104,108,112,116,117,120,121,124,126,128,132,135,136,140,144,147,148,150,152,162 more,980},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry D23 cartesianCount=1440, elapsed 0:00:00.002439
-Eval ParticularEntry D20 cartesianCount=1440, elapsed 0:00:00.000793
-Eval ParticularEntry A24 cartesianCount=2340, elapsed 0:00:00.001964
-Eval ParticularEntry D20 cartesianCount=1440, elapsed 0:00:00.001150
-Eval ParticularEntry D23 cartesianCount=1440, elapsed 0:00:00.001058
-Eval ParticularEntry A14 cartesianCount=2340, elapsed 0:00:00.002198
-Eval ParticularEntry D18 cartesianCount=2352, elapsed 0:00:00.001884
+Eval ParticularEntry D23 cartesianCount=1440, elapsed 0:00:00.000861
+Eval ParticularEntry D20 cartesianCount=1440, elapsed 0:00:00.000857
+Eval ParticularEntry A24 cartesianCount=2340, elapsed 0:00:00.001941
+Eval ParticularEntry D20 cartesianCount=1440, elapsed 0:00:00.000776
+Eval ParticularEntry D23 cartesianCount=1440, elapsed 0:00:00.000919
+Eval ParticularEntry A14 cartesianCount=2340, elapsed 0:00:00.001962
+Eval ParticularEntry D18 cartesianCount=2352, elapsed 0:00:00.001474
 solve: ParticularEntry(name=D18,length=2,value: OOH,
 	identities=[D18[0]=A18[0],D18[1]=A22[1]],referrers=[A18,A22],
 	values={10..29,40 more,99},
 	digits=[{1..9},{0..9}]
 O={1..9}
-Eval ParticularEntry D23 cartesianCount=270, elapsed 0:00:00.000323
+Eval ParticularEntry D23 cartesianCount=270, elapsed 0:00:00.000252
 solve: ParticularEntry(name=D23,length=2,value: OF + F,
 	identities=[D23[0]=A22[2]],referrers=[A22],
 	values={10,12,14..16,18,20..22,24..28,30,32..36,45 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D20 cartesianCount=270, elapsed 0:00:00.000384
+Eval ParticularEntry D20 cartesianCount=270, elapsed 0:00:00.000410
 solve: ParticularEntry(name=D20,length=2,value: OF,
 	identities=[D20[0]=A19[1],D20[1]=A24[1]],referrers=[A19,A24],
 	values={10..29,51 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D11 cartesianCount=270, elapsed 0:00:00.000811
+Eval ParticularEntry D11 cartesianCount=270, elapsed 0:00:00.000399
 solve: ParticularEntry(name=D11,length=3,value: OFF,
 	identities=[D11[0]=A9[8],D11[1]=A14[1],D11[2]=A18[1]],referrers=[A9,A14,A18],
 	values={100,108,112,121,128,144,147,150,162,169,175,180,192,196,200,225,242,243,245,252,53 more,980},
 	digits=[{1..9},{0..9},{0..9}]
 F={4..23,8 more,31}
-Eval ParticularEntry D23 cartesianCount=252, elapsed 0:00:00.000315
-Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000317
-Eval ParticularEntry D11 cartesianCount=252, elapsed 0:00:00.000286
-Eval ParticularEntry D18 cartesianCount=441, elapsed 0:00:00.000424
-Eval ParticularEntry D34 cartesianCount=801, elapsed 0:00:00.000837
+Eval ParticularEntry D23 cartesianCount=252, elapsed 0:00:00.000213
+Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000213
+Eval ParticularEntry D11 cartesianCount=252, elapsed 0:00:00.000187
+Eval ParticularEntry D18 cartesianCount=441, elapsed 0:00:00.000290
+Eval ParticularEntry D34 cartesianCount=801, elapsed 0:00:00.000797
 solve: ParticularEntry(name=D34,length=2,value: O + N,
 	identities=[D34[0]=A33[4],D34[1]=A36[1]],referrers=[A33,A36],
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry A14 cartesianCount=2184, elapsed 0:00:00.001945
+Eval ParticularEntry A14 cartesianCount=2184, elapsed 0:00:00.001866
 solve: ParticularEntry(name=A14,length=2,value: I - F,
 	identities=[A14[0]=D8[2],A14[1]=D11[1]],referrers=[D8,D11],
 	values={10..29,64 more,93},
 	digits=[{1..9},{0..9}]
 I={14..19,21..29,31..35,56 more,97}
-Eval ParticularEntry D15 cartesianCount=76, elapsed 0:00:00.000113
+Eval ParticularEntry D15 cartesianCount=76, elapsed 0:00:00.000078
 solve: ParticularEntry(name=D15,length=2,value: I,
 	identities=[D15[1]=A19[0]],referrers=[A19],
 	values={14..19,21..29,31..35,56 more,97},
 	digits=[{1..9},{1..9}]
-Eval ParticularEntry D11 cartesianCount=252, elapsed 0:00:00.000325
-Eval ParticularEntry D34 cartesianCount=801, elapsed 0:00:00.000803
-Eval ParticularEntry A24 cartesianCount=2128, elapsed 0:00:00.001967
+Eval ParticularEntry D11 cartesianCount=252, elapsed 0:00:00.000191
+Eval ParticularEntry D34 cartesianCount=801, elapsed 0:00:00.000931
+Eval ParticularEntry A24 cartesianCount=2128, elapsed 0:00:00.001845
 solve: ParticularEntry(name=A24,length=2,value: I + F,
 	identities=[A24[0]=D24[0],A24[1]=D20[1]],referrers=[D24,D20],
 	values={18..37,62 more,99},
 	digits=[{1..9},{0..9}]
 I={14..19,21..29,31..35,54 more,95}
-Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000131
+Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000071
 solve: ParticularEntry(name=D15,length=2,value: I,
 	identities=[D15[1]=A19[0]],referrers=[A19],
 	values={14..19,21..29,31..35,54 more,95},
 	digits=[{1..9},{1..9}]
-Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000261
-Eval ParticularEntry A24 cartesianCount=2072, elapsed 0:00:00.002244
-Eval ParticularEntry A14 cartesianCount=2072, elapsed 0:00:00.002316
+Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000209
+Eval ParticularEntry A24 cartesianCount=2072, elapsed 0:00:00.001792
+Eval ParticularEntry A14 cartesianCount=2072, elapsed 0:00:00.001874
 solve: ParticularEntry(name=A14,length=2,value: I - F,
 	identities=[A14[0]=D8[2],A14[1]=D11[1]],referrers=[D8,D11],
 	values={10..29,62 more,91},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D11 cartesianCount=252, elapsed 0:00:00.000218
-Eval ParticularEntry A14 cartesianCount=2072, elapsed 0:00:00.002451
-Eval ParticularEntry A13 cartesianCount=3920, elapsed 0:00:00.003549
-Eval ParticularEntry A22 cartesianCount=5920, elapsed 0:00:00.005961
+Eval ParticularEntry D11 cartesianCount=252, elapsed 0:00:00.000230
+Eval ParticularEntry A14 cartesianCount=2072, elapsed 0:00:00.002291
+Eval ParticularEntry A13 cartesianCount=3920, elapsed 0:00:00.002197
+Eval ParticularEntry A22 cartesianCount=5920, elapsed 0:00:00.003462
 solve: ParticularEntry(name=A22,length=3,value: IS,
 	identities=[A22[0]=D7[4],A22[1]=D18[1],A22[2]=D23[0]],referrers=[D7,D18,D23],
 	values={102,104..106,108,111,112,114..119,122..126,128,129,438 more,999},
 	digits=[{1..9},{0..9},{1..9}]
 S={2..9,11..19,21..23,43 more,71}
-Eval ParticularEntry D23 cartesianCount=252, elapsed 0:00:00.000451
-Eval ParticularEntry D18 cartesianCount=441, elapsed 0:00:00.000569
-Eval ParticularEntry A13 cartesianCount=3087, elapsed 0:00:00.002340
+Eval ParticularEntry D23 cartesianCount=252, elapsed 0:00:00.000200
+Eval ParticularEntry D18 cartesianCount=441, elapsed 0:00:00.000276
+Eval ParticularEntry A13 cartesianCount=3087, elapsed 0:00:00.001629
 solve: ParticularEntry(name=A13,length=2,value: SH,
 	identities=[A13[0]=D10[1]],referrers=[D10],
 	values={10..29,65 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry A22 cartesianCount=4662, elapsed 0:00:00.003501
-Eval ParticularEntry A19 cartesianCount=6586, elapsed 0:00:00.004440
+Eval ParticularEntry A22 cartesianCount=4662, elapsed 0:00:00.002798
+Eval ParticularEntry A19 cartesianCount=6586, elapsed 0:00:00.004657
 solve: ParticularEntry(name=A19,length=3,value: IN,
 	identities=[A19[0]=D15[1],A19[1]=D20[0],A19[2]=D16[1]],referrers=[D15,D20,D16],
 	values={110..112,114..120,122..126,128..130,132,133,474 more,999},
 	digits=[{1..9},{1..9},{0..9}]
 N={2..21,50 more,71}
-Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000123
-Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000278
-Eval ParticularEntry D34 cartesianCount=630, elapsed 0:00:00.000933
+Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000101
+Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000236
+Eval ParticularEntry D34 cartesianCount=630, elapsed 0:00:00.000668
 solve: ParticularEntry(name=D34,length=2,value: O + N,
 	identities=[D34[0]=A33[4],D34[1]=A36[1]],referrers=[A33,A36],
 	values={10..29,51 more,80},
 	digits=[{1..8},{0..9}]
-Eval ParticularEntry A19 cartesianCount=5180, elapsed 0:00:00.003905
-Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.045942
+Eval ParticularEntry A19 cartesianCount=5180, elapsed 0:00:00.003643
+Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.053792
 solve: ParticularEntry(name=D32,length=3,value: HO + OK,
 	identities=[D32[0]=A31[2],D32[1]=A33[8]],referrers=[A31,A33],
 	values={100..119,499 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry A31 cartesianCount=43659, elapsed 0:00:00.030974
+Eval ParticularEntry A31 cartesianCount=43659, elapsed 0:00:00.035061
 solve: ParticularEntry(name=A31,length=3,value: H + OBO,
 	identities=[A31[0]=D31[0],A31[1]=D27[1],A31[2]=D32[0]],referrers=[D31,D27,D32],
 	values={101..109,111..119,121,122,790 more,999},
 	digits=[{1..9},{0..9},{1..9}]
-Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.037206
-Eval ParticularEntry D27 cartesianCount=43659, elapsed 0:00:00.035369
+Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.065372
+Eval ParticularEntry D27 cartesianCount=43659, elapsed 0:00:00.040605
 solve: ParticularEntry(name=D27,length=4,value: HOOK,
 	identities=[D27[1]=A31[1],D27[2]=A33[7]],referrers=[A31,A33],
 	values={1000,1001,1003,1005,1007,1008,1012,1014,1015,1020,1022..1027,1029,1032,1034,1035,2203 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry A31 cartesianCount=43659, elapsed 0:00:00.037717
-Eval ParticularEntry D27 cartesianCount=43659, elapsed 0:00:00.038144
-Eval ParticularEntry A28 cartesianCount=43659, elapsed 0:00:00.030124
+Eval ParticularEntry A31 cartesianCount=43659, elapsed 0:00:00.041735
+Eval ParticularEntry D27 cartesianCount=43659, elapsed 0:00:00.038899
+Eval ParticularEntry A28 cartesianCount=43659, elapsed 0:00:00.027162
 solve: ParticularEntry(name=A28,length=2,value: HOO - P,
 	identities=[A28[0]=D24[1],A28[1]=D29[0]],referrers=[D24,D29],
 	values={11..19,21..29,31,32,61 more,99},
 	digits=[{1..9},{1..9}]
-Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.041521
-Eval ParticularEntry D5 cartesianCount=43659, elapsed 0:00:00.024925
+Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.052952
+Eval ParticularEntry D5 cartesianCount=43659, elapsed 0:00:00.025342
 solve: ParticularEntry(name=D5,length=2,value: WH + O,
 	identities=[D5[0]=A4[1],D5[1]=A9[4]],referrers=[A4,A9],
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
 W={1..20,77 more,97}
-Eval ParticularEntry A28 cartesianCount=43659, elapsed 0:00:00.033095
-Eval ParticularEntry D1 cartesianCount=46620, elapsed 0:00:00.044087
+Eval ParticularEntry A28 cartesianCount=43659, elapsed 0:00:00.028703
+Eval ParticularEntry D1 cartesianCount=46620, elapsed 0:00:00.056360
 solve: ParticularEntry(name=D1,length=3,value: IO + N,
 	identities=[D1[1]=A9[0],D1[2]=A12[0]],referrers=[A9,A12],
 	values={111..119,121..129,131,132,643 more,926},
 	digits=[{1..9},{1..9},{1..9}]
-Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.040298
-Eval ParticularEntry D1 cartesianCount=46620, elapsed 0:00:00.040594
-Eval ParticularEntry A12 cartesianCount=61110, elapsed 0:00:00.058674
+Eval ParticularEntry D32 cartesianCount=43659, elapsed 0:00:00.058201
+Eval ParticularEntry D1 cartesianCount=46620, elapsed 0:00:00.051871
+Eval ParticularEntry A12 cartesianCount=61110, elapsed 0:00:00.067416
 solve: ParticularEntry(name=A12,length=3,value: NO + W,
 	identities=[A12[0]=D1[2],A12[1]=D2[2],A12[2]=D3[2]],referrers=[D1,D2,D3],
 	values={100..119,617 more,736},
 	digits=[{1..7},{0..9},{0..9}]
-Eval ParticularEntry D1 cartesianCount=46620, elapsed 0:00:00.035595
+Eval ParticularEntry D1 cartesianCount=46620, elapsed 0:00:00.054754
 solve: ParticularEntry(name=D1,length=3,value: IO + N,
 	identities=[D1[1]=A9[0],D1[2]=A12[0]],referrers=[A9,A12],
 	values={111..117,121..127,131..136,497 more,926},
 	digits=[{1..9},{1..9},{1..7}]
-Eval ParticularEntry A12 cartesianCount=61110, elapsed 0:00:00.051788
-Eval ParticularEntry D6 cartesianCount=88209, elapsed 0:00:00.091775
+Eval ParticularEntry A12 cartesianCount=61110, elapsed 0:00:00.075925
+Eval ParticularEntry D6 cartesianCount=88209, elapsed 0:00:00.091583
 solve: ParticularEntry(name=D6,length=4,value: COY,
 	identities=[D6[0]=A4[2],D6[1]=A9[5],D6[3]=A16[3]],referrers=[A4,A9,A16],
 	values={1000,1001,1003,1005,1007,1008,1012,1014,1015,1020,1022..1027,1029,1032,1034,1035,2844 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
 C={2..21,78 more,99}
 Y={2..21,78 more,99}
-Eval ParticularEntry D17 cartesianCount=274428, elapsed 0:00:00.261781
+Eval ParticularEntry D17 cartesianCount=274428, elapsed 0:00:00.223655
 solve: ParticularEntry(name=D17,length=3,value: BU - FF,
 	identities=[D17[0]=A16[2],D17[2]=A25[2]],referrers=[A16,A25],
 	values={100..119,880 more,999},
 	digits=[{1..9},{0..9},{0..9}]
 B={2..21,78 more,99}
 U={2..21,78 more,99}
-Eval ParticularEntry A31 cartesianCount=43218, elapsed 0:00:00.047274
-Eval ParticularEntry D17 cartesianCount=268912, elapsed 0:00:00.219573
-Eval ParticularEntry A30 cartesianCount=302526, elapsed 0:00:00.187919
+Eval ParticularEntry A31 cartesianCount=43218, elapsed 0:00:00.038821
+Eval ParticularEntry D17 cartesianCount=268912, elapsed 0:00:00.219476
+Eval ParticularEntry A30 cartesianCount=302526, elapsed 0:00:00.173682
 solve: ParticularEntry(name=A30,length=2,value: SH + Y,
 	identities=[A30[1]=D21[2]],referrers=[D21],
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
 H={1..20,28 more,48}
 Y={2..21,76 more,97}
-Eval ParticularEntry D18 cartesianCount=432, elapsed 0:00:00.000606
-Eval ParticularEntry A13 cartesianCount=3024, elapsed 0:00:00.002215
-Eval ParticularEntry D5 cartesianCount=41904, elapsed 0:00:00.025156
-Eval ParticularEntry A31 cartesianCount=42336, elapsed 0:00:00.038800
-Eval ParticularEntry D27 cartesianCount=42768, elapsed 0:00:00.036782
-Eval ParticularEntry D32 cartesianCount=42768, elapsed 0:00:00.036257
+Eval ParticularEntry D18 cartesianCount=432, elapsed 0:00:00.000260
+Eval ParticularEntry A13 cartesianCount=3024, elapsed 0:00:00.001398
+Eval ParticularEntry D5 cartesianCount=41904, elapsed 0:00:00.021107
+Eval ParticularEntry A31 cartesianCount=42336, elapsed 0:00:00.035088
+Eval ParticularEntry D27 cartesianCount=42768, elapsed 0:00:00.037037
+Eval ParticularEntry D32 cartesianCount=42768, elapsed 0:00:00.059291
 solve: ParticularEntry(name=D32,length=3,value: HO + OK,
 	identities=[D32[0]=A31[2],D32[1]=A33[8]],referrers=[A31,A33],
 	values={100..119,498 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry A31 cartesianCount=42336, elapsed 0:00:00.034129
-Eval ParticularEntry A28 cartesianCount=42768, elapsed 0:00:00.032990
-Eval ParticularEntry D32 cartesianCount=42768, elapsed 0:00:00.040188
-Eval ParticularEntry D6 cartesianCount=84672, elapsed 0:00:00.069301
-Eval ParticularEntry A30 cartesianCount=290304, elapsed 0:00:00.181042
-Eval ParticularEntry D24 cartesianCount=329280, elapsed 0:00:00.204294
+Eval ParticularEntry A31 cartesianCount=42336, elapsed 0:00:00.048169
+Eval ParticularEntry A28 cartesianCount=42768, elapsed 0:00:00.034046
+Eval ParticularEntry D32 cartesianCount=42768, elapsed 0:00:00.055183
+Eval ParticularEntry D6 cartesianCount=84672, elapsed 0:00:00.084144
+Eval ParticularEntry A30 cartesianCount=290304, elapsed 0:00:00.211135
+Eval ParticularEntry D24 cartesianCount=329280, elapsed 0:00:00.217613
 solve: ParticularEntry(name=D24,length=3,value: HUN,
 	identities=[D24[0]=A24[0],D24[1]=A28[0],D24[2]=A33[0]],referrers=[A24,A28,A33],
 	values={111,112,114..119,122..126,128,129,132..136,403 more,999},
@@ -472,265 +473,265 @@ solve: ParticularEntry(name=D24,length=3,value: HUN,
 H={1..9,11..19,21,22,24 more,48}
 N={2..9,11..19,21..23,43 more,71}
 U={2..9,11..19,21..23,69 more,99}
-Eval ParticularEntry D18 cartesianCount=396, elapsed 0:00:00.000373
+Eval ParticularEntry D18 cartesianCount=396, elapsed 0:00:00.000314
 solve: ParticularEntry(name=D18,length=2,value: OOH,
 	identities=[D18[0]=A18[0],D18[1]=A22[1]],referrers=[A18,A22],
 	values={11..29,31,36 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D34 cartesianCount=567, elapsed 0:00:00.000743
-Eval ParticularEntry A24 cartesianCount=2072, elapsed 0:00:00.003112
-Eval ParticularEntry A13 cartesianCount=2772, elapsed 0:00:00.002250
-Eval ParticularEntry A22 cartesianCount=4662, elapsed 0:00:00.003428
-Eval ParticularEntry A19 cartesianCount=4662, elapsed 0:00:00.003340
+Eval ParticularEntry D34 cartesianCount=567, elapsed 0:00:00.000698
+Eval ParticularEntry A24 cartesianCount=2072, elapsed 0:00:00.001915
+Eval ParticularEntry A13 cartesianCount=2772, elapsed 0:00:00.001418
+Eval ParticularEntry A22 cartesianCount=4662, elapsed 0:00:00.003099
+Eval ParticularEntry A19 cartesianCount=4662, elapsed 0:00:00.003163
 solve: ParticularEntry(name=A19,length=3,value: IN,
 	identities=[A19[0]=D15[1],A19[1]=D20[0],A19[2]=D16[1]],referrers=[D15,D20,D16],
 	values={110..112,114..120,122..126,128..130,132,133,455 more,999},
 	digits=[{1..9},{1..9},{0..9}]
-Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000121
-Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000322
-Eval ParticularEntry A19 cartesianCount=4662, elapsed 0:00:00.003962
-Eval ParticularEntry D5 cartesianCount=38412, elapsed 0:00:00.027437
-Eval ParticularEntry A31 cartesianCount=38808, elapsed 0:00:00.037864
-Eval ParticularEntry D27 cartesianCount=39204, elapsed 0:00:00.034906
+Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000087
+Eval ParticularEntry D20 cartesianCount=252, elapsed 0:00:00.000208
+Eval ParticularEntry A19 cartesianCount=4662, elapsed 0:00:00.003080
+Eval ParticularEntry D5 cartesianCount=38412, elapsed 0:00:00.023777
+Eval ParticularEntry A31 cartesianCount=38808, elapsed 0:00:00.032432
+Eval ParticularEntry D27 cartesianCount=39204, elapsed 0:00:00.032975
 solve: ParticularEntry(name=D27,length=4,value: HOOK,
 	identities=[D27[1]=A31[1],D27[2]=A33[7]],referrers=[A31,A33],
 	values={1000,1001,1003,1005,1007,1008,1012,1014,1015,1020,1022..1027,1029,1032,1034,1035,2162 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry A31 cartesianCount=38808, elapsed 0:00:00.032238
-Eval ParticularEntry D27 cartesianCount=39204, elapsed 0:00:00.032553
-Eval ParticularEntry A28 cartesianCount=39204, elapsed 0:00:00.026697
-Eval ParticularEntry D32 cartesianCount=39204, elapsed 0:00:00.033321
-Eval ParticularEntry D1 cartesianCount=41958, elapsed 0:00:00.035945
+Eval ParticularEntry A31 cartesianCount=38808, elapsed 0:00:00.038005
+Eval ParticularEntry D27 cartesianCount=39204, elapsed 0:00:00.030863
+Eval ParticularEntry A28 cartesianCount=39204, elapsed 0:00:00.024674
+Eval ParticularEntry D32 cartesianCount=39204, elapsed 0:00:00.052534
+Eval ParticularEntry D1 cartesianCount=41958, elapsed 0:00:00.057435
 solve: ParticularEntry(name=D1,length=3,value: IO + N,
 	identities=[D1[1]=A9[0],D1[2]=A12[0]],referrers=[A9,A12],
 	values={111..117,121..127,131..136,496 more,926},
 	digits=[{1..9},{1..9},{1..7}]
-Eval ParticularEntry A12 cartesianCount=54999, elapsed 0:00:00.046839
-Eval ParticularEntry D17 cartesianCount=244216, elapsed 0:00:00.188051
-Eval ParticularEntry D24 cartesianCount=246708, elapsed 0:00:00.142790
-Eval ParticularEntry A30 cartesianCount=266112, elapsed 0:00:00.175419
-Eval ParticularEntry A18 cartesianCount=322344, elapsed 0:00:00.196278
+Eval ParticularEntry A12 cartesianCount=54999, elapsed 0:00:00.065763
+Eval ParticularEntry D17 cartesianCount=244216, elapsed 0:00:00.193897
+Eval ParticularEntry D24 cartesianCount=246708, elapsed 0:00:00.140528
+Eval ParticularEntry A30 cartesianCount=266112, elapsed 0:00:00.174911
+Eval ParticularEntry A18 cartesianCount=322344, elapsed 0:00:00.182420
 solve: ParticularEntry(name=A18,length=2,value: HI + P,
 	identities=[A18[0]=D18[0],A18[1]=D11[2]],referrers=[D18,D11],
 	values={16..35,64 more,99},
 	digits=[{1..9},{0..9}]
 H={1..7}
 P={1..20,65 more,85}
-Eval ParticularEntry D18 cartesianCount=63, elapsed 0:00:00.000072
+Eval ParticularEntry D18 cartesianCount=63, elapsed 0:00:00.000168
 solve: ParticularEntry(name=D18,length=2,value: OOH,
 	identities=[D18[0]=A18[0],D18[1]=A22[1]],referrers=[A18,A22],
 	values={12,16,18,20,24,25,28,32,36,45,48..50,54,63,64,72,75,80,81,2 more,98},
 	digits=[{1..9},{0..6,8,9}]
 O={2..9}
-Eval ParticularEntry D23 cartesianCount=224, elapsed 0:00:00.000303
+Eval ParticularEntry D23 cartesianCount=224, elapsed 0:00:00.000171
 solve: ParticularEntry(name=D23,length=2,value: OF + F,
 	identities=[D23[0]=A22[2]],referrers=[A22],
 	values={12,15,16,18,20,21,24,25,27,28,30,32,33,35,36,39,40,42,44,45,36 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D20 cartesianCount=224, elapsed 0:00:00.000297
+Eval ParticularEntry D20 cartesianCount=224, elapsed 0:00:00.000177
 solve: ParticularEntry(name=D20,length=2,value: OF,
 	identities=[D20[0]=A19[1],D20[1]=A24[1]],referrers=[A19,A24],
 	values={10,12,14..16,18,20..22,24,26..28,30,32..36,38,43 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D11 cartesianCount=224, elapsed 0:00:00.000276
+Eval ParticularEntry D11 cartesianCount=224, elapsed 0:00:00.000160
 solve: ParticularEntry(name=D11,length=3,value: OFF,
 	identities=[D11[0]=A9[8],D11[1]=A14[1],D11[2]=A18[1]],referrers=[A9,A14,A18],
 	values={100,108,112,128,144,147,150,162,175,180,192,196,200,225,242,243,245,252,256,288,44 more,980},
 	digits=[{1..9},{0..9},{0..8}]
 F={4..22}
-Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000244
+Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000124
 solve: ParticularEntry(name=D23,length=2,value: OF + F,
 	identities=[D23[0]=A22[2]],referrers=[A22],
 	values={12,15,16,18,20,21,24,25,27,28,30,32,33,35,36,39,40,42,44,45,32 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D20 cartesianCount=152, elapsed 0:00:00.000210
+Eval ParticularEntry D20 cartesianCount=152, elapsed 0:00:00.000130
 solve: ParticularEntry(name=D20,length=2,value: OF,
 	identities=[D20[0]=A19[1],D20[1]=A24[1]],referrers=[A19,A24],
 	values={10,12,14..16,18,20..22,24,26..28,30,32..36,38,35 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry D11 cartesianCount=152, elapsed 0:00:00.000526
-Eval ParticularEntry A13 cartesianCount=441, elapsed 0:00:00.000403
-Eval ParticularEntry D34 cartesianCount=504, elapsed 0:00:00.000733
-Eval ParticularEntry A14 cartesianCount=1406, elapsed 0:00:00.001700
-Eval ParticularEntry A24 cartesianCount=1406, elapsed 0:00:00.001436
-Eval ParticularEntry A22 cartesianCount=4662, elapsed 0:00:00.003075
+Eval ParticularEntry D11 cartesianCount=152, elapsed 0:00:00.000117
+Eval ParticularEntry A13 cartesianCount=441, elapsed 0:00:00.000284
+Eval ParticularEntry D34 cartesianCount=504, elapsed 0:00:00.000436
+Eval ParticularEntry A14 cartesianCount=1406, elapsed 0:00:00.001219
+Eval ParticularEntry A24 cartesianCount=1406, elapsed 0:00:00.001184
+Eval ParticularEntry A22 cartesianCount=4662, elapsed 0:00:00.002753
 solve: ParticularEntry(name=A22,length=3,value: IS,
 	identities=[A22[0]=D7[4],A22[1]=D18[1],A22[2]=D23[0]],referrers=[D7,D18,D23],
 	values={102,104..106,108,111,112,114..119,122..126,128,129,392 more,999},
 	digits=[{1..9},{0..6,8,9},{1..9}]
 S={2..9,11..19,21..23,42 more,71}
-Eval ParticularEntry D18 cartesianCount=56, elapsed 0:00:00.000090
-Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000176
-Eval ParticularEntry A13 cartesianCount=434, elapsed 0:00:00.000465
-Eval ParticularEntry A22 cartesianCount=4588, elapsed 0:00:00.003321
-Eval ParticularEntry A19 cartesianCount=4662, elapsed 0:00:00.003154
-Eval ParticularEntry A28 cartesianCount=4760, elapsed 0:00:00.003682
-Eval ParticularEntry D5 cartesianCount=5432, elapsed 0:00:00.003813
-Eval ParticularEntry A31 cartesianCount=5488, elapsed 0:00:00.004556
+Eval ParticularEntry D18 cartesianCount=56, elapsed 0:00:00.000056
+Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000123
+Eval ParticularEntry A13 cartesianCount=434, elapsed 0:00:00.000285
+Eval ParticularEntry A22 cartesianCount=4588, elapsed 0:00:00.002793
+Eval ParticularEntry A19 cartesianCount=4662, elapsed 0:00:00.002673
+Eval ParticularEntry A28 cartesianCount=4760, elapsed 0:00:00.003183
+Eval ParticularEntry D5 cartesianCount=5432, elapsed 0:00:00.003293
+Eval ParticularEntry A31 cartesianCount=5488, elapsed 0:00:00.003836
 solve: ParticularEntry(name=A31,length=3,value: H + OBO,
 	identities=[A31[0]=D31[0],A31[1]=D27[1],A31[2]=D32[0]],referrers=[D31,D27,D32],
 	values={101..109,111..119,121,122,716 more,999},
 	digits=[{1..9},{0..9},{1..9}]
-Eval ParticularEntry D32 cartesianCount=5544, elapsed 0:00:00.004407
+Eval ParticularEntry D32 cartesianCount=5544, elapsed 0:00:00.005224
 solve: ParticularEntry(name=D32,length=3,value: HO + OK,
 	identities=[D32[0]=A31[2],D32[1]=A33[8]],referrers=[A31,A33],
 	values={100,102,104..106,108,110..112,114..120,122..125,366 more,954},
 	digits=[{1..9},{0..9},{0..9}]
 K={5..24,75 more,99}
-Eval ParticularEntry D27 cartesianCount=5320, elapsed 0:00:00.007894
+Eval ParticularEntry D27 cartesianCount=5320, elapsed 0:00:00.004422
 solve: ParticularEntry(name=D27,length=4,value: HOOK,
 	identities=[D27[1]=A31[1],D27[2]=A33[7]],referrers=[A31,A33],
 	values={1000,1008,1020,1024..1026,1029,1032,1035,1036,1040,1044,1050,1053,1056,1060,1062,1064,1068,1071,1043 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry D32 cartesianCount=5320, elapsed 0:00:00.008637
-Eval ParticularEntry A31 cartesianCount=5488, elapsed 0:00:00.006014
-Eval ParticularEntry D1 cartesianCount=37296, elapsed 0:00:00.040803
-Eval ParticularEntry D24 cartesianCount=39249, elapsed 0:00:00.023669
-Eval ParticularEntry A30 cartesianCount=41664, elapsed 0:00:00.030179
-Eval ParticularEntry A18 cartesianCount=44030, elapsed 0:00:00.025364
+Eval ParticularEntry D32 cartesianCount=5320, elapsed 0:00:00.004959
+Eval ParticularEntry A31 cartesianCount=5488, elapsed 0:00:00.004129
+Eval ParticularEntry D1 cartesianCount=37296, elapsed 0:00:00.038254
+Eval ParticularEntry D24 cartesianCount=39249, elapsed 0:00:00.025258
+Eval ParticularEntry A30 cartesianCount=41664, elapsed 0:00:00.029257
+Eval ParticularEntry A18 cartesianCount=44030, elapsed 0:00:00.029850
 solve: ParticularEntry(name=A18,length=2,value: HI + P,
 	identities=[A18[0]=D18[0],A18[1]=D11[2]],referrers=[D18,D11],
 	values={16..18,20..28,30..37,55 more,98},
 	digits=[{1..9},{0..8}]
 H={1..6}
 P={1..20,64 more,84}
-Eval ParticularEntry D18 cartesianCount=48, elapsed 0:00:00.000084
+Eval ParticularEntry D18 cartesianCount=48, elapsed 0:00:00.000053
 solve: ParticularEntry(name=D18,length=2,value: OOH,
 	identities=[D18[0]=A18[0],D18[1]=A22[1]],referrers=[A18,A22],
 	values={12,16,18,20,24,25,32,36,45,48..50,54,64,72,75,80,81,96,98},
 	digits=[{1..9},{0..2,4..6,8,9}]
-Eval ParticularEntry D11 cartesianCount=152, elapsed 0:00:00.000249
-Eval ParticularEntry A13 cartesianCount=372, elapsed 0:00:00.000357
+Eval ParticularEntry D11 cartesianCount=152, elapsed 0:00:00.000132
+Eval ParticularEntry A13 cartesianCount=372, elapsed 0:00:00.000291
 solve: ParticularEntry(name=A13,length=2,value: SH,
 	identities=[A13[0]=D10[1]],referrers=[D10],
 	values={10..29,63 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry A28 cartesianCount=4032, elapsed 0:00:00.003602
-Eval ParticularEntry D32 cartesianCount=4560, elapsed 0:00:00.005929
+Eval ParticularEntry A28 cartesianCount=4032, elapsed 0:00:00.002996
+Eval ParticularEntry D32 cartesianCount=4560, elapsed 0:00:00.005069
 solve: ParticularEntry(name=D32,length=3,value: HO + OK,
 	identities=[D32[0]=A31[2],D32[1]=A33[8]],referrers=[A31,A33],
 	values={100,102,104..106,108,110..112,114..120,122..125,362 more,945},
 	digits=[{1..9},{0..9},{0..9}]
 K={7..26,73 more,99}
-Eval ParticularEntry D27 cartesianCount=4464, elapsed 0:00:00.004673
+Eval ParticularEntry D27 cartesianCount=4464, elapsed 0:00:00.004331
 solve: ParticularEntry(name=D27,length=4,value: HOOK,
 	identities=[D27[1]=A31[1],D27[2]=A33[7]],referrers=[A31,A33],
 	values={1000,1008,1020,1024..1026,1029,1032,1035,1040,1044,1050,1053,1056,1060,1062,1068,1072,1075,1078,916 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry A22 cartesianCount=4588, elapsed 0:00:00.003120
+Eval ParticularEntry A22 cartesianCount=4588, elapsed 0:00:00.003025
 solve: ParticularEntry(name=A22,length=3,value: IS,
 	identities=[A22[0]=D7[4],A22[1]=D18[1],A22[2]=D23[0]],referrers=[D7,D18,D23],
 	values={102,104..106,108,111,112,114..119,122..126,128,129,344 more,999},
 	digits=[{1..9},{0..2,4..6,8,9},{1..9}]
 S={2..9,11..19,21..23,41 more,71}
-Eval ParticularEntry D18 cartesianCount=48, elapsed 0:00:00.000098
-Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000163
-Eval ParticularEntry A13 cartesianCount=366, elapsed 0:00:00.000342
+Eval ParticularEntry D18 cartesianCount=48, elapsed 0:00:00.000045
+Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000118
+Eval ParticularEntry A13 cartesianCount=366, elapsed 0:00:00.000240
 solve: ParticularEntry(name=A13,length=2,value: SH,
 	identities=[A13[0]=D10[1]],referrers=[D10],
 	values={10..29,62 more,99},
 	digits=[{1..9},{0..9}]
-Eval ParticularEntry A22 cartesianCount=4514, elapsed 0:00:00.003409
-Eval ParticularEntry D5 cartesianCount=4656, elapsed 0:00:00.003450
-Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003730
+Eval ParticularEntry A22 cartesianCount=4514, elapsed 0:00:00.002381
+Eval ParticularEntry D5 cartesianCount=4656, elapsed 0:00:00.002799
+Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003295
 solve: ParticularEntry(name=A31,length=3,value: H + OBO,
 	identities=[A31[0]=D31[0],A31[1]=D27[1],A31[2]=D32[0]],referrers=[D31,D27,D32],
 	values={101..109,111..119,121,122,676 more,998},
 	digits=[{1..9},{0..9},{1..9}]
-Eval ParticularEntry D32 cartesianCount=4464, elapsed 0:00:00.004050
-Eval ParticularEntry D27 cartesianCount=4464, elapsed 0:00:00.006327
-Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.006410
-Eval ParticularEntry D24 cartesianCount=33642, elapsed 0:00:00.029675
-Eval ParticularEntry A30 cartesianCount=35136, elapsed 0:00:00.029214
-Eval ParticularEntry A18 cartesianCount=37296, elapsed 0:00:00.043114
-Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.041564
-Eval ParticularEntry D6 cartesianCount=75264, elapsed 0:00:00.059299
+Eval ParticularEntry D32 cartesianCount=4464, elapsed 0:00:00.004301
+Eval ParticularEntry D27 cartesianCount=4464, elapsed 0:00:00.003891
+Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003378
+Eval ParticularEntry D24 cartesianCount=33642, elapsed 0:00:00.021654
+Eval ParticularEntry A30 cartesianCount=35136, elapsed 0:00:00.031136
+Eval ParticularEntry A18 cartesianCount=37296, elapsed 0:00:00.037796
+Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.055910
+Eval ParticularEntry D6 cartesianCount=75264, elapsed 0:00:00.067942
 solve: ParticularEntry(name=D6,length=4,value: COY,
 	identities=[D6[0]=A4[2],D6[1]=A9[5],D6[3]=A16[3]],referrers=[A4,A9,A16],
 	values={1000,1001,1005,1008,1012,1014,1015,1020,1022..1024,1026,1029,1032,1034..1036,1040,1044,1045,2646 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry D17 cartesianCount=165718, elapsed 0:00:00.121546
-Eval ParticularEntry D31 cartesianCount=245952, elapsed 0:00:00.195291
+Eval ParticularEntry D17 cartesianCount=165718, elapsed 0:00:00.133190
+Eval ParticularEntry D31 cartesianCount=245952, elapsed 0:00:00.207183
 solve: ParticularEntry(name=D31,length=3,value: HOO + PS,
 	identities=[D31[0]=A31[0],D31[1]=A33[6]],referrers=[A31,A33],
 	values={100..119,880 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003957
-Eval ParticularEntry D31 cartesianCount=245952, elapsed 0:00:00.198658
-Eval ParticularEntry D3 cartesianCount=395136, elapsed 0:00:00.257534
+Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003713
+Eval ParticularEntry D31 cartesianCount=245952, elapsed 0:00:00.217033
+Eval ParticularEntry D3 cartesianCount=395136, elapsed 0:00:00.232875
 solve: ParticularEntry(name=D3,length=3,value: CHOP,
 	identities=[D3[1]=A9[2],D3[2]=A12[2]],referrers=[A9,A12],
 	values={100,102,104,105,108,110,112,114,120,126,128,130,132,135,136,138,140,144,150,152,357 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.042828
-Eval ParticularEntry D3 cartesianCount=395136, elapsed 0:00:00.257520
-Eval ParticularEntry D26 cartesianCount=433566, elapsed 0:00:00.265929
+Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.053663
+Eval ParticularEntry D3 cartesianCount=395136, elapsed 0:00:00.230507
+Eval ParticularEntry D26 cartesianCount=433566, elapsed 0:00:00.254911
 solve: ParticularEntry(name=D26,length=4,value: INK,
 	identities=[D26[0]=A25[1],D26[2]=A33[3],D26[3]=A36[0]],referrers=[A25,A33,A36],
 	values={1008,1012,1014,1015,1022..1024,1026,1029,1032,1034..1036,1044,1045,1053,1054,1056,1062,1064,2150 more,9996},
 	digits=[{1..9},{0..9},{0..9},{1..9}]
 K={7..9,11..19,21..28,64 more,99}
-Eval ParticularEntry D32 cartesianCount=4032, elapsed 0:00:00.004204
-Eval ParticularEntry D27 cartesianCount=4032, elapsed 0:00:00.004565
+Eval ParticularEntry D32 cartesianCount=4032, elapsed 0:00:00.003995
+Eval ParticularEntry D27 cartesianCount=4032, elapsed 0:00:00.003566
 solve: ParticularEntry(name=D27,length=4,value: HOOK,
 	identities=[D27[1]=A31[1],D27[2]=A33[7]],referrers=[A31,A33],
 	values={1008,1020,1024..1026,1029,1032,1035,1040,1044,1050,1053,1056,1060,1062,1068,1072,1075,1078,1080,910 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003648
-Eval ParticularEntry D26 cartesianCount=391608, elapsed 0:00:00.246360
-Eval ParticularEntry D29 cartesianCount=395136, elapsed 0:00:00.264002
+Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003370
+Eval ParticularEntry D26 cartesianCount=391608, elapsed 0:00:00.262625
+Eval ParticularEntry D29 cartesianCount=395136, elapsed 0:00:00.266777
 solve: ParticularEntry(name=D29,length=3,value: HOCK,
 	identities=[D29[0]=A28[1],D29[1]=A33[1],D29[2]=A35[1]],referrers=[A28,A33,A35],
 	values={102,104,105,108,110,112,114,120,126,128,130,132,135,136,138,140,144,150,152,154,356 more,999},
 	digits=[{1..9},{0..9},{0..9}]
 C={2..21,50 more,71}
-Eval ParticularEntry A28 cartesianCount=4032, elapsed 0:00:00.003014
-Eval ParticularEntry D6 cartesianCount=53760, elapsed 0:00:00.039009
+Eval ParticularEntry A28 cartesianCount=4032, elapsed 0:00:00.003066
+Eval ParticularEntry D6 cartesianCount=53760, elapsed 0:00:00.052270
 solve: ParticularEntry(name=D6,length=4,value: COY,
 	identities=[D6[0]=A4[2],D6[1]=A9[5],D6[3]=A16[3]],referrers=[A4,A9,A16],
 	values={1000,1001,1005,1008,1012,1014,1015,1020,1022..1024,1026,1029,1032,1034..1036,1040,1044,1045,2645 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry D29 cartesianCount=282240, elapsed 0:00:00.198944
-Eval ParticularEntry D3 cartesianCount=282240, elapsed 0:00:00.200718
+Eval ParticularEntry D29 cartesianCount=282240, elapsed 0:00:00.186209
+Eval ParticularEntry D3 cartesianCount=282240, elapsed 0:00:00.177987
 solve: ParticularEntry(name=D3,length=3,value: CHOP,
 	identities=[D3[1]=A9[2],D3[2]=A12[2]],referrers=[A9,A12],
 	values={100,102,104,105,108,110,112,114,120,126,128,130,132,135,136,138,140,144,150,152,351 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.051765
-Eval ParticularEntry D3 cartesianCount=282240, elapsed 0:00:00.182628
-Eval ParticularEntry D2 cartesianCount=514596, elapsed 0:00:00.389640
+Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.052326
+Eval ParticularEntry D3 cartesianCount=282240, elapsed 0:00:00.210220
+Eval ParticularEntry D2 cartesianCount=514596, elapsed 0:00:00.496702
 solve: ParticularEntry(name=D2,length=4,value: FISH,
 	identities=[D2[1]=A9[1],D2[2]=A12[1]],referrers=[A9,A12],
 	values={1000,1005,1008,1012,1014,1015,1020,1022..1024,1026,1029,1032,1034..1036,1040,1044,1045,1050,2462 more,9996},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.044104
-Eval ParticularEntry D2 cartesianCount=514596, elapsed 0:00:00.374195
-Eval ParticularEntry D8 cartesianCount=522144, elapsed 0:00:00.373547
+Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.063880
+Eval ParticularEntry D2 cartesianCount=514596, elapsed 0:00:00.427505
+Eval ParticularEntry D8 cartesianCount=522144, elapsed 0:00:00.420827
 solve: ParticularEntry(name=D8,length=3,value: K + IP,
 	identities=[D8[0]=A7[1],D8[1]=A9[7],D8[2]=A14[0]],referrers=[A7,A9,A14],
 	values={101..109,111..119,121,122,790 more,999},
 	digits=[{1..9},{0..9},{1..9}]
 P={1..20,50 more,70}
-Eval ParticularEntry A14 cartesianCount=1406, elapsed 0:00:00.001523
-Eval ParticularEntry A28 cartesianCount=3360, elapsed 0:00:00.002633
-Eval ParticularEntry A18 cartesianCount=31080, elapsed 0:00:00.020272
-Eval ParticularEntry D31 cartesianCount=204960, elapsed 0:00:00.170362
-Eval ParticularEntry D3 cartesianCount=235200, elapsed 0:00:00.149176
+Eval ParticularEntry A14 cartesianCount=1406, elapsed 0:00:00.001706
+Eval ParticularEntry A28 cartesianCount=3360, elapsed 0:00:00.002873
+Eval ParticularEntry A18 cartesianCount=31080, elapsed 0:00:00.022644
+Eval ParticularEntry D31 cartesianCount=204960, elapsed 0:00:00.180252
+Eval ParticularEntry D3 cartesianCount=235200, elapsed 0:00:00.155851
 solve: ParticularEntry(name=D3,length=3,value: CHOP,
 	identities=[D3[1]=A9[2],D3[2]=A12[2]],referrers=[A9,A12],
 	values={100,102,104,105,108,110,112,114,120,126,128,130,132,135,136,138,140,144,150,152,339 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.040635
-Eval ParticularEntry D3 cartesianCount=235200, elapsed 0:00:00.146984
-Eval ParticularEntry D8 cartesianCount=435120, elapsed 0:00:00.317170
-Eval ParticularEntry A36 cartesianCount=703296, elapsed 0:00:00.506697
+Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.086707
+Eval ParticularEntry D3 cartesianCount=235200, elapsed 0:00:00.180276
+Eval ParticularEntry D8 cartesianCount=435120, elapsed 0:00:00.332217
+Eval ParticularEntry A36 cartesianCount=703296, elapsed 0:00:00.530397
 solve: ParticularEntry(name=A36,length=3,value: I + VY,
 	identities=[A36[0]=D26[3],A36[1]=D34[1]],referrers=[D26,D34],
 	values={100..119,880 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval ParticularEntry D34 cartesianCount=504, elapsed 0:00:00.000592
-Eval ParticularEntry D26 cartesianCount=391608, elapsed 0:00:00.251663
-Eval ParticularEntry A36 cartesianCount=703296, elapsed 0:00:00.500627
+Eval ParticularEntry D34 cartesianCount=504, elapsed 0:00:00.000521
+Eval ParticularEntry D26 cartesianCount=391608, elapsed 0:00:00.241120
+Eval ParticularEntry A36 cartesianCount=703296, elapsed 0:00:00.569268
 Eval ParticularEntry A35 cartesianCount=3313520 Exception
 Eval ParticularEntry D7 cartesianCount=3313520 Exception
 Eval ParticularEntry A7 cartesianCount=4638928 Exception
@@ -742,23 +743,23 @@ Eval ParticularEntry A25 cartesianCount=164845800 Exception
 Eval ParticularEntry D21 cartesianCount=164845800 Exception
 Eval ParticularEntry D10 cartesianCount=1687230720 Exception
 Eval ParticularEntry A33 cartesianCount=14173598880 Exception
-Eval ParticularEntry D18 cartesianCount=48, elapsed 0:00:00.000105
-Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000139
-Eval ParticularEntry D20 cartesianCount=152, elapsed 0:00:00.000655
-Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000162
-Eval ParticularEntry D11 cartesianCount=152, elapsed 0:00:00.000208
-Eval ParticularEntry A13 cartesianCount=366, elapsed 0:00:00.000529
-Eval ParticularEntry D34 cartesianCount=504, elapsed 0:00:00.000719
-Eval ParticularEntry A14 cartesianCount=1406, elapsed 0:00:00.002029
-Eval ParticularEntry A28 cartesianCount=3360, elapsed 0:00:00.002994
-Eval ParticularEntry D32 cartesianCount=4032, elapsed 0:00:00.004034
-Eval ParticularEntry D27 cartesianCount=4032, elapsed 0:00:00.003711
-Eval ParticularEntry A22 cartesianCount=4514, elapsed 0:00:00.003294
-Eval ParticularEntry D5 cartesianCount=4656, elapsed 0:00:00.003457
-Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003831
-Eval ParticularEntry D1 cartesianCount=37296, elapsed 0:00:00.034473
-Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.048049
-Eval ParticularEntry D6 cartesianCount=53760, elapsed 0:00:00.050826
+Eval ParticularEntry D18 cartesianCount=48, elapsed 0:00:00.000086
+Eval ParticularEntry D15 cartesianCount=74, elapsed 0:00:00.000082
+Eval ParticularEntry D20 cartesianCount=152, elapsed 0:00:00.000164
+Eval ParticularEntry D23 cartesianCount=152, elapsed 0:00:00.000207
+Eval ParticularEntry D11 cartesianCount=152, elapsed 0:00:00.000198
+Eval ParticularEntry A13 cartesianCount=366, elapsed 0:00:00.000538
+Eval ParticularEntry D34 cartesianCount=504, elapsed 0:00:00.000503
+Eval ParticularEntry A14 cartesianCount=1406, elapsed 0:00:00.001362
+Eval ParticularEntry A28 cartesianCount=3360, elapsed 0:00:00.002431
+Eval ParticularEntry D32 cartesianCount=4032, elapsed 0:00:00.005148
+Eval ParticularEntry D27 cartesianCount=4032, elapsed 0:00:00.003909
+Eval ParticularEntry A22 cartesianCount=4514, elapsed 0:00:00.003564
+Eval ParticularEntry D5 cartesianCount=4656, elapsed 0:00:00.003694
+Eval ParticularEntry A31 cartesianCount=4704, elapsed 0:00:00.003845
+Eval ParticularEntry D1 cartesianCount=37296, elapsed 0:00:00.043121
+Eval ParticularEntry A12 cartesianCount=48888, elapsed 0:00:00.055766
+Eval ParticularEntry D6 cartesianCount=53760, elapsed 0:00:00.048316
 Eval ParticularEntry A35 cartesianCount=3313520 Exception
 Eval ParticularEntry D7 cartesianCount=3313520 Exception
 Eval ParticularEntry A7 cartesianCount=4638928 Exception
@@ -769,7 +770,7 @@ Eval ParticularEntry A16 cartesianCount=132711600 Exception
 Eval ParticularEntry D21 cartesianCount=164845800 Exception
 Eval ParticularEntry A25 cartesianCount=164845800 Exception
 Eval ParticularEntry D10 cartesianCount=1687230720 Exception
-Clue/Variable iterations=237, updates=78, elapsed 0:00:09.889991
+Clue/Variable iterations=237, updates=78, elapsed 0:00:10.537234
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A4, PI - CK, values={unknown}
@@ -848,6 +849,7 @@ V={1..20,79 more,99}
 W={1..20,77 more,97}
 Y={2..21,76 more,97}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+
 UPDATES-----------------------------
 solve: ParticularEntry(name=D34,length=2,value: O + N,
 	identities=[D34[0]=A33[4],D34[1]=A36[1]],referrers=[A33,A36],
@@ -1013,7 +1015,7 @@ solve: ParticularEntry(name=D16,length=6,value: SCUFF,
 	identities=[D16[0]=A16[0],D16[1]=A19[2],D16[2]=A25[0],D16[4]=A33[2],D16[5]=A35[2]],referrers=[A16,A19,A25,A33,A35],
 	values={715392},
 	digits=[{7},{1},{5},{3},{9},{2}]
-Clue/Variable iterations=106, updates=41, elapsed 0:00:00.074703
+Clue/Variable iterations=106, updates=41, elapsed 0:00:00.013665
 SOLUTION-----------------------------
 Puzzle Summary
 A4, PI - CK, values={681}

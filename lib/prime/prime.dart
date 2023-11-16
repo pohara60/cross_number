@@ -177,7 +177,7 @@ class Prime extends Crossnumber<PrimePuzzle> {
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

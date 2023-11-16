@@ -207,7 +207,7 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
   bool solveDiceNets(DiceNetsClue clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleVariables) {
     puzzle.solveExpressionEvaluator(
-        clue, possibleValue, possibleVariables, validDiceDigits);
+        clue, clue.exp, possibleValue, possibleVariables, validDiceDigits);
     return false;
   }
 }

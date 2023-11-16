@@ -14,14 +14,18 @@ class Clue extends Variable {
   late int? min, max;
 
   /// Description of clue
-  final String? valueDesc;
+  String? valueDesc;
 
   // References
   final _variableRefs = VariableRefList();
   List<String> get variableReferences => _variableRefs.variableNames;
   List<String> get clueReferences => _variableRefs.clueNames;
   List<String> get entryReferences => _variableRefs.entryNames;
-  List<String> get variableClueReferences => _variableRefs.names;
+  List<String> get variableClueReferences => [
+        ..._variableRefs.variableNames,
+        ..._variableRefs.clueNames,
+        ..._variableRefs.entryNames,
+      ];
 
   // Mutual reference to an other clue
   bool circularClueReference = false;
@@ -69,6 +73,11 @@ class Clue extends Variable {
   }) : super(name, solve: solve) {
     referrers = <Clue>[];
     this.reset();
+  }
+
+  void reset() {
+    if (entry != null) (entry as EntryMixin).initDigits();
+    values = null;
     if (length != null) {
       min = 10.pow(length! - 1) as int;
       max = (10.pow(length!) as int) - 1;
@@ -76,11 +85,6 @@ class Clue extends Variable {
       min = null;
       max = null;
     }
-  }
-
-  void reset() {
-    if (entry != null) (entry as EntryMixin).initDigits();
-    values = null;
     _restrictedValues = null;
   }
 
@@ -94,6 +98,10 @@ class Clue extends Variable {
 
   addVariableReference(String variable) {
     _variableRefs.addVariableReference(variable);
+  }
+
+  removeClueReference(String name) {
+    _variableRefs.removeClueReference(name);
   }
 
   bool initialise() {
@@ -215,8 +223,6 @@ class VariableClue extends Clue with PriorityVariable {
 }
 
 class ExpressionClue extends VariableClue with Expression {
-  late ExpressionEvaluator exp;
-
   ExpressionClue({
     required String name,
     required int? length,
@@ -226,6 +232,36 @@ class ExpressionClue extends VariableClue with Expression {
     List<String>? entryNames,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initExpression(valueDesc, variablePrefix, name, _variableRefs, entryNames);
+  }
+
+  addExpression(String valueDesc,
+      {String variablePrefix = '', List<String>? entryNames}) {
+    this.valueDesc = this.valueDesc == null || this.valueDesc == ''
+        ? valueDesc
+        : '${this.valueDesc} | $valueDesc';
+    initExpression(valueDesc, variablePrefix, name, _variableRefs, entryNames);
+  }
+
+  bool fixReference(clueName) {
+    var updated = false;
+    for (var exp in this.expressions) {
+      var name = exp.fixReference(clueName);
+      if (name != '') {
+        if (this.clueReferences.contains(clueName)) {
+          this.removeClueReference(clueName);
+          this.addVariableReference(name);
+        }
+        updated = true;
+      }
+    }
+    if (updated) {
+      _variableRefs.fixReference(clueName);
+    }
+    return updated;
+  }
+
+  void sortVariables() {
+    _variableRefs.sort();
   }
 }
 

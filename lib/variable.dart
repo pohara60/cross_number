@@ -1,3 +1,5 @@
+import "dart:math" as math;
+
 import 'clue.dart';
 import 'expression.dart';
 import 'set.dart';
@@ -18,6 +20,8 @@ class Variable {
 
   /// Current possible values, initialized in subclass
   Set<int>? _values;
+  int? _min;
+  int? _max;
 
   /// Forced value (when testing porrible solutions)
   int? _tryValue;
@@ -30,7 +34,20 @@ class Variable {
   }
 
   Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
-  set values(Set<int>? values) => _values = values;
+  set values(Set<int>? values) {
+    _values = values;
+    if (values == null || values.isEmpty) {
+      min = max = null;
+    } else {
+      min = values.reduce(math.min);
+      max = values.reduce(math.max);
+    }
+  }
+
+  int? get min => _min;
+  set min(int? min) => _min = min;
+  int? get max => _max ?? 10000; // Ugh!
+  set max(int? max) => _max = max;
 
   String toString() {
     var text = '$name=';
@@ -61,7 +78,7 @@ class Variable {
 
 class VariableRef {
   final String name;
-  final String type;
+  String type;
   Variable? variable;
   bool get isVariable => type == 'V';
   bool get isClue => type == 'C';
@@ -102,7 +119,26 @@ class VariableRefList {
     addReference(name, 'E');
   }
 
+  removeClueReference(String name) {
+    _references.removeWhere((r) => r.name == name && r.isClue);
+  }
+
+  fixReference(String clueName) {
+    for (var ref in _references) {
+      if (ref.type == 'C' && ref.name == clueName) {
+        ref.type = 'V';
+      }
+    }
+  }
+
   toString() => names.toString();
+
+  void sort() {
+    _references.sort((r1, r2) => r1.type.compareTo(r2.type) == -1 ||
+            r1.type.compareTo(r2.type) == 0 && r1.name.compareTo(r2.name) == -1
+        ? -1
+        : 1);
+  }
 }
 
 /// A collection of [Variable]s, with a set of values
@@ -175,8 +211,6 @@ class VariableList<VariableKind extends Variable> {
 
 class ExpressionVariable extends Variable with Expression, PriorityVariable {
   final String valueDesc;
-  late int _min;
-  late int? _max;
   // References
   final _variableRefs = VariableRefList();
   List<String> get variableReferences => _variableRefs.variableNames;
@@ -187,14 +221,10 @@ class ExpressionVariable extends Variable with Expression, PriorityVariable {
       {int min = 1, int? max, String variablePrefix = '', Function? solve})
       : super(name, solve: solve) {
     initExpression(valueDesc, variablePrefix, name, _variableRefs);
-    _min = min;
-    _max = max;
+    this.min = min;
+    this.max = max;
     referrers = [];
   }
-
-  num get min => _min;
-
-  num get max => _max ?? 10000; // Ugh!
 
   addReferrer(ExpressionVariable variable) {
     if (!referrers.contains(variable)) referrers.add(variable);
@@ -204,9 +234,31 @@ class ExpressionVariable extends Variable with Expression, PriorityVariable {
     _variableRefs.addVariableReference(variable);
   }
 
+  bool fixReference(clueName) {
+    var updated = false;
+    for (var exp in this.expressions) {
+      var name = exp.fixReference(clueName);
+      if (name != '' && name != clueName) {
+        if (this.variableReferences.contains(clueName)) {
+          this.variableReferences.remove(clueName);
+          this.variableReferences.add(name);
+        }
+        updated = true;
+      }
+    }
+    if (updated) {
+      _variableRefs.fixReference(clueName);
+    }
+    return updated;
+  }
+
+  void sortVariables() {
+    _variableRefs.sort();
+  }
+
   Set<int>? getValuesFromMinMax() {
-    if (_max == null || _max! - _min > 1000) return null;
-    return Set.from(List.generate(_max! - _min + 1, (index) => _min + index));
+    if (_max == null || _min == null || _max! - _min! > 1000) return null;
+    return Set.from(List.generate(_max! - _min! + 1, (index) => _min! + index));
   }
 
   String toString() {

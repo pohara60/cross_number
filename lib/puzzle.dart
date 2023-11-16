@@ -1,3 +1,8 @@
+import 'dart:math';
+
+// ignore: unused_import
+import 'package:crossnumber/set.dart';
+
 import 'cartesian.dart';
 import 'clue.dart';
 import 'crossnumber.dart';
@@ -140,7 +145,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     return text;
   }
 
-  List<int> knownValues = [];
+  List<int> knownClueValues = [];
+  List<int> knownEntryValues = [];
 
   bool updateValues(Clue clue, Set<int> possibleValue) {
     if (clue.isSet) {
@@ -148,10 +154,20 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       assert(possibleValue.contains(clue.values!.first));
       return false;
     }
+    // Values are restricted in set of clues/entries
+    List<int> knownValues;
+    if (clue is EntryMixin)
+      knownValues = knownClueValues;
+    else
+      knownValues = knownEntryValues;
     possibleValue.removeAll(knownValues);
     var updated = clue.updateValues(possibleValue);
-    if (possibleValue.length == 1) {
-      knownValues.addAll(possibleValue);
+    if (updated) {
+      clue.min = clue.values!.reduce(min);
+      clue.max = clue.values!.reduce(max);
+      if (possibleValue.length == 1) {
+        knownValues.addAll(possibleValue);
+      }
     }
     return updated;
   }
@@ -192,17 +208,25 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   void resetSolution() {
-    knownValues = [];
+    knownClueValues = [];
+    knownEntryValues = [];
     for (var clue in this.clues.values) {
       clue.reset();
     }
   }
 
   bool uniqueSolution() {
-    return !this
+    if (this
         .clues
         .values
-        .any((clue) => clue.values == null || clue.values!.length != 1);
+        .any((clue) => clue.values == null || clue.values!.length != 1))
+      return false;
+    if (this
+        .entries
+        .values
+        .any((entry) => entry.values == null || entry.values!.length != 1))
+      return false;
+    return true;
   }
 
   /*-------------------- Post-processing --------------------*/
@@ -242,6 +266,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           .toList();
       clues.addAll(variables);
     }
+    List<Variable> entries = this.entries.values.map((e) => e).toList();
+    clues.addAll(entries);
 
     // Sort clues with least values first
     clues.sort((c1, c2) {
@@ -292,28 +318,30 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     } else {
       var clue = order[next];
       if (clue.values == null) {
-        // Unknown clue - solve to get values
-        //checkSolution();
-        var possibleValue = <int>{};
-        var possibleVariables = <String, Set<int>>{};
-        if (clue is ExpressionVariable) {
-          for (var variable in clue.variableReferences) {
-            possibleVariables[variable] = <int>{};
+        if (clue.solve != null) {
+          // Unknown clue - solve to get values
+          //checkSolution();
+          var possibleValue = <int>{};
+          var possibleVariables = <String, Set<int>>{};
+          if (clue is ExpressionVariable) {
+            for (var variable in clue.variableReferences) {
+              possibleVariables[variable] = <int>{};
+            }
+            clue.solve!(clue, possibleValue, possibleVariables);
+          } else if (clue is VariableClue) {
+            for (var variable in clue.variableClueReferences) {
+              possibleVariables[variable] = <int>{};
+            }
+            clue.solve!(clue, possibleValue, possibleVariables);
+          } else {
+            clue.solve!(clue, possibleValue);
           }
-          clue.solve!(clue, possibleValue, possibleVariables);
-        } else if (clue is VariableClue) {
-          for (var variable in clue.variableReferences) {
-            possibleVariables[variable] = <int>{};
+          if (possibleValue.isEmpty) {
+            return count;
           }
-          clue.solve!(clue, possibleValue, possibleVariables);
-        } else {
-          clue.solve!(clue, possibleValue);
+          // Can iterate over values
+          solution[clue] = Answer(List.from(possibleValue));
         }
-        if (possibleValue.isEmpty) {
-          return count;
-        }
-        // Can iterate over values
-        solution[clue] = Answer(List.from(possibleValue));
       } else {
         // print(
         //     'findSolutions: next=$next, clue=${clue.name}, values ${clue.values!.toShortString()}');
@@ -346,26 +374,28 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     var failedClues = <Variable>[];
     for (var clue in solution.keys) {
       if (solution[clue] != null) {
-        var value = solution[clue]!.value;
-        var possibleValue = <int>{};
-        var possibleVariables = <String, Set<int>>{};
-        if (clue is ExpressionVariable) {
-          for (var variable in clue.variableReferences) {
-            possibleVariables[variable] = <int>{};
+        if (clue.solve != null) {
+          var value = solution[clue]!.value;
+          var possibleValue = <int>{};
+          var possibleVariables = <String, Set<int>>{};
+          if (clue is ExpressionVariable) {
+            for (var variable in clue.variableReferences) {
+              possibleVariables[variable] = <int>{};
+            }
+            clue.solve!(clue, possibleValue, possibleVariables);
+          } else if (clue is VariableClue) {
+            for (var variable in clue.variableClueReferences) {
+              possibleVariables[variable] = <int>{};
+            }
+            clue.solve!(clue, possibleValue, possibleVariables);
+          } else {
+            clue.solve!(clue, possibleValue);
           }
-          clue.solve!(clue, possibleValue, possibleVariables);
-        } else if (clue is VariableClue) {
-          for (var variable in clue.variableClueReferences) {
-            possibleVariables[variable] = <int>{};
+          if (possibleValue.isEmpty || !possibleValue.contains(value)) {
+            // Failed
+            failedClues.add(clue);
+            ok = false;
           }
-          clue.solve!(clue, possibleValue, possibleVariables);
-        } else {
-          clue.solve!(clue, possibleValue);
-        }
-        if (possibleValue.isEmpty || !possibleValue.contains(value)) {
-          // Failed
-          failedClues.add(clue);
-          ok = false;
         }
       }
     }
@@ -376,19 +406,20 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   bool clueValuesMatch(Clue clue, int value) {
     var match = true;
-    assert(clue.entry != null);
-    var entry = clue.entry!;
-    for (var d = 0; d < entry.length! && match; d++) {
-      if (entry.digitIdentities[d] != null) {
-        var clue2 = entry.digitIdentities[d]!.clue;
-        assert(clue2.entry != null);
-        var d2 = entry.digitIdentities[d]!.digit;
-        if (solution[clue2] != null) {
-          var value2 = solution[clue2]!.value;
-          if (value2 != null) {
-            if (value.toString()[d] != value2.toString()[d2]) {
-              // Inconsistent values
-              match = false;
+    if (clue.entry != null) {
+      var entry = clue.entry!;
+      for (var d = 0; d < entry.length! && match; d++) {
+        if (entry.digitIdentities[d] != null) {
+          var clue2 = entry.digitIdentities[d]!.clue;
+          assert(clue2.entry != null);
+          var d2 = entry.digitIdentities[d]!.digit;
+          if (solution[clue2] != null) {
+            var value2 = solution[clue2]!.value;
+            if (value2 != null) {
+              if (value.toString()[d] != value2.toString()[d2]) {
+                // Inconsistent values
+                match = false;
+              }
             }
           }
         }
@@ -740,16 +771,37 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
   }
 
-  String checkClueReferences(Map<String, ClueKind> clues,
-      [Map<String, EntryKind>? entries]) {
+  String checkClueReferences(Map<String, ClueKind>? clues,
+      [Map<String, EntryKind>? entries, bool checkEntry = false]) {
     var clueError = '';
-    for (var clue1 in clues.values) {
-      for (var clueName
-          in entries != null ? clue1.entryReferences : clue1.clueReferences) {
-        var clue2 = entries != null ? entries[clueName] : clues[clueName];
+    var checkEntries =
+        checkEntry && clues == null || !checkEntry && entries != null;
+    for (var clue1 in checkEntry ? entries!.values : clues!.values) {
+      // Make copy of references because can be updated
+      var references = List.from(
+          checkEntries ? clue1.entryReferences : clue1.clueReferences);
+      for (var clueName in references) {
+        var clue2 = checkEntries ? entries![clueName] : clues![clueName];
         if (clue2 == null) {
+          // Fix clue reference Roman Numeral to be variable
+          if (clueName == "I" || clueName == "V" || clueName == "X") {
+            if (clue1 is ExpressionVariable) {
+              var clue1ExpVar = (clue1 as ExpressionVariable);
+              if (clue1ExpVar.fixReference(clueName)) {
+                clue1ExpVar.sortVariables();
+                continue;
+              }
+            }
+            if (clue1 is ExpressionClue) {
+              if (clue1.fixReference(clueName)) {
+                // Maintain sorted variable order
+                clue1.sortVariables();
+                continue;
+              }
+            }
+          }
           clueError +=
-              "Clue ${clue1.name} expression '${clue1.valueDesc}' refers to clue/entry '$clueName' which does not exist\n";
+              "${checkEntry ? 'Entry' : 'Clue'} ${clue1.name} expression '${clue1.valueDesc}' refers to ${checkEntries ? 'entry' : 'clue'} '$clueName' which does not exist\n";
         } else {
           addClueReference(clue1, clue2);
           // Simple circular reference check for clue/clue
@@ -772,7 +824,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   String checkEntryClueReferences() {
-    return checkClueReferences(entries);
+    return checkClueReferences(clues, entries, true);
+  }
+
+  String checkEntryEntryReferences() {
+    return checkClueReferences(null, entries, true);
   }
 
   String checkClueVariableReferences(Map<String, ClueKind> clues) {
@@ -876,18 +932,21 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   // Generic expression evaluator, supports variables
-  bool solveVariableExpressionEvaluator(ExpressionClue clue,
-      Set<int> possibleValue, Map<String, Set<int>> possibleVariables,
-      [bool Function(ExpressionClue, int, List<String>, List<int>)?
-          validValue]) {
+  bool solveVariableExpressionEvaluator(
+    ExpressionClue clue,
+    ExpressionEvaluator exp,
+    Set<int> possibleValue,
+    Map<String, Set<int>> possibleVariables, [
+    bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
+    int maxCount = 1000000,
+  ]) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     for (var variable in clue.variableReferences) {
       variableValues.add(this.variables[variable]!.values!.toList());
     }
     var count = cartesianCount(variableValues);
-    if (count > 500000000) {
-      //if (count > 1000000) {
+    if (count > maxCount) {
       if (Crossnumber.traceSolve) {
         print(
             'Eval ${clue.runtimeType} ${clue.name} cartesianCount=$count Exception');
@@ -896,7 +955,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     for (var product in cartesian(variableValues)) {
       try {
-        var value = clue.exp.evaluate(clue.variableReferences, product);
+        var value = exp.evaluate(clue.variableReferences, product);
         if (clue.length == null ||
             value >= clue.min! && value < clue.max! + 1) {
           var valid = validValue == null
@@ -927,16 +986,21 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   // Generic expression evaluator, supports variables, clues, generators and functions
-  bool solveExpressionEvaluator(ExpressionClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables,
-      [bool Function(ExpressionClue, int, List<String>, List<int>)?
-          validValue]) {
+  bool solveExpressionEvaluator(
+    ExpressionClue clue,
+    ExpressionEvaluator exp,
+    Set<int> possibleValue,
+    Map<String, Set<int>> possibleVariables, [
+    bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
+    int maxCount = 1000000,
+  ]) {
     final stopwatch = Stopwatch()..start();
+    var variableNames = <String>[];
     var variableValues = <List<int>>[];
     var unknownVariable = <String>[];
     var impossibleVariable = <String>[];
-    getVariableValues(
-        clue, unknownVariable, impossibleVariable, variableValues);
+    getVariableValues(clue, exp, unknownVariable, impossibleVariable,
+        variableValues, variableNames);
 
     // Unknown variable
     if (unknownVariable.isNotEmpty) {
@@ -958,7 +1022,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     var count = cartesianCount(variableValues);
     // if (count > 500000000) {
-    if (count > 1000000) {
+    if (count > maxCount) {
       if (Crossnumber.traceSolve) {
         print(
             'Eval ${clue.runtimeType} ${clue.name} cartesianCount=$count Exception');
@@ -968,8 +1032,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
-        for (var value in clue.exp.generate(clue.min, clue.max,
-            clue.variableClueReferences, product, clue.values)) {
+        for (var value in exp.generate(
+            clue.min, clue.max, variableNames, product, clue.values)) {
           if (clue.length == null ||
               value >= clue.min! && value < clue.max! + 1) {
             var valid = validValue == null
@@ -978,7 +1042,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
             if (valid) {
               possibleValue.add(value);
               var index = 0;
-              for (var variable in clue.variableClueReferences) {
+              for (var variable in variableNames) {
                 possibleVariables[variable]!.add(product[index++]);
               }
               // if (Crossnumber.traceSolve) {
@@ -1006,11 +1070,15 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 
   void getVariableValues(
     ExpressionClue clue,
+    ExpressionEvaluator exp,
     List<String> unknownVariable,
     List<String> impossibleVariable,
     List<List<int>> variableValues,
+    List<String> variableNames,
   ) {
-    for (var variableName in clue.variableReferences) {
+    var variableReferences = exp.variableRefs
+        .where((name) => clue.variableReferences.contains(name));
+    for (var variableName in variableReferences) {
       var variable = this.variables[variableName]!;
       var values = variable.values;
       if (values == null && variable is ExpressionVariable)
@@ -1019,21 +1087,29 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         unknownVariable.add(variableName);
       } else if (values.isEmpty) {
         impossibleVariable.add(variableName);
-      } else
+      } else {
         variableValues.add(values.toList()..sort());
+        variableNames.add(variableName);
+      }
     }
-    getClueValues(clues, clue.clueReferences, unknownVariable,
-        impossibleVariable, variableValues);
-    getClueValues(entries, clue.entryReferences, unknownVariable,
-        impossibleVariable, variableValues);
+    var clueReferences =
+        exp.clueRefs.where((name) => clue.clueReferences.contains(name));
+    getClueValues(clues, clueReferences.toList(), unknownVariable,
+        impossibleVariable, variableValues, variableNames);
+    var entryReferences =
+        exp.clueRefs.where((name) => clue.entryReferences.contains(name));
+    getClueValues(entries, entryReferences.toList(), unknownVariable,
+        impossibleVariable, variableValues, variableNames);
   }
 
   void getClueValues(
-      Map<String, ClueKind> clues,
-      List<String> clueReferences,
-      List<String> unknownVariable,
-      List<String> impossibleVariable,
-      List<List<int>> variableValues) {
+    Map<String, ClueKind> clues,
+    List<String> clueReferences,
+    List<String> unknownVariable,
+    List<String> impossibleVariable,
+    List<List<int>> variableValues,
+    List<String> variableNames,
+  ) {
     for (var otherClueName in clueReferences) {
       var name = otherClueName;
       // Entry names are single alpha or prefixed with E
@@ -1050,16 +1126,21 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         unknownVariable.add(otherClueName);
       else if (otherClueValues.isEmpty)
         impossibleVariable.add(otherClueName);
-      else
+      else {
         variableValues.add(otherClueValues.toList()..sort());
+        variableNames.add(otherClueName);
+      }
     }
   }
 
   // Generic expression evaluator, supports variables
-  bool solveExpressionVariable(ExpressionVariable variable,
-      Set<int> possibleValue, Map<String, Set<int>> possibleVariables,
-      [bool Function(ExpressionVariable, int, List<String>, List<int>)?
-          validValue]) {
+  bool solveExpressionVariable(
+    ExpressionVariable variable,
+    ExpressionEvaluator exp,
+    Set<int> possibleValue,
+    Map<String, Set<int>> possibleVariables, [
+    bool Function(ExpressionVariable, int, List<String>, List<int>)? validValue,
+  ]) {
     final stopwatch = Stopwatch()..start();
     var updated = false;
     var variableValues = <List<int>>[];
@@ -1084,11 +1165,12 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
-        for (var value in variable.exp.generate(
+        for (var value in exp.generate(
             variable.min, variable.max, variable.variableReferences, product)) {
           // Variable values are distinct
           if (product.contains(value)) continue;
-          if (value >= variable.min && value < variable.max + 1) {
+          if ((variable.min == null || value >= variable.min!) &&
+              (variable.max == null || value < variable.max! + 1)) {
             var valid = validValue == null
                 ? true
                 : validValue(

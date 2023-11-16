@@ -358,6 +358,11 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       }
     }
 
+    // Copy clue values to entries
+    for (var clue in puzzle.clues.values) {
+      clue.entry!.values = clue.values;
+    }
+
     endSolve(false);
 
     // Print variable group variable values

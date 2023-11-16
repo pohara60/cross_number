@@ -444,42 +444,42 @@ T=[861]=[861]
 P=[743]=[743]
 SOLUTION-----------------------------
 Puzzle Summary
-A1, , values={467}, entry={unknown}
-A4, , values={147}, entry={unknown}
-A6, , values={37}, entry={unknown}
-A7, , values={977}, entry={unknown}
-A8, , values={287}, entry={unknown}
-A9, , values={199}, entry={unknown}
-A11, , values={127}, entry={unknown}
-A13, , values={29}, entry={unknown}
-A14, , values={325}, entry={unknown}
-A15, , values={351}, entry={unknown}
-D2, , values={678}, entry={unknown}
-D3, , values={797}, entry={unknown}
-D4, , values={17}, entry={unknown}
-D5, , values={769}, entry={unknown}
-D8, , values={253}, entry={unknown}
-D9, , values={173}, entry={unknown}
-D10, , values={925}, entry={unknown}
-D12, , values={25}, entry={unknown}
-A1, values={unknown}
-D2, values={unknown}
-D3, values={unknown}
-A4, values={unknown}
-D4, values={unknown}
-D5, values={unknown}
-A6, values={unknown}
-A7, values={unknown}
-A8, values={unknown}
-D8, values={unknown}
-A9, values={unknown}
-D9, values={unknown}
-D10, values={unknown}
-A11, values={unknown}
-D12, values={unknown}
-A13, values={unknown}
-A14, values={unknown}
-A15, values={unknown}
+A1, , values={467}, entry={467}
+A4, , values={147}, entry={147}
+A6, , values={37}, entry={37}
+A7, , values={977}, entry={977}
+A8, , values={287}, entry={287}
+A9, , values={199}, entry={199}
+A11, , values={127}, entry={127}
+A13, , values={29}, entry={29}
+A14, , values={325}, entry={325}
+A15, , values={351}, entry={351}
+D2, , values={678}, entry={678}
+D3, , values={797}, entry={797}
+D4, , values={17}, entry={17}
+D5, , values={769}, entry={769}
+D8, , values={253}, entry={253}
+D9, , values={173}, entry={173}
+D10, , values={925}, entry={925}
+D12, , values={25}, entry={25}
+A1, values={467}
+D2, values={678}
+D3, values={797}
+A4, values={147}
+D4, values={17}
+D5, values={769}
+A6, values={37}
+A7, values={977}
+A8, values={287}
+D8, values={253}
+A9, values={199}
+D9, values={173}
+D10, values={925}
+A11, values={127}
+D12, values={25}
+A13, values={29}
+A14, values={325}
+A15, values={351}
 +--+--+--+--+--+--+
 | 4  6  7| 1  4  7|
 +--      +   --   +

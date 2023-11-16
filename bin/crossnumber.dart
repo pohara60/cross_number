@@ -10,6 +10,7 @@ import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
+import 'package:crossnumber/increasingprime/increasingprime.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/no21/no21.dart';
@@ -58,7 +59,8 @@ void main(List<String> arguments) async {
     ..addCommand(ColumnsCommand())
     ..addCommand(KnightsCommand())
     ..addCommand(TwoPrimesCommand())
-    ..addCommand(IncreasingFibonnaciCommand());
+    ..addCommand(IncreasingFibonnaciCommand())
+    ..addCommand(IncreasingPrimeCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -490,6 +492,28 @@ class IncreasingFibonnaciCommand extends Command {
     // Get and print solve
     try {
       final pc = IncreasingFibonnaci();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class IncreasingPrimeCommand extends Command {
+  @override
+  final name = 'increasingprime';
+  @override
+  final description = 'solve hardcoded increasingprime puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = IncreasingPrime();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

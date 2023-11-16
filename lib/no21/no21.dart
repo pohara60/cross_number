@@ -178,8 +178,14 @@ class No21 extends Crossnumber<No21Puzzle> {
       // }
     }
 
-    var variableError = puzzle.checkVariableReferences();
-    if (variableError != '') throw PuzzleException(variableError);
+    var clueError = '';
+    // clueError = puzzle.checkClueEntryReferences();
+    clueError = puzzle.checkClueClueReferences();
+    // clueError += puzzle.checkEntryClueReferences();
+    // clueError += puzzle.checkEntryEntryReferences();
+    // Check variabes last, as prceeding may update them
+    clueError += puzzle.checkVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();
   }
@@ -201,7 +207,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         var otherMin = otherClue.values != null
             ? otherClue.values!.reduce(min)
             : otherClue.min;
-        if (otherMin! >= clue.min!) {
+        if (otherMin != null && otherMin >= clue.min!) {
           clue.min = otherMin + 1;
         }
       }
@@ -210,13 +216,13 @@ class No21 extends Crossnumber<No21Puzzle> {
         var otherMax = otherClue.values != null
             ? otherClue.values!.reduce(max)
             : otherClue.max;
-        if (otherMax! <= clue.max!) {
+        if (otherMax != null && otherMax <= clue.max!) {
           clue.max = otherMax - 1;
         }
       }
     }
     var updated = puzzle.solveExpressionEvaluator(
-        clue, possibleValue, possibleVariables, validClue);
+        clue, clue.exp, possibleValue, possibleVariables, validClue);
     return updated;
   }
 

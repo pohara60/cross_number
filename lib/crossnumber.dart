@@ -207,25 +207,32 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
-      if (updateClues(clue.name, possibleValue)) updated = true;
+      if (updateClueEntries(clue.name, possibleValue)) updated = true;
       if (clue.finalise()) updated = true;
       if (clue is VariableClue) {
         for (var variableName in clue.variableReferences) {
-          if (possibleVariables[variableName] != null) {
-            updateVariables(variableName, possibleVariables[variableName]!,
-                updatedVariables);
+          if (possibleVariables[variableName] != null &&
+              possibleVariables[variableName]!.isNotEmpty) {
+            if (updateVariables(variableName, possibleVariables[variableName]!,
+                updatedVariables)) updated = true;
           }
         }
         for (var clueName in clue.clueReferences) {
-          if (possibleVariables[clueName] != null) {
-            if (updateClues(clueName, possibleVariables[clueName]!))
+          if (possibleVariables[clueName] != null &&
+              possibleVariables[clueName]!.isNotEmpty) {
+            if (updateClues(clueName, possibleVariables[clueName]!)) {
               updatedClues.add(clueName);
+              updated = true;
+            }
           }
         }
         for (var entryName in clue.entryReferences) {
-          if (possibleVariables[entryName] != null) {
-            if (updateEntries(entryName, possibleVariables[entryName]!))
+          if (possibleVariables[entryName] != null &&
+              possibleVariables[entryName]!.isNotEmpty) {
+            if (updateEntries(entryName, possibleVariables[entryName]!)) {
               updatedEntries.add(entryName);
+              updated = true;
+            }
           }
         }
       }
@@ -298,12 +305,21 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     return false;
   }
 
-  bool updateClues(String clueName, Set<int> possibleValues) {
-    var clue = puzzle.clues[clueName]!;
+  bool updateClueEntries(String clueName, Set<int> possibleValues) {
+    if (puzzle.clues.containsKey(clueName))
+      return updateClues(clueName, possibleValues);
+    if (puzzle.entries.containsKey(clueName))
+      return updateClues(clueName, possibleValues, true);
+    throw SolveError('Clue/Entry $clueName not found!');
+  }
+
+  bool updateClues(String clueName, Set<int> possibleValues,
+      [bool isEntry = false]) {
+    var clue = isEntry ? puzzle.entries[clueName]! : puzzle.clues[clueName]!;
     var updated = puzzle.updateValues(clue, possibleValues);
     if (updated) {
       // Schedule clue for update (to check digits)
-      addToUpdateQueue(clue);
+      if (!isEntry) addToUpdateQueue(clue);
       // Schedule referencing clues for update
       for (var referrer in clue.referrers) {
         addToUpdateQueue(referrer);
@@ -325,29 +341,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   }
 
   bool updateEntries(String entryName, Set<int> possibleValues) {
-    var entry = puzzle.entries[entryName]!;
-    var updated = entry.updateValues(possibleValues);
-    if (updated) {
-      // Do not Schedule entry for update (to check digits)
-      // addToUpdateQueue(entry);
-      // Schedule referencing clues for update
-      for (var referrer in entry.referrers) {
-        addToUpdateQueue(referrer);
-      }
-      // Schedule referenced variables for update
-      if (puzzle is VariablePuzzle) {
-        var variablePuzzle = puzzle as VariablePuzzle;
-
-        for (var variableName in entry.variableReferences) {
-          var variable = variablePuzzle.variables[variableName]!;
-          if (variable is ExpressionVariable) {
-            addToUpdateQueue(variable);
-          }
-        }
-        return true;
-      }
-    }
-    return false;
+    return updateClues(entryName, possibleValues, true);
   }
 
   bool validVariable(ExpressionVariable variable, int value,
@@ -572,7 +566,7 @@ List<int>? getMultiplesOfValues(Clue clue, List<int> values) {
           multiplier++) {
         var multiple = multiplier * value;
         if (multiple < loResult) continue;
-        if (multiple >= hiResult) continue;
+        if (multiple > hiResult) continue;
         multiples.add(multiple);
       }
     }
@@ -596,9 +590,39 @@ List<int>? getTriangularsLessValues(Clue clue, Set<int> values) {
     for (var triangle in triangles) {
       var difference = triangle - value;
       if (difference < lo) continue;
-      if (difference >= hi) continue;
+      if (difference > hi) continue;
       result.add(difference);
     }
   }
   return List.from(result);
+}
+
+int romanToDecimal(String str) {
+  int value(String r) {
+    if (r == 'I') return 1;
+    if (r == 'V') return 5;
+    if (r == 'X') return 10;
+    if (r == 'L') return 50;
+    if (r == 'C') return 100;
+    if (r == 'D') return 500;
+    if (r == 'M') return 1000;
+    return -1;
+  }
+
+  int res = 0;
+  for (int i = 0; i < str.length; i++) {
+    int s1 = value(str[i]);
+    if (i + 1 < str.length) {
+      int s2 = value(str[i + 1]);
+      if (s1 >= s2) {
+        res = res + s1;
+      } else {
+        res = res + s2 - s1;
+        i++;
+      }
+    } else {
+      res = res + s1;
+    }
+  }
+  return res;
 }

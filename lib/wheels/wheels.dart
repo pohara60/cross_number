@@ -197,7 +197,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables, validClue);
     }
     return updated;
   }
@@ -207,8 +207,8 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
       Map<String, Set<int>> possibleVariables) {
     var updated = false;
     if (variable.valueDesc != '') {
-      updated = puzzle.solveExpressionVariable(
-          variable, possibleValue, possibleVariables, validVariable);
+      updated = puzzle.solveExpressionVariable(variable, variable.exp,
+          possibleValue, possibleVariables, validVariable);
     } else {
       if (variable.values != null) possibleValue.addAll(variable.values!);
     }

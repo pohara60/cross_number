@@ -1,6 +1,8 @@
 /// An API for solving Prime Cuts puzzles.
 library root66;
 
+import 'dart:math';
+
 import '../puzzle.dart';
 import '../crossnumber.dart';
 import '../clue.dart';
@@ -244,6 +246,15 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       }
     }
 
+    var clueError = '';
+    // clueError = puzzle.checkClueEntryReferences();
+    clueError = puzzle.checkClueClueReferences();
+    // clueError += puzzle.checkEntryClueReferences();
+    // clueError += puzzle.checkEntryEntryReferences();
+    // Check variabes last, as prceeding may update them
+    clueError += puzzle.checkVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
+
     if (Crossnumber.traceInit) {
       print(puzzle.toString());
     }
@@ -414,8 +425,15 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     // Normal clues have expression
     if (clue.type != Root66ClueType.BCEFG) {
       // Evaluate expression to get possible values, filtering by valid BCEFG values
+      var maxCount = 100000000;
       puzzle.solveVariableExpressionEvaluator(
-          clue, possiblePreValue, possibleVariables, validValue);
+        clue,
+        clue.exp,
+        possiblePreValue,
+        possibleVariables,
+        validValue,
+        maxCount,
+      );
       // Get possible values
       for (var preValue in possiblePreValue) {
         var valuesG = <int>{};
@@ -479,7 +497,14 @@ class Root66 extends Crossnumber<Root66Puzzle> {
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
-      if (puzzle.updateValues(clue, possibleValue)) updated = true;
+      if (puzzle.updateValues(clue, possibleValue)) {
+        updated = true;
+        if (clue.preValues != null) {
+          // Replace min/max from preValues!
+          clue.min = clue.preValues!.reduce(min);
+          clue.max = clue.preValues!.reduce(max);
+        }
+      }
       if (clue.finalise()) updated = true;
       for (var variableName in clue.variableReferences) {
         updateVariables(

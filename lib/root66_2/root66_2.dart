@@ -203,6 +203,15 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       }
     }
 
+    var clueError = '';
+    // clueError = puzzle.checkClueEntryReferences();
+    clueError = puzzle.checkClueClueReferences();
+    // clueError += puzzle.checkEntryClueReferences();
+    // clueError += puzzle.checkEntryEntryReferences();
+    // Check variabes last, as prceeding may update them
+    clueError += puzzle.checkVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
+
     if (Crossnumber.traceInit) {
       print(puzzle.toString());
     }
@@ -370,8 +379,15 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     // Normal clues have expression
     if (entry.type != Root66_2EntryType.BCEFG) {
       // Evaluate expression to get possible values, filtering by valid BCEFG values
+      var maxCount = 100000000;
       puzzle.solveVariableExpressionEvaluator(
-          clue, possibleClueValue, possibleVariables, validValue);
+        clue,
+        clue.exp,
+        possibleClueValue,
+        possibleVariables,
+        validValue,
+        maxCount,
+      );
       // Get possible values
       var entriesG = <int>{};
       var entriesBCEF = <int>{};

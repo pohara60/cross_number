@@ -167,7 +167,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables, validClue);
     }
     return updated;
   }

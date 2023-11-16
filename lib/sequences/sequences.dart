@@ -2,6 +2,7 @@
 library sequences;
 
 import '../crossnumber.dart';
+import '../puzzle.dart';
 import '../sequences/clue.dart';
 import '../sequences/puzzle.dart';
 
@@ -34,25 +35,25 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     var a2 = SequencesEntry(
       name: 'A2', length: 4, valueDesc: 'P*o + W*E + r',
       //solve: solveA2,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a2);
     var a5 = SequencesEntry(
       name: 'A5', length: 3, valueDesc: 'S + E + r*I*e/S',
       //solve: solveA5,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a5);
     var a8 = SequencesEntry(
       name: 'A8', length: 2, valueDesc: 'S + U*m/S',
       //solve: solveA8,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a8);
     var a10 = SequencesEntry(
       name: 'A10', length: 2, valueDesc: 'T + a - U',
       //solve: solveA10,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a10);
     var a11 = SequencesEntry(
@@ -60,13 +61,13 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'P + r + I + m + e',
       //solve: solveA11,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a11);
     var a12 = SequencesEntry(
       name: 'A12', length: 3, valueDesc: 'F + o - r - T*Y',
       //solve: solveA12,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a12);
     var a13 = SequencesEntry(
@@ -74,7 +75,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'S + P + H + e + r + e',
       //solve: solveA13,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a13);
     var a16 = SequencesEntry(
@@ -82,19 +83,19 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 2,
       valueDesc: 'P + O + W - E + r',
       //solve: solveA16,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a16);
     var a17 = SequencesEntry(
       name: 'A17', length: 2, valueDesc: 'S + U + m',
       //solve: solveA17,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a17);
     var a18 = SequencesEntry(
       name: 'A18', length: 2, valueDesc: 'S + I*G/M + A',
       solve: solveA18,
-      //solve: puzzle.solveVariableExpressionEvaluator,
+      //solve: solveSequencesClue,
     );
     puzzle.addEntry(a18);
     var a20 = SequencesEntry(
@@ -102,7 +103,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 2,
       valueDesc: 'S + I + G + m + A',
       //solve: solveA20,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a20);
     var a22 = SequencesEntry(
@@ -110,25 +111,25 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'S*E*r - I + e + S',
       //solve: solveA22,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a22);
     var a23 = SequencesEntry(
       name: 'A23', length: 3, valueDesc: 'M + E + N*U*S',
       //solve: solveA23,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a23);
     var a25 = SequencesEntry(
       name: 'A25', length: 3, valueDesc: 'S*U*m',
       //solve: solveA25,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a25);
     var a26 = SequencesEntry(
       name: 'A26', length: 2, valueDesc: 'S + U*M = O',
       //solve: solveA26,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a26);
     var a28 = SequencesEntry(
@@ -136,7 +137,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 2,
       valueDesc: 'P + R - I + M - e',
       //solve: solveA28,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a28);
     var a30 = SequencesEntry(
@@ -144,56 +145,56 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'T + H + e = T*I*M + E + S',
       //solve: solveA30,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a30);
     var a31 = SequencesEntry(
       name: 'A31', length: 4, valueDesc: 'M*I*N*T*Y',
       //solve: solveA31,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(a31);
 
     var d1 = SequencesEntry(
       name: 'D1', length: 2, valueDesc: 'S + U + m*S',
       //solve: solveD1,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d1);
     var d2 = SequencesEntry(
       name: 'D2', length: 3, valueDesc: 'm*O*r + e',
       //solve: solveD2,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d2);
     var d3 = SequencesEntry(
       name: 'D3', length: 2, valueDesc: 'S + U + M',
       //solve: solveD3,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d3);
     var d4 = SequencesEntry(
       name: 'D4', length: 2, valueDesc: 'S - I*G/M + a',
       //solve: solveD4,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d4);
     var d5 = SequencesEntry(
       name: 'D5', length: 3, valueDesc: 'S*E/r + I + E*S',
       //solve: solveD5,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d5);
     var d6 = SequencesEntry(
       name: 'D6', length: 3, valueDesc: 'P*R/I + M*e',
       //solve: solveD6,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d6);
     var d7 = SequencesEntry(
       name: 'D7', length: 2, valueDesc: 'F - E + W - e + R',
       //solve: solveD7,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d7);
     var d9 = SequencesEntry(
@@ -201,7 +202,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'R*A*T/I + o',
       //solve: solveD9,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d9);
     var d12 = SequencesEntry(
@@ -209,25 +210,25 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'R + A - T - I + o',
       //solve: solveD12,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d12);
     var d13 = SequencesEntry(
       name: 'D13', length: 3, valueDesc: 'S + I + N + E*S',
       //solve: solveD13,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d13);
     var d14 = SequencesEntry(
       name: 'D14', length: 3, valueDesc: '-T*E + R*M',
       //solve: solveD14,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d14);
     var d15 = SequencesEntry(
       name: 'D15', length: 3, valueDesc: 'm*a + T + H',
       //solve: solveD15,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d15);
     var d19 = SequencesEntry(
@@ -235,13 +236,13 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'C + O + S + I*N + E',
       //solve: solveD19,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d19);
     var d21 = SequencesEntry(
       name: 'D21', length: 3, valueDesc: '-T + r*I*G',
       //solve: solveD21,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d21);
     var d22 = SequencesEntry(
@@ -249,19 +250,19 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 3,
       valueDesc: 'S - E + R*I - e*S',
       //solve: solveD22,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d22);
     var d24 = SequencesEntry(
       name: 'D24', length: 3, valueDesc: 'N*(A + r) - C',
       //solve: solveD24,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d24);
     var d25 = SequencesEntry(
       name: 'D25', length: 2, valueDesc: 'Y*Y + Y = I - S',
       //solve: solveD25,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d25);
     var d26 = SequencesEntry(
@@ -269,7 +270,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 2,
       valueDesc: 'S*Y*S = S*(I - S)',
       solve: solveD26,
-      //solve: puzzle.solveVariableExpressionEvaluator,
+      //solve: solveSequencesClue,
     );
     puzzle.addEntry(d26);
     var d27 = SequencesEntry(
@@ -277,7 +278,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 2,
       valueDesc: 'M + E = T - I + C',
       //solve: solveD27,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d27);
     var d29 = SequencesEntry(
@@ -285,55 +286,11 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       length: 2,
       valueDesc: 'N + U + m + S',
       //solve: solveD29,
-      solve: puzzle.solveVariableExpressionEvaluator,
+      solve: solveSequencesClue,
     );
     puzzle.addEntry(d29);
 
     puzzle.addDigitIdentityFromGrid();
-    // puzzle.addDigitIdentity(a2, 1, d2, 1);
-    // puzzle.addDigitIdentity(a2, 3, d3, 1);
-    // puzzle.addDigitIdentity(a2, 4, d4, 1);
-    // puzzle.addDigitIdentity(a5, 1, d5, 1);
-    // puzzle.addDigitIdentity(a5, 2, d6, 1);
-    // puzzle.addDigitIdentity(a5, 2, d7, 1);
-    // puzzle.addDigitIdentity(a8, 1, d2, 2);
-    // puzzle.addDigitIdentity(a8, 2, d2, 2);
-    // puzzle.addDigitIdentity(a10, 1, d3, 2);
-    // puzzle.addDigitIdentity(a10, 2, d4, 2);
-    // puzzle.addDigitIdentity(a11, 1, d5, 2);
-    // puzzle.addDigitIdentity(a11, 2, d6, 2);
-    // puzzle.addDigitIdentity(a11, 3, d7, 2);
-    // puzzle.addDigitIdentity(a12, 1, d12, 1);
-    // puzzle.addDigitIdentity(a12, 2, d2, 3);
-    // puzzle.addDigitIdentity(a12, 3, d9, 2);
-    // puzzle.addDigitIdentity(a13, 1, d13, 1);
-    // puzzle.addDigitIdentity(a13, 2, d14, 1);
-    // puzzle.addDigitIdentity(a13, 3, d5, 3);
-    // puzzle.addDigitIdentity(a16, 1, d12, 2);
-    // puzzle.addDigitIdentity(a17, 1, d9, 3);
-    // puzzle.addDigitIdentity(a17, 2, d13, 2);
-    // puzzle.addDigitIdentity(a18, 1, d14, 2);
-    // puzzle.addDigitIdentity(a18, 2, d19, 1);
-    // puzzle.addDigitIdentity(a20, 2, d15, 2);
-    // puzzle.addDigitIdentity(a22, 1, d22, 1);
-    // puzzle.addDigitIdentity(a22, 2, d13, 3);
-    // puzzle.addDigitIdentity(a22, 3, d14, 3);
-    // puzzle.addDigitIdentity(a23, 1, d19, 2);
-    // puzzle.addDigitIdentity(a23, 2, d24, 1);
-    // puzzle.addDigitIdentity(a23, 3, d15, 3);
-    // puzzle.addDigitIdentity(a25, 1, d25, 1);
-    // puzzle.addDigitIdentity(a25, 2, d21, 2);
-    // puzzle.addDigitIdentity(a25, 3, d22, 2);
-    // puzzle.addDigitIdentity(a26, 1, d26, 1);
-    // puzzle.addDigitIdentity(a26, 2, d27, 1);
-    // puzzle.addDigitIdentity(a28, 1, d24, 2);
-    // puzzle.addDigitIdentity(a28, 2, d29, 1);
-    // puzzle.addDigitIdentity(a30, 1, d25, 2);
-    // puzzle.addDigitIdentity(a30, 2, d21, 3);
-    // puzzle.addDigitIdentity(a30, 3, d22, 3);
-    // puzzle.addDigitIdentity(a31, 1, d26, 2);
-    // puzzle.addDigitIdentity(a31, 2, d27, 2);
-    // puzzle.addDigitIdentity(a31, 4, d24, 3);
 
     // Add letter references from descriptions
     var letters = [
@@ -368,6 +325,15 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
         }
       }
     }
+
+    var clueError = '';
+    // clueError = puzzle.checkClueEntryReferences();
+    clueError = puzzle.checkClueClueReferences();
+    // clueError += puzzle.checkEntryClueReferences();
+    // clueError += puzzle.checkEntryEntryReferences();
+    // Check variabes last, as prceeding may update them
+    clueError += puzzle.checkVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
 
     if (Crossnumber.traceInit) {
       print(puzzle.toString());
@@ -1049,5 +1015,16 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     // solveClue(this.puzzle.clues['A25']!);
     // solveClue(this.puzzle.clues['A26']!);
     super.solve(iteration);
+  }
+
+  // Clue solver invokes generic expression evaluator with validator
+  bool solveSequencesClue(SequencesClue clue, Set<int> possibleValue,
+      Map<String, Set<int>> possibleVariables) {
+    var updated = false;
+    if (clue.valueDesc != null && clue.valueDesc != '') {
+      updated = puzzle.solveVariableExpressionEvaluator(
+          clue, clue.exp, possibleValue, possibleVariables);
+    }
+    return updated;
   }
 }

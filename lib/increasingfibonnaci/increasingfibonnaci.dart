@@ -162,43 +162,13 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     return true;
   }
 
-  int romanToDecimal(String str) {
-    int value(String r) {
-      if (r == 'I') return 1;
-      if (r == 'V') return 5;
-      if (r == 'X') return 10;
-      if (r == 'L') return 50;
-      if (r == 'C') return 100;
-      if (r == 'D') return 500;
-      if (r == 'M') return 1000;
-      return -1;
-    }
-
-    int res = 0;
-    for (int i = 0; i < str.length; i++) {
-      int s1 = value(str[i]);
-      if (i + 1 < str.length) {
-        int s2 = value(str[i + 1]);
-        if (s1 >= s2) {
-          res = res + s1;
-        } else {
-          res = res + s2 - s1;
-          i++;
-        }
-      } else {
-        res = res + s1;
-      }
-    }
-    return res;
-  }
-
   // Clue solver invokes generic expression evaluator with validator
   bool solveIncreasingFibonnaciClue(IncreasingFibonnaciClue clue,
       Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {
@@ -211,9 +181,10 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   }
 
   @override
-  bool updateClues(String clueName, Set<int> possibleValues) {
-    var updated = super.updateClues(clueName, possibleValues);
-    if (updated) {
+  bool updateClues(String clueName, Set<int> possibleValues,
+      [bool isEntry = false]) {
+    var updated = super.updateClues(clueName, possibleValues, isEntry);
+    if (!isEntry && updated) {
       var clue = puzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);
       if (clue.min == null || clue.min! < newMin) clue.min = newMin;

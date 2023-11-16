@@ -339,15 +339,18 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
     // Solve Clue
     var updated = puzzle.solveExpressionEvaluator(
-        clue, possibleValue, possibleVariables, validClue);
+        clue, clue.exp, possibleValue, possibleVariables, validClue);
 
     // Solve Entry
     // If expression, then evaluate it
     if (entry.valueDesc != '') {
       try {
         if (puzzle.solveExpressionEvaluator(
-            entry, possibleEntryValue, possibleEntryVariables, validEntry))
-          updated = true;
+            entry,
+            entry.exp,
+            possibleEntryValue,
+            possibleEntryVariables,
+            validEntry)) updated = true;
       } on SolveException {
         // Could not solve expression
         if (entry.values != null) {
@@ -471,8 +474,8 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
     var updated = false;
     if (variable.valueDesc != '') {
-      updated = puzzle.solveExpressionVariable(
-          variable, possibleValue, possibleVariables, validVariable);
+      updated = puzzle.solveExpressionVariable(variable, variable.exp,
+          possibleValue, possibleVariables, validVariable);
     } else {
       if (variable.values != null) possibleValue.addAll(variable.values!);
     }
