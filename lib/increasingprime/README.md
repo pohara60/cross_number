@@ -1,5 +1,9 @@
 # IncreasingPrime Puzzle Solver
 
+## To Do
+
+[ ] puzzle still not solved
+
 ## Puzzle
 
 Ten Increasing Clues by Nod

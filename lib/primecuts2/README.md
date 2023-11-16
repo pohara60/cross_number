@@ -1,5 +1,9 @@
 # Prime Cuts Puzzle Solver
 
+## To Do
+
+[ ] puzzle still not solved
+
 ## Introduction
 
 Prime Cuts puzzles have these features:
