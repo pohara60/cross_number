@@ -103,9 +103,6 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
     }
 
     // Get Entry expressions from Clue expressions
-    // puzzle.entries["e"]!
-    //     .setExpression(r'II - C + g + h', entryNames: entryNames);
-
     for (var clue in puzzle.clues.values) {
       for (var entryName in clue.entryReferences) {
         // Rearrange expression for new subject
