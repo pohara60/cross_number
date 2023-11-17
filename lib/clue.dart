@@ -1,4 +1,5 @@
 import 'package:crossnumber/cartesian.dart';
+import 'package:crossnumber/crossnumber.dart';
 import 'package:powers/powers.dart';
 
 import 'expression.dart';
@@ -195,10 +196,16 @@ class Clue extends Variable {
   @override
   compareTo(Variable other) {
     if (other is Clue) {
-      if (name[0] != other.name[0]) return name.compareTo(other.name);
-      var n1 = int.parse(name.substring(1));
-      var n2 = int.parse(other.name.substring(1));
-      return n1.compareTo(n2);
+      if (name[0] == 'A' || name[0] == 'D') {
+        if (name[0] != other.name[0]) return name.compareTo(other.name);
+        var n1 = int.parse(name.substring(1));
+        var n2 = int.parse(other.name.substring(1));
+        return n1.compareTo(n2);
+      } else {
+        var n1 = romanToDecimal(name);
+        var n2 = romanToDecimal(other.name);
+        return n1.compareTo(n2);
+      }
     }
     // Clues before Variables
     return -1;

@@ -14,8 +14,8 @@ import 'variable.dart';
 class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   late PuzzleKind puzzle;
 
-  static const bool traceInit = true;
-  static const bool traceSolve = true;
+  static bool traceInit = true;
+  static bool traceSolve = true;
 
   Crossnumber();
 

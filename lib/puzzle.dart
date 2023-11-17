@@ -300,6 +300,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   int findSolutions(List<Variable> order, int next, int count) {
+    // Skip variables/clues with value
     while (next < order.length &&
         solution[order[next]] != null &&
         solution[order[next]]!.value != null) {
@@ -307,6 +308,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       //     'findSolutions: next=$next, skip ${order[next].name}=${solution[order[next]]!.value} next=${next + 1}');
       next++;
     }
+
+    // End of search?
     if (next == order.length) {
       if (checkSolution()) {
         print(solutionToString());
@@ -315,56 +318,61 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       } else {
         // print('findSolutions: end of clues, no solution');
       }
-    } else {
-      var clue = order[next];
-      if (clue.values == null) {
-        if (clue.solve != null) {
-          // Unknown clue - solve to get values
-          //checkSolution();
-          var possibleValue = <int>{};
-          var possibleVariables = <String, Set<int>>{};
-          if (clue is ExpressionVariable) {
-            for (var variable in clue.variableReferences) {
-              possibleVariables[variable] = <int>{};
-            }
-            clue.solve!(clue, possibleValue, possibleVariables);
-          } else if (clue is VariableClue) {
-            for (var variable in clue.variableClueReferences) {
-              possibleVariables[variable] = <int>{};
-            }
-            clue.solve!(clue, possibleValue, possibleVariables);
-          } else {
-            clue.solve!(clue, possibleValue);
-          }
-          if (possibleValue.isEmpty) {
-            return count;
-          }
-          // Can iterate over values
-          solution[clue] = Answer(List.from(possibleValue));
-        }
-      } else {
-        // print(
-        //     'findSolutions: next=$next, clue=${clue.name}, values ${clue.values!.toShortString()}');
-      }
-      // Try each of the possible values for this clue
-      for (var value in solution[clue]!.possible) {
-        // Check that this value is consistent with other clues
-        if (clue is Clue) {
-          if (!clueValuesMatch(clue, value)) {
-            // print(
-            //     'findSolutions: next=$next, clue=${clue.name}, value $value does not match');
-            continue;
-          }
-        }
-        // Consistent, try this value
-        solution[clue]!.value = value;
-        clue.tryValue = value;
-        // print('findSolutions: next=$next, clue=${clue.name}, try value $value');
-        count = findSolutions(order, next + 1, count);
-        solution[clue]!.value = null;
-        clue.tryValue = null;
-      }
+      return count;
     }
+
+    // Get clue values
+    var clue = order[next];
+    var values = clue.values;
+    if (clue.solve != null) {
+      // Unknown clue - solve to get values
+      // if (clue.values == null) {
+
+      // Re-evaluate clue to see if have fewer values given context
+      var possibleValue = <int>{};
+      var possibleVariables = <String, Set<int>>{};
+      if (clue is ExpressionVariable) {
+        for (var variable in clue.variableReferences) {
+          possibleVariables[variable] = <int>{};
+        }
+        clue.solve!(clue, possibleValue, possibleVariables);
+      } else if (clue is VariableClue) {
+        for (var variable in clue.variableClueReferences) {
+          possibleVariables[variable] = <int>{};
+        }
+        clue.solve!(clue, possibleValue, possibleVariables);
+      } else {
+        clue.solve!(clue, possibleValue);
+      }
+      if (possibleValue.isEmpty) {
+        return count;
+      }
+      // Can iterate over values
+      values = possibleValue;
+      solution[clue] = Answer(List.from(possibleValue));
+      // }
+    }
+
+    // Try each of the possible values for this clue
+    // for (var value in solution[clue]!.possible) {
+    for (var value in values ?? {}) {
+      // Check that this value is consistent with other clues
+      if (clue is Clue) {
+        if (!clueValuesMatch(clue, value)) {
+          // print(
+          //     'findSolutions: next=$next, clue=${clue.name}, value $value does not match');
+          continue;
+        }
+      }
+      // Consistent, try this value
+      solution[clue]!.value = value;
+      clue.tryValue = value;
+      // print('findSolutions: next=$next, clue=${clue.name}, try value $value');
+      count = findSolutions(order, next + 1, count);
+      solution[clue]!.value = null;
+      clue.tryValue = null;
+    }
+
     //return count;
     return count;
   }

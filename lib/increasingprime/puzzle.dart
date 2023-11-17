@@ -1,3 +1,5 @@
+import 'package:crossnumber/crossnumber.dart';
+
 import 'clue.dart';
 import '../puzzle.dart';
 import '../variable.dart';
@@ -27,6 +29,7 @@ class IncreasingPrimePuzzle extends VariablePuzzle<IncreasingPrimeClue,
   @override
   postProcessing([bool iteration = false]) {
     // Prevent iteration as too slow
-    super.postProcessing(false);
+    Crossnumber.traceSolve = false;
+    super.postProcessing(true);
   }
 }
