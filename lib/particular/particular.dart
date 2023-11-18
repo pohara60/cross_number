@@ -7,6 +7,7 @@ import '../expression.dart';
 import '../particular/clue.dart';
 import '../particular/puzzle.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 
 /// Provide access to the Prime Cuts API.
 class Particular extends Crossnumber<ParticularPuzzle> {
@@ -40,10 +41,10 @@ class Particular extends Crossnumber<ParticularPuzzle> {
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
-        {String? name, int? length, String? valueDesc, Function? solve}) {
+        {String? name, int? length, String? valueDesc, SolveFunction? solve}) {
       try {
         var entry = ParticularEntry(
-            name: name, length: length, valueDesc: valueDesc, solve: solve);
+            name: name!, length: length, valueDesc: valueDesc, solve: solve);
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
@@ -247,9 +248,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   // Validate possible clue value
@@ -260,12 +259,21 @@ class Particular extends Crossnumber<ParticularPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveParticularClue(ParticularClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveParticularClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as ParticularPuzzle;
+    var clue = v as ParticularClue;
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

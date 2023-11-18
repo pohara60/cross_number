@@ -6,6 +6,8 @@ import '../instruction/clue.dart';
 import '../instruction/puzzle.dart';
 
 import '../generators.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 class Instruction extends Crossnumber<InstructionPuzzle> {
   var gridString = [
@@ -115,170 +117,242 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   late final InstructionEntry d25;
   late final InstructionEntry d27;
 
+  SolveFunction solveWrapper(
+      bool Function(InstructionEntry clue, Set<int> possibleValue) solve) {
+    bool solveInstructionClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<String, Set<int>>? possibleVariables,
+      Map<String, Set<int>>? possibleVariables2,
+      Set<String>? updatedVariables,
+    }) {
+      var clue = v as InstructionEntry;
+      return solve(clue, possibleValue);
+    }
+
+    return solveInstructionClue;
+  }
+
   void initCrossnumber() {
     a1 = InstructionEntry(
         name: 'A1',
         length: 3,
         valueDesc: 'Triangular number with a triangular DP',
-        solve: solveA1);
+        solve: solveWrapper(solveA1));
     puzzle.addEntry(a1);
     a3 = InstructionEntry(
         name: 'A3',
         length: 3,
         valueDesc: 'Square number with a square DS',
-        solve: solveA3);
+        solve: solveWrapper(solveA3));
     puzzle.addEntry(a3);
     a7 = InstructionEntry(
-        name: 'A7', length: 2, valueDesc: 'DS is half of D21', solve: solveA7);
+        name: 'A7',
+        length: 2,
+        valueDesc: 'DS is half of D21',
+        solve: solveWrapper(solveA7));
     puzzle.addEntry(a7);
     a9 = InstructionEntry(
-        name: 'A9', length: 2, valueDesc: 'D18+26', solve: solveA9);
+        name: 'A9',
+        length: 2,
+        valueDesc: 'D18+26',
+        solve: solveWrapper(solveA9));
     puzzle.addEntry(a9);
     a10 = InstructionEntry(
-        name: 'A10', length: 2, valueDesc: 'Palindrome', solve: solveA10);
+        name: 'A10',
+        length: 2,
+        valueDesc: 'Palindrome',
+        solve: solveWrapper(solveA10));
     puzzle.addEntry(a10);
     a11 = InstructionEntry(
-        name: 'A11', length: 4, valueDesc: 'DS equals D21', solve: solveA11);
+        name: 'A11',
+        length: 4,
+        valueDesc: 'DS equals D21',
+        solve: solveWrapper(solveA11));
     puzzle.addEntry(a11);
     a13 = InstructionEntry(
         name: 'A13',
         length: 2,
         valueDesc: 'Digits have opposite parity and DP equals another entry',
-        solve: solveA13);
+        solve: solveWrapper(solveA13));
     puzzle.addEntry(a13);
     a14 = InstructionEntry(
         name: 'A14',
         length: 3,
         valueDesc:
             'Consecutive odd digits in ascending or descending order, with triangular DP',
-        solve: solveA14);
+        solve: solveWrapper(solveA14));
     puzzle.addEntry(a14);
     a17 = InstructionEntry(
-        name: 'A17', length: 3, valueDesc: 'DS is triangular', solve: solveA17);
+        name: 'A17',
+        length: 3,
+        valueDesc: 'DS is triangular',
+        solve: solveWrapper(solveA17));
     puzzle.addEntry(a17);
     a19 = InstructionEntry(
-        name: 'A19', length: 2, valueDesc: 'DP equals D21', solve: solveA19);
+        name: 'A19',
+        length: 2,
+        valueDesc: 'DP equals D21',
+        solve: solveWrapper(solveA19));
     puzzle.addEntry(a19);
     a20 = InstructionEntry(
         name: 'A20',
         length: 4,
         valueDesc: 'Prime whose DP is square and DS is a factor of D13',
-        solve: solveA20);
+        solve: solveWrapper(solveA20));
     puzzle.addEntry(a20);
     a23 = InstructionEntry(
         name: 'A23',
         length: 2,
         valueDesc: 'Palindromic prime',
-        solve: solveA23);
+        solve: solveWrapper(solveA23));
     puzzle.addEntry(a23);
     a25 = InstructionEntry(
-        name: 'A25', length: 2, valueDesc: 'Prime', solve: solveA25);
+        name: 'A25',
+        length: 2,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveA25));
     puzzle.addEntry(a25);
     a26 = InstructionEntry(
-        name: 'A26', length: 2, valueDesc: 'DP is a cube', solve: solveA26);
+        name: 'A26',
+        length: 2,
+        valueDesc: 'DP is a cube',
+        solve: solveWrapper(solveA26));
     puzzle.addEntry(a26);
     a28 = InstructionEntry(
-        name: 'A28', length: 3, valueDesc: 'DP equals 180', solve: solveA28);
+        name: 'A28',
+        length: 3,
+        valueDesc: 'DP equals 180',
+        solve: solveWrapper(solveA28));
     puzzle.addEntry(a28);
     a29 = InstructionEntry(
         name: 'A29',
         length: 3,
         valueDesc: 'DS equals D21 and DP is a cube',
-        solve: solveA29);
+        solve: solveWrapper(solveA29));
     puzzle.addEntry(a29);
 
     d1 = InstructionEntry(
         name: 'D1',
         length: 2,
         valueDesc: '(DS+DP) is an odd multiple of 5',
-        solve: solveD1);
+        solve: solveWrapper(solveD1));
     puzzle.addEntry(d1);
     d2 = InstructionEntry(
         name: 'D2',
         length: 3,
         valueDesc: 'Palindrome and multiple of 5 with MP of 2',
-        solve: solveD2);
+        solve: solveWrapper(solveD2));
     puzzle.addEntry(d2);
     d3 = InstructionEntry(
-        name: 'D3', length: 3, valueDesc: 'A3 plus or minus 3', solve: solveD3);
+        name: 'D3',
+        length: 3,
+        valueDesc: 'A3 plus or minus 3',
+        solve: solveWrapper(solveD3));
     puzzle.addEntry(d3);
     d4 = InstructionEntry(
         name: 'D4',
         length: 2,
         valueDesc: 'Greater than D8 and DS equals another entry',
-        solve: solveD4);
+        solve: solveWrapper(solveD4));
     puzzle.addEntry(d4);
     d5 = InstructionEntry(
-        name: 'D5', length: 2, valueDesc: '2 times a square', solve: solveD5);
+        name: 'D5',
+        length: 2,
+        valueDesc: '2 times a square',
+        solve: solveWrapper(solveD5));
     puzzle.addEntry(d5);
     d6 = InstructionEntry(
         name: 'D6',
         length: 3,
         valueDesc: 'Has 8 factors including 1 and itself',
-        solve: solveD6);
+        solve: solveWrapper(solveD6));
     puzzle.addEntry(d6);
     d8 = InstructionEntry(
         name: 'D8',
         length: 2,
         valueDesc: 'Square pyramidal number (ie, sum of the first n squares)',
-        solve: solveD8);
+        solve: solveWrapper(solveD8));
     puzzle.addEntry(d8);
     d11 = InstructionEntry(
-        name: 'D11', length: 2, valueDesc: 'Square', solve: solveD11);
+        name: 'D11',
+        length: 2,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD11));
     puzzle.addEntry(d11);
     d12 = InstructionEntry(
         name: 'D12',
         length: 2,
         valueDesc: 'DP is a single-digit even number',
-        solve: solveD12);
+        solve: solveWrapper(solveD12));
     puzzle.addEntry(d12);
     d13 = InstructionEntry(
-        name: 'D13', length: 2, valueDesc: 'Multiple of 7', solve: solveD13);
+        name: 'D13',
+        length: 2,
+        valueDesc: 'Multiple of 7',
+        solve: solveWrapper(solveD13));
     puzzle.addEntry(d13);
     d15 = InstructionEntry(
         name: 'D15',
         length: 2,
         valueDesc: 'DP equals another entry',
-        solve: solveD15);
+        solve: solveWrapper(solveD15));
     puzzle.addEntry(d15);
     d16 = InstructionEntry(
-        name: 'D16', length: 2, valueDesc: 'Prime', solve: solveD16);
+        name: 'D16',
+        length: 2,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveD16));
     puzzle.addEntry(d16);
     d18 = InstructionEntry(
         name: 'D18',
         length: 2,
         valueDesc: 'Lucky and happy number',
-        solve: solveD18);
+        solve: solveWrapper(solveD18));
     puzzle.addEntry(d18);
     d19 = InstructionEntry(
         name: 'D19',
         length: 3,
         valueDesc: 'DP equals another entry',
-        solve: solveD19);
+        solve: solveWrapper(solveD19));
     puzzle.addEntry(d19);
     d20 = InstructionEntry(
         name: 'D20',
         length: 3,
         valueDesc: '(DS + DP) is a multiple of D21',
-        solve: solveD20);
+        solve: solveWrapper(solveD20));
     puzzle.addEntry(d20);
     d21 = InstructionEntry(
-        name: 'D21', length: 2, valueDesc: 'Multiple of 10', solve: solveD21);
+        name: 'D21',
+        length: 2,
+        valueDesc: 'Multiple of 10',
+        solve: solveWrapper(solveD21));
     puzzle.addEntry(d21);
     d22 = InstructionEntry(
         name: 'D22',
         length: 3,
         valueDesc: 'DP is a power of 2',
-        solve: solveD22);
+        solve: solveWrapper(solveD22));
     puzzle.addEntry(d22);
     d24 = InstructionEntry(
-        name: 'D24', length: 2, valueDesc: 'DP is square', solve: solveD24);
+        name: 'D24',
+        length: 2,
+        valueDesc: 'DP is square',
+        solve: solveWrapper(solveD24));
     puzzle.addEntry(d24);
     d25 = InstructionEntry(
-        name: 'D25', length: 2, valueDesc: 'Lucky number', solve: solveD25);
+        name: 'D25',
+        length: 2,
+        valueDesc: 'Lucky number',
+        solve: solveWrapper(solveD25));
     puzzle.addEntry(d25);
     d27 = InstructionEntry(
-        name: 'D27', length: 2, valueDesc: 'Fibonacci number', solve: solveD27);
+        name: 'D27',
+        length: 2,
+        valueDesc: 'Fibonacci number',
+        solve: solveWrapper(solveD27));
     puzzle.addEntry(d27);
 
     // D8 references all other cells!

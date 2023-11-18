@@ -335,21 +335,23 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         for (var variable in clue.variableReferences) {
           possibleVariables[variable] = <int>{};
         }
-        clue.solve!(clue, possibleValue, possibleVariables);
+        clue.solve!(this, clue, possibleValue,
+            possibleVariables: possibleVariables);
       } else if (clue is VariableClue) {
         for (var variable in clue.variableClueReferences) {
           possibleVariables[variable] = <int>{};
         }
-        clue.solve!(clue, possibleValue, possibleVariables);
+        clue.solve!(this, clue, possibleValue,
+            possibleVariables: possibleVariables);
       } else {
-        clue.solve!(clue, possibleValue);
+        clue.solve!(this, clue, possibleValue);
       }
       if (possibleValue.isEmpty) {
         return count;
       }
       // Can iterate over values
       values = possibleValue;
-      solution[clue] = Answer(List.from(possibleValue));
+      // solution[clue] = Answer(List.from(possibleValue));
       // }
     }
 
@@ -365,6 +367,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         }
       }
       // Consistent, try this value
+      if (solution[clue] == null) {
+        solution[clue] = Answer(null);
+      }
       solution[clue]!.value = value;
       clue.tryValue = value;
       // print('findSolutions: next=$next, clue=${clue.name}, try value $value');
@@ -390,14 +395,16 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
             for (var variable in clue.variableReferences) {
               possibleVariables[variable] = <int>{};
             }
-            clue.solve!(clue, possibleValue, possibleVariables);
+            clue.solve!(this, clue, possibleValue,
+                possibleVariables: possibleVariables);
           } else if (clue is VariableClue) {
             for (var variable in clue.variableClueReferences) {
               possibleVariables[variable] = <int>{};
             }
-            clue.solve!(clue, possibleValue, possibleVariables);
+            clue.solve!(this, clue, possibleValue,
+                possibleVariables: possibleVariables);
           } else {
-            clue.solve!(clue, possibleValue);
+            clue.solve!(this, clue, possibleValue);
           }
           if (possibleValue.isEmpty || !possibleValue.contains(value)) {
             // Failed
@@ -674,19 +681,19 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 /// PuzzleException for puzzle definition
 class PuzzleException implements Exception {
   final String msg;
-  PuzzleException(this.msg);
+  PuzzleException(String this.msg);
 }
 
 /// SolveException for puzzle solution
 class SolveException implements Exception {
   String? msg;
-  SolveException([this.msg]);
+  SolveException([String? this.msg]);
 }
 
 /// SolveError for puzzle solution - impossible situation
 class SolveError implements Exception {
   String? msg;
-  SolveError([this.msg]);
+  SolveError([String? this.msg]);
 }
 
 /*-------------------- Variable Puzzle --------------------*/
@@ -1245,7 +1252,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
             possibleVariables[variable] = <int>{};
           }
           try {
-            clue.solve!(clue, possibleValue, possibleVariables);
+            clue.solve!(this, clue, possibleValue,
+                possibleVariables: possibleVariables);
           } catch (e) {
             possibleValue.clear();
           }
@@ -1289,11 +1297,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 }
 
 class Answer {
-  List<int> possible;
+  List<int>? possible;
   int? value;
-  Answer(this.possible) {
-    if (this.possible.length == 1) {
-      this.value = this.possible[0];
+  Answer(List<int>? this.possible) {
+    if (this.possible?.length == 1) {
+      this.value = this.possible![0];
     }
   }
   Answer.value(int this.value) : this.possible = [value];

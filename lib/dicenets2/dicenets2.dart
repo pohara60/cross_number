@@ -5,6 +5,7 @@ import '../dicenets2/puzzle.dart';
 
 import '../clue.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 
 class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
   var gridString = [
@@ -39,10 +40,11 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
   @override
   void initCrossnumber() {
     var clueErrors = '';
-    void clueWrapper({String? name, int? length, String? valueDesc, solve}) {
+    void clueWrapper(
+        {String? name, int? length, String? valueDesc, SolveFunction? solve}) {
       try {
         var clue = DiceNetsEntry(
-            name: name, length: length, valueDesc: valueDesc, solve: solve);
+            name: name!, length: length, valueDesc: valueDesc, solve: solve);
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
@@ -204,10 +206,20 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
   }
 
   // Clue colver invokes generic expression evaluator with validator
-  bool solveDiceNets(DiceNetsClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveDiceNets(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as DiceNetsPuzzle;
+    var clue = v as DiceNetsClue;
+
     puzzle.solveExpressionEvaluator(
-        clue, clue.exp, possibleValue, possibleVariables, validDiceDigits);
+        clue, clue.exp, possibleValue, possibleVariables!, validDiceDigits);
     return false;
   }
 }

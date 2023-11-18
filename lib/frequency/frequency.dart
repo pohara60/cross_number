@@ -6,6 +6,8 @@ import '../frequency/puzzle.dart';
 
 import '../generators.dart';
 import '../monadic.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 class Frequency extends Crossnumber<FrequencyPuzzle> {
   var gridString = [
@@ -39,52 +41,97 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   late final FrequencyEntry d8;
   late final FrequencyEntry d9;
 
+  SolveFunction solveWrapper(
+      bool Function(FrequencyEntry clue, Set<int> possibleValue) solve) {
+    bool solveFrequencyClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<String, Set<int>>? possibleVariables,
+      Map<String, Set<int>>? possibleVariables2,
+      Set<String>? updatedVariables,
+    }) {
+      var clue = v as FrequencyEntry;
+      return solve(clue, possibleValue);
+    }
+
+    return solveFrequencyClue;
+  }
+
   void initCrossnumber() {
     a1 = FrequencyEntry(
-        name: 'A1', length: 3, valueDesc: 'Palindrome', solve: solveA1);
+        name: 'A1',
+        length: 3,
+        valueDesc: 'Palindrome',
+        solve: solveWrapper(solveA1));
     puzzle.addEntry(a1);
     a5 = FrequencyEntry(
-        name: 'A5', length: 2, valueDesc: 'Digit product = D2', solve: solveA5);
+        name: 'A5',
+        length: 2,
+        valueDesc: 'Digit product = D2',
+        solve: solveWrapper(solveA5));
     puzzle.addEntry(a5);
     a6 = FrequencyEntry(
-        name: 'A6', length: 2, valueDesc: 'Factor of D9', solve: solveA6);
+        name: 'A6',
+        length: 2,
+        valueDesc: 'Factor of D9',
+        solve: solveWrapper(solveA6));
     puzzle.addEntry(a6);
     a7 = FrequencyEntry(
-        name: 'A7', length: 2, valueDesc: 'Factor of D4', solve: solveA7);
+        name: 'A7',
+        length: 2,
+        valueDesc: 'Factor of D4',
+        solve: solveWrapper(solveA7));
     puzzle.addEntry(a7);
     a9 = FrequencyEntry(
-        name: 'A9', length: 2, valueDesc: 'Reverse of D2', solve: solveA9);
+        name: 'A9',
+        length: 2,
+        valueDesc: 'Reverse of D2',
+        solve: solveWrapper(solveA9));
     puzzle.addEntry(a9);
     a10 = FrequencyEntry(
-        name: 'A10', length: 3, valueDesc: 'Triangular', solve: solveA10);
+        name: 'A10',
+        length: 3,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveA10));
     puzzle.addEntry(a10);
 
     d2 = FrequencyEntry(
-        name: 'D2', length: 2, valueDesc: 'Triangular', solve: solveD2);
+        name: 'D2',
+        length: 2,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveD2));
     puzzle.addEntry(d2);
     d3 = FrequencyEntry(
         name: 'D3',
         length: 2,
         valueDesc: 'Digit sum is square',
-        solve: solveD3);
+        solve: solveWrapper(solveD3));
     puzzle.addEntry(d3);
     d4 = FrequencyEntry(
-        name: 'D4', length: 3, valueDesc: 'Multiple of A7', solve: solveD4);
+        name: 'D4',
+        length: 3,
+        valueDesc: 'Multiple of A7',
+        solve: solveWrapper(solveD4));
     puzzle.addEntry(d4);
     d5 = FrequencyEntry(
         name: 'D5',
         length: 3,
         valueDesc: 'Same digit product as A1',
-        solve: solveD5);
+        solve: solveWrapper(solveD5));
     puzzle.addEntry(d5);
     d8 = FrequencyEntry(
         name: 'D8',
         length: 2,
         valueDesc: 'Cube + sum all digits',
-        solve: solveD8);
+        solve: solveWrapper(solveD8));
     puzzle.addEntry(d8);
     d9 = FrequencyEntry(
-        name: 'D9', length: 2, valueDesc: 'Triangular', solve: solveD9);
+        name: 'D9',
+        length: 2,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveD9));
     puzzle.addEntry(d9);
 
     puzzle.addDigitIdentityFromGrid();

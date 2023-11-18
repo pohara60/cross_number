@@ -100,7 +100,7 @@ class Clue {
     final String? valueDesc;
     late final List<DigitIdentity?> digitIdentities;
     late final List<Clue> referrers;
-    final Function? solve;
+    final SolveFunction? solve;
     late final List<Set<int>> digits;
     Set<int>? \_values;
     int? \_tryValue;
@@ -126,7 +126,7 @@ class VariableClue extends Clue {
     late final List<String> variableReferences;
     late ExpressionEvaluator exp;
     int count = 0;
-    VariableClue({required name, required length, valueDesc, solve});
+    VariableClue({required String name, required int? length, String? valueDesc, SolveFunction? solve});
     addVariableReference(String variable);
 }
 

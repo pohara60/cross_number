@@ -5,6 +5,7 @@ import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
@@ -30,10 +31,10 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
-        {String? name, int? length, String? valueDesc, Function? solve}) {
+        {String? name, int? length, String? valueDesc, SolveFunction? solve}) {
       try {
         var entry = ChessboardEntry(
-            name: name, length: length, valueDesc: valueDesc, solve: solve);
+            name: name!, length: length, valueDesc: valueDesc, solve: solve);
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
@@ -109,9 +110,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
     var clueError = puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   // Validate possible clue value
@@ -122,12 +121,21 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveChessboardClue(ChessboardClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveChessboardClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as ChessboardPuzzle;
+    var clue = v as ChessboardClue;
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

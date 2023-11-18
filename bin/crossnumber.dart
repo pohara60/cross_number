@@ -7,6 +7,7 @@ import 'package:crossnumber/columns/columns.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
+import 'package:crossnumber/dieanotherday/dieanotherday.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
@@ -60,7 +61,8 @@ void main(List<String> arguments) async {
     ..addCommand(KnightsCommand())
     ..addCommand(TwoPrimesCommand())
     ..addCommand(IncreasingFibonnaciCommand())
-    ..addCommand(IncreasingPrimeCommand());
+    ..addCommand(IncreasingPrimeCommand())
+    ..addCommand(DieAnotherDayCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -514,6 +516,28 @@ class IncreasingPrimeCommand extends Command {
     // Get and print solve
     try {
       final pc = IncreasingPrime();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    }
+  }
+}
+
+class DieAnotherDayCommand extends Command {
+  @override
+  final name = 'DieAnotherDay';
+  @override
+  final description = 'solve hardcoded DieAnotherDay puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = DieAnotherDay();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

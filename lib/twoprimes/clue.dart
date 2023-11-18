@@ -1,4 +1,5 @@
 import '../clue.dart';
+import '../variable.dart';
 
 /// A Puzzle clue
 class TwoPrimesClue extends ExpressionClue {
@@ -7,10 +8,10 @@ class TwoPrimesClue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   TwoPrimesClue({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 }
 
@@ -20,10 +21,10 @@ class TwoPrimesEntry extends TwoPrimesClue with EntryMixin {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   TwoPrimesEntry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }

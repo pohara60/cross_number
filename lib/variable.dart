@@ -2,6 +2,7 @@ import "dart:math" as math;
 
 import 'clue.dart';
 import 'expression.dart';
+import 'puzzle.dart';
 import 'set.dart';
 
 mixin PriorityVariable {
@@ -10,13 +11,23 @@ mixin PriorityVariable {
   int get count => priority;
 }
 
+/// Solve function
+typedef SolveFunction = bool Function(
+  Puzzle puzzle,
+  Variable variable,
+  Set<int> possibleValue, {
+  Set<int>? possibleValue2,
+  Map<String, Set<int>>? possibleVariables,
+  Map<String, Set<int>>? possibleVariables2,
+  Set<String>? updatedVariables,
+});
+
 /// A variable, with restricted values, commonly used in [Clue] for a [Puzzle]
 class Variable {
   /// Name
   final String name;
 
-  /// Solve function
-  final Function? solve;
+  SolveFunction? solve;
 
   /// Current possible values, initialized in subclass
   Set<int>? _values;
@@ -26,7 +37,7 @@ class Variable {
   /// Forced value (when testing porrible solutions)
   int? _tryValue;
 
-  Variable(String this.name, {Function? this.solve = null});
+  Variable(String this.name, {SolveFunction? this.solve = null});
 //    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   set tryValue(int? value) {
@@ -84,7 +95,7 @@ class VariableRef {
   bool get isClue => type == 'C';
   bool get isEntry => type == 'E';
 
-  VariableRef(this.name, [this.type = 'V']);
+  VariableRef(String this.name, [String this.type = 'V']);
 }
 
 class VariableRefList {
@@ -151,7 +162,8 @@ class VariableList<VariableKind extends Variable> {
   // = List<int>.generate(9, (i) => i + 1);
 
   // Subclass constructor initializes remaining values
-  VariableList(this.remainingValues) : distinct = remainingValues != null;
+  VariableList(List<int>? this.remainingValues)
+      : distinct = remainingValues != null;
 
   Set<String> updateVariables(String variableName, Set<int> possibleValues) {
     // Get unknown variables before update this variable, in case of side effects
@@ -217,9 +229,14 @@ class ExpressionVariable extends Variable with Expression, PriorityVariable {
 
   /// List of variables that need to be examined when this clue is updated
   late final List<ExpressionVariable> referrers;
-  ExpressionVariable(String name, String this.valueDesc,
-      {int min = 1, int? max, String variablePrefix = '', Function? solve})
-      : super(name, solve: solve) {
+  ExpressionVariable(
+    String name,
+    String this.valueDesc, {
+    int min = 1,
+    int? max,
+    String variablePrefix = '',
+    SolveFunction? solve,
+  }) : super(name, solve: solve) {
     initExpression(valueDesc, variablePrefix, name, _variableRefs);
     this.min = min;
     this.max = max;

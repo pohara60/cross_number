@@ -8,6 +8,7 @@ import '../root66_2/clue.dart';
 import '../root66_2/puzzle.dart';
 
 import '../expression.dart';
+import '../variable.dart';
 
 /// Provide access to the Prime Cuts API.
 class Root66_2 extends Crossnumber<Root66_2Puzzle> {
@@ -55,7 +56,10 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
     var clueErrors = '';
     void clueWrapper(
-        {required String name, required int length, String? valueDesc, solve}) {
+        {required String name,
+        required int length,
+        String? valueDesc,
+        SolveFunction? solve}) {
       try {
         var clue = Root66_2Clue(
             name: name, length: length, valueDesc: valueDesc, solve: solve);
@@ -212,9 +216,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   final validBCEFG = <int, Map<String, int>>{};
@@ -368,13 +370,19 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
   // Puzzle specific clue solver
   bool solveBCEFG(
-    VariableClue variableClue,
-    Set<int> possibleClueValue,
-    Set<int> possibleEntryValue,
-    Map<String, Set<int>> possibleVariables,
-  ) {
-    var clue = variableClue as Root66_2Clue;
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as Root66_2Puzzle;
+    var clue = v as Root66_2Clue;
     var entry = clue.entry as Root66_2Entry;
+    var possibleClueValue = possibleValue;
+    var possibleEntryValue = possibleValue2!;
     var types = <Root66_2EntryType>{};
     // Normal clues have expression
     if (entry.type != Root66_2EntryType.BCEFG) {
@@ -384,7 +392,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
         clue,
         clue.exp,
         possibleClueValue,
-        possibleVariables,
+        possibleVariables!,
         validValue,
         maxCount,
       );
@@ -442,6 +450,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
   @override
   bool solveClue(Clue inputClue) {
     var clue = inputClue as Root66_2Clue;
+    var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as Root66_2Entry;
 
     // If entry solved already then skip it
@@ -458,9 +467,9 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       for (var variableName in clue.variableReferences) {
         possibleVariables[variableName] = <int>{};
       }
-      if (clue.solve!(
-          clue, possibleClueValue, possibleEntryValue, possibleVariables))
-        updated = true;
+      if (clue.solve!(puzzle, clue, possibleClueValue,
+          possibleValue2: possibleEntryValue,
+          possibleVariables: possibleVariables)) updated = true;
       // Some Solve functions do not update Clue Values
       if (possibleClueValue.isNotEmpty && clue.updateValues(possibleClueValue))
         updated = true;
@@ -473,8 +482,8 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       if (puzzle.updateValues(entry, possibleEntryValue)) updated = true;
       if (entry.finalise()) updated = true;
       for (var variableName in clue.variableReferences) {
-        updateVariables(
-            variableName, possibleVariables[variableName]!, updatedVariables);
+        updateVariables(puzzle, variableName, possibleVariables[variableName]!,
+            updatedVariables);
       }
 
       if (Crossnumber.traceSolve && updated) {

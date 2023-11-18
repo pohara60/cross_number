@@ -7,6 +7,7 @@ import '../clue.dart';
 import '../expression.dart';
 import '../monadic.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 
 class No21 extends Crossnumber<No21Puzzle> {
@@ -39,7 +40,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         {String? name,
         int? length,
         String? valueDesc,
-        solve,
+        SolveFunction? solve,
         int cellsTwoDigits = 1}) {
       try {
         var clue = No21Clue(
@@ -197,8 +198,18 @@ class No21 extends Crossnumber<No21Puzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveNo21Clue(No21Clue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveNo21Clue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as No21Puzzle;
+    var clue = v as No21Clue;
+
     // Clues are defined in ascending order of value
     for (var otherClue
         in puzzle.clues.values.where((c) => c.isAcross == clue.isAcross)) {
@@ -222,13 +233,22 @@ class No21 extends Crossnumber<No21Puzzle> {
       }
     }
     var updated = puzzle.solveExpressionEvaluator(
-        clue, clue.exp, possibleValue, possibleVariables, validClue);
+        clue, clue.exp, possibleValue, possibleVariables!, validClue);
     return updated;
   }
 
   // Clue solver for 7-digit (square*prime)'
-  bool solveReversedSquarePrimeClue(No21Clue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveReversedSquarePrimeClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var clue = v as No21Clue;
+
     // Do not use evaluator as too many possibilities
     // puzzle.solveExpressionEvaluator(
     //     clue, possibleValue, possibleVariables, validClue);

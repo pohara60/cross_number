@@ -5,6 +5,7 @@ import '../clue.dart';
 import '../expression.dart';
 import '../generators.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 
 class Partners extends Crossnumber<PartnersPuzzle> {
@@ -32,7 +33,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
         required String symmetricName,
         int? length,
         String? valueDesc,
-        Function? solve}) {
+        SolveFunction? solve}) {
       try {
         var entry = PartnersEntry(
             name: name,
@@ -162,12 +163,21 @@ class Partners extends Crossnumber<PartnersPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solvePartnersClue(PartnersClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solvePartnersClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as PartnersPuzzle;
+    var clue = v as PartnersClue;
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     }
     return updated;
   }

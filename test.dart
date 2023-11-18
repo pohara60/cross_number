@@ -3,6 +3,7 @@
 // ignore_for_file: unused_field
 
 import 'package:crossnumber/expression.dart';
+import 'package:crossnumber/variable.dart';
 import 'package:powers/powers.dart';
 
 class Variable {
@@ -51,7 +52,7 @@ class Clue extends Variable {
   List<String> get clueReferences => _variableRefs.clueNames;
   List<String> get variableClueReferences => _variableRefs.names;
   bool circularClueReference = false;
-  final Function? solve;
+  final SolveFunction? solve;
 
   // Mapped grid entry
   Clue? _entry;
@@ -61,10 +62,10 @@ class Clue extends Variable {
   List<Set<int>> get digits => entry!.digits;
 
   Clue({
-    required name,
-    required this.length,
-    this.valueDesc,
-    this.solve,
+    required String name,
+    required int this.length,
+    String? this.valueDesc,
+    SolveFunction? this.solve,
   }) : super(name) {
     min = 10.pow(length - 1) as int;
     max = (10.pow(length) as int) - 1;
@@ -84,8 +85,13 @@ class Clue extends Variable {
 }
 
 class VariableClue extends Clue {
-  VariableClue({required name, required length, valueDesc, solve})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {}
+  VariableClue(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve})
+      : super(
+            name: name, length: length!, valueDesc: valueDesc, solve: solve) {}
   int count = 0;
   toString() => '$runtimeType $name';
 }
@@ -118,7 +124,7 @@ class ExpressionClue extends VariableClue with Expression {
       {required String name,
       required int length,
       String? valueDesc,
-      Function? solve,
+      SolveFunction? solve,
       variablePrefix = ''})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initExpression(valueDesc, variablePrefix, name, this);
@@ -162,14 +168,22 @@ mixin EntryMixin on Clue {
 }
 
 class Entry extends Clue with EntryMixin {
-  Entry({required name, required length, valueDesc, solve})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  Entry(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve})
+      : super(name: name, length: length!, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }
 }
 
 class VariableEntry extends VariableClue with EntryMixin {
-  VariableEntry({required name, required length, valueDesc, solve})
+  VariableEntry(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }
@@ -184,7 +198,7 @@ class ExpressionEntry extends ExpressionClue with EntryMixin {
       {required String name,
       required int length,
       String? valueDesc,
-      Function? solve,
+      SolveFunction? solve,
       variablePrefix = ''})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
@@ -245,20 +259,20 @@ class DiceNetsPuzzle extends Puzzle<DiceNetsClue, DiceNetsEntry> {
 
 class DiceNetsClue extends Clue {
   DiceNetsClue({
-    required name,
-    required length,
-    valueDesc,
-    solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
+  }) : super(name: name, length: length!, valueDesc: valueDesc, solve: solve);
 }
 
 class DiceNetsEntry extends DiceNetsClue with EntryMixin {
   DiceNetsEntry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
+  }) : super(name: name, length: length!, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }
 }
@@ -278,19 +292,19 @@ class InstructionPuzzle extends Puzzle<InstructionClue, InstructionEntry> {
 
 class InstructionClue extends ExpressionClue {
   InstructionClue({
-    required name,
-    required length,
-    valueDesc,
-    solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
+  }) : super(name: name, length: length!, valueDesc: valueDesc, solve: solve);
 }
 
 class InstructionEntry extends InstructionClue with EntryMixin {
   InstructionEntry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }

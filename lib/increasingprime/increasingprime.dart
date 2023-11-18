@@ -8,6 +8,7 @@ import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
 import "../set.dart";
+import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
@@ -62,7 +63,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
     void clueWrapper({String? name, int? length, String? valueDesc}) {
       try {
         var clue = IncreasingPrimeClue(
-            name: name,
+            name: name!,
             length: length,
             valueDesc: valueDesc,
             solve: solveIncreasingPrimeClue,
@@ -123,9 +124,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   List<int> primes = [3, 5, 11, 17, 23];
@@ -192,13 +191,23 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveIncreasingPrimeClue(IncreasingPrimeClue clue,
-      Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
+  bool solveIncreasingPrimeClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as IncreasingPrimePuzzle;
+    var clue = v as IncreasingPrimeClue;
+
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
       if (clue.expressions.length == 1) {
         updated = puzzle.solveExpressionEvaluator(
-            clue, clue.exp, possibleValue, possibleVariables, validClue);
+            clue, clue.exp, possibleValue, possibleVariables!, validClue);
       } else {
         var first = true;
         String? exceptionMessage;
@@ -206,7 +215,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
           var possibleValueExp = <int>{};
           try {
             // Previous evaluation may have cleared variables
-            if (possibleVariables.isEmpty) return updated;
+            if (possibleVariables!.isEmpty) return updated;
             updated = puzzle.solveExpressionEvaluator(
               clue,
               exp,
@@ -247,9 +256,10 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
   }
 
   @override
-  bool updateClues(String clueName, Set<int> possibleValues,
+  bool updateClues(
+      IncreasingPrimePuzzle puzzle, clueName, Set<int> possibleValues,
       [bool isEntry = false]) {
-    var updated = super.updateClues(clueName, possibleValues, isEntry);
+    var updated = super.updateClues(puzzle, clueName, possibleValues, isEntry);
     if (!isEntry && updated) {
       var clue = puzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);

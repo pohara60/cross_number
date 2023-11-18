@@ -1,4 +1,5 @@
 import '../clue.dart';
+import '../variable.dart';
 
 enum Root66_2EntryType { UNKNOWN, BCEF, G, BCEFG }
 
@@ -10,10 +11,10 @@ class Root66_2Clue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   Root66_2Clue({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 
   String toString() {

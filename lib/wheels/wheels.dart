@@ -1,4 +1,5 @@
 import '../crossnumber.dart';
+import '../variable.dart';
 import '../wheels/puzzle.dart';
 
 import '../clue.dart';
@@ -31,10 +32,10 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
-        {String? name, int? length, String? valueDesc, Function? solve}) {
+        {String? name, int? length, String? valueDesc, SolveFunction? solve}) {
       try {
         var entry = WheelsEntry(
-          name: name,
+          name: name!,
           length: length,
           valueDesc: valueDesc,
           solve: solve,
@@ -49,7 +50,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
 
     var variableErrors = '';
     void variableWrapper(String name,
-        {int min = 1, int? max, String valueDesc = '', Function? solve}) {
+        {int min = 1, int? max, String valueDesc = '', SolveFunction? solve}) {
       try {
         var variable = WheelsVariable(
           name,
@@ -192,23 +193,41 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveWheelsClue(WheelsClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveWheelsClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as WheelsPuzzle;
+    var clue = v as WheelsClue;
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     }
     return updated;
   }
 
   // Variable solver invokes generic expression evaluator
-  bool solveWheelsVariable(WheelsVariable variable, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveWheelsVariable(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as WheelsPuzzle;
+    var variable = v as WheelsVariable;
     var updated = false;
     if (variable.valueDesc != '') {
       updated = puzzle.solveExpressionVariable(variable, variable.exp,
-          possibleValue, possibleVariables, validVariable);
+          possibleValue, possibleVariables!, validVariable);
     } else {
       if (variable.values != null) possibleValue.addAll(variable.values!);
     }

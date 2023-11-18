@@ -2,6 +2,8 @@ import '../clue.dart';
 import '../set.dart';
 import 'package:powers/powers.dart';
 
+import '../variable.dart';
+
 /// A [InstructionPuzzle] clue
 class No21Clue extends ExpressionClue {
   late int _cellsTwoDigits;
@@ -53,10 +55,10 @@ class No21Clue extends ExpressionClue {
 
 class No21Entry extends No21Clue with EntryMixin {
   No21Entry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }

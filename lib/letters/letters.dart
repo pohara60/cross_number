@@ -5,6 +5,8 @@ import '../crossnumber.dart';
 import '../cartesian.dart';
 import '../letters/clue.dart';
 import '../letters/puzzle.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 /// Provide access to the Prime Cuts API.
 class Letters extends Crossnumber<LettersPuzzle> {
@@ -29,82 +31,168 @@ class Letters extends Crossnumber<LettersPuzzle> {
     initCrossnumber();
   }
 
+  SolveFunction solveWrapper(
+      bool Function(LettersEntry clue, Set<int> possibleValue,
+              Map<String, Set<int>> possibleLetters)
+          solve) {
+    bool solveLettersClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<String, Set<int>>? possibleVariables,
+      Map<String, Set<int>>? possibleVariables2,
+      Set<String>? updatedVariables,
+    }) {
+      var clue = v as LettersEntry;
+      return solve(clue, possibleValue, possibleVariables!);
+    }
+
+    return solveLettersClue;
+  }
+
   void initCrossnumber() {
     var a1 = LettersEntry(
-        name: 'A1', length: 2, valueDesc: 'R(A+P)', solve: solveA1);
+        name: 'A1',
+        length: 2,
+        valueDesc: 'R(A+P)',
+        solve: solveWrapper(solveA1));
     puzzle.addEntry(a1);
     var a4 = LettersEntry(
-        name: 'A4', length: 2, valueDesc: 'D(U+E)', solve: solveA4);
+        name: 'A4',
+        length: 2,
+        valueDesc: 'D(U+E)',
+        solve: solveWrapper(solveA4));
     puzzle.addEntry(a4);
     var a7 = LettersEntry(
         name: 'A7',
         length: 3,
         valueDesc: 'PEEPE-R+S+((E-Y+E)/S)',
-        solve: solveA7);
+        solve: solveWrapper(solveA7));
     puzzle.addEntry(a7);
-    var a8 =
-        LettersEntry(name: 'A8', length: 2, valueDesc: 'PUPAS', solve: solveA8);
+    var a8 = LettersEntry(
+        name: 'A8',
+        length: 2,
+        valueDesc: 'PUPAS',
+        solve: solveWrapper(solveA8));
     puzzle.addEntry(a8);
     var a9 = LettersEntry(
-        name: 'A9', length: 3, valueDesc: '(ST-R+A-Y)ED', solve: solveA9);
+        name: 'A9',
+        length: 3,
+        valueDesc: '(ST-R+A-Y)ED',
+        solve: solveWrapper(solveA9));
     puzzle.addEntry(a9);
-    var a11 =
-        LettersEntry(name: 'A11', length: 2, valueDesc: 'ASP', solve: solveA11);
+    var a11 = LettersEntry(
+        name: 'A11',
+        length: 2,
+        valueDesc: 'ASP',
+        solve: solveWrapper(solveA11));
     puzzle.addEntry(a11);
     var a12 = LettersEntry(
-        name: 'A12', length: 2, valueDesc: 'PUPPY', solve: solveA12);
+        name: 'A12',
+        length: 2,
+        valueDesc: 'PUPPY',
+        solve: solveWrapper(solveA12));
     puzzle.addEntry(a12);
     var a14 = LettersEntry(
-        name: 'A14', length: 3, valueDesc: 'SY(RU+P+S)', solve: solveA14);
+        name: 'A14',
+        length: 3,
+        valueDesc: 'SY(RU+P+S)',
+        solve: solveWrapper(solveA14));
     puzzle.addEntry(a14);
     var a17 = LettersEntry(
-        name: 'A17', length: 2, valueDesc: 'YE+S', solve: solveA17);
+        name: 'A17',
+        length: 2,
+        valueDesc: 'YE+S',
+        solve: solveWrapper(solveA17));
     puzzle.addEntry(a17);
     var a18 = LettersEntry(
-        name: 'A18', length: 3, valueDesc: 'S(USSE+D)', solve: solveA18);
+        name: 'A18',
+        length: 3,
+        valueDesc: 'S(USSE+D)',
+        solve: solveWrapper(solveA18));
     puzzle.addEntry(a18);
     var a20 = LettersEntry(
-        name: 'A20', length: 2, valueDesc: 'TE+(D/D)Y', solve: solveA20);
+        name: 'A20',
+        length: 2,
+        valueDesc: 'TE+(D/D)Y',
+        solve: solveWrapper(solveA20));
     puzzle.addEntry(a20);
     var a21 = LettersEntry(
-        name: 'A21', length: 2, valueDesc: '(PEPP/E+R)E+D', solve: solveA21);
+        name: 'A21',
+        length: 2,
+        valueDesc: '(PEPP/E+R)E+D',
+        solve: solveWrapper(solveA21));
     puzzle.addEntry(a21);
 
     var d1 = LettersEntry(
-        name: 'D1', length: 3, valueDesc: 'Y(E+(A+S)T-S)', solve: solveD1);
+        name: 'D1',
+        length: 3,
+        valueDesc: 'Y(E+(A+S)T-S)',
+        solve: solveWrapper(solveD1));
     puzzle.addEntry(d1);
     var d2 = LettersEntry(
-        name: 'D2', length: 3, valueDesc: 'SEES-(P+E+A+R)S', solve: solveD2);
+        name: 'D2',
+        length: 3,
+        valueDesc: 'SEES-(P+E+A+R)S',
+        solve: solveWrapper(solveD2));
     puzzle.addEntry(d2);
-    var d3 =
-        LettersEntry(name: 'D3', length: 2, valueDesc: 'PRY', solve: solveD3);
+    var d3 = LettersEntry(
+        name: 'D3', length: 2, valueDesc: 'PRY', solve: solveWrapper(solveD3));
     puzzle.addEntry(d3);
     var d4 = LettersEntry(
-        name: 'D4', length: 4, valueDesc: 'YAYA+D+A+D-A+S', solve: solveD4);
+        name: 'D4',
+        length: 4,
+        valueDesc: 'YAYA+D+A+D-A+S',
+        solve: solveWrapper(solveD4));
     puzzle.addEntry(d4);
     var d5 = LettersEntry(
-        name: 'D5', length: 3, valueDesc: 'PR+Y+EYE', solve: solveD5);
+        name: 'D5',
+        length: 3,
+        valueDesc: 'PR+Y+EYE',
+        solve: solveWrapper(solveD5));
     puzzle.addEntry(d5);
     var d6 = LettersEntry(
-        name: 'D6', length: 3, valueDesc: 'DAYS-(T+A)U', solve: solveD6);
+        name: 'D6',
+        length: 3,
+        valueDesc: 'DAYS-(T+A)U',
+        solve: solveWrapper(solveD6));
     puzzle.addEntry(d6);
     var d10 = LettersEntry(
-        name: 'D10', length: 4, valueDesc: 'YESTE-R(D+A-Y)-S', solve: solveD10);
+        name: 'D10',
+        length: 4,
+        valueDesc: 'YESTE-R(D+A-Y)-S',
+        solve: solveWrapper(solveD10));
     puzzle.addEntry(d10);
     var d12 = LettersEntry(
-        name: 'D12', length: 3, valueDesc: 'EYE-SPY+PUD', solve: solveD12);
+        name: 'D12',
+        length: 3,
+        valueDesc: 'EYE-SPY+PUD',
+        solve: solveWrapper(solveD12));
     puzzle.addEntry(d12);
-    var d13 =
-        LettersEntry(name: 'D13', length: 3, valueDesc: 'ERR', solve: solveD13);
+    var d13 = LettersEntry(
+        name: 'D13',
+        length: 3,
+        valueDesc: 'ERR',
+        solve: solveWrapper(solveD13));
     puzzle.addEntry(d13);
     var d15 = LettersEntry(
-        name: 'D15', length: 3, valueDesc: 'RAT+ES', solve: solveD15);
+        name: 'D15',
+        length: 3,
+        valueDesc: 'RAT+ES',
+        solve: solveWrapper(solveD15));
     puzzle.addEntry(d15);
     var d16 = LettersEntry(
-        name: 'D16', length: 3, valueDesc: 'DREY-TU+P', solve: solveD16);
+        name: 'D16',
+        length: 3,
+        valueDesc: 'DREY-TU+P',
+        solve: solveWrapper(solveD16));
     puzzle.addEntry(d16);
-    var d19 =
-        LettersEntry(name: 'D19', length: 2, valueDesc: 'RAP', solve: solveD19);
+    var d19 = LettersEntry(
+        name: 'D19',
+        length: 2,
+        valueDesc: 'RAP',
+        solve: solveWrapper(solveD19));
     puzzle.addEntry(d19);
 
     puzzle.addDigitIdentity(a1, 1, d1, 1);
@@ -146,9 +234,7 @@ class Letters extends Crossnumber<LettersPuzzle> {
       }
     }
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   bool solveA1(LettersEntry clue, Set<int> possibleValue,

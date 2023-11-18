@@ -42,7 +42,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         required String prime,
         required int length,
         required String valueDesc,
-        required solve}) {
+        required SolveFunction? solve}) {
       try {
         var clueLength = length + 2; // Allow for removal of prime
         var clue = PrimeCutsClue(
@@ -79,7 +79,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
     var variableErrors = '';
     void variableWrapper(String name,
-        {String valueDesc = '', Function? solve}) {
+        {String valueDesc = '', SolveFunction? solve}) {
       try {
         var variable = PrimeCutsVariable(
           name,
@@ -327,19 +327,23 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
   // Clue solver invokes generic expression evaluator with validator
   bool solvePrimeCutsClue(
-    PrimeCutsClue inputClue,
-    Set<int> possibleValue,
-    Set<int> possibleEntryValue,
-    Map<String, Set<int>> possibleVariables,
-    Map<String, Set<int>> possibleEntryVariables,
-    Set<String> updatedVariables,
-  ) {
-    var clue = inputClue;
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as PrimeCuts2Puzzle;
+    var clue = v as PrimeCutsClue;
     var entry = clue.entry as PrimeCutsEntry;
+    var possibleEntryValue = possibleValue2!;
+    var possibleEntryVariables = possibleVariables2!;
 
     // Solve Clue
     var updated = puzzle.solveExpressionEvaluator(
-        clue, clue.exp, possibleValue, possibleVariables, validClue);
+        clue, clue.exp, possibleValue, possibleVariables!, validClue);
 
     // Solve Entry
     // If expression, then evaluate it
@@ -400,7 +404,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       possibleEntryValue.clear();
       possibleEntryValue.addAll(newEntryValues);
     }
-    if (updateVariables(clue.prime, primeValues, updatedVariables))
+    if (updateVariables(puzzle, clue.prime, primeValues, updatedVariables!))
       updated = true;
 
     return updated;
@@ -410,6 +414,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   @override
   bool solveClue(Clue inputClue) {
     var clue = inputClue as PrimeCutsClue;
+    var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as PrimeCutsEntry;
 
     // If entry solved already then skip it
@@ -430,13 +435,11 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       for (var variableName in entry.variableClueReferences) {
         possibleEntryVariables[variableName] = <int>{};
       }
-      if (clue.solve!(
-          clue,
-          possibleClueValue,
-          possibleEntryValue,
-          possibleVariables,
-          possibleEntryVariables,
-          updatedVariables)) updated = true;
+      if (clue.solve!(puzzle, clue, possibleClueValue,
+          possibleValue2: possibleEntryValue,
+          possibleVariables: possibleVariables,
+          possibleVariables2: possibleEntryVariables,
+          updatedVariables: updatedVariables)) updated = true;
       // Some Solve functions do not update Clue Values
       if (possibleClueValue.isNotEmpty && clue.updateValues(possibleClueValue))
         updated = true;
@@ -449,12 +452,12 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       if (puzzle.updateValues(entry, possibleEntryValue)) updated = true;
       if (entry.finalise()) updated = true;
       for (var variableName in clue.variableReferences) {
-        updateVariables(
-            variableName, possibleVariables[variableName]!, updatedVariables);
+        updateVariables(puzzle, variableName, possibleVariables[variableName]!,
+            updatedVariables);
       }
       for (var variableName in entry.variableReferences) {
-        updateVariables(variableName, possibleEntryVariables[variableName]!,
-            updatedVariables);
+        updateVariables(puzzle, variableName,
+            possibleEntryVariables[variableName]!, updatedVariables);
       }
 
       if (Crossnumber.traceSolve && updated) {
@@ -470,12 +473,21 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   }
 
   // Variable solver invokes generic expression evaluator
-  bool solvePrimeCutsVariable(PrimeCutsVariable variable,
-      Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
+  bool solvePrimeCutsVariable(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as VariablePuzzle;
+    var variable = v as ExpressionVariable;
     var updated = false;
     if (variable.valueDesc != '') {
-      updated = puzzle.solveExpressionVariable(variable, variable.exp,
-          possibleValue, possibleVariables, validVariable);
+      updated = puzzle.solveExpressionVariable(
+          v, v.exp, possibleValue, possibleVariables!, validVariable);
     } else {
       if (variable.values != null) possibleValue.addAll(variable.values!);
     }
@@ -483,7 +495,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   }
 
   bool updatePrimes(String prime, Set<int> possibleValues) =>
-      updateVariables(prime, possibleValues, <String>{});
+      updateVariables(puzzle, prime, possibleValues, <String>{});
 
   /// Find **multiple** of prime, that are also a multiple when the digits of prime are removed.
   ///

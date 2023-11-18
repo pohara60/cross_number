@@ -8,6 +8,7 @@ import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
@@ -53,7 +54,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     void clueWrapper({String? name, int? length, String? valueDesc}) {
       try {
         var clue = IncreasingFibonnaciClue(
-            name: name,
+            name: name!,
             length: length,
             valueDesc: valueDesc,
             solve: solveIncreasingFibonnaciClue,
@@ -99,9 +100,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     // clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   List<int> fibonnaciLessThan20 = [];
@@ -163,12 +162,22 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveIncreasingFibonnaciClue(IncreasingFibonnaciClue clue,
-      Set<int> possibleValue, Map<String, Set<int>> possibleVariables) {
+  bool solveIncreasingFibonnaciClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as IncreasingFibonnaciPuzzle;
+    var clue = v as IncreasingFibonnaciClue;
+
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {
@@ -181,9 +190,10 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   }
 
   @override
-  bool updateClues(String clueName, Set<int> possibleValues,
+  bool updateClues(IncreasingFibonnaciPuzzle puzzle, String clueName,
+      Set<int> possibleValues,
       [bool isEntry = false]) {
-    var updated = super.updateClues(clueName, possibleValues, isEntry);
+    var updated = super.updateClues(puzzle, clueName, possibleValues, isEntry);
     if (!isEntry && updated) {
       var clue = puzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);

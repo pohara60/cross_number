@@ -8,6 +8,7 @@ import '../expression.dart';
 import '../generators.dart';
 import '../puzzle.dart';
 import '../set.dart';
+import '../variable.dart';
 import './variable_group.dart';
 import './clue.dart';
 import './puzzle.dart';
@@ -61,11 +62,14 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
 
     var clueErrors = '';
     void clueWrapper(
-        {String? name, int? length, List<String>? valueDesc, Function? solve}) {
+        {String? name,
+        int? length,
+        List<String>? valueDesc,
+        SolveFunction? solve}) {
       try {
         // Expression is not attached to clue
         var entry = PandigitalsClue(
-            name: name, length: length, valueDesc: '', solve: solve);
+            name: name!, length: length, valueDesc: '', solve: solve);
         puzzle.addClue(entry);
         for (var index = 0; index < valueDesc!.length; index++) {
           if (valueDesc[index] != '') {
@@ -203,9 +207,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     }
     if (variableError != '') throw PuzzleException(variableError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   bool differentDigits(int a, int b) {
@@ -248,8 +250,16 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solvePandigitalsClue(PandigitalsClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solvePandigitalsClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var clue = v as PandigitalsClue;
     var updated = false;
     if (clue.valueDesc != '') {
       // updated = puzzle.solveExpressionEvaluator(

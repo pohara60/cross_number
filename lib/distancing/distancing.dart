@@ -6,6 +6,8 @@ import '../distancing/puzzle.dart';
 
 import '../generators.dart';
 import '../monadic.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 class Distancing extends Crossnumber<DistancingPuzzle> {
   Distancing() {
@@ -30,58 +32,112 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
   late final DistancingEntry d10;
   late final DistancingEntry d11;
 
+  SolveFunction solveWrapper(
+      bool Function(DistancingEntry clue, Set<int> possibleValue) solve) {
+    bool solveDistancingClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<String, Set<int>>? possibleVariables,
+      Map<String, Set<int>>? possibleVariables2,
+      Set<String>? updatedVariables,
+    }) {
+      var clue = v as DistancingEntry;
+      return solve(clue, possibleValue);
+    }
+
+    return solveDistancingClue;
+  }
+
   void initCrossnumber() {
     a1 = DistancingEntry(
-        name: 'A1', length: 2, valueDesc: 'Square', solve: solveA1);
+        name: 'A1',
+        length: 2,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveA1));
     puzzle.addEntry(a1);
     a3 = DistancingEntry(
-        name: 'A3', length: 3, valueDesc: 'Square', solve: solveA3);
+        name: 'A3',
+        length: 3,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveA3));
     puzzle.addEntry(a3);
     a6 = DistancingEntry(
-        name: 'A6', length: 3, valueDesc: 'Prime', solve: solveA6);
+        name: 'A6',
+        length: 3,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveA6));
     puzzle.addEntry(a6);
     a9 = DistancingEntry(
-        name: 'A9', length: 3, valueDesc: 'Square', solve: solveA9);
+        name: 'A9',
+        length: 3,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveA9));
     puzzle.addEntry(a9);
     a12 = DistancingEntry(
-        name: 'A12', length: 3, valueDesc: 'Triangular', solve: solveA12);
+        name: 'A12',
+        length: 3,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveA12));
     puzzle.addEntry(a12);
     a13 = DistancingEntry(
-        name: 'A13', length: 2, valueDesc: 'Lucas', solve: solveA13);
+        name: 'A13',
+        length: 2,
+        valueDesc: 'Lucas',
+        solve: solveWrapper(solveA13));
     puzzle.addEntry(a13);
 
     d1 = DistancingEntry(
-        name: 'D1', length: 2, valueDesc: 'Prime', solve: solveD1);
+        name: 'D1',
+        length: 2,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveD1));
     puzzle.addEntry(d1);
     d2 = DistancingEntry(
-        name: 'D2', length: 2, valueDesc: 'Prime', solve: solveD2);
+        name: 'D2',
+        length: 2,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveD2));
     puzzle.addEntry(d2);
     d4 = DistancingEntry(
-        name: 'D4', length: 2, valueDesc: 'Cube', solve: solveD4);
+        name: 'D4', length: 2, valueDesc: 'Cube', solve: solveWrapper(solveD4));
     puzzle.addEntry(d4);
     d5 = DistancingEntry(
-        name: 'D5', length: 2, valueDesc: 'Triangular', solve: solveD5);
+        name: 'D5',
+        length: 2,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveD5));
     puzzle.addEntry(d5);
     d7 = DistancingEntry(
-        name: 'D7', length: 2, valueDesc: 'Lucas', solve: solveD7);
+        name: 'D7',
+        length: 2,
+        valueDesc: 'Lucas',
+        solve: solveWrapper(solveD7));
     puzzle.addEntry(d7);
     d8 = DistancingEntry(
         name: 'D8',
         length: 2,
         valueDesc: 'Prime, digit product = another entry',
-        solve: solveD8);
+        solve: solveWrapper(solveD8));
     puzzle.addEntry(d8);
     d9 = DistancingEntry(
-        name: 'D9', length: 2, valueDesc: 'Triangular', solve: solveD9);
+        name: 'D9',
+        length: 2,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveD9));
     puzzle.addEntry(d9);
     d10 = DistancingEntry(
-        name: 'D10', length: 2, valueDesc: 'Square', solve: solveD10);
+        name: 'D10',
+        length: 2,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD10));
     puzzle.addEntry(d10);
     d11 = DistancingEntry(
         name: 'D11',
         length: 2,
         valueDesc: 'Prime = sum of digits',
-        solve: solveD11);
+        solve: solveWrapper(solveD11));
     puzzle.addEntry(d11);
 
     puzzle.addDigitIdentity(a1, 1, d1, 1);

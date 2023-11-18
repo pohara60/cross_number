@@ -5,6 +5,7 @@ import '../crossnumber.dart';
 import '../puzzle.dart';
 import '../sequences/clue.dart';
 import '../sequences/puzzle.dart';
+import '../variable.dart';
 
 /// Provide access to the Prime Cuts API.
 class Sequences extends Crossnumber<SequencesPuzzle> {
@@ -29,6 +30,26 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   Sequences() {
     puzzle = SequencesPuzzle.grid(gridString);
     initCrossnumber();
+  }
+
+  SolveFunction solveWrapper(
+      bool Function(SequencesEntry clue, Set<int> possibleValue,
+              Map<String, Set<int>> possibleLetters)
+          solve) {
+    bool solveSequencesClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<String, Set<int>>? possibleVariables,
+      Map<String, Set<int>>? possibleVariables2,
+      Set<String>? updatedVariables,
+    }) {
+      var clue = v as SequencesEntry;
+      return solve(clue, possibleValue, possibleVariables!);
+    }
+
+    return solveSequencesClue;
   }
 
   void initCrossnumber() {
@@ -94,7 +115,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     puzzle.addEntry(a17);
     var a18 = SequencesEntry(
       name: 'A18', length: 2, valueDesc: 'S + I*G/M + A',
-      solve: solveA18,
+      solve: solveWrapper(solveA18),
       //solve: solveSequencesClue,
     );
     puzzle.addEntry(a18);
@@ -269,7 +290,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       name: 'D26',
       length: 2,
       valueDesc: 'S*Y*S = S*(I - S)',
-      solve: solveD26,
+      solve: solveWrapper(solveD26),
       //solve: solveSequencesClue,
     );
     puzzle.addEntry(d26);
@@ -335,9 +356,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   solveA2(SequencesEntry clue, Set<int> possibleValue,
@@ -1018,12 +1037,22 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveSequencesClue(SequencesClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveSequencesClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as SequencesPuzzle;
+    var clue = v as SequencesClue;
+
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
       updated = puzzle.solveVariableExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables);
+          clue, clue.exp, possibleValue, possibleVariables!);
     }
     return updated;
   }

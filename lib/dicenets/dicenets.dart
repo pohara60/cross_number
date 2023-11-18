@@ -4,6 +4,8 @@ import '../dicenets/clue.dart';
 import '../dicenets/puzzle.dart';
 
 import '../generators.dart';
+import '../puzzle.dart';
+import '../variable.dart';
 
 class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   DiceNets() {
@@ -51,139 +53,253 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   late final DiceNetsEntry d32;
   late final DiceNetsEntry d34;
 
+  SolveFunction solveWrapper(
+      bool Function(DiceNetsEntry clue, Set<int> possibleValue) solve) {
+    bool solveDiceNetsClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<String, Set<int>>? possibleVariables,
+      Map<String, Set<int>>? possibleVariables2,
+      Set<String>? updatedVariables,
+    }) {
+      var clue = v as DiceNetsEntry;
+      return solve(clue, possibleValue);
+    }
+
+    return solveDiceNetsClue;
+  }
+
   void initCrossnumber() {
     a1 = DiceNetsEntry(
-        name: 'A1', length: 4, valueDesc: 'Prime', solve: solveA1);
+        name: 'A1',
+        length: 4,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveA1));
     puzzle.addEntry(a1);
     a4 = DiceNetsEntry(
-        name: 'A4', length: 4, valueDesc: 'Power', solve: solveA4);
+        name: 'A4',
+        length: 4,
+        valueDesc: 'Power',
+        solve: solveWrapper(solveA4));
     puzzle.addEntry(a4);
     a8 = DiceNetsEntry(
-        name: 'A8', length: 4, valueDesc: 'Triangular - A18', solve: solveA8);
+        name: 'A8',
+        length: 4,
+        valueDesc: 'Triangular - A18',
+        solve: solveWrapper(solveA8));
     puzzle.addEntry(a8);
     a10 = DiceNetsEntry(
-        name: 'A10', length: 3, valueDesc: 'Multiple of D34', solve: solveA10);
+        name: 'A10',
+        length: 3,
+        valueDesc: 'Multiple of D34',
+        solve: solveWrapper(solveA10));
     puzzle.addEntry(a10);
     a12 = DiceNetsEntry(
-        name: 'A12', length: 3, valueDesc: 'Even Square', solve: solveA12);
+        name: 'A12',
+        length: 3,
+        valueDesc: 'Even Square',
+        solve: solveWrapper(solveA12));
     puzzle.addEntry(a12);
     a14 = DiceNetsEntry(
-        name: 'A14', length: 2, valueDesc: 'Triangular', solve: solveA14);
+        name: 'A14',
+        length: 2,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveA14));
     puzzle.addEntry(a14);
     a16 = DiceNetsEntry(
-        name: 'A16', length: 3, valueDesc: 'Triangular - A31', solve: solveA16);
+        name: 'A16',
+        length: 3,
+        valueDesc: 'Triangular - A31',
+        solve: solveWrapper(solveA16));
     puzzle.addEntry(a16);
     a17 = DiceNetsEntry(
-        name: 'A17', length: 4, valueDesc: 'Multiple of D7', solve: solveA17);
+        name: 'A17',
+        length: 4,
+        valueDesc: 'Multiple of D7',
+        solve: solveWrapper(solveA17));
     puzzle.addEntry(a17);
     a18 = DiceNetsEntry(
-        name: 'A18', length: 5, valueDesc: 'Triangular', solve: solveA18);
+        name: 'A18',
+        length: 5,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveA18));
     puzzle.addEntry(a18);
     a19 = DiceNetsEntry(
-        name: 'A19', length: 2, valueDesc: 'Triangular - A29', solve: solveA19);
+        name: 'A19',
+        length: 2,
+        valueDesc: 'Triangular - A29',
+        solve: solveWrapper(solveA19));
     puzzle.addEntry(a19);
     a21 = DiceNetsEntry(
-        name: 'A21', length: 2, valueDesc: 'Power', solve: solveA21);
+        name: 'A21',
+        length: 2,
+        valueDesc: 'Power',
+        solve: solveWrapper(solveA21));
     puzzle.addEntry(a21);
     a23 = DiceNetsEntry(
-        name: 'A23', length: 5, valueDesc: 'Multiple of D32', solve: solveA23);
+        name: 'A23',
+        length: 5,
+        valueDesc: 'Multiple of D32',
+        solve: solveWrapper(solveA23));
     puzzle.addEntry(a23);
     a25 = DiceNetsEntry(
-        name: 'A25', length: 4, valueDesc: 'Prime', solve: solveA25);
+        name: 'A25',
+        length: 4,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveA25));
     puzzle.addEntry(a25);
     a27 = DiceNetsEntry(
-        name: 'A27', length: 3, valueDesc: 'Square - A16', solve: solveA27);
+        name: 'A27',
+        length: 3,
+        valueDesc: 'Square - A16',
+        solve: solveWrapper(solveA27));
     puzzle.addEntry(a27);
     a29 = DiceNetsEntry(
         name: 'A29',
         length: 2,
         valueDesc: 'Multiple of a Power',
-        solve: solveA29);
+        solve: solveWrapper(solveA29));
     puzzle.addEntry(a29);
     a30 = DiceNetsEntry(
-        name: 'A30', length: 3, valueDesc: 'Square + D24', solve: solveA30);
+        name: 'A30',
+        length: 3,
+        valueDesc: 'Square + D24',
+        solve: solveWrapper(solveA30));
     puzzle.addEntry(a30);
     a31 = DiceNetsEntry(
-        name: 'A31', length: 3, valueDesc: 'Square - A16', solve: solveA31);
+        name: 'A31',
+        length: 3,
+        valueDesc: 'Square - A16',
+        solve: solveWrapper(solveA31));
     puzzle.addEntry(a31);
     a33 = DiceNetsEntry(
-        name: 'A33', length: 4, valueDesc: 'Multiple of A30', solve: solveA33);
+        name: 'A33',
+        length: 4,
+        valueDesc: 'Multiple of A30',
+        solve: solveWrapper(solveA33));
     puzzle.addEntry(a33);
     a35 = DiceNetsEntry(
-        name: 'A35', length: 4, valueDesc: 'Triangular', solve: solveA35);
+        name: 'A35',
+        length: 4,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveA35));
     puzzle.addEntry(a35);
     a36 = DiceNetsEntry(
-        name: 'A36', length: 4, valueDesc: 'Jumble of D1', solve: solveA36);
+        name: 'A36',
+        length: 4,
+        valueDesc: 'Jumble of D1',
+        solve: solveWrapper(solveA36));
     puzzle.addEntry(a36);
 
     d1 = DiceNetsEntry(
-        name: 'D1', length: 4, valueDesc: 'Square', solve: solveD1);
+        name: 'D1',
+        length: 4,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD1));
     puzzle.addEntry(d1);
     d2 = DiceNetsEntry(
-        name: 'D2', length: 6, valueDesc: 'Square', solve: solveD2);
+        name: 'D2',
+        length: 6,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD2));
     puzzle.addEntry(d2);
     d3 = DiceNetsEntry(
         name: 'D3',
         length: 2,
         valueDesc: 'Product 3 distinct Primes',
-        solve: solveD3);
+        solve: solveWrapper(solveD3));
     puzzle.addEntry(d3);
     d5 = DiceNetsEntry(
         name: 'D5',
         length: 5,
         valueDesc: 'Product 3 distinct Primes',
-        solve: solveD5);
+        solve: solveWrapper(solveD5));
     puzzle.addEntry(d5);
     d6 = DiceNetsEntry(
-        name: 'D6', length: 4, valueDesc: 'D7 + D18', solve: solveD6);
+        name: 'D6',
+        length: 4,
+        valueDesc: 'D7 + D18',
+        solve: solveWrapper(solveD6));
     puzzle.addEntry(d6);
     d7 = DiceNetsEntry(
-        name: 'D7', length: 2, valueDesc: 'Power', solve: solveD7);
+        name: 'D7',
+        length: 2,
+        valueDesc: 'Power',
+        solve: solveWrapper(solveD7));
     puzzle.addEntry(d7);
     d9 = DiceNetsEntry(
-        name: 'D9', length: 7, valueDesc: 'Triangular', solve: solveD9);
+        name: 'D9',
+        length: 7,
+        valueDesc: 'Triangular',
+        solve: solveWrapper(solveD9));
     puzzle.addEntry(d9);
     d11 = DiceNetsEntry(
-        name: 'D11', length: 3, valueDesc: 'Twice a Square', solve: solveD11);
+        name: 'D11',
+        length: 3,
+        valueDesc: 'Twice a Square',
+        solve: solveWrapper(solveD11));
     puzzle.addEntry(d11);
     d13 = DiceNetsEntry(
-        name: 'D13', length: 7, valueDesc: 'Square', solve: solveD13);
+        name: 'D13',
+        length: 7,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD13));
     puzzle.addEntry(d13);
     d15 = DiceNetsEntry(
-        name: 'D15', length: 4, valueDesc: 'Square', solve: solveD15);
+        name: 'D15',
+        length: 4,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD15));
     puzzle.addEntry(d15);
     d18 = DiceNetsEntry(
-        name: 'D18', length: 4, valueDesc: 'Power', solve: solveD18);
+        name: 'D18',
+        length: 4,
+        valueDesc: 'Power',
+        solve: solveWrapper(solveD18));
     puzzle.addEntry(d18);
     d20 = DiceNetsEntry(
-        name: 'D20', length: 6, valueDesc: 'Square', solve: solveD20);
+        name: 'D20',
+        length: 6,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD20));
     puzzle.addEntry(d20);
     d22 = DiceNetsEntry(
         name: 'D22',
         length: 5,
         valueDesc: 'Multiple of Square of D32',
-        solve: solveD22);
+        solve: solveWrapper(solveD22));
     puzzle.addEntry(d22);
     d24 = DiceNetsEntry(
         name: 'D24',
         length: 3,
         valueDesc: 'Sum of 2 consecutive Squares',
-        solve: solveD24);
+        solve: solveWrapper(solveD24));
     puzzle.addEntry(d24);
     d26 = DiceNetsEntry(
         name: 'D26',
         length: 4,
         valueDesc: 'Half of a Triangular',
-        solve: solveD26);
+        solve: solveWrapper(solveD26));
     puzzle.addEntry(d26);
     d28 = DiceNetsEntry(
-        name: 'D28', length: 4, valueDesc: 'Square', solve: solveD28);
+        name: 'D28',
+        length: 4,
+        valueDesc: 'Square',
+        solve: solveWrapper(solveD28));
     puzzle.addEntry(d28);
     d32 = DiceNetsEntry(
-        name: 'D32', length: 2, valueDesc: 'A19 - D7', solve: solveD32);
+        name: 'D32',
+        length: 2,
+        valueDesc: 'A19 - D7',
+        solve: solveWrapper(solveD32));
     puzzle.addEntry(d32);
     d34 = DiceNetsEntry(
-        name: 'D34', length: 2, valueDesc: 'Prime', solve: solveD34);
+        name: 'D34',
+        length: 2,
+        valueDesc: 'Prime',
+        solve: solveWrapper(solveD34));
     puzzle.addEntry(d34);
 
     puzzle.addDigitIdentity(a1, 1, d1, 1);

@@ -1,5 +1,6 @@
 import '../clue.dart';
 import '../set.dart';
+import '../variable.dart';
 
 /// A [Puzzle] clue
 class PrimeCutsClue extends ExpressionClue {
@@ -11,11 +12,11 @@ class PrimeCutsClue extends ExpressionClue {
   addPrimeReference(String prime) => this.addVariableReference(prime);
 
   PrimeCutsClue({
-    required name,
-    required length,
-    required this.prime,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    required String this.prime,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 
   String toString() {
@@ -58,11 +59,11 @@ class PrimeCutsClue extends ExpressionClue {
 
 class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
   PrimeCutsEntry({
-    required name,
-    required length,
-    required prime,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    required String prime,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(
             name: name,
             length: length,

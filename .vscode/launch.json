@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "DieAnotherDay",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "DieAnotherDay"
+            ]
+        },
+        {
             "name": "node_test",
             "type": "dart",
             "request": "launch",

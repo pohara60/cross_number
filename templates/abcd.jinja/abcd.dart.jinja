@@ -1,5 +1,7 @@
 library {{env['abcd']}};
 
+import 'dart:math';
+
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
@@ -47,7 +49,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     void clueWrapper(
         {String? name, int? length, String? valueDesc}) {
       try {
-        var entry = {{env['ABCD']}}Clue(
+        var clue = {{env['ABCD']}}Clue(
             name: name, 
             length: length, 
             valueDesc: valueDesc, 
@@ -102,9 +104,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     if (clueError != '') throw PuzzleException(clueError);
 
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   @override
@@ -123,7 +123,6 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     //     print(
     //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
     //   }
-    }
 
     super.solve(iteration);
   }

@@ -12,7 +12,18 @@ import 'variable.dart';
 
 /// Provide access to the Cross Number API.
 class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
-  late PuzzleKind puzzle;
+  final puzzles = <PuzzleKind>[];
+  PuzzleKind get puzzle {
+    assert(puzzles.length == 1);
+    return puzzles[0];
+  }
+
+  void set puzzle(PuzzleKind puzzle) {
+    assert(puzzles.length == 0);
+    puzzles.add(puzzle);
+  }
+
+  final puzzleForVariable = <Variable, PuzzleKind>{};
 
   static bool traceInit = true;
   static bool traceSolve = true;
@@ -21,7 +32,24 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
   void initCrossnumber() {
     if (traceInit) {
-      print(puzzle.toString());
+      for (var puzzle in puzzles) {
+        print(puzzle.toString());
+      }
+    }
+
+    // Get puzzle to clue/variable mapping
+    for (var puzzle in puzzles) {
+      if (puzzle is VariablePuzzle) {
+        for (var variable in puzzle.variables.values) {
+          puzzleForVariable[variable] = puzzle;
+        }
+      }
+      for (var clue in puzzle.clues.values) {
+        puzzleForVariable[clue] = puzzle;
+      }
+      for (var entry in puzzle.entries.values) {
+        puzzleForVariable[entry] = puzzle;
+      }
     }
   }
 
@@ -31,13 +59,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       .compareTo((a as PriorityVariable).priority));
 
   void addToUpdateQueue(Variable clue) {
+    var puzzle = puzzleForVariable[clue]!;
     if ((puzzle is VariablePuzzle) &&
-        (puzzle as VariablePuzzle).hasVariables &&
+        puzzle.hasVariables &&
         (clue is VariableClue || clue is ExpressionVariable)) {
-      if (clue is VariableClue)
-        (puzzle as VariablePuzzle).updateCluePriority(clue);
-      if (clue is ExpressionVariable)
-        (puzzle as VariablePuzzle).updateVariablePriority(clue);
+      if (clue is VariableClue) puzzle.updateCluePriority(clue);
+      if (clue is ExpressionVariable) puzzle.updateVariablePriority(clue);
 
       if (priorityQueue.contains(clue)) {
         priorityQueue.remove(clue);
@@ -69,13 +96,14 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     bool updated;
     var iterations = 0;
     var updates = 0;
-    var remainingClues = List<Variable>.from(puzzle.clues.values).toList();
-    remainingClues.addAll(puzzle.entries.values);
-    if (puzzle is VariablePuzzle) {
-      remainingClues.addAll((puzzle as VariablePuzzle)
-          .variables
-          .values
-          .where((v) => (v is ExpressionVariable) && v.valueDesc != ''));
+    var remainingClues = <Variable>[];
+    for (var puzzle in puzzles) {
+      remainingClues.addAll(puzzle.clues.values);
+      remainingClues.addAll(puzzle.entries.values);
+      if (puzzle is VariablePuzzle) {
+        remainingClues.addAll(puzzle.variables.values
+            .where((v) => (v is ExpressionVariable) && v.valueDesc != ''));
+      }
     }
 
     if (traceSolve) {
@@ -129,6 +157,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             }
             if (clueOrVariable.isSet) {
               // Find other clues/variables that can no longer have the value
+              var puzzle = puzzleForVariable[clueOrVariable]!;
               for (var referrer
                   in puzzle.clueOrVariableValueReferences(clueOrVariable)) {
                 addToUpdateQueue(referrer);
@@ -166,20 +195,24 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
   void endSolve(bool iteration) {
     // Unique solution?
-    if (!puzzle.uniqueSolution()) {
-      if (Crossnumber.traceSolve) {
-        print("PARTIAL SOLUTION-----------------------------");
+    for (var puzzle in puzzles) {
+      if (!puzzle.uniqueSolution()) {
+        if (Crossnumber.traceSolve) {
+          print("PARTIAL SOLUTION-----------------------------");
+          print(puzzle.toSummary());
+          // print(puzzle.toString());
+        }
+        puzzle.postProcessing(iteration);
+      } else {
+        print("SOLUTION-----------------------------");
         print(puzzle.toSummary());
-        // print(puzzle.toString());
       }
-      puzzle.postProcessing(iteration);
-    } else {
-      print("SOLUTION-----------------------------");
-      print(puzzle.toSummary());
     }
   }
 
   bool solveClue(Clue clue) {
+    var puzzle = puzzleForVariable[clue]!;
+
     // If clue solved already then skip it
     // Can no longer do this because clue can be set by other clues
     // if (clue.values != null && clue.values!.length == 1) return false;
@@ -197,9 +230,14 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         for (var variableName in clue.variableClueReferences) {
           possibleVariables[variableName] = <int>{};
         }
-        if (clue.solve!(clue, possibleValue, possibleVariables)) updated = true;
+        if (clue.solve!(
+          puzzle,
+          clue,
+          possibleValue,
+          possibleVariables: possibleVariables,
+        )) updated = true;
       } else {
-        if (clue.solve!(clue, possibleValue)) updated = true;
+        if (clue.solve!(puzzle, clue, possibleValue)) updated = true;
       }
       // If no Values returned then Solve function could not solve
       if (possibleValue.isEmpty) {
@@ -207,20 +245,23 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
-      if (updateClueEntries(clue.name, possibleValue)) updated = true;
+      if (updateClueEntries(puzzle, clue.name, possibleValue)) updated = true;
       if (clue.finalise()) updated = true;
       if (clue is VariableClue) {
         for (var variableName in clue.variableReferences) {
           if (possibleVariables[variableName] != null &&
               possibleVariables[variableName]!.isNotEmpty) {
-            if (updateVariables(variableName, possibleVariables[variableName]!,
+            if (updateVariables(
+                puzzle,
+                variableName,
+                possibleVariables[variableName]!,
                 updatedVariables)) updated = true;
           }
         }
         for (var clueName in clue.clueReferences) {
           if (possibleVariables[clueName] != null &&
               possibleVariables[clueName]!.isNotEmpty) {
-            if (updateClues(clueName, possibleVariables[clueName]!)) {
+            if (updateClues(puzzle, clueName, possibleVariables[clueName]!)) {
               updatedClues.add(clueName);
               updated = true;
             }
@@ -229,7 +270,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         for (var entryName in clue.entryReferences) {
           if (possibleVariables[entryName] != null &&
               possibleVariables[entryName]!.isNotEmpty) {
-            if (updateEntries(entryName, possibleVariables[entryName]!)) {
+            if (updateEntries(
+                puzzle, entryName, possibleVariables[entryName]!)) {
               updatedEntries.add(entryName);
               updated = true;
             }
@@ -271,12 +313,11 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     return updated;
   }
 
-  bool updateVariables(String variableName, Set<int> possibleValues,
-      Set<String> updatedVariables) {
+  bool updateVariables(PuzzleKind puzzle, String variableName,
+      Set<int> possibleValues, Set<String> updatedVariables) {
     if (puzzle is VariablePuzzle) {
-      var variablePuzzle = puzzle as VariablePuzzle;
       updatedVariables
-          .addAll(variablePuzzle.updateVariables(variableName, possibleValues));
+          .addAll(puzzle.updateVariables(variableName, possibleValues));
       // Schedule updated variables for update
       // for (var variableName in updatedVariables) {
       //   var variable = variablePuzzle.variables[variableName]!;
@@ -292,7 +333,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         }
       }
       // Schedule referencing variables for update
-      for (var variable in variablePuzzle.variables.values) {
+      for (var variable in puzzle.variables.values) {
         if (variable is ExpressionVariable) {
           if (variable.variableReferences
               .any((element) => updatedVariables.contains(element))) {
@@ -305,15 +346,16 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     return false;
   }
 
-  bool updateClueEntries(String clueName, Set<int> possibleValues) {
+  bool updateClueEntries(
+      PuzzleKind puzzle, String clueName, Set<int> possibleValues) {
     if (puzzle.clues.containsKey(clueName))
-      return updateClues(clueName, possibleValues);
+      return updateClues(puzzle, clueName, possibleValues);
     if (puzzle.entries.containsKey(clueName))
-      return updateClues(clueName, possibleValues, true);
+      return updateClues(puzzle, clueName, possibleValues, true);
     throw SolveError('Clue/Entry $clueName not found!');
   }
 
-  bool updateClues(String clueName, Set<int> possibleValues,
+  bool updateClues(PuzzleKind puzzle, String clueName, Set<int> possibleValues,
       [bool isEntry = false]) {
     var clue = isEntry ? puzzle.entries[clueName]! : puzzle.clues[clueName]!;
     var updated = puzzle.updateValues(clue, possibleValues);
@@ -326,10 +368,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       }
       // Schedule referenced variables for update
       if (puzzle is VariablePuzzle) {
-        var variablePuzzle = puzzle as VariablePuzzle;
-
         for (var variableName in clue.variableReferences) {
-          var variable = variablePuzzle.variables[variableName]!;
+          var variable = puzzle.variables[variableName]!;
           if (variable is ExpressionVariable) {
             addToUpdateQueue(variable);
           }
@@ -340,8 +380,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     return false;
   }
 
-  bool updateEntries(String entryName, Set<int> possibleValues) {
-    return updateClues(entryName, possibleValues, true);
+  bool updateEntries(
+      PuzzleKind puzzle, String entryName, Set<int> possibleValues) {
+    return updateClues(puzzle, entryName, possibleValues, true);
   }
 
   bool validVariable(ExpressionVariable variable, int value,
@@ -357,7 +398,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     // if (variable.values != null && variable.values!.length == 1) return false;
 
     var updated = false;
-    var puzzle = this.puzzle as VariablePuzzle;
+    var puzzle = puzzleForVariable[variable]!;
+    var varPuzzle = puzzle as VariablePuzzle;
     var possibleValue = <int>{};
     var possibleVariables = <String, Set<int>>{};
 
@@ -365,8 +407,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       possibleVariables[variable] = <int>{};
     }
 
-    if (variable.solve!(variable, possibleValue, possibleVariables))
-      updated = true;
+    if (variable.solve!(
+      puzzle,
+      variable,
+      possibleValue,
+      possibleVariables: possibleVariables,
+    )) updated = true;
     // If no Values returned then Solve function could not solve
     if (possibleValue.isEmpty) {
       print(
@@ -374,21 +420,22 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       throw SolveException();
     }
     var updatedVariables = <String>{};
-    if (updateVariables(variable.name, possibleValue, updatedVariables)) {
+    if (updateVariables(
+        puzzle, variable.name, possibleValue, updatedVariables)) {
       updated = true;
     }
     // Update variable references even if this variable not updated, because may
     // have been set elsewhere
     for (var variableName in variable.variableReferences) {
-      if (updateVariables(
-          variableName, possibleVariables[variableName]!, updatedVariables)) {
+      if (updateVariables(puzzle, variableName,
+          possibleVariables[variableName]!, updatedVariables)) {
         updated = true;
       }
     }
 
     if (traceSolve && updated) {
       print("solve: ${variable.runtimeType}(${variable.toString()})");
-      var variableList = puzzle.variableList;
+      var variableList = varPuzzle.variableList;
       for (var variableName in updatedVariables) {
         print(
             '$variableName=${variableList.variables[variableName]!.values.toString()}');

@@ -6,12 +6,14 @@ class {{env['ABCD']}}Clue extends ExpressionClue {
   List<String> get letterReferences => this.variableReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
-  {{env['ABCD']}}Clue({
-    required name,
-    required length,
-    valueDesc,
-    solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  {{env['ABCD']}}Clue(
+      {required String name, required int? length, String? valueDesc, SolveFunction? solve, List<String>? entryNames})
+      : super(
+            name: name,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve,
+            entryNames: entryNames);
 }
 
 class {{env['ABCD']}}Entry extends {{env['ABCD']}}Clue with EntryMixin {
@@ -20,11 +22,17 @@ class {{env['ABCD']}}Entry extends {{env['ABCD']}}Clue with EntryMixin {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   {{env['ABCD']}}Entry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
+    entryNames,
+  }) : super(
+            name: name,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve,
+            entryNames: entryNames) {
     initEntry(this);
   }
 }

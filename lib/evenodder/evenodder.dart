@@ -5,6 +5,7 @@ import '../crossnumber.dart';
 import '../evenodder/clue.dart';
 import '../evenodder/puzzle.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 
 /// Provide access to the Prime Cuts API.
 class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
@@ -363,9 +364,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   // Semi-Manual solve procedure example
@@ -424,12 +423,22 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveEvenOdderClue(EvenOdderClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveEvenOdderClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as EvenOdderPuzzle;
+    var clue = v as EvenOdderClue;
+
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
       updated = puzzle.solveVariableExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables);
+          clue, clue.exp, possibleValue, possibleVariables!);
     }
     return updated;
   }

@@ -5,6 +5,7 @@ import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
@@ -38,10 +39,10 @@ class Prime extends Crossnumber<PrimePuzzle> {
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
-        {String? name, int? length, String? valueDesc, Function? solve}) {
+        {String? name, int? length, String? valueDesc, SolveFunction? solve}) {
       try {
         var entry = PrimeEntry(
-            name: name, length: length, valueDesc: valueDesc, solve: solve);
+            name: name!, length: length, valueDesc: valueDesc, solve: solve);
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
@@ -159,9 +160,7 @@ class Prime extends Crossnumber<PrimePuzzle> {
     var clueError = puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   // Validate possible clue value
@@ -172,12 +171,21 @@ class Prime extends Crossnumber<PrimePuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solvePrimeClue(PrimeClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solvePrimeClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as PrimePuzzle;
+    var clue = v as PrimeClue;
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

@@ -1,4 +1,5 @@
 import '../clue.dart';
+import '../variable.dart';
 
 /// A [LettersPuzzle] clue
 class PrimeClue extends ExpressionClue {
@@ -7,10 +8,10 @@ class PrimeClue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   PrimeClue({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 }
 
@@ -20,10 +21,10 @@ class PrimeEntry extends PrimeClue with EntryMixin {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   PrimeEntry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }

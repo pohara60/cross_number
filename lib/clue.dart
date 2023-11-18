@@ -67,10 +67,10 @@ class Clue extends Variable {
   }
 
   Clue({
-    required name,
-    required this.length,
-    this.valueDesc,
-    solve,
+    required String name,
+    required int? this.length,
+    String? this.valueDesc,
+    SolveFunction? solve,
   }) : super(name, solve: solve) {
     referrers = <Clue>[];
     this.reset();
@@ -225,7 +225,11 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 
 class VariableClue extends Clue with PriorityVariable {
   /// Computed - Count of combinations of variable values
-  VariableClue({required name, required length, valueDesc, solve})
+  VariableClue(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {}
 }
 
@@ -234,7 +238,7 @@ class ExpressionClue extends VariableClue with Expression {
     required String name,
     required int? length,
     String? valueDesc,
-    Function? solve,
+    SolveFunction? solve,
     variablePrefix = '',
     List<String>? entryNames,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
@@ -281,8 +285,8 @@ class DigitIdentity {
   Clue get clue => entry;
 
   DigitIdentity({
-    required this.entry,
-    required this.digit,
+    required EntryMixin this.entry,
+    required int this.digit,
   });
 
   String toString() {
@@ -400,7 +404,11 @@ mixin EntryMixin on Clue {
 }
 
 class Entry extends Clue with EntryMixin {
-  Entry({required name, required length, valueDesc, solve})
+  Entry(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     assert(length != null);
     initEntry(this);
@@ -408,7 +416,11 @@ class Entry extends Clue with EntryMixin {
 }
 
 class VariableEntry extends VariableClue with EntryMixin {
-  VariableEntry({required name, required length, valueDesc, solve})
+  VariableEntry(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);
   }
@@ -423,7 +435,7 @@ class ExpressionEntry extends ExpressionClue with EntryMixin {
       {required String name,
       required int length,
       String? valueDesc,
-      Function? solve,
+      SolveFunction? solve,
       variablePrefix = ''})
       : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initEntry(this);

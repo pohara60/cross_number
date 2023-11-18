@@ -8,6 +8,7 @@ import '../crossnumber.dart';
 import '../clue.dart';
 import '../root66/clue.dart';
 import '../root66/puzzle.dart';
+import '../variable.dart';
 
 /// Provide access to the Prime Cuts API.
 class Root66 extends Crossnumber<Root66Puzzle> {
@@ -255,9 +256,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   final validBCEFG = <int, Map<String, int>>{};
@@ -415,12 +414,16 @@ class Root66 extends Crossnumber<Root66Puzzle> {
 
   // Puzzle specific clue solver
   bool solveBCEFG(
-    VariableClue variableClue,
-    Set<int> possiblePreValue,
-    Set<int> possibleValue,
-    Map<String, Set<int>> possibleVariables,
-  ) {
-    var clue = variableClue as Root66Entry;
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as Root66Puzzle;
+    var clue = v as Root66Entry;
     var candidateValues = <int>{};
     // Normal clues have expression
     if (clue.type != Root66ClueType.BCEFG) {
@@ -429,13 +432,13 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       puzzle.solveVariableExpressionEvaluator(
         clue,
         clue.exp,
-        possiblePreValue,
-        possibleVariables,
+        possibleValue,
+        possibleVariables!,
         validValue,
         maxCount,
       );
       // Get possible values
-      for (var preValue in possiblePreValue) {
+      for (var preValue in possibleValue) {
         var valuesG = <int>{};
         var valuesBCEF = <int>{};
         if (clue.type == Root66ClueType.BCEF ||
@@ -463,7 +466,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     // Check digits match
     for (var candidateValue in candidateValues) {
       if (clue.digitsMatch(candidateValue)) {
-        possibleValue.add(candidateValue);
+        possibleValue2!.add(candidateValue);
       }
     }
     return false;
@@ -472,6 +475,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
   // Override solveClue to manage preValues
   bool solveClue(Clue inputClue) {
     var clue = inputClue as Root66Entry;
+    var puzzle = puzzleForVariable[clue]!;
     // If clue solved already then skip it
     if (clue.values != null && clue.values!.length == 1) return false;
 
@@ -486,8 +490,9 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       for (var variableName in clue.variableReferences) {
         possibleVariables[variableName] = <int>{};
       }
-      if (clue.solve!(clue, possiblePreValue, possibleValue, possibleVariables))
-        updated = true;
+      if (clue.solve!(puzzle, clue, possiblePreValue,
+          possibleValue2: possibleValue,
+          possibleVariables: possibleVariables)) updated = true;
       // Some Solve functions do not update PreValues
       if (possiblePreValue.isNotEmpty && clue.updatePreValues(possiblePreValue))
         updated = true;
@@ -507,8 +512,8 @@ class Root66 extends Crossnumber<Root66Puzzle> {
       }
       if (clue.finalise()) updated = true;
       for (var variableName in clue.variableReferences) {
-        updateVariables(
-            variableName, possibleVariables[variableName]!, updatedVariables);
+        updateVariables(puzzle, variableName, possibleVariables[variableName]!,
+            updatedVariables);
       }
 
       if (Crossnumber.traceSolve && updated) {

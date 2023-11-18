@@ -1,4 +1,5 @@
 import '../clue.dart';
+import '../variable.dart';
 
 /// A [Puzzle] clue
 class PrimeCutsClue extends VariableClue {
@@ -17,13 +18,13 @@ class PrimeCutsClue extends VariableClue {
   addPrimeReference(String prime) => this.addVariableReference(prime);
 
   PrimeCutsClue({
-    required name,
-    required length,
-    required this.prime,
-    valueDesc,
-    this.primeDesc,
-    this.preValueDesc,
-    solve,
+    required String name,
+    required int? length,
+    required String this.prime,
+    String? valueDesc,
+    String? this.primeDesc,
+    String? this.preValueDesc,
+    SolveFunction? solve,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
 
   bool updatePreValues(Set<int> possiblePreValue) {
@@ -64,13 +65,13 @@ class PrimeCutsClue extends VariableClue {
 
 class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
   PrimeCutsEntry({
-    required name,
-    required length,
-    required prime,
-    valueDesc,
-    primeDesc,
-    preValueDesc,
-    solve,
+    required String name,
+    required int? length,
+    required String prime,
+    String? valueDesc,
+    String? primeDesc,
+    String? preValueDesc,
+    SolveFunction? solve,
   }) : super(
             name: name,
             length: length,

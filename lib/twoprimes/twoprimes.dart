@@ -4,6 +4,7 @@ import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
@@ -33,7 +34,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     void clueWrapper({String? name, int? length, String? valueDesc}) {
       try {
         var entry = TwoPrimesEntry(
-            name: name,
+            name: name!,
             length: length,
             valueDesc: valueDesc,
             solve: solveTwoPrimesClue);
@@ -113,9 +114,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     clueError += puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    if (Crossnumber.traceInit) {
-      print(puzzle.toString());
-    }
+    super.initCrossnumber();
   }
 
   // Validate possible clue value
@@ -126,12 +125,22 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solveTwoPrimesClue(TwoPrimesClue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solveTwoPrimesClue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as TwoPrimesPuzzle;
+    var clue = v as TwoPrimesClue;
+
     var updated = false;
     if (clue.valueDesc != '') {
       updated = puzzle.solveExpressionEvaluator(
-          clue, clue.exp, possibleValue, possibleVariables, validClue);
+          clue, clue.exp, possibleValue, possibleVariables!, validClue);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

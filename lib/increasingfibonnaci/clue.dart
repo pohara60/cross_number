@@ -1,3 +1,5 @@
+import 'package:crossnumber/variable.dart';
+
 import '../clue.dart';
 
 /// A Puzzle clue
@@ -7,7 +9,11 @@ class IncreasingFibonnaciClue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   IncreasingFibonnaciClue(
-      {required name, required length, valueDesc, solve, entryNames})
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve,
+      List<String>? entryNames})
       : super(
             name: name,
             length: length,
@@ -22,10 +28,10 @@ class IncreasingFibonnaciEntry extends IncreasingFibonnaciClue with EntryMixin {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   IncreasingFibonnaciEntry({
-    required name,
-    required length,
-    valueDesc,
-    solve,
+    required String name,
+    required int? length,
+    String? valueDesc,
+    SolveFunction? solve,
     entryNames,
   }) : super(
             name: name,
