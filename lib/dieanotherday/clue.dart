@@ -1,3 +1,5 @@
+import 'package:powers/powers.dart';
+
 import '../clue.dart';
 import '../variable.dart';
 
@@ -19,14 +21,23 @@ class DieAnotherDayClue extends ExpressionClue {
             valueDesc: valueDesc,
             solve: solve,
             entryNames: entryNames);
+
+  static const powers = [1000, 100, 10, 1];
+  List<int> clueDigits(int digit) {
+    if (values == null) return [];
+    var digits = <int>{};
+    for (var value in values!) {
+      var v = value ~/ powers[digit] % 10;
+      digits.add(v);
+    }
+    return digits.toList()..sort();
+  }
 }
 
 class DieAnotherDayEntry extends DieAnotherDayClue with EntryMixin {
   /// List of referenced primes
   List<String> get letterReferences => this.variableReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
-
-  static var maxDigit = 6;
 
   DieAnotherDayEntry({
     required String name,
@@ -41,5 +52,14 @@ class DieAnotherDayEntry extends DieAnotherDayClue with EntryMixin {
             solve: solve,
             entryNames: entryNames) {
     initEntry(this);
+  }
+
+  @override
+  void initDigits() {
+    super.initDigits();
+    // possible digits are 1..6
+    for (var d = 0; d < this.length!; d++) {
+      digits[d].remove(0);
+    }
   }
 }

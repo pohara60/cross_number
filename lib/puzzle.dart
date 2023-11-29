@@ -19,8 +19,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   Grid? grid;
 
-  Puzzle() {}
-  Puzzle.grid(List<String> gridString) {
+  final String name;
+
+  Puzzle({this.name = ''}) {}
+  Puzzle.grid(List<String> gridString, {this.name = ''}) {
     this.grid = Grid(gridString);
   }
 
@@ -97,7 +99,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   String toString() {
-    var text = 'Puzzle\n';
+    var text = '$name${name == '' ? '' : ' '}Puzzle\n';
     for (var clue in clues.values) {
       text += clue.toString() + '\n';
     }
@@ -108,7 +110,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   String toSummary() {
-    var text = 'Puzzle Summary\n';
+    var text = '$name${name == '' ? '' : ' '}Puzzle Summary\n';
     for (var clue in clues.values) {
       text += clue.toSummary() + '\n';
     }
@@ -242,7 +244,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Map<Variable, Answer> solution = {};
   List<Variable> order = [];
 
-  int iterate() {
+  int iterate([Function? callback]) {
     if (this is VariablePuzzle && (this as VariablePuzzle).hasVariables) {
       var puzzle = this as VariablePuzzle;
       try {
@@ -252,17 +254,17 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         // No variables to iterate, so try values
       }
     }
-    return iterateValues();
+    return iterateValues(callback);
   }
 
-  int iterateValues() {
+  int iterateValues([Function? callback]) {
     var unknownClues = <Variable>[];
     // ignore: unnecessary_cast
     List<Variable> clues = this.clues.values.map((c) => c as Variable).toList();
     if (this is VariablePuzzle) {
       var variablePuzzle = this as VariablePuzzle;
       var variables = variablePuzzle.variables.values
-          .where((v) => v is ExpressionVariable)
+          // .where((v) => v is ExpressionVariable)
           .toList();
       clues.addAll(variables);
     }
@@ -295,11 +297,12 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     order.addAll(unknownClues);
     // Find solutions in clue order
     var count = 0;
-    count = findSolutions(order, 0, count);
+    count = findSolutions(order, 0, count, callback);
     return count;
   }
 
-  int findSolutions(List<Variable> order, int next, int count) {
+  int findSolutions(List<Variable> order, int next, int count,
+      [Function? callback]) {
     // Skip variables/clues with value
     while (next < order.length &&
         solution[order[next]] != null &&
@@ -312,8 +315,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     // End of search?
     if (next == order.length) {
       if (checkSolution()) {
-        print(solutionToString());
-        count++;
+        if (callback != null)
+          count += callback(this) as int;
+        else {
+          print(solutionToString());
+          count++;
+        }
+
         // print('findSolutions: end of clues, solution $count!');
       } else {
         // print('findSolutions: end of clues, no solution');
@@ -324,6 +332,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     // Get clue values
     var clue = order[next];
     var values = clue.values;
+    var undoVariables = <Variable, Answer?>{};
     if (clue.solve != null) {
       // Unknown clue - solve to get values
       // if (clue.values == null) {
@@ -331,32 +340,59 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       // Re-evaluate clue to see if have fewer values given context
       var possibleValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
-      if (clue is ExpressionVariable) {
-        for (var variable in clue.variableReferences) {
-          possibleVariables[variable] = <int>{};
+      try {
+        if (clue is ExpressionVariable) {
+          for (var variable in clue.variableReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(this, clue, possibleValue,
+              possibleVariables: possibleVariables);
+        } else if (clue is VariableClue) {
+          for (var variable in clue.variableClueReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(this, clue, possibleValue,
+              possibleVariables: possibleVariables);
+        } else {
+          clue.solve!(this, clue, possibleValue);
         }
-        clue.solve!(this, clue, possibleValue,
-            possibleVariables: possibleVariables);
-      } else if (clue is VariableClue) {
-        for (var variable in clue.variableClueReferences) {
-          possibleVariables[variable] = <int>{};
+        if (possibleValue.isEmpty) {
+          return count;
         }
-        clue.solve!(this, clue, possibleValue,
-            possibleVariables: possibleVariables);
-      } else {
-        clue.solve!(this, clue, possibleValue);
-      }
-      if (possibleValue.isEmpty) {
+        // Save previous values for updated variables as undo
+        if (clue is VariableClue) {
+          for (var variableName in clue.variableClueReferences) {
+            var possible = possibleVariables[variableName];
+            if (possible == null || possible.isEmpty) continue;
+            var variable = clues[variableName] ??
+                entries[variableName] ??
+                ((this is VariablePuzzle)
+                    ? (this as VariablePuzzle).variables[variableName]
+                    : null);
+            if (variable != null) {
+              if (variable is Clue && variable.updateValues(possible) ||
+                  !(variable is Clue) && variable.updatePossible(possible)) {
+                undoVariables[variable] = solution[variable];
+                variable.values = possibleVariables[variableName]!;
+                solution[variable] = Answer(List.from(variable.values!));
+              }
+            }
+          }
+        }
+
+        // Can iterate over values
+        values = possibleValue;
+        // solution[clue] = Answer(List.from(possibleValue));
+        // }
+      } catch (e) {
+        // Cannot solve clue
         return count;
       }
-      // Can iterate over values
-      values = possibleValue;
-      // solution[clue] = Answer(List.from(possibleValue));
-      // }
     }
 
     // Try each of the possible values for this clue
     // for (var value in solution[clue]!.possible) {
+    valueLoop:
     for (var value in values ?? {}) {
       // Check that this value is consistent with other clues
       if (clue is Clue) {
@@ -364,6 +400,15 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           // print(
           //     'findSolutions: next=$next, clue=${clue.name}, value $value does not match');
           continue;
+        }
+      } else {
+        // Check does not duplicate other variables
+        for (var variable in (this as VariablePuzzle).variables.values) {
+          if (variable != clue &&
+              variable.isSet &&
+              variable.values!.first == value) {
+            continue valueLoop;
+          }
         }
       }
       // Consistent, try this value
@@ -373,9 +418,15 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       solution[clue]!.value = value;
       clue.tryValue = value;
       // print('findSolutions: next=$next, clue=${clue.name}, try value $value');
-      count = findSolutions(order, next + 1, count);
+      count = findSolutions(order, next + 1, count, callback);
       solution[clue]!.value = null;
       clue.tryValue = null;
+      // Undo other variables
+      for (var variable in undoVariables.keys) {
+        var possible = undoVariables[variable]!.possible!;
+        solution[variable]!.possible = possible;
+        variable.values = Set.from(possible);
+      }
     }
 
     //return count;
@@ -711,12 +762,14 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     Scanner.addGenerators(puzzleGenerators);
   }
 
-  VariablePuzzle(List<int>? possibleValues) {
+  VariablePuzzle(List<int>? possibleValues, {String name = ''})
+      : super(name: name) {
     initVariablePuzzle(possibleValues);
   }
 
-  VariablePuzzle.grid(List<int>? possibleValues, List<String> gridString)
-      : super.grid(gridString) {
+  VariablePuzzle.grid(List<int>? possibleValues, List<String> gridString,
+      {String name = ''})
+      : super.grid(gridString, name: name) {
     initVariablePuzzle(possibleValues);
   }
 

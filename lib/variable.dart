@@ -55,6 +55,13 @@ class Variable {
     }
   }
 
+  set value(int? value) {
+    if (value != null) values = {value};
+  }
+
+  int? get value =>
+      values != null && values!.length == 1 ? values!.first : null;
+
   int? get min => _min;
   set min(int? min) => _min = min;
   int? get max => _max ?? 10000; // Ugh!

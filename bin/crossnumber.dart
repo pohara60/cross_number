@@ -545,6 +545,8 @@ class DieAnotherDayCommand extends Command {
       print(e.msg);
     } on SolveError catch (e) {
       print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
     }
   }
 }

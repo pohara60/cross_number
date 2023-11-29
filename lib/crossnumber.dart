@@ -202,10 +202,14 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
           print(puzzle.toSummary());
           // print(puzzle.toString());
         }
-        puzzle.postProcessing(iteration);
       } else {
         print("SOLUTION-----------------------------");
         print(puzzle.toSummary());
+      }
+    }
+    for (var puzzle in puzzles) {
+      if (!puzzle.uniqueSolution()) {
+        puzzle.postProcessing(iteration);
       }
     }
   }
@@ -294,7 +298,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
 
     if (traceSolve && updated) {
-      print("solve: ${clue.toString()}");
+      print("solve${puzzle.name}: ${clue.toString()}");
       if (clue is VariableClue) {
         var variableList = (puzzle as VariablePuzzle).variableList;
         for (var variableName in updatedVariables) {
