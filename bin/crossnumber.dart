@@ -27,6 +27,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
+import 'package:crossnumber/thirty/thirty.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/wheels/wheels.dart';
 
@@ -62,7 +63,8 @@ void main(List<String> arguments) async {
     ..addCommand(TwoPrimesCommand())
     ..addCommand(IncreasingFibonnaciCommand())
     ..addCommand(IncreasingPrimeCommand())
-    ..addCommand(DieAnotherDayCommand());
+    ..addCommand(DieAnotherDayCommand())
+    ..addCommand(ThirtyCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -538,6 +540,30 @@ class DieAnotherDayCommand extends Command {
     // Get and print solve
     try {
       final pc = DieAnotherDay();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class ThirtyCommand extends Command {
+  @override
+  final name = 'Thirty';
+  @override
+  final description = 'solve hardcoded Thirty puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Thirty();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

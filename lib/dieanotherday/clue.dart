@@ -1,5 +1,3 @@
-import 'package:powers/powers.dart';
-
 import '../clue.dart';
 import '../variable.dart';
 

@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Thirty",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Thirty"
+            ]
+        },
+        {
             "name": "DieAnotherDay",
             "type": "dart",
             "request": "launch",

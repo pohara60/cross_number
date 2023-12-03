@@ -2,13 +2,17 @@ import '../clue.dart';
 import '../variable.dart';
 
 /// A Puzzle clue
-class {{env['ABCD']}}Clue extends ExpressionClue {
+class ThirtyClue extends ExpressionClue {
   /// List of referenced primes
   List<String> get letterReferences => this.variableReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
-  {{env['ABCD']}}Clue(
-      {required String name, required int? length, String? valueDesc, SolveFunction? solve, List<String>? entryNames})
+  ThirtyClue(
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve,
+      List<String>? entryNames})
       : super(
             name: name,
             length: length,
@@ -17,12 +21,12 @@ class {{env['ABCD']}}Clue extends ExpressionClue {
             entryNames: entryNames);
 }
 
-class {{env['ABCD']}}Entry extends {{env['ABCD']}}Clue with EntryMixin {
+class ThirtyEntry extends ThirtyClue with EntryMixin {
   /// List of referenced primes
   List<String> get letterReferences => this.variableReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
-  {{env['ABCD']}}Entry({
+  ThirtyEntry({
     required String name,
     required int? length,
     String? valueDesc,

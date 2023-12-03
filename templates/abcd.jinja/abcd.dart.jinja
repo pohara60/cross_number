@@ -6,6 +6,7 @@ import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
+import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
@@ -16,11 +17,16 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   ];
 
   {{env['ABCD']}}() {
-    puzzle = {{env['ABCD']}}Puzzle.grid(gridString);
     initCrossnumber();
   }
 
   void initCrossnumber() {
+
+    {% if env['num_grids']!=1 %}
+    for (var i = 0; i < {{env['num_grids']}}; i++) {
+    {% endif %}
+    var puzzle = {{env['ABCD']}}Puzzle.grid(gridString);
+    this.puzzles.add(puzzle);
 
     // Get entries from grid
     var entryErrors = '';
@@ -50,7 +56,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
         {String? name, int? length, String? valueDesc}) {
       try {
         var clue = {{env['ABCD']}}Clue(
-            name: name, 
+            name: name!, 
             length: length, 
             valueDesc: valueDesc, 
             solve: solve{{env['ABCD']}}Clue,
@@ -103,6 +109,10 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
+    {% if env['num_grids']!=1 %}
+    }
+    {% endif %}
+
 
     super.initCrossnumber();
   }
@@ -139,8 +149,17 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solve{{env['ABCD']}}Clue({{env['ABCD']}}Clue clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleVariables) {
+  bool solve{{env['ABCD']}}Clue(
+    Puzzle p,
+    Variable v,
+    Set<int> possibleValue, {
+    Set<int>? possibleValue2,
+    Map<String, Set<int>>? possibleVariables,
+    Map<String, Set<int>>? possibleVariables2,
+    Set<String>? updatedVariables,
+  }) {
+    var puzzle = p as {{env['ABCD']}}Puzzle;
+    var clue = v as {{env['ABCD']}}Clue;
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
       if (clue.expressions.length == 1) {
@@ -194,9 +213,9 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   @override
-  bool updateClues(String clueName, Set<int> possibleValues,
+  bool updateClues({{env['ABCD']}}Puzzle puzzle, String clueName, Set<int> possibleValues,
       [bool isEntry = false]) {
-    var updated = super.updateClues(clueName, possibleValues, isEntry);
+    var updated = super.updateClues(puzzle, clueName, possibleValues, isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order
       var clue = puzzle.clues[clueName]!;
