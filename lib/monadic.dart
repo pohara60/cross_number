@@ -212,8 +212,10 @@ Iterable<int> jumbleStr(int value, int leftValue, String strValue) sync* {
 
     assert(strValue.length <= tens.length);
     chrVal *= tens[strValue.length - 1];
-    var rest = strValue.substring(0, d) + strValue.substring(d + 1);
-    yield* jumbleStr(value, leftValue + chrVal, rest);
+    if (leftValue + chrVal != 0) {
+      var rest = strValue.substring(0, d) + strValue.substring(d + 1);
+      yield* jumbleStr(value, leftValue + chrVal, rest);
+    }
   }
 }
 

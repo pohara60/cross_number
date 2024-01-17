@@ -1,9 +1,7 @@
 import 'dart:collection';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:collection/collection.dart';
-import 'package:powers/powers.dart';
 
 import '../clue.dart';
 import '../monadic.dart';
@@ -93,7 +91,6 @@ class Cell {
   final clues = <Clue>[];
   var digits = <int>{};
   int get digit => digits.length == 1 ? digits.first : -1;
-  late final Set<Cell> _faces;
 
   Cell(
     this.face,
@@ -105,9 +102,7 @@ class Cell {
 
   String get position => '$row$col';
 
-  set faces(Set<Cell> faces) {
-    _faces = faces;
-  }
+  set faces(Set<Cell> faces) {}
 
   Set<int> getNewDigits(Set<int> digits, Set<int> validDigits) {
     Function eq = const SetEquality().equals;
@@ -392,9 +387,7 @@ int backtrackPuzzleCell(
     stopwatch = Stopwatch()..start();
   }
   var puzzle1 = puzzles['Left']!;
-  var puzzle2 = puzzles['Right']!;
   var nRows = puzzle1.grid.nRows;
-  var nCols = puzzle1.grid.nCols;
   if (row == nRows) {
     if (!checkPuzzle()) return count;
     // Solution

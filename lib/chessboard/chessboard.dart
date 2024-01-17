@@ -163,7 +163,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
             if (entry.row != null && entry.col != null) {
               // Is the digit square even or odd?
               var mod = (entry.row! + entry.col! + d) % 2;
-              var index = entry.cellIndex(d);
+              var index = entry.cellDigitIndex(d);
               for (var otherClue
                   in puzzle.clues.values.where((element) => element != entry)) {
                 var otherEntry = otherClue.entry as ChessboardEntry;
@@ -172,7 +172,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
                   var otherMod = (otherEntry.row! + otherEntry.col! + d) % 2;
                   if (otherMod != mod) {
                     // Check not the same cell
-                    if (otherEntry.cellIndex(d) != index) {
+                    if (otherEntry.cellDigitIndex(d) != index) {
                       if (otherEntry.digits[d].remove(value)) {
                         otherUpdated = true;
                         if (otherEntry.digits[d].isEmpty) {

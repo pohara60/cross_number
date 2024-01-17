@@ -1,6 +1,8 @@
+import '../clue.dart';
 import 'clue.dart';
 import '../puzzle.dart';
 import '../variable.dart';
+import 'thirty.dart';
 
 // Numbers < 200 that are a power of a prime number
 
@@ -13,14 +15,45 @@ class ThirtyVariable extends Variable {
 
 class ThirtyPuzzle
     extends VariablePuzzle<ThirtyClue, ThirtyEntry, ThirtyVariable> {
+  final Thirty thirty;
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
-  ThirtyPuzzle() : super(null);
-  ThirtyPuzzle.grid(List<String> gridString, {String name = ''})
+  ThirtyPuzzle(this.thirty) : super(null);
+  ThirtyPuzzle.grid(this.thirty, List<String> gridString, {String name = ''})
       : super.grid(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;
   Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
+
+  @override
+  bool clueValuesMatch(Clue clue, int value) {
+    var match = super.clueValuesMatch(clue, value);
+    // Check value in other puzzle?
+    return match;
+  }
+
+  @override
+  int iterate([Function? callback]) {
+    return iterateValues(thirty.callback);
+  }
+
+  int sumdigits() {
+    var sum = 0;
+    for (var entry in entries.isNotEmpty ? entries.values : clues.values) {
+      var digits = entry.digits;
+      for (var d = entry.length! - 1; d >= 0; d--) {
+        // Avoid double-counting overlapping digits
+        // If trying value then cannot use digits
+        if (digits[d].length > 1) return -1;
+        var digit = entry.digits[d].first;
+        if (entry.isAcross ||
+            entry.isDown && entry.digitIdentities[d] == null) {
+          sum += digit;
+        }
+      }
+    }
+    return sum;
+  }
 }

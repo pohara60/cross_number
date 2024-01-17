@@ -44,6 +44,8 @@ class Variable {
     _tryValue = value;
   }
 
+  int? get tryValue => _tryValue;
+
   Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
   set values(Set<int>? values) {
     _values = values;

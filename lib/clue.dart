@@ -302,18 +302,40 @@ mixin EntryMixin on Clue {
   int? row;
   int? col;
   static const MAXROWS = 100;
-  int cellIndex(int digit) {
+  int cellDigitIndex(int digit) {
     if (isDown) {
-      return (row! + digit) * MAXROWS + col!;
+      return cellIndex(row! + digit, col!);
     }
-    return row! * MAXROWS + col! + digit;
+    return cellIndex(row!, col! + digit);
+  }
+
+  static int cellIndex(int row, int col) {
+    return row * MAXROWS + col;
   }
 
   /// Common digits with other clues: each digit has optional reference to clue and digit
   late final List<DigitIdentity?> digitIdentities;
 
   /// Computed - Possible digits
-  late final List<Set<int>> digits;
+  late final List<Set<int>> _digits;
+  List<Set<int>> get digits {
+    var tryValue = this.tryValue;
+    if (tryValue != null) {
+      var digits = List<Set<int>>.generate(this.length!, (_) => {});
+      for (var d = this.length! - 1; d >= 0; d--) {
+        var digit = tryValue! % 10;
+        tryValue = tryValue ~/ 10;
+        digits[d].add(digit);
+      }
+      return digits;
+    } else {
+      return _digits;
+    }
+  }
+
+  void set digits(List<Set<int>> digits) {
+    _digits = digits;
+  }
 
   // Mapped Clue
   Clue? _clue;
@@ -324,19 +346,19 @@ mixin EntryMixin on Clue {
 
   void initEntry(Clue entry) {
     digitIdentities = List.filled(entry.length!, null);
-    digits = [];
+    _digits = [];
     initDigits();
     // Self-reference to make Clue methods work
     entry._entry = entry;
   }
 
   void initDigits() {
-    digits.clear(); // Clear for reset
+    _digits.clear(); // Clear for reset
     // possible digits are 0..9, except cannot have leading 0
     for (var d = 0; d < this.length!; d++) {
-      digits.add(
+      _digits.add(
           Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
-      if (d == 0) digits[d].remove(0);
+      if (d == 0) _digits[d].remove(0);
     }
   }
 
@@ -348,7 +370,7 @@ mixin EntryMixin on Clue {
         var digit = int.parse(value.toString()[d]);
         possibleDigits.add(digit);
       }
-      if (updatePossible(digits[d], possibleDigits)) updated = true;
+      if (updatePossible(_digits[d], possibleDigits)) updated = true;
     }
     return updated;
   }
@@ -359,8 +381,8 @@ mixin EntryMixin on Clue {
       if (digitIdentities[d] != null) {
         var entry2 = digitIdentities[d]!.entry;
         var d2 = digitIdentities[d]!.digit;
-        var possibleDigits = entry2.digits[d2];
-        if (updatePossible(digits[d], possibleDigits)) updated = true;
+        var possibleDigits = entry2._digits[d2];
+        if (updatePossible(_digits[d], possibleDigits)) updated = true;
       }
     }
     return updated;
@@ -369,21 +391,21 @@ mixin EntryMixin on Clue {
   List<Set<int>> saveDigits() {
     var result = <Set<int>>[];
     for (var d = 0; d < length!; d++) {
-      result.add(Set.from(digits[d]));
+      result.add(Set.from(_digits[d]));
     }
     return result;
   }
 
   void restoreDigits(List<Set<int>> savedDigits) {
     for (var d = 0; d < length!; d++) {
-      digits[d] = savedDigits[d];
+      _digits[d] = savedDigits[d];
     }
   }
 
   bool digitsMatch(int value) {
     for (var d = this.length! - 1; d >= 0; d--) {
       var digit = value % 10;
-      if (!this.digits[d].contains(digit)) return false;
+      if (!this._digits[d].contains(digit)) return false;
       value = value ~/ 10;
     }
     return true;
@@ -391,7 +413,7 @@ mixin EntryMixin on Clue {
 
   Set<int>? getValuesFromDigits() {
     var allDigits =
-        List<List<int>>.generate(length!, (d) => digits[d].toList());
+        List<List<int>>.generate(length!, (d) => _digits[d].toList());
     var count = cartesianCount(allDigits);
     if (count > 1000) return null;
     var values = <int>{};

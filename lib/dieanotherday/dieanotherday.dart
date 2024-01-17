@@ -137,7 +137,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
         throw PuzzleException(clueErrors);
       }
 
-      // Not needed when create entries from grid
+      // Needed even when create entries from grid
       puzzle.validateEntriesFromGrid();
 
       puzzle.addDigitIdentityFromGrid();
