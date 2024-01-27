@@ -320,6 +320,17 @@ mixin EntryMixin on Clue {
   late final List<Set<int>> _digits;
   List<Set<int>> get digits {
     var tryValue = this.tryValue;
+    if (tryValue != null) return digitsFromValue;
+    return _digits;
+  }
+
+  List<Set<int>> get digitsFromValue {
+    var tryValue = this.tryValue;
+    if (tryValue == null) {
+      if (values != null && values!.length == 1) {
+        tryValue = values!.first;
+      }
+    }
     if (tryValue != null) {
       var digits = List<Set<int>>.generate(this.length!, (_) => {});
       for (var d = this.length! - 1; d >= 0; d--) {
