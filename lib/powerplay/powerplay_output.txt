@@ -1,0 +1,172 @@
+Connecting to VM Service at ws://127.0.0.1:59648/yTKiQqCZbkI=/ws
+Puzzle
+PowerPlayEntry(name=A1,length=5,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+PowerPlayEntry(name=A5,length=2,value: #square,
+	identities=[A5[0]=D1[1],A5[1]=D2[1]],referrers=[D1,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+PowerPlayEntry(name=A7,length=2,value: #square,
+	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+PowerPlayEntry(name=A8,length=5,value: $power D6,
+	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+PowerPlayEntry(name=D1,length=3,value: #square,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+PowerPlayEntry(name=D2,length=3,value: #square,
+	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+PowerPlayEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A1[3],D3[1]=A7[0],D3[2]=A8[3]],referrers=[A1,A7,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+PowerPlayEntry(name=D4,length=3,value: #triangular,
+	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+PowerPlayEntry(name=D6,length=2,value: #triangular,
+	identities=[D6[1]=A8[2]],referrers=[A8],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+UPDATES-----------------------------
+solve: PowerPlayEntry(name=A1,length=5,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={11025,11236,11449,11664,11881,12321,12544,12769,12996,13225,13456,13689,13924,14161,14641,14884,15129,15376,15625,15876,133 more,99856},
+	digits=[{1..9},{1..9},{0..9},{1..9},{1,4..6,9}]
+solve: PowerPlayEntry(name=A5,length=2,value: #square,
+	identities=[A5[0]=D1[1],A5[1]=D2[1]],referrers=[D1,D2],
+	values={16,25,36,49,64,81},
+	digits=[{1..4,6,8},{1,4..6,9}]
+solve: PowerPlayEntry(name=A7,length=2,value: #square,
+	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
+	values={16,25,36,49,64,81},
+	digits=[{1..4,6,8},{1,4..6,9}]
+Eval PowerPlayEntry A8 cartesianCount=90, elapsed 0:00:00.002967
+solve: PowerPlayEntry(name=A8,length=5,value: $power D6,
+	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
+	values={10000,10648,12167,13824,14641,15625,17576,19683,20736,21952,24389,27000,28561,29791,32768,35937,38416,39304,42875,46656,13 more,97336},
+	digits=[{1..9},{0..9},{0,1,3..9},{0..9},{0..9}]
+D6={10..17,22..33,13 more,46}
+solve: PowerPlayEntry(name=D1,length=3,value: #square,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={121,144,169,225,289,324,361,441,484,529,625,729,784,841,961},
+	digits=[{1..9},{2,4,6,8},{1,4,5,9}]
+solve: PowerPlayEntry(name=D2,length=3,value: #square,
+	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
+	values={144,169,196,256,361,441,841,961},
+	digits=[{1..4,8,9},{4..6,9},{1,4,6,9}]
+solve: PowerPlayEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A1[3],D3[1]=A7[0],D3[2]=A8[3]],referrers=[A1,A7,A8],
+	values={120,136,210,231,325,435,465,528,561,630,666,741,780,820,861,946},
+	digits=[{1..9},{1..4,6,8},{0,1,5,6,8}]
+solve: PowerPlayEntry(name=D4,length=3,value: #triangular,
+	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
+	values={153,190,465,496,561,595,666,946,990},
+	digits=[{1,4..6,9},{4..6,9},{0,1,3,5,6}]
+solve: PowerPlayEntry(name=D6,length=2,value: #triangular,
+	identities=[D6[1]=A8[2]],referrers=[A8],
+	values={10,15,28,36,45},
+	digits=[{1..4},{0,5,6,8}]
+solve: PowerPlayEntry(name=A1,length=5,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={11025,11236,11449,11664,11881,12321,12544,12769,12996,13225,13456,13689,13924,14161,14641,14884,18225,18496,18769,19044,76 more,99856},
+	digits=[{1..9},{1..4,8,9},{0..9},{1..9},{1,4..6,9}]
+solve: PowerPlayEntry(name=A5,length=2,value: #square,
+	identities=[A5[0]=D1[1],A5[1]=D2[1]],referrers=[D1,D2],
+	values={25,49,64},
+	digits=[{2,4,6},{4,5,9}]
+solve: PowerPlayEntry(name=A7,length=2,value: #square,
+	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
+	values={16,25,36,49,64},
+	digits=[{1..4,6},{4..6,9}]
+Eval PowerPlayEntry A8 cartesianCount=5, elapsed 0:00:00.000086
+solve: PowerPlayEntry(name=A8,length=5,value: $power D6,
+	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
+	values={46656},
+	digits=[{4},{6},{6},{5},{6}]
+D6={36}
+solve: PowerPlayEntry(name=D1,length=3,value: #square,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={144,324},
+	digits=[{1,3},{2,4},{4}]
+solve: PowerPlayEntry(name=D2,length=3,value: #square,
+	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
+	values={196,256},
+	digits=[{1,2},{5,9},{6}]
+solve: PowerPlayEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A1[3],D3[1]=A7[0],D3[2]=A8[3]],referrers=[A1,A7,A8],
+	values={325,435,465},
+	digits=[{3,4},{2,3,6},{5}]
+solve: PowerPlayEntry(name=D4,length=3,value: #triangular,
+	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
+	values={496,666,946},
+	digits=[{4,6,9},{4,6,9},{6}]
+solve: PowerPlayEntry(name=D6,length=2,value: #triangular,
+	identities=[D6[1]=A8[2]],referrers=[A8],
+	values={36},
+	digits=[{3},{6}]
+solve: PowerPlayEntry(name=A1,length=5,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={11236,11449,12544},
+	digits=[{1},{1,2},{2,4,5},{3,4},{4,6,9}]
+solve: PowerPlayEntry(name=A5,length=2,value: #square,
+	identities=[A5[0]=D1[1],A5[1]=D2[1]],referrers=[D1,D2],
+	values={25,49},
+	digits=[{2,4},{5,9}]
+solve: PowerPlayEntry(name=A7,length=2,value: #square,
+	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
+	values={64},
+	digits=[{6},{4}]
+solve: PowerPlayEntry(name=D1,length=3,value: #square,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={144},
+	digits=[{1},{4},{4}]
+solve: PowerPlayEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A1[3],D3[1]=A7[0],D3[2]=A8[3]],referrers=[A1,A7,A8],
+	values={465},
+	digits=[{4},{6},{5}]
+solve: PowerPlayEntry(name=D4,length=3,value: #triangular,
+	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
+	values={946},
+	digits=[{9},{4},{6}]
+solve: PowerPlayEntry(name=A1,length=5,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={11449},
+	digits=[{1},{1},{4},{4},{9}]
+solve: PowerPlayEntry(name=A5,length=2,value: #square,
+	identities=[A5[0]=D1[1],A5[1]=D2[1]],referrers=[D1,D2],
+	values={49},
+	digits=[{4},{9}]
+solve: PowerPlayEntry(name=D2,length=3,value: #square,
+	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
+	values={196},
+	digits=[{1},{9},{6}]
+Clue/Variable iterations=39, updates=27, elapsed 0:00:00.032463
+SOLUTION-----------------------------
+Puzzle Summary
+A1, #square, values={11449}
+A5, #square, values={49}
+A7, #square, values={64}
+A8, $power D6, values={46656}
+D1, #square, values={144}
+D2, #square, values={196}
+D3, #triangular, values={465}
+D4, #triangular, values={946}
+D6, #triangular, values={36}
++--+--+--+--+--+
+| 1  1  4  4  9|
++      --      +
+| 4  9| 3| 6  4|
++     +  +     +
+| 4  6  6  5  6|
++--+--+--+--+--+
+
+Exited.

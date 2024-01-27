@@ -45,6 +45,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['jumble'] = Monadic('jumble', jumble, Iterable<int>);
   monadics['factor'] = Monadic('factor', factors, Iterable<int>);
   monadics['divisor'] = Monadic('divisor', divisors, Iterable<int>);
+  monadics['power'] = Monadic('power', powers, Iterable<int>);
 }
 
 int digitSum(int value) {
@@ -265,6 +266,14 @@ Iterable<int> divisors(int value) sync* {
   var result = divisors.toList()..sort();
   yield* result;
   return;
+}
+
+Iterable<int> powers(int value) sync* {
+  var last = value;
+  while (true) {
+    last = last * value;
+    yield last;
+  }
 }
 
 bool twoDigitPrimeHasReverse(int prime) {

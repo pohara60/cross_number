@@ -4,6 +4,7 @@ import 'package:args/command_runner.dart';
 import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 import 'package:crossnumber/columns/columns.dart';
+import 'package:crossnumber/cubesandwich/cubesandwich.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
@@ -18,6 +19,7 @@ import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
 import 'package:crossnumber/partners/partners.dart';
+import 'package:crossnumber/powerplay/powerplay.dart';
 import 'package:crossnumber/prime/prime.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
@@ -64,7 +66,9 @@ void main(List<String> arguments) async {
     ..addCommand(IncreasingFibonnaciCommand())
     ..addCommand(IncreasingPrimeCommand())
     ..addCommand(DieAnotherDayCommand())
-    ..addCommand(ThirtyCommand());
+    ..addCommand(ThirtyCommand())
+    ..addCommand(CubeSandwichCommand())
+    ..addCommand(PowerPlayCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -564,6 +568,54 @@ class ThirtyCommand extends Command {
     // Get and print solve
     try {
       final pc = Thirty();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class CubeSandwichCommand extends Command {
+  @override
+  final name = 'CubeSandwich';
+  @override
+  final description = 'solve hardcoded CubeSandwich puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = CubeSandwich();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class PowerPlayCommand extends Command {
+  @override
+  final name = 'PowerPlay';
+  @override
+  final description = 'solve hardcoded PowerPlay puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = PowerPlay();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

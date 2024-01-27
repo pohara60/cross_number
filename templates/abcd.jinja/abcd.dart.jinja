@@ -55,12 +55,14 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     void clueWrapper(
         {String? name, int? length, String? valueDesc}) {
       try {
+        //var clue = {{env['ABCD']}}Entry(
         var clue = {{env['ABCD']}}Clue(
             name: name!, 
             length: length, 
             valueDesc: valueDesc, 
             solve: solve{{env['ABCD']}}Clue,
             entryNames: entryNames);
+        //puzzle.addEntry(clue);
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
@@ -105,7 +107,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     clueError = puzzle.checkClueClueReferences();
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as prceeding may update them
+    // Check variabes last, as preceeding may update them
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
@@ -164,7 +166,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     if (clue.valueDesc != null && clue.valueDesc != '') {
       if (clue.expressions.length == 1) {
         updated = puzzle.solveExpressionEvaluator(
-            clue, clue.exp, possibleValue, possibleVariables, validClue);
+            clue, clue.exp, possibleValue, possibleVariables!, validClue);
       } else {
         var first = true;
         String? exceptionMessage;
@@ -172,7 +174,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
           var possibleValueExp = <int>{};
           try {
             // Previous evaluation may have cleared variables
-            if (possibleVariables.isEmpty) return updated;
+            if (possibleVariables!.isEmpty) return updated;
             updated = puzzle.solveExpressionEvaluator(
               clue,
               exp,
