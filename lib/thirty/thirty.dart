@@ -89,16 +89,19 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     puzzles[0].clues['A3']!.values = {24, 26};
     puzzles[0].clues['A7']!.values = {24, 26};
     // Solution
-    puzzles[0].clues['A1']!.values = {866};
-    // puzzles[0].clues['A3']!.values = {24};
-    // puzzles[0].clues['A5']!.values = {680};
-    // puzzles[0].clues['A7']!.values = {26};
-    // puzzles[0].clues['A8']!.values = {624};
-    // puzzles[0].clues['D1']!.values = {802};
+    //puzzles[0].clues['A1']!.values = {866};
+    puzzles[0].clues['A3']!.values = {24};
+    puzzles[0].clues['A5']!.values = {680};
+    puzzles[0].clues['A7']!.values = {26};
+    puzzles[0].clues['A8']!.values = {624};
+    puzzles[0].clues['D1']!.values = {802};
     // puzzles[0].clues['D2']!.values = {666};
-    // puzzles[0].clues['D3']!.values = {202};
+    puzzles[0].clues['D3']!.values = {202};
     // puzzles[0].clues['D4']!.values = {404};
     // puzzles[0].clues['D6']!.values = {86};
+    for (var clue in puzzles[0].clues.values) {
+      clue.finalise();
+    }
 
     super.solve(iteration);
   }

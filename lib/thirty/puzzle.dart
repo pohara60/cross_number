@@ -42,12 +42,12 @@ class ThirtyPuzzle
   int sumdigits() {
     var sum = 0;
     for (var entry in entries.isNotEmpty ? entries.values : clues.values) {
-      var digits = entry.digits;
+      var digits = entry.entryMixin!.digitsFromValue;
       for (var d = entry.length! - 1; d >= 0; d--) {
         // Avoid double-counting overlapping digits
         // If trying value then cannot use digits
         if (digits[d].length > 1) return -1;
-        var digit = entry.digits[d].first;
+        var digit = digits[d].first;
         if (entry.isAcross ||
             entry.isDown && entry.digitIdentities[d] == null) {
           sum += digit;
