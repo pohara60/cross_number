@@ -9,6 +9,7 @@ Iterable<List<T>> cartesian<T>(List<List<T>> inputs,
     yield <T>[];
     return;
   }
+  assert(inputs.every((element) => element.length > 0));
   var indices = List<int>.filled(inputs.length, 0);
   int cursor = inputs.length - 1;
   outer:

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:crossnumber/abcd/abcd.dart';
+import 'package:crossnumber/almostfermat/almostfermat.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 import 'package:crossnumber/columns/columns.dart';
 import 'package:crossnumber/cubesandwich/cubesandwich.dart';
@@ -68,7 +69,8 @@ void main(List<String> arguments) async {
     ..addCommand(DieAnotherDayCommand())
     ..addCommand(ThirtyCommand())
     ..addCommand(CubeSandwichCommand())
-    ..addCommand(PowerPlayCommand());
+    ..addCommand(PowerPlayCommand())
+    ..addCommand(AlmostFermatCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -616,6 +618,30 @@ class PowerPlayCommand extends Command {
     // Get and print solve
     try {
       final pc = PowerPlay();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class AlmostFermatCommand extends Command {
+  @override
+  final name = 'AlmostFermat';
+  @override
+  final description = 'solve hardcoded AlmostFermat puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = AlmostFermat();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

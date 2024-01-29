@@ -1,7 +1,5 @@
 library powerplay;
 
-import 'dart:math';
-
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
@@ -131,8 +129,9 @@ class PowerPlay extends Crossnumber<PowerPlayPuzzle> {
   @override
   bool updateClues(
       PowerPlayPuzzle puzzle, String clueName, Set<int> possibleValues,
-      [bool isEntry = false]) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues, isEntry);
+      {bool isFocus = true, bool isEntry = false}) {
+    var updated = super.updateClues(puzzle, clueName, possibleValues,
+        isFocus: isFocus, isEntry: isEntry);
     return updated;
   }
 }

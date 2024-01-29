@@ -1,7 +1,5 @@
 library cubesandwich;
 
-import 'dart:math';
-
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
@@ -131,8 +129,9 @@ class CubeSandwich extends Crossnumber<CubeSandwichPuzzle> {
   @override
   bool updateClues(
       CubeSandwichPuzzle puzzle, String clueName, Set<int> possibleValues,
-      [bool isEntry = false]) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues, isEntry);
+      {bool isFocus = true, bool isEntry = false}) {
+    var updated = super.updateClues(puzzle, clueName, possibleValues,
+        isFocus: isFocus, isEntry: isEntry);
     return updated;
   }
 }

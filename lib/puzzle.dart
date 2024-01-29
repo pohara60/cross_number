@@ -20,6 +20,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Grid? grid;
 
   final String name;
+  bool distinctClues = true;
 
   Puzzle({this.name = ''}) {}
   Puzzle.grid(List<String> gridString, {this.name = ''}) {
@@ -157,18 +158,23 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       return false;
     }
     // Values are restricted in set of clues/entries
-    List<int> knownValues;
+    List<int>? knownValues;
     if (clue is EntryMixin)
-      knownValues = knownClueValues;
-    else
       knownValues = knownEntryValues;
-    possibleValue.removeAll(knownValues);
+    else {
+      // Clue values may not be distinct
+      if (!distinctClues)
+        knownValues = null;
+      else
+        knownValues = knownClueValues;
+    }
+    if (knownValues != null) possibleValue.removeAll(knownValues);
     var updated = clue.updateValues(possibleValue);
     if (updated) {
       clue.min = clue.values!.reduce(min);
       clue.max = clue.values!.reduce(max);
       if (possibleValue.length == 1) {
-        knownValues.addAll(possibleValue);
+        if (knownValues != null) knownValues.addAll(possibleValue);
       }
     }
     return updated;
@@ -183,8 +189,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           clue != clueOrVariable &&
           clue.values != null &&
           clue.values!.contains(value))) {
-        clue.values!.remove(value);
-        yield clue;
+        if (clue is EntryMixin || distinctClues) {
+          clue.values!.remove(value);
+          yield clue;
+        }
       }
     } else {
       var puzzle = this as VariablePuzzle;

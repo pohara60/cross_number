@@ -435,6 +435,8 @@ void main() {
       "C+(N-g)-h",
       "j(N+c)",
       "a*(-N)",
+      "N/6",
+      "6/N",
     ];
     for (var t in text) {
       test(t, () {

@@ -238,11 +238,17 @@ class ExpressionClue extends VariableClue with Expression {
     required String name,
     required int? length,
     String? valueDesc,
+    List<String>? addDesc,
     SolveFunction? solve,
     variablePrefix = '',
     List<String>? entryNames,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
     initExpression(valueDesc, variablePrefix, name, _variableRefs, entryNames);
+    if (addDesc != null) {
+      for (var desc in addDesc) {
+        addExpression(desc, entryNames: entryNames);
+      }
+    }
   }
 
   addExpression(String valueDesc,

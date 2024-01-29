@@ -281,7 +281,7 @@ class Node {
             if (token.type == MINUS && right != null)
               newToken = Token("+", PLUS);
             if (token.type == TIMES) newToken = Token("/", DIVIDE);
-            if (token.type == DIVIDE) newToken = Token("+", TIMES);
+            if (token.type == DIVIDE) newToken = Token("*", TIMES);
             var other = child ?? Node(oldSubject);
             child = Node(newToken, [other, right]);
             return left!.rearrangeNode(newSubject, oldSubject, child);

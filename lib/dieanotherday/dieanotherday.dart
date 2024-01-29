@@ -468,8 +468,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   @override
   bool updateClues(
       DieAnotherDayPuzzle puzzle, String clueName, Set<int> possibleValues,
-      [bool isEntry = false]) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues, isEntry);
+      {bool isFocus = true, bool isEntry = false}) {
+    var updated = super.updateClues(puzzle, clueName, possibleValues,
+        isFocus: isFocus, isEntry: isEntry);
     return updated;
   }
 
