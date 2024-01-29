@@ -28,6 +28,10 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     var puzzle = {{env['ABCD']}}Puzzle.grid(gridString);
     this.puzzles.add(puzzle);
 
+    // Select the appropriate branch in the test below
+    if (separateCluesEntries) {
+    // Entries and Clues have separate definitions
+
     // Get entries from grid
     var entryErrors = '';
     for (var entrySpec in puzzle.getEntriesFromGrid()) {
@@ -55,14 +59,12 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     void clueWrapper(
         {String? name, int? length, String? valueDesc}) {
       try {
-        //var clue = {{env['ABCD']}}Entry(
         var clue = {{env['ABCD']}}Clue(
             name: name!, 
             length: length, 
             valueDesc: valueDesc, 
             solve: solve{{env['ABCD']}}Clue,
             entryNames: entryNames);
-        //puzzle.addEntry(clue);
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
@@ -77,8 +79,49 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       throw PuzzleException(clueErrors);
     }
 
-    // Not needed when create entries from grid
-    // puzzle.validateEntriesFromGrid();
+    // Get Entry expressions from Clue expressions
+    // Only needed when Clue expressions refer to Entries
+    for (var clue in puzzle.clues.values) {
+      for (var exp in clue.expressions) {
+        for (var entryName in clue.entryReferences) {
+          // Rearrange expression for new subject
+          var expText = clue.exp.rearrangeExpressionText(entryName, clue.name);
+          if (expText != null) {
+            puzzle.entries[entryName]!
+                .addExpression(expText, entryNames: entryNames);
+          }
+        }
+      }
+    }
+
+    } else {
+    // Clue definitions define the Entries
+    var clueErrors = '';
+    void clueWrapper(
+        {String? name, int? length, String? valueDesc}) {
+      try {
+        var clue = {{env['ABCD']}}Entry(
+            name: name!, 
+            length: length, 
+            valueDesc: valueDesc, 
+            solve: solve{{env['ABCD']}}Clue,
+            entryNames: entryNames);
+        puzzle.addEntry(clue);
+        return;
+      } on ExpressionError catch (e) {
+        clueErrors += e.msg + '\n';
+        return;
+      }
+    }
+
+    {{env['clues']}}
+
+    if (clueErrors != '') {
+      throw PuzzleException(clueErrors);
+    }
+
+    puzzle.validateEntriesFromGrid();
+    }
 
     puzzle.addDigitIdentityFromGrid();
 
@@ -87,19 +130,6 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     ];
     for (var letter in letters) {
       puzzle.letters[letter] = {{env['ABCD']}}Variable(letter);
-    }
-
-    // Get Entry expressions from Clue expressions
-    // Only needed when Clue expressions refer to Entries
-    for (var clue in puzzle.clues.values) {
-      for (var entryName in clue.entryReferences) {
-        // Rearrange expression for new subject
-        var expText = clue.exp.rearrangeExpressionText(entryName, clue.name);
-        if (expText != null) {
-          puzzle.entries[entryName]!
-              .addExpression(expText, entryNames: entryNames);
-        }
-      }
     }
 
     var clueError = '';
