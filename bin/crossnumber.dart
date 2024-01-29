@@ -16,6 +16,7 @@ import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
 import 'package:crossnumber/increasingprime/increasingprime.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/knights/knights.dart';
+import 'package:crossnumber/knights2/knights2.dart';
 import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
@@ -70,7 +71,8 @@ void main(List<String> arguments) async {
     ..addCommand(ThirtyCommand())
     ..addCommand(CubeSandwichCommand())
     ..addCommand(PowerPlayCommand())
-    ..addCommand(AlmostFermatCommand());
+    ..addCommand(AlmostFermatCommand())
+    ..addCommand(Knights2Command());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -642,6 +644,30 @@ class AlmostFermatCommand extends Command {
     // Get and print solve
     try {
       final pc = AlmostFermat();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class Knights2Command extends Command {
+  @override
+  final name = 'Knights2';
+  @override
+  final description = 'solve hardcoded Knights2 puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Knights2();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

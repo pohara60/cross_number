@@ -304,6 +304,9 @@ mixin EntryMixin on Clue {
   /// Max digit value
   static var maxDigit = 9;
 
+  /// Zero allowed
+  static var zeroDigit = true;
+
   /// Optional row/col for start of entry, set by validateEntriesFromGrid
   int? row;
   int? col;
@@ -375,7 +378,7 @@ mixin EntryMixin on Clue {
     for (var d = 0; d < this.length!; d++) {
       _digits.add(
           Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
-      if (d == 0) _digits[d].remove(0);
+      if (d == 0 || !zeroDigit) _digits[d].remove(0);
     }
   }
 

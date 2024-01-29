@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Knights2",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Knights2"
+            ]
+        },
+        {
             "name": "AlmostFermat",
             "type": "dart",
             "request": "launch",
