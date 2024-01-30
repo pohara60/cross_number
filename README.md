@@ -54,12 +54,19 @@ The Clues, Entries and Variables columns refer to whether and how these entities
 | [Prime](lib/prime/README.md) | Simple | Expression Solvers | | Expression | |
 | [Chessboard](lib/chessboard/README.md) | Simple | Expression Solvers | | Expression | |
 | [Particular](lib/particular/README.md) | Variable | Expression Solvers | | Expression | Limited |
-| [Pandigitals](lib/pandigitals/README.md) | Variable | Custom Solve | | Expression | Variable Group |
+| [Pandigitals](lib/pandigitals/README.md) | Variable | Custom Solve, cf [AlmostFermat](lib/almostfermat/README.md) | Multiple Expressions, Constrained | Expressions, Referenced by Clues | Variable Group |
 | [ABCD](lib/abcd/README.md) | Variable | Expression Solvers | | Expression | Ordered |
 | [Columns](lib/columns/README.md) | Simple | Expression Solvers | | Expression | |
 | [Knights](lib/knights/README.md) | Simple | Expression Solvers | | Expression | |
 | [TwoPrimes](lib/twoprimes/README.md) | Variable | Expression Solvers | | Expression | 2 Primes per Variable |
 | [IncreasingFibonnaci](lib/increasingfibonnaci/README.md) | Simple | Expression Solvers | Expression, Constrained | Referenced by Clues |  |
+| [IncreasingPrime](lib/increasingprime/README.md) | Simple | Expression Solvers | Expression, Constrained | Referenced by Clues |  |
+| [DieAnotherDay](lib/dieanotherday/README.md) | Simple | 3 Grids, Expression Solvers | | Expression, Constrained triples |  |
+| [Thirty](lib/thirty/README.md) | Simple | 2 Grids, Manual Solvers | | Expression, Constrained pairs |  |
+| [PowerPlay](lib/powerplay/README.md) | Simple | Expression Solvers | | Expression |  |
+| [CubeSandwich](lib/cubesandwich/README.md) | Simple | Expression Solvers | | Expression |  |
+| [AlmostFermat](lib/almostfermat/README.md) | Simple | Expression Solvers, cf [Pandigitals](lib/pandigitals/README.md) | Multiple Expressions, Constrained | Referenced by Clues |  |
+| [Knights2](lib/knights2/README.md) | Simple | Expression Solvers | | Expression | |
 
 
 ## Specific Puzzle Implementation

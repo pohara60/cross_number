@@ -21,6 +21,7 @@ Prime Cuts puzzles have these features:
 
 This is the second implementation, using newer crossnumber features.
 
+```
 +--+--+--+--+--+--+
 |1 |2 :3 :4 |5 :6 |
 +::+--+::+::+--+::+
@@ -32,3 +33,4 @@ This is the second implementation, using newer crossnumber features.
 +::+--+::+::+--+::+
 |17:  |18:  :  |  |
 +--+--+--+--+--+--+
+```

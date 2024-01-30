@@ -10,6 +10,7 @@ Ten Increasing Clues by Nod
 
 Each answer may be expressed as p1 x p2 x p3 where the pi are distinct primes  and come  from the set  {3, 5, 11, 17, 23}. The answers to the clues are in ascending order. Upper case letters denote across entries and lower case down entries. The usual rules o f algebra apply, entries are distinct and there are no zeros in the grid.
 
+```
 +--+--+--+--+--+
 |A :a :b |B :c |
 +--+::+::+--+::+
@@ -24,7 +25,6 @@ Each answer may be expressed as p1 x p2 x p3 where the pi are distinct primes  a
 |J :  |K :  :  |
 +--+--+--+--+--+
 
-```
 Clues
 I	j( f - C )
 II	C + e - g - h

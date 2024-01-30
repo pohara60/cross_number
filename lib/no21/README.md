@@ -8,6 +8,7 @@ Across and down clues are each given in ascending order of their answers. The cl
 
 After filling the grid, solvers must replace the number in each cell with the letter used for it in the clues, with each of the 17 letters appearing at least once. Then the entire grid can be read systematically to find ten members of a set, sequenced conventionally. The five-letter word that completes the set must be written below the grid.
 
+```
 Across
 1 B+Y (2)
 2 IN (2)
@@ -44,6 +45,7 @@ Down
 32 (LY-O)RY (3)
 33 K'(ND^N-M!) (3)
 34 (square*prime)' (7)
+```
 
 ## Lessons Learned
 

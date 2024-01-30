@@ -6,6 +6,7 @@ ABCD by Nod
 
 A, B, C and D are four primes such that D > C > B > A. The normal rules of algebra apply, all entries are distinct and no entry starts with zero.
 
+```
 +--+--+--+--+--+--+
 |1 :2 :  :3 |4 :5 |
 +::+::+--+::+::+::+
@@ -20,7 +21,6 @@ A, B, C and D are four primes such that D > C > B > A. The normal rules of algeb
 |18:  |19:  :  :  |
 +--+--+--+--+--+--+
 
-```
 Across
 1 AC+CD 4
 4 A+A+A 2

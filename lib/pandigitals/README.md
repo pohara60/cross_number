@@ -132,4 +132,10 @@ Variables:
 
 ## Lessons Learned
 
-The 5 sets of variable values require a unique solution approach.
+The 5 sets of variable values require a unique solution approach. 
+- the possible variable value combinations are pre-computed according to the definition
+- Create VariableGroup for each of the 5 sets of variable constraints
+- The entries have expressions for (some of) the variable groups
+- The solver iterates over the VariableGroups, looking for possible variable combinations that satisfy the entry expressions
+
+The approach in [AlmostFermat](../almostfermat/README.md) is more standard, with less custom code.

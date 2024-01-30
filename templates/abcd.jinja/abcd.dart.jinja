@@ -57,12 +57,13 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
 
     var clueErrors = '';
     void clueWrapper(
-        {String? name, int? length, String? valueDesc}) {
+        {String? name, int? length, String? valueDesc, List<String>? addDesc}) {
       try {
         var clue = {{env['ABCD']}}Clue(
             name: name!, 
             length: length, 
             valueDesc: valueDesc, 
+            addDesc: addDesc,
             solve: solve{{env['ABCD']}}Clue,
             entryNames: entryNames);
         puzzle.addClue(clue);

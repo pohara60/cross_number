@@ -8,6 +8,7 @@ Muffit and Duffit operate a daily coach service from Aberdeen to Edinburgh which
 stop, in order, at Brechin, Crieff and Dundee before reaching its destination. The coach can
 hold a maximum of 60 passengers. All entries are distinct and none start with zero.
 
+```
 +--+--+--+--+--+--+
 |1 :  :2 |  |3 :4 |
 +::+--+::+--+--+::+
@@ -44,9 +45,10 @@ Down
 8,square of 8ac,3
 9,cube of the number who got off at Dundee,3
 11,number who got on at Dundee,2
-
+```
 ## Variables
 
+```
 Variable										Min	Max	Relation
 B	number who got on at Brechin				1	60	<=60-A+b
 T	total number of passengers carried			1		=A+B+C+D =b+c+d+e
@@ -60,7 +62,7 @@ c	number who got off at Crieff				1	60	<=A-b+B
 d	number who got off at Dundee				1	60	<=A-b+B-c+C
 D	number who got on at Dundee					1	60	<=60-A+b-B+c-C+d
 Y	the driver’s age in years					17	50	
-
+```
 
 ## Enhancements
 
@@ -70,6 +72,7 @@ Solving a Clue/Variable can set other Clues and/or Variables - these must then b
 
 ## Manual Solution Path
 
+```
 D8 = A8*A8	        A8=[11..14], D8=121, 144, 169, 196
 D4 = A3*A3	        A3=11..31, 
 A12 = factor A3 	A12=10..31
@@ -88,9 +91,11 @@ D9 ends 2,6	        216, 512, d=6,8
 A9 cube C	        A9=27, C=3, D9=216, d=6, A13=625,676,D11=25,26
 A1 square D1	    12..14, 144,169,196
 Var Arith	        e=41,A=14
+```
 
 ## Solution
 
+```
 SOLUTION-----------------------------
 Puzzle Summary
 A1, $square D1, values={196}
@@ -137,3 +142,4 @@ c={17},valueDesc=$lte (A-b+B),min=1,max=60
 d={6},valueDesc=$lte (A-b+B-c+C),min=1,max=60
 e={41},valueDesc=A+B+C+D-b-c-d,min=1,max=60
 f={11},valueDesc=$lt F,min=1,max=99
+```

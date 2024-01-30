@@ -6,6 +6,7 @@ It�s All About Columns by MatriX
 
 No entry starts with zero and all entries are distinct. The completed grid has the property that the column entries and any unchecked digits in a column are somehow connected. Can you find the connection?
 
+```
 +--+--+--+--+--+
 |1 :  :2 |3 :4 |
 +::+--+::+::+::+
@@ -16,7 +17,6 @@ No entry starts with zero and all entries are distinct. The completed grid has t
 |11:  |12:  :  |
 +--+--+--+--+--+
 
-```
 Across
 1	$palindrome $lessthan A12
 3	#triangular - A1

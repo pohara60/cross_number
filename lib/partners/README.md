@@ -5,7 +5,8 @@
 Partners in Prime by Zag				
 				
 Symmetrically opposite pairs of answers add to a prime number.				
-				
+
+```
 	+--+--+--+--+			
 	|1 |2 :3 :  |			
 	+::+::+::+--+			
@@ -30,6 +31,7 @@ D3	square	2
 D6	square	3	
 D8	square	2	
 D9	square	2	
+```
 
 ## Lessons Learned
 
@@ -41,6 +43,7 @@ The condition "Symmetrically opposite pairs of answers add to a prime number" is
 
 ## Solution Path
 
+```
 A2 reverse of generated values for A10
 A5 greater than generated values for A9
 A10 odd reverse of A2
@@ -99,3 +102,4 @@ ITERATE SOLUTIONS-----------------------------
 | 6  4  1| 6|
 +--+--+--+--+
 Solution count=2
+```

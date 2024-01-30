@@ -6,6 +6,7 @@ PRIMES by Oyler
 
 Each letter represents a pair of prime numbers that sum to 100. Within a clue a letter can take either of its two values. No entry starts with zero and all entries are distinct.
 
+```
 +--+--+--+--+--+--+
 |1 :  :2 |3 :4 :  |
 +::+--+::+::+::+--+
@@ -18,7 +19,6 @@ Each letter represents a pair of prime numbers that sum to 100. Within a clue a 
 |13:  :  :  |14:  |
 +--+--+--+--+--+--+
 
-```
 Across
 1	I
 3	PR

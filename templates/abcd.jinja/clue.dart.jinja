@@ -8,11 +8,17 @@ class {{env['ABCD']}}Clue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   {{env['ABCD']}}Clue(
-      {required String name, required int? length, String? valueDesc, SolveFunction? solve, List<String>? entryNames})
+      {required String name,
+      required int? length,
+      String? valueDesc,
+      List<String>? addDesc,
+      SolveFunction? solve,
+      List<String>? entryNames})
       : super(
             name: name,
             length: length,
             valueDesc: valueDesc,
+            addDesc: addDesc,
             solve: solve,
             entryNames: entryNames);
 }

@@ -6,6 +6,7 @@ Power Play
 
 Usual conventions apply, no duplicates or zero starts.
 
+```
 +--+--+--+--+--+
 |1 :2 :  :3 :4 |
 +::+::+--+::+::+
@@ -14,7 +15,6 @@ Usual conventions apply, no duplicates or zero starts.
 |8 :  :  :  :  |
 +--+--+--+--+--+
 
-```
 Across
 1	square
 5	square

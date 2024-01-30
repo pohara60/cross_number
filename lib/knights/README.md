@@ -6,6 +6,7 @@ Knights Still on the Move by Chalicea
 
 Six knights labelled 1 to 6 each start on a perimeter square and make five knight�s moves, marking  the start point and  wherever they land with their own number. No move ever lands on an occupied square and so the six knights between them fill the entire grid. Not all entries are clued but all are distinct.
 
+```
 +--+--+--+--+--+--+
 |1 :2 |3 |4 :5 :6 |
 +::+::+::+--+::+::+
@@ -20,7 +21,6 @@ Six knights labelled 1 to 6 each start on a perimeter square and make five knigh
 |20:  :  :  |21:  |
 +--+--+--+--+--+--+
 
-```
 Across
 1	#prime
 4	

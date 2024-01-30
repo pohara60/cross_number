@@ -17,6 +17,7 @@ Prime Cuts puzzles have these features:
 
 The Listener Crossword No 4764 Root 66 
 
+```
 +--+--+--+--+--+--+--+--+
 |  |1 |2 |3 :4 :5 |6 |  |
 +--+::+::+::+::+::+::+--+
@@ -34,9 +35,11 @@ The Listener Crossword No 4764 Root 66
 +--+::+::+::+::+::+::+--+
 |  |  |21:  :  :  |  |  |
 +--+--+--+--+--+--+--+--+
+```
 
 The clue answers are based on equations of the form (B+ C√66)(E+ F√66) = G + H√66, where B, C, E and F are distinct nonzero digits, G is a positive four-digit integer with no zeros or repeated digits and H is some positive integer. In the clues the letters of DURATIONS stand for the digits 1 to 9 in an order to be determined. In seven cases the answer is a BCEF value, ie 1000B + 100C+ 10E+F, and the grid entry is its G value; the remaining 13 answers are G values and the entry is an associated BCEF value. Each of the unclued entries a, g, h and x consists of a BCEF value followed by its G value. To resolve an ambiguity, solvers must identify a distinctive property that they all share. Solvers must find another BCEF and G pair with the same property, where G is the largest of the five that exist and BCEF is the smallest of its four possible values, and enter them below the grid with their digits converted to the letters used in the clues. All answers are different and all entries are different; normal rules of algebra apply in the clues; VX means the positive square root of X.
 
+```
 Across
 2  b -D+UR^(A+T)+I+ON^S
 7  h 
@@ -63,11 +66,12 @@ Down
 15 r ((N+U)^T+RI+S+O+D)A
 16 t R(O(√D-A+UST)-1+N) 
 17 u A(S^T+OU+N)+D
+```
 
 ## Observations
 
 The square roots must give an integer result, so √D, √I and √(ID) mean that D and are are from {1, 4, 9}.
-
+```
 G = BE+66*CF, so 17<=CF<=72 and 1234<=G<=4794
 
 All expressions give 4 digit values. 
@@ -101,5 +105,5 @@ D14=(R-(((((A+I)+N)+O)-(U^T))S))
 D15=(((((((N+U)^T)+(RI))+S)+O)+D)A)
 D16=(R(((O((√D-A)+((US)T)))-I)+N))
 D17=((A(((S^T)+(OU))+N))+D)
-
+```
 

@@ -6,6 +6,7 @@ Almost Fermat by John Gowland
 
 Whilst there are no solutions to x3 + y3 = z3, there are an infinite number of solutions to x3 + y3 + 1 = z3. For example, 83 + 63 + 1 = 93. In this puzzle x, y and z are confined to 3 -digit numbers, except for one value of x or y and one value of z. Upper case letters denote across entries and lower  case down entries. No entry starts with zero and all entries are distinct.  Clues are numbered for reference only.
 
+```
 +--+--+--+--+--+
 |a |b |A :c :  |
 +::+::+--+::+--+
@@ -18,15 +19,15 @@ Whilst there are no solutions to x3 + y3 = z3, there are an infinite number of s
 |G :  :  |  |  |
 +--+--+--+--+--+
 
-```
 Clues
-I	4B
-II	2C
-III	10F
-IV	f-4F
-V	f-4F
-VI	a
-VII	cg
+        x       y           z
+I	    4B      f           D
+II	    2C      E           8A
+III	    10F     (b-A)^2/2   g^2 
+IV	    f-4F    b           G
+V	    f-4F    f/6         2F
+VI	    a       4d          2D
+VII	    cg      f           e
 ```
 
 ## Solution
@@ -76,3 +77,5 @@ Puzzle has three expressions for each clue corresponding to the variables x, y a
 - Entry expression evaluation cannot set Clue values
 - Added Puzzle.distinctClues property, which is false here
 - Overrode Puzzle.uniqueSolution to not check for unique clue values 
+
+The [Pandigitals](../pandigitals/README.md) puzzle used a different custom approach to a similar problem.

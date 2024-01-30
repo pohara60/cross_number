@@ -6,6 +6,7 @@ Cube Sandwich
 
 Usual conventions apply, no duplicates or zero starts.
 
+```
 +--+--+--+--+--+
 |1 :2 :  :3 :4 |
 +::+::+--+::+::+
@@ -14,7 +15,6 @@ Usual conventions apply, no duplicates or zero starts.
 |8 :  :  :  :  |
 +--+--+--+--+--+
 
-```
 Across
 1	cube
 5	see 6dn

@@ -6,6 +6,7 @@ _______ _____ or A Particular Takeaway by Arden
 
 Solvers need to discover the puzzle’s true title, the absent clues to 9A and 16A, two words of 7 and 5 letters. This must be written below the grid. The letters used in the clues represent different positive integers, all less than 100. There are no leading zeros, all answers are distinct and the normal rules of algebra apply.
 
+```
 +--+--+--+--+--+--+--+--+--+
 |1 |2 |3 |4 :5 :6 |7 :8 :  |
 +::+::+::+--+::+::+::+::+--|
@@ -90,6 +91,7 @@ U
 V
 W
 Y
+```
 
 ## Lessons Learned
 
