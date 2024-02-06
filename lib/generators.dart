@@ -18,6 +18,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['integer'] = Generator('integer', generateIntegers);
   generators['ascending'] = Generator('ascending', generateAscending);
   generators['descending'] = Generator('descending', generateDescending);
+  generators['different'] = Generator('different', generateDifferent);
   generators['result'] = Generator('result', generateIntegers);
   generators['palindrome'] = Generator('palindrome', generatePalindromes);
   generators['harshad'] = Generator('harshad', generateHarshads);
@@ -39,6 +40,8 @@ void initializeGenerators(Map<String, Generator> generators) {
       Generator('product4primes', generateProduct4Primes);
   generators['sumconsecutivesquares'] =
       Generator('sumconsecutivesquares', generateSumConsecutiveSquares);
+  generators['sum2fibonacci'] =
+      Generator('sum2fibonacci', generateSum2Fibonacci);
 }
 
 Iterable<int> generateIntegers(num min, num max) sync* {
@@ -66,6 +69,14 @@ Iterable<int> generateDescending(num min, num max) sync* {
   }
 }
 
+Iterable<int> generateDifferent(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
+    var integerStr = integer.toString();
+    var digits = integerStr.split('');
+    if (digits.length == Set.from(digits).length) yield integer;
+  }
+}
+
 const powers10 = <int>[
   1,
   10,
@@ -78,17 +89,18 @@ const powers10 = <int>[
   100000000,
   1000000000
 ];
-Iterable<int> getPalindromes(int digits) sync* {
+Iterable<int> getPalindromes(int digits,
+    [bool allowLeadingZero = false]) sync* {
   for (var digit = 0; digit < 10; digit++) {
     if (digits == 1)
       yield digit;
-    else if (digit != 0) {
+    else if (allowLeadingZero || digit != 0) {
       var head = digit * powers10[digits - 1];
       var tail = digit;
       if (digits == 2)
         yield head + tail;
       else {
-        for (var middle in getPalindromes(digits - 2)) {
+        for (var middle in getPalindromes(digits - 2, true)) {
           yield head + middle * 10 + tail;
         }
       }
@@ -345,7 +357,7 @@ Iterable<int> generatePowerN(int power) sync* {
 var product2primes = <int>[6];
 Iterable<int> generateProduct2Primes(num min, num max) sync* {
   yield* generateProduct(
-      min, max, generatePrimes, generatePrimes, product2primes);
+      min, max, generatePrimes, generatePrimes, sum2fibonnaci);
 }
 
 var product3primes = <int>[30];
@@ -385,7 +397,7 @@ Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
     var max2 = max / p1;
     if (max2 >= p1) max2 = p1 - 1;
     for (var p2 in gen2(2, max2)) {
-      // Check for non-distict primes
+      // Check for non-distinct primes
       if (p1 % p2 != 0) {
         while (index >= nextProduct.length) nextProduct.add(ListQueue());
         nextProduct[index].add(p1 * p2);
@@ -422,6 +434,78 @@ Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
       yield lowest;
     }
   }
+}
+
+var sum2fibonnaci = <int>[2, 3, 4];
+Iterable<int> generateSum2Fibonacci(num min, num max) sync* {
+  yield* generateSum(
+      min, max, generateFibonacci, generateFibonacci, sum2fibonnaci);
+}
+
+Iterable<int> generateSum(num min, num max, GeneratorFunc gen1,
+    GeneratorFunc gen2, List<int> sums) sync* {
+  var index = 0;
+  int length = sums.length;
+  if (sums.last >= max.toInt()) {
+    // All products pre-computed
+    while (index < length) {
+      var element = sums[index++];
+      if (element < min) continue;
+      if (element > max) return;
+      yield element;
+    }
+    return;
+  }
+  // Generate from beginning
+
+  var sumIndex = 0;
+  var nextSum = <ListQueue<int>>[];
+  var previous = -1;
+  Iterable<int> gen(int limit) sync* {
+    while (true) {
+      var lowest = limit;
+      var foundIndex = -1;
+      var found = false;
+      for (var index = 0; index < nextSum.length; index++) {
+        if (nextSum[index].isNotEmpty && nextSum[index].first < lowest) {
+          lowest = nextSum[index].first;
+          foundIndex = index;
+          found = true;
+        }
+      }
+      if (!found) break;
+
+      nextSum[foundIndex].removeFirst();
+      // Skip duplicates (occurs when more than 2 primes)
+      if (lowest == previous) continue;
+      previous = lowest;
+
+      sumIndex++;
+      if (sumIndex > sums.length) {
+        sums.add(lowest);
+      }
+      if (lowest < min) continue;
+      if (lowest > max) return;
+      yield lowest;
+    }
+  }
+
+  for (var p1 in gen1(1, max - 1)) {
+    var index = 0;
+    // Add sums of p1 to next values
+    var max2 = max - p1;
+    if (max2 > p1) max2 = p1;
+    for (var p2 in gen2(1, max2)) {
+      // Check for non-distinct primes
+      while (index >= nextSum.length) nextSum.add(ListQueue());
+      nextSum[index].add(p1 + p2);
+      index++;
+    }
+    // Yield values lower than p1+2, in order
+
+    yield* gen(p1 + 2);
+  }
+  yield* gen(max.toInt() + 1);
 }
 
 var sumConsecutiveSquares = <int>[5];

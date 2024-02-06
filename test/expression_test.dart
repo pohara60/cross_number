@@ -416,7 +416,7 @@ void main() {
   group('Divisors', () {
     var text1 = '120';
     test(text1, () {
-      expect(divisors(60), equals([2, 3, 4, 5, 6, 10, 12, 15, 20, 30]));
+      expect(divisors(60, 1, 60), equals([2, 3, 4, 5, 6, 10, 12, 15, 20, 30]));
     });
     var text2 = r'$divisor 120';
     test(text2, () {
@@ -446,5 +446,25 @@ void main() {
         print('O = $exp => N = ${tree2}');
       });
     }
+  });
+  group('SumFibonnaci', () {
+    var text = '#sum2fibonnaci';
+    test(text, () {
+      var suma = generateSum2Fibonacci(1, 9).toList();
+      expect(suma, equals([2, 3, 4, 5, 6, 7, 8, 9]));
+      var sumb = generateSum2Fibonacci(10, 19).toList();
+      expect(sumb, equals([10, 11, 13, 14, 15, 16, 18]));
+    });
+  });
+  group('Jumblealindrome', () {
+    var text = r'$jumble #palindrome';
+    test(text, () {
+      var exp = ExpressionEvaluator(text);
+      // var values = exp.generate(100, 999).toSet().toList()..sort();
+      var values = exp.generate(10000, 99999).toSet();
+      var values2 = values.toList()..sort();
+      print(values);
+      // expect(values, equals([10, 11, 13, 14, 15, 16, 18]));
+    });
   });
 }

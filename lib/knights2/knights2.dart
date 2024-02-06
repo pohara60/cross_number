@@ -1,7 +1,5 @@
 library knights2;
 
-import 'dart:math';
-
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
@@ -223,9 +221,9 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
   @override
   bool updateClues(
       Knights2Puzzle puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false}) {
+      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     var updated = super.updateClues(puzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry);
+        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     return updated;
   }
 }

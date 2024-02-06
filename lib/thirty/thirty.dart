@@ -297,9 +297,9 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
   @override
   bool updateClues(
       ThirtyPuzzle puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false}) {
+      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     var updated = super.updateClues(puzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry);
+        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (updated) {
       /*
       Every digit is even and there are fifteen pairs of even digits, from {0,0}, {0,2} up to {8,8}. For this purpose, {p,q} is the same as {q,p}. Each of the fifteen pairs fills one of the matching cells of the two grids, one in each grid. All entries are distinct, and none starts with zero.

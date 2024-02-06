@@ -32,6 +32,7 @@ import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 import 'package:crossnumber/thirty/thirty.dart';
+import 'package:crossnumber/twentyfive/twentyfive.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/wheels/wheels.dart';
 
@@ -72,7 +73,8 @@ void main(List<String> arguments) async {
     ..addCommand(CubeSandwichCommand())
     ..addCommand(PowerPlayCommand())
     ..addCommand(AlmostFermatCommand())
-    ..addCommand(Knights2Command());
+    ..addCommand(Knights2Command())
+    ..addCommand(TwentyFiveCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -668,6 +670,30 @@ class Knights2Command extends Command {
     // Get and print solve
     try {
       final pc = Knights2();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class TwentyFiveCommand extends Command {
+  @override
+  final name = 'TwentyFive';
+  @override
+  final description = 'solve hardcoded TwentyFive puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = TwentyFive();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

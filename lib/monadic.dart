@@ -5,12 +5,14 @@ import 'package:powers/powers.dart';
 import 'generators.dart';
 
 typedef MonadicFunc = dynamic Function(int arg);
+typedef MonadicFuncRange = dynamic Function(int arg, num? min, num? max);
 
 class Monadic {
   String name;
-  MonadicFunc func;
+  MonadicFunc? func;
+  MonadicFuncRange? funcRange;
   Type type;
-  Monadic(this.name, this.func, this.type);
+  Monadic(this.name, this.func, this.type, [this.funcRange]);
 }
 
 void initializeMonadics(Map<String, Monadic> monadics) {
@@ -44,7 +46,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['lte'] = Monadic('lte', lessthanequal, Iterable<int>);
   monadics['jumble'] = Monadic('jumble', jumble, Iterable<int>);
   monadics['factor'] = Monadic('factor', factors, Iterable<int>);
-  monadics['divisor'] = Monadic('divisor', divisors, Iterable<int>);
+  monadics['divisor'] = Monadic('divisor', null, Iterable<int>, divisors);
   monadics['power'] = Monadic('power', powers, Iterable<int>);
 }
 
@@ -241,30 +243,36 @@ Iterable<int> factors(int value) sync* {
   return;
 }
 
-Iterable<int> divisors(int value) sync* {
-  var factor = factors(value).toList();
-  if (factor.length == 1) return; // Prime!
+// Iterable<int> divisors(int value) sync* {
+//   var factor = factors(value).toList();
+//   if (factor.length == 1) return; // Prime!
 
-  var divisors = <int>{};
-  void getCombinations(int partial, List<int> numbers, List<bool> taken,
-      int remaining, Set<int> combinations) {
-    for (var index = 0; index < numbers.length; index++) {
-      if (!taken[index]) {
-        int next = partial * numbers[index];
-        combinations.add(next);
-        if (remaining > 2) {
-          taken[index] = true;
-          getCombinations(next, numbers, taken, remaining - 1, combinations);
-          taken[index] = false;
-        }
-      }
-    }
+//   var divisors = <int>{};
+//   void getCombinations(int partial, List<int> numbers, List<bool> taken,
+//       int remaining, Set<int> combinations) {
+//     for (var index = 0; index < numbers.length; index++) {
+//       if (!taken[index]) {
+//         int next = partial * numbers[index];
+//         combinations.add(next);
+//         if (remaining > 2) {
+//           taken[index] = true;
+//           getCombinations(next, numbers, taken, remaining - 1, combinations);
+//           taken[index] = false;
+//         }
+//       }
+//     }
+//   }
+//}
+
+Iterable<int> divisors(int value, num? min, num? max) sync* {
+  var start = value % 2 == 0 ? 2 : 3;
+  var end = value ~/ start;
+  var inc = 1;
+  if (min != null && min > start) start = min.toInt();
+  if (max != null && max < end) end = max.toInt();
+  for (var div = start; div <= end; div += inc) {
+    if (value % div == 0) yield div;
   }
-
-  var taken = List.filled(factor.length, false);
-  getCombinations(1, factor, taken, factor.length, divisors);
-  var result = divisors.toList()..sort();
-  yield* result;
   return;
 }
 

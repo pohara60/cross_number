@@ -192,9 +192,9 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   @override
   bool updateClues(IncreasingFibonnaciPuzzle puzzle, String clueName,
       Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false}) {
+      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     var updated = super.updateClues(puzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry);
+        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (!isEntry && updated) {
       var clue = puzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);

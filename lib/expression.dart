@@ -847,7 +847,9 @@ class ExpressionEvaluator {
         }
         var left = eval(node.operands![0]);
         checkInteger(left);
-        var result = monadic.func(left.toInt());
+        var result = monadic.func != null
+            ? monadic.func!(left.toInt())
+            : monadic.funcRange!(left.toInt(), null, null);
         if (result is bool) {
           if (result) return left;
           throw ExpressionInvalid(
@@ -1214,10 +1216,14 @@ class ExpressionEvaluator {
         // Heuristic for min/max of argument to function
         var fmin = 1;
         var fmax = max;
-        if (!(monadic.type is bool)) fmax = maxResult! * maxResult!;
+        if (!(monadic.type is bool) && name != 'jumble') {
+          fmax = maxResult! * maxResult!;
+        }
         for (var left in gen(fmin, fmax, childNode)) {
           if (isIntegerValue(left)) {
-            var result = monadic.func(left.toInt());
+            var result = monadic.func != null
+                ? monadic.func!(left.toInt())
+                : monadic.funcRange!(left.toInt(), min, max);
             if (result is bool) {
               if (!result) continue;
               // if true then return argument
@@ -1237,11 +1243,13 @@ class ExpressionEvaluator {
               yield result;
             } else if (result is Iterable<int>) {
               var breakOuter = true;
+              var anyResult = false;
               // Override to prevent runaway NodeOrder.UNKNOWN
               var iterationCount = 0;
               const iterationLimit = 100000;
               for (var fresult in result) {
                 iterationCount++;
+                anyResult = true;
                 if (fresult > max) {
                   if (node.order == NodeOrder.ASCENDING) break;
                   breakOuter = false;
@@ -1259,7 +1267,7 @@ class ExpressionEvaluator {
                 breakOuter = false;
                 yield fresult;
               }
-              if (breakOuter) break;
+              if (anyResult && breakOuter) break;
             } else {
               throw ExpressionError(
                   'Unexpected value type $result for monadic $name');

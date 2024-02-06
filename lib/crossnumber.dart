@@ -266,7 +266,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
           if (possibleVariables[clueName] != null &&
               possibleVariables[clueName]!.isNotEmpty) {
             if (updateClues(puzzle, clueName, possibleVariables[clueName]!,
-                isFocus: false)) {
+                isFocus: false, focusClueName: clue.name)) {
               updatedClues.add(clueName);
               updated = true;
             }
@@ -276,7 +276,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
           if (possibleVariables[entryName] != null &&
               possibleVariables[entryName]!.isNotEmpty) {
             if (updateEntries(puzzle, entryName, possibleVariables[entryName]!,
-                isFocus: false)) {
+                isFocus: false, focusClueName: clue.name)) {
               updatedEntries.add(entryName);
               updated = true;
             }
@@ -307,11 +307,16 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
               '$variableName=${variableList.variables[variableName]!.values!.toShortString()}');
         }
         for (var clueName in updatedClues) {
-          print('$clueName=${puzzle.clues[clueName]!.values!.toShortString()}');
+          var puzzle2 =
+              clueName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
+          print(
+              '$clueName=${puzzle2.clues[clueName]!.values!.toShortString()}');
         }
         for (var entryName in updatedEntries) {
+          var puzzle2 =
+              entryName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
           print(
-              '$entryName=${puzzle.entries[entryName]!.values!.toShortString()}');
+              '$entryName=${puzzle2.entries[entryName]!.values!.toShortString()}');
         }
       }
     }
@@ -360,8 +365,13 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     throw SolveError('Clue/Entry $clueName not found!');
   }
 
-  bool updateClues(PuzzleKind puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false}) {
+  bool updateClues(
+      PuzzleKind thisPuzzle, String clueName, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
+    Puzzle puzzle = thisPuzzle;
+    if (!isFocus && thisPuzzle.otherPuzzleClues.containsKey(focusClueName)) {
+      puzzle = thisPuzzle.otherPuzzleClues[focusClueName]!;
+    }
     var clue = isEntry ? puzzle.entries[clueName]! : puzzle.clues[clueName]!;
     var updated = puzzle.updateValues(clue, possibleValues);
     if (updated) {
@@ -387,9 +397,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
   bool updateEntries(
       PuzzleKind puzzle, String entryName, Set<int> possibleValues,
-      {bool isFocus = true}) {
+      {bool isFocus = true, String? focusClueName}) {
     return updateClues(puzzle, entryName, possibleValues,
-        isEntry: true, isFocus: isFocus);
+        isEntry: true, isFocus: isFocus, focusClueName: focusClueName);
   }
 
   bool validVariable(ExpressionVariable variable, int value,

@@ -17,6 +17,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Map<String, ClueKind> get clues => _clues.isNotEmpty ? _clues : _entries;
   Map<String, EntryKind> get entries => _clues.isNotEmpty ? _entries : {};
 
+  final otherPuzzleClues = <String, Puzzle>{};
+  Puzzle cluePuzzle(String clueName) => otherPuzzleClues[clueName] ?? this;
+
   Grid? grid;
 
   final String name;
@@ -204,6 +207,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         yield variable;
       }
     }
+  }
+
+  void updateClueReference(
+      String clueName, String otherClueName, Puzzle otherPuzzle) {
+    otherPuzzleClues[clueName] = otherPuzzle;
+    print(
+        'updateClueReference($clueName, $otherClueName, ${otherPuzzle.name})');
   }
 
   void fixClue(String clueName, int value) {
@@ -1183,15 +1193,16 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     var clueReferences =
         exp.clueRefs.where((name) => clue.clueReferences.contains(name));
-    getClueValues(clues, clueReferences.toList(), unknownVariable,
+    getClueValues(clue.name, clues, clueReferences.toList(), unknownVariable,
         impossibleVariable, variableValues, variableNames);
     var entryReferences =
         exp.clueRefs.where((name) => clue.entryReferences.contains(name));
-    getClueValues(entries, entryReferences.toList(), unknownVariable,
+    getClueValues(clue.name, entries, entryReferences.toList(), unknownVariable,
         impossibleVariable, variableValues, variableNames);
   }
 
   void getClueValues(
+    String clueName,
     Map<String, ClueKind> clues,
     List<String> clueReferences,
     List<String> unknownVariable,
@@ -1203,7 +1214,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       var name = otherClueName;
       // Entry names are single alpha or prefixed with E
       if (name.length > 1 && name[0] == 'E') name = name.substring(1);
-      var otherClue = clues[name]!;
+      Puzzle puzzle = cluePuzzle(clueName);
+      var otherClue = puzzle.clues[name]!;
       // Clue values may not yet be available
       var otherClueValues = otherClue.values;
       //if (otherClueValues == null && clue.circularClueReference) {

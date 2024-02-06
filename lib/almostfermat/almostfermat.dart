@@ -244,14 +244,14 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
   @override
   bool updateClues(
       AlmostFermatPuzzle puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false}) {
+      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
     var updated = super.updateClues(puzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry);
+        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     return updated;
   }
 }

@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "TwentyFive",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "TwentyFive"
+            ]
+        },
+        {
             "name": "Knights2",
             "type": "dart",
             "request": "launch",

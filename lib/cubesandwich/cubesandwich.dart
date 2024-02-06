@@ -129,9 +129,9 @@ class CubeSandwich extends Crossnumber<CubeSandwichPuzzle> {
   @override
   bool updateClues(
       CubeSandwichPuzzle puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false}) {
+      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     var updated = super.updateClues(puzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry);
+        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     return updated;
   }
 }
