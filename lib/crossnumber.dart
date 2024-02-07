@@ -432,9 +432,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     )) updated = true;
     // If no Values returned then Solve function could not solve
     if (possibleValue.isEmpty) {
-      print(
+      throw SolveException(
           'Solve Error: variable ${variable.name} (${variable.valueDesc}) no solution!');
-      throw SolveException();
     }
     var updatedVariables = <String>{};
     if (updateVariables(

@@ -18,7 +18,7 @@ void main() {
       var tokens = Scanner.generateTokens(text).toList();
       expectToken(tokens[0]!, 'S', 'VAR');
       expectToken(tokens[1]!, '', 'PLUS');
-      expectToken(tokens[2]!, 'I', 'VAR');
+      expectToken(tokens[2]!, 'I', 'CLUE'); // I is CLUE until fixed to be a VAR
       expectToken(tokens[3]!, '', 'TIMES');
       expectToken(tokens[4]!, 'G', 'VAR');
       expectToken(tokens[5]!, '', 'DIVIDE');
@@ -456,14 +456,14 @@ void main() {
       expect(sumb, equals([10, 11, 13, 14, 15, 16, 18]));
     });
   });
-  group('Jumblealindrome', () {
+  group('JumblePalindrome', () {
     var text = r'$jumble #palindrome';
     test(text, () {
       var exp = ExpressionEvaluator(text);
       // var values = exp.generate(100, 999).toSet().toList()..sort();
       var values = exp.generate(10000, 99999).toSet();
       var values2 = values.toList()..sort();
-      print(values);
+      print(values2);
       // expect(values, equals([10, 11, 13, 14, 15, 16, 18]));
     });
   });

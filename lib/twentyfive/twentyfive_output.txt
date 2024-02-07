@@ -120,6 +120,7 @@ TwentyFiveEntry(name=D10,length=3,value: #Square,
 	identities=[D10[0]=A9[1],D10[2]=A13[2]],referrers=[A9,A13,D3,D10],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
+
 UPDATES-----------------------------
 Eval TwentyFiveEntry A1 cartesianCount=90, elapsed 0:00:00.451069
 solveLeft: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,

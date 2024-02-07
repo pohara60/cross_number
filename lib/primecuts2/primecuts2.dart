@@ -445,9 +445,8 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         updated = true;
       // If no Entry Values returned then Solve function could not solve
       if (possibleEntryValue.isEmpty) {
-        print(
+        throw SolveException(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
-        throw SolveError();
       }
       if (puzzle.updateValues(entry, possibleEntryValue)) updated = true;
       if (entry.finalise()) updated = true;
