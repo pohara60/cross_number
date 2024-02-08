@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:59648/yTKiQqCZbkI=/ws
 Puzzle
 PowerPlayEntry(name=A1,length=5,value: #square,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
@@ -36,6 +35,7 @@ PowerPlayEntry(name=D6,length=2,value: #triangular,
 	identities=[D6[1]=A8[2]],referrers=[A8],
 	values={unknown},
 	digits=[{1..9},{0..9}]
+
 UPDATES-----------------------------
 solve: PowerPlayEntry(name=A1,length=5,value: #square,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
@@ -49,7 +49,7 @@ solve: PowerPlayEntry(name=A7,length=2,value: #square,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
 	values={16,25,36,49,64,81},
 	digits=[{1..4,6,8},{1,4..6,9}]
-Eval PowerPlayEntry A8 cartesianCount=90, elapsed 0:00:00.002967
+Eval PowerPlayEntry A8 cartesianCount=90, elapsed 0:00:00.003104
 solve: PowerPlayEntry(name=A8,length=5,value: $power D6,
 	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
 	values={10000,10648,12167,13824,14641,15625,17576,19683,20736,21952,24389,27000,28561,29791,32768,35937,38416,39304,42875,46656,13 more,97336},
@@ -87,7 +87,7 @@ solve: PowerPlayEntry(name=A7,length=2,value: #square,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
 	values={16,25,36,49,64},
 	digits=[{1..4,6},{4..6,9}]
-Eval PowerPlayEntry A8 cartesianCount=5, elapsed 0:00:00.000086
+Eval PowerPlayEntry A8 cartesianCount=5, elapsed 0:00:00.000070
 solve: PowerPlayEntry(name=A8,length=5,value: $power D6,
 	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
 	values={46656},
@@ -149,7 +149,7 @@ solve: PowerPlayEntry(name=D2,length=3,value: #square,
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
 	values={196},
 	digits=[{1},{9},{6}]
-Clue/Variable iterations=39, updates=27, elapsed 0:00:00.032463
+Clue/Variable iterations=39, updates=27, elapsed 0:00:00.033881
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #square, values={11449}
@@ -169,4 +169,3 @@ D6, #triangular, values={36}
 | 4  6  6  5  6|
 +--+--+--+--+--+
 
-Exited.

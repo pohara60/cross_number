@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:59878/Crvmk208AOI=/ws
 Left Puzzle
 ThirtyEntry(name=LA1,length=3,value: null,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
@@ -40,6 +39,7 @@ ThirtyEntry(name=LA8,length=3,value: null,
 	identities=[A8[0]=D6[1],A8[1]=D3[2],A8[2]=D4[2]],referrers=[D6,D3,D4],
 	values={unknown},
 	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+
 Right Puzzle
 ThirtyEntry(name=RA1,length=3,value: null,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
@@ -81,202 +81,157 @@ ThirtyEntry(name=RA8,length=3,value: null,
 	identities=[A8[0]=D6[1],A8[1]=D3[2],A8[2]=D4[2]],referrers=[D6,D3,D4],
 	values={unknown},
 	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+
 UPDATES-----------------------------
-solveLeft: ThirtyEntry(name=LA1,length=3,value: null,
-	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={866},
-	digits=[{8},{6},{6}]
-solveLeft: ThirtyEntry(name=LD1,length=3,value: null,
-	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
-	values={802,804,806,808,822,824,826,828,842,844,846,848,862,864,868,882,884,886,888},
-	digits=[{8},{0,2,4,6,8},{2,4,6,8}]
 solveLeft: ThirtyEntry(name=LD2,length=3,value: null,
 	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
-	values={620,622,626,628,640,644,646,648,660,662,664,666,680,682,684,688},
-	digits=[{6},{2,4,6,8},{0,2,4,6,8}]
-solveLeft: ThirtyEntry(name=LA3,length=2,value: null,
-	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
-	values={24,26},
-	digits=[{2},{4,6}]
-solveLeft: ThirtyEntry(name=LD3,length=3,value: null,
-	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
-	values={200,202,204,206,208,220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,3 more,288},
-	digits=[{2},{0,2,4,6,8},{0,2,4,6,8}]
+	values={666},
+	digits=[{6},{6},{6}]
 solveLeft: ThirtyEntry(name=LD4,length=3,value: null,
 	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
-	values={400,402,404,406,408,420,422,424,428,440,442,444,446,448,460,464,466,468,480,482,24 more,688},
-	digits=[{4,6},{0,2,4,6,8},{0,2,4,6,8}]
-solveLeft: ThirtyEntry(name=LA5,length=3,value: null,
-	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
-	values={220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,284,286,288,420,422,51 more,888},
-	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
+	values={404,424,444,464,484},
+	digits=[{4},{0,2,4,6,8},{4}]
 solveLeft: ThirtyEntry(name=LD6,length=2,value: null,
 	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
-	values={24,26,28,44,46,48,64,66,68,84,86,88},
-	digits=[{2,4,6,8},{4,6,8}]
-solveLeft: ThirtyEntry(name=LA7,length=2,value: null,
-	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
-	values={24,26},
-	digits=[{2},{4,6}]
-solveLeft: ThirtyEntry(name=LA8,length=3,value: null,
-	identities=[A8[0]=D6[1],A8[1]=D3[2],A8[2]=D4[2]],referrers=[D6,D3,D4],
-	values={624},
-	digits=[{6},{2},{4}]
+	values={86},
+	digits=[{8},{6}]
 solveRight: ThirtyEntry(name=RA1,length=3,value: null,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={826,828,846,848,868,886,888},
-	digits=[{8},{2,4,6,8},{6,8}]
-solveRight: ThirtyEntry(name=RD2,length=3,value: null,
-	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
-	values={220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,284,286,288,420,422,51 more,888},
-	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
-solveRight: ThirtyEntry(name=RA3,length=2,value: null,
-	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
-	values={22,24,26,42,44},
-	digits=[{2,4},{2,4,6}]
-solveRight: ThirtyEntry(name=RD3,length=3,value: null,
-	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
-	values={200,202,204,206,208,220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,26 more,488},
-	digits=[{2,4},{0,2,4,6,8},{0,2,4,6,8}]
-solveRight: ThirtyEntry(name=RD4,length=3,value: null,
-	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
-	values={200,202,204,206,208,220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,47 more,688},
-	digits=[{2,4,6},{0,2,4,6,8},{0,2,4,6,8}]
-solveRight: ThirtyEntry(name=RA5,length=3,value: null,
-	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
-	values={220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,284,286,288,420,422,51 more,888},
-	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
-solveRight: ThirtyEntry(name=RD6,length=2,value: null,
-	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
-	values={24,26,28,44,46,48,64,66,68,84,86,88},
-	digits=[{2,4,6,8},{4,6,8}]
-solveRight: ThirtyEntry(name=RA7,length=2,value: null,
-	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
-	values={20,24,26,40},
-	digits=[{2,4},{0,4,6}]
-solveRight: ThirtyEntry(name=RA8,length=3,value: null,
-	identities=[A8[0]=D6[1],A8[1]=D3[2],A8[2]=D4[2]],referrers=[D6,D3,D4],
-	values={440,480,840,880},
-	digits=[{4,8},{4,8},{0}]
-solveLeft: ThirtyEntry(name=LD2,length=3,value: null,
-	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
-	values={626,644,646,664,666,684},
-	digits=[{6},{2,4,6,8},{4,6}]
-solveLeft: ThirtyEntry(name=LD3,length=3,value: null,
-	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
-	values={202,222,242,262,282},
-	digits=[{2},{0,2,4,6,8},{2}]
-solveLeft: ThirtyEntry(name=LD4,length=3,value: null,
-	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
-	values={404,424,444,464,484,604,644,664,684},
-	digits=[{4,6},{0,2,4,6,8},{4}]
-solveLeft: ThirtyEntry(name=LD6,length=2,value: null,
-	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
-	values={26,46,66,86},
-	digits=[{2,4,6,8},{6}]
+	values={826},
+	digits=[{8},{2},{6}]
 solveRight: ThirtyEntry(name=RD1,length=3,value: null,
 	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
-	values={822,824,842,844},
+	values={822,824,844},
 	digits=[{8},{2,4},{2,4}]
 solveRight: ThirtyEntry(name=RD2,length=3,value: null,
 	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
-	values={220,224,226,240,244,260,266,280,284,286,420,424,440,444,446,460,464,466,480,484,22 more,886},
-	digits=[{2,4,6,8},{2,4,6,8},{0,4,6}]
-solveRight: ThirtyEntry(name=RD3,length=3,value: null,
-	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
-	values={204,208,224,228,244,248,268,284,288,404,408,424,428,444,448,464,468,484,488},
-	digits=[{2,4},{0,2,4,6,8},{4,8}]
-solveRight: ThirtyEntry(name=RA3,length=2,value: null,
-	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
-	values={22,24,42,44},
-	digits=[{2,4},{2,4}]
-solveRight: ThirtyEntry(name=RA7,length=2,value: null,
-	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
-	values={20,40},
-	digits=[{2,4},{0}]
-solveRight: ThirtyEntry(name=RD6,length=2,value: null,
-	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
-	values={24,28,44,48,64,68,84,88},
-	digits=[{2,4,6,8},{4,8}]
-solveLeft: ThirtyEntry(name=LD1,length=3,value: null,
-	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
-	values={802,822,842,862},
-	digits=[{8},{0,2,4,6},{2}]
-solveRight: ThirtyEntry(name=RD2,length=3,value: null,
-	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
-	values={220,240,260,280,420,440,460,480,620,640,660,680,820,840,860,880},
-	digits=[{2,4,6,8},{2,4,6,8},{0}]
-solveLeft: ThirtyEntry(name=LA7,length=2,value: null,
-	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
-	values={26},
-	digits=[{2},{6}]
-solveLeft: ThirtyEntry(name=LD1,length=3,value: null,
-	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
-	values={802,822,862},
-	digits=[{8},{0,2,6},{2}]
-solveLeft: ThirtyEntry(name=LA3,length=2,value: null,
-	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
-	values={24},
-	digits=[{2},{4}]
-solveLeft: ThirtyEntry(name=LD6,length=2,value: null,
-	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
-	values={46,66,86},
-	digits=[{4,6,8},{6}]
-solveLeft: ThirtyEntry(name=LD2,length=3,value: null,
-	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
-	values={626,646,666},
-	digits=[{6},{2,4,6},{6}]
-solveLeft: ThirtyEntry(name=LA5,length=3,value: null,
-	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
-	values={240,242,244,248,260,262,266,268,280,282,284,286,288,440,442,444,446,448,460,464,19 more,688},
-	digits=[{2,4,6},{4,6,8},{0,2,4,6,8}]
-solveRight: ThirtyEntry(name=RA1,length=3,value: null,
-	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
-	values={826,846,886},
-	digits=[{8},{2,4,8},{6}]
+	values={240,248,284},
+	digits=[{2},{4,8},{0,4,8}]
 solveRight: ThirtyEntry(name=RA3,length=2,value: null,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={22,44},
 	digits=[{2,4},{2,4}]
-Clue/Variable iterations=94, updates=39, elapsed 0:00:00.067880
+solveRight: ThirtyEntry(name=RD3,length=3,value: null,
+	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
+	values={200,204,224,228,240,244,248,260,284,288,400,402,408,422,428,440,442,448,460,468,3 more,488},
+	digits=[{2,4},{0,2,4,6,8},{0,2,4,8}]
+solveRight: ThirtyEntry(name=RD4,length=3,value: null,
+	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
+	values={200,204,206,224,226,228,240,244,248,260,266,284,288,400,402,406,408,420,422,428,11 more,488},
+	digits=[{2,4},{0,2,4,6,8},{0,2,4,6,8}]
+solveRight: ThirtyEntry(name=RA5,length=3,value: null,
+	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
+	values={420,422,424,428,440,442,444,446,448,460,464,466,468,822,824,828,840,842,844,846,848},
+	digits=[{4,8},{2,4,6},{0,2,4,6,8}]
+solveRight: ThirtyEntry(name=RD6,length=2,value: null,
+	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
+	values={28,44,48,64},
+	digits=[{2,4,6},{4,8}]
+solveRight: ThirtyEntry(name=RA7,length=2,value: null,
+	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
+	values={20,40},
+	digits=[{2,4},{0}]
+solveRight: ThirtyEntry(name=RA8,length=3,value: null,
+	identities=[A8[0]=D6[1],A8[1]=D3[2],A8[2]=D4[2]],referrers=[D6,D3,D4],
+	values={440,880},
+	digits=[{4,8},{4,8},{0}]
+solveRight: ThirtyEntry(name=RD2,length=3,value: null,
+	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
+	values={240},
+	digits=[{2},{4},{0}]
+solveRight: ThirtyEntry(name=RD3,length=3,value: null,
+	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
+	values={224,228,284,288,408,428,488},
+	digits=[{2,4},{0,2,8},{4,8}]
+solveRight: ThirtyEntry(name=RD4,length=3,value: null,
+	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
+	values={200,260,400,440,460,480},
+	digits=[{2,4},{0,4,6,8},{0}]
+solveRight: ThirtyEntry(name=RA5,length=3,value: null,
+	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
+	values={422,428,440,442,448,460,468},
+	digits=[{4},{2,4,6},{0,2,8}]
+solveRight: ThirtyEntry(name=RD6,length=2,value: null,
+	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
+	values={28,48},
+	digits=[{2,4},{8}]
+solveRight: ThirtyEntry(name=RD1,length=3,value: null,
+	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
+	values={822},
+	digits=[{8},{2},{2}]
+solveRight: ThirtyEntry(name=RA8,length=3,value: null,
+	identities=[A8[0]=D6[1],A8[1]=D3[2],A8[2]=D4[2]],referrers=[D6,D3,D4],
+	values={880},
+	digits=[{8},{8},{0}]
+solveRight: ThirtyEntry(name=RD3,length=3,value: null,
+	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
+	values={408,488},
+	digits=[{4},{0,8},{8}]
+solveRight: ThirtyEntry(name=RA3,length=2,value: null,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={44},
+	digits=[{4},{4}]
+solveRight: ThirtyEntry(name=RD4,length=3,value: null,
+	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
+	values={400,440,480},
+	digits=[{4},{0,4,8},{0}]
+solveRight: ThirtyEntry(name=RA5,length=3,value: null,
+	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
+	values={440,448},
+	digits=[{4},{4},{0,8}]
+solveRight: ThirtyEntry(name=RD6,length=2,value: null,
+	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
+	values={48},
+	digits=[{4},{8}]
+solveRight: ThirtyEntry(name=RA7,length=2,value: null,
+	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
+	values={20},
+	digits=[{2},{0}]
+solveRight: ThirtyEntry(name=RD4,length=3,value: null,
+	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
+	values={400,480},
+	digits=[{4},{0,8},{0}]
+Clue/Variable iterations=57, updates=27, elapsed 0:00:00.037296
 PARTIAL SOLUTION-----------------------------
 Left Puzzle Summary
 A1, values={866}
-D1, values={802,822,862}
-D2, values={626,646,666}
+D1, values={802}
+D2, values={666}
 A3, values={24}
-D3, values={202,222,242,262,282}
+D3, values={202}
 D4, values={404,424,444,464,484}
-A5, values={240,242,244,248,260,262,266,268,280,282,284,286,288,440,442,444,446,448,460,464,19 more,688}
-D6, values={46,66,86}
+A5, values={680}
+D6, values={86}
 A7, values={26}
 A8, values={624}
 +--+--+--+--+--+
 | 8  6  6| 2  4|
 +      --+     +
-| ?| ?  ?  ?| ?|
+| 0| 6  8  0| ?|
 +  +        +  +
 | 2  6| 6  2  4|
 +--+--+--+--+--+
+
 PARTIAL SOLUTION-----------------------------
 Right Puzzle Summary
-A1, values={826,846,886}
-D1, values={822,824,844}
-D2, values={220,240,260,280,420,440,460,480,820,840,860,880}
-A3, values={22,44}
-D3, values={204,208,224,228,244,248,268,284,288,404,408,424,428,444,448,464,468,484,488}
-D4, values={200,220,240,260,280,400,420,440,460,480}
-A5, values={220,222,224,226,228,240,242,244,248,260,262,266,268,280,282,284,286,288,420,422,51 more,888}
-D6, values={24,28,44,48,64,68,84,88}
-A7, values={20,40}
-A8, values={440,480,840,880}
+A1, values={826}
+D1, values={822}
+D2, values={240}
+A3, values={44}
+D3, values={408,488}
+D4, values={400,480}
+A5, values={440,448}
+D6, values={48}
+A7, values={20}
+A8, values={880}
 +--+--+--+--+--+
-| 8  ?  6| ?  ?|
+| 8  2  6| 4  4|
 +      --+     +
-| ?| ?  ?  ?| ?|
+| 2| 4  4  ?| ?|
 +  +        +  +
-| ?  0| ?  ?  0|
+| 2  0| 8  8  0|
 +--+--+--+--+--+
+
 ITERATE SOLUTIONS-----------------------------
 SOLUTION-----------------------------
 Left Puzzle Summary
@@ -297,6 +252,7 @@ A8, values={624}
 +  +        +  +
 | 2  6| 6  2  4|
 +--+--+--+--+--+
+
 Right Puzzle Summary
 A1, values={826}
 D1, values={822}
@@ -315,6 +271,5 @@ A8, values={880}
 +  +        +  +
 | 2  0| 8  8  0|
 +--+--+--+--+--+
-Solution count=1
 
-Exited.
+Solution count=1

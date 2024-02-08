@@ -215,6 +215,17 @@ class Clue extends Variable {
     if (entryMixin == null) return null;
     return entryMixin!.getValuesFromDigits();
   }
+
+  static const powers = [10000000, 1000000, 100000, 10000, 1000, 100, 10, 1];
+  List<int> clueDigits(int digit) {
+    if (values == null) return [];
+    var digits = <int>{};
+    for (var value in values!) {
+      var v = value ~/ powers[digit + 8 - length!] % 10;
+      digits.add(v);
+    }
+    return digits.toList()..sort();
+  }
 }
 
 bool updatePossible(Set<int> possible, Set<int> possibleValues) {

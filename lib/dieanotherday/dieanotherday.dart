@@ -511,23 +511,6 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     }
   }
 
-  int callback(DieAnotherDayPuzzle puzzle) {
-    // Puzzle has found a valid solution, check futher puzzles
-    var index = unfinishedPuzzles.indexOf(puzzle);
-    if (index + 1 == unfinishedPuzzles.length) {
-      // Finished!
-      print("SOLUTION-----------------------------");
-      for (var puzzle in puzzles) {
-        if (puzzle.uniqueSolution()) {
-          print(puzzle.toSummary());
-        }
-      }
-      return 1;
-    }
-
-    return unfinishedPuzzles[index + 1].iterate(callback);
-  }
-
   bool checkSolution(Puzzle puzzle) {
     var ok = true;
     ok = ok && allVariables[0].value == 66;

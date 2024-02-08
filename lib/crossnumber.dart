@@ -4,6 +4,7 @@ library crossnumber;
 import 'package:collection/collection.dart' show PriorityQueue;
 import 'package:powers/powers.dart';
 
+import 'cartesian.dart';
 import 'clue.dart';
 import 'generators.dart';
 import 'puzzle.dart';
@@ -193,10 +194,17 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     endSolve(iteration);
   }
 
+  var iterating = false;
+
+  late List<Puzzle> unfinishedPuzzles;
   void endSolve(bool iteration) {
+    iterating = true;
+    // In case solve/endSolve are called more than once
+    unfinishedPuzzles = <Puzzle>[];
     // Unique solution?
     for (var puzzle in puzzles) {
       if (!puzzle.uniqueSolution()) {
+        unfinishedPuzzles.add(puzzle);
         if (Crossnumber.traceSolve) {
           print("PARTIAL SOLUTION-----------------------------");
           print(puzzle.toSummary());
@@ -207,11 +215,27 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         print(puzzle.toSummary());
       }
     }
-    for (var puzzle in puzzles) {
-      if (!puzzle.uniqueSolution()) {
-        puzzle.postProcessing(iteration);
-      }
+    if (unfinishedPuzzles.isNotEmpty) {
+      unfinishedPuzzles = puzzles;
+      unfinishedPuzzles.first.postProcessing(iteration);
     }
+  }
+
+  int callback(Puzzle puzzle) {
+    // Puzzle has found a valid solution, check futher puzzles
+    var index = unfinishedPuzzles.indexOf(puzzle);
+    if (index + 1 == unfinishedPuzzles.length) {
+      // Finished!
+      print("SOLUTION-----------------------------");
+      for (var puzzle in puzzles) {
+        if (puzzle.uniqueSolution()) {
+          print(puzzle.toSummary());
+        }
+      }
+      return 1;
+    }
+
+    return unfinishedPuzzles[index + 1].iterate(callback);
   }
 
   bool solveClue(Clue clue) {
@@ -459,6 +483,122 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
 
     return updated;
+  }
+
+  // Validate possible clue value
+  bool validClue(VariableClue clue, int value, List<String> variableReferences,
+      List<int> variableValues) {
+    if (value < 0) return false;
+    if (clue.min != null && value < clue.min!) return false;
+    if (clue.max != null && value > clue.max!) return false;
+    if (clue.values != null && !clue.values!.contains(value)) return false;
+    if (!clue.digitsMatch(value)) return false;
+
+    // Pairs
+    if (hasPairConstraint && !validPair(clue, value)) return false;
+
+    return true;
+  }
+
+  // Pair constraints logic
+  // When there are two puzzles, and the corresponding cells in each
+  // puzzle are constrained
+  bool hasPairConstraint = false;
+  var pairs = <int, int>{};
+
+  void addPairConstraint() {
+    hasPairConstraint = true;
+    initPairs();
+  }
+
+  void initPairs() {
+    // pairs[0] = 0; // Invalid
+    for (var i = 0; i < 10; i += 1) {
+      for (var j = 0; j < 10; j += 1) {
+        var pair = j * 10 + i;
+        pairs[pair] = -1;
+      }
+    }
+  }
+
+  int getPairValue(int i, int j) {
+    return 0;
+  }
+
+  bool validPair(Clue clue, int value) {
+    var otherPuzzle =
+        puzzles[0].clues.containsValue(clue) ? puzzles[1] : puzzles[0];
+    var otherClue = otherPuzzle.clues[clue.name]!;
+    var v = value;
+    var newPairs = <int>[];
+    for (var d = clue.length! - 1; d >= 0; d--) {
+      var digit = v % 10;
+      v = v ~/ 10;
+      var otherDigits = clueDigits(otherClue, d);
+
+      // Possible pair with any other digit means ok
+      var ok = false;
+      var newPair = -1; // No new pair
+      for (var otherDigit in otherDigits) {
+        var pair = getPairValue(digit, otherDigit);
+        if (newPairs.contains(pair)) {
+          continue; // This pair consumed by earlier digit in this value
+        }
+        if (pairs[pair] == -1) {
+          if (newPair == -1)
+            newPair = pair; // New pair consumed by this digit
+          else
+            newPair = 0; // Multiple new pairs for this digit
+          ok = true;
+        } else if (pairs[pair] == clue.entryMixin!.cellDigitIndex(d)) {
+          ok = true;
+        }
+      }
+      if (!ok) {
+        return false;
+      }
+      if (newPair > 0) newPairs.add(newPair);
+    }
+    return true;
+  }
+
+  void updatePairs(Puzzle puzzle, Clue clue) {
+    var otherPuzzle = puzzle == puzzles[0] ? puzzles[1] : puzzles[0];
+    var otherClue = otherPuzzle.clues[clue.name]!;
+    for (var d = 0; d < clue.length!; d++) {
+      // Get clue digits from values as may not have finalised digits
+      var digits = clue.clueDigits(d);
+      if (digits.length == 1) {
+        if (otherClue.digits[d].length == 1) {
+          var pair = getPairValue(digits.first, otherClue.digits[d].first);
+          if (!(pairs[pair] == -1 ||
+              pairs[pair] == clue.entryMixin!.cellDigitIndex(d))) {
+            throw SolveException('Pair violation');
+          }
+          // Cannot have side effect if iterating
+          if (!iterating && pairs[pair] == -1) {
+            pairs[pair] = clue.entryMixin!.cellDigitIndex(d);
+          }
+        }
+      }
+    }
+  }
+
+  List<int> clueDigits(Clue clue, int d) {
+    return iterating ? clue.clueDigits(d) : List.from(clue.digits[d]);
+  }
+
+  Set<int>? getValuesFromDigits(Clue clue) {
+    var allDigits =
+        List<List<int>>.generate(clue.length!, (d) => clueDigits(clue, d));
+    var count = cartesianCount(allDigits);
+    if (count > 1000) return null;
+    var values = <int>{};
+    for (var product in cartesian(allDigits, true)) {
+      int value = product.reduce((value, element) => value * 10 + element);
+      values.add(value);
+    }
+    return values;
   }
 }
 

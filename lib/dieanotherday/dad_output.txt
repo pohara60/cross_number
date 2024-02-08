@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:62635/mrbv3rS-3sw=/ws
 puzzle Top variables W=1 X=6
 00020: 4441353353666556
 puzzle Front variables Y=4
@@ -28513,4 +28512,3 @@ puzzle Top variables W=5 X=6
 03092: 4441666221561323
 Solution count 1
 
-Exited.

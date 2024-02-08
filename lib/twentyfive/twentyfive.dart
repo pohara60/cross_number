@@ -1,7 +1,5 @@
 library twentyfive;
 
-import '../cartesian.dart';
-import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
@@ -115,7 +113,6 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
     super.initCrossnumber();
   }
 
-  var iterating = false;
   @override
   void solve([bool iteration = true]) {
     // Initialise clue values
@@ -133,15 +130,14 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
     //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
     //   }
 
-    initPairs();
+    addPairConstraint();
     // A13, #Cube, values={216,729}
     puzzles[0].clues['A13']!.value = 216;
     puzzles[1].clues['A13']!.value = 729;
     super.solve(false);
   }
 
-  var pairs = <int, int>{};
-
+  @override
   void initPairs() {
     pairs[0] = 0; // Invalid
     for (var i = 0; i < 10; i += 2) {
@@ -152,6 +148,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
     }
   }
 
+  @override
   int getPairValue(int i, int j) {
     if (i % 2 == 1) {
       if (j % 2 == 1) return 0;
@@ -160,71 +157,6 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
       if (j % 2 == 0) return 0;
       return j * 10 + i;
     }
-  }
-
-  List<int> clueDigits(TwentyFiveClue clue, int d) {
-    return iterating ? clue.clueDigits(d) : List.from(clue.digits[d]);
-  }
-
-  // Validate possible clue value
-  bool validClue(VariableClue clue, int value, List<String> variableReferences,
-      List<int> variableValues) {
-    if (value < 0) return false;
-    if (clue.min != null && value < clue.min!) return false;
-    if (clue.max != null && value > clue.max!) return false;
-    if (clue.values != null && !clue.values!.contains(value)) return false;
-    if (!clue.digitsMatch(value)) return false;
-
-    // Pairs
-    var otherPuzzle =
-        puzzles[0].clues.containsValue(clue) ? puzzles[1] : puzzles[0];
-    var otherClue = otherPuzzle.clues[clue.name]!;
-    var v = value;
-    var newPairs = <int>[];
-    for (var d = clue.length! - 1; d >= 0; d--) {
-      var digit = v % 10;
-      v = v ~/ 10;
-      var otherDigits = clueDigits(otherClue, d);
-
-      // Possible pairs for this digit must intersect with other digits
-      // var ok = false;
-      // for (var otherDigit in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
-      //   var pair = getPairValue(digit, otherDigit);
-      //   if (pairs[pair] == -1) {
-      //       if (otherDigits.contains(otherDigit)) {
-      //       ok = true;
-      //       break;
-      //     }
-      //   }
-      // }
-      // if (!ok) {
-      //   return false;
-      // }
-
-      // Possible pair with any other digit means ok
-      var ok = false;
-      var newPair = -1; // No new pair
-      for (var otherDigit in otherDigits) {
-        var pair = getPairValue(digit, otherDigit);
-        if (newPairs.contains(pair)) {
-          continue; // This pair consumed by earlier digit in this value
-        }
-        if (pairs[pair] == -1) {
-          if (newPair == -1)
-            newPair = pair; // New pair consumed by this digit
-          else
-            newPair = 0; // Multiple new pairs for this digit
-          ok = true;
-        } else if (pairs[pair] == clue.entryMixin!.cellDigitIndex(d)) {
-          ok = true;
-        }
-      }
-      if (!ok) {
-        return false;
-      }
-      if (newPair > 0) newPairs.add(newPair);
-    }
-    return true;
   }
 
   // Clue solver invokes generic expression evaluator with validator
@@ -300,95 +232,8 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
     if (!isEntry && updated) {
       // Digits
       var clue = puzzle.clues[clueName]!;
-      var otherPuzzle = puzzle == puzzles[0] ? puzzles[1] : puzzles[0];
-      var otherClue = otherPuzzle.clues[clueName]!;
-      for (var d = 0; d < clue.length!; d++) {
-        // Get clue digits from values as may not have finalised digits
-        var digits = clue.clueDigits(d);
-        if (digits.length == 1) {
-          if (otherClue.digits[d].length == 1) {
-            var pair = getPairValue(digits.first, otherClue.digits[d].first);
-            if (!(pairs[pair] == -1 ||
-                pairs[pair] == clue.entryMixin!.cellDigitIndex(d))) {
-              throw SolveException('Pair violation');
-            }
-            // Cannot have side effect if iterating
-            if (!iterating && pairs[pair] == -1) {
-              pairs[pair] = clue.entryMixin!.cellDigitIndex(d);
-            }
-          }
-        }
-        var p1 = digitsParity(digits);
-        var p2 = digitsParity(otherClue.digits[d]);
-        if (p1 == 1 && p2 == 1 || p1 == 2 && p2 == 2) {
-          throw SolveException('Parity violation');
-        }
-      }
+      updatePairs(puzzle, clue);
     }
     return updated;
   }
-
-  var unfinishedPuzzles = <TwentyFivePuzzle>[];
-  @override
-  void endSolve(bool iteration) {
-    iterating = true;
-    // Unique solution?
-    for (var puzzle in puzzles) {
-      if (!puzzle.uniqueSolution()) {
-        unfinishedPuzzles.add(puzzle);
-        if (Crossnumber.traceSolve) {
-          print("PARTIAL SOLUTION-----------------------------");
-          print(puzzle.toSummary());
-          // print(puzzle.toString());
-        }
-      } else {
-        print("SOLUTION-----------------------------");
-        print(puzzle.toSummary());
-      }
-    }
-    if (unfinishedPuzzles.isNotEmpty) {
-      unfinishedPuzzles = puzzles;
-      unfinishedPuzzles.first.postProcessing(iteration);
-    }
-  }
-
-  int callback(TwentyFivePuzzle puzzle) {
-    // Puzzle has found a valid solution, check futher puzzles
-    var index = unfinishedPuzzles.indexOf(puzzle);
-    if (index + 1 == unfinishedPuzzles.length) {
-      // Finished!
-      print("SOLUTION-----------------------------");
-      for (var puzzle in puzzles) {
-        if (puzzle.uniqueSolution()) {
-          print(puzzle.toSummary());
-        }
-      }
-      return 1;
-    }
-
-    return unfinishedPuzzles[index + 1].iterate(callback);
-  }
-
-  Set<int>? getValuesFromDigits(TwentyFiveClue clue) {
-    var allDigits =
-        List<List<int>>.generate(clue.length!, (d) => clueDigits(clue, d));
-    var count = cartesianCount(allDigits);
-    if (count > 1000) return null;
-    var values = <int>{};
-    for (var product in cartesian(allDigits, true)) {
-      int value = product.reduce((value, element) => value * 10 + element);
-      values.add(value);
-    }
-    return values;
-  }
-}
-
-int digitsParity(Iterable<int> digits) {
-  var isOdd = false;
-  var isEven = false;
-  for (var d in digits) {
-    if (d % 2 == 0) isEven = true;
-    if (d % 2 == 1) isOdd = true;
-  }
-  return (isOdd ? 1 : 0) + (isEven ? 2 : 0);
 }

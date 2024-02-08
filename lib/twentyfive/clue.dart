@@ -21,17 +21,6 @@ class TwentyFiveClue extends ExpressionClue {
             addDesc: addDesc,
             solve: solve,
             entryNames: entryNames);
-
-  static const powers = [10000, 10000, 1000, 100, 10, 1];
-  List<int> clueDigits(int digit) {
-    if (values == null) return [];
-    var digits = <int>{};
-    for (var value in values!) {
-      var v = value ~/ powers[digit + 6 - length!] % 10;
-      digits.add(v);
-    }
-    return digits.toList()..sort();
-  }
 }
 
 class TwentyFiveEntry extends TwentyFiveClue with EntryMixin {

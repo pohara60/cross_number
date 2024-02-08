@@ -1,6 +1,5 @@
 library thirty;
 
-import '../cartesian.dart';
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
@@ -24,6 +23,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
 
   Thirty() {
     initCrossnumber();
+    addPairConstraint();
   }
 
   void initCrossnumber() {
@@ -89,7 +89,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     puzzles[0].clues['A3']!.values = {24, 26};
     puzzles[0].clues['A7']!.values = {24, 26};
     // Solution
-    //puzzles[0].clues['A1']!.values = {866};
+    puzzles[0].clues['A1']!.values = {866};
     puzzles[0].clues['A3']!.values = {24};
     puzzles[0].clues['A5']!.values = {680};
     puzzles[0].clues['A7']!.values = {26};
@@ -107,8 +107,8 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
   }
 
   var knownValues = <int, ThirtyClue?>{};
-  var pairs = <int, int>{};
 
+  @override
   void initPairs() {
     for (var i = 0; i < 9; i += 2) {
       for (var j = 0; j <= i; j += 2) {
@@ -118,15 +118,12 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     }
   }
 
+  @override
   int getPairValue(int i, int j) {
     if (i <= j)
       return i * 10 + j;
     else
       return j * 10 + i;
-  }
-
-  List<int> clueDigits(ThirtyClue clue, int d) {
-    return iterating ? clue.clueDigits(d) : List.from(clue.digits[d]);
   }
 
   void getKnownValues() {
@@ -160,17 +157,17 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (value < 0) return false;
-    if (clue.min != null && value < clue.min!) return false;
-    if (clue.max != null && value > clue.max!) return false;
-    if (clue.values != null && !clue.values!.contains(value)) return false;
-    if (!clue.digitsMatch(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
+
     // Other clue
     if (knownValues[value] != null && knownValues[value] != clue) {
       return false;
     }
+
     // Jumble
     for (var jumbleValue in jumble(value)) {
       var knownClue = knownValues[jumbleValue];
@@ -179,25 +176,6 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       }
     }
 
-    // Pairs
-    var otherPuzzle =
-        puzzles[0].clues.containsValue(clue) ? puzzles[1] : puzzles[0];
-    var otherClue = otherPuzzle.clues[clue.name]!;
-    var v = value;
-    for (var d = clue.length! - 1; d >= 0; d--) {
-      var digit = v % 10;
-      v = v ~/ 10;
-      var ok = false;
-      var digits = clueDigits(otherClue, d);
-      for (var otherDigit in digits) {
-        var pair = getPairValue(digit, otherDigit);
-        if (pairs[pair] == -1 ||
-            pairs[pair] == clue.entryMixin!.cellDigitIndex(d)) {
-          ok = true;
-        }
-      }
-      if (!ok) return false;
-    }
     return true;
   }
 
@@ -218,12 +196,6 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     var otherPuzzle = puzzle == puzzles[0] ? puzzles[1] : puzzles[0];
     getKnownValues();
 
-    /*
-    Every digit is even and there are fifteen pairs of even digits, from {0,0}, {0,2} up to {8,8}. For this purpose, {p,q} is the same as {q,p}. Each of the fifteen pairs fills one of the matching cells of the two grids, one in each grid. All entries are distinct, and none starts with zero.
-    8ac = 3ac x 7ac, both from the same grid
-    The sum of the digits in the first grid equals the sum of the digits in the second grid.
-    No entry is a jumble of another entry.
-    */
     // Values may have been set by other Clue
     if (clue.name == 'A1') {
       // 1ac = 1dn + 3ac, both from the opposite grid
@@ -315,20 +287,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
         // knownValues[value] = clue;
       }
       // Digits
-      var otherPuzzle = puzzle == puzzles[0] ? puzzles[1] : puzzles[0];
-      var otherClue = otherPuzzle.clues[clueName]!;
-      for (var d = 0; d < clue.length!; d++) {
-        if (clue.digits[d].length == 1) {
-          if (otherClue.digits[d].length == 1) {
-            var pair =
-                getPairValue(clue.digits[d].first, otherClue.digits[d].first);
-            if (!(pairs[pair] == '' || pairs[pair] == clue.name)) {
-              throw SolveException('Pair violation');
-            }
-            // pairs[pair] = clue.name;
-          }
-        }
-      }
+      updatePairs(puzzle, clue);
 
       // Maintain clue value order
       // var clue = puzzle.clues[clueName]!;
@@ -377,7 +336,8 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     }
   }
 
-  int callback(ThirtyPuzzle puzzle) {
+  @override
+  int callback(Puzzle puzzle) {
     // Puzzle has found a valid solution, check futher puzzles
     var index = unfinishedPuzzles.indexOf(puzzle);
     if (index + 1 == unfinishedPuzzles.length) {
@@ -396,18 +356,5 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     }
 
     return unfinishedPuzzles[index + 1].iterate(callback);
-  }
-
-  Set<int>? getValuesFromDigits(ThirtyClue clue) {
-    var allDigits =
-        List<List<int>>.generate(clue.length!, (d) => clueDigits(clue, d));
-    var count = cartesianCount(allDigits);
-    if (count > 1000) return null;
-    var values = <int>{};
-    for (var product in cartesian(allDigits, true)) {
-      int value = product.reduce((value, element) => value * 10 + element);
-      values.add(value);
-    }
-    return values;
   }
 }

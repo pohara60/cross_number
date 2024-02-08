@@ -167,7 +167,14 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
     //   }
 
+    {% if env['num_grids']!=1 %}
+    // Pairs
+    // addPairConstraint();
+    {% endif %}
     super.solve(iteration);
+    {% if env['num_grids']!=1 %}
+    }
+    {% endif %}
   }
 
   // Validate possible clue value
@@ -256,6 +263,13 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     var updated = super.updateClues(puzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
+
+    {% if env['num_grids']!=1 %}
+      // Pairs
+      var clue = puzzle.clues[clueName]!;
+      updatePairs(puzzle, clue);
+    {% endif %}
+
       // Maintain clue value order
       // var clue = puzzle.clues[clueName]!;
       // var newMin = clue.values!.reduce(min);

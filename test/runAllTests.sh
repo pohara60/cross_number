@@ -5,7 +5,8 @@ EXCLUDE="dummy" #"dicenets2"
 if [ $# -ne 0 ]; then
     files="$*"_test.dart
 else
-    files=*_test.dart
+    # files=*_test.dart
+    files=`dart run ../bin/crossnumber.dart | grep hardcoded | awk '{print $1;}'`
     echo $files
 fi
 for file in $files
