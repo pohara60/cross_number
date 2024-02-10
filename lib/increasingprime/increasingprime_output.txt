@@ -117,28 +117,28 @@ solve: IncreasingPrimeClue VIII values={1265}
 solve: IncreasingPrimeClue IX values={1955}
 solve: IncreasingPrimeClue X values={4301}
 UPDATES-----------------------------
-Eval IncreasingPrimeClue I cartesianCount=531441, elapsed 0:00:00.520930
+Eval IncreasingPrimeClue I cartesianCount=531441, elapsed 0:00:00.546054
 solve: IncreasingPrimeClue(name=I,length=null,value: j( f - C ),
 	referrers=[C,f,j],
 	values={165}
 C={11..19,21..29,31,32,58 more,96}
 f={14..19,21..29,31..35,58 more,99}
 j={11,15,33,55}
-Eval IncreasingPrimeClue III cartesianCount=59049, elapsed 0:00:00.050630
+Eval IncreasingPrimeClue III cartesianCount=59049, elapsed 0:00:00.056418
 solve: IncreasingPrimeClue(name=III,length=null,value: G - 2*b,
 	referrers=[b,G],
 	values={345}
 G={367,369,371,373,375,377,379,381,383,387,389,391,393,395,397,399,411,413,415,417,53 more,543}
 b={11..19,21..27,33..36,53 more,99}
 Eval IncreasingPrimeClue IV cartesianCount=4310577 Exception
-Eval IncreasingPrimeClue V cartesianCount=236196, elapsed 0:00:00.202548
+Eval IncreasingPrimeClue V cartesianCount=236196, elapsed 0:00:00.244078
 solve: IncreasingPrimeClue(name=V,length=null,value: D - H - j,
 	referrers=[D,j,H],
 	values={759}
 D={782..789,791..799,811..813,80 more,913}
 H={11..19,21..29,31,32,61 more,99}
 Eval IncreasingPrimeClue VI cartesianCount=43046721 Exception
-Eval IncreasingPrimeEntry A cartesianCount=59049, elapsed 0:00:00.053320
+Eval IncreasingPrimeEntry A cartesianCount=59049, elapsed 0:00:00.060128
 solve: IncreasingPrimeEntry(name=A,length=3,value: ((VI+K)-B),
 	identities=[A[1]=a[0],A[2]=b[0]],referrers=[a,b,VI,B,K],
 	values={947..949,951..959,961..968,28 more,999},
@@ -149,20 +149,20 @@ solve: IncreasingPrimeEntry(name=a,length=3,value: (F-(VIII+H)),
 	identities=[a[0]=A[1],a[1]=C[1],a[2]=E[0]],referrers=[A,C,E,VIII,F,H],
 	values={411..419,421..429,431,432,466 more,999},
 	digits=[{4..9},{1..9},{1..9}]
-Eval IncreasingPrimeEntry b cartesianCount=73, elapsed 0:00:00.000271
-Eval IncreasingPrimeEntry B cartesianCount=2304, elapsed 0:00:00.003216
+Eval IncreasingPrimeEntry b cartesianCount=73, elapsed 0:00:00.000362
+Eval IncreasingPrimeEntry B cartesianCount=2304, elapsed 0:00:00.003400
 solve: IncreasingPrimeEntry(name=B,length=2,value: ((VI+K)-A),
 	identities=[B[1]=c[0]],referrers=[c,VI,A,K],
 	values={47..49,51..59,61..68,28 more,99},
 	digits=[{4..9},{1..9}]
-Eval IncreasingPrimeEntry c cartesianCount=56862, elapsed 0:00:00.073101
+Eval IncreasingPrimeEntry c cartesianCount=56862, elapsed 0:00:00.075815
 solve: IncreasingPrimeEntry(name=c,length=4,value: ((X-h)-C),
 	identities=[c[0]=B[1],c[1]=D[2],c[2]=E[3]],referrers=[B,D,E,X,C,h],
 	values={3211..3219,3221..3229,3231,3232,691 more,4179},
 	digits=[{3,4},{1..9},{1..9},{1..9}]
 h={111..119,121..129,131,132,691 more,999}
-Eval IncreasingPrimeEntry C cartesianCount=312, elapsed 0:00:00.001193
-Eval IncreasingPrimeEntry D cartesianCount=324, elapsed 0:00:00.000698
+Eval IncreasingPrimeEntry C cartesianCount=312, elapsed 0:00:00.001760
+Eval IncreasingPrimeEntry D cartesianCount=324, elapsed 0:00:00.000680
 solve: IncreasingPrimeEntry(name=D,length=3,value: ((V+j)+H),
 	identities=[D[0]=b[1],D[1]=d[0],D[2]=c[1]],referrers=[b,d,c,V,j,H],
 	values={782..789,791..799,811..813,80 more,913},
@@ -172,165 +172,165 @@ solve: IncreasingPrimeEntry(name=d,length=2,value: ((VII+K)-e),
 	values={11..19,21..29,31,32,61 more,99},
 	digits=[{1..9},{1..9}]
 Eval IncreasingPrimeEntry e cartesianCount=4492098 Exception
-Eval IncreasingPrimeEntry e cartesianCount=3888, elapsed 0:00:00.018434
+Eval IncreasingPrimeEntry e cartesianCount=3888, elapsed 0:00:00.018790
 solve: IncreasingPrimeEntry(name=e,length=4,value: (((II+h)+g)-C) | ((VII+K)-d),
 	identities=[e[1]=F[0],e[2]=G[0],e[3]=J[0]],referrers=[F,G,J,II,VII,C,d,g,h,K],
 	values={1185..1189,1191..1199,1211..1216,89 more,1325},
 	digits=[{1},{1..3},{1..9},{1..9}]
-Eval IncreasingPrimeEntry E cartesianCount=5329, elapsed 0:00:00.006819
+Eval IncreasingPrimeEntry E cartesianCount=5329, elapsed 0:00:00.008262
 solve: IncreasingPrimeEntry(name=E,length=4,value: ((IX+G)-b),
 	identities=[E[0]=a[2],E[1]=f[0],E[2]=d[1],E[3]=c[2]],referrers=[a,f,d,c,IX,b,G],
 	values={2223..2229,2231..2239,2241..2244,201 more,2487},
 	digits=[{2},{2..4},{1..9},{1..9}]
-Eval IncreasingPrimeEntry f cartesianCount=312, elapsed 0:00:00.000671
+Eval IncreasingPrimeEntry f cartesianCount=312, elapsed 0:00:00.000644
 solve: IncreasingPrimeEntry(name=f,length=2,value: ((I/j)+C),
 	identities=[f[0]=E[1],f[1]=F[2]],referrers=[E,F,I,C,j],
 	values={21..29,31..39,41,42,7 more,49},
 	digits=[{2..4},{1..9}]
 C={11..14,16..19,21..29,31..33,12 more,46}
-Eval IncreasingPrimeEntry F cartesianCount=39366, elapsed 0:00:00.043061
+Eval IncreasingPrimeEntry F cartesianCount=39366, elapsed 0:00:00.048425
 solve: IncreasingPrimeEntry(name=F,length=4,value: ((VIII+H)+a),
 	identities=[F[0]=e[1],F[1]=g[0],F[2]=f[1],F[3]=h[0]],referrers=[e,g,f,h,VIII,a,H],
 	values={1687..1689,1691..1699,1711..1718,445 more,2363},
 	digits=[{1,2},{1..3,6..9},{1..9},{1..9}]
 a={411..419,421..429,431,432,445 more,999}
 Eval IncreasingPrimeEntry g cartesianCount=2479968 Exception
-Eval IncreasingPrimeEntry h cartesianCount=219744, elapsed 0:00:00.233249
-Eval IncreasingPrimeEntry h cartesianCount=22752, elapsed 0:00:00.027573
+Eval IncreasingPrimeEntry h cartesianCount=219744, elapsed 0:00:00.271280
+Eval IncreasingPrimeEntry h cartesianCount=22752, elapsed 0:00:00.027902
 solve: IncreasingPrimeEntry(name=h,length=3,value: (((C+e)-g)-II) | (X-(C+c)),
 	identities=[h[0]=F[3],h[1]=H[0],h[2]=K[1]],referrers=[F,H,K,II,X,c,C,e,g],
 	values={842..849,851..859,861..863,114 more,999},
 	digits=[{8,9},{1..9},{1..9}]
 g={11..19,21..29,31,32,43 more,99}
 c={3256..3259,3261..3269,3271..3277,650 more,4179}
-Eval IncreasingPrimeEntry G cartesianCount=73, elapsed 0:00:00.000108
-Eval IncreasingPrimeEntry G cartesianCount=3888, elapsed 0:00:00.004360
-Eval IncreasingPrimeEntry G cartesianCount=16133, elapsed 0:00:00.015182
+Eval IncreasingPrimeEntry G cartesianCount=73, elapsed 0:00:00.000112
+Eval IncreasingPrimeEntry G cartesianCount=3888, elapsed 0:00:00.004785
+Eval IncreasingPrimeEntry G cartesianCount=16133, elapsed 0:00:00.015594
 solve: IncreasingPrimeEntry(name=G,length=3,value: (III+(2*b)) | ((IV-K)+J) | ((b+E)-IX),
 	identities=[G[0]=e[2],G[1]=g[1],G[2]=j[0]],referrers=[e,g,j,III,IV,IX,b,E,J,K],
 	values={411,413,415,417,419,421,423,427,429,431,433,435,437,439,441,443,447,449,451,453,37 more,543},
 	digits=[{4,5},{1..9},{1,3,5,7,9}]
 J={11..19,21..29,31,32,61 more,99}
-Eval IncreasingPrimeEntry j cartesianCount=864, elapsed 0:00:00.000531
-Eval IncreasingPrimeEntry j cartesianCount=8100, elapsed 0:00:00.005482
+Eval IncreasingPrimeEntry j cartesianCount=864, elapsed 0:00:00.000484
+Eval IncreasingPrimeEntry j cartesianCount=8100, elapsed 0:00:00.005265
 solve: IncreasingPrimeEntry(name=j,length=2,value: (I/(f-C)) | ((D-H)-V),
 	identities=[j[0]=G[2],j[1]=K[0]],referrers=[G,K,I,V,C,D,f,H],
 	values={11,15,33,55},
 	digits=[{1,3,5},{1,3,5}]
-Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000391
-Eval IncreasingPrimeEntry H cartesianCount=216225, elapsed 0:00:00.121370
-Eval IncreasingPrimeEntry J cartesianCount=2736, elapsed 0:00:00.002236
-Eval IncreasingPrimeEntry K cartesianCount=4617, elapsed 0:00:00.003704
-Eval IncreasingPrimeEntry K cartesianCount=2304, elapsed 0:00:00.002069
-Eval IncreasingPrimeEntry K cartesianCount=8829, elapsed 0:00:00.006856
+Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000406
+Eval IncreasingPrimeEntry H cartesianCount=216225, elapsed 0:00:00.132795
+Eval IncreasingPrimeEntry J cartesianCount=2736, elapsed 0:00:00.002456
+Eval IncreasingPrimeEntry K cartesianCount=4617, elapsed 0:00:00.004139
+Eval IncreasingPrimeEntry K cartesianCount=2304, elapsed 0:00:00.002422
+Eval IncreasingPrimeEntry K cartesianCount=8829, elapsed 0:00:00.007966
 solve: IncreasingPrimeEntry(name=K,length=3,value: (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII),
 	identities=[K[0]=j[1],K[1]=h[2]],referrers=[j,h,IV,VI,VII,A,B,d,e,G,J],
 	values={111..119,121..129,131,132,28 more,163},
 	digits=[{1},{1..6},{1..9}]
-Eval IncreasingPrimeClue I cartesianCount=3456, elapsed 0:00:00.002987
+Eval IncreasingPrimeClue I cartesianCount=3456, elapsed 0:00:00.003231
 Eval IncreasingPrimeClue II cartesianCount=29445696 Exception
-Eval IncreasingPrimeClue III cartesianCount=4161, elapsed 0:00:00.003079
+Eval IncreasingPrimeClue III cartesianCount=4161, elapsed 0:00:00.003760
 solve: IncreasingPrimeClue(name=III,length=null,value: G - 2*b,
 	referrers=[b,G],
 	values={345}
 b={33..39,41..49,51..54,37 more,99}
-Eval IncreasingPrimeClue IV cartesianCount=221616, elapsed 0:00:00.192800
-Eval IncreasingPrimeClue V cartesianCount=32400, elapsed 0:00:00.031040
-Eval IncreasingPrimeClue VI cartesianCount=110592, elapsed 0:00:00.089544
-Eval IncreasingPrimeClue VII cartesianCount=423792, elapsed 0:00:00.362539
+Eval IncreasingPrimeClue IV cartesianCount=221616, elapsed 0:00:00.229780
+Eval IncreasingPrimeClue V cartesianCount=32400, elapsed 0:00:00.033200
+Eval IncreasingPrimeClue VI cartesianCount=110592, elapsed 0:00:00.108561
+Eval IncreasingPrimeClue VII cartesianCount=423792, elapsed 0:00:00.394984
 Eval IncreasingPrimeClue VIII cartesianCount=17514225 Exception
-Eval IncreasingPrimeClue IX cartesianCount=718029, elapsed 0:00:00.627917
+Eval IncreasingPrimeClue IX cartesianCount=718029, elapsed 0:00:00.713967
 solve: IncreasingPrimeClue(name=IX,length=null,value: b + E - G,
 	referrers=[b,E,G],
 	values={1955}
 E={2267..2269,2271..2279,2281..2288,141 more,2465}
 Eval IncreasingPrimeClue X cartesianCount=2872960 Exception
-Eval IncreasingPrimeEntry A cartesianCount=2304, elapsed 0:00:00.001720
-Eval IncreasingPrimeEntry B cartesianCount=2304, elapsed 0:00:00.001619
+Eval IncreasingPrimeEntry A cartesianCount=2304, elapsed 0:00:00.001944
+Eval IncreasingPrimeEntry B cartesianCount=2304, elapsed 0:00:00.001861
 solve: IncreasingPrimeEntry(name=B,length=2,value: ((VI+K)-A),
 	identities=[B[1]=c[0]],referrers=[c,VI,A,K],
 	values={53,54,63,64,73,74,83,84,93,94},
 	digits=[{5..9},{3,4}]
 A={952..959,961..969,971..973,24 more,999}
 K={111..119,121..129,131,132,24 more,158}
-Eval IncreasingPrimeEntry c cartesianCount=4288, elapsed 0:00:00.004414
+Eval IncreasingPrimeEntry c cartesianCount=4288, elapsed 0:00:00.005054
 solve: IncreasingPrimeEntry(name=c,length=4,value: ((X-h)-C),
 	identities=[c[0]=B[1],c[1]=D[2],c[2]=E[3]],referrers=[B,D,E,X,C,h],
 	values={3256..3259,3261..3269,3271..3277,136 more,3448},
 	digits=[{3},{2..4},{1..9},{1..9}]
 Eval IncreasingPrimeEntry b cartesianCount=57, elapsed 0:00:00.000074
-Eval IncreasingPrimeEntry b cartesianCount=9177, elapsed 0:00:00.006072
+Eval IncreasingPrimeEntry b cartesianCount=9177, elapsed 0:00:00.005820
 solve: IncreasingPrimeEntry(name=b,length=2,value: ((G-III)/2) | ((IX+G)-E),
 	identities=[b[0]=A[2],b[1]=D[0]],referrers=[A,D,III,IX,E,G],
 	values={37..39,47..49,57..59,67..69,77,87..89,97..99},
 	digits=[{3..9},{7..9}]
 E={2267..2269,2271..2279,2281..2288,137 more,2461}
-Eval IncreasingPrimeEntry D cartesianCount=324, elapsed 0:00:00.000278
+Eval IncreasingPrimeEntry D cartesianCount=324, elapsed 0:00:00.000301
 solve: IncreasingPrimeEntry(name=D,length=3,value: ((V+j)+H),
 	identities=[D[0]=b[1],D[1]=d[0],D[2]=c[1]],referrers=[b,d,c,V,j,H],
 	values={782..784,792..794,812..814,822..824,832..834,842..844,852,853,14 more,913},
 	digits=[{7..9},{1..9},{2..4}]
 H={12..14,18,19,21..24,28,29,31,32,38,39,41..44,48,31 more,99}
-Eval IncreasingPrimeEntry C cartesianCount=108, elapsed 0:00:00.000139
-Eval IncreasingPrimeEntry C cartesianCount=920178, elapsed 0:00:00.671382
-Eval IncreasingPrimeEntry C cartesianCount=20904, elapsed 0:00:00.015144
+Eval IncreasingPrimeEntry C cartesianCount=108, elapsed 0:00:00.000156
+Eval IncreasingPrimeEntry C cartesianCount=920178, elapsed 0:00:00.700586
+Eval IncreasingPrimeEntry C cartesianCount=20904, elapsed 0:00:00.013864
 solve: IncreasingPrimeEntry(name=C,length=2,value: (f-(I/j)) | (((II+h)+g)-e) | ((X-h)-c),
 	identities=[C[1]=a[1]],referrers=[a,I,II,X,c,e,f,g,h,j],
 	values={11..14,16..19,21..29,31..33,12 more,46},
 	digits=[{1..4},{1..9}]
-Eval IncreasingPrimeEntry d cartesianCount=4796, elapsed 0:00:00.004110
+Eval IncreasingPrimeEntry d cartesianCount=4796, elapsed 0:00:00.004446
 solve: IncreasingPrimeEntry(name=d,length=2,value: ((VII+K)-e),
 	identities=[d[0]=D[1],d[1]=E[2]],referrers=[D,E,VII,e,K],
 	values={11..19,21..29,31,32,61 more,99},
 	digits=[{1..9},{1..9}]
 e={1185..1189,1191..1199,1211..1216,84 more,1319}
-Eval IncreasingPrimeEntry a cartesianCount=23715, elapsed 0:00:00.018643
+Eval IncreasingPrimeEntry a cartesianCount=23715, elapsed 0:00:00.021556
 solve: IncreasingPrimeEntry(name=a,length=3,value: (F-(VIII+H)),
 	identities=[a[0]=A[1],a[1]=C[1],a[2]=E[0]],referrers=[A,C,E,VIII,F,H],
 	values={412,422,432,442,452,462,472,482,492,512,522,532,542,552,562,572,582,592,612,622,32 more,992},
 	digits=[{4..9},{1..9},{2}]
 F={1689,1691,1695,1696,1698,1699,1711,1715,1716,1718,1719,1721,1725,1726,1728,1729,1731,1735,1736,1738,234 more,2356}
 H={12,14,18,19,21,22,24,28,29,31,32,38,39,41,42,44,48,49,51,52,23 more,99}
-Eval IncreasingPrimeEntry E cartesianCount=1083, elapsed 0:00:00.001162
-Eval IncreasingPrimeEntry e cartesianCount=270144, elapsed 0:00:00.269843
-Eval IncreasingPrimeEntry e cartesianCount=3564, elapsed 0:00:00.003999
+Eval IncreasingPrimeEntry E cartesianCount=1083, elapsed 0:00:00.001528
+Eval IncreasingPrimeEntry e cartesianCount=270144, elapsed 0:00:00.298800
+Eval IncreasingPrimeEntry e cartesianCount=3564, elapsed 0:00:00.004309
 solve: IncreasingPrimeEntry(name=e,length=4,value: (((II+h)+g)-C) | ((VII+K)-d),
 	identities=[e[1]=F[0],e[2]=G[0],e[3]=J[0]],referrers=[F,G,J,II,VII,C,d,g,h,K],
 	values={1241..1249,1251..1259},
 	digits=[{1},{2},{4,5},{1..9}]
 h={898,899,911..919,921..929,63 more,999}
 d={25..29,31..39,41..46,39 more,89}
-Eval IncreasingPrimeEntry f cartesianCount=128, elapsed 0:00:00.000204
-Eval IncreasingPrimeEntry F cartesianCount=2236, elapsed 0:00:00.002221
+Eval IncreasingPrimeEntry f cartesianCount=128, elapsed 0:00:00.000246
+Eval IncreasingPrimeEntry F cartesianCount=2236, elapsed 0:00:00.002551
 solve: IncreasingPrimeEntry(name=F,length=4,value: ((VIII+H)+a),
 	identities=[F[0]=e[1],F[1]=g[0],F[2]=f[1],F[3]=h[0]],referrers=[e,g,f,h,VIII,a,H],
 	values={2118,2119,2128,2129,2138,2139,2148,2149,2158,2159,2168,2169,2178,2179,2188,2189,2198,2199,2218,2219,24 more,2349},
 	digits=[{2},{1..3},{1..9},{8,9}]
 H={12,21,22,31,32,41,42,51,52,61,62,71,72,81,82,91,92}
 a={762,772,782,792,812,822,832,842,852,862,872,882,892,912,922,932,942,952,962,972,2 more,992}
-Eval IncreasingPrimeEntry g cartesianCount=47808, elapsed 0:00:00.050462
+Eval IncreasingPrimeEntry g cartesianCount=47808, elapsed 0:00:00.046629
 solve: IncreasingPrimeEntry(name=g,length=2,value: ((C+e)-(II+h)),
 	identities=[g[0]=F[1],g[1]=G[1]],referrers=[F,G,II,C,e,h],
 	values={11..19,21..29,31,32,7 more,39},
 	digits=[{1..3},{1..9}]
 h={958,959,961..969,971..979,18 more,999}
-Eval IncreasingPrimeEntry h cartesianCount=15552, elapsed 0:00:00.014375
-Eval IncreasingPrimeEntry h cartesianCount=4992, elapsed 0:00:00.003114
+Eval IncreasingPrimeEntry h cartesianCount=15552, elapsed 0:00:00.014840
+Eval IncreasingPrimeEntry h cartesianCount=4992, elapsed 0:00:00.003700
 solve: IncreasingPrimeEntry(name=h,length=3,value: (((C+e)-g)-II) | (X-(C+c)),
 	identities=[h[0]=F[3],h[1]=H[0],h[2]=K[1]],referrers=[F,H,K,II,X,c,C,e,g],
 	values={961..966,971..976,981..986,991,992,4 more,996},
 	digits=[{9},{6..9},{1..6}]
 c={3259,3261..3269,3271..3279,3281,35 more,3329}
-Eval IncreasingPrimeEntry G cartesianCount=19, elapsed 0:00:00.000036
-Eval IncreasingPrimeEntry G cartesianCount=3564, elapsed 0:00:00.004666
-Eval IncreasingPrimeEntry G cartesianCount=2983, elapsed 0:00:00.003105
+Eval IncreasingPrimeEntry G cartesianCount=19, elapsed 0:00:00.000043
+Eval IncreasingPrimeEntry G cartesianCount=3564, elapsed 0:00:00.004340
+Eval IncreasingPrimeEntry G cartesianCount=2983, elapsed 0:00:00.004965
 solve: IncreasingPrimeEntry(name=G,length=3,value: (III+(2*b)) | ((IV-K)+J) | ((b+E)-IX),
 	identities=[G[0]=e[2],G[1]=g[1],G[2]=j[0]],referrers=[e,g,j,III,IV,IX,b,E,J,K],
 	values={421,423,441,443,461,463,481,483,521,523,541,543},
 	digits=[{4,5},{2,4,6,8},{1,3}]
 E={2267..2269,2271..2273,2277..2279,2281..2283,2287..2289,2291..2293,2297,2298,86 more,2461}
-Eval IncreasingPrimeEntry j cartesianCount=864, elapsed 0:00:00.000410
-Eval IncreasingPrimeEntry j cartesianCount=578, elapsed 0:00:00.000387
+Eval IncreasingPrimeEntry j cartesianCount=864, elapsed 0:00:00.000609
+Eval IncreasingPrimeEntry j cartesianCount=578, elapsed 0:00:00.000510
 solve: IncreasingPrimeEntry(name=j,length=2,value: (I/(f-C)) | ((D-H)-V),
 	identities=[j[0]=G[2],j[1]=K[0]],referrers=[G,K,I,V,C,D,f,H],
 	values={11},
@@ -339,478 +339,478 @@ C={12..14,16..19,21..24,26..29,31..34}
 f={26..29,31..34,36..39,41..44,46..49}
 D={782,792,812,822,832,842,852,862}
 H={12,22,42,52,62,72,82,92}
-Eval IncreasingPrimeEntry J cartesianCount=528, elapsed 0:00:00.000413
+Eval IncreasingPrimeEntry J cartesianCount=528, elapsed 0:00:00.000617
 solve: IncreasingPrimeEntry(name=J,length=2,value: (G-(IV-K)),
 	identities=[J[0]=e[3]],referrers=[e,IV,G,K],
 	values={12..19,21..29,31..33,60 more,99},
 	digits=[{1..9},{1..9}]
-Eval IncreasingPrimeClue II cartesianCount=221616, elapsed 0:00:00.217649
+Eval IncreasingPrimeClue II cartesianCount=221616, elapsed 0:00:00.265410
 solve: IncreasingPrimeClue(name=II,length=null,value: C + e - g - h,
 	referrers=[C,e,g,h],
 	values={255}
 g={12..19,21..29,31..33,6 more,39}
-Eval IncreasingPrimeClue III cartesianCount=228, elapsed 0:00:00.000194
+Eval IncreasingPrimeClue III cartesianCount=228, elapsed 0:00:00.000203
 solve: IncreasingPrimeClue(name=III,length=null,value: G - 2*b,
 	referrers=[b,G],
 	values={345}
 b={38,39,48,49,58,59,68,69,88,89,98,99}
-Eval IncreasingPrimeClue VIII cartesianCount=7744, elapsed 0:00:00.006653
+Eval IncreasingPrimeClue VIII cartesianCount=7744, elapsed 0:00:00.007535
 solve: IncreasingPrimeClue(name=VIII,length=null,value: F - a - H,
 	referrers=[a,F,H],
 	values={1265}
 F={2119,2129,2139,2149,2159,2169,2179,2189,2199,2219,2229,2239,2249,2259,2269,2279,2289,2299,2319,2329,2 more,2349}
-Eval IncreasingPrimeClue IX cartesianCount=15264, elapsed 0:00:00.012736
+Eval IncreasingPrimeClue IX cartesianCount=15264, elapsed 0:00:00.013860
 solve: IncreasingPrimeClue(name=IX,length=null,value: b + E - G,
 	referrers=[b,E,G],
 	values={1955}
 E={2277..2279,2287..2289,2297..2299,2317..2319,2327..2329,2337..2339,2347,2348,31 more,2459}
-Eval IncreasingPrimeClue X cartesianCount=25080, elapsed 0:00:00.022128
+Eval IncreasingPrimeClue X cartesianCount=25080, elapsed 0:00:00.026841
 solve: IncreasingPrimeClue(name=X,length=null,value: C + c + h,
 	referrers=[c,C,h],
 	values={4301}
 c={3271..3279,3281..3289,3291,3292,24 more,3328}
-Eval IncreasingPrimeClue VI cartesianCount=19360, elapsed 0:00:00.016910
-Eval IncreasingPrimeEntry A cartesianCount=440, elapsed 0:00:00.000368
+Eval IncreasingPrimeClue VI cartesianCount=19360, elapsed 0:00:00.022157
+Eval IncreasingPrimeEntry A cartesianCount=440, elapsed 0:00:00.000448
 solve: IncreasingPrimeEntry(name=A,length=3,value: ((VI+K)-B),
 	identities=[A[1]=a[0],A[2]=b[0]],referrers=[a,b,VI,B,K],
 	values={953..959,963..969,973..978,15 more,999},
 	digits=[{9},{5..9},{3..9}]
 K={111..118,121..128,131..134,20 more,158}
-Eval IncreasingPrimeEntry K cartesianCount=960, elapsed 0:00:00.000739
-Eval IncreasingPrimeEntry K cartesianCount=350, elapsed 0:00:00.000368
-Eval IncreasingPrimeEntry K cartesianCount=1062, elapsed 0:00:00.001141
+Eval IncreasingPrimeEntry K cartesianCount=960, elapsed 0:00:00.000856
+Eval IncreasingPrimeEntry K cartesianCount=350, elapsed 0:00:00.000415
+Eval IncreasingPrimeEntry K cartesianCount=1062, elapsed 0:00:00.001367
 solve: IncreasingPrimeEntry(name=K,length=3,value: (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII),
 	identities=[K[0]=j[1],K[1]=h[2]],referrers=[j,h,IV,VI,VII,A,B,d,e,G,J],
 	values={111..118,121..128,131..134,20 more,158},
 	digits=[{1},{1..5},{1..8}]
-Eval IncreasingPrimeEntry B cartesianCount=1400, elapsed 0:00:00.000995
+Eval IncreasingPrimeEntry B cartesianCount=1400, elapsed 0:00:00.001150
 solve: IncreasingPrimeEntry(name=B,length=2,value: ((VI+K)-A),
 	identities=[B[1]=c[0]],referrers=[c,VI,A,K],
 	values={53,63,73,83,93},
 	digits=[{5..9},{3}]
 K={111..117,121..127,131..136,15 more,157}
-Eval IncreasingPrimeClue IV cartesianCount=33600, elapsed 0:00:00.028842
-Eval IncreasingPrimeClue VII cartesianCount=37170, elapsed 0:00:00.031828
-Eval IncreasingPrimeEntry c cartesianCount=456, elapsed 0:00:00.000520
+Eval IncreasingPrimeClue IV cartesianCount=33600, elapsed 0:00:00.032223
+Eval IncreasingPrimeClue VII cartesianCount=37170, elapsed 0:00:00.039653
+Eval IncreasingPrimeEntry c cartesianCount=456, elapsed 0:00:00.000601
 solve: IncreasingPrimeEntry(name=c,length=4,value: ((X-h)-C),
 	identities=[c[0]=B[1],c[1]=D[2],c[2]=E[3]],referrers=[B,D,E,X,C,h],
 	values={3271..3279,3281..3289,3291,3292,24 more,3328},
 	digits=[{3},{2,3},{1,2,7..9},{1..9}]
 Eval IncreasingPrimeEntry b cartesianCount=12, elapsed 0:00:00.000034
-Eval IncreasingPrimeEntry b cartesianCount=612, elapsed 0:00:00.000408
+Eval IncreasingPrimeEntry b cartesianCount=612, elapsed 0:00:00.000489
 solve: IncreasingPrimeEntry(name=b,length=2,value: ((G-III)/2) | ((IX+G)-E),
 	identities=[b[0]=A[2],b[1]=D[0]],referrers=[A,D,III,IX,E,G],
 	values={38,39,48,49,58,59,68,69,88,89,98,99},
 	digits=[{3..6,8,9},{8,9}]
-Eval IncreasingPrimeClue V cartesianCount=64, elapsed 0:00:00.000092
-Eval IncreasingPrimeEntry H cartesianCount=8, elapsed 0:00:00.000017
-Eval IncreasingPrimeEntry H cartesianCount=484, elapsed 0:00:00.000327
+Eval IncreasingPrimeClue V cartesianCount=64, elapsed 0:00:00.000106
+Eval IncreasingPrimeEntry H cartesianCount=8, elapsed 0:00:00.000020
+Eval IncreasingPrimeEntry H cartesianCount=484, elapsed 0:00:00.000388
 solve: IncreasingPrimeEntry(name=H,length=2,value: (D-(V+j)) | ((F-a)-VIII),
 	identities=[H[0]=h[1]],referrers=[h,V,VIII,a,D,F,j],
 	values={62,72,82,92},
 	digits=[{6..9},{2}]
 D={832,842,852,862}
-Eval IncreasingPrimeEntry D cartesianCount=4, elapsed 0:00:00.000012
+Eval IncreasingPrimeEntry D cartesianCount=4, elapsed 0:00:00.000016
 solve: IncreasingPrimeEntry(name=D,length=3,value: ((V+j)+H),
 	identities=[D[0]=b[1],D[1]=d[0],D[2]=c[1]],referrers=[b,d,c,V,j,H],
 	values={832,842,852,862},
 	digits=[{8},{3..6},{2}]
-Eval IncreasingPrimeClue I cartesianCount=380, elapsed 0:00:00.000311
+Eval IncreasingPrimeClue I cartesianCount=380, elapsed 0:00:00.000409
 solve: IncreasingPrimeClue(name=I,length=null,value: j( f - C ),
 	referrers=[C,f,j],
 	values={165}
 f={27..29,31..34,36..39,41..44,46..49}
-Eval IncreasingPrimeEntry C cartesianCount=19, elapsed 0:00:00.000041
-Eval IncreasingPrimeEntry C cartesianCount=11232, elapsed 0:00:00.009924
-Eval IncreasingPrimeEntry C cartesianCount=1056, elapsed 0:00:00.000790
+Eval IncreasingPrimeEntry C cartesianCount=19, elapsed 0:00:00.000057
+Eval IncreasingPrimeEntry C cartesianCount=11232, elapsed 0:00:00.012234
+Eval IncreasingPrimeEntry C cartesianCount=1056, elapsed 0:00:00.001038
 solve: IncreasingPrimeEntry(name=C,length=2,value: (f-(I/j)) | (((II+h)+g)-e) | ((X-h)-c),
 	identities=[C[1]=a[1]],referrers=[a,I,II,X,c,e,f,g,h,j],
 	values={12..14,16..19,21..24,26..29,31..34},
 	digits=[{1..3},{1..4,6..9}]
-Eval IncreasingPrimeEntry d cartesianCount=630, elapsed 0:00:00.000640
+Eval IncreasingPrimeEntry d cartesianCount=630, elapsed 0:00:00.000770
 solve: IncreasingPrimeEntry(name=d,length=2,value: ((VII+K)-e),
 	identities=[d[0]=D[1],d[1]=E[2]],referrers=[D,E,VII,e,K],
 	values={31..39,41..49,51,52,16 more,69},
 	digits=[{3..6},{1..9}]
 K={111..117,121..127,131..136,13 more,155}
-Eval IncreasingPrimeEntry a cartesianCount=88, elapsed 0:00:00.000097
+Eval IncreasingPrimeEntry a cartesianCount=88, elapsed 0:00:00.000153
 solve: IncreasingPrimeEntry(name=a,length=3,value: (F-(VIII+H)),
 	identities=[a[0]=A[1],a[1]=C[1],a[2]=E[0]],referrers=[A,C,E,VIII,F,H],
 	values={762,772,782,792,812,822,832,842,862,872,882,892,912,922,932,942,962,972,982,992},
 	digits=[{7..9},{1..4,6..9},{2}]
-Eval IncreasingPrimeEntry e cartesianCount=11856, elapsed 0:00:00.009415
-Eval IncreasingPrimeEntry e cartesianCount=1188, elapsed 0:00:00.000949
-Eval IncreasingPrimeEntry E cartesianCount=144, elapsed 0:00:00.000158
+Eval IncreasingPrimeEntry e cartesianCount=11856, elapsed 0:00:00.011085
+Eval IncreasingPrimeEntry e cartesianCount=1188, elapsed 0:00:00.001136
+Eval IncreasingPrimeEntry E cartesianCount=144, elapsed 0:00:00.000202
 solve: IncreasingPrimeEntry(name=E,length=4,value: ((IX+G)-b),
 	identities=[E[0]=a[2],E[1]=f[0],E[2]=d[1],E[3]=c[2]],referrers=[a,f,d,c,IX,b,G],
 	values={2277..2279,2287..2289,2297..2299,2317..2319,2327..2329,2337..2339,2347,2348,31 more,2459},
 	digits=[{2},{2..4},{1..9},{7..9}]
-Eval IncreasingPrimeEntry f cartesianCount=19, elapsed 0:00:00.000030
+Eval IncreasingPrimeEntry f cartesianCount=19, elapsed 0:00:00.000043
 solve: IncreasingPrimeEntry(name=f,length=2,value: ((I/j)+C),
 	identities=[f[0]=E[1],f[1]=F[2]],referrers=[E,F,I,C,j],
 	values={27..29,31..34,36..39,41..44,46..49},
 	digits=[{2..4},{1..4,6..9}]
-Eval IncreasingPrimeEntry F cartesianCount=80, elapsed 0:00:00.000098
+Eval IncreasingPrimeEntry F cartesianCount=80, elapsed 0:00:00.000131
 solve: IncreasingPrimeEntry(name=F,length=4,value: ((VIII+H)+a),
 	identities=[F[0]=e[1],F[1]=g[0],F[2]=f[1],F[3]=h[0]],referrers=[e,g,f,h,VIII,a,H],
 	values={2119,2129,2139,2149,2169,2179,2189,2199,2219,2229,2239,2249,2269,2279,2289,2299,2319,2329,2339,2349},
 	digits=[{2},{1..3},{1..4,6..9},{9}]
-Eval IncreasingPrimeEntry g cartesianCount=8208, elapsed 0:00:00.006884
+Eval IncreasingPrimeEntry g cartesianCount=8208, elapsed 0:00:00.010530
 solve: IncreasingPrimeEntry(name=g,length=2,value: ((C+e)-(II+h)),
 	identities=[g[0]=F[1],g[1]=G[1]],referrers=[F,G,II,C,e,h],
 	values={12,14,16,18,22,24,26,28,32,34,36,38},
 	digits=[{1..3},{2,4,6,8}]
-Eval IncreasingPrimeEntry h cartesianCount=4104, elapsed 0:00:00.004042
-Eval IncreasingPrimeEntry h cartesianCount=836, elapsed 0:00:00.000719
+Eval IncreasingPrimeEntry h cartesianCount=4104, elapsed 0:00:00.004104
+Eval IncreasingPrimeEntry h cartesianCount=836, elapsed 0:00:00.000755
 solve: IncreasingPrimeEntry(name=h,length=3,value: (((C+e)-g)-II) | (X-(C+c)),
 	identities=[h[0]=F[3],h[1]=H[0],h[2]=K[1]],referrers=[F,H,K,II,X,c,C,e,g],
 	values={961..965,971..975,981..985,991..995},
 	digits=[{9},{6..9},{1..5}]
 c={3272..3279,3281..3289,3291..3293,23 more,3328}
-Eval IncreasingPrimeEntry G cartesianCount=12, elapsed 0:00:00.000033
-Eval IncreasingPrimeEntry G cartesianCount=2640, elapsed 0:00:00.002725
-Eval IncreasingPrimeEntry G cartesianCount=612, elapsed 0:00:00.000560
+Eval IncreasingPrimeEntry G cartesianCount=12, elapsed 0:00:00.000027
+Eval IncreasingPrimeEntry G cartesianCount=2640, elapsed 0:00:00.002698
+Eval IncreasingPrimeEntry G cartesianCount=612, elapsed 0:00:00.000555
 solve: IncreasingPrimeEntry(name=G,length=3,value: (III+(2*b)) | ((IV-K)+J) | ((b+E)-IX),
 	identities=[G[0]=e[2],G[1]=g[1],G[2]=j[0]],referrers=[e,g,j,III,IV,IX,b,E,J,K],
 	values={421,441,461,481,521,541},
 	digits=[{4,5},{2,4,6,8},{1}]
 J={12..17,21..27,31..37,42 more,97}
 E={2277,2278,2287,2288,2297,2298,2317,2318,2327,2328,2337,2338,2347,2348,2357,2358,2367,2368,2377,2378,14 more,2458}
-Eval IncreasingPrimeEntry j cartesianCount=361, elapsed 0:00:00.000188
-Eval IncreasingPrimeEntry j cartesianCount=16, elapsed 0:00:00.000018
-Eval IncreasingPrimeClue II cartesianCount=82080, elapsed 0:00:00.079426
-Eval IncreasingPrimeClue III cartesianCount=72, elapsed 0:00:00.000074
+Eval IncreasingPrimeEntry j cartesianCount=361, elapsed 0:00:00.000194
+Eval IncreasingPrimeEntry j cartesianCount=16, elapsed 0:00:00.000017
+Eval IncreasingPrimeClue II cartesianCount=82080, elapsed 0:00:00.086498
+Eval IncreasingPrimeClue III cartesianCount=72, elapsed 0:00:00.000116
 solve: IncreasingPrimeClue(name=III,length=null,value: G - 2*b,
 	referrers=[b,G],
 	values={345}
 b={38,48,58,68,88,98}
-Eval IncreasingPrimeClue VIII cartesianCount=1600, elapsed 0:00:00.001459
-Eval IncreasingPrimeClue IX cartesianCount=1224, elapsed 0:00:00.001106
+Eval IncreasingPrimeClue VIII cartesianCount=1600, elapsed 0:00:00.001656
+Eval IncreasingPrimeClue IX cartesianCount=1224, elapsed 0:00:00.001147
 solve: IncreasingPrimeClue(name=IX,length=null,value: b + E - G,
 	referrers=[b,E,G],
 	values={1955}
 E={2278,2288,2298,2318,2328,2338,2348,2358,2368,2378,2388,2398,2418,2428,2438,2448,2458}
-Eval IncreasingPrimeClue X cartesianCount=16340, elapsed 0:00:00.013924
-Eval IncreasingPrimeClue VI cartesianCount=5775, elapsed 0:00:00.004869
-Eval IncreasingPrimeEntry A cartesianCount=165, elapsed 0:00:00.000153
+Eval IncreasingPrimeClue X cartesianCount=16340, elapsed 0:00:00.014516
+Eval IncreasingPrimeClue VI cartesianCount=5775, elapsed 0:00:00.005248
+Eval IncreasingPrimeEntry A cartesianCount=165, elapsed 0:00:00.000152
 solve: IncreasingPrimeEntry(name=A,length=3,value: ((VI+K)-B),
 	identities=[A[1]=a[0],A[2]=b[0]],referrers=[a,b,VI,B,K],
 	values={973..976,978,979,983..986,988,989,993..996,998,999},
 	digits=[{9},{7..9},{3..6,8,9}]
 K={111..114,116,117,121..124,126,127,131..134,136,137,141,142,8 more,154}
-Eval IncreasingPrimeEntry J cartesianCount=168, elapsed 0:00:00.000141
+Eval IncreasingPrimeEntry J cartesianCount=168, elapsed 0:00:00.000156
 solve: IncreasingPrimeEntry(name=J,length=2,value: (G-(IV-K)),
 	identities=[J[0]=e[3]],referrers=[e,IV,G,K],
 	values={12..14,16,17,21..24,26,27,31..34,36,37,41..43,33 more,97},
 	digits=[{1..9},{1..4,6,7}]
-Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000265
-Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000111
-Eval IncreasingPrimeEntry K cartesianCount=648, elapsed 0:00:00.000810
+Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000255
+Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000288
+Eval IncreasingPrimeEntry K cartesianCount=648, elapsed 0:00:00.000984
 solve: IncreasingPrimeEntry(name=K,length=3,value: (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII),
 	identities=[K[0]=j[1],K[1]=h[2]],referrers=[j,h,IV,VI,VII,A,B,d,e,G,J],
 	values={111..114,116,117,121..124,126,127,131..134,136,137,141,142,8 more,154},
 	digits=[{1},{1..5},{1..4,6,7}]
-Eval IncreasingPrimeEntry B cartesianCount=504, elapsed 0:00:00.000410
-Eval IncreasingPrimeClue V cartesianCount=16, elapsed 0:00:00.000022
-Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000013
-Eval IncreasingPrimeEntry b cartesianCount=102, elapsed 0:00:00.000073
-Eval IncreasingPrimeEntry c cartesianCount=380, elapsed 0:00:00.000401
+Eval IncreasingPrimeEntry B cartesianCount=504, elapsed 0:00:00.000528
+Eval IncreasingPrimeClue V cartesianCount=16, elapsed 0:00:00.000029
+Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000016
+Eval IncreasingPrimeEntry b cartesianCount=102, elapsed 0:00:00.000104
+Eval IncreasingPrimeEntry c cartesianCount=380, elapsed 0:00:00.000479
 solve: IncreasingPrimeEntry(name=c,length=4,value: ((X-h)-C),
 	identities=[c[0]=B[1],c[1]=D[2],c[2]=E[3]],referrers=[B,D,E,X,C,h],
 	values={3272..3279,3281..3289,3291..3293,6 more,3299},
 	digits=[{3},{2},{7..9},{1..9}]
 h={971..975,981..985,991..995}
-Eval IncreasingPrimeEntry H cartesianCount=4, elapsed 0:00:00.000014
-Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000238
-Eval IncreasingPrimeClue I cartesianCount=361, elapsed 0:00:00.000297
-Eval IncreasingPrimeEntry D cartesianCount=4, elapsed 0:00:00.000011
-Eval IncreasingPrimeClue VII cartesianCount=18144, elapsed 0:00:00.015094
-Eval IncreasingPrimeClue IV cartesianCount=8904, elapsed 0:00:00.007681
-Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000561
-Eval IncreasingPrimeEntry C cartesianCount=19, elapsed 0:00:00.000045
-Eval IncreasingPrimeEntry C cartesianCount=3240, elapsed 0:00:00.003192
-Eval IncreasingPrimeEntry C cartesianCount=390, elapsed 0:00:00.000375
-Eval IncreasingPrimeEntry a cartesianCount=80, elapsed 0:00:00.000091
-Eval IncreasingPrimeEntry E cartesianCount=36, elapsed 0:00:00.000045
+Eval IncreasingPrimeEntry H cartesianCount=4, elapsed 0:00:00.000018
+Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000290
+Eval IncreasingPrimeClue I cartesianCount=361, elapsed 0:00:00.000388
+Eval IncreasingPrimeEntry D cartesianCount=4, elapsed 0:00:00.000013
+Eval IncreasingPrimeClue VII cartesianCount=18144, elapsed 0:00:00.018801
+Eval IncreasingPrimeClue IV cartesianCount=8904, elapsed 0:00:00.008750
+Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000532
+Eval IncreasingPrimeEntry C cartesianCount=19, elapsed 0:00:00.000050
+Eval IncreasingPrimeEntry C cartesianCount=3240, elapsed 0:00:00.003526
+Eval IncreasingPrimeEntry C cartesianCount=390, elapsed 0:00:00.000404
+Eval IncreasingPrimeEntry a cartesianCount=80, elapsed 0:00:00.000108
+Eval IncreasingPrimeEntry E cartesianCount=36, elapsed 0:00:00.000058
 solve: IncreasingPrimeEntry(name=E,length=4,value: ((IX+G)-b),
 	identities=[E[0]=a[2],E[1]=f[0],E[2]=d[1],E[3]=c[2]],referrers=[a,f,d,c,IX,b,G],
 	values={2278,2288,2298,2318,2328,2338,2348,2358,2368,2378,2388,2398,2418,2428,2438,2448,2458},
 	digits=[{2},{2..4},{1..9},{8}]
-Eval IncreasingPrimeEntry e cartesianCount=3420, elapsed 0:00:00.002902
-Eval IncreasingPrimeEntry e cartesianCount=1008, elapsed 0:00:00.000762
-Eval IncreasingPrimeEntry f cartesianCount=19, elapsed 0:00:00.000029
-Eval IncreasingPrimeEntry F cartesianCount=80, elapsed 0:00:00.000086
-Eval IncreasingPrimeEntry g cartesianCount=5130, elapsed 0:00:00.004459
-Eval IncreasingPrimeEntry h cartesianCount=4104, elapsed 0:00:00.003735
-Eval IncreasingPrimeEntry h cartesianCount=494, elapsed 0:00:00.000443
+Eval IncreasingPrimeEntry e cartesianCount=3420, elapsed 0:00:00.003317
+Eval IncreasingPrimeEntry e cartesianCount=1008, elapsed 0:00:00.000872
+Eval IncreasingPrimeEntry f cartesianCount=19, elapsed 0:00:00.000057
+Eval IncreasingPrimeEntry F cartesianCount=80, elapsed 0:00:00.000114
+Eval IncreasingPrimeEntry g cartesianCount=5130, elapsed 0:00:00.005453
+Eval IncreasingPrimeEntry h cartesianCount=4104, elapsed 0:00:00.004119
+Eval IncreasingPrimeEntry h cartesianCount=494, elapsed 0:00:00.000522
 solve: IncreasingPrimeEntry(name=h,length=3,value: (((C+e)-g)-II) | (X-(C+c)),
 	identities=[h[0]=F[3],h[1]=H[0],h[2]=K[1]],referrers=[F,H,K,II,X,c,C,e,g],
 	values={971..975,981..985,991..995},
 	digits=[{9},{7..9},{1..5}]
-Eval IncreasingPrimeEntry G cartesianCount=6, elapsed 0:00:00.000016
-Eval IncreasingPrimeEntry G cartesianCount=1484, elapsed 0:00:00.001574
-Eval IncreasingPrimeEntry G cartesianCount=102, elapsed 0:00:00.000103
-Eval IncreasingPrimeClue III cartesianCount=36, elapsed 0:00:00.000035
-Eval IncreasingPrimeClue IX cartesianCount=612, elapsed 0:00:00.000538
-Eval IncreasingPrimeClue VI cartesianCount=2520, elapsed 0:00:00.002154
-Eval IncreasingPrimeEntry j cartesianCount=361, elapsed 0:00:00.000195
-Eval IncreasingPrimeEntry j cartesianCount=16, elapsed 0:00:00.000017
-Eval IncreasingPrimeEntry A cartesianCount=140, elapsed 0:00:00.000133
-Eval IncreasingPrimeEntry J cartesianCount=168, elapsed 0:00:00.000144
-Eval IncreasingPrimeEntry B cartesianCount=504, elapsed 0:00:00.000457
-Eval IncreasingPrimeClue X cartesianCount=7410, elapsed 0:00:00.006321
-Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000256
-Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000113
-Eval IncreasingPrimeEntry K cartesianCount=648, elapsed 0:00:00.000742
-Eval IncreasingPrimeClue II cartesianCount=61560, elapsed 0:00:00.062151
-Eval IncreasingPrimeEntry c cartesianCount=285, elapsed 0:00:00.000277
+Eval IncreasingPrimeEntry G cartesianCount=6, elapsed 0:00:00.000019
+Eval IncreasingPrimeEntry G cartesianCount=1484, elapsed 0:00:00.001881
+Eval IncreasingPrimeEntry G cartesianCount=102, elapsed 0:00:00.000122
+Eval IncreasingPrimeClue III cartesianCount=36, elapsed 0:00:00.000048
+Eval IncreasingPrimeClue IX cartesianCount=612, elapsed 0:00:00.000645
+Eval IncreasingPrimeClue VI cartesianCount=2520, elapsed 0:00:00.002577
+Eval IncreasingPrimeEntry j cartesianCount=361, elapsed 0:00:00.000231
+Eval IncreasingPrimeEntry j cartesianCount=16, elapsed 0:00:00.000021
+Eval IncreasingPrimeEntry A cartesianCount=140, elapsed 0:00:00.000290
+Eval IncreasingPrimeEntry J cartesianCount=168, elapsed 0:00:00.000161
+Eval IncreasingPrimeEntry B cartesianCount=504, elapsed 0:00:00.000434
+Eval IncreasingPrimeClue X cartesianCount=7410, elapsed 0:00:00.007046
+Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000263
+Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000112
+Eval IncreasingPrimeEntry K cartesianCount=648, elapsed 0:00:00.000738
+Eval IncreasingPrimeClue II cartesianCount=61560, elapsed 0:00:00.070218
+Eval IncreasingPrimeEntry c cartesianCount=285, elapsed 0:00:00.000291
 solve: IncreasingPrimeEntry(name=c,length=4,value: ((X-h)-C),
 	identities=[c[0]=B[1],c[1]=D[2],c[2]=E[3]],referrers=[B,D,E,X,C,h],
 	values={3281..3289},
 	digits=[{3},{2},{8},{1..9}]
 C={17..19,21..24,26..29,31..34}
 h={981..985,991..995}
-Eval IncreasingPrimeEntry a cartesianCount=80, elapsed 0:00:00.000099
-Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000510
-Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000016
+Eval IncreasingPrimeEntry a cartesianCount=80, elapsed 0:00:00.000104
+Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000531
+Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000020
 Eval IncreasingPrimeEntry b cartesianCount=102, elapsed 0:00:00.000086
 Eval IncreasingPrimeEntry F cartesianCount=80, elapsed 0:00:00.000095
 Eval IncreasingPrimeEntry H cartesianCount=4, elapsed 0:00:00.000012
-Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000248
+Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000265
 solve: IncreasingPrimeEntry(name=H,length=2,value: (D-(V+j)) | ((F-a)-VIII),
 	identities=[H[0]=h[1]],referrers=[h,V,VIII,a,D,F,j],
 	values={72,82,92},
 	digits=[{7..9},{2}]
 D={842,852,862}
-Eval IncreasingPrimeEntry C cartesianCount=19, elapsed 0:00:00.000038
-Eval IncreasingPrimeEntry C cartesianCount=2160, elapsed 0:00:00.003068
-Eval IncreasingPrimeEntry C cartesianCount=90, elapsed 0:00:00.000350
+Eval IncreasingPrimeEntry C cartesianCount=19, elapsed 0:00:00.000045
+Eval IncreasingPrimeEntry C cartesianCount=2160, elapsed 0:00:00.002243
+Eval IncreasingPrimeEntry C cartesianCount=90, elapsed 0:00:00.000120
 solve: IncreasingPrimeEntry(name=C,length=2,value: (f-(I/j)) | (((II+h)+g)-e) | ((X-h)-c),
 	identities=[C[1]=a[1]],referrers=[a,I,II,X,c,e,f,g,h,j],
 	values={17..19,21..24,26..29,31..34},
 	digits=[{1..3},{1..4,6..9}]
 f={32..34,36..39,41..44,46..49}
-Eval IncreasingPrimeEntry e cartesianCount=1800, elapsed 0:00:00.002593
-Eval IncreasingPrimeEntry e cartesianCount=1008, elapsed 0:00:00.000816
-Eval IncreasingPrimeEntry g cartesianCount=2700, elapsed 0:00:00.002551
-Eval IncreasingPrimeEntry B cartesianCount=504, elapsed 0:00:00.000427
-Eval IncreasingPrimeEntry D cartesianCount=3, elapsed 0:00:00.000013
+Eval IncreasingPrimeEntry e cartesianCount=1800, elapsed 0:00:00.002121
+Eval IncreasingPrimeEntry e cartesianCount=1008, elapsed 0:00:00.000896
+Eval IncreasingPrimeEntry g cartesianCount=2700, elapsed 0:00:00.002875
+Eval IncreasingPrimeEntry B cartesianCount=504, elapsed 0:00:00.000557
+Eval IncreasingPrimeEntry D cartesianCount=3, elapsed 0:00:00.000014
 solve: IncreasingPrimeEntry(name=D,length=3,value: ((V+j)+H),
 	identities=[D[0]=b[1],D[1]=d[0],D[2]=c[1]],referrers=[b,d,c,V,j,H],
 	values={842,852,862},
 	digits=[{8},{4..6},{2}]
-Eval IncreasingPrimeEntry E cartesianCount=36, elapsed 0:00:00.000047
-Eval IncreasingPrimeClue X cartesianCount=1350, elapsed 0:00:00.001226
-Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.002686
-Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000141
+Eval IncreasingPrimeEntry E cartesianCount=36, elapsed 0:00:00.000048
+Eval IncreasingPrimeClue X cartesianCount=1350, elapsed 0:00:00.001108
+Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.002440
+Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000120
 solve: IncreasingPrimeEntry(name=h,length=3,value: (((C+e)-g)-II) | (X-(C+c)),
 	identities=[h[0]=F[3],h[1]=H[0],h[2]=K[1]],referrers=[F,H,K,II,X,c,C,e,g],
 	values={981..985,991..995},
 	digits=[{9},{8,9},{1..5}]
-Eval IncreasingPrimeClue I cartesianCount=225, elapsed 0:00:00.000211
-Eval IncreasingPrimeClue II cartesianCount=32400, elapsed 0:00:00.036080
-Eval IncreasingPrimeEntry c cartesianCount=150, elapsed 0:00:00.000146
-Eval IncreasingPrimeEntry f cartesianCount=15, elapsed 0:00:00.000027
+Eval IncreasingPrimeClue I cartesianCount=225, elapsed 0:00:00.000170
+Eval IncreasingPrimeClue II cartesianCount=32400, elapsed 0:00:00.030668
+Eval IncreasingPrimeEntry c cartesianCount=150, elapsed 0:00:00.000160
+Eval IncreasingPrimeEntry f cartesianCount=15, elapsed 0:00:00.000028
 solve: IncreasingPrimeEntry(name=f,length=2,value: ((I/j)+C),
 	identities=[f[0]=E[1],f[1]=F[2]],referrers=[E,F,I,C,j],
 	values={32..34,36..39,41..44,46..49},
 	digits=[{3,4},{1..4,6..9}]
-Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000146
-Eval IncreasingPrimeEntry j cartesianCount=9, elapsed 0:00:00.000014
-Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000256
-Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000118
-Eval IncreasingPrimeEntry K cartesianCount=648, elapsed 0:00:00.001020
-Eval IncreasingPrimeClue V cartesianCount=9, elapsed 0:00:00.000029
-Eval IncreasingPrimeClue VIII cartesianCount=1200, elapsed 0:00:00.001169
-Eval IncreasingPrimeEntry a cartesianCount=60, elapsed 0:00:00.000084
-Eval IncreasingPrimeEntry F cartesianCount=60, elapsed 0:00:00.000077
-Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000014
-Eval IncreasingPrimeEntry b cartesianCount=102, elapsed 0:00:00.000085
-Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000496
+Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000155
+Eval IncreasingPrimeEntry j cartesianCount=9, elapsed 0:00:00.000016
+Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000280
+Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000153
+Eval IncreasingPrimeEntry K cartesianCount=648, elapsed 0:00:00.000926
+Eval IncreasingPrimeClue V cartesianCount=9, elapsed 0:00:00.000025
+Eval IncreasingPrimeClue VIII cartesianCount=1200, elapsed 0:00:00.001261
+Eval IncreasingPrimeEntry a cartesianCount=60, elapsed 0:00:00.000088
+Eval IncreasingPrimeEntry F cartesianCount=60, elapsed 0:00:00.000085
+Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000016
+Eval IncreasingPrimeEntry b cartesianCount=102, elapsed 0:00:00.000089
+Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000539
 solve: IncreasingPrimeEntry(name=d,length=2,value: ((VII+K)-e),
 	identities=[d[0]=D[1],d[1]=E[2]],referrers=[D,E,VII,e,K],
 	values={41..49,51..59,61,62,7 more,69},
 	digits=[{4..6},{1..9}]
-Eval IncreasingPrimeEntry H cartesianCount=3, elapsed 0:00:00.000016
-Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000270
+Eval IncreasingPrimeEntry H cartesianCount=3, elapsed 0:00:00.000015
+Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000261
 solve: IncreasingPrimeEntry(name=H,length=2,value: (D-(V+j)) | ((F-a)-VIII),
 	identities=[H[0]=h[1]],referrers=[h,V,VIII,a,D,F,j],
 	values={82,92},
 	digits=[{8,9},{2}]
 D={852,862}
-Eval IncreasingPrimeEntry C cartesianCount=15, elapsed 0:00:00.000037
-Eval IncreasingPrimeEntry C cartesianCount=2160, elapsed 0:00:00.002326
-Eval IncreasingPrimeEntry C cartesianCount=90, elapsed 0:00:00.000125
-Eval IncreasingPrimeClue X cartesianCount=1350, elapsed 0:00:00.001324
-Eval IncreasingPrimeEntry e cartesianCount=1800, elapsed 0:00:00.001851
-Eval IncreasingPrimeEntry e cartesianCount=756, elapsed 0:00:00.000662
-Eval IncreasingPrimeEntry g cartesianCount=2700, elapsed 0:00:00.002916
-Eval IncreasingPrimeEntry E cartesianCount=36, elapsed 0:00:00.000052
+Eval IncreasingPrimeEntry C cartesianCount=15, elapsed 0:00:00.000041
+Eval IncreasingPrimeEntry C cartesianCount=2160, elapsed 0:00:00.002496
+Eval IncreasingPrimeEntry C cartesianCount=90, elapsed 0:00:00.000127
+Eval IncreasingPrimeClue X cartesianCount=1350, elapsed 0:00:00.001406
+Eval IncreasingPrimeEntry e cartesianCount=1800, elapsed 0:00:00.002712
+Eval IncreasingPrimeEntry e cartesianCount=756, elapsed 0:00:00.000749
+Eval IncreasingPrimeEntry g cartesianCount=2700, elapsed 0:00:00.002982
+Eval IncreasingPrimeEntry E cartesianCount=36, elapsed 0:00:00.000058
 solve: IncreasingPrimeEntry(name=E,length=4,value: ((IX+G)-b),
 	identities=[E[0]=a[2],E[1]=f[0],E[2]=d[1],E[3]=c[2]],referrers=[a,f,d,c,IX,b,G],
 	values={2318,2328,2338,2348,2358,2368,2378,2388,2398,2418,2428,2438,2448,2458},
 	digits=[{2},{3,4},{1..9},{8}]
-Eval IncreasingPrimeClue I cartesianCount=225, elapsed 0:00:00.000229
-Eval IncreasingPrimeEntry D cartesianCount=2, elapsed 0:00:00.000009
+Eval IncreasingPrimeClue I cartesianCount=225, elapsed 0:00:00.000222
+Eval IncreasingPrimeEntry D cartesianCount=2, elapsed 0:00:00.000012
 solve: IncreasingPrimeEntry(name=D,length=3,value: ((V+j)+H),
 	identities=[D[0]=b[1],D[1]=d[0],D[2]=c[1]],referrers=[b,d,c,V,j,H],
 	values={852,862},
 	digits=[{8},{5,6},{2}]
-Eval IncreasingPrimeClue VII cartesianCount=13608, elapsed 0:00:00.013382
-Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000277
-Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000121
-Eval IncreasingPrimeEntry K cartesianCount=486, elapsed 0:00:00.000679
-Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.002862
-Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000158
-Eval IncreasingPrimeClue V cartesianCount=4, elapsed 0:00:00.000012
-Eval IncreasingPrimeClue VIII cartesianCount=800, elapsed 0:00:00.000797
-Eval IncreasingPrimeEntry a cartesianCount=40, elapsed 0:00:00.000061
-Eval IncreasingPrimeEntry F cartesianCount=40, elapsed 0:00:00.000056
-Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000142
-Eval IncreasingPrimeEntry j cartesianCount=4, elapsed 0:00:00.000010
-Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000014
-Eval IncreasingPrimeEntry b cartesianCount=84, elapsed 0:00:00.000074
-Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000485
+Eval IncreasingPrimeClue VII cartesianCount=13608, elapsed 0:00:00.013948
+Eval IncreasingPrimeEntry K cartesianCount=318, elapsed 0:00:00.000291
+Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000126
+Eval IncreasingPrimeEntry K cartesianCount=486, elapsed 0:00:00.000732
+Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.003004
+Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000157
+Eval IncreasingPrimeClue V cartesianCount=4, elapsed 0:00:00.000013
+Eval IncreasingPrimeClue VIII cartesianCount=800, elapsed 0:00:00.000807
+Eval IncreasingPrimeEntry a cartesianCount=40, elapsed 0:00:00.000067
+Eval IncreasingPrimeEntry F cartesianCount=40, elapsed 0:00:00.000057
+Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000143
+Eval IncreasingPrimeEntry j cartesianCount=4, elapsed 0:00:00.000012
+Eval IncreasingPrimeEntry b cartesianCount=6, elapsed 0:00:00.000020
+Eval IncreasingPrimeEntry b cartesianCount=84, elapsed 0:00:00.000094
+Eval IncreasingPrimeEntry d cartesianCount=504, elapsed 0:00:00.000471
 solve: IncreasingPrimeEntry(name=d,length=2,value: ((VII+K)-e),
 	identities=[d[0]=D[1],d[1]=E[2]],referrers=[D,E,VII,e,K],
 	values={51..59,61..69},
 	digits=[{5,6},{1..9}]
 K={121..124,126,127,131..134,136,137,141..144,146,147,151,152,2 more,154}
-Eval IncreasingPrimeEntry c cartesianCount=150, elapsed 0:00:00.000128
-Eval IncreasingPrimeEntry H cartesianCount=2, elapsed 0:00:00.000010
-Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000231
-Eval IncreasingPrimeEntry f cartesianCount=15, elapsed 0:00:00.000024
-Eval IncreasingPrimeClue IX cartesianCount=504, elapsed 0:00:00.000501
+Eval IncreasingPrimeEntry c cartesianCount=150, elapsed 0:00:00.000136
+Eval IncreasingPrimeEntry H cartesianCount=2, elapsed 0:00:00.000019
+Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000267
+Eval IncreasingPrimeEntry f cartesianCount=15, elapsed 0:00:00.000034
+Eval IncreasingPrimeClue IX cartesianCount=504, elapsed 0:00:00.000508
 Eval IncreasingPrimeEntry G cartesianCount=6, elapsed 0:00:00.000016
-Eval IncreasingPrimeEntry G cartesianCount=1166, elapsed 0:00:00.001464
-Eval IncreasingPrimeEntry G cartesianCount=84, elapsed 0:00:00.000100
+Eval IncreasingPrimeEntry G cartesianCount=1166, elapsed 0:00:00.001477
+Eval IncreasingPrimeEntry G cartesianCount=84, elapsed 0:00:00.000108
 solve: IncreasingPrimeEntry(name=G,length=3,value: (III+(2*b)) | ((IV-K)+J) | ((b+E)-IX),
 	identities=[G[0]=e[2],G[1]=g[1],G[2]=j[0]],referrers=[e,g,j,III,IV,IX,b,E,J,K],
 	values={421,441,461,481,521},
 	digits=[{4,5},{2,4,6,8},{1}]
 J={12..14,16,17,21..24,26,27,31..34,36,37,41..43,31 more,97}
-Eval IncreasingPrimeEntry D cartesianCount=2, elapsed 0:00:00.000013
-Eval IncreasingPrimeEntry E cartesianCount=30, elapsed 0:00:00.000038
+Eval IncreasingPrimeEntry D cartesianCount=2, elapsed 0:00:00.000011
+Eval IncreasingPrimeEntry E cartesianCount=30, elapsed 0:00:00.000043
 solve: IncreasingPrimeEntry(name=E,length=4,value: ((IX+G)-b),
 	identities=[E[0]=a[2],E[1]=f[0],E[2]=d[1],E[3]=c[2]],referrers=[a,f,d,c,IX,b,G],
 	values={2318,2328,2338,2348,2358,2368,2378,2388,2398,2418,2428,2438},
 	digits=[{2},{3,4},{1..9},{8}]
-Eval IncreasingPrimeClue VII cartesianCount=7128, elapsed 0:00:00.006016
-Eval IncreasingPrimeEntry e cartesianCount=1800, elapsed 0:00:00.001661
-Eval IncreasingPrimeEntry e cartesianCount=396, elapsed 0:00:00.000354
-Eval IncreasingPrimeEntry K cartesianCount=255, elapsed 0:00:00.000195
-Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000090
-Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000413
+Eval IncreasingPrimeClue VII cartesianCount=7128, elapsed 0:00:00.007710
+Eval IncreasingPrimeEntry e cartesianCount=1800, elapsed 0:00:00.001969
+Eval IncreasingPrimeEntry e cartesianCount=396, elapsed 0:00:00.000413
+Eval IncreasingPrimeEntry K cartesianCount=255, elapsed 0:00:00.000228
+Eval IncreasingPrimeEntry K cartesianCount=90, elapsed 0:00:00.000111
+Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000488
 solve: IncreasingPrimeEntry(name=K,length=3,value: (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII),
 	identities=[K[0]=j[1],K[1]=h[2]],referrers=[j,h,IV,VI,VII,A,B,d,e,G,J],
 	values={121..124,126,127,131..134,136,137,141..144,146,147,151,152,2 more,154},
 	digits=[{1},{2..5},{1..4,6,7}]
 B={63,73,83,93}
-Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000126
-Eval IncreasingPrimeEntry j cartesianCount=4, elapsed 0:00:00.000008
-Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.002694
-Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000137
+Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000155
+Eval IncreasingPrimeEntry j cartesianCount=4, elapsed 0:00:00.000013
+Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.002849
+Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000146
 solve: IncreasingPrimeEntry(name=h,length=3,value: (((C+e)-g)-II) | (X-(C+c)),
 	identities=[h[0]=F[3],h[1]=H[0],h[2]=K[1]],referrers=[F,H,K,II,X,c,C,e,g],
 	values={982..985,992..995},
 	digits=[{9},{8,9},{2..5}]
-Eval IncreasingPrimeClue IV cartesianCount=5610, elapsed 0:00:00.005001
-Eval IncreasingPrimeClue VI cartesianCount=1584, elapsed 0:00:00.001523
-Eval IncreasingPrimeEntry A cartesianCount=88, elapsed 0:00:00.000082
-Eval IncreasingPrimeEntry B cartesianCount=396, elapsed 0:00:00.000316
+Eval IncreasingPrimeClue IV cartesianCount=5610, elapsed 0:00:00.004804
+Eval IncreasingPrimeClue VI cartesianCount=1584, elapsed 0:00:00.001939
+Eval IncreasingPrimeEntry A cartesianCount=88, elapsed 0:00:00.000092
+Eval IncreasingPrimeEntry B cartesianCount=396, elapsed 0:00:00.000534
 solve: IncreasingPrimeEntry(name=B,length=2,value: ((VI+K)-A),
 	identities=[B[1]=c[0]],referrers=[c,VI,A,K],
 	values={63,73,83,93},
 	digits=[{6..9},{3}]
-Eval IncreasingPrimeEntry d cartesianCount=396, elapsed 0:00:00.000295
-Eval IncreasingPrimeEntry J cartesianCount=110, elapsed 0:00:00.000098
-Eval IncreasingPrimeEntry g cartesianCount=2160, elapsed 0:00:00.002048
-Eval IncreasingPrimeClue III cartesianCount=30, elapsed 0:00:00.000031
+Eval IncreasingPrimeEntry d cartesianCount=396, elapsed 0:00:00.000344
+Eval IncreasingPrimeEntry J cartesianCount=110, elapsed 0:00:00.000104
+Eval IncreasingPrimeEntry g cartesianCount=2160, elapsed 0:00:00.001970
+Eval IncreasingPrimeClue III cartesianCount=30, elapsed 0:00:00.000030
 solve: IncreasingPrimeClue(name=III,length=null,value: G - 2*b,
 	referrers=[b,G],
 	values={345}
 b={38,48,58,68,88}
-Eval IncreasingPrimeClue IX cartesianCount=300, elapsed 0:00:00.000258
-Eval IncreasingPrimeEntry b cartesianCount=5, elapsed 0:00:00.000013
-Eval IncreasingPrimeEntry b cartesianCount=60, elapsed 0:00:00.000048
+Eval IncreasingPrimeClue IX cartesianCount=300, elapsed 0:00:00.000315
+Eval IncreasingPrimeEntry b cartesianCount=5, elapsed 0:00:00.000014
+Eval IncreasingPrimeEntry b cartesianCount=60, elapsed 0:00:00.000065
 solve: IncreasingPrimeEntry(name=b,length=2,value: ((G-III)/2) | ((IX+G)-E),
 	identities=[b[0]=A[2],b[1]=D[0]],referrers=[A,D,III,IX,E,G],
 	values={38,48,58,68,88},
 	digits=[{3..6,8},{8}]
-Eval IncreasingPrimeEntry G cartesianCount=5, elapsed 0:00:00.000012
-Eval IncreasingPrimeEntry G cartesianCount=1122, elapsed 0:00:00.001217
-Eval IncreasingPrimeEntry G cartesianCount=60, elapsed 0:00:00.000067
-Eval IncreasingPrimeEntry a cartesianCount=40, elapsed 0:00:00.000054
-Eval IncreasingPrimeEntry f cartesianCount=15, elapsed 0:00:00.000022
-Eval IncreasingPrimeEntry c cartesianCount=120, elapsed 0:00:00.000096
-Eval IncreasingPrimeEntry K cartesianCount=255, elapsed 0:00:00.000198
-Eval IncreasingPrimeEntry K cartesianCount=72, elapsed 0:00:00.000085
-Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000410
-Eval IncreasingPrimeClue VII cartesianCount=7128, elapsed 0:00:00.005907
-Eval IncreasingPrimeEntry e cartesianCount=1440, elapsed 0:00:00.001516
-Eval IncreasingPrimeEntry e cartesianCount=396, elapsed 0:00:00.000340
-Eval IncreasingPrimeEntry F cartesianCount=40, elapsed 0:00:00.000053
+Eval IncreasingPrimeEntry G cartesianCount=5, elapsed 0:00:00.000018
+Eval IncreasingPrimeEntry G cartesianCount=1122, elapsed 0:00:00.001301
+Eval IncreasingPrimeEntry G cartesianCount=60, elapsed 0:00:00.000092
+Eval IncreasingPrimeEntry a cartesianCount=40, elapsed 0:00:00.000062
+Eval IncreasingPrimeEntry f cartesianCount=15, elapsed 0:00:00.000029
+Eval IncreasingPrimeEntry c cartesianCount=120, elapsed 0:00:00.000091
+Eval IncreasingPrimeEntry K cartesianCount=255, elapsed 0:00:00.000195
+Eval IncreasingPrimeEntry K cartesianCount=72, elapsed 0:00:00.000081
+Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000370
+Eval IncreasingPrimeClue VII cartesianCount=7128, elapsed 0:00:00.005607
+Eval IncreasingPrimeEntry e cartesianCount=1440, elapsed 0:00:00.001302
+Eval IncreasingPrimeEntry e cartesianCount=396, elapsed 0:00:00.000411
+Eval IncreasingPrimeEntry F cartesianCount=40, elapsed 0:00:00.000105
 Eval IncreasingPrimeEntry H cartesianCount=2, elapsed 0:00:00.000009
-Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000228
-Eval IncreasingPrimeClue II cartesianCount=25920, elapsed 0:00:00.025539
-Eval IncreasingPrimeClue X cartesianCount=1080, elapsed 0:00:00.000925
-Eval IncreasingPrimeEntry C cartesianCount=15, elapsed 0:00:00.000037
-Eval IncreasingPrimeEntry C cartesianCount=1728, elapsed 0:00:00.001655
-Eval IncreasingPrimeEntry C cartesianCount=72, elapsed 0:00:00.000098
-Eval IncreasingPrimeClue VI cartesianCount=1584, elapsed 0:00:00.001371
-Eval IncreasingPrimeEntry A cartesianCount=88, elapsed 0:00:00.000080
+Eval IncreasingPrimeEntry H cartesianCount=400, elapsed 0:00:00.000294
+Eval IncreasingPrimeClue II cartesianCount=25920, elapsed 0:00:00.027133
+Eval IncreasingPrimeClue X cartesianCount=1080, elapsed 0:00:00.001073
+Eval IncreasingPrimeEntry C cartesianCount=15, elapsed 0:00:00.000046
+Eval IncreasingPrimeEntry C cartesianCount=1728, elapsed 0:00:00.001848
+Eval IncreasingPrimeEntry C cartesianCount=72, elapsed 0:00:00.000112
+Eval IncreasingPrimeClue VI cartesianCount=1584, elapsed 0:00:00.001517
+Eval IncreasingPrimeEntry A cartesianCount=88, elapsed 0:00:00.000092
 solve: IncreasingPrimeEntry(name=A,length=3,value: ((VI+K)-B),
 	identities=[A[1]=a[0],A[2]=b[0]],referrers=[a,b,VI,B,K],
 	values={973..976,978,983..986,988,993..996,998},
 	digits=[{9},{7..9},{3..6,8}]
 K={121..124,126,131..134,136,141..144,146,151..154}
-Eval IncreasingPrimeEntry D cartesianCount=2, elapsed 0:00:00.000010
-Eval IncreasingPrimeClue III cartesianCount=25, elapsed 0:00:00.000024
-Eval IncreasingPrimeEntry E cartesianCount=25, elapsed 0:00:00.000031
-Eval IncreasingPrimeClue IX cartesianCount=300, elapsed 0:00:00.000273
-Eval IncreasingPrimeEntry a cartesianCount=40, elapsed 0:00:00.000054
-Eval IncreasingPrimeEntry b cartesianCount=5, elapsed 0:00:00.000010
-Eval IncreasingPrimeEntry b cartesianCount=60, elapsed 0:00:00.000053
-Eval IncreasingPrimeClue VI cartesianCount=1140, elapsed 0:00:00.000954
-Eval IncreasingPrimeEntry B cartesianCount=285, elapsed 0:00:00.000264
-Eval IncreasingPrimeEntry K cartesianCount=255, elapsed 0:00:00.000184
-Eval IncreasingPrimeEntry K cartesianCount=60, elapsed 0:00:00.000075
-Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000384
+Eval IncreasingPrimeEntry D cartesianCount=2, elapsed 0:00:00.000021
+Eval IncreasingPrimeClue III cartesianCount=25, elapsed 0:00:00.000038
+Eval IncreasingPrimeEntry E cartesianCount=25, elapsed 0:00:00.000060
+Eval IncreasingPrimeClue IX cartesianCount=300, elapsed 0:00:00.000513
+Eval IncreasingPrimeEntry a cartesianCount=40, elapsed 0:00:00.000126
+Eval IncreasingPrimeEntry b cartesianCount=5, elapsed 0:00:00.000026
+Eval IncreasingPrimeEntry b cartesianCount=60, elapsed 0:00:00.000120
+Eval IncreasingPrimeClue VI cartesianCount=1140, elapsed 0:00:00.001568
+Eval IncreasingPrimeEntry B cartesianCount=285, elapsed 0:00:00.000266
+Eval IncreasingPrimeEntry K cartesianCount=255, elapsed 0:00:00.000215
+Eval IncreasingPrimeEntry K cartesianCount=60, elapsed 0:00:00.000090
+Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000480
 solve: IncreasingPrimeEntry(name=K,length=3,value: (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII),
 	identities=[K[0]=j[1],K[1]=h[2]],referrers=[j,h,IV,VI,VII,A,B,d,e,G,J],
 	values={121..124,126,131..134,136,141..144,146,151..154},
 	digits=[{1},{2..5},{1..4,6}]
 J={12..14,16,21..24,26,31..34,36,41..44,46,51,23 more,96}
-Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000191
-Eval IncreasingPrimeEntry j cartesianCount=4, elapsed 0:00:00.000016
-Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.002696
-Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000146
-Eval IncreasingPrimeClue IV cartesianCount=4085, elapsed 0:00:00.003540
-Eval IncreasingPrimeClue VII cartesianCount=6156, elapsed 0:00:00.005229
-Eval IncreasingPrimeEntry A cartesianCount=76, elapsed 0:00:00.000071
-Eval IncreasingPrimeEntry d cartesianCount=342, elapsed 0:00:00.000279
-Eval IncreasingPrimeEntry e cartesianCount=1440, elapsed 0:00:00.001328
-Eval IncreasingPrimeEntry e cartesianCount=342, elapsed 0:00:00.000293
-Eval IncreasingPrimeEntry G cartesianCount=5, elapsed 0:00:00.000012
-Eval IncreasingPrimeEntry G cartesianCount=817, elapsed 0:00:00.000845
-Eval IncreasingPrimeEntry G cartesianCount=60, elapsed 0:00:00.000088
-Eval IncreasingPrimeEntry J cartesianCount=95, elapsed 0:00:00.000084
+Eval IncreasingPrimeEntry j cartesianCount=225, elapsed 0:00:00.000145
+Eval IncreasingPrimeEntry j cartesianCount=4, elapsed 0:00:00.000011
+Eval IncreasingPrimeEntry h cartesianCount=3240, elapsed 0:00:00.003139
+Eval IncreasingPrimeEntry h cartesianCount=135, elapsed 0:00:00.000168
+Eval IncreasingPrimeClue IV cartesianCount=4085, elapsed 0:00:00.003923
+Eval IncreasingPrimeClue VII cartesianCount=6156, elapsed 0:00:00.006888
+Eval IncreasingPrimeEntry A cartesianCount=76, elapsed 0:00:00.000099
+Eval IncreasingPrimeEntry d cartesianCount=342, elapsed 0:00:00.000303
+Eval IncreasingPrimeEntry e cartesianCount=1440, elapsed 0:00:00.001500
+Eval IncreasingPrimeEntry e cartesianCount=342, elapsed 0:00:00.000438
+Eval IncreasingPrimeEntry G cartesianCount=5, elapsed 0:00:00.000019
+Eval IncreasingPrimeEntry G cartesianCount=817, elapsed 0:00:00.000956
+Eval IncreasingPrimeEntry G cartesianCount=60, elapsed 0:00:00.000077
+Eval IncreasingPrimeEntry J cartesianCount=95, elapsed 0:00:00.000094
 solve: IncreasingPrimeEntry(name=J,length=2,value: (G-(IV-K)),
 	identities=[J[0]=e[3]],referrers=[e,IV,G,K],
 	values={12..14,16,21..24,26,31..34,36,41..44,46,51,23 more,96},
 	digits=[{1..9},{1..4,6}]
-Eval IncreasingPrimeEntry K cartesianCount=215, elapsed 0:00:00.000197
-Eval IncreasingPrimeEntry K cartesianCount=60, elapsed 0:00:00.000088
-Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000447
-Eval IncreasingPrimeClue VI cartesianCount=1140, elapsed 0:00:00.001035
-Eval IncreasingPrimeEntry B cartesianCount=285, elapsed 0:00:00.000233
-Eval IncreasingPrimeEntry e cartesianCount=1440, elapsed 0:00:00.001364
-Eval IncreasingPrimeEntry e cartesianCount=342, elapsed 0:00:00.000319
-Eval IncreasingPrimeClue IV cartesianCount=4085, elapsed 0:00:00.003468
-Eval IncreasingPrimeEntry G cartesianCount=5, elapsed 0:00:00.000013
-Eval IncreasingPrimeEntry G cartesianCount=817, elapsed 0:00:00.000852
-Eval IncreasingPrimeEntry G cartesianCount=60, elapsed 0:00:00.000068
-Clue/Variable iterations=226, updates=84, elapsed 0:00:04.597925
+Eval IncreasingPrimeEntry K cartesianCount=215, elapsed 0:00:00.000176
+Eval IncreasingPrimeEntry K cartesianCount=60, elapsed 0:00:00.000077
+Eval IncreasingPrimeEntry K cartesianCount=324, elapsed 0:00:00.000452
+Eval IncreasingPrimeClue VI cartesianCount=1140, elapsed 0:00:00.001099
+Eval IncreasingPrimeEntry B cartesianCount=285, elapsed 0:00:00.000267
+Eval IncreasingPrimeEntry e cartesianCount=1440, elapsed 0:00:00.001454
+Eval IncreasingPrimeEntry e cartesianCount=342, elapsed 0:00:00.000321
+Eval IncreasingPrimeClue IV cartesianCount=4085, elapsed 0:00:00.004117
+Eval IncreasingPrimeEntry G cartesianCount=5, elapsed 0:00:00.000040
+Eval IncreasingPrimeEntry G cartesianCount=817, elapsed 0:00:00.000995
+Eval IncreasingPrimeEntry G cartesianCount=60, elapsed 0:00:00.000085
+Clue/Variable iterations=226, updates=84, elapsed 0:00:05.099291
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 I, j( f - C ), values={165}
@@ -857,37 +857,37 @@ K, (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII), values={121..124,126,131..134,136,141.
 +--+--+--+--+--+
 
 ITERATE SOLUTIONS-----------------------------
-Solution
-j=11
-I=165
-II=255
-III=345
-IV=561
-V=759
-VI=935
-VII=1173
-VIII=1265
-IX=1955
-X=4301
-D=862
-H=92
-B=83
-b=48
-G=441
-h=993
-c=3287
-E=2348
-g=14
-A=984
-f=36
-d=64
-e=1241
-K=132
-a=812
-F=2169
-J=12
-C=21
-
+SOLUTION-----------------------------
+Puzzle Summary
+I, j( f - C ), values={165}
+II, C + e - g - h, values={255}
+III, G - 2*b, values={345}
+IV, G - J + K, values={561}
+V, D - H - j, values={759}
+VI, A + B - K, values={935}
+VII, d + e - K, values={1173}
+VIII, F - a - H, values={1265}
+IX, b + E - G, values={1955}
+X, C + c + h, values={4301}
+A, ((VI+K)-B), values={984}
+a, (F-(VIII+H)), values={812}
+b, ((G-III)/2) | ((IX+G)-E), values={48}
+B, ((VI+K)-A), values={83}
+c, ((X-h)-C), values={3287}
+C, (f-(I/j)) | (((II+h)+g)-e) | ((X-h)-c), values={21}
+D, ((V+j)+H), values={862}
+d, ((VII+K)-e), values={64}
+e, (((II+h)+g)-C) | ((VII+K)-d), values={1241}
+E, ((IX+G)-b), values={2348}
+f, ((I/j)+C), values={36}
+F, ((VIII+H)+a), values={2169}
+g, ((C+e)-(II+h)), values={14}
+h, (((C+e)-g)-II) | (X-(C+c)), values={993}
+G, (III+(2*b)) | ((IV-K)+J) | ((b+E)-IX), values={441}
+j, (I/(f-C)) | ((D-H)-V), values={11}
+H, (D-(V+j)) | ((F-a)-VIII), values={92}
+J, (G-(IV-K)), values={12}
+K, (IV-(G-J)) | ((A+B)-VI) | ((d+e)-VII), values={132}
 +--+--+--+--+--+
 | 9  8  4| 8  3|
 +--      +--   +

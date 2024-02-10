@@ -140,9 +140,11 @@ class Partners extends Crossnumber<PartnersPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!clue.digitsMatch(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
 
     var otherName = (clue as PartnersClue).symmetricName;
     var index = variableReferences.indexOf(otherName);

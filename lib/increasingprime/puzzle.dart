@@ -27,9 +27,9 @@ class IncreasingPrimePuzzle extends VariablePuzzle<IncreasingPrimeClue,
       variableList.updateVariables(letter, possibleDigits);
 
   @override
-  postProcessing([bool iteration = false]) {
+  postProcessing([bool iteration = false, int Function(Puzzle)? callback]) {
     // Prevent iteration as too slow
     Crossnumber.traceSolve = false;
-    super.postProcessing(true);
+    super.postProcessing(true, callback);
   }
 }

@@ -114,9 +114,11 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!clue.digitsMatch(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     return true;
   }
 

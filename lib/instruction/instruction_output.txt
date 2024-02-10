@@ -416,7 +416,7 @@ solve: InstructionEntry(name=A26,length=2,value: DP is a cube,
 	identities=[A26[0]=D22[1],A26[1]=D27[0]],referrers=[D22,D27],
 	values={18,81},
 	digits=[{1,8},{1,8}]
-Clue/Variable iterations=181, updates=65, elapsed 0:00:00.097749
+Clue/Variable iterations=181, updates=65, elapsed 0:00:00.082952
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={153,351}
@@ -616,7 +616,7 @@ solve: InstructionEntry(name=A26,length=2,value: DP is a cube,
 	identities=[A26[0]=D22[1],A26[1]=D27[0]],referrers=[D22,D27],
 	values={18},
 	digits=[{1},{8}]
-Clue/Variable iterations=102, updates=31, elapsed 0:00:00.012536
+Clue/Variable iterations=102, updates=31, elapsed 0:00:00.009306
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={351}
@@ -672,44 +672,44 @@ D27, Fibonacci number, values={89}
 +--+--+--+--+--+--+--+
 
 ITERATE SOLUTIONS-----------------------------
-Solution
-A1=351
-A3=169
-A7=82
-A9=75
-A10=88
-A11=8552
-A13=29
-A14=135
-A17=384
-A19=45
-A20=1229
-A23=11
-A25=13
-A26=18
-A28=954
-A29=389
-D1=38
-D2=525
-D3=172
-D4=65
-D5=98
-D6=189
-D8=55
-D11=81
-D12=23
-D13=28
-D15=35
-D16=59
-D18=49
-D19=415
-D20=134
-D21=20
-D22=218
-D24=19
-D25=15
-D27=89
-
+SOLUTION-----------------------------
+Puzzle Summary
+A1, Triangular number with a triangular DP, values={351}
+A3, Square number with a square DS, values={169}
+A7, DS is half of D21, values={82}
+A9, D18+26, values={75}
+A10, Palindrome, values={88}
+A11, DS equals D21, values={8552}
+A13, Digits have opposite parity and DP equals another entry, values={29}
+A14, Consecutive odd digits in ascending or descending order, with triangular DP, values={135}
+A17, DS is triangular, values={384}
+A19, DP equals D21, values={45}
+A20, Prime whose DP is square and DS is a factor of D13, values={1229}
+A23, Palindromic prime, values={11}
+A25, Prime, values={13}
+A26, DP is a cube, values={18}
+A28, DP equals 180, values={954}
+A29, DS equals D21 and DP is a cube, values={389}
+D1, (DS+DP) is an odd multiple of 5, values={38}
+D2, Palindrome and multiple of 5 with MP of 2, values={525}
+D3, A3 plus or minus 3, values={172}
+D4, Greater than D8 and DS equals another entry, values={65}
+D5, 2 times a square, values={98}
+D6, Has 8 factors including 1 and itself, values={189}
+D8, Square pyramidal number (ie, sum of the first n squares), values={55}
+D11, Square, values={81}
+D12, DP is a single-digit even number, values={23}
+D13, Multiple of 7, values={28}
+D15, DP equals another entry, values={35}
+D16, Prime, values={59}
+D18, Lucky and happy number, values={49}
+D19, DP equals another entry, values={415}
+D20, (DS + DP) is a multiple of D21, values={134}
+D21, Multiple of 10, values={20}
+D22, DP is a power of 2, values={218}
+D24, DP is square, values={19}
+D25, Lucky number, values={15}
+D27, Fibonacci number, values={89}
 +--+--+--+--+--+--+--+
 | 3  5  1| 1  6  9| 1|
 +      --+        +  +
@@ -726,44 +726,44 @@ D27=89
 | 5| 9  5  4| 3  8  9|
 +--+--+--+--+--+--+--+
 
-Solution
-A1=351
-A3=169
-A7=82
-A9=75
-A10=88
-A11=8552
-A13=29
-A14=135
-A17=384
-A19=45
-A20=1229
-A23=11
-A25=17
-A26=18
-A28=954
-A29=389
-D1=38
-D2=525
-D3=172
-D4=65
-D5=98
-D6=189
-D8=55
-D11=81
-D12=23
-D13=28
-D15=35
-D16=59
-D18=49
-D19=415
-D20=174
-D21=20
-D22=218
-D24=19
-D25=15
-D27=89
-
+SOLUTION-----------------------------
+Puzzle Summary
+A1, Triangular number with a triangular DP, values={351}
+A3, Square number with a square DS, values={169}
+A7, DS is half of D21, values={82}
+A9, D18+26, values={75}
+A10, Palindrome, values={88}
+A11, DS equals D21, values={8552}
+A13, Digits have opposite parity and DP equals another entry, values={29}
+A14, Consecutive odd digits in ascending or descending order, with triangular DP, values={135}
+A17, DS is triangular, values={384}
+A19, DP equals D21, values={45}
+A20, Prime whose DP is square and DS is a factor of D13, values={1229}
+A23, Palindromic prime, values={11}
+A25, Prime, values={17}
+A26, DP is a cube, values={18}
+A28, DP equals 180, values={954}
+A29, DS equals D21 and DP is a cube, values={389}
+D1, (DS+DP) is an odd multiple of 5, values={38}
+D2, Palindrome and multiple of 5 with MP of 2, values={525}
+D3, A3 plus or minus 3, values={172}
+D4, Greater than D8 and DS equals another entry, values={65}
+D5, 2 times a square, values={98}
+D6, Has 8 factors including 1 and itself, values={189}
+D8, Square pyramidal number (ie, sum of the first n squares), values={55}
+D11, Square, values={81}
+D12, DP is a single-digit even number, values={23}
+D13, Multiple of 7, values={28}
+D15, DP equals another entry, values={35}
+D16, Prime, values={59}
+D18, Lucky and happy number, values={49}
+D19, DP equals another entry, values={415}
+D20, (DS + DP) is a multiple of D21, values={174}
+D21, Multiple of 10, values={20}
+D22, DP is a power of 2, values={218}
+D24, DP is square, values={19}
+D25, Lucky number, values={15}
+D27, Fibonacci number, values={89}
 +--+--+--+--+--+--+--+
 | 3  5  1| 1  6  9| 1|
 +      --+        +  +
@@ -818,7 +818,7 @@ Fix clue D24=14
 Fix clue D25=75
 Fix clue D27=13
 UPDATES-----------------------------
-Clue/Variable iterations=36, updates=0, elapsed 0:00:00.000266
+Clue/Variable iterations=36, updates=0, elapsed 0:00:00.000406
 SOLUTION-----------------------------
 Puzzle Summary
 A1, Triangular number with a triangular DP, values={153}

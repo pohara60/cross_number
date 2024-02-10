@@ -58,7 +58,7 @@ class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
     if (!ok) return ok;
 
     // Check variables
-    dieAnotherDay.getPuzzleDigitCountFromClues(this);
+    dieAnotherDay.getPuzzleDigitCount(this);
     var allUpdatedVariables = <String>{};
     ok = dieAnotherDay.checkPuzzleVariables(
         this, allUpdatedVariables, false, true);

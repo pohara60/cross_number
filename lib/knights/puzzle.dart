@@ -29,7 +29,7 @@ class KnightsPuzzle
       variableList.updateVariables(letter, possibleDigits);
 
   @override
-  postProcessing([bool iteration = true]) {
-    return super.postProcessing(false);
+  postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {
+    return super.postProcessing(false, callback);
   }
 }

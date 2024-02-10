@@ -201,7 +201,7 @@ solve: DistancingEntry(name=D1,length=2,value: Prime,
 	identities=[D1[0]=A1[0]],referrers=[A1,D8,D11],
 	values={83},
 	digits=[{8},{3}]
-Clue/Variable iterations=67, updates=35, elapsed 0:00:00.027890
+Clue/Variable iterations=67, updates=35, elapsed 0:00:00.026427
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Square, values={81}
@@ -221,21 +221,22 @@ D10, Square, values={64}
 D11, Prime = sum of digits, values={97}
 
 ITERATE SOLUTIONS-----------------------------
-Solution
-A1=81
-A3=729
-A6=727
-A9=196
-A12=351
-A13=47
-D1=83
-D2=17
-D4=27
-D5=91
-D7=29
-D8=53
-D9=15
-D10=64
-D11=97
+SOLUTION-----------------------------
+Puzzle Summary
+A1, Square, values={81}
+A3, Square, values={729}
+A6, Prime, values={727}
+A9, Square, values={196}
+A12, Triangular, values={351}
+A13, Lucas, values={47}
+D1, Prime, values={83}
+D2, Prime, values={17}
+D4, Cube, values={27}
+D5, Triangular, values={91}
+D7, Lucas, values={29}
+D8, Prime, digit product = another entry, values={53}
+D9, Triangular, values={15}
+D10, Square, values={64}
+D11, Prime = sum of digits, values={97}
 
 Solution count=1

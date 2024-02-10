@@ -151,13 +151,12 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   // Validate possible clue value
   // Each answer may be expressed as  F1 x F2 x F3 where the Fi are distinct and
   // come from five distinct Fibonacci numbers less than 20 to be determined.
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (value < 0) return false;
-    if (clue.min != null && value < clue.min!) return false;
-    if (clue.max != null && value > clue.max!) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     if (!check5Fibonnaci(value)) return false;
-    if (!clue.digitsMatch(value)) return false;
     return true;
   }
 

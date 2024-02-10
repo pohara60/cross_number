@@ -89,13 +89,11 @@ class PowerPlay extends Crossnumber<PowerPlayPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (value < 0) return false;
-    if (clue.min != null && value < clue.min!) return false;
-    if (clue.max != null && value > clue.max!) return false;
-    if (clue.values != null && !clue.values!.contains(value)) return false;
-    if (!clue.digitsMatch(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     return true;
   }
 

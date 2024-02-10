@@ -309,10 +309,11 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    // Validate against known values
-    if (clue.values != null) return clue.values!.contains(value);
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     return true;
   }
 

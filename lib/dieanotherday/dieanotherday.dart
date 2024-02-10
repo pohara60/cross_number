@@ -243,10 +243,11 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     var entry = clue.entry!;
     var digitCount = <int, int>{};
     for (var d = entry.length! - 1; d >= 0; d--) {
+      var digits = clueDigits(clue, d);
       var digit = value % 10;
       if (!facesMatchOtherPuzzles(puzzle, clue.name, d, digit)) return false;
       // If the entry digit is not fixed, then include the digit in the count
-      if (entry.digits[d].length != 1) {
+      if (digits.length != 1) {
         if (!digitCount.containsKey(digit))
           digitCount[digit] = 1;
         else
@@ -277,22 +278,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
       var clue = puzzle.clues[clueName]!;
       var entry = clue.entry!;
       for (var d = 0; d < entry.length!; d++) {
-        if (entry.digits[d].length == 1) {
-          var digit = entry.digits[d].first;
-          digitCount[digit] = digitCount[digit]! + 1;
-        }
-      }
-    }
-    puzzleDigitCount = digitCount;
-  }
-
-  void getPuzzleDigitCountFromClues(DieAnotherDayPuzzle puzzle) {
-    var digitCount = <int, int>{};
-    for (var i in [1, 2, 3, 4, 5, 6]) digitCount[i] = 0;
-    for (var clueName in ['D1', 'D2', 'D3', 'D4']) {
-      var clue = puzzle.clues[clueName]!;
-      for (var d = 0; d < clue.length!; d++) {
-        var digits = clue.clueDigits(d);
+        var digits = clueDigits(clue, d);
         if (digits.length == 1) {
           var digit = digits.first;
           digitCount[digit] = digitCount[digit]! + 1;
@@ -411,13 +397,11 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (value < 0) return false;
-    if (clue.min != null && value < clue.min!) return false;
-    if (clue.max != null && value > clue.max!) return false;
-    if (clue.values != null && !clue.values!.contains(value)) return false;
-    if (!clue.digitsMatch(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
 
     // Check digits against other puzzles
     var puzzle = puzzleForVariable[clue]!;
@@ -474,10 +458,11 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     return updated;
   }
 
-  var unfinishedPuzzles = <DieAnotherDayPuzzle>[];
   @override
   void endSolve(bool iteration) {
-    // Unique solution?
+    iterating = true;
+    // In case solve/endSolve are called more than once
+    unfinishedPuzzles = <Puzzle>[]; // Unique solution?
     for (var puzzle in puzzles) {
       if (!puzzle.uniqueSolution()) {
         unfinishedPuzzles.add(puzzle);
@@ -491,23 +476,23 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
         print(puzzle.toSummary());
       }
     }
-    // puzzleTop.clues['A1']!.value = 6545;
-    // puzzleTop.clues['A5']!.value = 5644;
-    // puzzleTop.clues['A6']!.value = 6666;
-    // puzzleTop.clues['A7']!.value = 1444;
+    puzzleTop.clues['A1']!.value = 6545;
+    puzzleTop.clues['A5']!.value = 5644;
+    puzzleTop.clues['A6']!.value = 6666;
+    puzzleTop.clues['A7']!.value = 1444;
 
-    // puzzleFront.clues['A1']!.value = 4413;
-    // puzzleFront.clues['A5']!.value = 6511;
-    // puzzleFront.clues['A6']!.value = 4522;
-    // puzzleFront.clues['A7']!.value = 4225;
+    puzzleFront.clues['A1']!.value = 4413;
+    puzzleFront.clues['A5']!.value = 6511;
+    puzzleFront.clues['A6']!.value = 4522;
+    puzzleFront.clues['A7']!.value = 4225;
 
-    // puzzleRight.clues['A1']!.value = 5156;
-    // puzzleRight.clues['A5']!.value = 4355;
-    // puzzleRight.clues['A6']!.value = 5344;
-    // puzzleRight.clues['A7']!.value = 2116;
+    puzzleRight.clues['A1']!.value = 5156;
+    puzzleRight.clues['A5']!.value = 4355;
+    puzzleRight.clues['A6']!.value = 5344;
+    puzzleRight.clues['A7']!.value = 2116;
     if (unfinishedPuzzles.isNotEmpty) {
       unfinishedPuzzles = [puzzleFront, puzzleRight, puzzleTop];
-      unfinishedPuzzles.first.postProcessing(iteration);
+      unfinishedPuzzles.first.postProcessing(iteration, callback);
     }
   }
 

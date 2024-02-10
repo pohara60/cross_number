@@ -76,281 +76,282 @@ AlmostFermatEntry(name=G,length=3,value: IV,
 	identities=[G[1]=g[1]],referrers=[g,IV],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
+
 UPDATES-----------------------------
-Eval AlmostFermatClue I cartesianCount=90, elapsed 0:00:00.008958
-Eval AlmostFermatClue I cartesianCount=900, elapsed 0:00:00.009722
-Eval AlmostFermatClue I cartesianCount=900, elapsed 0:00:00.007895
+Eval AlmostFermatClue I cartesianCount=90, elapsed 0:00:00.009334
+Eval AlmostFermatClue I cartesianCount=900, elapsed 0:00:00.008428
+Eval AlmostFermatClue I cartesianCount=900, elapsed 0:00:00.006334
 solve: AlmostFermatClue(name=I,length=null,value: 4B | f | D,
 	referrers=[B,D,f],
 	values={372,426,505}
 B={10..29,70 more,99}
 f={100..119,880 more,999}
 D={100..119,880 more,999}
-Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.006013
-Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.003848
-Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.005918
+Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.003995
+Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.002829
+Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.004204
 solve: AlmostFermatClue(name=II,length=null,value: 2C | E | 8A,
 	referrers=[A,C,E],
 	values={100..119,2130 more,7992}
 C={100..119,880 more,999}
 E={100..119,880 more,999}
 A={100..119,880 more,999}
-Eval AlmostFermatClue III cartesianCount=90, elapsed 0:00:00.000297
-Eval AlmostFermatClue III cartesianCount=810000, elapsed 0:00:00.681929
-Eval AlmostFermatClue III cartesianCount=90, elapsed 0:00:00.001412
+Eval AlmostFermatClue III cartesianCount=90, elapsed 0:00:00.000262
+Eval AlmostFermatClue III cartesianCount=810000, elapsed 0:00:00.619797
+Eval AlmostFermatClue III cartesianCount=90, elapsed 0:00:00.000994
 solve: AlmostFermatClue(name=III,length=null,value: 10F | (b-A)^2/2 | g^2,
 	referrers=[F],
 	values={242,720,729}
 F={10..29,70 more,99}
 b={100..119,880 more,999}
 g={10..29,70 more,99}
-Eval AlmostFermatClue IV cartesianCount=81000, elapsed 0:00:00.081787
-Eval AlmostFermatClue IV cartesianCount=900, elapsed 0:00:00.001047
-Eval AlmostFermatClue IV cartesianCount=900, elapsed 0:00:00.001426
+Eval AlmostFermatClue IV cartesianCount=81000, elapsed 0:00:00.077671
+Eval AlmostFermatClue IV cartesianCount=900, elapsed 0:00:00.000871
+Eval AlmostFermatClue IV cartesianCount=900, elapsed 0:00:00.000869
 solve: AlmostFermatClue(name=IV,length=null,value: f-4F | b | G,
 	referrers=[b,f,F,G],
 	values={0..19,980 more,999}
 G={100..119,880 more,999}
-Eval AlmostFermatClue V cartesianCount=81000, elapsed 0:00:00.074827
-Eval AlmostFermatClue V cartesianCount=900, elapsed 0:00:00.000899
-Eval AlmostFermatClue V cartesianCount=90, elapsed 0:00:00.000148
+Eval AlmostFermatClue V cartesianCount=81000, elapsed 0:00:00.065851
+Eval AlmostFermatClue V cartesianCount=900, elapsed 0:00:00.000422
+Eval AlmostFermatClue V cartesianCount=90, elapsed 0:00:00.000073
 solve: AlmostFermatClue(name=V,length=null,value: f-4F | f/6 | 2F,
 	referrers=[f,F],
 	values={71,135,138,144,172}
-Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.001046
-Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.001312
-Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.001091
+Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.000892
+Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.001419
+Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.001514
 solve: AlmostFermatClue(name=VI,length=null,value: a | 4d | 2D,
 	referrers=[a,d,D],
 	values={100..119,1880 more,3996}
 a={100..119,880 more,999}
 d={100..119,880 more,999}
-Eval AlmostFermatClue VII cartesianCount=8100, elapsed 0:00:00.008870
-Eval AlmostFermatClue VII cartesianCount=900, elapsed 0:00:00.000985
-Eval AlmostFermatClue VII cartesianCount=900, elapsed 0:00:00.001122
+Eval AlmostFermatClue VII cartesianCount=8100, elapsed 0:00:00.007144
+Eval AlmostFermatClue VII cartesianCount=900, elapsed 0:00:00.000730
+Eval AlmostFermatClue VII cartesianCount=900, elapsed 0:00:00.000914
 solve: AlmostFermatClue(name=VII,length=null,value: cg | f | e,
 	referrers=[c,e,f,g],
 	values={100..119,3037 more,9702}
 c={10..29,70 more,99}
 e={100..119,880 more,999}
-Eval AlmostFermatEntry a cartesianCount=1900, elapsed 0:00:00.002504
+Eval AlmostFermatEntry a cartesianCount=1900, elapsed 0:00:00.003371
 solve: AlmostFermatEntry(name=a,length=3,value: VI,
 	identities=[a[1]=B[0]],referrers=[B,VI],
 	values={110..129,790 more,999},
 	digits=[{1..9},{1..9},{0..9}]
-Eval AlmostFermatEntry b cartesianCount=1000, elapsed 0:00:00.001819
+Eval AlmostFermatEntry b cartesianCount=1000, elapsed 0:00:00.001414
 solve: AlmostFermatEntry(name=b,length=3,value: IV,
 	identities=[b[1]=B[1],b[2]=D[0]],referrers=[B,D,III,IV],
 	values={101..109,111..119,121,122,790 more,999},
 	digits=[{1..9},{0..9},{1..9}]
-Eval AlmostFermatEntry A cartesianCount=2150, elapsed 0:00:00.003834
+Eval AlmostFermatEntry A cartesianCount=2150, elapsed 0:00:00.002536
 solve: AlmostFermatEntry(name=A,length=3,value: (II/8),
 	identities=[A[1]=c[0]],referrers=[c,II,III],
 	values={110..129,790 more,999},
 	digits=[{1..9},{1..9},{0..9}]
-Eval AlmostFermatEntry c cartesianCount=275130, elapsed 0:00:00.145581
-Eval AlmostFermatEntry B cartesianCount=3, elapsed 0:00:00.001474
+Eval AlmostFermatEntry c cartesianCount=275130, elapsed 0:00:00.128927
+Eval AlmostFermatEntry B cartesianCount=3, elapsed 0:00:00.000053
 solve: AlmostFermatEntry(name=B,length=2,value: (I/4),
 	identities=[B[0]=a[1],B[1]=b[1]],referrers=[a,b,I],
 	values={93},
 	digits=[{9},{3}]
-Eval AlmostFermatEntry C cartesianCount=2150, elapsed 0:00:00.003340
-Eval AlmostFermatEntry d cartesianCount=1900, elapsed 0:00:00.002325
-Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000030
-Eval AlmostFermatEntry D cartesianCount=1900, elapsed 0:00:00.003461
+Eval AlmostFermatEntry C cartesianCount=2150, elapsed 0:00:00.001867
+Eval AlmostFermatEntry d cartesianCount=1900, elapsed 0:00:00.001913
+Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000020
+Eval AlmostFermatEntry D cartesianCount=1900, elapsed 0:00:00.001921
 solve: AlmostFermatEntry(name=D,length=3,value: I | (VI/2),
 	identities=[D[0]=b[2],D[1]=d[1],D[2]=e[0]],referrers=[b,d,e,I,VI],
 	values={372,426,505},
 	digits=[{3..5},{0,2,7},{2,5,6}]
-Eval AlmostFermatEntry e cartesianCount=3057, elapsed 0:00:00.003243
+Eval AlmostFermatEntry e cartesianCount=3057, elapsed 0:00:00.003959
 solve: AlmostFermatEntry(name=e,length=3,value: VII,
 	identities=[e[0]=D[2],e[1]=F[0]],referrers=[D,F,VII],
 	values={210..229,250 more,699},
 	digits=[{2,5,6},{1..9},{0..9}]
-Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000032
-Eval AlmostFermatEntry f cartesianCount=90000, elapsed 0:00:00.094843
-Eval AlmostFermatEntry f cartesianCount=450, elapsed 0:00:00.000781
-Eval AlmostFermatEntry f cartesianCount=5, elapsed 0:00:00.000039
-Eval AlmostFermatEntry f cartesianCount=3057, elapsed 0:00:00.002937
+Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000418
+Eval AlmostFermatEntry f cartesianCount=90000, elapsed 0:00:00.091063
+Eval AlmostFermatEntry f cartesianCount=450, elapsed 0:00:00.000528
+Eval AlmostFermatEntry f cartesianCount=5, elapsed 0:00:00.000017
+Eval AlmostFermatEntry f cartesianCount=3057, elapsed 0:00:00.002049
 solve: AlmostFermatEntry(name=f,length=3,value: I | (IV+(4F)) | (V+(4F)) | (V*6) | VII,
 	identities=[f[1]=F[1]],referrers=[F,I,IV,V,VII],
 	values={426},
 	digits=[{4},{2},{6}]
 F={10..29,69 more,99}
-Eval AlmostFermatEntry E cartesianCount=2150, elapsed 0:00:00.001873
+Eval AlmostFermatEntry E cartesianCount=2150, elapsed 0:00:00.001978
 solve: AlmostFermatEntry(name=E,length=3,value: II,
 	identities=[E[1]=g[0],E[2]=d[2]],referrers=[g,d,II],
 	values={110..129,789 more,999},
 	digits=[{1..9},{1..9},{0..9}]
-Eval AlmostFermatEntry g cartesianCount=275130, elapsed 0:00:00.128041
+Eval AlmostFermatEntry g cartesianCount=275130, elapsed 0:00:00.120598
 solve: AlmostFermatEntry(name=g,length=2,value: (VII/c),
 	identities=[g[0]=E[1],g[1]=G[1]],referrers=[E,G,III,VII,c],
 	values={10..29,69 more,99},
 	digits=[{1..9},{0..9}]
 c={10..29,69 more,99}
-Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000030
-Eval AlmostFermatEntry F cartesianCount=1000, elapsed 0:00:00.001062
-Eval AlmostFermatEntry F cartesianCount=5, elapsed 0:00:00.000048
-Eval AlmostFermatEntry F cartesianCount=5, elapsed 0:00:00.000015
+Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000019
+Eval AlmostFermatEntry F cartesianCount=1000, elapsed 0:00:00.000598
+Eval AlmostFermatEntry F cartesianCount=5, elapsed 0:00:00.000019
+Eval AlmostFermatEntry F cartesianCount=5, elapsed 0:00:00.000007
 solve: AlmostFermatEntry(name=F,length=2,value: (III/10) | ((f-IV)/4) | ((f-V)/4) | (V/2),
 	identities=[F[0]=e[1],F[1]=f[1]],referrers=[e,f,III,IV,V],
 	values={72},
 	digits=[{7},{2}]
-Eval AlmostFermatEntry G cartesianCount=1000, elapsed 0:00:00.001386
+Eval AlmostFermatEntry G cartesianCount=1000, elapsed 0:00:00.000948
 solve: AlmostFermatEntry(name=G,length=3,value: IV,
 	identities=[G[1]=g[1]],referrers=[g,IV],
 	values={100..119,879 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval AlmostFermatClue I cartesianCount=3, elapsed 0:00:00.000016
+Eval AlmostFermatClue I cartesianCount=3, elapsed 0:00:00.000013
 solve: AlmostFermatClue(name=I,length=null,value: 4B | f | D,
 	referrers=[B,D,f],
 	values={372,426,505}
 D={372,505}
-Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.001514
-Eval AlmostFermatClue II cartesianCount=809, elapsed 0:00:00.001166
-Eval AlmostFermatClue II cartesianCount=810, elapsed 0:00:00.001135
+Eval AlmostFermatClue II cartesianCount=900, elapsed 0:00:00.001033
+Eval AlmostFermatClue II cartesianCount=809, elapsed 0:00:00.000909
+Eval AlmostFermatClue II cartesianCount=810, elapsed 0:00:00.000939
 solve: AlmostFermatClue(name=II,length=null,value: 2C | E | 8A,
 	referrers=[A,C,E],
 	values={110..129,2010 more,7992}
 C={100..119,879 more,999}
 A={110..129,789 more,999}
-Eval AlmostFermatClue III cartesianCount=655290, elapsed 0:00:00.502382
-Eval AlmostFermatClue III cartesianCount=89, elapsed 0:00:00.001699
+Eval AlmostFermatClue III cartesianCount=655290, elapsed 0:00:00.476543
+Eval AlmostFermatClue III cartesianCount=89, elapsed 0:00:00.000943
 solve: AlmostFermatClue(name=III,length=null,value: 10F | (b-A)^2/2 | g^2,
 	referrers=[F],
 	values={242,720,729}
 A={110..117,119..130,786 more,999}
 b={101..109,111..119,121,122,789 more,999}
 g={27}
-Eval AlmostFermatClue IV cartesianCount=809, elapsed 0:00:00.001801
-Eval AlmostFermatClue IV cartesianCount=899, elapsed 0:00:00.002180
+Eval AlmostFermatClue IV cartesianCount=809, elapsed 0:00:00.000929
+Eval AlmostFermatClue IV cartesianCount=899, elapsed 0:00:00.001078
 solve: AlmostFermatClue(name=IV,length=null,value: f-4F | b | G,
 	referrers=[b,f,F,G],
 	values={135,138,172}
 solve: AlmostFermatClue(name=V,length=null,value: f-4F | f/6 | 2F,
 	referrers=[f,F],
 	values={71,138,144}
-Eval AlmostFermatClue VI cartesianCount=810, elapsed 0:00:00.001366
-Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.001519
-Eval AlmostFermatClue VI cartesianCount=2, elapsed 0:00:00.000051
+Eval AlmostFermatClue VI cartesianCount=810, elapsed 0:00:00.000770
+Eval AlmostFermatClue VI cartesianCount=900, elapsed 0:00:00.000849
+Eval AlmostFermatClue VI cartesianCount=2, elapsed 0:00:00.000018
 solve: AlmostFermatClue(name=VI,length=null,value: a | 4d | 2D,
 	referrers=[a,d,D],
 	values={791,812,1010}
 a={110..129,789 more,999}
 d={100..119,879 more,999}
-Eval AlmostFermatClue VII cartesianCount=89, elapsed 0:00:00.000142
-Eval AlmostFermatClue VII cartesianCount=270, elapsed 0:00:00.000484
+Eval AlmostFermatClue VII cartesianCount=89, elapsed 0:00:00.000133
+Eval AlmostFermatClue VII cartesianCount=270, elapsed 0:00:00.000271
 solve: AlmostFermatClue(name=VII,length=null,value: cg | f | e,
 	referrers=[c,e,f,g],
 	values={426,486,577}
 c={10..26,28..30,67 more,99}
-Eval AlmostFermatEntry a cartesianCount=3, elapsed 0:00:00.000164
+Eval AlmostFermatEntry a cartesianCount=3, elapsed 0:00:00.000021
 solve: AlmostFermatEntry(name=a,length=3,value: VI,
 	identities=[a[1]=B[0]],referrers=[B,VI],
 	values={791},
 	digits=[{7},{9},{1}]
-Eval AlmostFermatEntry b cartesianCount=3, elapsed 0:00:00.000023
+Eval AlmostFermatEntry b cartesianCount=3, elapsed 0:00:00.000010
 solve: AlmostFermatEntry(name=b,length=3,value: IV,
 	identities=[b[1]=B[1],b[2]=D[0]],referrers=[B,D,III,IV],
 	values={135},
 	digits=[{1},{3},{5}]
-Eval AlmostFermatEntry d cartesianCount=3, elapsed 0:00:00.000021
+Eval AlmostFermatEntry d cartesianCount=3, elapsed 0:00:00.000010
 solve: AlmostFermatEntry(name=d,length=3,value: (VI/4),
 	identities=[d[0]=C[0],d[1]=D[1],d[2]=E[2]],referrers=[C,D,E,VI],
 	values={203},
 	digits=[{2},{0},{3}]
-Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000018
-Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000018
+Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000008
+Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000007
 solve: AlmostFermatEntry(name=D,length=3,value: I | (VI/2),
 	identities=[D[0]=b[2],D[1]=d[1],D[2]=e[0]],referrers=[b,d,e,I,VI],
 	values={505},
 	digits=[{5},{0},{5}]
-Eval AlmostFermatEntry e cartesianCount=3, elapsed 0:00:00.000026
+Eval AlmostFermatEntry e cartesianCount=3, elapsed 0:00:00.000009
 solve: AlmostFermatEntry(name=e,length=3,value: VII,
 	identities=[e[0]=D[2],e[1]=F[0]],referrers=[D,F,VII],
 	values={577},
 	digits=[{5},{7},{7}]
-Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000018
-Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000020
-Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000014
-Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000006
+Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000007
 Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000009
-Eval AlmostFermatEntry E cartesianCount=2030, elapsed 0:00:00.002244
+Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000012
+Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000005
+Eval AlmostFermatEntry f cartesianCount=3, elapsed 0:00:00.000007
+Eval AlmostFermatEntry E cartesianCount=2030, elapsed 0:00:00.001504
 solve: AlmostFermatEntry(name=E,length=3,value: II,
 	identities=[E[1]=g[0],E[2]=d[2]],referrers=[g,d,II],
 	values={113,123,133,143,153,163,173,183,193,213,223,233,243,253,263,273,283,293,313,323,61 more,993},
 	digits=[{1..9},{1..9},{3}]
-Eval AlmostFermatEntry c cartesianCount=3, elapsed 0:00:00.000043
+Eval AlmostFermatEntry c cartesianCount=3, elapsed 0:00:00.000020
 solve: AlmostFermatEntry(name=c,length=2,value: (VII/g),
 	identities=[c[0]=A[1],c[1]=C[1]],referrers=[A,C,VII,g],
 	values={18},
 	digits=[{1},{8}]
-Eval AlmostFermatEntry A cartesianCount=2030, elapsed 0:00:00.002302
+Eval AlmostFermatEntry A cartesianCount=2030, elapsed 0:00:00.001321
 solve: AlmostFermatEntry(name=A,length=3,value: (II/8),
 	identities=[A[1]=c[0]],referrers=[c,II,III],
 	values={110..117,119,210..219,310,69 more,919},
 	digits=[{1..9},{1},{0..9}]
-Eval AlmostFermatEntry C cartesianCount=2030, elapsed 0:00:00.001805
+Eval AlmostFermatEntry C cartesianCount=2030, elapsed 0:00:00.001415
 solve: AlmostFermatEntry(name=C,length=3,value: (II/2),
 	identities=[C[0]=d[0],C[1]=c[1]],referrers=[d,c,II],
 	values={280..289},
 	digits=[{2},{8},{0..9}]
-Eval AlmostFermatEntry g cartesianCount=3, elapsed 0:00:00.000027
+Eval AlmostFermatEntry g cartesianCount=3, elapsed 0:00:00.000013
 solve: AlmostFermatEntry(name=g,length=2,value: (VII/c),
 	identities=[g[0]=E[1],g[1]=G[1]],referrers=[E,G,III,VII,c],
 	values={27},
 	digits=[{2},{7}]
-Eval AlmostFermatEntry B cartesianCount=3, elapsed 0:00:00.000009
-Eval AlmostFermatClue II cartesianCount=10, elapsed 0:00:00.000025
-Eval AlmostFermatClue II cartesianCount=81, elapsed 0:00:00.000156
-Eval AlmostFermatClue II cartesianCount=89, elapsed 0:00:00.000245
+Eval AlmostFermatEntry B cartesianCount=3, elapsed 0:00:00.000005
+Eval AlmostFermatClue II cartesianCount=10, elapsed 0:00:00.000014
+Eval AlmostFermatClue II cartesianCount=81, elapsed 0:00:00.000094
+Eval AlmostFermatClue II cartesianCount=89, elapsed 0:00:00.000094
 solve: AlmostFermatClue(name=II,length=null,value: 2C | E | 8A,
 	referrers=[A,C,E],
 	values={566,823,904}
-Eval AlmostFermatClue III cartesianCount=89, elapsed 0:00:00.000077
+Eval AlmostFermatClue III cartesianCount=89, elapsed 0:00:00.000068
 solve: AlmostFermatClue(name=III,length=null,value: 10F | (b-A)^2/2 | g^2,
 	referrers=[F],
 	values={242,720,729}
 A={113}
-Eval AlmostFermatEntry G cartesianCount=3, elapsed 0:00:00.000018
+Eval AlmostFermatEntry G cartesianCount=3, elapsed 0:00:00.000009
 solve: AlmostFermatEntry(name=G,length=3,value: IV,
 	identities=[G[1]=g[1]],referrers=[g,IV],
 	values={172},
 	digits=[{1},{7},{2}]
-Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000015
-Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000019
-Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000021
+Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000006
 Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000009
-Eval AlmostFermatEntry b cartesianCount=3, elapsed 0:00:00.000012
-Eval AlmostFermatEntry d cartesianCount=3, elapsed 0:00:00.000012
-Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000011
-Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000014
-Eval AlmostFermatEntry c cartesianCount=3, elapsed 0:00:00.000022
-Eval AlmostFermatEntry E cartesianCount=3, elapsed 0:00:00.000010
+Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000007
+Eval AlmostFermatEntry F cartesianCount=3, elapsed 0:00:00.000006
+Eval AlmostFermatEntry b cartesianCount=3, elapsed 0:00:00.000006
+Eval AlmostFermatEntry d cartesianCount=3, elapsed 0:00:00.000007
+Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000004
+Eval AlmostFermatEntry D cartesianCount=3, elapsed 0:00:00.000006
+Eval AlmostFermatEntry c cartesianCount=3, elapsed 0:00:00.000008
+Eval AlmostFermatEntry E cartesianCount=3, elapsed 0:00:00.000007
 solve: AlmostFermatEntry(name=E,length=3,value: II,
 	identities=[E[1]=g[0],E[2]=d[2]],referrers=[g,d,II],
 	values={823},
 	digits=[{8},{2},{3}]
-Eval AlmostFermatClue II cartesianCount=10, elapsed 0:00:00.000031
+Eval AlmostFermatClue II cartesianCount=10, elapsed 0:00:00.000014
 solve: AlmostFermatClue(name=II,length=null,value: 2C | E | 8A,
 	referrers=[A,C,E],
 	values={566,823,904}
 C={283}
-Eval AlmostFermatEntry A cartesianCount=3, elapsed 0:00:00.000018
+Eval AlmostFermatEntry A cartesianCount=3, elapsed 0:00:00.000007
 solve: AlmostFermatEntry(name=A,length=3,value: (II/8),
 	identities=[A[1]=c[0]],referrers=[c,II,III],
 	values={113},
 	digits=[{1},{1},{3}]
-Eval AlmostFermatEntry C cartesianCount=3, elapsed 0:00:00.000017
+Eval AlmostFermatEntry C cartesianCount=3, elapsed 0:00:00.000007
 solve: AlmostFermatEntry(name=C,length=3,value: (II/2),
 	identities=[C[0]=d[0],C[1]=c[1]],referrers=[d,c,II],
 	values={283},
 	digits=[{2},{8},{3}]
-Eval AlmostFermatEntry g cartesianCount=3, elapsed 0:00:00.000019
-Eval AlmostFermatEntry d cartesianCount=3, elapsed 0:00:00.000014
-Eval AlmostFermatEntry c cartesianCount=3, elapsed 0:00:00.000019
-Eval AlmostFermatEntry E cartesianCount=3, elapsed 0:00:00.000015
-Clue/Variable iterations=63, updates=42, elapsed 0:00:08.792375
+Eval AlmostFermatEntry g cartesianCount=3, elapsed 0:00:00.000009
+Eval AlmostFermatEntry d cartesianCount=3, elapsed 0:00:00.000006
+Eval AlmostFermatEntry c cartesianCount=3, elapsed 0:00:00.000008
+Eval AlmostFermatEntry E cartesianCount=3, elapsed 0:00:00.000007
+Clue/Variable iterations=63, updates=42, elapsed 0:00:08.085992
 SOLUTION-----------------------------
 Puzzle Summary
 I, 4B | f | D, values={372,426,505}

@@ -217,7 +217,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
     if (unfinishedPuzzles.isNotEmpty) {
       unfinishedPuzzles = puzzles;
-      unfinishedPuzzles.first.postProcessing(iteration);
+      unfinishedPuzzles.first.postProcessing(iteration, callback);
     }
   }
 

@@ -251,10 +251,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   /*-------------------- Post-processing --------------------*/
 
-  postProcessing([bool iteration = true]) {
+  postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {
     if (iteration) {
       print("ITERATE SOLUTIONS-----------------------------");
-      var count = iterate();
+      var count = iterate(callback);
       print('Solution count=$count');
     }
   }
@@ -262,7 +262,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Map<Variable, Answer> solution = {};
   List<Variable> order = [];
 
-  int iterate([Function? callback]) {
+  int iterate([int Function(Puzzle)? callback]) {
     if (this is VariablePuzzle && (this as VariablePuzzle).hasVariables) {
       var puzzle = this as VariablePuzzle;
       try {
@@ -275,7 +275,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     return iterateValues(callback);
   }
 
-  int iterateValues([Function? callback]) {
+  int iterateValues([int Function(Puzzle)? callback]) {
     var unknownClues = <Variable>[];
     // ignore: unnecessary_cast
     List<Variable> clues = this.clues.values.map((c) => c as Variable).toList();

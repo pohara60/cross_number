@@ -570,7 +570,7 @@ solve: DiceNetsEntry(name=D28,length=4,value: Square,
 	identities=[D28[0]=A27[2],D28[1]=A31[2],D28[3]=A36[3]],referrers=[A27,A31,A36],
 	values={2116,3136,6241,6561},
 	digits=[{2,3,6},{1,2,5},{1,3,4,6},{1,6}]
-Clue/Variable iterations=311, updates=101, elapsed 0:00:01.180089
+Clue/Variable iterations=311, updates=101, elapsed 0:00:01.218977
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Prime, values={3221,3541,3623,3643}
@@ -613,44 +613,45 @@ D32, A19 - D7, values={35}
 D34, Prime, values={23}
 
 ITERATE SOLUTIONS-----------------------------
-Solution
-A1=3541
-A4=1331
-A8=2156
-A10=322
-A12=324
-A14=45
-A16=664
-A17=6416
-A18=35245
-A19=51
-A21=64
-A23=63245
-A25=2153
-A27=632
-A29=54
-A30=314
-A31=561
-A33=2512
-A35=5356
-A36=3316
-D1=3136
-D2=512656
-D3=42
-D5=36445
-D6=3141
-D7=16
-D9=1314631
-D11=242
-D13=2653641
-D15=5625
-D18=3125
-D20=143641
-D22=45325
-D24=265
-D26=1463
-D28=2116
-D32=35
-D34=23
+SOLUTION-----------------------------
+Puzzle Summary
+A1, Prime, values={3541}
+A4, Power, values={1331}
+A8, Triangular - A18, values={2156}
+A10, Multiple of D34, values={322}
+A12, Even Square, values={324}
+A14, Triangular, values={45}
+A16, Triangular - A31, values={664}
+A17, Multiple of D7, values={6416}
+A18, Triangular, values={35245}
+A19, Triangular - A29, values={51}
+A21, Power, values={64}
+A23, Multiple of D32, values={63245}
+A25, Prime, values={2153}
+A27, Square - A16, values={632}
+A29, Multiple of a Power, values={54}
+A30, Square + D24, values={314}
+A31, Square - A16, values={561}
+A33, Multiple of A30, values={2512}
+A35, Triangular, values={5356}
+A36, Jumble of D1, values={3316}
+D1, Square, values={3136}
+D2, Square, values={512656}
+D3, Product 3 distinct Primes, values={42}
+D5, Product 3 distinct Primes, values={36445}
+D6, D7 + D18, values={3141}
+D7, Power, values={16}
+D9, Triangular, values={1314631}
+D11, Twice a Square, values={242}
+D13, Square, values={2653641}
+D15, Square, values={5625}
+D18, Power, values={3125}
+D20, Square, values={143641}
+D22, Multiple of Square of D32, values={45325}
+D24, Sum of 2 consecutive Squares, values={265}
+D26, Half of a Triangular, values={1463}
+D28, Square, values={2116}
+D32, A19 - D7, values={35}
+D34, Prime, values={23}
 
 Solution count=1

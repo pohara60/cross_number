@@ -130,7 +130,7 @@ solve: FrequencyEntry(name=A7,length=2,value: Factor of D4,
 	digits=[{1..4,6..8},{1..4,6..9}]
 Solve Error: clue D8 (Cube + sum all digits) no solution!
 Solve Error: clue D8 (Cube + sum all digits) no solution!
-Clue/Variable iterations=57, updates=18, elapsed 0:00:00.035432
+Clue/Variable iterations=57, updates=18, elapsed 0:00:00.046989
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Palindrome, values={131,232,313,333,343,616,636,646,737,838}
@@ -156,20 +156,20 @@ D9, Triangular, values={55,66}
 +--+--+--+--+
 
 ITERATE SOLUTIONS-----------------------------
-Solution
-A1=313
-A5=35
-A6=11
-A7=37
-A9=51
-A10=153
-D2=15
-D3=31
-D4=111
-D5=331
-D8=71
-D9=55
-
+SOLUTION-----------------------------
+Puzzle Summary
+A1, Palindrome, values={313}
+A5, Digit product = D2, values={35}
+A6, Factor of D9, values={11}
+A7, Factor of D4, values={37}
+A9, Reverse of D2, values={51}
+A10, Triangular, values={153}
+D2, Triangular, values={15}
+D3, Digit sum is square, values={31}
+D4, Multiple of A7, values={111}
+D5, Same digit product as A1, values={331}
+D8, Cube + sum all digits, values={71}
+D9, Triangular, values={55}
 +--+--+--+--+
 | 3  1  3| 1|
 +--      +  +

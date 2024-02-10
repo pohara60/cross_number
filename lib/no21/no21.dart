@@ -192,9 +192,12 @@ class No21 extends Crossnumber<No21Puzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    return clue.digitsMatch(value);
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
+    return true;
   }
 
   // Clue solver invokes generic expression evaluator with validator

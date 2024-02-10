@@ -122,9 +122,11 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!clue.digitsMatch(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     if (variableReferences.length > 1) {
       for (var v1 = 0; v1 < variableReferences.length - 1; v1++) {
         for (var v2 = v1 + 1; v2 < variableReferences.length; v2++) {

@@ -184,11 +184,11 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
   }
 
   // Validate possible clue value
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!clue.digitsMatch(value)) return false;
-    // Check prior value (maybe set by another clue)
-    if (clue.values != null && !clue.values!.contains(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     return true;
   }
 

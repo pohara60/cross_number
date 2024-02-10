@@ -179,14 +179,12 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
   // Validate possible clue value
   // Each answer may be expressed as p1 x p2 x p3 where the pi are distinct primes
   // and come from the set {3, 5, 11, 17, 23}.
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (value < 0) return false;
-    if (clue.min != null && value < clue.min!) return false;
-    if (clue.max != null && value > clue.max!) return false;
-    if (clue.values != null && !clue.values!.contains(value)) return false;
+    if (!super.validClue(clue, value, variableReferences, variableValues))
+      return false;
     if (!(clue is IncreasingPrimeEntry) && !check3Primes(value)) return false;
-    if (!clue.digitsMatch(value)) return false;
     return true;
   }
 
