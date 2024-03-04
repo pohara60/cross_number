@@ -400,7 +400,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var updated = puzzle.updateValues(clue, possibleValues);
     if (updated) {
       // Schedule clue for update (to check digits)
-      if (!isEntry) addToUpdateQueue(clue);
+      // if (!isEntry || clue.entry == null)
+      addToUpdateQueue(clue);
       // Schedule referencing clues for update
       for (var referrer in clue.referrers) {
         addToUpdateQueue(referrer);

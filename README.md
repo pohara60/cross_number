@@ -67,6 +67,7 @@ The Clues, Entries and Variables columns refer to whether and how these entities
 | [CubeSandwich](lib/cubesandwich/README.md) | Simple | Expression Solvers | | Expression |  |
 | [AlmostFermat](lib/almostfermat/README.md) | Simple | Expression Solvers, cf [Pandigitals](lib/pandigitals/README.md) | Multiple Expressions, Constrained | Referenced by Clues |  |
 | [Knights2](lib/knights2/README.md) | Simple | Expression Solvers | | Expression | |
+| [Couplets](lib/couplets/README.md) | Simple | Expression Solvers | Expression, Constrained | Referenced by Clues |  |
 
 
 ## Specific Puzzle Implementation

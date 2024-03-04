@@ -5,6 +5,7 @@ import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/almostfermat/almostfermat.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 import 'package:crossnumber/columns/columns.dart';
+import 'package:crossnumber/couplets/couplets.dart';
 import 'package:crossnumber/cubesandwich/cubesandwich.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
@@ -74,7 +75,8 @@ void main(List<String> arguments) async {
     ..addCommand(PowerPlayCommand())
     ..addCommand(AlmostFermatCommand())
     ..addCommand(Knights2Command())
-    ..addCommand(TwentyFiveCommand());
+    ..addCommand(TwentyFiveCommand())
+    ..addCommand(CoupletsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -694,6 +696,30 @@ class TwentyFiveCommand extends Command {
     // Get and print solve
     try {
       final pc = TwentyFive();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class CoupletsCommand extends Command {
+  @override
+  final name = 'Couplets';
+  @override
+  final description = 'solve hardcoded Couplets puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Couplets();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

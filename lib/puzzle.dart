@@ -1137,7 +1137,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
               value >= clue.min! && value < clue.max! + 1) {
             var valid = validValue == null
                 ? clue.digitsMatch(value)
-                : validValue(clue, value, clue.variableClueReferences, product);
+                : validValue(clue, value, variableNames, product);
             if (valid) {
               possibleValue.add(value);
               var index = 0;

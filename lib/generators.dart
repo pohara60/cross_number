@@ -42,6 +42,7 @@ void initializeGenerators(Map<String, Generator> generators) {
       Generator('sumconsecutivesquares', generateSumConsecutiveSquares);
   generators['sum2fibonacci'] =
       Generator('sum2fibonacci', generateSum2Fibonacci);
+  generators['sum2square'] = Generator('sum2square', generateSum2Square);
 }
 
 Iterable<int> generateIntegers(num min, num max) sync* {
@@ -440,6 +441,11 @@ var sum2fibonnaci = <int>[2, 3, 4];
 Iterable<int> generateSum2Fibonacci(num min, num max) sync* {
   yield* generateSum(
       min, max, generateFibonacci, generateFibonacci, sum2fibonnaci);
+}
+
+var sum2square = <int>[5, 10, 13];
+Iterable<int> generateSum2Square(num min, num max) sync* {
+  yield* generateSum(min, max, generateSquares, generateSquares, sum2square);
 }
 
 Iterable<int> generateSum(num min, num max, GeneratorFunc gen1,
