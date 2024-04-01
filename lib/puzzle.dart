@@ -1091,6 +1091,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     Set<int> possibleValue,
     Map<String, Set<int>> possibleVariables, [
     bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
+    ExpressionCallback? callback,
     int maxCount = 1000000,
   ]) {
     final stopwatch = Stopwatch()..start();
@@ -1131,8 +1132,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
-        for (var value in exp.generate(
-            clue.min, clue.max, variableNames, product, clue.values)) {
+        for (var value in exp.generate(clue.min, clue.max, variableNames,
+            product, clue.values, callback)) {
           if (clue.length == null ||
               value >= clue.min! && value < clue.max! + 1) {
             var valid = validValue == null
@@ -1216,7 +1217,9 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       // Entry names are single alpha or prefixed with E
       if (name.length > 1 && name[0] == 'E') name = name.substring(1);
       Puzzle puzzle = cluePuzzle(clueName);
-      var otherClue = isEntry ? puzzle.entries[name]! : puzzle.clues[name]!;
+      var otherClue = isEntry && puzzle.entries.isNotEmpty
+          ? puzzle.entries[name]!
+          : puzzle.clues[name]!;
       // Clue values may not yet be available
       var otherClueValues = otherClue.values;
       //if (otherClueValues == null && clue.circularClueReference) {

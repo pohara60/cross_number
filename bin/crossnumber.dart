@@ -35,6 +35,7 @@ import 'package:crossnumber/sequences/sequences.dart';
 import 'package:crossnumber/thirty/thirty.dart';
 import 'package:crossnumber/twentyfive/twentyfive.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
+import 'package:crossnumber/undersix/undersix.dart';
 import 'package:crossnumber/wheels/wheels.dart';
 
 const help = 'help';
@@ -76,7 +77,8 @@ void main(List<String> arguments) async {
     ..addCommand(AlmostFermatCommand())
     ..addCommand(Knights2Command())
     ..addCommand(TwentyFiveCommand())
-    ..addCommand(CoupletsCommand());
+    ..addCommand(CoupletsCommand())
+    ..addCommand(UnderSixCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -720,6 +722,30 @@ class CoupletsCommand extends Command {
     // Get and print solve
     try {
       final pc = Couplets();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class UnderSixCommand extends Command {
+  @override
+  final name = 'UnderSix';
+  @override
+  final description = 'solve hardcoded UnderSix puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = UnderSix();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

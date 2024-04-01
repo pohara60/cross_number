@@ -75,18 +75,18 @@ int multiplicativePersistence(int value) {
 }
 
 int reverse(int value) {
-  // var valueStr = value.toString();
-  // var reverse = '';
-  // for (var index = 0; index < valueStr.length; index++) {
-  //   reverse = valueStr[index] + reverse;
-  // }
-  // return int.parse(reverse);
-  var result = 0;
-  while (value > 0) {
-    result = result * 10 + value % 10;
-    value = value ~/ 10;
+  var valueStr = value.toString();
+  var reverse = '';
+  for (var index = 0; index < valueStr.length; index++) {
+    reverse = valueStr[index] + reverse;
   }
-  return result;
+  return int.parse(reverse);
+  // var result = 0;
+  // while (value > 0) {
+  //   result = result * 10 + value % 10;
+  //   value = value ~/ 10;
+  // }
+  // return result;
 }
 
 int sumDigits(int value) {

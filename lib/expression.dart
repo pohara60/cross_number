@@ -7,6 +7,8 @@ import 'generators.dart';
 import 'monadic.dart';
 import 'variable.dart';
 
+typedef num? ExpressionCallback(num? left, num? right, num? result, Node node);
+
 mixin Expression {
   final expressions = <ExpressionEvaluator>[];
   ExpressionEvaluator get exp => expressions[0];
@@ -216,13 +218,14 @@ class Node {
   late NodeOrder order;
   List<Node>? operands;
   bool isSubject = false;
+  int? depth;
 
   Node? get left =>
       operands != null && operands!.length >= 1 ? operands![0] : null;
   Node? get right =>
       operands != null && operands!.length >= 1 ? operands![1] : null;
 
-  Node(this.token, [List<Node?>? operands]) {
+  Node(this.token, [List<Node?>? operands, this.depth]) {
     if (operands == null)
       this.operands = null;
     else {
@@ -488,6 +491,9 @@ class ExpressionEvaluator {
     this.nexttok = null; // Next symbol tokenized
     this._advance(); // Load first lookahead token
     this._parse(); // Build tree
+    if (this.tree != null) {
+      this._setDepth([this.tree!]);
+    }
     this.usesResult =
         _hasToken(GENERATOR, "result"); // Does not yet use generator result
     this.variableRefs.sort();
@@ -515,6 +521,15 @@ class ExpressionEvaluator {
       }
     }
     return false;
+  }
+
+  void _setDepth(List<Node> nodes, [int depth = 0]) {
+    for (var node in nodes) {
+      node.depth = depth;
+      if (node.operands != null) {
+        _setDepth(node.operands!, depth + 1);
+      }
+    }
   }
 
   void getVariableReferences(List<String> references, [Node? node]) {
@@ -565,10 +580,14 @@ class ExpressionEvaluator {
     return '';
   }
 
-  int evaluate([List<String>? variableNames, List<int>? variableValues]) {
+  int evaluate([
+    List<String>? variableNames,
+    List<int>? variableValues,
+    ExpressionCallback? callback,
+  ]) {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
-    var value = this.eval(this.tree);
+    var value = this.eval(this.tree, callback);
     checkInteger(value);
     return value.toInt();
   }
@@ -579,6 +598,7 @@ class ExpressionEvaluator {
     List<String>? variableNames,
     List<int>? variableValues,
     Set<int>? knownResults,
+    ExpressionCallback? callback,
   ]) sync* {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
@@ -590,7 +610,7 @@ class ExpressionEvaluator {
     if (this.usesResult) {
       this.knownResults = knownResults?.toList()?..sort();
     }
-    for (var value in this.gen(min, max, this.tree)) {
+    for (var value in this.gen(min, max, this.tree, callback)) {
       num result = resultValue(value);
       if (isIntegerValue(result)) yield result.toInt();
       this.result = null;
@@ -749,40 +769,43 @@ class ExpressionEvaluator {
     }
   }
 
-  num eval(Node? node) {
+  num eval(Node? node, ExpressionCallback? callback) {
     if (node == null) return 0;
+    num? left;
+    num? right;
+    num? result;
     switch (node.token.type) {
       case NUM:
-        return node.token.value;
+        result = node.token.value;
       case PLUS:
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
-        return left + right;
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
+        result = left + right;
       case MINUS:
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
-        return left - right;
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
+        result = left - right;
       case TIMES:
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
-        return left * right;
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
+        result = left * right;
       case DIVIDE:
         // Require exact integer result - checked later
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
         if (right == 0) {
           throw ExpressionInvalid('Divide by zero');
         }
-        return left / right;
+        result = left / right;
       case MOD:
         // Require exact integer operands
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
         checkInteger(left);
         checkInteger(right);
-        return left % right;
+        result = left % right;
       case ROOT:
-        var square = eval(node.operands![0]);
+        var square = eval(node.operands![0], callback);
         if (square < 0) {
           throw ExpressionInvalid('Negative root');
         }
@@ -790,14 +813,14 @@ class ExpressionEvaluator {
         if (root * root != square) {
           throw ExpressionInvalid('Non-integer root');
         }
-        return root;
+        result = root;
       case FACTORIAL:
-        var left = eval(node.operands![0]);
+        left = eval(node.operands![0], callback);
         int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
         checkInteger(left);
-        return factorial(left.toInt());
+        result = factorial(left.toInt());
       case REVERSE:
-        var left = eval(node.operands![0]);
+        left = eval(node.operands![0], callback);
         int reverse(int value) {
           var valueStr = value.toString();
           var reverse = '';
@@ -807,85 +830,97 @@ class ExpressionEvaluator {
           return int.parse(reverse);
         }
         checkInteger(left);
-        var result = reverse(left.toInt());
+        result = reverse(left.toInt());
         if (result == left || left % 10 == 0) {
           throw ExpressionInvalid('Invalid reverse value');
         }
-        return result;
       case EXPONENT:
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
         var exp = pow(left, right);
-        var result = exp;
-        return result;
+        result = exp;
       case EQUAL:
-        var left = eval(node.operands![0]);
-        var right = eval(node.operands![1]);
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
         if (left != right) {
           throw ExpressionInvalid('Unequal expressions');
         }
-        return left;
+        result = left;
       case CLUE:
         var name = node.token.name;
         var index = this.variableNames!.indexOf(name);
         if (index < 0) {
           throw ExpressionInvalid('Unknown clue $name');
         }
-        return this.variableValues![index];
+        result = this.variableValues![index];
       case VAR:
         var name = node.token.name;
         var index = this.variableNames!.indexOf(name);
         if (index < 0) {
           throw ExpressionInvalid('Unknown variable $name');
         }
-        return this.variableValues![index];
+        result = this.variableValues![index];
       case MONADIC:
         var name = node.token.name;
         var monadic = monadics[name];
         if (monadic == null) {
           throw ExpressionInvalid('Unknown monadic $name');
         }
-        var left = eval(node.operands![0]);
+        left = eval(node.operands![0], callback);
         checkInteger(left);
-        var result = monadic.func != null
+        var funcResult = monadic.func != null
             ? monadic.func!(left.toInt())
             : monadic.funcRange!(left.toInt(), null, null);
-        if (result is bool) {
-          if (result) return left;
-          throw ExpressionInvalid(
-              'False bool result for monadic $name in simple expression');
-        } else if (result is num) {
-          return result;
+        if (funcResult is bool) {
+          if (funcResult)
+            result = left;
+          else
+            throw ExpressionInvalid(
+                'False bool result for monadic $name in simple expression');
+        } else if (funcResult is num) {
+          result = funcResult;
         } else {
           throw ExpressionInvalid(
-              'Unexpected value type $result for monadic $name');
+              'Unexpected value type $funcResult for monadic $name');
         }
       case GENERATOR:
         throw ExpressionInvalid("GENERATOR should be evaluated using 'gen()'");
       default:
         throw ExpressionInvalid('Invalid AST');
     }
+    // Apply callback - can update result, or result to null to throw exception
+    if (callback != null) {
+      result = callback(left, right, result, node);
+      if (result == null) {
+        throw ExpressionInvalid('Callback rejected result');
+      }
+    }
+    return result;
   }
 
-  Iterable<num> gen(num min, num max, Node? node) sync* {
+  Iterable<num> gen(
+      num min, num max, Node? node, ExpressionCallback? callback) sync* {
     if (node == null) return;
     if (node.complexity == NodeComplexity.SIMPLE) {
       // Just one value
-      yield eval(node);
+      yield eval(node, callback);
       return;
     }
     switch (node.token.type) {
       case PLUS:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 1 : min - rvalue,
                 rvalue == 0 ? max : max - rvalue,
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -893,8 +928,9 @@ class ExpressionEvaluator {
                   min - left,
                   max - left,
                   rnode,
+                  callback,
                 )) {
-            var result = left + right;
+            num? result = left + right;
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -902,6 +938,10 @@ class ExpressionEvaluator {
             if (result < min) {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
+            }
+            if (callback != null) {
+              result = callback(left, right, result, node);
+              if (result == null) continue;
             }
             yield result;
           }
@@ -909,15 +949,18 @@ class ExpressionEvaluator {
         break;
       case MINUS:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 1 : min + rvalue,
                 rvalue == 0 ? max : max + rvalue,
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -925,8 +968,9 @@ class ExpressionEvaluator {
                   left - max,
                   left - min,
                   rnode,
+                  callback,
                 )) {
-            var result = left - right;
+            num? result = left - right;
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -934,6 +978,10 @@ class ExpressionEvaluator {
             if (result < min) {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
+            }
+            if (callback != null) {
+              result = callback(left, right, result, node);
+              if (result == null) continue;
             }
             yield result;
           }
@@ -941,15 +989,18 @@ class ExpressionEvaluator {
         break;
       case TIMES:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 1 : min / rvalue,
                 rvalue == 0 ? max : max / rvalue,
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -957,8 +1008,9 @@ class ExpressionEvaluator {
                   min / left,
                   max / left,
                   rnode,
+                  callback,
                 )) {
-            var result = left * right;
+            num? result = left * right;
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -966,6 +1018,10 @@ class ExpressionEvaluator {
             if (result < min) {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
+            }
+            if (callback != null) {
+              result = callback(left, right, result, node);
+              if (result == null) continue;
             }
             yield result;
           }
@@ -973,15 +1029,18 @@ class ExpressionEvaluator {
         break;
       case DIVIDE:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 1 : min * rvalue,
                 rvalue == 0 ? max : max * rvalue,
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -989,11 +1048,12 @@ class ExpressionEvaluator {
                   left / max,
                   left / min,
                   rnode,
+                  callback,
                 )) {
             if (right == 0) {
               continue;
             }
-            var result = left / right;
+            num? result = left / right;
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -1002,21 +1062,28 @@ class ExpressionEvaluator {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
             }
+            if (callback != null) {
+              result = callback(left, right, result, node);
+              if (result == null) continue;
+            }
             yield result;
           }
         }
         break;
       case MOD:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 1 : min,
                 rvalue == 0 ? max : max,
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -1024,14 +1091,19 @@ class ExpressionEvaluator {
                   2,
                   left,
                   rnode,
+                  callback,
                 )) {
             if (isIntegerValue(left) && isIntegerValue(right)) {
-              var result = left % right;
+              num? result = left % right;
               if (result > max) {
                 continue;
               }
               if (result < min) {
                 continue;
+              }
+              if (callback != null) {
+                result = callback(left, right, result, node);
+                if (result == null) continue;
               }
               yield result;
             }
@@ -1039,11 +1111,12 @@ class ExpressionEvaluator {
         }
         break;
       case ROOT:
-        for (var square in gen(min * min, max * max, node.operands![0])) {
+        for (var square
+            in gen(min * min, max * max, node.operands![0], callback)) {
           if (square < 0) {
             continue;
           }
-          var result = sqrt(square).toInt();
+          num? result = sqrt(square).toInt();
           if (result > max) {
             if (node.order == NodeOrder.ASCENDING) break;
             continue;
@@ -1053,15 +1126,19 @@ class ExpressionEvaluator {
             continue;
           }
           if (result * result == square) {
+            if (callback != null) {
+              result = callback(square, null, result, node);
+              if (result == null) continue;
+            }
             yield result;
           }
         }
         break;
       case FACTORIAL:
-        for (var left in gen(1, max, node.operands![0])) {
+        for (var left in gen(1, max, node.operands![0], callback)) {
           int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
           if (isIntegerValue(left)) {
-            var result = factorial(left.toInt());
+            num? result = factorial(left.toInt());
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -1070,12 +1147,16 @@ class ExpressionEvaluator {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
             }
+            if (callback != null) {
+              result = callback(left, null, result, node);
+              if (result == null) continue;
+            }
             yield result;
           }
         }
         break;
       case REVERSE:
-        for (var left in gen(min, max, node.operands![0])) {
+        for (var left in gen(min, max, node.operands![0], callback)) {
           int reverse(int value) {
             var valueStr = value.toString();
             var reverse = '';
@@ -1086,7 +1167,7 @@ class ExpressionEvaluator {
           }
 
           if (isIntegerValue(left)) {
-            var result = reverse(left.toInt());
+            num? result = reverse(left.toInt());
             if (result == left || left % 10 == 0) continue;
             if (result > max) {
               // if (node.order == NodeOrder.ASCENDING) break;
@@ -1096,21 +1177,28 @@ class ExpressionEvaluator {
               // if (node.order == NodeOrder.DESCENDING) break;
               continue;
             }
+            if (callback != null) {
+              result = callback(left, null, result, node);
+              if (result == null) continue;
+            }
             yield result;
           }
         }
         break;
       case EXPONENT:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 1 : pow(min, 1 / rvalue),
                 rvalue == 0 ? max : pow(max, 1 / rvalue),
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -1118,8 +1206,9 @@ class ExpressionEvaluator {
                   left <= 1 ? 2 : log(min) / log(left),
                   left <= 1 ? max : log(max) / log(left),
                   rnode,
+                  callback,
                 )) {
-            var result = pow(left, right);
+            num? result = pow(left, right);
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -1127,6 +1216,10 @@ class ExpressionEvaluator {
             if (result < min) {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
+            }
+            if (callback != null) {
+              result = callback(left, right, result, node);
+              if (result == null) continue;
             }
             yield result;
           }
@@ -1134,15 +1227,18 @@ class ExpressionEvaluator {
         break;
       case EQUAL:
         var lnode = node.operands![0];
-        var lvalue = lnode.order == NodeOrder.SINGLE ? eval(lnode) : 0;
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
         var rnode = node.operands![1];
-        var rvalue = rnode.order == NodeOrder.SINGLE ? eval(rnode) : 0;
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
                 rvalue == 0 ? 0 : rvalue,
                 rvalue == 0 ? max : rvalue,
                 lnode,
+                callback,
               )) {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
@@ -1150,8 +1246,9 @@ class ExpressionEvaluator {
                   left,
                   left,
                   rnode,
+                  callback,
                 )) {
-            var result = resultValue(left);
+            num? result = resultValue(left);
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -1160,7 +1257,13 @@ class ExpressionEvaluator {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
             }
-            if (left == right) yield result;
+            if (left == right) {
+              if (callback != null) {
+                result = callback(left, right, result, node);
+                if (result == null) continue;
+              }
+              yield result;
+            }
           }
         }
         break;
@@ -1179,7 +1282,7 @@ class ExpressionEvaluator {
             if (this.result! >= min && this.result! <= max) yield this.result!;
             return;
           }
-          // if have previous known values then no return them
+          // if have previous known values then return them
           if (knownResults != null) {
             for (var result in knownResults!) {
               if (result >= min && result <= max) {
@@ -1190,8 +1293,8 @@ class ExpressionEvaluator {
             return;
           }
         }
-        for (var result in generator.func(min, max)) {
-          if (result > max) {
+        for (num? result in generator.func(min, max)) {
+          if (result! > max) {
             if (node.order == NodeOrder.ASCENDING) break;
             continue;
           }
@@ -1200,7 +1303,11 @@ class ExpressionEvaluator {
             continue;
           }
           // Side-efffect
-          if (name == "result") this.result = result;
+          if (name == "result") this.result = result as int;
+          if (callback != null) {
+            result = callback(null, null, result, node);
+            if (result == null) continue;
+          }
           yield result;
         }
         break;
@@ -1219,7 +1326,7 @@ class ExpressionEvaluator {
         if (!(monadic.type is bool) && name != 'jumble') {
           fmax = maxResult! * maxResult!;
         }
-        for (var left in gen(fmin, fmax, childNode)) {
+        for (var left in gen(fmin, fmax, childNode, callback)) {
           if (isIntegerValue(left)) {
             var result = monadic.func != null
                 ? monadic.func!(left.toInt())
@@ -1240,6 +1347,10 @@ class ExpressionEvaluator {
                     childNode.order == NodeOrder.SINGLE) break;
                 continue;
               }
+              if (callback != null) {
+                result = callback(left, null, result, node);
+                if (result == null) continue;
+              }
               yield result;
             } else if (result is Iterable<int>) {
               var breakOuter = true;
@@ -1247,10 +1358,10 @@ class ExpressionEvaluator {
               // Override to prevent runaway NodeOrder.UNKNOWN
               var iterationCount = 0;
               const iterationLimit = 100000;
-              for (var fresult in result) {
+              for (int? fresult in result) {
                 iterationCount++;
                 anyResult = true;
-                if (fresult > max) {
+                if (fresult! > max) {
                   if (node.order == NodeOrder.ASCENDING) break;
                   breakOuter = false;
                   if (node.order == NodeOrder.UNKNOWN &&
@@ -1265,6 +1376,10 @@ class ExpressionEvaluator {
                   continue;
                 }
                 breakOuter = false;
+                if (callback != null) {
+                  fresult = callback(left, null, fresult as num, node) as int?;
+                  if (fresult == null) continue;
+                }
                 yield fresult;
               }
               if (anyResult && breakOuter) break;

@@ -1,6 +1,4 @@
-library {{env['abcd']}};
-
-import 'dart:math';
+library undersix;
 
 import '../clue.dart';
 import '../crossnumber.dart';
@@ -10,103 +8,60 @@ import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
-/// Provide access to the {{env['ABCD']}} API.
-class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
-  var gridString = [{% for line in env['grid'].rstrip().split('\n') %}
-    '{{line}}',{% endfor %}
+/// Provide access to the UnderSix API.
+class UnderSix extends Crossnumber<UnderSixPuzzle> {
+  var gridString = [
+    '+--+--+--+--+--+--+',
+    '|Aa:b :  |B :c :d |',
+    '+::+::+--+--+::+::+',
+    '|  |  |e |f |  |  |',
+    '+::+::+::+::+::+::+',
+    '|C :  :  :  :  :  |',
+    '+--+--+::+::+--+--+',
+    '|Dg:  :  :  :  :h |',
+    '+::+--+::+::+--+::+',
+    '|E :  :  |F :  :  |',
+    '+::+--+::+::+--+::+',
+    '|G :  :  :  :  :  |',
+    '+--+--+--+--+--+--+',
   ];
 
-  {{env['ABCD']}}() {
+  UnderSix() {
     initCrossnumber();
   }
 
   void initCrossnumber() {
-
-    {% if env['num_grids']!=1 %}
-    for (var i = 0; i < {{env['num_grids']}}; i++) {
-    {% endif %}
-    var puzzle = {{env['ABCD']}}Puzzle.grid(gridString);
+    var puzzle = UnderSixPuzzle.grid(gridString);
     this.puzzles.add(puzzle);
 
-    // Select the appropriate branch in the test below
-    if (separateCluesEntries) {
-    // Entries and Clues have separate definitions
-
-    // Get entries from grid
-    var entryErrors = '';
-    for (var entrySpec in puzzle.getEntriesFromGrid()) {
-      try {
-        var entry = {{env['ABCD']}}Entry(
-          name: entrySpec.name,
-          length: entrySpec.length,
-          solve: solve{{env['ABCD']}}Clue,
-        );
-        puzzle.addEntry(entry);
-      } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
-      }
-    }
-
-    if (entryErrors != '') {
-      throw PuzzleException(entryErrors);
-    }
-
-    // For alpha entry names we pass the names to clue expression parsing
-    // Until we create a clue, then entries are returned as clues (legacy)
-    var entryNames = puzzle.clues.keys.toList();
-
-    var clueErrors = '';
-    void clueWrapper(
-        {String? name, int? length, String? valueDesc, List<String>? addDesc}) {
-      try {
-        var clue = {{env['ABCD']}}Clue(
-            name: name!, 
-            length: length, 
-            valueDesc: valueDesc, 
-            addDesc: addDesc,
-            solve: solve{{env['ABCD']}}Clue,
-            entryNames: entryNames);
-        puzzle.addClue(clue);
-        return;
-      } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
-        return;
-      }
-    }
-
-    {{env['clues']}}
-
-    if (clueErrors != '') {
-      throw PuzzleException(clueErrors);
-    }
-
-    // Get Entry expressions from Clue expressions
-    // Only needed when Clue expressions refer to Entries
-    for (var clue in puzzle.clues.values) {
-      for (var exp in clue.expressions) {
-        for (var entryName in clue.entryReferences) {
-          // Rearrange expression for new subject
-          var expText = clue.exp.rearrangeExpressionText(entryName, clue.name);
-          if (expText != null) {
-            puzzle.entries[entryName]!
-                .addExpression(expText, entryNames: entryNames);
-          }
-        }
-      }
-    }
-
-    } else {
     // Clue definitions define the Entries
     var clueErrors = '';
-    void clueWrapper(
-        {String? name, int? length, String? valueDesc}) {
+    var entryNames = [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h'
+    ];
+    void clueWrapper({String? name, int? length, String? valueDesc}) {
       try {
-        var clue = {{env['ABCD']}}Entry(
-            name: name!, 
-            length: length, 
-            valueDesc: valueDesc, 
-            solve: solve{{env['ABCD']}}Clue,
-            );
+        var clue = UnderSixEntry(
+          name: name!,
+          length: length,
+          valueDesc: valueDesc,
+          solve: solveUnderSixClue,
+          entryNames: entryNames,
+        );
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
@@ -115,14 +70,27 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       }
     }
 
-    {{env['clues']}}
+    clueWrapper(name: 'A', length: 3, valueDesc: r'');
+    clueWrapper(name: 'B', length: 3, valueDesc: r'');
+    clueWrapper(name: 'C', length: 6, valueDesc: r'B( F + a - g )');
+    clueWrapper(name: 'D', length: 6, valueDesc: r'ab');
+    clueWrapper(name: 'E', length: 3, valueDesc: r'');
+    clueWrapper(name: 'F', length: 3, valueDesc: r'');
+    clueWrapper(name: 'G', length: 6, valueDesc: r"Ec'");
+    clueWrapper(name: 'a', length: 3, valueDesc: r'');
+    clueWrapper(name: 'b', length: 3, valueDesc: r'');
+    clueWrapper(name: 'c', length: 3, valueDesc: r'');
+    clueWrapper(name: 'd', length: 3, valueDesc: r'');
+    clueWrapper(name: 'e', length: 5, valueDesc: r'Ac');
+    clueWrapper(name: 'f', length: 5, valueDesc: r'F(d - h)');
+    clueWrapper(name: 'g', length: 3, valueDesc: r'');
+    clueWrapper(name: 'h', length: 3, valueDesc: r'');
 
     if (clueErrors != '') {
       throw PuzzleException(clueErrors);
     }
 
     puzzle.validateEntriesFromGrid();
-    }
 
     puzzle.addDigitIdentityFromGrid();
 
@@ -130,7 +98,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = {{env['ABCD']}}Variable(letter);
+      puzzle.letters[letter] = UnderSixVariable(letter);
     }
 
     var clueError = '';
@@ -141,11 +109,6 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     // Check variabes last, as preceeding may update them
     clueError += puzzle.checkVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
-
-    {% if env['num_grids']!=1 %}
-    }
-    {% endif %}
-
 
     super.initCrossnumber();
   }
@@ -167,18 +130,11 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
     //   }
 
-    {% if env['num_grids']!=1 %}
-    // Pairs
-    // addPairConstraint();
-    {% endif %}
     super.solve(iteration);
-    {% if env['num_grids']!=1 %}
-    }
-    {% endif %}
   }
 
   // Validate possible clue value
- @override
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
     if (!super.validClue(clue, value, variableReferences, variableValues))
@@ -186,8 +142,24 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     return true;
   }
 
+  num? underSixCallback(num? left, num? right, num? result, Node node) {
+    // top level node is multiplication of two 3 digit numbers, comprising the six
+    // digits under six. Result has digits under six.
+    if (node.depth == 0) {
+      assert(left != null && right != null && node.token.type == TIMES);
+      var lStr = left.toString();
+      var rStr = right.toString();
+      if (lStr.length != 3 || rStr.length != 3) return null;
+      if (!lessSix(lStr) || !lessSix(rStr)) return null;
+      if (commonChar(lStr, rStr)) return null;
+      var resStr = result.toString();
+      if (!lessSix(resStr)) return null;
+    }
+    return result;
+  }
+
   // Clue solver invokes generic expression evaluator with validator
-  bool solve{{env['ABCD']}}Clue(
+  bool solveUnderSixClue(
     Puzzle p,
     Variable v,
     Set<int> possibleValue, {
@@ -196,13 +168,13 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     Map<String, Set<int>>? possibleVariables2,
     Set<String>? updatedVariables,
   }) {
-    var puzzle = p as {{env['ABCD']}}Puzzle;
-    var clue = v as {{env['ABCD']}}Clue;
+    var puzzle = p as UnderSixPuzzle;
+    var clue = v as UnderSixClue;
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
       if (clue.expressions.length == 1) {
-        updated = puzzle.solveExpressionEvaluator(
-            clue, clue.exp, possibleValue, possibleVariables!, validClue);
+        updated = puzzle.solveExpressionEvaluator(clue, clue.exp, possibleValue,
+            possibleVariables!, validClue, underSixCallback);
       } else {
         var first = true;
         String? exceptionMessage;
@@ -217,6 +189,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
               first ? possibleValue : possibleValueExp,
               possibleVariables,
               validClue,
+              underSixCallback,
             );
             // Combine values
             if (first) {
@@ -251,7 +224,8 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   @override
-  bool updateClues({{env['ABCD']}}Puzzle puzzle, String clueName, Set<int> possibleValues,
+  bool updateClues(
+      UnderSixPuzzle puzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
@@ -261,13 +235,6 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     var updated = super.updateClues(puzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
-
-    {% if env['num_grids']!=1 %}
-      // Pairs
-      var clue = puzzle.clues[clueName]!;
-      updatePairs(puzzle, clue);
-    {% endif %}
-
       // Maintain clue value order
       // var clue = puzzle.clues[clueName]!;
       // var newMin = clue.values!.reduce(min);
@@ -288,5 +255,25 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       //   }
     }
     return updated;
+  }
+
+  bool lessSix(String str) {
+    for (var i = 0; i < str.length; i++) {
+      if (!"012345".contains(str[i])) return false;
+    }
+    return true;
+  }
+
+  bool commonChar(String lStr, String rStr) {
+    var allChars = '';
+    for (var i = 0; i < lStr.length; i++) {
+      if (allChars.contains(lStr[i])) return true;
+      allChars += lStr[i];
+    }
+    for (var i = 0; i < rStr.length; i++) {
+      if (allChars.contains(rStr[i])) return true;
+      allChars += rStr[i];
+    }
+    return false;
   }
 }

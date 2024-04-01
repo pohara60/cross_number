@@ -339,8 +339,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         for (var entryName in updatedEntries) {
           var puzzle2 =
               entryName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
-          print(
-              '$entryName=${puzzle2.entries[entryName]!.values!.toShortString()}');
+          var entries =
+              puzzle2.entries.isNotEmpty ? puzzle2.entries : puzzle2.clues;
+          print('$entryName=${entries[entryName]!.values!.toShortString()}');
         }
       }
     }
@@ -396,7 +397,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     if (!isFocus && thisPuzzle.otherPuzzleClues.containsKey(focusClueName)) {
       puzzle = thisPuzzle.otherPuzzleClues[focusClueName]!;
     }
-    var clue = isEntry ? puzzle.entries[clueName]! : puzzle.clues[clueName]!;
+    var clue = isEntry && puzzle.entries.isNotEmpty
+        ? puzzle.entries[clueName]!
+        : puzzle.clues[clueName]!;
     var updated = puzzle.updateValues(clue, possibleValues);
     if (updated) {
       // Schedule clue for update (to check digits)

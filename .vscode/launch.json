@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "UnderSix",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "UnderSix"
+            ]
+        },
+        {
             "name": "Couplets",
             "type": "dart",
             "request": "launch",
