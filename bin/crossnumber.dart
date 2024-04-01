@@ -32,6 +32,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
+import 'package:crossnumber/sumsquares/sumsquares.dart';
 import 'package:crossnumber/thirty/thirty.dart';
 import 'package:crossnumber/twentyfive/twentyfive.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
@@ -78,7 +79,8 @@ void main(List<String> arguments) async {
     ..addCommand(Knights2Command())
     ..addCommand(TwentyFiveCommand())
     ..addCommand(CoupletsCommand())
-    ..addCommand(UnderSixCommand());
+    ..addCommand(UnderSixCommand())
+    ..addCommand(SumSquaresCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -746,6 +748,30 @@ class UnderSixCommand extends Command {
     // Get and print solve
     try {
       final pc = UnderSix();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class SumSquaresCommand extends Command {
+  @override
+  final name = 'SumSquares';
+  @override
+  final description = 'solve hardcoded SumSquares puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = SumSquares();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

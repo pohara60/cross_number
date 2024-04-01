@@ -86,7 +86,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       for (var exp in clue.expressions) {
         for (var entryName in clue.entryReferences) {
           // Rearrange expression for new subject
-          var expText = clue.exp.rearrangeExpressionText(entryName, clue.name);
+          var expText = exp.rearrangeExpressionText(entryName, clue.name);
           if (expText != null) {
             puzzle.entries[entryName]!
                 .addExpression(expText, entryNames: entryNames);

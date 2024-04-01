@@ -676,7 +676,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     for (var clue in mappedClue != null
         ? [mappedClue]
         : _clues.values.where((c) =>
-            c.isAcross == entry.isAcross &&
+            (c.isUnknown || c.isAcross == entry.isAcross) &&
             c.length == entry.length &&
             c.entry == null)) {
       // Set mapping

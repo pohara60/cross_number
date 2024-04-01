@@ -806,13 +806,13 @@ List<int>? getTriangularsLessValues(Clue clue, Set<int> values) {
 
 int romanToDecimal(String str) {
   int value(String r) {
-    if (r == 'I') return 1;
-    if (r == 'V') return 5;
-    if (r == 'X') return 10;
-    if (r == 'L') return 50;
-    if (r == 'C') return 100;
-    if (r == 'D') return 500;
-    if (r == 'M') return 1000;
+    if (r == 'I' || r == 'i') return 1;
+    if (r == 'V' || r == 'v') return 5;
+    if (r == 'X' || r == 'x') return 10;
+    if (r == 'L' || r == 'l') return 50;
+    if (r == 'C' || r == 'c') return 100;
+    if (r == 'D' || r == 'd') return 500;
+    if (r == 'M' || r == 'm') return 1000;
     return -1;
   }
 

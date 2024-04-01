@@ -48,6 +48,7 @@ class Clue extends Variable {
 
   bool get isAcross => this.name[0] == 'A';
   bool get isDown => this.name[0] == 'D';
+  bool get isUnknown => !isAcross && !isDown;
 
   /// Computed - Range of possible values
   int? get lo => min;
