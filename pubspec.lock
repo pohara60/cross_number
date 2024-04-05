@@ -289,6 +289,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.12.16+1"
+  memoized:
+    dependency: "direct main"
+    description:
+      name: memoized
+      sha256: ba4621ecb6e795c589f95ba75a371f9fa00b3851187c04425260d401b4498097
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.6"
   meta:
     dependency: transitive
     description:

@@ -1,5 +1,6 @@
 library combinations;
 
+import 'package:memoized/memoized.dart';
 import 'package:crossnumber/cartesian.dart';
 import 'package:crossnumber/generators.dart';
 
@@ -301,66 +302,53 @@ Iterable<int> kPrimesGreaterN(int valueN, int valueK) sync* {
   }
 }
 
-int computeSumKPrimes(int valueN, int valueK) {
+late final sumRange = Memoized2((int begin, int end) {
+  int sum = 0;
+  for (int i = begin; i <= end; i++) {
+    sum += i;
+  }
+  return sum;
+});
+
+late final computeSumKPrimes = Memoized2((int valueN, int valueK) {
   var sum = 0;
   for (var prime in kPrimesGreaterN(valueN, valueK)) {
     sum += prime;
   }
   return sum;
-}
+});
 
-int computeProductKPrimes(int valueN, int valueK) {
+late final computeProductKPrimes = Memoized2((int valueN, int valueK) {
   var product = 1;
   for (var prime in kPrimesGreaterN(valueN, valueK)) {
     product *= prime;
   }
   return product;
-}
+});
 
-var combinations = <(int, int), int>{};
-int computeCombinations(int valueN, int valueK) {
+late final computeCombinations = Memoized2((int valueN, int valueK) {
   if (valueK < 1 || valueK > valueN) return 0;
   if (valueK == valueN) return 1;
   if (valueK == 1) return valueN;
-  var record = (valueN, valueK);
-  if (combinations.containsKey(record)) return combinations[record]!;
   try {
     // nCk = n!/(n-k)!k!
-    // Compute partial factorial with larger of k and n-k
     var k = valueK;
-    var nLessK = valueN - valueK;
-    if (nLessK > valueK) {
-      k = nLessK;
-      nLessK = valueK;
+    var n = valueN;
+    if (n - k < k) k = n - k;
+    var r = 1;
+    for (var d = 1; d <= k; d++) {
+      r *= n--;
+      r ~/= d;
+      if (r > 1000000) throw SolveException('Combinations out of range');
     }
-    var value = getPartialFactorial(valueN, k) ~/ getFactorial(nLessK);
-    combinations[record] = value;
-    return value;
+    return r;
   } on SolveException {
     return 0;
   }
-}
+});
 
-var factorials = <int>[1, 2, 6];
-int getFactorial(int n) {
+late final Memoized1<int, int> getFactorial = Memoized1((int n) {
   if (n > 19) throw SolveException('Factorial out of range');
-  int length = factorials.length;
-  while (length < n) {
-    var next = factorials[length - 1] * (length + 1);
-    length++;
-    factorials.add(next);
-  }
-  return factorials[n - 1];
-}
-
-int getPartialFactorial(int n, int k) {
-  var next = k + 1;
-  var result = next;
-  while (next < n) {
-    if (result > 1000000)
-      throw SolveException('Partial factorial out of range');
-    next++;
-    result *= next;
-  }
-  return result;
-}
+  if (n <= 1) return n;
+  return n * getFactorial(n - 1);
+});
