@@ -153,7 +153,6 @@ Iterable<int> generateNDigitPrimes(int n) sync* {
 
 Iterable<int> generatePrimes(num min, num max) sync* {
   var limit = max.toInt();
-  var next = min.toInt();
   var index = 0;
   while (index <= limit) {
     while (index < primes.length) {
@@ -162,7 +161,21 @@ Iterable<int> generatePrimes(num min, num max) sync* {
       if (element > max) return;
       yield element;
     }
-    next = primes.last + chunk_size;
+    var next = primes.last + chunk_size;
+    chunk_size *= CHUNK_SIZE_MULTIPLIER;
+    extendPrimesUpto(next);
+  }
+}
+
+Iterable<int> generatePrimesOver(num min) sync* {
+  var index = 0;
+  while (true) {
+    while (index < primes.length) {
+      var element = primes[index++];
+      if (element < min) continue;
+      yield element;
+    }
+    var next = primes.last + chunk_size;
     chunk_size *= CHUNK_SIZE_MULTIPLIER;
     extendPrimesUpto(next);
   }

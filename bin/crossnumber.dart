@@ -5,6 +5,7 @@ import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/almostfermat/almostfermat.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 import 'package:crossnumber/columns/columns.dart';
+import 'package:crossnumber/combinations/combinations.dart';
 import 'package:crossnumber/couplets/couplets.dart';
 import 'package:crossnumber/cubesandwich/cubesandwich.dart';
 
@@ -80,7 +81,8 @@ void main(List<String> arguments) async {
     ..addCommand(TwentyFiveCommand())
     ..addCommand(CoupletsCommand())
     ..addCommand(UnderSixCommand())
-    ..addCommand(SumSquaresCommand());
+    ..addCommand(SumSquaresCommand())
+    ..addCommand(CombinationsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -772,6 +774,30 @@ class SumSquaresCommand extends Command {
     // Get and print solve
     try {
       final pc = SumSquares();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class CombinationsCommand extends Command {
+  @override
+  final name = 'Combinations';
+  @override
+  final description = 'solve hardcoded Combinations puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Combinations();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

@@ -4,18 +4,19 @@ import '../variable.dart';
 
 // Numbers < 200 that are a power of a prime number
 
-class {{env['ABCD']}}Variable extends Variable {
-  {{env['ABCD']}}Variable(letter) : super(letter) {
-    this.values = Set.from([]);
+class CombinationsVariable extends Variable {
+  CombinationsVariable(letter) : super(letter) {
+    this.values = Set.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   }
   String get letter => this.name;
 }
 
-class {{env['ABCD']}}Puzzle extends VariablePuzzle<{{env['ABCD']}}Clue, {{env['ABCD']}}Entry, {{env['ABCD']}}Variable> {
+class CombinationsPuzzle extends VariablePuzzle<CombinationsClue,
+    CombinationsEntry, CombinationsVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
-  {{env['ABCD']}}Puzzle({String name = ''}) : super(null, name: name);
-  {{env['ABCD']}}Puzzle.grid(List<String> gridString, {String name = ''})
+  CombinationsPuzzle({String name = ''}) : super(null, name: name);
+  CombinationsPuzzle.grid(List<String> gridString, {String name = ''})
       : super.grid(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;

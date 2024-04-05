@@ -1084,24 +1084,15 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     return false;
   }
 
-  // Generic expression evaluator, supports variables, clues, generators and functions
-  bool solveExpressionEvaluator(
-    ExpressionClue clue,
-    ExpressionEvaluator exp,
+  int checkVariablesCount(
+    Clue clue,
     Set<int> possibleValue,
-    Map<String, Set<int>> possibleVariables, [
-    bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
-    ExpressionCallback? callback,
-    int maxCount = 1000000,
-  ]) {
-    final stopwatch = Stopwatch()..start();
-    var variableNames = <String>[];
-    var variableValues = <List<int>>[];
-    var unknownVariable = <String>[];
-    var impossibleVariable = <String>[];
-    getVariableValues(clue, exp, unknownVariable, impossibleVariable,
-        variableValues, variableNames);
-
+    Map<String, Set<int>> possibleVariables,
+    List<String> unknownVariable,
+    List<String> impossibleVariable,
+    List<List<int>> variableValues,
+    int maxCount,
+  ) {
     // Unknown variable
     if (unknownVariable.isNotEmpty) {
       // Try guessing clue values
@@ -1110,7 +1101,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         possibleValue.addAll(clueValues);
         // Cannot update variables
         possibleVariables.clear();
-        return false;
+        return 0;
       }
       throw new SolveException(
           "Solve ${clue.runtimeType} ${clue.name} no values for variable(s) ${unknownVariable}");
@@ -1129,6 +1120,44 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
       throw new SolveException();
     }
+    return count;
+  }
+
+  int getVariables(
+    ExpressionClue clue,
+    List<ExpressionEvaluator> expressions,
+    Set<int> possibleValue,
+    Map<String, Set<int>> possibleVariables,
+    List<String> variableNames,
+    List<List<int>> variableValues,
+    int maxCount,
+  ) {
+    var unknownVariable = <String>[];
+    var impossibleVariable = <String>[];
+    getVariableValues(clue, expressions, unknownVariable, impossibleVariable,
+        variableValues, variableNames);
+    var count = checkVariablesCount(clue, possibleValue, possibleVariables,
+        unknownVariable, impossibleVariable, variableValues, maxCount);
+    return count;
+  }
+
+  // Generic expression evaluator, supports variables, clues, generators and functions
+  bool solveExpressionEvaluator(
+    ExpressionClue clue,
+    ExpressionEvaluator exp,
+    Set<int> possibleValue,
+    Map<String, Set<int>> possibleVariables, [
+    bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
+    ExpressionCallback? callback,
+    int maxCount = 1000000,
+  ]) {
+    final stopwatch = Stopwatch()..start();
+    var variableNames = <String>[];
+    var variableValues = <List<int>>[];
+    var count = getVariables(clue, [exp], possibleValue, possibleVariables,
+        variableNames, variableValues, maxCount);
+    if (count == 0) return false;
+
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
@@ -1170,14 +1199,14 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 
   void getVariableValues(
     ExpressionClue clue,
-    ExpressionEvaluator exp,
+    List<ExpressionEvaluator> exps,
     List<String> unknownVariable,
     List<String> impossibleVariable,
     List<List<int>> variableValues,
     List<String> variableNames,
   ) {
-    var variableReferences = exp.variableRefs
-        .where((name) => clue.variableReferences.contains(name));
+    var variableReferences = Set.from(exps.expand((exp) => exp.variableRefs
+        .where((name) => clue.variableReferences.contains(name))));
     for (var variableName in variableReferences) {
       var variable = this.variables[variableName]!;
       var values = variable.values;
@@ -1192,14 +1221,21 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         variableNames.add(variableName);
       }
     }
-    var clueReferences =
-        exp.clueRefs.where((name) => clue.clueReferences.contains(name));
-    getClueValues(clue.name, clues, clueReferences.toList(), unknownVariable,
+    var clueReferences = Set.from(exps.expand((exp) =>
+        exp.clueRefs.where((name) => clue.clueReferences.contains(name))));
+    getClueValues(clue.name, clues, List.from(clueReferences), unknownVariable,
         impossibleVariable, variableValues, variableNames);
-    var entryReferences =
-        exp.clueRefs.where((name) => clue.entryReferences.contains(name));
-    getClueValues(clue.name, entries, entryReferences.toList(), unknownVariable,
-        impossibleVariable, variableValues, variableNames, true);
+    var entryReferences = Set.from(exps.expand((exp) =>
+        exp.clueRefs.where((name) => clue.entryReferences.contains(name))));
+    getClueValues(
+        clue.name,
+        entries,
+        List.from(entryReferences),
+        unknownVariable,
+        impossibleVariable,
+        variableValues,
+        variableNames,
+        true);
   }
 
   void getClueValues(
