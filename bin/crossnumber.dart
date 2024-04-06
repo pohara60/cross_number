@@ -35,6 +35,7 @@ import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 import 'package:crossnumber/sumsquares/sumsquares.dart';
 import 'package:crossnumber/thirty/thirty.dart';
+import 'package:crossnumber/triangularpairs/triangularpairs.dart';
 import 'package:crossnumber/twentyfive/twentyfive.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/undersix/undersix.dart';
@@ -82,7 +83,8 @@ void main(List<String> arguments) async {
     ..addCommand(CoupletsCommand())
     ..addCommand(UnderSixCommand())
     ..addCommand(SumSquaresCommand())
-    ..addCommand(CombinationsCommand());
+    ..addCommand(CombinationsCommand())
+    ..addCommand(TriangularPairsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -798,6 +800,30 @@ class CombinationsCommand extends Command {
     // Get and print solve
     try {
       final pc = Combinations();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class TriangularPairsCommand extends Command {
+  @override
+  final name = 'TriangularPairs';
+  @override
+  final description = 'solve hardcoded TriangularPairs puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = TriangularPairs();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
