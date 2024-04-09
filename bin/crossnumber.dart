@@ -29,6 +29,7 @@ import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
 import 'package:crossnumber/distancing/distancing.dart';
 import 'package:crossnumber/primecuts2/primecuts2.dart';
+import 'package:crossnumber/primeknight/primeknight.dart';
 import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
@@ -84,7 +85,8 @@ void main(List<String> arguments) async {
     ..addCommand(UnderSixCommand())
     ..addCommand(SumSquaresCommand())
     ..addCommand(CombinationsCommand())
-    ..addCommand(TriangularPairsCommand());
+    ..addCommand(TriangularPairsCommand())
+    ..addCommand(PrimeKnightCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -824,6 +826,30 @@ class TriangularPairsCommand extends Command {
     // Get and print solve
     try {
       final pc = TriangularPairs();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class PrimeKnightCommand extends Command {
+  @override
+  final name = 'PrimeKnight';
+  @override
+  final description = 'solve hardcoded PrimeKnight puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = PrimeKnight();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
