@@ -75,11 +75,11 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     var vY = DieAnotherDayVariable(letters[3]);
     var vZ = DieAnotherDayVariable(letters[4]);
     allVariables.addAll([vA, vW, vX, vY, vZ]);
-    puzzleTop = DieAnotherDayPuzzle.grid(this, gridStringTop,
+    puzzleTop = DieAnotherDayPuzzle.fromGridString(this, gridStringTop,
         name: 'Top', check: [vW, vX]);
-    puzzleFront = DieAnotherDayPuzzle.grid(this, gridStringFront,
+    puzzleFront = DieAnotherDayPuzzle.fromGridString(this, gridStringFront,
         name: 'Front', check: [vY]);
-    puzzleRight = DieAnotherDayPuzzle.grid(this, gridStringRight,
+    puzzleRight = DieAnotherDayPuzzle.fromGridString(this, gridStringRight,
         name: 'Right', check: [vZ]);
 
     EntryMixin.maxDigit = 6;

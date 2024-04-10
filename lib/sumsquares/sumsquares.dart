@@ -35,7 +35,7 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = SumSquaresPuzzle.grid(gridString);
+    var puzzle = SumSquaresPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Entries and Clues have separate definitions

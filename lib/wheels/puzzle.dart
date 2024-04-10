@@ -16,5 +16,6 @@ class WheelsVariable extends ExpressionVariable {
 class WheelsPuzzle
     extends VariablePuzzle<WheelsClue, WheelsEntry, WheelsVariable> {
   WheelsPuzzle() : super(null);
-  WheelsPuzzle.grid(List<String> gridString) : super.grid(null, gridString);
+  WheelsPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString);
 }

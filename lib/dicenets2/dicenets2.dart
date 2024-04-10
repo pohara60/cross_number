@@ -33,7 +33,7 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
   ];
 
   DiceNets2() {
-    puzzle = DiceNetsPuzzle.grid(gridString);
+    puzzle = DiceNetsPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

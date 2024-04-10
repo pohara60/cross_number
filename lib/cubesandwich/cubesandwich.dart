@@ -25,7 +25,7 @@ class CubeSandwich extends Crossnumber<CubeSandwichPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = CubeSandwichPuzzle.grid(gridString);
+    var puzzle = CubeSandwichPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     var clueErrors = '';

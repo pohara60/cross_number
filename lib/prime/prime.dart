@@ -32,7 +32,7 @@ class Prime extends Crossnumber<PrimePuzzle> {
   ];
 
   Prime() {
-    puzzle = PrimePuzzle.grid(gridString);
+    puzzle = PrimePuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

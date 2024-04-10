@@ -30,7 +30,7 @@ class No21 extends Crossnumber<No21Puzzle> {
   ];
 
   No21() {
-    puzzle = No21Puzzle.grid(gridString);
+    puzzle = No21Puzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

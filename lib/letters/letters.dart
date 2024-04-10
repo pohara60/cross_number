@@ -27,7 +27,7 @@ class Letters extends Crossnumber<LettersPuzzle> {
   ];
 
   Letters() {
-    puzzle = LettersPuzzle.grid(gridString);
+    puzzle = LettersPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

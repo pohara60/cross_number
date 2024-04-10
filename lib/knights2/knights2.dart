@@ -31,7 +31,7 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = Knights2Puzzle.grid(gridString);
+    var puzzle = Knights2Puzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Clue definitions define the Entries

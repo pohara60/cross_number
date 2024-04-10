@@ -16,8 +16,8 @@ class PrimeKnightPuzzle extends VariablePuzzle<PrimeKnightClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   PrimeKnightPuzzle({String name = ''}) : super(null, name: name);
-  PrimeKnightPuzzle.grid(List<String> gridString, {String name = ''})
-      : super.grid(null, gridString, name: name);
+  PrimeKnightPuzzle.fromGridString(List<String> gridString, {String name = ''})
+      : super.fromGridString(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

@@ -19,8 +19,9 @@ class ThirtyPuzzle
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   ThirtyPuzzle(this.thirty) : super(null);
-  ThirtyPuzzle.grid(this.thirty, List<String> gridString, {String name = ''})
-      : super.grid(null, gridString, name: name);
+  ThirtyPuzzle.fromGridString(this.thirty, List<String> gridString,
+      {String name = ''})
+      : super.fromGridString(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

@@ -25,7 +25,7 @@ class PowerPlay extends Crossnumber<PowerPlayPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = PowerPlayPuzzle.grid(gridString);
+    var puzzle = PowerPlayPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     var clueErrors = '';

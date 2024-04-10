@@ -397,7 +397,7 @@ int backtrackPuzzleCell(
   }
 
   // Try cell
-  // var cell = puzzle.grid.rows[row][col];
+  // var cell = Puzzle.fromGridString.rows[row][col];
   // Reverse order
   var pairKeys = pairs.keys;
   for (var pair in pairKeys) {

@@ -29,8 +29,8 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
 
   void initCrossnumber() {
     for (var i = 0; i < 2; i++) {
-      var puzzle =
-          TwentyFivePuzzle.grid(gridString, name: i == 0 ? 'Left' : 'Right');
+      var puzzle = TwentyFivePuzzle.fromGridString(gridString,
+          name: i == 0 ? 'Left' : 'Right');
       this.puzzles.add(puzzle);
 
       // Clue definitions define the Entries

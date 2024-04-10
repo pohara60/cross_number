@@ -27,9 +27,10 @@ class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
       : super(null, name: name) {
     if (check != null) checkVariables.addAll(check);
   }
-  DieAnotherDayPuzzle.grid(this.dieAnotherDay, List<String> gridString,
+  DieAnotherDayPuzzle.fromGridString(
+      this.dieAnotherDay, List<String> gridString,
       {String name = '', List<DieAnotherDayVariable>? check})
-      : super.grid([1, 2, 3, 4, 5, 6], gridString, name: name) {
+      : super.fromGridString([1, 2, 3, 4, 5, 6], gridString, name: name) {
     if (check != null) checkVariables.addAll(check);
   }
 

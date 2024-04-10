@@ -37,7 +37,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = CoupletsPuzzle.grid(gridString);
+    var puzzle = CoupletsPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Entries and Clues have separate definitions

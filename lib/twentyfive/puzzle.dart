@@ -16,8 +16,8 @@ class TwentyFivePuzzle extends VariablePuzzle<TwentyFiveClue, TwentyFiveEntry,
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   TwentyFivePuzzle({String name = ''}) : super(null, name: name);
-  TwentyFivePuzzle.grid(List<String> gridString, {String name = ''})
-      : super.grid(null, gridString, name: name);
+  TwentyFivePuzzle.fromGridString(List<String> gridString, {String name = ''})
+      : super.fromGridString(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

@@ -37,7 +37,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = CombinationsPuzzle.grid(gridString);
+    var puzzle = CombinationsPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Clue definitions define the Entries

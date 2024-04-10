@@ -37,8 +37,8 @@ class No21Puzzle extends VariablePuzzle<No21Clue, No21Entry, No21Variable> {
   No21Puzzle() : super(List.from(VARIABLE_VALUES)) {
     EntryMixin.maxDigit = 16;
   }
-  No21Puzzle.grid(List<String> gridString)
-      : super.grid(List.from(VARIABLE_VALUES), gridString) {
+  No21Puzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(List.from(VARIABLE_VALUES), gridString) {
     EntryMixin.maxDigit = 16;
   }
 

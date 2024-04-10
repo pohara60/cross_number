@@ -31,7 +31,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
   ];
 
   IncreasingPrime() {
-    puzzle = IncreasingPrimePuzzle.grid(gridString);
+    puzzle = IncreasingPrimePuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

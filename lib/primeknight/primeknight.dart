@@ -29,7 +29,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = PrimeKnightPuzzle.grid(gridString);
+    var puzzle = PrimeKnightPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Clue definitions define the Entries

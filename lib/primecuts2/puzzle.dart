@@ -16,8 +16,8 @@ class PrimeCuts2Puzzle
     extends VariablePuzzle<PrimeCutsClue, PrimeCutsEntry, PrimeCutsVariable> {
   // Puzzle has Prime variables that are restricted to two digit primes
   PrimeCuts2Puzzle() : super(List.from(twoDigitPrimes));
-  PrimeCuts2Puzzle.grid(List<String> gridString)
-      : super.grid(List.from(twoDigitPrimes), gridString);
+  PrimeCuts2Puzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(List.from(twoDigitPrimes), gridString);
 
   Map<String, Variable> get primes => variableList.variables;
   List<int> get remainingPrimes => variableList.remainingValues!;

@@ -213,7 +213,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   // Grid? grid;
 
   Puzzle() {}
-  Puzzle.grid(List<String> gridString) {
+  Puzzle.fromGridString(List<String> gridString) {
     // this.grid = Grid(gridString);
   }
 

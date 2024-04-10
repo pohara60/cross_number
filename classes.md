@@ -51,7 +51,7 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
     extends Puzzle<ClueKind> {
     late final VariableList variableList;
     VariablePuzzle(List<int> possibleValues);
-    VariablePuzzle.grid(List<int> possibleValues, List<String> gridString);
+    VariablePuzzle.fromGridString(List<int> possibleValues, List<String> gridString);
     Map<String, Variable> get variables => variableList.variables;
     List<int> get remainingValues => variableList.remainingValues;
     Set<String> updateVariables(String variable, Set<int> possibleValues) =>

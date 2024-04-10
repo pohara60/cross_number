@@ -33,7 +33,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
   ];
 
   Root66_2() {
-    puzzle = Root66_2Puzzle.grid(gridString);
+    puzzle = Root66_2Puzzle.fromGridString(gridString);
     initCrossnumber();
     initBCEFG();
   }

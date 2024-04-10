@@ -72,8 +72,8 @@ class EvenOdderPuzzle
   // Puzzle has Letter variables with restricted values
   late final VariableList variableList;
   EvenOdderPuzzle() : super(List.from(variableValues));
-  EvenOdderPuzzle.grid(List<String> gridString)
-      : super.grid(List.from(variableValues), gridString);
+  EvenOdderPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(List.from(variableValues), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

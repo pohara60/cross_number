@@ -25,7 +25,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   ];
 
   IncreasingFibonnaci() {
-    puzzle = IncreasingFibonnaciPuzzle.grid(gridString);
+    puzzle = IncreasingFibonnaciPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

@@ -3,7 +3,8 @@ import '../puzzle.dart';
 
 class FrequencyPuzzle extends Puzzle<FrequencyClue, FrequencyEntry> {
   FrequencyPuzzle();
-  FrequencyPuzzle.grid(List<String> gridString) : super.grid(gridString);
+  FrequencyPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(gridString);
 
   @override
   bool checkSolution() {

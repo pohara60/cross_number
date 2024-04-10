@@ -31,7 +31,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   ];
 
   PrimeCuts2() {
-    puzzle = PrimeCuts2Puzzle.grid(gridString);
+    puzzle = PrimeCuts2Puzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

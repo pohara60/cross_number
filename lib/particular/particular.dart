@@ -34,7 +34,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
   ];
 
   Particular() {
-    puzzle = ParticularPuzzle.grid(gridString);
+    puzzle = ParticularPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

@@ -11,12 +11,13 @@ class UnderSixVariable extends Variable {
   String get letter => this.name;
 }
 
-class UnderSixPuzzle extends VariablePuzzle<UnderSixClue, UnderSixEntry, UnderSixVariable> {
+class UnderSixPuzzle
+    extends VariablePuzzle<UnderSixClue, UnderSixEntry, UnderSixVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   UnderSixPuzzle({String name = ''}) : super(null, name: name);
-  UnderSixPuzzle.grid(List<String> gridString, {String name = ''})
-      : super.grid(null, gridString, name: name);
+  UnderSixPuzzle.fromGridString(List<String> gridString, {String name = ''})
+      : super.fromGridString(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

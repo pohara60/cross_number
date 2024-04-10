@@ -11,11 +11,13 @@ class IncreasingFibonnaciVariable extends Variable {
   String get letter => this.name;
 }
 
-class IncreasingFibonnaciPuzzle extends VariablePuzzle<IncreasingFibonnaciClue, IncreasingFibonnaciEntry, IncreasingFibonnaciVariable> {
+class IncreasingFibonnaciPuzzle extends VariablePuzzle<IncreasingFibonnaciClue,
+    IncreasingFibonnaciEntry, IncreasingFibonnaciVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   IncreasingFibonnaciPuzzle() : super(null);
-  IncreasingFibonnaciPuzzle.grid(List<String> gridString) : super.grid(null, gridString);
+  IncreasingFibonnaciPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

@@ -24,7 +24,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
   ];
 
   Chessboard() {
-    puzzle = ChessboardPuzzle.grid(gridString);
+    puzzle = ChessboardPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

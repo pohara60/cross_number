@@ -20,7 +20,8 @@ class Knights2Puzzle
     EntryMixin.maxDigit = 6;
     EntryMixin.zeroDigit = false;
   }
-  Knights2Puzzle.grid(List<String> gridString) : super.grid(null, gridString) {
+  Knights2Puzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString) {
     EntryMixin.maxDigit = 6;
     EntryMixin.zeroDigit = false;
   }

@@ -14,8 +14,9 @@ class ParticularPuzzle extends VariablePuzzle<ParticularClue, ParticularEntry,
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   ParticularPuzzle() : super(List.generate(99, (index) => index + 1));
-  ParticularPuzzle.grid(List<String> gridString)
-      : super.grid(List.generate(99, (index) => index + 1), gridString);
+  ParticularPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(
+            List.generate(99, (index) => index + 1), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

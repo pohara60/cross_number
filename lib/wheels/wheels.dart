@@ -25,7 +25,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
   ];
 
   Wheels() {
-    puzzle = WheelsPuzzle.grid(gridString);
+    puzzle = WheelsPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

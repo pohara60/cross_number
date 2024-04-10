@@ -29,7 +29,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
   ];
 
   Instruction() {
-    puzzle = InstructionPuzzle.grid(gridString);
+    puzzle = InstructionPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

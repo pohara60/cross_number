@@ -9,7 +9,8 @@ class DiceNetsPuzzle
   DiceNetsPuzzle() : super([]) {
     EntryMixin.maxDigit = 6;
   }
-  DiceNetsPuzzle.grid(List<String> gridString) : super.grid([], gridString) {
+  DiceNetsPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString([], gridString) {
     EntryMixin.maxDigit = 6;
   }
 }

@@ -6,5 +6,6 @@ import '../variable.dart';
 class PartnersPuzzle
     extends VariablePuzzle<PartnersClue, PartnersEntry, Variable> {
   PartnersPuzzle() : super([]);
-  PartnersPuzzle.grid(List<String> gridString) : super.grid([], gridString);
+  PartnersPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString([], gridString);
 }

@@ -25,7 +25,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     {% if env['num_grids']!=1 %}
     for (var i = 0; i < {{env['num_grids']}}; i++) {
     {% endif %}
-    var puzzle = {{env['ABCD']}}Puzzle.grid(gridString);
+    var puzzle = {{env['ABCD']}}Puzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Select the appropriate branch in the test below

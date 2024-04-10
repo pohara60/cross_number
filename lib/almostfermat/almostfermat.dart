@@ -30,7 +30,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = AlmostFermatPuzzle.grid(gridString);
+    var puzzle = AlmostFermatPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Get entries from grid

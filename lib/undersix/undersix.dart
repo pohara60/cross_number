@@ -31,7 +31,7 @@ class UnderSix extends Crossnumber<UnderSixPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = UnderSixPuzzle.grid(gridString);
+    var puzzle = UnderSixPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Clue definitions define the Entries

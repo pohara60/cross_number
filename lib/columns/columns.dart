@@ -23,7 +23,7 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
   ];
 
   Columns() {
-    puzzle = ColumnsPuzzle.grid(gridString);
+    puzzle = ColumnsPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

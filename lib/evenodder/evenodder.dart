@@ -32,7 +32,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   ];
 
   EvenOdder() {
-    puzzle = EvenOdderPuzzle.grid(gridString);
+    puzzle = EvenOdderPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

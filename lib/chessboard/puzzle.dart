@@ -14,5 +14,6 @@ class ChessboardPuzzle extends VariablePuzzle<ChessboardClue, ChessboardEntry,
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   ChessboardPuzzle() : super(null);
-  ChessboardPuzzle.grid(List<String> gridString) : super.grid(null, gridString);
+  ChessboardPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString);
 }

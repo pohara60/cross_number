@@ -19,7 +19,8 @@ class KnightsPuzzle
   KnightsPuzzle() : super(null) {
     EntryMixin.maxDigit = 6;
   }
-  KnightsPuzzle.grid(List<String> gridString) : super.grid(null, gridString) {
+  KnightsPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString) {
     EntryMixin.maxDigit = 6;
   }
 

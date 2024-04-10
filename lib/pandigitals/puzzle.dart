@@ -12,8 +12,8 @@ class PandigitalsPuzzle extends VariablePuzzle<PandigitalsClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   PandigitalsPuzzle() : super(null);
-  PandigitalsPuzzle.grid(List<String> gridString)
-      : super.grid(null, gridString);
+  PandigitalsPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

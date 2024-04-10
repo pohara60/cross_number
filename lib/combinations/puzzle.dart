@@ -16,8 +16,8 @@ class CombinationsPuzzle extends VariablePuzzle<CombinationsClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   CombinationsPuzzle({String name = ''}) : super(null, name: name);
-  CombinationsPuzzle.grid(List<String> gridString, {String name = ''})
-      : super.grid(null, gridString, name: name);
+  CombinationsPuzzle.fromGridString(List<String> gridString, {String name = ''})
+      : super.fromGridString(null, gridString, name: name);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

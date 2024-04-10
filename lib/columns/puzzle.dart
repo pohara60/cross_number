@@ -11,11 +11,13 @@ class ColumnsVariable extends Variable {
   String get letter => this.name;
 }
 
-class ColumnsPuzzle extends VariablePuzzle<ColumnsClue, ColumnsEntry, ColumnsVariable> {
+class ColumnsPuzzle
+    extends VariablePuzzle<ColumnsClue, ColumnsEntry, ColumnsVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   ColumnsPuzzle() : super(null);
-  ColumnsPuzzle.grid(List<String> gridString) : super.grid(null, gridString);
+  ColumnsPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

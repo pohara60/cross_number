@@ -28,7 +28,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   ];
 
   Sequences() {
-    puzzle = SequencesPuzzle.grid(gridString);
+    puzzle = SequencesPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

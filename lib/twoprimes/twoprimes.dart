@@ -25,7 +25,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
   ];
 
   TwoPrimes() {
-    puzzle = TwoPrimesPuzzle.grid(gridString);
+    puzzle = TwoPrimesPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

@@ -79,8 +79,8 @@ class SequencesPuzzle
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   SequencesPuzzle() : super(List.from(variableValues));
-  SequencesPuzzle.grid(List<String> gridString)
-      : super.grid(List.from(variableValues), gridString);
+  SequencesPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(List.from(variableValues), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

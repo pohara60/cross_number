@@ -27,7 +27,7 @@ class Knights extends Crossnumber<KnightsPuzzle> {
   ];
 
   Knights() {
-    puzzle = KnightsPuzzle.grid(gridString);
+    puzzle = KnightsPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

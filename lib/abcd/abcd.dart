@@ -28,7 +28,7 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
   ];
 
   ABCD() {
-    puzzle = ABCDPuzzle.grid(gridString);
+    puzzle = ABCDPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

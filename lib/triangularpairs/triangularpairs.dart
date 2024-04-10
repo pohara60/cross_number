@@ -32,7 +32,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
   }
 
   void initCrossnumber() {
-    var puzzle = TriangularPairsPuzzle.grid(gridString);
+    var puzzle = TriangularPairsPuzzle.fromGridString(gridString);
     this.puzzles.add(puzzle);
 
     // Clue definitions define the Entries

@@ -13,8 +13,9 @@ class Root66Puzzle
     extends VariablePuzzle<Root66Clue, Root66Entry, Root66Variable> {
   // Puzzle has Prime variables that are restricted to two digit primes
   Root66Puzzle() : super(List.from({1, 2, 3, 4, 5, 6, 7, 8, 9}));
-  Root66Puzzle.grid(List<String> gridString)
-      : super.grid(List.from({1, 2, 3, 4, 5, 6, 7, 8, 9}), gridString);
+  Root66Puzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(
+            List.from({1, 2, 3, 4, 5, 6, 7, 8, 9}), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingValues => variableList.remainingValues!;

@@ -28,8 +28,8 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
 
   void initCrossnumber() {
     for (var i = 0; i < 2; i++) {
-      var puzzle =
-          ThirtyPuzzle.grid(this, gridString, name: i == 0 ? 'Left' : 'Right');
+      var puzzle = ThirtyPuzzle.fromGridString(this, gridString,
+          name: i == 0 ? 'Left' : 'Right');
       this.puzzles.add(puzzle);
 
       // Get entries from grid

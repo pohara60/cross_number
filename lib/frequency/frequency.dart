@@ -23,7 +23,7 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
   ];
 
   Frequency() {
-    puzzle = FrequencyPuzzle.grid(gridString);
+    puzzle = FrequencyPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

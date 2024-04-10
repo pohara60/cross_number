@@ -22,7 +22,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
   ];
 
   Partners() {
-    puzzle = PartnersPuzzle.grid(gridString);
+    puzzle = PartnersPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

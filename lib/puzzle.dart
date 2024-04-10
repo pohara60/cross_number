@@ -8,7 +8,7 @@ import 'clue.dart';
 import 'crossnumber.dart';
 import 'expression.dart';
 import 'generators.dart';
-import 'grid.dart';
+import 'gridspec.dart';
 import 'variable.dart';
 
 class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
@@ -16,18 +16,19 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   final _entries = <String, EntryKind>{};
   Map<String, ClueKind> get clues => _clues.isNotEmpty ? _clues : _entries;
   Map<String, EntryKind> get entries => _clues.isNotEmpty ? _entries : {};
+  Map<String, EntryKind> get allEntries => _entries;
 
   final otherPuzzleClues = <String, Puzzle>{};
   Puzzle cluePuzzle(String clueName) => otherPuzzleClues[clueName] ?? this;
 
-  Grid? grid;
+  GridSpec? grid;
 
   final String name;
   bool distinctClues = true;
 
   Puzzle({this.name = ''}) {}
-  Puzzle.grid(List<String> gridString, {this.name = ''}) {
-    this.grid = Grid(gridString);
+  Puzzle.fromGridString(List<String> gridString, {this.name = ''}) {
+    this.grid = GridSpec(gridString);
   }
 
   void addClue(ClueKind clue) {
@@ -798,9 +799,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     initVariablePuzzle(possibleValues);
   }
 
-  VariablePuzzle.grid(List<int>? possibleValues, List<String> gridString,
+  VariablePuzzle.fromGridString(
+      List<int>? possibleValues, List<String> gridString,
       {String name = ''})
-      : super.grid(gridString, name: name) {
+      : super.fromGridString(gridString, name: name) {
     initVariablePuzzle(possibleValues);
   }
 

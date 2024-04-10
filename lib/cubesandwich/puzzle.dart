@@ -11,11 +11,13 @@ class CubeSandwichVariable extends Variable {
   String get letter => this.name;
 }
 
-class CubeSandwichPuzzle extends VariablePuzzle<CubeSandwichClue, CubeSandwichEntry, CubeSandwichVariable> {
+class CubeSandwichPuzzle extends VariablePuzzle<CubeSandwichClue,
+    CubeSandwichEntry, CubeSandwichVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   late final VariableList variableList;
   CubeSandwichPuzzle() : super(null);
-  CubeSandwichPuzzle.grid(List<String> gridString) : super.grid(null, gridString);
+  CubeSandwichPuzzle.fromGridString(List<String> gridString)
+      : super.fromGridString(null, gridString);
 
   Map<String, Variable> get letters => variableList.variables;
   List<int> get remainingDigits => variableList.remainingValues!;

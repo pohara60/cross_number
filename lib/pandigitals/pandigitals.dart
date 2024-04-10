@@ -33,7 +33,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
 
   final variableGroups = <VariableGroup>[];
   Pandigitals() {
-    puzzle = PandigitalsPuzzle.grid(gridString);
+    puzzle = PandigitalsPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
 

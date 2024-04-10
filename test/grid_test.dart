@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../lib/grid.dart';
+import '../lib/gridspec.dart';
 
 void main() {
   group('Grid tests', () {
@@ -15,7 +15,7 @@ void main() {
       '+--+--+--+--+',
     ];
     test('1st test', () {
-      var spec = Grid(grid);
+      var spec = GridSpec(grid);
       // spec.extractClues();
       expect(
           spec.entries.toString(),
