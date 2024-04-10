@@ -21,14 +21,14 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   final otherPuzzleClues = <String, Puzzle>{};
   Puzzle cluePuzzle(String clueName) => otherPuzzleClues[clueName] ?? this;
 
-  GridSpec? grid;
+  GridSpec? gridSpec;
 
   final String name;
   bool distinctClues = true;
 
   Puzzle({this.name = ''}) {}
   Puzzle.fromGridString(List<String> gridString, {this.name = ''}) {
-    this.grid = GridSpec(gridString);
+    this.gridSpec = GridSpec(gridString);
   }
 
   void addClue(ClueKind clue) {
@@ -56,8 +56,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   List<EntrySpec> getEntriesFromGrid() {
-    assert(this.grid != null);
-    return this.grid!.entries;
+    assert(this.gridSpec != null);
+    return this.gridSpec!.entries;
   }
 
   void validateEntriesFromGrid() {
@@ -78,8 +78,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   void addDigitIdentityFromGrid() {
-    assert(this.grid != null);
-    for (var identity in this.grid!.getIdentities()) {
+    assert(this.gridSpec != null);
+    for (var identity in this.gridSpec!.getIdentities()) {
       var entry1 = this._entries[identity['entry1']]!;
       var entry2 = this._entries[identity['entry2']]!;
       addDigitIdentity(entry1 as EntryMixin, identity['digit1'],
@@ -122,7 +122,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     for (var entry in entries.values) {
       text += entry.toSummary() + '\n';
     }
-    if (grid != null) text += toSolution();
+    if (gridSpec != null) text += toSolution();
     return text;
   }
 
@@ -148,7 +148,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         anyClue = true;
       }
     }
-    if (anyClue) text += '${grid!.solutionToString(entryValues)}';
+    if (anyClue) text += '${gridSpec!.solutionToString(entryValues)}';
     return text;
   }
 
@@ -547,8 +547,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           clueValues[clue.name] = solution[clue]!.value!.toString().split('');
       }
     }
-    if (unique && this.grid != null) {
-      text += '\n${grid!.solutionToString(clueValues)}';
+    if (unique && this.gridSpec != null) {
+      text += '\n${gridSpec!.solutionToString(clueValues)}';
       if (varText != '') {
         text += 'Variables:\n$varText';
       }

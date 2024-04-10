@@ -358,7 +358,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         ;
       }
       print("LETTER GRID-----------------------------");
-      print(puzzle.grid!.solutionToString(entryValues));
+      print(puzzle.gridSpec!.solutionToString(entryValues));
     } on SolveException catch (e) {
       if (e.msg != null) print(e.msg);
     }

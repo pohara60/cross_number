@@ -29,7 +29,7 @@ class PrimeKnightPuzzle extends VariablePuzzle<PrimeKnightClue,
     // visiting each cell once
     // Create board from grid of cells
     var board = List<List<int>>.from(
-        grid!.cells.map((r) => List<int>.from(r.map((c) => 0))));
+        gridSpec!.cells.map((r) => List<int>.from(r.map((c) => 0))));
     var tours = <List<(int, int)>>[];
     var count = visitNextCell(board, 0, 0, 0, 0, tours, <(int, int)>[]);
     // print('$count knight tours');
