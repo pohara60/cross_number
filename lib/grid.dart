@@ -1,32 +1,36 @@
 import 'clue.dart';
-import 'gridspec.dart';
 import 'puzzle.dart';
 
 class Cell {
   final String face;
   final int row, col;
   String get name => '$face$row$col';
-  final entries = <Entry>[];
-  var digits = <int>{};
-  int get digit => digits.length == 1 ? digits.first : 0;
+  final entries = <EntryMixin>[];
+  final entryDigits = <int>[];
+  var _digits = <int>{};
+  int get digit => _digits.length == 1 ? _digits.first : 0;
+  Set<int> get digits => _digits;
+  void set digits(Set<int> digits) {
+    _digits = digits;
+  }
 
   Cell(
     this.row,
     this.col, [
     this.face = '',
   ]) {
-    digits.addAll([1, 2, 3, 4, 5, 6]);
+    // _digits.addAll([1, 2, 3, 4, 5, 6]);
   }
 
   String get position => '$row$col';
-  String toString() => '$name=$digits';
-  String toDigit() => digits.length == 1 ? digits.first.toString() : '?';
+  String toString() => '$name=$_digits';
+  String toDigit() => _digits.length == 1 ? _digits.first.toString() : '?';
 
   void setDigit(int digit) {
-    if (digits.length == 1 && digits.first == digit) return;
+    if (_digits.length == 1 && _digits.first == digit) return;
 
     // UndoStack.push(this);
-    digits = {digit};
+    _digits = {digit};
   }
 }
 
@@ -36,6 +40,7 @@ class Grid {
   final rows = <List<Cell>>[];
   final int numRows;
   final int numCols;
+  final entryCells = <String, List<Cell>>{};
   Grid(
     this.puzzle,
     this.numRows,
@@ -47,26 +52,58 @@ class Grid {
   }
 
   Grid.fromGridSpec(
-    this.puzzle,
-    GridSpec gridSpec, [
+    this.puzzle, [
     String this.face = '',
-  ])  : numRows = gridSpec.grid.length,
-        numCols = gridSpec.grid[0].length {
+  ])  : numRows = puzzle.gridSpec!.cells.length,
+        numCols = puzzle.gridSpec!.cells[0].length {
     rows.addAll(List.generate(numRows,
         (row) => List.generate(numCols, (col) => Cell(row, col, face))));
     var r = 0;
     for (var row in rows) {
       var c = 0;
       for (var cell in row) {
-        var cellSpec = gridSpec.cells[r][c];
+        var cellSpec = puzzle.gridSpec!.cells[r][c];
         if (cellSpec == null) continue;
         if (cellSpec.across != null) {
-          cell.entries.add(puzzle.allEntries[cellSpec.across!.label] as Entry);
+          var name = cellSpec.across!.name;
+          var digit = cellSpec.acrossDigit!;
+          cellEntry(cell, name, digit);
         }
         if (cellSpec.down != null) {
-          cell.entries.add(puzzle.allEntries[cellSpec.down!.label] as Entry);
+          var name = cellSpec.down!.name;
+          var digit = cellSpec.downDigit!;
+          cellEntry(cell, name, digit);
         }
+        c++;
       }
+      r++;
+    }
+  }
+
+  void cellEntry(Cell cell, String name, int digit) {
+    var entry = puzzle.allEntries[name] as EntryMixin;
+    cell.entries.add(entry);
+    cell.entryDigits.add(digit);
+    if (!entryCells.containsKey(name)) entryCells[name] = <Cell>[];
+    entryCells[name]!.add(cell);
+
+    // Initialise digits
+    var digits = entry.digits[digit];
+    if (cell.digits.isEmpty) {
+      // First entry for cell
+      cell.digits = digits;
+    } else {
+      // Second entry for cell
+      var removeDigits = <int>[];
+      for (var digit in cell.digits) {
+        if (!digits.contains(digit)) removeDigits.add(digit);
+      }
+      cell.digits.removeAll(removeDigits);
+    }
+    entry.cells.add(cell);
+    if (digit == entry.length! - 1) {
+      // Completed entry cells
+      entry.hasGrid = true;
     }
   }
 

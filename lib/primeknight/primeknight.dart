@@ -1,10 +1,9 @@
 library primeknight;
 
-import 'dart:math';
-
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
+import '../grid.dart';
 import '../puzzle.dart';
 import '../variable.dart';
 import 'clue.dart';
@@ -73,6 +72,8 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     puzzle.validateEntriesFromGrid();
 
     puzzle.addDigitIdentityFromGrid();
+
+    puzzle.grid = Grid.fromGridSpec(puzzle);
 
     var letters = [
       // variables

@@ -8,6 +8,7 @@ import 'clue.dart';
 import 'crossnumber.dart';
 import 'expression.dart';
 import 'generators.dart';
+import 'grid.dart';
 import 'gridspec.dart';
 import 'variable.dart';
 
@@ -22,6 +23,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Puzzle cluePuzzle(String clueName) => otherPuzzleClues[clueName] ?? this;
 
   GridSpec? gridSpec;
+  Grid? grid;
 
   final String name;
   bool distinctClues = true;
