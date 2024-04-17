@@ -1,5 +1,8 @@
+import 'package:collection/collection.dart';
+
 import 'clue.dart';
 import 'puzzle.dart';
+import 'undo.dart';
 
 class Cell {
   final String face;
@@ -7,10 +10,17 @@ class Cell {
   String get name => '$face$row$col';
   final entries = <EntryMixin>[];
   final entryDigits = <int>[];
+
   var _digits = <int>{};
   int get digit => _digits.length == 1 ? _digits.first : 0;
   Set<int> get digits => _digits;
   void set digits(Set<int> digits) {
+    UndoStack.push(this);
+    digitsNoUndo = digits;
+  }
+
+  void set digitsNoUndo(Set<int> digits) {
+    if (IterableEquality().equals(_digits, digits)) return;
     _digits = digits;
   }
 
@@ -29,8 +39,27 @@ class Cell {
   void setDigit(int digit) {
     if (_digits.length == 1 && _digits.first == digit) return;
 
-    // UndoStack.push(this);
+    UndoStack.push(this);
     _digits = {digit};
+
+    for (var entry in entries) {
+      entry.updateValuesFromDigits();
+    }
+  }
+
+  static const powers = [1, 10, 100, 1000, 10000, 10000];
+
+  void updateDigitsFromEntry(EntryMixin entry) {
+    var index = entries.indexWhere((element) => element == entry);
+    assert(index >= 0);
+    var digit = entryDigits[index];
+    var divisor = powers[entry.length! - digit - 1];
+    digits = entry.values!.map((value) {
+      var result = value;
+      if (divisor != 1) result = result ~/ divisor;
+      if (digit > 0) result = result % 10;
+      return result;
+    }).toSet();
   }
 }
 

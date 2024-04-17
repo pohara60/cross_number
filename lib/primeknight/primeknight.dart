@@ -1,10 +1,15 @@
 library primeknight;
 
+import 'package:collection/collection.dart';
+
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
+import '../generators.dart';
 import '../grid.dart';
+import '../monadic.dart';
 import '../puzzle.dart';
+import '../undo.dart';
 import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
@@ -73,6 +78,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
 
     puzzle.addDigitIdentityFromGrid();
 
+    // Link entries to grid cells
     puzzle.grid = Grid.fromGridSpec(puzzle);
 
     var letters = [
@@ -111,9 +117,53 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
     //   }
 
+    // puzzle.clues['A1']!.value = 971;
+    // puzzle.clues['A3']!.value = 14;
+    // puzzle.clues['A5']!.value = 67;
+    // puzzle.clues['A7']!.value = 37;
+    // puzzle.clues['A8']!.value = 59;
+    // puzzle.clues['A9']!.value = 23;
+    // puzzle.clues['A11']!.value = 17;
+    // puzzle.clues['A12']!.value = 353;
+    // puzzle.clues['D10']!.value = 13;
+
     super.solve(false);
 
+    // manualSolve();
+
+    // super.solve(false);
+
     var tours = puzzle.knightTours();
+    var tourAnswer = [
+      (0, 0),
+      (1, 2),
+      (0, 4),
+      (2, 3),
+      (3, 1),
+      (1, 0),
+      (0, 2),
+      (1, 4),
+      (3, 3),
+      (2, 1),
+      (1, 3),
+      (0, 1),
+      (2, 0),
+      (3, 2),
+      (2, 4),
+      (0, 3),
+      (1, 1),
+      (3, 0),
+      (2, 2),
+      (3, 4)
+    ];
+    var primes = [97, 43, 71, 17, 59, 37, 53, 11, 61, 23];
+    Crossnumber.traceSolve = false;
+    for (var tour in tours) {
+      // var answer = IterableEquality().equals(tour, tourAnswer);
+      var answer = false;
+      if (answer) print('Possible tour $tour, answer=$answer');
+      solveTour(tour, 1, twoDigitPrimes, [], answer ? primes : null);
+    }
   }
 
   // Validate possible clue value
@@ -189,37 +239,183 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     return updated;
   }
 
-  @override
-  bool updateClues(
-      PrimeKnightPuzzle puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    // If updating Clue values based on Entry, then skip the update as
-    // the Clue values are for multiple entry expressions
-    if (!isFocus && !isEntry) {
-      return false;
+  void solveTour(
+    List<(int, int)> tour,
+    int index,
+    List<int> availablePrimes,
+    List<int> usedPrimes, [
+    List<int>? checkPrimes,
+    bool previousDebug = true,
+  ]) {
+    if (index > tour.length) {
+      // End of tour
+      // Check entries
+      if (checkSolution(usedPrimes)) {
+        print('Successful tour $tour, primes $usedPrimes');
+        print(puzzle.toSummary());
+      }
+      return;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry);
-    if (!isEntry && updated) {
-      // Maintain clue value order
-      // var clue = puzzle.clues[clueName]!;
-      // var newMin = clue.values!.reduce(min);
-      // if (clue.min == null || clue.min! < newMin) clue.min = newMin;
-      // var newMax = clue.values!.reduce(max);
-      // if (clue.max == null || clue.max! > newMax) clue.max = newMax;
-      // // Clues are defined in ascending order of value
-      // for (var otherClue in puzzle.clues.values) {
-      //   if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
-      //     if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
-      //       otherClue.min = clue.min! + 1;
-      //     }
-      //   }
-      //   if (romanToDecimal(otherClue.name) < romanToDecimal(clue.name)) {
-      //     if ((otherClue.max == null || otherClue.max! >= clue.max!)) {
-      //       otherClue.max = clue.max! - 1;
-      //     }
-      //   }
+    var (prevRow, prevCol) = tour[index - 1];
+    var grid = puzzle.grid!;
+    var (row, col) = (grid.numRows - 1, grid.numCols - 1);
+    if (index < tour.length) (row, col) = tour[index];
+    var startCell = grid.rows[prevRow][prevCol];
+    var endCell = grid.rows[row][col];
+    for (var prime in availablePrimes) {
+      var debug = checkPrimes != null &&
+          checkPrimes[usedPrimes.length] == prime &&
+          previousDebug;
+      if (debug) {
+        print('Index $index next prime $prime');
+      }
+      // Try prime in these cells
+      var firstDigit = prime ~/ 10;
+      var secondDigit = prime % 10;
+      if (startCell.digits.contains(firstDigit) &&
+          endCell.digits.contains(secondDigit)) {
+        // This prime is possible, check sequence
+        if (index > 4) {
+          var prevPrime = usedPrimes[usedPrimes.length - 1];
+          var prevPrevPrime = usedPrimes[usedPrimes.length - 2];
+          if (prevPrevPrime < prevPrime && prevPrime < prime) continue;
+          if (prevPrevPrime > prevPrime && prevPrime > prime) continue;
+        }
+        // Prime obeys sequence
+        // Used prime
+        UndoStack.begin();
+        usedPrimes.add(prime);
+        try {
+          startCell.setDigit(firstDigit);
+          endCell.setDigit(secondDigit);
+          solveTour(tour, index + 2, List.from(availablePrimes)..remove(prime),
+              usedPrimes, checkPrimes, debug);
+        } on SolveException {
+          var debug = true;
+        }
+        // Un-use prime
+        usedPrimes.removeLast();
+        UndoStack.undo();
+      }
     }
-    return updated;
+  }
+
+  bool checkSolution(List<int> usedPrimes) {
+    var ok = true;
+    for (var clue in puzzle.clues.values) {
+      if (clue.solve != null) {
+        var values = clue.getValuesFromDigits();
+        assert(values != null && values.length == 1);
+        var value = values!.first;
+        var possibleValue = <int>{};
+        var possibleVariables = <String, Set<int>>{};
+        try {
+          for (var variable in clue.variableClueReferences) {
+            possibleVariables[variable] = <int>{};
+          }
+          clue.solve!(puzzle, clue, possibleValue,
+              possibleVariables: possibleVariables);
+        } on SolveException {}
+        if (possibleValue.isEmpty || !possibleValue.contains(value)) {
+          // Failed
+          return false;
+        }
+      }
+    }
+    // The sum of the primes collected is a multiple of 8ac
+    var sumPrimes = usedPrimes.reduce((value, element) => value + element);
+    var valueA8 = puzzle.clues['A8']!.value!;
+    if (sumPrimes % valueA8 != 0) return false;
+    return ok;
+  }
+
+  void manualSolve() {
+    // A3 difference of two primes, so Even. (Found by solve)
+    // D6 DP = A3 which is Even, and first digit ends a prime and so Odd, so D6
+    // is Even and A9 starts even. (Found by solve).
+
+    var a1 = puzzle.clues['A1']!;
+    var a3 = puzzle.clues['A3']!;
+    var a7 = puzzle.clues['A7']!;
+    var a5 = puzzle.clues['A5']!;
+    var a9 = puzzle.clues['A9']!;
+    var d1 = puzzle.clues['D1']!;
+    var d4 = puzzle.clues['D4']!;
+    var d6 = puzzle.clues['D6']!;
+    var d7 = puzzle.clues['D7']!;
+    var d8 = puzzle.clues['D8']!;
+    var newA1 = <int>{};
+    var newA3 = <int>{};
+    var newA5 = <int>{};
+    var newA7 = <int>{};
+    var newA9 = <int>{};
+    var newD1 = <int>{};
+    var newD4 = <int>{};
+    var newD6 = <int>{};
+    var newD7 = <int>{};
+    var newD8 = <int>{};
+    for (var valueA7 in a7.values!) {
+      for (var valueA9 in a9.values!) {
+        // A3 = A7-A9
+        var valueA3 = valueA7 - valueA9;
+        if (valueA3 < 10) continue;
+        // D8 = A3+A7
+        var valueD8 = valueA3 + valueA7;
+        if (valueD8 == valueA9) continue;
+        if (valueD8 > 99) continue;
+        if (![1, 3, 7, 9].contains(valueD8 % 10)) continue;
+        // D4 prime = last digits of A3 and A7
+        var valueD4 = (valueA3 % 10) * 10 + valueA7 % 10;
+        if (!d4.values!.contains(valueD4)) continue;
+        if (valueD4 == valueA3) continue;
+        if (valueD4 == valueA7) continue;
+        if (valueD4 == valueA9) continue;
+        if (valueD4 == valueD8) continue;
+        // D6 DP = A3
+        for (var valueD6 in d6.values!) {
+          if (valueD6 % 10 != valueA9 ~/ 10) continue;
+          var dp = digitProduct(valueD6);
+          if (dp != valueA3) continue;
+          if (valueD6 == valueA3) continue;
+          if (valueD6 == valueA7) continue;
+          if (valueD6 == valueA9) continue;
+          if (valueD6 == valueD4) continue;
+          if (valueD6 == valueD8) continue;
+          for (var valueA5 in a5.values!) {
+            if (valueA5 % 10 != valueD6 ~/ 10) continue;
+            if (valueA5 == valueA3) continue;
+            if (valueA5 == valueA7) continue;
+            if (valueA5 == valueA9) continue;
+            if (valueA5 == valueD4) continue;
+            if (valueA5 == valueD6) continue;
+            if (valueA5 == valueD8) continue;
+            for (var valueD7 in d7.values!) {
+              if (valueD7 ~/ 100 != valueA7 ~/ 10) continue;
+              if (valueD7 ~/ 10 % 10 != valueA9 % 10) continue;
+              if (valueD7 % valueA5 != 0) continue;
+              print(
+                  'A3=$valueA3, A5=$valueA5, A7=$valueA7, A9=$valueA9, D4=$valueD4, D6=$valueD6, D7=$valueD7, D8=$valueD8');
+              newA3.add(valueA3);
+              newA5.add(valueA5);
+              newA7.add(valueA7);
+              newA9.add(valueA9);
+              newD4.add(valueD4);
+              newD6.add(valueD6);
+              newD7.add(valueD7);
+              newD8.add(valueD8);
+            }
+          }
+        }
+      }
+    }
+    a3.values = newA3;
+    a5.values = newA5;
+    a7.values = newA7;
+    a9.values = newA9;
+    d4.values = newD4;
+    d6.values = newD6;
+    d7.values = newD7;
+    d8.values = newD8;
+    return;
   }
 }

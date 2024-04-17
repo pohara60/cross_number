@@ -4,6 +4,7 @@ import 'package:powers/powers.dart';
 
 import 'expression.dart';
 import 'grid.dart';
+import 'puzzle.dart';
 import 'set.dart';
 import 'variable.dart';
 
@@ -466,6 +467,7 @@ mixin EntryMixin on Clue {
     var allDigits =
         List<List<int>>.generate(length!, (d) => digits[d].toList());
     var count = cartesianCount(allDigits);
+    if (count == 0) throw SolveException('No values for a digit');
     if (count > 1000) return null;
     var values = <int>{};
     for (var product in cartesian(allDigits, true)) {
@@ -473,6 +475,25 @@ mixin EntryMixin on Clue {
       values.add(value);
     }
     return values;
+  }
+
+  void updateValuesFromDigits() {
+    var digitValues = getValuesFromDigits();
+    if (digitValues == null) return;
+
+    if (values == null) {
+      values = digitValues;
+      return;
+    }
+
+    var newValues =
+        values!.where((value) => digitValues.contains(value)).toSet();
+    if (newValues.length != values!.length) {
+      values = newValues;
+      for (var cell in cells) {
+        cell.updateDigitsFromEntry(this);
+      }
+    }
   }
 }
 

@@ -1,6 +1,3 @@
-
-Exited (-1).
-Connecting to VM Service at ws://127.0.0.1:51133/qXLxkR0c1BI=/ws
 Warning: expression 'A3 = $DP #result' has generator with Unknown Order
 Puzzle
 PrimeKnightEntry(name=A1,length=3,value: #prime,
@@ -63,32 +60,35 @@ PrimeKnightEntry(name=D10,length=2,value: #prime,
 	identities=[D10[1]=A12[2]],referrers=[A12],
 	values={unknown},
 	digits=[{1..9},{0..9}]
+
 UPDATES-----------------------------
 solve: PrimeKnightEntry(name=A1,length=3,value: #prime,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
 	values={113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,108 more,997},
 	digits=[{1..9},{1..9},{1,3,7,9}]
-Eval PrimeKnightEntry A3 cartesianCount=8100, elapsed 0:00:00.032340
+Eval PrimeKnightEntry A3 cartesianCount=8100, elapsed 0:00:00.032966
 solve: PrimeKnightEntry(name=A3,length=2,value: A7-A9,
 	identities=[A3[1]=D4[0]],referrers=[D4,D6,D8],
 	values={11..19,21..29,31,32,52 more,89},
 	digits=[{1..8},{1..9}]
+A7={21..40,59 more,99}
+A9={10..29,59 more,88}
 solve: PrimeKnightEntry(name=A5,length=2,value: #prime,
 	identities=[A5[0]=D2[1],A5[1]=D6[0]],referrers=[D2,D6,D7],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
 	digits=[{1..9},{1,3,7,9}]
 solve: PrimeKnightEntry(name=A7,length=2,value: #prime,
 	identities=[A7[0]=D7[0],A7[1]=D4[1]],referrers=[D7,D4,A3,D8],
-	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
-	digits=[{1..9},{1,3,7,9}]
+	values={23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{2..9},{1,3,7,9}]
 solve: PrimeKnightEntry(name=A8,length=2,value: #prime,
 	identities=[A8[0]=D8[0],A8[1]=D2[2]],referrers=[D8,D2],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
 	digits=[{1..9},{1,3,7,9}]
 solve: PrimeKnightEntry(name=A9,length=2,value: #prime,
 	identities=[A9[0]=D6[1],A9[1]=D7[1]],referrers=[D6,D7,A3],
-	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
-	digits=[{1..9},{1,3,7,9}]
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83},
+	digits=[{1..8},{1,3,7,9}]
 solve: PrimeKnightEntry(name=A11,length=2,value: #prime,
 	identities=[A11[0]=D8[1]],referrers=[D8],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
@@ -109,21 +109,23 @@ solve: PrimeKnightEntry(name=D4,length=2,value: #prime,
 	identities=[D4[0]=A3[1],D4[1]=A7[1]],referrers=[A3,A7],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
 	digits=[{1..9},{1,3,7,9}]
-Eval PrimeKnightEntry D6 cartesianCount=72, elapsed 0:00:00.012486
+Eval PrimeKnightEntry D6 cartesianCount=72, elapsed 0:00:00.008505
 solve: PrimeKnightEntry(name=D6,length=2,value: A3 = $DP #result,
 	identities=[D6[0]=A5[1],D6[1]=A9[0]],referrers=[A5,A9],
-	values={34..39,72..79,92..97,2 more,99},
-	digits=[{3,7,9},{2..9}]
-Eval PrimeKnightEntry D7 cartesianCount=21, elapsed 0:00:00.000769
+	values={34..38,72..78,92..98},
+	digits=[{3,7,9},{2..8}]
+A3={12,14,15,18,21,24,27,28,35,36,42,45,49,54,56,63,72}
+Eval PrimeKnightEntry D7 cartesianCount=21, elapsed 0:00:00.000438
 solve: PrimeKnightEntry(name=D7,length=3,value: $multiple A5,
 	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[2]=A12[1]],referrers=[A7,A9,A12],
-	values={110,111,114..119,130,132..134,136,138,170..172,174,176,177,180 more,999},
-	digits=[{1..9},{1,3,7,9},{0..9}]
-Eval PrimeKnightEntry D8 cartesianCount=1512, elapsed 0:00:00.003564
+	values={212,213,215,217,219,230..232,234..238,272,273,275,276,279,290,291,155 more,999},
+	digits=[{2..9},{1,3,7,9},{0..9}]
+Eval PrimeKnightEntry D8 cartesianCount=289, elapsed 0:00:00.000345
 solve: PrimeKnightEntry(name=D8,length=2,value: A3+A7,
 	identities=[D8[0]=A8[0],D8[1]=A11[0]],referrers=[A8,A11],
-	values={23..29,31..39,41..44,50 more,99},
-	digits=[{2..9},{1..9}]
+	values={35,37,38,41,43..47,49,51..53,55..59,61,62,32 more,99},
+	digits=[{3..9},{1..9}]
+A7={23,29,31,37,41,43,47,53,59,61,67,71,73,79,83}
 solve: PrimeKnightEntry(name=D10,length=2,value: #prime,
 	identities=[D10[1]=A12[2]],referrers=[A12],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
@@ -132,87 +134,109 @@ solve: PrimeKnightEntry(name=A1,length=3,value: #prime,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
 	values={113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,94 more,997},
 	digits=[{1..7,9},{1..9},{1,3,7,9}]
-Eval PrimeKnightEntry A3 cartesianCount=441, elapsed 0:00:00.001416
+Eval PrimeKnightEntry A3 cartesianCount=285, elapsed 0:00:00.000494
 solve: PrimeKnightEntry(name=A3,length=2,value: A7-A9,
 	identities=[A3[1]=D4[0]],referrers=[D4,D6,D8],
-	values={12,14,16,18,22,24,26,28,32,34,36,38,42,44,46,48,52,54,56,58,10 more,86},
-	digits=[{1..8},{2,4,6,8}]
+	values={12,14,18,24,28,36,42,54,56,72},
+	digits=[{1..5,7},{2,4,6,8}]
+A9={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71}
 solve: PrimeKnightEntry(name=A5,length=2,value: #prime,
 	identities=[A5[0]=D2[1],A5[1]=D6[0]],referrers=[D2,D6,D7],
 	values={13,17,19,23,29,37,43,47,53,59,67,73,79,83,89,97},
 	digits=[{1..9},{3,7,9}]
+solve: PrimeKnightEntry(name=A7,length=2,value: #prime,
+	identities=[A7[0]=D7[0],A7[1]=D4[1]],referrers=[D7,D4,A3,D8],
+	values={23,29,31,37,41,43,47,53,59,61,67,71,73,79,83},
+	digits=[{2..8},{1,3,7,9}]
 solve: PrimeKnightEntry(name=A8,length=2,value: #prime,
 	identities=[A8[0]=D8[0],A8[1]=D2[2]],referrers=[D8,D2],
-	values={23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
-	digits=[{2..9},{1,3,7,9}]
+	values={31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{3..9},{1,3,7,9}]
 solve: PrimeKnightEntry(name=A9,length=2,value: #prime,
 	identities=[A9[0]=D6[1],A9[1]=D7[1]],referrers=[D6,D7,A3],
-	values={23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
-	digits=[{2..9},{1,3,7,9}]
+	values={23,29,31,37,41,43,47,53,59,61,67,71},
+	digits=[{2..7},{1,3,7,9}]
 solve: PrimeKnightEntry(name=D4,length=2,value: #prime,
 	identities=[D4[0]=A3[1],D4[1]=A7[1]],referrers=[A3,A7],
 	values={23,29,41,43,47,61,67,83,89},
 	digits=[{2,4,6,8},{1,3,7,9}]
-Eval PrimeKnightEntry D6 cartesianCount=30, elapsed 0:00:00.003123
+Eval PrimeKnightEntry D6 cartesianCount=10, elapsed 0:00:00.000716
 solve: PrimeKnightEntry(name=D6,length=2,value: A3 = $DP #result,
 	identities=[D6[0]=A5[1],D6[1]=A9[0]],referrers=[A5,A9],
-	values={34,36,38,72,74,76,78,92,94,96,98},
-	digits=[{3,7,9},{2,4,6,8}]
-Eval PrimeKnightEntry D7 cartesianCount=16, elapsed 0:00:00.000434
+	values={34,36,72,74,76,92,94,96},
+	digits=[{3,7,9},{2,4,6}]
+A3={12,14,18,28,36,42,54}
+Eval PrimeKnightEntry D7 cartesianCount=16, elapsed 0:00:00.000367
 solve: PrimeKnightEntry(name=D7,length=3,value: $multiple A5,
 	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[2]=A12[1]],referrers=[A7,A9,A12],
-	values={111,114..119,130,133,134,136,138,170..172,174,177,178,190,194,137 more,999},
-	digits=[{1..9},{1,3,7,9},{0..9}]
-Eval PrimeKnightEntry D8 cartesianCount=630, elapsed 0:00:00.002424
+	values={212,215,219,230,232,234..238,272,273,276,290..292,295,296,299,312,103 more,899},
+	digits=[{2..8},{1,3,7,9},{0..9}]
+Eval PrimeKnightEntry D8 cartesianCount=105, elapsed 0:00:00.000672
 solve: PrimeKnightEntry(name=D8,length=2,value: A3+A7,
 	identities=[D8[0]=A8[0],D8[1]=A11[0]],referrers=[A8,A11],
-	values={23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,19 more,99},
-	digits=[{2..9},{1,3,5,7,9}]
-Eval PrimeKnightEntry A3 cartesianCount=357, elapsed 0:00:00.000471
+	values={35,37,41,43,45,47,49,51,53,55,57,59,61,65,67,69,71,73,75,77,11 more,99},
+	digits=[{3..9},{1,3,5,7,9}]
+Eval PrimeKnightEntry A3 cartesianCount=180, elapsed 0:00:00.000158
 solve: PrimeKnightEntry(name=A3,length=2,value: A7-A9,
 	identities=[A3[1]=D4[0]],referrers=[D4,D6,D8],
-	values={12,14,16,18,22,24,26,28,32,34,36,38,42,44,46,48,52,54,56,58,3 more,74},
-	digits=[{1..7},{2,4,6,8}]
+	values={12,14,18,28,36,42,54},
+	digits=[{1..5},{2,4,6,8}]
+A7={37,41,43,47,53,59,61,67,71,73,79,83}
 solve: PrimeKnightEntry(name=A9,length=2,value: #prime,
 	identities=[A9[0]=D6[1],A9[1]=D7[1]],referrers=[D6,D7,A3],
-	values={23,29,41,43,47,61,67,83,89},
-	digits=[{2,4,6,8},{1,3,7,9}]
-Eval PrimeKnightEntry D6 cartesianCount=23, elapsed 0:00:00.002032
-solve: PrimeKnightEntry(name=D6,length=2,value: A3 = $DP #result,
-	identities=[D6[0]=A5[1],D6[1]=A9[0]],referrers=[A5,A9],
-	values={34,36,38,72,74,76,78,92,94,96},
-	digits=[{3,7,9},{2,4,6,8}]
-Eval PrimeKnightEntry D7 cartesianCount=16, elapsed 0:00:00.000472
-Eval PrimeKnightEntry D8 cartesianCount=483, elapsed 0:00:00.000956
+	values={23,29,41,43,47,61,67},
+	digits=[{2,4,6},{1,3,7,9}]
+solve: PrimeKnightEntry(name=A7,length=2,value: #prime,
+	identities=[A7[0]=D7[0],A7[1]=D4[1]],referrers=[D7,D4,A3,D8],
+	values={37,41,43,47,53,59,61,67,71,73,79,83},
+	digits=[{3..8},{1,3,7,9}]
+Eval PrimeKnightEntry D6 cartesianCount=7, elapsed 0:00:00.000290
+Eval PrimeKnightEntry D7 cartesianCount=16, elapsed 0:00:00.000216
+solve: PrimeKnightEntry(name=D7,length=3,value: $multiple A5,
+	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[2]=A12[1]],referrers=[A7,A9,A12],
+	values={312,316,318,319,332,333,335,338,370,371,374,376,377,390,391,395,399,413..415,84 more,899},
+	digits=[{3..8},{1,3,7,9},{0..9}]
+Eval PrimeKnightEntry D8 cartesianCount=84, elapsed 0:00:00.000104
+solve: PrimeKnightEntry(name=D8,length=2,value: A3+A7,
+	identities=[D8[0]=A8[0],D8[1]=A11[0]],referrers=[A8,A11],
+	values={49,51,53,55,57,59,61,65,67,69,71,73,75,77,79,81,83,85,87,89,5 more,99},
+	digits=[{4..9},{1,3,5,7,9}]
 solve: PrimeKnightEntry(name=A11,length=2,value: #prime,
 	identities=[A11[0]=D8[1]],referrers=[D8],
 	values={11,13,17,19,31,37,53,59,71,73,79,97},
 	digits=[{1,3,5,7,9},{1,3,7,9}]
-Eval PrimeKnightEntry A3 cartesianCount=189, elapsed 0:00:00.000367
+Eval PrimeKnightEntry A3 cartesianCount=84, elapsed 0:00:00.000091
 solve: PrimeKnightEntry(name=A3,length=2,value: A7-A9,
 	identities=[A3[1]=D4[0]],referrers=[D4,D6,D8],
-	values={12,14,16,18,22,24,26,28,32,36,38,42,44,46,48,54,56,66,68,74},
-	digits=[{1..7},{2,4,6,8}]
-Eval PrimeKnightEntry D6 cartesianCount=20, elapsed 0:00:00.001303
-Eval PrimeKnightEntry D8 cartesianCount=420, elapsed 0:00:00.000553
-Eval PrimeKnightEntry A3 cartesianCount=189, elapsed 0:00:00.000436
-Clue/Variable iterations=50, updates=29, elapsed 0:00:00.102393
+	values={12,14,18,28,36,42,54},
+	digits=[{1..5},{2,4,6,8}]
+A7={37,41,43,47,53,59,61,71,73,79,83}
+Eval PrimeKnightEntry D7 cartesianCount=16, elapsed 0:00:00.000961
+Eval PrimeKnightEntry D8 cartesianCount=77, elapsed 0:00:00.000102
+solve: PrimeKnightEntry(name=A8,length=2,value: #prime,
+	identities=[A8[0]=D8[0],A8[1]=D2[2]],referrers=[D8,D2],
+	values={41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{4..9},{1,3,7,9}]
+Eval PrimeKnightEntry A3 cartesianCount=77, elapsed 0:00:00.000084
+Eval PrimeKnightEntry D6 cartesianCount=7, elapsed 0:00:00.000290
+Eval PrimeKnightEntry D8 cartesianCount=77, elapsed 0:00:00.000097
+Clue/Variable iterations=55, updates=33, elapsed 0:00:00.077229
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, #prime, values={113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,94 more,997}
-A3, A7-A9, values={12,14,16,18,22,24,26,28,32,36,38,42,44,46,48,54,56,66,68,74}
+A3, A7-A9, values={12,14,18,28,36,42,54}
 A5, #prime, values={13,17,19,23,29,37,43,47,53,59,67,73,79,83,89,97}
-A7, #prime, values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-A8, #prime, values={23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-A9, #prime, values={23,29,41,43,47,61,67,83,89}
+A7, #prime, values={37,41,43,47,53,59,61,71,73,79,83}
+A8, #prime, values={41,43,47,53,59,61,67,71,73,79,83,89,97}
+A9, #prime, values={23,29,41,43,47,61,67}
 A11, #prime, values={11,13,17,19,31,37,53,59,71,73,79,97}
 A12, #prime, values={101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,123 more,997}
 D1, #triangular, values={10,15,21,28,36,45,55,66,78,91}
 D2, #prime, values={113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,108 more,997}
 D4, #prime, values={23,29,41,43,47,61,67,83,89}
-D6, A3 = $DP #result, values={34,36,38,72,74,76,78,92,94,96}
-D7, $multiple A5, values={111,114..119,130,133,134,136,138,170..172,174,177,178,190,194,137 more,999}
-D8, A3+A7, values={23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,19 more,99}
+D6, A3 = $DP #result, values={34,36,72,74,76,92,94,96}
+D7, $multiple A5, values={312,316,318,319,332,333,335,338,370,371,374,376,377,390,391,395,399,413..415,84 more,899}
+D8, A3+A7, values={49,51,53,55,57,59,61,65,67,69,71,73,75,77,79,81,83,85,87,89,5 more,99}
 D10, #prime, values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 +--+--+--+--+--+
 | ?  ?  ?| ?  ?|
@@ -224,4 +248,30 @@ D10, #prime, values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89
 | ?  ?| ?  ?  ?|
 +--+--+--+--+--+
 
-Exited.
+Successful tour [(0, 0), (1, 2), (0, 4), (2, 3), (3, 1), (1, 0), (0, 2), (1, 4), (3, 3), (2, 1), (1, 3), (0, 1), (2, 0), (3, 2), (2, 4), (0, 3), (1, 1), (3, 0), (2, 2), (3, 4)], primes [97, 43, 71, 17, 59, 37, 53, 11, 61, 23]
+Puzzle Summary
+A1, #prime, values={971}
+A3, A7-A9, values={14}
+A5, #prime, values={67}
+A7, #prime, values={37}
+A8, #prime, values={59}
+A9, #prime, values={23}
+A11, #prime, values={17}
+A12, #prime, values={353}
+D1, #triangular, values={91}
+D2, #prime, values={769}
+D4, #prime, values={47}
+D6, A3 = $DP #result, values={72}
+D7, $multiple A5, values={335}
+D8, A3+A7, values={51}
+D10, #prime, values={13}
++--+--+--+--+--+
+| 9  7  1| 1  4|
++      --+--   +
+| 1| 6  7| 3  7|
++--+     +   --+
+| 5  9| 2  3| 1|
++   --+--+  +  +
+| 1  7| 3  5  3|
++--+--+--+--+--+
+

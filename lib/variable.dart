@@ -4,6 +4,7 @@ import 'clue.dart';
 import 'expression.dart';
 import 'puzzle.dart';
 import 'set.dart';
+import 'undo.dart';
 
 mixin PriorityVariable {
   /// Computed - Count of combinations of variable values
@@ -48,6 +49,11 @@ class Variable {
 
   Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
   set values(Set<int>? values) {
+    UndoStack.push(this);
+    valuesNoUndo = values;
+  }
+
+  set valuesNoUndo(Set<int>? values) {
     _values = values;
     if (values == null || values.isEmpty) {
       min = max = null;
@@ -58,7 +64,10 @@ class Variable {
   }
 
   set value(int? value) {
-    if (value != null) values = {value};
+    if (value != null) {
+      UndoStack.push(this);
+      values = {value};
+    }
   }
 
   int? get value =>
