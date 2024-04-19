@@ -3,15 +3,15 @@ Puzzle
 ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9}]
 ColumnsEntry(name=A3,length=2,value: #triangular - A1,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={unknown},
-	digits=[{1..9},{0..9}]
+	digits=[{1..9},{1..9}]
 ColumnsEntry(name=A5,length=2,value: #Harshad,
 	identities=[A5[0]=D1[1],A5[1]=D6[0]],referrers=[D1,D6],
 	values={unknown},
-	digits=[{1..9},{0..9}]
+	digits=[{1..9},{1..9}]
 ColumnsEntry(name=A7,length=3,value: $ascending #result % $ds #result = 0,
 	identities=[A7[0]=D2[1],A7[1]=D3[1],A7[2]=D4[1]],referrers=[D2,D3,D4],
 	values={unknown},
@@ -19,7 +19,7 @@ ColumnsEntry(name=A7,length=3,value: $ascending #result % $ds #result = 0,
 ColumnsEntry(name=A8,length=3,value: $descending $multiple A10,
 	identities=[A8[0]=D1[2],A8[1]=D6[1],A8[2]=D9[0]],referrers=[D1,D6,D9],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9}]
 ColumnsEntry(name=A10,length=2,value: $reverse $dp A5,
 	identities=[A10[0]=D3[2],A10[1]=D4[2]],referrers=[D3,D4],
 	values={unknown},
@@ -35,15 +35,15 @@ ColumnsEntry(name=A12,length=3,value: A8 - #triangular,
 ColumnsEntry(name=D1,length=4,value: #product4primes,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0],D1[3]=A11[0]],referrers=[A1,A5,A8,A11],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{1..9},{1..9},{1..9}]
 ColumnsEntry(name=D2,length=2,value: $divisor A5,
 	identities=[D2[0]=A1[2],D2[1]=A7[0]],referrers=[A1,A7],
 	values={unknown},
-	digits=[{1..9},{0..9}]
+	digits=[{1..9},{1..9}]
 ColumnsEntry(name=D3,length=3,value: #triangular - D6,
 	identities=[D3[0]=A3[0],D3[1]=A7[1],D3[2]=A10[0]],referrers=[A3,A7,A10],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9}]
 ColumnsEntry(name=D4,length=4,value: #product4primes,
 	identities=[D4[0]=A3[1],D4[1]=A7[2],D4[2]=A10[1],D4[3]=A12[2]],referrers=[A3,A7,A10,A12],
 	values={unknown},
@@ -55,16 +55,16 @@ ColumnsEntry(name=D6,length=3,value: $multiple A3,
 ColumnsEntry(name=D9,length=2,value: $divisor D2,
 	identities=[D9[0]=A8[2],D9[1]=A12[0]],referrers=[A8,A12],
 	values={unknown},
-	digits=[{1..9},{0..9}]
+	digits=[{1..9},{1..9}]
 
 UPDATES-----------------------------
-Eval ColumnsEntry A1 cartesianCount=900, elapsed 0:00:00.119425
+Eval ColumnsEntry A1 cartesianCount=900, elapsed 0:00:00.111422
 solve: ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={101,111,121,131,141,151,161,171,181,191,202,212,222,232,242,252,262,272,282,292,69 more,989},
 	digits=[{1..9},{0..9},{1..9}]
 A12={102..121,878 more,999}
-Eval ColumnsEntry A3 cartesianCount=89, elapsed 0:00:00.001594
+Eval ColumnsEntry A3 cartesianCount=89, elapsed 0:00:00.001540
 solve: ColumnsEntry(name=A3,length=2,value: #triangular - A1,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={11..19,21..29,31,32,61 more,99},
@@ -77,25 +77,25 @@ solve: ColumnsEntry(name=A7,length=3,value: $ascending #result % $ds #result = 0
 	identities=[A7[0]=D2[1],A7[1]=D3[1],A7[2]=D4[1]],referrers=[D2,D3,D4],
 	values={126,135,156,234,247,378,468},
 	digits=[{1..4},{2..7},{4..8}]
-Eval ColumnsEntry A8 cartesianCount=90, elapsed 0:00:00.075258
+Eval ColumnsEntry A8 cartesianCount=90, elapsed 0:00:00.080526
 solve: ColumnsEntry(name=A8,length=3,value: $descending $multiple A10,
 	identities=[A8[0]=D1[2],A8[1]=D6[1],A8[2]=D9[0]],referrers=[D1,D6,D9],
 	values={432,531,532,621,632,651,731,732,741,742,752,754,765,832,841,851,852,854,861,864,17 more,987},
 	digits=[{4..9},{2..8},{1..7}]
 A10={12..19,21,23..29,31,32,34,35,39 more,97}
-Eval ColumnsEntry A10 cartesianCount=14, elapsed 0:00:00.000524
+Eval ColumnsEntry A10 cartesianCount=14, elapsed 0:00:00.000477
 solve: ColumnsEntry(name=A10,length=2,value: $reverse $dp A5,
 	identities=[A10[0]=D3[2],A10[1]=D4[2]],referrers=[D3,D4],
 	values={23,41,81},
 	digits=[{2,4,8},{1,3}]
 A5={27,36,48,63,72,84}
-Eval ColumnsEntry A11 cartesianCount=3, elapsed 0:00:00.001546
+Eval ColumnsEntry A11 cartesianCount=3, elapsed 0:00:00.000673
 solve: ColumnsEntry(name=A11,length=2,value: $adjacentprime A10,
 	identities=[A11[0]=D1[3],A11[1]=D6[2]],referrers=[D1,D6],
 	values={19,29,37,43},
 	digits=[{1..4},{3,7,9}]
 A10={23,41}
-Eval ColumnsEntry A12 cartesianCount=37, elapsed 0:00:00.001495
+Eval ColumnsEntry A12 cartesianCount=37, elapsed 0:00:00.001927
 solve: ColumnsEntry(name=A12,length=3,value: A8 - #triangular,
 	identities=[A12[0]=D9[1],A12[2]=D4[3]],referrers=[D9,D4],
 	values={102,104,107,110..115,120,122..126,129,130,132..134,671 more,986},
@@ -104,40 +104,40 @@ solve: ColumnsEntry(name=D1,length=4,value: #product4primes,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0],D1[3]=A11[0]],referrers=[A1,A5,A8,A11],
 	values={1254,1482,1554,1794,2262,2442,2562,3162,3354,3542,3774,3894,4182,4242,4494,4641,4674,4774,4794,4862,34 more,9894},
 	digits=[{1..9},{1..8},{4..9},{1..4}]
-Eval ColumnsEntry D2 cartesianCount=6, elapsed 0:00:00.000278
+Eval ColumnsEntry D2 cartesianCount=6, elapsed 0:00:00.000251
 solve: ColumnsEntry(name=D2,length=2,value: $divisor A5,
 	identities=[D2[0]=A1[2],D2[1]=A7[0]],referrers=[A1,A7],
 	values={12,14,21,24,42},
 	digits=[{1,2,4},{1,2,4}]
 A5={36,48,63,72,84}
-Eval ColumnsEntry D3 cartesianCount=900, elapsed 0:00:00.024529
+Eval ColumnsEntry D3 cartesianCount=168, elapsed 0:00:00.003161
 solve: ColumnsEntry(name=D3,length=3,value: #triangular - D6,
 	identities=[D3[0]=A3[0],D3[1]=A7[1],D3[2]=A10[0]],referrers=[A3,A7,A10],
 	values={122,124,128,132,134,138,142,144,148,152,154,158,162,164,168,172,174,178,222,224,142 more,978},
 	digits=[{1..9},{2..7},{2,4,8}]
-D6={100..119,848 more,999}
+D6={123,127,129,133,137,139,143,147,149,153,157,159,163,167,169,173,177,179,183,187,148 more,889}
 solve: ColumnsEntry(name=D4,length=4,value: #product4primes,
 	identities=[D4[0]=A3[1],D4[1]=A7[2],D4[2]=A10[1],D4[3]=A12[2]],referrers=[A3,A7,A10,A12],
 	values={1410,1430,1518,1610,1830,2415,2418,2530,2618,2814,2838,3410,3534,3710,3738,3810,4510,4515,4530,4710,41 more,9834},
 	digits=[{1..9},{4..8},{1,3},{0,4,5,8}]
-Eval ColumnsEntry D6 cartesianCount=81, elapsed 0:00:00.001593
+Eval ColumnsEntry D6 cartesianCount=81, elapsed 0:00:00.000497
 solve: ColumnsEntry(name=D6,length=3,value: $multiple A3,
 	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A11[1]],referrers=[A5,A8,A11],
 	values={123,129,133,143,147,153,159,169,177,183,187,189,237,243,247,249,253,259,267,273,56 more,873},
 	digits=[{1..8},{2..8},{3,7,9}]
 A3={11,13,17,19,21,23,27,29,31,33,37,39,41,43,47,49,51,53,57,59,15 more,97}
-Eval ColumnsEntry D9 cartesianCount=5, elapsed 0:00:00.000021
+Eval ColumnsEntry D9 cartesianCount=5, elapsed 0:00:00.000032
 solve: ColumnsEntry(name=D9,length=2,value: $divisor D2,
 	identities=[D9[0]=A8[2],D9[1]=A12[0]],referrers=[A8,A12],
 	values={12,14,21},
 	digits=[{1,2},{1,2,4}]
 D2={24,42}
-Eval ColumnsEntry A1 cartesianCount=691, elapsed 0:00:00.049737
+Eval ColumnsEntry A1 cartesianCount=691, elapsed 0:00:00.049369
 solve: ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={101,111,121,131,141,151,161,171,181,191,202,212,222,232,242,252,262,272,282,292,10 more,494},
 	digits=[{1,2,4},{0..9},{1,2,4}]
-Eval ColumnsEntry A3 cartesianCount=30, elapsed 0:00:00.000262
+Eval ColumnsEntry A3 cartesianCount=30, elapsed 0:00:00.000220
 solve: ColumnsEntry(name=A3,length=2,value: #triangular - A1,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={11,19,21,29,31,33,39,41,43,49,51,53,59,61,63,67,69,73,77,79,5 more,97},
@@ -150,19 +150,19 @@ solve: ColumnsEntry(name=A7,length=3,value: $ascending #result % $ds #result = 0
 	identities=[A7[0]=D2[1],A7[1]=D3[1],A7[2]=D4[1]],referrers=[D2,D3,D4],
 	values={126,135,156,234,247,468},
 	digits=[{1,2,4},{2..6},{4..8}]
-Eval ColumnsEntry A8 cartesianCount=2, elapsed 0:00:00.000063
+Eval ColumnsEntry A8 cartesianCount=2, elapsed 0:00:00.000080
 solve: ColumnsEntry(name=A8,length=3,value: $descending $multiple A10,
 	identities=[A8[0]=D1[2],A8[1]=D6[1],A8[2]=D9[0]],referrers=[D1,D6,D9],
 	values={621,851,861},
 	digits=[{6,8},{2,5,6},{1}]
-Eval ColumnsEntry A10 cartesianCount=5, elapsed 0:00:00.000102
+Eval ColumnsEntry A10 cartesianCount=5, elapsed 0:00:00.000087
 solve: ColumnsEntry(name=A10,length=2,value: $reverse $dp A5,
 	identities=[A10[0]=D3[2],A10[1]=D4[2]],referrers=[D3,D4],
 	values={23,41},
 	digits=[{2,4},{1,3}]
 A5={48,72,84}
-Eval ColumnsEntry A11 cartesianCount=2, elapsed 0:00:00.000095
-Eval ColumnsEntry A12 cartesianCount=3, elapsed 0:00:00.000125
+Eval ColumnsEntry A11 cartesianCount=2, elapsed 0:00:00.000050
+Eval ColumnsEntry A12 cartesianCount=3, elapsed 0:00:00.000141
 solve: ColumnsEntry(name=A12,length=3,value: A8 - #triangular,
 	identities=[A12[0]=D9[1],A12[2]=D4[3]],referrers=[D9,D4],
 	values={110,120,125,148,158,185,195,215,270,290,445,450,455,468,485},
@@ -171,12 +171,12 @@ solve: ColumnsEntry(name=D1,length=4,value: #product4primes,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0],D1[3]=A11[0]],referrers=[A1,A5,A8,A11],
 	values={1482,4862},
 	digits=[{1,4},{4,8},{6,8},{2}]
-Eval ColumnsEntry D2 cartesianCount=3, elapsed 0:00:00.000036
+Eval ColumnsEntry D2 cartesianCount=3, elapsed 0:00:00.000054
 solve: ColumnsEntry(name=D2,length=2,value: $divisor A5,
 	identities=[D2[0]=A1[2],D2[1]=A7[0]],referrers=[A1,A7],
 	values={24,42},
 	digits=[{2,4},{2,4}]
-Eval ColumnsEntry D3 cartesianCount=76, elapsed 0:00:00.001329
+Eval ColumnsEntry D3 cartesianCount=76, elapsed 0:00:00.000630
 solve: ColumnsEntry(name=D3,length=3,value: #triangular - D6,
 	identities=[D3[0]=A3[0],D3[1]=A7[1],D3[2]=A10[0]],referrers=[A3,A7,A10],
 	values={122,124,132,134,142,144,152,154,162,164,222,224,232,234,244,252,254,262,264,322,59 more,964},
@@ -186,24 +186,24 @@ solve: ColumnsEntry(name=D4,length=4,value: #product4primes,
 	identities=[D4[0]=A3[1],D4[1]=A7[2],D4[2]=A10[1],D4[3]=A12[2]],referrers=[A3,A7,A10,A12],
 	values={1410,1430,1518,1610,1830,3410,3710,3738,3810,7518,7530,7630,7638,7710,7735,7810,9430,9435,9510,9618,2 more,9735},
 	digits=[{1,3,7,9},{4..8},{1,3},{0,5,8}]
-Eval ColumnsEntry D6 cartesianCount=25, elapsed 0:00:00.000259
+Eval ColumnsEntry D6 cartesianCount=25, elapsed 0:00:00.000154
 solve: ColumnsEntry(name=D6,length=3,value: $multiple A3,
 	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A11[1]],referrers=[A5,A8,A11],
 	values={253,323,357,363,369,427,429,459,469,623,627,657,663,667,867,869},
 	digits=[{2..4,6,8},{2,5,6},{3,7,9}]
 A3={11,19,21,29,33,39,41,51,61,67,73,79,89}
-Eval ColumnsEntry D9 cartesianCount=2, elapsed 0:00:00.000013
+Eval ColumnsEntry D9 cartesianCount=2, elapsed 0:00:00.000026
 solve: ColumnsEntry(name=D9,length=2,value: $divisor D2,
 	identities=[D9[0]=A8[2],D9[1]=A12[0]],referrers=[A8,A12],
 	values={12,14},
 	digits=[{1},{2,4}]
-Eval ColumnsEntry A1 cartesianCount=15, elapsed 0:00:00.000470
+Eval ColumnsEntry A1 cartesianCount=15, elapsed 0:00:00.000418
 solve: ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={404,414,424,434,444,454,464,474,484},
 	digits=[{4},{0..8},{4}]
 A12={445,450,455,468,485}
-Eval ColumnsEntry A3 cartesianCount=9, elapsed 0:00:00.000036
+Eval ColumnsEntry A3 cartesianCount=9, elapsed 0:00:00.000049
 solve: ColumnsEntry(name=A3,length=2,value: #triangular - A1,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={11,21,41,51,61},
@@ -213,12 +213,12 @@ solve: ColumnsEntry(name=A7,length=3,value: $ascending #result % $ds #result = 0
 	identities=[A7[0]=D2[1],A7[1]=D3[1],A7[2]=D4[1]],referrers=[D2,D3,D4],
 	values={234,247,468},
 	digits=[{2,4},{3,4,6},{4,7,8}]
-Eval ColumnsEntry A8 cartesianCount=2, elapsed 0:00:00.000026
+Eval ColumnsEntry A8 cartesianCount=2, elapsed 0:00:00.000036
 solve: ColumnsEntry(name=A5,length=2,value: #Harshad,
 	identities=[A5[0]=D1[1],A5[1]=D6[0]],referrers=[D1,D6],
 	values={48,84},
 	digits=[{4,8},{4,8}]
-Eval ColumnsEntry A12 cartesianCount=3, elapsed 0:00:00.000018
+Eval ColumnsEntry A12 cartesianCount=3, elapsed 0:00:00.000028
 solve: ColumnsEntry(name=A12,length=3,value: A8 - #triangular,
 	identities=[A12[0]=D9[1],A12[2]=D4[3]],referrers=[D9,D4],
 	values={445,450,455,468,485},
@@ -227,19 +227,19 @@ solve: ColumnsEntry(name=D1,length=4,value: #product4primes,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0],D1[3]=A11[0]],referrers=[A1,A5,A8,A11],
 	values={4862},
 	digits=[{4},{8},{6},{2}]
-Eval ColumnsEntry A11 cartesianCount=2, elapsed 0:00:00.000026
+Eval ColumnsEntry A11 cartesianCount=2, elapsed 0:00:00.000037
 solve: ColumnsEntry(name=A11,length=2,value: $adjacentprime A10,
 	identities=[A11[0]=D1[3],A11[1]=D6[2]],referrers=[D1,D6],
 	values={29},
 	digits=[{2},{9}]
 A10={23}
-Eval ColumnsEntry D3 cartesianCount=16, elapsed 0:00:00.000250
+Eval ColumnsEntry D3 cartesianCount=16, elapsed 0:00:00.000143
 solve: ColumnsEntry(name=D3,length=3,value: #triangular - D6,
 	identities=[D3[0]=A3[0],D3[1]=A7[1],D3[2]=A10[0]],referrers=[A3,A7,A10],
 	values={132,134,142,232,234,244,432,434,444,534,562,564},
 	digits=[{1,2,4,5},{3,4,6},{2,4}]
 D6={323,363,369,427,429,459,469,627,663,867,869}
-Eval ColumnsEntry A10 cartesianCount=2, elapsed 0:00:00.000019
+Eval ColumnsEntry A10 cartesianCount=2, elapsed 0:00:00.000029
 solve: ColumnsEntry(name=A10,length=2,value: $reverse $dp A5,
 	identities=[A10[0]=D3[2],A10[1]=D4[2]],referrers=[D3,D4],
 	values={23},
@@ -248,30 +248,30 @@ solve: ColumnsEntry(name=D4,length=4,value: #product4primes,
 	identities=[D4[0]=A3[1],D4[1]=A7[2],D4[2]=A10[1],D4[3]=A12[2]],referrers=[A3,A7,A10,A12],
 	values={1430,1830},
 	digits=[{1},{4,8},{3},{0}]
-Eval ColumnsEntry D6 cartesianCount=5, elapsed 0:00:00.000080
+Eval ColumnsEntry D6 cartesianCount=5, elapsed 0:00:00.000059
 solve: ColumnsEntry(name=D6,length=3,value: $multiple A3,
 	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A11[1]],referrers=[A5,A8,A11],
 	values={429,459,869},
 	digits=[{4,8},{2,5,6},{9}]
 A3={11,51}
-Eval ColumnsEntry D9 cartesianCount=2, elapsed 0:00:00.000017
+Eval ColumnsEntry D9 cartesianCount=2, elapsed 0:00:00.000026
 solve: ColumnsEntry(name=D9,length=2,value: $divisor D2,
 	identities=[D9[0]=A8[2],D9[1]=A12[0]],referrers=[A8,A12],
 	values={14},
 	digits=[{1},{4}]
 D2={42}
-Eval ColumnsEntry A1 cartesianCount=5, elapsed 0:00:00.000083
+Eval ColumnsEntry A1 cartesianCount=5, elapsed 0:00:00.000085
 solve: ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={404,414,424,444,454},
 	digits=[{4},{0..2,4,5},{4}]
-Eval ColumnsEntry D2 cartesianCount=2, elapsed 0:00:00.000010
+Eval ColumnsEntry D2 cartesianCount=2, elapsed 0:00:00.000022
 solve: ColumnsEntry(name=D2,length=2,value: $divisor A5,
 	identities=[D2[0]=A1[2],D2[1]=A7[0]],referrers=[A1,A7],
 	values={42},
 	digits=[{4},{2}]
 A5={84}
-Eval ColumnsEntry A3 cartesianCount=5, elapsed 0:00:00.000020
+Eval ColumnsEntry A3 cartesianCount=5, elapsed 0:00:00.000035
 solve: ColumnsEntry(name=A3,length=2,value: #triangular - A1,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={11,51},
@@ -289,7 +289,7 @@ solve: ColumnsEntry(name=A8,length=3,value: $descending $multiple A10,
 	identities=[A8[0]=D1[2],A8[1]=D6[1],A8[2]=D9[0]],referrers=[D1,D6,D9],
 	values={621},
 	digits=[{6},{2},{1}]
-Eval ColumnsEntry D3 cartesianCount=3, elapsed 0:00:00.000262
+Eval ColumnsEntry D3 cartesianCount=3, elapsed 0:00:00.000032
 solve: ColumnsEntry(name=D3,length=3,value: #triangular - D6,
 	identities=[D3[0]=A3[0],D3[1]=A7[1],D3[2]=A10[0]],referrers=[A3,A7,A10],
 	values={132},
@@ -303,7 +303,7 @@ solve: ColumnsEntry(name=A12,length=3,value: A8 - #triangular,
 	identities=[A12[0]=D9[1],A12[2]=D4[3]],referrers=[D9,D4],
 	values={450},
 	digits=[{4},{5},{0}]
-Eval ColumnsEntry D6 cartesianCount=2, elapsed 0:00:00.000021
+Eval ColumnsEntry D6 cartesianCount=2, elapsed 0:00:00.000025
 solve: ColumnsEntry(name=D6,length=3,value: $multiple A3,
 	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A11[1]],referrers=[A5,A8,A11],
 	values={429},
@@ -313,7 +313,7 @@ solve: ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={414,424},
 	digits=[{4},{1,2},{4}]
-Eval ColumnsEntry A3 cartesianCount=2, elapsed 0:00:00.000007
+Eval ColumnsEntry A3 cartesianCount=2, elapsed 0:00:00.000018
 solve: ColumnsEntry(name=A3,length=2,value: #triangular - A1,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={11},
@@ -323,7 +323,7 @@ solve: ColumnsEntry(name=A1,length=3,value: $palindrome $lessthan A12,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={424},
 	digits=[{4},{2},{4}]
-Clue/Variable iterations=70, updates=52, elapsed 0:00:00.355487
+Clue/Variable iterations=70, updates=52, elapsed 0:00:00.320482
 SOLUTION-----------------------------
 Puzzle Summary
 A1, $palindrome $lessthan A12, values={424}

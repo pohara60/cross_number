@@ -2,11 +2,11 @@ Puzzle
 CombinationsEntry(name=A1,length=3,value: GJ(B+I)-JJ | E,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{1..9},{1..9}]
 CombinationsEntry(name=A4,length=5,value: BFJ | G - J,
 	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[3]=D6[0],A4[4]=D7[0]],referrers=[D4,D5,D6,D7],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9},{1..9},{1..9}]
 CombinationsEntry(name=A8,length=2,value: A+E | F - G,
 	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2],
 	values={unknown},
@@ -14,7 +14,7 @@ CombinationsEntry(name=A8,length=2,value: A+E | F - G,
 CombinationsEntry(name=A9,length=3,value: BB+C | GJ,
 	identities=[A9[0]=D3[1],A9[1]=D4[1],A9[2]=D10[0]],referrers=[D3,D4,D10],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9}]
 CombinationsEntry(name=A11,length=3,value: AF-E | AD,
 	identities=[A11[0]=D5[1],A11[1]=D6[1],A11[2]=D7[1]],referrers=[D5,D6,D7],
 	values={unknown},
@@ -30,11 +30,11 @@ CombinationsEntry(name=A13,length=3,value: DE | F - I,
 CombinationsEntry(name=A14,length=4,value: IJ | H - C,
 	identities=[A14[0]=D14[0],A14[1]=D2[3],A14[2]=D15[0],A14[3]=D4[3]],referrers=[D14,D2,D15,D4],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9},{0..9}]
 CombinationsEntry(name=A16,length=4,value: I(D-C) | D - G,
 	identities=[A16[0]=D10[2],A16[1]=D5[3],A16[2]=D17[0],A16[3]=D7[3]],referrers=[D10,D5,D17,D7],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9},{0..9}]
 CombinationsEntry(name=A18,length=3,value: JJ | C + C,
 	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
 	values={unknown},
@@ -42,7 +42,7 @@ CombinationsEntry(name=A18,length=3,value: JJ | C + C,
 CombinationsEntry(name=A19,length=3,value: AH | I - C,
 	identities=[A19[0]=D19[0],A19[1]=D17[1],A19[2]=D20[0]],referrers=[D19,D17,D20],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9}]
 CombinationsEntry(name=A21,length=3,value: BB+J | H(B + G),
 	identities=[A21[0]=D14[2],A21[1]=D18[1],A21[2]=D15[2]],referrers=[D14,D18,D15],
 	values={unknown},
@@ -66,7 +66,7 @@ CombinationsEntry(name=A25,length=3,value: E^G | I - A,
 CombinationsEntry(name=D1,length=3,value: EF(B+F+G) | C+C,
 	identities=[D1[0]=A1[0],D1[1]=A8[0],D1[2]=A12[0]],referrers=[A1,A8,A12],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{1..9},{1..9}]
 CombinationsEntry(name=D2,length=4,value: BF | E,
 	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A12[1],D2[3]=A14[1]],referrers=[A1,A8,A12,A14],
 	values={unknown},
@@ -74,15 +74,15 @@ CombinationsEntry(name=D2,length=4,value: BF | E,
 CombinationsEntry(name=D3,length=3,value: EF | F-I,
 	identities=[D3[0]=A1[2],D3[1]=A9[0],D3[2]=A12[2]],referrers=[A1,A9,A12],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{1..9},{0..9}]
 CombinationsEntry(name=D4,length=6,value: FG(B+I)-I | D-G,
 	identities=[D4[0]=A4[0],D4[1]=A9[1],D4[3]=A14[3],D4[4]=A18[2],D4[5]=A22[0]],referrers=[A4,A9,A14,A18,A22],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{1..9}]
 CombinationsEntry(name=D5,length=4,value: F(B+F+G) | D+I,
 	identities=[D5[0]=A4[2],D5[1]=A11[0],D5[2]=A13[1],D5[3]=A16[1]],referrers=[A4,A11,A13,A16],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{1..9},{0..9},{0..9}]
 CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
 	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
 	values={unknown},
@@ -94,11 +94,11 @@ CombinationsEntry(name=D7,length=4,value: DD | G-J,
 CombinationsEntry(name=D10,length=6,value: AAGG+B+B | B-A,
 	identities=[D10[0]=A9[2],D10[1]=A13[0],D10[2]=A16[0],D10[4]=A22[1],D10[5]=A24[4]],referrers=[A9,A13,A16,A22,A24],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{1..9},{1..9},{0..9},{0..9},{0..9}]
 CombinationsEntry(name=D14,length=4,value: BG | GH,
 	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9},{1..9}]
 CombinationsEntry(name=D15,length=4,value: ABJ-E | H-C,
 	identities=[D15[0]=A14[2],D15[1]=A18[1],D15[2]=A21[2],D15[3]=A24[2]],referrers=[A14,A18,A21,A24],
 	values={unknown},
@@ -106,7 +106,7 @@ CombinationsEntry(name=D15,length=4,value: ABJ-E | H-C,
 CombinationsEntry(name=D17,length=4,value: F(BGH-I) | F-J,
 	identities=[D17[0]=A16[2],D17[1]=A19[1],D17[2]=A23[0],D17[3]=A25[1]],referrers=[A16,A19,A23,A25],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9},{0..9}]
 CombinationsEntry(name=D18,length=3,value: B(F+G) | D-E,
 	identities=[D18[0]=A18[0],D18[1]=A21[1],D18[2]=A24[1]],referrers=[A18,A21,A24],
 	values={unknown},
@@ -114,7 +114,7 @@ CombinationsEntry(name=D18,length=3,value: B(F+G) | D-E,
 CombinationsEntry(name=D19,length=3,value: I+J | B+H,
 	identities=[D19[0]=A19[0],D19[1]=A22[2],D19[2]=A25[0]],referrers=[A19,A22,A25],
 	values={unknown},
-	digits=[{1..9},{0..9},{0..9}]
+	digits=[{1..9},{0..9},{1..9}]
 CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
 	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
 	values={unknown},
@@ -464,7 +464,7 @@ solve: CombinationsEntry(name=D18,length=3,value: B(F+G) | D-E,
 	identities=[D18[0]=A18[0],D18[1]=A21[1],D18[2]=A24[1]],referrers=[A18,A21,A24],
 	values={827},
 	digits=[{8},{2},{7}]
-Clue/Variable iterations=191, updates=73, elapsed 0:00:00.177509
+Clue/Variable iterations=191, updates=73, elapsed 0:00:00.215970
 SOLUTION-----------------------------
 Puzzle Summary
 A1, GJ(B+I)-JJ | E, values={946}

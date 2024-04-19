@@ -85,7 +85,7 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
 
     puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

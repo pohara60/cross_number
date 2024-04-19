@@ -134,7 +134,7 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
         solve: solveWrapper(solveD9));
     puzzle.addEntry(d9);
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
     // puzzle.addDigitIdentity(a1, 2, d2, 1);
     // puzzle.addDigitIdentity(a1, 3, d3, 1);
     // puzzle.addDigitIdentity(a5, 1, d5, 1);

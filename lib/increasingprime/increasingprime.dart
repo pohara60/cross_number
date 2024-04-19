@@ -94,7 +94,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
     // Not needed when create entries from grid
     // puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

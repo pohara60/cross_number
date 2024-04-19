@@ -315,7 +315,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
         solve: solveEvenOdderClue);
     puzzle.addEntry(d39);
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var clueError = '';
     // clueError = puzzle.checkClueEntryReferences();

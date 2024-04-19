@@ -194,7 +194,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       throw PuzzleException(clueErrors);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     // Add letter references from descriptions
     var letters = ['A', 'D', 'I', 'N', 'O', 'R', 'S', 'T', 'U'];

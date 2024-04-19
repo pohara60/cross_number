@@ -48,6 +48,10 @@ class Clue extends Variable {
   List<DigitIdentity?> get digitIdentities => entry!.digitIdentities;
   List<Set<int>> get digits => entry!.digits;
 
+  void setDigits(int i, Set<int> set) {
+    entry!.setDigits(i, set);
+  }
+
   bool get isAcross => this.name[0] == 'A';
   bool get isDown => this.name[0] == 'D';
   bool get isUnknown => !isAcross && !isDown;
@@ -408,8 +412,8 @@ mixin EntryMixin on Clue {
       _digits.addAll(List.generate(length!, (index) => <int>{}));
     }
     for (var d = 0; d < this.length!; d++) {
-      digits[d] =
-          Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index));
+      setDigits(d,
+          Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
       if (d == 0 || !zeroDigit) digits[d].remove(0);
     }
   }
@@ -450,7 +454,7 @@ mixin EntryMixin on Clue {
 
   void restoreDigits(List<Set<int>> savedDigits) {
     for (var d = 0; d < length!; d++) {
-      digits[d] = savedDigits[d];
+      setDigits(d, savedDigits[d]);
     }
   }
 
@@ -494,6 +498,13 @@ mixin EntryMixin on Clue {
         cell.updateDigitsFromEntry(this);
       }
     }
+  }
+
+  void setDigits(int d, Set<int> set) {
+    if (hasGrid)
+      cells[d].digits = set;
+    else
+      _digits[d] = set;
   }
 }
 

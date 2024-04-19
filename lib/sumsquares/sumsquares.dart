@@ -132,7 +132,7 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
       }
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       'A',

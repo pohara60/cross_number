@@ -124,10 +124,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     puzzle.validateEntriesFromGrid();
     }
 
-    puzzle.addDigitIdentityFromGrid();
-
-    // Link entries to grid cells
-    puzzle.grid = Grid.fromGridSpec(puzzle);
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

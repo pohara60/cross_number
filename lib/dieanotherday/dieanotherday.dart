@@ -140,7 +140,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
       // Needed even when create entries from grid
       puzzle.validateEntriesFromGrid();
 
-      puzzle.addDigitIdentityFromGrid();
+      puzzle.linkEntriesToGrid();
 
       // Add variables to puzzle
       for (var variable in allVariables) {
@@ -315,7 +315,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   @override
   void solve([bool iteration = true]) {
     // Front D3 starts with 1
-    puzzleFront.clues['D3']!.digits[0] = {1};
+    puzzleFront.clues['D3']!.setDigits(0, {1});
 
     // puzzleTop.clues['A1']!.value = 6545;
     // puzzleTop.clues['A5']!.value = 5644;

@@ -102,7 +102,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     }
 
     puzzle.validateEntriesFromGrid();
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = ['E', 'I', 'M', 'P', 'R', 'S'];
     for (var letter in letters) {

@@ -311,7 +311,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     );
     puzzle.addEntry(d29);
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     // Add letter references from descriptions
     var letters = [

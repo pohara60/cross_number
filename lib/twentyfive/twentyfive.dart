@@ -72,7 +72,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
 
       puzzle.validateEntriesFromGrid();
 
-      puzzle.addDigitIdentityFromGrid();
+      puzzle.linkEntriesToGrid();
 
       var letters = [
         // variables

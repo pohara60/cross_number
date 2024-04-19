@@ -164,7 +164,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
       }
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

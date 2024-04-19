@@ -92,7 +92,7 @@ class UnderSix extends Crossnumber<UnderSixPuzzle> {
 
     puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

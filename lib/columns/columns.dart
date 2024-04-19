@@ -67,7 +67,7 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
     }
 
     puzzle.validateEntriesFromGrid();
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

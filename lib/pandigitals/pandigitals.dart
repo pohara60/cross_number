@@ -198,7 +198,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       throw PuzzleException(entryErrors);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var variableError = '';
     for (var variableGroup in variableGroups) {

@@ -79,7 +79,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     if (errors != '') throw PuzzleException(errors);
   }
 
-  void addDigitIdentityFromGrid() {
+  void linkEntriesToGrid() {
     assert(this.gridSpec != null);
     for (var identity in this.gridSpec!.getIdentities()) {
       var entry1 = this._entries[identity['entry1']]!;
@@ -87,6 +87,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       addDigitIdentity(entry1 as EntryMixin, identity['digit1'],
           entry2 as EntryMixin, identity['digit2']);
     }
+    // Link entries to grid cells
+    grid = Grid.fromGridSpec(this);
   }
 
   /// clue1 refers to clue2
@@ -637,7 +639,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       var product = 1;
       if (digits != null) {
         for (var d = 0; d < e.length!; d++) {
-          e.digits[d] = digits[d];
+          e.setDigits(d, digits[d]);
           product *= digits[d].length;
         }
       }

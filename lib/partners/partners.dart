@@ -131,7 +131,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
       otherClue.addReferrer(clue);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var clueError = puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);

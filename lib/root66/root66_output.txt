@@ -3,7 +3,7 @@ Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
 	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
 	values={unknown},
@@ -18,7 +18,7 @@ Clue(name=A9,length=4,type=Root66ClueType.UNKNOWN,value: (S+I+T^A+RO-U-N)D,
 	identities=[A9[0]=D4[2],A9[1]=D5[2],A9[2]=D6[2],A9[3]=D10[0]],referrers=[D4,D5,D6,D10],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={unknown},
@@ -33,12 +33,12 @@ Clue(name=A13,length=4,type=Root66ClueType.UNKNOWN,value: S*U^T+(O+R+I)A+N,
 	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=A16,length=4,type=Root66ClueType.UNKNOWN,value: (DI-NO)(S+T)A+R,
 	identities=[A16[0]=D16[0],A16[1]=D17[0],A16[2]=D6[4],A16[3]=D10[2]],referrers=[D16,D17,D6,D10],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=A18,length=4,type=Root66ClueType.UNKNOWN,value: (T/R)*I^N*(ODU+S),
 	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
 	values={unknown},
@@ -78,7 +78,7 @@ Clue(name=D4,length=4,type=Root66ClueType.UNKNOWN,value: (AROU+N)D,
 	identities=[D4[0]=A2[2],D4[1]=A7[4],D4[2]=A9[0],D4[3]=A12[0]],referrers=[A2,A7,A9,A12],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=D5,length=4,type=Root66ClueType.UNKNOWN,value: A(U+D)+(I+T+O)*R^S,
 	identities=[D5[0]=A2[3],D5[1]=A7[5],D5[2]=A9[1],D5[3]=A12[1]],referrers=[A2,A7,A9,A12],
 	values={unknown},
@@ -93,7 +93,7 @@ Clue(name=D8,length=4,type=Root66ClueType.UNKNOWN,value: S-A+U^T*(O+I-R),
 	identities=[D8[0]=A8[0],D8[1]=A11[0],D8[2]=A13[0],D8[3]=A18[0]],referrers=[A8,A11,A13,A18],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=D10,length=4,type=Root66ClueType.UNKNOWN,value: (S(U+D-A)-T)IO+N,
 	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
 	values={unknown},
@@ -103,7 +103,7 @@ Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
 	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
 	values={unknown},
@@ -113,7 +113,7 @@ Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)-I+N),
 	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
 	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
 	values={unknown},
@@ -132,7 +132,7 @@ U={1..9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 SOLVE------------
-Eval Root66Entry D14 cartesianCount=14348907, elapsed 0:00:02.335635
+Eval Root66Entry D14 cartesianCount=14348907, elapsed 0:00:01.725186
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={more than 20},
@@ -140,7 +140,7 @@ solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval Root66Entry D2 cartesianCount=29760696, elapsed 0:00:04.434637
+Eval Root66Entry D2 cartesianCount=29760696, elapsed 0:00:03.079594
 solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={more than 20},
@@ -152,7 +152,7 @@ I={1, 4}
 N={1, 2, 3, 4, 5, 6, 7, 8}
 R={2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 8}
-Eval Root66Entry A2 cartesianCount=6193152, elapsed 0:00:00.970287
+Eval Root66Entry A2 cartesianCount=6193152, elapsed 0:00:00.691931
 solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={4659, 4956, 5649, 5946, 1395, 2643, 3567, 2318, 1436, 1634, 3416, 3614},
@@ -167,7 +167,7 @@ U={6, 7}
 I={4}
 N={1, 5, 6, 7, 8}
 S={1, 8}
-Eval Root66Entry A12 cartesianCount=72, elapsed 0:00:00.000794
+Eval Root66Entry A12 cartesianCount=72, elapsed 0:00:00.000323
 solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={1869, 1968, 2839, 2938, 3829, 3928},
@@ -360,7 +360,7 @@ solve: Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)
 	values={2516},
 	preValues={1982}),
 	digits=[{2}, {5}, {1}, {6}]
-Clue/Variable iterations=118, updates=35, elapsed 0:00:00.015424
+Clue/Variable iterations=118, updates=35, elapsed 0:00:00.017576
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A2, -D+U*R^(A+T)+I+O*N^S, values={2643}

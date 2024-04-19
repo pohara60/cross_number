@@ -79,7 +79,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
 
     puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

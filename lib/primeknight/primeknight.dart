@@ -76,10 +76,10 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
 
     puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     // Link entries to grid cells
-    puzzle.grid = Grid.fromGridSpec(puzzle);
+    // puzzle.grid = Grid.fromGridSpec(puzzle);
 
     var letters = [
       // variables

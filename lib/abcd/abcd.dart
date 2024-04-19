@@ -101,7 +101,7 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
     }
 
     puzzle.validateEntriesFromGrid();
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     // A, B, C and D are four primes such that D > C > B > A.
     // A, B and C are 2 digits, D is 3.

@@ -216,7 +216,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
       throw PuzzleException(clueErrors);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     // Add letter references from descriptions
     var letters = [

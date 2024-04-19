@@ -171,7 +171,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
       throw PuzzleException(variableErrors);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var clueError = puzzle.checkClueClueReferences();
     clueError += puzzle.checkVariableReferences();

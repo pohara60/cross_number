@@ -149,7 +149,7 @@ class No21 extends Crossnumber<No21Puzzle> {
       throw PuzzleException(entryErrors);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       'A',

@@ -234,7 +234,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
         solve: solveBCEFG);
     puzzle.addEntry(d17);
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     // Add letter references from descriptions
     var letters = ['A', 'D', 'I', 'N', 'O', 'R', 'S', 'T', 'U'];

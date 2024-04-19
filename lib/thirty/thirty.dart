@@ -55,7 +55,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       // Needed even when create entries from grid
       puzzle.validateEntriesFromGrid();
 
-      puzzle.addDigitIdentityFromGrid();
+      puzzle.linkEntriesToGrid();
     }
 
     super.initCrossnumber();

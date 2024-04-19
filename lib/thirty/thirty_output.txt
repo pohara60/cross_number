@@ -2,19 +2,19 @@ Left Puzzle
 ThirtyEntry(name=LA1,length=3,value: null,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
 ThirtyEntry(name=LD1,length=3,value: null,
 	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{0,2,4,6,8},{2,4,6,8}]
 ThirtyEntry(name=LD2,length=3,value: null,
 	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
 ThirtyEntry(name=LA3,length=2,value: null,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8}]
 ThirtyEntry(name=LD3,length=3,value: null,
 	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
 	values={unknown},
@@ -26,11 +26,11 @@ ThirtyEntry(name=LD4,length=3,value: null,
 ThirtyEntry(name=LA5,length=3,value: null,
 	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
 ThirtyEntry(name=LD6,length=2,value: null,
 	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8}]
 ThirtyEntry(name=LA7,length=2,value: null,
 	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
 	values={unknown},
@@ -44,19 +44,19 @@ Right Puzzle
 ThirtyEntry(name=RA1,length=3,value: null,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
 ThirtyEntry(name=RD1,length=3,value: null,
 	identities=[D1[0]=A1[0],D1[2]=A7[0]],referrers=[A1,A7],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{0,2,4,6,8},{2,4,6,8}]
 ThirtyEntry(name=RD2,length=3,value: null,
 	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
 ThirtyEntry(name=RA3,length=2,value: null,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8}]
 ThirtyEntry(name=RD3,length=3,value: null,
 	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
 	values={unknown},
@@ -68,11 +68,11 @@ ThirtyEntry(name=RD4,length=3,value: null,
 ThirtyEntry(name=RA5,length=3,value: null,
 	identities=[A5[0]=D2[1],A5[1]=D6[0],A5[2]=D3[1]],referrers=[D2,D6,D3],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8},{0,2,4,6,8}]
 ThirtyEntry(name=RD6,length=2,value: null,
 	identities=[D6[0]=A5[1],D6[1]=A8[0]],referrers=[A5,A8],
 	values={unknown},
-	digits=[{2,4,6,8},{0,2,4,6,8}]
+	digits=[{2,4,6,8},{2,4,6,8}]
 ThirtyEntry(name=RA7,length=2,value: null,
 	identities=[A7[0]=D1[2],A7[1]=D2[2]],referrers=[D1,D2],
 	values={unknown},
@@ -191,7 +191,7 @@ solveRight: ThirtyEntry(name=RD4,length=3,value: null,
 	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
 	values={400,480},
 	digits=[{4},{0,8},{0}]
-Clue/Variable iterations=57, updates=27, elapsed 0:00:00.037296
+Clue/Variable iterations=57, updates=27, elapsed 0:00:00.029840
 PARTIAL SOLUTION-----------------------------
 Left Puzzle Summary
 A1, values={866}

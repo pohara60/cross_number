@@ -261,7 +261,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       throw PuzzleException(entryErrors);
     }
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       ('B', ''),
@@ -456,8 +456,10 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
             updatedVariables);
       }
       for (var variableName in entry.variableReferences) {
-        updateVariables(puzzle, variableName,
-            possibleEntryVariables[variableName]!, updatedVariables);
+        if (possibleEntryVariables[variableName] != null) {
+          updateVariables(puzzle, variableName,
+              possibleEntryVariables[variableName]!, updatedVariables);
+        }
       }
 
       if (Crossnumber.traceSolve && updated) {

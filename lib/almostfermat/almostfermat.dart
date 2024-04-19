@@ -92,7 +92,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
     // Not needed when create entries from grid
     // puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       // variables

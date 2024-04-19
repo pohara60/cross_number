@@ -100,7 +100,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
 
     puzzle.validateEntriesFromGrid();
 
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
 
     var letters = [
       'A',

@@ -356,7 +356,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     puzzle.addEntry(d27);
 
     // D8 references all other cells!
-    puzzle.addDigitIdentityFromGrid();
+    puzzle.linkEntriesToGrid();
     puzzle.addClueReference(a7, d21, true);
     puzzle.addClueReference(a9, d18, true);
     puzzle.addClueReference(a11, d21, true);
