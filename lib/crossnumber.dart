@@ -353,6 +353,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     if (puzzle is VariablePuzzle) {
       updatedVariables
           .addAll(puzzle.updateVariables(variableName, possibleValues));
+      if (updatedVariables.isEmpty) return false;
+
       // Schedule updated variables for update
       // for (var variableName in updatedVariables) {
       //   var variable = variablePuzzle.variables[variableName]!;

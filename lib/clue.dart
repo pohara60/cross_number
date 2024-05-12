@@ -159,6 +159,7 @@ class Clue extends Variable {
       this.values = possibleValue;
       updated = true;
     } else {
+      checkAnswer(possibleValue);
       if (updatePossible(this.values!, possibleValue)) updated = true;
     }
     return updated;

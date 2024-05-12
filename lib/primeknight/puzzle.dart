@@ -31,7 +31,7 @@ class PrimeKnightPuzzle extends VariablePuzzle<PrimeKnightClue,
     var board = List<List<int>>.from(
         gridSpec!.cells.map((r) => List<int>.from(r.map((c) => 0))));
     var tours = <List<(int, int)>>[];
-    var count = visitNextCell(board, 0, 0, 0, 0, tours, <(int, int)>[]);
+    visitNextCell(board, 0, 0, 0, 0, tours, <(int, int)>[]);
     // print('$count knight tours');
     return tours;
   }

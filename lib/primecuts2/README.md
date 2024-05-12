@@ -1,9 +1,5 @@
 # Prime Cuts Puzzle Solver
 
-## To Do
-
-[ ] puzzle still not solved
-
 ## Introduction
 
 Prime Cuts puzzles have these features:
@@ -25,12 +21,46 @@ This is the second implementation, using newer crossnumber features.
 +--+--+--+--+--+--+
 |1 |2 :3 :4 |5 :6 |
 +::+--+::+::+--+::+
-|7 :8 :  |9 :  :  |
+|7 :8 :  |9 :10|  |
 +--+::+--+::+::+::+
-|10:  |11:12|13:  |
+|11:  |12:  |13:  |
 +::+::+::+--+::+--+
-|  |14:  |15:  :16|
+|  |14:  |15:  :16|
 +::+--+::+::+--+::+
-|17:  |18:  :  |  |
+|17:  |18:  :  |  |
 +--+--+--+--+--+--+
+
+Across  Value               Prime           Grid                        
+A2      Multiple of gA2     B               
+A5      Square              C                                           
+A7      Multiple of D       D               Multiple of D               
+A9      Multiple of R       F               Reverse of another entry    
+A11     Ascending digits    G               Factor of gD11              
+A12     Triangular          H               Triangular                  
+A13     Prime               J                                           
+A14     Triangular          K                                           
+A15     Cube of D           L               Square of S                 
+A17     Square              M reverse C     Reverse of gD3              
+A18     Multiple H          N ascending     Multiple  of W              
+Down                                                                    
+D1      Multiple of P       P=Triangular-Z                              
+D3      Square              Q                                           
+D4      Multiple of B       R                                           
+D6      Palindrome          S               K x T                       
+D8      Descending digits   T                                           
+D10     Ascending digits,   V                                           
+        Divisible by sum digits
+D11     Ascending digits    W               G + W                       
+D12     Same sum digits A18 X               Jumble gA18                 
+D15     Square              Y=reverse Q                                 
+D16     Multiple of Z       Z               Square - gD1                
+
 ```
+
+## Lessons Learned
+
+These changes were made:
+- Debug ability to set known answer, which is checked during solve
+- Reverse function is order Unknown
+- Clue solver tests clue and expression values nested, and checks primes for each
+- Clue solver spots clue reference to its own entry value

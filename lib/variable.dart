@@ -38,6 +38,19 @@ class Variable {
   /// Forced value (when testing porrible solutions)
   int? _tryValue;
 
+  /// Answer - preset to detect erros in puzzles with known answers
+  int? _answer;
+  set answer(int answer) {
+    _answer = answer;
+  }
+
+  void checkAnswer(Set<int> values) {
+    if (_answer == null) return;
+    if (values.contains(_answer)) return;
+    throw SolveException(
+        'Variable $name answer $_answer not in values ${values.toShortString()}');
+  }
+
   Variable(String this.name, {SolveFunction? this.solve = null});
 //    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -93,6 +106,7 @@ class Variable {
       values = Set.from(possibleValues);
       return true;
     }
+    checkAnswer(possibleValues);
     var updated =
         this.values!.any((element) => !possibleValues.contains(element));
     this.values!.removeWhere((element) => !possibleValues.contains(element));

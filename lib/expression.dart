@@ -346,13 +346,14 @@ class Node {
           // Ascending generator functions
           if (order == NodeOrder.SINGLE && name == 'lessthan')
             order = NodeOrder.DESCENDING;
-          else if (order == NodeOrder.SINGLE && name != 'jumble')
+          else if (order == NodeOrder.SINGLE && !['jumble'].contains(name))
             order = NodeOrder.ASCENDING;
           else
             order = NodeOrder.UNKNOWN;
         } else {
           // Non-generator functions that do not preserver operand order
-          if (order != NodeOrder.SINGLE && ['ds', 'dp', 'mp'].contains(name))
+          if (order != NodeOrder.SINGLE &&
+              ['ds', 'dp', 'mp', 'reverse'].contains(name))
             order = NodeOrder.UNKNOWN;
         }
       } else if (token.type == REVERSE) {

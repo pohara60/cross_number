@@ -1,7 +1,7 @@
 #!/bin/bash
 ROOT=~/Documents/Development/Dart/cross_number
 cd $ROOT/test
-EXCLUDE="Couplets" # This is very slow
+EXCLUDE="Couplets primecuts2" # This is very slow
 if [ $# -ne 0 ]; then
     files="$*"_test.dart
 else
@@ -16,7 +16,7 @@ do
     if [ -d "$dir" ]; then
         output=$dir/"$puzzle"_output.txt
         if [ -f "$output" ]; then
-            if [ "$puzzle" == $EXCLUDE ]; then
+            if [[ "$EXCLUDE" =~ $puzzle ]]; then
                 echo Eclude $puzzle
             else
                 echo Running $puzzle

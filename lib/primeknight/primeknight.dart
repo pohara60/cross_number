@@ -1,12 +1,9 @@
 library primeknight;
 
-import 'package:collection/collection.dart';
-
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../generators.dart';
-import '../grid.dart';
 import '../monadic.dart';
 import '../puzzle.dart';
 import '../undo.dart';
@@ -134,35 +131,14 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     // super.solve(false);
 
     var tours = puzzle.knightTours();
-    var tourAnswer = [
-      (0, 0),
-      (1, 2),
-      (0, 4),
-      (2, 3),
-      (3, 1),
-      (1, 0),
-      (0, 2),
-      (1, 4),
-      (3, 3),
-      (2, 1),
-      (1, 3),
-      (0, 1),
-      (2, 0),
-      (3, 2),
-      (2, 4),
-      (0, 3),
-      (1, 1),
-      (3, 0),
-      (2, 2),
-      (3, 4)
-    ];
-    var primes = [97, 43, 71, 17, 59, 37, 53, 11, 61, 23];
+    // var primes = [97, 43, 71, 17, 59, 37, 53, 11, 61, 23];
     Crossnumber.traceSolve = false;
     for (var tour in tours) {
       // var answer = IterableEquality().equals(tour, tourAnswer);
-      var answer = false;
-      if (answer) print('Possible tour $tour, answer=$answer');
-      solveTour(tour, 1, twoDigitPrimes, [], answer ? primes : null);
+      // var answer = false;
+      // if (answer) print('Possible tour $tour, answer=$answer');
+      // solveTour(tour, 1, twoDigitPrimes, [], answer ? primes : null);
+      solveTour(tour, 1, twoDigitPrimes, [], null);
     }
   }
 
@@ -290,9 +266,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
           endCell.setDigit(secondDigit);
           solveTour(tour, index + 2, List.from(availablePrimes)..remove(prime),
               usedPrimes, checkPrimes, debug);
-        } on SolveException {
-          var debug = true;
-        }
+        } on SolveException {}
         // Un-use prime
         usedPrimes.removeLast();
         UndoStack.undo();
@@ -334,22 +308,18 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     // D6 DP = A3 which is Even, and first digit ends a prime and so Odd, so D6
     // is Even and A9 starts even. (Found by solve).
 
-    var a1 = puzzle.clues['A1']!;
     var a3 = puzzle.clues['A3']!;
     var a7 = puzzle.clues['A7']!;
     var a5 = puzzle.clues['A5']!;
     var a9 = puzzle.clues['A9']!;
-    var d1 = puzzle.clues['D1']!;
     var d4 = puzzle.clues['D4']!;
     var d6 = puzzle.clues['D6']!;
     var d7 = puzzle.clues['D7']!;
     var d8 = puzzle.clues['D8']!;
-    var newA1 = <int>{};
     var newA3 = <int>{};
     var newA5 = <int>{};
     var newA7 = <int>{};
     var newA9 = <int>{};
-    var newD1 = <int>{};
     var newD4 = <int>{};
     var newD6 = <int>{};
     var newD7 = <int>{};

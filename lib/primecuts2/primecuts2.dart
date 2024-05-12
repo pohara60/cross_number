@@ -3,6 +3,7 @@ library primecuts;
 
 import 'package:powers/powers.dart';
 
+import '../cartesian.dart';
 import '../crossnumber.dart';
 import '../clue.dart';
 import '../expression.dart';
@@ -312,18 +313,25 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
-      return false;
+    if (value < 0) return false;
+    if (clue.min != null && value < clue.min!) return false;
+    if (clue.max != null && value > clue.max!) return false;
+    if (clue.values != null && !clue.values!.contains(value)) return false;
+    // if (!clue.digitsMatch(value)) return false;
     return true;
   }
 
   // Validate possible entry value
   bool validEntry(VariableClue entry, int value,
       List<String> variableReferences, List<int> variableValues) {
-    // Validate against known values
+    // if (!super.validClue(entry, value, variableReferences, variableValues))
+    //   return false;
+    if (value < 0) return false;
+    if (entry.min != null && value < entry.min!) return false;
+    if (entry.max != null && value > entry.max!) return false;
     if (entry.values != null && !entry.values!.contains(value)) return false;
-    // Validate against digits
-    return entry.digitsMatch(value);
+    if (!entry.digitsMatch(value)) return false;
+    return true;
   }
 
   // Clue solver invokes generic expression evaluator with validator
@@ -339,76 +347,167 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     var puzzle = p as PrimeCuts2Puzzle;
     var clue = v as PrimeCutsClue;
     var entry = clue.entry as PrimeCutsEntry;
+    var updated = false;
+
     var possibleEntryValue = possibleValue2!;
     var possibleEntryVariables = possibleVariables2!;
 
-    // Solve Clue
-    var updated = puzzle.solveExpressionEvaluator(
-        clue, clue.exp, possibleValue, possibleVariables!, validClue);
+    var variableNames = <String>[];
+    var variableValues = <List<int>>[];
+    var count = puzzle.getVariables(clue, clue.expressions, possibleValue,
+        possibleVariables!, variableNames, variableValues, 1000000);
+    if (count == 0) return false;
 
-    // Solve Entry
-    // If expression, then evaluate it
+    var entryVariableNames = <String>[];
+    var entryVariableValues = <List<int>>[];
+    var entryVariableMapsToClueVariable = <int>[];
+    var clueRefersToEntryIndex = variableNames.indexOf('E' + entry.name);
     if (entry.valueDesc != '') {
-      try {
-        if (puzzle.solveExpressionEvaluator(
-            entry,
-            entry.exp,
-            possibleEntryValue,
-            possibleEntryVariables,
-            validEntry)) updated = true;
-      } on SolveException {
-        // Could not solve expression
-        if (entry.values != null) {
-          possibleEntryValue.clear();
-          possibleEntryValue
-              .addAll(entry.values!.where((v) => entry.digitsMatch(v)));
-          possibleEntryVariables.clear();
-        }
+      var count2 = puzzle.getVariables(
+          entry,
+          entry.expressions,
+          possibleValue,
+          possibleEntryVariables,
+          entryVariableNames,
+          entryVariableValues,
+          1000000);
+      if (count2 == 0) return false;
+
+      // Find variables in common for clue and entry
+      for (var variable in entryVariableNames) {
+        entryVariableMapsToClueVariable.add(variableNames.indexOf(variable));
       }
-    } else if (entry.values != null) {
-      possibleEntryValue
-          .addAll(entry.values!.where((v) => entry.digitsMatch(v)));
     }
 
-    // TODO A2 = multiple EA2, so clue and entry are not independent
-    // TODO ED11 = G+W = 126, but others left - variable doe not have referrers?
-    // Find Clue value without possible primes that match entry value
-    var newClueValues = <int>{};
-    var newEntryValues = <int>{};
+    // Solve Clue
     var primeValues = <int>{};
-    for (var clueValue in possibleValue) {
-      var clueValueOK = false;
-      for (var primeValue in puzzle.primes[clue.prime]!.values!) {
-        for (var value in ValueIterable(clueValue, primeValue)) {
-          if (possibleEntryValue.isNotEmpty) {
-            if (possibleEntryValue.contains(value)) {
-              clueValueOK = true;
-              newEntryValues.add(value!);
-              primeValues.add(primeValue);
+    for (var product
+        in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
+      try {
+        for (var clueValue in clue.exp.generate(
+            clue.min, clue.max, variableNames, product, clue.values)) {
+          if (!validClue(clue, clueValue, variableNames, product)) continue;
+
+          if (entry.valueDesc == '') {
+            if (entry.values == null) {
+              entry.values = entry.getValuesFromDigits();
+              assert(entry.values != null);
             }
-          } else {
-            clueValueOK = true;
-            newEntryValues.add(value!);
-            primeValues.add(primeValue);
+            for (var entryValue
+                in entry.values!.where((v) => entry.digitsMatch(v))) {
+              if (clueRefersToEntryIndex != -1) {
+                if (product[clueRefersToEntryIndex] != entryValue) {
+                  continue;
+                }
+              }
+              // Find a prime to get from Clue to Entry value
+              checkPrimes(
+                  puzzle,
+                  clue,
+                  clueValue,
+                  entryValue,
+                  possibleValue,
+                  possibleEntryValue,
+                  primeValues,
+                  variableNames,
+                  possibleVariables,
+                  product);
+            }
+
+            continue;
+          }
+
+          // Solve Entry
+          for (var product2 in entryVariableValues.isEmpty
+              ? [<int>[]]
+              : cartesian(entryVariableValues)) {
+            try {
+              // Skip when entry variable that maps to clue variable has different value
+              var skip = false;
+              for (var index2 = 0;
+                  index2 < entryVariableNames.length;
+                  index2++) {
+                var index = entryVariableMapsToClueVariable[index2];
+                if (index != -1 && product[index] != product2[index2]) {
+                  skip = true;
+                  break;
+                }
+              }
+              if (skip) continue;
+
+              for (var entryValue in entry.exp.generate(entry.min, entry.max,
+                  entryVariableNames, product2, entry.values)) {
+                if (clueRefersToEntryIndex != -1) {
+                  if (variableValues[clueRefersToEntryIndex] != entryValue) {
+                    continue;
+                  }
+                }
+
+                if (!validEntry(
+                    entry, entryValue, entryVariableNames, product2)) continue;
+
+                // Find a prime to get from Clue to Entry value
+                checkPrimes(
+                    puzzle,
+                    clue,
+                    clueValue,
+                    entryValue,
+                    possibleValue,
+                    possibleEntryValue,
+                    primeValues,
+                    variableNames,
+                    possibleVariables,
+                    product,
+                    entryVariableNames,
+                    possibleEntryVariables,
+                    product2);
+              }
+            } on ExpressionInvalid {}
           }
         }
-      }
-      if (clueValueOK) newClueValues.add(clueValue);
+      } on ExpressionInvalid {}
     }
 
-    if (newClueValues.length != possibleValue.length) {
-      possibleValue.clear();
-      possibleValue.addAll(newClueValues);
-      // TODO The variable values are not updated for the lost values
-    }
-    if (newEntryValues.length != possibleEntryValue.length) {
-      possibleEntryValue.clear();
-      possibleEntryValue.addAll(newEntryValues);
-    }
     if (updateVariables(puzzle, clue.prime, primeValues, updatedVariables!))
       updated = true;
 
     return updated;
+  }
+
+  void checkPrimes(
+    PrimeCuts2Puzzle puzzle,
+    PrimeCutsClue clue,
+    int clueValue,
+    int entryValue,
+    Set<int> possibleValue,
+    Set<int> possibleEntryValue,
+    Set<int> primeValues,
+    List<String> variableNames,
+    Map<String, Set<int>> possibleVariables,
+    List<int> product, [
+    List<String>? entryVariableNames,
+    Map<String, Set<int>>? possibleEntryVariables,
+    List<int>? product2,
+  ]) {
+    for (var primeValue in puzzle.primes[clue.prime]!.values!) {
+      for (var value in ValueIterable(clueValue, primeValue)) {
+        if (entryValue == value) {
+          possibleValue.add(clueValue);
+          possibleEntryValue.add(entryValue);
+          primeValues.add(primeValue);
+          var index = 0;
+          for (var variable in variableNames) {
+            possibleVariables[variable]!.add(product[index++]);
+          }
+          index = 0;
+          if (entryVariableNames != null) {
+            for (var variable in entryVariableNames) {
+              possibleEntryVariables![variable]!.add(product2![index++]);
+            }
+          }
+        }
+      }
+    }
   }
 
   // Override solveClue to manage preValues
@@ -520,10 +619,60 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     return matches;
   }
 
+  void setAnswers() {
+    puzzle.variables['B']!.answer = 97;
+    puzzle.variables['C']!.answer = 31;
+    puzzle.variables['D']!.answer = 29;
+    puzzle.variables['F']!.answer = 53;
+    puzzle.variables['G']!.answer = 47;
+    puzzle.variables['H']!.answer = 83;
+    puzzle.variables['J']!.answer = 89;
+    puzzle.variables['K']!.answer = 11;
+    puzzle.variables['L']!.answer = 43;
+    puzzle.variables['M']!.answer = 13;
+    puzzle.variables['N']!.answer = 23;
+    puzzle.variables['P']!.answer = 59;
+    puzzle.variables['Q']!.answer = 73;
+    puzzle.variables['R']!.answer = 71;
+    puzzle.variables['S']!.answer = 17;
+    puzzle.variables['T']!.answer = 61;
+    puzzle.variables['V']!.answer = 67;
+    puzzle.variables['W']!.answer = 79;
+    puzzle.variables['X']!.answer = 41;
+    puzzle.variables['Y']!.answer = 37;
+    puzzle.variables['Z']!.answer = 19;
+
+    puzzle.entries['A2']!.answer = 592;
+    puzzle.entries['A5']!.answer = 36;
+    puzzle.entries['A7']!.answer = 696;
+    puzzle.entries['A9']!.answer = 62;
+    puzzle.entries['A11']!.answer = 18;
+    puzzle.entries['A12']!.answer = 10;
+    puzzle.entries['A13']!.answer = 41;
+    puzzle.entries['A14']!.answer = 76;
+    puzzle.entries['A15']!.answer = 289;
+    puzzle.entries['A17']!.answer = 69;
+    puzzle.entries['A18']!.answer = 316;
+    puzzle.entries['D1']!.answer = 26;
+    puzzle.entries['D3']!.answer = 96;
+    puzzle.entries['D4']!.answer = 260;
+    puzzle.entries['D6']!.answer = 671;
+    puzzle.entries['D8']!.answer = 987;
+    puzzle.entries['D10']!.answer = 248;
+    puzzle.entries['D11']!.answer = 126;
+    puzzle.entries['D12']!.answer = 163;
+    puzzle.entries['D15']!.answer = 21;
+    puzzle.entries['D16']!.answer = 95;
+  }
+
   @override
   void solve([bool iteration = true]) {
-    //solveClue(puzzle.clues["D16"]!);
+    // setAnswers();
 
+    if (Crossnumber.traceSolve) {
+      print("MANUAL UPDATES-----------------------------");
+    }
+    // Force solve in same order as previous version to compare output
     try {
       solveVariable(puzzle.variables["M"]! as ExpressionVariable);
     } on SolveException {}
