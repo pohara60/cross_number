@@ -1,0 +1,136 @@
+Puzzle
+FactorsEntry(name=A1,length=3,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+FactorsEntry(name=A4,length=2,value: ,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FactorsEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FactorsEntry(name=A7,length=3,value: ,
+	identities=[A7[0]=D3[1],A7[1]=D4[1],A7[2]=D5[1]],referrers=[D3,D4,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FactorsEntry(name=A8,length=2,value: ,
+	identities=[A8[0]=D8[0],A8[1]=D2[2]],referrers=[D8,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FactorsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FactorsEntry(name=A10,length=3,value: ,
+	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+FactorsEntry(name=A13,length=2,value: ,
+	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FactorsEntry(name=A15,length=2,value: ,
+	identities=[A15[0]=D8[2],A15[1]=D11[1]],referrers=[D8,D11],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FactorsEntry(name=A16,length=3,value: ,
+	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FactorsEntry(name=D1,length=2,value: ,
+	identities=[D1[0]=A1[0],D1[1]=A6[0]],referrers=[A1,A6],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FactorsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A8[1]],referrers=[A1,A6,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FactorsEntry(name=D3,length=2,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[0]],referrers=[A1,A7],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FactorsEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A7[1]],referrers=[A4,A7],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FactorsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A4[1],D5[1]=A7[2],D5[2]=A9[1]],referrers=[A4,A7,A9],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FactorsEntry(name=D8,length=3,value: ,
+	identities=[D8[0]=A8[0],D8[1]=A10[0],D8[2]=A15[0]],referrers=[A8,A10,A15],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+FactorsEntry(name=D9,length=3,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+FactorsEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FactorsEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FactorsEntry(name=D14,length=2,value: ,
+	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Variables:
+A={}
+B={}
+C={}
+D={}
+E={}
+F={}
+G={}
+
+UPDATES-----------------------------
+Clue/Variable iterations=20, updates=0, elapsed 0:00:00.044491
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, , values={111..119,121..129,131,132,709 more,999}
+A4, , values={11..19,21..29,31,32,61 more,99}
+A6, , values={10..29,70 more,99}
+A7, , values={100..119,880 more,999}
+A8, , values={10..29,70 more,99}
+A9, , values={10..29,70 more,99}
+A10, , values={111..119,121..129,131,132,709 more,999}
+A13, , values={11..19,21..29,31,32,61 more,99}
+A15, , values={10..29,70 more,99}
+A16, , values={100..119,880 more,999}
+D1, , values={11..19,21..29,31,32,61 more,99}
+D2, , values={100..119,880 more,999}
+D3, , values={11..19,21..29,31,32,61 more,99}
+D4, , values={10..29,70 more,99}
+D5, , values={100..119,880 more,999}
+D8, , values={111..119,121..129,131,132,709 more,999}
+D9, , values={110..129,790 more,999}
+D11, , values={10..29,70 more,99}
+D12, , values={11..19,21..29,31,32,61 more,99}
+D14, , values={10..29,70 more,99}
++--+--+--+--+--+
+| ?  ?  ?| ?  ?|
++        +     +
+| ?  ?| ?  ?  ?|
++--+  +--+--+  +
+| ?  ?|  | ?  ?|
++   --+--+   --+
+| ?  ?  ?| ?  ?|
++        +     +
+| ?  ?| ?  ?  ?|
++--+--+--+--+--+
+Variables:
+A={}
+B={}
+C={}
+D={}
+E={}
+F={}
+G={}
+
+ITERATE SOLUTIONS-----------------------------
+Exception RangeError (index): Invalid value: Valid value range is empty: 0

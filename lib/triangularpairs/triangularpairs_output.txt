@@ -1,3 +1,5 @@
+Warning: expression '$reverse #triangular' has generator with Unknown Order
+Warning: expression '$reverse #triangular' has generator with Unknown Order
 Puzzle
 TriangularPairsEntry(name=A1,length=2,value: #triangular,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2,A4,A6,A7,A9,A11,A12,A15,A16,D3,D4,D5,D8,D9,D10,D13,D14],
@@ -91,16 +93,16 @@ solve: TriangularPairsEntry(name=A6,length=3,value: #triangular,
 	digits=[{1..9},{2..7,9},{1,3,5,6,8}]
 solve: TriangularPairsEntry(name=A7,length=2,value: $reverse #triangular,
 	identities=[A7[1]=D5[1]],referrers=[D5,A1,A4,A6,A9,A11,A12,A15,A16,D1,D2,D3,D4,D8,D9,D10,D13,D14],
-	values={12,19,51,54,55,63,66,82,87},
-	digits=[{1,5,6,8},{1..7,9}]
+	values={12,19,21,28,36,51,54,55,63,66,82,87,91,99},
+	digits=[{1..3,5,6,8,9},{1..9}]
 solve: TriangularPairsEntry(name=A9,length=2,value: #triangular,
 	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,A1,A4,A6,A7,A11,A12,A15,A16,D1,D2,D3,D5,D8,D10,D13,D14],
 	values={15,21,28,36,45,55,66,78,91},
 	digits=[{1..7,9},{1,5,6,8}]
 solve: TriangularPairsEntry(name=A11,length=2,value: $reverse #triangular,
 	identities=[A11[0]=D8[1]],referrers=[D8,A1,A4,A6,A7,A9,A12,A15,A16,D1,D2,D3,D4,D5,D9,D10,D13,D14],
-	values={12,19,51,54,55,63,66,82,87},
-	digits=[{1,5,6,8},{1..7,9}]
+	values={12,19,21,28,36,51,54,55,63,66,82,87,91,99},
+	digits=[{1..3,5,6,8,9},{1..9}]
 solve: TriangularPairsEntry(name=A12,length=3,value: #cube,
 	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D10[1]],referrers=[D9,D13,D10,D8,A6,A1,A4,A7,A9,A11,A15,A16,D1,D2,D3,D4,D5,D14],
 	values={216},
@@ -131,8 +133,8 @@ solve: TriangularPairsEntry(name=D4,length=3,value: ,
 	digits=[{1..9},{1,3,5,6,8},{1,5,6,8}]
 solve: TriangularPairsEntry(name=D5,length=3,value: #palindrome,
 	identities=[D5[0]=A4[2],D5[1]=A7[1]],referrers=[A4,A7,D8,A1,A6,A9,A11,A12,A15,A16,D1,D2,D3,D4,D9,D10,D13,D14],
-	values={111,121,131,141,151,161,171,191,212,222,232,242,252,262,272,292,313,323,333,343,52 more,999},
-	digits=[{1..9},{1..7,9},{1..9}]
+	values={111,121,131,141,151,161,171,181,191,212,222,232,242,252,262,272,282,292,313,323,61 more,999},
+	digits=[{1..9},{1..9},{1..9}]
 solve: TriangularPairsEntry(name=D8,length=3,value: $reverse A12,
 	identities=[D8[1]=A11[0],D8[2]=A15[0]],referrers=[A11,A15,D5,A1,A4,A6,A7,A9,A12,A16,D1,D2,D3,D4,D9,D10,D13,D14],
 	values={612},
@@ -167,8 +169,8 @@ solve: TriangularPairsEntry(name=A6,length=3,value: #triangular,
 	digits=[{1},{5},{3}]
 solve: TriangularPairsEntry(name=A7,length=2,value: $reverse #triangular,
 	identities=[A7[1]=D5[1]],referrers=[D5,A1,A4,A6,A9,A11,A12,A15,A16,D1,D2,D3,D4,D8,D9,D10,D13,D14],
-	values={12,19,54,55,63,66,82,87},
-	digits=[{1,5,6,8},{2..7,9}]
+	values={12,19,21,28,36,54,55,63,66,82,87,91,99},
+	digits=[{1..3,5,6,8,9},{1..9}]
 solve: TriangularPairsEntry(name=A9,length=2,value: #triangular,
 	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,A1,A4,A6,A7,A11,A12,A15,A16,D1,D2,D3,D5,D8,D10,D13,D14],
 	values={21,28,36,55,66},
@@ -226,7 +228,6 @@ solve: TriangularPairsEntry(name=A9,length=2,value: #triangular,
 	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,A1,A4,A6,A7,A11,A12,A15,A16,D1,D2,D3,D5,D8,D10,D13,D14],
 	values={55},
 	digits=[{5},{5}]
-Solve Error: clue A11 ($reverse #triangular) no solution!
 solve: TriangularPairsEntry(name=A15,length=3,value: #square,
 	identities=[A15[0]=D8[2],A15[2]=D9[2]],referrers=[D8,D9,A4,A1,A6,A7,A9,A11,A12,A16,D1,D2,D3,D4,D5,D10,D13,D14],
 	values={289},
@@ -258,7 +259,6 @@ solve: TriangularPairsEntry(name=A1,length=2,value: #triangular,
 	digits=[{2},{8}]
 Solve Error: clue A7 ($reverse #triangular) no solution!
 Solve Error: clue A9 (#triangular) no solution!
-Solve Error: clue A11 ($reverse #triangular) no solution!
 Solve Error: clue A16 (#triangular) no solution!
 solve: TriangularPairsEntry(name=D2,length=3,value: ,
 	identities=[D2[0]=A1[1],D2[1]=A6[0]],referrers=[A1,A6,D10,A4,A7,A9,A11,A12,A15,A16,D1,D3,D4,D5,D8,D9,D13,D14],
@@ -278,8 +278,11 @@ Solve Error: clue D14 (#triangular) no solution!
 Solve Error: clue A1 (#triangular) no solution!
 Solve Error: clue A7 ($reverse #triangular) no solution!
 Solve Error: clue A9 (#triangular) no solution!
-Solve Error: clue A11 ($reverse #triangular) no solution!
 Solve Error: clue A16 (#triangular) no solution!
+solve: TriangularPairsEntry(name=A11,length=2,value: $reverse #triangular,
+	identities=[A11[0]=D8[1]],referrers=[D8,A1,A4,A6,A7,A9,A12,A15,A16,D1,D2,D3,D4,D5,D9,D10,D13,D14],
+	values={19},
+	digits=[{1},{9}]
 Solve Error: clue D1 (#triangular) no solution!
 Solve Error: clue D3 (#triangular) no solution!
 Solve Error: clue D13 (#triangular) no solution!
@@ -287,18 +290,26 @@ Solve Error: clue D14 (#triangular) no solution!
 Solve Error: clue A1 (#triangular) no solution!
 Solve Error: clue A7 ($reverse #triangular) no solution!
 Solve Error: clue A9 (#triangular) no solution!
-Solve Error: clue A11 ($reverse #triangular) no solution!
 Solve Error: clue A16 (#triangular) no solution!
+Solve Error: clue A11 ($reverse #triangular) no solution!
 Solve Error: clue D1 (#triangular) no solution!
-Clue/Variable iterations=97, updates=47, elapsed 0:00:00.051106
-PARTIAL SOLUTION-----------------------------
+Solve Error: clue D3 (#triangular) no solution!
+Solve Error: clue D13 (#triangular) no solution!
+Solve Error: clue D14 (#triangular) no solution!
+Solve Error: clue A1 (#triangular) no solution!
+Solve Error: clue A7 ($reverse #triangular) no solution!
+Solve Error: clue A9 (#triangular) no solution!
+Solve Error: clue A16 (#triangular) no solution!
+Solve Error: clue A11 ($reverse #triangular) no solution!
+Clue/Variable iterations=112, updates=48, elapsed 0:00:00.056857
+SOLUTION-----------------------------
 Puzzle Summary
 A1, #triangular, values={28}
 A4, , values={941}
 A6, #triangular, values={153}
 A7, $reverse #triangular, values={87}
 A9, #triangular, values={55}
-A11, $reverse #triangular, values={12,19}
+A11, $reverse #triangular, values={19}
 A12, #cube, values={216}
 A15, #square, values={289}
 A16, #triangular, values={66}
@@ -319,10 +330,8 @@ D14, #triangular, values={36}
 +--+   --+  +--   +
 | 6| 5| 5  5| 2| 1|
 +  +--+   --+  +--+
-| 1  ?| 2  1  6| 3|
+| 1  9| 2  1  6| 3|
 +   --+        +  +
 | 2  8  9| 5| 6  6|
 +--+--+--+--+--+--+
 
-ITERATE SOLUTIONS-----------------------------
-Solution count=0

@@ -63,6 +63,8 @@ class Cell {
   }
 }
 
+typedef Cell CellConstructor(int row, int col, String face);
+
 class Grid {
   final Puzzle puzzle;
   final String face;
@@ -75,18 +77,28 @@ class Grid {
     this.numRows,
     this.numCols, [
     this.face = '',
+    CellConstructor? constructor,
   ]) {
-    rows.addAll(List.generate(numRows,
-        (row) => List.generate(numCols, (col) => Cell(row, col, face))));
+    rows.addAll(List.generate(
+        numRows,
+        (row) => List.generate(
+            numCols,
+            (col) => constructor != null
+                ? constructor(row, col, face)
+                : Cell(row, col, face))));
   }
 
-  Grid.fromGridSpec(
-    this.puzzle, [
-    String this.face = '',
-  ])  : numRows = puzzle.gridSpec!.cells.length,
+  Grid.fromGridSpec(this.puzzle,
+      [String this.face = '', CellConstructor? constructor])
+      : numRows = puzzle.gridSpec!.cells.length,
         numCols = puzzle.gridSpec!.cells[0].length {
-    rows.addAll(List.generate(numRows,
-        (row) => List.generate(numCols, (col) => Cell(row, col, face))));
+    rows.addAll(List.generate(
+        numRows,
+        (row) => List.generate(
+            numCols,
+            (col) => constructor != null
+                ? constructor(row, col, face)
+                : Cell(row, col, face))));
     var r = 0;
     for (var row in rows) {
       var c = 0;

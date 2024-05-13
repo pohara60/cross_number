@@ -13,6 +13,7 @@ import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/dieanotherday/dieanotherday.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
+import 'package:crossnumber/factors/factors.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
 import 'package:crossnumber/increasingprime/increasingprime.dart';
@@ -86,7 +87,8 @@ void main(List<String> arguments) async {
     ..addCommand(SumSquaresCommand())
     ..addCommand(CombinationsCommand())
     ..addCommand(TriangularPairsCommand())
-    ..addCommand(PrimeKnightCommand());
+    ..addCommand(PrimeKnightCommand())
+    ..addCommand(FactorsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -850,6 +852,30 @@ class PrimeKnightCommand extends Command {
     // Get and print solve
     try {
       final pc = PrimeKnight();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class FactorsCommand extends Command {
+  @override
+  final name = 'Factors';
+  @override
+  final description = 'solve hardcoded Factors puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Factors();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

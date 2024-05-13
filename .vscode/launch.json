@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Factors",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Factors"
+            ]
+        },
+        {
             "name": "PrimeKnight",
             "type": "dart",
             "request": "launch",
