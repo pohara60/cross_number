@@ -91,7 +91,7 @@ class Factors extends Crossnumber<FactorsPuzzle> {
       'G',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = FactorsVariable(letter);
+      puzzle.addVariable(FactorsVariable(letter));
     }
     var cellExpresssions = [
       ['BBB', 'AABB', 'AB', 'D', 'BD'],
@@ -148,7 +148,7 @@ class Factors extends Crossnumber<FactorsPuzzle> {
     Map<String, Set<int>>? possibleVariables2,
     Set<String>? updatedVariables,
   }) {
-    var puzzle = p as FactorsPuzzle;
+    //var puzzle = p as FactorsPuzzle;
     var clue = v as FactorsClue;
     var updated = false;
     // Values may have been set by other Clue

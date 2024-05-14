@@ -236,7 +236,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
       'Y',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = ParticularVariable(letter);
+      puzzle.addVariable(ParticularVariable(letter));
     }
 
     var clueError = '';

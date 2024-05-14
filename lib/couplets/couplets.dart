@@ -170,7 +170,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = CoupletsVariable(letter);
+      puzzle.addVariable(CoupletsVariable(letter));
     }
 
     var clueError = '';

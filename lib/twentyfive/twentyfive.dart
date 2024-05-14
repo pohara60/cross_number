@@ -78,7 +78,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
         // variables
       ];
       for (var letter in letters) {
-        puzzle.letters[letter] = TwentyFiveVariable(letter);
+        puzzle.addVariable(TwentyFiveVariable(letter));
       }
 
       var clueError = '';

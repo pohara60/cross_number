@@ -512,7 +512,17 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Clue inputClue) {
+  bool solveClue(Variable inputClue) {
+    if (inputClue is Clue) {
+      return solveActualClue(inputClue);
+    }
+    if (inputClue is ExpressionVariable) {
+      return solveVariable(inputClue);
+    }
+    return false;
+  }
+
+  bool solveActualClue(Clue inputClue) {
     var clue = inputClue as PrimeCutsClue;
     var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as PrimeCutsEntry;

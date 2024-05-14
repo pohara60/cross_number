@@ -226,7 +226,7 @@ class Letters extends Crossnumber<LettersPuzzle> {
     // Add letter references from descriptions
     var letters = ['A', 'D', 'E', 'P', 'R', 'S', 'T', 'U', 'Y'];
     for (var letter in letters) {
-      puzzle.letters[letter] = LetterVariable(letter);
+      puzzle.addVariable(LetterVariable(letter));
       for (var clue in puzzle.clues.values) {
         if (clue.valueDesc!.contains(letter)) {
           clue.addLetterReference(letter);

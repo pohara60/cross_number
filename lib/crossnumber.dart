@@ -62,11 +62,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   void addToUpdateQueue(Variable clue) {
     var puzzle = puzzleForVariable[clue]!;
     if ((puzzle is VariablePuzzle) &&
-        puzzle.hasVariables &&
-        (clue is VariableClue || clue is ExpressionVariable)) {
-      if (clue is VariableClue) puzzle.updateCluePriority(clue);
-      if (clue is ExpressionVariable) puzzle.updateVariablePriority(clue);
-
+        // (clue is VariableClue || clue is ExpressionVariable) &&
+        puzzle.hasVariables) {
+      puzzle.updatePriority(clue);
       if (priorityQueue.contains(clue)) {
         priorityQueue.remove(clue);
       }
@@ -136,22 +134,13 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
         iterations++;
         try {
-          var referrers = <Variable>[];
           if (clueOrVariable is Clue) {
             updated = solveClue(clueOrVariable);
-            referrers.addAll(clueOrVariable.referrers);
-            // Add variables that clue uses
-            // if (puzzle is VariablePuzzle) {
-            //   for (var variableName in clueOrVariable.variableReferences) {
-            //     var variable =
-            //         (puzzle as VariablePuzzle).variables[variableName]!;
-            //     if (variable is ExpressionVariable) referrers.add(variable);
-            //   }
-            // }
           } else {
-            updated = solveVariable(clueOrVariable as ExpressionVariable);
-            referrers = clueOrVariable.referrers;
+            //updated = solveVariable(clueOrVariable as ExpressionVariable);
+            updated = solveClue(clueOrVariable);
           }
+          var referrers = clueOrVariable.referrers;
           if (updated) {
             for (var referrer in referrers) {
               addToUpdateQueue(referrer);
@@ -238,7 +227,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     return unfinishedPuzzles[index + 1].iterate(callback);
   }
 
-  bool solveClue(Clue clue) {
+  bool solveClue(Variable clue) {
     var puzzle = puzzleForVariable[clue]!;
 
     // If clue solved already then skip it
@@ -246,68 +235,99 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     // if (clue.values != null && clue.values!.length == 1) return false;
 
     var updated = false;
-    if (clue.initialise()) updated = true;
+    if (clue is Clue && clue.initialise()) updated = true;
 
     var updatedVariables = <String>{};
     var updatedClues = <String>{};
     var updatedEntries = <String>{};
+    var updatedAllVariables = <(VariableType, String)>[];
     if (clue.solve != null) {
       var possibleValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
-      if (clue is VariableClue) {
-        for (var variableName in clue.variableClueReferences) {
-          possibleVariables[variableName] = <int>{};
-        }
-        if (clue.solve!(
-          puzzle,
-          clue,
-          possibleValue,
-          possibleVariables: possibleVariables,
-        )) updated = true;
-      } else {
-        if (clue.solve!(puzzle, clue, possibleValue)) updated = true;
+      // if (clue is VariableClue) {
+      for (var variableName in clue.variableClueReferences) {
+        possibleVariables[variableName] = <int>{};
       }
+      if (clue.solve!(
+        puzzle,
+        clue,
+        possibleValue,
+        possibleVariables: possibleVariables,
+      )) updated = true;
+      // } else {
+      //   if (clue.solve!(puzzle, clue, possibleValue)) updated = true;
+      // }
       // If no Values returned then Solve function could not solve
       if (possibleValue.isEmpty) {
-        print(
-            'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
-        throw SolveException();
+        if (clue is Clue) {
+          print(
+              'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
+
+          throw SolveException();
+        } else if (clue is ExpressionVariable) {
+          throw SolveException(
+              'Solve Error: variable ${clue.name} (${clue.valueDesc}) no solution!');
+        }
       }
-      if (updateClueEntries(puzzle, clue.name, possibleValue)) updated = true;
-      if (clue.finalise()) updated = true;
-      if (clue is VariableClue) {
+      if (clue is Clue && updateClueEntries(puzzle, clue.name, possibleValue))
+        updated = true;
+      if (clue is ExpressionVariable) {
+        if (updateVariables(
+            puzzle, clue.name, possibleValue, updatedVariables)) {
+          for (var updatedVariable in updatedVariables) {
+            var key = (VariableType.V, updatedVariable);
+            if (!updatedAllVariables.contains(key))
+              updatedAllVariables.add(key);
+          }
+          updated = true;
+        }
+        // Update variable references even if this variable not updated, because may
+        // have been set elsewhere
         for (var variableName in clue.variableReferences) {
+          if (updateVariables(puzzle, variableName,
+              possibleVariables[variableName]!, updatedVariables)) {
+            updated = true;
+          }
+        }
+      }
+      if (clue is Clue && clue.finalise()) updated = true;
+      if (clue is VariableClue) {
+        for (var variableName in clue.variableClueReferences) {
           if (possibleVariables[variableName] != null &&
               possibleVariables[variableName]!.isNotEmpty) {
-            if (updateVariables(
-                puzzle,
-                variableName,
-                possibleVariables[variableName]!,
-                updatedVariables)) updated = true;
-          }
-        }
-        for (var clueName in clue.clueReferences) {
-          if (possibleVariables[clueName] != null &&
-              possibleVariables[clueName]!.isNotEmpty) {
-            if (updateClues(puzzle, clueName, possibleVariables[clueName]!,
-                isFocus: false, focusClueName: clue.name)) {
-              updatedClues.add(clueName);
+            if (clue.variableReferences.contains(variableName) &&
+                updateVariables(puzzle, variableName,
+                    possibleVariables[variableName]!, updatedVariables)) {
+              for (var updatedVariable in updatedVariables) {
+                var key = (VariableType.V, updatedVariable);
+                if (!updatedAllVariables.contains(key))
+                  updatedAllVariables.add(key);
+              }
               updated = true;
             }
-          }
-        }
-        for (var entryName in clue.entryReferences) {
-          if (possibleVariables[entryName] != null &&
-              possibleVariables[entryName]!.isNotEmpty) {
-            if (updateEntries(puzzle, entryName, possibleVariables[entryName]!,
-                isFocus: false, focusClueName: clue.name)) {
-              updatedEntries.add(entryName);
+            if (clue.clueReferences.contains(variableName) &&
+                updateClues(
+                    puzzle, variableName, possibleVariables[variableName]!,
+                    isFocus: false, focusClueName: clue.name)) {
+              var type = puzzle.allEntries == puzzle.clues
+                  ? VariableType.E
+                  : VariableType.C;
+              updatedAllVariables.add((type, variableName));
+              updatedClues.add(variableName);
+              updated = true;
+            }
+            if (clue.entryReferences.contains(variableName) &&
+                updateEntries(
+                    puzzle, variableName, possibleVariables[variableName]!,
+                    isFocus: false, focusClueName: clue.name)) {
+              updatedAllVariables.add((VariableType.E, variableName));
+              updatedEntries.add(variableName);
               updated = true;
             }
           }
         }
       }
-    } else {
+    } else if (clue is Clue) {
       // No solve function, but may have been updated elsewhere
       // Check digits match
       var values = clue.values;
@@ -324,27 +344,35 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
     if (traceSolve && updated) {
       print("solve${puzzle.name}: ${clue.toString()}");
-      if (clue is VariableClue) {
-        var variableList = (puzzle as VariablePuzzle).variableList;
-        for (var variableName in updatedVariables) {
-          print(
-              '$variableName=${variableList.variables[variableName]!.values!.toShortString()}');
-        }
-        for (var clueName in updatedClues) {
-          var puzzle2 =
-              clueName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
-          print(
-              '$clueName=${puzzle2.clues[clueName]!.values!.toShortString()}');
-        }
-        for (var entryName in updatedEntries) {
-          var puzzle2 =
-              entryName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
-          var entries =
-              puzzle2.entries.isNotEmpty ? puzzle2.entries : puzzle2.clues;
-          print('$entryName=${entries[entryName]!.values!.toShortString()}');
-        }
+      for (var key in updatedAllVariables) {
+        var variableName = key.$2;
+        var puzzle2 =
+            variableName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
+        print(
+            '$variableName=${puzzle2.allVariables[key]!.values!.toShortString()}');
       }
+      // if (clue is VariableClue) {
+      //   var variableList = (puzzle as VariablePuzzle).variableList;
+      //   for (var variableName in updatedVariables) {
+      //     print(
+      //         '$variableName=${variableList.variables[variableName]!.values!.toShortString()}');
+      //   }
+      //   for (var clueName in updatedClues) {
+      //     var puzzle2 =
+      //         clueName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
+      //     print(
+      //         '$clueName=${puzzle2.clues[clueName]!.values!.toShortString()}');
+      //   }
+      //   for (var entryName in updatedEntries) {
+      //     var puzzle2 =
+      //         entryName == clue.name ? puzzle : puzzle.cluePuzzle(clue.name);
+      //     var entries =
+      //         puzzle2.entries.isNotEmpty ? puzzle2.entries : puzzle2.clues;
+      //     print('$entryName=${entries[entryName]!.values!.toShortString()}');
+      //   }
+      // }
     }
+
     return updated;
   }
 
@@ -361,21 +389,13 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       //   addToUpdateQueue(variable);
       // }
       // Schedule referencing clues for update
-      for (var clue in puzzle.clues.values) {
-        if (clue is VariableClue) {
-          if (clue.variableReferences
-              .any((element) => updatedVariables.contains(element))) {
-            addToUpdateQueue(clue);
-          }
-        }
-      }
-      // Schedule referencing variables for update
-      for (var variable in puzzle.variables.values) {
-        if (variable is ExpressionVariable) {
-          if (variable.variableReferences
-              .any((element) => updatedVariables.contains(element))) {
-            addToUpdateQueue(variable);
-          }
+      for (var e in puzzle.allVariables.entries) {
+        // var type = e.key.$1;
+        // var name = e.key.$2;
+        var variable = e.value;
+        if (variable.variableReferences
+            .any((element) => updatedVariables.contains(element))) {
+          addToUpdateQueue(variable);
         }
       }
       return updatedVariables.length > 0;

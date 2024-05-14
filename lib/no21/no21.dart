@@ -171,7 +171,7 @@ class No21 extends Crossnumber<No21Puzzle> {
       'Y',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = No21Variable(letter);
+      puzzle.addVariable(No21Variable(letter));
       // for (var clue in puzzle.clues.values) {
       //   if (clue.valueDesc!.contains(letter)) {
       //     clue.addLetterReference(letter);

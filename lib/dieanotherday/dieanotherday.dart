@@ -144,7 +144,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
 
       // Add variables to puzzle
       for (var variable in allVariables) {
-        puzzle.letters[variable.name] = variable;
+        puzzle.addVariable(variable);
       }
 
       var clueError = '';
@@ -336,7 +336,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   }
 
   @override
-  bool solveClue(Clue clue) {
+  bool solveClue(Variable clue) {
     var updated = super.solveClue(clue);
 
     var puzzle = puzzleForVariable[clue]!;

@@ -49,7 +49,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       'R',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = PandigitalsVariable(letter);
+      puzzle.addVariable(PandigitalsVariable(letter));
     }
 
     // Create Variable Group for each set of rules

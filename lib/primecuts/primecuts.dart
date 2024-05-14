@@ -5,7 +5,6 @@ import 'dart:collection';
 
 import 'package:powers/powers.dart';
 import '../crossnumber.dart';
-import '../clue.dart';
 import '../primecuts/clue.dart';
 import '../primecuts/puzzle.dart';
 
@@ -292,7 +291,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   }
 
   // Override solveClue to manage preValues
-  bool solveClue(Clue inputClue) {
+  bool solveClue(Variable inputClue) {
     var clue = inputClue as PrimeCutsEntry;
     var puzzle = puzzleForVariable[clue]!;
     // If clue solved already then skip it

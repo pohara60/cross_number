@@ -91,7 +91,7 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = Knights2Variable(letter);
+      puzzle.addVariable(Knights2Variable(letter));
     }
 
     var clueError = '';

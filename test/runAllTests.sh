@@ -17,7 +17,7 @@ do
         output=$dir/"$puzzle"_output.txt
         if [ -f "$output" ]; then
             if [[ "$EXCLUDE" =~ $puzzle ]]; then
-                echo Eclude $puzzle
+                echo Exclude $puzzle
             else
                 echo Running $puzzle
                 result=/tmp/"$puzzle"_result.txt

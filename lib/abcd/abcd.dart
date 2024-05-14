@@ -112,7 +112,7 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
       ('D', 3),
     ];
     for (var letter in letters) {
-      puzzle.letters[letter.$1] = ABCDVariable(letter);
+      puzzle.addVariable(ABCDVariable(letter));
     }
 
     var clueError = puzzle.checkVariableReferences();

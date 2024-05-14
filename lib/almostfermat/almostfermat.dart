@@ -98,7 +98,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = AlmostFermatVariable(letter);
+      puzzle.addVariable(AlmostFermatVariable(letter));
     }
 
     // Get Entry expressions from Clue expressions

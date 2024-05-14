@@ -115,7 +115,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
       'J',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = CombinationsVariable(letter);
+      puzzle.addVariable(CombinationsVariable(letter));
     }
 
     var clueError = '';

@@ -15,9 +15,11 @@ import 'variable.dart';
 class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   final _clues = <String, ClueKind>{};
   final _entries = <String, EntryKind>{};
+  final _allVariables = <(VariableType, String), Variable>{};
   Map<String, ClueKind> get clues => _clues.isNotEmpty ? _clues : _entries;
   Map<String, EntryKind> get entries => _clues.isNotEmpty ? _entries : {};
   Map<String, EntryKind> get allEntries => _entries;
+  Map<(VariableType, String), Variable> get allVariables => _allVariables;
 
   final otherPuzzleClues = <String, Puzzle>{};
   Puzzle cluePuzzle(String clueName) => otherPuzzleClues[clueName] ?? this;
@@ -35,10 +37,12 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   void addClue(ClueKind clue) {
     _clues[clue.name] = clue;
+    _allVariables[(VariableType.C, clue.name)] = clue;
   }
 
   void addEntry(EntryKind entry) {
     _entries[entry.name] = entry;
+    _allVariables[(VariableType.E, entry.name)] = entry;
   }
 
   // clue1[digit1-1] = clue2[digit2-1]
@@ -817,6 +821,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 
   void addVariable(VariableKind variable) {
     variableList.variables[variable.name] = variable;
+    _allVariables[(VariableType.V, variable.name)] = variable;
   }
 
   Iterable<int> generateSumDigits(num min, num max) sync* {
@@ -986,12 +991,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     return cartesianCount(variableValues);
   }
 
-  void updateCluePriority(VariableClue clue) {
-    var variableValues = <List<int>>[];
-    clue.priority = getPriority(clue.variableReferences, variableValues);
-  }
-
-  void updateVariablePriority(ExpressionVariable variable) {
+  void updatePriority(Variable variable) {
     var variableValues = <List<int>>[];
     variable.priority =
         getPriority(variable.variableReferences, variableValues);

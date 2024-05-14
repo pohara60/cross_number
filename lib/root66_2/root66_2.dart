@@ -199,7 +199,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     // Add letter references from descriptions
     var letters = ['A', 'D', 'I', 'N', 'O', 'R', 'S', 'T', 'U'];
     for (var letter in letters) {
-      puzzle.letters[letter] = Root66_2Variable(letter);
+      puzzle.addVariable(Root66_2Variable(letter));
       for (var clue in puzzle.clues.values) {
         if (clue.valueDesc!.contains(letter)) {
           clue.addLetterReference(letter);
@@ -448,7 +448,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Clue inputClue) {
+  bool solveClue(Variable inputClue) {
     var clue = inputClue as Root66_2Clue;
     var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as Root66_2Entry;

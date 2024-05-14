@@ -339,7 +339,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       'r',
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = SequenceVariable(letter);
+      puzzle.addVariable(SequenceVariable(letter));
       for (var clue in puzzle.clues.values) {
         if (clue.valueDesc!.contains(letter)) {
           clue.addLetterReference(letter);

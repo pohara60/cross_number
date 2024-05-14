@@ -91,7 +91,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = IncreasingFibonnaciVariable(letter);
+      puzzle.addVariable(IncreasingFibonnaciVariable(letter));
     }
 
     var clueError = '';

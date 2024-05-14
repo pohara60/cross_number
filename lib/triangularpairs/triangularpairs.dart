@@ -85,7 +85,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = TriangularPairsVariable(letter);
+      puzzle.addVariable(TriangularPairsVariable(letter));
     }
 
     var clueError = '';

@@ -19,22 +19,8 @@ class Clue extends Variable {
   /// Description of clue
   String? valueDesc;
 
-  // References
-  final _variableRefs = VariableRefList();
-  List<String> get variableReferences => _variableRefs.variableNames;
-  List<String> get clueReferences => _variableRefs.clueNames;
-  List<String> get entryReferences => _variableRefs.entryNames;
-  List<String> get variableClueReferences => [
-        ..._variableRefs.variableNames,
-        ..._variableRefs.clueNames,
-        ..._variableRefs.entryNames,
-      ];
-
   // Mutual reference to an other clue
   bool circularClueReference = false;
-
-  /// List of clues that need to be examined when this clue is updated
-  late final List<Clue> referrers;
 
   // Mapped grid entry - Clue with EntryMixin
   Clue? _entry;
@@ -79,7 +65,6 @@ class Clue extends Variable {
     String? this.valueDesc,
     SolveFunction? solve,
   }) : super(name, solve: solve) {
-    referrers = <Clue>[];
     this.reset();
   }
 
@@ -94,22 +79,6 @@ class Clue extends Variable {
       max = null;
     }
     _restrictedValues = null;
-  }
-
-  addReferrer(Clue clue) {
-    if (!referrers.contains(clue)) referrers.add(clue);
-  }
-
-  addClueReference(String clueName) {
-    _variableRefs.addClueReference(clueName);
-  }
-
-  addVariableReference(String variable) {
-    _variableRefs.addVariableReference(variable);
-  }
-
-  removeClueReference(String name) {
-    _variableRefs.removeClueReference(name);
   }
 
   bool initialise() {
@@ -262,7 +231,7 @@ class ExpressionClue extends VariableClue with Expression {
     variablePrefix = '',
     List<String>? entryNames,
   }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
-    initExpression(valueDesc, variablePrefix, name, _variableRefs, entryNames);
+    initExpression(valueDesc, variablePrefix, name, variableRefs, entryNames);
     if (addDesc != null) {
       for (var desc in addDesc) {
         addExpression(desc, entryNames: entryNames);
@@ -275,7 +244,7 @@ class ExpressionClue extends VariableClue with Expression {
     this.valueDesc = this.valueDesc == null || this.valueDesc == ''
         ? valueDesc
         : '${this.valueDesc} | $valueDesc';
-    initExpression(valueDesc, variablePrefix, name, _variableRefs, entryNames);
+    initExpression(valueDesc, variablePrefix, name, variableRefs, entryNames);
   }
 
   bool fixReference(clueName) {
@@ -291,13 +260,13 @@ class ExpressionClue extends VariableClue with Expression {
       }
     }
     if (updated) {
-      _variableRefs.fixReference(clueName);
+      variableRefs.fixReference(clueName);
     }
     return updated;
   }
 
   void sortVariables() {
-    _variableRefs.sort();
+    variableRefs.sort();
   }
 }
 
@@ -532,7 +501,7 @@ class VariableEntry extends VariableClue with EntryMixin {
   }
 
   addVariableReference(String variable) {
-    _variableRefs.addVariableReference(variable);
+    variableRefs.addVariableReference(variable);
   }
 }
 

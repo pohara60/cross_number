@@ -86,7 +86,7 @@ class Knights extends Crossnumber<KnightsPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = KnightsVariable(letter);
+      puzzle.addVariable(KnightsVariable(letter));
     }
 
     var clueError = puzzle.checkVariableReferences();

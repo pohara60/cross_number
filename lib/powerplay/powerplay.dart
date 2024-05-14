@@ -68,7 +68,7 @@ class PowerPlay extends Crossnumber<PowerPlayPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = PowerPlayVariable(letter);
+      puzzle.addVariable(PowerPlayVariable(letter));
     }
 
     var clueError = '';

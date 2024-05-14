@@ -106,7 +106,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
 
     var letters = ['E', 'I', 'M', 'P', 'R', 'S'];
     for (var letter in letters) {
-      puzzle.letters[letter] = TwoPrimesVariable(letter);
+      puzzle.addVariable(TwoPrimesVariable(letter));
     }
 
     var clueError = '';

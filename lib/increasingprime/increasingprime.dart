@@ -100,7 +100,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = IncreasingPrimeVariable(letter);
+      puzzle.addVariable(IncreasingPrimeVariable(letter));
     }
 
     // Get Entry expressions from Clue expressions

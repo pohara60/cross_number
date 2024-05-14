@@ -23,12 +23,24 @@ typedef SolveFunction = bool Function(
   Set<String>? updatedVariables,
 });
 
+enum VariableType {
+  C('Clue'),
+  E('Entry'),
+  V('Variable');
+
+  final String name;
+  const VariableType(this.name);
+}
+
 /// A variable, with restricted values, commonly used in [Clue] for a [Puzzle]
-class Variable {
+class Variable with PriorityVariable {
   /// Name
   final String name;
 
   SolveFunction? solve;
+
+  /// List of variables that need to be examined when this clue is updated
+  final referrers = <Variable>[];
 
   /// Current possible values, initialized in subclass
   Set<int>? _values;
@@ -38,17 +50,10 @@ class Variable {
   /// Forced value (when testing porrible solutions)
   int? _tryValue;
 
-  /// Answer - preset to detect erros in puzzles with known answers
+  /// Answer - preset to detect errors in puzzles with known answers
   int? _answer;
   set answer(int answer) {
     _answer = answer;
-  }
-
-  void checkAnswer(Set<int> values) {
-    if (_answer == null) return;
-    if (values.contains(_answer)) return;
-    throw SolveException(
-        'Variable $name answer $_answer not in values ${values.toShortString()}');
   }
 
   Variable(String this.name, {SolveFunction? this.solve = null});
@@ -86,6 +91,8 @@ class Variable {
   int? get value =>
       values != null && values!.length == 1 ? values!.first : null;
 
+  bool get isSet => values != null && values!.length == 1;
+
   int? get min => _min;
   set min(int? min) => _min = min;
   int? get max => _max ?? 10000; // Ugh!
@@ -99,6 +106,13 @@ class Variable {
 
   compareTo(Variable other) {
     return name.compareTo(other.name);
+  }
+
+  void checkAnswer(Set<int> values) {
+    if (_answer == null) return;
+    if (values.contains(_answer)) return;
+    throw SolveException(
+        'Variable $name answer $_answer not in values ${values.toShortString()}');
   }
 
   bool updatePossible(Set<int> possibleValues) {
@@ -116,7 +130,33 @@ class Variable {
     return updated;
   }
 
-  bool get isSet => values != null && values!.length == 1;
+  addReferrer(Variable variable) {
+    if (!referrers.contains(variable)) referrers.add(variable);
+  }
+
+  // References
+  final _variableRefs = VariableRefList();
+  VariableRefList get variableRefs => _variableRefs;
+  List<String> get variableReferences => _variableRefs.variableNames;
+  List<String> get clueReferences => _variableRefs.clueNames;
+  List<String> get entryReferences => _variableRefs.entryNames;
+  List<String> get variableClueReferences => [
+        ..._variableRefs.variableNames,
+        ..._variableRefs.clueNames,
+        ..._variableRefs.entryNames,
+      ];
+
+  addVariableReference(String variable) {
+    _variableRefs.addVariableReference(variable);
+  }
+
+  addClueReference(String clueName) {
+    _variableRefs.addClueReference(clueName);
+  }
+
+  removeClueReference(String name) {
+    _variableRefs.removeClueReference(name);
+  }
 }
 
 class VariableRef {
@@ -253,14 +293,9 @@ class VariableList<VariableKind extends Variable> {
   }
 }
 
-class ExpressionVariable extends Variable with Expression, PriorityVariable {
+class ExpressionVariable extends Variable with Expression {
   final String valueDesc;
-  // References
-  final _variableRefs = VariableRefList();
-  List<String> get variableReferences => _variableRefs.variableNames;
 
-  /// List of variables that need to be examined when this clue is updated
-  late final List<ExpressionVariable> referrers;
   ExpressionVariable(
     String name,
     String this.valueDesc, {
@@ -272,15 +307,6 @@ class ExpressionVariable extends Variable with Expression, PriorityVariable {
     initExpression(valueDesc, variablePrefix, name, _variableRefs);
     this.min = min;
     this.max = max;
-    referrers = [];
-  }
-
-  addReferrer(ExpressionVariable variable) {
-    if (!referrers.contains(variable)) referrers.add(variable);
-  }
-
-  addVariableReference(String variable) {
-    _variableRefs.addVariableReference(variable);
   }
 
   bool fixReference(clueName) {

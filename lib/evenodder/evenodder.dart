@@ -347,7 +347,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
       // Add Across and Down versions of variable
       for (var prefix in ['A', 'D']) {
         var variableName = prefix + letter;
-        puzzle.letters[variableName] = EvenOdderVariable(variableName);
+        puzzle.addVariable(EvenOdderVariable(variableName));
         for (var clue in puzzle.clues.values) {
           if (clue.name[0] == prefix) {
             if (clue.exp.variableRefs.contains(variableName)) {

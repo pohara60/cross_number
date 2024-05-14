@@ -128,7 +128,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = {{env['ABCD']}}Variable(letter);
+      puzzle.addVariable({{env['ABCD']}}Variable(letter));
     }
 
     var clueError = '';

@@ -68,7 +68,7 @@ class CubeSandwich extends Crossnumber<CubeSandwichPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = CubeSandwichVariable(letter);
+      puzzle.addVariable(CubeSandwichVariable(letter));
     }
 
     var clueError = '';

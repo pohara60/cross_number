@@ -98,7 +98,7 @@ class UnderSix extends Crossnumber<UnderSixPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = UnderSixVariable(letter);
+      puzzle.addVariable(UnderSixVariable(letter));
     }
 
     var clueError = '';

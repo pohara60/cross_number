@@ -82,7 +82,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.letters[letter] = PrimeKnightVariable(letter);
+      puzzle.addVariable(PrimeKnightVariable(letter));
     }
 
     var clueError = '';
