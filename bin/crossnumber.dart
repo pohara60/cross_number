@@ -37,6 +37,7 @@ import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 import 'package:crossnumber/sumsquares/sumsquares.dart';
 import 'package:crossnumber/thirty/thirty.dart';
+import 'package:crossnumber/transformation/transformation.dart';
 import 'package:crossnumber/triangularpairs/triangularpairs.dart';
 import 'package:crossnumber/twentyfive/twentyfive.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
@@ -88,7 +89,8 @@ void main(List<String> arguments) async {
     ..addCommand(CombinationsCommand())
     ..addCommand(TriangularPairsCommand())
     ..addCommand(PrimeKnightCommand())
-    ..addCommand(FactorsCommand());
+    ..addCommand(FactorsCommand())
+    ..addCommand(TransformationCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -876,6 +878,30 @@ class FactorsCommand extends Command {
     // Get and print solve
     try {
       final pc = Factors();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class TransformationCommand extends Command {
+  @override
+  final name = 'Transformation';
+  @override
+  final description = 'solve hardcoded Transformation puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Transformation();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
