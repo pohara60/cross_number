@@ -1,0 +1,483 @@
+Puzzle
+TransformationEntry(name=A1,length=5,value: T+T+W+y,
+	identities=[A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0],A1[4]=D5[0]],referrers=[D2,D3,D4,D5],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9},{1..9},{1..9}]
+TransformationEntry(name=A7,length=2,value: b+b,
+	identities=[A7[0]=D7[0],A7[1]=D8[0]],referrers=[D7,D8],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TransformationEntry(name=A9,length=4,value: I+N,
+	identities=[A9[0]=D9[0],A9[1]=D2[1],A9[2]=D3[1],A9[3]=D4[1]],referrers=[D9,D2,D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A10,length=4,value: E+S+T+T,
+	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1],A10[3]=D8[1]],referrers=[D5,D6,D7,D8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A11,length=3,value: D-o-o-Y,
+	identities=[A11[0]=D9[1],A11[1]=D2[2],A11[2]=D3[2]],referrers=[D9,D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TransformationEntry(name=A12,length=4,value: i+J-E-E,
+	identities=[A12[0]=D12[0],A12[1]=D5[2],A12[2]=D6[2],A12[3]=D7[2]],referrers=[D12,D5,D6,D7],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A13,length=4,value: i+s+s-N,
+	identities=[A13[0]=D13[0],A13[1]=D3[3],A13[2]=D12[1],A13[3]=D5[3]],referrers=[D13,D3,D12,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A14,length=3,value: d-e-e-P,
+	identities=[A14[0]=D6[3],A14[1]=D7[3],A14[2]=D8[3]],referrers=[D6,D7,D8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TransformationEntry(name=A15,length=3,value: b+U+U+Y,
+	identities=[A15[0]=D9[3],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+TransformationEntry(name=A17,length=4,value: B-l-l-s,
+	identities=[A17[0]=D12[2],A17[1]=D5[4],A17[2]=D18[0],A17[3]=D7[4]],referrers=[D12,D5,D18,D7],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+TransformationEntry(name=A19,length=4,value: H-E-l,
+	identities=[A19[0]=D13[2],A19[1]=D16[1],A19[2]=D12[3],A19[3]=D5[5]],referrers=[D13,D16,D12,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A20,length=3,value: S-U,
+	identities=[A20[0]=D18[1],A20[1]=D21[0],A20[2]=D8[5]],referrers=[D18,D21,D8],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+TransformationEntry(name=A22,length=4,value: U+U+y-E,
+	identities=[A22[0]=D9[5],A22[1]=D13[3],A22[2]=D16[2],A22[3]=D12[4]],referrers=[D9,D13,D16,D12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A23,length=4,value: A-G-G,
+	identities=[A23[0]=D23[0],A23[1]=D18[2],A23[2]=D21[1],A23[3]=D8[6]],referrers=[D23,D18,D21,D8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=A24,length=2,value: b+J,
+	identities=[A24[0]=D9[6],A24[1]=D13[4]],referrers=[D9,D13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TransformationEntry(name=A25,length=5,value: D-S-Y,
+	identities=[A25[0]=D12[5],A25[1]=D23[1],A25[2]=D18[3],A25[3]=D21[2]],referrers=[D12,D23,D18,D21],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=D2,length=3,value: U-b,
+	identities=[D2[0]=A1[1],D2[1]=A9[1],D2[2]=A11[1]],referrers=[A1,A9,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TransformationEntry(name=D3,length=4,value: R-O,
+	identities=[D3[0]=A1[2],D3[1]=A9[2],D3[2]=A11[2],D3[3]=A13[1]],referrers=[A1,A9,A11,A13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=D4,length=2,value: s+s-T,
+	identities=[D4[0]=A1[3],D4[1]=A9[3]],referrers=[A1,A9],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TransformationEntry(name=D5,length=6,value: Ns-J,
+	identities=[D5[0]=A1[4],D5[1]=A10[0],D5[2]=A12[1],D5[3]=A13[3],D5[4]=A17[1],D5[5]=A19[3]],referrers=[A1,A10,A12,A13,A17,A19],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=D6,length=4,value: E+L,
+	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{1..9}]
+TransformationEntry(name=D7,length=5,value: YYY,
+	identities=[D7[0]=A7[0],D7[1]=A10[2],D7[2]=A12[3],D7[3]=A14[1],D7[4]=A17[3]],referrers=[A7,A10,A12,A14,A17],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=D8,length=7,value: BP+o+o,
+	identities=[D8[0]=A7[1],D8[1]=A10[3],D8[3]=A14[2],D8[5]=A20[2],D8[6]=A23[3]],referrers=[A7,A10,A14,A20,A23],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=D9,length=7,value: Et+E+L,
+	identities=[D9[0]=A9[0],D9[1]=A11[0],D9[3]=A15[0],D9[5]=A22[0],D9[6]=A24[0]],referrers=[A9,A11,A15,A22,A24],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{1..9},{0..9},{1..9},{1..9}]
+TransformationEntry(name=D12,length=6,value: bF+F+S,
+	identities=[D12[0]=A12[0],D12[1]=A13[2],D12[2]=A17[0],D12[3]=A19[2],D12[4]=A22[3],D12[5]=A25[0]],referrers=[A12,A13,A17,A19,A22,A25],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9},{0..9},{1..9}]
+TransformationEntry(name=D13,length=5,value: JJ+e+ B,
+	identities=[D13[0]=A13[0],D13[1]=A15[1],D13[2]=A19[0],D13[3]=A22[1],D13[4]=A24[1]],referrers=[A13,A15,A19,A22,A24],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9},{0..9}]
+TransformationEntry(name=D16,length=4,value: i+J,
+	identities=[D16[0]=A15[2],D16[1]=A19[1],D16[2]=A22[2]],referrers=[A15,A19,A22],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+TransformationEntry(name=D18,length=4,value: B+J+J-E,
+	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+TransformationEntry(name=D21,length=3,value: P+T-s,
+	identities=[D21[0]=A20[1],D21[1]=A23[2],D21[2]=A25[3]],referrers=[A20,A23,A25],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TransformationEntry(name=D23,length=2,value: U-Y,
+	identities=[D23[0]=A23[0],D23[1]=A25[1]],referrers=[A23,A25],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Variables:
+A={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+B={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+D={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+E={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+F={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+G={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+H={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+I={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+J={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+L={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+N={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+O={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+P={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+R={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+S={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+T={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+U={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+W={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+Y={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+b={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+d={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+e={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+i={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+l={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+o={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+s={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+t={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+y={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
+
+UPDATES-----------------------------
+Eval TransformationEntry D7 cartesianCount=45, elapsed 0:00:00.007236
+solve: TransformationEntry(name=D7,length=5,value: YYY,
+	identities=[D7[0]=A7[0],D7[1]=A10[2],D7[2]=A12[3],D7[3]=A14[1],D7[4]=A17[3]],referrers=[A7,A10,A12,A14,A17],
+	values={19683},
+	digits=[{1},{9},{6},{8},{3}]
+Y={27}
+Eval TransformationEntry A7 cartesianCount=45, elapsed 0:00:00.000388
+solve: TransformationEntry(name=A7,length=2,value: b+b,
+	identities=[A7[0]=D7[0],A7[1]=D8[0]],referrers=[D7,D8],
+	values={16},
+	digits=[{1},{6}]
+b={8}
+Eval TransformationEntry D23 cartesianCount=45, elapsed 0:00:00.000269
+solve: TransformationEntry(name=D23,length=2,value: U-Y,
+	identities=[D23[0]=A23[0],D23[1]=A25[1]],referrers=[A23,A25],
+	values={37,98},
+	digits=[{3,9},{7,8}]
+U={64,125}
+Eval TransformationEntry D2 cartesianCount=2, elapsed 0:00:00.000062
+solve: TransformationEntry(name=D2,length=3,value: U-b,
+	identities=[D2[0]=A1[1],D2[1]=A9[1],D2[2]=A11[1]],referrers=[A1,A9,A11],
+	values={117},
+	digits=[{1},{1},{7}]
+U={125}
+solve: TransformationEntry(name=D23,length=2,value: U-Y,
+	identities=[D23[0]=A23[0],D23[1]=A25[1]],referrers=[A23,A25],
+	values={98},
+	digits=[{9},{8}]
+solve: TransformationEntry(name=A15,length=3,value: b+U+U+Y,
+	identities=[A15[0]=D9[3],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
+	values={285},
+	digits=[{2},{8},{5}]
+Eval TransformationEntry A24 cartesianCount=45, elapsed 0:00:00.000172
+solve: TransformationEntry(name=A24,length=2,value: b+J,
+	identities=[A24[0]=D9[6],A24[1]=D13[4]],referrers=[D9,D13],
+	values={35,72},
+	digits=[{3,7},{2,5}]
+J={27,64}
+Eval TransformationEntry A20 cartesianCount=45, elapsed 0:00:00.000274
+solve: TransformationEntry(name=A20,length=3,value: S-U,
+	identities=[A20[0]=D18[1],A20[1]=D21[0],A20[2]=D8[5]],referrers=[D18,D21,D8],
+	values={218,387,875},
+	digits=[{2,3,8},{1,7,8},{5,7,8}]
+S={343,512,1000}
+Eval TransformationEntry D16 cartesianCount=90, elapsed 0:00:00.000584
+solve: TransformationEntry(name=D16,length=4,value: i+J,
+	identities=[D16[0]=A15[2],D16[1]=A19[1],D16[2]=A22[2]],referrers=[A15,A19,A22],
+	values={5859,5896},
+	digits=[{5},{8},{5,9},{6,9}]
+i={5832}
+Eval TransformationEntry D16 cartesianCount=2, elapsed 0:00:00.000083
+Eval TransformationEntry A12 cartesianCount=90, elapsed 0:00:00.000321
+solve: TransformationEntry(name=A12,length=4,value: i+J-E-E,
+	identities=[A12[0]=D12[0],A12[1]=D5[2],A12[2]=D6[2],A12[3]=D7[2]],referrers=[D12,D5,D6,D7],
+	values={3896,5646},
+	digits=[{3,5},{6,8},{4,9},{6}]
+E={125,1000}
+J={64}
+solve: TransformationEntry(name=D16,length=4,value: i+J,
+	identities=[D16[0]=A15[2],D16[1]=A19[1],D16[2]=A22[2]],referrers=[A15,A19,A22],
+	values={5896},
+	digits=[{5},{8},{9},{6}]
+solve: TransformationEntry(name=A24,length=2,value: b+J,
+	identities=[A24[0]=D9[6],A24[1]=D13[4]],referrers=[D9,D13],
+	values={72},
+	digits=[{7},{2}]
+Eval TransformationEntry A12 cartesianCount=2, elapsed 0:00:00.000076
+Eval TransformationEntry D18 cartesianCount=90, elapsed 0:00:00.000531
+solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
+	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
+	values={1325,1334,1872,2200,3224,3378,5835,6862,8389,9264},
+	digits=[{1..3,5,6,8,9},{2,3,8},{0,2,3,6..8},{0,2,4,5,8,9}]
+B={1331,2197,2744,3375,4096,5832,6859,9261}
+Eval TransformationEntry A20 cartesianCount=3, elapsed 0:00:00.000122
+Eval TransformationEntry D18 cartesianCount=16, elapsed 0:00:00.000200
+Eval TransformationEntry D6 cartesianCount=90, elapsed 0:00:00.000461
+solve: TransformationEntry(name=D6,length=4,value: E+L,
+	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
+	values={1343,3197,3744,5096},
+	digits=[{1,3,5},{0,1,3,7},{4,9},{3,4,6,7}]
+E={1000}
+L={343,2197,2744,4096}
+solve: TransformationEntry(name=A12,length=4,value: i+J-E-E,
+	identities=[A12[0]=D12[0],A12[1]=D5[2],A12[2]=D6[2],A12[3]=D7[2]],referrers=[D12,D5,D6,D7],
+	values={3896},
+	digits=[{3},{8},{9},{6}]
+Eval TransformationEntry D6 cartesianCount=4, elapsed 0:00:00.000108
+solve: TransformationEntry(name=D6,length=4,value: E+L,
+	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
+	values={3197,5096},
+	digits=[{3,5},{0,1},{9},{6,7}]
+L={2197,4096}
+Eval TransformationEntry D6 cartesianCount=2, elapsed 0:00:00.000070
+Eval TransformationEntry D18 cartesianCount=8, elapsed 0:00:00.000170
+solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
+	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
+	values={1325,1872,3224,8389},
+	digits=[{1,3,8},{2,3,8},{2,7,8},{2,4,5,9}]
+B={2197,2744,4096,9261}
+Eval TransformationEntry A20 cartesianCount=3, elapsed 0:00:00.000113
+Eval TransformationEntry D18 cartesianCount=4, elapsed 0:00:00.000120
+Eval TransformationEntry A22 cartesianCount=45, elapsed 0:00:00.000364
+solve: TransformationEntry(name=A22,length=4,value: U+U+y-E,
+	identities=[A22[0]=D9[5],A22[1]=D13[3],A22[2]=D16[2],A22[3]=D12[4]],referrers=[D9,D13,D16,D12],
+	values={1994,9898},
+	digits=[{1,9},{8,9},{9},{4,8}]
+y={2744,10648}
+Eval TransformationEntry A22 cartesianCount=2, elapsed 0:00:00.000060
+Eval TransformationEntry D9 cartesianCount=90, elapsed 0:00:00.000476
+solve: TransformationEntry(name=D9,length=7,value: Et+E+L,
+	identities=[D9[0]=A9[0],D9[1]=A11[0],D9[3]=A15[0],D9[5]=A22[0],D9[6]=A24[0]],referrers=[A9,A11,A15,A22,A24],
+	values={6862197},
+	digits=[{6},{8},{6},{2},{1},{9},{7}]
+L={2197}
+t={6859}
+solve: TransformationEntry(name=D6,length=4,value: E+L,
+	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
+	values={3197},
+	digits=[{3},{1},{9},{7}]
+Eval TransformationEntry A22 cartesianCount=2, elapsed 0:00:00.000055
+solve: TransformationEntry(name=A22,length=4,value: U+U+y-E,
+	identities=[A22[0]=D9[5],A22[1]=D13[3],A22[2]=D16[2],A22[3]=D12[4]],referrers=[D9,D13,D16,D12],
+	values={9898},
+	digits=[{9},{8},{9},{8}]
+y={10648}
+Eval TransformationEntry D12 cartesianCount=135, elapsed 0:00:00.000649
+solve: TransformationEntry(name=D12,length=6,value: bF+F+S,
+	identities=[D12[0]=A12[0],D12[1]=A13[2],D12[2]=A17[0],D12[3]=A19[2],D12[4]=A22[3],D12[5]=A25[0]],referrers=[A12,A13,A17,A19,A22,A25],
+	values={386387},
+	digits=[{3},{8},{6},{3},{8},{7}]
+F={42875}
+S={512}
+solve: TransformationEntry(name=A20,length=3,value: S-U,
+	identities=[A20[0]=D18[1],A20[1]=D21[0],A20[2]=D8[5]],referrers=[D18,D21,D8],
+	values={387},
+	digits=[{3},{8},{7}]
+Eval TransformationEntry D18 cartesianCount=4, elapsed 0:00:00.000058
+solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
+	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
+	values={1325,8389},
+	digits=[{1,8},{3},{2,8},{5,9}]
+B={2197,9261}
+Eval TransformationEntry D18 cartesianCount=2, elapsed 0:00:00.000232
+Eval TransformationEntry A10 cartesianCount=45, elapsed 0:00:00.000453
+solve: TransformationEntry(name=A10,length=4,value: E+S+T+T,
+	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1],A10[3]=D8[1]],referrers=[D5,D6,D7,D8],
+	values={2198},
+	digits=[{2},{1},{9},{8}]
+T={343}
+Eval TransformationEntry A1 cartesianCount=45, elapsed 0:00:00.000461
+solve: TransformationEntry(name=A1,length=5,value: T+T+W+y,
+	identities=[A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0],A1[4]=D5[0]],referrers=[D2,D3,D4,D5],
+	values={11342,11361,11398,11459,11846,41125,61987},
+	digits=[{1,4,6},{1},{1,3,4,8,9},{2,4..6,8,9},{1,2,5..9}]
+W={8,27,64,125,512,29791,50653}
+Eval TransformationEntry A1 cartesianCount=7, elapsed 0:00:00.000103
+Eval TransformationEntry D4 cartesianCount=45, elapsed 0:00:00.000286
+solve: TransformationEntry(name=D4,length=2,value: s+s-T,
+	identities=[D4[0]=A1[3],D4[1]=A9[3]],referrers=[A1,A9],
+	values={89},
+	digits=[{8},{9}]
+s={216}
+Eval TransformationEntry A1 cartesianCount=7, elapsed 0:00:00.000107
+solve: TransformationEntry(name=A1,length=5,value: T+T+W+y,
+	identities=[A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0],A1[4]=D5[0]],referrers=[D2,D3,D4,D5],
+	values={61987},
+	digits=[{6},{1},{9},{8},{7}]
+W={50653}
+Eval TransformationEntry A13 cartesianCount=45, elapsed 0:00:00.000313
+solve: TransformationEntry(name=A13,length=4,value: i+s+s-N,
+	identities=[A13[0]=D13[0],A13[1]=D3[3],A13[2]=D12[1],A13[3]=D5[3]],referrers=[D13,D3,D12,D5],
+	values={2889},
+	digits=[{2},{8},{8},{9}]
+N={3375}
+solve: TransformationEntry(name=D5,length=6,value: Ns-J,
+	identities=[D5[0]=A1[4],D5[1]=A10[0],D5[2]=A12[1],D5[3]=A13[3],D5[4]=A17[1],D5[5]=A19[3]],referrers=[A1,A10,A12,A13,A17,A19],
+	values={728936},
+	digits=[{7},{2},{8},{9},{3},{6}]
+Eval TransformationEntry A9 cartesianCount=45, elapsed 0:00:00.000290
+solve: TransformationEntry(name=A9,length=4,value: I+N,
+	identities=[A9[0]=D9[0],A9[1]=D2[1],A9[2]=D3[1],A9[3]=D4[1]],referrers=[D9,D2,D3,D4],
+	values={6119},
+	digits=[{6},{1},{1},{9}]
+I={2744}
+Eval TransformationEntry A25 cartesianCount=45, elapsed 0:00:00.000375
+solve: TransformationEntry(name=A25,length=5,value: D-S-Y,
+	identities=[A25[0]=D12[5],A25[1]=D23[1],A25[2]=D18[3],A25[3]=D21[2]],referrers=[D12,D23,D18,D21],
+	values={78968},
+	digits=[{7},{8},{9},{6},{8}]
+D={79507}
+Eval TransformationEntry D18 cartesianCount=2, elapsed 0:00:00.000073
+solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
+	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
+	values={8389},
+	digits=[{8},{3},{8},{9}]
+B={9261}
+Eval TransformationEntry D21 cartesianCount=45, elapsed 0:00:00.000510
+solve: TransformationEntry(name=D21,length=3,value: P+T-s,
+	identities=[D21[0]=A20[1],D21[1]=A23[2],D21[2]=A25[3]],referrers=[A20,A23,A25],
+	values={856},
+	digits=[{8},{5},{6}]
+P={729}
+Eval TransformationEntry A11 cartesianCount=45, elapsed 0:00:00.000191
+solve: TransformationEntry(name=A11,length=3,value: D-o-o-Y,
+	identities=[A11[0]=D9[1],A11[1]=D2[2],A11[2]=D3[2]],referrers=[D9,D2,D3],
+	values={872},
+	digits=[{8},{7},{2}]
+o={39304}
+solve: TransformationEntry(name=D8,length=7,value: BP+o+o,
+	identities=[D8[0]=A7[1],D8[1]=A10[3],D8[3]=A14[2],D8[5]=A20[2],D8[6]=A23[3]],referrers=[A7,A10,A14,A20,A23],
+	values={6829877},
+	digits=[{6},{8},{2},{9},{8},{7},{7}]
+Eval TransformationEntry D13 cartesianCount=45, elapsed 0:00:00.000326
+solve: TransformationEntry(name=D13,length=5,value: JJ+e+ B,
+	identities=[D13[0]=A13[0],D13[1]=A15[1],D13[2]=A19[0],D13[3]=A22[1],D13[4]=A24[1]],referrers=[A13,A15,A19,A22,A24],
+	values={28982},
+	digits=[{2},{8},{9},{8},{2}]
+e={15625}
+Eval TransformationEntry A17 cartesianCount=45, elapsed 0:00:00.000540
+solve: TransformationEntry(name=A17,length=4,value: B-l-l-s,
+	identities=[A17[0]=D12[2],A17[1]=D5[4],A17[2]=D18[0],A17[3]=D7[4]],referrers=[D12,D5,D18,D7],
+	values={6383},
+	digits=[{6},{3},{8},{3}]
+l={1331}
+Eval TransformationEntry A19 cartesianCount=45, elapsed 0:00:00.000486
+solve: TransformationEntry(name=A19,length=4,value: H-E-l,
+	identities=[A19[0]=D13[2],A19[1]=D16[1],A19[2]=D12[3],A19[3]=D5[5]],referrers=[D13,D16,D12,D5],
+	values={9836},
+	digits=[{9},{8},{3},{6}]
+H={12167}
+Eval TransformationEntry A14 cartesianCount=45, elapsed 0:00:00.000334
+solve: TransformationEntry(name=A14,length=3,value: d-e-e-P,
+	identities=[A14[0]=D6[3],A14[1]=D7[3],A14[2]=D8[3]],referrers=[D6,D7,D8],
+	values={789},
+	digits=[{7},{8},{9}]
+d={32768}
+Eval TransformationEntry A23 cartesianCount=2025, elapsed 0:00:00.007872
+solve: TransformationEntry(name=A23,length=4,value: A-G-G,
+	identities=[A23[0]=D23[0],A23[1]=D18[2],A23[2]=D21[1],A23[3]=D8[6]],referrers=[D23,D18,D21,D8],
+	values={9857},
+	digits=[{9},{8},{5},{7}]
+A={19683}
+G={4913}
+Eval TransformationEntry D3 cartesianCount=2025, elapsed 0:00:00.004326
+solve: TransformationEntry(name=D3,length=4,value: R-O,
+	identities=[D3[0]=A1[2],D3[1]=A9[2],D3[2]=A11[2],D3[3]=A13[1]],referrers=[A1,A9,A11,A13],
+	values={9128},
+	digits=[{9},{1},{2},{8}]
+O={54872}
+R={64000}
+Clue/Variable iterations=154, updates=42, elapsed 0:00:04.534595
+SOLUTION-----------------------------
+Puzzle Summary
+A1, T+T+W+y, values={61987}
+A7, b+b, values={16}
+A9, I+N, values={6119}
+A10, E+S+T+T, values={2198}
+A11, D-o-o-Y, values={872}
+A12, i+J-E-E, values={3896}
+A13, i+s+s-N, values={2889}
+A14, d-e-e-P, values={789}
+A15, b+U+U+Y, values={285}
+A17, B-l-l-s, values={6383}
+A19, H-E-l, values={9836}
+A20, S-U, values={387}
+A22, U+U+y-E, values={9898}
+A23, A-G-G, values={9857}
+A24, b+J, values={72}
+A25, D-S-Y, values={78968}
+D2, U-b, values={117}
+D3, R-O, values={9128}
+D4, s+s-T, values={89}
+D5, Ns-J, values={728936}
+D6, E+L, values={3197}
+D7, YYY, values={19683}
+D8, BP+o+o, values={6829877}
+D9, Et+E+L, values={6862197}
+D12, bF+F+S, values={386387}
+D13, JJ+e+ B, values={28982}
+D16, i+J, values={5896}
+D18, B+J+J-E, values={8389}
+D21, P+T-s, values={856}
+D23, U-Y, values={98}
++--+--+--+--+--+--+--+--+
+| 6  1  9  8  7| 3| 1  6|
++--            +  +     +
+| 6  1  1  9| 2  1  9  8|
++         --+           +
+| 8  7  2| 3  8  9  6| 2|
++   --+  +           +  +
+| 6| 2  8  8  9| 7  8  9|
++  +   --+     +--+     +
+| 2  8  5| 6  3  8  3| 8|
++        +         --+  +
+| 1| 9  8  3  6| 3  8  7|
++  +         --+        +
+| 9  8  9  8| 9  8  5  7|
++           +         --+
+| 7  2| 6| 7  8  9  6  8|
++--+--+--+--+--+--+--+--+
+Variables:
+A={19683}
+B={9261}
+D={79507}
+E={1000}
+F={42875}
+G={4913}
+H={12167}
+I={2744}
+J={64}
+L={2197}
+N={3375}
+O={54872}
+P={729}
+R={64000}
+S={512}
+T={343}
+U={125}
+W={50653}
+Y={27}
+b={8}
+d={32768}
+e={15625}
+i={5832}
+l={1331}
+o={39304}
+s={216}
+t={6859}
+y={10648}
+
+bYJUsTSPElLINGitByHeAdoFWORD
