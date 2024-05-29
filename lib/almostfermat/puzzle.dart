@@ -14,17 +14,11 @@ class AlmostFermatVariable extends Variable {
 class AlmostFermatPuzzle extends VariablePuzzle<AlmostFermatClue,
     AlmostFermatEntry, AlmostFermatVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   AlmostFermatPuzzle() : super(null);
   AlmostFermatPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(null, gridString) {
     distinctClues = false;
   }
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 
   @override
   bool uniqueSolution() {

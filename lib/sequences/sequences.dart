@@ -963,10 +963,10 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     var count = 0;
     var updated = false;
     for (var Y
-        in puzzle.letters['Y']!.values!.where((element) => element < 10)) {
+        in puzzle.variables['Y']!.values!.where((element) => element < 10)) {
       for (var S
-          in puzzle.letters['S']!.values!.where((element) => element != Y)) {
-        for (var I in puzzle.letters['I']!.values!
+          in puzzle.variables['S']!.values!.where((element) => element != Y)) {
+        for (var I in puzzle.variables['I']!.values!
             .where((element) => element != S && element != Y)) {
           count++;
           var value = Y * Y + Y;
@@ -994,10 +994,10 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     var count = 0;
     var updated = false;
     for (var S
-        in puzzle.letters['S']!.values!.where((element) => element < 10)) {
-      for (var Y in puzzle.letters['Y']!.values!
+        in puzzle.variables['S']!.values!.where((element) => element < 10)) {
+      for (var Y in puzzle.variables['Y']!.values!
           .where((element) => element < 100 && element != S)) {
-        for (var I in puzzle.letters['I']!.values!.where(
+        for (var I in puzzle.variables['I']!.values!.where(
             (element) => element < 100 && element != S && element != Y)) {
           count++;
           var value = S * Y * S;

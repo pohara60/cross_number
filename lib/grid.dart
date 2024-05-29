@@ -3,11 +3,11 @@ import 'package:collection/collection.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 import 'undo.dart';
+import 'variable.dart';
 
-class Cell {
+class Cell extends Variable {
   final String face;
   final int row, col;
-  String get name => '$face$row$col';
   final entries = <EntryMixin>[];
   final entryDigits = <int>[];
 
@@ -28,9 +28,7 @@ class Cell {
     this.row,
     this.col, [
     this.face = '',
-  ]) {
-    // _digits.addAll([1, 2, 3, 4, 5, 6]);
-  }
+  ]) : super('$face$row$col');
 
   String get position => '$row$col';
   String toString() => '$name=$_digits';

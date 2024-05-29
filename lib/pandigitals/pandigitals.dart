@@ -53,7 +53,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     }
 
     // Create Variable Group for each set of rules
-    var variables = puzzle.letters.values.toList();
+    var variables = puzzle.variables.values.toList();
     variableGroups.add(VariableGroup('I', variables));
     variableGroups.add(VariableGroup('II', variables));
     variableGroups.add(VariableGroup('III', variables));
@@ -337,7 +337,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
         for (var clueEntry in allClueValues.entries) {
           var clueName = clueEntry.key;
           var clue = puzzle.clues[clueName]!;
-          if (puzzle.updateValues(clue, clueEntry.value)) {
+          if (puzzle.updateVariableValues(clue, clueEntry.value).isNotEmpty) {
             if (clue.values!.isEmpty) {
               print("solve: ${clue.toString()}");
               throw SolveError('Solve Error no values for clue ${clue.name}');

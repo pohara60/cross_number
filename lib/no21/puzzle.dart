@@ -33,7 +33,6 @@ class No21Variable extends Variable {
 
 class No21Puzzle extends VariablePuzzle<No21Clue, No21Entry, No21Variable> {
   // Puzzle has Letter variables that are restricted to values 0..16
-  late final VariableList variableList;
   No21Puzzle() : super(List.from(VARIABLE_VALUES)) {
     EntryMixin.maxDigit = 16;
   }
@@ -43,7 +42,7 @@ class No21Puzzle extends VariablePuzzle<No21Clue, No21Entry, No21Variable> {
   }
 
   Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingValues => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleValues) =>
+  List<int> get remainingValues => variableList.restrictedValues!;
+  Set<Variable> updateLetters(String letter, Set<int> possibleValues) =>
       variableList.updateVariables(letter, possibleValues);
 }

@@ -14,13 +14,7 @@ class ColumnsVariable extends Variable {
 class ColumnsPuzzle
     extends VariablePuzzle<ColumnsClue, ColumnsEntry, ColumnsVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   ColumnsPuzzle() : super(null);
   ColumnsPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(null, gridString);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 }

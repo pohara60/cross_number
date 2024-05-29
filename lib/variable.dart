@@ -1,4 +1,5 @@
 import "dart:math" as math;
+import 'dart:math';
 
 import 'clue.dart';
 import 'expression.dart';
@@ -26,6 +27,7 @@ typedef SolveFunction = bool Function(
 enum VariableType {
   C('Clue'),
   E('Entry'),
+  G('Cell'),
   V('Variable');
 
   final String name;
@@ -34,6 +36,8 @@ enum VariableType {
 
 /// A variable, with restricted values, commonly used in [Clue] for a [Puzzle]
 class Variable with PriorityVariable {
+  final VariableType variableType;
+
   /// Name
   final String name;
 
@@ -56,7 +60,8 @@ class Variable with PriorityVariable {
     _answer = answer;
   }
 
-  Variable(String this.name, {SolveFunction? this.solve = null});
+  Variable(String this.name,
+      {this.variableType = VariableType.V, SolveFunction? this.solve = null});
 //    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   set tryValue(int? value) {
@@ -157,6 +162,10 @@ class Variable with PriorityVariable {
   removeClueReference(String name) {
     _variableRefs.removeClueReference(name);
   }
+
+  void sortVariables() {
+    _variableRefs.sort();
+  }
 }
 
 class VariableRef {
@@ -226,27 +235,48 @@ class VariableRefList {
 
 /// A collection of [Variable]s, with a set of values
 class VariableList<VariableKind extends Variable> {
-  final Map<String, VariableKind> variables = {};
-  bool get hasVariables => variables.isNotEmpty;
+  final VariableType type;
+  final Map<String, VariableKind> _variables = {};
 
-  late final List<int>? remainingValues;
+  Map<String, VariableKind> get variables => _variables;
+  VariableKind? operator [](String name) => _variables[name]; // get
+  void operator []=(String name, VariableKind variable) =>
+      _variables[name] = variable; // get
+  bool get hasVariables => variables.isNotEmpty;
+  Iterable<VariableKind> get values => _variables.values;
+
+  late final List<int>? restrictedValues;
   late final bool distinct;
+  Set<int> get knownValues => variables.entries
+      .where((entry) => entry.value.isSet)
+      .map<int>((e) => e.value.value!)
+      .toSet();
   // = List<int>.generate(9, (i) => i + 1);
 
   // Subclass constructor initializes remaining values
-  VariableList(List<int>? this.remainingValues)
-      : distinct = remainingValues != null;
+  VariableList(VariableType this.type, [List<int>? this.restrictedValues])
+      : distinct = restrictedValues != null;
 
-  Set<String> updateVariables(String variableName, Set<int> possibleValues) {
+  void add(VariableKind variable) {
+    _variables[variable.name] = variable;
+  }
+
+  Set<Variable> updateVariables(String variableName, Set<int> possibleValues) {
+    // Already known?
+    var variable = variables[variableName]!;
+    if (variable.isSet) {
+      // Nothing to do
+      assert(possibleValues.contains(variable.value!));
+      return {};
+    }
     // Get unknown variables before update this variable, in case of side effects
     // (EvenOdderVariable can set linked variable)
-    var updatedVariables = <String>{};
-    var variable = variables[variableName]!;
+    var updatedVariables = <Variable>{};
     var unknownVariableEntries =
         variables.entries.where((entry) => !entry.value.isSet).toList();
     var updated = variable.updatePossible(possibleValues);
     if (updated) {
-      updatedVariables.add(variableName);
+      updatedVariables.add(variable);
       // Only check for distinct variables when have remainingValues
       if (variable.isSet && distinct) {
         List<String> knownLetters = [variableName];
@@ -255,22 +285,23 @@ class VariableList<VariableKind extends Variable> {
           String letterKey = knownLetters[index];
           int letterValue = variables[letterKey]!.values!.first;
           // Remove the known variable from all other variable possible values
-          remainingValues!.remove(letterValue);
+          // restrictedValues!.remove(letterValue);
           for (var entry in unknownVariableEntries) {
             if (!knownLetters.contains(entry.key)) {
               var entryVariable = entry.value;
-              if (entryVariable.values != null &&
-                  (entryVariable.values!.remove(letterValue) ||
-                      entryVariable.isSet)) {
-                updatedVariables.add(entry.key);
-                if (entryVariable.isSet) {
-                  knownLetters.add(entry.key);
-                }
+              if (entryVariable.values != null) {
+                if (entryVariable.values!.remove(letterValue))
+                  updatedVariables.add(entry.value);
+                if (entryVariable.isSet) knownLetters.add(entry.key);
               }
             }
           }
           index++;
         }
+      }
+      for (var updatedVariable in updatedVariables) {
+        updatedVariable.min = updatedVariable.values!.reduce(min);
+        updatedVariable.max = updatedVariable.values!.reduce(max);
       }
     }
     return updatedVariables;
@@ -283,8 +314,11 @@ class VariableList<VariableKind extends Variable> {
     for (var variableName in variables.keys.toList()..sort()) {
       text += variables[variableName].toString() + '\n';
     }
-    if (remainingValues != null)
+    if (restrictedValues != null) {
+      var remainingValues =
+          List.from(Set<int>.from(restrictedValues!)..removeAll(knownValues));
       text += 'RemainingValues: ${remainingValues.toString()}\n';
+    }
     return text;
   }
 
@@ -327,10 +361,6 @@ class ExpressionVariable extends Variable with Expression {
     return updated;
   }
 
-  void sortVariables() {
-    _variableRefs.sort();
-  }
-
   Set<int>? getValuesFromMinMax() {
     if (_max == null || _min == null || _max! - _min! > 1000) return null;
     return Set.from(List.generate(_max! - _min! + 1, (index) => _min! + index));
@@ -341,8 +371,10 @@ class ExpressionVariable extends Variable with Expression {
     if (valueDesc != '') {
       text += ',valueDesc=${valueDesc}';
     }
-    text += ',min=${min}';
-    text += ',max=${max}';
+    if (!isSet) {
+      text += ',min=${_min}';
+      text += ',max=${_max}';
+    }
     return text;
   }
 }

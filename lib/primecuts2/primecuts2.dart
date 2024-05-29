@@ -558,7 +558,8 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         throw SolveException(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
       }
-      if (puzzle.updateValues(entry, possibleEntryValue)) updated = true;
+      if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty)
+        updated = true;
       if (entry.finalise()) updated = true;
       for (var variableName in clue.variableReferences) {
         updateVariables(puzzle, variableName, possibleVariables[variableName]!,

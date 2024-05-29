@@ -9,10 +9,16 @@ class TwoPrimesClue extends ExpressionClue {
 
   TwoPrimesClue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 }
 
 class TwoPrimesEntry extends TwoPrimesClue with EntryMixin {
@@ -22,10 +28,16 @@ class TwoPrimesEntry extends TwoPrimesClue with EntryMixin {
 
   TwoPrimesEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 }

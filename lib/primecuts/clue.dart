@@ -19,13 +19,19 @@ class PrimeCutsClue extends VariableClue {
 
   PrimeCutsClue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     required String this.prime,
     String? valueDesc,
     String? this.primeDesc,
     String? this.preValueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 
   bool updatePreValues(Set<int> possiblePreValue) {
     var updated = false;
@@ -66,6 +72,7 @@ class PrimeCutsClue extends VariableClue {
 class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
   PrimeCutsEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     required String prime,
     String? valueDesc,
@@ -74,6 +81,7 @@ class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
     SolveFunction? solve,
   }) : super(
             name: name,
+            type: type,
             length: length,
             prime: prime,
             valueDesc: valueDesc,

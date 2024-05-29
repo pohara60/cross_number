@@ -9,10 +9,16 @@ class LettersClue extends VariableClue {
 
   LettersClue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 }
 
 class LettersEntry extends LettersClue with EntryMixin {
@@ -22,10 +28,16 @@ class LettersEntry extends LettersClue with EntryMixin {
 
   LettersEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 }

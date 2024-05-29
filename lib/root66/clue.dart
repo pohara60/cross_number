@@ -8,7 +8,7 @@ enum Root66ClueType { UNKNOWN, BCEF, G, BCEFG }
 class Root66Clue extends ExpressionClue {
   /// Computed - Possible Values before BCEF/G
   Set<int>? preValues;
-  Root66ClueType type;
+  Root66ClueType root66type;
 
   /// List of referenced letters
   List<String> get letterReferences => this.variableReferences;
@@ -16,11 +16,17 @@ class Root66Clue extends ExpressionClue {
 
   Root66Clue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
-    required Root66ClueType this.type,
+    required Root66ClueType this.root66type,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 
   bool updatePreValues(Set<int> possiblePreValue) {
     var updated = false;
@@ -54,21 +60,23 @@ class Root66Clue extends ExpressionClue {
         : preValues!.length > kLimit
             ? '{more than $kLimit}'
             : preValues.toString();
-    return 'Clue(name=$name,length=$length,type=$type,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tpreValues=$preValueStr),\n\tdigits=$digits';
+    return 'Clue(name=$name,length=$length,type=$root66type,value: $valueDesc,\n\tidentities=[$identityStr],referrers=[$referrersStr],\n\tvalues=$valueStr,\n\tpreValues=$preValueStr),\n\tdigits=$digits';
   }
 }
 
 class Root66Entry extends Root66Clue with EntryMixin {
   Root66Entry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
-    required Root66ClueType type,
+    required Root66ClueType root66type,
     String? valueDesc,
     SolveFunction? solve,
   }) : super(
             name: name,
-            length: length,
             type: type,
+            length: length,
+            root66type: root66type,
             valueDesc: valueDesc,
             solve: solve) {
     initEntry(this);

@@ -9,11 +9,13 @@ class EvenOdderClue extends ExpressionClue {
 
   EvenOdderClue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
   }) : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,
@@ -27,10 +29,16 @@ class EvenOdderEntry extends EvenOdderClue with EntryMixin {
 
   EvenOdderEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 }

@@ -129,7 +129,7 @@ solve: TriangularPairsEntry(name=D3,length=2,value: #triangular,
 	digits=[{1,3..6},{5,6}]
 solve: TriangularPairsEntry(name=D4,length=3,value: ,
 	identities=[D4[0]=A4[0],D4[1]=A6[2],D4[2]=A9[1]],referrers=[A4,A6,A9,D9,A1,A7,A11,A12,A15,A16,D1,D2,D3,D5,D8,D10,D13,D14],
-	values={111,115,116,118,131,135,136,138,151,155,156,158,161,165,166,168,181,185,186,188,159 more,988},
+	values={111,115,116,118,131,135,136,138,151,155,156,158,161,165,166,168,181,185,186,188,160 more,988},
 	digits=[{1..9},{1,3,5,6,8},{1,5,6,8}]
 solve: TriangularPairsEntry(name=D5,length=3,value: #palindrome,
 	identities=[D5[0]=A4[2],D5[1]=A7[1]],referrers=[A4,A7,D8,A1,A6,A9,A11,A12,A15,A16,D1,D2,D3,D4,D9,D10,D13,D14],
@@ -238,8 +238,8 @@ solve: TriangularPairsEntry(name=A16,length=2,value: #triangular,
 	digits=[{6},{6}]
 solve: TriangularPairsEntry(name=D1,length=2,value: #triangular,
 	identities=[D1[0]=A1[0]],referrers=[A1,A4,A6,A7,A9,A11,A12,A15,A16,D2,D3,D4,D5,D8,D9,D10,D13,D14],
-	values={21,28,45},
-	digits=[{2,4},{1,5,8}]
+	values={21,28},
+	digits=[{2},{1,8}]
 solve: TriangularPairsEntry(name=D3,length=2,value: #triangular,
 	identities=[D3[1]=A6[1]],referrers=[A6,A1,A4,A7,A9,A11,A12,A15,A16,D1,D2,D4,D5,D8,D9,D10,D13,D14],
 	values={45},
@@ -301,7 +301,7 @@ Solve Error: clue A7 ($reverse #triangular) no solution!
 Solve Error: clue A9 (#triangular) no solution!
 Solve Error: clue A16 (#triangular) no solution!
 Solve Error: clue A11 ($reverse #triangular) no solution!
-Clue/Variable iterations=112, updates=48, elapsed 0:00:00.056857
+Clue/Variable iterations=112, updates=48, elapsed 0:00:00.052814
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #triangular, values={28}

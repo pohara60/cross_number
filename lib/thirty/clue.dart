@@ -9,12 +9,14 @@ class ThirtyClue extends ExpressionClue {
 
   ThirtyClue(
       {required String name,
+      VariableType type = VariableType.C,
       required int? length,
       String? valueDesc,
       SolveFunction? solve,
       List<String>? entryNames})
       : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,
@@ -41,6 +43,7 @@ class ThirtyEntry extends ThirtyClue with EntryMixin {
 
   ThirtyEntry(
       {required String name,
+      VariableType type = VariableType.E,
       required int? length,
       String? valueDesc,
       SolveFunction? solve,
@@ -48,6 +51,7 @@ class ThirtyEntry extends ThirtyClue with EntryMixin {
       String this.puzzleName = ''})
       : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,

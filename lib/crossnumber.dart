@@ -6,6 +6,7 @@ import 'package:powers/powers.dart';
 
 import 'cartesian.dart';
 import 'clue.dart';
+import 'expression.dart';
 import 'generators.dart';
 import 'puzzle.dart';
 import 'set.dart';
@@ -40,16 +41,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
 
     // Get puzzle to clue/variable mapping
     for (var puzzle in puzzles) {
-      if (puzzle is VariablePuzzle) {
-        for (var variable in puzzle.variables.values) {
-          puzzleForVariable[variable] = puzzle;
-        }
-      }
-      for (var clue in puzzle.clues.values) {
-        puzzleForVariable[clue] = puzzle;
-      }
-      for (var entry in puzzle.entries.values) {
-        puzzleForVariable[entry] = puzzle;
+      for (var variableEntry in puzzle.allVariables.entries) {
+        var v = variableEntry.value;
+        puzzleForVariable[v] = puzzle;
       }
     }
   }
@@ -60,7 +54,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       .compareTo((a as PriorityVariable).priority));
 
   void addToUpdateQueue(Variable clue) {
-    var puzzle = puzzleForVariable[clue]!;
+    var puzzle = puzzleForVariable[clue];
     if ((puzzle is VariablePuzzle) &&
         // (clue is VariableClue || clue is ExpressionVariable) &&
         puzzle.hasVariables) {
@@ -97,11 +91,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var updates = 0;
     var remainingClues = <Variable>[];
     for (var puzzle in puzzles) {
-      remainingClues.addAll(puzzle.clues.values);
-      remainingClues.addAll(puzzle.entries.values);
-      if (puzzle is VariablePuzzle) {
-        remainingClues.addAll(puzzle.variables.values
-            .where((v) => (v is ExpressionVariable) && v.valueDesc != ''));
+      for (var variableEntry in puzzle.allVariables.entries) {
+        var v = variableEntry.value;
+        if (variableEntry.key.$1 != VariableType.V ||
+            (v is ExpressionVariable) && v.valueDesc != '') {
+          remainingClues.add(v);
+        }
       }
     }
 
@@ -264,21 +259,19 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
               'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
 
           throw SolveException();
-        } else if (clue is ExpressionVariable) {
-          throw SolveException(
-              'Solve Error: variable ${clue.name} (${clue.valueDesc}) no solution!');
+        } else {
+          if (clue is Expression) {
+            throw SolveException(
+                'Solve Error: variable ${clue.name} (${(clue as Expression).expString}) no solution!');
+          }
         }
       }
-      if (clue is Clue && updateClueEntries(puzzle, clue.name, possibleValue))
-        updated = true;
-      if (clue is ExpressionVariable) {
+      if (clue is Clue) {
+        if (updateClueEntries(puzzle, clue.name, possibleValue)) updated = true;
+      } else {
         if (updateVariables(
             puzzle, clue.name, possibleValue, updatedVariables)) {
-          for (var updatedVariable in updatedVariables) {
-            var key = (VariableType.V, updatedVariable);
-            if (!updatedAllVariables.contains(key))
-              updatedAllVariables.add(key);
-          }
+          updateAllVariables(updatedVariables, updatedAllVariables);
           updated = true;
         }
         // Update variable references even if this variable not updated, because may
@@ -298,11 +291,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             if (clue.variableReferences.contains(variableName) &&
                 updateVariables(puzzle, variableName,
                     possibleVariables[variableName]!, updatedVariables)) {
-              for (var updatedVariable in updatedVariables) {
-                var key = (VariableType.V, updatedVariable);
-                if (!updatedAllVariables.contains(key))
-                  updatedAllVariables.add(key);
-              }
+              updateAllVariables(updatedVariables, updatedAllVariables);
               updated = true;
             }
             if (clue.clueReferences.contains(variableName) &&
@@ -379,8 +368,9 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   bool updateVariables(PuzzleKind puzzle, String variableName,
       Set<int> possibleValues, Set<String> updatedVariables) {
     if (puzzle is VariablePuzzle) {
-      updatedVariables
-          .addAll(puzzle.updateVariables(variableName, possibleValues));
+      updatedVariables.addAll(puzzle
+          .updateVariables(variableName, possibleValues)
+          .map((e) => e.name));
       if (updatedVariables.isEmpty) return false;
 
       // Schedule updated variables for update
@@ -422,11 +412,13 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var clue = isEntry && puzzle.entries.isNotEmpty
         ? puzzle.entries[clueName]!
         : puzzle.clues[clueName]!;
-    var updated = puzzle.updateValues(clue, possibleValues);
-    if (updated) {
+    var updatedVariables = puzzle.updateVariableValues(clue, possibleValues);
+    if (updatedVariables.isNotEmpty) {
       // Schedule clue for update (to check digits)
       // if (!isEntry || clue.entry == null)
-      addToUpdateQueue(clue);
+      for (var clue in updatedVariables) {
+        addToUpdateQueue(clue);
+      }
       // Schedule referencing clues for update
       for (var referrer in clue.referrers) {
         addToUpdateQueue(referrer);
@@ -625,6 +617,14 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       values.add(value);
     }
     return values;
+  }
+
+  void updateAllVariables(Set<String> updatedVariables,
+      List<(VariableType, String)> updatedAllVariables) {
+    for (var updatedVariable in updatedVariables) {
+      var key = (VariableType.V, updatedVariable);
+      if (!updatedAllVariables.contains(key)) updatedAllVariables.add(key);
+    }
   }
 }
 

@@ -87,6 +87,7 @@ class Clue extends Variable {
 class VariableClue extends Clue {
   VariableClue(
       {required String name,
+      VariableType type = VariableType.C,
       required int? length,
       String? valueDesc,
       SolveFunction? solve})
@@ -269,6 +270,7 @@ class DiceNetsClue extends Clue {
 class DiceNetsEntry extends DiceNetsClue with EntryMixin {
   DiceNetsEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,

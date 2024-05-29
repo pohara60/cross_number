@@ -20,8 +20,8 @@ class PrimeCuts2Puzzle
       : super.fromGridString(List.from(twoDigitPrimes), gridString);
 
   Map<String, Variable> get primes => variableList.variables;
-  List<int> get remainingPrimes => variableList.remainingValues!;
-  Set<String> updatePrimes(String letter, Set<int> possibleDigits) =>
+  List<int> get remainingPrimes => variableList.restrictedValues!;
+  Set<Variable> updatePrimes(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 
   @override

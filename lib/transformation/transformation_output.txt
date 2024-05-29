@@ -150,25 +150,25 @@ t={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859
 y={8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,25 more,97336}
 
 UPDATES-----------------------------
-Eval TransformationEntry D7 cartesianCount=45, elapsed 0:00:00.007236
+Eval TransformationEntry D7 cartesianCount=45, elapsed 0:00:00.006647
 solve: TransformationEntry(name=D7,length=5,value: YYY,
 	identities=[D7[0]=A7[0],D7[1]=A10[2],D7[2]=A12[3],D7[3]=A14[1],D7[4]=A17[3]],referrers=[A7,A10,A12,A14,A17],
 	values={19683},
 	digits=[{1},{9},{6},{8},{3}]
 Y={27}
-Eval TransformationEntry A7 cartesianCount=45, elapsed 0:00:00.000388
+Eval TransformationEntry A7 cartesianCount=45, elapsed 0:00:00.000183
 solve: TransformationEntry(name=A7,length=2,value: b+b,
 	identities=[A7[0]=D7[0],A7[1]=D8[0]],referrers=[D7,D8],
 	values={16},
 	digits=[{1},{6}]
 b={8}
-Eval TransformationEntry D23 cartesianCount=45, elapsed 0:00:00.000269
+Eval TransformationEntry D23 cartesianCount=45, elapsed 0:00:00.000299
 solve: TransformationEntry(name=D23,length=2,value: U-Y,
 	identities=[D23[0]=A23[0],D23[1]=A25[1]],referrers=[A23,A25],
 	values={37,98},
 	digits=[{3,9},{7,8}]
 U={64,125}
-Eval TransformationEntry D2 cartesianCount=2, elapsed 0:00:00.000062
+Eval TransformationEntry D2 cartesianCount=2, elapsed 0:00:00.000049
 solve: TransformationEntry(name=D2,length=3,value: U-b,
 	identities=[D2[0]=A1[1],D2[1]=A9[1],D2[2]=A11[1]],referrers=[A1,A9,A11],
 	values={117},
@@ -182,26 +182,26 @@ solve: TransformationEntry(name=A15,length=3,value: b+U+U+Y,
 	identities=[A15[0]=D9[3],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
 	values={285},
 	digits=[{2},{8},{5}]
-Eval TransformationEntry A24 cartesianCount=45, elapsed 0:00:00.000172
+Eval TransformationEntry A24 cartesianCount=45, elapsed 0:00:00.000128
 solve: TransformationEntry(name=A24,length=2,value: b+J,
 	identities=[A24[0]=D9[6],A24[1]=D13[4]],referrers=[D9,D13],
 	values={35,72},
 	digits=[{3,7},{2,5}]
 J={27,64}
-Eval TransformationEntry A20 cartesianCount=45, elapsed 0:00:00.000274
+Eval TransformationEntry A20 cartesianCount=45, elapsed 0:00:00.000155
 solve: TransformationEntry(name=A20,length=3,value: S-U,
 	identities=[A20[0]=D18[1],A20[1]=D21[0],A20[2]=D8[5]],referrers=[D18,D21,D8],
 	values={218,387,875},
 	digits=[{2,3,8},{1,7,8},{5,7,8}]
 S={343,512,1000}
-Eval TransformationEntry D16 cartesianCount=90, elapsed 0:00:00.000584
+Eval TransformationEntry D16 cartesianCount=90, elapsed 0:00:00.000608
 solve: TransformationEntry(name=D16,length=4,value: i+J,
 	identities=[D16[0]=A15[2],D16[1]=A19[1],D16[2]=A22[2]],referrers=[A15,A19,A22],
 	values={5859,5896},
 	digits=[{5},{8},{5,9},{6,9}]
 i={5832}
-Eval TransformationEntry D16 cartesianCount=2, elapsed 0:00:00.000083
-Eval TransformationEntry A12 cartesianCount=90, elapsed 0:00:00.000321
+Eval TransformationEntry D16 cartesianCount=2, elapsed 0:00:00.000067
+Eval TransformationEntry A12 cartesianCount=90, elapsed 0:00:00.000299
 solve: TransformationEntry(name=A12,length=4,value: i+J-E-E,
 	identities=[A12[0]=D12[0],A12[1]=D5[2],A12[2]=D6[2],A12[3]=D7[2]],referrers=[D12,D5,D6,D7],
 	values={3896,5646},
@@ -216,16 +216,16 @@ solve: TransformationEntry(name=A24,length=2,value: b+J,
 	identities=[A24[0]=D9[6],A24[1]=D13[4]],referrers=[D9,D13],
 	values={72},
 	digits=[{7},{2}]
-Eval TransformationEntry A12 cartesianCount=2, elapsed 0:00:00.000076
-Eval TransformationEntry D18 cartesianCount=90, elapsed 0:00:00.000531
+Eval TransformationEntry A12 cartesianCount=2, elapsed 0:00:00.000050
+Eval TransformationEntry D18 cartesianCount=90, elapsed 0:00:00.000457
 solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
 	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
 	values={1325,1334,1872,2200,3224,3378,5835,6862,8389,9264},
 	digits=[{1..3,5,6,8,9},{2,3,8},{0,2,3,6..8},{0,2,4,5,8,9}]
 B={1331,2197,2744,3375,4096,5832,6859,9261}
-Eval TransformationEntry A20 cartesianCount=3, elapsed 0:00:00.000122
-Eval TransformationEntry D18 cartesianCount=16, elapsed 0:00:00.000200
-Eval TransformationEntry D6 cartesianCount=90, elapsed 0:00:00.000461
+Eval TransformationEntry A20 cartesianCount=3, elapsed 0:00:00.000063
+Eval TransformationEntry D18 cartesianCount=16, elapsed 0:00:00.000159
+Eval TransformationEntry D6 cartesianCount=90, elapsed 0:00:00.000359
 solve: TransformationEntry(name=D6,length=4,value: E+L,
 	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
 	values={1343,3197,3744,5096},
@@ -236,29 +236,29 @@ solve: TransformationEntry(name=A12,length=4,value: i+J-E-E,
 	identities=[A12[0]=D12[0],A12[1]=D5[2],A12[2]=D6[2],A12[3]=D7[2]],referrers=[D12,D5,D6,D7],
 	values={3896},
 	digits=[{3},{8},{9},{6}]
-Eval TransformationEntry D6 cartesianCount=4, elapsed 0:00:00.000108
+Eval TransformationEntry D6 cartesianCount=4, elapsed 0:00:00.000060
 solve: TransformationEntry(name=D6,length=4,value: E+L,
 	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
 	values={3197,5096},
 	digits=[{3,5},{0,1},{9},{6,7}]
 L={2197,4096}
-Eval TransformationEntry D6 cartesianCount=2, elapsed 0:00:00.000070
-Eval TransformationEntry D18 cartesianCount=8, elapsed 0:00:00.000170
+Eval TransformationEntry D6 cartesianCount=2, elapsed 0:00:00.000033
+Eval TransformationEntry D18 cartesianCount=8, elapsed 0:00:00.000068
 solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
 	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
 	values={1325,1872,3224,8389},
 	digits=[{1,3,8},{2,3,8},{2,7,8},{2,4,5,9}]
 B={2197,2744,4096,9261}
-Eval TransformationEntry A20 cartesianCount=3, elapsed 0:00:00.000113
-Eval TransformationEntry D18 cartesianCount=4, elapsed 0:00:00.000120
-Eval TransformationEntry A22 cartesianCount=45, elapsed 0:00:00.000364
+Eval TransformationEntry A20 cartesianCount=3, elapsed 0:00:00.000043
+Eval TransformationEntry D18 cartesianCount=4, elapsed 0:00:00.000049
+Eval TransformationEntry A22 cartesianCount=45, elapsed 0:00:00.000167
 solve: TransformationEntry(name=A22,length=4,value: U+U+y-E,
 	identities=[A22[0]=D9[5],A22[1]=D13[3],A22[2]=D16[2],A22[3]=D12[4]],referrers=[D9,D13,D16,D12],
 	values={1994,9898},
 	digits=[{1,9},{8,9},{9},{4,8}]
 y={2744,10648}
-Eval TransformationEntry A22 cartesianCount=2, elapsed 0:00:00.000060
-Eval TransformationEntry D9 cartesianCount=90, elapsed 0:00:00.000476
+Eval TransformationEntry A22 cartesianCount=2, elapsed 0:00:00.000036
+Eval TransformationEntry D9 cartesianCount=90, elapsed 0:00:00.000312
 solve: TransformationEntry(name=D9,length=7,value: Et+E+L,
 	identities=[D9[0]=A9[0],D9[1]=A11[0],D9[3]=A15[0],D9[5]=A22[0],D9[6]=A24[0]],referrers=[A9,A11,A15,A22,A24],
 	values={6862197},
@@ -269,13 +269,13 @@ solve: TransformationEntry(name=D6,length=4,value: E+L,
 	identities=[D6[1]=A10[1],D6[2]=A12[2],D6[3]=A14[0]],referrers=[A10,A12,A14],
 	values={3197},
 	digits=[{3},{1},{9},{7}]
-Eval TransformationEntry A22 cartesianCount=2, elapsed 0:00:00.000055
+Eval TransformationEntry A22 cartesianCount=2, elapsed 0:00:00.000036
 solve: TransformationEntry(name=A22,length=4,value: U+U+y-E,
 	identities=[A22[0]=D9[5],A22[1]=D13[3],A22[2]=D16[2],A22[3]=D12[4]],referrers=[D9,D13,D16,D12],
 	values={9898},
 	digits=[{9},{8},{9},{8}]
 y={10648}
-Eval TransformationEntry D12 cartesianCount=135, elapsed 0:00:00.000649
+Eval TransformationEntry D12 cartesianCount=135, elapsed 0:00:00.000563
 solve: TransformationEntry(name=D12,length=6,value: bF+F+S,
 	identities=[D12[0]=A12[0],D12[1]=A13[2],D12[2]=A17[0],D12[3]=A19[2],D12[4]=A22[3],D12[5]=A25[0]],referrers=[A12,A13,A17,A19,A22,A25],
 	values={386387},
@@ -286,39 +286,39 @@ solve: TransformationEntry(name=A20,length=3,value: S-U,
 	identities=[A20[0]=D18[1],A20[1]=D21[0],A20[2]=D8[5]],referrers=[D18,D21,D8],
 	values={387},
 	digits=[{3},{8},{7}]
-Eval TransformationEntry D18 cartesianCount=4, elapsed 0:00:00.000058
+Eval TransformationEntry D18 cartesianCount=4, elapsed 0:00:00.000047
 solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
 	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
 	values={1325,8389},
 	digits=[{1,8},{3},{2,8},{5,9}]
 B={2197,9261}
-Eval TransformationEntry D18 cartesianCount=2, elapsed 0:00:00.000232
-Eval TransformationEntry A10 cartesianCount=45, elapsed 0:00:00.000453
+Eval TransformationEntry D18 cartesianCount=2, elapsed 0:00:00.000043
+Eval TransformationEntry A10 cartesianCount=45, elapsed 0:00:00.000269
 solve: TransformationEntry(name=A10,length=4,value: E+S+T+T,
 	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1],A10[3]=D8[1]],referrers=[D5,D6,D7,D8],
 	values={2198},
 	digits=[{2},{1},{9},{8}]
 T={343}
-Eval TransformationEntry A1 cartesianCount=45, elapsed 0:00:00.000461
+Eval TransformationEntry A1 cartesianCount=45, elapsed 0:00:00.000252
 solve: TransformationEntry(name=A1,length=5,value: T+T+W+y,
 	identities=[A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0],A1[4]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={11342,11361,11398,11459,11846,41125,61987},
 	digits=[{1,4,6},{1},{1,3,4,8,9},{2,4..6,8,9},{1,2,5..9}]
 W={8,27,64,125,512,29791,50653}
-Eval TransformationEntry A1 cartesianCount=7, elapsed 0:00:00.000103
-Eval TransformationEntry D4 cartesianCount=45, elapsed 0:00:00.000286
+Eval TransformationEntry A1 cartesianCount=7, elapsed 0:00:00.000087
+Eval TransformationEntry D4 cartesianCount=45, elapsed 0:00:00.000171
 solve: TransformationEntry(name=D4,length=2,value: s+s-T,
 	identities=[D4[0]=A1[3],D4[1]=A9[3]],referrers=[A1,A9],
 	values={89},
 	digits=[{8},{9}]
 s={216}
-Eval TransformationEntry A1 cartesianCount=7, elapsed 0:00:00.000107
+Eval TransformationEntry A1 cartesianCount=7, elapsed 0:00:00.000067
 solve: TransformationEntry(name=A1,length=5,value: T+T+W+y,
 	identities=[A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0],A1[4]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={61987},
 	digits=[{6},{1},{9},{8},{7}]
 W={50653}
-Eval TransformationEntry A13 cartesianCount=45, elapsed 0:00:00.000313
+Eval TransformationEntry A13 cartesianCount=45, elapsed 0:00:00.000182
 solve: TransformationEntry(name=A13,length=4,value: i+s+s-N,
 	identities=[A13[0]=D13[0],A13[1]=D3[3],A13[2]=D12[1],A13[3]=D5[3]],referrers=[D13,D3,D12,D5],
 	values={2889},
@@ -328,31 +328,31 @@ solve: TransformationEntry(name=D5,length=6,value: Ns-J,
 	identities=[D5[0]=A1[4],D5[1]=A10[0],D5[2]=A12[1],D5[3]=A13[3],D5[4]=A17[1],D5[5]=A19[3]],referrers=[A1,A10,A12,A13,A17,A19],
 	values={728936},
 	digits=[{7},{2},{8},{9},{3},{6}]
-Eval TransformationEntry A9 cartesianCount=45, elapsed 0:00:00.000290
+Eval TransformationEntry A9 cartesianCount=45, elapsed 0:00:00.000147
 solve: TransformationEntry(name=A9,length=4,value: I+N,
 	identities=[A9[0]=D9[0],A9[1]=D2[1],A9[2]=D3[1],A9[3]=D4[1]],referrers=[D9,D2,D3,D4],
 	values={6119},
 	digits=[{6},{1},{1},{9}]
 I={2744}
-Eval TransformationEntry A25 cartesianCount=45, elapsed 0:00:00.000375
+Eval TransformationEntry A25 cartesianCount=45, elapsed 0:00:00.000201
 solve: TransformationEntry(name=A25,length=5,value: D-S-Y,
 	identities=[A25[0]=D12[5],A25[1]=D23[1],A25[2]=D18[3],A25[3]=D21[2]],referrers=[D12,D23,D18,D21],
 	values={78968},
 	digits=[{7},{8},{9},{6},{8}]
 D={79507}
-Eval TransformationEntry D18 cartesianCount=2, elapsed 0:00:00.000073
+Eval TransformationEntry D18 cartesianCount=2, elapsed 0:00:00.000032
 solve: TransformationEntry(name=D18,length=4,value: B+J+J-E,
 	identities=[D18[0]=A17[2],D18[1]=A20[0],D18[2]=A23[1],D18[3]=A25[2]],referrers=[A17,A20,A23,A25],
 	values={8389},
 	digits=[{8},{3},{8},{9}]
 B={9261}
-Eval TransformationEntry D21 cartesianCount=45, elapsed 0:00:00.000510
+Eval TransformationEntry D21 cartesianCount=45, elapsed 0:00:00.000144
 solve: TransformationEntry(name=D21,length=3,value: P+T-s,
 	identities=[D21[0]=A20[1],D21[1]=A23[2],D21[2]=A25[3]],referrers=[A20,A23,A25],
 	values={856},
 	digits=[{8},{5},{6}]
 P={729}
-Eval TransformationEntry A11 cartesianCount=45, elapsed 0:00:00.000191
+Eval TransformationEntry A11 cartesianCount=45, elapsed 0:00:00.000292
 solve: TransformationEntry(name=A11,length=3,value: D-o-o-Y,
 	identities=[A11[0]=D9[1],A11[1]=D2[2],A11[2]=D3[2]],referrers=[D9,D2,D3],
 	values={872},
@@ -362,45 +362,45 @@ solve: TransformationEntry(name=D8,length=7,value: BP+o+o,
 	identities=[D8[0]=A7[1],D8[1]=A10[3],D8[3]=A14[2],D8[5]=A20[2],D8[6]=A23[3]],referrers=[A7,A10,A14,A20,A23],
 	values={6829877},
 	digits=[{6},{8},{2},{9},{8},{7},{7}]
-Eval TransformationEntry D13 cartesianCount=45, elapsed 0:00:00.000326
+Eval TransformationEntry D13 cartesianCount=45, elapsed 0:00:00.000195
 solve: TransformationEntry(name=D13,length=5,value: JJ+e+ B,
 	identities=[D13[0]=A13[0],D13[1]=A15[1],D13[2]=A19[0],D13[3]=A22[1],D13[4]=A24[1]],referrers=[A13,A15,A19,A22,A24],
 	values={28982},
 	digits=[{2},{8},{9},{8},{2}]
 e={15625}
-Eval TransformationEntry A17 cartesianCount=45, elapsed 0:00:00.000540
+Eval TransformationEntry A17 cartesianCount=45, elapsed 0:00:00.000177
 solve: TransformationEntry(name=A17,length=4,value: B-l-l-s,
 	identities=[A17[0]=D12[2],A17[1]=D5[4],A17[2]=D18[0],A17[3]=D7[4]],referrers=[D12,D5,D18,D7],
 	values={6383},
 	digits=[{6},{3},{8},{3}]
 l={1331}
-Eval TransformationEntry A19 cartesianCount=45, elapsed 0:00:00.000486
+Eval TransformationEntry A19 cartesianCount=45, elapsed 0:00:00.000156
 solve: TransformationEntry(name=A19,length=4,value: H-E-l,
 	identities=[A19[0]=D13[2],A19[1]=D16[1],A19[2]=D12[3],A19[3]=D5[5]],referrers=[D13,D16,D12,D5],
 	values={9836},
 	digits=[{9},{8},{3},{6}]
 H={12167}
-Eval TransformationEntry A14 cartesianCount=45, elapsed 0:00:00.000334
+Eval TransformationEntry A14 cartesianCount=45, elapsed 0:00:00.000154
 solve: TransformationEntry(name=A14,length=3,value: d-e-e-P,
 	identities=[A14[0]=D6[3],A14[1]=D7[3],A14[2]=D8[3]],referrers=[D6,D7,D8],
 	values={789},
 	digits=[{7},{8},{9}]
 d={32768}
-Eval TransformationEntry A23 cartesianCount=2025, elapsed 0:00:00.007872
+Eval TransformationEntry A23 cartesianCount=2025, elapsed 0:00:00.006032
 solve: TransformationEntry(name=A23,length=4,value: A-G-G,
 	identities=[A23[0]=D23[0],A23[1]=D18[2],A23[2]=D21[1],A23[3]=D8[6]],referrers=[D23,D18,D21,D8],
 	values={9857},
 	digits=[{9},{8},{5},{7}]
 A={19683}
 G={4913}
-Eval TransformationEntry D3 cartesianCount=2025, elapsed 0:00:00.004326
+Eval TransformationEntry D3 cartesianCount=2025, elapsed 0:00:00.003858
 solve: TransformationEntry(name=D3,length=4,value: R-O,
 	identities=[D3[0]=A1[2],D3[1]=A9[2],D3[2]=A11[2],D3[3]=A13[1]],referrers=[A1,A9,A11,A13],
 	values={9128},
 	digits=[{9},{1},{2},{8}]
 O={54872}
 R={64000}
-Clue/Variable iterations=154, updates=42, elapsed 0:00:04.534595
+Clue/Variable iterations=154, updates=42, elapsed 0:00:00.063657
 SOLUTION-----------------------------
 Puzzle Summary
 A1, T+T+W+y, values={61987}
@@ -481,3 +481,21 @@ t={6859}
 y={10648}
 
 bYJUsTSPElLINGitByHeAdoFWORD
++--+--+--+--+--+--+--+--+
+| S  O  N  E  S| T| O  S|
++--            +  +     +
+| S  O  O  N| T  O  N  E|
++         --+           +
+| E  S  T| T  E  N  S| T|
++   --+  +           +  +
+| S| T  E  E  N| S  E  N|
++  +   --+     +--+     +
+| T  E  F| S  T  E  T| E|
++        +         --+  +
+| O| N  E  T  S| T  E  S|
++  +         --+        +
+| N  E  N  E| N  E  F  S|
++           +         --+
+| S  T| S| S  E  N  S  E|
++--+--+--+--+--+--+--+--+
+

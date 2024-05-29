@@ -5,22 +5,20 @@ import '../variable.dart';
 
 class FactorsCell extends Cell with Expression {
   var expDesc = '';
-  final _variableRefs = VariableRefList();
-  List<String> get variableReferences => _variableRefs.variableNames;
-
-  Set<int>? _values;
 
   FactorsCell(
     row,
     col, [
     face = '',
   ]) : super(row, col, face);
+
   String toString() =>
       super.toString() +
-      ',$expDesc=${_values != null ? _values!.toShortString() : 'null'}';
+      ',$expDesc=${values != null ? values!.toShortString() : 'null'}';
 
-  void setExp(String cellExpresssion) {
+  void setExp(String cellExpresssion, SolveFunction solve) {
     expDesc = cellExpresssion;
-    initExpression(expDesc, '', name, _variableRefs);
+    initExpression(expDesc, '', name, variableRefs);
+    this.solve = solve;
   }
 }

@@ -570,7 +570,7 @@ solve: DiceNetsEntry(name=D28,length=4,value: Square,
 	identities=[D28[0]=A27[2],D28[1]=A31[2],D28[3]=A36[3]],referrers=[A27,A31,A36],
 	values={2116,3136,6241,6561},
 	digits=[{2,3,6},{1,2,5},{1,3,4,6},{1,6}]
-Clue/Variable iterations=311, updates=101, elapsed 0:00:01.205811
+Clue/Variable iterations=311, updates=101, elapsed 0:00:01.160328
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Prime, values={3221,3541,3623,3643}

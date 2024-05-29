@@ -12,6 +12,10 @@ typedef num? ExpressionCallback(num? left, num? right, num? result, Node node);
 mixin Expression {
   final expressions = <ExpressionEvaluator>[];
   ExpressionEvaluator get exp => expressions[0];
+  String get expString => expressions.fold(
+      '',
+      (previousValue, element) =>
+          previousValue == '' ? element.text : '|' + element.text);
 
   void initExpression(String? valueDesc, String variablePrefix, String name,
       VariableRefList variableRefs,

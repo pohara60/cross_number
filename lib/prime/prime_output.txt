@@ -129,14 +129,14 @@ PrimeEntry(name=D23,length=3,value: ,
 	digits=[{1..9},{0..9},{0..9}]
 
 UPDATES-----------------------------
-Eval PrimeEntry A4 cartesianCount=656100, elapsed 0:00:00.763058
+Eval PrimeEntry A4 cartesianCount=656100, elapsed 0:00:00.796348
 solve: PrimeEntry(name=A4,length=5,value: 67*A14 + 41*A16,
 	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[4]=D6[0]],referrers=[D4,D5,D6],
 	values={11511,11552,11578,11593,11619,11634,11645,11675,11686,11701,11712,11716,11727,11742,11753,11757,11768,11779,11783,11794,70406 more,99999},
 	digits=[{1..9},{0..9},{1..9},{0..9},{1..9}]
 A14={110..129,790 more,999}
 A16={101..109,111..119,121,122,790 more,999}
-Eval PrimeEntry A8 cartesianCount=656100, elapsed 0:00:00.625464
+Eval PrimeEntry A8 cartesianCount=656100, elapsed 0:00:00.588659
 solve: PrimeEntry(name=A8,length=4,value: 11*A14+2*D1,
 	identities=[A8[0]=D8[0],A8[1]=D5[1],A8[3]=D6[1]],referrers=[D8,D5,D6],
 	values={1412,1414,1416,1418,1420,1422..1429,1431..1437,8560 more,9999},
@@ -162,7 +162,7 @@ solve: PrimeEntry(name=D1,length=3,value: #square,
 Solve Error: clue D2 () no solution!
 Solve Error: clue D3 () no solution!
 Solve Error: clue D5 () no solution!
-Eval PrimeEntry D6 cartesianCount=656100, elapsed 0:00:00.448276
+Eval PrimeEntry D6 cartesianCount=656100, elapsed 0:00:00.492261
 solve: PrimeEntry(name=D6,length=5,value: 13*A16 + 277*D3,
 	identities=[D6[0]=A4[4],D6[1]=A8[3],D6[2]=A10[5],D6[3]=A14[2]],referrers=[A4,A8,A10,A14],
 	values={29303,29316,29329,29342,29355,29368,29381,29394,29420,29433,29446,29459,29472,29485,29498,29511,29524,29550,29563,29567,68365 more,99999},
@@ -172,7 +172,7 @@ solve: PrimeEntry(name=D8,length=4,value: #square,
 	identities=[D8[0]=A8[0],D8[1]=A10[2],D8[3]=A18[2]],referrers=[A8,A10,A18,A7,A25,A26,A27,D19],
 	values={1024,1089,1156,1225,1296,1369,1444,1521,1600,1681,1764,1849,1936,2025,2116,2209,2304,2401,2500,2601,48 more,9801},
 	digits=[{1..9},{0..9},{0..9},{0,1,4..6,9}]
-Eval PrimeEntry D11 cartesianCount=4389, elapsed 0:00:00.011370
+Eval PrimeEntry D11 cartesianCount=4389, elapsed 0:00:00.014554
 solve: PrimeEntry(name=D11,length=5,value: 641*√D1 + 229*D3,
 	identities=[D11[1]=A16[0],D11[2]=A20[0],D11[3]=A24[0],D11[4]=A26[0]],referrers=[A16,A20,A24,A26],
 	values={31279,31325,31462,31554,31691,31737,31783,31966,32149,32195,32332,32378,32424,32561,32653,32699,32744,32836,32928,32973,2822 more,99884},
@@ -183,7 +183,7 @@ solve: PrimeEntry(name=D17,length=4,value: #square,
 	identities=[D17[0]=A16[2],D17[1]=A20[2],D17[2]=A24[2],D17[3]=A26[2]],referrers=[A16,A20,A24,A26,A1],
 	values={1024,1089,1156,1225,1296,1369,1444,1521,1600,1681,1764,1849,1936,2025,2116,2209,2304,2401,2500,2601,48 more,9801},
 	digits=[{1..9},{0..9},{0..9},{0,1,4..6,9}]
-Eval PrimeEntry D19 cartesianCount=55080, elapsed 0:00:00.059228
+Eval PrimeEntry D19 cartesianCount=55080, elapsed 0:00:00.062669
 solve: PrimeEntry(name=D19,length=4,value: 13*√D8 + 7*D21,
 	identities=[D19[1]=A22[1],D19[2]=A25[3],D19[3]=A27[2]],referrers=[A22,A25,A27,D13],
 	values={1123,1130,1136,1137,1143,1144,1149..1151,1156..1158,1162..1165,1169..1172,7052 more,8280},
@@ -194,28 +194,32 @@ solve: PrimeEntry(name=D21,length=3,value: #square,
 	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961},
 	digits=[{1..9},{2,4..9},{1,4..6,9}]
 Solve Error: clue D23 () no solution!
-Eval PrimeEntry A1 cartesianCount=1292, elapsed 0:00:00.005558
+Eval PrimeEntry A1 cartesianCount=1292, elapsed 0:00:00.006349
 solve: PrimeEntry(name=A1,length=5,value: 353*√D21 + 239*√D17 = 521*√D21 + 181*√D17,
 	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[4]=D3[0]],referrers=[D1,D2,D3,A10],
 	values={30313},
 	digits=[{3},{0},{3},{1},{3}]
 D17={7056}
 D21={841}
-Eval PrimeEntry A4 cartesianCount=575910, elapsed 0:00:00.595552
+Eval PrimeEntry A4 cartesianCount=574390, elapsed 0:00:00.641256
 solve: PrimeEntry(name=A4,length=5,value: 67*A14 + 41*A16,
 	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[4]=D6[0]],referrers=[D4,D5,D6],
-	values={11552,11578,11593,11619,11634,11645,11675,11686,11712,11716,11727,11742,11753,11757,11768,11779,11783,11794,11798,11809,61800 more,99997},
+	values={11552,11578,11593,11619,11634,11645,11675,11686,11712,11716,11727,11742,11753,11757,11768,11779,11783,11794,11798,11809,61784 more,99997},
 	digits=[{1..9},{0..9},{1..9},{0..9},{2..9}]
-A14={110..129,690 more,890}
-A16={101..109,111..119,121,122,789 more,999}
-Eval PrimeEntry A7 cartesianCount=1045228 Exception
-Eval PrimeEntry A8 cartesianCount=13490, elapsed 0:00:00.013538
+Eval PrimeEntry A7 cartesianCount=975654, elapsed 0:00:04.945490
+solve: PrimeEntry(name=A7,length=5,value: 263*√D8 + 317*A16 = 113*D1 + 467*√D8,
+	identities=[A7[0]=D7[0],A7[1]=D2[1],A7[3]=D3[1],A7[4]=D4[1]],referrers=[D7,D2,D3,D4],
+	values={61341,96002},
+	digits=[{6,9},{1,6},{0,3},{0,4},{1,2}]
+A16={157,268}
+D1={361,676}
+D8={1764,1936}
+Eval PrimeEntry A8 cartesianCount=1420, elapsed 0:00:00.002150
 solve: PrimeEntry(name=A8,length=4,value: 11*A14+2*D1,
 	identities=[A8[0]=D8[0],A8[1]=D5[1],A8[3]=D6[1]],referrers=[D8,D5,D6],
-	values={1452,1463,1474,1485,1496,1498,1507,1509,1518,1520,1529,1531,1540,1542,1548,1551,1553,1559,1562,1564,4573 more,9999},
+	values={1932,1943,1954,1965,1976,1987,1998,2009,2020,2031,2042,2053,2064,2075,2086,2097,2108,2119,2130,2141,1258 more,9998},
 	digits=[{1..9},{0..9},{0..9},{0..9}]
-A14={110..129,687 more,887}
-D1={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,961}
+A14={110..129,643 more,843}
 Solve Error: clue A9 () no solution!
 Solve Error: clue A12 () no solution!
 solve: PrimeEntry(name=A18,length=3,value: #square,
@@ -224,49 +228,52 @@ solve: PrimeEntry(name=A18,length=3,value: #square,
 	digits=[{1..7,9},{0,2,4..9},{0,1,4..6,9}]
 Solve Error: clue A22 () no solution!
 Solve Error: clue A24 () no solution!
-Eval PrimeEntry A25 cartesianCount=49572000 Exception
-Eval PrimeEntry A27 cartesianCount=68, elapsed 0:00:00.000089
+Eval PrimeEntry A25 cartesianCount=1458000 Exception
+Eval PrimeEntry A27 cartesianCount=2, elapsed 0:00:00.000034
 solve: PrimeEntry(name=A27,length=5,value: 5*D8 + 79*√D21,
 	identities=[A27[0]=D21[2],A27[2]=D19[3],A27[4]=D23[2]],referrers=[D21,D19,D23],
-	values={10291,10696,11111,11536,11971,12416,12871,13336,13811,14296,14791,15296,15811,16336,16871,17416,17971,18536,19111,19696,13 more,51296},
-	digits=[{1,4,5},{0..9},{0..9},{1,3,7,9},{1,6}]
-D8={1600,1681,1764,1849,1936,2025,2116,2209,2304,2401,2500,2601,2704,2809,2916,3025,3136,3249,3364,3481,13 more,9801}
+	values={11111,11971},
+	digits=[{1},{1},{1,9},{1,7},{1}]
 solve: PrimeEntry(name=D1,length=3,value: #square,
 	identities=[D1[0]=A1[0],D1[2]=A9[0]],referrers=[A1,A9,A7,A8,A26,D7,D11],
-	values={324,361},
-	digits=[{3},{2,6},{1,4}]
+	values={361},
+	digits=[{3},{6},{1}]
 Solve Error: clue D2 () no solution!
 solve: PrimeEntry(name=D3,length=3,value: ,
 	identities=[D3[0]=A1[4],D3[1]=A7[3],D3[2]=A10[0]],referrers=[A1,A7,A10,D4,D6,D11],
-	values={301..309,311..319,321,322,31 more,356},
-	digits=[{3},{0..5},{1..9}]
+	values={301..309,341..349},
+	digits=[{3},{0,4},{1..9}]
 Solve Error: clue D5 () no solution!
-Eval PrimeEntry D6 cartesianCount=41259, elapsed 0:00:00.038243
+Eval PrimeEntry D6 cartesianCount=36, elapsed 0:00:00.000110
 solve: PrimeEntry(name=D6,length=5,value: 13*A16 + 277*D3,
 	identities=[D6[0]=A4[4],D6[1]=A8[3],D6[2]=A10[5],D6[3]=A14[2]],referrers=[A4,A8,A10,A14],
-	values={84690,84703,84716,84729,84742,84755,84768,84781,84794,84820,84833,84846,84859,84872,84885,84898,84911,84924,84950,84963,12965 more,99999},
-	digits=[{8,9},{0..9},{0..9},{0..9},{0..9}]
-Eval PrimeEntry D7 cartesianCount=2000, elapsed 0:00:00.001853
+	values={85418,85695,85972,86249,86526,86803,86861,87080,87138,87357,87415,87634,87692,87969,88246,88523,88800,89077,96498,96775,15 more,99880},
+	digits=[{8,9},{5..9},{0..9},{0..9},{0..9}]
+Eval PrimeEntry D7 cartesianCount=200, elapsed 0:00:00.000471
 solve: PrimeEntry(name=D7,length=4,value: 19*√D1 + 2*D2,
 	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[3]=A16[1]],referrers=[A7,A9,A16],
-	values={6342,6344,6346,6348,6350,6352,6354,6356,6358,6360..6370,1979 more,8359},
-	digits=[{6..8},{0..9},{0..9},{0..9}]
-D2={3000..3019,980 more,3999}
+	values={6561,6563,6565,6567,6569,6571,6573,6575,6577,6579,6581,6583,6585,6587,6589,6591,6593,6595,6597,6599,80 more,6759},
+	digits=[{6},{5..7},{0..9},{1,3,5,7,9}]
+D2={3100..3119,80 more,3199}
 solve: PrimeEntry(name=D8,length=4,value: #square,
 	identities=[D8[0]=A8[0],D8[1]=A10[2],D8[3]=A18[2]],referrers=[A8,A10,A18,A7,A25,A26,A27,D19],
-	values={1600,1681,1764,1849,1936,2025,2116,2209,2304,2401,2500,2601,2704,2809,2916,3025,3136,3249,3364,3481,13 more,9801},
-	digits=[{1..3,7..9},{0..9},{0..4,6,8},{0,1,4..6,9}]
-Eval PrimeEntry D11 cartesianCount=102, elapsed 0:00:00.000147
+	values={1764,1936},
+	digits=[{1},{7,9},{3,6},{4,6}]
+Eval PrimeEntry D11 cartesianCount=18, elapsed 0:00:00.000041
 solve: PrimeEntry(name=D11,length=5,value: 641*√D1 + 229*D3,
 	identities=[D11[1]=A16[0],D11[2]=A20[0],D11[3]=A24[0],D11[4]=A26[0]],referrers=[A16,A20,A24,A26],
-	values={81154,81337,81383,81566,81612,81795,81841,82253,82299,82482,82711,82757,82986,83215,83398,83444,83627,83673,83856,84131,44 more,93474},
-	digits=[{8,9},{1..9},{1..9},{1..9},{1..9}]
-D3={302..309,311..317,319,321..324,26 more,355}
+	values={81337,81566,81795,82253,82482,82711,91184,91413,91642,91871},
+	digits=[{8,9},{1,2},{1..8},{1,3..9},{1..7}]
+D3={302..304,306..308,345..348}
+solve: PrimeEntry(name=A16,length=3,value: ,
+	identities=[A16[0]=D11[1],A16[1]=D7[3],A16[2]=D17[0]],referrers=[D11,D7,D17,A4,A7,D6],
+	values={157},
+	digits=[{1},{5},{7}]
 Solve Error: clue D12 () no solution!
-Eval PrimeEntry D13 cartesianCount=148512, elapsed 0:00:00.166672
+Eval PrimeEntry D13 cartesianCount=141420, elapsed 0:00:00.207734
 solve: PrimeEntry(name=D13,length=5,value: 127*√A18 + 5*D19,
 	identities=[D13[0]=A12[1],D13[1]=A18[0],D13[2]=A20[4],D13[3]=A25[0],D13[4]=A26[4]],referrers=[A12,A18,A20,A25,A26],
-	values={11010..11029,24951 more,45337},
+	values={11010..11029,24950 more,45337},
 	digits=[{1..4},{1..7,9},{0..9},{1..9},{0..9}]
 D19={1415..1432,1435,1436,6800 more,8280}
 Solve Error: clue D15 () no solution!
@@ -274,215 +281,183 @@ solve: PrimeEntry(name=D17,length=4,value: #square,
 	identities=[D17[0]=A16[2],D17[1]=A20[2],D17[2]=A24[2],D17[3]=A26[2]],referrers=[A16,A20,A24,A26,A1],
 	values={7056},
 	digits=[{7},{0},{5},{6}]
-Eval PrimeEntry D19 cartesianCount=33, elapsed 0:00:00.000132
+Eval PrimeEntry D19 cartesianCount=2, elapsed 0:00:00.000049
 solve: PrimeEntry(name=D19,length=4,value: 13*√D8 + 7*D21,
 	identities=[D19[1]=A22[1],D19[2]=A25[3],D19[3]=A27[2]],referrers=[A22,A25,A27,D13],
-	values={6407,6420,6433,6446,6459,6472,6485,6498,6511,6524,6537,6550,6563,6576,6589,6602,6615,6628,6641,6654,13 more,7174},
-	digits=[{6,7},{0,1,4..6},{0..9},{0..9}]
+	values={6459},
+	digits=[{6},{4},{5},{9}]
+D8={1936}
 solve: PrimeEntry(name=D21,length=3,value: #square,
 	identities=[D21[0]=A20[5],D21[1]=A25[1],D21[2]=A27[0]],referrers=[A20,A25,A27,A1,D19],
 	values={841},
 	digits=[{8},{4},{1}]
 Solve Error: clue D23 () no solution!
-Eval PrimeEntry A4 cartesianCount=571963, elapsed 0:00:00.467849
+Eval PrimeEntry A4 cartesianCount=661, elapsed 0:00:00.000824
 solve: PrimeEntry(name=A4,length=5,value: 67*A14 + 41*A16,
 	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[4]=D6[0]],referrers=[D4,D5,D6],
-	values={11578,11619,11768,11779,11798,11809,11839,11928,11958,11969,11999,12118,12129,12159,12178,12189,12208,12219,12248,12249,15393 more,99978},
-	digits=[{1..9},{0..9},{1..9},{0..9},{8,9}]
-Eval PrimeEntry A7 cartesianCount=53394, elapsed 0:00:00.223789
+	values={14209,14678,14879,15348,15549,16219,16688,16889,17358,17559,18229,18698,18899,19368,19569,20708,20909,21378,21579,22249,95 more,62918},
+	digits=[{1..6},{0..9},{1..9},{0..2,4..9},{8,9}]
+A14={116,123,126,133,136,146,153,156,163,166,176,183,186,193,196,213,216,223,226,236,95 more,843}
 solve: PrimeEntry(name=A7,length=5,value: 263*√D8 + 317*A16 = 113*D1 + 467*√D8,
 	identities=[A7[0]=D7[0],A7[1]=D2[1],A7[3]=D3[1],A7[4]=D4[1]],referrers=[D7,D2,D3,D4],
 	values={61341},
 	digits=[{6},{1},{3},{4},{1}]
-A16={157}
-D1={361}
-D8={1936}
-Eval PrimeEntry A8 cartesianCount=707, elapsed 0:00:00.001248
+Eval PrimeEntry A8 cartesianCount=115, elapsed 0:00:00.000350
 solve: PrimeEntry(name=A8,length=4,value: 11*A14+2*D1,
 	identities=[A8[0]=D8[0],A8[1]=D5[1],A8[3]=D6[1]],referrers=[D8,D5,D6],
-	values={1932,1943,1954,1965,1976,1987,1998,2009,2020,2031,2042,2053,2064,2075,2086,2097,2108,2119,2130,2141,400 more,9995},
-	digits=[{1..3,7..9},{0..9},{0..9},{0..9}]
-A14={110..129,399 more,843}
+	values={1998},
+	digits=[{1},{9},{9},{8}]
+A14={116}
 Solve Error: clue A9 () no solution!
 Solve Error: clue A12 () no solution!
-solve: PrimeEntry(name=A18,length=3,value: #square,
-	identities=[A18[0]=D13[1],A18[1]=D4[4],A18[2]=D8[3]],referrers=[D13,D4,D8],
-	values={100,121,144,169,196,225,256,289,324,400,441,484,529,576,625,676,729,784,900,961},
-	digits=[{1..7,9},{0,2,4..9},{0,1,4..6,9}]
 Solve Error: clue A22 () no solution!
 Solve Error: clue A24 () no solution!
-Eval PrimeEntry A25 cartesianCount=64800, elapsed 0:00:00.254906
+Eval PrimeEntry A25 cartesianCount=32400, elapsed 0:00:00.214262
 solve: PrimeEntry(name=A25,length=5,value: 167*A12 + 113*√D8 = 53*√D21 + 383*D23,
 	identities=[A25[0]=D13[3],A25[1]=D21[1],A25[3]=D19[2],A25[4]=D15[3]],referrers=[D13,D21,D19,D15],
 	values={44050},
 	digits=[{4},{4},{0},{5},{0}]
 A12={234}
 D23={111}
+Eval PrimeEntry A26 cartesianCount=583200, elapsed 0:00:03.198862
+solve: PrimeEntry(name=A26,length=5,value: 5*D5 + 3*D8 = 199*√D1 + 2*A22,
+	identities=[A26[0]=D11[4],A26[2]=D17[3],A26[4]=D13[4]],referrers=[D11,D17,D13],
+	values={20613,20623,20633,20643,20663,20673,20683,20693},
+	digits=[{2},{0},{6},{1..4,6..9},{3}]
+A22={8416,8421,8426,8431,8441,8446,8451,8456}
+D5={2961,2963,2965,2967,2971,2973,2975,2977}
 solve: PrimeEntry(name=A27,length=5,value: 5*D8 + 79*√D21,
 	identities=[A27[0]=D21[2],A27[2]=D19[3],A27[4]=D23[2]],referrers=[D21,D19,D23],
 	values={11971},
 	digits=[{1},{1},{9},{7},{1}]
-solve: PrimeEntry(name=D1,length=3,value: #square,
-	identities=[D1[0]=A1[0],D1[2]=A9[0]],referrers=[A1,A9,A7,A8,A26,D7,D11],
-	values={361},
-	digits=[{3},{6},{1}]
-solve: PrimeEntry(name=D2,length=4,value: ,
-	identities=[D2[0]=A1[2],D2[1]=A7[1],D2[2]=A9[2]],referrers=[A1,A7,A9,D7],
-	values={3100..3119,80 more,3199},
-	digits=[{3},{1},{0..9},{0..9}]
+solve: PrimeEntry(name=A18,length=3,value: #square,
+	identities=[A18[0]=D13[1],A18[1]=D4[4],A18[2]=D8[3]],referrers=[D13,D4,D8],
+	values={144,196,256,324,484,576,676,784},
+	digits=[{1..7},{2,4,5,7..9},{4,6}]
 solve: PrimeEntry(name=D3,length=3,value: ,
 	identities=[D3[0]=A1[4],D3[1]=A7[3],D3[2]=A10[0]],referrers=[A1,A7,A10,D4,D6,D11],
-	values={341,342,345..349},
-	digits=[{3},{4},{1,2,5..9}]
-Eval PrimeEntry D4 cartesianCount=6300, elapsed 0:00:00.004510
+	values={345..348},
+	digits=[{3},{4},{5..8}]
+Eval PrimeEntry D4 cartesianCount=3200, elapsed 0:00:00.002426
 solve: PrimeEntry(name=D4,length=5,value: 7*D3 + 2*A24,
 	identities=[D4[0]=A4[0],D4[1]=A7[4],D4[2]=A10[1],D4[3]=A12[2],D4[4]=A18[1]],referrers=[A4,A7,A10,A12,A18],
-	values={11087,11089,11094..11100,11102,11104..11106,11108,11110,11112,11115,11117,11119,11122,460 more,21959},
-	digits=[{1,2},{1},{0..9},{0..5,8,9},{0,2,4..9}]
+	values={11115,11117,11119,11122,11124,11125,11127..11129,11132,11134,11135,11137..11139,11142,11144,11145,11147,11148,200 more,21954},
+	digits=[{1,2},{1},{1,3,5,7,9},{1..5},{2,4,5,7..9}]
 A24={4350..4359,4450..4459,80 more,9759}
-Solve Error: clue D5 () no solution!
-Eval PrimeEntry D6 cartesianCount=7, elapsed 0:00:00.000042
+solve: PrimeEntry(name=D5,length=4,value: ,
+	identities=[D5[0]=A4[2],D5[1]=A8[1],D5[2]=A10[3],D5[3]=A14[0]],referrers=[A4,A8,A10,A14,A26],
+	values={2961,2963,2965,2967,2971,2973,2975,2977},
+	digits=[{2},{9},{6,7},{1,3,5,7}]
+Eval PrimeEntry D6 cartesianCount=4, elapsed 0:00:00.000051
 solve: PrimeEntry(name=D6,length=5,value: 13*A16 + 277*D3,
 	identities=[D6[0]=A4[4],D6[1]=A8[3],D6[2]=A10[5],D6[3]=A14[2]],referrers=[A4,A8,A10,A14],
-	values={96498,96775,97606,97883,98160,98437,98714},
-	digits=[{9},{6..8},{1,4,6..8},{0,1,3,6..9},{0,3..8}]
-Eval PrimeEntry D7 cartesianCount=100, elapsed 0:00:00.000120
+	values={98160,98437},
+	digits=[{9},{8},{1,4},{3,6},{0,7}]
+D3={347,348}
+Eval PrimeEntry D7 cartesianCount=100, elapsed 0:00:00.000122
 solve: PrimeEntry(name=D7,length=4,value: 19*√D1 + 2*D2,
 	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[3]=A16[1]],referrers=[A7,A9,A16],
-	values={6561,6563,6565,6567,6569,6571,6573,6575,6577,6579,6581,6583,6585,6587,6589,6591,6593,6595,6597,6599,80 more,6759},
-	digits=[{6},{5..7},{0..9},{1,3,5,7,9}]
-Eval PrimeEntry D11 cartesianCount=7, elapsed 0:00:00.000029
+	values={6565,6575,6585,6595,6605,6615,6625,6635,6645,6655,6665,6675,6685,6695,6705,6715,6725,6735,6745,6755},
+	digits=[{6},{5..7},{0..9},{5}]
+D2={3102,3107,3112,3117,3122,3127,3132,3137,3142,3147,3152,3157,3162,3167,3172,3177,3182,3187,3192,3197}
+Eval PrimeEntry D11 cartesianCount=2, elapsed 0:00:00.000029
 solve: PrimeEntry(name=D11,length=5,value: 641*√D1 + 229*D3,
 	identities=[D11[1]=A16[0],D11[2]=A20[0],D11[3]=A24[0],D11[4]=A26[0]],referrers=[A16,A20,A24,A26],
-	values={91184,91413,91642,91871},
-	digits=[{9},{1},{1,4,6,8},{1,4,7,8},{1..4}]
-D3={345..348}
-Solve Error: clue D12 () no solution!
-Eval PrimeEntry D13 cartesianCount=660, elapsed 0:00:00.000519
-solve: PrimeEntry(name=D13,length=5,value: 127*√A18 + 5*D19,
-	identities=[D13[0]=A12[1],D13[1]=A18[0],D13[2]=A20[4],D13[3]=A25[0],D13[4]=A26[4]],referrers=[A12,A18,A20,A25,A26],
-	values={33940,33943,33946,33949,34141,34144,34147,34342,34345,34540,34640,34646,34649,34841,34844,34847,35042,35045,35048,35148,38 more,39742},
-	digits=[{3},{3..7,9},{0..9},{4},{0..9}]
-D19={6407,6420,6433,6446,6459,6472,6485,6498,6511,6524,6537,6550,6563,6576,6589,6602,6615,6628,6641,6654,12 more,7174}
-Solve Error: clue D15 () no solution!
-solve: PrimeEntry(name=A16,length=3,value: ,
-	identities=[A16[0]=D11[1],A16[1]=D7[3],A16[2]=D17[0]],referrers=[D11,D7,D17,A4,A7,D6],
-	values={157},
-	digits=[{1},{5},{7}]
-solve: PrimeEntry(name=D19,length=4,value: 13*√D8 + 7*D21,
-	identities=[D19[1]=A22[1],D19[2]=A25[3],D19[3]=A27[2]],referrers=[A22,A25,A27,D13],
-	values={6459},
-	digits=[{6},{4},{5},{9}]
-solve: PrimeEntry(name=D23,length=3,value: ,
-	identities=[D23[0]=A22[3],D23[2]=A27[4]],referrers=[A22,A27,A20,A25],
-	values={111},
-	digits=[{1},{1},{1}]
-Eval PrimeEntry A4 cartesianCount=418, elapsed 0:00:00.000775
-solve: PrimeEntry(name=A4,length=5,value: 67*A14 + 41*A16,
-	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[4]=D6[0]],referrers=[D4,D5,D6],
-	values={14209,14879,15549,16219,16889,17559,18229,18899,19569,20909,21579,22249,22919,23589,24259,24929,25599,26269},
-	digits=[{1,2},{0..9},{2,5,8,9},{0..2,4..9},{9}]
-A14={116,126,136,146,156,166,176,186,196,216,226,236,246,256,266,276,286,296}
-solve: PrimeEntry(name=D8,length=4,value: #square,
-	identities=[D8[0]=A8[0],D8[1]=A10[2],D8[3]=A18[2]],referrers=[A8,A10,A18,A7,A25,A26,A27,D19],
-	values={1936},
-	digits=[{1},{9},{3},{6}]
-Eval PrimeEntry A8 cartesianCount=18, elapsed 0:00:00.000035
-solve: PrimeEntry(name=A8,length=4,value: 11*A14+2*D1,
-	identities=[A8[0]=D8[0],A8[1]=D5[1],A8[3]=D6[1]],referrers=[D8,D5,D6],
-	values={1998},
-	digits=[{1},{9},{9},{8}]
-A14={116}
+	values={91642},
+	digits=[{9},{1},{6},{4},{2}]
+D3={347}
 solve: PrimeEntry(name=A14,length=3,value: ,
 	identities=[A14[0]=D5[3],A14[1]=D15[0],A14[2]=D6[3]],referrers=[D5,D15,D6,A4,A8,A20],
 	values={116},
 	digits=[{1},{1},{6}]
+Solve Error: clue D12 () no solution!
+Eval PrimeEntry D13 cartesianCount=8, elapsed 0:00:00.000040
+solve: PrimeEntry(name=D13,length=5,value: 127*√A18 + 5*D19,
+	identities=[D13[0]=A12[1],D13[1]=A18[0],D13[2]=A20[4],D13[3]=A25[0],D13[4]=A26[4]],referrers=[A12,A18,A20,A25,A26],
+	values={35343},
+	digits=[{3},{5},{3},{4},{3}]
+A18={576}
+Solve Error: clue D15 () no solution!
+solve: PrimeEntry(name=D8,length=4,value: #square,
+	identities=[D8[0]=A8[0],D8[1]=A10[2],D8[3]=A18[2]],referrers=[A8,A10,A18,A7,A25,A26,A27,D19],
+	values={1936},
+	digits=[{1},{9},{3},{6}]
+solve: PrimeEntry(name=D23,length=3,value: ,
+	identities=[D23[0]=A22[3],D23[2]=A27[4]],referrers=[A22,A27,A20,A25],
+	values={111},
+	digits=[{1},{1},{1}]
+solve: PrimeEntry(name=A4,length=5,value: 67*A14 + 41*A16,
+	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[4]=D6[0]],referrers=[D4,D5,D6],
+	values={14209},
+	digits=[{1},{4},{2},{0},{9}]
 Solve Error: clue A9 () no solution!
-Eval PrimeEntry A10 cartesianCount=100, elapsed 0:00:00.000116
+Eval PrimeEntry A10 cartesianCount=100, elapsed 0:00:00.000140
 solve: PrimeEntry(name=A10,length=6,value: 17*A1 + 181*D15,
 	identities=[A10[0]=D3[2],A10[1]=D4[2],A10[2]=D8[1],A10[3]=D5[2],A10[5]=D6[2]],referrers=[D3,D4,D8,D5,D6],
-	values={699941,719851,739761,759671,779581,799491,819401,839311,859221},
-	digits=[{6..8},{1,3,5,7,9},{9},{2..9},{0..2,4..9},{1}]
-D15={1020,1130,1240,1350,1460,1570,1680,1790,1900}
+	values={739761,759671},
+	digits=[{7},{3,5},{9},{6,7},{6,7},{1}]
+D15={1240,1350}
 solve: PrimeEntry(name=A12,length=3,value: ,
 	identities=[A12[0]=D12[0],A12[1]=D13[0],A12[2]=D4[3]],referrers=[D12,D13,D4,A25],
 	values={234},
 	digits=[{2},{3},{4}]
-solve: PrimeEntry(name=A18,length=3,value: #square,
-	identities=[A18[0]=D13[1],A18[1]=D4[4],A18[2]=D8[3]],referrers=[D13,D4,D8],
-	values={576,676},
-	digits=[{5,6},{7},{6}]
-Eval PrimeEntry A20 cartesianCount=300000, elapsed 0:00:01.158821
+Eval PrimeEntry A20 cartesianCount=300000, elapsed 0:00:01.676467
 solve: PrimeEntry(name=A20,length=6,value: 359*A9 + 599*A14 = 479*D23+251*d12,
 	identities=[A20[0]=D11[2],A20[2]=D17[1],A20[3]=D12[2],A20[4]=D13[2],A20[5]=D21[0]],referrers=[D11,D17,D12,D13,D21],
 	values={610138},
 	digits=[{6},{1},{0},{1},{3},{8}]
 A9={1506}
 D12={2219}
-Solve Error: clue A22 () no solution!
+solve: PrimeEntry(name=A22,length=4,value: ,
+	identities=[A22[1]=D19[1],A22[2]=D15[2],A22[3]=D23[0]],referrers=[D19,D15,D23,A26],
+	values={8421,8431,8441,8451},
+	digits=[{8},{4},{2..5},{1}]
 solve: PrimeEntry(name=A24,length=4,value: ,
 	identities=[A24[0]=D11[3],A24[2]=D17[2],A24[3]=D12[3]],referrers=[D11,D17,D12,D4],
 	values={4350..4359,4450..4459,30 more,4759},
 	digits=[{4},{3..7},{5},{0..9}]
-Eval PrimeEntry A26 cartesianCount=2880, elapsed 0:00:00.012043
+Eval PrimeEntry A26 cartesianCount=32, elapsed 0:00:00.000312
 solve: PrimeEntry(name=A26,length=5,value: 5*D5 + 3*D8 = 199*√D1 + 2*A22,
 	identities=[A26[0]=D11[4],A26[2]=D17[3],A26[4]=D13[4]],referrers=[D11,D17,D13],
-	values={20663},
-	digits=[{2},{0},{6},{6},{3}]
-A22={8441}
-D5={2971}
-solve: PrimeEntry(name=D3,length=3,value: ,
-	identities=[D3[0]=A1[4],D3[1]=A7[3],D3[2]=A10[0]],referrers=[A1,A7,A10,D4,D6,D11],
-	values={346..348},
-	digits=[{3},{4},{6..8}]
-Eval PrimeEntry D4 cartesianCount=150, elapsed 0:00:00.000121
+	values={20623,20643,20663,20683},
+	digits=[{2},{0},{6},{2,4,6,8},{3}]
+D5={2963,2967,2971,2975}
+solve: PrimeEntry(name=A18,length=3,value: #square,
+	identities=[A18[0]=D13[1],A18[1]=D4[4],A18[2]=D8[3]],referrers=[D13,D4,D8],
+	values={576},
+	digits=[{5},{7},{6}]
+Eval PrimeEntry D4 cartesianCount=50, elapsed 0:00:00.000111
 solve: PrimeEntry(name=D4,length=5,value: 7*D3 + 2*A24,
 	identities=[D4[0]=A4[0],D4[1]=A7[4],D4[2]=A10[1],D4[3]=A12[2],D4[4]=A18[1]],referrers=[A4,A7,A10,A12,A18],
-	values={11147,11347,11547,11747,11947},
-	digits=[{1},{1},{1,3,5,7,9},{4},{7}]
-A24={4359,4459,4559,4659,4759}
-D3={347}
-solve: PrimeEntry(name=D5,length=4,value: ,
-	identities=[D5[0]=A4[2],D5[1]=A8[1],D5[2]=A10[3],D5[3]=A14[0]],referrers=[A4,A8,A10,A14,A26],
-	values={2971},
-	digits=[{2},{9},{7},{1}]
+	values={11347,11547},
+	digits=[{1},{1},{3,5},{4},{7}]
+A24={4459,4559}
 solve: PrimeEntry(name=D6,length=5,value: 13*A16 + 277*D3,
 	identities=[D6[0]=A4[4],D6[1]=A8[3],D6[2]=A10[5],D6[3]=A14[2]],referrers=[A4,A8,A10,A14],
 	values={98160},
 	digits=[{9},{8},{1},{6},{0}]
-Eval PrimeEntry D7 cartesianCount=100, elapsed 0:00:00.000101
-solve: PrimeEntry(name=D7,length=4,value: 19*√D1 + 2*D2,
-	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[3]=A16[1]],referrers=[A7,A9,A16],
-	values={6565,6575,6585,6595,6605,6615,6625,6635,6645,6655,6665,6675,6685,6695,6705,6715,6725,6735,6745,6755},
-	digits=[{6},{5..7},{0..9},{5}]
-D2={3102,3107,3112,3117,3122,3127,3132,3137,3142,3147,3152,3157,3162,3167,3172,3177,3182,3187,3192,3197}
-solve: PrimeEntry(name=D11,length=5,value: 641*√D1 + 229*D3,
-	identities=[D11[1]=A16[0],D11[2]=A20[0],D11[3]=A24[0],D11[4]=A26[0]],referrers=[A16,A20,A24,A26],
-	values={91642},
-	digits=[{9},{1},{6},{4},{2}]
+Eval PrimeEntry D7 cartesianCount=20, elapsed 0:00:00.000105
+solve: PrimeEntry(name=D2,length=4,value: ,
+	identities=[D2[0]=A1[2],D2[1]=A7[1],D2[2]=A9[2]],referrers=[A1,A7,A9,D7],
+	values={3102,3107,3112,3117,3122,3127,3132,3137,3142,3147,3152,3157,3162,3167,3172,3177,3182,3187,3192,3197},
+	digits=[{3},{1},{0..9},{2,7}]
+solve: PrimeEntry(name=D5,length=4,value: ,
+	identities=[D5[0]=A4[2],D5[1]=A8[1],D5[2]=A10[3],D5[3]=A14[0]],referrers=[A4,A8,A10,A14,A26],
+	values={2971},
+	digits=[{2},{9},{7},{1}]
 solve: PrimeEntry(name=D12,length=4,value: ,
 	identities=[D12[0]=A12[0],D12[2]=A20[3],D12[3]=A24[3]],referrers=[A12,A20,A24],
 	values={2219},
 	digits=[{2},{2},{1},{9}]
-Eval PrimeEntry D13 cartesianCount=2, elapsed 0:00:00.000026
-solve: PrimeEntry(name=D13,length=5,value: 127*√A18 + 5*D19,
-	identities=[D13[0]=A12[1],D13[1]=A18[0],D13[2]=A20[4],D13[3]=A25[0],D13[4]=A26[4]],referrers=[A12,A18,A20,A25,A26],
-	values={35343},
-	digits=[{3},{5},{3},{4},{3}]
-A18={576}
 solve: PrimeEntry(name=D15,length=4,value: ,
 	identities=[D15[0]=A14[1],D15[2]=A22[2],D15[3]=A25[4]],referrers=[A14,A22,A25,A10],
-	values={1020,1130,1240,1350,1460,1570,1680,1790,1900},
-	digits=[{1},{0..7,9},{0,2..9},{0}]
-solve: PrimeEntry(name=A4,length=5,value: 67*A14 + 41*A16,
-	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[4]=D6[0]],referrers=[D4,D5,D6],
-	values={14209},
-	digits=[{1},{4},{2},{0},{9}]
+	values={1240,1350},
+	digits=[{1},{2,3},{4,5},{0}]
 solve: PrimeEntry(name=A9,length=4,value: ,
 	identities=[A9[0]=D1[2],A9[1]=D7[1],A9[2]=D2[2]],referrers=[D1,D7,D2,A20],
 	values={1506},
 	digits=[{1},{5},{0},{6}]
-Eval PrimeEntry A10 cartesianCount=9, elapsed 0:00:00.000027
+Eval PrimeEntry A10 cartesianCount=2, elapsed 0:00:00.000038
 solve: PrimeEntry(name=A10,length=6,value: 17*A1 + 181*D15,
 	identities=[A10[0]=D3[2],A10[1]=D4[2],A10[2]=D8[1],A10[3]=D5[2],A10[5]=D6[2]],referrers=[D3,D4,D8,D5,D6],
 	values={739761},
@@ -490,15 +465,25 @@ solve: PrimeEntry(name=A10,length=6,value: 17*A1 + 181*D15,
 D15={1240}
 solve: PrimeEntry(name=A22,length=4,value: ,
 	identities=[A22[1]=D19[1],A22[2]=D15[2],A22[3]=D23[0]],referrers=[D19,D15,D23,A26],
-	values={8441},
-	digits=[{8},{4},{4},{1}]
-Eval PrimeEntry D4 cartesianCount=5, elapsed 0:00:00.000022
+	values={8441,8451},
+	digits=[{8},{4},{4,5},{1}]
+solve: PrimeEntry(name=A24,length=4,value: ,
+	identities=[A24[0]=D11[3],A24[2]=D17[2],A24[3]=D12[3]],referrers=[D11,D17,D12,D4],
+	values={4459,4559},
+	digits=[{4},{4,5},{5},{9}]
+Eval PrimeEntry A26 cartesianCount=2, elapsed 0:00:00.000071
+solve: PrimeEntry(name=A26,length=5,value: 5*D5 + 3*D8 = 199*√D1 + 2*A22,
+	identities=[A26[0]=D11[4],A26[2]=D17[3],A26[4]=D13[4]],referrers=[D11,D17,D13],
+	values={20663},
+	digits=[{2},{0},{6},{6},{3}]
+A22={8441}
+Eval PrimeEntry D4 cartesianCount=2, elapsed 0:00:00.000040
 solve: PrimeEntry(name=D4,length=5,value: 7*D3 + 2*A24,
 	identities=[D4[0]=A4[0],D4[1]=A7[4],D4[2]=A10[1],D4[3]=A12[2],D4[4]=A18[1]],referrers=[A4,A7,A10,A12,A18],
 	values={11347},
 	digits=[{1},{1},{3},{4},{7}]
 A24={4459}
-Eval PrimeEntry D7 cartesianCount=20, elapsed 0:00:00.000036
+Eval PrimeEntry D7 cartesianCount=20, elapsed 0:00:00.000034
 solve: PrimeEntry(name=D7,length=4,value: 19*√D1 + 2*D2,
 	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[3]=A16[1]],referrers=[A7,A9,A16],
 	values={6565,6575,6585,6595},
@@ -516,13 +501,13 @@ solve: PrimeEntry(name=A24,length=4,value: ,
 	identities=[A24[0]=D11[3],A24[2]=D17[2],A24[3]=D12[3]],referrers=[D11,D17,D12,D4],
 	values={4459},
 	digits=[{4},{4},{5},{9}]
-Eval PrimeEntry D7 cartesianCount=2, elapsed 0:00:00.000022
+Eval PrimeEntry D7 cartesianCount=2, elapsed 0:00:00.000023
 solve: PrimeEntry(name=D7,length=4,value: 19*√D1 + 2*D2,
 	identities=[D7[0]=A7[0],D7[1]=A9[1],D7[3]=A16[1]],referrers=[A7,A9,A16],
 	values={6565,6575},
 	digits=[{6},{5},{6,7},{5}]
-Eval PrimeEntry D7 cartesianCount=2, elapsed 0:00:00.000016
-Clue/Variable iterations=173, updates=72, elapsed 0:00:05.047043
+Eval PrimeEntry D7 cartesianCount=2, elapsed 0:00:00.000015
+Clue/Variable iterations=172, updates=70, elapsed 0:00:13.069960
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, 353*√D21 + 239*√D17 = 521*√D21 + 181*√D17, values={30313}

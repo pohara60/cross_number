@@ -12,7 +12,6 @@ class ChessboardVariable extends Variable {
 class ChessboardPuzzle extends VariablePuzzle<ChessboardClue, ChessboardEntry,
     ChessboardVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   ChessboardPuzzle() : super(null);
   ChessboardPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(null, gridString);

@@ -61,10 +61,11 @@ class Clue extends Variable {
 
   Clue({
     required String name,
+    required VariableType type,
     required int? this.length,
     String? this.valueDesc,
     SolveFunction? solve,
-  }) : super(name, solve: solve) {
+  }) : super(name, variableType: type, solve: solve) {
     this.reset();
   }
 
@@ -215,22 +216,34 @@ class VariableClue extends Clue with PriorityVariable {
   /// Computed - Count of combinations of variable values
   VariableClue(
       {required String name,
+      required VariableType type,
       required int? length,
       String? valueDesc,
       SolveFunction? solve})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {}
+      : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {}
 }
 
 class ExpressionClue extends VariableClue with Expression {
   ExpressionClue({
     required String name,
+    required VariableType type,
     required int? length,
     String? valueDesc,
     List<String>? addDesc,
     SolveFunction? solve,
     variablePrefix = '',
     List<String>? entryNames,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initExpression(valueDesc, variablePrefix, name, variableRefs, entryNames);
     if (addDesc != null) {
       for (var desc in addDesc) {
@@ -481,10 +494,16 @@ mixin EntryMixin on Clue {
 class Entry extends Clue with EntryMixin {
   Entry(
       {required String name,
+      required VariableType type,
       required int? length,
       String? valueDesc,
       SolveFunction? solve})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+      : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     assert(length != null);
     initEntry(this);
   }
@@ -493,10 +512,16 @@ class Entry extends Clue with EntryMixin {
 class VariableEntry extends VariableClue with EntryMixin {
   VariableEntry(
       {required String name,
+      required VariableType type,
       required int? length,
       String? valueDesc,
       SolveFunction? solve})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+      : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 
@@ -508,11 +533,17 @@ class VariableEntry extends VariableClue with EntryMixin {
 class ExpressionEntry extends ExpressionClue with EntryMixin {
   ExpressionEntry(
       {required String name,
+      required VariableType type,
       required int length,
       String? valueDesc,
       SolveFunction? solve,
       variablePrefix = ''})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+      : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 }

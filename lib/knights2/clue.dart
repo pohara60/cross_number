@@ -8,9 +8,15 @@ class Knights2Clue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   Knights2Clue(
-      {required String name, required int? length, String? valueDesc, SolveFunction? solve, List<String>? entryNames})
+      {required String name,
+      VariableType type = VariableType.C,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve,
+      List<String>? entryNames})
       : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,
@@ -24,12 +30,14 @@ class Knights2Entry extends Knights2Clue with EntryMixin {
 
   Knights2Entry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
     entryNames,
   }) : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,

@@ -14,13 +14,7 @@ class ABCDVariable extends Variable {
 
 class ABCDPuzzle extends VariablePuzzle<ABCDClue, ABCDEntry, ABCDVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   ABCDPuzzle() : super(null);
   ABCDPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(null, gridString);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 }

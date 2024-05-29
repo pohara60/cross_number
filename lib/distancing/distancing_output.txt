@@ -201,7 +201,7 @@ solve: DistancingEntry(name=D1,length=2,value: Prime,
 	identities=[D1[0]=A1[0]],referrers=[A1,D8,D11],
 	values={83},
 	digits=[{8},{3}]
-Clue/Variable iterations=67, updates=35, elapsed 0:00:00.026427
+Clue/Variable iterations=66, updates=35, elapsed 0:00:00.025538
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Square, values={81}

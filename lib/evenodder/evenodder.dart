@@ -357,8 +357,8 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
         }
       }
       EvenOdderVariable.link(
-        puzzle.letters['A' + letter]! as EvenOdderVariable,
-        puzzle.letters['D' + letter]! as EvenOdderVariable,
+        puzzle.variables['A' + letter]! as EvenOdderVariable,
+        puzzle.variables['D' + letter]! as EvenOdderVariable,
       );
     }
     clueError += puzzle.checkVariableReferences();

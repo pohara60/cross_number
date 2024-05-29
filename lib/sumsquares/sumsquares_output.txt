@@ -207,461 +207,363 @@ N={2,3,5,7,11,13,17,19,23,29,31,37,41,43}
 UPDATES-----------------------------
 Solve Error: clue A24 (null) no solution!
 Solve Error: clue A20 (null) no solution!
-Solve Error: clue A19 (null) no solution!
-Solve Error: clue A22 (null) no solution!
-Solve Error: clue D17 (null) no solution!
-Solve Error: clue D18 (null) no solution!
-Solve Error: clue D2 (null) no solution!
-Solve Error: clue A23 (null) no solution!
-Solve Error: clue D14 (null) no solution!
-Solve Error: clue D15 (null) no solution!
-Solve Error: clue D12 (null) no solution!
-Solve Error: clue D16 (null) no solution!
-Solve Error: clue D10 (null) no solution!
-Solve Error: clue A11 (null) no solution!
-Solve Error: clue A9 (null) no solution!
-Solve Error: clue D21 (null) no solution!
-Solve Error: clue D6 (null) no solution!
-Solve Error: clue A7 (null) no solution!
 Solve Error: clue D4 (null) no solution!
+Solve Error: clue A22 (null) no solution!
+Solve Error: clue A9 (null) no solution!
+Solve Error: clue D12 (null) no solution!
 Solve Error: clue D1 (null) no solution!
-Solve Error: clue A3 (null) no solution!
-Solve Error: clue D3 (null) no solution!
-Solve Error: clue D5 (null) no solution!
-Solve Error: clue A1 (null) no solution!
-Solve Error: clue A13 (null) no solution!
+Solve Error: clue D21 (null) no solution!
+Solve Error: clue D16 (null) no solution!
+Solve Error: clue D17 (null) no solution!
+Solve Error: clue D6 (null) no solution!
+Solve Error: clue A19 (null) no solution!
+Solve Error: clue A7 (null) no solution!
 Solve Error: clue A16 (null) no solution!
+Solve Error: clue D2 (null) no solution!
+Solve Error: clue D18 (null) no solution!
+Solve Error: clue A13 (null) no solution!
+Solve Error: clue D14 (null) no solution!
+Solve Error: clue A3 (null) no solution!
+Solve Error: clue A11 (null) no solution!
+Solve Error: clue D5 (null) no solution!
 Solve Error: clue A8 (null) no solution!
-Eval SumSquaresClue xxiii cartesianCount=2744, elapsed 0:00:00.017467
-solve: SumSquaresClue(name=xxiii,length=4,value: F*F+L*L+M*M,
+Solve Error: clue A1 (null) no solution!
+Solve Error: clue D10 (null) no solution!
+Solve Error: clue D3 (null) no solution!
+Solve Error: clue D15 (null) no solution!
+Solve Error: clue A23 (null) no solution!
+Eval SumSquaresClue xxvii cartesianCount=2744, elapsed 0:00:00.018807
+solve: SumSquaresClue(name=xxvii,length=4,value: C*C+D*D+H*H,
 	referrers=[],
 	values={1011,1014,1019,1035,1059,1086,1091,1107,1131,1134,1139,1155,1179,1206,1211,1227,1251,1254,1259,1275,143 more,4899}
-Eval SumSquaresClue xiv cartesianCount=2744, elapsed 0:00:00.004265
-solve: SumSquaresClue(name=xiv,length=3,value: B*B+E*E+N*N,
-	referrers=[],
-	values={134,150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,54 more,995}
-B={2,3,5,7,11,13,17,19,23,29,31}
-E={2,3,5,7,11,13,17,19,23,29,31}
-N={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue xxii cartesianCount=1694, elapsed 0:00:00.003870
+Eval SumSquaresClue xxii cartesianCount=2744, elapsed 0:00:00.006780
 solve: SumSquaresClue(name=xxii,length=4,value: E*E+H*H+N*N,
 	referrers=[],
-	values={1011,1014,1019,1035,1059,1086,1091,1107,1131,1134,1139,1155,1179,1206,1211,1227,1251,1254,1259,1275,119 more,3651}
-Eval SumSquaresClue x cartesianCount=1694, elapsed 0:00:00.003747
-solve: SumSquaresClue(name=x,length=3,value: D*D+E*E+N*N,
+	values={1011,1014,1019,1035,1059,1086,1091,1107,1131,1134,1139,1155,1179,1206,1211,1227,1251,1254,1259,1275,142 more,4491}
+Eval SumSquaresClue xviii cartesianCount=2744, elapsed 0:00:00.006057
+solve: SumSquaresClue(name=xviii,length=3,value: D*D+I*I+L*L,
+	referrers=[],
+	values={134,150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,54 more,995}
+D={2,3,5,7,11,13,17,19,23,29,31}
+I={2,3,5,7,11,13,17,19,23,29,31}
+L={2,3,5,7,11,13,17,19,23,29,31}
+Eval SumSquaresClue vi cartesianCount=1694, elapsed 0:00:00.002273
+solve: SumSquaresClue(name=vi,length=3,value: D*D+I*I+K*K,
 	referrers=[],
 	values={134,150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,53 more,990}
-D={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue v cartesianCount=1331, elapsed 0:00:00.001355
-solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
-	referrers=[],
-	values={134,150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,52 more,987}
-Eval SumSquaresClue xiv cartesianCount=1331, elapsed 0:00:00.001360
-solve: SumSquaresClue(name=xiv,length=3,value: B*B+E*E+N*N,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,53 more,995}
-Eval SumSquaresClue x cartesianCount=1331, elapsed 0:00:00.001785
-solve: SumSquaresClue(name=x,length=3,value: D*D+E*E+N*N,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,52 more,990}
-Eval SumSquaresClue viii cartesianCount=1694, elapsed 0:00:00.001644
-solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,51 more,987}
-A={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue iii cartesianCount=1331, elapsed 0:00:00.001065
-solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
-	referrers=[],
-	values={134,150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,51 more,974}
-Eval SumSquaresClue viii cartesianCount=1331, elapsed 0:00:00.001185
-Eval SumSquaresClue iii cartesianCount=1331, elapsed 0:00:00.001188
-Eval SumSquaresClue xvi cartesianCount=1694, elapsed 0:00:00.001715
-solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
-	referrers=[],
-	values={155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,363,52 more,995}
-J={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue xii cartesianCount=1694, elapsed 0:00:00.001375
-solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
-	referrers=[],
-	values={155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,363,51 more,990}
-G={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue xiii cartesianCount=1694, elapsed 0:00:00.001656
-solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
-	referrers=[],
-	values={174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,363,374,50 more,990}
-M={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue vii cartesianCount=1331, elapsed 0:00:00.001170
-solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,50 more,974}
-Eval SumSquaresClue xi cartesianCount=1694, elapsed 0:00:00.001499
-solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
-	referrers=[],
-	values={155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,363,50 more,987}
-I={2,3,5,7,11,13,17,19,23,29,31}
-Eval SumSquaresClue xv cartesianCount=1331, elapsed 0:00:00.001034
-solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
-	referrers=[],
-	values={179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,363,374,390,49 more,990}
-Eval SumSquaresClue xi cartesianCount=1331, elapsed 0:00:00.000952
-Eval SumSquaresClue iv cartesianCount=1331, elapsed 0:00:00.000914
-solve: SumSquaresClue(name=iv,length=3,value: B*B+I*I+M*M,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,294,299,302,315,318,323,339,342,347,49 more,971}
-B={2,3,5,7,11,13,17,19,23,29}
-I={2,3,5,7,11,13,17,19,23,29}
-M={2,3,5,7,11,13,17,19,23,29}
-Eval SumSquaresClue ii cartesianCount=1100, elapsed 0:00:00.000651
-solve: SumSquaresClue(name=ii,length=2,value: A*A+I*I+M*M,
-	referrers=[],
-	values={38,62,78,83}
-A={2,3,5,7}
-I={2,3,5,7}
-M={2,3,5,7}
-Eval SumSquaresClue iv cartesianCount=160, elapsed 0:00:00.000137
-solve: SumSquaresClue(name=iv,length=3,value: B*B+I*I+M*M,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,15 more,915}
-B={11,13,17,19,23,29}
-Eval SumSquaresClue i cartesianCount=176, elapsed 0:00:00.000124
+K={2,3,5,7,11,13,17,19,23,29,31}
+Eval SumSquaresClue i cartesianCount=1694, elapsed 0:00:00.002245
 solve: SumSquaresClue(name=i,length=2,value: D*D+I*I+M*M,
 	referrers=[],
-	values={38,62,78}
+	values={38,62,78,83}
 D={2,3,5,7}
-Eval SumSquaresClue iv cartesianCount=96, elapsed 0:00:00.000123
-Eval SumSquaresClue i cartesianCount=64, elapsed 0:00:00.000107
-Eval SumSquaresClue xiii cartesianCount=176, elapsed 0:00:00.000148
-solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
+I={2,3,5,7}
+M={2,3,5,7}
+Eval SumSquaresClue xix cartesianCount=176, elapsed 0:00:00.000353
+solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
 	referrers=[],
-	values={174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,419,14 more,974}
-G={11,13,17,19,23,29,31}
-Eval SumSquaresClue i cartesianCount=64, elapsed 0:00:00.000061
-Eval SumSquaresClue iv cartesianCount=96, elapsed 0:00:00.000112
-Eval SumSquaresClue xiii cartesianCount=112, elapsed 0:00:00.000119
-Eval SumSquaresClue xi cartesianCount=112, elapsed 0:00:00.000127
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,18 more,995}
+L={11,13,17,19,23,29,31}
+Eval SumSquaresClue i cartesianCount=64, elapsed 0:00:00.000091
+Eval SumSquaresClue xix cartesianCount=112, elapsed 0:00:00.000167
+Eval SumSquaresClue xviii cartesianCount=112, elapsed 0:00:00.000168
+solve: SumSquaresClue(name=xviii,length=3,value: D*D+I*I+L*L,
+	referrers=[],
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,17 more,990}
+Eval SumSquaresClue vi cartesianCount=176, elapsed 0:00:00.000198
+solve: SumSquaresClue(name=vi,length=3,value: D*D+I*I+K*K,
+	referrers=[],
+	values={134,150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,17 more,974}
+K={11,13,17,19,23,29,31}
+Eval SumSquaresClue xix cartesianCount=112, elapsed 0:00:00.000159
+solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
+	referrers=[],
+	values={155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,17 more,995}
+Eval SumSquaresClue ii cartesianCount=224, elapsed 0:00:00.000215
+solve: SumSquaresClue(name=ii,length=2,value: A*A+I*I+M*M,
+	referrers=[],
+	values={62,78,83}
+A={2,3,5,7}
+Eval SumSquaresClue xviii cartesianCount=112, elapsed 0:00:00.000167
+Eval SumSquaresClue xvi cartesianCount=224, elapsed 0:00:00.000214
+solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
+	referrers=[],
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,16 more,974}
+J={11,13,17,19,23,29,31}
+Eval SumSquaresClue xi cartesianCount=224, elapsed 0:00:00.001053
 solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
+	referrers=[],
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,15 more,915}
+G={11,13,17,19,23,29}
+Eval SumSquaresClue xiii cartesianCount=96, elapsed 0:00:00.000149
+solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
 	referrers=[],
 	values={155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,14 more,915}
-G={11,13,17,19,23,29}
-Eval SumSquaresClue xiii cartesianCount=96, elapsed 0:00:00.000109
-solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
-	referrers=[],
-	values={174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,419,13 more,915}
-Eval SumSquaresClue xii cartesianCount=96, elapsed 0:00:00.000108
+Eval SumSquaresClue xii cartesianCount=96, elapsed 0:00:00.000145
 solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
 	referrers=[],
-	values={174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,419,12 more,899}
-Eval SumSquaresClue xi cartesianCount=96, elapsed 0:00:00.000104
+	values={155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,13 more,899}
+Eval SumSquaresClue xi cartesianCount=96, elapsed 0:00:00.000686
 solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
 	referrers=[],
-	values={155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,12 more,894}
-Eval SumSquaresClue iii cartesianCount=176, elapsed 0:00:00.000173
-solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
-	referrers=[],
-	values={134,150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,13 more,875}
-N={11,13,17,19,23,29}
-Eval SumSquaresClue xv cartesianCount=144, elapsed 0:00:00.000211
-solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
-	referrers=[],
-	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,18 more,987}
-Eval SumSquaresClue vii cartesianCount=144, elapsed 0:00:00.000154
-solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
-	referrers=[],
-	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,11 more,867}
-B={11,13,17,19,23}
-N={11,13,17,19,23}
-Eval SumSquaresClue iv cartesianCount=80, elapsed 0:00:00.000097
-solve: SumSquaresClue(name=iv,length=3,value: B*B+I*I+M*M,
-	referrers=[],
-	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,9 more,603}
-Eval SumSquaresClue iii cartesianCount=80, elapsed 0:00:00.000098
-solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
-	referrers=[],
-	values={134,150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,9 more,587}
-Eval SumSquaresClue viii cartesianCount=100, elapsed 0:00:00.000119
-solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
-	referrers=[],
-	values={299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,10 more,867}
-Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000119
-solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
-	referrers=[],
-	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,10 more,843}
-Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000115
-solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
-	referrers=[],
-	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,9 more,827}
-Eval SumSquaresClue xvi cartesianCount=176, elapsed 0:00:00.000131
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,13 more,894}
+Eval SumSquaresClue xvi cartesianCount=112, elapsed 0:00:00.000166
 solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
 	referrers=[],
-	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,7 more,995}
-J={17,19,23,29,31}
-Eval SumSquaresClue xii cartesianCount=96, elapsed 0:00:00.000129
-solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
-	referrers=[],
-	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,3 more,899}
-G={17,19,23,29}
-Eval SumSquaresClue xiii cartesianCount=64, elapsed 0:00:00.000082
-solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
-	referrers=[],
-	values={318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,875,3 more,915}
-Eval SumSquaresClue xii cartesianCount=64, elapsed 0:00:00.000083
-Eval SumSquaresClue xi cartesianCount=64, elapsed 0:00:00.000088
-solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
-	referrers=[],
-	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,2 more,894}
-Eval SumSquaresClue xv cartesianCount=80, elapsed 0:00:00.000110
-solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
-	referrers=[],
-	values={414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,699,702,14 more,987}
-Eval SumSquaresClue xvi cartesianCount=80, elapsed 0:00:00.000095
-solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
-	referrers=[],
-	values={419,435,542,558,563,582,587,603,854,870,875,894,899,915,974,990,995}
-J={19,23,29,31}
-Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000120
-solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
-	referrers=[],
-	values={299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,9 more,843}
-Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000130
-Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000115
-Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000115
-Eval SumSquaresClue xv cartesianCount=80, elapsed 0:00:00.000107
-Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000116
-Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000116
-Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000113
-Eval SumSquaresClue xv cartesianCount=80, elapsed 0:00:00.000104
-Eval SumSquaresClue x cartesianCount=220, elapsed 0:00:00.000212
-solve: SumSquaresClue(name=x,length=3,value: D*D+E*E+N*N,
-	referrers=[],
-	values={302,315,318,323,339,342,347,363,374,390,395,414,419,435,459,462,467,483,486,491,24 more,867}
-E={2,3,5,7,11,13,17,19,23}
-Eval SumSquaresClue xxi cartesianCount=224, elapsed 0:00:00.000168
+	values={174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,419,14 more,974}
+Eval SumSquaresClue xxi cartesianCount=224, elapsed 0:00:00.000193
 solve: SumSquaresClue(name=xxi,length=4,value: A*A+H*H+M*M,
 	referrers=[],
 	values={1014,1019,1035,1382,1398,1403,1422,1427,1443,1694,1710,1715,1734,1739,1755,1862,1878,1883,1902,1907,1923}
 H={31,37,41,43}
-Eval SumSquaresClue xxii cartesianCount=180, elapsed 0:00:00.000201
-solve: SumSquaresClue(name=xxii,length=4,value: E*E+H*H+N*N,
+Eval SumSquaresClue xiii cartesianCount=96, elapsed 0:00:00.000140
+solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
 	referrers=[],
-	values={1086,1091,1107,1131,1134,1139,1155,1179,1251,1254,1259,1275,1299,1326,1331,1347,1371,1419,1443,1491,64 more,2739}
-Eval SumSquaresClue viii cartesianCount=100, elapsed 0:00:00.000119
+	values={174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,419,13 more,915}
+Eval SumSquaresClue xvi cartesianCount=112, elapsed 0:00:00.000226
+solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
+	referrers=[],
+	values={179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,419,435,13 more,974}
+Eval SumSquaresClue xxi cartesianCount=64, elapsed 0:00:00.000157
+Eval SumSquaresClue xiii cartesianCount=96, elapsed 0:00:00.000230
+Eval SumSquaresClue xvi cartesianCount=112, elapsed 0:00:00.000222
+Eval SumSquaresClue xxvii cartesianCount=224, elapsed 0:00:00.000517
+solve: SumSquaresClue(name=xxvii,length=4,value: C*C+D*D+H*H,
+	referrers=[],
+	values={1019,1035,1086,1091,1107,1131,1134,1139,1155,1179,1254,1259,1275,1299,1326,1331,1347,1371,1382,1398,93 more,3579}
+Eval SumSquaresClue xi cartesianCount=96, elapsed 0:00:00.000240
+Eval SumSquaresClue xxvii cartesianCount=224, elapsed 0:00:00.000345
+Eval SumSquaresClue iii cartesianCount=224, elapsed 0:00:00.000211
+solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
+	referrers=[],
+	values={134,150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,13 more,875}
+N={11,13,17,19,23,29}
+Eval SumSquaresClue xv cartesianCount=144, elapsed 0:00:00.000183
+solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
+	referrers=[],
+	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,17 more,971}
+Eval SumSquaresClue i cartesianCount=64, elapsed 0:00:00.000066
+solve: SumSquaresClue(name=i,length=2,value: D*D+I*I+M*M,
+	referrers=[],
+	values={38,62,78}
+Eval SumSquaresClue iii cartesianCount=96, elapsed 0:00:00.000144
+Eval SumSquaresClue xii cartesianCount=96, elapsed 0:00:00.000140
+Eval SumSquaresClue xvi cartesianCount=112, elapsed 0:00:00.000145
+solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
+	referrers=[],
+	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,5 more,974}
+J={17,19,23,29,31}
+Eval SumSquaresClue iii cartesianCount=96, elapsed 0:00:00.000141
+Eval SumSquaresClue xvi cartesianCount=80, elapsed 0:00:00.000114
+Eval SumSquaresClue xv cartesianCount=144, elapsed 0:00:00.000200
+Eval SumSquaresClue iv cartesianCount=224, elapsed 0:00:00.000214
+solve: SumSquaresClue(name=iv,length=3,value: B*B+I*I+M*M,
+	referrers=[],
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,12 more,875}
+B={11,13,17,19,23,29}
+Eval SumSquaresClue xvi cartesianCount=80, elapsed 0:00:00.000128
+Eval SumSquaresClue iv cartesianCount=96, elapsed 0:00:00.000141
+Eval SumSquaresClue xi cartesianCount=96, elapsed 0:00:00.000146
+solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
+	referrers=[],
+	values={155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,414,12 more,894}
+Eval SumSquaresClue viii cartesianCount=144, elapsed 0:00:00.000185
 solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
 	referrers=[],
-	values={315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,8 more,843}
-Eval SumSquaresClue xxii cartesianCount=180, elapsed 0:00:00.000232
-Eval SumSquaresClue viii cartesianCount=100, elapsed 0:00:00.000126
-Eval SumSquaresClue xxii cartesianCount=180, elapsed 0:00:00.000191
-Eval SumSquaresClue xxvii cartesianCount=224, elapsed 0:00:00.000273
-solve: SumSquaresClue(name=xxvii,length=4,value: C*C+D*D+H*H,
+	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,11 more,867}
+B={11,13,17,19,23}
+N={11,13,17,19,23}
+Eval SumSquaresClue iv cartesianCount=80, elapsed 0:00:00.000174
+solve: SumSquaresClue(name=iv,length=3,value: B*B+I*I+M*M,
 	referrers=[],
-	values={1091,1107,1131,1134,1139,1155,1179,1254,1259,1275,1299,1326,1331,1347,1371,1382,1398,1403,1422,1427,90 more,3579}
-Eval SumSquaresClue xviii cartesianCount=224, elapsed 0:00:00.000162
-solve: SumSquaresClue(name=xviii,length=3,value: D*D+I*I+L*L,
+	values={150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,395,9 more,603}
+Eval SumSquaresClue iii cartesianCount=80, elapsed 0:00:00.000161
+solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
 	referrers=[],
-	values={435,542,558,563,582,587,603,854,870,875,894,899,915,974,990,995}
+	values={134,150,155,174,179,182,195,198,203,222,227,243,302,318,323,342,347,363,374,390,9 more,587}
+Eval SumSquaresClue xiii cartesianCount=96, elapsed 0:00:00.000211
+solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
+	referrers=[],
+	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,4 more,915}
+G={17,19,23,29}
+Eval SumSquaresClue xii cartesianCount=64, elapsed 0:00:00.000120
+solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
+	referrers=[],
+	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,3 more,899}
+Eval SumSquaresClue xi cartesianCount=64, elapsed 0:00:00.000108
+solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
+	referrers=[],
+	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,2 more,894}
+Eval SumSquaresClue xv cartesianCount=80, elapsed 0:00:00.000117
+solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
+	referrers=[],
+	values={414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,699,702,13 more,971}
+Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000132
+solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
+	referrers=[],
+	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,10 more,843}
+Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000173
+solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
+	referrers=[],
+	values={299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,9 more,843}
+Eval SumSquaresClue iii cartesianCount=80, elapsed 0:00:00.000119
+Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000128
+Eval SumSquaresClue viii cartesianCount=100, elapsed 0:00:00.000148
+solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
+	referrers=[],
+	values={315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,9 more,867}
+Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000149
+solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
+	referrers=[],
+	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,9 more,827}
+Eval SumSquaresClue vii cartesianCount=100, elapsed 0:00:00.000138
+Eval SumSquaresClue iii cartesianCount=80, elapsed 0:00:00.000164
+Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000138
+Eval SumSquaresClue iv cartesianCount=80, elapsed 0:00:00.000111
+Eval SumSquaresClue v cartesianCount=100, elapsed 0:00:00.000129
+Eval SumSquaresClue viii cartesianCount=100, elapsed 0:00:00.000133
+Eval SumSquaresClue xii cartesianCount=64, elapsed 0:00:00.000198
+solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
+	referrers=[],
+	values={318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603,854,870,875,2 more,899}
+Eval SumSquaresClue xix cartesianCount=112, elapsed 0:00:00.000129
+solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
+	referrers=[],
+	values={419,435,542,558,563,582,587,603,854,870,875,894,899,915,974,990,995}
 L={19,23,29,31}
-Eval SumSquaresClue xix cartesianCount=64, elapsed 0:00:00.000252
-solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
-	referrers=[],
-	values={542,558,563,582,587,603,854,870,875,894,899,915,974,990,995}
-L={23,29,31}
-Eval SumSquaresClue xviii cartesianCount=48, elapsed 0:00:00.000079
+Eval SumSquaresClue xviii cartesianCount=64, elapsed 0:00:00.000097
 solve: SumSquaresClue(name=xviii,length=3,value: D*D+I*I+L*L,
 	referrers=[],
-	values={542,558,563,582,587,603,854,870,875,894,899,915,974,990}
-Eval SumSquaresClue xix cartesianCount=48, elapsed 0:00:00.000066
-solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
-	referrers=[],
-	values={558,563,582,587,603,854,870,875,894,899,915,974,990,995}
-Eval SumSquaresClue xxi cartesianCount=64, elapsed 0:00:00.000086
-Eval SumSquaresClue viii cartesianCount=100, elapsed 0:00:00.000119
-Eval SumSquaresClue xxiv cartesianCount=168, elapsed 0:00:00.000154
-solve: SumSquaresClue(name=xxiv,length=4,value: C*C+I*I+L*L,
-	referrers=[],
-	values={1091,1107,1131,1134,1139,1155,1179,1206,1211,1227,1251,1254,1259,1275,1299,1326,1331,1347,1371,1374,43 more,2859}
-C={11,13,17,19,23,29,31,37,41,43}
-Eval SumSquaresClue xxvi cartesianCount=120, elapsed 0:00:00.000112
-solve: SumSquaresClue(name=xxvi,length=4,value: C*C+J*J+L*L,
-	referrers=[],
-	values={1179,1323,1371,1443,1491,1539,1611,1659,1731,1779,1851,1923,1971,2091,2163,2259,2331,2571,2691,2739,8 more,3483}
-Eval SumSquaresClue xxiv cartesianCount=120, elapsed 0:00:00.000133
-Eval SumSquaresClue xxvii cartesianCount=160, elapsed 0:00:00.000180
-solve: SumSquaresClue(name=xxvii,length=4,value: C*C+D*D+H*H,
-	referrers=[],
-	values={1254,1259,1275,1299,1326,1331,1347,1371,1494,1499,1515,1539,1542,1547,1563,1587,1662,1667,1683,1707,71 more,3579}
-Eval SumSquaresClue xxiii cartesianCount=168, elapsed 0:00:00.000159
-solve: SumSquaresClue(name=xxiii,length=4,value: F*F+L*L+M*M,
-	referrers=[],
-	values={1091,1107,1131,1134,1139,1155,1179,1206,1211,1227,1251,1254,1259,1275,1299,1326,1331,1347,1371,1374,42 more,2835}
-F={11,13,17,19,23,29,31,37,41,43}
-Eval SumSquaresClue xxi cartesianCount=64, elapsed 0:00:00.000079
-Eval SumSquaresClue xxiii cartesianCount=120, elapsed 0:00:00.000134
-Eval SumSquaresClue xxv cartesianCount=200, elapsed 0:00:00.000187
-solve: SumSquaresClue(name=xxv,length=4,value: F*F+H*H+N*N,
-	referrers=[],
-	values={1251,1371,1419,1443,1491,1611,1659,1779,1827,1851,1899,1923,1971,2019,2067,2091,2139,2163,2187,2211,27 more,3411}
-Eval SumSquaresClue xx cartesianCount=200, elapsed 0:00:00.000174
-solve: SumSquaresClue(name=xx,length=4,value: F*F+I*I+N*N,
-	referrers=[],
-	values={1011,1014,1019,1035,1059,1086,1091,1107,1131,1134,1139,1155,1179,1206,1211,1227,1251,1254,1259,1275,35 more,1907}
-F={29,31,37,41}
-Eval SumSquaresClue xxiii cartesianCount=48, elapsed 0:00:00.000079
-solve: SumSquaresClue(name=xxiii,length=4,value: F*F+L*L+M*M,
-	referrers=[],
-	values={1374,1379,1395,1419,1494,1499,1515,1539,1806,1811,1827,1851,1902,1907,1923,1947,2214,2219,2235,2259,12 more,2691}
-Eval SumSquaresClue xxv cartesianCount=80, elapsed 0:00:00.000116
-solve: SumSquaresClue(name=xxv,length=4,value: F*F+H*H+N*N,
-	referrers=[],
-	values={1923,1971,2091,2163,2331,2379,2451,2499,2571,2619,2643,2691,2739,2763,2811,2859,2883,2931,2979,3003,7 more,3411}
-Eval SumSquaresClue xx cartesianCount=80, elapsed 0:00:00.000107
-Eval SumSquaresClue vi cartesianCount=224, elapsed 0:00:00.000143
+	values={419,435,542,558,563,582,587,603,854,870,875,894,899,915,974,990}
+Eval SumSquaresClue vi cartesianCount=112, elapsed 0:00:00.000127
 solve: SumSquaresClue(name=vi,length=3,value: D*D+I*I+K*K,
 	referrers=[],
 	values={302,318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603}
 K={17,19,23}
-Eval SumSquaresClue ix cartesianCount=60, elapsed 0:00:00.000077
-solve: SumSquaresClue(name=ix,length=3,value: B*B+D*D+K*K,
-	referrers=[],
-	values={414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,699,702,6 more,843}
-Eval SumSquaresClue xvii cartesianCount=60, elapsed 0:00:00.000056
+Eval SumSquaresClue xvii cartesianCount=60, elapsed 0:00:00.000102
 solve: SumSquaresClue(name=xvii,length=3,value: G*G+K*K+N*N,
 	referrers=[],
 	values={771,819,939,987}
 G={17,19,23}
 N={11,13}
-Eval SumSquaresClue xv cartesianCount=24, elapsed 0:00:00.000056
+Eval SumSquaresClue xv cartesianCount=24, elapsed 0:00:00.000064
 solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
 	referrers=[],
-	values={419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,699,702,707,2 more,747}
-Eval SumSquaresClue xx cartesianCount=32, elapsed 0:00:00.000061
-solve: SumSquaresClue(name=xx,length=4,value: F*F+I*I+N*N,
-	referrers=[],
-	values={1011,1014,1019,1035,1059,1086,1091,1107,1131,1134,1139,1155,1179,1494,1499,1515,1539,1542,1547,1563,9 more,1899}
-Eval SumSquaresClue iii cartesianCount=32, elapsed 0:00:00.000064
+	values={414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,699,702,3 more,747}
+Eval SumSquaresClue iii cartesianCount=32, elapsed 0:00:00.000060
 solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
 	referrers=[],
 	values={134,150,155,174,179,182,195,198,203,222,227,243}
-Eval SumSquaresClue xxv cartesianCount=32, elapsed 0:00:00.000059
-solve: SumSquaresClue(name=xxv,length=4,value: F*F+H*H+N*N,
-	referrers=[],
-	values={1923,1971,2331,2379,2451,2499,2643,2691,2763,2811,2859,2931,2979,3171,3219,3339,3387}
-Eval SumSquaresClue viii cartesianCount=40, elapsed 0:00:00.000063
-solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
-	referrers=[],
-	values={315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579,654,659,675,4 more,723}
-Eval SumSquaresClue xvii cartesianCount=18, elapsed 0:00:00.000048
-Eval SumSquaresClue v cartesianCount=40, elapsed 0:00:00.000064
+Eval SumSquaresClue xvii cartesianCount=18, elapsed 0:00:00.000040
+Eval SumSquaresClue v cartesianCount=40, elapsed 0:00:00.000068
 solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
 	referrers=[],
 	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579}
 B={11,13,17,19}
-Eval SumSquaresClue viii cartesianCount=32, elapsed 0:00:00.000192
+Eval SumSquaresClue xvii cartesianCount=18, elapsed 0:00:00.000042
+Eval SumSquaresClue viii cartesianCount=32, elapsed 0:00:00.000054
 solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
 	referrers=[],
 	values={315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555,579}
-Eval SumSquaresClue vii cartesianCount=32, elapsed 0:00:00.000085
+Eval SumSquaresClue vii cartesianCount=32, elapsed 0:00:00.000094
 solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
 	referrers=[],
 	values={315,339,414,419,435,459,462,467,483,486,491,507,531,534,539,555}
-Eval SumSquaresClue v cartesianCount=32, elapsed 0:00:00.000060
+Eval SumSquaresClue v cartesianCount=32, elapsed 0:00:00.000067
 solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
 	referrers=[],
 	values={294,299,315,339,414,419,435,459,462,467,483,486,491,507,531,534,539}
-Eval SumSquaresClue xii cartesianCount=48, elapsed 0:00:00.000063
-solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
+Eval SumSquaresClue xiii cartesianCount=48, elapsed 0:00:00.000076
+solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
 	referrers=[],
-	values={419,435,542,558,563,582,587,603}
-G={19,23}
-Eval SumSquaresClue xvii cartesianCount=12, elapsed 0:00:00.000043
-solve: SumSquaresClue(name=xvii,length=3,value: G*G+K*K+N*N,
+	values={323,342,347,363,374,390,395,414,419,435,542,558,563,582,587,603}
+Eval SumSquaresClue xi cartesianCount=48, elapsed 0:00:00.000078
+solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
 	referrers=[],
-	values={771,819,939,987}
-K={17}
-Eval SumSquaresClue vi cartesianCount=16, elapsed 0:00:00.000051
-solve: SumSquaresClue(name=vi,length=3,value: D*D+I*I+K*K,
-	referrers=[],
-	values={302,318,323,342,347,363}
-Eval SumSquaresClue xv cartesianCount=16, elapsed 0:00:00.000048
-solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
-	referrers=[],
-	values={486,491,507,531,534,539,555,579,654,659,675,699,702,707,723,747}
-Eval SumSquaresClue ix cartesianCount=16, elapsed 0:00:00.000042
+	values={318,323,342,347,363,374,390,395,414,419,435,542,558,563,582,587}
+Eval SumSquaresClue ix cartesianCount=48, elapsed 0:00:00.000071
 solve: SumSquaresClue(name=ix,length=3,value: B*B+D*D+K*K,
 	referrers=[],
-	values={414,419,435,459,462,467,483,507}
+	values={414,419,435,459,462,467,483,486,491,507,531,534,539,555,579}
 B={11,13}
-Eval SumSquaresClue v cartesianCount=16, elapsed 0:00:00.000041
-solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
-	referrers=[],
-	values={294,299,315,339}
-Eval SumSquaresClue viii cartesianCount=16, elapsed 0:00:00.000043
+K={17,19}
+Eval SumSquaresClue xvii cartesianCount=12, elapsed 0:00:00.000052
+Eval SumSquaresClue viii cartesianCount=16, elapsed 0:00:00.000036
 solve: SumSquaresClue(name=viii,length=3,value: A*A+B*B+N*N,
 	referrers=[],
 	values={339}
 A={7}
-Eval SumSquaresClue xi cartesianCount=8, elapsed 0:00:00.000047
-solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
-	referrers=[],
-	values={419,435,582,587}
-I={2,3,5}
-Eval SumSquaresClue xii cartesianCount=8, elapsed 0:00:00.000045
-solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
-	referrers=[],
-	values={435,582,587,603}
-D={2,3,5}
-Eval SumSquaresClue iii cartesianCount=6, elapsed 0:00:00.000039
+Eval SumSquaresClue iii cartesianCount=8, elapsed 0:00:00.000048
 solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
 	referrers=[],
 	values={174,179,195,222,227,243}
-Eval SumSquaresClue viii cartesianCount=4, elapsed 0:00:00.000033
-Eval SumSquaresClue iii cartesianCount=6, elapsed 0:00:00.000034
-Eval SumSquaresClue xii cartesianCount=6, elapsed 0:00:00.000033
-Eval SumSquaresClue ix cartesianCount=6, elapsed 0:00:00.000035
+D={2,3,5}
+Eval SumSquaresClue viii cartesianCount=4, elapsed 0:00:00.000030
+Eval SumSquaresClue iii cartesianCount=6, elapsed 0:00:00.000030
+Eval SumSquaresClue xii cartesianCount=9, elapsed 0:00:00.000032
+solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
+	referrers=[],
+	values={419,435,582,587}
+G={19,23}
+Eval SumSquaresClue xi cartesianCount=8, elapsed 0:00:00.000032
+solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
+	referrers=[],
+	values={419,435,582}
+I={2,3,5}
+Eval SumSquaresClue xii cartesianCount=6, elapsed 0:00:00.000031
+solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
+	referrers=[],
+	values={435,582,587}
+Eval SumSquaresClue xvii cartesianCount=8, elapsed 0:00:00.000031
+solve: SumSquaresClue(name=xvii,length=3,value: G*G+K*K+N*N,
+	referrers=[],
+	values={771,819,939,987}
+K={17}
+Eval SumSquaresClue ix cartesianCount=6, elapsed 0:00:00.000038
 solve: SumSquaresClue(name=ix,length=3,value: B*B+D*D+K*K,
 	referrers=[],
 	values={414,419,435,462,467,483}
-Eval SumSquaresClue xi cartesianCount=6, elapsed 0:00:00.000036
-Eval SumSquaresClue xiii cartesianCount=8, elapsed 0:00:00.000036
+Eval SumSquaresClue xi cartesianCount=6, elapsed 0:00:00.000031
+Eval SumSquaresClue xii cartesianCount=6, elapsed 0:00:00.000027
+Eval SumSquaresClue xiii cartesianCount=8, elapsed 0:00:00.000028
 solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
 	referrers=[],
 	values={582,587,603}
 G={23}
 M={2,3,5}
-Eval SumSquaresClue xvii cartesianCount=2, elapsed 0:00:00.000032
+Eval SumSquaresClue xvii cartesianCount=2, elapsed 0:00:00.000026
 solve: SumSquaresClue(name=xvii,length=3,value: G*G+K*K+N*N,
 	referrers=[],
 	values={939,987}
-Eval SumSquaresClue xiii cartesianCount=3, elapsed 0:00:00.000033
-Eval SumSquaresClue xii cartesianCount=3, elapsed 0:00:00.000034
+Eval SumSquaresClue xiii cartesianCount=3, elapsed 0:00:00.000028
+Eval SumSquaresClue xii cartesianCount=3, elapsed 0:00:00.000025
 solve: SumSquaresClue(name=xii,length=3,value: A*A+D*D+G*G,
 	referrers=[],
 	values={582,587}
 D={2,3}
-Eval SumSquaresClue xi cartesianCount=3, elapsed 0:00:00.000034
+Eval SumSquaresClue xi cartesianCount=3, elapsed 0:00:00.000028
 solve: SumSquaresClue(name=xi,length=3,value: A*A+G*G+I*I,
 	referrers=[],
 	values={582}
 I={2}
-Eval SumSquaresClue vi cartesianCount=2, elapsed 0:00:00.000038
+Eval SumSquaresClue vi cartesianCount=2, elapsed 0:00:00.000032
 solve: SumSquaresClue(name=vi,length=3,value: D*D+I*I+K*K,
 	referrers=[],
 	values={302}
 D={3}
-Eval SumSquaresClue iii cartesianCount=2, elapsed 0:00:00.000034
-solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
-	referrers=[],
-	values={179,227}
-Eval SumSquaresClue ix cartesianCount=2, elapsed 0:00:00.000032
+Eval SumSquaresClue ix cartesianCount=2, elapsed 0:00:00.000021
 solve: SumSquaresClue(name=ix,length=3,value: B*B+D*D+K*K,
 	referrers=[],
 	values={419,467}
-Eval SumSquaresClue xv cartesianCount=2, elapsed 0:00:00.000037
+Eval SumSquaresClue iii cartesianCount=2, elapsed 0:00:00.000032
+solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
+	referrers=[],
+	values={179,227}
+Eval SumSquaresClue xv cartesianCount=2, elapsed 0:00:00.000025
 solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
 	referrers=[],
 	values={654,702}
-Eval SumSquaresClue iii cartesianCount=2, elapsed 0:00:00.000032
-Eval SumSquaresClue xv cartesianCount=2, elapsed 0:00:00.000038
-Eval SumSquaresClue i cartesianCount=3, elapsed 0:00:00.000032
+Eval SumSquaresClue i cartesianCount=3, elapsed 0:00:00.000023
 solve: SumSquaresClue(name=i,length=2,value: D*D+I*I+M*M,
 	referrers=[],
 	values={38}
@@ -669,10 +571,7 @@ M={5}
 solve: SumSquaresClue(name=ii,length=2,value: A*A+I*I+M*M,
 	referrers=[],
 	values={78}
-solve: SumSquaresClue(name=xiii,length=3,value: A*A+G*G+M*M,
-	referrers=[],
-	values={603}
-Eval SumSquaresClue iv cartesianCount=2, elapsed 0:00:00.000030
+Eval SumSquaresClue iv cartesianCount=2, elapsed 0:00:00.000020
 solve: SumSquaresClue(name=iv,length=3,value: B*B+I*I+M*M,
 	referrers=[],
 	values={198}
@@ -680,7 +579,7 @@ B={13}
 solve: SumSquaresClue(name=ix,length=3,value: B*B+D*D+K*K,
 	referrers=[],
 	values={467}
-Eval SumSquaresClue v cartesianCount=2, elapsed 0:00:00.000040
+Eval SumSquaresClue v cartesianCount=2, elapsed 0:00:00.000019
 solve: SumSquaresClue(name=v,length=3,value: B*B+D*D+N*N,
 	referrers=[],
 	values={299}
@@ -688,52 +587,52 @@ N={11}
 solve: SumSquaresClue(name=xvii,length=3,value: G*G+K*K+N*N,
 	referrers=[],
 	values={939}
-solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
-	referrers=[],
-	values={654}
 solve: SumSquaresClue(name=vii,length=3,value: B*B+M*M+N*N,
 	referrers=[],
 	values={315}
 solve: SumSquaresClue(name=iii,length=3,value: A*A+D*D+N*N,
 	referrers=[],
 	values={179}
-Eval SumSquaresClue xix cartesianCount=3, elapsed 0:00:00.000032
-solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
+solve: SumSquaresClue(name=xv,length=3,value: G*G+I*I+N*N,
 	referrers=[],
-	values={990}
-L={31}
+	values={654}
+Eval SumSquaresClue xviii cartesianCount=4, elapsed 0:00:00.000025
 solve: SumSquaresClue(name=xviii,length=3,value: D*D+I*I+L*L,
 	referrers=[],
 	values={974}
-Eval SumSquaresClue xxi cartesianCount=4, elapsed 0:00:00.000033
+L={31}
+solve: SumSquaresClue(name=xix,length=3,value: I*I+L*L+M*M,
+	referrers=[],
+	values={990}
+Eval SumSquaresClue xxi cartesianCount=4, elapsed 0:00:00.000034
 solve: SumSquaresClue(name=xxi,length=4,value: A*A+H*H+M*M,
 	referrers=[],
 	values={1035,1443,1755,1923}
-Eval SumSquaresClue xxiii cartesianCount=4, elapsed 0:00:00.000034
+Eval SumSquaresClue xvi cartesianCount=5, elapsed 0:00:00.000031
+solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
+	referrers=[],
+	values={347,419,899}
+J={17,19,29}
+Eval SumSquaresClue xxiii cartesianCount=14, elapsed 0:00:00.000050
 solve: SumSquaresClue(name=xxiii,length=4,value: F*F+L*L+M*M,
 	referrers=[],
-	values={1827,2355,2667}
-F={29,37,41}
-Eval SumSquaresClue xx cartesianCount=3, elapsed 0:00:00.000045
+	values={1107,1155,1275,1347,1515,1827,2355,2667,2835}
+F={11,13,17,19,23,29,37,41,43}
+Eval SumSquaresClue xx cartesianCount=9, elapsed 0:00:00.000057
 solve: SumSquaresClue(name=xx,length=4,value: F*F+I*I+N*N,
 	referrers=[],
 	values={1494,1806}
 F={37,41}
-Eval SumSquaresClue xxiii cartesianCount=2, elapsed 0:00:00.000045
+Eval SumSquaresClue xxiii cartesianCount=2, elapsed 0:00:00.000027
 solve: SumSquaresClue(name=xxiii,length=4,value: F*F+L*L+M*M,
 	referrers=[],
 	values={2355,2667}
-Eval SumSquaresClue xx cartesianCount=2, elapsed 0:00:00.000042
-Eval SumSquaresClue xvi cartesianCount=4, elapsed 0:00:00.000042
-solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
-	referrers=[],
-	values={899}
-J={29}
-Eval SumSquaresClue xxv cartesianCount=8, elapsed 0:00:00.000049
+Eval SumSquaresClue xx cartesianCount=2, elapsed 0:00:00.000030
+Eval SumSquaresClue xxv cartesianCount=8, elapsed 0:00:00.000031
 solve: SumSquaresClue(name=xxv,length=4,value: F*F+H*H+N*N,
 	referrers=[],
 	values={2451,2763,3171,3339}
-Eval SumSquaresClue x cartesianCount=9, elapsed 0:00:00.000047
+Eval SumSquaresClue x cartesianCount=14, elapsed 0:00:00.000036
 solve: SumSquaresClue(name=x,length=3,value: D*D+E*E+N*N,
 	referrers=[],
 	values={491}
@@ -741,22 +640,24 @@ E={19}
 solve: SumSquaresClue(name=xiv,length=3,value: B*B+E*E+N*N,
 	referrers=[],
 	values={651}
-Eval SumSquaresClue xxii cartesianCount=4, elapsed 0:00:00.000042
+Eval SumSquaresClue xxii cartesianCount=4, elapsed 0:00:00.000024
 solve: SumSquaresClue(name=xxii,length=4,value: E*E+H*H+N*N,
 	referrers=[],
 	values={1851,2163,2331}
 H={37,41,43}
-Eval SumSquaresClue xxi cartesianCount=3, elapsed 0:00:00.000044
+Eval SumSquaresClue xxii cartesianCount=3, elapsed 0:00:00.000027
+Eval SumSquaresClue xxi cartesianCount=3, elapsed 0:00:00.000024
 solve: SumSquaresClue(name=xxi,length=4,value: A*A+H*H+M*M,
 	referrers=[],
 	values={1755,1923}
 H={41,43}
-Eval SumSquaresClue xxii cartesianCount=2, elapsed 0:00:00.000043
+Eval SumSquaresClue xxii cartesianCount=2, elapsed 0:00:00.000024
 solve: SumSquaresClue(name=xxii,length=4,value: E*E+H*H+N*N,
 	referrers=[],
 	values={2163,2331}
-Eval SumSquaresClue xxi cartesianCount=2, elapsed 0:00:00.000042
-Eval SumSquaresClue xxv cartesianCount=4, elapsed 0:00:00.000043
+Eval SumSquaresClue xxi cartesianCount=2, elapsed 0:00:00.000025
+Eval SumSquaresClue xxii cartesianCount=2, elapsed 0:00:00.000021
+Eval SumSquaresClue xxv cartesianCount=4, elapsed 0:00:00.000023
 solve: SumSquaresClue(name=xxv,length=4,value: F*F+H*H+N*N,
 	referrers=[],
 	values={3171,3339}
@@ -767,112 +668,122 @@ solve: SumSquaresClue(name=xxiii,length=4,value: F*F+L*L+M*M,
 solve: SumSquaresClue(name=xx,length=4,value: F*F+I*I+N*N,
 	referrers=[],
 	values={1494}
-Eval SumSquaresClue xxv cartesianCount=2, elapsed 0:00:00.000042
-Eval SumSquaresClue xxiv cartesianCount=10, elapsed 0:00:00.000050
+Eval SumSquaresClue xxv cartesianCount=2, elapsed 0:00:00.000024
+Eval SumSquaresClue xxiv cartesianCount=14, elapsed 0:00:00.000034
 solve: SumSquaresClue(name=xxiv,length=4,value: C*C+I*I+L*L,
 	referrers=[],
 	values={2646,2814}
 C={41,43}
-Eval SumSquaresClue xxvi cartesianCount=2, elapsed 0:00:00.000044
+Eval SumSquaresClue xxvii cartesianCount=4, elapsed 0:00:00.000027
+solve: SumSquaresClue(name=xxvii,length=4,value: C*C+D*D+H*H,
+	referrers=[],
+	values={3539}
+Eval SumSquaresClue xxvi cartesianCount=6, elapsed 0:00:00.000027
 solve: SumSquaresClue(name=xxvi,length=4,value: C*C+J*J+L*L,
 	referrers=[],
 	values={3483}
 C={41}
+J={29}
 solve: SumSquaresClue(name=xxiv,length=4,value: C*C+I*I+L*L,
 	referrers=[],
 	values={2646}
-Eval SumSquaresClue xxvii cartesianCount=2, elapsed 0:00:00.000036
+solve: SumSquaresClue(name=xvi,length=3,value: A*A+D*D+J*J,
+	referrers=[],
+	values={899}
+Eval SumSquaresClue xxvii cartesianCount=2, elapsed 0:00:00.000019
 solve: SumSquaresClue(name=xxvii,length=4,value: C*C+D*D+H*H,
 	referrers=[],
 	values={3539}
 H={43}
-solve: SumSquaresClue(name=xxii,length=4,value: E*E+H*H+N*N,
-	referrers=[],
-	values={2331}
 solve: SumSquaresClue(name=xxi,length=4,value: A*A+H*H+M*M,
 	referrers=[],
 	values={1923}
+solve: SumSquaresClue(name=xxii,length=4,value: E*E+H*H+N*N,
+	referrers=[],
+	values={2331}
 solve: SumSquaresClue(name=xxv,length=4,value: F*F+H*H+N*N,
 	referrers=[],
 	values={3339}
-Solve Error: clue D18 (null) no solution!
-Solve Error: clue A1 (null) no solution!
-Solve Error: clue A20 (null) no solution!
-Solve Error: clue D4 (null) no solution!
-Solve Error: clue A23 (null) no solution!
-Solve Error: clue A7 (null) no solution!
-Solve Error: clue D14 (null) no solution!
-Solve Error: clue D21 (null) no solution!
-Solve Error: clue A3 (null) no solution!
-Solve Error: clue D2 (null) no solution!
-Solve Error: clue A24 (null) no solution!
-Solve Error: clue A9 (null) no solution!
-Solve Error: clue A11 (null) no solution!
-Solve Error: clue D10 (null) no solution!
-Solve Error: clue A16 (null) no solution!
-Solve Error: clue A22 (null) no solution!
-Solve Error: clue D16 (null) no solution!
-Solve Error: clue D5 (null) no solution!
-Solve Error: clue D17 (null) no solution!
-Solve Error: clue A8 (null) no solution!
-Solve Error: clue D1 (null) no solution!
-Solve Error: clue D3 (null) no solution!
-Solve Error: clue A13 (null) no solution!
 Solve Error: clue D6 (null) no solution!
-Solve Error: clue D15 (null) no solution!
-Solve Error: clue D12 (null) no solution!
+Solve Error: clue A16 (null) no solution!
+Solve Error: clue A11 (null) no solution!
+Solve Error: clue D4 (null) no solution!
+Solve Error: clue D21 (null) no solution!
+Solve Error: clue D14 (null) no solution!
+Solve Error: clue D18 (null) no solution!
+Solve Error: clue D1 (null) no solution!
+Solve Error: clue A3 (null) no solution!
+Solve Error: clue A13 (null) no solution!
+Solve Error: clue A8 (null) no solution!
 Solve Error: clue A19 (null) no solution!
-Solve Error: clue D12 (null) no solution!
-Solve Error: clue A13 (null) no solution!
-Solve Error: clue D10 (null) no solution!
 Solve Error: clue D15 (null) no solution!
-Solve Error: clue A8 (null) no solution!
-Solve Error: clue D1 (null) no solution!
-Solve Error: clue D5 (null) no solution!
-Solve Error: clue D17 (null) no solution!
-Solve Error: clue A22 (null) no solution!
-Solve Error: clue D16 (null) no solution!
+Solve Error: clue D3 (null) no solution!
+Solve Error: clue A20 (null) no solution!
+Solve Error: clue D10 (null) no solution!
 Solve Error: clue D2 (null) no solution!
-Solve Error: clue A16 (null) no solution!
-Solve Error: clue A11 (null) no solution!
+Solve Error: clue D16 (null) no solution!
+Solve Error: clue A7 (null) no solution!
+Solve Error: clue A9 (null) no solution!
 Solve Error: clue A1 (null) no solution!
 Solve Error: clue A24 (null) no solution!
+Solve Error: clue A22 (null) no solution!
+Solve Error: clue D17 (null) no solution!
 Solve Error: clue A23 (null) no solution!
-Solve Error: clue A3 (null) no solution!
-Solve Error: clue D18 (null) no solution!
-Solve Error: clue A20 (null) no solution!
-Solve Error: clue D4 (null) no solution!
-Solve Error: clue A9 (null) no solution!
-Solve Error: clue D6 (null) no solution!
+Solve Error: clue D5 (null) no solution!
+Solve Error: clue D12 (null) no solution!
+Solve Error: clue D12 (null) no solution!
+Solve Error: clue D17 (null) no solution!
+Solve Error: clue A23 (null) no solution!
 Solve Error: clue D3 (null) no solution!
-Solve Error: clue D14 (null) no solution!
+Solve Error: clue A22 (null) no solution!
+Solve Error: clue A9 (null) no solution!
+Solve Error: clue A1 (null) no solution!
+Solve Error: clue D16 (null) no solution!
 Solve Error: clue A7 (null) no solution!
+Solve Error: clue D10 (null) no solution!
+Solve Error: clue D2 (null) no solution!
+Solve Error: clue A13 (null) no solution!
+Solve Error: clue A20 (null) no solution!
+Solve Error: clue D15 (null) no solution!
+Solve Error: clue A16 (null) no solution!
+Solve Error: clue A8 (null) no solution!
 Solve Error: clue D21 (null) no solution!
-Solve Error: clue A7 (null) no solution!
-Solve Error: clue A13 (null) no solution!
-Solve Error: clue D4 (null) no solution!
-Solve Error: clue D17 (null) no solution!
-Solve Error: clue A22 (null) no solution!
-Solve Error: clue D10 (null) no solution!
-Solve Error: clue A24 (null) no solution!
-Solve Error: clue D15 (null) no solution!
-Solve Error: clue D5 (null) no solution!
-Solve Error: clue D12 (null) no solution!
-Solve Error: clue A16 (null) no solution!
-Solve Error: clue A8 (null) no solution!
-Solve Error: clue D1 (null) no solution!
-Solve Error: clue D2 (null) no solution!
-Solve Error: clue A9 (null) no solution!
-Solve Error: clue A20 (null) no solution!
-Solve Error: clue A23 (null) no solution!
-Solve Error: clue D16 (null) no solution!
-Solve Error: clue A11 (null) no solution!
-Solve Error: clue A1 (null) no solution!
-Solve Error: clue D6 (null) no solution!
 Solve Error: clue A3 (null) no solution!
+Solve Error: clue D6 (null) no solution!
+Solve Error: clue A11 (null) no solution!
+Solve Error: clue D4 (null) no solution!
+Solve Error: clue A19 (null) no solution!
+Solve Error: clue D5 (null) no solution!
+Solve Error: clue A24 (null) no solution!
+Solve Error: clue D18 (null) no solution!
 Solve Error: clue D14 (null) no solution!
+Solve Error: clue D1 (null) no solution!
+Solve Error: clue D14 (null) no solution!
+Solve Error: clue D2 (null) no solution!
+Solve Error: clue D17 (null) no solution!
+Solve Error: clue A11 (null) no solution!
+Solve Error: clue D16 (null) no solution!
+Solve Error: clue A7 (null) no solution!
+Solve Error: clue A23 (null) no solution!
+Solve Error: clue A16 (null) no solution!
 Solve Error: clue D3 (null) no solution!
-Clue/Variable iterations=303, updates=120, elapsed 0:00:00.129453
+Solve Error: clue A1 (null) no solution!
+Solve Error: clue D12 (null) no solution!
+Solve Error: clue A13 (null) no solution!
+Solve Error: clue A22 (null) no solution!
+Solve Error: clue A9 (null) no solution!
+Solve Error: clue D15 (null) no solution!
+Solve Error: clue D4 (null) no solution!
+Solve Error: clue A3 (null) no solution!
+Solve Error: clue A8 (null) no solution!
+Solve Error: clue D10 (null) no solution!
+Solve Error: clue A20 (null) no solution!
+Solve Error: clue A24 (null) no solution!
+Solve Error: clue A19 (null) no solution!
+Solve Error: clue D21 (null) no solution!
+Solve Error: clue D18 (null) no solution!
+Solve Error: clue D5 (null) no solution!
+Clue/Variable iterations=285, updates=100, elapsed 0:00:00.110551
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 i, D*D+I*I+M*M, values={38}

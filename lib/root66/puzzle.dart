@@ -18,8 +18,8 @@ class Root66Puzzle
             List.from({1, 2, 3, 4, 5, 6, 7, 8, 9}), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingValues => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
+  List<int> get remainingValues => variableList.restrictedValues!;
+  Set<Variable> updateLetters(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 
   @override
@@ -28,7 +28,7 @@ class Root66Puzzle
       print("ITERATE SOLUTIONS-----------------------------");
       // Find ambiguous clues
       for (var clue in this.clues.values) {
-        if ((clue).type == Root66ClueType.BCEFG &&
+        if ((clue).root66type == Root66ClueType.BCEFG &&
             clue.values != null &&
             clue.values!.length > 1) {
           var values = clue.values!;

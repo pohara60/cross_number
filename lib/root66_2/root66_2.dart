@@ -43,9 +43,10 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     void entryWrapper(
         {String? name,
         int? length,
-        Root66_2EntryType type = Root66_2EntryType.UNKNOWN}) {
+        Root66_2EntryType root66type = Root66_2EntryType.UNKNOWN}) {
       try {
-        var entry = Root66_2Entry(name: name, length: length, type: type);
+        var entry =
+            Root66_2Entry(name: name, length: length, root66type: root66type);
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
@@ -73,7 +74,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     }
 
     entryWrapper(name: 'A2', length: 4);
-    entryWrapper(name: 'A7', length: 8, type: Root66_2EntryType.BCEFG);
+    entryWrapper(name: 'A7', length: 8, root66type: Root66_2EntryType.BCEFG);
     entryWrapper(name: 'A8', length: 4);
     entryWrapper(name: 'A9', length: 4);
     entryWrapper(name: 'A11', length: 4);
@@ -82,15 +83,15 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     entryWrapper(name: 'A16', length: 4);
     entryWrapper(name: 'A18', length: 4);
     entryWrapper(name: 'A19', length: 4);
-    entryWrapper(name: 'A20', length: 8, type: Root66_2EntryType.BCEFG);
+    entryWrapper(name: 'A20', length: 8, root66type: Root66_2EntryType.BCEFG);
     entryWrapper(name: 'A21', length: 4);
 
-    entryWrapper(name: 'D1', length: 8, type: Root66_2EntryType.BCEFG);
+    entryWrapper(name: 'D1', length: 8, root66type: Root66_2EntryType.BCEFG);
     entryWrapper(name: 'D2', length: 4);
     entryWrapper(name: 'D3', length: 4);
     entryWrapper(name: 'D4', length: 4);
     entryWrapper(name: 'D5', length: 4);
-    entryWrapper(name: 'D6', length: 8, type: Root66_2EntryType.BCEFG);
+    entryWrapper(name: 'D6', length: 8, root66type: Root66_2EntryType.BCEFG);
     entryWrapper(name: 'D8', length: 4);
     entryWrapper(name: 'D10', length: 4);
     entryWrapper(name: 'D14', length: 4);
@@ -287,7 +288,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     // G = BE+66*CF, so 17<=CF<=72 and 1234<=G<=4794
     // C, F >= 2
     for (var entry in puzzle.entries.values) {
-      if (entry.type == Root66_2EntryType.BCEFG) {
+      if (entry.root66type == Root66_2EntryType.BCEFG) {
         entry.digits[1].remove(1);
         entry.digits[3].remove(1);
         entry.digits[4].removeAll([5, 6, 7, 8, 9]);
@@ -356,11 +357,11 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     var clue = variableClue as Root66_2Clue;
     var entry = clue.entry as Root66_2Entry;
     var valid = false;
-    if (entry.type == Root66_2EntryType.BCEFG) {
+    if (entry.root66type == Root66_2EntryType.BCEFG) {
       valid = validBCEFG.containsKey(value);
-    } else if (entry.type == Root66_2EntryType.G) {
+    } else if (entry.root66type == Root66_2EntryType.G) {
       valid = validBCEF.containsKey(value);
-    } else if (entry.type == Root66_2EntryType.BCEF) {
+    } else if (entry.root66type == Root66_2EntryType.BCEF) {
       valid = validG.containsKey(value);
     } else {
       valid = validBCEForG.containsKey(value);
@@ -385,7 +386,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     var possibleEntryValue = possibleValue2!;
     var types = <Root66_2EntryType>{};
     // Normal clues have expression
-    if (entry.type != Root66_2EntryType.BCEFG) {
+    if (entry.root66type != Root66_2EntryType.BCEFG) {
       // Evaluate expression to get possible values, filtering by valid BCEFG values
       var maxCount = 100000000;
       puzzle.solveVariableExpressionEvaluator(
@@ -400,14 +401,14 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       var entriesG = <int>{};
       var entriesBCEF = <int>{};
       for (var clueValue in possibleClueValue) {
-        if (entry.type == Root66_2EntryType.G ||
-            entry.type == Root66_2EntryType.UNKNOWN) {
+        if (entry.root66type == Root66_2EntryType.G ||
+            entry.root66type == Root66_2EntryType.UNKNOWN) {
           if (validBCEF.containsKey(clueValue)) {
             entriesG.add(validBCEF[clueValue]!['g']!);
           }
         }
-        if (entry.type == Root66_2EntryType.BCEF ||
-            entry.type == Root66_2EntryType.UNKNOWN) {
+        if (entry.root66type == Root66_2EntryType.BCEF ||
+            entry.root66type == Root66_2EntryType.UNKNOWN) {
           if (validG.containsKey(clueValue)) {
             entriesBCEF.addAll(validG[clueValue]!.map((e) => e['bcef']!));
           }
@@ -479,7 +480,8 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
-      if (puzzle.updateValues(entry, possibleEntryValue)) updated = true;
+      if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty)
+        updated = true;
       if (entry.finalise()) updated = true;
       for (var variableName in clue.variableReferences) {
         updateVariables(puzzle, variableName, possibleVariables[variableName]!,
@@ -499,15 +501,15 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
   }
 
   void setEntryType(Root66_2Entry entry, Root66_2EntryType type) {
-    if (entry.type != Root66_2EntryType.UNKNOWN) {
-      if (entry.type != type) {
+    if (entry.root66type != Root66_2EntryType.UNKNOWN) {
+      if (entry.root66type != type) {
         print('Solve Error: changing type for Entry ${entry.name}!');
         throw SolveException();
       }
       return;
     }
     // Set type
-    entry.type = type;
+    entry.root66type = type;
   }
 
   void checkEntryTypes() {
@@ -515,10 +517,10 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     const TARGET_G = 7;
     const TARGET_BCEF = 13;
     var countG = puzzle.entries.values
-        .where((e) => e.type == Root66_2EntryType.G)
+        .where((e) => e.root66type == Root66_2EntryType.G)
         .length;
     var countBCEF = puzzle.entries.values
-        .where((e) => e.type == Root66_2EntryType.BCEF)
+        .where((e) => e.root66type == Root66_2EntryType.BCEF)
         .length;
     if (countG < TARGET_G && countBCEF < TARGET_BCEF) return;
     if (countG == TARGET_G && countBCEF == TARGET_BCEF) return;
@@ -530,9 +532,9 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     // Can fix other entries
     var fix = countG == TARGET_G ? Root66_2EntryType.BCEF : Root66_2EntryType.G;
     puzzle.entries.values
-        .where((e) => e.type == Root66_2EntryType.UNKNOWN)
+        .where((e) => e.root66type == Root66_2EntryType.UNKNOWN)
         .forEach((e) {
-      e.type = fix;
+      e.root66type = fix;
       if (Crossnumber.traceSolve) {
         print('Set remaining types to $fix');
       }

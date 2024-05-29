@@ -15,7 +15,6 @@ class Knights2Variable extends Variable {
 class Knights2Puzzle
     extends VariablePuzzle<Knights2Clue, Knights2Entry, Knights2Variable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   Knights2Puzzle() : super(null) {
     EntryMixin.maxDigit = 6;
     EntryMixin.zeroDigit = false;
@@ -25,9 +24,4 @@ class Knights2Puzzle
     EntryMixin.maxDigit = 6;
     EntryMixin.zeroDigit = false;
   }
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 }

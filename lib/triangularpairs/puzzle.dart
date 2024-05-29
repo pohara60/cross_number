@@ -14,14 +14,8 @@ class TriangularPairsVariable extends Variable {
 class TriangularPairsPuzzle extends VariablePuzzle<TriangularPairsClue,
     TriangularPairsEntry, TriangularPairsVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   TriangularPairsPuzzle({String name = ''}) : super(null, name: name);
   TriangularPairsPuzzle.fromGridString(List<String> gridString,
       {String name = ''})
       : super.fromGridString(null, gridString, name: name);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 }

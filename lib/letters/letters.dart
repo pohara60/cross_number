@@ -240,10 +240,10 @@ class Letters extends Crossnumber<LettersPuzzle> {
   bool solveA1(LettersEntry clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleLetters) {
     var updated = false;
-    for (var r in puzzle.letters['R']!.values!) {
+    for (var r in puzzle.variables['R']!.values!) {
       for (var a
-          in puzzle.letters['A']!.values!.where((element) => element != r)) {
-        for (var p in puzzle.letters['P']!.values!
+          in puzzle.variables['A']!.values!.where((element) => element != r)) {
+        for (var p in puzzle.variables['P']!.values!
             .where((element) => element != r && element != a)) {
           var value = r * (a + p);
           if (value >= 10 && value < 100) {
@@ -261,10 +261,10 @@ class Letters extends Crossnumber<LettersPuzzle> {
   bool solveA4(LettersEntry clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleLetters) {
     var updated = false;
-    for (var d in puzzle.letters['D']!.values!) {
+    for (var d in puzzle.variables['D']!.values!) {
       for (var u
-          in puzzle.letters['U']!.values!.where((element) => element != d)) {
-        for (var e in puzzle.letters['E']!.values!
+          in puzzle.variables['U']!.values!.where((element) => element != d)) {
+        for (var e in puzzle.variables['E']!.values!
             .where((element) => element != d && element != u)) {
           var value = d * (u + e);
           if (value >= 10 && value < 100) {
@@ -282,14 +282,14 @@ class Letters extends Crossnumber<LettersPuzzle> {
   bool solveA7(LettersEntry clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleLetters) {
     var updated = false;
-    for (var p in puzzle.letters['P']!.values!) {
+    for (var p in puzzle.variables['P']!.values!) {
       for (var e
-          in puzzle.letters['E']!.values!.where((element) => element != p)) {
-        for (var r in puzzle.letters['R']!.values!
+          in puzzle.variables['E']!.values!.where((element) => element != p)) {
+        for (var r in puzzle.variables['R']!.values!
             .where((element) => element != p && element != e)) {
-          for (var s in puzzle.letters['S']!.values!.where(
+          for (var s in puzzle.variables['S']!.values!.where(
               (element) => element != p && element != e && element != r)) {
-            for (var y in puzzle.letters['Y']!.values!.where((element) =>
+            for (var y in puzzle.variables['Y']!.values!.where((element) =>
                 element != p && element != e && element != r && element != s)) {
               var mul = (e - y + e);
               var div = (mul ~/ s);
@@ -315,12 +315,12 @@ class Letters extends Crossnumber<LettersPuzzle> {
   bool solveA8(LettersEntry clue, Set<int> possibleValue,
       Map<String, Set<int>> possibleLetters) {
     var updated = false;
-    for (var p in puzzle.letters['P']!.values!) {
+    for (var p in puzzle.variables['P']!.values!) {
       for (var u
-          in puzzle.letters['U']!.values!.where((element) => element != p)) {
-        for (var a in puzzle.letters['A']!.values!
+          in puzzle.variables['U']!.values!.where((element) => element != p)) {
+        for (var a in puzzle.variables['A']!.values!
             .where((element) => element != p && element != u)) {
-          for (var s in puzzle.letters['S']!.values!.where(
+          for (var s in puzzle.variables['S']!.values!.where(
               (element) => element != p && element != u && element != a)) {
             var value = p * u * p * a * s;
             if (value >= 10 && value < 100) {
@@ -341,13 +341,13 @@ class Letters extends Crossnumber<LettersPuzzle> {
       Map<String, Set<int>> possibleLetters) {
     var updated = false;
     for (var product in cartesian([
-      puzzle.letters['S']!.values!.toList(),
-      puzzle.letters['T']!.values!.toList(),
-      puzzle.letters['R']!.values!.toList(),
-      puzzle.letters['A']!.values!.toList(),
-      puzzle.letters['Y']!.values!.toList(),
-      puzzle.letters['E']!.values!.toList(),
-      puzzle.letters['D']!.values!.toList(),
+      puzzle.variables['S']!.values!.toList(),
+      puzzle.variables['T']!.values!.toList(),
+      puzzle.variables['R']!.values!.toList(),
+      puzzle.variables['A']!.values!.toList(),
+      puzzle.variables['Y']!.values!.toList(),
+      puzzle.variables['E']!.values!.toList(),
+      puzzle.variables['D']!.values!.toList(),
     ])) {
       var s = product[0];
       var t = product[1];

@@ -8,9 +8,15 @@ class PowerPlayClue extends ExpressionClue {
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   PowerPlayClue(
-      {required String name, required int? length, String? valueDesc, SolveFunction? solve, List<String>? entryNames})
+      {required String name,
+      VariableType type = VariableType.C,
+      required int? length,
+      String? valueDesc,
+      SolveFunction? solve,
+      List<String>? entryNames})
       : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,
@@ -24,12 +30,14 @@ class PowerPlayEntry extends PowerPlayClue with EntryMixin {
 
   PowerPlayEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
     entryNames,
   }) : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,

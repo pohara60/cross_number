@@ -9,10 +9,16 @@ class ABCDClue extends ExpressionClue {
 
   ABCDClue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 }
 
 class ABCDEntry extends ABCDClue with EntryMixin {
@@ -22,10 +28,16 @@ class ABCDEntry extends ABCDClue with EntryMixin {
 
   ABCDEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 }

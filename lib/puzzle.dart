@@ -1,5 +1,3 @@
-import 'dart:math';
-
 // ignore: unused_import
 import 'package:crossnumber/set.dart';
 
@@ -13,12 +11,16 @@ import 'gridspec.dart';
 import 'variable.dart';
 
 class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
-  final _clues = <String, ClueKind>{};
-  final _entries = <String, EntryKind>{};
+  late final Map<VariableType, VariableList> _variableLists;
+  late final VariableList<ClueKind> _clues;
+  late final VariableList<EntryKind> _entries;
+  late final VariableList<Cell> _cells;
   final _allVariables = <(VariableType, String), Variable>{};
-  Map<String, ClueKind> get clues => _clues.isNotEmpty ? _clues : _entries;
-  Map<String, EntryKind> get entries => _clues.isNotEmpty ? _entries : {};
-  Map<String, EntryKind> get allEntries => _entries;
+  Map<String, ClueKind> get clues =>
+      _clues.variables.isNotEmpty ? _clues.variables : _entries.variables;
+  Map<String, EntryKind> get entries =>
+      _clues.variables.isNotEmpty ? _entries.variables : {};
+  Map<String, EntryKind> get allEntries => _entries.variables;
   Map<(VariableType, String), Variable> get allVariables => _allVariables;
 
   final otherPuzzleClues = <String, Puzzle>{};
@@ -30,8 +32,21 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   final String name;
   bool distinctClues = true;
 
-  Puzzle({this.name = ''}) {}
+  void _initPuzzle() {
+    _variableLists = <VariableType, VariableList>{};
+    _variableLists[VariableType.C] =
+        (_clues = VariableList<ClueKind>(VariableType.C, []));
+    _variableLists[VariableType.E] =
+        (_entries = VariableList<EntryKind>(VariableType.E, []));
+    _variableLists[VariableType.G] =
+        (_cells = VariableList<Cell>(VariableType.G, []));
+  }
+
+  Puzzle({this.name = ''}) {
+    _initPuzzle();
+  }
   Puzzle.fromGridString(List<String> gridString, {this.name = ''}) {
+    _initPuzzle();
     this.gridSpec = GridSpec(gridString);
   }
 
@@ -43,6 +58,20 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   void addEntry(EntryKind entry) {
     _entries[entry.name] = entry;
     _allVariables[(VariableType.E, entry.name)] = entry;
+  }
+
+  void addCell(Cell cell) {
+    _cells[cell.name] = cell;
+    _allVariables[(VariableType.G, cell.name)] = cell as Variable;
+  }
+
+  void addCellVariables() {
+    assert(grid != null);
+    for (var row in grid!.rows) {
+      for (var cell in row) {
+        addCell(cell);
+      }
+    }
   }
 
   // clue1[digit1-1] = clue2[digit2-1]
@@ -163,33 +192,12 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   List<int> knownClueValues = [];
   List<int> knownEntryValues = [];
 
-  bool updateValues(Clue clue, Set<int> possibleValue) {
-    if (clue.isSet) {
-      // Nothing to do
-      assert(possibleValue.contains(clue.values!.first));
-      return false;
-    }
-    // Values are restricted in set of clues/entries
-    List<int>? knownValues;
-    if (clue is EntryMixin)
-      knownValues = knownEntryValues;
-    else {
-      // Clue values may not be distinct
-      if (!distinctClues)
-        knownValues = null;
-      else
-        knownValues = knownClueValues;
-    }
-    if (knownValues != null) possibleValue.removeAll(knownValues);
-    var updated = clue.updateValues(possibleValue);
-    if (updated) {
-      clue.min = clue.values!.reduce(min);
-      clue.max = clue.values!.reduce(max);
-      if (possibleValue.length == 1) {
-        if (knownValues != null) knownValues.addAll(possibleValue);
-      }
-    }
-    return updated;
+  Set<Variable> updateVariableValues(
+      Variable variable, Set<int> possibleValue) {
+    var variableList = _variableLists[variable.variableType]!;
+    var updatedVariables =
+        variableList.updateVariables(variable.name, possibleValue);
+    return updatedVariables;
   }
 
   Iterable<Variable> clueOrVariableValueReferences(
@@ -228,7 +236,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   void fixClue(String clueName, int value) {
     var clue = this.clues[clueName];
     if (clue != null) {
-      updateValues(clue, {value});
+      updateVariableValues(clue, {value});
       clue.finalise();
       if (Crossnumber.traceSolve) {
         print('Fix clue $clueName=$value');
@@ -798,7 +806,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       Generator('sumdigits', generateSumDigits),
       Generator('otherentry', generateOtherEntry)
     ];
-    variableList = VariableList<VariableKind>(possibleValues);
+    _variableLists[VariableType.V] = (variableList =
+        VariableList<VariableKind>(VariableType.V, possibleValues));
     Scanner.addGenerators(puzzleGenerators);
   }
 
@@ -815,8 +824,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   Map<String, Variable> get variables => variableList.variables;
-  List<int>? get remainingValues => variableList.remainingValues;
-  Set<String> updateVariables(String variable, Set<int> possibleValues) =>
+  List<int>? get remainingValues => variableList.restrictedValues;
+  Set<Variable> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
 
   void addVariable(VariableKind variable) {
@@ -958,8 +967,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 
   String checkVariableReferences() {
     var variableError = '';
-    variableError += checkClueVariableReferences(_clues);
-    variableError += checkClueVariableReferences(_entries);
+    variableError += checkClueVariableReferences(_clues.variables);
+    variableError += checkClueVariableReferences(_entries.variables);
     return variableError;
   }
 
@@ -974,6 +983,25 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
                 "${variable.runtimeType} ${variable.name} expression '${variable.valueDesc}' refers to variable '$variableName' which does not exist\n";
           } else {
             (otherVariable as ExpressionVariable).addReferrer(variable);
+          }
+        }
+      }
+    }
+    return variableError;
+  }
+
+  String checkPuzzleVariableReferences() {
+    var variableError = '';
+    for (var variable in allVariables.values) {
+      if (variable is Expression) {
+        for (var variableName in variable.variableReferences) {
+          var otherVariable = variables[variableName];
+          if (otherVariable == null) {
+            var expString = (variable as Expression).expString;
+            variableError +=
+                "${variable.runtimeType} ${variable.name} expression '${expString}' refers to variable '$variableName' which does not exist\n";
+          } else {
+            otherVariable.addReferrer(variable);
           }
         }
       }
@@ -1091,7 +1119,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   int checkVariablesCount(
-    Clue clue,
+    Variable clue,
     Set<int> possibleValue,
     Map<String, Set<int>> possibleVariables,
     List<String> unknownVariable,
@@ -1102,12 +1130,14 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     // Unknown variable
     if (unknownVariable.isNotEmpty) {
       // Try guessing clue values
-      var clueValues = clue.getValuesFromDigits();
-      if (clueValues != null) {
-        possibleValue.addAll(clueValues);
-        // Cannot update variables
-        possibleVariables.clear();
-        return 0;
+      if (clue is Clue) {
+        var clueValues = clue.getValuesFromDigits();
+        if (clueValues != null) {
+          possibleValue.addAll(clueValues);
+          // Cannot update variables
+          possibleVariables.clear();
+          return 0;
+        }
       }
       throw new SolveException(
           "Solve ${clue.runtimeType} ${clue.name} no values for variable(s) ${unknownVariable}");
@@ -1130,7 +1160,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   int getVariables(
-    ExpressionClue clue,
+    Variable clue,
     List<ExpressionEvaluator> expressions,
     Set<int> possibleValue,
     Map<String, Set<int>> possibleVariables,
@@ -1204,7 +1234,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   void getVariableValues(
-    ExpressionClue clue,
+    Variable clue,
     List<ExpressionEvaluator> exps,
     List<String> unknownVariable,
     List<String> impossibleVariable,
@@ -1351,6 +1381,84 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     return updated;
   }
 
+  // Generic expression evaluator, supports variables
+  bool solveVariable(
+    Variable variable,
+    ExpressionEvaluator exp,
+    Set<int> possibleValue,
+    Map<String, Set<int>> possibleVariables, [
+    bool Function(Variable, int, List<String>, List<int>)? validValue,
+    int maxCount = 1000000,
+    bool enforceDistinctValues = false,
+  ]) {
+    final stopwatch = Stopwatch()..start();
+    var updated = false;
+    var variableNames = <String>[];
+    var variableValues = <List<int>>[];
+    // for (var variableName in variable.variableReferences) {
+    //   var variable = this.variables[variableName]!;
+    //   if (variable.values == null)
+    //     throw new SolveException("Unknown values for variable $variableName");
+    //   if (variable.values!.isEmpty)
+    //     throw new SolveException("No values for variable $variableName!");
+    //   variableValues.add(variable.values!.toList());
+    //   possibleVariables[variableName] = <int>{};
+    // }
+    // var count = cartesianCount(variableValues);
+    var count = getVariables(variable, [exp], possibleValue, possibleVariables,
+        variableNames, variableValues, maxCount);
+    if (count == 0) return false;
+    if (count > 1000000) {
+      //if (count > 1000000) {
+      if (Crossnumber.traceSolve) {
+        print(
+            'Eval ${variable.runtimeType} ${variable.name} cartesianCount=$count Exception');
+      }
+      throw new SolveException();
+    }
+    for (var product
+        in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
+      try {
+        for (var value in exp.generate(
+            variable.min, variable.max, variableNames, product)) {
+          if (enforceDistinctValues) {
+            // Variable values are distinct
+            if (product.contains(value)) continue;
+          }
+          if ((variable.min == null || value >= variable.min!) &&
+              (variable.max == null || value < variable.max! + 1)) {
+            var valid = validValue == null
+                ? true
+                : validValue(variable, value, variableNames, product);
+            if (valid) {
+              possibleValue.add(value);
+              var index = 0;
+              for (var variableName in variableNames) {
+                possibleVariables[variableName]!.add(product[index++]);
+              }
+              // if (Crossnumber.traceSolve) {
+              //   print('${variable.name}=$value, ${variable.variableReferences}=$product');
+              // }
+            }
+          }
+        }
+      } on ExpressionInvalid {
+        // Illegal values
+      }
+    }
+    if (Crossnumber.traceSolve) {
+      if (count != 1) {
+        print(
+            'Eval ${variable.runtimeType} ${variable.name} cartesianCount=$count, elapsed ${stopwatch.elapsed}');
+        // print('${clue.exp.toString()}');
+        // for (var v in clue.variableReferences) {
+        //   print('$v=${this.variables[v]!.values!.toList()}');
+        // }
+      }
+    }
+    return updated;
+  }
+
   /*-------------------- Variable Puzzle Post-processing --------------------*/
 
   int iterateVariables() {
@@ -1366,6 +1474,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     if (variableNames.isEmpty)
       throw SolveException('No variable values to iterate over!');
+    if (variableValues.any((element) => element.isEmpty))
+      throw SolveException('A variable has no values!');
 
     var count = 0;
     //for (var product in [      [8, 3, 5, 1, 7, 4, 9, 2, 6]    ]) {

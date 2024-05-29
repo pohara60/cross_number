@@ -17,16 +17,10 @@ class ThirtyPuzzle
     extends VariablePuzzle<ThirtyClue, ThirtyEntry, ThirtyVariable> {
   final Thirty thirty;
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   ThirtyPuzzle(this.thirty) : super(null);
   ThirtyPuzzle.fromGridString(this.thirty, List<String> gridString,
       {String name = ''})
       : super.fromGridString(null, gridString, name: name);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 
   @override
   bool clueValuesMatch(Clue clue, int value) {

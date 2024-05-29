@@ -77,13 +77,7 @@ class SequenceVariable extends Variable {
 class SequencesPuzzle
     extends VariablePuzzle<SequencesClue, SequencesEntry, SequenceVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   SequencesPuzzle() : super(List.from(variableValues));
   SequencesPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(List.from(variableValues), gridString);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 }

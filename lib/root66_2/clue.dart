@@ -12,10 +12,16 @@ class Root66_2Clue extends ExpressionClue {
 
   Root66_2Clue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 
   String toString() {
     var identityStr = digitIdentities
@@ -43,14 +49,20 @@ class Root66_2Clue extends ExpressionClue {
 }
 
 class Root66_2Entry extends Root66_2Clue with EntryMixin {
-  Root66_2EntryType type;
+  Root66_2EntryType root66type;
   Root66_2Entry({
     required name,
+    VariableType type = VariableType.E,
     required length,
-    required this.type,
+    required this.root66type,
     valueDesc,
     solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 }

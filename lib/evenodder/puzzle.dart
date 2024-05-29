@@ -70,13 +70,7 @@ class EvenOdderVariable extends Variable {
 class EvenOdderPuzzle
     extends VariablePuzzle<EvenOdderClue, EvenOdderEntry, EvenOdderVariable> {
   // Puzzle has Letter variables with restricted values
-  late final VariableList variableList;
   EvenOdderPuzzle() : super(List.from(variableValues));
   EvenOdderPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(List.from(variableValues), gridString);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 }

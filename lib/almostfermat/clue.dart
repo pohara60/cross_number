@@ -9,6 +9,7 @@ class AlmostFermatClue extends ExpressionClue {
 
   AlmostFermatClue(
       {required String name,
+      VariableType type = VariableType.C,
       required int? length,
       String? valueDesc,
       List<String>? addDesc,
@@ -16,6 +17,7 @@ class AlmostFermatClue extends ExpressionClue {
       List<String>? entryNames})
       : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             addDesc: addDesc,
@@ -30,12 +32,14 @@ class AlmostFermatEntry extends AlmostFermatClue with EntryMixin {
 
   AlmostFermatEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
     entryNames,
   }) : super(
             name: name,
+            type: type,
             length: length,
             valueDesc: valueDesc,
             solve: solve,

@@ -21,7 +21,6 @@ class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
   final DieAnotherDay dieAnotherDay;
   final checkVariables = <DieAnotherDayVariable>[];
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   DieAnotherDayPuzzle(this.dieAnotherDay,
       {String name = '', List<DieAnotherDayVariable>? check})
       : super(null, name: name) {
@@ -33,11 +32,6 @@ class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
       : super.fromGridString([1, 2, 3, 4, 5, 6], gridString, name: name) {
     if (check != null) checkVariables.addAll(check);
   }
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 
   @override
   int iterate([Function? callback]) {

@@ -16,15 +16,9 @@ class TwoPrimesVariable extends Variable {
 class TwoPrimesPuzzle
     extends VariablePuzzle<TwoPrimesClue, TwoPrimesEntry, TwoPrimesVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   TwoPrimesPuzzle() : super(null);
   TwoPrimesPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString(null, gridString);
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 
   Iterable<int> variablevalues(int value) sync* {
     // Return value and 100-value

@@ -13,11 +13,17 @@ class PrimeCutsClue extends ExpressionClue {
 
   PrimeCutsClue({
     required String name,
+    VariableType type = VariableType.C,
     required int? length,
     required String this.prime,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve);
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve);
 
   String toString() {
     var identityStr = entry == null
@@ -60,12 +66,14 @@ class PrimeCutsClue extends ExpressionClue {
 class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
   PrimeCutsEntry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     required String prime,
     String? valueDesc,
     SolveFunction? solve,
   }) : super(
             name: name,
+            type: type,
             length: length,
             prime: prime,
             valueDesc: valueDesc,

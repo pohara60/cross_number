@@ -15,7 +15,6 @@ class KnightsVariable extends Variable {
 class KnightsPuzzle
     extends VariablePuzzle<KnightsClue, KnightsEntry, KnightsVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
-  late final VariableList variableList;
   KnightsPuzzle() : super(null) {
     EntryMixin.maxDigit = 6;
   }
@@ -23,11 +22,6 @@ class KnightsPuzzle
       : super.fromGridString(null, gridString) {
     EntryMixin.maxDigit = 6;
   }
-
-  Map<String, Variable> get letters => variableList.variables;
-  List<int> get remainingDigits => variableList.remainingValues!;
-  Set<String> updateLetters(String letter, Set<int> possibleDigits) =>
-      variableList.updateVariables(letter, possibleDigits);
 
   @override
   postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {

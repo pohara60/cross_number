@@ -9,12 +9,18 @@ class No21Clue extends ExpressionClue {
   late int _cellsTwoDigits;
   No21Clue(
       {required name,
+      VariableType type = VariableType.C,
       required length,
       valueDesc,
       solve,
       int cellsTwoDigits = 1})
       : _cellsTwoDigits = cellsTwoDigits,
-        super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+        super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     // Some cells contain two digits
     // Assume upto two of these per clue
     setDoubleDigits();
@@ -56,10 +62,16 @@ class No21Clue extends ExpressionClue {
 class No21Entry extends No21Clue with EntryMixin {
   No21Entry({
     required String name,
+    VariableType type = VariableType.E,
     required int? length,
     String? valueDesc,
     SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+  }) : super(
+            name: name,
+            type: type,
+            length: length,
+            valueDesc: valueDesc,
+            solve: solve) {
     initEntry(this);
   }
 

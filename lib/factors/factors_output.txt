@@ -80,16 +80,103 @@ FactorsEntry(name=D14,length=2,value: ,
 	values={unknown},
 	digits=[{1..9},{0..9}]
 Variables:
-A={}
-B={}
-C={}
-D={}
-E={}
-F={}
-G={}
+A={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+B={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+C={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+D={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+E={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+F={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+G={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
 
 UPDATES-----------------------------
-Clue/Variable iterations=20, updates=0, elapsed 0:00:00.044491
+Eval FactorsCell 34 cartesianCount=182250, elapsed 0:00:00.321881
+solve: 34={1, 2, 3, 4, 5, 6, 7, 8, 9},AA={4,9,25,49}
+Eval FactorsCell 40 cartesianCount=262440, elapsed 0:00:00.206739
+solve: 40={1, 2, 3, 4, 5, 6, 7, 8, 9},AAA={8,27}
+Eval FactorsCell 34 cartesianCount=14580, elapsed 0:00:00.009178
+solve: 34={1, 2, 3, 4, 5, 6, 7, 8, 9},AA={4,9}
+Eval FactorsCell 31 cartesianCount=131220, elapsed 0:00:00.083732
+solve: 31={1, 2, 3, 4, 5, 6, 7, 8, 9},A={2,3}
+Eval FactorsCell 43 cartesianCount=18225000 Exception
+Eval FactorsCell 40 cartesianCount=131220, elapsed 0:00:00.101819
+Eval FactorsCell 43 cartesianCount=18225000 Exception
+Eval FactorsCell 03 cartesianCount=182250, elapsed 0:00:00.089583
+solve: 03={1, 2, 3, 4, 5, 6, 7, 8, 9},D={2,3,5,7,11,13,17,19,23,29,31}
+Eval FactorsCell 13 cartesianCount=1782000 Exception
+Eval FactorsCell 12 cartesianCount=1603800 Exception
+Eval FactorsCell 00 cartesianCount=1476225 Exception
+Eval FactorsCell 10 cartesianCount=182250, elapsed 0:00:00.096387
+solve: 10={1, 2, 3, 4, 5, 6, 7, 8, 9},BB={4,9,25,49}
+Eval FactorsCell 42 cartesianCount=291600, elapsed 0:00:00.185010
+solve: 42={1, 2, 3, 4, 5, 6, 7, 8, 9},B={2,3,5,7}
+Eval FactorsCell 10 cartesianCount=29160, elapsed 0:00:00.016249
+Eval FactorsCell 00 cartesianCount=236196, elapsed 0:00:00.167734
+solve: 00={1, 2, 3, 4, 5, 6, 7, 8, 9},BBB={8,27}
+Eval FactorsCell 42 cartesianCount=145800, elapsed 0:00:00.095758
+solve: 42={1, 2, 3, 4, 5, 6, 7, 8, 9},B={2,3}
+Eval FactorsCell 10 cartesianCount=14580, elapsed 0:00:00.008239
+solve: 10={1, 2, 3, 4, 5, 6, 7, 8, 9},BB={4,9}
+Eval FactorsCell 00 cartesianCount=118098, elapsed 0:00:00.085257
+Eval FactorsCell 21 cartesianCount=324000, elapsed 0:00:00.138754
+solve: 21={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},AAB={12,18}
+Eval FactorsCell 20 cartesianCount=262440, elapsed 0:00:00.119257
+solve: 20={1, 2, 3, 4, 5, 6, 7, 8, 9},AAAB={24,54}
+Eval FactorsCell 01 cartesianCount=2624400 Exception
+Eval FactorsCell 42 cartesianCount=145800, elapsed 0:00:00.090033
+Eval FactorsCell 31 cartesianCount=131220, elapsed 0:00:00.082545
+Eval FactorsCell 02 cartesianCount=236196, elapsed 0:00:00.089981
+solve: 02={1, 2, 3, 4, 5, 6, 7, 8, 9},AB={6}
+Eval FactorsCell 11 cartesianCount=324000, elapsed 0:00:00.144539
+solve: 11={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},ABB={12,18}
+Eval FactorsCell 20 cartesianCount=262440, elapsed 0:00:00.139253
+Eval FactorsCell 11 cartesianCount=324000, elapsed 0:00:00.141872
+Eval FactorsCell 20 cartesianCount=262440, elapsed 0:00:00.120999
+Eval FactorsCell 02 cartesianCount=236196, elapsed 0:00:00.090791
+Eval FactorsCell 11 cartesianCount=324000, elapsed 0:00:00.140165
+Eval FactorsCell 04 cartesianCount=1603800 Exception
+Eval FactorsCell 13 cartesianCount=1782000 Exception
+Eval FactorsCell 12 cartesianCount=1603800 Exception
+Eval FactorsCell 33 cartesianCount=1640250 Exception
+Eval FactorsCell 32 cartesianCount=1476225 Exception
+Eval FactorsCell 21 cartesianCount=324000, elapsed 0:00:00.143714
+Eval FactorsCell 01 cartesianCount=2624400 Exception
+Eval FactorsCell 23 cartesianCount=1822500 Exception
+Eval FactorsCell 32 cartesianCount=1476225 Exception
+Eval FactorsCell 30 cartesianCount=26572050 Exception
+Eval FactorsCell 41 cartesianCount=405000, elapsed 0:00:00.227509
+solve: 41={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},AC={6,10,14,15,21,22,26,33,34,38,39,46}
+Eval FactorsCell 43 cartesianCount=6561000 Exception
+Eval FactorsCell 23 cartesianCount=656100, elapsed 0:00:00.439937
+solve: 23={1, 2, 3, 4, 5, 6, 7, 8, 9},C={2,3,5,7,11,13,17,19,23}
+Eval FactorsCell 24 cartesianCount=1458000 Exception
+Eval FactorsCell 41 cartesianCount=145800, elapsed 0:00:00.075227
+Eval FactorsCell 44 cartesianCount=2916000 Exception
+Eval FactorsCell 14 cartesianCount=80190000 Exception
+Eval FactorsCell 31 cartesianCount=131220, elapsed 0:00:00.084335
+Eval FactorsCell 00 cartesianCount=118098, elapsed 0:00:00.084207
+Eval FactorsCell 40 cartesianCount=131220, elapsed 0:00:00.104146
+Eval FactorsCell 01 cartesianCount=2624400 Exception
+Eval FactorsCell 11 cartesianCount=324000, elapsed 0:00:00.144495
+Eval FactorsCell 23 cartesianCount=656100, elapsed 0:00:00.455770
+Eval FactorsCell 43 cartesianCount=6561000 Exception
+Eval FactorsCell 03 cartesianCount=80190, elapsed 0:00:00.038366
+Eval FactorsCell 24 cartesianCount=1458000 Exception
+Eval FactorsCell 13 cartesianCount=1782000 Exception
+Eval FactorsCell 04 cartesianCount=1603800 Exception
+Eval FactorsCell 12 cartesianCount=1603800 Exception
+Eval FactorsCell 33 cartesianCount=1640250 Exception
+Eval FactorsCell 32 cartesianCount=1476225 Exception
+Eval FactorsCell 44 cartesianCount=2916000 Exception
+Eval FactorsCell 30 cartesianCount=26572050 Exception
+Eval FactorsCell 01 cartesianCount=2624400 Exception
+Eval FactorsCell 43 cartesianCount=6561000 Exception
+Eval FactorsCell 12 cartesianCount=1603800 Exception
+Eval FactorsCell 04 cartesianCount=1603800 Exception
+Eval FactorsCell 13 cartesianCount=1782000 Exception
+Eval FactorsCell 33 cartesianCount=1640250 Exception
+Eval FactorsCell 32 cartesianCount=1476225 Exception
+Eval FactorsCell 44 cartesianCount=2916000 Exception
+Clue/Variable iterations=94, updates=16, elapsed 0:00:04.620678
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, , values={111..119,121..129,131,132,709 more,999}
@@ -124,13 +211,36 @@ D14, , values={10..29,70 more,99}
 | ?  ?| ?  ?  ?|
 +--+--+--+--+--+
 Variables:
-A={}
-B={}
-C={}
-D={}
-E={}
-F={}
-G={}
+A={2,3}
+B={2,3}
+C={2,3,5,7,11,13,17,19,23}
+D={2,3,5,7,11,13,17,19,23,29,31}
+E={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+F={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+G={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,5 more,97}
+00={1, 2, 3, 4, 5, 6, 7, 8, 9},BBB={8,27}
+01={1, 2, 3, 4, 5, 6, 7, 8, 9},AABB=null
+02={1, 2, 3, 4, 5, 6, 7, 8, 9},AB={6}
+03={1, 2, 3, 4, 5, 6, 7, 8, 9},D={2,3,5,7,11,13,17,19,23,29,31}
+04={1, 2, 3, 4, 5, 6, 7, 8, 9},BD=null
+10={1, 2, 3, 4, 5, 6, 7, 8, 9},BB={4,9}
+11={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},ABB={12,18}
+12={1, 2, 3, 4, 5, 6, 7, 8, 9},AD=null
+13={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},AAD=null
+14={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},CD=null
+20={1, 2, 3, 4, 5, 6, 7, 8, 9},AAAB={24,54}
+21={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},AAB={12,18}
+22={},=null
+23={1, 2, 3, 4, 5, 6, 7, 8, 9},C={2,3,5,7,11,13,17,19,23}
+24={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},BC=null
+30={1, 2, 3, 4, 5, 6, 7, 8, 9},AE=null
+31={1, 2, 3, 4, 5, 6, 7, 8, 9},A={2,3}
+32={1, 2, 3, 4, 5, 6, 7, 8, 9},F=null
+33={1, 2, 3, 4, 5, 6, 7, 8, 9},G=null
+34={1, 2, 3, 4, 5, 6, 7, 8, 9},AA={4,9}
+40={1, 2, 3, 4, 5, 6, 7, 8, 9},AAA={8,27}
+41={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},AC={6,10,14,15,21,22,26,33,34,38,39,46}
+42={1, 2, 3, 4, 5, 6, 7, 8, 9},B={2,3}
+43={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},CC=null
+44={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},ABC=null
 
-ITERATE SOLUTIONS-----------------------------
-Exception RangeError (index): Invalid value: Valid value range is empty: 0
