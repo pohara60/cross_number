@@ -96,7 +96,7 @@ class Factors extends Crossnumber<FactorsPuzzle> {
       'G',
     ];
     for (var letter in letters) {
-      puzzle.addVariable(FactorsVariable(letter));
+      puzzle.addAnyVariable(FactorsVariable(letter));
     }
     var cellExpresssions = [
       ['BBB', 'AABB', 'AB', 'D', 'BD'],
@@ -208,7 +208,7 @@ class Factors extends Crossnumber<FactorsPuzzle> {
       List<int> variableValues) {
     // The number in each cell is the greatest common factor of the two
     // entries that cross at that cell in the first grid.
-    // These are the last  two variable references
+    // These are the last two variable references
     // var cell = v as FactorsCell;
     var gcf = getGCF(variableValues[variableValues.length - 1],
         variableValues[variableValues.length - 2]);

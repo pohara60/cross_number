@@ -191,7 +191,7 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
     var clueError = puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
-    var variableError = puzzle.checkVariableReferences();
+    var variableError = puzzle.checkPuzzleVariableReferences();
     if (variableError != '') throw PuzzleException(variableError);
 
     super.initCrossnumber();

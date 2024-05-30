@@ -73,10 +73,10 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(ColumnsVariable(letter));
+      puzzle.addAnyVariable(ColumnsVariable(letter));
     }
 
-    var clueError = puzzle.checkVariableReferences();
+    var clueError = puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

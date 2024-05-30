@@ -68,7 +68,7 @@ class PowerPlay extends Crossnumber<PowerPlayPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(PowerPlayVariable(letter));
+      puzzle.addAnyVariable(PowerPlayVariable(letter));
     }
 
     var clueError = '';
@@ -77,7 +77,7 @@ class PowerPlay extends Crossnumber<PowerPlayPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

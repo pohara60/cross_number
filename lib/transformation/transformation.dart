@@ -128,7 +128,7 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
       'Y',
     ];
     for (var letter in letters) {
-      puzzle.addVariable(TransformationVariable(letter));
+      puzzle.addAnyVariable(TransformationVariable(letter));
     }
 
     var clueError = '';
@@ -137,7 +137,7 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

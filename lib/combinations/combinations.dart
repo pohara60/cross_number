@@ -115,7 +115,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
       'J',
     ];
     for (var letter in letters) {
-      puzzle.addVariable(CombinationsVariable(letter));
+      puzzle.addAnyVariable(CombinationsVariable(letter));
     }
 
     var clueError = '';
@@ -124,7 +124,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

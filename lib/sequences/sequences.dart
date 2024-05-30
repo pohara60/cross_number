@@ -339,7 +339,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       'r',
     ];
     for (var letter in letters) {
-      puzzle.addVariable(SequenceVariable(letter));
+      puzzle.addAnyVariable(SequenceVariable(letter));
       for (var clue in puzzle.clues.values) {
         if (clue.valueDesc!.contains(letter)) {
           clue.addLetterReference(letter);
@@ -353,7 +353,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     // clueError += puzzle.checkEntryClueReferences();
     // clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as prceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

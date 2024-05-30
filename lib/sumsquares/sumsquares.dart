@@ -151,7 +151,7 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
       'N',
     ];
     for (var letter in letters) {
-      puzzle.addVariable(SumSquaresVariable(letter));
+      puzzle.addAnyVariable(SumSquaresVariable(letter));
     }
 
     var clueError = '';
@@ -160,7 +160,7 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     initSumSquares();

@@ -28,7 +28,7 @@ class Cell extends Variable {
     this.row,
     this.col, [
     this.face = '',
-  ]) : super('$face$row$col');
+  ]) : super('$face$row$col', variableType: VariableType.G);
 
   String get position => '$row$col';
   String toString() => '$name=$_digits';

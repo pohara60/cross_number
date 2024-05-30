@@ -78,7 +78,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
         // variables
       ];
       for (var letter in letters) {
-        puzzle.addVariable(TwentyFiveVariable(letter));
+        puzzle.addAnyVariable(TwentyFiveVariable(letter));
       }
 
       var clueError = '';
@@ -87,7 +87,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
       clueError += puzzle.checkEntryClueReferences();
       clueError += puzzle.checkEntryEntryReferences();
       // Check variabes last, as preceeding may update them
-      clueError += puzzle.checkVariableReferences();
+      clueError += puzzle.checkPuzzleVariableReferences();
       if (clueError != '') throw PuzzleException(clueError);
     }
 

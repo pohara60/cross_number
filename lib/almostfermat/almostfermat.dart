@@ -98,7 +98,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(AlmostFermatVariable(letter));
+      puzzle.addAnyVariable(AlmostFermatVariable(letter));
     }
 
     // Get Entry expressions from Clue expressions
@@ -122,7 +122,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

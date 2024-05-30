@@ -170,7 +170,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(CoupletsVariable(letter));
+      puzzle.addAnyVariable(CoupletsVariable(letter));
     }
 
     var clueError = '';
@@ -179,7 +179,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

@@ -68,7 +68,7 @@ class CubeSandwich extends Crossnumber<CubeSandwichPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(CubeSandwichVariable(letter));
+      puzzle.addAnyVariable(CubeSandwichVariable(letter));
     }
 
     var clueError = '';
@@ -77,7 +77,7 @@ class CubeSandwich extends Crossnumber<CubeSandwichPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

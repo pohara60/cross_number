@@ -59,7 +59,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
           valueDesc: valueDesc,
           solve: solve,
         );
-        puzzle.addVariable(variable);
+        puzzle.addAnyVariable(variable);
         return;
       } on ExpressionError catch (e) {
         variableErrors += e.msg + '\n';
@@ -174,11 +174,8 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     puzzle.linkEntriesToGrid();
 
     var clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
-
-    var variableError = puzzle.checkVariableVariableReferences();
-    if (variableError != '') throw PuzzleException(variableError);
 
     super.initCrossnumber();
   }
@@ -226,8 +223,8 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     var variable = v as WheelsVariable;
     var updated = false;
     if (variable.valueDesc != '') {
-      updated = puzzle.solveExpressionVariable(variable, variable.exp,
-          possibleValue, possibleVariables!, validVariable);
+      updated = puzzle.solveVariable(variable, variable.exp, possibleValue,
+          possibleVariables!, validVariable);
     } else {
       if (variable.values != null) possibleValue.addAll(variable.values!);
     }

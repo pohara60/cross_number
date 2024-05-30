@@ -87,7 +87,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
           valueDesc,
           solve: solve,
         );
-        puzzle.addVariable(variable);
+        puzzle.addAnyVariable(variable);
         return;
       } on ExpressionError catch (e) {
         variableErrors += e.msg + '\n';
@@ -293,10 +293,9 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     }
     if (variableErrors != '') throw PuzzleException(variableErrors);
 
-    variableErrors += puzzle.checkVariableVariableReferences();
     variableErrors += puzzle.checkClueClueReferences();
     variableErrors += puzzle.checkEntryClueReferences();
-    variableErrors = puzzle.checkVariableReferences();
+    variableErrors += puzzle.checkPuzzleVariableReferences();
     if (variableErrors != '') throw PuzzleException(variableErrors);
 
     // A9 depends on all other 2 digit entries
@@ -598,7 +597,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     var variable = v as ExpressionVariable;
     var updated = false;
     if (variable.valueDesc != '') {
-      updated = puzzle.solveExpressionVariable(
+      updated = puzzle.solveVariable(
           v, v.exp, possibleValue, possibleVariables!, validVariable);
     } else {
       if (variable.values != null) possibleValue.addAll(variable.values!);

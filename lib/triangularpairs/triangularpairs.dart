@@ -85,7 +85,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(TriangularPairsVariable(letter));
+      puzzle.addAnyVariable(TriangularPairsVariable(letter));
     }
 
     var clueError = '';
@@ -94,7 +94,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     // Symmetric pairs

@@ -98,7 +98,7 @@ class UnderSix extends Crossnumber<UnderSixPuzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable(UnderSixVariable(letter));
+      puzzle.addAnyVariable(UnderSixVariable(letter));
     }
 
     var clueError = '';
@@ -107,7 +107,7 @@ class UnderSix extends Crossnumber<UnderSixPuzzle> {
     clueError += puzzle.checkEntryClueReferences();
     clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

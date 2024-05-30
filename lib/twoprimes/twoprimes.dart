@@ -106,11 +106,11 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
 
     var letters = ['E', 'I', 'M', 'P', 'R', 'S'];
     for (var letter in letters) {
-      puzzle.addVariable(TwoPrimesVariable(letter));
+      puzzle.addAnyVariable(TwoPrimesVariable(letter));
     }
 
     var clueError = '';
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     clueError += puzzle.checkClueClueReferences();
     if (clueError != '') throw PuzzleException(clueError);
 

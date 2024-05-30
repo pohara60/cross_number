@@ -200,7 +200,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     // Add letter references from descriptions
     var letters = ['A', 'D', 'I', 'N', 'O', 'R', 'S', 'T', 'U'];
     for (var letter in letters) {
-      puzzle.addVariable(Root66_2Variable(letter));
+      puzzle.addAnyVariable(Root66_2Variable(letter));
       for (var clue in puzzle.clues.values) {
         if (clue.valueDesc!.contains(letter)) {
           clue.addLetterReference(letter);
@@ -214,7 +214,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     // clueError += puzzle.checkEntryClueReferences();
     // clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as prceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

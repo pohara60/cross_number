@@ -236,7 +236,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
       'Y',
     ];
     for (var letter in letters) {
-      puzzle.addVariable(ParticularVariable(letter));
+      puzzle.addAnyVariable(ParticularVariable(letter));
     }
 
     var clueError = '';
@@ -245,7 +245,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
     // clueError += puzzle.checkEntryClueReferences();
     // clueError += puzzle.checkEntryEntryReferences();
     // Check variabes last, as prceeding may update them
-    clueError += puzzle.checkVariableReferences();
+    clueError += puzzle.checkPuzzleVariableReferences();
     if (clueError != '') throw PuzzleException(clueError);
 
     super.initCrossnumber();

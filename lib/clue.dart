@@ -489,6 +489,20 @@ mixin EntryMixin on Clue {
     else
       _digits[d] = set;
   }
+
+  void addDigitIdentity(int digit1, EntryMixin otherEntry, int digit2) {
+    digitIdentities[digit1 - 1] =
+        DigitIdentity(entry: otherEntry, digit: digit2 - 1);
+    otherEntry.digitIdentities[digit2 - 1] =
+        DigitIdentity(entry: this, digit: digit1 - 1);
+    addReferrer(otherEntry);
+    otherEntry.addReferrer(this);
+    if (clue != null && otherEntry.clue != null) {
+      // Entrys are mapped to clues, so add reference betwen them
+      clue!.addReferrer(otherEntry.clue!);
+      otherEntry.clue!.addReferrer(clue!);
+    }
+  }
 }
 
 class Entry extends Clue with EntryMixin {
