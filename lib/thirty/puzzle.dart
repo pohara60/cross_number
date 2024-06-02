@@ -20,7 +20,7 @@ class ThirtyPuzzle
   ThirtyPuzzle(this.thirty) : super(null);
   ThirtyPuzzle.fromGridString(this.thirty, List<String> gridString,
       {String name = ''})
-      : super.fromGridString(null, gridString, name: name);
+      : super.fromGridString([], gridString, name: name);
 
   @override
   bool clueValuesMatch(Clue clue, int value) {

@@ -15,5 +15,5 @@ class {{env['ABCD']}}Puzzle extends VariablePuzzle<{{env['ABCD']}}Clue, {{env['A
   // Puzzle has Letter variables that are restricted to values 1..9
   {{env['ABCD']}}Puzzle({String name = ''}) : super(null, name: name);
   {{env['ABCD']}}Puzzle.fromGridString(List<String> gridString, {String name = ''})
-      : super.fromGridString(null, gridString, name: name);
+      : super.fromGridString([], gridString, name: name);
 }

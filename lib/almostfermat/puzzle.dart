@@ -16,7 +16,7 @@ class AlmostFermatPuzzle extends VariablePuzzle<AlmostFermatClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   AlmostFermatPuzzle() : super(null);
   AlmostFermatPuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString) {
+      : super.fromGridString([], gridString) {
     distinctClues = false;
   }
 

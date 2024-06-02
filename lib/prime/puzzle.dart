@@ -15,5 +15,5 @@ class PrimePuzzle extends VariablePuzzle<PrimeClue, PrimeEntry, PrimeVariable> {
   // Puzzle has Letter variables that are restricted to values 1..9
   PrimePuzzle() : super(null);
   PrimePuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString);
+      : super.fromGridString([], gridString);
 }

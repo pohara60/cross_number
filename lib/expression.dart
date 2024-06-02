@@ -347,17 +347,18 @@ class Node {
         var name = token.name;
         var monadic = monadics[name]!;
         if (monadic.type == Iterable<int>) {
-          // Ascending generator functions
-          if (order == NodeOrder.SINGLE && name == 'lessthan')
+          // Descending/Ascending/Unknown generator functions
+          if (order == NodeOrder.SINGLE &&
+              monadic.order == NodeOrder.DESCENDING)
             order = NodeOrder.DESCENDING;
-          else if (order == NodeOrder.SINGLE && !['jumble'].contains(name))
+          else if (order == NodeOrder.SINGLE &&
+              monadic.order == NodeOrder.ASCENDING)
             order = NodeOrder.ASCENDING;
           else
             order = NodeOrder.UNKNOWN;
         } else {
-          // Non-generator functions that do not preserver operand order
-          if (order != NodeOrder.SINGLE &&
-              ['ds', 'dp', 'mp', 'reverse'].contains(name))
+          // Non-generator functions that do not preserve operand order
+          if (order != NodeOrder.SINGLE && monadic.order == NodeOrder.UNKNOWN)
             order = NodeOrder.UNKNOWN;
         }
       } else if (token.type == REVERSE) {
@@ -959,11 +960,13 @@ class ExpressionEvaluator {
         var rnode = node.operands![1];
         var rvalue =
             rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
+        // Arbitrary min/max limit when do not know what values are to be subtracted
+        const ARBITRARY_LIMIT = 10000;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
-                rvalue == 0 ? 1 : min + rvalue,
-                rvalue == 0 ? max : max + rvalue,
+                rvalue == 0 ? -ARBITRARY_LIMIT : min + rvalue,
+                rvalue == 0 ? ARBITRARY_LIMIT : max + rvalue,
                 lnode,
                 callback,
               )) {

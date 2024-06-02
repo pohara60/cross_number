@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:powers/powers.dart';
 
+import 'expression.dart';
 import 'generators.dart';
 
 typedef MonadicFunc = dynamic Function(int arg);
@@ -12,15 +13,20 @@ class Monadic {
   MonadicFunc? func;
   MonadicFuncRange? funcRange;
   Type type;
-  Monadic(this.name, this.func, this.type, [this.funcRange]);
+  NodeOrder order;
+  Monadic(this.name, this.func, this.type,
+      {this.funcRange, this.order = NodeOrder.ASCENDING});
 }
 
 void initializeMonadics(Map<String, Monadic> monadics) {
-  monadics['ds'] = Monadic('ds', digitSum, int);
-  monadics['dp'] = Monadic('dp', digitProduct, int);
-  monadics['mp'] = Monadic('mp', multiplicativePersistence, int);
-  monadics['reverse'] = Monadic('reverse', reverse, int);
-  monadics['sumdigits'] = Monadic('sumdigits', sumDigits, int);
+  monadics['ds'] = Monadic('ds', digitSum, int, order: NodeOrder.UNKNOWN);
+  monadics['dp'] = Monadic('dp', digitProduct, int, order: NodeOrder.UNKNOWN);
+  monadics['mp'] =
+      Monadic('mp', multiplicativePersistence, int, order: NodeOrder.UNKNOWN);
+  monadics['reverse'] =
+      Monadic('reverse', reverse, int, order: NodeOrder.UNKNOWN);
+  monadics['sumdigits'] =
+      Monadic('sumdigits', sumDigits, int, order: NodeOrder.UNKNOWN);
   monadics['square'] = Monadic('square', square, int);
   monadics['cube'] = Monadic('cube', cube, int);
   monadics['even'] = Monadic('even', isEven, bool);
@@ -37,16 +43,22 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['greaterthan'] = Monadic('greaterthan', greaterthan, Iterable<int>);
   monadics['greaterthanequal'] =
       Monadic('greaterthanequal', greaterthanequal, Iterable<int>);
-  monadics['lessthan'] = Monadic('lessthan', lessthan, Iterable<int>);
-  monadics['lessthanequal'] =
-      Monadic('lessthanequal', lessthanequal, Iterable<int>);
+  monadics['lessthan'] =
+      Monadic('lessthan', lessthan, Iterable<int>, order: NodeOrder.DESCENDING);
+  monadics['lessthanequal'] = Monadic(
+      'lessthanequal', lessthanequal, Iterable<int>,
+      order: NodeOrder.DESCENDING);
   monadics['gt'] = Monadic('gt', greaterthan, Iterable<int>);
   monadics['gte'] = Monadic('gte', greaterthanequal, Iterable<int>);
-  monadics['lt'] = Monadic('lt', lessthan, Iterable<int>);
-  monadics['lte'] = Monadic('lte', lessthanequal, Iterable<int>);
-  monadics['jumble'] = Monadic('jumble', jumble, Iterable<int>);
+  monadics['lt'] =
+      Monadic('lt', lessthan, Iterable<int>, order: NodeOrder.DESCENDING);
+  monadics['lte'] =
+      Monadic('lte', lessthanequal, Iterable<int>, order: NodeOrder.DESCENDING);
+  monadics['jumble'] =
+      Monadic('jumble', jumble, Iterable<int>, order: NodeOrder.UNKNOWN);
   monadics['factor'] = Monadic('factor', factors, Iterable<int>);
-  monadics['divisor'] = Monadic('divisor', null, Iterable<int>, divisors);
+  monadics['divisor'] =
+      Monadic('divisor', null, Iterable<int>, funcRange: divisors);
   monadics['power'] = Monadic('power', powers, Iterable<int>);
 }
 

@@ -72,11 +72,13 @@ class Variable with PriorityVariable {
 
   Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
   set values(Set<int>? values) {
+    // print("!$name=${values == null ? 'null' : values.toShortString()}");
     UndoStack.push(this);
     valuesNoUndo = values;
   }
 
   set valuesNoUndo(Set<int>? values) {
+    // print("!$name=${values == null ? 'null' : values.toShortString()}");
     _values = values;
     if (values == null || values.isEmpty) {
       min = max = null;
@@ -126,6 +128,7 @@ class Variable with PriorityVariable {
       return true;
     }
     checkAnswer(possibleValues);
+    // print("!$name=${possibleValues.toShortString()}");
     var updated =
         this.values!.any((element) => !possibleValues.contains(element));
     this.values!.removeWhere((element) => !possibleValues.contains(element));
@@ -165,6 +168,13 @@ class Variable with PriorityVariable {
 
   void sortVariables() {
     _variableRefs.sort();
+  }
+
+  bool removeValue(int value) {
+    // print("!$name=${possibleValues.toShortString()}");
+    var updated = _values!.remove(value);
+    checkAnswer(_values!);
+    return updated;
   }
 }
 
@@ -246,7 +256,7 @@ class VariableList<VariableKind extends Variable> {
   Iterable<VariableKind> get values => _variables.values;
 
   late final List<int>? restrictedValues;
-  late final bool distinct;
+  late bool distinct;
   Set<int> get knownValues => variables.entries
       .where((entry) => entry.value.isSet)
       .map<int>((e) => e.value.value!)
@@ -290,7 +300,7 @@ class VariableList<VariableKind extends Variable> {
             if (!knownLetters.contains(entry.key)) {
               var entryVariable = entry.value;
               if (entryVariable.values != null) {
-                if (entryVariable.values!.remove(letterValue))
+                if (entryVariable.removeValue(letterValue))
                   updatedVariables.add(entry.value);
                 if (entryVariable.isSet) knownLetters.add(entry.key);
               }
@@ -314,7 +324,7 @@ class VariableList<VariableKind extends Variable> {
     for (var variableName in variables.keys.toList()..sort()) {
       text += variables[variableName].toString() + '\n';
     }
-    if (restrictedValues != null) {
+    if (restrictedValues != null && restrictedValues!.isNotEmpty) {
       var remainingValues =
           List.from(Set<int>.from(restrictedValues!)..removeAll(knownValues));
       text += 'RemainingValues: ${remainingValues.toString()}\n';

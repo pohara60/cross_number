@@ -13,8 +13,7 @@ class FactorsCell extends Cell with Expression {
   ]) : super(row, col, face);
 
   String toString() =>
-      super.toString() +
-      ',$expDesc=${values != null ? values!.toShortString() : 'null'}';
+      '$name,$expDesc=${values != null ? values!.toShortString() : 'null'}';
 
   void setExp(String cellExpresssion, SolveFunction solve) {
     expDesc = cellExpresssion;

@@ -33,5 +33,5 @@ class SumSquaresPuzzle extends VariablePuzzle<SumSquaresClue, SumSquaresEntry,
   // Puzzle has Letter variables that are restricted to values 1..9
   SumSquaresPuzzle({String name = ''}) : super(null, name: name);
   SumSquaresPuzzle.fromGridString(List<String> gridString, {String name = ''})
-      : super.fromGridString(null, gridString, name: name);
+      : super.fromGridString([], gridString, name: name);
 }

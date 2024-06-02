@@ -16,7 +16,7 @@ class PrimeKnightPuzzle extends VariablePuzzle<PrimeKnightClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   PrimeKnightPuzzle({String name = ''}) : super(null, name: name);
   PrimeKnightPuzzle.fromGridString(List<String> gridString, {String name = ''})
-      : super.fromGridString(null, gridString, name: name);
+      : super.fromGridString([], gridString, name: name);
 
   List<List<(int, int)>> knightTours() {
     // Count knight tours starting in top-left and ending in bottom-right

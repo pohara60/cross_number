@@ -18,7 +18,7 @@ class TwoPrimesPuzzle
   // Puzzle has Letter variables that are restricted to values 1..9
   TwoPrimesPuzzle() : super(null);
   TwoPrimesPuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString);
+      : super.fromGridString([], gridString);
 
   Iterable<int> variablevalues(int value) sync* {
     // Return value and 100-value
@@ -31,7 +31,8 @@ class TwoPrimesPuzzle
   void initVariablePuzzle(List<int>? possibleValues) {
     super.initVariablePuzzle(possibleValues);
     final puzzleMonadics = [
-      Monadic('variablevalue', variablevalues, Iterable<int>),
+      Monadic('variablevalue', variablevalues, Iterable<int>,
+          order: NodeOrder.UNKNOWN),
     ];
     Scanner.addMonadics(puzzleMonadics);
   }

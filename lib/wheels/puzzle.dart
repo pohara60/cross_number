@@ -17,5 +17,5 @@ class WheelsPuzzle
     extends VariablePuzzle<WheelsClue, WheelsEntry, WheelsVariable> {
   WheelsPuzzle() : super(null);
   WheelsPuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString);
+      : super.fromGridString([], gridString);
 }

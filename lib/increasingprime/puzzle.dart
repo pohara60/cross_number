@@ -18,7 +18,7 @@ class IncreasingPrimePuzzle extends VariablePuzzle<IncreasingPrimeClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   IncreasingPrimePuzzle() : super(null);
   IncreasingPrimePuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString);
+      : super.fromGridString([], gridString);
 
   @override
   postProcessing([bool iteration = false, int Function(Puzzle)? callback]) {

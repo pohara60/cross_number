@@ -22,6 +22,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Map<String, EntryKind> get entries =>
       _clues.variables.isNotEmpty ? _entries.variables : {};
   Map<String, EntryKind> get allEntries => _entries.variables;
+  Map<String, Cell> get cells => _cells.variables;
   Map<(VariableType, String), Variable> get allVariables => _allVariables;
 
   final otherPuzzleClues = <String, Puzzle>{};
@@ -31,7 +32,11 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Grid? grid;
 
   final String name;
-  bool distinctClues = true;
+  bool _distinctClues = true;
+  void set distinctClues(bool distinctClues) {
+    _distinctClues = distinctClues;
+    _clues.distinct = _distinctClues;
+  }
 
   void _initPuzzle() {
     _variableLists = <VariableType, VariableList>{};
@@ -39,8 +44,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         (_clues = VariableList<ClueKind>(VariableType.C, []));
     _variableLists[VariableType.E] =
         (_entries = VariableList<EntryKind>(VariableType.E, []));
+    // Cell values not distinct
     _variableLists[VariableType.G] =
-        (_cells = VariableList<Cell>(VariableType.G, []));
+        (_cells = VariableList<Cell>(VariableType.G, null));
   }
 
   Puzzle({this.name = ''}) {
@@ -207,18 +213,18 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           clue != clueOrVariable &&
           clue.values != null &&
           clue.values!.contains(value))) {
-        if (clue is EntryMixin || distinctClues) {
-          clue.values!.remove(value);
+        if (clue is EntryMixin || _distinctClues) {
+          clue.removeValue(value);
           yield clue;
         }
       }
-    } else {
+    } else if (clueOrVariable.variableType == VariableType.V) {
       var puzzle = this as VariablePuzzle;
       for (var variable in puzzle.variables.values.where((variable) =>
           variable != clueOrVariable &&
           variable.values != null &&
           variable.values!.contains(value))) {
-        variable.values!.remove(value);
+        variable.removeValue(value);
         yield variable;
       }
     }
@@ -1282,8 +1288,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     var count = getVariables(variable, [exp], possibleValue, possibleVariables,
         variableNames, variableValues, maxCount);
     if (count == 0) return false;
-    if (count > 1000000) {
-      //if (count > 1000000) {
+    if (count > maxCount) {
       if (Crossnumber.traceSolve) {
         print(
             'Eval ${variable.runtimeType} ${variable.name} cartesianCount=$count Exception');

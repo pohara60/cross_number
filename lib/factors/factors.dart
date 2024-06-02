@@ -118,6 +118,10 @@ class Factors extends Crossnumber<FactorsPuzzle> {
           factorsCell.addClueReference(factorsCell.entries[0].name);
           factorsCell.exp.clueRefs.add(factorsCell.entries[1].name);
           factorsCell.addClueReference(factorsCell.entries[1].name);
+          factorsCell.addReferrer(factorsCell.entries[0]);
+          factorsCell.addReferrer(factorsCell.entries[1]);
+          factorsCell.entries[0].addReferrer(factorsCell);
+          factorsCell.entries[1].addReferrer(factorsCell);
         }
         c++;
       }
@@ -138,6 +142,34 @@ class Factors extends Crossnumber<FactorsPuzzle> {
 
   @override
   void solve([bool iteration = false]) {
+    // puzzle.clues['A1']!.answer = 864;
+    // puzzle.variables['A']!.answer = 2;
+    // puzzle.variables['B']!.answer = 3;
+    // puzzle.variables['C']!.answer = 5;
+    // puzzle.variables['D']!.answer = 7;
+    // puzzle.variables['E']!.answer = 11;
+    // puzzle.variables['F']!.answer = 29;
+    // puzzle.variables['G']!.answer = 19;
+    // puzzle.clues['A4']!.answer = 21;
+    // puzzle.clues['A6']!.answer = 18;
+    // puzzle.clues['A7']!.answer = 280;
+    // puzzle.clues['A8']!.answer = 24;
+    // puzzle.clues['A9']!.answer = 45;
+    // puzzle.clues['A10']!.answer = 638;
+    // puzzle.clues['A13']!.answer = 76;
+    // puzzle.clues['A15']!.answer = 40;
+    // puzzle.clues['A16']!.answer = 750;
+    // puzzle.clues['D1']!.answer = 81;
+    // puzzle.clues['D2']!.answer = 684;
+    // puzzle.clues['D3']!.answer = 42;
+    // puzzle.clues['D4']!.answer = 28;
+    // puzzle.clues['D5']!.answer = 105;
+    // puzzle.clues['D8']!.answer = 264;
+    // puzzle.clues['D9']!.answer = 475;
+    // puzzle.clues['D11']!.answer = 30;
+    // puzzle.clues['D12']!.answer = 87;
+    // puzzle.clues['D14']!.answer = 60;
+
     super.solve(iteration);
   }
 
@@ -148,7 +180,32 @@ class Factors extends Crossnumber<FactorsPuzzle> {
     if (!super.validClue(clue, value, variableReferences, variableValues))
       return false;
 
-    // TODO Any two entries that meet are sure to share at least one prime factor.
+    // Any two entries that meet are sure to share at least one prime factor.
+    var entryMixin = clue as EntryMixin;
+    for (var cell in entryMixin.cells) {
+      for (var otherEntry in cell.entries) {
+        if (otherEntry != clue) {
+          var ok = false;
+          if (otherEntry.values == null)
+            ok = true;
+          else {
+            for (var otherValue in otherEntry.values!) {
+              var gcf = getGCF(value, otherValue);
+              // Check the cell values include the gcf
+              if (cell.values != null && !cell.values!.contains(gcf)) continue;
+              // Check entries have a common factor
+              if (gcf != 1) {
+                ok = true;
+                break;
+              }
+            }
+          }
+          if (!ok) {
+            return false;
+          }
+        }
+      }
+    }
     return true;
   }
 
@@ -198,8 +255,8 @@ class Factors extends Crossnumber<FactorsPuzzle> {
     // The prime factorisation of each number in the second grid is shown.
     var updated = false;
     if (cell.expressions.isNotEmpty) {
-      updated = puzzle.solveVariable(
-          cell, cell.exp, possibleValue, possibleVariables!, validCell);
+      updated = puzzle.solveVariable(cell, cell.exp, possibleValue,
+          possibleVariables!, validCell, 2000000);
     }
     return updated;
   }

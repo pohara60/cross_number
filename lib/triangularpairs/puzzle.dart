@@ -17,5 +17,5 @@ class TriangularPairsPuzzle extends VariablePuzzle<TriangularPairsClue,
   TriangularPairsPuzzle({String name = ''}) : super(null, name: name);
   TriangularPairsPuzzle.fromGridString(List<String> gridString,
       {String name = ''})
-      : super.fromGridString(null, gridString, name: name);
+      : super.fromGridString([], gridString, name: name);
 }

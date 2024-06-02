@@ -16,5 +16,5 @@ class CubeSandwichPuzzle extends VariablePuzzle<CubeSandwichClue,
   // Puzzle has Letter variables that are restricted to values 1..9
   CubeSandwichPuzzle() : super(null);
   CubeSandwichPuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString);
+      : super.fromGridString([], gridString);
 }

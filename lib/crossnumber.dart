@@ -280,6 +280,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         for (var variableName in variable.variableReferences) {
           if (updateVariables(puzzle, variableName,
               possibleVariables[variableName]!, updatedVariables)) {
+            updateAllVariables(updatedVariables, updatedAllVariables);
             updated = true;
           }
         }

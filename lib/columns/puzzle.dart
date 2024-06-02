@@ -16,5 +16,5 @@ class ColumnsPuzzle
   // Puzzle has Letter variables that are restricted to values 1..9
   ColumnsPuzzle() : super(null);
   ColumnsPuzzle.fromGridString(List<String> gridString)
-      : super.fromGridString(null, gridString);
+      : super.fromGridString([], gridString);
 }
