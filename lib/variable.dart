@@ -115,6 +115,19 @@ class Variable with PriorityVariable {
     return name.compareTo(other.name);
   }
 
+  int priorityCompareTo(Variable other) {
+    var cmp = -priority.compareTo(other.priority);
+    if (cmp == 0) {
+      // Attempt consistent order - name
+      cmp = -compareTo(other);
+    }
+    // if (cmp == 0) {
+    //   // Attempt consistent order - hashcode
+    //   cmp = hashCode.compareTo(other.hashCode);
+    // }
+    return cmp;
+  }
+
   void checkAnswer(Set<int> values) {
     if (_answer == null) return;
     if (values.contains(_answer)) return;
@@ -379,7 +392,7 @@ class ExpressionVariable extends Variable with Expression {
   String toString() {
     var text = super.toString();
     if (valueDesc != '') {
-      text += ',valueDesc=${valueDesc}';
+      text += ',${valueDesc}';
     }
     if (!isSet) {
       text += ',min=${_min}';

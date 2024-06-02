@@ -73,255 +73,254 @@ WheelsEntry(name=D11,length=2,value: D,
 	digits=[{1..9},{0..9}]
 Variables:
 A={1..20,40 more,60},min=1,max=60
-B={1..20,40 more,60},valueDesc=$lte (60-A+b),min=1,max=60
-C={1..20,40 more,60},valueDesc=$lte (60-A+b-B+c),min=1,max=60
-D={1..20,40 more,60},valueDesc=$lte (60-A+b-B+c-C+d),min=1,max=60
+B={1..20,40 more,60},$lte (60-A+b),min=1,max=60
+C={1..20,40 more,60},$lte (60-A+b-B+c),min=1,max=60
+D={1..20,40 more,60},$lte (60-A+b-B+c-C+d),min=1,max=60
 F={1..20,79 more,99},min=1,max=99
-T={1..20,220 more,240},valueDesc=A+B+C+D = b+c+d+e,min=1,max=240
+T={1..20,220 more,240},A+B+C+D = b+c+d+e,min=1,max=240
 Y={17..36,14 more,50},min=17,max=50
-b={1..20,40 more,60},valueDesc=$lte (A),min=1,max=60
-c={1..20,40 more,60},valueDesc=$lte (A-b+B),min=1,max=60
-d={1..20,40 more,60},valueDesc=$lte (A-b+B-c+C),min=1,max=60
-e={1..20,40 more,60},valueDesc=A+B+C+D-b-c-d,min=1,max=60
-f={1..20,79 more,99},valueDesc=$lt F,min=1,max=99
+b={1..20,40 more,60},$lte (A),min=1,max=60
+c={1..20,40 more,60},$lte (A-b+B),min=1,max=60
+d={1..20,40 more,60},$lte (A-b+B-c+C),min=1,max=60
+e={1..20,40 more,60},A+B+C+D-b-c-d,min=1,max=60
+f={1..20,79 more,99},$lt F,min=1,max=99
 
 UPDATES-----------------------------
-Eval WheelsEntry D8 cartesianCount=90, elapsed 0:00:00.007499
+Eval WheelsEntry D8 cartesianCount=90, elapsed 0:00:00.009013
 solve: WheelsEntry(name=D8,length=3,value: $square A8,
 	identities=[D8[0]=A8[0],D8[2]=A12[0]],referrers=[A8,A12],
 	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961},
 	digits=[{1..9},{2,4..9},{1,4..6,9}]
 A8={11..19,21..29,31}
-Eval WheelsEntry A12 cartesianCount=81, elapsed 0:00:00.001144
-solve: WheelsEntry(name=A12,length=2,value: $factor A3,
-	identities=[A12[0]=D8[2]],referrers=[D8],
-	values={11,13,17,19,41,43,47,53,59,61,67,97},
-	digits=[{1,4..6,9},{1,3,7,9}]
-A3={11,13,17,19,22,26,33,34,38,39,41,43,44,47,51..53,55,57,59,17 more,99}
-Eval WheelsEntry D8 cartesianCount=19, elapsed 0:00:00.000164
-Eval WheelsEntry A13 cartesianCount=90, elapsed 0:00:00.000342
+Eval WheelsEntry D6 cartesianCount=81, elapsed 0:00:00.008430
+solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
+	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
+	values={10..29,69 more,98},
+	digits=[{1..9},{0..9}]
+A3={11..19,21..29,31,32,61 more,99}
+Eval WheelsEntry D4 cartesianCount=81, elapsed 0:00:00.000443
+solve: WheelsEntry(name=D4,length=3,value: $square A3,
+	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
+	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961},
+	digits=[{1..9},{2,4..9},{1,4..6,9}]
+A3={11..19,21..29,31}
+Eval WheelsEntry D6 cartesianCount=19, elapsed 0:00:00.000316
+solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
+	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
+	values={10..29,30},
+	digits=[{1..3},{0..9}]
+Eval WheelsEntry D4 cartesianCount=19, elapsed 0:00:00.000102
+Eval WheelsEntry A13 cartesianCount=90, elapsed 0:00:00.000359
 solve: WheelsEntry(name=A13,length=3,value: $square D11,
 	identities=[A13[0]=D9[2],A13[2]=D11[1]],referrers=[D9,D11],
 	values={100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961},
 	digits=[{1..9},{0,2,4..9},{0,1,4..6,9}]
 D11={10..29,2 more,31}
-Eval WheelsEntry A12 cartesianCount=37, elapsed 0:00:00.000713
-Eval WheelsEntry D4 cartesianCount=37, elapsed 0:00:00.000139
-solve: WheelsEntry(name=D4,length=3,value: $square A3,
-	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
-	values={121,169,289,361,484,676},
-	digits=[{1..4,6},{2,6..8},{1,4,6,9}]
-A3={11,13,17,19,22,26}
-Eval WheelsEntry D6 cartesianCount=6, elapsed 0:00:00.000208
-solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
-	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
-	values={10..25},
-	digits=[{1,2},{0..9}]
-Eval WheelsEntry A12 cartesianCount=6, elapsed 0:00:00.000115
+Eval WheelsEntry A12 cartesianCount=19, elapsed 0:00:00.000857
 solve: WheelsEntry(name=A12,length=2,value: $factor A3,
 	identities=[A12[0]=D8[2]],referrers=[D8],
 	values={11,13,17,19},
 	digits=[{1},{1,3,7,9}]
-Eval WheelsEntry D8 cartesianCount=19, elapsed 0:00:00.000094
+A3={11,13,17,19,22,26}
+Eval WheelsEntry D8 cartesianCount=19, elapsed 0:00:00.000092
 solve: WheelsEntry(name=D8,length=3,value: $square A8,
 	identities=[D8[0]=A8[0],D8[2]=A12[0]],referrers=[A8,A12],
 	values={121,361,441,841,961},
 	digits=[{1,3,4,8,9},{2,4,6},{1}]
 A8={11,19,21,29,31}
-Eval WheelsEntry A12 cartesianCount=6, elapsed 0:00:00.000076
-Eval WheelsEntry D6 cartesianCount=6, elapsed 0:00:00.000142
-Eval WheelsEntry D8 cartesianCount=5, elapsed 0:00:00.000055
-Eval WheelsEntry D4 cartesianCount=6, elapsed 0:00:00.000047
-Eval WheelsEntry A1 cartesianCount=90, elapsed 0:00:00.000452
+Eval WheelsEntry D6 cartesianCount=6, elapsed 0:00:00.000093
+solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
+	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
+	values={10..25},
+	digits=[{1,2},{0..9}]
+Eval WheelsEntry D4 cartesianCount=6, elapsed 0:00:00.000060
+solve: WheelsEntry(name=D4,length=3,value: $square A3,
+	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
+	values={121,169,289,361,484,676},
+	digits=[{1..4,6},{2,6..8},{1,4,6,9}]
+Eval WheelsEntry A12 cartesianCount=6, elapsed 0:00:00.000066
+Eval WheelsEntry A1 cartesianCount=90, elapsed 0:00:00.000381
 solve: WheelsEntry(name=A1,length=3,value: $square D1,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961},
 	digits=[{1..9},{2,4..9},{1,4..6,9}]
 D1={11..19,21..29,31}
-Eval WheelsEntry A1 cartesianCount=19, elapsed 0:00:00.000138
-Eval WheelsEntry D2 cartesianCount=34, elapsed 0:00:00.000361
+Eval WheelsEntry A1 cartesianCount=19, elapsed 0:00:00.000136
+Eval WheelsEntry D2 cartesianCount=34, elapsed 0:00:00.000286
 solve: WheelsEntry(name=D2,length=3,value: 20 * Y,
 	identities=[D2[0]=A1[2],D2[1]=A5[0],D2[2]=A6[1]],referrers=[A1,A5,A6],
 	values={420,440,460,480,520,540,560,580,620,640,660,680,920,940,960,980},
 	digits=[{4..6,9},{2,4,6,8},{0}]
 Y={21..24,26..29,31..34,46..49}
-Eval WheelsEntry A1 cartesianCount=19, elapsed 0:00:00.000103
+Eval WheelsEntry A1 cartesianCount=19, elapsed 0:00:00.000292
 solve: WheelsEntry(name=A1,length=3,value: $square D1,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={144,169,196,225,256,289,324,484,529,576,625,676,729,784},
 	digits=[{1..7},{2,4..9},{4..6,9}]
 D1={12..18,22..28}
-Eval WheelsEntry A1 cartesianCount=14, elapsed 0:00:00.000095
-Eval WheelsEntry D2 cartesianCount=16, elapsed 0:00:00.000084
+Eval WheelsEntry A1 cartesianCount=14, elapsed 0:00:00.000093
+Eval WheelsEntry D2 cartesianCount=16, elapsed 0:00:00.000102
+Eval WheelsVariable b cartesianCount=60, elapsed 0:00:00.001979
 Eval WheelsEntry D11 cartesianCount=60, elapsed 0:00:00.000159
 solve: WheelsEntry(name=D11,length=2,value: D,
 	identities=[D11[1]=A13[2]],referrers=[A13],
 	values={10,11,14..16,19..21,24..26,29..31},
 	digits=[{1..3},{0,1,4..6,9}]
 D={10,11,14..16,19..21,24..26,29..31}
-Eval WheelsEntry A13 cartesianCount=14, elapsed 0:00:00.000148
+Eval WheelsEntry A13 cartesianCount=14, elapsed 0:00:00.000088
 solve: WheelsEntry(name=A13,length=3,value: $square D11,
 	identities=[A13[0]=D9[2],A13[2]=D11[1]],referrers=[D9,D11],
 	values={100,121,196,225,256,361,400,441,576,625,676,841,900,961},
 	digits=[{1..6,8,9},{0,2,4..7,9},{0,1,5,6}]
-Eval WheelsEntry D11 cartesianCount=14, elapsed 0:00:00.000067
+Eval WheelsEntry D11 cartesianCount=14, elapsed 0:00:00.000180
 solve: WheelsEntry(name=D11,length=2,value: D,
 	identities=[D11[1]=A13[2]],referrers=[A13],
 	values={10,11,15,16,20,21,25,26,30,31},
 	digits=[{1..3},{0,1,5,6}]
 D={10,11,15,16,20,21,25,26,30,31}
-Eval WheelsEntry A13 cartesianCount=10, elapsed 0:00:00.000112
+Eval WheelsEntry A13 cartesianCount=10, elapsed 0:00:00.000062
 solve: WheelsEntry(name=A13,length=3,value: $square D11,
 	identities=[A13[0]=D9[2],A13[2]=D11[1]],referrers=[D9,D11],
 	values={100,121,225,256,400,441,625,676,900,961},
 	digits=[{1,2,4,6,9},{0,2,4..7},{0,1,5,6}]
-Eval WheelsEntry D11 cartesianCount=10, elapsed 0:00:00.000063
-Eval WheelsEntry A3 cartesianCount=60, elapsed 0:00:00.000131
-solve: WheelsEntry(name=A3,length=2,value: B,
-	identities=[A3[1]=D4[0]],referrers=[D4,A12,D6],
-	values={11,13,22,26},
-	digits=[{1,2},{1..3,6}]
-B={11,13,22,26}
-Eval WheelsEntry D6 cartesianCount=4, elapsed 0:00:00.000085
-Eval WheelsEntry A12 cartesianCount=4, elapsed 0:00:00.000047
-solve: WheelsEntry(name=A12,length=2,value: $factor A3,
-	identities=[A12[0]=D8[2]],referrers=[D8],
-	values={11,13},
-	digits=[{1},{1,3}]
-Eval WheelsEntry D8 cartesianCount=5, elapsed 0:00:00.000041
-Eval WheelsEntry A12 cartesianCount=4, elapsed 0:00:00.000066
-Eval WheelsEntry D4 cartesianCount=4, elapsed 0:00:00.000040
-solve: WheelsEntry(name=D4,length=3,value: $square A3,
-	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
-	values={121,169,676},
-	digits=[{1,6},{2,6,7},{1,6,9}]
-A3={11,13,26}
-Eval WheelsEntry D6 cartesianCount=3, elapsed 0:00:00.000203
-Eval WheelsEntry A12 cartesianCount=3, elapsed 0:00:00.000049
-Eval WheelsEntry D4 cartesianCount=3, elapsed 0:00:00.000043
-Eval WheelsEntry A3 cartesianCount=4, elapsed 0:00:00.000036
-solve: WheelsEntry(name=A3,length=2,value: B,
-	identities=[A3[1]=D4[0]],referrers=[D4,A12,D6],
-	values={11,26},
-	digits=[{1,2},{1,6}]
-B={11,26}
-Eval WheelsEntry D6 cartesianCount=2, elapsed 0:00:00.000051
-Eval WheelsEntry A12 cartesianCount=2, elapsed 0:00:00.000031
-Eval WheelsEntry D4 cartesianCount=2, elapsed 0:00:00.000034
-solve: WheelsEntry(name=D4,length=3,value: $square A3,
-	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
-	values={121,676},
-	digits=[{1,6},{2,7},{1,6}]
-Eval WheelsEntry A3 cartesianCount=2, elapsed 0:00:00.000027
-Eval WheelsEntry D9 cartesianCount=60, elapsed 0:00:00.000262
+Eval WheelsEntry D11 cartesianCount=10, elapsed 0:00:00.000048
+Eval WheelsEntry D9 cartesianCount=60, elapsed 0:00:00.000230
 solve: WheelsEntry(name=D9,length=3,value: $cube d,
 	identities=[D9[0]=A9[0],D9[1]=A10[1],D9[2]=A13[0]],referrers=[A9,A10,A13],
 	values={216,512,729},
 	digits=[{2,5,7},{1,2},{2,6,9}]
 d={6,8,9}
-Eval WheelsEntry A13 cartesianCount=10, elapsed 0:00:00.000073
+Eval WheelsEntry A13 cartesianCount=10, elapsed 0:00:00.000071
 solve: WheelsEntry(name=A13,length=3,value: $square D11,
 	identities=[A13[0]=D9[2],A13[2]=D11[1]],referrers=[D9,D11],
 	values={225,256,625,676,900,961},
 	digits=[{2,6,9},{0,2,5..7},{0,1,5,6}]
 D11={15,16,25,26,30,31}
-Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000054
-Eval WheelsEntry D11 cartesianCount=10, elapsed 0:00:00.000049
+Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000038
+Eval WheelsEntry D11 cartesianCount=10, elapsed 0:00:00.000042
 solve: WheelsEntry(name=D11,length=2,value: D,
 	identities=[D11[1]=A13[2]],referrers=[A13],
 	values={15,16,25,26,30,31},
 	digits=[{1..3},{0,1,5,6}]
 D={15,16,25,26,30,31}
-Eval WheelsEntry A13 cartesianCount=6, elapsed 0:00:00.000045
-Eval WheelsEntry D11 cartesianCount=6, elapsed 0:00:00.000037
-Eval WheelsEntry D1 cartesianCount=60, elapsed 0:00:00.000223
+Eval WheelsEntry A13 cartesianCount=6, elapsed 0:00:00.000049
+Eval WheelsEntry D11 cartesianCount=6, elapsed 0:00:00.000035
+Eval WheelsEntry D7 cartesianCount=60, elapsed 0:00:00.000168
+solve: WheelsEntry(name=D7,length=2,value: c,
+	identities=[D7[0]=A7[0],D7[1]=A9[1]],referrers=[A7,A9],
+	values={10..29,31 more,60},
+	digits=[{1..6},{0..9}]
+c={10..29,31 more,60}
+Eval WheelsEntry D1 cartesianCount=60, elapsed 0:00:00.000148
 solve: WheelsEntry(name=D1,length=2,value: A,
 	identities=[D1[0]=A1[0]],referrers=[A1],
 	values={12..18,22..28},
 	digits=[{1,2},{2..8}]
 A={12..18,22..28}
-Eval WheelsEntry A1 cartesianCount=14, elapsed 0:00:00.000071
+Eval WheelsEntry A1 cartesianCount=14, elapsed 0:00:00.000069
 solve: WheelsEntry(name=A1,length=3,value: $square D1,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={144,169,196,225,256,289},
 	digits=[{1,2},{2,4..6,8,9},{4..6,9}]
 D1={12..17}
-Eval WheelsEntry A1 cartesianCount=6, elapsed 0:00:00.000044
-Eval WheelsEntry D1 cartesianCount=14, elapsed 0:00:00.000049
+Eval WheelsEntry A1 cartesianCount=6, elapsed 0:00:00.000042
+Eval WheelsVariable b cartesianCount=14, elapsed 0:00:00.000196
+solve: b={1..20,8 more,28},$lte (A),min=1,max=28
+b={1..20,8 more,28}
+Eval WheelsEntry D1 cartesianCount=14, elapsed 0:00:00.000075
 solve: WheelsEntry(name=D1,length=2,value: A,
 	identities=[D1[0]=A1[0]],referrers=[A1],
 	values={12..17},
 	digits=[{1},{2..7}]
 A={12..17}
-Eval WheelsEntry A1 cartesianCount=6, elapsed 0:00:00.000039
+Eval WheelsEntry A1 cartesianCount=6, elapsed 0:00:00.000048
 solve: WheelsEntry(name=A1,length=3,value: $square D1,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={144,169,196},
 	digits=[{1},{4,6,9},{4,6,9}]
 D1={12..14}
-Eval WheelsEntry A1 cartesianCount=3, elapsed 0:00:00.000172
-Eval WheelsEntry D1 cartesianCount=6, elapsed 0:00:00.000049
+Eval WheelsEntry A1 cartesianCount=3, elapsed 0:00:00.000052
+Eval WheelsVariable b cartesianCount=6, elapsed 0:00:00.000125
+solve: b={1..17},$lte (A),min=1,max=17
+b={1..17}
+Eval WheelsEntry D1 cartesianCount=6, elapsed 0:00:00.000039
 solve: WheelsEntry(name=D1,length=2,value: A,
 	identities=[D1[0]=A1[0]],referrers=[A1],
 	values={12..14},
 	digits=[{1},{2..4}]
 A={12..14}
-Eval WheelsEntry A1 cartesianCount=3, elapsed 0:00:00.000038
-Eval WheelsVariable b cartesianCount=3, elapsed 0:00:00.000337
-solve: b={1..14},valueDesc=$lte (A),min=1,max=14
+Eval WheelsEntry A1 cartesianCount=3, elapsed 0:00:00.000035
+Eval WheelsVariable b cartesianCount=3, elapsed 0:00:00.000051
+solve: b={1..14},$lte (A),min=1,max=14
 b={1..14}
-Eval WheelsEntry D1 cartesianCount=3, elapsed 0:00:00.000034
-Eval WheelsEntry A7 cartesianCount=14, elapsed 0:00:00.000048
+Eval WheelsEntry D1 cartesianCount=3, elapsed 0:00:00.000030
+Eval WheelsEntry A7 cartesianCount=14, elapsed 0:00:00.000059
 solve: WheelsEntry(name=A7,length=2,value: $square b,
 	identities=[A7[0]=D7[0],A7[1]=D4[2]],referrers=[D7,D4],
-	values={16,36,81},
-	digits=[{1,3,8},{1,6}]
-b={4,6,9}
-Eval WheelsEntry D4 cartesianCount=2, elapsed 0:00:00.000030
-Eval WheelsEntry A7 cartesianCount=3, elapsed 0:00:00.000026
-Eval WheelsVariable b cartesianCount=3, elapsed 0:00:00.000043
-Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000032
-Eval WheelsVariable B cartesianCount=9, elapsed 0:00:00.000138
-Eval WheelsEntry D2 cartesianCount=16, elapsed 0:00:00.000078
+	values={16,36,49,64},
+	digits=[{1,3,4,6},{4,6,9}]
+b={4,6..8}
+Eval WheelsEntry D4 cartesianCount=6, elapsed 0:00:00.000043
+solve: WheelsEntry(name=D4,length=3,value: $square A3,
+	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
+	values={169,289,484,676},
+	digits=[{1,2,4,6},{6..8},{4,6,9}]
+A3={13,17,22,26}
+Eval WheelsEntry D6 cartesianCount=4, elapsed 0:00:00.000066
+Eval WheelsEntry D4 cartesianCount=4, elapsed 0:00:00.000037
+Eval WheelsEntry A12 cartesianCount=4, elapsed 0:00:00.000051
+solve: WheelsEntry(name=A12,length=2,value: $factor A3,
+	identities=[A12[0]=D8[2]],referrers=[D8],
+	values={11,13,17},
+	digits=[{1},{1,3,7}]
+Eval WheelsEntry D8 cartesianCount=5, elapsed 0:00:00.000042
+Eval WheelsEntry A12 cartesianCount=4, elapsed 0:00:00.000044
+Eval WheelsVariable b cartesianCount=3, elapsed 0:00:00.000059
+Eval WheelsEntry A7 cartesianCount=4, elapsed 0:00:00.000032
+Eval WheelsVariable B cartesianCount=12, elapsed 0:00:00.000394
+solve: B={1..20,36 more,56},$lte (60-A+b),min=1,max=56
+B={1..20,36 more,56}
+Eval WheelsEntry D2 cartesianCount=16, elapsed 0:00:00.000066
 solve: WheelsEntry(name=D2,length=3,value: 20 * Y,
 	identities=[D2[0]=A1[2],D2[1]=A5[0],D2[2]=A6[1]],referrers=[A1,A5,A6],
 	values={420,440,460,480,620,640,660,680,920,940,960,980},
 	digits=[{4,6,9},{2,4,6,8},{0}]
 Y={21..24,31..34,46..49}
-Eval WheelsEntry A1 cartesianCount=3, elapsed 0:00:00.000033
-Eval WheelsEntry D2 cartesianCount=12, elapsed 0:00:00.000056
-Eval WheelsVariable c cartesianCount=18, elapsed 0:00:00.000359
-solve: c={1..20,16 more,36},valueDesc=$lte (A-b+B),min=1,max=36
-c={1..20,16 more,36}
-Eval WheelsEntry D7 cartesianCount=36, elapsed 0:00:00.000172
+Eval WheelsEntry A1 cartesianCount=3, elapsed 0:00:00.000035
+Eval WheelsEntry D2 cartesianCount=12, elapsed 0:00:00.000055
+Eval WheelsVariable B cartesianCount=12, elapsed 0:00:00.000375
+Eval WheelsEntry D7 cartesianCount=51, elapsed 0:00:00.000139
 solve: WheelsEntry(name=D7,length=2,value: c,
 	identities=[D7[0]=A7[0],D7[1]=A9[1]],referrers=[A7,A9],
-	values={10..19,30..36},
-	digits=[{1,3},{0..9}]
-c={10..19,30..36}
-Eval WheelsEntry A7 cartesianCount=3, elapsed 0:00:00.000039
-solve: WheelsEntry(name=A7,length=2,value: $square b,
-	identities=[A7[0]=D7[0],A7[1]=D4[2]],referrers=[D7,D4],
-	values={16,36},
-	digits=[{1,3},{6}]
-b={4,6}
-Eval WheelsEntry D4 cartesianCount=2, elapsed 0:00:00.000030
+	values={10..19,30..39,11 more,60},
+	digits=[{1,3,4,6},{0..9}]
+c={10..19,30..39,11 more,60}
+Eval WheelsEntry A7 cartesianCount=4, elapsed 0:00:00.000035
+Eval WheelsEntry D7 cartesianCount=31, elapsed 0:00:00.000092
+Eval WheelsEntry A3 cartesianCount=56, elapsed 0:00:00.000194
+solve: WheelsEntry(name=A3,length=2,value: B,
+	identities=[A3[1]=D4[0]],referrers=[D4,A12,D6],
+	values={22,26},
+	digits=[{2},{2,6}]
+B={22,26}
+Eval WheelsEntry D6 cartesianCount=2, elapsed 0:00:00.000075
+Eval WheelsEntry D4 cartesianCount=2, elapsed 0:00:00.000054
 solve: WheelsEntry(name=D4,length=3,value: $square A3,
 	identities=[D4[0]=A3[1],D4[2]=A7[1]],referrers=[A3,A7],
 	values={676},
 	digits=[{6},{7},{6}]
 A3={26}
-solve: WheelsEntry(name=A12,length=2,value: $factor A3,
-	identities=[A12[0]=D8[2]],referrers=[D8],
-	values={13},
-	digits=[{1},{3}]
-Eval WheelsEntry D8 cartesianCount=5, elapsed 0:00:00.000060
-Eval WheelsEntry A13 cartesianCount=5, elapsed 0:00:00.000050
+Eval WheelsEntry A13 cartesianCount=5, elapsed 0:00:00.000034
 solve: WheelsEntry(name=A13,length=3,value: $square D11,
 	identities=[A13[0]=D9[2],A13[2]=D11[1]],referrers=[D9,D11],
 	values={225,256,625,900,961},
 	digits=[{2,6,9},{0,2,5,6},{0,1,5,6}]
-Eval WheelsEntry A3 cartesianCount=2, elapsed 0:00:00.000028
+solve: WheelsEntry(name=A12,length=2,value: $factor A3,
+	identities=[A12[0]=D8[2]],referrers=[D8],
+	values={13},
+	digits=[{1},{3}]
+Eval WheelsEntry D8 cartesianCount=5, elapsed 0:00:00.000039
+Eval WheelsEntry A3 cartesianCount=2, elapsed 0:00:00.000023
 solve: WheelsEntry(name=A3,length=2,value: B,
 	identities=[A3[1]=D4[0]],referrers=[D4,A12,D6],
 	values={26},
@@ -333,49 +332,61 @@ f={1..20,78 more,99}
 C={1..20,39 more,60}
 e={1..20,39 more,60}
 D={15,16,25,30,31}
-Eval WheelsEntry A7 cartesianCount=2, elapsed 0:00:00.000024
-Eval WheelsEntry D1 cartesianCount=3, elapsed 0:00:00.000025
+Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000034
+Eval WheelsEntry D1 cartesianCount=3, elapsed 0:00:00.000029
 solve: WheelsEntry(name=D1,length=2,value: A,
 	identities=[D1[0]=A1[0]],referrers=[A1],
 	values={12,14},
 	digits=[{1},{2,4}]
 A={12,14}
-Eval WheelsEntry A1 cartesianCount=2, elapsed 0:00:00.000027
+Eval WheelsEntry A1 cartesianCount=2, elapsed 0:00:00.000039
 solve: WheelsEntry(name=A1,length=3,value: $square D1,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={144,196},
 	digits=[{1},{4,9},{4,6}]
-Eval WheelsEntry D1 cartesianCount=2, elapsed 0:00:00.000042
-Eval WheelsVariable b cartesianCount=2, elapsed 0:00:00.000053
-Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000032
-Eval WheelsVariable c cartesianCount=4, elapsed 0:00:00.000097
-Eval WheelsVariable B cartesianCount=4, elapsed 0:00:00.000065
-Eval WheelsEntry D11 cartesianCount=5, elapsed 0:00:00.000054
-Eval WheelsEntry D2 cartesianCount=12, elapsed 0:00:00.000076
+Eval WheelsEntry A1 cartesianCount=2, elapsed 0:00:00.000024
+Eval WheelsVariable b cartesianCount=2, elapsed 0:00:00.000037
+Eval WheelsEntry D1 cartesianCount=2, elapsed 0:00:00.000032
+Eval WheelsEntry A7 cartesianCount=4, elapsed 0:00:00.000030
+solve: WheelsEntry(name=A7,length=2,value: $square b,
+	identities=[A7[0]=D7[0],A7[1]=D4[2]],referrers=[D7,D4],
+	values={16,36},
+	digits=[{1,3},{6}]
+b={4,6}
+Eval WheelsVariable b cartesianCount=2, elapsed 0:00:00.000031
+Eval WheelsEntry A7 cartesianCount=2, elapsed 0:00:00.000026
+Eval WheelsVariable c cartesianCount=4, elapsed 0:00:00.000090
+solve: c={10..19,30..36},$lte (A-b+B),min=10,max=36
+c={10..19,30..36}
+Eval WheelsVariable B cartesianCount=4, elapsed 0:00:00.000053
+Eval WheelsEntry D11 cartesianCount=5, elapsed 0:00:00.000034
+Eval WheelsEntry D2 cartesianCount=12, elapsed 0:00:00.000055
 solve: WheelsEntry(name=D2,length=3,value: 20 * Y,
 	identities=[D2[0]=A1[2],D2[1]=A5[0],D2[2]=A6[1]],referrers=[A1,A5,A6],
 	values={420,440,460,480,620,640,660,680},
 	digits=[{4,6},{2,4,6,8},{0}]
 Y={21..24,31..34}
 Eval WheelsEntry A1 cartesianCount=2, elapsed 0:00:00.000030
-Eval WheelsEntry D2 cartesianCount=8, elapsed 0:00:00.000044
-Eval WheelsEntry D7 cartesianCount=17, elapsed 0:00:00.000066
+Eval WheelsVariable c cartesianCount=4, elapsed 0:00:00.000090
+Eval WheelsEntry D2 cartesianCount=8, elapsed 0:00:00.000040
+Eval WheelsEntry D7 cartesianCount=17, elapsed 0:00:00.000056
 solve: WheelsEntry(name=D7,length=2,value: c,
 	identities=[D7[0]=A7[0],D7[1]=A9[1]],referrers=[A7,A9],
 	values={10..12,14..19,30..36},
 	digits=[{1,3},{0..9}]
 c={10..12,14..19,30..36}
-Eval WheelsEntry A7 cartesianCount=2, elapsed 0:00:00.000046
-Eval WheelsEntry D7 cartesianCount=16, elapsed 0:00:00.000077
-Eval WheelsEntry A10 cartesianCount=59, elapsed 0:00:00.000157
+Eval WheelsEntry A7 cartesianCount=2, elapsed 0:00:00.000030
+Eval WheelsVariable c cartesianCount=4, elapsed 0:00:00.000097
+Eval WheelsEntry D7 cartesianCount=16, elapsed 0:00:00.000056
+Eval WheelsEntry A10 cartesianCount=59, elapsed 0:00:00.000145
 solve: WheelsEntry(name=A10,length=2,value: e,
 	identities=[A10[1]=D9[1]],referrers=[D9],
 	values={11,12,21,22,31,32,41,42,51,52},
 	digits=[{1..5},{1,2}]
 e={11,12,21,22,31,32,41,42,51,52}
-Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000052
-Eval WheelsEntry A10 cartesianCount=10, elapsed 0:00:00.000074
-Eval WheelsEntry A9 cartesianCount=59, elapsed 0:00:00.000181
+Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000032
+Eval WheelsEntry A10 cartesianCount=10, elapsed 0:00:00.000049
+Eval WheelsEntry A9 cartesianCount=59, elapsed 0:00:00.000139
 solve: WheelsEntry(name=A9,length=2,value: $cube C,
 	identities=[A9[0]=D9[0],A9[1]=D7[1]],referrers=[D9,D7],
 	values={27},
@@ -384,7 +395,7 @@ C={3}
 T={1,2,4..21,218 more,240}
 F={1,2,4..21,77 more,99}
 f={1,2,4..21,77 more,99}
-Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000050
+Eval WheelsEntry D9 cartesianCount=3, elapsed 0:00:00.000034
 solve: WheelsEntry(name=D9,length=3,value: $cube d,
 	identities=[D9[0]=A9[0],D9[1]=A10[1],D9[2]=A13[0]],referrers=[A9,A10,A13],
 	values={216},
@@ -394,7 +405,7 @@ T={1,2,5,7..23,216 more,240}
 F={1,2,5,7..23,75 more,99}
 b={4}
 f={1,2,5,7..23,75 more,99}
-Eval WheelsEntry A13 cartesianCount=5, elapsed 0:00:00.000057
+Eval WheelsEntry A13 cartesianCount=5, elapsed 0:00:00.000043
 solve: WheelsEntry(name=A13,length=3,value: $square D11,
 	identities=[A13[0]=D9[2],A13[2]=D11[1]],referrers=[D9,D11],
 	values={625},
@@ -408,10 +419,10 @@ solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
 	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
 	values={10..12,14,15,17..24},
 	digits=[{1,2},{0..5,7..9}]
-Eval WheelsVariable b cartesianCount=2, elapsed 0:00:00.000032
-Eval WheelsVariable c cartesianCount=2, elapsed 0:00:00.000068
-Eval WheelsVariable B cartesianCount=2, elapsed 0:00:00.000052
-Eval WheelsEntry D11 cartesianCount=5, elapsed 0:00:00.000034
+Eval WheelsVariable c cartesianCount=2, elapsed 0:00:00.000105
+Eval WheelsVariable b cartesianCount=2, elapsed 0:00:00.000043
+Eval WheelsVariable B cartesianCount=2, elapsed 0:00:00.000053
+Eval WheelsEntry D11 cartesianCount=5, elapsed 0:00:00.000052
 solve: WheelsEntry(name=D11,length=2,value: D,
 	identities=[D11[1]=A13[2]],referrers=[A13],
 	values={25},
@@ -420,14 +431,14 @@ D={25}
 T={1,2,5,7..23,215 more,240}
 F={1,2,5,7..23,74 more,99}
 f={1,2,5,7..23,74 more,99}
-Eval WheelsEntry A10 cartesianCount=10, elapsed 0:00:00.000043
+Eval WheelsEntry A10 cartesianCount=10, elapsed 0:00:00.000083
 solve: WheelsEntry(name=A10,length=2,value: e,
 	identities=[A10[1]=D9[1]],referrers=[D9],
 	values={11,21,31,41,51},
 	digits=[{1..5},{1}]
 e={11,21,31,41,51}
-Eval WheelsEntry A10 cartesianCount=5, elapsed 0:00:00.000033
-Eval WheelsEntry D7 cartesianCount=16, elapsed 0:00:00.000056
+Eval WheelsEntry A10 cartesianCount=5, elapsed 0:00:00.000048
+Eval WheelsEntry D7 cartesianCount=16, elapsed 0:00:00.000101
 solve: WheelsEntry(name=D7,length=2,value: c,
 	identities=[D7[0]=A7[0],D7[1]=A9[1]],referrers=[A7,A9],
 	values={17},
@@ -440,21 +451,21 @@ solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
 	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
 	values={10..12,14,15,18..24},
 	digits=[{1,2},{0..5,8,9}]
-Eval WheelsVariable D cartesianCount=2, elapsed 0:00:00.000049
-Eval WheelsVariable c cartesianCount=2, elapsed 0:00:00.000035
-Eval WheelsVariable d cartesianCount=2, elapsed 0:00:00.000052
-Eval WheelsVariable C cartesianCount=2, elapsed 0:00:00.000048
-Eval WheelsVariable e cartesianCount=2, elapsed 0:00:00.000043
-solve: e={41},valueDesc=A+B+C+D-b-c-d
+Eval WheelsVariable e cartesianCount=2, elapsed 0:00:00.000081
+solve: e={41},A+B+C+D-b-c-d
 e={41}
 T={1,2,5,7..13,15,16,18..24,27,212 more,240}
 F={1,2,5,7..13,15,16,18..24,27,71 more,99}
 f={1,2,5,7..13,15,16,18..24,27,71 more,99}
 A={14}
-solve: T={68},valueDesc=A+B+C+D = b+c+d+e
+solve: T={68},A+B+C+D = b+c+d+e
 T={68}
 F={1,2,5,7..13,15,16,18..24,27,70 more,99}
 f={1,2,5,7..13,15,16,18..24,27,70 more,99}
+solve: WheelsEntry(name=D1,length=2,value: A,
+	identities=[D1[0]=A1[0]],referrers=[A1],
+	values={14},
+	digits=[{1},{4}]
 solve: WheelsEntry(name=A10,length=2,value: e,
 	identities=[A10[1]=D9[1]],referrers=[D9],
 	values={41},
@@ -463,10 +474,6 @@ solve: WheelsEntry(name=A5,length=2,value: T,
 	identities=[A5[0]=D2[1]],referrers=[D2],
 	values={68},
 	digits=[{6},{8}]
-solve: WheelsEntry(name=D1,length=2,value: A,
-	identities=[D1[0]=A1[0]],referrers=[A1],
-	values={14},
-	digits=[{1},{4}]
 solve: WheelsEntry(name=A1,length=3,value: $square D1,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
 	values={196},
@@ -479,51 +486,59 @@ solve: WheelsEntry(name=D2,length=3,value: 20 * Y,
 Y={33}
 F={1,2,5,7..13,15,16,18..24,27,69 more,99}
 f={1,2,5,7..13,15,16,18..24,27,69 more,99}
-Eval WheelsEntry A6 cartesianCount=89, elapsed 0:00:00.000236
-solve: WheelsEntry(name=A6,length=2,value: F,
-	identities=[A6[0]=D6[0],A6[1]=D2[2]],referrers=[D6,D2],
-	values={10,20},
-	digits=[{1,2},{0}]
-F={10,20}
-Eval WheelsVariable f cartesianCount=2, elapsed 0:00:00.000044
-solve: f={1,2,5,7..13,15,16,18,19},valueDesc=$lt F,min=1,max=19
-f={1,2,5,7..13,15,16,18,19}
-Eval WheelsEntry A6 cartesianCount=2, elapsed 0:00:00.000024
-Eval WheelsEntry A8 cartesianCount=14, elapsed 0:00:00.000039
+Eval WheelsVariable f cartesianCount=89, elapsed 0:00:00.006001
+solve: f={1,2,5,7..13,15,16,18..24,27,68 more,98},$lt F,min=1,max=98
+f={1,2,5,7..13,15,16,18..24,27,68 more,98}
+F={2,5,7..13,15,16,18..24,27,28,68 more,99}
+Eval WheelsEntry A8 cartesianCount=88, elapsed 0:00:00.000401
+solve: WheelsEntry(name=A8,length=2,value: f,
+	identities=[A8[0]=D8[0],A8[1]=D6[1]],referrers=[D8,D6],
+	values={11,19,31},
+	digits=[{1,3},{1,9}]
+f={11,19,31}
+Eval WheelsEntry D8 cartesianCount=3, elapsed 0:00:00.000046
+solve: WheelsEntry(name=D8,length=3,value: $square A8,
+	identities=[D8[0]=A8[0],D8[2]=A12[0]],referrers=[A8,A12],
+	values={121,361},
+	digits=[{1,3},{2,6},{1}]
+A8={11,19}
+solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
+	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
+	values={11,19,21},
+	digits=[{1,2},{1,9}]
+Eval WheelsEntry A8 cartesianCount=3, elapsed 0:00:00.000025
 solve: WheelsEntry(name=A8,length=2,value: f,
 	identities=[A8[0]=D8[0],A8[1]=D6[1]],referrers=[D8,D6],
 	values={11,19},
 	digits=[{1},{1,9}]
 f={11,19}
-solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
-	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
-	values={11,19,21},
-	digits=[{1,2},{1,9}]
-Eval WheelsEntry D8 cartesianCount=2, elapsed 0:00:00.000026
+Eval WheelsEntry D8 cartesianCount=2, elapsed 0:00:00.000069
 solve: WheelsEntry(name=D8,length=3,value: $square A8,
 	identities=[D8[0]=A8[0],D8[2]=A12[0]],referrers=[A8,A12],
 	values={121},
 	digits=[{1},{2},{1}]
 A8={11}
-Eval WheelsEntry A6 cartesianCount=2, elapsed 0:00:00.000021
 Eval WheelsEntry A8 cartesianCount=2, elapsed 0:00:00.000022
 solve: WheelsEntry(name=A8,length=2,value: f,
 	identities=[A8[0]=D8[0],A8[1]=D6[1]],referrers=[D8,D6],
 	values={11},
 	digits=[{1},{1}]
 f={11}
+F={2,5,7..10,12,13,15,16,18..24,27..29,67 more,99}
 solve: WheelsEntry(name=D6,length=2,value: $lessthan A3,
 	identities=[D6[0]=A6[0],D6[1]=A8[1]],referrers=[A6,A8],
 	values={21},
 	digits=[{2},{1}]
-Eval WheelsVariable f cartesianCount=2, elapsed 0:00:00.000021
-solve: f={11},valueDesc=$lt F
-F={20}
+Eval WheelsVariable f cartesianCount=87, elapsed 0:00:00.000517
+solve: f={11},$lt F
+F={12,13,15,16,18..24,27..32,34..36,61 more,99}
+Eval WheelsEntry A6 cartesianCount=81, elapsed 0:00:00.000187
 solve: WheelsEntry(name=A6,length=2,value: F,
 	identities=[A6[0]=D6[0],A6[1]=D2[2]],referrers=[D6,D2],
 	values={20},
 	digits=[{2},{0}]
-Clue/Variable iterations=193, updates=67, elapsed 0:00:00.060565
+F={20}
+Clue/Variable iterations=193, updates=72, elapsed 0:00:00.087777
 SOLUTION-----------------------------
 Puzzle Summary
 A1, $square D1, values={196}
@@ -559,15 +574,15 @@ D11, D, values={25}
 +--+--+--+--+--+--+
 Variables:
 A={14}
-B={26},valueDesc=$lte (60-A+b)
-C={3},valueDesc=$lte (60-A+b-B+c)
-D={25},valueDesc=$lte (60-A+b-B+c-C+d)
+B={26},$lte (60-A+b)
+C={3},$lte (60-A+b-B+c)
+D={25},$lte (60-A+b-B+c-C+d)
 F={20}
-T={68},valueDesc=A+B+C+D = b+c+d+e
+T={68},A+B+C+D = b+c+d+e
 Y={33}
-b={4},valueDesc=$lte (A)
-c={17},valueDesc=$lte (A-b+B)
-d={6},valueDesc=$lte (A-b+B-c+C)
-e={41},valueDesc=A+B+C+D-b-c-d
-f={11},valueDesc=$lt F
+b={4},$lte (A)
+c={17},$lte (A-b+B)
+d={6},$lte (A-b+B-c+C)
+e={41},A+B+C+D-b-c-d
+f={11},$lt F
 

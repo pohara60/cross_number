@@ -49,9 +49,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   }
 
   var updateQueue = <Variable>[];
-  var priorityQueue = PriorityQueue<Variable>((a, b) => -(b as PriorityVariable)
-      .priority
-      .compareTo((a as PriorityVariable).priority));
+  var priorityQueue = PriorityQueue<Variable>((a, b) => b.priorityCompareTo(a));
 
   void addToUpdateQueue(Variable clue) {
     var puzzle = puzzleForVariable[clue];

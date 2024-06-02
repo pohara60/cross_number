@@ -172,6 +172,25 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
       }
     }
 
+    int priorityCompareTo(Variable a, Variable b) {
+      var cmp = b.priorityCompareTo(a);
+      if (cmp == 0) {
+        // Attempt consistent order - puzzle name
+        if (puzzleTop.allVariables.containsValue(b))
+          cmp = 1;
+        else if (puzzleFront.allVariables.containsValue(b)) {
+          if (puzzleTop.allVariables.containsValue(a))
+            cmp = -1;
+          else
+            cmp = 1;
+        } else
+          cmp = -1;
+      }
+      return cmp;
+    }
+
+    priorityQueue = PriorityQueue<Variable>(priorityCompareTo);
+
     super.initCrossnumber();
   }
 

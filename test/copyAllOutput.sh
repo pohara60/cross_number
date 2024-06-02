@@ -1,7 +1,13 @@
 #!/bin/bash
 ROOT=~/Documents/Development/Dart/cross_number
 cd $ROOT/test
-files=*_test.dart
+if [ $# -ne 0 ]; then
+    files="$*"_test.dart
+else
+    # files=*_test.dart
+    files=`dart run ../bin/crossnumber.dart | grep hardcoded | awk '{print $1;}'`
+    echo $files
+fi
 for file in $files
 do
     puzzle=${file%_test.dart}
