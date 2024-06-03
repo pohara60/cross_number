@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Inbetweeners",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Inbetweeners"
+            ]
+        },
+        {
             "name": "Transformation",
             "type": "dart",
             "request": "launch",

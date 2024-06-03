@@ -15,6 +15,7 @@ import 'package:crossnumber/dieanotherday/dieanotherday.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/factors/factors.dart';
 import 'package:crossnumber/frequency/frequency.dart';
+import 'package:crossnumber/inbetweeners/inbetweeners.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
 import 'package:crossnumber/increasingprime/increasingprime.dart';
 import 'package:crossnumber/instruction/instruction.dart';
@@ -90,7 +91,8 @@ void main(List<String> arguments) async {
     ..addCommand(TriangularPairsCommand())
     ..addCommand(PrimeKnightCommand())
     ..addCommand(FactorsCommand())
-    ..addCommand(TransformationCommand());
+    ..addCommand(TransformationCommand())
+    ..addCommand(InbetweenersCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -902,6 +904,30 @@ class TransformationCommand extends Command {
     // Get and print solve
     try {
       final pc = Transformation();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class InbetweenersCommand extends Command {
+  @override
+  final name = 'Inbetweeners';
+  @override
+  final description = 'solve hardcoded Inbetweeners puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Inbetweeners();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

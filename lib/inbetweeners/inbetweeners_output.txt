@@ -1,0 +1,580 @@
+Puzzle
+InbetweenersEntry(name=A1,length=4,value: BN^S | ABE,
+	identities=[A1[1]=D2[0],A1[3]=D3[0]],referrers=[D2,D3],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{1..9}]
+InbetweenersEntry(name=A4,length=3,value: EI | BDS,
+	identities=[A4[0]=D4[0],A4[2]=D5[0]],referrers=[D4,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+InbetweenersEntry(name=A6,length=3,value: I*I | DINN,
+	identities=[A6[0]=D6[0],A6[1]=D2[1],A6[2]=D7[0]],referrers=[D6,D2,D7],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+InbetweenersEntry(name=A8,length=4,value: ADDNNU | DDEOS,
+	identities=[A8[0]=D3[1],A8[1]=D4[1],A8[2]=D9[0],A8[3]=D5[1]],referrers=[D3,D4,D9,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+InbetweenersEntry(name=A10,length=4,value: ND^U | AESS,
+	identities=[A10[0]=D6[1],A10[1]=D2[2],A10[2]=D7[1],A10[3]=D11[0]],referrers=[D6,D2,D7,D11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{1..9}]
+InbetweenersEntry(name=A12,length=3,value: OS | EE,
+	identities=[A12[0]=D4[2],A12[1]=D9[1],A12[2]=D5[2]],referrers=[D4,D9,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+InbetweenersEntry(name=A13,length=3,value: DDRU | OU,
+	identities=[A13[0]=D6[2],A13[2]=D7[2]],referrers=[D6,D7],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+InbetweenersEntry(name=A14,length=4,value: EUU | BBN,
+	identities=[A14[0]=D11[1],A14[2]=D9[2]],referrers=[D11,D9],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+InbetweenersEntry(name=D2,length=3,value: DRRR | NNRU,
+	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A10[1]],referrers=[A1,A6,A10],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+InbetweenersEntry(name=D3,length=2,value: AS | DRR,
+	identities=[D3[0]=A1[3],D3[1]=A8[0]],referrers=[A1,A8],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+InbetweenersEntry(name=D4,length=3,value: AE | BU,
+	identities=[D4[0]=A4[0],D4[1]=A8[1],D4[2]=A12[0]],referrers=[A4,A8,A12],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+InbetweenersEntry(name=D5,length=3,value: DDDRR | ANR,
+	identities=[D5[0]=A4[2],D5[1]=A8[3],D5[2]=A12[2]],referrers=[A4,A8,A12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+InbetweenersEntry(name=D6,length=3,value: N^S | ADR,
+	identities=[D6[0]=A6[0],D6[1]=A10[0],D6[2]=A13[0]],referrers=[A6,A10,A13],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+InbetweenersEntry(name=D7,length=3,value: NUU | BDDDD,
+	identities=[D7[0]=A6[2],D7[1]=A10[2],D7[2]=A13[2]],referrers=[A6,A10,A13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+InbetweenersEntry(name=D9,length=3,value: BU | NNO,
+	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[2]],referrers=[A8,A12,A14],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+InbetweenersEntry(name=D11,length=2,value: B | DI,
+	identities=[D11[0]=A10[3],D11[1]=A14[0]],referrers=[A10,A14],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Variables:
+A={2,3,5,7,11,13,17,19,23,29}
+B={2,3,5,7,11,13,17,19,23,29}
+D={2,3,5,7,11,13,17,19,23,29}
+E={2,3,5,7,11,13,17,19,23,29}
+I={2,3,5,7,11,13,17,19,23,29}
+N={2,3,5,7,11,13,17,19,23,29}
+O={2,3,5,7,11,13,17,19,23,29}
+R={2,3,5,7,11,13,17,19,23,29}
+S={2,3,5,7,11,13,17,19,23,29}
+U={2,3,5,7,11,13,17,19,23,29}
+
+UPDATES-----------------------------
+Eval InbetweenersEntry A6 cartesianCount=10, elapsed 0:00:00.010144
+Eval InbetweenersEntry A6 cartesianCount=1000, elapsed 0:00:00.005279
+solve: InbetweenersEntry(name=A6,length=3,value: I*I | DINN,
+	identities=[A6[0]=D6[0],A6[1]=D2[1],A6[2]=D7[0]],referrers=[D6,D2,D7],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,116 more,983},
+	digits=[{1..9},{0..9},{1,3,7,9}]
+N={2,3,5,7,11}
+Eval InbetweenersEntry A12 cartesianCount=100, elapsed 0:00:00.000316
+Eval InbetweenersEntry A12 cartesianCount=10, elapsed 0:00:00.000061
+solve: InbetweenersEntry(name=A12,length=3,value: OS | EE,
+	identities=[A12[0]=D4[2],A12[1]=D9[1],A12[2]=D5[2]],referrers=[D4,D9,D5],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,96 more,839},
+	digits=[{1..8},{0..9},{1,3,7,9}]
+O={5,7,11,13,17,19,23,29}
+S={5,7,11,13,17,19,23,29}
+E={11,13,17,19,23,29}
+Eval InbetweenersEntry D11 cartesianCount=10, elapsed 0:00:00.000068
+Eval InbetweenersEntry D11 cartesianCount=100, elapsed 0:00:00.000313
+solve: InbetweenersEntry(name=D11,length=2,value: B | DI,
+	identities=[D11[0]=A10[3],D11[1]=A14[0]],referrers=[A10,A14],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89},
+	digits=[{1..8},{1,3,7,9}]
+B={11,13,17,19,23,29}
+Eval InbetweenersEntry A14 cartesianCount=60, elapsed 0:00:00.000171
+Eval InbetweenersEntry A14 cartesianCount=30, elapsed 0:00:00.000098
+solve: InbetweenersEntry(name=A14,length=4,value: EUU | BBN,
+	identities=[A14[0]=D11[1],A14[2]=D9[2]],referrers=[D11,D9],
+	values={1129,1151,1153,1163,1171,1181,1187,1193,1201,1213,1217,1223,1229,1231,1237,1249,1259,1277,1279,1283,938 more,9241},
+	digits=[{1,3,7,9},{0..9},{0..9},{1,3,7,9}]
+U={7,11,13,17,19,23,29}
+B={13,17,19,23,29}
+Eval InbetweenersEntry D11 cartesianCount=5, elapsed 0:00:00.000126
+Eval InbetweenersEntry D11 cartesianCount=100, elapsed 0:00:00.000256
+solve: InbetweenersEntry(name=D11,length=2,value: B | DI,
+	identities=[D11[0]=A10[3],D11[1]=A14[0]],referrers=[A10,A14],
+	values={13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89},
+	digits=[{1..8},{1,3,7,9}]
+Eval InbetweenersEntry A14 cartesianCount=42, elapsed 0:00:00.000161
+Eval InbetweenersEntry A14 cartesianCount=25, elapsed 0:00:00.000305
+Eval InbetweenersEntry D9 cartesianCount=35, elapsed 0:00:00.000267
+Eval InbetweenersEntry D9 cartesianCount=40, elapsed 0:00:00.000162
+solve: InbetweenersEntry(name=D9,length=3,value: BU | NNO,
+	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[2]],referrers=[A8,A12,A14],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,108 more,929},
+	digits=[{1..9},{0..9},{1,3,7,9}]
+Eval InbetweenersEntry A12 cartesianCount=64, elapsed 0:00:00.000228
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000047
+Eval InbetweenersEntry A14 cartesianCount=42, elapsed 0:00:00.000336
+Eval InbetweenersEntry A14 cartesianCount=25, elapsed 0:00:00.000265
+Eval InbetweenersEntry D9 cartesianCount=35, elapsed 0:00:00.000292
+Eval InbetweenersEntry D9 cartesianCount=40, elapsed 0:00:00.000171
+Eval InbetweenersEntry D7 cartesianCount=35, elapsed 0:00:00.000138
+Eval InbetweenersEntry D7 cartesianCount=50, elapsed 0:00:00.000134
+solve: InbetweenersEntry(name=D7,length=3,value: NUU | BDDDD,
+	identities=[D7[0]=A6[2],D7[1]=A10[2],D7[2]=A13[2]],referrers=[A6,A10,A13],
+	values={149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,36 more,463},
+	digits=[{1,3},{0..9},{1,3,7,9}]
+U={7,11,13,17,19}
+D={2}
+A={3,5,7,11,13,17,19,23,29}
+I={3,5,7,11,13,17,19,23,29}
+N={3,5,7,11}
+R={3,5,7,11,13,17,19,23,29}
+Eval InbetweenersEntry A6 cartesianCount=9, elapsed 0:00:00.000090
+Eval InbetweenersEntry A6 cartesianCount=36, elapsed 0:00:00.000175
+solve: InbetweenersEntry(name=A6,length=3,value: I*I | DINN,
+	identities=[A6[0]=D6[0],A6[1]=D2[1],A6[2]=D7[0]],referrers=[D6,D2,D7],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,111 more,947},
+	digits=[{1..9},{0..9},{1,3}]
+Eval InbetweenersEntry D11 cartesianCount=5, elapsed 0:00:00.000063
+Eval InbetweenersEntry D11 cartesianCount=9, elapsed 0:00:00.000069
+solve: InbetweenersEntry(name=D11,length=2,value: B | DI,
+	identities=[D11[0]=A10[3],D11[1]=A14[0]],referrers=[A10,A14],
+	values={13,17,19,23,29,31,37,41,43,47,53},
+	digits=[{1..5},{1,3,7,9}]
+I={5,7,11,13,17,19,23,29}
+Eval InbetweenersEntry A6 cartesianCount=8, elapsed 0:00:00.000067
+Eval InbetweenersEntry A6 cartesianCount=32, elapsed 0:00:00.000128
+solve: InbetweenersEntry(name=A6,length=3,value: I*I | DINN,
+	identities=[A6[0]=D6[0],A6[1]=D2[1],A6[2]=D7[0]],referrers=[D6,D2,D7],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,111 more,947},
+	digits=[{1..9},{0..9},{1,3}]
+N={3,5,7}
+Eval InbetweenersEntry D11 cartesianCount=5, elapsed 0:00:00.000089
+Eval InbetweenersEntry D11 cartesianCount=8, elapsed 0:00:00.000108
+Eval InbetweenersEntry D7 cartesianCount=15, elapsed 0:00:00.000188
+Eval InbetweenersEntry D7 cartesianCount=5, elapsed 0:00:00.000105
+solve: InbetweenersEntry(name=D7,length=3,value: NUU | BDDDD,
+	identities=[D7[0]=A6[2],D7[1]=A10[2],D7[2]=A13[2]],referrers=[A6,A10,A13],
+	values={149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,36 more,463},
+	digits=[{1,3},{0..9},{1,3,7,9}]
+U={7,11,13,17}
+Eval InbetweenersEntry A6 cartesianCount=8, elapsed 0:00:00.000066
+Eval InbetweenersEntry A6 cartesianCount=24, elapsed 0:00:00.000116
+Eval InbetweenersEntry D7 cartesianCount=12, elapsed 0:00:00.000079
+Eval InbetweenersEntry D7 cartesianCount=5, elapsed 0:00:00.000060
+Eval InbetweenersEntry D2 cartesianCount=9, elapsed 0:00:00.000048
+Eval InbetweenersEntry D2 cartesianCount=108, elapsed 0:00:00.000186
+solve: InbetweenersEntry(name=D2,length=3,value: DRRR | NNRU,
+	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A10[1]],referrers=[A1,A6,A10],
+	values={251,257,263,269,271,277,281,283,293,307,311,313,317,331,337,347,349,353,359,367,91 more,971},
+	digits=[{2..9},{0..9},{1,3,7,9}]
+R={3,5,7,11,13}
+N={3,5}
+Eval InbetweenersEntry A6 cartesianCount=8, elapsed 0:00:00.000123
+Eval InbetweenersEntry A6 cartesianCount=16, elapsed 0:00:00.000140
+solve: InbetweenersEntry(name=A6,length=3,value: I*I | DINN,
+	identities=[A6[0]=D6[0],A6[1]=D2[1],A6[2]=D7[0]],referrers=[D6,D2,D7],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,111 more,947},
+	digits=[{1..9},{0..9},{1,3}]
+I={7,11,13,17,19,23,29}
+Eval InbetweenersEntry D11 cartesianCount=5, elapsed 0:00:00.000069
+Eval InbetweenersEntry D11 cartesianCount=7, elapsed 0:00:00.000055
+Eval InbetweenersEntry D2 cartesianCount=5, elapsed 0:00:00.000060
+Eval InbetweenersEntry D2 cartesianCount=40, elapsed 0:00:00.000138
+Eval InbetweenersEntry D7 cartesianCount=8, elapsed 0:00:00.000087
+Eval InbetweenersEntry D7 cartesianCount=5, elapsed 0:00:00.000059
+Eval InbetweenersEntry D5 cartesianCount=5, elapsed 0:00:00.000071
+Eval InbetweenersEntry D5 cartesianCount=90, elapsed 0:00:00.000240
+solve: InbetweenersEntry(name=D5,length=3,value: DDDRR | ANR,
+	identities=[D5[0]=A4[2],D5[1]=A8[3],D5[2]=A12[2]],referrers=[A4,A8,A12],
+	values={211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293,307,311,313,317,96 more,953},
+	digits=[{2..9},{0..9},{1,3,7,9}]
+Eval InbetweenersEntry A13 cartesianCount=20, elapsed 0:00:00.000143
+Eval InbetweenersEntry A13 cartesianCount=32, elapsed 0:00:00.000107
+solve: InbetweenersEntry(name=A13,length=3,value: DDRU | OU,
+	identities=[A13[0]=D6[2],A13[2]=D7[2]],referrers=[D6,D7],
+	values={137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,42 more,491},
+	digits=[{1..4},{0..9},{1,3,7,9}]
+O={7,11,13,17,19,23,29}
+Eval InbetweenersEntry D7 cartesianCount=8, elapsed 0:00:00.000163
+Eval InbetweenersEntry D7 cartesianCount=5, elapsed 0:00:00.000076
+Eval InbetweenersEntry A13 cartesianCount=20, elapsed 0:00:00.000131
+Eval InbetweenersEntry A13 cartesianCount=28, elapsed 0:00:00.000158
+Eval InbetweenersEntry A14 cartesianCount=24, elapsed 0:00:00.000205
+Eval InbetweenersEntry A14 cartesianCount=10, elapsed 0:00:00.000153
+solve: InbetweenersEntry(name=A14,length=4,value: EUU | BBN,
+	identities=[A14[0]=D11[1],A14[2]=D9[2]],referrers=[D11,D9],
+	values={1129,1151,1153,1163,1171,1181,1187,1193,1201,1213,1217,1223,1229,1231,1237,1249,1259,1277,1279,1283,367 more,4201},
+	digits=[{1,3},{0..9},{1,3,7,9},{1,3,7,9}]
+B={17,19,23,29}
+Eval InbetweenersEntry D11 cartesianCount=4, elapsed 0:00:00.000082
+Eval InbetweenersEntry D11 cartesianCount=7, elapsed 0:00:00.000065
+solve: InbetweenersEntry(name=D11,length=2,value: B | DI,
+	identities=[D11[0]=A10[3],D11[1]=A14[0]],referrers=[A10,A14],
+	values={17,19,23,29,31,37,41,43,47,53},
+	digits=[{1..5},{1,3}]
+Eval InbetweenersEntry D7 cartesianCount=8, elapsed 0:00:00.000100
+Eval InbetweenersEntry D7 cartesianCount=4, elapsed 0:00:00.000078
+Eval InbetweenersEntry A14 cartesianCount=24, elapsed 0:00:00.000115
+Eval InbetweenersEntry A14 cartesianCount=8, elapsed 0:00:00.000077
+Eval InbetweenersEntry D9 cartesianCount=16, elapsed 0:00:00.000096
+Eval InbetweenersEntry D9 cartesianCount=14, elapsed 0:00:00.000096
+solve: InbetweenersEntry(name=D9,length=3,value: BU | NNO,
+	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[2]],referrers=[A8,A12,A14],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,78 more,719},
+	digits=[{1..7},{0..9},{1,3,7,9}]
+Eval InbetweenersEntry A14 cartesianCount=24, elapsed 0:00:00.000095
+Eval InbetweenersEntry A14 cartesianCount=8, elapsed 0:00:00.000067
+Eval InbetweenersEntry D9 cartesianCount=16, elapsed 0:00:00.000090
+Eval InbetweenersEntry D9 cartesianCount=14, elapsed 0:00:00.000074
+Eval InbetweenersEntry A12 cartesianCount=56, elapsed 0:00:00.000171
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000052
+Eval InbetweenersEntry D3 cartesianCount=72, elapsed 0:00:00.000253
+Eval InbetweenersEntry D3 cartesianCount=5, elapsed 0:00:00.000069
+solve: InbetweenersEntry(name=D3,length=2,value: AS | DRR,
+	identities=[D3[0]=A1[3],D3[1]=A8[0]],referrers=[A1,A8],
+	values={17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{1..9},{1,3,7,9}]
+A={3,5,7,11,13,17,19}
+R={3,5,7}
+Eval InbetweenersEntry D2 cartesianCount=3, elapsed 0:00:00.000094
+Eval InbetweenersEntry D2 cartesianCount=24, elapsed 0:00:00.000092
+Eval InbetweenersEntry D5 cartesianCount=3, elapsed 0:00:00.000057
+Eval InbetweenersEntry D5 cartesianCount=42, elapsed 0:00:00.000126
+solve: InbetweenersEntry(name=D5,length=3,value: DDDRR | ANR,
+	identities=[D5[0]=A4[2],D5[1]=A8[3],D5[2]=A12[2]],referrers=[A4,A8,A12],
+	values={211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293,307,311,313,317,55 more,661},
+	digits=[{2..6},{0..9},{1,3,7,9}]
+Eval InbetweenersEntry A13 cartesianCount=12, elapsed 0:00:00.000093
+Eval InbetweenersEntry A13 cartesianCount=28, elapsed 0:00:00.000086
+Eval InbetweenersEntry D3 cartesianCount=56, elapsed 0:00:00.000111
+Eval InbetweenersEntry D3 cartesianCount=3, elapsed 0:00:00.000026
+Eval InbetweenersEntry A12 cartesianCount=56, elapsed 0:00:00.000184
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000055
+Eval InbetweenersEntry D6 cartesianCount=16, elapsed 0:00:00.000307
+Eval InbetweenersEntry D6 cartesianCount=21, elapsed 0:00:00.000162
+solve: InbetweenersEntry(name=D6,length=3,value: N^S | ADR,
+	identities=[D6[0]=A6[0],D6[1]=A10[0],D6[2]=A13[0]],referrers=[A6,A10,A13],
+	values={251,257,263},
+	digits=[{2},{5,6},{1,3}]
+N={3}
+A={11,13,17,19}
+R={7}
+S={5}
+I={11,13,17,19,23,29}
+O={11,13,17,19,23,29}
+U={11,13,17}
+Eval InbetweenersEntry D2 cartesianCount=3, elapsed 0:00:00.000033
+solve: InbetweenersEntry(name=D2,length=3,value: DRRR | NNRU,
+	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A10[1]],referrers=[A1,A6,A10],
+	values={691,701,709,719,727,733,739,743,751,757,761,769,773,787,797,809,811},
+	digits=[{6..8},{0..9},{1,3,7,9}]
+U={11,13}
+Eval InbetweenersEntry D3 cartesianCount=4, elapsed 0:00:00.000074
+solve: InbetweenersEntry(name=D3,length=2,value: AS | DRR,
+	identities=[D3[0]=A1[3],D3[1]=A8[0]],referrers=[A1,A8],
+	values={59,61,67,71,73,79,83,89,97},
+	digits=[{5..9},{1,3,7,9}]
+Eval InbetweenersEntry D5 cartesianCount=4, elapsed 0:00:00.000052
+solve: InbetweenersEntry(name=D5,length=3,value: DDDRR | ANR,
+	identities=[D5[0]=A4[2],D5[1]=A8[3],D5[2]=A12[2]],referrers=[A4,A8,A12],
+	values={397},
+	digits=[{3},{9},{7}]
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000051
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000062
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000093
+solve: InbetweenersEntry(name=A6,length=3,value: I*I | DINN,
+	identities=[A6[0]=D6[0],A6[1]=D2[1],A6[2]=D7[0]],referrers=[D6,D2,D7],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,47 more,521},
+	digits=[{2},{0..9},{1,3}]
+Eval InbetweenersEntry D2 cartesianCount=2, elapsed 0:00:00.000044
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000049
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000067
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000072
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000057
+Eval InbetweenersEntry D7 cartesianCount=4, elapsed 0:00:00.000058
+solve: InbetweenersEntry(name=D7,length=3,value: NUU | BDDDD,
+	identities=[D7[0]=A6[2],D7[1]=A10[2],D7[2]=A13[2]],referrers=[A6,A10,A13],
+	values={367,373,379,383,389,401,409,419,421,431,433,439,443,449,457,461,463},
+	digits=[{3},{0..8},{1,3,7,9}]
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000614
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000110
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000071
+Eval InbetweenersEntry D7 cartesianCount=4, elapsed 0:00:00.000068
+Eval InbetweenersEntry A13 cartesianCount=2, elapsed 0:00:00.000041
+Eval InbetweenersEntry A13 cartesianCount=12, elapsed 0:00:00.000074
+solve: InbetweenersEntry(name=A13,length=3,value: DDRU | OU,
+	identities=[A13[0]=D6[2],A13[2]=D7[2]],referrers=[D6,D7],
+	values={311,313,317,331,337,347,349,353,359,367,373},
+	digits=[{3},{1,3..7},{1,3,7,9}]
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000046
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000041
+Eval InbetweenersEntry D7 cartesianCount=4, elapsed 0:00:00.000074
+Eval InbetweenersEntry A13 cartesianCount=2, elapsed 0:00:00.000065
+Eval InbetweenersEntry A13 cartesianCount=12, elapsed 0:00:00.000258
+Eval InbetweenersEntry D11 cartesianCount=4, elapsed 0:00:00.000103
+Eval InbetweenersEntry D11 cartesianCount=6, elapsed 0:00:00.000090
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000087
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000069
+solve: InbetweenersEntry(name=A12,length=3,value: OS | EE,
+	identities=[A12[0]=D4[2],A12[1]=D9[1],A12[2]=D5[2]],referrers=[D4,D9,D5],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,95 more,839},
+	digits=[{1..8},{0..9},{7}]
+O={23,29}
+Eval InbetweenersEntry A13 cartesianCount=2, elapsed 0:00:00.000067
+Eval InbetweenersEntry A13 cartesianCount=4, elapsed 0:00:00.000054
+Eval InbetweenersEntry D5 cartesianCount=4, elapsed 0:00:00.000051
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000098
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000035
+Eval InbetweenersEntry D9 cartesianCount=8, elapsed 0:00:00.000053
+Eval InbetweenersEntry D9 cartesianCount=2, elapsed 0:00:00.000025
+solve: InbetweenersEntry(name=D9,length=3,value: BU | NNO,
+	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[2]],referrers=[A8,A12,A14],
+	values={191,193,197,199,211,223,227,229,233,239,241,251,257},
+	digits=[{1,2},{1..5,9},{1,3,7,9}]
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000043
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000044
+Eval InbetweenersEntry D9 cartesianCount=8, elapsed 0:00:00.000061
+Eval InbetweenersEntry D9 cartesianCount=2, elapsed 0:00:00.000030
+Eval InbetweenersEntry A10 cartesianCount=2, elapsed 0:00:00.000035
+Eval InbetweenersEntry A10 cartesianCount=24, elapsed 0:00:00.000138
+solve: InbetweenersEntry(name=A10,length=4,value: ND^U | AESS,
+	identities=[A10[0]=D6[1],A10[1]=D2[2],A10[2]=D7[1],A10[3]=D11[0]],referrers=[D6,D2,D7,D11],
+	values={1009,1013,1019,1021,1031,1033,1039,1049,1051,1061,1063,1069,1087,1091,1093,1097,1103,1109,1117,1123,1017 more,9769},
+	digits=[{5,6},{1,3,7,9},{0..8},{1,3}]
+Eval InbetweenersEntry D2 cartesianCount=2, elapsed 0:00:00.000094
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000065
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000062
+Eval InbetweenersEntry D7 cartesianCount=4, elapsed 0:00:00.000065
+Eval InbetweenersEntry D11 cartesianCount=4, elapsed 0:00:00.000059
+Eval InbetweenersEntry D11 cartesianCount=6, elapsed 0:00:00.000173
+Eval InbetweenersEntry A10 cartesianCount=2, elapsed 0:00:00.000076
+Eval InbetweenersEntry A10 cartesianCount=24, elapsed 0:00:00.000134
+Eval InbetweenersEntry A14 cartesianCount=12, elapsed 0:00:00.000105
+Eval InbetweenersEntry A14 cartesianCount=4, elapsed 0:00:00.000059
+solve: InbetweenersEntry(name=A14,length=4,value: EUU | BBN,
+	identities=[A14[0]=D11[1],A14[2]=D9[2]],referrers=[D11,D9],
+	values={1579,1583,1597,1601,1607,1609,1613,1619,1621,1627,1637,1657,1663,1667,1669,1693,1697,1699,1709,1721,101 more,2521},
+	digits=[{1},{0..9},{1,3,7,9},{1,3,7,9}]
+B={19,23,29}
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000082
+Eval InbetweenersEntry D7 cartesianCount=3, elapsed 0:00:00.000060
+Eval InbetweenersEntry D9 cartesianCount=6, elapsed 0:00:00.000068
+Eval InbetweenersEntry D9 cartesianCount=2, elapsed 0:00:00.000047
+solve: InbetweenersEntry(name=D9,length=3,value: BU | NNO,
+	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[2]],referrers=[A8,A12,A14],
+	values={211,223,227,229,233,239,241,251,257},
+	digits=[{2},{1..5},{1,3,7,9}]
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000048
+Eval InbetweenersEntry A12 cartesianCount=6, elapsed 0:00:00.000040
+Eval InbetweenersEntry D9 cartesianCount=6, elapsed 0:00:00.000046
+Eval InbetweenersEntry D9 cartesianCount=2, elapsed 0:00:00.000022
+Eval InbetweenersEntry D11 cartesianCount=3, elapsed 0:00:00.000035
+Eval InbetweenersEntry D11 cartesianCount=6, elapsed 0:00:00.000046
+solve: InbetweenersEntry(name=D11,length=2,value: B | DI,
+	identities=[D11[0]=A10[3],D11[1]=A14[0]],referrers=[A10,A14],
+	values={19,23,29,31,37,41,43,47,53},
+	digits=[{1,3},{1}]
+Eval InbetweenersEntry A14 cartesianCount=12, elapsed 0:00:00.000051
+Eval InbetweenersEntry A14 cartesianCount=3, elapsed 0:00:00.000026
+Eval InbetweenersEntry A10 cartesianCount=2, elapsed 0:00:00.000036
+Eval InbetweenersEntry A10 cartesianCount=24, elapsed 0:00:00.000078
+Eval InbetweenersEntry A1 cartesianCount=3, elapsed 0:00:00.000048
+Eval InbetweenersEntry A1 cartesianCount=72, elapsed 0:00:00.000194
+solve: InbetweenersEntry(name=A1,length=4,value: BN^S | ABE,
+	identities=[A1[1]=D2[0],A1[3]=D3[0]],referrers=[D2,D3],
+	values={1009,1013,1019,1021,1031,1033,1039,1049,1051,1061,1063,1069,1087,1091,1093,1097,1103,1109,1117,1123,970 more,9349},
+	digits=[{1..9},{6..8},{0..9},{7,9}]
+Eval InbetweenersEntry D2 cartesianCount=2, elapsed 0:00:00.000029
+Eval InbetweenersEntry D3 cartesianCount=4, elapsed 0:00:00.000032
+Eval InbetweenersEntry A1 cartesianCount=3, elapsed 0:00:00.000061
+Eval InbetweenersEntry A1 cartesianCount=72, elapsed 0:00:00.000213
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000093
+Eval InbetweenersEntry A8 cartesianCount=12, elapsed 0:00:00.000092
+solve: InbetweenersEntry(name=A8,length=4,value: ADDNNU | DDEOS,
+	identities=[A8[0]=D3[1],A8[1]=D4[1],A8[2]=D9[0],A8[3]=D5[1]],referrers=[D3,D4,D9,D5],
+	values={5153,5167,5171,5179,5189,5197,5209,5227,5231,5233,5237,5261,5273,5279,5281,5297,5303,5309,5323,5333,511 more,9859},
+	digits=[{7,9},{0..9},{2},{9}]
+E={11,13,17,19}
+Eval InbetweenersEntry D3 cartesianCount=4, elapsed 0:00:00.000079
+Eval InbetweenersEntry D5 cartesianCount=4, elapsed 0:00:00.000047
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000044
+Eval InbetweenersEntry A12 cartesianCount=4, elapsed 0:00:00.000041
+solve: InbetweenersEntry(name=A12,length=3,value: OS | EE,
+	identities=[A12[0]=D4[2],A12[1]=D9[1],A12[2]=D5[2]],referrers=[D4,D9,D5],
+	values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,22 more,359},
+	digits=[{1..3},{1..5},{7}]
+Eval InbetweenersEntry D5 cartesianCount=4, elapsed 0:00:00.000043
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000037
+Eval InbetweenersEntry A12 cartesianCount=4, elapsed 0:00:00.000038
+Eval InbetweenersEntry D9 cartesianCount=6, elapsed 0:00:00.000045
+Eval InbetweenersEntry D9 cartesianCount=2, elapsed 0:00:00.000035
+Eval InbetweenersEntry A14 cartesianCount=8, elapsed 0:00:00.000063
+Eval InbetweenersEntry A14 cartesianCount=3, elapsed 0:00:00.000044
+Eval InbetweenersEntry A10 cartesianCount=2, elapsed 0:00:00.000053
+Eval InbetweenersEntry A10 cartesianCount=16, elapsed 0:00:00.000093
+solve: InbetweenersEntry(name=A10,length=4,value: ND^U | AESS,
+	identities=[A10[0]=D6[1],A10[1]=D2[2],A10[2]=D7[1],A10[3]=D11[0]],referrers=[D6,D2,D7,D11],
+	values={1009,1013,1019,1021,1031,1033,1039,1049,1051,1061,1063,1069,1087,1091,1093,1097,1103,1109,1117,1123,826 more,8069},
+	digits=[{5,6},{1,3,7,9},{0..8},{1,3}]
+Eval InbetweenersEntry D2 cartesianCount=2, elapsed 0:00:00.000047
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000042
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000037
+Eval InbetweenersEntry D7 cartesianCount=3, elapsed 0:00:00.000043
+Eval InbetweenersEntry D11 cartesianCount=3, elapsed 0:00:00.000033
+Eval InbetweenersEntry D11 cartesianCount=6, elapsed 0:00:00.000043
+Eval InbetweenersEntry A10 cartesianCount=2, elapsed 0:00:00.000039
+Eval InbetweenersEntry A10 cartesianCount=16, elapsed 0:00:00.000086
+Eval InbetweenersEntry A1 cartesianCount=3, elapsed 0:00:00.000054
+Eval InbetweenersEntry A1 cartesianCount=48, elapsed 0:00:00.000163
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000075
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000057
+Eval InbetweenersEntry A4 cartesianCount=24, elapsed 0:00:00.000100
+Eval InbetweenersEntry A4 cartesianCount=3, elapsed 0:00:00.000049
+solve: InbetweenersEntry(name=A4,length=3,value: EI | BDS,
+	identities=[A4[0]=D4[0],A4[2]=D5[0]],referrers=[D4,D5],
+	values={149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,7 more,283},
+	digits=[{1,2},{1..9},{3}]
+Eval InbetweenersEntry D5 cartesianCount=4, elapsed 0:00:00.000038
+Eval InbetweenersEntry A4 cartesianCount=24, elapsed 0:00:00.000099
+Eval InbetweenersEntry A4 cartesianCount=3, elapsed 0:00:00.000054
+Eval InbetweenersEntry D4 cartesianCount=16, elapsed 0:00:00.000093
+Eval InbetweenersEntry D4 cartesianCount=6, elapsed 0:00:00.000071
+solve: InbetweenersEntry(name=D4,length=3,value: AE | BU,
+	identities=[D4[0]=A4[0],D4[1]=A8[1],D4[2]=A12[0]],referrers=[A4,A8,A12],
+	values={149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,20 more,373},
+	digits=[{1,2},{0..9},{1,3}]
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000201
+Eval InbetweenersEntry A12 cartesianCount=4, elapsed 0:00:00.000083
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000083
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000093
+Eval InbetweenersEntry A4 cartesianCount=24, elapsed 0:00:00.000109
+Eval InbetweenersEntry A4 cartesianCount=3, elapsed 0:00:00.000055
+Eval InbetweenersEntry D4 cartesianCount=16, elapsed 0:00:00.000204
+Eval InbetweenersEntry D4 cartesianCount=6, elapsed 0:00:00.000061
+Eval InbetweenersEntry D2 cartesianCount=2, elapsed 0:00:00.000035
+Eval InbetweenersEntry D3 cartesianCount=4, elapsed 0:00:00.000055
+Eval InbetweenersEntry D5 cartesianCount=4, elapsed 0:00:00.000056
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000055
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000094
+Eval InbetweenersEntry A6 cartesianCount=6, elapsed 0:00:00.000081
+Eval InbetweenersEntry D7 cartesianCount=2, elapsed 0:00:00.000076
+Eval InbetweenersEntry D7 cartesianCount=3, elapsed 0:00:00.000054
+Eval InbetweenersEntry A12 cartesianCount=2, elapsed 0:00:00.000051
+Eval InbetweenersEntry A12 cartesianCount=4, elapsed 0:00:00.000042
+Eval InbetweenersEntry D9 cartesianCount=6, elapsed 0:00:00.000071
+Eval InbetweenersEntry D9 cartesianCount=2, elapsed 0:00:00.000035
+Eval InbetweenersEntry D11 cartesianCount=3, elapsed 0:00:00.000033
+Eval InbetweenersEntry D11 cartesianCount=6, elapsed 0:00:00.000042
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000154
+Eval InbetweenersEntry A8 cartesianCount=8, elapsed 0:00:00.000195
+Clue/Variable iterations=117, updates=39, elapsed 0:00:00.154224
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, BN^S | ABE, values={1009,1013,1019,1021,1031,1033,1039,1049,1051,1061,1063,1069,1087,1091,1093,1097,1103,1109,1117,1123,970 more,9349}
+A4, EI | BDS, values={149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,7 more,283}
+A6, I*I | DINN, values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,47 more,521}
+A8, ADDNNU | DDEOS, values={5153,5167,5171,5179,5189,5197,5209,5227,5231,5233,5237,5261,5273,5279,5281,5297,5303,5309,5323,5333,511 more,9859}
+A10, ND^U | AESS, values={1009,1013,1019,1021,1031,1033,1039,1049,1051,1061,1063,1069,1087,1091,1093,1097,1103,1109,1117,1123,826 more,8069}
+A12, OS | EE, values={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,22 more,359}
+A13, DDRU | OU, values={311,313,317,331,337,347,349,353,359,367,373}
+A14, EUU | BBN, values={1579,1583,1597,1601,1607,1609,1613,1619,1621,1627,1637,1657,1663,1667,1669,1693,1697,1699,1709,1721,101 more,2521}
+D2, DRRR | NNRU, values={691,701,709,719,727,733,739,743,751,757,761,769,773,787,797,809,811}
+D3, AS | DRR, values={59,61,67,71,73,79,83,89,97}
+D4, AE | BU, values={149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,20 more,373}
+D5, DDDRR | ANR, values={397}
+D6, N^S | ADR, values={251,257,263}
+D7, NUU | BDDDD, values={367,373,379,383,389,401,409,419,421,431,433,439,443,449,457,461,463}
+D9, BU | NNO, values={211,223,227,229,233,239,241,251,257}
+D11, B | DI, values={19,23,29,31,37,41,43,47,53}
++--+--+--+--+--+--+--+
+| ?  ?  ?  ?| ?  ?  3|
++--    --   +   --   +
+| 2  ?  3| ?  ?  2  9|
++        +--+        +
+| ?  ?  ?  ?| ?  ?  7|
++   --+     +--+   --+
+| 3  ?  ?| 1  ?  ?  ?|
++--+--+--+--+--+--+--+
+Variables:
+A={11,13,17,19}
+B={19,23,29}
+D={2}
+E={11,13,17,19}
+I={11,13,17,19,23,29}
+N={3}
+O={23,29}
+R={7}
+S={5}
+U={11,13}
+
+ITERATE SOLUTIONS-----------------------------
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000027
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000062
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000031
+frequencies=(5, 3, 1, 4, 4, 4, 4, 3)
+frequencies=(6, 3, 4, 4, 4, 4, 3)
+frequencies=(5, 4, 4, 4, 4, 4, 3)
+frequencies=(5, 3, 5, 4, 4, 4, 3)
+frequencies=(5, 3, 1, 4, 4, 4, 3, 4)
+frequencies=(5, 3, 4, 4, 4, 4, 4)
+frequencies=(5, 3, 1, 4, 4, 4, 3, 4)
+frequencies=(5, 3, 5, 4, 4, 3, 4)
+frequencies=(5, 3, 4, 4, 4, 4, 4)
+frequencies=(1, 3, 5, 4, 4, 4, 3, 4)
+frequencies=(2, 3, 4, 4, 4, 4, 3, 4)
+frequencies=(1, 3, 5, 4, 4, 4, 3, 4)
+frequencies=(4, 3, 5, 4, 4, 4, 4)
+frequencies=(5, 3, 4, 4, 4, 4, 4)
+frequencies=(4, 4, 4, 4, 4, 4, 4)
+SOLUTION-----------------------------
+Puzzle Summary
+A1, BN^S | ABE, values={5669}
+A4, EI | BDS, values={223}
+A6, I*I | DINN, values={293}
+A8, ADDNNU | DDEOS, values={7529}
+A10, ND^U | AESS, values={6163}
+A12, OS | EE, values={157}
+A13, DDRU | OU, values={317}
+A14, EUU | BBN, values={1579}
+D2, DRRR | NNRU, values={691}
+D3, AS | DRR, values={97}
+D4, AE | BU, values={251}
+D5, DDDRR | ANR, values={397}
+D6, N^S | ADR, values={263}
+D7, NUU | BDDDD, values={367}
+D9, BU | NNO, values={257}
+D11, B | DI, values={31}
++--+--+--+--+--+--+--+
+| 5  6  6  9| 2  2  3|
++--    --   +   --   +
+| 2  9  3| 7  5  2  9|
++        +--+        +
+| 6  1  6  3| 1  5  7|
++   --+     +--+   --+
+| 3  1  7| 1  5  7  9|
++--+--+--+--+--+--+--+
+Variables:
+A={19}
+B={23}
+D={2}
+E={13}
+I={17}
+N={3}
+O={29}
+R={7}
+S={5}
+U={11}
+
+Eval InbetweenersEntry D6 cartesianCount=4, elapsed 0:00:00.000210
+Solution count=1

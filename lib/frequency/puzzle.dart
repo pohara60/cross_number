@@ -27,23 +27,4 @@ class FrequencyPuzzle extends Puzzle<FrequencyClue, FrequencyEntry> {
     }
     return true;
   }
-
-  List<int>? getAllDigits() {
-    var digits = <int>[];
-    // Do not double count digits that appear in Across and Down clues
-    for (var clue in this.clues.values) {
-      if (clue.values == null || clue.values!.length != 1) return null;
-      var value = clue.values!.first.toString();
-      // Get all digits of Across clues
-      for (var d = 0; d < clue.length!; d++) {
-        var digit = int.parse(value[d]);
-        // Exclude digits of Down clues that intersect with Across clues
-        if (clue.name[0] == 'D') {
-          if (clue.digitIdentities[d] != null) continue;
-        }
-        digits.add(digit);
-      }
-    }
-    return digits;
-  }
 }
