@@ -136,34 +136,38 @@ solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
 	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
 	values={112,120,124,126,129,138,143,156,168,172,180,192,197,204,210,228,240,264,276,280,40 more,960},
 	digits=[{1..9},{0..9},{0..4,6..9}]
-solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
-	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
-	values={101,105,108,109,112,113,119..121,126..128,131,138..140,143,144,149,152,161 more,991},
+solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
+	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
+	values={101,105,112,119,120,124,126,127,132,136,143,150,153,155,156,158,165,169,171,180,72 more,969},
 	digits=[{1..9},{0..9},{0..9}]
-H={1..9}
-J={3..10}
-solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
-	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
-	values={112,120,126,138,143,156,168,172,180,204,228,240,264,280,290,300,323,340,364,370,26 more,960},
-	digits=[{1..9},{0..9},{0,2..4,6,8,9}]
 solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
 	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
 	values={10..12,15,17,18,20,21,23,24,26,28,30,31,35,36,39,41,48,53,13 more,98},
 	digits=[{1..9},{0..9}]
 H={1..7}
+J={2..10}
+solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
+	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
+	values={112,120,124,126,138,143,156,168,172,180,192,204,228,240,264,276,280,290,300,323,33 more,960},
+	digits=[{1..9},{0..9},{0,2..4,6,8,9}]
 solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
 	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
 	values={101,105,108,109,112,113,119..121,126..128,131,138..140,143,144,149,152,148 more,991},
+	digits=[{1..9},{0..9},{0..9}]
+J={3..10}
+solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
+	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
+	values={112,120,126,138,143,156,168,172,180,204,228,240,264,280,290,300,323,340,364,370,26 more,960},
+	digits=[{1..9},{0..9},{0,2..4,6,8,9}]
+solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
+	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
+	values={100,112,121,129,139,143,153,160,168,173,180,197,221,223,235,238,240,264,270,280,55 more,954},
 	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
 	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
 	values={1025,1026,1032,1067,1084,1133,1155,1156,1164,1174,1199,1212,1223,1242,1254,1265,1313,1354,1392,1452,115 more,9994},
 	digits=[{1..9},{0..9},{1..9},{1..9}]
 G={1,3..10}
-solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
-	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
-	values={100,112,121,129,139,143,153,160,168,173,180,197,221,223,235,238,240,264,270,280,55 more,954},
-	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D7,length=4,value: DD | G-J,
 	identities=[D7[0]=A4[4],D7[1]=A11[2],D7[3]=A16[3]],referrers=[A4,A11,A16],
 	values={1176,1517,1820,2016,2300,2310,2431,3127,3240,4368,4757,4950,5005,7140,7387,7429,8008},
@@ -174,27 +178,27 @@ solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
 	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
 	values={112,120,126,138,143,156,168,180,228,240,264,280,290,300,323,340,364,384,408,460,19 more,960},
 	digits=[{1..9},{0..9},{0,2..4,6,8,9}]
-solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
-	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
-	values={101,105,108,109,112,113,119..121,126..128,131,138..140,143,144,149,152,115 more,978},
-	digits=[{1..9},{0..9},{0..9}]
-solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
-	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
-	values={1025,1026,1067,1164,1174,1199,1212,1223,1242,1254,1265,1354,1392,1452,1464,1482,1493,1552,1654,1662,98 more,9994},
-	digits=[{1..9},{0..9},{1..9},{1..9}]
 solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
 	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
 	values={10..12,15,17,18,20,21,23,24,26,28,30,31,35,36,39,41,48,53,12 more,95},
 	digits=[{1..9},{0..9}]
 H={1..6}
-solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
-	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
-	values={101,105,108,109,112,119..121,126..128,131,138..140,143,144,149,152,153,108 more,978},
-	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
 	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
 	values={1025,1026,1067,1164,1174,1199,1212,1223,1242,1254,1265,1354,1392,1452,1464,1482,1493,1552,1654,1662,86 more,9575},
 	digits=[{1..9},{0..9},{1..9},{1..9}]
+solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
+	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
+	values={101,105,108,109,112,119..121,126..128,131,138..140,143,144,149,152,153,108 more,978},
+	digits=[{1..9},{0..9},{0..9}]
+solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
+	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
+	values={105,112,119,120,124,127,136,143,150,153,155,158,165,169,171,180,187,192,195,210,60 more,969},
+	digits=[{1..9},{0..9},{0..9}]
+solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
+	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
+	values={100,112,121,129,139,143,153,160,168,173,180,197,221,223,235,238,240,264,270,280,52 more,954},
+	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D10,length=6,value: AAGG+B+B | B-A,
 	identities=[D10[0]=A9[2],D10[1]=A13[0],D10[2]=A16[0],D10[4]=A22[1],D10[5]=A24[4]],referrers=[A9,A13,A16,A22,A24],
 	values={113564,116939,146969,163185,171371,171405,176399,241133,272691,316410,348091,413595,417241,419070,435897,455126,478661,536130,549077,596904,6 more,871933},
@@ -205,33 +209,25 @@ solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
 	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
 	values={1026,1067,1164,1174,1199,1212,1242,1392,1464,1482,1493,1654,1691,1746,1788,1846,1889,1926,1948,1998,39 more,9552},
 	digits=[{1..9},{0..9},{1..9},{1..9}]
-solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
-	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
-	values={100,112,121,129,139,143,153,160,168,173,180,197,221,223,235,238,240,264,270,280,52 more,954},
-	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D2,length=4,value: BF | E,
 	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A12[1],D2[3]=A14[1]],referrers=[A1,A8,A12,A14],
 	values={1001,1128,1140,1147,1225,1365,1431,1517,1540,1763,1770,1820,1953,2002,2021,2024,2415,2431,2491,2556,26 more,9880},
 	digits=[{1..9},{0..5,7..9},{0..9},{0..9}]
 E={2..10}
-solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
-	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
-	values={105,112,119,120,124,127,136,143,150,153,155,158,165,169,171,180,187,192,195,210,60 more,969},
-	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D3,length=3,value: EF | F-I,
 	identities=[D3[0]=A1[2],D3[1]=A9[0],D3[2]=A12[2]],referrers=[A1,A9,A12],
 	values={112,119..121,128,131,138,139,143,144,152,153,156,159,161,168,172,173,180,181,91 more,990},
 	digits=[{1..9},{1..9},{0..9}]
 F={3..10}
 I={1..8}
-solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
-	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
-	values={100,112,121,129,139,143,153,160,168,173,180,197,221,223,235,238,240,264,270,280,47 more,954},
-	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=D2,length=4,value: BF | E,
 	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A12[1],D2[3]=A14[1]],referrers=[A1,A8,A12,A14],
 	values={1128,1140,1147,1225,1365,1431,1517,1540,1763,1770,1953,2021,2024,2415,2491,2556,3003,3060,3127,3160,18 more,9880},
 	digits=[{1..9},{0..5,7..9},{0..9},{0,1,3..9}]
+solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
+	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
+	values={100,112,121,129,139,143,153,160,168,173,180,197,221,223,235,238,240,264,270,280,47 more,954},
+	digits=[{1..9},{0..9},{0..9}]
 solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
 	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
 	values={105,120,124,136,150,153,155,165,171,180,187,192,210,220,221,228,233,253,264,271,49 more,969},
@@ -248,6 +244,10 @@ solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
 	digits=[{1..3},{0..9},{2,4..9},{1..9}]
 G={6..10}
 H={2,3}
+solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
+	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
+	values={10..12,15,17,18,20,21,23,24,26,28,30,31,35,36,39,41,48,53,8 more,90},
+	digits=[{1..9},{0..9}]
 solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
 	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
 	values={105,108,109,112,119..121,127,128,131,138,143,152,156,168,172,181,198,199,202,42 more,960},
@@ -302,10 +302,10 @@ solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
 	values={112,138,228,240,300,340,384,546,612,732,774,899,936,960},
 	digits=[{1..3,5..9},{0..4,6..9},{0,2,4,6,8,9}]
 C={1..8}
-solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
-	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
-	values={105,109,119,120,128,131,198,199,202,216,223,258,263,269,276,301,308,311,323,331,12 more,890},
-	digits=[{1..8},{0..9},{0..9}]
+solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
+	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
+	values={10,12,15,17,18,20,21,23,26,28,30,31,35,36,39,41,48,53,56,67,2 more,83},
+	digits=[{1..8},{0..3,5..9}]
 solve: CombinationsEntry(name=D7,length=4,value: DD | G-J,
 	identities=[D7[0]=A4[4],D7[1]=A11[2],D7[3]=A16[3]],referrers=[A4,A11,A16],
 	values={1517,2016,2300,2310,2431,3240,4368,4757,4950,7140,7387,7429},
@@ -313,175 +313,184 @@ solve: CombinationsEntry(name=D7,length=4,value: DD | G-J,
 D={1,3..6,8..10}
 solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
 	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
-	values={105,109,119,120,128,131,198,199,258,263,269,276,301,308,311,323,331,390,395,456,8 more,890},
-	digits=[{1..8},{0..9},{0,1,3..9}]
-solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
-	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
-	values={10,12,15,17,18,20,21,23,26,28,30,31,35,36,39,41,48,53,56,67,2 more,83},
-	digits=[{1..8},{0..3,5..9}]
-solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
-	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
 	values={105,109,119,120,128,131,198,199,258,263,269,276,301,308,311,323,331,390,395,456,7 more,890},
 	digits=[{1..8},{0..3,5..9},{0,1,3..9}]
-solve: CombinationsEntry(name=D19,length=3,value: I+J | B+H,
-	identities=[D19[0]=A19[0],D19[1]=A22[2],D19[2]=A25[0]],referrers=[A19,A22,A25],
-	values={143,165,169,187,197,221,253,287,495,715},
-	digits=[{1,2,4,7},{1,2,4..6,8,9},{1,3,5,7,9}]
-solve: CombinationsEntry(name=A9,length=3,value: BB+C | GJ,
-	identities=[A9[0]=D3[1],A9[1]=D4[1],A9[2]=D10[0]],referrers=[D3,D4,D10],
-	values={666},
-	digits=[{6},{6},{6}]
+solve: CombinationsEntry(name=A4,length=5,value: BFJ | G - J,
+	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[3]=D6[0],A4[4]=D7[0]],referrers=[D4,D5,D6,D7],
+	values={16637,60491,95477},
+	digits=[{1,6,9},{0,5,6},{4,6},{3,7,9},{1,7}]
 B={6}
-C={1}
-D={3,4,8..10}
+C={1..4,8}
+D={1,3,4,8..10}
 E={2..4,8..10}
-F={3,4,8..10}
-I={2..4,8}
-A={3,4}
-G={7}
+F={4,8,10}
+I={1..4,8}
 J={5}
-solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
-	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
-	values={300,899},
-	digits=[{3,8},{0,9},{0,9}]
-solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
-	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
-	values={1889},
-	digits=[{1},{8},{8},{9}]
-H={3}
-A={4}
-D={8..10}
-E={2,8..10}
-F={8..10}
-I={2,8}
-solve: CombinationsEntry(name=D10,length=6,value: AAGG+B+B | B-A,
-	identities=[D10[0]=A9[2],D10[1]=A13[0],D10[2]=A16[0],D10[4]=A22[1],D10[5]=A24[4]],referrers=[A9,A13,A16,A22,A24],
-	values={644773},
-	digits=[{6},{4},{4},{7},{7},{3}]
+G={7}
 solve: CombinationsEntry(name=A21,length=3,value: BB+J | H(B + G),
 	identities=[A21[0]=D14[2],A21[1]=D18[1],A21[2]=D15[2]],referrers=[D14,D18,D15],
 	values={820},
 	digits=[{8},{2},{0}]
-solve: CombinationsEntry(name=D19,length=3,value: I+J | B+H,
-	identities=[D19[0]=A19[0],D19[1]=A22[2],D19[2]=A25[0]],referrers=[A19,A22,A25],
-	values={187,253,715},
-	digits=[{1,2,7},{1,5,8},{3,5,7}]
-solve: CombinationsEntry(name=A19,length=3,value: AH | I - C,
-	identities=[A19[0]=D19[0],A19[1]=D17[1],A19[2]=D20[0]],referrers=[D19,D17,D20],
-	values={792},
-	digits=[{7},{9},{2}]
-I={8}
-D={9,10}
-E={2,9,10}
-F={9,10}
-solve: CombinationsEntry(name=D19,length=3,value: I+J | B+H,
-	identities=[D19[0]=A19[0],D19[1]=A22[2],D19[2]=A25[0]],referrers=[A19,A22,A25],
-	values={715},
-	digits=[{7},{1},{5}]
+H={3}
+A={1,4}
+C={1,2,4,8}
+D={1,4,8..10}
+E={2,4,8..10}
+I={1,2,4,8}
+solve: CombinationsEntry(name=D14,length=4,value: BG | GH,
+	identities=[D14[0]=A14[0],D14[2]=A21[0],D14[3]=A24[0]],referrers=[A14,A21,A24],
+	values={1889},
+	digits=[{1},{8},{8},{9}]
+solve: CombinationsEntry(name=D10,length=6,value: AAGG+B+B | B-A,
+	identities=[D10[0]=A9[2],D10[1]=A13[0],D10[2]=A16[0],D10[4]=A22[1],D10[5]=A24[4]],referrers=[A9,A13,A16,A22,A24],
+	values={316410,644773},
+	digits=[{3,6},{1,4},{4,6},{4,7},{1,7},{0,3}]
+A={4}
+C={1,2,8}
+D={1,8..10}
+E={2,8..10}
+F={8,10}
+I={1,2,8}
+solve: CombinationsEntry(name=A4,length=5,value: BFJ | G - J,
+	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[3]=D6[0],A4[4]=D7[0]],referrers=[D4,D5,D6,D7],
+	values={60491,95477},
+	digits=[{6,9},{0,5},{4},{7,9},{1,7}]
+solve: CombinationsEntry(name=A9,length=3,value: BB+C | GJ,
+	identities=[A9[0]=D3[1],A9[1]=D4[1],A9[2]=D10[0]],referrers=[D3,D4,D10],
+	values={666},
+	digits=[{6},{6},{6}]
+C={1}
+D={8..10}
+I={2,8}
+solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
+	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
+	values={300,899},
+	digits=[{3,8},{0,9},{0,9}]
+solve: CombinationsEntry(name=D10,length=6,value: AAGG+B+B | B-A,
+	identities=[D10[0]=A9[2],D10[1]=A13[0],D10[2]=A16[0],D10[4]=A22[1],D10[5]=A24[4]],referrers=[A9,A13,A16,A22,A24],
+	values={644773},
+	digits=[{6},{4},{4},{7},{7},{3}]
+solve: CombinationsEntry(name=A12,length=3,value: J(AI-C) | H,
+	identities=[A12[0]=D1[2],A12[1]=D2[2],A12[2]=D3[2]],referrers=[D1,D2,D3],
+	values={121,487},
+	digits=[{1,4},{2,8},{1,7}]
 solve: CombinationsEntry(name=A14,length=4,value: IJ | H - C,
 	identities=[A14[0]=D14[0],A14[1]=D2[3],A14[2]=D15[0],A14[3]=D4[3]],referrers=[D14,D2,D15,D4],
 	values={1763},
 	digits=[{1},{7},{6},{3}]
-solve: CombinationsEntry(name=A12,length=3,value: J(AI-C) | H,
-	identities=[A12[0]=D1[2],A12[1]=D2[2],A12[2]=D3[2]],referrers=[D1,D2,D3],
-	values={487},
-	digits=[{4},{8},{7}]
-solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
-	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
-	values={276},
-	digits=[{2},{7},{6}]
+I={8}
 D={9}
 E={2}
 F={10}
-solve: CombinationsEntry(name=D18,length=3,value: B(F+G) | D-E,
-	identities=[D18[0]=A18[0],D18[1]=A21[1],D18[2]=A24[1]],referrers=[A18,A21,A24],
-	values={827},
-	digits=[{8},{2},{7}]
-solve: CombinationsEntry(name=D17,length=4,value: F(BGH-I) | F-J,
-	identities=[D17[0]=A16[2],D17[1]=A19[1],D17[2]=A23[0],D17[3]=A25[1]],referrers=[A16,A19,A23,A25],
-	values={5975},
-	digits=[{5},{9},{7},{5}]
-solve: CombinationsEntry(name=D15,length=4,value: ABJ-E | H-C,
-	identities=[D15[0]=A14[2],D15[1]=A18[1],D15[2]=A21[2],D15[3]=A24[2]],referrers=[A14,A18,A21,A24],
-	values={6903},
-	digits=[{6},{9},{0},{3}]
-solve: CombinationsEntry(name=D7,length=4,value: DD | G-J,
-	identities=[D7[0]=A4[4],D7[1]=A11[2],D7[3]=A16[3]],referrers=[A4,A11,A16],
-	values={3240,7387},
-	digits=[{3,7},{2,3},{4,8},{0,7}]
-solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
-	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
-	values={707},
-	digits=[{7},{0},{7}]
-solve: CombinationsEntry(name=D5,length=4,value: F(B+F+G) | D+I,
-	identities=[D5[0]=A4[2],D5[1]=A11[0],D5[2]=A13[1],D5[3]=A16[1]],referrers=[A4,A11,A13,A16],
-	values={4737},
-	digits=[{4},{7},{3},{7}]
-solve: CombinationsEntry(name=D4,length=6,value: FG(B+I)-I | D-G,
-	identities=[D4[0]=A4[0],D4[1]=A9[1],D4[3]=A14[3],D4[4]=A18[2],D4[5]=A22[0]],referrers=[A4,A9,A14,A18,A22],
-	values={960391},
-	digits=[{9},{6},{0},{3},{9},{1}]
-solve: CombinationsEntry(name=D3,length=3,value: EF | F-I,
-	identities=[D3[0]=A1[2],D3[1]=A9[0],D3[2]=A12[2]],referrers=[A1,A9,A12],
-	values={667},
-	digits=[{6},{6},{7}]
-solve: CombinationsEntry(name=D2,length=4,value: BF | E,
-	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A12[1],D2[3]=A14[1]],referrers=[A1,A8,A12,A14],
-	values={4087},
-	digits=[{4},{0},{8},{7}]
-solve: CombinationsEntry(name=D1,length=3,value: EF(B+F+G) | C+C,
-	identities=[D1[0]=A1[0],D1[1]=A8[0],D1[2]=A12[0]],referrers=[A1,A8,A12],
-	values={924},
-	digits=[{9},{2},{4}]
-solve: CombinationsEntry(name=A25,length=3,value: E^G | I - A,
-	identities=[A25[0]=D19[2],A25[1]=D17[3],A25[2]=D20[2]],referrers=[D19,D17,D20],
-	values={556},
-	digits=[{5},{5},{6}]
-solve: CombinationsEntry(name=A24,length=5,value: F(GJ-A) | C + F - D,
-	identities=[A24[0]=D14[3],A24[1]=D18[2],A24[2]=D15[3],A24[4]=D10[5]],referrers=[D14,D18,D15,D10],
-	values={97343},
-	digits=[{9},{7},{3},{4},{3}]
-solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
-	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
-	values={77},
-	digits=[{7},{7}]
-solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
-	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
-	values={171},
-	digits=[{1},{7},{1}]
-solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
-	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
-	values={899},
-	digits=[{8},{9},{9}]
-solve: CombinationsEntry(name=A16,length=4,value: I(D-C) | D - G,
-	identities=[A16[0]=D10[2],A16[1]=D5[3],A16[2]=D17[0],A16[3]=D7[3]],referrers=[D10,D5,D17,D7],
-	values={4757},
-	digits=[{4},{7},{5},{7}]
-solve: CombinationsEntry(name=D7,length=4,value: DD | G-J,
-	identities=[D7[0]=A4[4],D7[1]=A11[2],D7[3]=A16[3]],referrers=[A4,A11,A16],
-	values={7387},
-	digits=[{7},{3},{8},{7}]
-solve: CombinationsEntry(name=A13,length=3,value: DE | F - I,
-	identities=[A13[0]=D10[1],A13[1]=D5[2],A13[2]=D6[2]],referrers=[D10,D5,D6],
-	values={437},
-	digits=[{4},{3},{7}]
-solve: CombinationsEntry(name=A11,length=3,value: AF-E | AD,
-	identities=[A11[0]=D5[1],A11[1]=D6[1],A11[2]=D7[1]],referrers=[D5,D6,D7],
-	values={703},
-	digits=[{7},{0},{3}]
-solve: CombinationsEntry(name=A8,length=2,value: A+E | F - G,
-	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2],
-	values={20},
-	digits=[{2},{0}]
-solve: CombinationsEntry(name=A4,length=5,value: BFJ | G - J,
-	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[3]=D6[0],A4[4]=D7[0]],referrers=[D4,D5,D6,D7],
-	values={95477},
-	digits=[{9},{5},{4},{7},{7}]
 solve: CombinationsEntry(name=A1,length=3,value: GJ(B+I)-JJ | E,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
 	values={946},
 	digits=[{9},{4},{6}]
-Clue/Variable iterations=197, updates=75, elapsed 0:00:00.194763
+solve: CombinationsEntry(name=A4,length=5,value: BFJ | G - J,
+	identities=[A4[0]=D4[0],A4[2]=D5[0],A4[3]=D6[0],A4[4]=D7[0]],referrers=[D4,D5,D6,D7],
+	values={95477},
+	digits=[{9},{5},{4},{7},{7}]
+solve: CombinationsEntry(name=A8,length=2,value: A+E | F - G,
+	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2],
+	values={20,31},
+	digits=[{2,3},{0,1}]
+solve: CombinationsEntry(name=A11,length=3,value: AF-E | AD,
+	identities=[A11[0]=D5[1],A11[1]=D6[1],A11[2]=D7[1]],referrers=[D5,D6,D7],
+	values={703},
+	digits=[{7},{0},{3}]
+solve: CombinationsEntry(name=A12,length=3,value: J(AI-C) | H,
+	identities=[A12[0]=D1[2],A12[1]=D2[2],A12[2]=D3[2]],referrers=[D1,D2,D3],
+	values={487},
+	digits=[{4},{8},{7}]
+solve: CombinationsEntry(name=A13,length=3,value: DE | F - I,
+	identities=[A13[0]=D10[1],A13[1]=D5[2],A13[2]=D6[2]],referrers=[D10,D5,D6],
+	values={437},
+	digits=[{4},{3},{7}]
+solve: CombinationsEntry(name=A16,length=4,value: I(D-C) | D - G,
+	identities=[A16[0]=D10[2],A16[1]=D5[3],A16[2]=D17[0],A16[3]=D7[3]],referrers=[D10,D5,D17,D7],
+	values={4757},
+	digits=[{4},{7},{5},{7}]
+solve: CombinationsEntry(name=A19,length=3,value: AH | I - C,
+	identities=[A19[0]=D19[0],A19[1]=D17[1],A19[2]=D20[0]],referrers=[D19,D17,D20],
+	values={792},
+	digits=[{7},{9},{2}]
+solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
+	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
+	values={171},
+	digits=[{1},{7},{1}]
+solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
+	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
+	values={15,18,77},
+	digits=[{1,7},{5,7,8}]
+solve: CombinationsEntry(name=A24,length=5,value: F(GJ-A) | C + F - D,
+	identities=[A24[0]=D14[3],A24[1]=D18[2],A24[2]=D15[3],A24[4]=D10[5]],referrers=[D14,D18,D15,D10],
+	values={97343},
+	digits=[{9},{7},{3},{4},{3}]
+solve: CombinationsEntry(name=A25,length=3,value: E^G | I - A,
+	identities=[A25[0]=D19[2],A25[1]=D17[3],A25[2]=D20[2]],referrers=[D19,D17,D20],
+	values={556},
+	digits=[{5},{5},{6}]
+solve: CombinationsEntry(name=D1,length=3,value: EF(B+F+G) | C+C,
+	identities=[D1[0]=A1[0],D1[1]=A8[0],D1[2]=A12[0]],referrers=[A1,A8,A12],
+	values={924},
+	digits=[{9},{2},{4}]
+solve: CombinationsEntry(name=A8,length=2,value: A+E | F - G,
+	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2],
+	values={20},
+	digits=[{2},{0}]
+solve: CombinationsEntry(name=D2,length=4,value: BF | E,
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A12[1],D2[3]=A14[1]],referrers=[A1,A8,A12,A14],
+	values={4087},
+	digits=[{4},{0},{8},{7}]
+solve: CombinationsEntry(name=D3,length=3,value: EF | F-I,
+	identities=[D3[0]=A1[2],D3[1]=A9[0],D3[2]=A12[2]],referrers=[A1,A9,A12],
+	values={667},
+	digits=[{6},{6},{7}]
+solve: CombinationsEntry(name=D4,length=6,value: FG(B+I)-I | D-G,
+	identities=[D4[0]=A4[0],D4[1]=A9[1],D4[3]=A14[3],D4[4]=A18[2],D4[5]=A22[0]],referrers=[A4,A9,A14,A18,A22],
+	values={960391},
+	digits=[{9},{6},{0},{3},{9},{1}]
+solve: CombinationsEntry(name=A18,length=3,value: JJ | C + C,
+	identities=[A18[0]=D18[0],A18[1]=D15[1],A18[2]=D4[4]],referrers=[D18,D15,D4],
+	values={899},
+	digits=[{8},{9},{9}]
+solve: CombinationsEntry(name=D5,length=4,value: F(B+F+G) | D+I,
+	identities=[D5[0]=A4[2],D5[1]=A11[0],D5[2]=A13[1],D5[3]=A16[1]],referrers=[A4,A11,A13,A16],
+	values={4737},
+	digits=[{4},{7},{3},{7}]
+solve: CombinationsEntry(name=D6,length=3,value: I(I+I) | E+H,
+	identities=[D6[0]=A4[3],D6[1]=A11[1],D6[2]=A13[2]],referrers=[A4,A11,A13],
+	values={707},
+	digits=[{7},{0},{7}]
+solve: CombinationsEntry(name=D7,length=4,value: DD | G-J,
+	identities=[D7[0]=A4[4],D7[1]=A11[2],D7[3]=A16[3]],referrers=[A4,A11,A16],
+	values={7387},
+	digits=[{7},{3},{8},{7}]
+solve: CombinationsEntry(name=D15,length=4,value: ABJ-E | H-C,
+	identities=[D15[0]=A14[2],D15[1]=A18[1],D15[2]=A21[2],D15[3]=A24[2]],referrers=[A14,A18,A21,A24],
+	values={6903},
+	digits=[{6},{9},{0},{3}]
+solve: CombinationsEntry(name=D17,length=4,value: F(BGH-I) | F-J,
+	identities=[D17[0]=A16[2],D17[1]=A19[1],D17[2]=A23[0],D17[3]=A25[1]],referrers=[A16,A19,A23,A25],
+	values={5975},
+	digits=[{5},{9},{7},{5}]
+solve: CombinationsEntry(name=A23,length=2,value: D-H | J - H,
+	identities=[A23[0]=D17[2],A23[1]=D20[1]],referrers=[D17,D20],
+	values={77},
+	digits=[{7},{7}]
+solve: CombinationsEntry(name=D18,length=3,value: B(F+G) | D-E,
+	identities=[D18[0]=A18[0],D18[1]=A21[1],D18[2]=A24[1]],referrers=[A18,A21,A24],
+	values={827},
+	digits=[{8},{2},{7}]
+solve: CombinationsEntry(name=D19,length=3,value: I+J | B+H,
+	identities=[D19[0]=A19[0],D19[1]=A22[2],D19[2]=A25[0]],referrers=[A19,A22,A25],
+	values={715},
+	digits=[{7},{1},{5}]
+solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
+	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
+	values={276},
+	digits=[{2},{7},{6}]
+Clue/Variable iterations=194, updates=76, elapsed 0:00:00.212917
 SOLUTION-----------------------------
 Puzzle Summary
 A1, GJ(B+I)-JJ | E, values={946}

@@ -132,7 +132,7 @@ U={1..9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 SOLVE------------
-Eval Root66Entry D14 cartesianCount=14348907, elapsed 0:00:02.059917
+Eval Root66Entry D14 cartesianCount=14348907, elapsed 0:00:03.056175
 solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={more than 20},
@@ -140,7 +140,7 @@ solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval Root66Entry D2 cartesianCount=29760696, elapsed 0:00:03.509448
+Eval Root66Entry D2 cartesianCount=29760696, elapsed 0:00:04.377279
 solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={more than 20},
@@ -152,7 +152,7 @@ I={1, 4}
 N={1, 2, 3, 4, 5, 6, 7, 8}
 R={2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 8}
-Eval Root66Entry A2 cartesianCount=6193152, elapsed 0:00:00.837594
+Eval Root66Entry A2 cartesianCount=6193152, elapsed 0:00:00.978075
 solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={4659, 4956, 5649, 5946, 1395, 2643, 3567, 2318, 1436, 1634, 3416, 3614},
@@ -167,7 +167,7 @@ U={6, 7}
 I={4}
 N={1, 5, 6, 7, 8}
 S={1, 8}
-Eval Root66Entry A12 cartesianCount=72, elapsed 0:00:00.000726
+Eval Root66Entry A12 cartesianCount=72, elapsed 0:00:00.001285
 solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={1869, 1968, 2839, 2938, 3829, 3928},
@@ -185,191 +185,101 @@ solve: Clue(name=D4,length=4,type=Root66ClueType.UNKNOWN,value: (AROU+N)D,
 	preValues={3789}),
 	digits=[{4}, {1}, {8}, {2}]
 UPDATES-----------------------------
-solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
-	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
-	values={1864, 3647, 3746, 4637, 4736},
-	preValues={2784}),
-	digits=[{1, 3, 4}, {6, 7, 8}, {3, 4, 6}, {4, 6, 7}]
-solve: Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)-I+N),
-	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
-	values={1526, 1625, 2516, 2615},
-	preValues={1982}),
-	digits=[{1, 2}, {5, 6}, {1, 2}, {5, 6}]
-solve: Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
-	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
-	values={2647, 3497, 3794, 9437, 9734},
-	preValues={1875}),
-	digits=[{2, 3, 9}, {4, 6, 7}, {3, 4, 9}, {4, 7}]
-solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
-	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
-	values={1329, 2358, 2456, 2654, 2853, 5328, 5426, 5624, 5823},
-	preValues={1594}),
-	digits=[{1, 2, 5}, {3, 4, 6, 8}, {2, 5}, {3, 4, 6, 8, 9}]
-solve: Clue(name=D10,length=4,type=Root66ClueType.UNKNOWN,value: (S(U+D-A)-T)IO+N,
-	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
-	values={5894, 9854},
-	preValues={2157}),
-	digits=[{5, 9}, {8}, {5, 9}, {4}]
-solve: Clue(name=D8,length=4,type=Root66ClueType.UNKNOWN,value: S-A+U^T*(O+I-R),
-	identities=[D8[0]=A8[0],D8[1]=A11[0],D8[2]=A13[0],D8[3]=A18[0]],referrers=[A8,A11,A13,A18],
-	values={4162},
-	preValues={1947}),
-	digits=[{4}, {1}, {6}, {2}]
-solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
+solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
+	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
+	values={2643},
+	preValues={1538}),
+	digits=[{2}, {6}, {4}, {3}]
+solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
 	values={more than 20},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {4, 5, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 6}, {1, 2, 3}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-solve: Clue(name=D5,length=4,type=Root66ClueType.UNKNOWN,value: A(U+D)+(I+T+O)*R^S,
-	identities=[D5[0]=A2[3],D5[1]=A7[5],D5[2]=A9[1],D5[3]=A12[1]],referrers=[A2,A7,A9,A12],
-	values={3579},
-	preValues={3659}),
-	digits=[{3}, {5}, {7}, {9}]
-solve: Clue(name=D3,length=4,type=Root66ClueType.UNKNOWN,value: DI(N^O*S+A+U)R,
-	identities=[D3[0]=A2[1],D3[1]=A7[3],D3[2]=A8[3],D3[3]=A11[3]],referrers=[A2,A7,A8,A11],
-	values={6485, 6584},
-	preValues={1368}),
-	digits=[{6}, {4, 5}, {8}, {4, 5}]
-solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
-	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
-	values={2796},
-	preValues={3687}),
-	digits=[{2}, {7}, {9}, {6}]
-solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
-	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
-	values={8467, 8764},
-	preValues={1896}),
-	digits=[{8}, {4, 7}, {6}, {4, 7}]
-solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
-	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
-	values={1864, 3647, 4637},
-	preValues={2784}),
-	digits=[{1, 3, 4}, {6, 8}, {3, 4, 6}, {4, 7}]
-solve: Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)-I+N),
-	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
-	values={1526, 2516},
-	preValues={1982}),
-	digits=[{1, 2}, {5}, {1, 2}, {6}]
-solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
-	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
-	values={2358, 5328},
-	preValues={1594}),
-	digits=[{2, 5}, {3}, {2, 5}, {8}]
-solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 8, 9}, {4, 5, 6, 7, 8, 9}, {2, 5}, {3, 4, 9}, {1, 2}, {3, 4, 6}, {1, 2, 7, 8, 9}, {1, 4, 6, 8, 9}]
-solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {4, 5, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 6}, {1, 2, 3}, {1, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-solve: Clue(name=A19,length=4,type=Root66ClueType.UNKNOWN,value: (T*U^N*(D+R)+A)S,
-	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
-	values={5684},
-	preValues={1624}),
-	digits=[{5}, {6}, {8}, {4}]
-solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
-	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
-	values={3647, 4637},
-	preValues={2784}),
-	digits=[{3, 4}, {6}, {3, 4}, {7}]
-solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
-	values={57962817, 69731824, 79631824, 97562817},
-	preValues={unknown}),
-	digits=[{5, 6, 7, 9}, {7, 9}, {5, 6, 7, 9}, {3, 6}, {1, 2}, {8}, {1, 2}, {4, 7}]
-solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4}, {1, 3, 4, 5, 6, 7, 8, 9}, {4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
-	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
-	values={8467},
-	preValues={1896}),
-	digits=[{8}, {4}, {6}, {7}]
-solve: Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
-	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
-	values={3794, 9734},
-	preValues={1875}),
-	digits=[{3, 9}, {7}, {3, 9}, {4}]
-solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
-	values={84592416, 87531426},
-	preValues={unknown}),
-	digits=[{8}, {4, 7}, {5}, {3, 9}, {1, 2}, {4}, {1, 2}, {6}]
-solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
-	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
-	values={3647},
-	preValues={2784}),
-	digits=[{3}, {6}, {4}, {7}]
-solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
-	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
-	values={2358},
-	preValues={1594}),
-	digits=[{2}, {3}, {5}, {8}]
-solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4}, {1, 3, 5, 6, 7, 8, 9}, {4, 7}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-solve: Clue(name=A18,length=4,type=Root66ClueType.UNKNOWN,value: (T/R)*I^N*(ODU+S),
-	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
-	values={2537},
-	preValues={2316}),
-	digits=[{2}, {5}, {3}, {7}]
-solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 7, 8}, {6, 9}, {1, 2, 3, 4, 5, 7, 8}, {6, 9}, {3}, {5}, {7}, {1, 2, 4, 6, 8, 9}]
-solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
-	values={87531426},
-	preValues={unknown}),
-	digits=[{8}, {7}, {5}, {3}, {1}, {4}, {2}, {6}]
-solve: Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)-I+N),
-	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
-	values={2516},
-	preValues={1982}),
-	digits=[{2}, {5}, {1}, {6}]
-solve: Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
-	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
-	values={9734},
-	preValues={1875}),
-	digits=[{9}, {7}, {3}, {4}]
-solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
-	values={69731824, 79631824},
-	preValues={unknown}),
-	digits=[{6, 7}, {9}, {6, 7}, {3}, {1}, {8}, {2}, {4}]
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1}, {2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}]
+solve: Clue(name=A8,length=4,type=Root66ClueType.UNKNOWN,value: R+O(TU+N)DA,
+	identities=[A8[0]=D8[0],A8[1]=D1[2],A8[2]=D2[2],A8[3]=D3[2]],referrers=[D8,D1,D2,D3],
+	values={4198},
+	preValues={5987}),
+	digits=[{4}, {1}, {9}, {8}]
+solve: Clue(name=A9,length=4,type=Root66ClueType.UNKNOWN,value: (S+I+T^A+RO-U-N)D,
+	identities=[A9[0]=D4[2],A9[1]=D5[2],A9[2]=D6[2],A9[3]=D10[0]],referrers=[D4,D5,D6,D10],
+	values={8567, 8765},
+	preValues={2358}),
+	digits=[{8}, {5, 7}, {6}, {5, 7}]
+solve: Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
+	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
+	values={3578, 1569, 1965, 2539, 2935},
+	preValues={2976}),
+	digits=[{1, 2, 3}, {5, 9}, {3, 6, 7}, {5, 8, 9}]
+solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
+	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
+	values={2839, 2938},
+	preValues={4758}),
+	digits=[{2}, {8, 9}, {3}, {8, 9}]
+solve: Clue(name=A13,length=4,type=Root66ClueType.UNKNOWN,value: S*U^T+(O+R+I)A+N,
+	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
+	values={2369, 6329},
+	preValues={1794}),
+	digits=[{2, 6}, {3}, {2, 6}, {9}]
 solve: Clue(name=A16,length=4,type=Root66ClueType.UNKNOWN,value: (DI-NO)(S+T)A+R,
 	identities=[A16[0]=D16[0],A16[1]=D17[0],A16[2]=D6[4],A16[3]=D10[2]],referrers=[D16,D17,D6,D10],
 	values={2319},
 	preValues={1597}),
 	digits=[{2}, {3}, {1}, {9}]
-solve: Clue(name=D10,length=4,type=Root66ClueType.UNKNOWN,value: (S(U+D-A)-T)IO+N,
-	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
-	values={5894},
-	preValues={2157}),
-	digits=[{5}, {8}, {9}, {4}]
-solve: Clue(name=A13,length=4,type=Root66ClueType.UNKNOWN,value: S*U^T+(O+R+I)A+N,
-	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
-	values={6329},
-	preValues={1794}),
-	digits=[{6}, {3}, {2}, {9}]
-solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
-	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
-	values={2938},
-	preValues={4758}),
-	digits=[{2}, {9}, {3}, {8}]
+solve: Clue(name=A18,length=4,type=Root66ClueType.UNKNOWN,value: (T/R)*I^N*(ODU+S),
+	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
+	values={1567, 1765, 2537, 2735, 3527, 3725, 6517, 6715},
+	preValues={2316}),
+	digits=[{1, 2, 3, 6}, {5, 7}, {1, 2, 3, 6}, {5, 7}]
+solve: Clue(name=A19,length=4,type=Root66ClueType.UNKNOWN,value: (T*U^N*(D+R)+A)S,
+	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
+	values={1586, 5486, 5684, 8456, 8654},
+	preValues={1624}),
+	digits=[{1, 5, 8}, {4, 5, 6}, {5, 8}, {4, 6}]
+solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
+	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
+	values={6487, 6784, 8467, 8764},
+	preValues={1896}),
+	digits=[{6, 8}, {4, 7}, {6, 8}, {4, 7}]
+solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
+	values={36193567, 46193568, 56193569, 76193571, 86193572},
+	preValues={unknown}),
+	digits=[{3, 4, 5, 7, 8}, {6}, {1}, {9}, {3}, {5}, {6, 7}, {1, 2, 7, 8, 9}]
+solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 7, 8, 9}, {6}, {1, 3, 4, 5, 7, 8, 9}, {4, 5}, {1}, {5, 6, 9}, {2, 4, 8, 9}, {2, 3, 4, 6, 7, 8, 9}]
+solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {6, 7}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4}, {1, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+solve: Clue(name=A18,length=4,type=Root66ClueType.UNKNOWN,value: (T/R)*I^N*(ODU+S),
+	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
+	values={1567, 2537, 3527, 6517},
+	preValues={2316}),
+	digits=[{1, 2, 3, 6}, {5}, {1, 2, 3, 6}, {7}]
+solve: Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
+	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
+	values={1965, 2935},
+	preValues={2976}),
+	digits=[{1, 2}, {9}, {3, 6}, {5}]
+solve: Clue(name=D2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U(R+A)(T^I+O*N^S),
+	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
+	values={2796},
+	preValues={3687}),
+	digits=[{2}, {7}, {9}, {6}]
+solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
+	values={16751987, 26741598, 96741647},
+	preValues={unknown}),
+	digits=[{1, 2, 9}, {6}, {7}, {4, 5}, {1}, {5, 6, 9}, {4, 8, 9}, {7, 8}]
 solve: Clue(name=A11,length=4,type=Root66ClueType.UNKNOWN,value: U((N+I)^T-(A+R)D)S,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={1965},
@@ -380,11 +290,26 @@ solve: Clue(name=D3,length=4,type=Root66ClueType.UNKNOWN,value: DI(N^O*S+A+U)R,
 	values={6485},
 	preValues={1368}),
 	digits=[{6}, {4}, {8}, {5}]
-solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
-	values={16793571, 16893572, 26493572, 26593574, 26793578, 36493576, 36593579, 46293572, 46393576, 56293574, 56393579, 76193571, 76293578, 86193572},
+solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
+	values={26741598, 96741647},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 7, 8}, {6}, {1, 2, 3, 4, 5, 7, 8}, {9}, {3}, {5}, {7}, {1, 2, 4, 6, 8, 9}]
+	digits=[{2, 9}, {6}, {7}, {4}, {1}, {5, 6}, {4, 9}, {7, 8}]
+solve: Clue(name=D5,length=4,type=Root66ClueType.UNKNOWN,value: A(U+D)+(I+T+O)*R^S,
+	identities=[D5[0]=A2[3],D5[1]=A7[5],D5[2]=A9[1],D5[3]=A12[1]],referrers=[A2,A7,A9,A12],
+	values={3579},
+	preValues={3659}),
+	digits=[{3}, {5}, {7}, {9}]
+solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
+	values={26741598},
+	preValues={unknown}),
+	digits=[{2}, {6}, {7}, {4}, {1}, {5}, {9}, {8}]
+solve: Clue(name=A12,length=4,type=Root66ClueType.UNKNOWN,value: (A+S)T(R^O-√(ID)),
+	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
+	values={2938},
+	preValues={4758}),
+	digits=[{2}, {9}, {3}, {8}]
 solve: Clue(name=A9,length=4,type=Root66ClueType.UNKNOWN,value: (S+I+T^A+RO-U-N)D,
 	identities=[A9[0]=D4[2],A9[1]=D5[2],A9[2]=D6[2],A9[3]=D10[0]],referrers=[D4,D5,D6,D10],
 	values={8765},
@@ -395,27 +320,87 @@ solve: Clue(name=D6,length=8,type=Root66ClueType.BCEFG,value: ,
 	values={79631824},
 	preValues={unknown}),
 	digits=[{7}, {9}, {6}, {3}, {1}, {8}, {2}, {4}]
-solve: Clue(name=A8,length=4,type=Root66ClueType.UNKNOWN,value: R+O(TU+N)DA,
-	identities=[A8[0]=D8[0],A8[1]=D1[2],A8[2]=D2[2],A8[3]=D3[2]],referrers=[D8,D1,D2,D3],
-	values={4198},
-	preValues={5987}),
-	digits=[{4}, {1}, {9}, {8}]
+solve: Clue(name=A19,length=4,type=Root66ClueType.UNKNOWN,value: (T*U^N*(D+R)+A)S,
+	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
+	values={1586, 5486, 5684},
+	preValues={1624}),
+	digits=[{1, 5}, {4, 5, 6}, {8}, {4, 6}]
+solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
+	values={56841624, 56941629, 57683726, 57831426, 67583726, 86541624, 87531426, 96541629},
+	preValues={unknown}),
+	digits=[{5, 6, 8, 9}, {6, 7}, {5, 6, 8, 9}, {3, 4, 8}, {1, 3}, {4, 6, 7}, {2}, {4, 6, 9}]
+solve: Clue(name=D8,length=4,type=Root66ClueType.UNKNOWN,value: S-A+U^T*(O+I-R),
+	identities=[D8[0]=A8[0],D8[1]=A11[0],D8[2]=A13[0],D8[3]=A18[0]],referrers=[A8,A11,A13,A18],
+	values={4162},
+	preValues={1947}),
+	digits=[{4}, {1}, {6}, {2}]
+solve: Clue(name=A13,length=4,type=Root66ClueType.UNKNOWN,value: S*U^T+(O+R+I)A+N,
+	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
+	values={6329},
+	preValues={1794}),
+	digits=[{6}, {3}, {2}, {9}]
+solve: Clue(name=A18,length=4,type=Root66ClueType.UNKNOWN,value: (T/R)*I^N*(ODU+S),
+	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
+	values={2537},
+	preValues={2316}),
+	digits=[{2}, {5}, {3}, {7}]
+solve: Clue(name=D10,length=4,type=Root66ClueType.UNKNOWN,value: (S(U+D-A)-T)IO+N,
+	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
+	values={5894},
+	preValues={2157}),
+	digits=[{5}, {8}, {9}, {4}]
+solve: Clue(name=A19,length=4,type=Root66ClueType.UNKNOWN,value: (T*U^N*(D+R)+A)S,
+	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
+	values={5684},
+	preValues={1624}),
+	digits=[{5}, {6}, {8}, {4}]
+solve: Clue(name=D14,length=4,type=Root66ClueType.UNKNOWN,value: R-(A+I+N+O-U^T)S,
+	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
+	values={2358},
+	preValues={1594}),
+	digits=[{2}, {3}, {5}, {8}]
+solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
+	values={67583726, 86541624, 87531426, 96541629},
+	preValues={unknown}),
+	digits=[{6, 8, 9}, {6, 7}, {5}, {3, 4, 8}, {1, 3}, {4, 6, 7}, {2}, {4, 6, 9}]
+solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
+	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
+	values={8467, 8764},
+	preValues={1896}),
+	digits=[{8}, {4, 7}, {6}, {4, 7}]
+solve: Clue(name=D15,length=4,type=Root66ClueType.UNKNOWN,value: ((N+U)^T+RI+S+O+D)A,
+	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
+	values={9734},
+	preValues={1875}),
+	digits=[{9}, {7}, {3}, {4}]
+solve: Clue(name=A20,length=8,type=Root66ClueType.BCEFG,value: ,
+	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
+	values={87531426},
+	preValues={unknown}),
+	digits=[{8}, {7}, {5}, {3}, {1}, {4}, {2}, {6}]
+solve: Clue(name=A21,length=4,type=Root66ClueType.UNKNOWN,value: -(√I)N+TRADO+S,
+	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
+	values={8467},
+	preValues={1896}),
+	digits=[{8}, {4}, {6}, {7}]
 solve: Clue(name=D1,length=8,type=Root66ClueType.BCEFG,value: ,
 	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
 	values={76193571, 86193572},
 	preValues={unknown}),
 	digits=[{7, 8}, {6}, {1}, {9}, {3}, {5}, {7}, {1, 2}]
-solve: Clue(name=A7,length=8,type=Root66ClueType.BCEFG,value: ,
-	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
-	values={26741598},
-	preValues={unknown}),
-	digits=[{2}, {6}, {7}, {4}, {1}, {5}, {9}, {8}]
-solve: Clue(name=A2,length=4,type=Root66ClueType.UNKNOWN,value: -D+U*R^(A+T)+I+O*N^S,
-	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
-	values={2643},
-	preValues={1538}),
-	digits=[{2}, {6}, {4}, {3}]
-Clue/Variable iterations=186, updates=46, elapsed 0:00:00.023730
+solve: Clue(name=D16,length=4,type=Root66ClueType.UNKNOWN,value: R(O(√D-A+UST)-I+N),
+	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
+	values={2516},
+	preValues={1982}),
+	digits=[{2}, {5}, {1}, {6}]
+solve: Clue(name=D17,length=4,type=Root66ClueType.UNKNOWN,value: A(S^T+OU+N)+D,
+	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
+	values={3647},
+	preValues={2784}),
+	digits=[{3}, {6}, {4}, {7}]
+Clue/Variable iterations=149, updates=43, elapsed 0:00:00.028767
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A2, -D+U*R^(A+T)+I+O*N^S, values={2643}

@@ -150,34 +150,55 @@ Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 RemainingValues: [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
 UPDATES-----------------------------
-solve: Clue(name=D16,length=2,value: Square - gD1,
-	prime=Z,preValue: Multiple of Z,
-	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D12,length=3,value: Jumble gA18,
-	prime=X,preValue: Same sum digits A18,
-	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
-	values={unknown},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-X={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D10,length=3,value: ,
-	prime=V,preValue: Ascending digits, Divisible by sum digits,
-	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
-	values={145, 148, 169, 478, 138, 689, 136, 156, 457, 568, 679, 239, 236, 248},
-	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
-	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7, 8}, {5, 6, 7, 8, 9}]
-V={13,23,47,67,79,89}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
+solve: Clue(name=A2,length=3,value: ,
+	prime=B,preValue: Multiple of gA2,
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
 	values={more than 20},
 	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}, {1, 2, 3, 4, 5, 6, 7}]
-T={31,41,43,53,61,73,83,97}
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+B={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A5,length=2,value: ,
+	prime=C,preValue: Square,
+	identities=[A5[1]=D6[0]],referrers=[D6,A17,A9],
+	values={69, 64, 36, 21, 96},
+	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
+	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
+C={13,17,31,37,73,79}
+solve: Clue(name=A7,length=3,value: Multiple of D,
+	prime=D,preValue: Multiple of D,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A11,length=2,value: Factor of gD11,
+	prime=G,preValue: Ascending digits,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+G={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A12,length=2,value: Triangular ,
+	prime=H,preValue: Triangular ,
+	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
+	values={28, 78, 10, 91},
+	preValues={1128, 1378, 1830, 9591}),
+	digits=[{1, 2, 7, 9}, {0, 1, 8}]
+H={11,13,59,83}
+solve: Clue(name=A13,length=2,value: ,
+	prime=J,preValue: Prime,
+	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+J={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A14,length=2,value: ,
+	prime=K,preValue: Triangular ,
+	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+K={11,13,17,19,23,29,31,37,41,43,47,53,59,67,71,73,83,89,97}
 solve: Clue(name=D3,length=2,value: ,
 	prime=Q,preValue: Square ,
 	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
@@ -185,20 +206,27 @@ solve: Clue(name=D3,length=2,value: ,
 	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
 	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
 Q={13,17,31,37,73,79}
-solve: Clue(name=A14,length=2,value: ,
-	prime=K,preValue: Triangular ,
-	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+solve: Clue(name=A2,length=3,value: ,
+	prime=B,preValue: Multiple of gA2,
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
 	values={more than 20},
 	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-K={11,13,17,19,23,29,31,37,41,43,47,53,59,67,71,83,89,97}
-solve: Clue(name=D12,length=3,value: Jumble gA18,
-	prime=X,preValue: Same sum digits A18,
-	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
-	values={unknown},
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 6, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+B={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A7,length=3,value: Multiple of D,
+	prime=D,preValue: Multiple of D,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+	values={more than 20},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-X={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 4, 6, 9}]
+D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=D3,length=2,value: ,
+	prime=Q,preValue: Square ,
+	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
+	values={69, 64, 36, 21, 96},
+	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
+	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
+Q={13,17,31,37,73,79}
 solve: Clue(name=D8,length=3,value: ,
 	prime=T,preValue: Descending digits,
 	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
@@ -206,6 +234,48 @@ solve: Clue(name=D8,length=3,value: ,
 	preValues={more than 20}),
 	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}, {1, 2, 3, 4, 5, 6, 7}]
 T={31,41,43,53,61,73,83,97}
+solve: Clue(name=A7,length=3,value: Multiple of D,
+	prime=D,preValue: Multiple of D,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 4, 6, 9}]
+D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A11,length=2,value: Factor of gD11,
+	prime=G,preValue: Ascending digits,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}]
+G={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A14,length=2,value: ,
+	prime=K,preValue: Triangular ,
+	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+K={11,13,17,19,23,29,31,37,41,43,47,53,59,67,71,83,89,97}
+solve: Clue(name=D3,length=2,value: ,
+	prime=Q,preValue: Square ,
+	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
+	values={69, 64, 36, 21, 96},
+	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
+	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
+Q={13,17,31,37,73,79}
+solve: Clue(name=D8,length=3,value: ,
+	prime=T,preValue: Descending digits,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}, {1, 2, 3, 4, 5, 6, 7}]
+T={31,41,43,53,61,73,83,97}
+solve: Clue(name=D10,length=3,value: ,
+	prime=V,preValue: Ascending digits, Divisible by sum digits,
+	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
+	values={145, 148, 169, 478, 138, 689, 136, 156, 457, 568, 679, 239, 236, 248},
+	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
+	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7, 8}, {5, 6, 7, 8, 9}]
+V={13,23,47,67,79,89}
 solve: Clue(name=A13,length=2,value: ,
 	prime=J,preValue: Prime,
 	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
@@ -220,13 +290,6 @@ solve: Clue(name=D10,length=3,value: ,
 	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
 	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7, 8}, {5, 6, 7, 8, 9}]
 V={13,23,47,67,79,89}
-solve: Clue(name=A12,length=2,value: Triangular ,
-	prime=H,preValue: Triangular ,
-	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
-	values={28, 78, 10, 91},
-	preValues={1128, 1378, 1830, 9591}),
-	digits=[{1, 2, 7, 9}, {0, 1, 8}]
-H={11,13,59,83}
 solve: Clue(name=D12,length=3,value: Jumble gA18,
 	prime=X,preValue: Same sum digits A18,
 	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
@@ -234,13 +297,67 @@ solve: Clue(name=D12,length=3,value: Jumble gA18,
 	preValues={unknown}),
 	digits=[{1, 2, 7, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 X={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=A11,length=2,value: Factor of gD11,
-	prime=G,preValue: Ascending digits,
-	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A17,length=2,value: Reverse of gD3,
+	prime=M reverse C,preValue: Square,
+	identities=[A17[0]=D11[2]],referrers=[D11,A5,D3,A9],
+	values={69, 36, 21, 96},
+	preValues={1369, 3136, 3721, 7396}),
+	digits=[{2, 3, 6, 9}, {1, 6, 9}]
+M={13,31,37,73}
+C={13,31,37,73}
+solve: Clue(name=A5,length=2,value: ,
+	prime=C,preValue: Square,
+	identities=[A5[1]=D6[0]],referrers=[D6,A17,A9],
+	values={69, 36, 21, 96},
+	preValues={1369, 3136, 3721, 7396}),
+	digits=[{2, 3, 6, 9}, {1, 6, 9}]
+C={13,31,37,73}
+solve: Clue(name=D3,length=2,value: ,
+	prime=Q,preValue: Square ,
+	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
+	values={69, 64, 36, 21, 96},
+	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
+	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
+Q={13,17,31,37,73,79}
+solve: Clue(name=A17,length=2,value: Reverse of gD3,
+	prime=M reverse C,preValue: Square,
+	identities=[A17[0]=D11[2]],referrers=[D11,A5,D3,A9],
+	values={69, 36, 21, 96},
+	preValues={1369, 3136, 3721, 7396}),
+	digits=[{2, 3, 6, 9}, {1, 6, 9}]
+M={13,31,37,73}
+C={13,31,37,73}
+solve: Clue(name=D15,length=2,value: ,
+	prime=Y = reverse Q,preValue: Square,
+	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
+	values={69, 36, 21, 96},
+	preValues={1369, 3136, 3721, 7396}),
+	digits=[{2, 3, 6, 9}, {1, 6, 9}]
+Y={13,31,37,73}
+Q={13,31,37,73}
+solve: Clue(name=A9,length=2,value: Reverse of another entry,
+	prime=F,preValue: Multiple of R,
+	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
 	values={unknown},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}]
-G={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 4, 5, 6}]
+F={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+R={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=D1,length=2,value: ,
+	prime=P = Triangular - Z,preValue: Multiple of P,
+	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+P={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97}
+Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97}
 solve: Clue(name=A7,length=3,value: Multiple of D,
 	prime=D,preValue: Multiple of D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
@@ -248,92 +365,37 @@ solve: Clue(name=A7,length=3,value: Multiple of D,
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 4, 6, 9}]
 D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}, {1, 2, 3, 4, 5, 6, 7}]
-T={31,41,43,53,61,73,83,97}
-solve: Clue(name=D3,length=2,value: ,
-	prime=Q,preValue: Square ,
-	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
-	values={69, 64, 36, 21, 96},
-	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
-	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
-Q={13,17,31,37,73,79}
-solve: Clue(name=A5,length=2,value: ,
-	prime=C,preValue: Square,
-	identities=[A5[1]=D6[0]],referrers=[D6,A17,A9],
-	values={69, 64, 36, 21, 96},
-	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
-	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
-C={13,17,31,37,73,79}
-solve: Clue(name=A2,length=3,value: ,
-	prime=B,preValue: Multiple of gA2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 6, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-B={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D3,length=2,value: ,
-	prime=Q,preValue: Square ,
-	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
-	values={69, 64, 36, 21, 96},
-	preValues={1369, 1764, 3136, 3721, 7396, 7921}),
-	digits=[{2, 3, 6, 9}, {1, 4, 6, 9}]
-Q={13,17,31,37,73,79}
-solve: Clue(name=D15,length=2,value: ,
-	prime=Y = reverse Q,preValue: Square,
-	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-Y={13,31,37,73}
-Q={13,31,37,73}
-solve: Clue(name=A17,length=2,value: Reverse of gD3,
-	prime=M reverse C,preValue: Square,
-	identities=[A17[0]=D11[2]],referrers=[D11,A5,D3,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-M={13,31,37,73}
-C={13,31,37,73}
-solve: Clue(name=D3,length=2,value: ,
-	prime=Q,preValue: Square ,
-	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-Q={13,31,37,73}
-solve: Clue(name=A7,length=3,value: Multiple of D,
-	prime=D,preValue: Multiple of D,
-	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
 	values={more than 20},
 	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6, 9}]
-D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97}
+solve: Clue(name=D1,length=2,value: ,
+	prime=P = Triangular - Z,preValue: Multiple of P,
+	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+P={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97}
+Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97}
+solve: Clue(name=A9,length=2,value: Reverse of another entry,
+	prime=F,preValue: Multiple of R,
+	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 4, 5, 6}]
+F={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+R={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=D4,length=3,value: ,
+	prime=R,preValue: Multiple of B,
+	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
 	values={more than 20},
 	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 5, 6, 7, 8}, {1, 2, 3, 4, 5, 6, 7}]
-T={31,41,43,53,61,73,83,97}
-solve: Clue(name=D3,length=2,value: ,
-	prime=Q,preValue: Square ,
-	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-Q={13,31,37,73}
-solve: Clue(name=A5,length=2,value: ,
-	prime=C,preValue: Square,
-	identities=[A5[1]=D6[0]],referrers=[D6,A17,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-C={13,31,37,73}
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 8}]
+R={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+B={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=A2,length=3,value: ,
 	prime=B,preValue: Multiple of gA2,
 	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
@@ -341,22 +403,21 @@ solve: Clue(name=A2,length=3,value: ,
 	preValues={more than 20}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 6, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 B={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D15,length=2,value: ,
-	prime=Y = reverse Q,preValue: Square,
-	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-Y={13,31,37,73}
-Q={13,31,37,73}
-solve: Clue(name=A17,length=2,value: Reverse of gD3,
-	prime=M reverse C,preValue: Square,
-	identities=[A17[0]=D11[2]],referrers=[D11,A5,D3,A9],
-	values={69, 36, 21, 96},
-	preValues={1369, 3136, 3721, 7396}),
-	digits=[{2, 3, 6, 9}, {1, 6, 9}]
-M={13,31,37,73}
-C={13,31,37,73}
+solve: Clue(name=A12,length=2,value: Triangular ,
+	prime=H,preValue: Triangular ,
+	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
+	values={28, 78, 10, 91},
+	preValues={1128, 1378, 1830, 9591}),
+	digits=[{1, 2, 7, 9}, {0, 1, 8}]
+H={11,13,59,83}
+solve: Clue(name=A9,length=2,value: Reverse of another entry,
+	prime=F,preValue: Multiple of R,
+	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 4, 5, 6}]
+F={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+R={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=D11,length=3,value: G + W,
 	prime=W,preValue: Ascending digits,
 	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17,A18],
@@ -379,13 +440,13 @@ solve: Clue(name=D8,length=3,value: ,
 	preValues={more than 20}),
 	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 8}, {1, 2, 3, 4, 5, 6, 7}]
 T={31,41,43,53,61,73,83,97}
-solve: Clue(name=A14,length=2,value: ,
-	prime=K,preValue: Triangular ,
-	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+solve: Clue(name=A7,length=3,value: Multiple of D,
+	prime=D,preValue: Multiple of D,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
 	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-K={11,13,17,19,23,29,31,37,41,43,47,53,59,67,71,83,89,97}
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 4, 6, 9}]
+D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=A11,length=2,value: Factor of gD11,
 	prime=G,preValue: Ascending digits,
 	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
@@ -393,13 +454,13 @@ solve: Clue(name=A11,length=2,value: Factor of gD11,
 	preValues={1237, 1247, 1267, 1347, 1367, 1378, 1467, 1478, 1678}),
 	digits=[{1}, {2, 3, 4, 8}]
 G={37,47,67}
-solve: Clue(name=A7,length=3,value: Multiple of D,
-	prime=D,preValue: Multiple of D,
-	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+solve: Clue(name=A14,length=2,value: ,
+	prime=K,preValue: Triangular ,
+	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
 	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6, 9}]
-D={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+K={11,13,17,19,23,29,31,37,41,43,47,53,59,67,71,83,89,97}
 solve: Clue(name=D11,length=3,value: G + W,
 	prime=W,preValue: Ascending digits,
 	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17,A18],
@@ -416,104 +477,6 @@ solve: Clue(name=A17,length=2,value: Reverse of gD3,
 	digits=[{6}, {9}]
 M={13}
 C={31}
-solve: Clue(name=D16,length=2,value: Square - gD1,
-	prime=Z,preValue: Multiple of Z,
-	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Z={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D3,length=2,value: ,
-	prime=Q,preValue: Square ,
-	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
-	values={21, 96},
-	preValues={3721, 7396}),
-	digits=[{2, 9}, {1, 6}]
-Q={37,73}
-solve: Clue(name=A13,length=2,value: ,
-	prime=J,preValue: Prime,
-	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7, 8}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-J={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D10,length=3,value: ,
-	prime=V,preValue: Ascending digits, Divisible by sum digits,
-	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
-	values={145, 148, 169, 138, 136, 156, 457, 568, 679, 239, 236, 248},
-	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
-	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7}, {5, 6, 7, 8, 9}]
-V={23,47,67,79,89}
-solve: Clue(name=A13,length=2,value: ,
-	prime=J,preValue: Prime,
-	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-J={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D10,length=3,value: ,
-	prime=V,preValue: Ascending digits, Divisible by sum digits,
-	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
-	values={145, 148, 169, 138, 136, 156, 457, 568, 679, 239, 236, 248},
-	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
-	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7}, {5, 6, 7, 8, 9}]
-V={23,47,67,79,89}
-solve: Clue(name=A7,length=3,value: Multiple of D,
-	prime=D,preValue: Multiple of D,
-	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6}]
-D={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,83,89,97}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 8}, {1, 2, 3, 5, 6, 7}]
-T={41,43,53,61,73,83,97}
-solve: Clue(name=D3,length=2,value: ,
-	prime=Q,preValue: Square ,
-	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
-	values={21, 96},
-	preValues={3721, 7396}),
-	digits=[{2, 9}, {1, 6}]
-Q={37,73}
-solve: Clue(name=A14,length=2,value: ,
-	prime=K,preValue: Triangular ,
-	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-K={11,17,19,29,37,41,43,47,53,59,67,71,83,89,97}
-solve: Clue(name=D12,length=3,value: Jumble gA18,
-	prime=X,preValue: Same sum digits A18,
-	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
-	values={unknown},
-	preValues={unknown}),
-	digits=[{1, 2, 7, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-X={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 8}, {1, 2, 3, 5, 6, 7}]
-T={41,43,53,61,73,83,97}
-solve: Clue(name=A11,length=2,value: Factor of gD11,
-	prime=G,preValue: Ascending digits,
-	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
-	values={12, 13, 18, 14},
-	preValues={1237, 1247, 1267, 1347, 1367, 1378, 1467, 1478, 1678}),
-	digits=[{1}, {2, 3, 4, 8}]
-G={37,47,67}
-solve: Clue(name=A7,length=3,value: Multiple of D,
-	prime=D,preValue: Multiple of D,
-	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6}]
-D={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,83,89,97}
 solve: Clue(name=A5,length=2,value: ,
 	prime=C,preValue: Square,
 	identities=[A5[1]=D6[0]],referrers=[D6,A17,A9],
@@ -526,15 +489,8 @@ solve: Clue(name=A13,length=2,value: ,
 	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
 	values={more than 20},
 	preValues={more than 20}),
-	digits=[{3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+	digits=[{3, 4, 5, 6, 7, 8}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
 J={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=A2,length=3,value: ,
-	prime=B,preValue: Multiple of gA2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=D3,length=2,value: ,
 	prime=Q,preValue: Square ,
 	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
@@ -542,6 +498,97 @@ solve: Clue(name=D3,length=2,value: ,
 	preValues={3721, 7396}),
 	digits=[{2, 9}, {1, 6}]
 Q={37,73}
+solve: Clue(name=A2,length=3,value: ,
+	prime=B,preValue: Multiple of gA2,
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A7,length=3,value: Multiple of D,
+	prime=D,preValue: Multiple of D,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6}]
+D={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,83,89,97}
+solve: Clue(name=D3,length=2,value: ,
+	prime=Q,preValue: Square ,
+	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
+	values={21, 96},
+	preValues={3721, 7396}),
+	digits=[{2, 9}, {1, 6}]
+Q={37,73}
+solve: Clue(name=D8,length=3,value: ,
+	prime=T,preValue: Descending digits,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 8}, {1, 2, 3, 5, 6, 7}]
+T={41,43,53,61,73,83,97}
+solve: Clue(name=A7,length=3,value: Multiple of D,
+	prime=D,preValue: Multiple of D,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6}]
+D={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,83,89,97}
+solve: Clue(name=A11,length=2,value: Factor of gD11,
+	prime=G,preValue: Ascending digits,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
+	values={12, 13, 18, 14},
+	preValues={1237, 1247, 1267, 1347, 1367, 1378, 1467, 1478, 1678}),
+	digits=[{1}, {2, 3, 4, 8}]
+G={37,47,67}
+solve: Clue(name=A14,length=2,value: ,
+	prime=K,preValue: Triangular ,
+	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+K={11,17,19,29,37,41,43,47,53,59,67,71,83,89,97}
+solve: Clue(name=D8,length=3,value: ,
+	prime=T,preValue: Descending digits,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{3, 4, 5, 6, 7, 8, 9}, {2, 3, 4, 8}, {1, 2, 3, 5, 6, 7}]
+T={41,43,53,61,73,83,97}
+solve: Clue(name=D10,length=3,value: ,
+	prime=V,preValue: Ascending digits, Divisible by sum digits,
+	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
+	values={145, 148, 169, 138, 136, 156, 457, 568, 679, 239, 236, 248},
+	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
+	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7}, {5, 6, 7, 8, 9}]
+V={23,47,67,79,89}
+solve: Clue(name=A13,length=2,value: ,
+	prime=J,preValue: Prime,
+	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{3, 4, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
+J={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=D10,length=3,value: ,
+	prime=V,preValue: Ascending digits, Divisible by sum digits,
+	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
+	values={145, 148, 169, 138, 136, 156, 457, 568, 679, 239, 236, 248},
+	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
+	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7}, {5, 6, 7, 8, 9}]
+V={23,47,67,79,89}
+solve: Clue(name=D12,length=3,value: Jumble gA18,
+	prime=X,preValue: Same sum digits A18,
+	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 7, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+X={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+Z={11,17,19,23,29,37,41,43,47,53,59,61,67,73,79,83,89,97}
 solve: Clue(name=D15,length=2,value: ,
 	prime=Y = reverse Q,preValue: Square,
 	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
@@ -582,61 +629,6 @@ solve: Clue(name=D15,length=2,value: ,
 	digits=[{2, 9}, {1, 6}]
 Y={37,73}
 Q={37,73}
-solve: Clue(name=A18,length=3,value: Multiple  of W,
-	prime=N ascending ,preValue: Multiple H,
-	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
-	values={316, 712, 267, 711, 869},
-	preValues={more than 20}),
-	digits=[{2, 3, 7, 8}, {1, 6}, {1, 2, 6, 7, 9}]
-N={17,19,23,29,37,47,59}
-H={11,59,83}
-W={79,89}
-solve: Clue(name=D4,length=3,value: ,
-	prime=R,preValue: Multiple of B,
-	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 8}]
-R={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=A12,length=2,value: Triangular ,
-	prime=H,preValue: Triangular ,
-	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
-	values={28, 10, 91},
-	preValues={1128, 1830, 9591}),
-	digits=[{1, 2, 9}, {0, 1, 8}]
-H={11,59,83}
-solve: Clue(name=D12,length=3,value: Jumble gA18,
-	prime=X,preValue: Same sum digits A18,
-	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
-	values={unknown},
-	preValues={unknown}),
-	digits=[{1, 2, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 7, 8}]
-X={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=A2,length=3,value: ,
-	prime=B,preValue: Multiple of gA2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=A18,length=3,value: Multiple  of W,
-	prime=N ascending ,preValue: Multiple H,
-	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
-	values={316, 712, 267, 711, 869},
-	preValues={more than 20}),
-	digits=[{2, 3, 7, 8}, {1, 6}, {1, 2, 6, 7, 9}]
-N={17,19,23,29,37,47,59}
-H={11,59,83}
-W={79,89}
-solve: Clue(name=D4,length=3,value: ,
-	prime=R,preValue: Multiple of B,
-	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 8}]
-R={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=D1,length=2,value: ,
 	prime=P = Triangular - Z,preValue: Multiple of P,
 	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
@@ -644,13 +636,6 @@ solve: Clue(name=D1,length=2,value: ,
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 P={11,17,19,23,29,37,41,43,47,53,59,61,67,73,79,83,89,97}
-Z={11,17,19,23,29,37,41,43,47,53,59,61,67,73,79,83,89,97}
-solve: Clue(name=D16,length=2,value: Square - gD1,
-	prime=Z,preValue: Multiple of Z,
-	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 Z={11,17,19,23,29,37,41,43,47,53,59,61,67,73,79,83,89,97}
 solve: Clue(name=A7,length=3,value: Multiple of D,
 	prime=D,preValue: Multiple of D,
@@ -659,13 +644,12 @@ solve: Clue(name=A7,length=3,value: Multiple of D,
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {3, 4, 5, 6, 7, 8, 9}, {1, 6}]
 D={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,83,89,97}
-solve: Clue(name=D1,length=2,value: ,
-	prime=P = Triangular - Z,preValue: Multiple of P,
-	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
 	values={more than 20},
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-P={11,17,19,23,29,37,41,43,47,53,59,61,67,73,79,83,89,97}
 Z={11,17,19,23,29,37,41,43,47,53,59,61,67,73,79,83,89,97}
 solve: Clue(name=A9,length=2,value: Reverse of another entry,
 	prime=F,preValue: Multiple of R,
@@ -690,6 +674,52 @@ solve: Clue(name=D4,length=3,value: ,
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 8}]
 R={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A2,length=3,value: ,
+	prime=B,preValue: Multiple of gA2,
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A12,length=2,value: Triangular ,
+	prime=H,preValue: Triangular ,
+	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
+	values={28, 10, 91},
+	preValues={1128, 1830, 9591}),
+	digits=[{1, 2, 9}, {0, 1, 8}]
+H={11,59,83}
+solve: Clue(name=D12,length=3,value: Jumble gA18,
+	prime=X,preValue: Same sum digits A18,
+	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 7, 8}]
+X={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=A18,length=3,value: Multiple  of W,
+	prime=N ascending ,preValue: Multiple H,
+	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
+	values={316, 712, 267, 711, 869},
+	preValues={more than 20}),
+	digits=[{2, 3, 7, 8}, {1, 6}, {1, 2, 6, 7, 9}]
+N={17,19,23,29,37,47,59}
+H={11,59,83}
+W={79,89}
+solve: Clue(name=A9,length=2,value: Reverse of another entry,
+	prime=F,preValue: Multiple of R,
+	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 4, 5, 6}]
+F={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+R={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+solve: Clue(name=D4,length=3,value: ,
+	prime=R,preValue: Multiple of B,
+	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
+	values={more than 20},
+	preValues={more than 20}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 8}]
+R={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+B={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=D6,length=3,value: K x T,
 	prime=S,preValue: Palindrome,
 	identities=[D6[0]=A5[1],D6[2]=A13[1]],referrers=[A5,A13,A14,D8],
@@ -699,34 +729,6 @@ solve: Clue(name=D6,length=3,value: K x T,
 S={11,17,79}
 K={11,17,41,47}
 T={41,61}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
-	values={985, 986, 987},
-	preValues={98541, 98641, 98741, 98761}),
-	digits=[{9}, {8}, {5, 6, 7}]
-T={41,61}
-solve: Clue(name=A14,length=2,value: ,
-	prime=K,preValue: Triangular ,
-	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
-	values={76, 70, 53, 64},
-	preValues={1176, 1770, 4753, 6441}),
-	digits=[{5, 6, 7}, {0, 3, 4, 6}]
-K={11,17,41,47}
-solve: Clue(name=D12,length=3,value: Jumble gA18,
-	prime=X,preValue: Same sum digits A18,
-	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
-	values={unknown},
-	preValues={unknown}),
-	digits=[{1, 2, 9}, {0, 3, 4, 6}, {2, 3, 7, 8}]
-X={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
-	values={985, 986, 987},
-	preValues={98541, 98641, 98741, 98761}),
-	digits=[{9}, {8}, {5, 6, 7}]
-T={41,61}
 solve: Clue(name=A13,length=2,value: ,
 	prime=J,preValue: Prime,
 	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
@@ -734,20 +736,13 @@ solve: Clue(name=A13,length=2,value: ,
 	preValues={more than 20}),
 	digits=[{3, 4, 5, 6, 7}, {1, 7}]
 J={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-solve: Clue(name=D10,length=3,value: ,
-	prime=V,preValue: Ascending digits, Divisible by sum digits,
-	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
-	values={145, 148, 169, 138, 136, 156, 457, 568, 679, 239, 236, 248},
-	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
-	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7}, {5, 6, 7, 8, 9}]
-V={23,47,67,79,89}
-solve: Clue(name=A11,length=2,value: Factor of gD11,
-	prime=G,preValue: Ascending digits,
-	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
-	values={18},
-	preValues={1378, 1478, 1678}),
-	digits=[{1}, {8}]
-G={37,47,67}
+solve: Clue(name=A14,length=2,value: ,
+	prime=K,preValue: Triangular ,
+	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+	values={28, 76, 16, 11, 17, 70, 53, 22, 25, 37, 64},
+	preValues={1128, 1176, 1711, 1770, 2211, 2415, 3741, 4753, 6441}),
+	digits=[{1, 2, 3, 5, 6, 7}, {0, 1, 2, 3, 4, 5, 6, 7, 8}]
+K={11,17,41,47}
 solve: Clue(name=D8,length=3,value: ,
 	prime=T,preValue: Descending digits,
 	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
@@ -762,13 +757,20 @@ solve: Clue(name=A7,length=3,value: Multiple of D,
 	preValues={unknown}),
 	digits=[{2, 3, 6, 8, 9}, {9}, {1, 6}]
 D={11,17,23,29,37,83,97}
-solve: Clue(name=D8,length=3,value: ,
-	prime=T,preValue: Descending digits,
-	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
-	values={985, 986, 987},
-	preValues={98541, 98641, 98741, 98761}),
-	digits=[{9}, {8}, {5, 6, 7}]
-T={41,61}
+solve: Clue(name=A11,length=2,value: Factor of gD11,
+	prime=G,preValue: Ascending digits,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
+	values={18},
+	preValues={1378, 1478, 1678}),
+	digits=[{1}, {8}]
+G={37,47,67}
+solve: Clue(name=A14,length=2,value: ,
+	prime=K,preValue: Triangular ,
+	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
+	values={76, 70, 53, 64},
+	preValues={1176, 1770, 4753, 6441}),
+	digits=[{5, 6, 7}, {0, 3, 4, 6}]
+K={11,17,41,47}
 solve: Clue(name=D3,length=2,value: ,
 	prime=Q,preValue: Square ,
 	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A17,D15,A9],
@@ -776,6 +778,27 @@ solve: Clue(name=D3,length=2,value: ,
 	preValues={3721, 7396}),
 	digits=[{2, 9}, {1, 6}]
 Q={37,73}
+solve: Clue(name=D8,length=3,value: ,
+	prime=T,preValue: Descending digits,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14,D6],
+	values={985, 986, 987},
+	preValues={98541, 98641, 98741, 98761}),
+	digits=[{9}, {8}, {5, 6, 7}]
+T={41,61}
+solve: Clue(name=D10,length=3,value: ,
+	prime=V,preValue: Ascending digits, Divisible by sum digits,
+	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
+	values={145, 148, 169, 138, 136, 156, 457, 568, 679, 239, 236, 248},
+	preValues={12345, 12348, 12369, 13478, 13689, 15689, 23457, 23568, 23679, 24678}),
+	digits=[{1, 2, 4, 5, 6}, {3, 4, 5, 6, 7}, {5, 6, 7, 8, 9}]
+V={23,47,67,79,89}
+solve: Clue(name=D12,length=3,value: Jumble gA18,
+	prime=X,preValue: Same sum digits A18,
+	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
+	values={unknown},
+	preValues={unknown}),
+	digits=[{1, 2, 9}, {0, 3, 4, 6}, {2, 3, 7, 8}]
+X={11,17,19,23,29,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: Clue(name=D11,length=3,value: G + W,
 	prime=W,preValue: Ascending digits,
 	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17,A18],
@@ -801,13 +824,6 @@ solve: Clue(name=D1,length=2,value: ,
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 6, 8, 9}]
 P={11,17,19,23,29,41,43,47,53,59,61,73,79,83,89}
 Z={11,17,19,23,37,41,43,47,53,59,61,67,73,79,83,89,97}
-solve: Clue(name=D16,length=2,value: Square - gD1,
-	prime=Z,preValue: Multiple of Z,
-	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
-	values={more than 20},
-	preValues={unknown}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Z={11,17,19,23,37,41,43,47,53,59,61,67,73,79,83,89,97}
 solve: Clue(name=A7,length=3,value: Multiple of D,
 	prime=D,preValue: Multiple of D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
@@ -815,6 +831,13 @@ solve: Clue(name=A7,length=3,value: Multiple of D,
 	preValues={unknown}),
 	digits=[{2, 3, 6, 8, 9}, {9}, {1, 6}]
 D={11,17,23,29,37,83,97}
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
+	values={more than 20},
+	preValues={unknown}),
+	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
+Z={11,17,19,23,37,41,43,47,53,59,61,67,73,79,83,89,97}
 solve: Clue(name=D1,length=2,value: ,
 	prime=P = Triangular - Z,preValue: Multiple of P,
 	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
@@ -855,13 +878,6 @@ solve: Clue(name=A15,length=3,value: Square of S,
 L={43}
 D={29}
 S={17}
-solve: Clue(name=D16,length=2,value: Square - gD1,
-	prime=Z,preValue: Multiple of Z,
-	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
-	values={99, 95, 96, 92, 97},
-	preValues={unknown}),
-	digits=[{9}, {2, 5, 6, 7, 9}]
-Z={11,19,23,79,97}
 solve: Clue(name=D10,length=3,value: ,
 	prime=V,preValue: Ascending digits, Divisible by sum digits,
 	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
@@ -883,6 +899,13 @@ solve: Clue(name=D10,length=3,value: ,
 	preValues={12348, 13478, 23568, 24678}),
 	digits=[{1, 2, 5}, {3, 4, 6}, {8}]
 V={23,47,67}
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
+	values={99, 95, 96, 92, 97},
+	preValues={unknown}),
+	digits=[{9}, {2, 5, 6, 7, 9}]
+Z={11,19,23,79,97}
 solve: Clue(name=D15,length=2,value: ,
 	prime=Y = reverse Q,preValue: Square,
 	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
@@ -902,18 +925,11 @@ G={47,67}
 solve: Clue(name=D1,length=2,value: ,
 	prime=P = Triangular - Z,preValue: Multiple of P,
 	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
-	values={13, 26, 39, 38, 23, 46, 69, 92, 42, 63, 29, 82, 52, 73, 59},
+	values={13, 26, 39, 52, 38, 23, 46, 92, 42, 63, 29, 82, 73, 59},
 	preValues={unknown}),
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {2, 3, 6, 8, 9}]
 P={23,41,47,59}
 Z={19,79,97}
-solve: Clue(name=D16,length=2,value: Square - gD1,
-	prime=Z,preValue: Multiple of Z,
-	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
-	values={95, 96},
-	preValues={unknown}),
-	digits=[{9}, {5, 6}]
-Z={19,79}
 solve: Clue(name=A7,length=3,value: Multiple of D,
 	prime=D,preValue: Multiple of D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3,A15],
@@ -928,6 +944,13 @@ solve: Clue(name=D8,length=3,value: ,
 	preValues={98541, 98641, 98741, 98761}),
 	digits=[{9}, {8}, {5, 6, 7}]
 T={41,61}
+solve: Clue(name=D16,length=2,value: Square - gD1,
+	prime=Z,preValue: Multiple of Z,
+	identities=[D16[0]=A15[2]],referrers=[A15,D1,A9],
+	values={95, 96},
+	preValues={unknown}),
+	digits=[{9}, {5, 6}]
+Z={19,79}
 solve: Clue(name=D1,length=2,value: ,
 	prime=P = Triangular - Z,preValue: Multiple of P,
 	identities=[D1[1]=A7[0]],referrers=[A7,D16,A9],
@@ -959,6 +982,13 @@ solve: Clue(name=D12,length=3,value: Jumble gA18,
 	preValues={14763, 16347, 16383, 16473, 16833, 18363, 47163, 83163, 12363, 14163, 16233, 16323, 16341, 16413, 23163, 41163}),
 	digits=[{1}, {6}, {3}]
 X={23,41,47,83}
+solve: Clue(name=A12,length=2,value: Triangular ,
+	prime=H,preValue: Triangular ,
+	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
+	values={10},
+	preValues={1830}),
+	digits=[{1}, {0}]
+H={83}
 solve: Clue(name=A14,length=2,value: ,
 	prime=K,preValue: Triangular ,
 	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,D6,A9],
@@ -973,13 +1003,15 @@ solve: Clue(name=D8,length=3,value: ,
 	preValues={98741, 98761}),
 	digits=[{9}, {8}, {7}]
 T={41,61}
-solve: Clue(name=A12,length=2,value: Triangular ,
-	prime=H,preValue: Triangular ,
-	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A18,A9],
-	values={10},
-	preValues={1830}),
-	digits=[{1}, {0}]
+solve: Clue(name=A18,length=3,value: Multiple  of W,
+	prime=N ascending ,preValue: Multiple H,
+	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
+	values={316},
+	preValues={31623}),
+	digits=[{3}, {1}, {6}]
+N={23}
 H={83}
+W={79}
 solve: Clue(name=D6,length=3,value: K x T,
 	prime=S,preValue: Palindrome,
 	identities=[D6[0]=A5[1],D6[2]=A13[1]],referrers=[A5,A13,A14,D8],
@@ -993,55 +1025,30 @@ solve: Clue(name=A13,length=2,value: ,
 	prime=J,preValue: Prime,
 	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
 	values={61, 41, 31},
-	preValues={2341, 3167, 3671, 4153, 4231, 6197, 6761, 6791, 6971, 8941}),
+	preValues={3167, 3671, 4153, 6197, 6761, 6971, 8941}),
 	digits=[{3, 4, 6}, {1}]
-J={23,53,67,79,89,97}
+J={53,67,89,97}
 solve: Clue(name=D10,length=3,value: ,
 	prime=V,preValue: Ascending digits, Divisible by sum digits,
 	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
-	values={148, 138, 568, 248},
-	preValues={12348, 13478, 23568, 24678}),
-	digits=[{1, 2, 5}, {3, 4, 6}, {8}]
-V={23,47,67}
-solve: Clue(name=A18,length=3,value: Multiple  of W,
-	prime=N ascending ,preValue: Multiple H,
-	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
-	values={316},
-	preValues={31623}),
-	digits=[{3}, {1}, {6}]
-N={23}
-H={83}
-W={79}
-solve: Clue(name=D4,length=3,value: ,
-	prime=R,preValue: Multiple of B,
-	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0}]
-R={41,47,53,67,71,89,97}
-B={41,47,53,67,71,89,97}
-solve: Clue(name=A2,length=3,value: ,
-	prime=B,preValue: Multiple of gA2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={125, 325, 425, 194, 196, 197, 295, 296, 395, 328, 925, 394, 493, 494, 424, 592, 593, 691, 692, 791},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 9}, {2, 9}, {1, 2, 3, 4, 5, 6, 7, 8}]
-B={41,47,53,67,71,89,97}
-solve: Clue(name=D4,length=3,value: ,
-	prime=R,preValue: Multiple of B,
-	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
-	values={more than 20},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 8}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0}]
-R={41,47,53,67,71,89,97}
-B={41,47,53,67,71,89,97}
-solve: Clue(name=A2,length=3,value: ,
-	prime=B,preValue: Multiple of gA2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={125, 325, 425, 194, 196, 197, 295, 296, 395, 328, 925, 394, 493, 494, 424, 592, 593, 691, 692, 791},
-	preValues={more than 20}),
-	digits=[{1, 2, 3, 4, 5, 6, 7, 9}, {2, 9}, {1, 2, 3, 4, 5, 6, 7, 8}]
-B={41,47,53,67,71,89,97}
+	values={138, 248},
+	preValues={13478, 24678}),
+	digits=[{1, 2}, {3, 4}, {8}]
+V={47,67}
+solve: Clue(name=A13,length=2,value: ,
+	prime=J,preValue: Prime,
+	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
+	values={41, 31},
+	preValues={3167, 3671, 4153, 8941}),
+	digits=[{3, 4}, {1}]
+J={53,67,89}
+solve: Clue(name=D10,length=3,value: ,
+	prime=V,preValue: Ascending digits, Divisible by sum digits,
+	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
+	values={138, 248},
+	preValues={13478, 24678}),
+	digits=[{1, 2}, {3, 4}, {8}]
+V={47,67}
 solve: Clue(name=A9,length=2,value: Reverse of another entry,
 	prime=F,preValue: Multiple of R,
 	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
@@ -1057,29 +1064,6 @@ solve: Clue(name=D10,length=3,value: ,
 	preValues={24678}),
 	digits=[{2}, {4}, {8}]
 V={67}
-solve: Clue(name=D11,length=3,value: G + W,
-	prime=W,preValue: Ascending digits,
-	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17,A18],
-	values={126},
-	preValues={12679}),
-	digits=[{1}, {2}, {6}]
-W={79}
-G={47}
-solve: Clue(name=A13,length=2,value: ,
-	prime=J,preValue: Prime,
-	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
-	values={41},
-	preValues={8941}),
-	digits=[{4}, {1}]
-J={89}
-solve: Clue(name=D4,length=3,value: ,
-	prime=R,preValue: Multiple of B,
-	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
-	values={260, 410},
-	preValues={41710, 27160}),
-	digits=[{2, 4}, {1, 6}, {0}]
-R={71}
-B={97}
 solve: Clue(name=A9,length=2,value: Reverse of another entry,
 	prime=F,preValue: Multiple of R,
 	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
@@ -1088,6 +1072,13 @@ solve: Clue(name=A9,length=2,value: Reverse of another entry,
 	digits=[{6}, {2}]
 F={53}
 R={71}
+solve: Clue(name=A13,length=2,value: ,
+	prime=J,preValue: Prime,
+	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
+	values={41},
+	preValues={8941}),
+	digits=[{4}, {1}]
+J={89}
 solve: Clue(name=D4,length=3,value: ,
 	prime=R,preValue: Multiple of B,
 	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
@@ -1103,7 +1094,15 @@ solve: Clue(name=A2,length=3,value: ,
 	preValues={59792}),
 	digits=[{5}, {9}, {2}]
 B={97}
-Clue/Variable iterations=175, updates=75, elapsed 0:00:01.526689
+solve: Clue(name=D11,length=3,value: G + W,
+	prime=W,preValue: Ascending digits,
+	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17,A18],
+	values={126},
+	preValues={12679}),
+	digits=[{1}, {2}, {6}]
+W={79}
+G={47}
+Clue/Variable iterations=172, updates=79, elapsed 0:00:01.829122
 SOLUTION-----------------------------
 Puzzle Summary
 A2, , values={592}

@@ -110,265 +110,308 @@ C={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 D={101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,123 more,997}
 
 UPDATES-----------------------------
-Eval ABCDEntry D15 cartesianCount=21, elapsed 0:00:00.006123
-solve: ABCDEntry(name=D15,length=2,value: C+C+C,
-	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
+Eval ABCDEntry A4 cartesianCount=21, elapsed 0:00:00.005666
+solve: ABCDEntry(name=A4,length=2,value: A+A+A,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
 	values={33,39,51,57,69,87,93},
 	digits=[{3,5,6,8,9},{1,3,7,9}]
-C={11,13,17,19,23,29,31}
-Eval ABCDEntry A11 cartesianCount=7, elapsed 0:00:00.000085
-solve: ABCDEntry(name=A11,length=2,value: C,
-	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+A={11,13,17,19,23,29,31}
+Eval ABCDEntry A6 cartesianCount=7, elapsed 0:00:00.000109
+solve: ABCDEntry(name=A6,length=2,value: A,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
 	values={11,13,17,19,23,29,31},
 	digits=[{1..3},{1,3,7,9}]
-Eval ABCDEntry D15 cartesianCount=7, elapsed 0:00:00.000072
-Eval ABCDEntry A11 cartesianCount=7, elapsed 0:00:00.000062
-Eval ABCDEntry D10 cartesianCount=21, elapsed 0:00:00.000108
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={22,26,34,38,46,58,62,74,82,86,94},
-	digits=[{2..9},{2,4,6,8}]
-B={11,13,17,19,23,29,31,37,41,43,47}
-Eval ABCDEntry D2 cartesianCount=11, elapsed 0:00:00.000136
+Eval ABCDEntry A10 cartesianCount=7, elapsed 0:00:00.000077
+solve: ABCDEntry(name=A10,length=2,value: A+A,
+	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
+	values={22,26,34,38,46,58,62},
+	digits=[{2..6},{2,4,6,8}]
+Eval ABCDEntry A11 cartesianCount=21, elapsed 0:00:00.000129
+solve: ABCDEntry(name=A11,length=2,value: C,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{1..9},{1,3,7,9}]
+Eval ABCDEntry A18 cartesianCount=21, elapsed 0:00:00.000646
+solve: ABCDEntry(name=A18,length=2,value: B,
+	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{1..9},{1,3,7,9}]
+Eval ABCDEntry D2 cartesianCount=21, elapsed 0:00:00.000100
 solve: ABCDEntry(name=D2,length=2,value: B+B+B,
 	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
 	values={33,39,51,57,69,87,93},
 	digits=[{3,5,6,8,9},{1,3,7,9}]
 B={11,13,17,19,23,29,31}
-Eval ABCDEntry D10 cartesianCount=7, elapsed 0:00:00.000103
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={22,26,34,38,46,58,62},
-	digits=[{2..6},{2,4,6,8}]
-Eval ABCDEntry D2 cartesianCount=7, elapsed 0:00:00.000101
-Eval ABCDEntry A18 cartesianCount=7, elapsed 0:00:00.000093
+Eval ABCDEntry A6 cartesianCount=7, elapsed 0:00:00.000075
+Eval ABCDEntry A18 cartesianCount=7, elapsed 0:00:00.000055
 solve: ABCDEntry(name=A18,length=2,value: B,
 	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
 	values={11,13,17,19,23,29,31},
 	digits=[{1..3},{1,3,7,9}]
-Eval ABCDEntry D15 cartesianCount=7, elapsed 0:00:00.000115
-Eval ABCDEntry D10 cartesianCount=7, elapsed 0:00:00.000098
-Eval ABCDEntry D2 cartesianCount=7, elapsed 0:00:00.000424
-Eval ABCDEntry A18 cartesianCount=7, elapsed 0:00:00.000069
-Eval ABCDEntry A11 cartesianCount=7, elapsed 0:00:00.000057
-Eval ABCDEntry A10 cartesianCount=21, elapsed 0:00:00.000098
-solve: ABCDEntry(name=A10,length=2,value: A+A,
-	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
+Eval ABCDEntry D2 cartesianCount=7, elapsed 0:00:00.000062
+Eval ABCDEntry D10 cartesianCount=7, elapsed 0:00:00.000053
+solve: ABCDEntry(name=D10,length=2,value: B+B,
+	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
 	values={22,26,34,38,46,58,62},
 	digits=[{2..6},{2,4,6,8}]
-A={11,13,17,19,23,29,31}
-Eval ABCDEntry D10 cartesianCount=7, elapsed 0:00:00.000068
-Eval ABCDEntry A10 cartesianCount=7, elapsed 0:00:00.000056
-Eval ABCDEntry A6 cartesianCount=7, elapsed 0:00:00.000325
-solve: ABCDEntry(name=A6,length=2,value: A,
-	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
-	values={11,13,17,19,23,29,31},
-	digits=[{1..3},{1,3,7,9}]
-Eval ABCDEntry D2 cartesianCount=7, elapsed 0:00:00.000070
-Eval ABCDEntry A6 cartesianCount=7, elapsed 0:00:00.000049
-Eval ABCDEntry A4 cartesianCount=7, elapsed 0:00:00.000156
-solve: ABCDEntry(name=A4,length=2,value: A+A+A,
-	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
+Eval ABCDEntry A10 cartesianCount=7, elapsed 0:00:00.000057
+Eval ABCDEntry D10 cartesianCount=7, elapsed 0:00:00.000054
+Eval ABCDEntry D15 cartesianCount=21, elapsed 0:00:00.000092
+solve: ABCDEntry(name=D15,length=2,value: C+C+C,
+	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
 	values={33,39,51,57,69,87,93},
 	digits=[{3,5,6,8,9},{1,3,7,9}]
-Eval ABCDEntry D16 cartesianCount=49, elapsed 0:00:00.000259
+C={11,13,17,19,23,29,31}
+Eval ABCDEntry A11 cartesianCount=7, elapsed 0:00:00.000062
+solve: ABCDEntry(name=A11,length=2,value: C,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+	values={11,13,17,19,23,29,31},
+	digits=[{1..3},{1,3,7,9}]
+Eval ABCDEntry A18 cartesianCount=7, elapsed 0:00:00.000065
+Eval ABCDEntry D15 cartesianCount=7, elapsed 0:00:00.000059
+Eval ABCDEntry D3 cartesianCount=49, elapsed 0:00:00.000226
+solve: ABCDEntry(name=D3,length=2,value: A+C,
+	identities=[D3[0]=A1[3],D3[1]=A7[1]],referrers=[A1,A7],
+	values={24,28,30,32,34,36,40,42,44,46,48,50,52,54,60},
+	digits=[{2..6},{0,2,4,6,8}]
+A={11,13,17,19,23,29}
+C={13,17,19,23,29,31}
+Eval ABCDEntry A4 cartesianCount=6, elapsed 0:00:00.000097
+solve: ABCDEntry(name=A4,length=2,value: A+A+A,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
+	values={33,39,51,57,69,87},
+	digits=[{3,5,6,8},{1,3,7,9}]
+Eval ABCDEntry A6 cartesianCount=6, elapsed 0:00:00.000060
+solve: ABCDEntry(name=A6,length=2,value: A,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
+	values={11,13,17,19,23,29},
+	digits=[{1,2},{1,3,7,9}]
+Eval ABCDEntry A10 cartesianCount=6, elapsed 0:00:00.000093
+solve: ABCDEntry(name=A10,length=2,value: A+A,
+	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
+	values={22,26,34,38,46,58},
+	digits=[{2..5},{2,4,6,8}]
+Eval ABCDEntry A11 cartesianCount=6, elapsed 0:00:00.000044
+solve: ABCDEntry(name=A11,length=2,value: C,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+	values={13,17,19,23,29,31},
+	digits=[{1..3},{1,3,7,9}]
+Eval ABCDEntry D15 cartesianCount=6, elapsed 0:00:00.000210
+solve: ABCDEntry(name=D15,length=2,value: C+C+C,
+	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
+	values={39,51,57,69,87,93},
+	digits=[{3,5,6,8,9},{1,3,7,9}]
+Eval ABCDEntry A18 cartesianCount=7, elapsed 0:00:00.000086
+Eval ABCDEntry D2 cartesianCount=7, elapsed 0:00:00.000096
+Eval ABCDEntry D10 cartesianCount=7, elapsed 0:00:00.000045
+solve: ABCDEntry(name=D10,length=2,value: B+B,
+	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
+	values={22,26,34,38,46,58},
+	digits=[{2..5},{2,4,6,8}]
+B={11,13,17,19,23,29}
+Eval ABCDEntry A10 cartesianCount=6, elapsed 0:00:00.000072
+Eval ABCDEntry A18 cartesianCount=6, elapsed 0:00:00.000322
+solve: ABCDEntry(name=A18,length=2,value: B,
+	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
+	values={11,13,17,19,23,29},
+	digits=[{1,2},{1,3,7,9}]
+Eval ABCDEntry D2 cartesianCount=6, elapsed 0:00:00.000080
+solve: ABCDEntry(name=D2,length=2,value: B+B+B,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={33,39,51,57,69,87},
+	digits=[{3,5,6,8},{1,3,7,9}]
+Eval ABCDEntry A6 cartesianCount=6, elapsed 0:00:00.000046
+Eval ABCDEntry D2 cartesianCount=6, elapsed 0:00:00.000044
+Eval ABCDEntry D10 cartesianCount=6, elapsed 0:00:00.000388
+Eval ABCDEntry D15 cartesianCount=6, elapsed 0:00:00.000049
+Eval ABCDEntry D3 cartesianCount=36, elapsed 0:00:00.000482
+Eval ABCDEntry D16 cartesianCount=36, elapsed 0:00:00.000133
 solve: ABCDEntry(name=D16,length=2,value: B+C,
 	identities=[D16[0]=A14[2],D16[1]=A19[0]],referrers=[A14,A19],
 	values={24,28,32,34,36,42,44,46,48,52,54},
 	digits=[{2..5},{2,4,6,8}]
 B={11,13,17,19,23}
-C={13,17,19,23,29,31}
-Eval ABCDEntry D10 cartesianCount=5, elapsed 0:00:00.000057
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={22,26,34,38,46},
-	digits=[{2..4},{2,4,6,8}]
-Eval ABCDEntry D2 cartesianCount=5, elapsed 0:00:00.000043
-solve: ABCDEntry(name=D2,length=2,value: B+B+B,
-	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
-	values={33,39,51,57,69},
-	digits=[{3,5,6},{1,3,7,9}]
-Eval ABCDEntry A18 cartesianCount=5, elapsed 0:00:00.000040
+Eval ABCDEntry A18 cartesianCount=5, elapsed 0:00:00.000043
 solve: ABCDEntry(name=A18,length=2,value: B,
 	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
 	values={11,13,17,19,23},
 	digits=[{1,2},{1,3,7,9}]
-Eval ABCDEntry D15 cartesianCount=6, elapsed 0:00:00.000191
-solve: ABCDEntry(name=D15,length=2,value: C+C+C,
-	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
-	values={39,51,57,69,87,93},
-	digits=[{3,5,6,8,9},{1,3,7,9}]
-Eval ABCDEntry A18 cartesianCount=5, elapsed 0:00:00.000049
-Eval ABCDEntry D15 cartesianCount=6, elapsed 0:00:00.000045
-Eval ABCDEntry A11 cartesianCount=6, elapsed 0:00:00.000040
-solve: ABCDEntry(name=A11,length=2,value: C,
-	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
-	values={13,17,19,23,29,31},
-	digits=[{1..3},{1,3,7,9}]
-Eval ABCDEntry A10 cartesianCount=7, elapsed 0:00:00.000058
+Eval ABCDEntry D2 cartesianCount=5, elapsed 0:00:00.000038
+solve: ABCDEntry(name=D2,length=2,value: B+B+B,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={33,39,51,57,69},
+	digits=[{3,5,6},{1,3,7,9}]
+Eval ABCDEntry D10 cartesianCount=5, elapsed 0:00:00.000050
+solve: ABCDEntry(name=D10,length=2,value: B+B,
+	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
+	values={22,26,34,38,46},
+	digits=[{2..4},{2,4,6,8}]
+Eval ABCDEntry A6 cartesianCount=6, elapsed 0:00:00.000045
+Eval ABCDEntry A10 cartesianCount=6, elapsed 0:00:00.000038
 solve: ABCDEntry(name=A10,length=2,value: A+A,
 	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
 	values={22,26,34,38,46},
 	digits=[{2..4},{2,4,6,8}]
 A={11,13,17,19,23}
-Eval ABCDEntry D10 cartesianCount=5, elapsed 0:00:00.000046
-Eval ABCDEntry A10 cartesianCount=5, elapsed 0:00:00.000313
-Eval ABCDEntry A6 cartesianCount=5, elapsed 0:00:00.000113
-solve: ABCDEntry(name=A6,length=2,value: A,
-	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
-	values={11,13,17,19,23},
-	digits=[{1,2},{1,3,7,9}]
-Eval ABCDEntry D2 cartesianCount=5, elapsed 0:00:00.000054
-Eval ABCDEntry A10 cartesianCount=5, elapsed 0:00:00.000053
-Eval ABCDEntry A6 cartesianCount=5, elapsed 0:00:00.000037
-Eval ABCDEntry A4 cartesianCount=5, elapsed 0:00:00.000044
+Eval ABCDEntry A4 cartesianCount=5, elapsed 0:00:00.000047
 solve: ABCDEntry(name=A4,length=2,value: A+A+A,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
 	values={33,39,51,57,69},
 	digits=[{3,5,6},{1,3,7,9}]
-Eval ABCDEntry D16 cartesianCount=30, elapsed 0:00:00.000377
-Eval ABCDEntry D3 cartesianCount=30, elapsed 0:00:00.000131
+Eval ABCDEntry A6 cartesianCount=5, elapsed 0:00:00.000051
+solve: ABCDEntry(name=A6,length=2,value: A,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
+	values={11,13,17,19,23},
+	digits=[{1,2},{1,3,7,9}]
+Eval ABCDEntry A10 cartesianCount=5, elapsed 0:00:00.000042
+Eval ABCDEntry D2 cartesianCount=5, elapsed 0:00:00.000038
+Eval ABCDEntry D10 cartesianCount=5, elapsed 0:00:00.000037
+Eval ABCDEntry D15 cartesianCount=6, elapsed 0:00:00.000037
+Eval ABCDEntry D3 cartesianCount=30, elapsed 0:00:00.000146
 solve: ABCDEntry(name=D3,length=2,value: A+C,
 	identities=[D3[0]=A1[3],D3[1]=A7[1]],referrers=[A1,A7],
 	values={24,28,30,32,34,36,40,42,44,46,48,50,52,54},
 	digits=[{2..5},{0,2,4,6,8}]
-Eval ABCDEntry D17 cartesianCount=150, elapsed 0:00:00.000512
-solve: ABCDEntry(name=D17,length=2,value: B+C-A,
-	identities=[D17[0]=A17[0],D17[1]=A19[2]],referrers=[A17,A19],
-	values={19,21,23,25,27,29,31,33,35,37,39,41,43},
-	digits=[{1..4},{1,3,5,7,9}]
+Eval ABCDEntry D16 cartesianCount=30, elapsed 0:00:00.000115
+Eval ABCDEntry A17 cartesianCount=150, elapsed 0:00:00.000602
+solve: ABCDEntry(name=A17,length=2,value: A+C-B,
+	identities=[A17[0]=D17[0],A17[1]=D13[1]],referrers=[D17,D13],
+	values={13,15,17,19,21,23,25,27,29},
+	digits=[{1,2},{1,3,5,7,9}]
 A={11,13,17,19}
 B={13,17,19,23}
 C={17,19,23,29,31}
-Eval ABCDEntry D10 cartesianCount=4, elapsed 0:00:00.000168
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={26,34,38,46},
-	digits=[{2..4},{4,6,8}]
-Eval ABCDEntry D2 cartesianCount=4, elapsed 0:00:00.000100
-solve: ABCDEntry(name=D2,length=2,value: B+B+B,
-	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
-	values={39,51,57,69},
-	digits=[{3,5,6},{1,7,9}]
-Eval ABCDEntry A18 cartesianCount=4, elapsed 0:00:00.000037
-solve: ABCDEntry(name=A18,length=2,value: B,
-	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
-	values={13,17,19,23},
-	digits=[{1,2},{3,7,9}]
-Eval ABCDEntry A10 cartesianCount=4, elapsed 0:00:00.000036
+Eval ABCDEntry A4 cartesianCount=4, elapsed 0:00:00.000053
+solve: ABCDEntry(name=A4,length=2,value: A+A+A,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
+	values={33,39,51,57},
+	digits=[{3,5},{1,3,7,9}]
+Eval ABCDEntry A6 cartesianCount=4, elapsed 0:00:00.000039
+solve: ABCDEntry(name=A6,length=2,value: A,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
+	values={11,13,17,19},
+	digits=[{1},{1,3,7,9}]
+Eval ABCDEntry A10 cartesianCount=4, elapsed 0:00:00.000037
 solve: ABCDEntry(name=A10,length=2,value: A+A,
 	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
 	values={22,26,34,38},
 	digits=[{2,3},{2,4,6,8}]
-Eval ABCDEntry D10 cartesianCount=4, elapsed 0:00:00.000034
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={26,34,38},
-	digits=[{2,3},{4,6,8}]
-B={13,17,19}
-Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000033
-solve: ABCDEntry(name=D2,length=2,value: B+B+B,
-	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
-	values={39,51,57},
-	digits=[{3,5},{1,7,9}]
-Eval ABCDEntry A18 cartesianCount=3, elapsed 0:00:00.000034
+Eval ABCDEntry A18 cartesianCount=4, elapsed 0:00:00.000036
 solve: ABCDEntry(name=A18,length=2,value: B,
 	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
-	values={13,17,19},
-	digits=[{1},{3,7,9}]
-Eval ABCDEntry D10 cartesianCount=3, elapsed 0:00:00.000030
-Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000057
-Eval ABCDEntry A18 cartesianCount=3, elapsed 0:00:00.000043
-Eval ABCDEntry A10 cartesianCount=4, elapsed 0:00:00.000033
+	values={13,17,19,23},
+	digits=[{1,2},{3,7,9}]
+Eval ABCDEntry D2 cartesianCount=4, elapsed 0:00:00.000033
+solve: ABCDEntry(name=D2,length=2,value: B+B+B,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={39,51,57,69},
+	digits=[{3,5,6},{1,7,9}]
 Eval ABCDEntry A6 cartesianCount=4, elapsed 0:00:00.000031
 solve: ABCDEntry(name=A6,length=2,value: A,
 	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
 	values={11,17,19},
 	digits=[{1},{1,7,9}]
 A={11,17,19}
-Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000049
-Eval ABCDEntry A10 cartesianCount=3, elapsed 0:00:00.000045
-solve: ABCDEntry(name=A10,length=2,value: A+A,
-	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
-	values={22,34,38},
-	digits=[{2,3},{2,4,8}]
-Eval ABCDEntry D10 cartesianCount=3, elapsed 0:00:00.000052
-Eval ABCDEntry A10 cartesianCount=3, elapsed 0:00:00.000035
-Eval ABCDEntry A6 cartesianCount=3, elapsed 0:00:00.000033
-Eval ABCDEntry A4 cartesianCount=3, elapsed 0:00:00.000030
+Eval ABCDEntry A4 cartesianCount=3, elapsed 0:00:00.000031
 solve: ABCDEntry(name=A4,length=2,value: A+A+A,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
 	values={33,51,57},
 	digits=[{3,5},{1,3,7}]
-Eval ABCDEntry A6 cartesianCount=3, elapsed 0:00:00.000062
-Eval ABCDEntry A4 cartesianCount=3, elapsed 0:00:00.000033
-Eval ABCDEntry D15 cartesianCount=5, elapsed 0:00:00.000040
+Eval ABCDEntry A6 cartesianCount=3, elapsed 0:00:00.000028
+Eval ABCDEntry A10 cartesianCount=3, elapsed 0:00:00.000033
+solve: ABCDEntry(name=A10,length=2,value: A+A,
+	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
+	values={22,34,38},
+	digits=[{2,3},{2,4,8}]
+Eval ABCDEntry D2 cartesianCount=4, elapsed 0:00:00.000033
+Eval ABCDEntry D10 cartesianCount=4, elapsed 0:00:00.000031
+solve: ABCDEntry(name=D10,length=2,value: B+B,
+	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
+	values={26,34,38},
+	digits=[{2,3},{4,6,8}]
+B={13,17,19}
+Eval ABCDEntry A10 cartesianCount=3, elapsed 0:00:00.000030
+Eval ABCDEntry A18 cartesianCount=3, elapsed 0:00:00.000026
+solve: ABCDEntry(name=A18,length=2,value: B,
+	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
+	values={13,17,19},
+	digits=[{1},{3,7,9}]
+Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000029
+solve: ABCDEntry(name=D2,length=2,value: B+B+B,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={39,51,57},
+	digits=[{3,5},{1,7,9}]
+Eval ABCDEntry A6 cartesianCount=3, elapsed 0:00:00.000028
+Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000034
+Eval ABCDEntry D10 cartesianCount=3, elapsed 0:00:00.000029
+Eval ABCDEntry A11 cartesianCount=5, elapsed 0:00:00.000038
+solve: ABCDEntry(name=A11,length=2,value: C,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+	values={17,19,23,29,31},
+	digits=[{1..3},{1,3,7,9}]
+Eval ABCDEntry D15 cartesianCount=5, elapsed 0:00:00.000039
 solve: ABCDEntry(name=D15,length=2,value: C+C+C,
 	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
 	values={57,69,87,93},
 	digits=[{5,6,8,9},{3,7,9}]
 C={19,23,29,31}
-Eval ABCDEntry A18 cartesianCount=3, elapsed 0:00:00.000037
-Eval ABCDEntry D15 cartesianCount=4, elapsed 0:00:00.000049
-Eval ABCDEntry A11 cartesianCount=4, elapsed 0:00:00.000038
+Eval ABCDEntry A18 cartesianCount=3, elapsed 0:00:00.000048
+Eval ABCDEntry A11 cartesianCount=4, elapsed 0:00:00.000032
 solve: ABCDEntry(name=A11,length=2,value: C,
 	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
 	values={19,23,29,31},
 	digits=[{1..3},{1,3,9}]
-Eval ABCDEntry D15 cartesianCount=4, elapsed 0:00:00.000039
-Eval ABCDEntry A11 cartesianCount=4, elapsed 0:00:00.000032
-Eval ABCDEntry D16 cartesianCount=12, elapsed 0:00:00.000059
-solve: ABCDEntry(name=D16,length=2,value: B+C,
-	identities=[D16[0]=A14[2],D16[1]=A19[0]],referrers=[A14,A19],
-	values={32,36,42,44,46,48},
-	digits=[{3,4},{2,4,6,8}]
-Eval ABCDEntry D3 cartesianCount=12, elapsed 0:00:00.000063
+Eval ABCDEntry D15 cartesianCount=4, elapsed 0:00:00.000041
+Eval ABCDEntry D3 cartesianCount=12, elapsed 0:00:00.000066
 solve: ABCDEntry(name=D3,length=2,value: A+C,
 	identities=[D3[0]=A1[3],D3[1]=A7[1]],referrers=[A1,A7],
 	values={30,34,36,40,42,46,48,50},
 	digits=[{3..5},{0,2,4,6,8}]
-Eval ABCDEntry D17 cartesianCount=36, elapsed 0:00:00.000125
-solve: ABCDEntry(name=D17,length=2,value: B+C-A,
-	identities=[D17[0]=A17[0],D17[1]=A19[2]],referrers=[A17,A19],
-	values={21,25,29,31,33,35,37,39},
-	digits=[{2,3},{1,3,5,7,9}]
+Eval ABCDEntry D16 cartesianCount=12, elapsed 0:00:00.000064
+solve: ABCDEntry(name=D16,length=2,value: B+C,
+	identities=[D16[0]=A14[2],D16[1]=A19[0]],referrers=[A14,A19],
+	values={32,36,42,44,46,48},
+	digits=[{3,4},{2,4,6,8}]
+Eval ABCDEntry A17 cartesianCount=36, elapsed 0:00:00.000118
+solve: ABCDEntry(name=A17,length=2,value: A+C-B,
+	identities=[A17[0]=D17[0],A17[1]=D13[1]],referrers=[D17,D13],
+	values={13,15,17,21,23,25,27,29},
+	digits=[{1,2},{1,3,5,7,9}]
 A={11,17}
-Eval ABCDEntry A10 cartesianCount=2, elapsed 0:00:00.000032
-solve: ABCDEntry(name=A10,length=2,value: A+A,
-	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
-	values={22,34},
-	digits=[{2,3},{2,4}]
-Eval ABCDEntry A6 cartesianCount=2, elapsed 0:00:00.000030
-solve: ABCDEntry(name=A6,length=2,value: A,
-	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
-	values={11,17},
-	digits=[{1},{1,7}]
 Eval ABCDEntry A4 cartesianCount=2, elapsed 0:00:00.000032
 solve: ABCDEntry(name=A4,length=2,value: A+A+A,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
 	values={33,51},
 	digits=[{3,5},{1,3}]
-Eval ABCDEntry D10 cartesianCount=3, elapsed 0:00:00.000030
-Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000035
+Eval ABCDEntry A6 cartesianCount=2, elapsed 0:00:00.000028
+solve: ABCDEntry(name=A6,length=2,value: A,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
+	values={11,17},
+	digits=[{1},{1,7}]
+Eval ABCDEntry A10 cartesianCount=2, elapsed 0:00:00.000032
+solve: ABCDEntry(name=A10,length=2,value: A+A,
+	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
+	values={22,34},
+	digits=[{2,3},{2,4}]
+Eval ABCDEntry D2 cartesianCount=3, elapsed 0:00:00.000033
 solve: ABCDEntry(name=D2,length=2,value: B+B+B,
 	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
 	values={51,57},
 	digits=[{5},{1,7}]
 B={17,19}
-Eval ABCDEntry D10 cartesianCount=2, elapsed 0:00:00.000030
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={34,38},
-	digits=[{3},{4,8}]
-Eval ABCDEntry D2 cartesianCount=2, elapsed 0:00:00.000028
-Eval ABCDEntry A18 cartesianCount=2, elapsed 0:00:00.000025
+Eval ABCDEntry A6 cartesianCount=2, elapsed 0:00:00.000030
+Eval ABCDEntry A18 cartesianCount=2, elapsed 0:00:00.000027
 solve: ABCDEntry(name=A18,length=2,value: B,
 	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
 	values={17,19},
 	digits=[{1},{7,9}]
-Eval ABCDEntry D2 cartesianCount=2, elapsed 0:00:00.000034
-Eval ABCDEntry A18 cartesianCount=2, elapsed 0:00:00.000024
-Eval ABCDEntry A10 cartesianCount=2, elapsed 0:00:00.000025
+Eval ABCDEntry D2 cartesianCount=2, elapsed 0:00:00.000029
+Eval ABCDEntry D10 cartesianCount=2, elapsed 0:00:00.000034
+solve: ABCDEntry(name=D10,length=2,value: B+B,
+	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
+	values={34,38},
+	digits=[{3},{4,8}]
+Eval ABCDEntry A10 cartesianCount=2, elapsed 0:00:00.000028
 solve: ABCDEntry(name=A10,length=2,value: A+A,
 	identities=[A10[0]=D10[0],A10[1]=D5[2]],referrers=[D10,D5],
 	values={34},
@@ -376,158 +419,139 @@ solve: ABCDEntry(name=A10,length=2,value: A+A,
 A={17}
 B={19}
 C={23,29,31}
-solve: ABCDEntry(name=D10,length=2,value: B+B,
-	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
-	values={38},
-	digits=[{3},{8}]
-solve: ABCDEntry(name=D2,length=2,value: B+B+B,
-	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
-	values={57},
-	digits=[{5},{7}]
-solve: ABCDEntry(name=A18,length=2,value: B,
-	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
-	values={19},
-	digits=[{1},{9}]
-solve: ABCDEntry(name=A6,length=2,value: A,
-	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
-	values={17},
-	digits=[{1},{7}]
 solve: ABCDEntry(name=A4,length=2,value: A+A+A,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5],
 	values={51},
 	digits=[{5},{1}]
-Eval ABCDEntry D17 cartesianCount=3, elapsed 0:00:00.000035
-solve: ABCDEntry(name=D17,length=2,value: B+C-A,
-	identities=[D17[0]=A17[0],D17[1]=A19[2]],referrers=[A17,A19],
-	values={25,31,33},
-	digits=[{2,3},{1,3,5}]
-Eval ABCDEntry D16 cartesianCount=3, elapsed 0:00:00.000033
-solve: ABCDEntry(name=D16,length=2,value: B+C,
-	identities=[D16[0]=A14[2],D16[1]=A19[0]],referrers=[A14,A19],
-	values={42,48},
-	digits=[{4},{2,8}]
+solve: ABCDEntry(name=A6,length=2,value: A,
+	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2],
+	values={17},
+	digits=[{1},{7}]
+solve: ABCDEntry(name=A18,length=2,value: B,
+	identities=[A18[0]=D11[2],A18[1]=D15[1]],referrers=[D11,D15],
+	values={19},
+	digits=[{1},{9}]
+solve: ABCDEntry(name=D10,length=2,value: B+B,
+	identities=[D10[0]=A10[0],D10[1]=A12[2]],referrers=[A10,A12],
+	values={38},
+	digits=[{3},{8}]
+Eval ABCDEntry A11 cartesianCount=3, elapsed 0:00:00.000024
+solve: ABCDEntry(name=A11,length=2,value: C,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+	values={23,29,31},
+	digits=[{2,3},{1,3,9}]
+Eval ABCDEntry A17 cartesianCount=3, elapsed 0:00:00.000040
+solve: ABCDEntry(name=A17,length=2,value: A+C-B,
+	identities=[A17[0]=D17[0],A17[1]=D13[1]],referrers=[D17,D13],
+	values={21,27,29},
+	digits=[{2},{1,7,9}]
+Eval ABCDEntry D1 cartesianCount=3, elapsed 0:00:00.000101
+solve: ABCDEntry(name=D1,length=3,value: B+AC,
+	identities=[D1[0]=A1[0],D1[1]=A6[0]],referrers=[A1,A6],
+	values={410,512},
+	digits=[{4,5},{1},{0,2}]
 C={23,29}
-Eval ABCDEntry D17 cartesianCount=2, elapsed 0:00:00.000040
-solve: ABCDEntry(name=D17,length=2,value: B+C-A,
-	identities=[D17[0]=A17[0],D17[1]=A19[2]],referrers=[A17,A19],
-	values={25,31},
-	digits=[{2,3},{1,5}]
-Eval ABCDEntry D16 cartesianCount=2, elapsed 0:00:00.000029
-Eval ABCDEntry D15 cartesianCount=2, elapsed 0:00:00.000032
-solve: ABCDEntry(name=D15,length=2,value: C+C+C,
-	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
-	values={69},
-	digits=[{6},{9}]
-C={23}
-solve: ABCDEntry(name=D17,length=2,value: B+C-A,
-	identities=[D17[0]=A17[0],D17[1]=A19[2]],referrers=[A17,A19],
-	values={25},
-	digits=[{2},{5}]
-solve: ABCDEntry(name=D16,length=2,value: B+C,
-	identities=[D16[0]=A14[2],D16[1]=A19[0]],referrers=[A14,A19],
-	values={42},
-	digits=[{4},{2}]
-solve: ABCDEntry(name=D13,length=3,value: AB+AC,
-	identities=[D13[1]=A17[1],D13[2]=A19[3]],referrers=[A17,A19],
-	values={714},
-	digits=[{7},{1},{4}]
-solve: ABCDEntry(name=D8,length=2,value: A+B-C,
-	identities=[D8[0]=A8[0],D8[1]=A11[1]],referrers=[A8,A11],
-	values={13},
-	digits=[{1},{3}]
-solve: ABCDEntry(name=D7,length=3,value: AB+C,
-	identities=[D7[0]=A7[0],D7[1]=A8[1],D7[2]=A12[0]],referrers=[A7,A8,A12],
-	values={346},
-	digits=[{3},{4},{6}]
+Eval ABCDEntry A11 cartesianCount=2, elapsed 0:00:00.000027
+solve: ABCDEntry(name=A11,length=2,value: C,
+	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
+	values={23,29},
+	digits=[{2},{3,9}]
+Eval ABCDEntry A17 cartesianCount=2, elapsed 0:00:00.000043
+solve: ABCDEntry(name=A17,length=2,value: A+C-B,
+	identities=[A17[0]=D17[0],A17[1]=D13[1]],referrers=[D17,D13],
+	values={21,27},
+	digits=[{2},{1,7}]
+Eval ABCDEntry D1 cartesianCount=2, elapsed 0:00:00.000059
+Eval ABCDEntry D3 cartesianCount=2, elapsed 0:00:00.000035
+solve: ABCDEntry(name=D3,length=2,value: A+C,
+	identities=[D3[0]=A1[3],D3[1]=A7[1]],referrers=[A1,A7],
+	values={40,46},
+	digits=[{4},{0,6}]
+Eval ABCDEntry D4 cartesianCount=2, elapsed 0:00:00.000041
 solve: ABCDEntry(name=D4,length=2,value: A+B+C,
 	identities=[D4[0]=A4[0],D4[1]=A7[2]],referrers=[A4,A7],
 	values={59},
 	digits=[{5},{9}]
-solve: ABCDEntry(name=D3,length=2,value: A+C,
-	identities=[D3[0]=A1[3],D3[1]=A7[1]],referrers=[A1,A7],
-	values={40},
-	digits=[{4},{0}]
-solve: ABCDEntry(name=D1,length=3,value: B+AC,
-	identities=[D1[0]=A1[0],D1[1]=A6[0]],referrers=[A1,A6],
-	values={410},
-	digits=[{4},{1},{0}]
-solve: ABCDEntry(name=A17,length=2,value: A+C-B,
-	identities=[A17[0]=D17[0],A17[1]=D13[1]],referrers=[D17,D13],
-	values={21},
-	digits=[{2},{1}]
+C={23}
 solve: ABCDEntry(name=A11,length=2,value: C,
 	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
 	values={23},
 	digits=[{2},{3}]
-Eval ABCDEntry D11 cartesianCount=143, elapsed 0:00:00.000539
-solve: ABCDEntry(name=D11,length=3,value: A+C+D,
-	identities=[D11[0]=A11[0],D11[1]=A14[0],D11[2]=A18[0]],referrers=[A11,A14,A18],
-	values={221,231,251,281,291},
-	digits=[{2},{2,3,5,8,9},{1}]
-D={181,191,211,241,251}
-Eval ABCDEntry D11 cartesianCount=5, elapsed 0:00:00.000050
-Eval ABCDEntry D9 cartesianCount=5, elapsed 0:00:00.000048
-solve: ABCDEntry(name=D9,length=3,value: AC-D,
-	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[3]],referrers=[A8,A12,A14],
-	values={140,150,180,200,210},
-	digits=[{1,2},{0,1,4,5,8},{0}]
-Eval ABCDEntry D5 cartesianCount=5, elapsed 0:00:00.000050
-solve: ABCDEntry(name=D5,length=3,value: D-A,
-	identities=[D5[0]=A4[1],D5[1]=A7[3],D5[2]=A10[1]],referrers=[A4,A7,A10],
-	values={164,174,194},
-	digits=[{1},{6,7,9},{4}]
-D={181,191,211}
-Eval ABCDEntry D11 cartesianCount=3, elapsed 0:00:00.000035
-solve: ABCDEntry(name=D11,length=3,value: A+C+D,
-	identities=[D11[0]=A11[0],D11[1]=A14[0],D11[2]=A18[0]],referrers=[A11,A14,A18],
-	values={221,231,251},
-	digits=[{2},{2,3,5},{1}]
-Eval ABCDEntry D11 cartesianCount=3, elapsed 0:00:00.000035
-Eval ABCDEntry D9 cartesianCount=3, elapsed 0:00:00.000037
-solve: ABCDEntry(name=D9,length=3,value: AC-D,
-	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[3]],referrers=[A8,A12,A14],
-	values={180,200,210},
-	digits=[{1,2},{0,1,8},{0}]
-Eval ABCDEntry D5 cartesianCount=3, elapsed 0:00:00.000043
-Eval ABCDEntry A19 cartesianCount=3, elapsed 0:00:00.000037
-solve: ABCDEntry(name=A19,length=4,value: AD-AB,
-	identities=[A19[0]=D16[1],A19[2]=D17[1],A19[3]=D13[2]],referrers=[D16,D17,D13],
-	values={2754},
-	digits=[{2},{7},{5},{4}]
-D={181}
-solve: ABCDEntry(name=D11,length=3,value: A+C+D,
-	identities=[D11[0]=A11[0],D11[1]=A14[0],D11[2]=A18[0]],referrers=[A11,A14,A18],
-	values={221},
-	digits=[{2},{2},{1}]
-solve: ABCDEntry(name=D9,length=3,value: AC-D,
-	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[3]],referrers=[A8,A12,A14],
-	values={210},
-	digits=[{2},{1},{0}]
-solve: ABCDEntry(name=D5,length=3,value: D-A,
-	identities=[D5[0]=A4[1],D5[1]=A7[3],D5[2]=A10[1]],referrers=[A4,A7,A10],
-	values={164},
-	digits=[{1},{6},{4}]
-solve: ABCDEntry(name=A14,length=4,value: AD-BC,
-	identities=[A14[0]=D11[1],A14[1]=D15[0],A14[2]=D16[0],A14[3]=D9[2]],referrers=[D11,D15,D16,D9],
-	values={2640},
-	digits=[{2},{6},{4},{0}]
-solve: ABCDEntry(name=A12,length=3,value: BC+D,
-	identities=[A12[0]=D7[2],A12[1]=D9[1],A12[2]=D10[1]],referrers=[D7,D9,D10],
-	values={618},
-	digits=[{6},{1},{8}]
-solve: ABCDEntry(name=A8,length=3,value: AB-D,
-	identities=[A8[0]=D8[0],A8[1]=D7[1],A8[2]=D9[0]],referrers=[D8,D7,D9],
-	values={142},
-	digits=[{1},{4},{2}]
-solve: ABCDEntry(name=A7,length=4,value: B+AD,
-	identities=[A7[0]=D7[0],A7[1]=D3[1],A7[2]=D4[1],A7[3]=D5[1]],referrers=[D7,D3,D4,D5],
-	values={3096},
-	digits=[{3},{0},{9},{6}]
+solve: ABCDEntry(name=A17,length=2,value: A+C-B,
+	identities=[A17[0]=D17[0],A17[1]=D13[1]],referrers=[D17,D13],
+	values={21},
+	digits=[{2},{1}]
+solve: ABCDEntry(name=D1,length=3,value: B+AC,
+	identities=[D1[0]=A1[0],D1[1]=A6[0]],referrers=[A1,A6],
+	values={410},
+	digits=[{4},{1},{0}]
+solve: ABCDEntry(name=D3,length=2,value: A+C,
+	identities=[D3[0]=A1[3],D3[1]=A7[1]],referrers=[A1,A7],
+	values={40},
+	digits=[{4},{0}]
+solve: ABCDEntry(name=D7,length=3,value: AB+C,
+	identities=[D7[0]=A7[0],D7[1]=A8[1],D7[2]=A12[0]],referrers=[A7,A8,A12],
+	values={346},
+	digits=[{3},{4},{6}]
+solve: ABCDEntry(name=D8,length=2,value: A+B-C,
+	identities=[D8[0]=A8[0],D8[1]=A11[1]],referrers=[A8,A11],
+	values={13},
+	digits=[{1},{3}]
+solve: ABCDEntry(name=D13,length=3,value: AB+AC,
+	identities=[D13[1]=A17[1],D13[2]=A19[3]],referrers=[A17,A19],
+	values={714},
+	digits=[{7},{1},{4}]
+solve: ABCDEntry(name=D15,length=2,value: C+C+C,
+	identities=[D15[0]=A14[1],D15[1]=A18[1]],referrers=[A14,A18],
+	values={69},
+	digits=[{6},{9}]
+solve: ABCDEntry(name=D16,length=2,value: B+C,
+	identities=[D16[0]=A14[2],D16[1]=A19[0]],referrers=[A14,A19],
+	values={42},
+	digits=[{4},{2}]
+solve: ABCDEntry(name=D17,length=2,value: B+C-A,
+	identities=[D17[0]=A17[0],D17[1]=A19[2]],referrers=[A17,A19],
+	values={25},
+	digits=[{2},{5}]
+Eval ABCDEntry A1 cartesianCount=143, elapsed 0:00:00.000549
 solve: ABCDEntry(name=A1,length=4,value: AC+CD,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
 	values={4554},
 	digits=[{4},{5},{5},{4}]
-Clue/Variable iterations=211, updates=75, elapsed 0:00:00.053754
+D={181}
+solve: ABCDEntry(name=A7,length=4,value: B+AD,
+	identities=[A7[0]=D7[0],A7[1]=D3[1],A7[2]=D4[1],A7[3]=D5[1]],referrers=[D7,D3,D4,D5],
+	values={3096},
+	digits=[{3},{0},{9},{6}]
+solve: ABCDEntry(name=A8,length=3,value: AB-D,
+	identities=[A8[0]=D8[0],A8[1]=D7[1],A8[2]=D9[0]],referrers=[D8,D7,D9],
+	values={142},
+	digits=[{1},{4},{2}]
+solve: ABCDEntry(name=A12,length=3,value: BC+D,
+	identities=[A12[0]=D7[2],A12[1]=D9[1],A12[2]=D10[1]],referrers=[D7,D9,D10],
+	values={618},
+	digits=[{6},{1},{8}]
+solve: ABCDEntry(name=A14,length=4,value: AD-BC,
+	identities=[A14[0]=D11[1],A14[1]=D15[0],A14[2]=D16[0],A14[3]=D9[2]],referrers=[D11,D15,D16,D9],
+	values={2640},
+	digits=[{2},{6},{4},{0}]
+solve: ABCDEntry(name=A19,length=4,value: AD-AB,
+	identities=[A19[0]=D16[1],A19[2]=D17[1],A19[3]=D13[2]],referrers=[D16,D17,D13],
+	values={2754},
+	digits=[{2},{7},{5},{4}]
+solve: ABCDEntry(name=D5,length=3,value: D-A,
+	identities=[D5[0]=A4[1],D5[1]=A7[3],D5[2]=A10[1]],referrers=[A4,A7,A10],
+	values={164},
+	digits=[{1},{6},{4}]
+solve: ABCDEntry(name=D9,length=3,value: AC-D,
+	identities=[D9[0]=A8[2],D9[1]=A12[1],D9[2]=A14[3]],referrers=[A8,A12,A14],
+	values={210},
+	digits=[{2},{1},{0}]
+solve: ABCDEntry(name=D11,length=3,value: A+C+D,
+	identities=[D11[0]=A11[0],D11[1]=A14[0],D11[2]=A18[0]],referrers=[A11,A14,A18],
+	values={221},
+	digits=[{2},{2},{1}]
+Clue/Variable iterations=173, updates=82, elapsed 0:00:00.046498
 SOLUTION-----------------------------
 Puzzle Summary
 A1, AC+CD, values={4554}

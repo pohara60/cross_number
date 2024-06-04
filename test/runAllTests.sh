@@ -1,7 +1,7 @@
 #!/bin/bash
 ROOT=~/Documents/Development/Dart/cross_number
 cd $ROOT/test
-EXCLUDE="/Couplets/primecuts2/" # This is very slow
+EXCLUDE="/Couplets/primecuts2/SumSquares/" # This is very slow
 if [ $# -ne 0 ]; then
     files="$*"_test.dart
 else

@@ -60,11 +60,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       if (priorityQueue.contains(clue)) {
         priorityQueue.remove(clue);
       }
-      //print('addToUpdateQueue(${clue.name}), count=${clue.count}');
       priorityQueue.add(clue);
+      // print('addToUpdateQueue(${clue.name}), count=${clue.count}');
     } else {
       if (!updateQueue.contains(clue)) {
         updateQueue.add(clue);
+        // print('addToUpdateQueue(${clue.name})');
       }
     }
   }
@@ -72,10 +73,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   Variable takeFromUpdateQueue() {
     if (priorityQueue.isNotEmpty) {
       var clue = priorityQueue.removeFirst();
-      //print('takeFromUpdateQueue()=${clue.name}), count=${clue.count}');
+      // print('takeFromUpdateQueue()=${clue.name}), count=${clue.count}');
       return clue;
     } else {
-      return updateQueue.removeAt(0);
+      var clue = updateQueue.removeAt(0);
+      // print('takeFromUpdateQueue()=${clue.name})');
+      return clue;
     }
   }
 
