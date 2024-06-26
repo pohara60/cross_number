@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "SquaresTriangles",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "SquaresTriangles"
+            ]
+        },
+        {
             "name": "Inbetweeners",
             "type": "dart",
             "request": "launch",

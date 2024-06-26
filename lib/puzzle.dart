@@ -145,22 +145,28 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       addReference(entry1, entry2, symmetric);
 
   String toString() {
+    var addLabel = clues.isNotEmpty && entries.isNotEmpty;
     var text = '$name${name == '' ? '' : ' '}Puzzle\n';
     for (var clue in clues.values) {
+      if (addLabel) text += 'Clue ';
       text += clue.toString() + '\n';
     }
     for (var entry in entries.values) {
+      if (addLabel) text += 'Entry ';
       text += entry.toString() + '\n';
     }
     return text;
   }
 
   String toSummary() {
+    var addLabel = clues.isNotEmpty && entries.isNotEmpty;
     var text = '$name${name == '' ? '' : ' '}Puzzle Summary\n';
     for (var clue in clues.values) {
+      if (addLabel) text += 'Clue ';
       text += clue.toSummary() + '\n';
     }
     for (var entry in entries.values) {
+      if (addLabel) text += 'Entry ';
       text += entry.toSummary() + '\n';
     }
     if (gridSpec != null) text += toSolution();

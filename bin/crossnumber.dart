@@ -36,6 +36,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
+import 'package:crossnumber/squarestriangles/squarestriangles.dart';
 import 'package:crossnumber/sumsquares/sumsquares.dart';
 import 'package:crossnumber/thirty/thirty.dart';
 import 'package:crossnumber/transformation/transformation.dart';
@@ -92,7 +93,7 @@ void main(List<String> arguments) async {
     ..addCommand(PrimeKnightCommand())
     ..addCommand(FactorsCommand())
     ..addCommand(TransformationCommand())
-    ..addCommand(InbetweenersCommand());
+    ..addCommand(SquaresTrianglesCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -928,6 +929,30 @@ class InbetweenersCommand extends Command {
     // Get and print solve
     try {
       final pc = Inbetweeners();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class SquaresTrianglesCommand extends Command {
+  @override
+  final name = 'SquaresTriangles';
+  @override
+  final description = 'solve hardcoded SquaresTriangles puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = SquaresTriangles();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

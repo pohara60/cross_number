@@ -268,8 +268,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         }
       }
       if (variable is Clue) {
-        if (updateClueEntries(puzzle, variable.name, possibleValue))
-          updated = true;
+        if (updateClueEntries(puzzle, variable, possibleValue)) updated = true;
       } else {
         if (updateVariables(
             puzzle, variable.name, possibleValue, updatedVariables)) {
@@ -378,12 +377,14 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   }
 
   bool updateClueEntries(
-      PuzzleKind puzzle, String clueName, Set<int> possibleValues) {
-    if (puzzle.clues.containsKey(clueName))
-      return updateClues(puzzle, clueName, possibleValues);
-    if (puzzle.entries.containsKey(clueName))
-      return updateClues(puzzle, clueName, possibleValues, isEntry: true);
-    throw SolveError('Clue/Entry $clueName not found!');
+      PuzzleKind puzzle, Clue clue, Set<int> possibleValues) {
+    var key = (clue.variableType, clue.name);
+    if (!puzzle.allVariables.containsKey(key))
+      throw SolveError('Clue/Entry ${clue.name} not found!');
+
+    return updateClues(puzzle, clue.name, possibleValues,
+        isEntry:
+            clue.variableType == VariableType.E && puzzle.entries.isNotEmpty);
   }
 
   bool updateClues(
