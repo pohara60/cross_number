@@ -1,145 +1,145 @@
 Puzzle
-PandigitalsClue(name=A1,length=3,value: ,
+Clue PandigitalsClue(name=A1,length=3,value: ,
 	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3],
 	values={unknown},
 	digits=[{1..9},{1..9},{1..9}]
-PandigitalsClue(name=A4,length=3,value: ,
+Clue PandigitalsClue(name=A4,length=3,value: ,
 	identities=[A4[0]=D4[0],A4[2]=D5[0]],referrers=[D4,D5],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PandigitalsClue(name=A6,length=2,value: ,
+Clue PandigitalsClue(name=A6,length=2,value: ,
 	identities=[A6[1]=D2[1]],referrers=[D2,A13,D4,D12,D3],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsClue(name=A7,length=3,value: ,
+Clue PandigitalsClue(name=A7,length=3,value: ,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsClue(name=A8,length=3,value: ,
+Clue PandigitalsClue(name=A8,length=3,value: ,
 	identities=[A8[0]=D8[0],A8[1]=D2[2],A8[2]=D3[2]],referrers=[D8,D2,D3],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsClue(name=A9,length=3,value: ,
+Clue PandigitalsClue(name=A9,length=3,value: ,
 	identities=[A9[0]=D9[0],A9[1]=D10[0],A9[2]=D5[2]],referrers=[D9,D10,D5],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsClue(name=A11,length=3,value: ,
+Clue PandigitalsClue(name=A11,length=3,value: ,
 	identities=[A11[1]=D12[0],A11[2]=D9[1]],referrers=[D12,D9],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsClue(name=A13,length=2,value: ,
+Clue PandigitalsClue(name=A13,length=2,value: ,
 	identities=[A13[0]=D10[1]],referrers=[D10,D4,D12],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsClue(name=A14,length=3,value: ,
+Clue PandigitalsClue(name=A14,length=3,value: ,
 	identities=[A14[0]=D8[2],A14[2]=D12[1]],referrers=[D8,D12],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsClue(name=A15,length=3,value: ,
+Clue PandigitalsClue(name=A15,length=3,value: ,
 	identities=[A15[0]=D9[2],A15[1]=D10[2]],referrers=[D9,D10],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsClue(name=D2,length=3,value: ,
+Clue PandigitalsClue(name=D2,length=3,value: ,
 	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A8[1]],referrers=[A1,A6,A8,D4],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsClue(name=D3,length=3,value: ,
+Clue PandigitalsClue(name=D3,length=3,value: ,
 	identities=[D3[0]=A1[2],D3[1]=A7[0],D3[2]=A8[2]],referrers=[A1,A7,A8,A6,D4],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsClue(name=D4,length=2,value: ,
+Clue PandigitalsClue(name=D4,length=2,value: ,
 	identities=[D4[0]=A4[0],D4[1]=A7[1]],referrers=[A4,A7,A13,D12,A6,D3,D2],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsClue(name=D5,length=3,value: ,
+Clue PandigitalsClue(name=D5,length=3,value: ,
 	identities=[D5[0]=A4[2],D5[2]=A9[2]],referrers=[A4,A9],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsClue(name=D8,length=3,value: ,
+Clue PandigitalsClue(name=D8,length=3,value: ,
 	identities=[D8[0]=A8[0],D8[2]=A14[0]],referrers=[A8,A14],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PandigitalsClue(name=D9,length=3,value: ,
+Clue PandigitalsClue(name=D9,length=3,value: ,
 	identities=[D9[0]=A9[0],D9[1]=A11[2],D9[2]=A15[0]],referrers=[A9,A11,A15],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PandigitalsClue(name=D10,length=3,value: ,
+Clue PandigitalsClue(name=D10,length=3,value: ,
 	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsClue(name=D12,length=2,value: ,
+Clue PandigitalsClue(name=D12,length=2,value: ,
 	identities=[D12[0]=A11[1],D12[1]=A14[2]],referrers=[A11,A14,A13,D4],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsEntry(name=A1,length=3,value: null,
+Entry PandigitalsEntry(name=A1,length=3,value: null,
 	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3],
 	values={unknown},
 	digits=[{1..9},{1..9},{1..9}]
-PandigitalsEntry(name=D2,length=3,value: null,
+Entry PandigitalsEntry(name=D2,length=3,value: null,
 	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A8[1]],referrers=[A1,A6,A8],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsEntry(name=D3,length=3,value: null,
+Entry PandigitalsEntry(name=D3,length=3,value: null,
 	identities=[D3[0]=A1[2],D3[1]=A7[0],D3[2]=A8[2]],referrers=[A1,A7,A8],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsEntry(name=A4,length=3,value: null,
+Entry PandigitalsEntry(name=A4,length=3,value: null,
 	identities=[A4[0]=D4[0],A4[2]=D5[0]],referrers=[D4,D5],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PandigitalsEntry(name=D4,length=2,value: null,
+Entry PandigitalsEntry(name=D4,length=2,value: null,
 	identities=[D4[0]=A4[0],D4[1]=A7[1]],referrers=[A4,A7],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsEntry(name=D5,length=3,value: null,
+Entry PandigitalsEntry(name=D5,length=3,value: null,
 	identities=[D5[0]=A4[2],D5[2]=A9[2]],referrers=[A4,A9],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsEntry(name=A6,length=2,value: null,
+Entry PandigitalsEntry(name=A6,length=2,value: null,
 	identities=[A6[1]=D2[1]],referrers=[D2],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsEntry(name=A7,length=3,value: null,
+Entry PandigitalsEntry(name=A7,length=3,value: null,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsEntry(name=A8,length=3,value: null,
+Entry PandigitalsEntry(name=A8,length=3,value: null,
 	identities=[A8[0]=D8[0],A8[1]=D2[2],A8[2]=D3[2]],referrers=[D8,D2,D3],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsEntry(name=D8,length=3,value: null,
+Entry PandigitalsEntry(name=D8,length=3,value: null,
 	identities=[D8[0]=A8[0],D8[2]=A14[0]],referrers=[A8,A14],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PandigitalsEntry(name=A9,length=3,value: null,
+Entry PandigitalsEntry(name=A9,length=3,value: null,
 	identities=[A9[0]=D9[0],A9[1]=D10[0],A9[2]=D5[2]],referrers=[D9,D10,D5],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsEntry(name=D9,length=3,value: null,
+Entry PandigitalsEntry(name=D9,length=3,value: null,
 	identities=[D9[0]=A9[0],D9[1]=A11[2],D9[2]=A15[0]],referrers=[A9,A11,A15],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PandigitalsEntry(name=D10,length=3,value: null,
+Entry PandigitalsEntry(name=D10,length=3,value: null,
 	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsEntry(name=A11,length=3,value: null,
+Entry PandigitalsEntry(name=A11,length=3,value: null,
 	identities=[A11[1]=D12[0],A11[2]=D9[1]],referrers=[D12,D9],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PandigitalsEntry(name=D12,length=2,value: null,
+Entry PandigitalsEntry(name=D12,length=2,value: null,
 	identities=[D12[0]=A11[1],D12[1]=A14[2]],referrers=[A11,A14],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsEntry(name=A13,length=2,value: null,
+Entry PandigitalsEntry(name=A13,length=2,value: null,
 	identities=[A13[0]=D10[1]],referrers=[D10],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-PandigitalsEntry(name=A14,length=3,value: null,
+Entry PandigitalsEntry(name=A14,length=3,value: null,
 	identities=[A14[0]=D8[2],A14[2]=D12[1]],referrers=[D8,D12],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PandigitalsEntry(name=A15,length=3,value: null,
+Entry PandigitalsEntry(name=A15,length=3,value: null,
 	identities=[A15[0]=D9[2],A15[1]=D10[2]],referrers=[D9,D10],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
@@ -444,42 +444,42 @@ T=[861]=[861]
 P=[743]=[743]
 SOLUTION-----------------------------
 Puzzle Summary
-A1, , values={467}, entry={467}
-A4, , values={147}, entry={147}
-A6, , values={37}, entry={37}
-A7, , values={977}, entry={977}
-A8, , values={287}, entry={287}
-A9, , values={199}, entry={199}
-A11, , values={127}, entry={127}
-A13, , values={29}, entry={29}
-A14, , values={325}, entry={325}
-A15, , values={351}, entry={351}
-D2, , values={678}, entry={678}
-D3, , values={797}, entry={797}
-D4, , values={17}, entry={17}
-D5, , values={769}, entry={769}
-D8, , values={253}, entry={253}
-D9, , values={173}, entry={173}
-D10, , values={925}, entry={925}
-D12, , values={25}, entry={25}
-A1, values={467}
-D2, values={678}
-D3, values={797}
-A4, values={147}
-D4, values={17}
-D5, values={769}
-A6, values={37}
-A7, values={977}
-A8, values={287}
-D8, values={253}
-A9, values={199}
-D9, values={173}
-D10, values={925}
-A11, values={127}
-D12, values={25}
-A13, values={29}
-A14, values={325}
-A15, values={351}
+Clue A1, , values={467}, entry={467}
+Clue A4, , values={147}, entry={147}
+Clue A6, , values={37}, entry={37}
+Clue A7, , values={977}, entry={977}
+Clue A8, , values={287}, entry={287}
+Clue A9, , values={199}, entry={199}
+Clue A11, , values={127}, entry={127}
+Clue A13, , values={29}, entry={29}
+Clue A14, , values={325}, entry={325}
+Clue A15, , values={351}, entry={351}
+Clue D2, , values={678}, entry={678}
+Clue D3, , values={797}, entry={797}
+Clue D4, , values={17}, entry={17}
+Clue D5, , values={769}, entry={769}
+Clue D8, , values={253}, entry={253}
+Clue D9, , values={173}, entry={173}
+Clue D10, , values={925}, entry={925}
+Clue D12, , values={25}, entry={25}
+Entry A1, values={467}
+Entry D2, values={678}
+Entry D3, values={797}
+Entry A4, values={147}
+Entry D4, values={17}
+Entry D5, values={769}
+Entry A6, values={37}
+Entry A7, values={977}
+Entry A8, values={287}
+Entry D8, values={253}
+Entry A9, values={199}
+Entry D9, values={173}
+Entry D10, values={925}
+Entry A11, values={127}
+Entry D12, values={25}
+Entry A13, values={29}
+Entry A14, values={325}
+Entry A15, values={351}
 +--+--+--+--+--+--+
 | 4  6  7| 1  4  7|
 +--      +   --   +

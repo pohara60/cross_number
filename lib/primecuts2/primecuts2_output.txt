@@ -2,212 +2,212 @@ Warning: expression '$ascending #result % $ds #result = 0' has generator with Un
 Warning: expression '$ds A18 = $ds #result' has generator with Unknown Order
 Warning: expression '$notpalindrome $reverse #otherentry' has generator with Unknown Order
 Puzzle
-PrimeCutsClue(name=A2,prime=B,length=5,value: $multiple EA2,
+Clue PrimeCutsClue(name=A2,prime=B,length=5,value: $multiple EA2,
 	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{1..9}]
-PrimeCutsClue(name=A5,prime=C,length=4,value: #square,
+Clue PrimeCutsClue(name=A5,prime=C,length=4,value: #square,
 	identities=[A5[1]=D6[0]],referrers=[D6,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9}]
-PrimeCutsClue(name=A7,prime=D,length=5,value: $multiple D,
+Clue PrimeCutsClue(name=A7,prime=D,length=5,value: $multiple D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PrimeCutsClue(name=A9,prime=F,length=4,value: $multiple R,
+Clue PrimeCutsClue(name=A9,prime=F,length=4,value: $multiple R,
 	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9}]
-PrimeCutsClue(name=A11,prime=G,length=4,value: #ascending,
+Clue PrimeCutsClue(name=A11,prime=G,length=4,value: #ascending,
 	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=A12,prime=H,length=4,value: #triangular ,
+Clue PrimeCutsClue(name=A12,prime=H,length=4,value: #triangular ,
 	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=A13,prime=J,length=4,value: #prime,
+Clue PrimeCutsClue(name=A13,prime=J,length=4,value: #prime,
 	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=A14,prime=K,length=4,value: #triangular ,
+Clue PrimeCutsClue(name=A14,prime=K,length=4,value: #triangular ,
 	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=A15,prime=L,length=5,value: D^3,
+Clue PrimeCutsClue(name=A15,prime=L,length=5,value: D^3,
 	identities=[A15[0]=D15[0],A15[1]=D10[2],A15[2]=D16[0]],referrers=[D15,D10,D16],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsClue(name=A17,prime=M,length=4,value: #square,
+Clue PrimeCutsClue(name=A17,prime=M,length=4,value: #square,
 	identities=[A17[0]=D11[2]],referrers=[D11,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=A18,prime=N,length=5,value: $multiple H,
+Clue PrimeCutsClue(name=A18,prime=N,length=5,value: $multiple H,
 	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PrimeCutsClue(name=D1,prime=P,length=4,value: $multiple P,
+Clue PrimeCutsClue(name=D1,prime=P,length=4,value: $multiple P,
 	identities=[D1[1]=A7[0]],referrers=[A7,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9}]
-PrimeCutsClue(name=D3,prime=Q,length=4,value: #square ,
+Clue PrimeCutsClue(name=D3,prime=Q,length=4,value: #square ,
 	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=D4,prime=R,length=5,value: $multiple B,
+Clue PrimeCutsClue(name=D4,prime=R,length=5,value: $multiple B,
 	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PrimeCutsClue(name=D6,prime=S,length=5,value: #palindrome,
+Clue PrimeCutsClue(name=D6,prime=S,length=5,value: #palindrome,
 	identities=[D6[0]=A5[1],D6[2]=A13[1]],referrers=[A5,A13],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PrimeCutsClue(name=D8,prime=T,length=5,value: #descending,
+Clue PrimeCutsClue(name=D8,prime=T,length=5,value: #descending,
 	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsClue(name=D10,prime=V,length=5,value: $ascending #result % $ds #result = 0,
+Clue PrimeCutsClue(name=D10,prime=V,length=5,value: $ascending #result % $ds #result = 0,
 	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PrimeCutsClue(name=D11,prime=W,length=5,value: #ascending,
+Clue PrimeCutsClue(name=D11,prime=W,length=5,value: #ascending,
 	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsClue(name=D12,prime=X,length=5,value: $ds A18 = $ds #result,
+Clue PrimeCutsClue(name=D12,prime=X,length=5,value: $ds A18 = $ds #result,
 	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsClue(name=D15,prime=Y,length=4,value: #square,
+Clue PrimeCutsClue(name=D15,prime=Y,length=4,value: #square,
 	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsClue(name=D16,prime=Z,length=4,value: $multiple Z,
+Clue PrimeCutsClue(name=D16,prime=Z,length=4,value: $multiple Z,
 	identities=[D16[0]=A15[2]],referrers=[A15,A9],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=A2,prime=B,length=3,value: ,
+Entry PrimeCutsEntry(name=A2,prime=B,length=3,value: ,
 	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{1..9}]
-PrimeCutsEntry(name=A5,prime=C,length=2,value: ,
+Entry PrimeCutsEntry(name=A5,prime=C,length=2,value: ,
 	identities=[A5[1]=D6[0]],referrers=[D6],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9}]
-PrimeCutsEntry(name=A7,prime=D,length=3,value: $multiple D,
+Entry PrimeCutsEntry(name=A7,prime=D,length=3,value: $multiple D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PrimeCutsEntry(name=A9,prime=F,length=2,value: $notpalindrome $reverse #otherentry,
+Entry PrimeCutsEntry(name=A9,prime=F,length=2,value: $notpalindrome $reverse #otherentry,
 	identities=[A9[0]=D4[1],A9[1]=D10[0]],referrers=[D4,D10],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9}]
-PrimeCutsEntry(name=A11,prime=G,length=2,value: $divisor ED11,
+Entry PrimeCutsEntry(name=A11,prime=G,length=2,value: $divisor ED11,
 	identities=[A11[0]=D11[0],A11[1]=D8[1]],referrers=[D11,D8],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=A12,prime=H,length=2,value: #triangular,
+Entry PrimeCutsEntry(name=A12,prime=H,length=2,value: #triangular,
 	identities=[A12[0]=D12[0],A12[1]=D4[2]],referrers=[D12,D4],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=A13,prime=J,length=2,value: ,
+Entry PrimeCutsEntry(name=A13,prime=J,length=2,value: ,
 	identities=[A13[0]=D10[1],A13[1]=D6[2]],referrers=[D10,D6],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=A14,prime=K,length=2,value: ,
+Entry PrimeCutsEntry(name=A14,prime=K,length=2,value: ,
 	identities=[A14[0]=D8[2],A14[1]=D12[1]],referrers=[D8,D12],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=A15,prime=L,length=3,value: S^2,
+Entry PrimeCutsEntry(name=A15,prime=L,length=3,value: S^2,
 	identities=[A15[0]=D15[0],A15[1]=D10[2],A15[2]=D16[0]],referrers=[D15,D10,D16],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsEntry(name=A17,prime=M,length=2,value: $reverse ED3,
+Entry PrimeCutsEntry(name=A17,prime=M,length=2,value: $reverse ED3,
 	identities=[A17[0]=D11[2]],referrers=[D11],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=A18,prime=N,length=3,value: $multiple W,
+Entry PrimeCutsEntry(name=A18,prime=N,length=3,value: $multiple W,
 	identities=[A18[0]=D12[2],A18[1]=D15[1]],referrers=[D12,D15],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PrimeCutsEntry(name=D1,prime=P,length=2,value: ,
+Entry PrimeCutsEntry(name=D1,prime=P,length=2,value: ,
 	identities=[D1[1]=A7[0]],referrers=[A7],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9}]
-PrimeCutsEntry(name=D3,prime=Q,length=2,value: ,
+Entry PrimeCutsEntry(name=D3,prime=Q,length=2,value: ,
 	identities=[D3[0]=A2[1],D3[1]=A7[2]],referrers=[A2,A7],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=D4,prime=R,length=3,value: ,
+Entry PrimeCutsEntry(name=D4,prime=R,length=3,value: ,
 	identities=[D4[0]=A2[2],D4[1]=A9[0],D4[2]=A12[1]],referrers=[A2,A9,A12],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PrimeCutsEntry(name=D6,prime=S,length=3,value: K * T,
+Entry PrimeCutsEntry(name=D6,prime=S,length=3,value: K * T,
 	identities=[D6[0]=A5[1],D6[2]=A13[1]],referrers=[A5,A13],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{0..9}]
-PrimeCutsEntry(name=D8,prime=T,length=3,value: ,
+Entry PrimeCutsEntry(name=D8,prime=T,length=3,value: ,
 	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A14[0]],referrers=[A7,A11,A14],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsEntry(name=D10,prime=V,length=3,value: ,
+Entry PrimeCutsEntry(name=D10,prime=V,length=3,value: ,
 	identities=[D10[0]=A9[1],D10[1]=A13[0],D10[2]=A15[1]],referrers=[A9,A13,A15],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-PrimeCutsEntry(name=D11,prime=W,length=3,value: G + W,
+Entry PrimeCutsEntry(name=D11,prime=W,length=3,value: G + W,
 	identities=[D11[0]=A11[0],D11[2]=A17[0]],referrers=[A11,A17],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsEntry(name=D12,prime=X,length=3,value: $jumble EA18,
+Entry PrimeCutsEntry(name=D12,prime=X,length=3,value: $jumble EA18,
 	identities=[D12[0]=A12[0],D12[1]=A14[1],D12[2]=A18[0]],referrers=[A12,A14,A18],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-PrimeCutsEntry(name=D15,prime=Y,length=2,value: ,
+Entry PrimeCutsEntry(name=D15,prime=Y,length=2,value: ,
 	identities=[D15[0]=A15[0],D15[1]=A18[1]],referrers=[A15,A18],
 	values={unknown},
 	entries={unknown},
 	digits=[{1..9},{0..9}]
-PrimeCutsEntry(name=D16,prime=Z,length=2,value: #square - ED1,
+Entry PrimeCutsEntry(name=D16,prime=Z,length=2,value: #square - ED1,
 	identities=[D16[0]=A15[2]],referrers=[A15],
 	values={unknown},
 	entries={unknown},
@@ -237,17 +237,17 @@ Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},min=11,max=97
 RemainingValues: [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
 MANUAL UPDATES-----------------------------
-Eval PrimeCutsVariable M cartesianCount=21, elapsed 0:00:00.013398
+Eval PrimeCutsVariable M cartesianCount=21, elapsed 0:00:00.008604
 solve: PrimeCutsVariable(M={11,13,17,31,37,71,73,79,97},$reverse C,min=11,max=97)
 M={11, 13, 17, 31, 37, 71, 73, 79, 97}
 C={11, 13, 17, 31, 37, 71, 73, 79, 97}
 solve: PrimeCutsVariable(N={13,17,19,23,29,37,47,59,67,79,89},#ascending,min=13,max=89)
 N={13, 17, 19, 23, 29, 37, 47, 59, 67, 79, 89}
-Eval PrimeCutsVariable P cartesianCount=21, elapsed 0:00:00.000943
+Eval PrimeCutsVariable P cartesianCount=21, elapsed 0:00:00.000623
 solve: PrimeCutsVariable(P={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97},#triangular - Z,min=11,max=97)
 P={11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 73, 79, 83, 89, 97}
 Z={11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 73, 79, 83, 89, 97}
-Eval PrimeCutsVariable Y cartesianCount=21, elapsed 0:00:00.000364
+Eval PrimeCutsVariable Y cartesianCount=21, elapsed 0:00:00.000182
 solve: PrimeCutsVariable(Y={11,13,17,31,37,71,73,79,97},$reverse Q,min=11,max=97)
 Y={11, 13, 17, 31, 37, 71, 73, 79, 97}
 Q={11, 13, 17, 31, 37, 71, 73, 79, 97}
@@ -549,7 +549,7 @@ solve: PrimeCutsClue(name=D15,prime=Y,length=4,value: #square,
 	entries={21,26,36,56,96},
 	digits=[{2,3,5,9},{1,6}]
 Y={11,31,37,73,79}
-Eval PrimeCutsVariable M cartesianCount=4, elapsed 0:00:00.000063
+Eval PrimeCutsVariable M cartesianCount=4, elapsed 0:00:00.000044
 solve: PrimeCutsVariable(M={13},$reverse C)
 C={31}
 B={11, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97}
@@ -562,11 +562,11 @@ Q={11, 17, 37, 73, 79}
 R={11, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97}
 Y={11, 37, 73, 79}
 Z={11, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 73, 79, 83, 89, 97}
-Eval PrimeCutsVariable Y cartesianCount=5, elapsed 0:00:00.000045
+Eval PrimeCutsVariable Y cartesianCount=5, elapsed 0:00:00.000030
 solve: PrimeCutsVariable(Y={11,37,73},$reverse Q,min=11,max=73)
 Y={11, 37, 73}
 Q={11, 37, 73}
-Eval PrimeCutsVariable Y cartesianCount=3, elapsed 0:00:00.000026
+Eval PrimeCutsVariable Y cartesianCount=3, elapsed 0:00:00.000021
 solve: PrimeCutsClue(name=D1,prime=P,length=4,value: $multiple P,
 	identities=[D1[1]=A7[0]],referrers=[A7,A9],
 	values={1111,1113,1118,1121,1122,1127,1128,1131,1133,1139,1144,1147,1148,1155..1157,1159,1161,1162,1164,1353 more,9983},
@@ -577,7 +577,7 @@ solve: PrimeCutsClue(name=D16,prime=Z,length=4,value: $multiple Z,
 	values={1023,1037,1067,1073,1079,1083,1089,1110,1111,1113,1118,1121,1122,1127,1128,1131,1133,1139,1140,1144,1523 more,9983},
 	entries={10..29,69 more,99},
 	digits=[{1..9},{0..9}]
-Eval PrimeCutsVariable P cartesianCount=18, elapsed 0:00:00.000249
+Eval PrimeCutsVariable P cartesianCount=18, elapsed 0:00:00.000124
 solve: PrimeCutsClue(name=A7,prime=D,length=5,value: $multiple D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3],
 	values={11154,11176,11264,11286,11374,11396,11451,11484,11561,11594,11671,11774,11781,11891,15114,15371,15411,16123,16441,16683,213 more,99683},
@@ -897,51 +897,51 @@ solve: PrimeCutsClue(name=A2,prime=B,length=5,value: $multiple EA2,
 	values={59792},
 	entries={592},
 	digits=[{5},{9},{2}]
-Clue/Variable iterations=219, updates=87, elapsed 0:00:29.616176
+Clue/Variable iterations=219, updates=87, elapsed 0:00:20.722667
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
-A2, $multiple EA2, values={59792}, entry={592}
-A5, #square, values={3136}, entry={36}
-A7, $multiple D, values={29696,69629}, entry={696}
-A9, $multiple R, values={6532}, entry={62}
-A11, #ascending, values={1378,1478,1678}, entry={18}
-A12, #triangular , values={1830}, entry={10}
-A13, #prime, values={8941}, entry={41}
-A14, #triangular , values={1176}, entry={76}
-A15, D^3, values={24389}, entry={289}
-A17, #square, values={1369}, entry={69}
-A18, $multiple H, values={31623}, entry={316}
-D1, $multiple P, values={2596}, entry={26}
-D3, #square , values={7396}, entry={96}
-D4, $multiple B, values={27160}, entry={260}
-D6, #palindrome, values={17671}, entry={671}
-D8, #descending, values={98741,98761}, entry={987}
-D10, $ascending #result % $ds #result = 0, values={24678}, entry={248}
-D11, #ascending, values={12679,12689,13679,13689,14679,14689,15679,15689}, entry={126,136,146,156}
-D12, $ds A18 = $ds #result, values={14163,16341,16413,41163}, entry={163}
-D15, #square, values={3721}, entry={21}
-D16, $multiple Z, values={1995,9519,9595,9975}, entry={95}
-A2, , values={592}
-A5, , values={36}
-A7, $multiple D, values={696}
-A9, $notpalindrome $reverse #otherentry, values={62}
-A11, $divisor ED11, values={18}
-A12, #triangular, values={10}
-A13, , values={41}
-A14, , values={76}
-A15, S^2, values={289}
-A17, $reverse ED3, values={69}
-A18, $multiple W, values={316}
-D1, , values={26}
-D3, , values={96}
-D4, , values={260}
-D6, K * T, values={671}
-D8, , values={987}
-D10, , values={248}
-D11, G + W, values={126,136,146,156}
-D12, $jumble EA18, values={163}
-D15, , values={21}
-D16, #square - ED1, values={95}
+Clue A2, $multiple EA2, values={59792}, entry={592}
+Clue A5, #square, values={3136}, entry={36}
+Clue A7, $multiple D, values={29696,69629}, entry={696}
+Clue A9, $multiple R, values={6532}, entry={62}
+Clue A11, #ascending, values={1378,1478,1678}, entry={18}
+Clue A12, #triangular , values={1830}, entry={10}
+Clue A13, #prime, values={8941}, entry={41}
+Clue A14, #triangular , values={1176}, entry={76}
+Clue A15, D^3, values={24389}, entry={289}
+Clue A17, #square, values={1369}, entry={69}
+Clue A18, $multiple H, values={31623}, entry={316}
+Clue D1, $multiple P, values={2596}, entry={26}
+Clue D3, #square , values={7396}, entry={96}
+Clue D4, $multiple B, values={27160}, entry={260}
+Clue D6, #palindrome, values={17671}, entry={671}
+Clue D8, #descending, values={98741,98761}, entry={987}
+Clue D10, $ascending #result % $ds #result = 0, values={24678}, entry={248}
+Clue D11, #ascending, values={12679,12689,13679,13689,14679,14689,15679,15689}, entry={126,136,146,156}
+Clue D12, $ds A18 = $ds #result, values={14163,16341,16413,41163}, entry={163}
+Clue D15, #square, values={3721}, entry={21}
+Clue D16, $multiple Z, values={1995,9519,9595,9975}, entry={95}
+Entry A2, , values={592}
+Entry A5, , values={36}
+Entry A7, $multiple D, values={696}
+Entry A9, $notpalindrome $reverse #otherentry, values={62}
+Entry A11, $divisor ED11, values={18}
+Entry A12, #triangular, values={10}
+Entry A13, , values={41}
+Entry A14, , values={76}
+Entry A15, S^2, values={289}
+Entry A17, $reverse ED3, values={69}
+Entry A18, $multiple W, values={316}
+Entry D1, , values={26}
+Entry D3, , values={96}
+Entry D4, , values={260}
+Entry D6, K * T, values={671}
+Entry D8, , values={987}
+Entry D10, , values={248}
+Entry D11, G + W, values={126,136,146,156}
+Entry D12, $jumble EA18, values={163}
+Entry D15, , values={21}
+Entry D16, #square - ED1, values={95}
 +--+--+--+--+--+--+
 | 2| 5  9  2| 3  6|
 +  +--      +--   +

@@ -6,7 +6,14 @@ if [ $# -ne 0 ]; then
     files="$*"_test.dart
 else
     # files=*_test.dart
-    files=`dart run ../bin/crossnumber.dart | grep hardcoded | awk '{print $1;}'`
+    allfiles=`dart run ../bin/crossnumber.dart | grep hardcoded | awk '{print $1;}'`
+    files=""
+    for file in $allfiles
+    do
+        if [ ! -f ${file}_test.dart ]; then
+            files=$files" $file"
+        fi
+    done
     echo $files
 fi
 ./runTests.sh $files

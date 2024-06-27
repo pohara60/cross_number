@@ -1,240 +1,240 @@
 Puzzle
-Root66_2Clue(name=A2,length=4,value: -D+U*R^(A+T)+I+O*N^S,
+Clue Root66_2Clue(name=A2,length=4,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A7,length=8,value: ,
+Clue Root66_2Clue(name=A7,length=8,value: ,
 	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A8,length=4,value: R+O(TU+N)DA,
+Clue Root66_2Clue(name=A8,length=4,value: R+O(TU+N)DA,
 	identities=[A8[0]=D8[0],A8[1]=D1[2],A8[2]=D2[2],A8[3]=D3[2]],referrers=[D8,D1,D2,D3],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A9,length=4,value: (S+I+T^A+RO-U-N)D,
+Clue Root66_2Clue(name=A9,length=4,value: (S+I+T^A+RO-U-N)D,
 	identities=[A9[0]=D4[2],A9[1]=D5[2],A9[2]=D6[2],A9[3]=D10[0]],referrers=[D4,D5,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A11,length=4,value: U((N+I)^T-(A+R)D)S,
+Clue Root66_2Clue(name=A11,length=4,value: U((N+I)^T-(A+R)D)S,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A12,length=4,value: (A+S)T(R^O-√(ID)),
+Clue Root66_2Clue(name=A12,length=4,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A13,length=4,value: S*U^T+(O+R+I)A+N,
+Clue Root66_2Clue(name=A13,length=4,value: S*U^T+(O+R+I)A+N,
 	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A16,length=4,value: (DI-NO)(S+T)A+R,
+Clue Root66_2Clue(name=A16,length=4,value: (DI-NO)(S+T)A+R,
 	identities=[A16[0]=D16[0],A16[1]=D17[0],A16[2]=D6[4],A16[3]=D10[2]],referrers=[D16,D17,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A18,length=4,value: (T/R)*I^N*(ODU+S),
+Clue Root66_2Clue(name=A18,length=4,value: (T/R)*I^N*(ODU+S),
 	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A19,length=4,value: (T*U^N*(D+R)+A)S,
+Clue Root66_2Clue(name=A19,length=4,value: (T*U^N*(D+R)+A)S,
 	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A20,length=8,value: ,
+Clue Root66_2Clue(name=A20,length=8,value: ,
 	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=A21,length=4,value: -(√I)N+TRADO+S,
+Clue Root66_2Clue(name=A21,length=4,value: -(√I)N+TRADO+S,
 	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D1,length=8,value: ,
+Clue Root66_2Clue(name=D1,length=8,value: ,
 	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D2,length=4,value: -D+U(R+A)(T^I+O*N^S),
+Clue Root66_2Clue(name=D2,length=4,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D3,length=4,value: DI(N^O*S+A+U)R,
+Clue Root66_2Clue(name=D3,length=4,value: DI(N^O*S+A+U)R,
 	identities=[D3[0]=A2[1],D3[1]=A7[3],D3[2]=A8[3],D3[3]=A11[3]],referrers=[A2,A7,A8,A11],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D4,length=4,value: (AROU+N)D,
+Clue Root66_2Clue(name=D4,length=4,value: (AROU+N)D,
 	identities=[D4[0]=A2[2],D4[1]=A7[4],D4[2]=A9[0],D4[3]=A12[0]],referrers=[A2,A7,A9,A12],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D5,length=4,value: A(U+D)+(I+T+O)*R^S,
+Clue Root66_2Clue(name=D5,length=4,value: A(U+D)+(I+T+O)*R^S,
 	identities=[D5[0]=A2[3],D5[1]=A7[5],D5[2]=A9[1],D5[3]=A12[1]],referrers=[A2,A7,A9,A12],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D6,length=8,value: ,
+Clue Root66_2Clue(name=D6,length=8,value: ,
 	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D8,length=4,value: S-A+U^T*(O+I-R),
+Clue Root66_2Clue(name=D8,length=4,value: S-A+U^T*(O+I-R),
 	identities=[D8[0]=A8[0],D8[1]=A11[0],D8[2]=A13[0],D8[3]=A18[0]],referrers=[A8,A11,A13,A18],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D10,length=4,value: (S(U+D-A)-T)IO+N,
+Clue Root66_2Clue(name=D10,length=4,value: (S(U+D-A)-T)IO+N,
 	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D14,length=4,value: R-(A+I+N+O-U^T)S,
+Clue Root66_2Clue(name=D14,length=4,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D15,length=4,value: ((N+U)^T+RI+S+O+D)A,
+Clue Root66_2Clue(name=D15,length=4,value: ((N+U)^T+RI+S+O+D)A,
 	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D16,length=4,value: R(O(√D-A+UST)-I+N),
+Clue Root66_2Clue(name=D16,length=4,value: R(O(√D-A+UST)-I+N),
 	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Clue(name=D17,length=4,value: A(S^T+OU+N)+D,
+Clue Root66_2Clue(name=D17,length=4,value: A(S^T+OU+N)+D,
 	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A2,length=4,value: null,
+Entry Root66_2Entry(name=A2,length=4,value: null,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A7,length=8,value: null,
+Entry Root66_2Entry(name=A7,length=8,value: null,
 	identities=[A7[1]=D1[1],A7[2]=D2[1],A7[3]=D3[1],A7[4]=D4[1],A7[5]=D5[1],A7[6]=D6[1]],referrers=[D1,D2,D3,D4,D5,D6],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A8,length=4,value: null,
+Entry Root66_2Entry(name=A8,length=4,value: null,
 	identities=[A8[0]=D8[0],A8[1]=D1[2],A8[2]=D2[2],A8[3]=D3[2]],referrers=[D8,D1,D2,D3],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A9,length=4,value: null,
+Entry Root66_2Entry(name=A9,length=4,value: null,
 	identities=[A9[0]=D4[2],A9[1]=D5[2],A9[2]=D6[2],A9[3]=D10[0]],referrers=[D4,D5,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A11,length=4,value: null,
+Entry Root66_2Entry(name=A11,length=4,value: null,
 	identities=[A11[0]=D8[1],A11[1]=D1[3],A11[2]=D2[3],A11[3]=D3[3]],referrers=[D8,D1,D2,D3],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A12,length=4,value: null,
+Entry Root66_2Entry(name=A12,length=4,value: null,
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A13,length=4,value: null,
+Entry Root66_2Entry(name=A13,length=4,value: null,
 	identities=[A13[0]=D8[2],A13[1]=D1[4],A13[2]=D14[0],A13[3]=D15[0]],referrers=[D8,D1,D14,D15],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A16,length=4,value: null,
+Entry Root66_2Entry(name=A16,length=4,value: null,
 	identities=[A16[0]=D16[0],A16[1]=D17[0],A16[2]=D6[4],A16[3]=D10[2]],referrers=[D16,D17,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A18,length=4,value: null,
+Entry Root66_2Entry(name=A18,length=4,value: null,
 	identities=[A18[0]=D8[3],A18[1]=D1[5],A18[2]=D14[1],A18[3]=D15[1]],referrers=[D8,D1,D14,D15],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A19,length=4,value: null,
+Entry Root66_2Entry(name=A19,length=4,value: null,
 	identities=[A19[0]=D16[1],A19[1]=D17[1],A19[2]=D6[5],A19[3]=D10[3]],referrers=[D16,D17,D6,D10],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A20,length=8,value: null,
+Entry Root66_2Entry(name=A20,length=8,value: null,
 	identities=[A20[1]=D1[6],A20[2]=D14[2],A20[3]=D15[2],A20[4]=D16[2],A20[5]=D17[2],A20[6]=D6[6]],referrers=[D1,D14,D15,D16,D17,D6],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=A21,length=4,value: null,
+Entry Root66_2Entry(name=A21,length=4,value: null,
 	identities=[A21[0]=D14[3],A21[1]=D15[3],A21[2]=D16[3],A21[3]=D17[3]],referrers=[D14,D15,D16,D17],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D1,length=8,value: null,
+Entry Root66_2Entry(name=D1,length=8,value: null,
 	identities=[D1[1]=A7[1],D1[2]=A8[1],D1[3]=A11[1],D1[4]=A13[1],D1[5]=A18[1],D1[6]=A20[1]],referrers=[A7,A8,A11,A13,A18,A20],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D2,length=4,value: null,
+Entry Root66_2Entry(name=D2,length=4,value: null,
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D3,length=4,value: null,
+Entry Root66_2Entry(name=D3,length=4,value: null,
 	identities=[D3[0]=A2[1],D3[1]=A7[3],D3[2]=A8[3],D3[3]=A11[3]],referrers=[A2,A7,A8,A11],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D4,length=4,value: null,
+Entry Root66_2Entry(name=D4,length=4,value: null,
 	identities=[D4[0]=A2[2],D4[1]=A7[4],D4[2]=A9[0],D4[3]=A12[0]],referrers=[A2,A7,A9,A12],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D5,length=4,value: null,
+Entry Root66_2Entry(name=D5,length=4,value: null,
 	identities=[D5[0]=A2[3],D5[1]=A7[5],D5[2]=A9[1],D5[3]=A12[1]],referrers=[A2,A7,A9,A12],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D6,length=8,value: null,
+Entry Root66_2Entry(name=D6,length=8,value: null,
 	identities=[D6[1]=A7[6],D6[2]=A9[2],D6[3]=A12[2],D6[4]=A16[2],D6[5]=A19[2],D6[6]=A20[6]],referrers=[A7,A9,A12,A16,A19,A20],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D8,length=4,value: null,
+Entry Root66_2Entry(name=D8,length=4,value: null,
 	identities=[D8[0]=A8[0],D8[1]=A11[0],D8[2]=A13[0],D8[3]=A18[0]],referrers=[A8,A11,A13,A18],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D10,length=4,value: null,
+Entry Root66_2Entry(name=D10,length=4,value: null,
 	identities=[D10[0]=A9[3],D10[1]=A12[3],D10[2]=A16[3],D10[3]=A19[3]],referrers=[A9,A12,A16,A19],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D14,length=4,value: null,
+Entry Root66_2Entry(name=D14,length=4,value: null,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D15,length=4,value: null,
+Entry Root66_2Entry(name=D15,length=4,value: null,
 	identities=[D15[0]=A13[3],D15[1]=A18[3],D15[2]=A20[3],D15[3]=A21[1]],referrers=[A13,A18,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D16,length=4,value: null,
+Entry Root66_2Entry(name=D16,length=4,value: null,
 	identities=[D16[0]=A16[0],D16[1]=A19[0],D16[2]=A20[4],D16[3]=A21[2]],referrers=[A16,A19,A20,A21],
 	values={unknown}),
 	entries={unknown},
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]
-Root66_2Entry(name=D17,length=4,value: null,
+Entry Root66_2Entry(name=D17,length=4,value: null,
 	identities=[D17[0]=A16[1],D17[1]=A19[1],D17[2]=A20[5],D17[3]=A21[3]],referrers=[A16,A19,A20,A21],
 	values={unknown}),
 	entries={unknown},
@@ -252,7 +252,7 @@ U={1..9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 SOLVE------------
-Eval Root66_2Clue D14 cartesianCount=14348907, elapsed 0:00:01.911859
+Eval Root66_2Clue D14 cartesianCount=14348907, elapsed 0:00:02.588928
 solve: Root66_2Clue(name=D14,length=4,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={more than 20}),
@@ -260,7 +260,7 @@ solve: Root66_2Clue(name=D14,length=4,value: R-(A+I+N+O-U^T)S,
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval Root66_2Clue D2 cartesianCount=29760696, elapsed 0:00:03.523015
+Eval Root66_2Clue D2 cartesianCount=29760696, elapsed 0:00:05.325843
 solve: Root66_2Clue(name=D2,length=4,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={more than 20}),
@@ -272,7 +272,7 @@ I={1, 4}
 N={1, 2, 3, 4, 5, 6, 7, 8}
 R={2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 8}
-Eval Root66_2Clue A2 cartesianCount=6193152, elapsed 0:00:00.791044
+Eval Root66_2Clue A2 cartesianCount=6193152, elapsed 0:00:00.897380
 solve: Root66_2Clue(name=A2,length=4,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={3584, 1793, 1538, 3619, 1835, 1587}),
@@ -287,7 +287,7 @@ U={6, 7}
 I={4}
 N={1, 5, 6, 7, 8}
 S={1, 8}
-Eval Root66_2Clue A12 cartesianCount=72, elapsed 0:00:00.000477
+Eval Root66_2Clue A12 cartesianCount=72, elapsed 0:00:00.000542
 solve: Root66_2Clue(name=A12,length=4,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={4758}),
@@ -520,57 +520,57 @@ solve: Root66_2Clue(name=D17,length=4,value: A(S^T+OU+N)+D,
 	values={2784}),
 	entries={3647},
 	digits=[{3}, {6}, {4}, {7}]
-Clue/Variable iterations=173, updates=43, elapsed 0:00:00.022965
+Clue/Variable iterations=173, updates=43, elapsed 0:00:00.025377
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
-A2, -D+U*R^(A+T)+I+O*N^S, values={1538}, entry={2643}
-A7, , values={unknown}, entry={26741598}
-A8, R+O(TU+N)DA, values={5987}, entry={4198}
-A9, (S+I+T^A+RO-U-N)D, values={2358}, entry={8765}
-A11, U((N+I)^T-(A+R)D)S, values={2976}, entry={1965}
-A12, (A+S)T(R^O-√(ID)), values={4758}, entry={2938}
-A13, S*U^T+(O+R+I)A+N, values={1794}, entry={6329}
-A16, (DI-NO)(S+T)A+R, values={1597}, entry={2319}
-A18, (T/R)*I^N*(ODU+S), values={2316}, entry={2537}
-A19, (T*U^N*(D+R)+A)S, values={1624}, entry={5684}
-A20, , values={unknown}, entry={87531426}
-A21, -(√I)N+TRADO+S, values={1896}, entry={8467}
-D1, , values={unknown}, entry={76193571,86193572}
-D2, -D+U(R+A)(T^I+O*N^S), values={3687}, entry={2796}
-D3, DI(N^O*S+A+U)R, values={1368}, entry={6485}
-D4, (AROU+N)D, values={3789}, entry={4182}
-D5, A(U+D)+(I+T+O)*R^S, values={3659}, entry={3579}
-D6, , values={unknown}, entry={79631824}
-D8, S-A+U^T*(O+I-R), values={1947}, entry={4162}
-D10, (S(U+D-A)-T)IO+N, values={2157}, entry={5894}
-D14, R-(A+I+N+O-U^T)S, values={1594}, entry={2358}
-D15, ((N+U)^T+RI+S+O+D)A, values={1875}, entry={9734}
-D16, R(O(√D-A+UST)-I+N), values={1982}, entry={2516}
-D17, A(S^T+OU+N)+D, values={2784}, entry={3647}
-A2, values={2643}
-A7, values={26741598}
-A8, values={4198}
-A9, values={8765}
-A11, values={1965}
-A12, values={2938}
-A13, values={6329}
-A16, values={2319}
-A18, values={2537}
-A19, values={5684}
-A20, values={87531426}
-A21, values={8467}
-D1, values={76193571,86193572}
-D2, values={2796}
-D3, values={6485}
-D4, values={4182}
-D5, values={3579}
-D6, values={79631824}
-D8, values={4162}
-D10, values={5894}
-D14, values={2358}
-D15, values={9734}
-D16, values={2516}
-D17, values={3647}
+Clue A2, -D+U*R^(A+T)+I+O*N^S, values={1538}, entry={2643}
+Clue A7, , values={unknown}, entry={26741598}
+Clue A8, R+O(TU+N)DA, values={5987}, entry={4198}
+Clue A9, (S+I+T^A+RO-U-N)D, values={2358}, entry={8765}
+Clue A11, U((N+I)^T-(A+R)D)S, values={2976}, entry={1965}
+Clue A12, (A+S)T(R^O-√(ID)), values={4758}, entry={2938}
+Clue A13, S*U^T+(O+R+I)A+N, values={1794}, entry={6329}
+Clue A16, (DI-NO)(S+T)A+R, values={1597}, entry={2319}
+Clue A18, (T/R)*I^N*(ODU+S), values={2316}, entry={2537}
+Clue A19, (T*U^N*(D+R)+A)S, values={1624}, entry={5684}
+Clue A20, , values={unknown}, entry={87531426}
+Clue A21, -(√I)N+TRADO+S, values={1896}, entry={8467}
+Clue D1, , values={unknown}, entry={76193571,86193572}
+Clue D2, -D+U(R+A)(T^I+O*N^S), values={3687}, entry={2796}
+Clue D3, DI(N^O*S+A+U)R, values={1368}, entry={6485}
+Clue D4, (AROU+N)D, values={3789}, entry={4182}
+Clue D5, A(U+D)+(I+T+O)*R^S, values={3659}, entry={3579}
+Clue D6, , values={unknown}, entry={79631824}
+Clue D8, S-A+U^T*(O+I-R), values={1947}, entry={4162}
+Clue D10, (S(U+D-A)-T)IO+N, values={2157}, entry={5894}
+Clue D14, R-(A+I+N+O-U^T)S, values={1594}, entry={2358}
+Clue D15, ((N+U)^T+RI+S+O+D)A, values={1875}, entry={9734}
+Clue D16, R(O(√D-A+UST)-I+N), values={1982}, entry={2516}
+Clue D17, A(S^T+OU+N)+D, values={2784}, entry={3647}
+Entry A2, values={2643}
+Entry A7, values={26741598}
+Entry A8, values={4198}
+Entry A9, values={8765}
+Entry A11, values={1965}
+Entry A12, values={2938}
+Entry A13, values={6329}
+Entry A16, values={2319}
+Entry A18, values={2537}
+Entry A19, values={5684}
+Entry A20, values={87531426}
+Entry A21, values={8467}
+Entry D1, values={76193571,86193572}
+Entry D2, values={2796}
+Entry D3, values={6485}
+Entry D4, values={4182}
+Entry D5, values={3579}
+Entry D6, values={79631824}
+Entry D8, values={4162}
+Entry D10, values={5894}
+Entry D14, values={2358}
+Entry D15, values={9734}
+Entry D16, values={2516}
+Entry D17, values={3647}
 +--+--+--+--+--+--+--+--+
 |  | ?| 2  6  4  3| 7|  |
 +--+  +           +  +--+

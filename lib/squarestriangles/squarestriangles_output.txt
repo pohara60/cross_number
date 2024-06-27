@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:52051/Rm6mYZoQA1U=/ws
 Puzzle
 Clue SquaresTrianglesClue(name=A1,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D14],
@@ -168,6 +167,7 @@ Entry SquaresTrianglesEntry(name=A20,length=3,value: #square,
 	identities=[A20[0]=D16[2],A20[2]=D12[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D16,D12],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
+
 UPDATES-----------------------------
 solve: SquaresTrianglesEntry(name=A1,length=4,value: #square,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D1,D2],
@@ -798,7 +798,7 @@ solve: SquaresTrianglesClue(name=A10,length=null,value: ,
 solve: SquaresTrianglesClue(name=D5,length=null,value: #triangular,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D9],
 	values={45}, min=45, max=45
-Clue/Variable iterations=323, updates=179, elapsed 0:00:00.123199
+Clue/Variable iterations=323, updates=179, elapsed 0:00:00.089924
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue A1, , values={32}
@@ -864,6 +864,7 @@ Entry A20, #square, values={361}
 +   --    --+  +--   +
 | ?  ?  8  ?| 3  6  1|
 +--+--+--+--+--+--+--+
+
 ITERATE SOLUTIONS-----------------------------
 SOLUTION-----------------------------
 Puzzle Summary
@@ -930,6 +931,5 @@ Entry A20, #square, values={361}
 +   --    --+  +--   +
 | 3  4  8  1| 3  6  1|
 +--+--+--+--+--+--+--+
-Solution count=1
 
-Exited.
+Solution count=1
