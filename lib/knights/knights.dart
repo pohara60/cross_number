@@ -89,9 +89,7 @@ class Knights extends Crossnumber<KnightsPuzzle> {
       puzzle.addAnyVariable(KnightsVariable(letter));
     }
 
-    var clueError = puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
-
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

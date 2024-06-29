@@ -85,14 +85,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
       puzzle.addAnyVariable(PrimeKnightVariable(letter));
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkEntryClueReferences();
-    clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }
@@ -284,7 +277,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
         var possibleValue = <int>{};
         var possibleVariables = <String, Set<int>>{};
         try {
-          for (var variable in clue.variableClueReferences) {
+          for (var variable in clue.variableClueNameReferences) {
             possibleVariables[variable] = <int>{};
           }
           clue.solve!(puzzle, clue, possibleValue,

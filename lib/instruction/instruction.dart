@@ -371,6 +371,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     puzzle.addClueReference(d20, d21, false);
     // printReferences();
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

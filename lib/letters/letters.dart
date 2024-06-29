@@ -234,6 +234,8 @@ class Letters extends Crossnumber<LettersPuzzle> {
       }
     }
 
+    puzzle.finalize();
+
     super.initCrossnumber();
   }
 

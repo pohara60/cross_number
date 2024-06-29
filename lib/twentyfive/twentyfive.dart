@@ -81,14 +81,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
         puzzle.addAnyVariable(TwentyFiveVariable(letter));
       }
 
-      var clueError = '';
-      clueError = puzzle.checkClueEntryReferences();
-      clueError = puzzle.checkClueClueReferences();
-      clueError += puzzle.checkEntryClueReferences();
-      clueError += puzzle.checkEntryEntryReferences();
-      // Check variabes last, as preceeding may update them
-      clueError += puzzle.checkPuzzleVariableReferences();
-      if (clueError != '') throw PuzzleException(clueError);
+      puzzle.finalize();
     }
 
     // All clues refer to clue in opposite puzzle

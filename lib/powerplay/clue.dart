@@ -4,7 +4,7 @@ import '../variable.dart';
 /// A Puzzle clue
 class PowerPlayClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   PowerPlayClue(
@@ -25,7 +25,7 @@ class PowerPlayClue extends ExpressionClue {
 
 class PowerPlayEntry extends PowerPlayClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   PowerPlayEntry({

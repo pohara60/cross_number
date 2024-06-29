@@ -286,7 +286,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     for (var other in getTwoDigitCluesLessA9()) {
       puzzle.addClueReference(a9, other, false);
     }
-
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

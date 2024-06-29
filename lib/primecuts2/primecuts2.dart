@@ -293,11 +293,6 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     }
     if (variableErrors != '') throw PuzzleException(variableErrors);
 
-    variableErrors += puzzle.checkClueClueReferences();
-    variableErrors += puzzle.checkEntryClueReferences();
-    variableErrors += puzzle.checkPuzzleVariableReferences();
-    if (variableErrors != '') throw PuzzleException(variableErrors);
-
     // A9 depends on all other 2 digit entries
     var a9 = puzzle.clues["A9"]!;
     for (var other in puzzle.clues.values
@@ -305,6 +300,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       puzzle.addClueReference(a9, other, false);
     }
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 
@@ -538,10 +534,10 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       var possibleVariables = <String, Set<int>>{};
       var possibleEntryVariables = <String, Set<int>>{};
       var updatedVariables = <String>{};
-      for (var variableName in clue.variableClueReferences) {
+      for (var variableName in clue.variableClueNameReferences) {
         possibleVariables[variableName] = <int>{};
       }
-      for (var variableName in entry.variableClueReferences) {
+      for (var variableName in entry.variableClueNameReferences) {
         possibleEntryVariables[variableName] = <int>{};
       }
       if (clue.solve!(puzzle, clue, possibleClueValue,
@@ -560,11 +556,11 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
       if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty)
         updated = true;
       if (entry.finalise()) updated = true;
-      for (var variableName in clue.variableReferences) {
+      for (var variableName in clue.variableNameReferences) {
         updateVariables(puzzle, variableName, possibleVariables[variableName]!,
             updatedVariables);
       }
-      for (var variableName in entry.variableReferences) {
+      for (var variableName in entry.variableNameReferences) {
         if (possibleEntryVariables[variableName] != null) {
           updateVariables(puzzle, variableName,
               possibleEntryVariables[variableName]!, updatedVariables);

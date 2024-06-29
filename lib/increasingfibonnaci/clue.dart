@@ -5,7 +5,7 @@ import '../clue.dart';
 /// A Puzzle clue
 class IncreasingFibonnaciClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   IncreasingFibonnaciClue(
@@ -26,7 +26,7 @@ class IncreasingFibonnaciClue extends ExpressionClue {
 
 class IncreasingFibonnaciEntry extends IncreasingFibonnaciClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   IncreasingFibonnaciEntry({

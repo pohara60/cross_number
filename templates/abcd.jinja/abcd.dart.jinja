@@ -131,19 +131,10 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       puzzle.addVariable({{env['ABCD']}}Variable(letter));
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkEntryClueReferences();
-    clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
-
+    puzzle.finalize();
     {% if env['num_grids']!=1 %}
     }
     {% endif %}
-
 
     super.initCrossnumber();
   }

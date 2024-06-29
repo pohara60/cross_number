@@ -147,14 +147,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
         puzzle.addAnyVariable(variable);
       }
 
-      var clueError = '';
-      // clueError = puzzle.checkClueEntryReferences();
-      clueError = puzzle.checkClueClueReferences();
-      // clueError += puzzle.checkEntryClueReferences();
-      // clueError += puzzle.checkEntryEntryReferences();
-      // Check variabes last, as prceeding may update them
-      clueError += puzzle.checkPuzzleVariableReferences();
-      if (clueError != '') throw PuzzleException(clueError);
+      puzzle.finalize();
     }
 
     // Puzzle clues refer to each other because of dice faces

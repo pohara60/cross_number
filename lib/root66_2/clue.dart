@@ -7,7 +7,7 @@ enum Root66_2EntryType { UNKNOWN, BCEF, G, BCEFG }
 
 class Root66_2Clue extends ExpressionClue {
   /// List of referenced letters
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   Root66_2Clue({

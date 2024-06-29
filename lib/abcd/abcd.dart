@@ -115,8 +115,7 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
       puzzle.addAnyVariable(ABCDVariable(letter));
     }
 
-    var clueError = puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

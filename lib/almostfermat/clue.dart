@@ -4,7 +4,7 @@ import '../variable.dart';
 /// A Puzzle clue
 class AlmostFermatClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   AlmostFermatClue(
@@ -27,7 +27,7 @@ class AlmostFermatClue extends ExpressionClue {
 
 class AlmostFermatEntry extends AlmostFermatClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   AlmostFermatEntry({

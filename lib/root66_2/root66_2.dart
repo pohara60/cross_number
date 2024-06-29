@@ -208,14 +208,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       }
     }
 
-    var clueError = '';
-    // clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    // clueError += puzzle.checkEntryClueReferences();
-    // clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as prceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }
@@ -465,7 +458,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       var possibleEntryValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
       var updatedVariables = <String>{};
-      for (var variableName in clue.variableReferences) {
+      for (var variableName in clue.variableNameReferences) {
         possibleVariables[variableName] = <int>{};
       }
       if (clue.solve!(puzzle, clue, possibleClueValue,
@@ -483,7 +476,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty)
         updated = true;
       if (entry.finalise()) updated = true;
-      for (var variableName in clue.variableReferences) {
+      for (var variableName in clue.variableNameReferences) {
         updateVariables(puzzle, variableName, possibleVariables[variableName]!,
             updatedVariables);
       }

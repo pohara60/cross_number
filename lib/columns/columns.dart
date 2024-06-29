@@ -76,8 +76,7 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
       puzzle.addAnyVariable(ColumnsVariable(letter));
     }
 
-    var clueError = puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

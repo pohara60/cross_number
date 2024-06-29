@@ -187,6 +187,7 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     puzzle.addClueReference(d11, d10, false);
     puzzle.addClueReference(d11, d11, false);
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

@@ -140,6 +140,10 @@ class Grid {
       cell.digits.removeAll(removeDigits);
     }
     entry.cells.add(cell);
+    if (digit == 0) {
+      entry.row = cell.row;
+      entry.col = cell.col;
+    }
     if (digit == entry.length! - 1) {
       // Completed entry cells
       entry.hasGrid = true;

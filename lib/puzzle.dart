@@ -21,6 +21,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       _clues.variables.isNotEmpty ? _clues.variables : _entries.variables;
   Map<String, EntryKind> get entries =>
       _clues.variables.isNotEmpty ? _entries.variables : {};
+  bool get cluesAreEntries => _clues.variables.isEmpty;
   Map<String, EntryKind> get allEntries => _entries.variables;
   Map<String, Cell> get cells => _cells.variables;
   Map<(VariableType, String), Variable> get allVariables => _allVariables;
@@ -30,6 +31,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   GridSpec? gridSpec;
   Grid? grid;
+
+  bool finalized = false;
 
   final String name;
   bool _distinctClues = true;
@@ -143,6 +146,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   /// entry1 refers to entry2
   void addEntryReference(Clue entry1, Clue entry2, [bool symmetric = false]) =>
       addReference(entry1, entry2, symmetric);
+
+  void finalize() {
+    finalized = true;
+  }
 
   String toString() {
     var addLabel = clues.isNotEmpty && entries.isNotEmpty;
@@ -389,13 +396,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       var possibleVariables = <String, Set<int>>{};
       try {
         if (clue is ExpressionVariable) {
-          for (var variable in clue.variableReferences) {
+          for (var variable in clue.variableNameReferences) {
             possibleVariables[variable] = <int>{};
           }
           clue.solve!(this, clue, possibleValue,
               possibleVariables: possibleVariables);
         } else if (clue is VariableClue) {
-          for (var variable in clue.variableClueReferences) {
+          for (var variable in clue.variableClueNameReferences) {
             possibleVariables[variable] = <int>{};
           }
           clue.solve!(this, clue, possibleValue,
@@ -410,7 +417,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         }
         // Save previous values for updated variables as undo
         if (clue is VariableClue) {
-          for (var variableName in clue.variableClueReferences) {
+          for (var variableName in clue.variableClueNameReferences) {
             var possible = possibleVariables[variableName];
             if (possible == null || possible.isEmpty) continue;
             var variable = clues[variableName] ??
@@ -497,13 +504,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           var possibleVariables = <String, Set<int>>{};
           try {
             if (clue is ExpressionVariable) {
-              for (var variable in clue.variableReferences) {
+              for (var variable in clue.variableNameReferences) {
                 possibleVariables[variable] = <int>{};
               }
               clue.solve!(this, clue, possibleValue,
                   possibleVariables: possibleVariables);
             } else if (clue is VariableClue) {
-              for (var variable in clue.variableClueReferences) {
+              for (var variable in clue.variableClueNameReferences) {
                 possibleVariables[variable] = <int>{};
               }
               clue.solve!(this, clue, possibleValue,
@@ -825,6 +832,7 @@ class SolveError implements Exception {
 class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     VariableKind extends Variable> extends Puzzle<ClueKind, EntryKind> {
   late final VariableList variableList;
+
   bool get hasVariables => variableList.hasVariables;
 
   void initVariablePuzzle(List<int>? possibleValues) {
@@ -924,8 +932,12 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     for (var clue1 in checkEntry ? entries!.values : clues!.values) {
       // Make copy of references because can be updated
       var references = List.from(
-          checkEntries ? clue1.entryReferences : clue1.clueReferences);
-      for (var clueName in references) {
+          checkEntries ? clue1.entryNameReferences : clue1.clueNameReferences);
+      for (var refName in references) {
+        var clueName = refName;
+        // Clue references that start with E are entry references
+        if (clueName.length > 1 && clueName[0] == 'E')
+          clueName = clueName.substring(1);
         var clue2 = checkEntries ? entries![clueName] : clues![clueName];
         if (clue2 == null) {
           // Fix clue reference Roman Numeral to be variable
@@ -950,7 +962,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         } else {
           addClueReference(clue1, clue2);
           // Simple circular reference check for clue/clue
-          if (entries == null && clue2.clueReferences.contains(clue1.name)) {
+          if (entries == null &&
+              clue2.clueNameReferences.contains(clue1.name)) {
             clue1.circularClueReference = true;
             clue2.circularClueReference = true;
           }
@@ -980,7 +993,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     var variableError = '';
     for (var variable in allVariables.values) {
       if (variable is Expression) {
-        for (var variableName in variable.variableReferences) {
+        for (var variableName in variable.variableNameReferences) {
           var otherVariable = variables[variableName];
           if (otherVariable == null) {
             var expString = (variable as Expression).expString;
@@ -993,6 +1006,44 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
     }
     return variableError;
+  }
+
+  void resolveReferences(Variable variable) {
+    // All references should already have been checked, i.e. valid
+    for (var reference in variable.references) {
+      // Clue references may actually be to entries
+      var type = reference.type == VariableType.C && cluesAreEntries
+          ? VariableType.E
+          : reference.type;
+      // Entry references may have prefix E
+      var name = reference.name.length > 1 && reference.name[0] == 'E'
+          ? reference.name.substring(1)
+          : reference.name;
+      var key = (type, name);
+      reference.variable = allVariables[key]!;
+    }
+  }
+
+  void resolveAllReferences() {
+    for (var variable in allVariables.values) {
+      resolveReferences(variable);
+    }
+  }
+
+  @override
+  void finalize() {
+    var clueError = '';
+    clueError = checkClueEntryReferences();
+    clueError = checkClueClueReferences();
+    clueError += checkEntryClueReferences();
+    clueError += checkEntryEntryReferences();
+    // Check variabes last, as preceeding may update them
+    clueError += checkPuzzleVariableReferences();
+    if (clueError != '') throw PuzzleException(clueError);
+
+    resolveAllReferences();
+
+    super.finalize();
   }
 
   int getPriority(
@@ -1008,7 +1059,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   void updatePriority(Variable variable) {
     var variableValues = <List<int>>[];
     variable.priority =
-        getPriority(variable.variableReferences, variableValues);
+        getPriority(variable.variableNameReferences, variableValues);
   }
 
   // Expression evaluator, supports variables with expression callback
@@ -1020,9 +1071,9 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
     var count = clue is VariableClue
-        ? getPriority(clue.variableReferences, variableValues)
+        ? getPriority(clue.variableNameReferences, variableValues)
         : clue is VariableEntry
-            ? getPriority(clue.variableReferences, variableValues)
+            ? getPriority(clue.variableNameReferences, variableValues)
             : null;
     if (count! > 1000000) {
       if (Crossnumber.traceSolve) {
@@ -1036,7 +1087,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         if (clue.digitsMatch(value)) {
           possibleValue.add(value);
           var index = 0;
-          for (var variable in clue.variableClueReferences) {
+          for (var variable in clue.variableClueNameReferences) {
             possibleVariables[variable]!.add(product[index++]);
           }
         }
@@ -1061,7 +1112,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   ]) {
     final stopwatch = Stopwatch()..start();
     var variableValues = <List<int>>[];
-    for (var variable in clue.variableReferences) {
+    for (var variable in clue.variableNameReferences) {
       variableValues.add(this.variables[variable]!.values!.toList());
     }
     var count = cartesianCount(variableValues);
@@ -1074,16 +1125,16 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     for (var product in cartesian(variableValues)) {
       try {
-        var value = exp.evaluate(clue.variableReferences, product);
+        var value = exp.evaluate(clue.variableNameReferences, product);
         if (clue.length == null ||
             value >= clue.min! && value < clue.max! + 1) {
           var valid = validValue == null
               ? clue.digitsMatch(value)
-              : validValue(clue, value, clue.variableReferences, product);
+              : validValue(clue, value, clue.variableNameReferences, product);
           if (valid) {
             possibleValue.add(value);
             var index = 0;
-            for (var variable in clue.variableClueReferences) {
+            for (var variable in clue.variableClueNameReferences) {
               possibleVariables[variable]!.add(product[index++]);
             }
             // if (Crossnumber.traceSolve) {
@@ -1228,7 +1279,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     List<String> variableNames,
   ) {
     var variableReferences = Set.from(exps.expand((exp) => exp.variableRefs
-        .where((name) => clue.variableReferences.contains(name))));
+        .where((name) => clue.variableNameReferences.contains(name))));
     for (var variableName in variableReferences) {
       var variable = this.variables[variableName]!;
       var values = variable.values;
@@ -1244,11 +1295,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       }
     }
     var clueReferences = Set.from(exps.expand((exp) =>
-        exp.clueRefs.where((name) => clue.clueReferences.contains(name))));
+        exp.clueRefs.where((name) => clue.clueNameReferences.contains(name))));
     getClueValues(clue.name, clues, List.from(clueReferences), unknownVariable,
         impossibleVariable, variableValues, variableNames);
     var entryReferences = Set.from(exps.expand((exp) =>
-        exp.clueRefs.where((name) => clue.entryReferences.contains(name))));
+        exp.clueRefs.where((name) => clue.entryNameReferences.contains(name))));
     getClueValues(
         clue.name,
         entries,
@@ -1394,7 +1445,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         if (clue is VariableClue) {
           var possibleValue = <int>{};
           Map<String, Set<int>> possibleVariables = {};
-          for (var variable in clue.variableClueReferences) {
+          for (var variable in clue.variableClueNameReferences) {
             possibleVariables[variable] = <int>{};
           }
           try {

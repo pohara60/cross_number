@@ -56,6 +56,8 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       puzzle.validateEntriesFromGrid();
 
       puzzle.linkEntriesToGrid();
+
+      puzzle.finalize();
     }
 
     super.initCrossnumber();

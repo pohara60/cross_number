@@ -25,6 +25,8 @@ class PrimeCutsPuzzle
   void addEntry(Clue inputClue) {
     var clue = inputClue as PrimeCutsEntry;
     super.addEntry(inputClue);
-    primes[clue.prime] = PrimeVariable(clue.prime);
+    var prime = PrimeVariable(clue.prime);
+    primes[clue.prime] = prime;
+    addAnyVariable(prime);
   }
 }

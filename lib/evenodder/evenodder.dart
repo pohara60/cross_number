@@ -361,8 +361,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
         puzzle.variables['D' + letter]! as EvenOdderVariable,
       );
     }
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

@@ -207,6 +207,8 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     }
     if (variableError != '') throw PuzzleException(variableError);
 
+    puzzle.finalize();
+
     super.initCrossnumber();
   }
 
@@ -401,7 +403,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     var variableValues = <List<int>>[];
     var unknownVariable = <String>[];
     var impossibleVariable = <String>[];
-    for (var variableName in clueExp.variableReferences) {
+    for (var variableName in clueExp.variableNameReferences) {
       possibleVariables[variableName] = <int>{};
       switch (variableName) {
         case 'R':
@@ -418,7 +420,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
           break;
       }
     }
-    for (var otherClueName in clueExp.clueReferences) {
+    for (var otherClueName in clueExp.clueNameReferences) {
       possibleVariables[otherClueName] = <int>{};
       var otherClue = puzzle.clues[otherClueName]!;
       // Clue values may not yet be available
@@ -467,13 +469,13 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
         for (var value in clueExp.exp.generate(
-            clue.min, clue.max, clueExp.variableClueReferences, product)) {
+            clue.min, clue.max, clueExp.variableClueNameReferences, product)) {
           if (value >= clue.min! && value < clue.max! + 1) {
             var valid = clue.digitsMatch(value);
             if (valid) {
               possibleValue.add(value);
               var index = 0;
-              for (var variable in clue.variableClueReferences) {
+              for (var variable in clue.variableClueNameReferences) {
                 possibleVariables[variable]!.add(product[index++]);
               }
               // if (Crossnumber.traceSolve) {
@@ -513,7 +515,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       updatedClues.add(clue.name);
     }
     // if (clue.finalise()) updated = true;
-    for (var clueName in clue.clueReferences) {
+    for (var clueName in clue.clueNameReferences) {
       if (possibleVariables[clueName] != null) {
         if (clueValues[clueName] == null) clueValues[clueName] = {};
 

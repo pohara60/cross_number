@@ -179,14 +179,7 @@ class No21 extends Crossnumber<No21Puzzle> {
       // }
     }
 
-    var clueError = '';
-    // clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    // clueError += puzzle.checkEntryClueReferences();
-    // clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as prceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

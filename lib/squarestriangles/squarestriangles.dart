@@ -159,6 +159,7 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
 
     priorityQueue = PriorityQueue<Variable>(priorityCompareTo);
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 
@@ -255,7 +256,7 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
           return false;
         }
       } else {
-        var n = ((sqrt(8 * value + 1) - 1) / 2).toInt();
+        var n = (sqrt(8 * value + 1) - 1) ~/ 2;
         if (!clue.values!.contains(n) && !clue.values!.contains(n + 1)) {
           return false;
         }

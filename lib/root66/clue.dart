@@ -11,7 +11,7 @@ class Root66Clue extends ExpressionClue {
   Root66ClueType root66type;
 
   /// List of referenced letters
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   Root66Clue({

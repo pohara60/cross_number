@@ -94,14 +94,7 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
       puzzle.addAnyVariable(Knights2Variable(letter));
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkEntryClueReferences();
-    clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

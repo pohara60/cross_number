@@ -129,6 +129,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
     initTwoDigitTriangular();
     initSixDigitTriangular();
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

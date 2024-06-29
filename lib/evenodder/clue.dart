@@ -4,7 +4,7 @@ import '../variable.dart';
 /// A [LettersPuzzle] clue
 class EvenOdderClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   EvenOdderClue({
@@ -24,7 +24,7 @@ class EvenOdderClue extends ExpressionClue {
 
 class EvenOdderEntry extends EvenOdderClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   EvenOdderEntry({

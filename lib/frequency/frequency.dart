@@ -168,6 +168,7 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     puzzle.addClueReference(d8, d5, false);
     puzzle.addClueReference(d8, d9, false);
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

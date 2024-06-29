@@ -153,7 +153,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
     // Only needed when Clue expressions refer to Entries
     for (var clue in puzzle.clues.values) {
       for (var exp in clue.expressions) {
-        for (var entryName in clue.entryReferences) {
+        for (var entryName in clue.entryNameReferences) {
           // Rearrange expression for new subject
           var expText = exp.rearrangeExpressionText(entryName, clue.name);
           if (expText != null) {
@@ -173,14 +173,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
       puzzle.addAnyVariable(CoupletsVariable(letter));
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkEntryClueReferences();
-    clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

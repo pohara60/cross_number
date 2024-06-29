@@ -265,7 +265,7 @@ class ExpressionClue extends VariableClue with Expression {
     for (var exp in this.expressions) {
       var name = exp.fixReference(clueName);
       if (name != '') {
-        if (this.clueReferences.contains(clueName)) {
+        if (this.clueNameReferences.contains(clueName)) {
           this.removeClueReference(clueName);
           this.addVariableReference(name);
         }

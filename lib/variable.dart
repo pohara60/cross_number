@@ -32,6 +32,7 @@ enum VariableType {
 
   final String name;
   const VariableType(this.name);
+  int compareTo(VariableType other) => index.compareTo(other.index);
 }
 
 /// A variable, with restricted values, commonly used in [Clue] for a [Puzzle]
@@ -158,14 +159,16 @@ class Variable with PriorityVariable {
   // References
   final _variableRefs = VariableRefList();
   VariableRefList get variableRefs => _variableRefs;
-  List<String> get variableReferences => _variableRefs.variableNames;
-  List<String> get clueReferences => _variableRefs.clueNames;
-  List<String> get entryReferences => _variableRefs.entryNames;
-  List<String> get variableClueReferences => [
-        ..._variableRefs.variableNames,
-        ..._variableRefs.clueNames,
-        ..._variableRefs.entryNames,
-      ];
+  List<VariableRef> get references => _variableRefs.references;
+  List<String> get variableNameReferences => _variableRefs.variableNames;
+  List<String> get clueNameReferences => _variableRefs.clueNames;
+  List<String> get entryNameReferences => _variableRefs.entryNames;
+  List<String> get variableClueNameReferences =>
+      _variableRefs.variableClueNames;
+  Iterable<Variable> get variableReferences => _variableRefs.variables;
+  Iterable<Variable> get clueReferences => _variableRefs.clues;
+  Iterable<Variable> get entryReferences => _variableRefs.entries;
+  Iterable<Variable> get variableClueReferences => _variableRefs.variableClues;
 
   addVariableReference(String variable) {
     _variableRefs.addVariableReference(variable);
@@ -193,17 +196,18 @@ class Variable with PriorityVariable {
 
 class VariableRef {
   final String name;
-  String type;
+  VariableType type;
   Variable? variable;
-  bool get isVariable => type == 'V';
-  bool get isClue => type == 'C';
-  bool get isEntry => type == 'E';
+  bool get isVariable => type == VariableType.V;
+  bool get isClue => type == VariableType.C;
+  bool get isEntry => type == VariableType.E;
 
-  VariableRef(String this.name, [String this.type = 'V']);
+  VariableRef(String this.name, [VariableType this.type = VariableType.V]);
 }
 
 class VariableRefList {
   final _references = <VariableRef>[];
+  List<VariableRef> get references => _references;
   List<String> get names => _references.map((r) => r.name).toList();
   List<String> get variableNames =>
       _references.where((r) => r.isVariable).map((r) => r.name).toList();
@@ -211,15 +215,28 @@ class VariableRefList {
       _references.where((r) => r.isClue).map((r) => r.name).toList();
   List<String> get entryNames =>
       _references.where((r) => r.isEntry).map((r) => r.name).toList();
+  List<String> get variableClueNames => _references
+      .where((r) => r.isVariable || r.isClue || r.isEntry)
+      .map((r) => r.name)
+      .toList();
+  Iterable<Variable> get variables =>
+      _references.where((r) => r.isVariable).map((r) => r.variable!);
+  Iterable<Variable> get clues =>
+      _references.where((r) => r.isClue).map((r) => r.variable!);
+  Iterable<Variable> get entries =>
+      _references.where((r) => r.isEntry).map((r) => r.variable!);
+  Iterable<Variable> get variableClues => _references
+      .where((r) => r.isVariable || r.isClue || r.isEntry)
+      .map((r) => r.variable!);
 
-  addReference(String name, String type) {
+  addReference(String name, VariableType type) {
     if (_references.indexWhere((r) => name == r.name) == -1) {
       _references.add(VariableRef(name, type));
     }
   }
 
   addVariableReference(String name) {
-    addReference(name, 'V');
+    addReference(name, VariableType.V);
   }
 
   addClueReference(String name) {
@@ -227,11 +244,11 @@ class VariableRefList {
     if (name[0] == 'E')
       addEntryReference(name);
     else
-      addReference(name, 'C');
+      addReference(name, VariableType.C);
   }
 
   addEntryReference(String name) {
-    addReference(name, 'E');
+    addReference(name, VariableType.E);
   }
 
   removeClueReference(String name) {
@@ -240,8 +257,8 @@ class VariableRefList {
 
   fixReference(String clueName) {
     for (var ref in _references) {
-      if (ref.type == 'C' && ref.name == clueName) {
-        ref.type = 'V';
+      if (ref.type == VariableType.C && ref.name == clueName) {
+        ref.type = VariableType.V;
       }
     }
   }
@@ -371,9 +388,9 @@ class ExpressionVariable extends Variable with Expression {
     for (var exp in this.expressions) {
       var name = exp.fixReference(clueName);
       if (name != '' && name != clueName) {
-        if (this.variableReferences.contains(clueName)) {
-          this.variableReferences.remove(clueName);
-          this.variableReferences.add(name);
+        if (this.variableNameReferences.contains(clueName)) {
+          this.variableNameReferences.remove(clueName);
+          this.variableNameReferences.add(name);
         }
         updated = true;
       }

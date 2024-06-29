@@ -94,11 +94,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
       puzzle.addAnyVariable(IncreasingFibonnaciVariable(letter));
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    // clueError = puzzle.checkClueClueReferences();
-    // clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

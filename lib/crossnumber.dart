@@ -33,17 +33,21 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
   Crossnumber();
 
   void initCrossnumber() {
-    if (traceInit) {
-      for (var puzzle in puzzles) {
-        print(puzzle.toString());
-      }
-    }
-
     // Get puzzle to clue/variable mapping
     for (var puzzle in puzzles) {
+      // Puzzles must have been finalized
+      if (!puzzle.finalized) {
+        throw PuzzleException('Puzzle not finalized, call fnalize()');
+      }
       for (var variableEntry in puzzle.allVariables.entries) {
         var v = variableEntry.value;
         puzzleForVariable[v] = puzzle;
+      }
+    }
+
+    if (traceInit) {
+      for (var puzzle in puzzles) {
+        print(puzzle.toString());
       }
     }
   }
@@ -241,7 +245,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       var possibleValue = <int>{};
       var possibleVariables = <String, Set<int>>{};
       // if (clue is VariableClue) {
-      for (var variableName in variable.variableClueReferences) {
+      for (var variableName in variable.variableClueNameReferences) {
         possibleVariables[variableName] = <int>{};
       }
       if (variable.solve!(
@@ -277,7 +281,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         }
         // Update variable references even if this variable not updated, because may
         // have been set elsewhere
-        for (var variableName in variable.variableReferences) {
+        for (var variableName in variable.variableNameReferences) {
           if (updateVariables(puzzle, variableName,
               possibleVariables[variableName]!, updatedVariables)) {
             updateAllVariables(updatedVariables, updatedAllVariables);
@@ -287,16 +291,16 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       }
       if (variable is Clue && variable.finalise()) updated = true;
       if (variable is VariableClue) {
-        for (var variableName in variable.variableClueReferences) {
+        for (var variableName in variable.variableClueNameReferences) {
           if (possibleVariables[variableName] != null &&
               possibleVariables[variableName]!.isNotEmpty) {
-            if (variable.variableReferences.contains(variableName) &&
+            if (variable.variableNameReferences.contains(variableName) &&
                 updateVariables(puzzle, variableName,
                     possibleVariables[variableName]!, updatedVariables)) {
               updateAllVariables(updatedVariables, updatedAllVariables);
               updated = true;
             }
-            if (variable.clueReferences.contains(variableName) &&
+            if (variable.clueNameReferences.contains(variableName) &&
                 updateClues(
                     puzzle, variableName, possibleVariables[variableName]!,
                     isFocus: false, focusClueName: variable.name)) {
@@ -307,7 +311,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
               updatedClues.add(variableName);
               updated = true;
             }
-            if (variable.entryReferences.contains(variableName) &&
+            if (variable.entryNameReferences.contains(variableName) &&
                 updateEntries(
                     puzzle, variableName, possibleVariables[variableName]!,
                     isFocus: false, focusClueName: variable.name)) {
@@ -340,8 +344,13 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         var puzzle2 = variableName == variable.name
             ? puzzle
             : puzzle.cluePuzzle(variable.name);
-        print(
-            '$variableName=${puzzle2.allVariables[key]!.values!.toShortString()}');
+        // Entry names are single alpha or prefixed with E
+        if (variableName.length > 1 && variableName[0] == 'E')
+          variableName = variableName.substring(1);
+        print('$variableName=${puzzle2.allVariables[(
+          key.$1,
+          variableName
+        )]!.values!.toShortString()}');
       }
     }
 
@@ -366,7 +375,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
         // var type = e.key.$1;
         // var name = e.key.$2;
         var variable = e.value;
-        if (variable.variableReferences
+        if (variable.variableNameReferences
             .any((element) => updatedVariables.contains(element))) {
           addToUpdateQueue(variable);
         }
@@ -394,8 +403,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     if (!isFocus && thisPuzzle.otherPuzzleClues.containsKey(focusClueName)) {
       puzzle = thisPuzzle.otherPuzzleClues[focusClueName]!;
     }
+    // Entry names are single alpha or prefixed with E
+    var entryName = clueName;
+    if (clueName.length > 1 && clueName[0] == 'E')
+      entryName = clueName.substring(1);
     var clue = isEntry && puzzle.entries.isNotEmpty
-        ? puzzle.entries[clueName]!
+        ? puzzle.entries[entryName]!
         : puzzle.clues[clueName]!;
     var updatedVariables = puzzle.updateVariableValues(clue, possibleValues);
     if (updatedVariables.isNotEmpty) {
@@ -410,7 +423,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       }
       // Schedule referenced variables for update
       if (puzzle is VariablePuzzle) {
-        for (var variableName in clue.variableReferences) {
+        for (var variableName in clue.variableNameReferences) {
           var variable = puzzle.variables[variableName]!;
           if (variable is ExpressionVariable) {
             addToUpdateQueue(variable);
@@ -447,7 +460,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     var possibleValue = <int>{};
     var possibleVariables = <String, Set<int>>{};
 
-    for (var variable in variable.variableReferences) {
+    for (var variable in variable.variableNameReferences) {
       possibleVariables[variable] = <int>{};
     }
 
@@ -469,7 +482,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
     // Update variable references even if this variable not updated, because may
     // have been set elsewhere
-    for (var variableName in variable.variableReferences) {
+    for (var variableName in variable.variableNameReferences) {
       if (updateVariables(puzzle, variableName,
           possibleVariables[variableName]!, updatedVariables)) {
         updated = true;

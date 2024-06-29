@@ -381,6 +381,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
     puzzle.addEntryReference(d32, a19, false);
     puzzle.addEntryReference(d32, d7, false);
 
+    puzzle.finalize();
     super.initCrossnumber();
   }
 

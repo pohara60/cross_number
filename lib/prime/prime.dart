@@ -157,8 +157,7 @@ class Prime extends Crossnumber<PrimePuzzle> {
     puzzle.validateEntriesFromGrid();
     puzzle.linkEntriesToGrid();
 
-    var clueError = puzzle.checkClueClueReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

@@ -4,7 +4,7 @@ import '../variable.dart';
 /// A Puzzle clue
 class KnightsClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   KnightsClue({
@@ -23,7 +23,7 @@ class KnightsClue extends ExpressionClue {
 
 class KnightsEntry extends KnightsClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   KnightsEntry({

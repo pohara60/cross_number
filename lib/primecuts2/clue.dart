@@ -8,7 +8,7 @@ class PrimeCutsClue extends ExpressionClue {
   final String prime;
 
   /// List of referenced primes
-  List<String> get primeReferences => this.variableReferences;
+  List<String> get primeReferences => this.variableNameReferences;
   addPrimeReference(String prime) => this.addVariableReference(prime);
 
   PrimeCutsClue({

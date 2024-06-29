@@ -113,29 +113,23 @@ class Factors extends Crossnumber<FactorsPuzzle> {
         var factorsCell = cell as FactorsCell;
         factorsCell.setExp(cellExpresssions[r][c], solveCell);
         // Cells also depend on the intersecting entries
-        if (factorsCell.entries.isNotEmpty) {
-          factorsCell.exp.clueRefs.add(factorsCell.entries[0].name);
-          factorsCell.addClueReference(factorsCell.entries[0].name);
-          factorsCell.exp.clueRefs.add(factorsCell.entries[1].name);
-          factorsCell.addClueReference(factorsCell.entries[1].name);
-          factorsCell.addReferrer(factorsCell.entries[0]);
-          factorsCell.addReferrer(factorsCell.entries[1]);
-          factorsCell.entries[0].addReferrer(factorsCell);
-          factorsCell.entries[1].addReferrer(factorsCell);
+        var entries = factorsCell.entries;
+        if (entries.isNotEmpty) {
+          factorsCell.exp.clueRefs.add(entries[0].name);
+          factorsCell.addClueReference(entries[0].name);
+          factorsCell.exp.clueRefs.add(entries[1].name);
+          factorsCell.addClueReference(entries[1].name);
+          factorsCell.addReferrer(entries[0]);
+          factorsCell.addReferrer(entries[1]);
+          entries[0].addReferrer(factorsCell);
+          entries[1].addReferrer(factorsCell);
         }
         c++;
       }
       r++;
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkEntryClueReferences();
-    clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as preceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

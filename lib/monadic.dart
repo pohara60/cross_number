@@ -60,6 +60,18 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['divisor'] =
       Monadic('divisor', null, Iterable<int>, funcRange: divisors);
   monadics['power'] = Monadic('power', powers, Iterable<int>);
+  monadics['whereds'] = Monadic(
+      'whereds',
+      null,
+      funcRange: whereDS,
+      Iterable<int>,
+      order: NodeOrder.UNKNOWN);
+  monadics['wheredp'] = Monadic(
+      'wheredp',
+      null,
+      funcRange: whereDP,
+      Iterable<int>,
+      order: NodeOrder.UNKNOWN);
 }
 
 int digitSum(int value) {
@@ -300,6 +312,24 @@ Iterable<int> powers(int value) sync* {
     last = last * value;
     yield last;
   }
+}
+
+Iterable<int> whereDS(int ds, num? min, num? max) sync* {
+  var imin = min!;
+  var imax = max!;
+  for (var value in generateIntegers(imin, imax)) {
+    if (digitSum(value) == ds) yield value;
+  }
+  return;
+}
+
+Iterable<int> whereDP(int dp, num? min, num? max) sync* {
+  var imin = min!;
+  var imax = max!;
+  for (var value in generateIntegers(imin, imax)) {
+    if (digitProduct(value) == dp) yield value;
+  }
+  return;
 }
 
 bool twoDigitPrimeHasReverse(int prime) {

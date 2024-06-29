@@ -105,7 +105,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
 
     // Get Entry expressions from Clue expressions
     for (var clue in puzzle.clues.values) {
-      for (var entryName in clue.entryReferences) {
+      for (var entryName in clue.entryNameReferences) {
         // Rearrange expression for new subject
         var expText = clue.exp.rearrangeExpressionText(entryName, clue.name);
         if (expText != null) {
@@ -115,14 +115,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
       }
     }
 
-    var clueError = '';
-    clueError = puzzle.checkClueEntryReferences();
-    // clueError = puzzle.checkClueClueReferences();
-    clueError += puzzle.checkEntryClueReferences();
-    clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as prceeding may update them
-    clueError += puzzle.checkPuzzleVariableReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }

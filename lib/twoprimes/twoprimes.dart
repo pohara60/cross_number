@@ -109,10 +109,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
       puzzle.addAnyVariable(TwoPrimesVariable(letter));
     }
 
-    var clueError = '';
-    clueError += puzzle.checkPuzzleVariableReferences();
-    clueError += puzzle.checkClueClueReferences();
-    if (clueError != '') throw PuzzleException(clueError);
+    puzzle.finalize();
 
     super.initCrossnumber();
   }
