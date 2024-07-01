@@ -14,6 +14,8 @@ class Clue extends Variable {
 
   /// Number of digits, min and max values
   final int? length;
+  @override
+  @override
   late int? min, max;
 
   /// Description of clue
@@ -24,8 +26,9 @@ class Clue extends Variable {
 
   // Mapped grid entry - Clue with EntryMixin
   Clue? _entry;
+  // ignore: unnecessary_getters_setters
   Clue? get entry => _entry;
-  void set entry(Clue? entry) {
+  set entry(Clue? entry) {
     _entry = entry;
   }
 
@@ -38,8 +41,8 @@ class Clue extends Variable {
     entry!.setDigits(i, set);
   }
 
-  bool get isAcross => this.name[0] == 'A';
-  bool get isDown => this.name[0] == 'D';
+  bool get isAcross => name[0] == 'A';
+  bool get isDown => name[0] == 'D';
   bool get isUnknown => !isAcross && !isDown;
 
   /// Computed - Range of possible values
@@ -62,11 +65,11 @@ class Clue extends Variable {
   Clue({
     required String name,
     required VariableType type,
-    required int? this.length,
-    String? this.valueDesc,
+    required this.length,
+    this.valueDesc,
     SolveFunction? solve,
   }) : super(name, variableType: type, solve: solve) {
-    this.reset();
+    reset();
   }
 
   void reset() {
@@ -104,10 +107,10 @@ class Clue extends Variable {
 
   bool finalise() {
     // Update digits from values
-    if (this.values == null) return false;
+    if (values == null) return false;
     var updated = false;
     if (entry != null) {
-      if ((entry as EntryMixin).updateDigits(this.values!)) updated = true;
+      if ((entry as EntryMixin).updateDigits(values!)) updated = true;
     }
     return updated;
   }
@@ -125,12 +128,12 @@ class Clue extends Variable {
 
   bool updateValues(Set<int> possibleValue) {
     var updated = false;
-    if (this.values == null) {
-      this.values = possibleValue;
+    if (values == null) {
+      values = possibleValue;
       updated = true;
     } else {
       checkAnswer(possibleValue);
-      if (updatePossible(this.values!, possibleValue)) updated = true;
+      if (updatePossible(values!, possibleValue)) updated = true;
     }
     return updated;
   }
@@ -140,19 +143,11 @@ class Clue extends Variable {
     return true;
   }
 
+  @override
   String toString() {
     var identityStr = entry == null
         ? ''
-        : 'identities=[' +
-            digitIdentities
-                .asMap()
-                .entries
-                .map((e) => e.value == null
-                    ? ''
-                    : '${this.name}[${e.key}]=${e.value!.entry.name}[${e.value!.digit}]')
-                .where((element) => element != '')
-                .join(',') +
-            '],';
+        : 'identities=[${digitIdentities.asMap().entries.map((e) => e.value == null ? '' : '$name[${e.key}]=${e.value!.entry.name}[${e.value!.digit}]').where((element) => element != '').join(',')}],';
     var digitsStr =
         entry == null ? '' : ',\n\tdigits=${digits.toShortString()}';
     var referrersStr = referrers.map((e) => e.name).join(',');
@@ -166,8 +161,9 @@ class Clue extends Variable {
         values == null ? '{unknown}' : values.toShortString();
     var valueStr =
         '${valueDesc == null ? "" : "$valueDesc, "}values=${valueString(values)}';
-    if (entry != null && entry != this)
+    if (entry != null && entry != this) {
       valueStr += ', entry=${valueString(entry!.values)}';
+    }
     return '$name, $valueStr';
   }
 
@@ -215,35 +211,24 @@ bool updatePossible(Set<int> possible, Set<int> possibleValues) {
 class VariableClue extends Clue with PriorityVariable {
   /// Computed - Count of combinations of variable values
   VariableClue(
-      {required String name,
-      required VariableType type,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {}
+      {required super.name,
+      required super.type,
+      required super.length,
+      super.valueDesc,
+      super.solve});
 }
 
 class ExpressionClue extends VariableClue with Expression {
   ExpressionClue({
     required String name,
-    required VariableType type,
-    required int? length,
+    required super.type,
+    required super.length,
     String? valueDesc,
     List<String>? addDesc,
-    SolveFunction? solve,
+    super.solve,
     variablePrefix = '',
     List<String>? entryNames,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {
+  }) : super(name: name, valueDesc: valueDesc) {
     initExpression(valueDesc, variablePrefix, name, variableRefs, entryNames);
     if (addDesc != null) {
       for (var desc in addDesc) {
@@ -262,12 +247,12 @@ class ExpressionClue extends VariableClue with Expression {
 
   bool fixReference(clueName) {
     var updated = false;
-    for (var exp in this.expressions) {
+    for (var exp in expressions) {
       var name = exp.fixReference(clueName);
       if (name != '') {
-        if (this.clueNameReferences.contains(clueName)) {
-          this.removeClueReference(clueName);
-          this.addVariableReference(name);
+        if (clueNameReferences.contains(clueName)) {
+          removeClueReference(clueName);
+          addVariableReference(name);
         }
         updated = true;
       }
@@ -278,6 +263,7 @@ class ExpressionClue extends VariableClue with Expression {
     return updated;
   }
 
+  @override
   void sortVariables() {
     variableRefs.sort();
   }
@@ -292,10 +278,11 @@ class DigitIdentity {
   Clue get clue => entry;
 
   DigitIdentity({
-    required EntryMixin this.entry,
-    required int this.digit,
+    required this.entry,
+    required this.digit,
   });
 
+  @override
   String toString() {
     return '$entry[$digit]';
   }
@@ -311,6 +298,7 @@ mixin EntryMixin on Clue {
   /// Optional row/col for start of entry, set by validateEntriesFromGrid
   int? row;
   int? col;
+  // ignore: constant_identifier_names
   static const MAXROWS = 100;
   int cellDigitIndex(int digit) {
     if (isDown) {
@@ -324,19 +312,21 @@ mixin EntryMixin on Clue {
   }
 
   /// Common digits with other clues: each digit has optional reference to clue and digit
+  @override
   late final List<DigitIdentity?> digitIdentities;
 
   /// Cells - set when puzzle has a Grid
   final cells = <Cell>[];
   bool _hasGrid = false;
   bool get hasGrid => _hasGrid;
-  void set hasGrid(bool hasGrid) {
+  set hasGrid(bool hasGrid) {
     assert(hasGrid == true && cells.length == length!);
     _hasGrid = hasGrid;
   }
 
   /// Computed - Possible digits, used when puzzle does not have a grid (legacy)
   var _digits = <Set<int>>[];
+  @override
   List<Set<int>> get digits {
     var tryValue = this.tryValue;
     if (tryValue != null) return digitsFromValue;
@@ -352,8 +342,8 @@ mixin EntryMixin on Clue {
       }
     }
     if (tryValue != null) {
-      var digits = List<Set<int>>.generate(this.length!, (_) => {});
-      for (var d = this.length! - 1; d >= 0; d--) {
+      var digits = List<Set<int>>.generate(length!, (_) => {});
+      for (var d = length! - 1; d >= 0; d--) {
         var digit = tryValue! % 10;
         tryValue = tryValue ~/ 10;
         digits[d].add(digit);
@@ -364,7 +354,7 @@ mixin EntryMixin on Clue {
     }
   }
 
-  void set digits(List<Set<int>> digits) {
+  set digits(List<Set<int>> digits) {
     if (!hasGrid) {
       _digits = digits;
       return;
@@ -378,7 +368,7 @@ mixin EntryMixin on Clue {
   // Mapped Clue
   Clue? _clue;
   Clue? get clue => _clue;
-  void set clue(Clue? clue) {
+  set clue(Clue? clue) {
     _clue = clue;
   }
 
@@ -394,7 +384,7 @@ mixin EntryMixin on Clue {
     if (!hasGrid && _digits.isEmpty) {
       _digits.addAll(List.generate(length!, (index) => <int>{}));
     }
-    for (var d = 0; d < this.length!; d++) {
+    for (var d = 0; d < length!; d++) {
       setDigits(d,
           Set.from(List.generate(EntryMixin.maxDigit + 1, (index) => index)));
       if (d == 0 || !zeroDigit) digits[d].remove(0);
@@ -427,6 +417,7 @@ mixin EntryMixin on Clue {
     return updated;
   }
 
+  @override
   List<Set<int>> saveDigits() {
     var result = <Set<int>>[];
     for (var d = 0; d < length!; d++) {
@@ -435,21 +426,24 @@ mixin EntryMixin on Clue {
     return result;
   }
 
+  @override
   void restoreDigits(List<Set<int>> savedDigits) {
     for (var d = 0; d < length!; d++) {
       setDigits(d, savedDigits[d]);
     }
   }
 
+  @override
   bool digitsMatch(int value) {
-    for (var d = this.length! - 1; d >= 0; d--) {
+    for (var d = length! - 1; d >= 0; d--) {
       var digit = value % 10;
-      if (!this.digits[d].contains(digit)) return false;
+      if (!digits[d].contains(digit)) return false;
       value = value ~/ 10;
     }
     return true;
   }
 
+  @override
   Set<int>? getValuesFromDigits() {
     var allDigits =
         List<List<int>>.generate(length!, (d) => digits[d].toList());
@@ -483,11 +477,13 @@ mixin EntryMixin on Clue {
     }
   }
 
+  @override
   void setDigits(int d, Set<int> set) {
-    if (hasGrid)
+    if (hasGrid) {
       cells[d].digits = set;
-    else
+    } else {
       _digits[d] = set;
+    }
   }
 
   void addDigitIdentity(int digit1, EntryMixin otherEntry, int digit2) {
@@ -507,17 +503,12 @@ mixin EntryMixin on Clue {
 
 class Entry extends Clue with EntryMixin {
   Entry(
-      {required String name,
-      required VariableType type,
+      {required super.name,
+      required super.type,
       required int? length,
-      String? valueDesc,
-      SolveFunction? solve})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {
+      super.valueDesc,
+      super.solve})
+      : super(length: length) {
     assert(length != null);
     initEntry(this);
   }
@@ -525,20 +516,15 @@ class Entry extends Clue with EntryMixin {
 
 class VariableEntry extends VariableClue with EntryMixin {
   VariableEntry(
-      {required String name,
-      required VariableType type,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {
+      {required super.name,
+      required super.type,
+      required super.length,
+      super.valueDesc,
+      super.solve}) {
     initEntry(this);
   }
 
+  @override
   addVariableReference(String variable) {
     variableRefs.addVariableReference(variable);
   }
@@ -546,18 +532,12 @@ class VariableEntry extends VariableClue with EntryMixin {
 
 class ExpressionEntry extends ExpressionClue with EntryMixin {
   ExpressionEntry(
-      {required String name,
-      required VariableType type,
-      required int length,
-      String? valueDesc,
-      SolveFunction? solve,
-      variablePrefix = ''})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {
+      {required super.name,
+      required super.type,
+      required int super.length,
+      super.valueDesc,
+      super.solve,
+      variablePrefix = ''}) {
     initEntry(this);
   }
 }

@@ -68,10 +68,10 @@ const variableValues = [
 ];
 
 class SequenceVariable extends Variable {
-  SequenceVariable(letter) : super(letter) {
-    this.values = Set.from(variableValues);
+  SequenceVariable(super.letter) {
+    values = Set.from(variableValues);
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class SequencesPuzzle

@@ -7,10 +7,10 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class TwoPrimesVariable extends Variable {
-  TwoPrimesVariable(letter) : super(letter) {
-    this.values = Set.from([3, 11, 17, 29, 41, 47, 53, 57, 59, 71, 83, 89, 97]);
+  TwoPrimesVariable(super.letter) {
+    values = {3, 11, 17, 29, 41, 47, 53, 57, 59, 71, 83, 89, 97};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class TwoPrimesPuzzle

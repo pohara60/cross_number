@@ -4,25 +4,19 @@ import '../variable.dart';
 /// A Puzzle clue
 class ThirtyClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableNameReferences;
-  addLetterReference(String letter) => this.addVariableReference(letter);
+  List<String> get letterReferences => variableNameReferences;
+  addLetterReference(String letter) => addVariableReference(letter);
 
   ThirtyClue(
-      {required String name,
-      VariableType type = VariableType.C,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve,
-      List<String>? entryNames})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve,
-            entryNames: entryNames);
+      {required super.name,
+      super.type = VariableType.C,
+      required super.length,
+      super.valueDesc,
+      super.solve,
+      super.entryNames});
 
   static const powers = [1000, 100, 10, 1];
+  @override
   List<int> clueDigits(int digit) {
     if (values == null) return [];
     var digits = <int>{};
@@ -36,26 +30,21 @@ class ThirtyClue extends ExpressionClue {
 
 class ThirtyEntry extends ThirtyClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableNameReferences;
-  addLetterReference(String letter) => this.addVariableReference(letter);
+  @override
+  List<String> get letterReferences => variableNameReferences;
+  @override
+  addLetterReference(String letter) => addVariableReference(letter);
 
   String puzzleName;
 
   ThirtyEntry(
-      {required String name,
-      VariableType type = VariableType.E,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve,
-      entryNames,
-      String this.puzzleName = ''})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve,
-            entryNames: entryNames) {
+      {required super.name,
+      super.type = VariableType.E,
+      required super.length,
+      super.valueDesc,
+      super.solve,
+      super.entryNames,
+      this.puzzleName = ''}) {
     initEntry(this);
   }
 
@@ -63,7 +52,7 @@ class ThirtyEntry extends ThirtyClue with EntryMixin {
   void initDigits() {
     digits.clear(); // Clear for reset
     // possible digits are even 0..8, except cannot have leading 0
-    for (var d = 0; d < this.length!; d++) {
+    for (var d = 0; d < length!; d++) {
       digits.add(Set.from(List.generate(5, (index) => index * 2)));
       if (d == 0) digits[d].remove(0);
     }

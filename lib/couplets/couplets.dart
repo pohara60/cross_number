@@ -36,9 +36,10 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = CoupletsPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Entries and Clues have separate definitions
 
@@ -53,7 +54,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -80,7 +81,7 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -191,8 +192,9 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
 
     // Each clue has at least one pair of variables that must be the reverse of each other
     var acrossIndex = 0;
@@ -220,9 +222,9 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as CoupletsPuzzle;
     var clue = v as CoupletsClue;
@@ -289,9 +291,9 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
 
   @override
   bool updateClues(
-      CoupletsPuzzle puzzle, String clueName, Set<int> possibleValues,
+      CoupletsPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (!isEntry && updated) {
       // Maintain clue value order

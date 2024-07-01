@@ -5,10 +5,10 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class PrimeVariable extends Variable {
-  PrimeVariable(letter) : super(letter) {
-    this.values = {};
+  PrimeVariable(super.letter) {
+    values = {};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class PrimePuzzle extends VariablePuzzle<PrimeClue, PrimeEntry, PrimeVariable> {

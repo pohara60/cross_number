@@ -7,9 +7,9 @@ import '../variable.dart';
 
 class Knights2Variable extends Variable {
   Knights2Variable(letter) : super(letter.$1) {
-    this.values = Set.from([]);
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class Knights2Puzzle

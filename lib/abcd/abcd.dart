@@ -32,6 +32,7 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -42,7 +43,7 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -124,8 +125,9 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     if (variableReferences.length > 1) {
       for (var v1 = 0; v1 < variableReferences.length - 1; v1++) {
         for (var v2 = v1 + 1; v2 < variableReferences.length; v2++) {
@@ -143,9 +145,9 @@ class ABCD extends Crossnumber<ABCDPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as ABCDPuzzle;
     var clue = v as ABCDClue;

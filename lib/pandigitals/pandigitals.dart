@@ -37,6 +37,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     // S, T and P are three 3-digit numbers that between them contain all of the
     // digits from 1 to 9 inclusive such that S is a square number, T a triangular
@@ -80,7 +81,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
         }
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -190,7 +191,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
         // Link clues to entries
         puzzle.mapClueToEntry(puzzle.clues[entrySpec.name]!, entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -217,10 +218,12 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     var bStr = b.toString();
     for (var d = 0; d < aStr.length; d++) {
       if (bStr.contains(aStr[d])) return false;
-      if (d + 1 < aStr.length && aStr.substring(d + 1).contains(aStr[d]))
+      if (d + 1 < aStr.length && aStr.substring(d + 1).contains(aStr[d])) {
         return false;
-      if (d + 1 < bStr.length && bStr.substring(d + 1).contains(bStr[d]))
+      }
+      if (d + 1 < bStr.length && bStr.substring(d + 1).contains(bStr[d])) {
         return false;
+      }
     }
     return true;
   }
@@ -248,8 +251,9 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -259,9 +263,9 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var clue = v as PandigitalsClue;
     var updated = false;
@@ -325,17 +329,18 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
           }
           if (ok) {
             clueValues.forEach((key, value) {
-              if (allClueValues[key] == null)
+              if (allClueValues[key] == null) {
                 allClueValues[key] = value;
-              else
+              } else {
                 allClueValues[key]!.addAll(value);
+              }
             });
           }
         }
         // Set clue values
 
         var s = StringBuffer();
-        s.writeln("solve: ${variableGroup}");
+        s.writeln("solve: $variableGroup");
         for (var clueEntry in allClueValues.entries) {
           var clueName = clueEntry.key;
           var clue = puzzle.clues[clueName]!;
@@ -358,7 +363,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
         }
         if (groupUpdated) {
           print(s.toString());
-          printLetter(String letter, int select(dynamic)) {
+          printLetter(String letter, int Function(RSTP) select) {
             var list = rstpQueue.map<int>(select).toList();
             var nodups = List<int>.from(Set<int>.from(list))..sort();
             print('$letter=${list.toShortString()}=${nodups.toShortString()}');
@@ -398,14 +403,14 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     var clue = clueExp.clue;
     var updated = false;
     var possibleValue = <int>{};
-    var possibleVariables = <String, Set<int>>{};
+    var possibleVariables = <Variable, Set<int>>{};
     var updatedClues = <String>{};
     var variableValues = <List<int>>[];
     var unknownVariable = <String>[];
     var impossibleVariable = <String>[];
-    for (var variableName in clueExp.variableNameReferences) {
-      possibleVariables[variableName] = <int>{};
-      switch (variableName) {
+    for (var variable in clueExp.variableReferences) {
+      possibleVariables[variable] = <int>{};
+      switch (variable.name) {
         case 'R':
           variableValues.add([rstp.r]);
           break;
@@ -420,22 +425,19 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
           break;
       }
     }
-    for (var otherClueName in clueExp.clueNameReferences) {
-      possibleVariables[otherClueName] = <int>{};
-      var otherClue = puzzle.clues[otherClueName]!;
+    for (var otherClue in clueExp.clueReferences) {
+      possibleVariables[otherClue] = <int>{};
       // Clue values may not yet be available
       var otherClueValues = otherClue.values;
       //if (otherClueValues == null && clue.circularClueReference) {
+      otherClueValues ??= getValuesFromClueDigits(otherClue as Clue);
       if (otherClueValues == null) {
-        // Try guessing other clue values for circular reference
-        otherClueValues = getValuesFromClueDigits(otherClue);
-      }
-      if (otherClueValues == null)
-        unknownVariable.add(otherClueName);
-      else if (otherClueValues.isEmpty)
-        impossibleVariable.add(otherClueName);
-      else
+        unknownVariable.add(otherClue.name);
+      } else if (otherClueValues.isEmpty) {
+        impossibleVariable.add(otherClue.name);
+      } else {
         variableValues.add(otherClueValues.toList());
+      }
     }
 
     // Unknown variable
@@ -448,13 +450,13 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
         possibleVariables.clear();
         return false;
       }
-      throw new SolveException(
-          "Solve ${clue.name} no values for variable(s) ${unknownVariable}");
+      throw SolveException(
+          "Solve ${clue.name} no values for variable(s) $unknownVariable");
     }
     // Impossible variable
     if (impossibleVariable.isNotEmpty) {
-      throw new SolveException(
-          "Solve ${clue.name} no values for variable(s) ${impossibleVariable}");
+      throw SolveException(
+          "Solve ${clue.name} no values for variable(s) $impossibleVariable");
     }
 
     var count = cartesianCount(variableValues);
@@ -463,7 +465,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       if (Crossnumber.traceSolve) {
         // print('Eval ${clue.name} cartesianCount=$count Exception');
       }
-      throw new SolveException();
+      throw SolveException();
     }
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
@@ -475,7 +477,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
             if (valid) {
               possibleValue.add(value);
               var index = 0;
-              for (var variable in clue.variableClueNameReferences) {
+              for (var variable in clue.variableClueReferences) {
                 possibleVariables[variable]!.add(product[index++]);
               }
               // if (Crossnumber.traceSolve) {
@@ -515,11 +517,12 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
       updatedClues.add(clue.name);
     }
     // if (clue.finalise()) updated = true;
-    for (var clueName in clue.clueNameReferences) {
-      if (possibleVariables[clueName] != null) {
+    for (var clue in clue.clueReferences) {
+      if (possibleVariables[clue] != null) {
+        var clueName = clue.name;
         if (clueValues[clueName] == null) clueValues[clueName] = {};
 
-        if (addPossible(clueValues[clueName]!, possibleVariables[clueName]!)) {
+        if (addPossible(clueValues[clueName]!, possibleVariables[clue]!)) {
           updated = true;
           // if (updateClues(clueName, possibleVariables[clueName]!))
           updatedClues.add(clueName);

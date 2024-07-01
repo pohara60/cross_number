@@ -32,9 +32,10 @@ class Factors extends Crossnumber<FactorsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = FactorsPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -49,7 +50,7 @@ class Factors extends Crossnumber<FactorsPuzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -171,18 +172,19 @@ class Factors extends Crossnumber<FactorsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
 
     // Any two entries that meet are sure to share at least one prime factor.
     var entryMixin = clue as EntryMixin;
     for (var cell in entryMixin.cells) {
       for (var otherEntry in cell.entries) {
-        if (otherEntry != clue) {
+        if (otherEntry != entryMixin) {
           var ok = false;
-          if (otherEntry.values == null)
+          if (otherEntry.values == null) {
             ok = true;
-          else {
+          } else {
             for (var otherValue in otherEntry.values!) {
               var gcf = getGCF(value, otherValue);
               // Check the cell values include the gcf
@@ -209,17 +211,15 @@ class Factors extends Crossnumber<FactorsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     //var puzzle = p as FactorsPuzzle;
     var clue = v as FactorsClue;
     var updated = false;
     // Values may have been set by other Clue
-    if (clue.values == null) {
-      clue.values = clue.getValuesFromDigits();
-    }
+    clue.values ??= clue.getValuesFromDigits();
     if (clue.values != null) {
       var values =
           clue.values!.where((value) => validClue(clue, value, [], []));
@@ -230,18 +230,18 @@ class Factors extends Crossnumber<FactorsPuzzle> {
 
   @override
   bool updateClues(
-      FactorsPuzzle puzzle, String clueName, Set<int> possibleValues,
+      FactorsPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     return updated;
   }
 
   bool solveCell(Puzzle<Clue, Clue> p, Variable v, Set<int> possibleValue,
       {Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables}) {
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables}) {
     var puzzle = p as FactorsPuzzle;
     var cell = v as FactorsCell;
     // The number in each cell is the greatest common factor of the two
@@ -269,7 +269,7 @@ class Factors extends Crossnumber<FactorsPuzzle> {
 
   @override
   bool updateVariables(FactorsPuzzle puzzle, String variableName,
-      Set<int> possibleValues, Set<String> updatedVariables) {
+      Set<int> possibleValues, Set<Variable> updatedVariables) {
     if (puzzle.variables.containsKey(variableName)) {
       return super.updateVariables(
           puzzle, variableName, possibleValues, updatedVariables);
@@ -317,10 +317,12 @@ List<int> intersection(List<int> list1, List<int> list2) {
       result.add(list1[i1]);
       i1++;
       i2++;
-    } else if (list1[i1] < list2[i2])
+    } else if (list1[i1] < list2[i2]) {
       i1++;
-    else // (list1[i1] > list2[i2])
+    } else // (list1[i1] > list2[i2])
+    {
       i2++;
+    }
   }
   return result;
 }

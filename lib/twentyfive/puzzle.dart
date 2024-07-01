@@ -6,9 +6,9 @@ import '../variable.dart';
 
 class TwentyFiveVariable extends Variable {
   TwentyFiveVariable(letter) : super(letter.$1) {
-    this.values = Set.from([]);
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class TwentyFivePuzzle extends VariablePuzzle<TwentyFiveClue, TwentyFiveEntry,

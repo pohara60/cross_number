@@ -19,9 +19,9 @@ typedef SolveFunction = bool Function(
   Variable variable,
   Set<int> possibleValue, {
   Set<int>? possibleValue2,
-  Map<String, Set<int>>? possibleVariables,
-  Map<String, Set<int>>? possibleVariables2,
-  Set<String>? updatedVariables,
+  Map<Variable, Set<int>>? possibleVariables,
+  Map<Variable, Set<int>>? possibleVariables2,
+  Set<Variable>? updatedVariables,
 });
 
 enum VariableType {
@@ -61,14 +61,14 @@ class Variable with PriorityVariable {
     _answer = answer;
   }
 
-  Variable(String this.name,
-      {this.variableType = VariableType.V, SolveFunction? this.solve = null});
+  Variable(this.name, {this.variableType = VariableType.V, this.solve});
 //    _values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   set tryValue(int? value) {
     _tryValue = value;
   }
 
+  // ignore: unnecessary_getters_setters
   int? get tryValue => _tryValue;
 
   Set<int>? get values => _tryValue != null ? {_tryValue!} : _values;
@@ -101,11 +101,13 @@ class Variable with PriorityVariable {
 
   bool get isSet => values != null && values!.length == 1;
 
+  // ignore: unnecessary_getters_setters
   int? get min => _min;
   set min(int? min) => _min = min;
   int? get max => _max ?? 10000; // Ugh!
   set max(int? max) => _max = max;
 
+  @override
   String toString() {
     var text = '$name=';
     text += values == null ? '{unknown}' : values!.toShortString();
@@ -143,9 +145,8 @@ class Variable with PriorityVariable {
     }
     checkAnswer(possibleValues);
     // print("!$name=${possibleValues.toShortString()}");
-    var updated =
-        this.values!.any((element) => !possibleValues.contains(element));
-    this.values!.removeWhere((element) => !possibleValues.contains(element));
+    var updated = values!.any((element) => !possibleValues.contains(element));
+    values!.removeWhere((element) => !possibleValues.contains(element));
     // if (this.values.length == 1) {
     //   this._value = this.values.first;
     // }
@@ -202,7 +203,7 @@ class VariableRef {
   bool get isClue => type == VariableType.C;
   bool get isEntry => type == VariableType.E;
 
-  VariableRef(String this.name, [VariableType this.type = VariableType.V]);
+  VariableRef(this.name, [this.type = VariableType.V]);
 }
 
 class VariableRefList {
@@ -241,10 +242,11 @@ class VariableRefList {
 
   addClueReference(String name) {
     // Clue references that start with E are entry references
-    if (name[0] == 'E')
+    if (name[0] == 'E') {
       addEntryReference(name);
-    else
+    } else {
       addReference(name, VariableType.C);
+    }
   }
 
   addEntryReference(String name) {
@@ -263,6 +265,7 @@ class VariableRefList {
     }
   }
 
+  @override
   toString() => names.toString();
 
   void sort() {
@@ -294,7 +297,7 @@ class VariableList<VariableKind extends Variable> {
   // = List<int>.generate(9, (i) => i + 1);
 
   // Subclass constructor initializes remaining values
-  VariableList(VariableType this.type, [List<int>? this.restrictedValues])
+  VariableList(this.type, [this.restrictedValues])
       : distinct = restrictedValues != null;
 
   void add(VariableKind variable) {
@@ -330,8 +333,9 @@ class VariableList<VariableKind extends Variable> {
             if (!knownLetters.contains(entry.key)) {
               var entryVariable = entry.value;
               if (entryVariable.values != null) {
-                if (entryVariable.removeValue(letterValue))
+                if (entryVariable.removeValue(letterValue)) {
                   updatedVariables.add(entry.value);
+                }
                 if (entryVariable.isSet) knownLetters.add(entry.key);
               }
             }
@@ -340,19 +344,23 @@ class VariableList<VariableKind extends Variable> {
         }
       }
       for (var updatedVariable in updatedVariables) {
-        updatedVariable.min = updatedVariable.values!.reduce(min);
-        updatedVariable.max = updatedVariable.values!.reduce(max);
+        if (updatedVariable.values != null &&
+            updatedVariable.values!.isNotEmpty) {
+          updatedVariable.min = updatedVariable.values!.reduce(min);
+          updatedVariable.max = updatedVariable.values!.reduce(max);
+        }
       }
     }
     return updatedVariables;
   }
 
+  @override
   String toString() {
     if (variables.isEmpty) return '';
 
     var text = 'Variables:\n';
     for (var variableName in variables.keys.toList()..sort()) {
-      text += variables[variableName].toString() + '\n';
+      text += '${variables[variableName]}\n';
     }
     if (restrictedValues != null && restrictedValues!.isNotEmpty) {
       var remainingValues =
@@ -372,7 +380,7 @@ class ExpressionVariable extends Variable with Expression {
 
   ExpressionVariable(
     String name,
-    String this.valueDesc, {
+    this.valueDesc, {
     int min = 1,
     int? max,
     String variablePrefix = '',
@@ -385,12 +393,12 @@ class ExpressionVariable extends Variable with Expression {
 
   bool fixReference(clueName) {
     var updated = false;
-    for (var exp in this.expressions) {
+    for (var exp in expressions) {
       var name = exp.fixReference(clueName);
       if (name != '' && name != clueName) {
-        if (this.variableNameReferences.contains(clueName)) {
-          this.variableNameReferences.remove(clueName);
-          this.variableNameReferences.add(name);
+        if (variableNameReferences.contains(clueName)) {
+          variableNameReferences.remove(clueName);
+          variableNameReferences.add(name);
         }
         updated = true;
       }
@@ -406,14 +414,15 @@ class ExpressionVariable extends Variable with Expression {
     return Set.from(List.generate(_max! - _min! + 1, (index) => _min! + index));
   }
 
+  @override
   String toString() {
     var text = super.toString();
     if (valueDesc != '') {
-      text += ',${valueDesc}';
+      text += ',$valueDesc';
     }
     if (!isSet) {
-      text += ',min=${_min}';
-      text += ',max=${_max}';
+      text += ',min=$_min';
+      text += ',max=$_max';
     }
     return text;
   }

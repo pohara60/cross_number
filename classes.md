@@ -59,7 +59,7 @@ class VariablePuzzle<ClueKind extends Clue, VariableKind extends Variable>
 
     int getClueCount(VariableClue clue, List<List<int>> variableValues);
     void updateClueCount(VariableClue clue);
-    void solveVariableExpression(VariableClue clue,Set<int> possibleValue,Map<String, Set<int>> possibleVariables,int expression(List<int> variables));
+    void solveVariableExpression(VariableClue clue,Set<int> possibleValue,Map<Variable, Set<int>>? possibleVariables,int expression(List<int> variables));
     bool solveVariableExpressionEvaluator(VariableClue clue,Set<int> possibleValue, Map<String, Set<int>> possibleVariables);
     int iterateVariables();
     String toString();

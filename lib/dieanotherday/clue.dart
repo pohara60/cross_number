@@ -4,25 +4,19 @@ import '../variable.dart';
 /// A Puzzle clue
 class DieAnotherDayClue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableNameReferences;
-  addLetterReference(String letter) => this.addVariableReference(letter);
+  List<String> get letterReferences => variableNameReferences;
+  addLetterReference(String letter) => addVariableReference(letter);
 
   DieAnotherDayClue(
-      {required String name,
-      VariableType type = VariableType.C,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve,
-      List<String>? entryNames})
-      : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve,
-            entryNames: entryNames);
+      {required super.name,
+      super.type = VariableType.C,
+      required super.length,
+      super.valueDesc,
+      super.solve,
+      super.entryNames});
 
   static const powers = [1000, 100, 10, 1];
+  @override
   List<int> clueDigits(int digit) {
     if (values == null) return [];
     var digits = <int>{};
@@ -36,23 +30,19 @@ class DieAnotherDayClue extends ExpressionClue {
 
 class DieAnotherDayEntry extends DieAnotherDayClue with EntryMixin {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableNameReferences;
-  addLetterReference(String letter) => this.addVariableReference(letter);
+  @override
+  List<String> get letterReferences => variableNameReferences;
+  @override
+  addLetterReference(String letter) => addVariableReference(letter);
 
   DieAnotherDayEntry({
-    required String name,
-    VariableType type = VariableType.E,
-    required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-    entryNames,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve,
-            entryNames: entryNames) {
+    required super.name,
+    super.type = VariableType.E,
+    required super.length,
+    super.valueDesc,
+    super.solve,
+    super.entryNames,
+  }) {
     initEntry(this);
   }
 
@@ -60,7 +50,7 @@ class DieAnotherDayEntry extends DieAnotherDayClue with EntryMixin {
   void initDigits() {
     super.initDigits();
     // possible digits are 1..6
-    for (var d = 0; d < this.length!; d++) {
+    for (var d = 0; d < length!; d++) {
       digits[d].remove(0);
     }
   }

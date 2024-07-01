@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../lib/set.dart';
+import 'package:crossnumber/set.dart';
 
 var values = {
   110,

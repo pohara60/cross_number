@@ -30,9 +30,10 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = Knights2Puzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -47,7 +48,7 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -140,8 +141,9 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -151,9 +153,9 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as Knights2Puzzle;
     var clue = v as Knights2Clue;
@@ -211,9 +213,9 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
 
   @override
   bool updateClues(
-      Knights2Puzzle puzzle, String clueName, Set<int> possibleValues,
+      Knights2Puzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     return updated;
   }

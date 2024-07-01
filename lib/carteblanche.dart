@@ -1,4 +1,4 @@
-// ignore_for_file: unused_label
+// ignore_for_file: unused_label, non_constant_identifier_names
 
 import 'dart:math';
 

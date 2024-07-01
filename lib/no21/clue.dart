@@ -8,25 +8,20 @@ import '../variable.dart';
 class No21Clue extends ExpressionClue {
   late int _cellsTwoDigits;
   No21Clue(
-      {required name,
-      VariableType type = VariableType.C,
-      required length,
-      valueDesc,
-      solve,
+      {required super.name,
+      super.type = VariableType.C,
+      required super.length,
+      super.valueDesc,
+      super.solve,
       int cellsTwoDigits = 1})
       : _cellsTwoDigits = cellsTwoDigits,
-        super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {
+        super() {
     // Some cells contain two digits
     // Assume upto two of these per clue
     setDoubleDigits();
   }
 
-  void set cellsTwoDigits(int cells) {
+  set cellsTwoDigits(int cells) {
     _cellsTwoDigits = cells;
     setDoubleDigits();
   }
@@ -38,7 +33,7 @@ class No21Clue extends ExpressionClue {
   }
 
   @override
-  toString() => super.toString() + ', min=$min, max=$max';
+  toString() => '${super.toString()}, min=$min, max=$max';
 
   @override
   String toSummary() {
@@ -53,43 +48,39 @@ class No21Clue extends ExpressionClue {
   @override
   bool finalise() {
     // Update digits from values
-    if (this.values == null) return false;
-    if (entry != null) return (entry as No21Entry).updateDigits(this.values!);
+    if (values == null) return false;
+    if (entry != null) return (entry as No21Entry).updateDigits(values!);
     return false;
   }
 }
 
 class No21Entry extends No21Clue with EntryMixin {
   No21Entry({
-    required String name,
-    VariableType type = VariableType.E,
-    required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve) {
+    required super.name,
+    super.type = VariableType.E,
+    required super.length,
+    super.valueDesc,
+    super.solve,
+  }) {
     initEntry(this);
   }
 
   @override
-  bool digitsMatch(int matchValue, [List<List<int>>? digitMatches]) {
-    if (matchValue >= 10.pow(digits.length))
-      return twoDigitsMatch(matchValue, digitMatches);
+  bool digitsMatch(int value, [List<List<int>>? digitMatches]) {
+    if (value >= 10.pow(digits.length)) {
+      return twoDigitsMatch(value, digitMatches);
+    }
 
-    var value = matchValue;
+    var mValue = value;
     if (digitMatches != null) digitMatches.add(<int>[]);
-    for (var d = this.length! - 1; d >= 0; d--) {
-      var digit = value % 10;
-      if (!this.digits[d].contains(digit)) {
+    for (var d = length! - 1; d >= 0; d--) {
+      var digit = mValue % 10;
+      if (!digits[d].contains(digit)) {
         if (digitMatches != null) digitMatches.removeLast();
         return false;
       }
       if (digitMatches != null) digitMatches.last.insert(0, digit);
-      value = value ~/ 10;
+      mValue = mValue ~/ 10;
     }
     return true;
   }
@@ -97,17 +88,17 @@ class No21Entry extends No21Clue with EntryMixin {
   bool twoDigitsMatch(int matchValue, [List<List<int>>? digitMatches]) {
     var strValue = matchValue.toString();
     var anyMatch = false;
-    int numDoubleDigits = strValue.length - this.length!;
+    int numDoubleDigits = strValue.length - length!;
     if (numDoubleDigits == 1) {
-      for (var dd = this.length! - 1; dd >= 0; dd--) {
+      for (var dd = length! - 1; dd >= 0; dd--) {
         var match = true;
         var value = matchValue;
         if (digitMatches != null) digitMatches.add(<int>[]);
-        for (var d = this.length! - 1; d >= 0; d--) {
+        for (var d = length! - 1; d >= 0; d--) {
           var divisor = dd == d ? 100 : 10;
           var minDigit = dd == d ? 10 : 0;
           var digit = value % divisor;
-          if (digit < minDigit || !this.digits[d].contains(digit)) {
+          if (digit < minDigit || !digits[d].contains(digit)) {
             match = false;
             break;
           }
@@ -122,16 +113,16 @@ class No21Entry extends No21Clue with EntryMixin {
         }
       }
     } else if (numDoubleDigits == 2) {
-      for (var dd1 = this.length! - 1; dd1 > 0; dd1--) {
+      for (var dd1 = length! - 1; dd1 > 0; dd1--) {
         var value = matchValue;
         for (var dd2 = dd1 - 1; dd2 >= 0; dd2--) {
           var match = true;
           if (digitMatches != null) digitMatches.add(<int>[]);
-          for (var d = this.length! - 1; d >= 0; d--) {
+          for (var d = length! - 1; d >= 0; d--) {
             var divisor = dd1 == d || dd2 == d ? 100 : 10;
             var minDigit = dd1 == d || dd2 == d ? 10 : 0;
             var digit = value % divisor;
-            if (digit < minDigit || !this.digits[d].contains(digit)) {
+            if (digit < minDigit || !digits[d].contains(digit)) {
               match = false;
               break;
             }
@@ -152,6 +143,7 @@ class No21Entry extends No21Clue with EntryMixin {
     return anyMatch;
   }
 
+  @override
   bool updateDigits(Set<int> values) {
     var updated = false;
     var possibleDigits = List.generate(length!, (_) => <int>{});

@@ -8,14 +8,17 @@ environment:
 
 dependencies:
   args: ^2.1.0
+  basics: ^0.10.0
   build: ^2.0.1
   memoized: ^2.2.6
   powers: ^1.0.0+2
   quiver: ^3.2.1
 
+  collection: any
 dev_dependencies:
   build_runner: ^2.0.4
   build_web_compilers: ^4.0.5
+  lints: ^4.0.0
   pedantic: ^1.11.0
   string_scanner: ^1.1.1
   test: ^1.17.4

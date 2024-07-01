@@ -6,9 +6,9 @@ import '../variable.dart';
 
 class AlmostFermatVariable extends Variable {
   AlmostFermatVariable(letter) : super(letter.$1) {
-    this.values = Set.from([]);
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class AlmostFermatPuzzle extends VariablePuzzle<AlmostFermatClue,
@@ -28,11 +28,10 @@ class AlmostFermatPuzzle extends VariablePuzzle<AlmostFermatClue,
     //     .values
     //     .any((clue) => clue.values == null || clue.values!.length != 3))
     //   return false;
-    if (this
-        .entries
-        .values
-        .any((entry) => entry.values == null || entry.values!.length != 1))
+    if (entries.values
+        .any((entry) => entry.values == null || entry.values!.length != 1)) {
       return false;
+    }
     return true;
   }
 }

@@ -36,9 +36,10 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = CombinationsPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -57,7 +58,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
         }
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -169,9 +170,9 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as CombinationsPuzzle;
     var clue = v as CombinationsClue;
@@ -182,12 +183,13 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
     var expN = clue.expressions[0];
     var expK = clue.expressions[1];
 
-    var variableNames = <String>[];
+    var variables = <Variable>[];
     var variableValues = <List<int>>[];
     var count = puzzle.getVariables(clue, clue.expressions, possibleValue,
-        possibleVariables!, variableNames, variableValues, 1000000);
+        possibleVariables!, variables, variableValues, 1000000);
     if (count == 0) return false;
 
+    var variableNames = variables.map((e) => e.name).toList();
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
@@ -224,7 +226,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
 
             if (anyValid) {
               var index = 0;
-              for (var variable in variableNames) {
+              for (var variable in variables) {
                 possibleVariables[variable]!.add(product[index++]);
               }
               // if (Crossnumber.traceSolve) {
@@ -253,14 +255,14 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
 
   @override
   bool updateClues(
-      CombinationsPuzzle puzzle, String clueName, Set<int> possibleValues,
+      CombinationsPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order
@@ -295,7 +297,7 @@ Iterable<int> kPrimesGreaterN(int valueN, int valueK) sync* {
   }
 }
 
-late final sumRange = Memoized2((int begin, int end) {
+final sumRange = Memoized2((int begin, int end) {
   int sum = 0;
   for (int i = begin; i <= end; i++) {
     sum += i;
@@ -303,7 +305,7 @@ late final sumRange = Memoized2((int begin, int end) {
   return sum;
 });
 
-late final computeSumKPrimes = Memoized2((int valueN, int valueK) {
+final computeSumKPrimes = Memoized2((int valueN, int valueK) {
   var sum = 0;
   for (var prime in kPrimesGreaterN(valueN, valueK)) {
     sum += prime;
@@ -311,7 +313,7 @@ late final computeSumKPrimes = Memoized2((int valueN, int valueK) {
   return sum;
 });
 
-late final computeProductKPrimes = Memoized2((int valueN, int valueK) {
+final computeProductKPrimes = Memoized2((int valueN, int valueK) {
   var product = 1;
   for (var prime in kPrimesGreaterN(valueN, valueK)) {
     product *= prime;
@@ -319,7 +321,7 @@ late final computeProductKPrimes = Memoized2((int valueN, int valueK) {
   return product;
 });
 
-late final computeCombinations = Memoized2((int valueN, int valueK) {
+final computeCombinations = Memoized2((int valueN, int valueK) {
   if (valueK < 1 || valueK > valueN) return 0;
   if (valueK == valueN) return 1;
   if (valueK == 1) return valueN;
@@ -340,7 +342,7 @@ late final computeCombinations = Memoized2((int valueN, int valueK) {
   }
 });
 
-late final Memoized1<int, int> getFactorial = Memoized1((int n) {
+final Memoized1<int, int> getFactorial = Memoized1((int n) {
   if (n > 19) throw SolveException('Factorial out of range');
   if (n <= 1) return n;
   return n * getFactorial(n - 1);

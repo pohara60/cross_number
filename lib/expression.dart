@@ -1,5 +1,7 @@
 // Evaluate expression strings, with variable references
 
+// ignore_for_file: constant_identifier_names, curly_braces_in_flow_control_structures
+
 // Token specification
 import 'dart:math';
 
@@ -7,7 +9,8 @@ import 'generators.dart';
 import 'monadic.dart';
 import 'variable.dart';
 
-typedef num? ExpressionCallback(num? left, num? right, num? result, Node node);
+typedef ExpressionCallback = num? Function(
+    num? left, num? right, num? result, Node node);
 
 mixin Expression {
   final expressions = <ExpressionEvaluator>[];
@@ -15,7 +18,7 @@ mixin Expression {
   String get expString => expressions.fold(
       '',
       (previousValue, element) =>
-          previousValue == '' ? element.text : '|' + element.text);
+          previousValue == '' ? element.text : '|${element.text}');
 
   void initExpression(String? valueDesc, String variablePrefix, String name,
       VariableRefList variableRefs,
@@ -28,10 +31,11 @@ mixin Expression {
           variableRefs.addVariableReference(variableName);
         }
         for (var clueName in exp.clueRefs..sort()) {
-          if (entryNames != null && entryNames.contains(clueName))
+          if (entryNames != null && entryNames.contains(clueName)) {
             variableRefs.addEntryReference(clueName);
-          else
+          } else {
             variableRefs.addClueReference(clueName);
+          }
         }
       } on ExpressionError catch (e) {
         throw ExpressionError('$name expression $valueDesc error ${e.msg}');
@@ -91,12 +95,11 @@ class Token {
   final String name;
   Token(this.str, this.type, {this.value = 0, this.name = ''});
   String toLongString() {
-    return '$type' +
-        (value != 0 ? '=${value.toString()}' : '') +
-        (name != '' ? '=$name' : '');
+    return '$type${value != 0 ? '=${value.toString()}' : ''}${name != '' ? '=$name' : ''}';
   }
 
-  String toString() => this.str;
+  @override
+  String toString() => str;
 }
 
 class Scanner {
@@ -111,15 +114,15 @@ class Scanner {
   }
 
   static void addGenerators(List<Generator> generatorList) {
-    generatorList.forEach((generator) {
+    for (var generator in generatorList) {
       generators[generator.name] = generator;
-    });
+    }
   }
 
   static void addMonadics(List<Monadic> monadicList) {
-    monadicList.forEach((monadic) {
+    for (var monadic in monadicList) {
       monadics[monadic.name] = monadic;
-    });
+    }
   }
 
   static Iterable<Token?> generateTokens(String text,
@@ -139,8 +142,9 @@ class Scanner {
           // Simple alpha entry names are scanned as variables
           // The name is case sensitive
           yield Token(match!, CLUE, name: match);
-        } else
+        } else {
           yield Token(match!, VAR, name: variablePrefix + match);
+        }
       }
       if (m.namedGroup(GENERATOR) != null) {
         var name = match!.substring(1).toLowerCase();
@@ -225,18 +229,18 @@ class Node {
   int? depth;
 
   Node? get left =>
-      operands != null && operands!.length >= 1 ? operands![0] : null;
+      operands != null && operands!.isNotEmpty ? operands![0] : null;
   Node? get right =>
-      operands != null && operands!.length >= 1 ? operands![1] : null;
+      operands != null && operands!.isNotEmpty ? operands![1] : null;
 
   Node(this.token, [List<Node?>? operands, this.depth]) {
-    if (operands == null)
+    if (operands == null) {
       this.operands = null;
-    else {
+    } else {
       this.operands = [];
-      operands.forEach((element) {
+      for (var element in operands) {
         if (element != null) this.operands!.add(element);
-      });
+      }
     }
     nodeComplexity();
     nodeOrder();
@@ -246,10 +250,11 @@ class Node {
     switch (token.type) {
       case CLUE:
       case VAR:
-        if (token.type == subject.type && token.name == subject.name)
+        if (token.type == subject.type && token.name == subject.name) {
           return this;
+        }
       default:
-        Node? sNode = null;
+        Node? sNode;
         int count = 0;
         if (operands != null) {
           for (var node in operands!) {
@@ -260,8 +265,9 @@ class Node {
             }
           }
         }
-        if (count > 1)
+        if (count > 1) {
           throw ExpressionInvalid('More than one node for $subject');
+        }
         return sNode;
     }
     return null;
@@ -285,8 +291,9 @@ class Node {
           if (left!.findNode(newSubject) != null) {
             var newToken = token;
             if (token.type == PLUS) newToken = Token("-", MINUS);
-            if (token.type == MINUS && right != null)
+            if (token.type == MINUS && right != null) {
               newToken = Token("+", PLUS);
+            }
             if (token.type == TIMES) newToken = Token("/", DIVIDE);
             if (token.type == DIVIDE) newToken = Token("*", TIMES);
             var other = child ?? Node(oldSubject);
@@ -349,17 +356,18 @@ class Node {
         if (monadic.type == Iterable<int>) {
           // Descending/Ascending/Unknown generator functions
           if (order == NodeOrder.SINGLE &&
-              monadic.order == NodeOrder.DESCENDING)
+              monadic.order == NodeOrder.DESCENDING) {
             order = NodeOrder.DESCENDING;
-          else if (order == NodeOrder.SINGLE &&
+          } else if (order == NodeOrder.SINGLE &&
               monadic.order == NodeOrder.ASCENDING)
             order = NodeOrder.ASCENDING;
           else
             order = NodeOrder.UNKNOWN;
         } else {
           // Non-generator functions that do not preserve operand order
-          if (order != NodeOrder.SINGLE && monadic.order == NodeOrder.UNKNOWN)
+          if (order != NodeOrder.SINGLE && monadic.order == NodeOrder.UNKNOWN) {
             order = NodeOrder.UNKNOWN;
+          }
         }
       } else if (token.type == REVERSE) {
         order = NodeOrder.UNKNOWN;
@@ -367,14 +375,15 @@ class Node {
     } else {
       var childOrder1 = operands![0].order;
       var childOrder2 = operands![1].order;
-      if (childOrder1 == NodeOrder.SINGLE && childOrder2 == NodeOrder.SINGLE)
+      if (childOrder1 == NodeOrder.SINGLE && childOrder2 == NodeOrder.SINGLE) {
         order = NodeOrder.SINGLE;
-      else if (token.type == MINUS || token.type == DIVIDE) {
+      } else if (token.type == MINUS || token.type == DIVIDE) {
         if (childOrder1 == NodeOrder.SINGLE) {
-          if (childOrder2 == NodeOrder.ASCENDING)
+          if (childOrder2 == NodeOrder.ASCENDING) {
             order = NodeOrder.DESCENDING;
-          else
+          } else {
             order = NodeOrder.ASCENDING;
+          }
         } else if (childOrder2 == NodeOrder.SINGLE)
           order = childOrder1;
         else
@@ -382,9 +391,9 @@ class Node {
       } else if (token.type == MOD) {
         order = NodeOrder.UNKNOWN;
       } else {
-        if (childOrder1 == NodeOrder.SINGLE)
+        if (childOrder1 == NodeOrder.SINGLE) {
           order = childOrder2;
-        else if (childOrder2 == NodeOrder.SINGLE)
+        } else if (childOrder2 == NodeOrder.SINGLE)
           order = childOrder1;
         else
           order = NodeOrder.UNKNOWN;
@@ -401,9 +410,9 @@ class Node {
       }
     } else if (operands!.length == 1) {
       var childComplexity = operands!.first.complexity;
-      if (childComplexity == NodeComplexity.GENERATOR_CHILDREN)
+      if (childComplexity == NodeComplexity.GENERATOR_CHILDREN) {
         complexity = NodeComplexity.GENERATOR_CHILDREN;
-      else if (childComplexity == NodeComplexity.GENERATOR_CHILD)
+      } else if (childComplexity == NodeComplexity.GENERATOR_CHILD)
         complexity = NodeComplexity.GENERATOR_CHILD;
       else if (childComplexity == NodeComplexity.GENERATOR)
         complexity = NodeComplexity.GENERATOR_CHILD;
@@ -413,19 +422,20 @@ class Node {
         var name = token.name;
         var monadic = monadics[name]!;
         if (monadic.type == Iterable<int>) {
-          if (complexity == NodeComplexity.SIMPLE)
+          if (complexity == NodeComplexity.SIMPLE) {
             complexity = NodeComplexity.GENERATOR;
-          else
+          } else {
             complexity = NodeComplexity.GENERATOR_CHILDREN;
+          }
         }
       }
     } else {
       var childComplexity1 = operands![0].complexity;
       var childComplexity2 = operands![1].complexity;
       if (childComplexity1 == NodeComplexity.GENERATOR_CHILDREN ||
-          childComplexity2 == NodeComplexity.GENERATOR_CHILDREN)
+          childComplexity2 == NodeComplexity.GENERATOR_CHILDREN) {
         complexity = NodeComplexity.GENERATOR_CHILDREN;
-      else if ((childComplexity1 == NodeComplexity.GENERATOR_CHILD ||
+      } else if ((childComplexity1 == NodeComplexity.GENERATOR_CHILD ||
               childComplexity1 == NodeComplexity.GENERATOR) &&
           (childComplexity2 == NodeComplexity.GENERATOR_CHILD ||
               childComplexity2 == NodeComplexity.GENERATOR))
@@ -441,6 +451,7 @@ class Node {
     }
   }
 
+  @override
   String toString() => operands == null
       ? '$token'
       : operands!.length == 1
@@ -492,35 +503,37 @@ class ExpressionEvaluator {
       [this.variablePrefix = '', List<String>? entryNames]) {
     var tokenIterable =
         Scanner.generateTokens(text, variablePrefix, entryNames);
-    this.tokenIterator = tokenIterable.iterator;
-    this.tok = null; // Last symbol consumed
-    this.nexttok = null; // Next symbol tokenized
-    this._advance(); // Load first lookahead token
-    this._parse(); // Build tree
-    if (this.tree != null) {
-      this._setDepth([this.tree!]);
+    tokenIterator = tokenIterable.iterator;
+    tok = null; // Last symbol consumed
+    nexttok = null; // Next symbol tokenized
+    _advance(); // Load first lookahead token
+    _parse(); // Build tree
+    if (tree != null) {
+      _setDepth([tree!]);
     }
-    this.usesResult =
+    usesResult =
         _hasToken(GENERATOR, "result"); // Does not yet use generator result
-    this.variableRefs.sort();
-    if (this.tree!.order == NodeOrder.UNKNOWN &&
-        (this.tree!.complexity == NodeComplexity.GENERATOR_CHILD ||
-            this.tree!.complexity == NodeComplexity.GENERATOR_CHILDREN))
+    variableRefs.sort();
+    if (tree!.order == NodeOrder.UNKNOWN &&
+        (tree!.complexity == NodeComplexity.GENERATOR_CHILD ||
+            tree!.complexity == NodeComplexity.GENERATOR_CHILDREN)) {
       print("Warning: expression '$text' has generator with Unknown Order");
+    }
   }
 
-  String toString() => this.tree == null ? '' : this.tree.toString();
+  @override
+  String toString() => tree == null ? '' : tree.toString();
 
   void _parse() {
-    this.tree = this.logical();
-    if (this.nexttok != null) {
-      throw ExpressionError('Parse error at ${this.nexttok.toString()}');
+    tree = logical();
+    if (nexttok != null) {
+      throw ExpressionError('Parse error at ${nexttok.toString()}');
     }
   }
 
   bool _hasToken(String token, String name, [Node? node]) {
-    if (node == null) node = this.tree!;
-    if (node.token == token && node.token.name == name) return true;
+    node ??= tree!;
+    if (node.token.type == token && node.token.name == name) return true;
     if (node.operands != null) {
       for (var child in node.operands!) {
         if (_hasToken(token, name, child)) return true;
@@ -539,7 +552,7 @@ class ExpressionEvaluator {
   }
 
   void getVariableReferences(List<String> references, [Node? node]) {
-    if (node == null) node = tree;
+    node ??= tree;
     if (node!.token.type == VAR) {}
   }
 
@@ -559,8 +572,7 @@ class ExpressionEvaluator {
     // Get new evaluation tree and text
     try {
       if (tree!.findNode(newSubjectToken) != null) {
-        var newTree =
-            this.tree!.rearrangeNode(newSubjectToken, oldSubjectToken);
+        var newTree = tree!.rearrangeNode(newSubjectToken, oldSubjectToken);
         var newText = newTree.toString();
         return newText;
       }
@@ -573,10 +585,10 @@ class ExpressionEvaluator {
   }
 
   String fixReference(clueName) {
-    if (this.clueRefs.contains(clueName)) {
-      this.clueRefs.remove(clueName);
-      var name = this.variablePrefix + clueName;
-      this.variableRefs.add(name);
+    if (clueRefs.contains(clueName)) {
+      clueRefs.remove(clueName);
+      var name = variablePrefix + clueName;
+      variableRefs.add(name);
       tree!.fixNode(
         Token(clueName, CLUE, name: clueName),
         Token(name, VAR, name: name),
@@ -593,7 +605,7 @@ class ExpressionEvaluator {
   ]) {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
-    var value = this.eval(this.tree, callback);
+    var value = eval(tree, callback);
     checkInteger(value);
     return value.toInt();
   }
@@ -608,15 +620,15 @@ class ExpressionEvaluator {
   ]) sync* {
     this.variableNames = variableNames;
     this.variableValues = variableValues;
-    this.result = null;
-    if (min == null) min = 1;
-    if (max == null) max = 100000; // Arbitrarily large
-    this.minResult = min;
-    this.maxResult = max;
-    if (this.usesResult) {
+    result = null;
+    min ??= 1;
+    max ??= 100000; // Arbitrarily large
+    minResult = min;
+    maxResult = max;
+    if (usesResult) {
       this.knownResults = knownResults?.toList()?..sort();
     }
-    for (var value in this.gen(min, max, this.tree, callback)) {
+    for (var value in gen(min, max, tree, callback)) {
       num result = resultValue(value);
       if (isIntegerValue(result)) yield result.toInt();
       this.result = null;
@@ -634,18 +646,18 @@ class ExpressionEvaluator {
 
   void _advance() {
     // Advance one token ahead
-    this.tok = this.nexttok;
+    tok = nexttok;
     if (tokenIterator.moveNext()) {
-      this.nexttok = tokenIterator.current;
+      nexttok = tokenIterator.current;
     } else {
-      this.nexttok = null;
+      nexttok = null;
     }
   }
 
   bool _accept(toktype) {
     // Test and consume the next token if it matches toktype
-    if (this.nexttok?.type == toktype) {
-      this._advance();
+    if (nexttok?.type == toktype) {
+      _advance();
       return true;
     }
     return false;
@@ -653,8 +665,8 @@ class ExpressionEvaluator {
 
   void _expect(toktype) {
     // Consume next token if it matches toktype or throw SyntaxError
-    if (!this._accept(toktype)) {
-      throw ExpressionError('Expected ' + toktype);
+    if (!_accept(toktype)) {
+      throw ExpressionError('Expected $toktype');
     }
   }
 
@@ -663,10 +675,10 @@ class ExpressionEvaluator {
   Node logical() {
     // logical ::= expr { '=' expr }*
 
-    var node = this.expr();
-    while (this._accept(EQUAL)) {
-      var token = this.tok!;
-      var right = this.expr();
+    var node = expr();
+    while (_accept(EQUAL)) {
+      var token = tok!;
+      var right = expr();
       node = Node(token, [node, right]);
     }
     return node;
@@ -675,10 +687,10 @@ class ExpressionEvaluator {
   Node expr() {
     // expression ::= term { ('+'|'-') term }*
 
-    var node = this.term();
-    while (this._accept(PLUS) || this._accept(MINUS)) {
-      var token = this.tok!;
-      var right = this.term();
+    var node = term();
+    while (_accept(PLUS) || _accept(MINUS)) {
+      var token = tok!;
+      var right = term();
       node = Node(token, [node, right]);
     }
     return node;
@@ -686,10 +698,10 @@ class ExpressionEvaluator {
 
   Node term() {
     // term ::= exponent { ('*'|'/'|'%') exponent }*
-    var node = this.exponent();
-    while (this._accept(TIMES) || this._accept(DIVIDE) || this._accept(MOD)) {
-      var token = this.tok!;
-      var right = this.exponent();
+    var node = exponent();
+    while (_accept(TIMES) || _accept(DIVIDE) || _accept(MOD)) {
+      var token = tok!;
+      var right = exponent();
       node = Node(token, [node, right]);
     }
     return node;
@@ -697,10 +709,10 @@ class ExpressionEvaluator {
 
   Node exponent() {
     // exponent ::= unary { '^') unary }*
-    var node = this.unary();
-    while (this._accept(EXPONENT)) {
-      var token = this.tok!;
-      var right = this.unary();
+    var node = unary();
+    while (_accept(EXPONENT)) {
+      var token = tok!;
+      var right = unary();
       node = Node(token, [node, right]);
     }
     return node;
@@ -708,28 +720,28 @@ class ExpressionEvaluator {
 
   Node unary() {
     // term ::= { '-' | '√' | MONADIC }* multiplication
-    if (this._accept(MINUS)) {
-      var token = this.tok!;
+    if (_accept(MINUS)) {
+      var token = tok!;
       var left = Node(Token('', NUM, value: 0));
-      var right = this.unary();
+      var right = unary();
       var node = Node(token, [left, right]);
       return node;
     }
-    if (this._accept(ROOT) || this._accept(MONADIC)) {
-      var token = this.tok!;
-      var right = this.unary();
+    if (_accept(ROOT) || _accept(MONADIC)) {
+      var token = tok!;
+      var right = unary();
       var node = Node(token, [right]);
       return node;
     }
-    return this.multiplication();
+    return multiplication();
   }
 
   Node multiplication() {
     // multiplication ::= factorial { factorial }*
-    var node = this.factorial();
+    var node = factorial();
     if (node != null) {
       while (true) {
-        var node2 = this.factorial();
+        var node2 = factorial();
         if (node2 == null) return node!;
         var token = Token('', TIMES);
         node = Node(token, [node!, node2]);
@@ -741,9 +753,9 @@ class ExpressionEvaluator {
 
   Node? factorial() {
     // factorial ::= factor { '!' | "'"}
-    var node = this.factor();
-    if (node != null && (this._accept(FACTORIAL) || this._accept(REVERSE))) {
-      var token = this.tok!;
+    var node = factor();
+    if (node != null && (_accept(FACTORIAL) || _accept(REVERSE))) {
+      var token = tok!;
       node = Node(token, [node]);
     }
     return node;
@@ -751,25 +763,23 @@ class ExpressionEvaluator {
 
   Node? factor() {
     // factor ::= VAR | CLUE | NUM | GENERATOR | ( expr ) | ERROR
-    if (this._accept(VAR) ||
-        this._accept(CLUE) ||
-        this._accept(NUM) ||
-        this._accept(GENERATOR)) {
-      var token = this.tok!;
+    if (_accept(VAR) || _accept(CLUE) || _accept(NUM) || _accept(GENERATOR)) {
+      var token = tok!;
       if (token.type == VAR) {
-        if (!this.variableRefs.contains(token.name))
-          this.variableRefs.add(token.name);
+        if (!variableRefs.contains(token.name)) {
+          variableRefs.add(token.name);
+        }
       }
       if (token.type == CLUE) {
-        if (!this.clueRefs.contains(token.name)) this.clueRefs.add(token.name);
+        if (!clueRefs.contains(token.name)) clueRefs.add(token.name);
       }
       return Node(token);
-    } else if (this._accept(LPAREN)) {
-      var node = this.expr();
-      this._expect(RPAREN);
+    } else if (_accept(LPAREN)) {
+      var node = expr();
+      _expect(RPAREN);
       return node;
-    } else if (this._accept(ERROR)) {
-      throw ExpressionError(this.tok!.name);
+    } else if (_accept(ERROR)) {
+      throw ExpressionError(tok!.name);
     } else {
       return null;
     }
@@ -854,18 +864,19 @@ class ExpressionEvaluator {
         result = left;
       case CLUE:
         var name = node.token.name;
-        var index = this.variableNames!.indexOf(name);
+        if (name.length > 1 && name[0] == 'E') name = name.substring(1);
+        var index = variableNames!.indexOf(name);
         if (index < 0) {
           throw ExpressionInvalid('Unknown clue $name');
         }
-        result = this.variableValues![index];
+        result = variableValues![index];
       case VAR:
         var name = node.token.name;
-        var index = this.variableNames!.indexOf(name);
+        var index = variableNames!.indexOf(name);
         if (index < 0) {
           throw ExpressionInvalid('Unknown variable $name');
         }
-        result = this.variableValues![index];
+        result = variableValues![index];
       case MONADIC:
         var name = node.token.name;
         var monadic = monadics[name];
@@ -878,11 +889,12 @@ class ExpressionEvaluator {
             ? monadic.func!(left.toInt())
             : monadic.funcRange!(left.toInt(), null, null);
         if (funcResult is bool) {
-          if (funcResult)
+          if (funcResult) {
             result = left;
-          else
+          } else {
             throw ExpressionInvalid(
                 'False bool result for monadic $name in simple expression');
+          }
         } else if (funcResult is num) {
           result = funcResult;
         } else {
@@ -961,12 +973,12 @@ class ExpressionEvaluator {
         var rvalue =
             rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
         // Arbitrary min/max limit when do not know what values are to be subtracted
-        const ARBITRARY_LIMIT = 10000;
+        const arbitraryLimit = 10000;
         for (var left in lnode.order == NodeOrder.SINGLE
             ? [lvalue]
             : gen(
-                rvalue == 0 ? -ARBITRARY_LIMIT : min + rvalue,
-                rvalue == 0 ? ARBITRARY_LIMIT : max + rvalue,
+                rvalue == 0 ? -arbitraryLimit : min + rvalue,
+                rvalue == 0 ? arbitraryLimit : max + rvalue,
                 lnode,
                 callback,
               )) {
@@ -1283,11 +1295,11 @@ class ExpressionEvaluator {
         }
         if (name == 'result') {
           // Result generator is constrained to expression min/max
-          min = this.minResult!;
-          max = this.maxResult!;
+          min = minResult!;
+          max = maxResult!;
           // if previously evaluated want same value
-          if (this.result != null) {
-            if (this.result! >= min && this.result! <= max) yield this.result!;
+          if (result != null) {
+            if (result! >= min && result! <= max) yield result!;
             return;
           }
           // if have previous known values then return them
@@ -1331,7 +1343,7 @@ class ExpressionEvaluator {
         // Heuristic for min/max of argument to function
         var fmin = 1;
         var fmax = max;
-        if (!(monadic.type is bool) && name != 'jumble') {
+        if (monadic.type is! bool && name != 'jumble') {
           fmax = maxResult! * maxResult!;
         }
         for (var left in gen(fmin, fmax, childNode, callback)) {

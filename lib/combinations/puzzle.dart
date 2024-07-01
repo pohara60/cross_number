@@ -5,10 +5,10 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class CombinationsVariable extends Variable {
-  CombinationsVariable(letter) : super(letter) {
-    this.values = Set.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  CombinationsVariable(super.letter) {
+    values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class CombinationsPuzzle extends VariablePuzzle<CombinationsClue,

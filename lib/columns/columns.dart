@@ -27,6 +27,7 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper({String? name, int? length, String? valueDesc}) {
@@ -39,7 +40,7 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -85,8 +86,9 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -96,9 +98,9 @@ class Columns extends Crossnumber<ColumnsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as ColumnsPuzzle;
     var clue = v as ColumnsClue;

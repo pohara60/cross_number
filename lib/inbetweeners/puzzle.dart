@@ -5,8 +5,8 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class InbetweenersVariable extends Variable {
-  InbetweenersVariable(letter) : super(letter) {
-    this.values = Set.from([
+  InbetweenersVariable(super.letter) {
+    values = {
       2,
       3,
       5,
@@ -17,9 +17,9 @@ class InbetweenersVariable extends Variable {
       19,
       23,
       29,
-    ]);
+    };
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class InbetweenersPuzzle extends VariablePuzzle<InbetweenersClue,
@@ -29,6 +29,7 @@ class InbetweenersPuzzle extends VariablePuzzle<InbetweenersClue,
   InbetweenersPuzzle.fromGridString(List<String> gridString, {String name = ''})
       : super.fromGridString([], gridString, name: name);
 
+  @override
   bool checkSolution() {
     if (!super.checkSolution()) return false;
     if (!checkFrequencyAllDigits()) return false;

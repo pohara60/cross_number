@@ -3,10 +3,10 @@ import '../puzzle.dart';
 import '../variable.dart';
 
 class LetterVariable extends Variable {
-  LetterVariable(letter) : super(letter) {
-    this.values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  LetterVariable(super.letter) {
+    values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class LettersPuzzle

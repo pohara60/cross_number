@@ -3,10 +3,10 @@ import '../puzzle.dart';
 import '../variable.dart';
 
 class ChessboardVariable extends Variable {
-  ChessboardVariable(letter) : super(letter) {
-    this.values = {};
+  ChessboardVariable(super.letter) {
+    values = {};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class ChessboardPuzzle extends VariablePuzzle<ChessboardClue, ChessboardEntry,

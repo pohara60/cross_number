@@ -5,11 +5,11 @@ import '../puzzle.dart';
 import '../variable.dart';
 
 class FactorsVariable extends Variable {
-  FactorsVariable(letter) : super(letter) {
-    this.values = Set.from([2, 3, 5, 7]);
-    this.values!.addAll(twoDigitPrimes);
+  FactorsVariable(super.letter) {
+    values = {2, 3, 5, 7};
+    values!.addAll(twoDigitPrimes);
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class FactorsPuzzle
@@ -24,8 +24,8 @@ class FactorsPuzzle
     var text = super.toSummary();
     text += grid!.rows.fold(
         '',
-        (previousValue, row) => row.fold(previousValue,
-            (previousValue, cell) => previousValue + cell.toString() + '\n'));
+        (previousValue, row) => row.fold(
+            previousValue, (previousValue, cell) => '$previousValue$cell\n'));
     return text;
   }
 }

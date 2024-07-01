@@ -5,7 +5,7 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class {{env['ABCD']}}Variable extends Variable {
-  {{env['ABCD']}}Variable(letter) : super(letter) {
+  {{env['ABCD']}}Variable(super.letter) {
     this.values = Set.from([]);
   }
   String get letter => this.name;

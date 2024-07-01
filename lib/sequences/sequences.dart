@@ -31,8 +31,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     puzzle = SequencesPuzzle.fromGridString(gridString);
     initCrossnumber();
   }
-
-  SolveFunction solveWrapper(
+  SolveFunction solveWrapperOld(
       bool Function(SequencesEntry clue, Set<int> possibleValue,
               Map<String, Set<int>> possibleLetters)
           solve) {
@@ -41,17 +40,45 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       Variable v,
       Set<int> possibleValue, {
       Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
     }) {
       var clue = v as SequencesEntry;
-      return solve(clue, possibleValue, possibleVariables!);
+      Map<String, Set<int>> possibleLetters = {};
+      for (var entry in possibleVariables!.entries) {
+        var variable = entry.key;
+        possibleLetters[variable.name] = entry.value;
+      }
+      var updated = solve(clue, possibleValue, possibleLetters);
+      return updated;
     }
 
     return solveSequencesClue;
   }
 
+  SolveFunction solveWrapper(
+      bool Function(SequencesEntry clue, Set<int> possibleValue,
+              Map<Variable, Set<int>> possibleLetters)
+          solve) {
+    bool solveSequencesClue(
+      Puzzle p,
+      Variable v,
+      Set<int> possibleValue, {
+      Set<int>? possibleValue2,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
+    }) {
+      var clue = v as SequencesEntry;
+      var updated = solve(clue, possibleValue, possibleVariables!);
+      return updated;
+    }
+
+    return solveSequencesClue;
+  }
+
+  @override
   void initCrossnumber() {
     var a2 = SequencesEntry(
       name: 'A2', length: 4, valueDesc: 'P*o + W*E + r',
@@ -290,7 +317,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
       name: 'D26',
       length: 2,
       valueDesc: 'S*Y*S = S*(I - S)',
-      solve: solveWrapper(solveD26),
+      solve: solveWrapperOld(solveD26),
       //solve: solveSequencesClue,
     );
     puzzle.addEntry(d26);
@@ -353,7 +380,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   solveA2(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -369,7 +396,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   solveA5(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -386,7 +413,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   solveA8(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -401,7 +428,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA10(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -415,7 +442,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA11(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -431,7 +458,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA12(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -447,7 +474,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA13(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -463,7 +490,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA16(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -479,7 +506,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA17(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -493,7 +520,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA18(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -510,7 +537,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA20(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -526,7 +553,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA22(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -542,7 +569,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA23(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -558,7 +585,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA25(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -572,7 +599,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA26(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -588,7 +615,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA28(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -604,7 +631,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA30(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -623,7 +650,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveA31(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -639,7 +666,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD1(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -653,7 +680,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD2(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -668,7 +695,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD3(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -682,7 +709,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD4(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -699,7 +726,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD5(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -715,7 +742,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD6(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -732,7 +759,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD7(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -748,7 +775,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD9(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -765,7 +792,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD12(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -781,7 +808,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD13(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -796,7 +823,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD14(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -811,7 +838,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD15(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -826,7 +853,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD19(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -843,7 +870,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD21(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -858,7 +885,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD22(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -874,7 +901,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD24(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -919,7 +946,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   // }
 
   bool solveD27(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -936,7 +963,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
   }
 
   bool solveD29(SequencesEntry clue, Set<int> possibleValue,
-      Map<String, Set<int>> possibleLetters) {
+      Map<Variable, Set<int>> possibleLetters) {
     var updated = false;
     puzzle.solveVariableExpression(clue, possibleValue, possibleLetters,
         (letters) {
@@ -1012,6 +1039,7 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     return updated;
   }
 
+  @override
   void solve([bool iteration = true]) {
     print("SOLVE------------");
     // Manual sequencing of solution saves 20 iterations
@@ -1035,9 +1063,9 @@ class Sequences extends Crossnumber<SequencesPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as SequencesPuzzle;
     var clue = v as SequencesClue;

@@ -60,9 +60,9 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
       Variable v,
       Set<int> possibleValue, {
       Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
     }) {
       var clue = v as DiceNetsEntry;
       return solve(clue, possibleValue);
@@ -71,6 +71,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
     return solveDiceNetsClue;
   }
 
+  @override
   void initCrossnumber() {
     a1 = DiceNetsEntry(
         name: 'A1',
@@ -567,7 +568,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
   bool solveD1(DiceNetsEntry clue, Set<int> possibleValue) {
     filterDiceDigits(clue, getFourDigitSquares(), possibleValue);
     // A36 is Jumble of D1, so check for illegal values
-    if (possibleValue.length > 0) {
+    if (possibleValue.isNotEmpty) {
       // Find required and forbidden digits in A36, check for D1 values that have them
       var required = <int>{};
       var forbidden = Set.from(List.generate(6, (index) => index + 1));
@@ -577,7 +578,7 @@ class DiceNets extends Crossnumber<DiceNetsPuzzle> {
         }
         forbidden.removeAll(a36.digits[d]);
       }
-      if (required.length > 0 || forbidden.length > 0) {
+      if (required.isNotEmpty || forbidden.isNotEmpty) {
         var removeValue = <int>{};
         for (var value in possibleValue) {
           var ok = true;

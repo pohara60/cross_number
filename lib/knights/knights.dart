@@ -31,6 +31,7 @@ class Knights extends Crossnumber<KnightsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper({String? name, int? length, String? valueDesc}) {
@@ -43,7 +44,7 @@ class Knights extends Crossnumber<KnightsPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -97,8 +98,9 @@ class Knights extends Crossnumber<KnightsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -108,9 +110,9 @@ class Knights extends Crossnumber<KnightsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as KnightsPuzzle;
     var clue = v as KnightsClue;
@@ -122,9 +124,7 @@ class Knights extends Crossnumber<KnightsPuzzle> {
     } else {
       // Values may have been set by other Clue
       var values = clue.values;
-      if (values == null) {
-        values = getValuesFromClueDigits(clue);
-      }
+      values ??= getValuesFromClueDigits(clue);
       if (values != null) {
         var newValues = values.where((value) => validClue(clue, value, [], []));
         possibleValue.addAll(newValues);

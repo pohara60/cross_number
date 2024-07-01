@@ -1,5 +1,6 @@
 #!/bin/bash
 ROOT=~/Documents/Development/Dart/cross_number
+EXCLUDED=
 for file in $*
 do
     puzzle=${file%_test.dart}
@@ -9,6 +10,7 @@ do
         if [ -f "$output" ]; then
             if [[ "$EXCLUDE" =~ "/$puzzle/" ]]; then
                 echo Exclude $puzzle
+                EXCLUDED=$EXCLUDED" $puzzle"
             else
                 echo Running $puzzle
                 result=/tmp/"$puzzle"_result.txt
@@ -32,3 +34,6 @@ do
         echo Skip $puzzle
     fi
 done
+if [ -n "$EXCLUDED" ]; then
+    echo Excluded $EXCLUDE
+fi

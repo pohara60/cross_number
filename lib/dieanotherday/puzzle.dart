@@ -8,12 +8,12 @@ import 'dieanotherday.dart';
 
 class DieAnotherDayVariable extends Variable {
   DieAnotherDayVariable(letter) : super(letter.$1) {
-    this.values = Set.from([
+    values = {
       for (var i = letter.$2; i <= letter.$3; i++)
         if (!letter.$4.contains(i)) i
-    ]);
+    };
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
@@ -54,7 +54,7 @@ class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
 
     // Check variables
     dieAnotherDay.getPuzzleDigitCount(this);
-    var allUpdatedVariables = <String>{};
+    var allUpdatedVariables = <Variable>{};
     ok = dieAnotherDay.checkPuzzleVariables(
         this, allUpdatedVariables, false, true);
     return ok;

@@ -27,11 +27,12 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     for (var i = 0; i < 2; i++) {
       var puzzle = TwentyFivePuzzle.fromGridString(gridString,
           name: i == 0 ? 'Left' : 'Right');
-      this.puzzles.add(puzzle);
+      puzzles.add(puzzle);
 
       // Clue definitions define the Entries
       var clueErrors = '';
@@ -46,7 +47,7 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
           puzzle.addEntry(clue);
           return;
         } on ExpressionError catch (e) {
-          clueErrors += e.msg + '\n';
+          clueErrors += '${e.msg}\n';
           return;
         }
       }
@@ -80,8 +81,6 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
       for (var letter in letters) {
         puzzle.addAnyVariable(TwentyFiveVariable(letter));
       }
-
-      puzzle.finalize();
     }
 
     // All clues refer to clue in opposite puzzle
@@ -101,6 +100,10 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
       var otherPuzzle = puzzles[(i + 1) % 2];
       puzzle.updateClueReference('A11', 'A9', otherPuzzle);
       puzzle.updateClueReference('D3', 'D10', otherPuzzle);
+    }
+
+    for (var i = 0; i < 2; i++) {
+      puzzles[i].finalize();
     }
 
     super.initCrossnumber();
@@ -158,9 +161,9 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as TwentyFivePuzzle;
     var clue = v as TwentyFiveClue;
@@ -218,14 +221,14 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
 
   @override
   bool updateClues(
-      TwentyFivePuzzle puzzle, String clueName, Set<int> possibleValues,
+      TwentyFivePuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (!isEntry && updated) {
       // Digits
-      var clue = puzzle.clues[clueName]!;
-      updatePairs(puzzle, clue);
+      var clue = thisPuzzle.clues[clueName]!;
+      updatePairs(thisPuzzle, clue);
     }
     return updated;
   }

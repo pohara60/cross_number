@@ -8,10 +8,10 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class SquaresTrianglesVariable extends Variable {
-  SquaresTrianglesVariable(letter) : super(letter) {
-    this.values = Set.from([]);
+  SquaresTrianglesVariable(super.letter) {
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class SquaresTrianglesPuzzle extends VariablePuzzle<SquaresTrianglesClue,
@@ -21,7 +21,7 @@ class SquaresTrianglesPuzzle extends VariablePuzzle<SquaresTrianglesClue,
   SquaresTrianglesPuzzle.fromGridString(List<String> gridString,
       {String name = ''})
       : super.fromGridString([], gridString, name: name) {
-    this.distinctClues = false;
+    distinctClues = false;
   }
 
   // Iteration generates duplicate solutions, so filter them

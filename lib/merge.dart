@@ -68,7 +68,7 @@ class _IteratorPeeker<T> {
 }
 
 class _MergeIterator<T> implements Iterator<T> {
-  _MergeIterator(Iterable<Iterable<T>> this._iterables, this._compare) {
+  _MergeIterator(this._iterables, this._compare) {
     // Get first two iterators
     _iterator = _iterables.iterator;
     if (_iterator.moveNext()) {

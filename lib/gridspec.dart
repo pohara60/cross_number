@@ -11,15 +11,16 @@ class EntrySpec {
 
   EntrySpec(this.number, this.label, this.isAcross, this.row, this.col) {
     if (label != '') {
-      this.name = label;
+      name = label;
     } else if (isAcross) {
-      this.name = 'A${this.number}';
+      name = 'A$number';
     } else {
-      this.name = 'D${this.number}';
+      name = 'D$number';
     }
-    this.length = 1;
+    length = 1;
   }
 
+  @override
   String toString() {
     return '$name($length)';
   }
@@ -33,6 +34,7 @@ class CellSpec {
   int? downDigit;
   CellSpec(
       {this.number, this.across, this.acrossDigit, this.down, this.downDigit});
+  @override
   String toString() {
     return number != null ? number.toString() : ' ';
   }
@@ -148,7 +150,7 @@ class GridSpec {
 
   List<Map<String, dynamic>> getIdentities() {
     List<Map<String, dynamic>> identities = [];
-    for (var row in this.cells) {
+    for (var row in cells) {
       for (var cell in row) {
         if (cell!.across != null && cell.down != null) {
           identities.add({
@@ -163,9 +165,10 @@ class GridSpec {
     return identities;
   }
 
+  @override
   String toString() {
     var identities = '';
-    for (var row in this.cells) {
+    for (var row in cells) {
       for (var cell in row) {
         if (cell!.across != null && cell.down != null) {
           identities +=
@@ -178,10 +181,10 @@ class GridSpec {
 
   String solutionToString(Map<String, List<String>> entryValues) {
     var border = getBorder();
-    var text = border + '\n';
+    var text = '$border\n';
     var rowSeparator = '';
-    for (var row in this.cells) {
-      if (rowSeparator != '') text += rowSeparator + '\n';
+    for (var row in cells) {
+      if (rowSeparator != '') text += '$rowSeparator\n';
       rowSeparator = '+';
       var lastRowSeparatorChar = rowSeparator;
       var separator = '|';
@@ -225,12 +228,12 @@ class GridSpec {
       }
       text += '|\n';
     }
-    text += border + '\n';
+    text += '$border\n';
     return text;
   }
 
   String getBorder() {
-    var text = '+' + '--+' * cells[0].length;
+    var text = '+${'--+' * cells[0].length}';
     return text;
   }
 }

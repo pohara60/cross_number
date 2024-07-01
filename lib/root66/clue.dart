@@ -1,6 +1,7 @@
 import '../clue.dart';
 import '../variable.dart';
 
+// ignore: constant_identifier_names
 enum Root66ClueType { UNKNOWN, BCEF, G, BCEFG }
 
 /// A [Puzzle] clue
@@ -11,41 +12,37 @@ class Root66Clue extends ExpressionClue {
   Root66ClueType root66type;
 
   /// List of referenced letters
-  List<String> get letterReferences => this.variableNameReferences;
-  addLetterReference(String letter) => this.addVariableReference(letter);
+  List<String> get letterReferences => variableNameReferences;
+  addLetterReference(String letter) => addVariableReference(letter);
 
   Root66Clue({
-    required String name,
-    VariableType type = VariableType.C,
-    required int? length,
-    required Root66ClueType this.root66type,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve);
+    required super.name,
+    super.type = VariableType.C,
+    required super.length,
+    required this.root66type,
+    super.valueDesc,
+    super.solve,
+  });
 
   bool updatePreValues(Set<int> possiblePreValue) {
     var updated = false;
-    if (this.preValues == null) {
-      this.preValues = possiblePreValue;
+    if (preValues == null) {
+      preValues = possiblePreValue;
       updated = true;
     } else {
-      if (updatePossible(this.preValues!, possiblePreValue)) updated = true;
+      if (updatePossible(preValues!, possiblePreValue)) updated = true;
     }
     return updated;
   }
 
+  @override
   String toString() {
     var identityStr = digitIdentities
         .asMap()
         .entries
         .map((e) => e.value == null
             ? ''
-            : '${this.name}[${e.key}]=${e.value!.clue.name}[${e.value!.digit}]')
+            : '$name[${e.key}]=${e.value!.clue.name}[${e.value!.digit}]')
         .where((element) => element != '')
         .join(',');
     var referrersStr = referrers.map((e) => e.name).join(',');
@@ -66,19 +63,13 @@ class Root66Clue extends ExpressionClue {
 
 class Root66Entry extends Root66Clue with EntryMixin {
   Root66Entry({
-    required String name,
-    VariableType type = VariableType.E,
-    required int? length,
-    required Root66ClueType root66type,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            root66type: root66type,
-            valueDesc: valueDesc,
-            solve: solve) {
+    required super.name,
+    super.type = VariableType.E,
+    required super.length,
+    required super.root66type,
+    super.valueDesc,
+    super.solve,
+  }) {
     initEntry(this);
   }
 }

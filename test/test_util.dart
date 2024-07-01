@@ -14,27 +14,28 @@ void handleTimestamp(String data, EventSink sink) {
 }
 
 dynamic appendToIterable(Iterable<dynamic> iter, dynamic item) sync* {
-  for (var next in iter) yield next;
+  for (var next in iter) {
+    yield next;
+  }
   yield item;
 }
 
 // Test the command line program
 // output is the list of expected output lines
-void test_command(String command, String output_file_name) {
+void testCommand(String command, String outputFileName) {
   final path = 'bin/crossnumber.dart';
 
   test(command, () async {
     var timestampTransformer =
         StreamTransformer.fromHandlers(handleData: handleTimestamp);
-    final process =
-        await Process.start('dart', ['$path', ...command.split(' ')]);
+    final process = await Process.start('dart', [path, ...command.split(' ')]);
     final lineStream = process.stdout
         .transform(Utf8Decoder())
         .transform(LineSplitter())
         .transform(timestampTransformer);
 
-    var output_file = new File(output_file_name);
-    List<String> output = output_file.readAsLinesSync();
+    var outputFile = File(outputFileName);
+    List<String> output = outputFile.readAsLinesSync();
 
     // Test output is expected
     expect(

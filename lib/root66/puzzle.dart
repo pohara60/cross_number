@@ -3,10 +3,10 @@ import '../root66/clue.dart';
 import '../variable.dart';
 
 class Root66Variable extends Variable {
-  Root66Variable(letter) : super(letter) {
-    this.values = Set.from({1, 2, 3, 4, 5, 6, 7, 8, 9});
+  Root66Variable(super.letter) {
+    values = Set.from({1, 2, 3, 4, 5, 6, 7, 8, 9});
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class Root66Puzzle
@@ -18,6 +18,7 @@ class Root66Puzzle
             List.from({1, 2, 3, 4, 5, 6, 7, 8, 9}), gridString);
 
   Map<String, Variable> get letters => variableList.variables;
+  @override
   List<int> get remainingValues => variableList.restrictedValues!;
   Set<Variable> updateLetters(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
@@ -27,13 +28,13 @@ class Root66Puzzle
     if (iteration) {
       print("ITERATE SOLUTIONS-----------------------------");
       // Find ambiguous clues
-      for (var clue in this.clues.values) {
+      for (var clue in clues.values) {
         if ((clue).root66type == Root66ClueType.BCEFG &&
             clue.values != null &&
             clue.values!.length > 1) {
           var values = clue.values!;
           var valuestoRemove = <int>{};
-          print('Ambiguous clue ${clue.name}=${values}');
+          print('Ambiguous clue ${clue.name}=$values');
           for (var value in values) {
             if (duplicateDigit(value)) {
               valuestoRemove.add(value);
@@ -41,7 +42,7 @@ class Root66Puzzle
           }
           values.removeAll(valuestoRemove);
           if (values.length > 1) {
-            print('Still ambiguous clue ${clue.name}=${values}');
+            print('Still ambiguous clue ${clue.name}=$values');
           } else {
             print('Disambiguated clue ${clue.name}=${values.first}');
           }

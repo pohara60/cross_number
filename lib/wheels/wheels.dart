@@ -29,6 +29,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -43,7 +44,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -62,7 +63,7 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
         puzzle.addAnyVariable(variable);
         return;
       } on ExpressionError catch (e) {
-        variableErrors += e.msg + '\n';
+        variableErrors += '${e.msg}\n';
         return;
       }
     }
@@ -182,8 +183,9 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -193,9 +195,9 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as WheelsPuzzle;
     var clue = v as WheelsClue;
@@ -213,9 +215,9 @@ class Wheels extends Crossnumber<WheelsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as WheelsPuzzle;
     var variable = v as WheelsVariable;

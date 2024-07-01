@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'dart:io';
 import 'dart:math';
 
@@ -17,9 +19,9 @@ class UndoStack {
   static void push(Object object) {
     undoObject.add(object);
     Set<int> set = {};
-    if (object is Cell)
+    if (object is Cell) {
       set = object.digits;
-    else if (object is Clue)
+    } else if (object is Clue)
       set = object.values;
     else if (object is Variable)
       set = object.values;
@@ -35,9 +37,9 @@ class UndoStack {
       undoTop--;
       var object = undoObject.removeLast();
       var set = undoValue.removeLast();
-      if (object is Cell)
+      if (object is Cell) {
         object.digits = set;
-      else if (object is Clue)
+      } else if (object is Clue)
         object._values = set;
       else if (object is Variable)
         object._values = set;
@@ -105,8 +107,9 @@ class Cell {
 
   Set<int> getNewDigits(Set<int> digits, Set<int> validDigits) {
     Function eq = const SetEquality().equals;
-    if (digits.length == validDigits.length && eq(digits, validDigits))
+    if (digits.length == validDigits.length && eq(digits, validDigits)) {
       return digits;
+    }
     var newDigits = <int>{};
     for (var digit in digits) {
       if (validDigits.contains(digit)) newDigits.add(digit);
@@ -156,8 +159,9 @@ class Cell {
       if (isOppositeFaces(newDigits)) {
         updatedClues.addAll(otherCell.updateNewDigits(newDigits, false));
         removeOppositeDigits(otherCell.digits.first, validDigits);
-      } else
+      } else {
         unknownCells.add(otherCell);
+      }
     }
     for (var otherCell in unknownCells) {
       updatedClues.addAll(otherCell.updateDigits(validDigits, false));
@@ -165,6 +169,7 @@ class Cell {
     return updatedClues;
   }
 
+  @override
   String toString() => '$name=$digits';
   String toDigit() => digits.length == 1 ? digits.first.toString() : '?';
 
@@ -191,9 +196,9 @@ class Cell {
                   oppositeDigit != otherDigit &&
                       7 - oppositeDigit != otherDigit)) {
             newDigits.add(otherDigit);
-            if (newDigits.length == 1)
+            if (newDigits.length == 1) {
               nextOppositeDigit = otherDigit;
-            else if (newDigits.length > 2 ||
+            } else if (newDigits.length > 2 ||
                 otherDigit != 7 - nextOppositeDigit) nextOppositeDigit = 0;
           }
         }
@@ -215,13 +220,10 @@ class Grid {
     rows.addAll(List.generate(dimension,
         (row) => List.generate(dimension, (col) => Cell(face[0], row, col))));
   }
+  @override
   String toString() =>
-      '$face\n' +
-      this
-          .rows
-          .map((row) => row.fold('', (str, cell) => str + cell.toDigit()))
-          .join('\n');
-  int get sumdigits => this.rows.fold(
+      '$face\n${rows.map((row) => row.fold('', (str, cell) => str + cell.toDigit())).join('\n')}';
+  int get sumdigits => rows.fold(
       0, (value, row) => row.fold(value, (value, cell) => value + cell.digit));
 }
 
@@ -234,11 +236,11 @@ class Clue {
   var _values = <int>{};
   Set<int> get values => _values;
   int get value => values.length == 1 ? values.first : 0;
-  void set value(int value) {
+  set value(int value) {
     values = {value};
   }
 
-  void set values(Set<int> values) {
+  set values(Set<int> values) {
     UndoStack.push(this);
     _values = Set.from(values);
     // Update digits
@@ -271,8 +273,9 @@ class Clue {
       col = 0;
       if (name[1] == '1') {
         row = 0;
-      } else
+      } else {
         row = int.parse(name[1]) - 4;
+      }
     } else {
       row = 0;
       col = int.parse(name[1]) - 1;
@@ -284,10 +287,11 @@ class Clue {
       var cell = grid.rows[r][c];
       cells.add(cell);
       cell.clues.add(this);
-      if (isAcross)
+      if (isAcross) {
         c++;
-      else
+      } else {
         r++;
+      }
     }
   }
 
@@ -324,6 +328,7 @@ class Clue {
     if (!allOk) values = newValues;
   }
 
+  @override
   String toString() => '$face$name';
 
   int getValueFromDigits() {
@@ -344,15 +349,16 @@ class Variable {
   Variable(this.name, this._values);
   Set<int> get values => _values;
   int get value => values.length == 1 ? values.first : 0;
-  void set value(int value) {
+  set value(int value) {
     values = {value};
   }
 
-  void set values(Set<int> values) {
+  set values(Set<int> values) {
     UndoStack.push(this);
     _values = Set.from(values);
   }
 
+  @override
   String toString() => '$name=$_values';
 }
 
@@ -367,6 +373,7 @@ class Puzzle {
   );
   final clues = <String, Clue>{};
 
+  @override
   String toString() => 'Puzzle $grid';
 }
 
@@ -412,8 +419,9 @@ void main() {
       }
       downDigit++;
       for (var cell in acrossClue.cells) {
-        if (!cellFaces.containsKey(cell.position))
+        if (!cellFaces.containsKey(cell.position)) {
           cellFaces[cell.position] = [];
+        }
         cellFaces[cell.position]!.add(cell);
         cell.faces = cellFaces[cell.position]!;
       }
@@ -449,10 +457,8 @@ void printPuzzles(String heading) {
 Stopwatch? stopwatch;
 
 int backtrack(Map<String, Puzzle> puzzles, List<String> names, int count) {
-  if (stopwatch == null) {
-    stopwatch = Stopwatch()..start();
-  }
-  if (names.length == 0) {
+  stopwatch ??= Stopwatch()..start();
+  if (names.isEmpty) {
     var ok = false;
     for (var a = 20; a < 99; a++) {
       UndoStack.begin();
@@ -479,7 +485,7 @@ int backtrack(Map<String, Puzzle> puzzles, List<String> names, int count) {
 
 int backtrackPuzzle(Map<String, Puzzle> puzzles, List<String> names, int count,
     Puzzle puzzle, List<String> variableNames, List<bool> variableValues) {
-  if (variableNames.length == 0) {
+  if (variableNames.isEmpty) {
     // Set variables, so backtrack over cells
     // Clues first
     if (!checkPuzzle(puzzle, true)) return count;
@@ -724,10 +730,11 @@ pushProgress(int value) {
   if (!trace) return;
   var char = characters[value];
   progress += char;
-  if (timed)
+  if (timed) {
     checkProgress(progress);
-  else
-    stdout.write('$char');
+  } else {
+    stdout.write(char);
+  }
 }
 
 popProgress() {
@@ -735,9 +742,9 @@ popProgress() {
   progress = progress.substring(0, progress.length - 1);
   const ansiCursorLeft = '\x1b[D';
   const ansiEraseCursorToEnd = '\x1b[K';
-  if (timed)
+  if (timed) {
     checkProgress(progress);
-  else {
+  } else {
     stdout.write(ansiCursorLeft);
     stdout.write(ansiEraseCursorToEnd);
   }
@@ -745,9 +752,9 @@ popProgress() {
 
 addProgress(String msg) {
   if (!trace) return;
-  if (timed)
+  if (timed) {
     checkProgress(msg, true);
-  else {
+  } else {
     stdout.write(' ');
     stdout.writeln(msg);
     stdout.write(progress);

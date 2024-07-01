@@ -8,9 +8,9 @@ import '../variable.dart';
 
 class IncreasingPrimeVariable extends Variable {
   IncreasingPrimeVariable(letter) : super(letter.$1) {
-    this.values = Set.from([]);
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class IncreasingPrimePuzzle extends VariablePuzzle<IncreasingPrimeClue,

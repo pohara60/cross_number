@@ -38,6 +38,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -48,7 +49,7 @@ class Particular extends Crossnumber<ParticularPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -248,8 +249,9 @@ class Particular extends Crossnumber<ParticularPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -259,9 +261,9 @@ class Particular extends Crossnumber<ParticularPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as ParticularPuzzle;
     var clue = v as ParticularClue;

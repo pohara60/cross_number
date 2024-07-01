@@ -33,7 +33,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     initCrossnumber();
   }
 
-  var HappyNumbers = [
+  var happyNumbers = [
     1,
     7,
     10,
@@ -54,7 +54,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     94,
     97
   ];
-  var LuckyNumbers = [
+  var luckyNumbers = [
     1,
     3,
     7,
@@ -124,9 +124,9 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
       Variable v,
       Set<int> possibleValue, {
       Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
     }) {
       var clue = v as InstructionEntry;
       return solve(clue, possibleValue);
@@ -135,6 +135,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     return solveInstructionClue;
   }
 
+  @override
   void initCrossnumber() {
     a1 = InstructionEntry(
         name: 'A1',
@@ -809,9 +810,9 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD18(InstructionEntry clue, Set<int> possibleValue) {
     /* Lucky and happy number, 2 digits */
-    var values = clue.getValues(() =>
-        LuckyNumbers.where((element) => HappyNumbers.contains(element))
-            .toList());
+    var values = clue.getValues(() => luckyNumbers
+        .where((element) => happyNumbers.contains(element))
+        .toList());
     filterDigits(clue, values, possibleValue);
     return false;
     // puzzle.addReference(a9, d18, true);
@@ -849,7 +850,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD22(InstructionEntry clue, Set<int> possibleValue) {
     /* DP is a power of 2, 3 digits */
-    var getPowers = (lo, hi) => getPowersInRange(lo, hi, 2, 0);
+    getPowers(lo, hi) => getPowersInRange(lo, hi, 2, 0);
     return solveDPConstraint(
         clue, possibleValue, getThreeDigitNumbers, getPowers);
   }
@@ -862,7 +863,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
   bool solveD25(InstructionEntry clue, Set<int> possibleValue) {
     /* Lucky number, 2 digits */
-    var values = clue.getValues(() => LuckyNumbers);
+    var values = clue.getValues(() => luckyNumbers);
     filterDigits(clue, values, possibleValue);
     return false;
   }
@@ -878,6 +879,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     puzzle.resetSolution();
   }
 
+  @override
   void solve([bool iteration = true]) {
     print("SOLVE------------");
 
@@ -886,7 +888,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
     // Partial solution enabled me to guess the words
     // formed by the Down clues, and so restrict some
     // of the values - this gave 2 solutions
-    this.resetSolution();
+    resetSolution();
     puzzle.fixClue('D8', 55);
     puzzle.fixClue('D1', 38);
     puzzle.fixClue('D3', 172);
@@ -903,7 +905,7 @@ class Instruction extends Crossnumber<InstructionPuzzle> {
 
     // Reversing the Across Entries gives a different
     // potential solution
-    this.resetSolution();
+    resetSolution();
     puzzle.fixClue('A1', 153);
     puzzle.fixClue('A3', 961);
     puzzle.fixClue('A7', 28);

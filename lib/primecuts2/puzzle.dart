@@ -5,11 +5,10 @@ import '../generators.dart';
 import './clue.dart';
 
 class PrimeCutsVariable extends ExpressionVariable {
-  PrimeCutsVariable(String prime, String expression, {SolveFunction? solve})
-      : super(prime, expression, solve: solve) {
-    this.values = Set.from(twoDigitPrimes);
+  PrimeCutsVariable(super.prime, super.expression, {super.solve}) {
+    values = Set.from(twoDigitPrimes);
   }
-  String get prime => this.name;
+  String get prime => name;
 }
 
 class PrimeCuts2Puzzle

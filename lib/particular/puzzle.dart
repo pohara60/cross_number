@@ -3,10 +3,10 @@ import '../puzzle.dart';
 import '../variable.dart';
 
 class ParticularVariable extends Variable {
-  ParticularVariable(letter) : super(letter) {
-    this.values = Set.from(List.generate(99, (index) => index + 1));
+  ParticularVariable(super.letter) {
+    values = Set.from(List.generate(99, (index) => index + 1));
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class ParticularPuzzle extends VariablePuzzle<ParticularClue, ParticularEntry,

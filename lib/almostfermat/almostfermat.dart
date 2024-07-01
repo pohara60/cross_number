@@ -29,9 +29,10 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = AlmostFermatPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Get entries from grid
     var entryErrors = '';
@@ -44,7 +45,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -72,7 +73,7 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -121,17 +122,13 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
     super.initCrossnumber();
   }
 
-  @override
-  void solve([bool iteration = true]) {
-    super.solve(iteration);
-  }
-
   // Validate possible clue value
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -141,9 +138,9 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as AlmostFermatPuzzle;
     var clue = v as AlmostFermatClue;
@@ -202,8 +199,9 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
           possibleValue.clear();
           var count = cartesianCount(cluesPossibleValues);
           if (count > 100000000) {
-            for (var cluePossibleValues in cluesPossibleValues)
+            for (var cluePossibleValues in cluesPossibleValues) {
               possibleValue.addAll(cluePossibleValues);
+            }
           } else {
             for (var product in cartesian(cluesPossibleValues, true)) {
               var x = product[0];
@@ -218,7 +216,6 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
               }
             }
           }
-          ;
         }
       }
     } else {
@@ -234,14 +231,14 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
 
   @override
   bool updateClues(
-      AlmostFermatPuzzle puzzle, String clueName, Set<int> possibleValues,
+      AlmostFermatPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     return updated;
   }

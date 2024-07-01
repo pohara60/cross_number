@@ -3,6 +3,6 @@ import 'test_util.dart';
 
 void main() {
   group('Command line', () {
-    test_command('wheels', 'lib/wheels/wheels_output.txt');
+    testCommand('wheels', 'lib/wheels/wheels_output.txt');
   });
 }

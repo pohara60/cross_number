@@ -34,9 +34,10 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = SumSquaresPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Entries and Clues have separate definitions
 
@@ -51,7 +52,7 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -80,7 +81,7 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -162,11 +163,10 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
   }
 
   void mapCallback() {
-    var mapping =
-        "${puzzle.entries.values.where((e) => e.clue != null).map((e) {
+    var mapping = puzzle.entries.values.where((e) => e.clue != null).map((e) {
       var c = e.clue!;
       return '${e.name}=${c.name}${c.values})';
-    }).join(',')}";
+    }).join(',');
     print('Mapping $mapping');
     print(puzzle.toSolution());
   }
@@ -187,8 +187,9 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -198,9 +199,9 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as SumSquaresPuzzle;
     var clue = v as SumSquaresClue;
@@ -258,19 +259,19 @@ class SumSquares extends Crossnumber<SumSquaresPuzzle> {
 
   @override
   bool updateClues(
-      SumSquaresPuzzle puzzle, String clueName, Set<int> possibleValues,
+      SumSquaresPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order
-      var clue = puzzle.clues[clueName]!;
+      var clue = thisPuzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);
       if (clue.min == null || clue.min! < newMin) clue.min = newMin;
       var newMax = clue.values!.reduce(max);
       if (clue.max == null || clue.max! > newMax) clue.max = newMax;
       // Clues are defined in ascending order of value
-      for (var otherClue in puzzle.clues.values) {
+      for (var otherClue in thisPuzzle.clues.values) {
         if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
           if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
             otherClue.min = clue.min! + 1;

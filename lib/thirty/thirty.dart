@@ -26,11 +26,12 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     addPairConstraint();
   }
 
+  @override
   void initCrossnumber() {
     for (var i = 0; i < 2; i++) {
       var puzzle = ThirtyPuzzle.fromGridString(this, gridString,
           name: i == 0 ? 'Left' : 'Right');
-      this.puzzles.add(puzzle);
+      puzzles.add(puzzle);
 
       // Get entries from grid
       var entryErrors = '';
@@ -44,7 +45,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
           );
           puzzle.addEntry(entry);
         } on ExpressionInvalid catch (e) {
-          entryErrors += e.msg + '\n';
+          entryErrors += '${e.msg}\n';
         }
       }
 
@@ -64,7 +65,6 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     initPairs();
   }
 
-  var iterating = false;
   @override
   void solve([bool iteration = true]) {
     for (var i in [0, 1]) {
@@ -122,10 +122,11 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
 
   @override
   int getPairValue(int i, int j) {
-    if (i <= j)
+    if (i <= j) {
       return i * 10 + j;
-    else
+    } else {
       return j * 10 + i;
+    }
   }
 
   void getKnownValues() {
@@ -162,8 +163,9 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
 
     // Other clue
     if (knownValues[value] != null && knownValues[value] != clue) {
@@ -187,9 +189,9 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as ThirtyPuzzle;
     var clue = v as ThirtyClue;
@@ -208,12 +210,14 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       var d1possible = <int>{};
       var a3possible = <int>{};
       for (var d1value in d1values) {
-        if (knownValues[d1value] != null && knownValues[d1value] != d1)
+        if (knownValues[d1value] != null && knownValues[d1value] != d1) {
           continue;
+        }
         for (var a3value in a3values) {
           if (d1value == a3value ||
-              knownValues[a3value] != null && knownValues[a3value] != a3)
+              knownValues[a3value] != null && knownValues[a3value] != a3) {
             continue;
+          }
           var value = d1value + a3value;
           if (validClue(clue, value, [], [])) {
             possibleValue.add(value);
@@ -236,12 +240,14 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       var a3possible = <int>{};
       var a7possible = <int>{};
       for (var a3value in a3values) {
-        if (knownValues[a3value] != null && knownValues[a3value] != a3)
+        if (knownValues[a3value] != null && knownValues[a3value] != a3) {
           continue;
+        }
         for (var a7value in a7values) {
           if (a3value == a7value ||
-              knownValues[a7value] != null && knownValues[a7value] != a7)
+              knownValues[a7value] != null && knownValues[a7value] != a7) {
             continue;
+          }
           var value = a3value * a7value;
           if (validClue(clue, value, [], [])) {
             possibleValue.add(value);
@@ -257,9 +263,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       updateClues(puzzle, a7.name, a7possible);
     } else {
       var values = clue.values;
-      if (values == null) {
-        values = getValuesFromDigits(clue);
-      }
+      values ??= getValuesFromDigits(clue);
       if (values != null) {
         possibleValue
             .addAll(values.where((value) => validClue(clue, value, [], [])));
@@ -270,9 +274,9 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
 
   @override
   bool updateClues(
-      ThirtyPuzzle puzzle, String clueName, Set<int> possibleValues,
+      ThirtyPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (updated) {
       /*
@@ -280,7 +284,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       The sum of the digits in the first grid equals the sum of the digits in the second grid.
       No entry is a jumble of another entry.
       */
-      var clue = puzzle.clues[clueName]!;
+      var clue = thisPuzzle.clues[clueName]!;
       if (possibleValues.length == 1) {
         var value = possibleValues.first;
         if (knownValues.containsKey(value)) {
@@ -289,7 +293,7 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
         // knownValues[value] = clue;
       }
       // Digits
-      updatePairs(puzzle, clue);
+      updatePairs(thisPuzzle, clue);
 
       // Maintain clue value order
       // var clue = puzzle.clues[clueName]!;
@@ -312,30 +316,6 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       // }
     }
     return updated;
-  }
-
-  var unfinishedPuzzles = <ThirtyPuzzle>[];
-  @override
-  void endSolve(bool iteration) {
-    iterating = true;
-    // Unique solution?
-    for (var puzzle in puzzles) {
-      if (!puzzle.uniqueSolution()) {
-        unfinishedPuzzles.add(puzzle);
-        if (Crossnumber.traceSolve) {
-          print("PARTIAL SOLUTION-----------------------------");
-          print(puzzle.toSummary());
-          // print(puzzle.toString());
-        }
-      } else {
-        print("SOLUTION-----------------------------");
-        print(puzzle.toSummary());
-      }
-    }
-    if (unfinishedPuzzles.isNotEmpty) {
-      unfinishedPuzzles = puzzles;
-      unfinishedPuzzles.first.postProcessing(iteration);
-    }
   }
 
   @override

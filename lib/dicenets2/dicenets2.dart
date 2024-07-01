@@ -48,7 +48,7 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -207,9 +207,9 @@ class DiceNets2 extends Crossnumber<DiceNetsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as DiceNetsPuzzle;
     var clue = v as DiceNetsClue;

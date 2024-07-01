@@ -35,6 +35,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     // Get entries from grid
     var entryErrors = '';
@@ -47,7 +48,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -71,7 +72,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -128,7 +129,7 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
   List<int> product3Primes = [];
   Map<int, List<int>> product3PrimesList = {};
   List<int> getProduct3Primes() {
-    if (product3Primes.length == 0) {
+    if (product3Primes.isEmpty) {
       for (var f1 in getPrimes()) {
         for (var f2 in getPrimes().where((f2) => f2 > f1)) {
           for (var f3 in getPrimes().where((f3) => f3 > f2)) {
@@ -175,9 +176,10 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
-    if (!(clue is IncreasingPrimeEntry) && !check3Primes(value)) return false;
+    }
+    if (clue is! IncreasingPrimeEntry && !check3Primes(value)) return false;
     return true;
   }
 
@@ -187,9 +189,9 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as IncreasingPrimePuzzle;
     var clue = v as IncreasingPrimeClue;
@@ -248,18 +250,18 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
 
   @override
   bool updateClues(
-      IncreasingPrimePuzzle puzzle, clueName, Set<int> possibleValues,
+      IncreasingPrimePuzzle thisPuzzle, clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (!isEntry && updated) {
-      var clue = puzzle.clues[clueName]!;
+      var clue = thisPuzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);
       if (clue.min == null || clue.min! < newMin) clue.min = newMin;
       var newMax = clue.values!.reduce(max);
       if (clue.max == null || clue.max! > newMax) clue.max = newMax;
       // Clues are defined in ascending order of value
-      for (var otherClue in puzzle.clues.values) {
+      for (var otherClue in thisPuzzle.clues.values) {
         if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
           if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
             otherClue.min = clue.min! + 1;

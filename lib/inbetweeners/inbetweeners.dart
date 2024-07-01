@@ -31,9 +31,10 @@ class Inbetweeners extends Crossnumber<InbetweenersPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = InbetweenersPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -48,7 +49,7 @@ class Inbetweeners extends Crossnumber<InbetweenersPuzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -138,9 +139,9 @@ class Inbetweeners extends Crossnumber<InbetweenersPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as InbetweenersPuzzle;
     var clue = v as InbetweenersClue;
@@ -171,12 +172,14 @@ class Inbetweeners extends Crossnumber<InbetweenersPuzzle> {
             );
             if (first) {
               first = false;
-              if (possibleValue.isEmpty)
+              if (possibleValue.isEmpty) {
                 throw SolveException('${clue.name} No values for exp $exp');
+              }
               minValue = possibleValue.reduce(min);
             } else {
-              if (possibleValueExp.isEmpty)
+              if (possibleValueExp.isEmpty) {
                 throw SolveException('${clue.name} No values for exp $exp');
+              }
               maxValue = possibleValueExp.reduce(max);
             }
           } on SolveException catch (e) {
@@ -205,14 +208,14 @@ class Inbetweeners extends Crossnumber<InbetweenersPuzzle> {
 
   @override
   bool updateClues(
-      InbetweenersPuzzle puzzle, String clueName, Set<int> possibleValues,
+      InbetweenersPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order

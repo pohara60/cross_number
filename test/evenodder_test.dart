@@ -3,6 +3,6 @@ import 'test_util.dart';
 
 void main() {
   group('Command line', () {
-    test_command('evenodder', 'lib/evenodder/evenodder_output.txt');
+    testCommand('evenodder', 'lib/evenodder/evenodder_output.txt');
   });
 }

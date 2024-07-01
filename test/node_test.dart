@@ -11,9 +11,9 @@ class Node {
   Node(this.token, [this.left, this.right]);
 
   Node? findNode(String subject) {
-    Node? sNode = null;
+    Node? sNode;
     int count = 0;
-    for (var node in [this.left, this.right]) {
+    for (var node in [left, right]) {
       if (node != null) {
         var nNode = node.findNode(subject);
         if (nNode != null) {
@@ -22,7 +22,7 @@ class Node {
         }
       }
     }
-    if (this.token == subject) {
+    if (token == subject) {
       count++;
       sNode = this;
     }
@@ -65,8 +65,9 @@ class Node {
     return null;
   }
 
+  @override
   String toString() =>
-      "($token${left != null ? ' ' + left.toString() : ''}${right != null ? ' ' + right.toString() : ''})";
+      "($token${left != null ? ' $left' : ''}${right != null ? ' $right' : ''})";
 }
 
 void main() {

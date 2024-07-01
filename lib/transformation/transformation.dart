@@ -34,9 +34,10 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = TransformationPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -51,7 +52,7 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -203,8 +204,9 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -214,9 +216,9 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as TransformationPuzzle;
     var clue = v as TransformationClue;
@@ -274,14 +276,14 @@ class Transformation extends Crossnumber<TransformationPuzzle> {
 
   @override
   bool updateClues(
-      TransformationPuzzle puzzle, String clueName, Set<int> possibleValues,
+      TransformationPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order

@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 library dieanotherday;
 
 import 'package:collection/collection.dart';
@@ -84,7 +86,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
 
     EntryMixin.maxDigit = 6;
     for (var puzzle in [puzzleTop, puzzleFront, puzzleRight]) {
-      this.puzzles.add(puzzle);
+      puzzles.add(puzzle);
 
       var clueErrors = '';
       void clueWrapper({String? name, int? length, String? valueDesc}) {
@@ -97,7 +99,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
           puzzle.addEntry(clue);
           return;
         } on ExpressionError catch (e) {
-          clueErrors += e.msg + '\n';
+          clueErrors += '${e.msg}\n';
           return;
         }
       }
@@ -158,10 +160,11 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
         if (i == j) continue;
         var p2 = puzzles[j];
         for (var clueName1 in clueNames)
-          for (var clueName2 in clueNames)
+          for (var clueName2 in clueNames) {
             if (clueName1 == clueName2 || clueName1[0] != clueName2[0]) {
               p1.clues[clueName1]!.addReferrer(p2.clues[clueName2]!);
             }
+          }
       }
     }
 
@@ -169,13 +172,14 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
       var cmp = b.priorityCompareTo(a);
       if (cmp == 0) {
         // Attempt consistent order - puzzle name
-        if (puzzleTop.allVariables.containsValue(b))
+        if (puzzleTop.allVariables.containsValue(b)) {
           cmp = 1;
-        else if (puzzleFront.allVariables.containsValue(b)) {
-          if (puzzleTop.allVariables.containsValue(a))
+        } else if (puzzleFront.allVariables.containsValue(b)) {
+          if (puzzleTop.allVariables.containsValue(a)) {
             cmp = -1;
-          else
+          } else {
             cmp = 1;
+          }
         } else
           cmp = -1;
       }
@@ -240,8 +244,10 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     // Check products
     try {
       for (var product in cartesian([faceTop, faceFront, faceRight])) {
-        if (diceFaces.any((element) => ListEquality().equals(element, product)))
+        if (diceFaces
+            .any((element) => ListEquality().equals(element, product))) {
           return true;
+        }
       }
     } catch (e) {
       print('Exception $e');
@@ -260,10 +266,11 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
       if (!facesMatchOtherPuzzles(puzzle, clue.name, d, digit)) return false;
       // If the entry digit is not fixed, then include the digit in the count
       if (digits.length != 1) {
-        if (!digitCount.containsKey(digit))
+        if (!digitCount.containsKey(digit)) {
           digitCount[digit] = 1;
-        else
+        } else {
           digitCount[digit] = digitCount[digit]! + 1;
+        }
       }
       value = value ~/ 10;
     }
@@ -285,7 +292,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
 
   void getPuzzleDigitCount(DieAnotherDayPuzzle puzzle) {
     var digitCount = <int, int>{};
-    for (var i in [1, 2, 3, 4, 5, 6]) digitCount[i] = 0;
+    for (var i in [1, 2, 3, 4, 5, 6]) {
+      digitCount[i] = 0;
+    }
     for (var clueName in ['D1', 'D2', 'D3', 'D4']) {
       var clue = puzzle.clues[clueName]!;
       var entry = clue.entry!;
@@ -348,13 +357,13 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   }
 
   @override
-  bool solveClue(Variable clue) {
-    var updated = super.solveClue(clue);
+  bool solveClue(Variable variable) {
+    var updated = super.solveClue(variable);
 
-    var puzzle = puzzleForVariable[clue]!;
+    var puzzle = puzzleForVariable[variable]!;
 
     // Check puzzle restriction
-    var allUpdatedVariables = <String>{};
+    var allUpdatedVariables = <Variable>{};
     getPuzzleDigitCount(puzzle);
     var ok = checkPuzzleVariables(puzzle, allUpdatedVariables);
     if (!ok) {
@@ -362,9 +371,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     }
     if (allUpdatedVariables.isNotEmpty && Crossnumber.traceSolve) {
       print('DieAnotherDay variable count updates');
-      for (var variableName in allUpdatedVariables) {
+      for (var updatedVariable in allUpdatedVariables) {
         print(
-            '$variableName=${puzzle.variables[variableName]!.values!.toShortString()}');
+            '${updatedVariable.name}=${updatedVariable.values!.toShortString()}');
       }
     }
 
@@ -372,12 +381,12 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   }
 
   bool checkPuzzleVariables(
-      DieAnotherDayPuzzle puzzle, Set<String> allUpdatedVariables,
+      DieAnotherDayPuzzle puzzle, Set<Variable> allUpdatedVariables,
       [bool updateVars = true, bool equality = false]) {
     var knownVariableValues = <int>{};
     for (var variable in allVariables) {
       var possibleValues = <int>{};
-      var updatedVariables = <String>{};
+      var updatedVariables = <Variable>{};
       var updated = false;
       var isPuzzleVariable = puzzle.checkVariables.contains(variable);
       for (var value in variable.values!) {
@@ -386,8 +395,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
                 !equality && puzzleDigitCount[value]! < value ||
                 puzzleDigitCount[value]! == value)) {
           possibleValues.add(value);
-        } else
+        } else {
           updated = true;
+        }
       }
       if (possibleValues.isEmpty) {
         return false;
@@ -412,8 +422,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
 
     // Check digits against other puzzles
     var puzzle = puzzleForVariable[clue]!;
@@ -426,9 +437,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as DieAnotherDayPuzzle;
     var clue = v as DieAnotherDayClue;
@@ -463,9 +474,9 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
 
   @override
   bool updateClues(
-      DieAnotherDayPuzzle puzzle, String clueName, Set<int> possibleValues,
+      DieAnotherDayPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     return updated;
   }

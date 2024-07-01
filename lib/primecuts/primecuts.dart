@@ -29,9 +29,9 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
       Variable v,
       Set<int> possibleValue, {
       Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
     }) {
       var clue = v as PrimeCutsEntry;
       return solve(clue, possibleValue, possibleValue2!);
@@ -40,6 +40,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
     return solvePrimeCutsClue;
   }
 
+  @override
   void initCrossnumber() {
     var a2 = PrimeCutsEntry(
         name: 'A2',
@@ -291,8 +292,9 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   }
 
   // Override solveClue to manage preValues
-  bool solveClue(Variable inputClue) {
-    var clue = inputClue as PrimeCutsEntry;
+  @override
+  bool solveClue(Variable variable) {
+    var clue = variable as PrimeCutsEntry;
     var puzzle = puzzleForVariable[clue]!;
     // If clue solved already then skip it
     if (clue.values != null && clue.values!.length == 1) return false;
@@ -310,8 +312,10 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         possibleValue2: possibleValue,
       )) updated = true;
       // Some Solve functions do not update PreValues
-      if (possiblePreValue.isNotEmpty && clue.updatePreValues(possiblePreValue))
+      if (possiblePreValue.isNotEmpty &&
+          clue.updatePreValues(possiblePreValue)) {
         updated = true;
+      }
       // If no Values returned then Solve function could not solve
       if (possibleValue.isNotEmpty) {
         if (clue.updateValues(possibleValue)) updated = true;
@@ -330,7 +334,7 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
   }
 
   bool updatePrimes(prime, Set<int> possibleValues) =>
-      updateVariables(puzzle, prime, possibleValues, <String>{});
+      updateVariables(puzzle, prime, possibleValues, <Variable>{});
 
   // A15 - PreValue 5 digits D^3, Removed prime L, Value entry S^2
   bool solveA15(
@@ -609,11 +613,11 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         }
       }
       if (updatedP) {
-        triangleSumTwoPrimes[p]!.forEach((element) {
+        for (var element in triangleSumTwoPrimes[p]!) {
           if (puzzle.primes['Z']!.values!.contains(element)) {
             possibleZ.add(element);
           }
-        });
+        }
       }
     }
     if (updatePrimes('P', possibleP)) updated = true;
@@ -1069,8 +1073,8 @@ Map<int, List<int>> getPrimesInTriangleSumTwoPrimes() {
 
 List<int> getTwoDigitSquaresLessA1(int? d1) {
   var squares = <int>[];
-  int minA1 = d1 != null ? d1 : 10;
-  int maxA1 = d1 != null ? d1 : 99;
+  int minA1 = d1 ?? 10;
+  int maxA1 = d1 ?? 99;
   for (var d1 = 1; d1 <= 200.sqrt().floor(); d1++) {
     var preValue = d1 * d1;
     if (preValue - minA1 > 9 && preValue - maxA1 < 100) {
@@ -1105,6 +1109,7 @@ class ValueIterable extends Iterable<int?> {
   final int preValue;
   final int prime;
   ValueIterable(this.preValue, this.prime);
+  @override
   Iterator<int?> get iterator => ValueIterator(preValue, prime);
 }
 
@@ -1121,6 +1126,7 @@ class ValueIterator implements Iterator<int?> {
 
   // `moveNext`method must return boolean preValue to state if next preValue is available
 
+  @override
   bool moveNext() {
     while (index < preValueStr.length - 1 &&
             preValueStr.substring(index, index + 2) != primeStr ||
@@ -1139,5 +1145,6 @@ class ValueIterator implements Iterator<int?> {
   }
 
   // `current` getter method returns the current preValue of the iteration when `moveNext` is called
+  @override
   int? get current => _current;
 }

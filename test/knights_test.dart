@@ -3,6 +3,6 @@ import 'test_util.dart';
 
 void main() {
   group('Command line', () {
-    test_command('knights', 'lib/knights/knights_output.txt');
+    testCommand('knights', 'lib/knights/knights_output.txt');
   });
 }

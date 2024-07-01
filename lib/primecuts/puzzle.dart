@@ -6,10 +6,10 @@ import '../variable.dart';
 import '../generators.dart';
 
 class PrimeVariable extends Variable {
-  PrimeVariable(prime) : super(prime) {
-    this.values = Set.from(twoDigitPrimes);
+  PrimeVariable(super.prime) {
+    values = Set.from(twoDigitPrimes);
   }
-  String get prime => this.name;
+  String get prime => name;
 }
 
 class PrimeCutsPuzzle
@@ -22,9 +22,10 @@ class PrimeCutsPuzzle
   Set<Variable> updatePrimes(String letter, Set<int> possibleDigits) =>
       variableList.updateVariables(letter, possibleDigits);
 
-  void addEntry(Clue inputClue) {
-    var clue = inputClue as PrimeCutsEntry;
-    super.addEntry(inputClue);
+  @override
+  void addEntry(Clue entry) {
+    var clue = entry as PrimeCutsEntry;
+    super.addEntry(entry);
     var prime = PrimeVariable(clue.prime);
     primes[clue.prime] = prime;
     addAnyVariable(prime);

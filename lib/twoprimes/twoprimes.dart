@@ -29,6 +29,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper({String? name, int? length, String? valueDesc}) {
@@ -41,7 +42,7 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -118,8 +119,9 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -129,9 +131,9 @@ class TwoPrimes extends Crossnumber<TwoPrimesPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as TwoPrimesPuzzle;
     var clue = v as TwoPrimesClue;

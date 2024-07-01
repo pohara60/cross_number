@@ -181,9 +181,9 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as {{env['ABCD']}}Puzzle;
     var clue = v as {{env['ABCD']}}Clue;

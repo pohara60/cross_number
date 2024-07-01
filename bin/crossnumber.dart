@@ -100,7 +100,7 @@ void main(List<String> arguments) async {
     // Arguments exception
     print('$program: ${e.message}');
     print('');
-    print('${runner.usage}');
+    print(runner.usage);
   } catch (e) {
     print('$program: $e');
   }
@@ -245,7 +245,7 @@ class DiceNets2Command extends Command {
       final dn = DiceNets2();
       dn.solve();
     } on PuzzleException catch (e) {
-      print('${e.msg}');
+      print(e.msg);
     }
   }
 }
@@ -268,6 +268,7 @@ class No21Command extends Command {
   }
 }
 
+// ignore: camel_case_types
 class Root66_2Command extends Command {
   @override
   final name = 'root66_2';

@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'clue.dart';
 import 'grid.dart';
 import 'variable.dart';
@@ -17,9 +19,9 @@ class UndoStack {
     if (!undoing) return;
     undoObject.add(object);
     Set<int>? set = {};
-    if (object is Cell)
+    if (object is Cell) {
       set = object.digits;
-    else if (object is Clue)
+    } else if (object is Clue)
       set = object.values;
     else if (object is Variable)
       set = object.values;
@@ -36,9 +38,9 @@ class UndoStack {
       undoTop--;
       var object = undoObject.removeLast();
       var set = undoValue.removeLast();
-      if (object is Cell)
+      if (object is Cell) {
         object.digitsNoUndo = set!;
-      else if (object is Clue)
+      } else if (object is Clue)
         object.valuesNoUndo = set;
       else if (object is Variable)
         object.valuesNoUndo = set;

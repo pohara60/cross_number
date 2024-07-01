@@ -3,6 +3,6 @@ import 'test_util.dart';
 
 void main() {
   group('Command line', () {
-    test_command('twoprimes', 'lib/twoprimes/twoprimes_output.txt');
+    testCommand('twoprimes', 'lib/twoprimes/twoprimes_output.txt');
   });
 }

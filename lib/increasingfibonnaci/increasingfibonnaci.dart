@@ -29,6 +29,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     // Get entries from grid
     var entryErrors = '';
@@ -38,7 +39,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
             name: entrySpec.name, length: entrySpec.length);
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -62,7 +63,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -101,7 +102,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
 
   List<int> fibonnaciLessThan20 = [];
   List<int> getFibonnaciLessThan20() {
-    if (fibonnaciLessThan20.length == 0) {
+    if (fibonnaciLessThan20.isEmpty) {
       fibonnaciLessThan20 = generateFibonacci(1, 20).toList();
     }
     return fibonnaciLessThan20;
@@ -110,7 +111,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   List<int> product3FibonnaciLessThan20 = [];
   Map<int, List<int>> product3Fibonnaci = {};
   List<int> getProduct3FibonnaciLessThan20() {
-    if (product3FibonnaciLessThan20.length == 0) {
+    if (product3FibonnaciLessThan20.isEmpty) {
       for (var f1 in getFibonnaciLessThan20()) {
         for (var f2 in getFibonnaciLessThan20().where((f2) => f2 > f1)) {
           for (var f3 in getFibonnaciLessThan20().where((f3) => f3 > f2)) {
@@ -150,8 +151,9 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     if (!check5Fibonnaci(value)) return false;
     return true;
   }
@@ -162,9 +164,9 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as IncreasingFibonnaciPuzzle;
     var clue = v as IncreasingFibonnaciClue;
@@ -185,19 +187,19 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
   }
 
   @override
-  bool updateClues(IncreasingFibonnaciPuzzle puzzle, String clueName,
+  bool updateClues(IncreasingFibonnaciPuzzle thisPuzzle, String clueName,
       Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
     if (!isEntry && updated) {
-      var clue = puzzle.clues[clueName]!;
+      var clue = thisPuzzle.clues[clueName]!;
       var newMin = clue.values!.reduce(min);
       if (clue.min == null || clue.min! < newMin) clue.min = newMin;
       var newMax = clue.values!.reduce(max);
       if (clue.max == null || clue.max! > newMax) clue.max = newMax;
       // Clues are defined in ascending order of value
-      for (var otherClue in puzzle.clues.values) {
+      for (var otherClue in thisPuzzle.clues.values) {
         if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
           if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
             otherClue.min = clue.min! + 1;

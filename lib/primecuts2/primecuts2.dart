@@ -1,4 +1,6 @@
 /// An API for solving Prime Cuts puzzles.
+// ignore_for_file: empty_catches
+
 library primecuts;
 
 import 'package:powers/powers.dart';
@@ -36,6 +38,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -55,7 +58,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -73,7 +76,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         puzzle.mapClueToEntry(puzzle.clues[name]!, entry);
         return;
       } on ExpressionError catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
         return;
       }
     }
@@ -90,7 +93,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         puzzle.addAnyVariable(variable);
         return;
       } on ExpressionError catch (e) {
-        variableErrors += e.msg + '\n';
+        variableErrors += '${e.msg}\n';
         return;
       }
     }
@@ -335,9 +338,9 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as PrimeCuts2Puzzle;
     var clue = v as PrimeCutsClue;
@@ -347,34 +350,37 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     var possibleEntryValue = possibleValue2!;
     var possibleEntryVariables = possibleVariables2!;
 
-    var variableNames = <String>[];
+    var variables = <Variable>[];
     var variableValues = <List<int>>[];
     var count = puzzle.getVariables(clue, clue.expressions, possibleValue,
-        possibleVariables!, variableNames, variableValues, 1000000);
+        possibleVariables!, variables, variableValues, 1000000);
     if (count == 0) return false;
 
-    var entryVariableNames = <String>[];
+    var variableNames = variables.map((e) => e.name).toList();
+    var entryVariables = <Variable>[];
     var entryVariableValues = <List<int>>[];
     var entryVariableMapsToClueVariable = <int>[];
-    var clueRefersToEntryIndex = variableNames.indexOf('E' + entry.name);
+    var clueRefersToEntryIndex = variables.indexOf(entry);
     if (entry.valueDesc != '') {
-      var count2 = puzzle.getVariables(
-          entry,
-          entry.expressions,
-          possibleValue,
-          possibleEntryVariables,
-          entryVariableNames,
-          entryVariableValues,
-          1000000);
+      var count2 = puzzle.getVariables(entry, entry.expressions, possibleValue,
+          possibleEntryVariables, entryVariables, entryVariableValues, 1000000);
       if (count2 == 0) return false;
 
       // Find variables in common for clue and entry
-      for (var variable in entryVariableNames) {
-        entryVariableMapsToClueVariable.add(variableNames.indexOf(variable));
+      for (var variable in entryVariables) {
+        entryVariableMapsToClueVariable.add(variables.indexOf(variable));
       }
     }
+    // var anyEntryVariableMapsToClueVariable =
+    //     entryVariableMapsToClueVariable.any((element) => element != -1);
+    // if (clueRefersToEntryIndex != -1 || anyEntryVariableMapsToClueVariable) {
+    //   var msg =
+    //       'Solve Clue ${clue.name}, ${clueRefersToEntryIndex != -1 ? "clueRefersToEntryIndex=$clueRefersToEntryIndex" : ""}, ${anyEntryVariableMapsToClueVariable ? "entryVariableMapsToClueVariable=$entryVariableMapsToClueVariable" : ""}';
+    //   print(msg);
+    // }
 
     // Solve Clue
+    var entryVariableNames = entryVariables.map((e) => e.name).toList();
     var primeValues = <int>{};
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
@@ -404,7 +410,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
                   possibleValue,
                   possibleEntryValue,
                   primeValues,
-                  variableNames,
+                  variables,
                   possibleVariables,
                   product);
             }
@@ -433,7 +439,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
               for (var entryValue in entry.exp.generate(entry.min, entry.max,
                   entryVariableNames, product2, entry.values)) {
                 if (clueRefersToEntryIndex != -1) {
-                  if (variableValues[clueRefersToEntryIndex] != entryValue) {
+                  if (product[clueRefersToEntryIndex] != entryValue) {
                     continue;
                   }
                 }
@@ -450,21 +456,26 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
                     possibleValue,
                     possibleEntryValue,
                     primeValues,
-                    variableNames,
+                    variables,
                     possibleVariables,
                     product,
-                    entryVariableNames,
+                    entryVariables,
                     possibleEntryVariables,
                     product2);
               }
-            } on ExpressionInvalid {}
+            } on ExpressionInvalid {
+              // Do nothing
+            }
           }
         }
-      } on ExpressionInvalid {}
+      } on ExpressionInvalid {
+        // Do nothing
+      }
     }
 
-    if (updateVariables(puzzle, clue.prime, primeValues, updatedVariables!))
+    if (updateVariables(puzzle, clue.prime, primeValues, updatedVariables!)) {
       updated = true;
+    }
 
     return updated;
   }
@@ -477,11 +488,11 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     Set<int> possibleValue,
     Set<int> possibleEntryValue,
     Set<int> primeValues,
-    List<String> variableNames,
-    Map<String, Set<int>> possibleVariables,
+    List<Variable> variables,
+    Map<Variable, Set<int>>? possibleVariables,
     List<int> product, [
-    List<String>? entryVariableNames,
-    Map<String, Set<int>>? possibleEntryVariables,
+    List<Variable>? entryVariables,
+    Map<Variable, Set<int>>? possibleEntryVariables,
     List<int>? product2,
   ]) {
     for (var primeValue in puzzle.primes[clue.prime]!.values!) {
@@ -491,12 +502,12 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
           possibleEntryValue.add(entryValue);
           primeValues.add(primeValue);
           var index = 0;
-          for (var variable in variableNames) {
-            possibleVariables[variable]!.add(product[index++]);
+          for (var variable in variables) {
+            possibleVariables![variable]!.add(product[index++]);
           }
           index = 0;
-          if (entryVariableNames != null) {
-            for (var variable in entryVariableNames) {
+          if (entryVariables != null) {
+            for (var variable in entryVariables) {
               possibleEntryVariables![variable]!.add(product2![index++]);
             }
           }
@@ -507,12 +518,12 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Variable inputClue) {
-    if (inputClue is Clue) {
-      return solveActualClue(inputClue);
+  bool solveClue(Variable variable) {
+    if (variable is Clue) {
+      return solveActualClue(variable);
     }
-    if (inputClue is ExpressionVariable) {
-      return solveVariable(inputClue);
+    if (variable is ExpressionVariable) {
+      return solveVariable(variable);
     }
     return false;
   }
@@ -531,14 +542,14 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     if (clue.solve != null) {
       var possibleClueValue = <int>{};
       var possibleEntryValue = <int>{};
-      var possibleVariables = <String, Set<int>>{};
-      var possibleEntryVariables = <String, Set<int>>{};
-      var updatedVariables = <String>{};
-      for (var variableName in clue.variableClueNameReferences) {
-        possibleVariables[variableName] = <int>{};
+      var possibleVariables = <Variable, Set<int>>{};
+      var possibleEntryVariables = <Variable, Set<int>>{};
+      var updatedVariables = <Variable>{};
+      for (var variableRef in clue.variableClueReferences) {
+        possibleVariables[variableRef] = <int>{};
       }
-      for (var variableName in entry.variableClueNameReferences) {
-        possibleEntryVariables[variableName] = <int>{};
+      for (var variableRef in entry.variableClueReferences) {
+        possibleEntryVariables[variableRef] = <int>{};
       }
       if (clue.solve!(puzzle, clue, possibleClueValue,
           possibleValue2: possibleEntryValue,
@@ -546,33 +557,34 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
           possibleVariables2: possibleEntryVariables,
           updatedVariables: updatedVariables)) updated = true;
       // Some Solve functions do not update Clue Values
-      if (possibleClueValue.isNotEmpty && clue.updateValues(possibleClueValue))
+      if (possibleClueValue.isNotEmpty &&
+          clue.updateValues(possibleClueValue)) {
         updated = true;
+      }
       // If no Entry Values returned then Solve function could not solve
       if (possibleEntryValue.isEmpty) {
         throw SolveException(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
       }
-      if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty)
+      if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty) {
         updated = true;
+      }
       if (entry.finalise()) updated = true;
-      for (var variableName in clue.variableNameReferences) {
-        updateVariables(puzzle, variableName, possibleVariables[variableName]!,
+      for (var variable in clue.variableReferences) {
+        updateVariables(puzzle, variable.name, possibleVariables[variable]!,
             updatedVariables);
       }
-      for (var variableName in entry.variableNameReferences) {
-        if (possibleEntryVariables[variableName] != null) {
-          updateVariables(puzzle, variableName,
-              possibleEntryVariables[variableName]!, updatedVariables);
+      for (var variable in entry.variableReferences) {
+        if (possibleEntryVariables[variable] != null) {
+          updateVariables(puzzle, variable.name,
+              possibleEntryVariables[variable]!, updatedVariables);
         }
       }
 
       if (Crossnumber.traceSolve && updated) {
         print("solve: ${clue.toString()}");
-        var variableList = puzzle.variableList;
-        for (var variableName in updatedVariables) {
-          print(
-              '$variableName=${variableList.variables[variableName]!.values!.toShortString()}');
+        for (var variable in updatedVariables) {
+          print('${variable.name}=${variable.values!.toShortString()}');
         }
       }
     }
@@ -585,9 +597,9 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as VariablePuzzle;
     var variable = v as ExpressionVariable;
@@ -602,7 +614,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
   }
 
   bool updatePrimes(String prime, Set<int> possibleValues) =>
-      updateVariables(puzzle, prime, possibleValues, <String>{});
+      updateVariables(puzzle, prime, possibleValues, <Variable>{});
 
   /// Find **multiple** of prime, that are also a multiple when the digits of prime are removed.
   ///
@@ -835,8 +847,8 @@ Map<int, List<int>> getPrimesInTriangleSumTwoPrimes() {
 
 List<int> getTwoDigitSquaresLessA1(int? d1) {
   var squares = <int>[];
-  int minA1 = d1 != null ? d1 : 10;
-  int maxA1 = d1 != null ? d1 : 99;
+  int minA1 = d1 ?? 10;
+  int maxA1 = d1 ?? 99;
   for (var d1 = 1; d1 <= 200.sqrt().floor(); d1++) {
     var preValue = d1 * d1;
     if (preValue - minA1 > 9 && preValue - maxA1 < 100) {
@@ -871,6 +883,7 @@ class ValueIterable extends Iterable<int?> {
   final int preValue;
   final int prime;
   ValueIterable(this.preValue, this.prime);
+  @override
   Iterator<int?> get iterator => ValueIterator(preValue, prime);
 }
 
@@ -887,6 +900,7 @@ class ValueIterator implements Iterator<int?> {
 
   // `moveNext`method must return boolean preValue to state if next preValue is available
 
+  @override
   bool moveNext() {
     while (index < preValueStr.length - 1 &&
             preValueStr.substring(index, index + 2) != primeStr ||
@@ -905,5 +919,6 @@ class ValueIterator implements Iterator<int?> {
   }
 
   // `current` getter method returns the current preValue of the iteration when `moveNext` is called
+  @override
   int? get current => _current;
 }

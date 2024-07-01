@@ -29,9 +29,10 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = PrimeKnightPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -46,7 +47,7 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -139,8 +140,9 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -150,9 +152,9 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as PrimeKnightPuzzle;
     var clue = v as PrimeKnightClue;
@@ -259,7 +261,9 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
           endCell.setDigit(secondDigit);
           solveTour(tour, index + 2, List.from(availablePrimes)..remove(prime),
               usedPrimes, checkPrimes, debug);
-        } on SolveException {}
+        } on SolveException {
+          // Do nothing
+        }
         // Un-use prime
         usedPrimes.removeLast();
         UndoStack.undo();
@@ -275,14 +279,16 @@ class PrimeKnight extends Crossnumber<PrimeKnightPuzzle> {
         assert(values != null && values.length == 1);
         var value = values!.first;
         var possibleValue = <int>{};
-        var possibleVariables = <String, Set<int>>{};
+        var possibleVariables = <Variable, Set<int>>{};
         try {
-          for (var variable in clue.variableClueNameReferences) {
-            possibleVariables[variable] = <int>{};
+          for (var variableRef in clue.variableClueReferences) {
+            possibleVariables[variableRef] = <int>{};
           }
           clue.solve!(puzzle, clue, possibleValue,
               possibleVariables: possibleVariables);
-        } on SolveException {}
+        } on SolveException {
+          // Do nothing
+        }
         if (possibleValue.isEmpty || !possibleValue.contains(value)) {
           // Failed
           return false;

@@ -38,9 +38,10 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = SquaresTrianglesPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Entries and Clues have separate definitions
 
@@ -56,7 +57,7 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -94,7 +95,7 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
         clue.max = maxValue;
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -149,10 +150,11 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
       var cmp = b.priorityCompareTo(a);
       if (cmp == 0) {
         // Attempt consistent order - Entries before Clues
-        if (b.variableType == VariableType.E)
+        if (b.variableType == VariableType.E) {
           cmp = 1;
-        else
+        } else {
           cmp = -1;
+        }
       }
       return cmp;
     }
@@ -171,16 +173,20 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
 
   // Validate possible clue value
   @override
+  // ignore: avoid_renaming_method_parameters
   bool validClue(VariableClue variable, int value,
       List<String> variableReferences, List<int> variableValues) {
     // Super method checks digits which is incorrect for clues
     if (value < 0) return false;
     if (variable.min != null && value < variable.min!) return false;
     if (variable.max != null && value > variable.max!) return false;
-    if (variable.values != null && !variable.values!.contains(value))
+    if (variable.values != null && !variable.values!.contains(value)) {
       return false;
-    if (variable.variableType == VariableType.E && !variable.digitsMatch(value))
+    }
+    if (variable.variableType == VariableType.E &&
+        !variable.digitsMatch(value)) {
       return false;
+    }
 
     // Across entries are square numbers and down entries are triangular numbers.
     // In the across clues, the clues give any properties of the square root of
@@ -271,9 +277,9 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as SquaresTrianglesPuzzle;
     var clue = v as SquaresTrianglesClue;
@@ -287,10 +293,11 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
       // Values may have been set by other Clue
       var values = clue.values;
       if (clue.values == null) {
-        if (clue.variableType == VariableType.E)
+        if (clue.variableType == VariableType.E) {
           values = clue.getValuesFromDigits();
-        else
+        } else {
           values = Set.from(generateIntegers(clue.min!, clue.max!));
+        }
       }
       if (values != null) {
         var newValues = values.where((value) => validClue(clue, value, [], []));
@@ -301,15 +308,15 @@ class SquaresTriangles extends Crossnumber<SquaresTrianglesPuzzle> {
   }
 
   @override
-  bool updateClues(
-      SquaresTrianglesPuzzle puzzle, String clueName, Set<int> possibleValues,
+  bool updateClues(SquaresTrianglesPuzzle thisPuzzle, String clueName,
+      Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order

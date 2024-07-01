@@ -17,9 +17,8 @@ class Variable {
 class VariableRef {
   final String name;
   Variable? variable;
-  bool get isVariable => variable != null && !(variable is Clue);
-  bool get isClue =>
-      variable != null && variable is Clue && !(variable is Entry);
+  bool get isVariable => variable != null && variable is! Clue;
+  bool get isClue => variable != null && variable is Clue && variable is! Entry;
   bool get isGridEntry => variable != null && variable is Entry;
 
   VariableRef(this.name);
@@ -63,16 +62,16 @@ class Clue extends Variable {
 
   Clue({
     required String name,
-    required int this.length,
-    String? this.valueDesc,
-    SolveFunction? this.solve,
+    required this.length,
+    this.valueDesc,
+    this.solve,
   }) : super(name) {
     min = 10.pow(length - 1) as int;
     max = (10.pow(length) as int) - 1;
   }
 
-  bool get isAcross => this.name[0] == 'A';
-  bool get isDown => this.name[0] == 'D';
+  bool get isAcross => name[0] == 'A';
+  bool get isDown => name[0] == 'D';
 
   int get lo => 10.pow(length - 1) as int;
   int get hi => (10.pow(length) as int) - 1;
@@ -81,19 +80,20 @@ class Clue extends Variable {
 
   Set<int>? _restrictedValues;
 
+  @override
   toString() => '$runtimeType $name';
 }
 
 class VariableClue extends Clue {
   VariableClue(
-      {required String name,
+      {required super.name,
       VariableType type = VariableType.C,
       required int? length,
-      String? valueDesc,
-      SolveFunction? solve})
-      : super(
-            name: name, length: length!, valueDesc: valueDesc, solve: solve) {}
+      super.valueDesc,
+      super.solve})
+      : super(length: length!);
   int count = 0;
+  @override
   toString() => '$runtimeType $name';
 }
 
@@ -119,17 +119,16 @@ mixin Expression {
 }
 
 class ExpressionClue extends VariableClue with Expression {
-  late ExpressionEvaluator exp;
-
   ExpressionClue(
       {required String name,
-      required int length,
+      required int super.length,
       String? valueDesc,
-      SolveFunction? solve,
+      super.solve,
       variablePrefix = ''})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+      : super(name: name, valueDesc: valueDesc) {
     initExpression(valueDesc, variablePrefix, name, this);
   }
+  @override
   toString() => '$runtimeType $name';
 }
 
@@ -145,6 +144,7 @@ class DigitIdentity {
     required this.digit,
   });
 
+  @override
   String toString() {
     return '$entry[$digit]';
   }
@@ -152,9 +152,11 @@ class DigitIdentity {
 
 mixin EntryMixin on Clue {
   /// Common digits with other clues: each digit has optional reference to clue and digit
+  @override
   late final List<DigitIdentity?> digitIdentities;
 
   /// Computed - Possible digits
+  @override
   late final List<Set<int>> digits;
 
   // Mapped Clue
@@ -170,22 +172,18 @@ mixin EntryMixin on Clue {
 
 class Entry extends Clue with EntryMixin {
   Entry(
-      {required String name,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve})
-      : super(name: name, length: length!, valueDesc: valueDesc, solve: solve) {
+      {required super.name, required int? length, super.valueDesc, super.solve})
+      : super(length: length!) {
     initEntry(this);
   }
 }
 
 class VariableEntry extends VariableClue with EntryMixin {
   VariableEntry(
-      {required String name,
-      required int? length,
-      String? valueDesc,
-      SolveFunction? solve})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+      {required super.name,
+      required super.length,
+      super.valueDesc,
+      super.solve}) {
     initEntry(this);
   }
 
@@ -196,12 +194,11 @@ class VariableEntry extends VariableClue with EntryMixin {
 
 class ExpressionEntry extends ExpressionClue with EntryMixin {
   ExpressionEntry(
-      {required String name,
-      required int length,
-      String? valueDesc,
-      SolveFunction? solve,
-      variablePrefix = ''})
-      : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+      {required super.name,
+      required super.length,
+      super.valueDesc,
+      super.solve,
+      variablePrefix = ''}) {
     initEntry(this);
   }
 }
@@ -213,7 +210,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Map<String, EntryKind> get entries => _entries;
   // Grid? grid;
 
-  Puzzle() {}
+  Puzzle();
   Puzzle.fromGridString(List<String> gridString) {
     // this.grid = Grid(gridString);
   }
@@ -226,10 +223,11 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     entries[entry.name] = entry;
   }
 
+  @override
   String toString() {
     var text = 'Puzzle\n';
     for (var clue in clues.values) {
-      text += clue.toString() + '\n';
+      text += '$clue\n';
     }
     return text;
   }
@@ -260,21 +258,21 @@ class DiceNetsPuzzle extends Puzzle<DiceNetsClue, DiceNetsEntry> {
 
 class DiceNetsClue extends Clue {
   DiceNetsClue({
-    required String name,
+    required super.name,
     required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(name: name, length: length!, valueDesc: valueDesc, solve: solve);
+    super.valueDesc,
+    super.solve,
+  }) : super(length: length!);
 }
 
 class DiceNetsEntry extends DiceNetsClue with EntryMixin {
   DiceNetsEntry({
-    required String name,
+    required super.name,
     VariableType type = VariableType.E,
     required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(name: name, length: length!, valueDesc: valueDesc, solve: solve) {
+    super.valueDesc,
+    super.solve,
+  }) : super(length: length!) {
     initEntry(this);
   }
 }
@@ -294,20 +292,20 @@ class InstructionPuzzle extends Puzzle<InstructionClue, InstructionEntry> {
 
 class InstructionClue extends ExpressionClue {
   InstructionClue({
-    required String name,
+    required super.name,
     required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(name: name, length: length!, valueDesc: valueDesc, solve: solve);
+    super.valueDesc,
+    super.solve,
+  }) : super(length: length!);
 }
 
 class InstructionEntry extends InstructionClue with EntryMixin {
   InstructionEntry({
-    required String name,
-    required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-  }) : super(name: name, length: length, valueDesc: valueDesc, solve: solve) {
+    required super.name,
+    required super.length,
+    super.valueDesc,
+    super.solve,
+  }) {
     initEntry(this);
   }
 }

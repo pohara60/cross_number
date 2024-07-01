@@ -14,12 +14,12 @@ class Cell extends Variable {
   var _digits = <int>{};
   int get digit => _digits.length == 1 ? _digits.first : 0;
   Set<int> get digits => _digits;
-  void set digits(Set<int> digits) {
+  set digits(Set<int> digits) {
     UndoStack.push(this);
     digitsNoUndo = digits;
   }
 
-  void set digitsNoUndo(Set<int> digits) {
+  set digitsNoUndo(Set<int> digits) {
     if (IterableEquality().equals(_digits, digits)) return;
     _digits = digits;
   }
@@ -31,6 +31,7 @@ class Cell extends Variable {
   ]) : super('$face$row$col', variableType: VariableType.G);
 
   String get position => '$row$col';
+  @override
   String toString() => '$name=$_digits';
   String toDigit() => _digits.length == 1 ? _digits.first.toString() : '?';
 
@@ -61,7 +62,7 @@ class Cell extends Variable {
   }
 }
 
-typedef Cell CellConstructor(int row, int col, String face);
+typedef CellConstructor = Cell Function(int row, int col, String face);
 
 class Grid {
   final Puzzle puzzle;
@@ -87,7 +88,7 @@ class Grid {
   }
 
   Grid.fromGridSpec(this.puzzle,
-      [String this.face = '', CellConstructor? constructor])
+      [this.face = '', CellConstructor? constructor])
       : numRows = puzzle.gridSpec!.cells.length,
         numCols = puzzle.gridSpec!.cells[0].length {
     rows.addAll(List.generate(
@@ -150,12 +151,11 @@ class Grid {
     }
   }
 
+  @override
   String toString() =>
-      '${face == '' ? '' : face + '\n'}' +
-      this
-          .rows
+      '${face == '' ? '' : '$face\n'}${rows
           .map((row) => row.fold('', (str, cell) => str + cell.toDigit()))
-          .join('\n');
-  int get sumdigits => this.rows.fold(
+          .join('\n')}';
+  int get sumdigits => rows.fold(
       0, (value, row) => row.fold(value, (value, cell) => value + cell.digit));
 }

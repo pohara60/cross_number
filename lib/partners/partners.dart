@@ -26,6 +26,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -36,7 +37,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
         SolveFunction? solve}) {
       try {
         var entry = PartnersEntry(
-            name: name,
+            name: name!,
             length: length,
             valueDesc: valueDesc,
             solve: solve,
@@ -44,7 +45,7 @@ class Partners extends Crossnumber<PartnersPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -142,8 +143,9 @@ class Partners extends Crossnumber<PartnersPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
 
     var otherName = (clue as PartnersClue).symmetricName;
     var index = variableReferences.indexOf(otherName);
@@ -169,9 +171,9 @@ class Partners extends Crossnumber<PartnersPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as PartnersPuzzle;
     var clue = v as PartnersClue;

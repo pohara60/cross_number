@@ -34,6 +34,7 @@ class No21 extends Crossnumber<No21Puzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -44,7 +45,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         int cellsTwoDigits = 1}) {
       try {
         var clue = No21Clue(
-            name: name,
+            name: name!,
             length: length,
             valueDesc: valueDesc,
             solve: solve,
@@ -52,7 +53,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -141,7 +142,7 @@ class No21 extends Crossnumber<No21Puzzle> {
         var entry = No21Entry(name: entrySpec.name, length: entrySpec.length);
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -188,8 +189,9 @@ class No21 extends Crossnumber<No21Puzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -199,9 +201,9 @@ class No21 extends Crossnumber<No21Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as No21Puzzle;
     var clue = v as No21Clue;
@@ -239,9 +241,9 @@ class No21 extends Crossnumber<No21Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var clue = v as No21Clue;
 
@@ -267,15 +269,15 @@ class No21 extends Crossnumber<No21Puzzle> {
   }
 
   void mapCallback() {
-    var mapping =
-        "${puzzle.entries.values.where((e) => e.clue != null).map((e) {
+    var mapping = puzzle.entries.values.where((e) => e.clue != null).map((e) {
       var c = e.clue!;
       return '${e.name}=${c.name}${c.values})';
-    }).join(',')}";
+    }).join(',');
     print('Mapping $mapping');
     print(puzzle.toSolution());
   }
 
+  @override
   void solve([bool iteration = true]) {
     print("SOLVE------------");
 
@@ -344,11 +346,10 @@ class No21 extends Crossnumber<No21Puzzle> {
         entryValues[entry.name] = e.digits
             .map((dl) => dl.length == 1
                 ? valueMapping[dl.first] ?? '?'
-                : dl.length == 0
+                : dl.isEmpty
                     ? ''
                     : '?')
             .toList();
-        ;
       }
       print("LETTER GRID-----------------------------");
       print(puzzle.gridSpec!.solutionToString(entryValues));

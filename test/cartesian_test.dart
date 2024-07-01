@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../lib/cartesian.dart';
+import 'package:crossnumber/cartesian.dart';
 
 void main() {
   group('Cartesian tests', () {

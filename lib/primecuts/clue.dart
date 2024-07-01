@@ -14,43 +14,39 @@ class PrimeCutsClue extends VariableClue {
   Set<int>? preValues;
 
   /// List of referenced primes
-  List<String> get primeReferences => this.variableNameReferences;
-  addPrimeReference(String prime) => this.addVariableReference(prime);
+  List<String> get primeReferences => variableNameReferences;
+  addPrimeReference(String prime) => addVariableReference(prime);
 
   PrimeCutsClue({
-    required String name,
-    VariableType type = VariableType.C,
-    required int? length,
-    required String this.prime,
-    String? valueDesc,
-    String? this.primeDesc,
-    String? this.preValueDesc,
-    SolveFunction? solve,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve);
+    required super.name,
+    super.type = VariableType.C,
+    required super.length,
+    required this.prime,
+    super.valueDesc,
+    this.primeDesc,
+    this.preValueDesc,
+    super.solve,
+  });
 
   bool updatePreValues(Set<int> possiblePreValue) {
     var updated = false;
-    if (this.preValues == null) {
-      this.preValues = possiblePreValue;
+    if (preValues == null) {
+      preValues = possiblePreValue;
       updated = true;
     } else {
-      if (updatePossible(this.preValues!, possiblePreValue)) updated = true;
+      if (updatePossible(preValues!, possiblePreValue)) updated = true;
     }
     return updated;
   }
 
+  @override
   String toString() {
     var identityStr = digitIdentities
         .asMap()
         .entries
         .map((e) => e.value == null
             ? ''
-            : '${this.name}[${e.key}]=${e.value!.clue.name}[${e.value!.digit}]')
+            : '$name[${e.key}]=${e.value!.clue.name}[${e.value!.digit}]')
         .where((element) => element != '')
         .join(',');
     var referrersStr = referrers.map((e) => e.name).join(',');
@@ -71,23 +67,15 @@ class PrimeCutsClue extends VariableClue {
 
 class PrimeCutsEntry extends PrimeCutsClue with EntryMixin {
   PrimeCutsEntry({
-    required String name,
-    VariableType type = VariableType.E,
-    required int? length,
-    required String prime,
-    String? valueDesc,
-    String? primeDesc,
-    String? preValueDesc,
-    SolveFunction? solve,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            prime: prime,
-            valueDesc: valueDesc,
-            primeDesc: primeDesc,
-            preValueDesc: preValueDesc,
-            solve: solve) {
+    required super.name,
+    super.type = VariableType.E,
+    required super.length,
+    required super.prime,
+    super.valueDesc,
+    super.primeDesc,
+    super.preValueDesc,
+    super.solve,
+  }) {
     initEntry(this);
   }
 }

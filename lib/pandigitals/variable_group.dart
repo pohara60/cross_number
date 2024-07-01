@@ -20,6 +20,7 @@ class ClueExpression with Expression {
     initExpression(expression, '', clue.name, _variableRefs);
   }
 
+  @override
   String toString() {
     var text = '$runtimeType ${clue.name}=$expression';
     return text;
@@ -34,10 +35,11 @@ class VariableGroup {
 
   VariableGroup(this.name, this.variables);
 
+  @override
   String toString() {
     var text = '$runtimeType $name\n';
     for (var clueExp in clues) {
-      text += clueExp.toString() + '\n';
+      text += '$clueExp\n';
     }
     return text.substring(0, text.length - 1);
   }

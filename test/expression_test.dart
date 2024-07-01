@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
-import '../lib/generators.dart';
-import '../lib/monadic.dart';
-import '../lib/expression.dart';
+import 'package:crossnumber/generators.dart';
+import 'package:crossnumber/monadic.dart';
+import 'package:crossnumber/expression.dart';
 
 void main() {
   group('Original tests', () {
@@ -443,7 +443,7 @@ void main() {
         var exp = ExpressionEvaluator(t);
         var tree2 = exp.tree!.rearrangeNode(
             Token("N", VAR, name: "N"), Token("O", VAR, name: "O"));
-        print('O = $exp => N = ${tree2}');
+        print('O = $exp => N = $tree2');
       });
     }
   });

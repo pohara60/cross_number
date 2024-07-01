@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:collection';
 import 'dart:math';
 
@@ -46,8 +48,9 @@ void initializeGenerators(Map<String, Generator> generators) {
 }
 
 Iterable<int> generateIntegers(num min, num max) sync* {
-  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
     yield integer;
+  }
 }
 
 Iterable<int> generateAscending(num min, num max) sync* {
@@ -93,14 +96,14 @@ const powers10 = <int>[
 Iterable<int> getPalindromes(int digits,
     [bool allowLeadingZero = false]) sync* {
   for (var digit = 0; digit < 10; digit++) {
-    if (digits == 1)
+    if (digits == 1) {
       yield digit;
-    else if (allowLeadingZero || digit != 0) {
+    } else if (allowLeadingZero || digit != 0) {
       var head = digit * powers10[digits - 1];
       var tail = digit;
-      if (digits == 2)
+      if (digits == 2) {
         yield head + tail;
-      else {
+      } else {
         for (var middle in getPalindromes(digits - 2, true)) {
           yield head + middle * 10 + tail;
         }
@@ -122,23 +125,26 @@ Iterable<int> generatePalindromes(num min, num max) sync* {
 }
 
 Iterable<int> generateHarshads(num min, num max) sync* {
-  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
     if (integer % digitSum(integer) == 0) yield integer;
+  }
 }
 
 Iterable<int> generateOddIntegers(num min, num max) sync* {
-  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
     if (integer % 2 == 1) yield integer;
+  }
 }
 
 Iterable<int> generateEvenIntegers(num min, num max) sync* {
-  for (var integer = min.toInt(); integer <= max.toInt(); integer++)
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
     if (integer % 2 == 0) yield integer;
+  }
 }
 
 const INITIAL_CHUNK_SIZE = 100;
 const CHUNK_SIZE_MULTIPLIER = 10;
-var chunk_size = INITIAL_CHUNK_SIZE;
+var chunkSize = INITIAL_CHUNK_SIZE;
 List<int> primes = [2, 3, 5, 7];
 Iterable<int> generatePrimesWithOne(num max) sync* {
   yield 1;
@@ -161,8 +167,8 @@ Iterable<int> generatePrimes(num min, num max) sync* {
       if (element > max) return;
       yield element;
     }
-    var next = primes.last + chunk_size;
-    chunk_size *= CHUNK_SIZE_MULTIPLIER;
+    var next = primes.last + chunkSize;
+    chunkSize *= CHUNK_SIZE_MULTIPLIER;
     extendPrimesUpto(next);
   }
 }
@@ -175,8 +181,8 @@ Iterable<int> generatePrimesOver(num min) sync* {
       if (element < min) continue;
       yield element;
     }
-    var next = primes.last + chunk_size;
-    chunk_size *= CHUNK_SIZE_MULTIPLIER;
+    var next = primes.last + chunkSize;
+    chunkSize *= CHUNK_SIZE_MULTIPLIER;
     extendPrimesUpto(next);
   }
 }
@@ -413,7 +419,9 @@ Iterable<int> generateProduct(num min, num max, GeneratorFunc gen1,
     for (var p2 in gen2(2, max2)) {
       // Check for non-distinct primes
       if (p1 % p2 != 0) {
-        while (index >= nextProduct.length) nextProduct.add(ListQueue());
+        while (index >= nextProduct.length) {
+          nextProduct.add(ListQueue());
+        }
         nextProduct[index].add(p1 * p2);
       }
 
@@ -516,7 +524,9 @@ Iterable<int> generateSum(num min, num max, GeneratorFunc gen1,
     if (max2 > p1) max2 = p1;
     for (var p2 in gen2(1, max2)) {
       // Check for non-distinct primes
-      while (index >= nextSum.length) nextSum.add(ListQueue());
+      while (index >= nextSum.length) {
+        nextSum.add(ListQueue());
+      }
       nextSum[index].add(p1 + p2);
       index++;
     }

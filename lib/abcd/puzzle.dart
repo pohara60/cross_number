@@ -7,9 +7,9 @@ import '../variable.dart';
 
 class ABCDVariable extends Variable {
   ABCDVariable(letter) : super(letter.$1) {
-    this.values = Set.from(generateNDigitPrimes(letter.$2));
+    values = Set.from(generateNDigitPrimes(letter.$2));
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class ABCDPuzzle extends VariablePuzzle<ABCDClue, ABCDEntry, ABCDVariable> {

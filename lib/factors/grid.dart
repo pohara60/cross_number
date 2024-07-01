@@ -7,11 +7,12 @@ class FactorsCell extends Cell with Expression {
   var expDesc = '';
 
   FactorsCell(
-    row,
-    col, [
-    face = '',
-  ]) : super(row, col, face);
+    super.row,
+    super.col, [
+    super.face = '',
+  ]);
 
+  @override
   String toString() =>
       '$name,$expDesc=${values != null ? values!.toShortString() : 'null'}';
 

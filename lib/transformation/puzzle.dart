@@ -7,12 +7,12 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class TransformationVariable extends Variable {
-  TransformationVariable(letter) : super(letter) {
+  TransformationVariable(super.letter) {
     // The 28 letters in the clues stand for different cubes that are greater
     // than 1 and less than 100,000
-    this.values = Set.from(getCubesInRange(2, 99999));
+    values = Set.from(getCubesInRange(2, 99999));
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class TransformationPuzzle extends VariablePuzzle<TransformationClue,

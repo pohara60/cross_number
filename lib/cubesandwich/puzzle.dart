@@ -6,9 +6,9 @@ import '../variable.dart';
 
 class CubeSandwichVariable extends Variable {
   CubeSandwichVariable(letter) : super(letter.$1) {
-    this.values = Set.from([]);
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class CubeSandwichPuzzle extends VariablePuzzle<CubeSandwichClue,

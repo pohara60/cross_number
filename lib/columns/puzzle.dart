@@ -6,9 +6,9 @@ import '../variable.dart';
 
 class ColumnsVariable extends Variable {
   ColumnsVariable(letter) : super(letter.$1) {
-    this.values = Set.from([]);
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class ColumnsPuzzle

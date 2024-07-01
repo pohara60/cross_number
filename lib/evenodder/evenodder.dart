@@ -36,6 +36,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var a1 = EvenOdderEntry(
         name: 'A1',
@@ -317,13 +318,6 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
 
     puzzle.linkEntriesToGrid();
 
-    var clueError = '';
-    // clueError = puzzle.checkClueEntryReferences();
-    clueError = puzzle.checkClueClueReferences();
-    // clueError += puzzle.checkEntryClueReferences();
-    // clueError += puzzle.checkEntryEntryReferences();
-    // Check variabes last, as prceeding may update them
-
     // Add letter references from descriptions
     var letters = [
       'A',
@@ -357,8 +351,8 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
         }
       }
       EvenOdderVariable.link(
-        puzzle.variables['A' + letter]! as EvenOdderVariable,
-        puzzle.variables['D' + letter]! as EvenOdderVariable,
+        puzzle.variables['A$letter']! as EvenOdderVariable,
+        puzzle.variables['D$letter']! as EvenOdderVariable,
       );
     }
     puzzle.finalize();
@@ -414,6 +408,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
   //   return updated;
   // }
 
+  @override
   void solve([bool iteration = true]) {
     print("SOLVE------------");
     // Manual sequencing of solution may save iterations
@@ -427,9 +422,9 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as EvenOdderPuzzle;
     var clue = v as EvenOdderClue;

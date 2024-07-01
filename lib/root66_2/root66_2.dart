@@ -1,4 +1,6 @@
 /// An API for solving Prime Cuts puzzles.
+// ignore_for_file: camel_case_types
+
 library root66;
 
 import '../puzzle.dart';
@@ -38,6 +40,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     initBCEFG();
   }
 
+  @override
   void initCrossnumber() {
     var entryErrors = '';
     void entryWrapper(
@@ -46,11 +49,11 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
         Root66_2EntryType root66type = Root66_2EntryType.UNKNOWN}) {
       try {
         var entry =
-            Root66_2Entry(name: name, length: length, root66type: root66type);
+            Root66_2Entry(name: name!, length: length, root66type: root66type);
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
         return;
       }
     }
@@ -68,7 +71,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
         puzzle.mapClueToEntryByName(name, name);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -220,6 +223,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
   final setBCEFG = <int>{};
 
   void initBCEFG() {
+    // ignore: constant_identifier_names
     const DIGITS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (var b in DIGITS) {
       for (var c in DIGITS.where((element) => element != b)) {
@@ -294,14 +298,16 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
     // Manual sequencing of solution for debugging
     try {
-      solveClue(this.puzzle.clues['D14']!);
-      solveClue(this.puzzle.clues['D2']!);
-      solveClue(this.puzzle.clues['A2']!);
-      solveClue(this.puzzle.clues['A12']!);
-      solveClue(this.puzzle.clues['D4']!);
+      solveClue(puzzle.clues['D14']!);
+      solveClue(puzzle.clues['D2']!);
+      solveClue(puzzle.clues['A2']!);
+      solveClue(puzzle.clues['A12']!);
+      solveClue(puzzle.clues['D4']!);
       // solveClue(this.puzzle.clues['A12']!);
       // solveClue(this.puzzle.clues['A12']!);
-    } catch (e) {}
+    } catch (e) {
+      // Do Nothing
+    }
     super.solve(iteration);
 
     // Check entry types, re-solve
@@ -368,9 +374,9 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as Root66_2Puzzle;
     var clue = v as Root66_2Clue;
@@ -411,12 +417,14 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
       //   print('${clue.name} value=$preValue, G=$valuesG, BCEF=$valuesBCEF');
       // }
       if (entriesG.isNotEmpty) {
-        if (getMatchingEntryValues(entriesG, clue, possibleEntryValue))
+        if (getMatchingEntryValues(entriesG, clue, possibleEntryValue)) {
           types.add(Root66_2EntryType.G);
+        }
       }
       if (entriesBCEF.isNotEmpty) {
-        if (getMatchingEntryValues(entriesBCEF, clue, possibleEntryValue))
+        if (getMatchingEntryValues(entriesBCEF, clue, possibleEntryValue)) {
           types.add(Root66_2EntryType.BCEF);
+        }
       }
     } else {
       // Possible values are all BCEFG
@@ -442,8 +450,8 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Variable inputClue) {
-    var clue = inputClue as Root66_2Clue;
+  bool solveClue(Variable variable) {
+    var clue = variable as Root66_2Clue;
     var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as Root66_2Entry;
 
@@ -456,37 +464,38 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
     if (clue.solve != null) {
       var possibleClueValue = <int>{};
       var possibleEntryValue = <int>{};
-      var possibleVariables = <String, Set<int>>{};
-      var updatedVariables = <String>{};
-      for (var variableName in clue.variableNameReferences) {
-        possibleVariables[variableName] = <int>{};
+      var possibleVariables = <Variable, Set<int>>{};
+      var updatedVariables = <Variable>{};
+      for (var variableRef in clue.variableReferences) {
+        possibleVariables[variableRef] = <int>{};
       }
       if (clue.solve!(puzzle, clue, possibleClueValue,
           possibleValue2: possibleEntryValue,
           possibleVariables: possibleVariables)) updated = true;
       // Some Solve functions do not update Clue Values
-      if (possibleClueValue.isNotEmpty && clue.updateValues(possibleClueValue))
+      if (possibleClueValue.isNotEmpty &&
+          clue.updateValues(possibleClueValue)) {
         updated = true;
+      }
       // If no Entry Values returned then Solve function could not solve
       if (possibleEntryValue.isEmpty) {
         print(
             'Solve Error: clue ${clue.name} (${clue.valueDesc}) no solution!');
         throw SolveException();
       }
-      if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty)
+      if (puzzle.updateVariableValues(entry, possibleEntryValue).isNotEmpty) {
         updated = true;
+      }
       if (entry.finalise()) updated = true;
-      for (var variableName in clue.variableNameReferences) {
-        updateVariables(puzzle, variableName, possibleVariables[variableName]!,
-            updatedVariables);
+      for (var variableRef in clue.variableReferences) {
+        updateVariables(puzzle, variableRef.name,
+            possibleVariables[variableRef]!, updatedVariables);
       }
 
       if (Crossnumber.traceSolve && updated) {
         print("solve: ${clue.toString()}");
-        var variableList = puzzle.variableList;
-        for (var variableName in updatedVariables) {
-          print(
-              '$variableName=${variableList.variables[variableName]!.values.toString()}');
+        for (var variableRef in updatedVariables) {
+          print('${variableRef.name}=${variableRef.values.toString()}');
         }
       }
     }
@@ -507,23 +516,22 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
   void checkEntryTypes() {
     // Check type totals - should be 7 G and 13 BCEF
-    const TARGET_G = 7;
-    const TARGET_BCEF = 13;
+    const targetG = 7;
+    const targetBcef = 13;
     var countG = puzzle.entries.values
         .where((e) => e.root66type == Root66_2EntryType.G)
         .length;
     var countBCEF = puzzle.entries.values
         .where((e) => e.root66type == Root66_2EntryType.BCEF)
         .length;
-    if (countG < TARGET_G && countBCEF < TARGET_BCEF) return;
-    if (countG == TARGET_G && countBCEF == TARGET_BCEF) return;
-    if (countG > TARGET_G || countBCEF > TARGET_BCEF) {
-      print(
-          'Solve Error: invalid Entry types ${countG}/7 and ${countBCEF}/13!');
+    if (countG < targetG && countBCEF < targetBcef) return;
+    if (countG == targetG && countBCEF == targetBcef) return;
+    if (countG > targetG || countBCEF > targetBcef) {
+      print('Solve Error: invalid Entry types $countG/7 and $countBCEF/13!');
       throw SolveException();
     }
     // Can fix other entries
-    var fix = countG == TARGET_G ? Root66_2EntryType.BCEF : Root66_2EntryType.G;
+    var fix = countG == targetG ? Root66_2EntryType.BCEF : Root66_2EntryType.G;
     puzzle.entries.values
         .where((e) => e.root66type == Root66_2EntryType.UNKNOWN)
         .forEach((e) {

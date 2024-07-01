@@ -22,10 +22,10 @@ const first14primes = [
 ];
 
 class SumSquaresVariable extends Variable {
-  SumSquaresVariable(letter) : super(letter) {
-    this.values = Set.from(first14primes);
+  SumSquaresVariable(super.letter) {
+    values = Set.from(first14primes);
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class SumSquaresPuzzle extends VariablePuzzle<SumSquaresClue, SumSquaresEntry,

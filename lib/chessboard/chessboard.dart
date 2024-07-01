@@ -28,6 +28,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var clueErrors = '';
     void clueWrapper(
@@ -38,7 +39,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
         puzzle.addEntry(entry);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -115,8 +116,9 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -126,9 +128,9 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as ChessboardPuzzle;
     var clue = v as ChessboardClue;
@@ -149,12 +151,12 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
 
   // Override solveClue to check chessboard
   @override
-  bool solveClue(Variable clue) {
-    var updated = super.solveClue(clue);
+  bool solveClue(Variable variable) {
+    var updated = super.solveClue(variable);
     if (updated) {
       // Check entry digits for chessboard
-      if (clue is Clue) {
-        var entry = clue.entry as ChessboardEntry?;
+      if (variable is Clue) {
+        var entry = variable.entry as ChessboardEntry?;
         if (entry != null) {
           for (var d = 0; d < entry.length!; d++) {
             if (entry.digits[d].length == 1) {

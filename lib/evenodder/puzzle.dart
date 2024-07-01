@@ -40,10 +40,10 @@ const variableValues = [
 
 class EvenOdderVariable extends Variable {
   late EvenOdderVariable _link;
-  EvenOdderVariable(letter) : super(letter) {
-    this.values = Set.from(variableValues);
+  EvenOdderVariable(super.letter) {
+    values = Set.from(variableValues);
   }
-  String get letter => this.name;
+  String get letter => name;
 
   @override
   bool updatePossible(Set<int> possibleValues) {
@@ -51,12 +51,12 @@ class EvenOdderVariable extends Variable {
     if (updated) {
       // Update corresponding Across/Down variable
       var otherValues = <int>{};
-      for (var value in this.values!) {
+      for (var value in values!) {
         // Even add one, odd sutract one
         var otherValue = value + (value % 2 == 0 ? 1 : -1);
         otherValues.add(otherValue);
       }
-      this._link.updatePossible(otherValues);
+      _link.updatePossible(otherValues);
     }
     return updated;
   }

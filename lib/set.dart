@@ -30,8 +30,8 @@ const kLimit = 20;
 String _toShortString(List<int> list) {
   if (list.isEmpty) return '';
 
-  int? first = null;
-  int? last = null;
+  int? first;
+  int? last;
   var count = 0;
   var str = StringBuffer();
   var str2 = StringBuffer();
@@ -42,10 +42,11 @@ String _toShortString(List<int> list) {
       str2.write(',');
       if (last! + 1 != item) {
         if (last > first) {
-          if (last > first + 1)
+          if (last > first + 1) {
             str.write('$first..$last,');
-          else
+          } else {
             str.write('$first,$last,');
+          }
           str2.clear();
         } else {
           str.write(str2);
@@ -60,10 +61,11 @@ String _toShortString(List<int> list) {
     if (count >= kLimit) break;
   }
   if (last! > first!) {
-    if (last > first + 1)
+    if (last > first + 1) {
       str.write('$first..$last');
-    else
+    } else {
       str.write('$first,$last');
+    }
   } else {
     str.write('$first');
   }

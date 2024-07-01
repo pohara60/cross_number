@@ -3,8 +3,8 @@ import '../puzzle.dart';
 import '../variable.dart';
 
 class PandigitalsVariable extends Variable {
-  PandigitalsVariable(letter) : super(letter);
-  String get letter => this.name;
+  PandigitalsVariable(super.letter);
+  String get letter => name;
 }
 
 class PandigitalsPuzzle extends VariablePuzzle<PandigitalsClue,

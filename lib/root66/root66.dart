@@ -63,6 +63,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
   late Root66Entry d16;
   late Root66Entry d17;
 
+  @override
   void initCrossnumber() {
     a2 = Root66Entry(
         name: 'A2',
@@ -259,6 +260,7 @@ class Root66 extends Crossnumber<Root66Puzzle> {
   final setBCEFG = <int>{};
 
   void initBCEFG() {
+    // ignore: constant_identifier_names
     const DIGITS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (var b in DIGITS) {
       for (var c in DIGITS.where((element) => element != b)) {
@@ -333,14 +335,16 @@ class Root66 extends Crossnumber<Root66Puzzle> {
 
     // Manual sequencing of solution for debugging
     try {
-      solveClue(this.puzzle.clues['D14']!);
-      solveClue(this.puzzle.clues['D2']!);
-      solveClue(this.puzzle.clues['A2']!);
-      solveClue(this.puzzle.clues['A12']!);
-      solveClue(this.puzzle.clues['D4']!);
+      solveClue(puzzle.clues['D14']!);
+      solveClue(puzzle.clues['D2']!);
+      solveClue(puzzle.clues['A2']!);
+      solveClue(puzzle.clues['A12']!);
+      solveClue(puzzle.clues['D4']!);
       // solveClue(this.puzzle.clues['A12']!);
       // solveClue(this.puzzle.clues['A12']!);
-    } catch (e) {}
+    } catch (e) {
+      // Do Nothing
+    }
     super.solve(iteration);
 
     // Find solution BCEFG
@@ -411,9 +415,9 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as Root66Puzzle;
     var clue = v as Root66Entry;
@@ -466,8 +470,9 @@ class Root66 extends Crossnumber<Root66Puzzle> {
   }
 
   // Override solveClue to manage preValues
-  bool solveClue(Variable inputClue) {
-    var clue = inputClue as Root66Entry;
+  @override
+  bool solveClue(Variable variable) {
+    var clue = variable as Root66Entry;
     var puzzle = puzzleForVariable[clue]!;
     // If clue solved already then skip it
     if (clue.values != null && clue.values!.length == 1) return false;
@@ -478,17 +483,19 @@ class Root66 extends Crossnumber<Root66Puzzle> {
     if (clue.solve != null) {
       var possiblePreValue = <int>{};
       var possibleValue = <int>{};
-      var possibleVariables = <String, Set<int>>{};
-      var updatedVariables = <String>{};
-      for (var variableName in clue.variableNameReferences) {
-        possibleVariables[variableName] = <int>{};
+      var possibleVariables = <Variable, Set<int>>{};
+      var updatedVariables = <Variable>{};
+      for (var variableRef in clue.variableReferences) {
+        possibleVariables[variableRef] = <int>{};
       }
       if (clue.solve!(puzzle, clue, possiblePreValue,
           possibleValue2: possibleValue,
           possibleVariables: possibleVariables)) updated = true;
       // Some Solve functions do not update PreValues
-      if (possiblePreValue.isNotEmpty && clue.updatePreValues(possiblePreValue))
+      if (possiblePreValue.isNotEmpty &&
+          clue.updatePreValues(possiblePreValue)) {
         updated = true;
+      }
       // If no Values returned then Solve function could not solve
       if (possibleValue.isEmpty) {
         print(
@@ -504,17 +511,15 @@ class Root66 extends Crossnumber<Root66Puzzle> {
         }
       }
       if (clue.finalise()) updated = true;
-      for (var variableName in clue.variableNameReferences) {
-        updateVariables(puzzle, variableName, possibleVariables[variableName]!,
-            updatedVariables);
+      for (var variableRef in clue.variableReferences) {
+        updateVariables(puzzle, variableRef.name,
+            possibleVariables[variableRef]!, updatedVariables);
       }
 
       if (Crossnumber.traceSolve && updated) {
         print("solve: ${clue.toString()}");
-        var variableList = puzzle.variableList;
-        for (var variableName in updatedVariables) {
-          print(
-              '$variableName=${variableList.variables[variableName]!.values.toString()}');
+        for (var updatedVariable in updatedVariables) {
+          print('${updatedVariable.name}=${updatedVariable.values.toString()}');
         }
       }
     }

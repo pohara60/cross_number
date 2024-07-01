@@ -39,9 +39,9 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
       Variable v,
       Set<int> possibleValue, {
       Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
     }) {
       var clue = v as DistancingEntry;
       return solve(clue, possibleValue);
@@ -50,6 +50,7 @@ class Distancing extends Crossnumber<DistancingPuzzle> {
     return solveDistancingClue;
   }
 
+  @override
   void initCrossnumber() {
     a1 = DistancingEntry(
         name: 'A1',

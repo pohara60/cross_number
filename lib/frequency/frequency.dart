@@ -48,9 +48,9 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
       Variable v,
       Set<int> possibleValue, {
       Set<int>? possibleValue2,
-      Map<String, Set<int>>? possibleVariables,
-      Map<String, Set<int>>? possibleVariables2,
-      Set<String>? updatedVariables,
+      Map<Variable, Set<int>>? possibleVariables,
+      Map<Variable, Set<int>>? possibleVariables2,
+      Set<Variable>? updatedVariables,
     }) {
       var clue = v as FrequencyEntry;
       return solve(clue, possibleValue);
@@ -59,6 +59,7 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     return solveFrequencyClue;
   }
 
+  @override
   void initCrossnumber() {
     a1 = FrequencyEntry(
         name: 'A1',
@@ -252,9 +253,9 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
 
   bool solveD3(FrequencyEntry clue, Set<int> possibleValue) {
     List<int>? values;
-    if (clue.values != null)
+    if (clue.values != null) {
       values = List.from(clue.values!);
-    else {
+    } else {
       var squares = getSquaresInRange(1, 17);
       values = <int>[];
       for (var d1 = 1; d1 < 10; d1++) {
@@ -275,9 +276,9 @@ class Frequency extends Crossnumber<FrequencyPuzzle> {
     if (a7.values != null) {
       values = getMultipleOfOtherClue(clue, a7)!;
     } else {
-      if (clue.values != null)
+      if (clue.values != null) {
         values = List.from(clue.values!);
-      else {
+      } else {
         // Need to get started with mutually recursive clues
         var setValues = <int>{};
         for (var a7value = 10; a7value < 100; a7value++) {

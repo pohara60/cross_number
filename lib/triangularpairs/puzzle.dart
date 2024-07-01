@@ -5,10 +5,10 @@ import '../variable.dart';
 // Numbers < 200 that are a power of a prime number
 
 class TriangularPairsVariable extends Variable {
-  TriangularPairsVariable(letter) : super(letter) {
-    this.values = Set.from([]);
+  TriangularPairsVariable(super.letter) {
+    values = <int>{};
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class TriangularPairsPuzzle extends VariablePuzzle<TriangularPairsClue,

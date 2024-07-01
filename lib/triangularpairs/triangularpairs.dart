@@ -31,9 +31,10 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
     var puzzle = TriangularPairsPuzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Clue definitions define the Entries
     var clueErrors = '';
@@ -48,7 +49,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
         puzzle.addEntry(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -122,6 +123,7 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
 
     // Two digit clues are distinct triangular numbers
     for (var clue1 in puzzle.clues.values)
+      // ignore: curly_braces_in_flow_control_structures
       for (var clue2 in puzzle.clues.values) {
         if (clue1 != clue2) clue1.addReferrer(clue2);
       }
@@ -186,8 +188,9 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
   @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     // Check pairs of 3 digit numbers
     var pair = (clue as TriangularPairsClue).pair;
     if (pair != null) {
@@ -213,9 +216,9 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
     Variable v,
     Set<int> possibleValue, {
     Set<int>? possibleValue2,
-    Map<String, Set<int>>? possibleVariables,
-    Map<String, Set<int>>? possibleVariables2,
-    Set<String>? updatedVariables,
+    Map<Variable, Set<int>>? possibleVariables,
+    Map<Variable, Set<int>>? possibleVariables2,
+    Set<Variable>? updatedVariables,
   }) {
     var puzzle = p as TriangularPairsPuzzle;
     var clue = v as TriangularPairsClue;
@@ -281,13 +284,13 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
   }
 
   @override
-  bool updateClues(
-      TriangularPairsPuzzle puzzle, String clueName, Set<int> possibleValues,
+  bool updateClues(TriangularPairsPuzzle thisPuzzle, String clueName,
+      Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     // Maintain clue value order
-    var clue = puzzle.clues[clueName]!;
+    var clue = thisPuzzle.clues[clueName]!;
     if (clue.isSet && clue.length == 2) {
       addKnownTwoDigitTriangular(clue.value!);
     }
