@@ -344,7 +344,7 @@ class EvenOdder extends Crossnumber<EvenOdderPuzzle> {
         puzzle.addAnyVariable(EvenOdderVariable(variableName));
         for (var clue in puzzle.clues.values) {
           if (clue.name[0] == prefix) {
-            if (clue.exp.variableRefs.contains(variableName)) {
+            if (clue.exp.variableNameRefs.contains(variableName)) {
               clue.addLetterReference(variableName);
             }
           }

@@ -116,9 +116,9 @@ class Factors extends Crossnumber<FactorsPuzzle> {
         // Cells also depend on the intersecting entries
         var entries = factorsCell.entries;
         if (entries.isNotEmpty) {
-          factorsCell.exp.clueRefs.add(entries[0].name);
+          factorsCell.exp.clueNameRefs.add(entries[0].name);
           factorsCell.addClueReference(entries[0].name);
-          factorsCell.exp.clueRefs.add(entries[1].name);
+          factorsCell.exp.clueNameRefs.add(entries[1].name);
           factorsCell.addClueReference(entries[1].name);
           factorsCell.addReferrer(entries[0]);
           factorsCell.addReferrer(entries[1]);

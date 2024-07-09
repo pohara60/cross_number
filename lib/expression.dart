@@ -27,10 +27,10 @@ mixin Expression {
       try {
         var exp = ExpressionEvaluator(valueDesc, variablePrefix, entryNames);
         expressions.add(exp);
-        for (var variableName in exp.variableRefs..sort()) {
+        for (var variableName in exp.variableNameRefs..sort()) {
           variableRefs.addVariableReference(variableName);
         }
-        for (var clueName in exp.clueRefs..sort()) {
+        for (var clueName in exp.clueNameRefs..sort()) {
           if (entryNames != null && entryNames.contains(clueName)) {
             variableRefs.addEntryReference(clueName);
           } else {
@@ -483,8 +483,9 @@ class ExpressionEvaluator {
 
   late final String text;
   late final String variablePrefix;
-  List<String> variableRefs = [];
-  List<String> clueRefs = [];
+  List<String> variableNameRefs = [];
+  List<String> clueNameRefs = [];
+  List<Variable> variableRefs = [];
   late final Iterator tokenIterator;
   Token? tok;
   Token? nexttok;
@@ -515,7 +516,7 @@ class ExpressionEvaluator {
     }
     usesResult =
         _hasToken(GENERATOR, "result"); // Does not yet use generator result
-    variableRefs.sort();
+    variableNameRefs.sort();
     if (tree!.order == NodeOrder.UNKNOWN &&
         (tree!.complexity == NodeComplexity.GENERATOR_CHILD ||
             tree!.complexity == NodeComplexity.GENERATOR_CHILDREN)) {
@@ -587,10 +588,10 @@ class ExpressionEvaluator {
   }
 
   String fixReference(clueName) {
-    if (clueRefs.contains(clueName)) {
-      clueRefs.remove(clueName);
+    if (clueNameRefs.contains(clueName)) {
+      clueNameRefs.remove(clueName);
       var name = variablePrefix + clueName;
-      variableRefs.add(name);
+      variableNameRefs.add(name);
       tree!.fixNode(
         Token(clueName, CLUE, name: clueName),
         Token(name, VAR, name: name),
@@ -606,7 +607,8 @@ class ExpressionEvaluator {
     var name = node.token.name;
     if (type == VAR) {
       if (!node.token.resolvedVariable) {
-        node.token.variable = allVariables[(VariableType.V, name)]!;
+        var variable = allVariables[(VariableType.V, name)]!;
+        node.token.variable = variable;
         // Token is re-used, cannot re-initialise late variable
         node.token.resolvedVariable = true;
       }
@@ -633,7 +635,26 @@ class ExpressionEvaluator {
   }
 
   void resolveReferences(Map<(VariableType, String), Variable> allVariables) {
-    if (tree != null) resolveReferencesNode(allVariables, tree!);
+    if (tree != null) {
+      var length = variableNameRefs.length + clueNameRefs.length;
+      if (length > 0) {
+        resolveReferencesNode(allVariables, tree!);
+        // Get variable references in same order as variable names
+        for (var name in variableNameRefs) {
+          var variable = allVariables[(VariableType.V, name)]!;
+          variableRefs.add(variable);
+        }
+        for (var name in clueNameRefs) {
+          var variable = allVariables[(VariableType.C, name)];
+          if (variable == null) {
+            // Entry, alphabetic or prefix E
+            if (name.length > 1 && name[0] == 'E') name = name.substring(1);
+            variable = allVariables[(VariableType.E, name)]!;
+          }
+          variableRefs.add(variable);
+        }
+      }
+    }
   }
 
   int evaluate([
@@ -804,12 +825,12 @@ class ExpressionEvaluator {
     if (_accept(VAR) || _accept(CLUE) || _accept(NUM) || _accept(GENERATOR)) {
       var token = tok!;
       if (token.type == VAR) {
-        if (!variableRefs.contains(token.name)) {
-          variableRefs.add(token.name);
+        if (!variableNameRefs.contains(token.name)) {
+          variableNameRefs.add(token.name);
         }
       }
       if (token.type == CLUE) {
-        if (!clueRefs.contains(token.name)) clueRefs.add(token.name);
+        if (!clueNameRefs.contains(token.name)) clueNameRefs.add(token.name);
       }
       return Node(token);
     } else if (_accept(LPAREN)) {
