@@ -8,7 +8,7 @@ class {{env['ABCD']}}Variable extends Variable {
   {{env['ABCD']}}Variable(super.letter) {
     this.values = Set.from([]);
   }
-  String get letter => this.name;
+  String get letter => name;
 }
 
 class {{env['ABCD']}}Puzzle extends VariablePuzzle<{{env['ABCD']}}Clue, {{env['ABCD']}}Entry, {{env['ABCD']}}Variable> {

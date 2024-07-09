@@ -231,15 +231,15 @@ class AlmostFermat extends Crossnumber<AlmostFermatPuzzle> {
 
   @override
   bool updateClues(
-      AlmostFermatPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
+      AlmostFermatPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+        isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     return updated;
   }
 }

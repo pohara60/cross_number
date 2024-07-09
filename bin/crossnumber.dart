@@ -22,6 +22,7 @@ import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/knights2/knights2.dart';
 import 'package:crossnumber/no21/no21.dart';
+import 'package:crossnumber/opposingdigitsum/opposingdigitsum.dart';
 import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
 import 'package:crossnumber/partners/partners.dart';
@@ -93,7 +94,8 @@ void main(List<String> arguments) async {
     ..addCommand(PrimeKnightCommand())
     ..addCommand(FactorsCommand())
     ..addCommand(TransformationCommand())
-    ..addCommand(SquaresTrianglesCommand());
+    ..addCommand(SquaresTrianglesCommand())
+    ..addCommand(OpposingDigitSumCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -954,6 +956,30 @@ class SquaresTrianglesCommand extends Command {
     // Get and print solve
     try {
       final pc = SquaresTriangles();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class OpposingDigitSumCommand extends Command {
+  @override
+  final name = 'OpposingDigitSum';
+  @override
+  final description = 'solve hardcoded OpposingDigitSum puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = OpposingDigitSum();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

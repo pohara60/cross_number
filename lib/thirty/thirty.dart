@@ -229,8 +229,8 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       if (d1possible.isEmpty || a3possible.isEmpty) {
         throw SolveException('No possible values!');
       }
-      updateClues(otherPuzzle, d1.name, d1possible);
-      updateClues(otherPuzzle, a3.name, a3possible);
+      updateClues(otherPuzzle, d1, d1possible);
+      updateClues(otherPuzzle, a3, a3possible);
     } else if (clue.name == 'A8') {
       // 8ac = 3ac x 7ac, both from the same grid
       var a3 = puzzle.clues['A3']!;
@@ -259,8 +259,8 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       if (a3possible.isEmpty || a7possible.isEmpty) {
         throw SolveException('No possible values!');
       }
-      updateClues(puzzle, a3.name, a3possible);
-      updateClues(puzzle, a7.name, a7possible);
+      updateClues(puzzle, a3, a3possible);
+      updateClues(puzzle, a7, a7possible);
     } else {
       var values = clue.values;
       values ??= getValuesFromDigits(clue);
@@ -273,18 +273,16 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
   }
 
   @override
-  bool updateClues(
-      ThirtyPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
+  bool updateClues(ThirtyPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+        isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (updated) {
       /*
       Every digit is even and there are fifteen pairs of even digits, from {0,0}, {0,2} up to {8,8}. For this purpose, {p,q} is the same as {q,p}. Each of the fifteen pairs fills one of the matching cells of the two grids, one in each grid. All entries are distinct, and none starts with zero.
       The sum of the digits in the first grid equals the sum of the digits in the second grid.
       No entry is a jumble of another entry.
       */
-      var clue = thisPuzzle.clues[clueName]!;
       if (possibleValues.length == 1) {
         var value = possibleValues.first;
         if (knownValues.containsKey(value)) {

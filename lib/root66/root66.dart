@@ -471,20 +471,20 @@ class Root66 extends Crossnumber<Root66Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Variable variable) {
+  Set<Variable> solveClue(Variable variable) {
     var clue = variable as Root66Entry;
     var puzzle = puzzleForVariable[clue]!;
     // If clue solved already then skip it
-    if (clue.values != null && clue.values!.length == 1) return false;
+    if (clue.values != null && clue.values!.length == 1) return {};
 
     var updated = false;
     if (clue.initialise()) updated = true;
 
+    var updatedVariables = <Variable>{};
     if (clue.solve != null) {
       var possiblePreValue = <int>{};
       var possibleValue = <int>{};
       var possibleVariables = <Variable, Set<int>>{};
-      var updatedVariables = <Variable>{};
       for (var variableRef in clue.variableReferences) {
         possibleVariables[variableRef] = <int>{};
       }
@@ -523,6 +523,12 @@ class Root66 extends Crossnumber<Root66Puzzle> {
         }
       }
     }
-    return updated;
+
+    // Return all updated variables
+    if (!updated) return {};
+    var allUpdatedVariables = <Variable>{clue};
+    allUpdatedVariables.addAll(updatedVariables);
+
+    return allUpdatedVariables;
   }
 }

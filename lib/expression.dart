@@ -93,6 +93,8 @@ class Token {
   final String str;
   final int value;
   final String name;
+  bool resolvedVariable = false;
+  late final Variable variable;
   Token(this.str, this.type, {this.value = 0, this.name = ''});
   String toLongString() {
     return '$type${value != 0 ? '=${value.toString()}' : ''}${name != '' ? '=$name' : ''}';
@@ -489,7 +491,7 @@ class ExpressionEvaluator {
   Node? tree;
 
   // Evaluation context
-  List<String>? variableNames;
+  List<Variable>? variables;
   List<int>? variableValues;
 
   // Hard-coded result generator
@@ -598,12 +600,48 @@ class ExpressionEvaluator {
     return '';
   }
 
+  void resolveReferencesNode(
+      Map<(VariableType, String), Variable> allVariables, Node node) {
+    var type = node.token.type;
+    var name = node.token.name;
+    if (type == VAR) {
+      if (!node.token.resolvedVariable) {
+        node.token.variable = allVariables[(VariableType.V, name)]!;
+        // Token is re-used, cannot re-initialise late variable
+        node.token.resolvedVariable = true;
+      }
+      return;
+    }
+    if (type == CLUE) {
+      var variable = allVariables[(VariableType.C, name)];
+      if (variable == null) {
+        // Entry, alphabetic or prefix E
+        if (name.length > 1 && name[0] == 'E') name = name.substring(1);
+        variable = allVariables[(VariableType.E, name)]!;
+      }
+      if (!node.token.resolvedVariable) {
+        node.token.variable = variable;
+        // Token is re-used, cannot re-initialise late variable
+        node.token.resolvedVariable = true;
+      }
+      return;
+    }
+    if (node.operands == null) return;
+    for (var operand in node.operands!) {
+      resolveReferencesNode(allVariables, operand);
+    }
+  }
+
+  void resolveReferences(Map<(VariableType, String), Variable> allVariables) {
+    if (tree != null) resolveReferencesNode(allVariables, tree!);
+  }
+
   int evaluate([
-    List<String>? variableNames,
+    List<Variable>? variables,
     List<int>? variableValues,
     ExpressionCallback? callback,
   ]) {
-    this.variableNames = variableNames;
+    this.variables = variables;
     this.variableValues = variableValues;
     var value = eval(tree, callback);
     checkInteger(value);
@@ -613,12 +651,12 @@ class ExpressionEvaluator {
   Iterable<int> generate(
     num? min,
     num? max, [
-    List<String>? variableNames,
+    List<Variable>? variables,
     List<int>? variableValues,
     Set<int>? knownResults,
     ExpressionCallback? callback,
   ]) sync* {
-    this.variableNames = variableNames;
+    this.variables = variables;
     this.variableValues = variableValues;
     result = null;
     min ??= 1;
@@ -864,15 +902,16 @@ class ExpressionEvaluator {
         result = left;
       case CLUE:
         var name = node.token.name;
-        if (name.length > 1 && name[0] == 'E') name = name.substring(1);
-        var index = variableNames!.indexOf(name);
+        var variable = node.token.variable;
+        var index = variables!.indexOf(variable);
         if (index < 0) {
           throw ExpressionInvalid('Unknown clue $name');
         }
         result = variableValues![index];
       case VAR:
         var name = node.token.name;
-        var index = variableNames!.indexOf(name);
+        var variable = node.token.variable;
+        var index = variables!.indexOf(variable);
         if (index < 0) {
           throw ExpressionInvalid('Unknown variable $name');
         }

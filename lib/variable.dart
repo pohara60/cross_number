@@ -33,6 +33,8 @@ enum VariableType {
   final String name;
   const VariableType(this.name);
   int compareTo(VariableType other) => index.compareTo(other.index);
+  @override
+  String toString() => name;
 }
 
 /// A variable, with restricted values, commonly used in [Clue] for a [Puzzle]

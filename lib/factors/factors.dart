@@ -229,10 +229,9 @@ class Factors extends Crossnumber<FactorsPuzzle> {
   }
 
   @override
-  bool updateClues(
-      FactorsPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
+  bool updateClues(FactorsPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     return updated;
   }

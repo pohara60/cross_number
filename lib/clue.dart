@@ -449,7 +449,7 @@ mixin EntryMixin on Clue {
         List<List<int>>.generate(length!, (d) => digits[d].toList());
     var count = cartesianCount(allDigits);
     if (count == 0) throw SolveException('No values for a digit');
-    if (count > 1000) return null;
+    if (count > 10000) return null;
     var values = <int>{};
     for (var product in cartesian(allDigits, true)) {
       int value = product.reduce((value, element) => value * 10 + element);

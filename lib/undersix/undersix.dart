@@ -220,14 +220,14 @@ class UnderSix extends Crossnumber<UnderSixPuzzle> {
 
   @override
   bool updateClues(
-      UnderSixPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
+      UnderSixPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order

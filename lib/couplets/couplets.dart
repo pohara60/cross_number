@@ -291,10 +291,10 @@ class Couplets extends Crossnumber<CoupletsPuzzle> {
 
   @override
   bool updateClues(
-      CoupletsPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
+      CoupletsPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+        isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (!isEntry && updated) {
       // Maintain clue value order
       // var clue = puzzle.clues[clueName]!;

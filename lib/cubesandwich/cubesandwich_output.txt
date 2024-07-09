@@ -63,13 +63,13 @@ solve: CubeSandwichEntry(name=D4,length=3,value: #triangular,
 	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
 	values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561,11 more,990},
 	digits=[{1..9},{0..9},{0,1,3,5,6,8}]
-Eval CubeSandwichEntry D6 cartesianCount=5040, elapsed 0:00:00.037750
+Eval CubeSandwichEntry D6 cartesianCount=5040, elapsed 0:00:00.039003
 solve: CubeSandwichEntry(name=D6,length=2,value: $reverse(A5 + A7),
 	identities=[D6[1]=A8[2]],referrers=[A8],
 	values={11,13,15..19,21,23,25..29,31,33,35..38,43 more,99},
 	digits=[{1..9},{1,3,5..9}]
-A5={20,22,24..30,32,34..40,42,44,45,36 more,99}
-A7={10..29,66 more,98}
+Entry A5={20,22,24..30,32,34..40,42,44,45,36 more,99}
+Entry A7={10..29,66 more,98}
 solve: CubeSandwichEntry(name=A8,length=5,value: #cube,
 	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
 	values={19683,50653},
@@ -90,13 +90,17 @@ solve: CubeSandwichEntry(name=D4,length=3,value: #triangular,
 	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
 	values={153,253,703,903},
 	digits=[{1,2,7,9},{0,5},{3}]
-Eval CubeSandwichEntry D6 cartesianCount=4816, elapsed 0:00:00.008524
+Eval CubeSandwichEntry D6 cartesianCount=4816, elapsed 0:00:00.010429
 solve: CubeSandwichEntry(name=D6,length=2,value: $reverse(A5 + A7),
 	identities=[D6[1]=A8[2]],referrers=[A8],
 	values={16,26,36,46,56,66,76,86,96},
 	digits=[{1..9},{6}]
-A5={20,22,24..30,32,34..40,42,44,45,12 more,59}
-A7={10..29,20 more,49}
+Entry A5={20,22,24..30,32,34..40,42,44,45,12 more,59}
+Entry A7={10..29,20 more,49}
+solve: CubeSandwichEntry(name=D1,length=3,value: #triangular,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={231,325,351,435,741},
+	digits=[{2..4,7},{2..5},{1,5}]
 solve: CubeSandwichEntry(name=A1,length=5,value: #cube,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
 	values={21952,35937},
@@ -109,6 +113,10 @@ solve: CubeSandwichEntry(name=D2,length=3,value: #square,
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
 	values={100,169,529},
 	digits=[{1,5},{0,2,6},{0,9}]
+solve: CubeSandwichEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A1[3],D3[1]=A7[0],D3[2]=A8[3]],referrers=[A1,A7,A8],
+	values={325,528},
+	digits=[{3,5},{2},{5,8}]
 solve: CubeSandwichEntry(name=A7,length=2,value: ,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4,D6],
 	values={20,25},
@@ -117,16 +125,24 @@ solve: CubeSandwichEntry(name=D4,length=3,value: #triangular,
 	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
 	values={253,703},
 	digits=[{2,7},{0,5},{3}]
-Eval CubeSandwichEntry D6 cartesianCount=32, elapsed 0:00:00.000096
+Eval CubeSandwichEntry D6 cartesianCount=32, elapsed 0:00:00.000111
 solve: CubeSandwichEntry(name=D6,length=2,value: $reverse(A5 + A7),
 	identities=[D6[1]=A8[2]],referrers=[A8],
 	values={16,26,36,56,66,76,86},
 	digits=[{1..3,5..8},{6}]
-A5={36,38,40,42,46,48}
+Entry A5={36,38,40,42,46,48}
 solve: CubeSandwichEntry(name=D1,length=3,value: #triangular,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
-	values={231,325,351},
-	digits=[{2,3},{2,3,5},{1,5}]
+	values={231},
+	digits=[{2},{3},{1}]
+solve: CubeSandwichEntry(name=A8,length=5,value: #cube,
+	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
+	values={19683},
+	digits=[{1},{9},{6},{8},{3}]
+solve: CubeSandwichEntry(name=A1,length=5,value: #cube,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={21952},
+	digits=[{2},{1},{9},{5},{2}]
 solve: CubeSandwichEntry(name=A5,length=2,value: ,
 	identities=[A5[0]=D1[1],A5[1]=D2[1]],referrers=[D1,D2,D6],
 	values={36},
@@ -135,37 +151,21 @@ solve: CubeSandwichEntry(name=D2,length=3,value: #square,
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
 	values={169},
 	digits=[{1},{6},{9}]
-solve: CubeSandwichEntry(name=A8,length=5,value: #cube,
-	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
-	values={19683},
-	digits=[{1},{9},{6},{8},{3}]
 solve: CubeSandwichEntry(name=D3,length=3,value: #triangular,
 	identities=[D3[0]=A1[3],D3[1]=A7[0],D3[2]=A8[3]],referrers=[A1,A7,A8],
 	values={528},
 	digits=[{5},{2},{8}]
-Eval CubeSandwichEntry D6 cartesianCount=2, elapsed 0:00:00.000040
-solve: CubeSandwichEntry(name=D6,length=2,value: $reverse(A5 + A7),
-	identities=[D6[1]=A8[2]],referrers=[A8],
-	values={16},
-	digits=[{1},{6}]
-A7={25}
-solve: CubeSandwichEntry(name=D1,length=3,value: #triangular,
-	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
-	values={231},
-	digits=[{2},{3},{1}]
-solve: CubeSandwichEntry(name=A1,length=5,value: #cube,
-	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4],
-	values={21952},
-	digits=[{2},{1},{9},{5},{2}]
-solve: CubeSandwichEntry(name=A7,length=2,value: ,
-	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4,D6],
-	values={25},
-	digits=[{2},{5}]
 solve: CubeSandwichEntry(name=D4,length=3,value: #triangular,
 	identities=[D4[0]=A1[4],D4[1]=A7[1],D4[2]=A8[4]],referrers=[A1,A7,A8],
 	values={253},
 	digits=[{2},{5},{3}]
-Clue/Variable iterations=51, updates=29, elapsed 0:00:00.068368
+Eval CubeSandwichEntry D6 cartesianCount=2, elapsed 0:00:00.000039
+solve: CubeSandwichEntry(name=D6,length=2,value: $reverse(A5 + A7),
+	identities=[D6[1]=A8[2]],referrers=[A8],
+	values={16},
+	digits=[{1},{6}]
+Entry A7={25}
+Clue/Variable iterations=45, updates=35, elapsed 0:00:00.075460
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #cube, values={21952}

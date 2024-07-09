@@ -121,9 +121,9 @@ solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
 	values={100,102,104..106,108,110..112,114..124,737 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval FactorsCell 00 cartesianCount=1217025, elapsed 0:00:00.765435
+Eval FactorsCell 00 cartesianCount=1217025, elapsed 0:00:00.843857
 solve: 00,BBB={8,27}
-B={2,3}
+Variable B={2,3}
 solve: FactorsEntry(name=A1,length=3,value: ,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3,00,01,02],
 	values={112,128,135,136,144,152,162,168,176,184,189,192,216,224,232,243,248,256,264,272,85 more,999},
@@ -136,8 +136,8 @@ solve: FactorsEntry(name=A6,length=2,value: ,
 	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2,10,11],
 	values={10..12,14..16,18,20..22,24,26..28,40,42,44..46,48,22 more,88},
 	digits=[{1,2,4,6..8},{0..9}]
-Eval FactorsCell 00 cartesianCount=2520, elapsed 0:00:00.002097
-Eval FactorsCell 10 cartesianCount=1008, elapsed 0:00:00.000709
+Eval FactorsCell 00 cartesianCount=2520, elapsed 0:00:00.002180
+Eval FactorsCell 10 cartesianCount=1008, elapsed 0:00:00.000689
 solve: 10,BB={4,9}
 solve: FactorsEntry(name=A6,length=2,value: ,
 	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2,10,11],
@@ -147,8 +147,8 @@ solve: FactorsEntry(name=D2,length=3,value: ,
 	identities=[D2[0]=A1[1],D2[1]=A6[1],D2[2]=A8[1]],referrers=[A1,A6,A8,01,11,21],
 	values={100,102,104..106,108,110..112,114..124,641 more,988},
 	digits=[{1..9},{0..8},{0..9}]
-Eval FactorsCell 10 cartesianCount=336, elapsed 0:00:00.000315
-Eval FactorsCell 42 cartesianCount=122634, elapsed 0:00:00.086834
+Eval FactorsCell 10 cartesianCount=336, elapsed 0:00:00.000310
+Eval FactorsCell 42 cartesianCount=122634, elapsed 0:00:00.090795
 solve: 42,B={2,3}
 solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
@@ -158,10 +158,10 @@ solve: FactorsEntry(name=D12,length=2,value: ,
 	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
 	values={12,14..16,18,21,22,24,26..28,32..34,36,38,39,42,44,45,31 more,99},
 	digits=[{1..9},{1..9}]
-Eval FactorsCell 42 cartesianCount=61200, elapsed 0:00:00.041644
-Eval FactorsCell 03 cartesianCount=182250, elapsed 0:00:00.093928
+Eval FactorsCell 42 cartesianCount=61200, elapsed 0:00:00.042073
+Eval FactorsCell 03 cartesianCount=182250, elapsed 0:00:00.105907
 solve: 03,D={2,3,5,7,11,13,17,19,23,29,31}
-D={2,3,5,7,11,13,17,19,23,29,31}
+Variable D={2,3,5,7,11,13,17,19,23,29,31}
 solve: FactorsEntry(name=A4,length=2,value: ,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
 	values={11..19,21..29,31,32,47 more,99},
@@ -170,8 +170,8 @@ solve: FactorsEntry(name=D4,length=2,value: ,
 	identities=[D4[0]=A4[0],D4[1]=A7[1]],referrers=[A4,A7,03,13],
 	values={10..29,56 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 03 cartesianCount=56012, elapsed 0:00:00.029448
-Eval FactorsCell 04 cartesianCount=1115818, elapsed 0:00:00.806284
+Eval FactorsCell 03 cartesianCount=56012, elapsed 0:00:00.031249
+Eval FactorsCell 04 cartesianCount=1115818, elapsed 0:00:00.942000
 solve: 04,BD={6,14,15,21,22,26,33,34,38,39,46,51,57,58,62,69,87,93}
 solve: FactorsEntry(name=A4,length=2,value: ,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
@@ -181,20 +181,20 @@ solve: FactorsEntry(name=D5,length=3,value: ,
 	identities=[D5[0]=A4[1],D5[1]=A7[2],D5[2]=A9[1]],referrers=[A4,A7,A9,04,14,24],
 	values={102,104,105,108,110,112,114,116,117,120,124,126,130,132,135,136,138,140,144,147,325 more,996},
 	digits=[{1..9},{0..9},{0..9}]
-Eval FactorsCell 03 cartesianCount=35112, elapsed 0:00:00.016437
-Eval FactorsCell 04 cartesianCount=318780, elapsed 0:00:00.239354
-Eval FactorsCell 23 cartesianCount=1534500, elapsed 0:00:01.073095
+Eval FactorsCell 03 cartesianCount=35112, elapsed 0:00:00.018335
+Eval FactorsCell 04 cartesianCount=318780, elapsed 0:00:00.258443
+Eval FactorsCell 23 cartesianCount=1534500, elapsed 0:00:01.150149
 solve: 23,C={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
-C={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
+Variable C={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
 solve: FactorsEntry(name=A9,length=2,value: ,
 	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5,23,24],
 	values={10..29,60 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 23 cartesianCount=818400, elapsed 0:00:00.554217
+Eval FactorsCell 23 cartesianCount=818400, elapsed 0:00:00.642573
 Eval FactorsCell 43 cartesianCount=6138000 Exception
-Eval FactorsCell 31 cartesianCount=1352250, elapsed 0:00:00.877401
+Eval FactorsCell 31 cartesianCount=1352250, elapsed 0:00:01.075133
 solve: 31,A={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
-A={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
+Variable A={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
 solve: FactorsEntry(name=D11,length=2,value: ,
 	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
 	values={10..29,60 more,99},
@@ -203,10 +203,10 @@ solve: FactorsEntry(name=A15,length=2,value: ,
 	identities=[A15[0]=D8[2],A15[1]=D11[1]],referrers=[D8,D11,40,41],
 	values={10..29,60 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 31 cartesianCount=721200, elapsed 0:00:00.450300
-Eval FactorsCell 34 cartesianCount=109350, elapsed 0:00:00.061765
+Eval FactorsCell 31 cartesianCount=721200, elapsed 0:00:00.537992
+Eval FactorsCell 34 cartesianCount=109350, elapsed 0:00:00.062765
 solve: 34,AA={4,9,25,49}
-A={2,3,5,7}
+Variable A={2,3,5,7}
 solve: FactorsEntry(name=A13,length=2,value: ,
 	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
 	values={12,16,18,24,25,27,28,32,36,44,45,48,49,52,54,56,63,64,68,72,9 more,99},
@@ -219,7 +219,7 @@ solve: FactorsEntry(name=D14,length=2,value: ,
 	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16,34,44],
 	values={12,16,18,20,24,25,27,28,32,36,40,44,45,48..50,52,54,56,60,15 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 31 cartesianCount=192320, elapsed 0:00:00.122370
+Eval FactorsCell 31 cartesianCount=192320, elapsed 0:00:00.135070
 solve: 31,A={2,3,5,7}
 solve: FactorsEntry(name=A10,length=3,value: ,
 	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
@@ -229,11 +229,11 @@ solve: FactorsEntry(name=D11,length=2,value: ,
 	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
 	values={10,12,14..16,18,20..22,24..28,30,32..36,49 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 31 cartesianCount=150144, elapsed 0:00:00.097127
-Eval FactorsCell 34 cartesianCount=4060, elapsed 0:00:00.002216
-Eval FactorsCell 40 cartesianCount=192320, elapsed 0:00:00.146127
+Eval FactorsCell 31 cartesianCount=150144, elapsed 0:00:00.107364
+Eval FactorsCell 34 cartesianCount=4060, elapsed 0:00:00.002345
+Eval FactorsCell 40 cartesianCount=192320, elapsed 0:00:00.169296
 solve: 40,AAA={8,27}
-A={2,3}
+Variable A={2,3}
 solve: FactorsEntry(name=A15,length=2,value: ,
 	identities=[A15[0]=D8[2],A15[1]=D11[1]],referrers=[D8,D11,40,41],
 	values={16,24,27,32,40,48,54,56,64,72,80,81,88,96},
@@ -246,7 +246,7 @@ solve: FactorsEntry(name=D11,length=2,value: ,
 	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
 	values={10,12,14,16,18,20..22,24,26..28,30,32,34,36,38,40,42,44,33 more,98},
 	digits=[{1..9},{0..2,4,6..8}]
-Eval FactorsCell 31 cartesianCount=57664, elapsed 0:00:00.037568
+Eval FactorsCell 31 cartesianCount=57664, elapsed 0:00:00.041661
 solve: 31,A={2,3}
 solve: FactorsEntry(name=A10,length=3,value: ,
 	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
@@ -256,8 +256,8 @@ solve: FactorsEntry(name=D11,length=2,value: ,
 	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
 	values={10,12,14,16,18,20..22,24,26..28,30,32,34,36,38,40,42,44,31 more,98},
 	digits=[{1..9},{0..2,4,6..8}]
-Eval FactorsCell 31 cartesianCount=46818, elapsed 0:00:00.031969
-Eval FactorsCell 34 cartesianCount=2030, elapsed 0:00:00.001262
+Eval FactorsCell 31 cartesianCount=46818, elapsed 0:00:00.034993
+Eval FactorsCell 34 cartesianCount=2030, elapsed 0:00:00.002279
 solve: 34,AA={4,9}
 solve: FactorsEntry(name=A13,length=2,value: ,
 	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
@@ -267,9 +267,9 @@ solve: FactorsEntry(name=D14,length=2,value: ,
 	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16,34,44],
 	values={12,16,18,20,24,27,28,32,36,40,44,45,48,52,54,56,60,63,64,68,10 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 34 cartesianCount=1500, elapsed 0:00:00.000880
-Eval FactorsCell 40 cartesianCount=2940, elapsed 0:00:00.002532
-Eval FactorsCell 01 cartesianCount=277620, elapsed 0:00:00.133382
+Eval FactorsCell 34 cartesianCount=1500, elapsed 0:00:00.000895
+Eval FactorsCell 40 cartesianCount=2940, elapsed 0:00:00.002614
+Eval FactorsCell 01 cartesianCount=277620, elapsed 0:00:00.147245
 solve: 01,AABB={36}
 solve: FactorsEntry(name=A1,length=3,value: ,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3,00,01,02],
@@ -307,11 +307,11 @@ solve: FactorsEntry(name=A7,length=3,value: ,
 	identities=[A7[0]=D3[1],A7[1]=D4[1],A7[2]=D5[1]],referrers=[D3,D4,D5,12,13,14],
 	values={100,102,104..106,108,110..112,114..124,724 more,999},
 	digits=[{1..9},{0..9},{0..9}]
-Eval FactorsCell 00 cartesianCount=98, elapsed 0:00:00.000116
-Eval FactorsCell 10 cartesianCount=154, elapsed 0:00:00.000109
-Eval FactorsCell 40 cartesianCount=2940, elapsed 0:00:00.002150
-Eval FactorsCell 01 cartesianCount=280, elapsed 0:00:00.000174
-Eval FactorsCell 02 cartesianCount=476, elapsed 0:00:00.000182
+Eval FactorsCell 00 cartesianCount=98, elapsed 0:00:00.000225
+Eval FactorsCell 10 cartesianCount=154, elapsed 0:00:00.000200
+Eval FactorsCell 40 cartesianCount=2940, elapsed 0:00:00.003860
+Eval FactorsCell 01 cartesianCount=280, elapsed 0:00:00.000201
+Eval FactorsCell 02 cartesianCount=476, elapsed 0:00:00.000181
 solve: 02,AB={6}
 solve: FactorsEntry(name=D3,length=2,value: ,
 	identities=[D3[0]=A1[2],D3[1]=A7[0]],referrers=[A1,A7,02,12],
@@ -341,11 +341,11 @@ solve: FactorsEntry(name=A8,length=2,value: ,
 	identities=[A8[0]=D8[0],A8[1]=D2[2]],referrers=[D8,D2,20,21],
 	values={10,14,18,20,24,28,30,34,38,40,44,48,50,54,58,60,64,68,70,74,7 more,98},
 	digits=[{1..9},{0,4,8}]
-Eval FactorsCell 00 cartesianCount=60, elapsed 0:00:00.000075
-Eval FactorsCell 10 cartesianCount=108, elapsed 0:00:00.000084
-Eval FactorsCell 01 cartesianCount=140, elapsed 0:00:00.000084
-Eval FactorsCell 02 cartesianCount=40, elapsed 0:00:00.000034
-Eval FactorsCell 11 cartesianCount=252, elapsed 0:00:00.000121
+Eval FactorsCell 00 cartesianCount=60, elapsed 0:00:00.000086
+Eval FactorsCell 10 cartesianCount=108, elapsed 0:00:00.000102
+Eval FactorsCell 01 cartesianCount=140, elapsed 0:00:00.000086
+Eval FactorsCell 02 cartesianCount=40, elapsed 0:00:00.000037
+Eval FactorsCell 11 cartesianCount=252, elapsed 0:00:00.000113
 solve: 11,ABB={12,18}
 solve: FactorsEntry(name=A6,length=2,value: ,
 	identities=[A6[0]=D1[1],A6[1]=D2[1]],referrers=[D1,D2,10,11],
@@ -415,54 +415,39 @@ solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
 	values={100,102,104..106,108,110,112,114,116..118,120,122..124,126,128..130,548 more,999},
 	digits=[{1..9},{0..9},{0,2..9}]
-Eval FactorsCell 00 cartesianCount=2, elapsed 0:00:00.000077
+Eval FactorsCell 00 cartesianCount=2, elapsed 0:00:00.000065
 solve: 00,BBB={27}
-B={3}
-A={2}
-C={5,7,11,13,17,19,23,29,31,37,41,43,47}
-D={5,7,11,13,17,19,23,29,31}
-E={5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,3 more,97}
-F={5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,3 more,97}
-G={5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,3 more,97}
+Variable B={3}
+Variable A={2}
+Variable C={5,7,11,13,17,19,23,29,31,37,41,43,47}
+Variable D={5,7,11,13,17,19,23,29,31}
+Variable E={5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,3 more,97}
+Variable F={5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,3 more,97}
+Variable G={5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,3 more,97}
 solve: 10,BB={9}
 solve: 11,ABB={18}
-Eval FactorsCell 20 cartesianCount=936, elapsed 0:00:00.000827
+Eval FactorsCell 20 cartesianCount=936, elapsed 0:00:00.001015
 solve: 20,AAAB={24}
-Eval FactorsCell 21 cartesianCount=9, elapsed 0:00:00.000046
-solve: 21,AAB={12}
-Eval FactorsCell 31 cartesianCount=21022, elapsed 0:00:00.014706
-solve: 31,A={2}
-Eval FactorsCell 34 cartesianCount=598, elapsed 0:00:00.000457
-solve: 34,AA={4}
 solve: FactorsEntry(name=A8,length=2,value: ,
 	identities=[A8[0]=D8[0],A8[1]=D2[2]],referrers=[D8,D2,20,21],
 	values={24},
 	digits=[{2},{4}]
-solve: FactorsEntry(name=A10,length=3,value: ,
-	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
-	values={112,114,116,118,122,124,126,128,132,134,136,138,142,144,146,148,152,154,156,158,302 more,998},
-	digits=[{1..9},{1..9},{2,4,6,8}]
-solve: FactorsEntry(name=D11,length=2,value: ,
-	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
-	values={10,12,14,16,20,22,26,28,30,32,34,36,38,40,44,46,48,50,52,54,22 more,98},
-	digits=[{1..9},{0,2,4,6,8}]
 solve: FactorsEntry(name=D8,length=3,value: ,
 	identities=[D8[0]=A8[0],D8[1]=A10[0],D8[2]=A15[0]],referrers=[A8,A10,A15,20,30,40],
 	values={216,264,288},
 	digits=[{2},{1,6,8},{4,6,8}]
-solve: FactorsEntry(name=D12,length=2,value: ,
-	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
-	values={21,22,26..28,44..46,48,62..64,66,68,69,82,84,86..88},
-	digits=[{2,4,6,8},{1..9}]
-Eval FactorsCell 31 cartesianCount=13524, elapsed 0:00:00.009921
-Eval FactorsCell 40 cartesianCount=36, elapsed 0:00:00.000091
+Eval FactorsCell 20 cartesianCount=3, elapsed 0:00:00.000061
+solve: 21,AAB={12}
+Eval FactorsCell 31 cartesianCount=20565, elapsed 0:00:00.016003
+solve: 31,A={2}
+Eval FactorsCell 40 cartesianCount=36, elapsed 0:00:00.000099
 solve: 40,AAA={8}
+Eval FactorsCell 42 cartesianCount=26696, elapsed 0:00:00.019311
+solve: 42,B={3}
 solve: FactorsEntry(name=A10,length=3,value: ,
 	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
 	values={112,114,116,118,122,124,126,128,132,134,136,138,142,144,146,148,152,154,156,158,86 more,898},
 	digits=[{1,6,8},{1..9},{2,4,6,8}]
-Eval FactorsCell 42 cartesianCount=11360, elapsed 0:00:00.006909
-solve: 42,B={3}
 solve: FactorsEntry(name=A15,length=2,value: ,
 	identities=[A15[0]=D8[2],A15[1]=D11[1]],referrers=[D8,D11,40,41],
 	values={40,64,80,88},
@@ -471,70 +456,64 @@ solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
 	values={102,105,108,114,117,120,123,126,129,132,135,138,144,147,150,153,156,159,162,165,248 more,999},
 	digits=[{1..9},{0..9},{0,2..9}]
-Eval FactorsCell 20 cartesianCount=3, elapsed 0:00:00.000075
-Eval FactorsCell 31 cartesianCount=4452, elapsed 0:00:00.003136
 solve: FactorsEntry(name=D11,length=2,value: ,
 	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
 	values={10,14,20,28,30,34,38,40,44,48,50,54,58,60,64,68,70,74,78,80,5 more,98},
 	digits=[{1..9},{0,4,8}]
-Eval FactorsCell 40 cartesianCount=12, elapsed 0:00:00.000048
-Eval FactorsCell 42 cartesianCount=5360, elapsed 0:00:00.003289
-Eval FactorsCell 31 cartesianCount=2650, elapsed 0:00:00.001815
-Eval FactorsCell 31 cartesianCount=2650, elapsed 0:00:00.001691
+Eval FactorsCell 40 cartesianCount=12, elapsed 0:00:00.000079
+Eval FactorsCell 42 cartesianCount=12596, elapsed 0:00:00.008705
 solve: FactorsEntry(name=D12,length=2,value: ,
 	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
 	values={21,27,45,48,63,66,69,84,87},
 	digits=[{2,4,6,8},{1,3..9}]
-solve: FactorsEntry(name=D14,length=2,value: ,
-	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16,34,44],
-	values={20,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96},
-	digits=[{2..9},{0,2,4,6,8}]
-Eval FactorsCell 20 cartesianCount=3, elapsed 0:00:00.000040
+Eval FactorsCell 31 cartesianCount=2650, elapsed 0:00:00.001840
+Eval FactorsCell 42 cartesianCount=2412, elapsed 0:00:00.001813
 solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
-	values={102,108,114,120,126,132,138,144,150,156,162,168,174,180,186,192,198,300,306,312,112 more,996},
-	digits=[{1,3..9},{0..9},{0,2,4,6,8}]
-Eval FactorsCell 20 cartesianCount=3, elapsed 0:00:00.000029
-Eval FactorsCell 31 cartesianCount=2650, elapsed 0:00:00.001599
-Eval FactorsCell 34 cartesianCount=418, elapsed 0:00:00.000287
+	values={102,105,108,114,117,120,123,126,129,132,135,138,144,147,150,153,156,159,162,165,219 more,999},
+	digits=[{1,3..9},{0..9},{0,2..9}]
+Eval FactorsCell 42 cartesianCount=2151, elapsed 0:00:00.002169
+Eval FactorsCell 34 cartesianCount=550, elapsed 0:00:00.000384
+solve: 34,AA={4}
+Eval FactorsCell 40 cartesianCount=12, elapsed 0:00:00.000045
 solve: FactorsEntry(name=A13,length=2,value: ,
 	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
 	values={12,16,28,32,36,44,48,52,56,64,68,72,76,84,88,92,96},
 	digits=[{1..9},{2,4,6,8}]
+Eval FactorsCell 34 cartesianCount=425, elapsed 0:00:00.000266
 solve: FactorsEntry(name=D9,length=3,value: ,
 	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
 	values={110..112,114..124,126,128..130,132,133,619 more,999},
 	digits=[{1..9},{1..9},{0..9}]
-Eval FactorsCell 34 cartesianCount=323, elapsed 0:00:00.000225
-Eval FactorsCell 40 cartesianCount=12, elapsed 0:00:00.000047
-Eval FactorsCell 42 cartesianCount=1188, elapsed 0:00:00.000940
-solve: FactorsEntry(name=D12,length=2,value: ,
-	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
-	values={21,27,45,63,69,87},
-	digits=[{2,4,6,8},{1,3,5,7,9}]
+Eval FactorsCell 42 cartesianCount=2151, elapsed 0:00:00.001470
 solve: FactorsEntry(name=D14,length=2,value: ,
 	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16,34,44],
 	values={20,28,40,44,48,60,64,68,80,84,88},
 	digits=[{2,4,6,8},{0,4,8}]
-Eval FactorsCell 40 cartesianCount=12, elapsed 0:00:00.000034
-Eval FactorsCell 42 cartesianCount=792, elapsed 0:00:00.000549
+Eval FactorsCell 34 cartesianCount=187, elapsed 0:00:00.000172
+Eval FactorsCell 42 cartesianCount=2151, elapsed 0:00:00.001939
 solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
-	values={108,114,120,138,144,150,168,174,180,198,300,318,324,330,348,354,360,378,384,390,30 more,990},
-	digits=[{1,3,5,7,9},{0..9},{0,4,8}]
-Eval FactorsCell 34 cartesianCount=187, elapsed 0:00:00.000149
-Eval FactorsCell 42 cartesianCount=300, elapsed 0:00:00.000201
+	values={108,114,120,138,144,150,168,174,180,198,300,318,324,330,348,354,360,378,384,390,58 more,990},
+	digits=[{1,3..9},{0..9},{0,4,8}]
+Eval FactorsCell 34 cartesianCount=187, elapsed 0:00:00.000279
+solve: FactorsEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
+	values={21,27,45,63,69,87},
+	digits=[{2,4,6,8},{1,3,5,7,9}]
+Eval FactorsCell 42 cartesianCount=468, elapsed 0:00:00.000383
 solve: FactorsEntry(name=A10,length=3,value: ,
 	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
 	values={112,114,116,126,132,138,144,154,156,162,168,174,182,184,186,192,196,198,612,616,31 more,896},
 	digits=[{1,6,8},{1..9},{2,4,6,8}]
-Eval FactorsCell 31 cartesianCount=1275, elapsed 0:00:00.000812
-Eval FactorsCell 34 cartesianCount=187, elapsed 0:00:00.000134
-Eval FactorsCell 42 cartesianCount=300, elapsed 0:00:00.000200
-Eval FactorsCell 42 cartesianCount=300, elapsed 0:00:00.000200
-Eval FactorsCell 31 cartesianCount=1275, elapsed 0:00:00.000781
-Eval FactorsCell 42 cartesianCount=300, elapsed 0:00:00.000206
-Eval FactorsCell 03 cartesianCount=25272, elapsed 0:00:00.011892
+solve: FactorsEntry(name=A16,length=3,value: ,
+	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
+	values={108,114,120,138,144,150,168,174,180,198,300,318,324,330,348,354,360,378,384,390,30 more,990},
+	digits=[{1,3,5,7,9},{0..9},{0,4,8}]
+Eval FactorsCell 31 cartesianCount=1275, elapsed 0:00:00.000866
+Eval FactorsCell 31 cartesianCount=1275, elapsed 0:00:00.000787
+Eval FactorsCell 42 cartesianCount=300, elapsed 0:00:00.000233
+Eval FactorsCell 03 cartesianCount=25272, elapsed 0:00:00.014355
 solve: 03,D={5,7,11,13,17,19,23,29,31}
 solve: FactorsEntry(name=A4,length=2,value: ,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
@@ -544,8 +523,8 @@ solve: FactorsEntry(name=D4,length=2,value: ,
 	identities=[D4[0]=A4[0],D4[1]=A7[1]],referrers=[A4,A7,03,13],
 	values={10,11,13,14,17,19..23,25,26,28,29,31,33..35,38,39,29 more,99},
 	digits=[{1..9},{0..9}]
-Eval FactorsCell 03 cartesianCount=14553, elapsed 0:00:00.007042
-Eval FactorsCell 04 cartesianCount=101871, elapsed 0:00:00.074487
+Eval FactorsCell 03 cartesianCount=14553, elapsed 0:00:00.006829
+Eval FactorsCell 04 cartesianCount=101871, elapsed 0:00:00.094433
 solve: 04,BD={15,21,33,39,51,57,69,87,93}
 solve: FactorsEntry(name=A4,length=2,value: ,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
@@ -563,51 +542,37 @@ solve: FactorsEntry(name=D5,length=3,value: ,
 	identities=[D5[0]=A4[1],D5[1]=A7[2],D5[2]=A9[1]],referrers=[A4,A7,A9,04,14,24],
 	values={102,105,114,117,120,126,132,135,138,147,150,153,156,165,168,171,174,180,186,189,122 more,990},
 	digits=[{1,3..9},{0..9},{0..9}]
-Eval FactorsCell 03 cartesianCount=5616, elapsed 0:00:00.003105
-Eval FactorsCell 04 cartesianCount=20448, elapsed 0:00:00.013382
-Eval FactorsCell 12 cartesianCount=576, elapsed 0:00:00.000414
+Eval FactorsCell 03 cartesianCount=5616, elapsed 0:00:00.003187
+Eval FactorsCell 04 cartesianCount=20448, elapsed 0:00:00.014578
+Eval FactorsCell 12 cartesianCount=576, elapsed 0:00:00.000443
 solve: 12,AD={14}
-D={7}
-C={5,11,13,17,19,23,29,31,37,41,43,47}
-E={5,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97}
-F={5,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97}
-G={5,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97}
-Eval FactorsCell 03 cartesianCount=624, elapsed 0:00:00.000471
+Variable D={7}
+Variable C={5,11,13,17,19,23,29,31,37,41,43,47}
+Variable E={5,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97}
+Variable F={5,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97}
+Variable G={5,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97}
+Eval FactorsCell 03 cartesianCount=624, elapsed 0:00:00.000457
 solve: 03,D={7}
-Eval FactorsCell 04 cartesianCount=2272, elapsed 0:00:00.001548
+Eval FactorsCell 04 cartesianCount=2272, elapsed 0:00:00.001747
 solve: 04,BD={21}
-Eval FactorsCell 12 cartesianCount=64, elapsed 0:00:00.000080
-Eval FactorsCell 13 cartesianCount=2496, elapsed 0:00:00.001829
+Eval FactorsCell 12 cartesianCount=64, elapsed 0:00:00.000104
+Eval FactorsCell 13 cartesianCount=2496, elapsed 0:00:00.001980
 solve: 13,AAD={28}
 solve: FactorsEntry(name=A4,length=2,value: ,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
 	values={21,63,84},
 	digits=[{2,6,8},{1,3,4}]
+Eval FactorsCell 03 cartesianCount=117, elapsed 0:00:00.000115
+Eval FactorsCell 04 cartesianCount=426, elapsed 0:00:00.000379
 solve: FactorsEntry(name=A7,length=3,value: ,
 	identities=[A7[0]=D3[1],A7[1]=D4[1],A7[2]=D5[1]],referrers=[D3,D4,D5,12,13,14],
 	values={224,280},
 	digits=[{2},{2,8},{0,4}]
-Eval FactorsCell 03 cartesianCount=117, elapsed 0:00:00.000099
-solve: FactorsEntry(name=D5,length=3,value: ,
-	identities=[D5[0]=A4[1],D5[1]=A7[2],D5[2]=A9[1]],referrers=[A4,A7,A9,04,14,24],
-	values={105,147,441},
-	digits=[{1,4},{0,4},{1,5,7}]
-Eval FactorsCell 12 cartesianCount=2, elapsed 0:00:00.000025
-Eval FactorsCell 13 cartesianCount=78, elapsed 0:00:00.000084
-solve: FactorsEntry(name=A4,length=2,value: ,
-	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
-	values={21,84},
-	digits=[{2,8},{1,4}]
-solve: FactorsEntry(name=A9,length=2,value: ,
-	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5,23,24],
-	values={15,21,25,27,35,45,51,55,57,65,75,77,85,87,91,95},
-	digits=[{1..9},{1,5,7}]
+Eval FactorsCell 13 cartesianCount=78, elapsed 0:00:00.000100
 solve: FactorsEntry(name=D4,length=2,value: ,
 	identities=[D4[0]=A4[0],D4[1]=A7[1]],referrers=[A4,A7,03,13],
 	values={28},
 	digits=[{2},{8}]
-Eval FactorsCell 03 cartesianCount=2, elapsed 0:00:00.000042
-Eval FactorsCell 04 cartesianCount=6, elapsed 0:00:00.000027
 solve: FactorsEntry(name=A4,length=2,value: ,
 	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,03,04],
 	values={21},
@@ -616,7 +581,10 @@ solve: FactorsEntry(name=A7,length=3,value: ,
 	identities=[A7[0]=D3[1],A7[1]=D4[1],A7[2]=D5[1]],referrers=[D3,D4,D5,12,13,14],
 	values={280},
 	digits=[{2},{8},{0}]
-Eval FactorsCell 04 cartesianCount=3, elapsed 0:00:00.000019
+solve: FactorsEntry(name=A13,length=2,value: ,
+	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
+	values={12,16,32,36,44,48,52,56,64,68,72,76,84,88,92,96},
+	digits=[{1,3..9},{2,4,6,8}]
 solve: FactorsEntry(name=D5,length=3,value: ,
 	identities=[D5[0]=A4[1],D5[1]=A7[2],D5[2]=A9[1]],referrers=[A4,A7,A9,04,14,24],
 	values={105},
@@ -627,39 +595,31 @@ solve: FactorsEntry(name=A9,length=2,value: ,
 	digits=[{1..9},{5}]
 solve: FactorsEntry(name=D9,length=3,value: ,
 	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
-	values={110..112,114,115,117,119..121,123,126,129,130,132,133,135,136,138,140,141,463 more,999},
-	digits=[{1..9},{1..9},{0..9}]
-solve: FactorsEntry(name=A13,length=2,value: ,
-	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
-	values={12,16,32,36,44,48,52,56,64,68,72,76,84,88,92,96},
-	digits=[{1,3..9},{2,4,6,8}]
-Eval FactorsCell 34 cartesianCount=160, elapsed 0:00:00.000132
-solve: FactorsEntry(name=D9,length=3,value: ,
-	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
 	values={110..112,114,115,117,119,130,132,133,135,136,138,140,141,143,144,147,150,152,410 more,999},
 	digits=[{1..9},{1,3..9},{0..9}]
 solve: FactorsEntry(name=D12,length=2,value: ,
 	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
 	values={27,45,63,69,87},
 	digits=[{2,4,6,8},{3,5,7,9}]
-Eval FactorsCell 42 cartesianCount=250, elapsed 0:00:00.000198
+Eval FactorsCell 34 cartesianCount=160, elapsed 0:00:00.000165
+Eval FactorsCell 42 cartesianCount=250, elapsed 0:00:00.000227
 solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
 	values={300,318,324,330,348,354,360,378,384,390,504,510,528,534,540,558,564,570,588,594,20 more,990},
 	digits=[{3,5,7,9},{0..9},{0,4,8}]
-Eval FactorsCell 42 cartesianCount=200, elapsed 0:00:00.000166
-Eval FactorsCell 42 cartesianCount=200, elapsed 0:00:00.000151
-Eval FactorsCell 14 cartesianCount=12, elapsed 0:00:00.000029
+Eval FactorsCell 42 cartesianCount=200, elapsed 0:00:00.000189
+Eval FactorsCell 42 cartesianCount=200, elapsed 0:00:00.000161
+Eval FactorsCell 14 cartesianCount=12, elapsed 0:00:00.000037
 solve: 14,CD={35}
-C={5}
-E={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-F={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-G={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Eval FactorsCell 23 cartesianCount=3870, elapsed 0:00:00.003333
+Variable C={5}
+Variable E={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Variable F={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Variable G={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Eval FactorsCell 23 cartesianCount=3870, elapsed 0:00:00.002977
 solve: 23,C={5}
-Eval FactorsCell 24 cartesianCount=9, elapsed 0:00:00.000072
+Eval FactorsCell 24 cartesianCount=9, elapsed 0:00:00.000044
 solve: 24,BC={15}
-Eval FactorsCell 41 cartesianCount=96, elapsed 0:00:00.000134
+Eval FactorsCell 41 cartesianCount=96, elapsed 0:00:00.000101
 solve: 41,AC={10}
 solve: FactorsEntry(name=A9,length=2,value: ,
 	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5,23,24],
@@ -669,77 +629,79 @@ solve: FactorsEntry(name=A15,length=2,value: ,
 	identities=[A15[0]=D8[2],A15[1]=D11[1]],referrers=[D8,D11,40,41],
 	values={40,80},
 	digits=[{4,8},{0}]
-Eval FactorsCell 23 cartesianCount=1290, elapsed 0:00:00.001318
-Eval FactorsCell 24 cartesianCount=3, elapsed 0:00:00.000038
-Eval FactorsCell 41 cartesianCount=48, elapsed 0:00:00.000060
-solve: FactorsEntry(name=D8,length=3,value: ,
-	identities=[D8[0]=A8[0],D8[1]=A10[0],D8[2]=A15[0]],referrers=[A8,A10,A15,20,30,40],
-	values={264,288},
-	digits=[{2},{6,8},{4,8}]
-solve: FactorsEntry(name=D9,length=3,value: ,
-	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
-	values={110,115,130,140,160,170,175,190,410,430,440,455,460,470,475,490,710,715,730,740,3 more,790},
-	digits=[{1,4,7},{1,3..7,9},{0,5}]
-Eval FactorsCell 20 cartesianCount=2, elapsed 0:00:00.000027
-Eval FactorsCell 40 cartesianCount=4, elapsed 0:00:00.000020
-Eval FactorsCell 23 cartesianCount=69, elapsed 0:00:00.000072
-Eval FactorsCell 40 cartesianCount=4, elapsed 0:00:00.000019
-Eval FactorsCell 43 cartesianCount=920, elapsed 0:00:00.000812
+Eval FactorsCell 23 cartesianCount=1290, elapsed 0:00:00.000967
+Eval FactorsCell 23 cartesianCount=1290, elapsed 0:00:00.000877
+Eval FactorsCell 24 cartesianCount=3, elapsed 0:00:00.000048
+Eval FactorsCell 41 cartesianCount=48, elapsed 0:00:00.000067
+Eval FactorsCell 40 cartesianCount=6, elapsed 0:00:00.000333
+Eval FactorsCell 43 cartesianCount=17200, elapsed 0:00:00.014045
 solve: 43,CC={25}
-solve: FactorsEntry(name=A13,length=2,value: ,
-	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
-	values={12,16,32,36,44,48,52,56,64,68,72,76,92,96},
-	digits=[{1,3..7,9},{2,4,6,8}]
-solve: FactorsEntry(name=A16,length=3,value: ,
-	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
-	values={300,750,900},
-	digits=[{3,7,9},{0,5},{0}]
-Eval FactorsCell 34 cartesianCount=140, elapsed 0:00:00.000119
-solve: FactorsEntry(name=A10,length=3,value: ,
-	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
-	values={612,616,618,624,636,638,642,644,648,654,658,666,672,678,686,696,812,816,822,826,13 more,896},
-	digits=[{6,8},{1..9},{2,4,6,8}]
-solve: FactorsEntry(name=D9,length=3,value: ,
-	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
-	values={175,475},
-	digits=[{1,4},{7},{5}]
-solve: FactorsEntry(name=D11,length=2,value: ,
-	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
-	values={10,30,50,70,90},
-	digits=[{1,3,5,7,9},{0}]
-solve: FactorsEntry(name=D14,length=2,value: ,
-	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16,34,44],
-	values={20,40,60,80},
-	digits=[{2,4,6,8},{0}]
-Eval FactorsCell 23 cartesianCount=6, elapsed 0:00:00.000024
-Eval FactorsCell 31 cartesianCount=165, elapsed 0:00:00.000148
-Eval FactorsCell 40 cartesianCount=4, elapsed 0:00:00.000020
-Eval FactorsCell 41 cartesianCount=10, elapsed 0:00:00.000024
-Eval FactorsCell 42 cartesianCount=15, elapsed 0:00:00.000027
-Eval FactorsCell 43 cartesianCount=6, elapsed 0:00:00.000019
-solve: FactorsEntry(name=A10,length=3,value: ,
-	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
-	values={612,616,618,636,638,654,658,672,678,696,812,816,834,852,854,858,874,876,894,896},
-	digits=[{6,8},{1,3,5,7,9},{2,4,6,8}]
-solve: FactorsEntry(name=A13,length=2,value: ,
-	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
-	values={76},
-	digits=[{7},{6}]
+Eval FactorsCell 44 cartesianCount=400, elapsed 0:00:00.000474
+solve: 44,ABC={30}
 solve: FactorsEntry(name=A16,length=3,value: ,
 	identities=[A16[0]=D12[1],A16[1]=D9[2],A16[2]=D14[1]],referrers=[D12,D9,D14,42,43,44],
 	values={750},
 	digits=[{7},{5},{0}]
-Eval FactorsCell 31 cartesianCount=100, elapsed 0:00:00.000088
-Eval FactorsCell 34 cartesianCount=4, elapsed 0:00:00.000019
-Eval FactorsCell 41 cartesianCount=10, elapsed 0:00:00.000023
-Eval FactorsCell 43 cartesianCount=2, elapsed 0:00:00.000018
-Eval FactorsCell 42 cartesianCount=5, elapsed 0:00:00.000017
-Eval FactorsCell 44 cartesianCount=4, elapsed 0:00:00.000022
-solve: 44,ABC={30}
+solve: FactorsEntry(name=D8,length=3,value: ,
+	identities=[D8[0]=A8[0],D8[1]=A10[0],D8[2]=A15[0]],referrers=[A8,A10,A15,20,30,40],
+	values={264,288},
+	digits=[{2},{6,8},{4,8}]
+Eval FactorsCell 20 cartesianCount=2, elapsed 0:00:00.000050
+Eval FactorsCell 40 cartesianCount=4, elapsed 0:00:00.000028
+Eval FactorsCell 41 cartesianCount=48, elapsed 0:00:00.000065
+Eval FactorsCell 44 cartesianCount=10, elapsed 0:00:00.000035
+solve: FactorsEntry(name=A10,length=3,value: ,
+	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
+	values={612,616,618,624,636,638,642,644,648,654,658,666,672,678,686,696,812,816,822,826,13 more,896},
+	digits=[{6,8},{1..9},{2,4,6,8}]
+solve: FactorsEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
+	values={10,30,50,70,90},
+	digits=[{1,3,5,7,9},{0}]
+Eval FactorsCell 20 cartesianCount=2, elapsed 0:00:00.000036
+solve: FactorsEntry(name=A10,length=3,value: ,
+	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
+	values={612,616,618,636,638,654,658,672,678,696,812,816,834,852,854,858,874,876,894,896},
+	digits=[{6,8},{1,3,5,7,9},{2,4,6,8}]
+Eval FactorsCell 31 cartesianCount=100, elapsed 0:00:00.000113
+Eval FactorsCell 41 cartesianCount=10, elapsed 0:00:00.000034
+Eval FactorsCell 31 cartesianCount=100, elapsed 0:00:00.000096
+Eval FactorsCell 43 cartesianCount=429, elapsed 0:00:00.000386
+solve: FactorsEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
+	values={27,87},
+	digits=[{2,8},{7}]
+solve: FactorsEntry(name=A10,length=3,value: ,
+	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
+	values={612,618,638,672,678,812,852,858},
+	digits=[{6,8},{1,3,5,7},{2,8}]
+solve: FactorsEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
+	values={10,30,50,70},
+	digits=[{1,3,5,7},{0}]
+Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000055
+Eval FactorsCell 41 cartesianCount=8, elapsed 0:00:00.000040
+Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000042
+Eval FactorsCell 41 cartesianCount=8, elapsed 0:00:00.000029
+Eval FactorsCell 42 cartesianCount=2, elapsed 0:00:00.000023
+Eval FactorsCell 42 cartesianCount=2, elapsed 0:00:00.000024
+Eval FactorsCell 42 cartesianCount=2, elapsed 0:00:00.000029
+solve: FactorsEntry(name=D9,length=3,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
+	values={175,475},
+	digits=[{1,4},{7},{5}]
 solve: FactorsEntry(name=A9,length=2,value: ,
 	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5,23,24],
 	values={15,45},
 	digits=[{1,4},{5}]
+solve: FactorsEntry(name=A13,length=2,value: ,
+	identities=[A13[0]=D9[1],A13[1]=D14[0]],referrers=[D9,D14,33,34],
+	values={76},
+	digits=[{7},{6}]
+Eval FactorsCell 23 cartesianCount=4, elapsed 0:00:00.000031
+Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000046
+Eval FactorsCell 34 cartesianCount=10, elapsed 0:00:00.000029
+Eval FactorsCell 43 cartesianCount=2, elapsed 0:00:00.000022
 solve: FactorsEntry(name=D9,length=3,value: ,
 	identities=[D9[0]=A9[0],D9[1]=A13[0],D9[2]=A16[1]],referrers=[A9,A13,A16,23,33,43],
 	values={475},
@@ -748,34 +710,18 @@ solve: FactorsEntry(name=A9,length=2,value: ,
 	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5,23,24],
 	values={45},
 	digits=[{4},{5}]
-solve: FactorsEntry(name=D12,length=2,value: ,
-	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
-	values={27,87},
-	digits=[{2,8},{7}]
 solve: FactorsEntry(name=D14,length=2,value: ,
 	identities=[D14[0]=A13[1],D14[1]=A16[2]],referrers=[A13,A16,34,44],
 	values={60},
 	digits=[{6},{0}]
-Eval FactorsCell 42 cartesianCount=2, elapsed 0:00:00.000018
-solve: FactorsEntry(name=A10,length=3,value: ,
-	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
-	values={612,618,638,672,678,812,852,858},
-	digits=[{6,8},{1,3,5,7},{2,8}]
-Eval FactorsCell 31 cartesianCount=40, elapsed 0:00:00.000043
-solve: FactorsEntry(name=D11,length=2,value: ,
-	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
-	values={10,30,50,70},
-	digits=[{1,3,5,7},{0}]
-Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000035
-Eval FactorsCell 41 cartesianCount=8, elapsed 0:00:00.000029
-Eval FactorsCell 41 cartesianCount=8, elapsed 0:00:00.000022
-Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000039
-Eval FactorsCell 20 cartesianCount=2, elapsed 0:00:00.000022
-Eval FactorsCell 30 cartesianCount=336, elapsed 0:00:00.000214
+Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000041
+Eval FactorsCell 31 cartesianCount=32, elapsed 0:00:00.000050
+Eval FactorsCell 42 cartesianCount=2, elapsed 0:00:00.000024
+Eval FactorsCell 30 cartesianCount=336, elapsed 0:00:00.000234
 solve: 30,AE={22}
-E={11}
-F={13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-G={13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Variable E={11}
+Variable F={13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Variable G={13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: FactorsEntry(name=A10,length=3,value: ,
 	identities=[A10[0]=D8[1],A10[1]=D11[0],A10[2]=D12[0]],referrers=[D8,D11,D12,30,31,32],
 	values={638},
@@ -788,8 +734,6 @@ solve: FactorsEntry(name=D11,length=2,value: ,
 	identities=[D11[0]=A10[1],D11[1]=A15[1]],referrers=[A10,A15,31,41],
 	values={30},
 	digits=[{3},{0}]
-Eval FactorsCell 40 cartesianCount=2, elapsed 0:00:00.000016
-Eval FactorsCell 41 cartesianCount=2, elapsed 0:00:00.000016
 solve: FactorsEntry(name=A15,length=2,value: ,
 	identities=[A15[0]=D8[2],A15[1]=D11[1]],referrers=[D8,D11,40,41],
 	values={40},
@@ -798,14 +742,14 @@ solve: FactorsEntry(name=D12,length=2,value: ,
 	identities=[D12[0]=A10[2],D12[1]=A16[0]],referrers=[A10,A16,32,42],
 	values={87},
 	digits=[{8},{7}]
-Eval FactorsCell 32 cartesianCount=20, elapsed 0:00:00.000024
+Eval FactorsCell 32 cartesianCount=20, elapsed 0:00:00.000030
 solve: 32,F={29}
-F={29}
-G={13,17,19,23,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Eval FactorsCell 33 cartesianCount=19, elapsed 0:00:00.000026
+Variable F={29}
+Variable G={13,17,19,23,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Eval FactorsCell 33 cartesianCount=19, elapsed 0:00:00.000043
 solve: 33,G={19}
-G={19}
-Clue/Variable iterations=728, updates=170, elapsed 0:00:06.301545
+Variable G={19}
+Clue/Variable iterations=676, updates=187, elapsed 0:00:07.205937
 SOLUTION-----------------------------
 Puzzle Summary
 A1, , values={864}

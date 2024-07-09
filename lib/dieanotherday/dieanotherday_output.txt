@@ -126,6 +126,26 @@ solveFront: DieAnotherDayEntry(name=A1,length=4,value: ,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4,A1,D1,D2,D3,D4,A1,D1,D2,D3,D4],
 	values={1111..1116,1211..1216,1311..1316,1411,1412,196 more,6616},
 	digits=[{1..6},{1..6},{1},{1..6}]
+solveRight: DieAnotherDayEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4,A1,D1,D2,D3,D4,A1,D1,D2,D3,D4],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
+solveTop: DieAnotherDayEntry(name=A5,length=4,value: ,
+	identities=[A5[0]=D1[1],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1]],referrers=[D1,D2,D3,D4,A5,D1,D2,D3,D4,A5,D1,D2,D3,D4],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
+solveFront: DieAnotherDayEntry(name=A5,length=4,value: ,
+	identities=[A5[0]=D1[1],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1]],referrers=[D1,D2,D3,D4,A5,D1,D2,D3,D4,A5,D1,D2,D3,D4],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
+solveFront: DieAnotherDayEntry(name=A6,length=4,value: ,
+	identities=[A6[0]=D1[2],A6[1]=D2[2],A6[2]=D3[2],A6[3]=D4[2]],referrers=[D1,D2,D3,D4,A6,D1,D2,D3,D4,A6,D1,D2,D3,D4],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
+solveRight: DieAnotherDayEntry(name=A6,length=4,value: ,
+	identities=[A6[0]=D1[2],A6[1]=D2[2],A6[2]=D3[2],A6[3]=D4[2]],referrers=[D1,D2,D3,D4,A6,D1,D2,D3,D4,A6,D1,D2,D3,D4],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
 solveTop: DieAnotherDayEntry(name=A7,length=4,value: #square,
 	identities=[A7[0]=D1[3],A7[1]=D2[3],A7[2]=D3[3],A7[3]=D4[3]],referrers=[D1,D2,D3,D4,A7,D1,D2,D3,D4,A7,D1,D2,D3,D4],
 	values={1156,1225,1444,1521,2116,3136,3364,4225,4356,4624,5625,6241,6561},
@@ -150,6 +170,18 @@ solveTop: DieAnotherDayEntry(name=A7,length=4,value: #square,
 	identities=[A7[0]=D1[3],A7[1]=D2[3],A7[2]=D3[3],A7[3]=D4[3]],referrers=[D1,D2,D3,D4,A7,D1,D2,D3,D4,A7,D1,D2,D3,D4],
 	values={1156,1225,1444,1521,5625},
 	digits=[{1,5},{1,2,4..6},{2,4,5},{1,4..6}]
+solveRight: DieAnotherDayEntry(name=D1,length=4,value: ,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A6[0],D1[3]=A7[0]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D1,A1,A5,A6,A7,D1],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
+solveFront: DieAnotherDayEntry(name=D2,length=4,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A6[1],D2[3]=A7[1]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D2,A1,A5,A6,A7,D2],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
+solveRight: DieAnotherDayEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A5[2],D3[2]=A6[2],D3[3]=A7[2]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D3,A1,A5,A6,A7,D3],
+	values={1111..1116,1121..1126,1131..1136,1141,1142,1276 more,6666},
+	digits=[{1..6},{1..6},{1..6},{1..6}]
 solveTop: DieAnotherDayEntry(name=D4,length=4,value: ,
 	identities=[D4[0]=A1[3],D4[1]=A5[3],D4[2]=A6[3],D4[3]=A7[3]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D4,A1,A5,A6,A7,D4],
 	values={1111,1114..1116,1121,1124..1126,1131,1134..1136,1141,1144..1146,1151,1154..1156,844 more,6666},
@@ -256,19 +288,19 @@ solveRight: DieAnotherDayEntry(name=D4,length=4,value: ,
 	digits=[{1,2,5,6},{2..5},{1,3,4,6},{6}]
 solveRight: DieAnotherDayEntry(name=A1,length=4,value: ,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4,A1,D1,D2,D3,D4,A1,D1,D2,D3,D4],
-	values={1111,1112,1115,1116,1121,1122,1125,1126,1131,1132,1135,1136,1141,1142,1145,1146,1151,1152,1155,1156,844 more,6666},
+	values={1111,1112,1115,1116,1121,1122,1125,1126,1131,1132,1135,1136,1141,1142,1145,1146,1151,1152,1155,1156,843 more,6666},
 	digits=[{1..6},{1..6},{1..6},{1,2,5,6}]
 solveRight: DieAnotherDayEntry(name=A6,length=4,value: ,
 	identities=[A6[0]=D1[2],A6[1]=D2[2],A6[2]=D3[2],A6[3]=D4[2]],referrers=[D1,D2,D3,D4,A6,D1,D2,D3,D4,A6,D1,D2,D3,D4],
-	values={1111,1113,1114,1116,1121,1123,1124,1126,1131,1133,1134,1136,1141,1143,1144,1146,1151,1153,1154,1156,844 more,6666},
+	values={1111,1113,1114,1116,1121,1123,1124,1126,1131,1133,1134,1136,1141,1143,1144,1146,1151,1153,1154,1156,843 more,6666},
 	digits=[{1..6},{1..6},{1..6},{1,3,4,6}]
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.003087
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.002339
 solveFront: DieAnotherDayEntry(name=D3,length=4,value: #sumdigits * X,
 	identities=[D3[0]=A1[2],D3[1]=A5[2],D3[2]=A6[2],D3[3]=A7[2]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D3,A1,A5,A6,A7,D3],
 	values={1112,1122,1132,1142,1152,1162,1212,1222,1232,1242,1252,1262,1312,1322,1332,1342,1352,1362,1412,1422,16 more,1662},
 	digits=[{1},{1..6},{1..6},{2}]
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000308
-Eval DieAnotherDayEntry A1 cartesianCount=4, elapsed 0:00:00.001581
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000106
+Eval DieAnotherDayEntry A1 cartesianCount=4, elapsed 0:00:00.002008
 solveTop: DieAnotherDayEntry(name=A1,length=4,value: #square - Y^2,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4,A1,D1,D2,D3,D4,A1,D1,D2,D3,D4],
 	values={1131,1435,1645,1656,6225,6232,6525,6536,6545,6552},
@@ -289,18 +321,18 @@ solveRight: DieAnotherDayEntry(name=D3,length=4,value: ,
 	identities=[D3[0]=A1[2],D3[1]=A5[2],D3[2]=A6[2],D3[3]=A7[2]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D3,A1,A5,A6,A7,D3],
 	values={2111,2121,2131,2141,2151,2161,2211,2221,2231,2241,2251,2261,2311,2321,2331,2341,2351,2361,2411,2421,124 more,5661},
 	digits=[{2..5},{1..6},{1..6},{1}]
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000118
-Eval DieAnotherDayEntry A1 cartesianCount=4, elapsed 0:00:00.000493
-Eval DieAnotherDayEntry D2 cartesianCount=8, elapsed 0:00:00.002375
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000105
+Eval DieAnotherDayEntry A1 cartesianCount=4, elapsed 0:00:00.000568
+Eval DieAnotherDayEntry D2 cartesianCount=8, elapsed 0:00:00.002690
 solveTop: DieAnotherDayEntry(name=D2,length=4,value: $multiple X*Y,
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A6[1],D2[3]=A7[1]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D2,A1,A5,A6,A7,D2],
 	values={1134,1224,1314,1344,1464,2124,2214,2424,2544,2664,4224,4344,4464,4554,4644,5364,5424,5454,5544,5634,7 more,6624},
 	digits=[{1,2,4..6},{1..6},{1..6},{4}]
-X={6}
-W={1..5}
-Y={3,4}
-Z={2..5}
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000270
+Variable X={6}
+Variable W={1..5}
+Variable Y={3,4}
+Variable Z={2..5}
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000552
 solveTop: DieAnotherDayEntry(name=A1,length=4,value: #square - Y^2,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4,A1,D1,D2,D3,D4,A1,D1,D2,D3,D4],
 	values={1435,6225,6232,6545,6552},
@@ -317,37 +349,43 @@ solveRight: DieAnotherDayEntry(name=D4,length=4,value: ,
 	identities=[D4[0]=A1[3],D4[1]=A5[3],D4[2]=A6[3],D4[3]=A7[3]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D4,A1,A5,A6,A7,D4],
 	values={1216,1236,1246,1266,1316,1336,1346,1366,1416,1436,1446,1466,1516,1536,1546,1566,6216,6236,6246,6266,12 more,6566},
 	digits=[{1,6},{2..5},{1,3,4,6},{6}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000221
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000570
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000334
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001138
 solveTop: DieAnotherDayEntry(name=D2,length=4,value: $multiple X*Y,
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A6[1],D2[3]=A7[1]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D2,A1,A5,A6,A7,D2],
 	values={2124,2214,2424,2544,2664,4224,4344,4464,4554,4644,5364,5424,5454,5544,5634,5664},
 	digits=[{2,4,5},{1..6},{1..6},{4}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000280
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000656
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.001957
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000248
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000855
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.002306
 solveTop: DieAnotherDayEntry(name=D3,length=4,value: $multiple X*Y,
 	identities=[D3[0]=A1[2],D3[1]=A5[2],D3[2]=A6[2],D3[3]=A7[2]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D3,A1,A5,A6,A7,D3],
 	values={2124,2214,2424,2544,2664,3114,3144,3264,3564,3624,3654,4224,4344,4464,4554,4644,5364,5424,5454,5544,2 more,5664},
 	digits=[{2..5},{1..6},{1..6},{4}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000177
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000463
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000613
-Eval DieAnotherDayEntry D2 cartesianCount=4, elapsed 0:00:00.004267
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000258
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001118
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000918
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000658
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000906
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000757
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.001674
+Eval DieAnotherDayEntry D2 cartesianCount=4, elapsed 0:00:00.004443
 solveRight: DieAnotherDayEntry(name=D2,length=4,value: $multiple (X + Z),
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A6[1],D2[3]=A7[1]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D2,A1,A5,A6,A7,D2],
 	values={1111,1161,1221,1251,1331,1341,1431,1441,1521,1551,1611,1661,2151,2211,2241,2321,2331,2421,2431,2511,25 more,6651},
 	digits=[{1..6},{1..6},{1..6},{1}]
-Z={3,5}
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000181
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000556
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001534
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000859
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001330
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000610
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001461
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000724
-Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.003158
+Variable Z={3,5}
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000234
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001214
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.002841
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000949
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001697
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000855
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001680
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000886
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.003058
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.001518
+Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.002006
 solveFront: DieAnotherDayEntry(name=D1,length=4,value: #square + W*Y*Z,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A6[0],D1[3]=A7[0]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D1,A1,A5,A6,A7,D1],
 	values={2224,2324,2334,2344,2364,2524,3264,3424,3624,4644,4654,4664,5214,5224,5244,5344},
@@ -360,28 +398,28 @@ solveRight: DieAnotherDayEntry(name=D1,length=4,value: ,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A6[0],D1[3]=A7[0]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D1,A1,A5,A6,A7,D1],
 	values={2112,2122,2132,2142,2152,2162,2412,2422,2432,2442,2452,2462,2512,2522,2532,2542,2552,2562,2612,2622,76 more,5662},
 	digits=[{2..5},{1,4..6},{1..6},{2}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000192
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000558
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001298
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000645
-Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000475
-Eval DieAnotherDayEntry A6 cartesianCount=79, elapsed 0:00:00.037871
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000209
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000835
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.002217
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.001012
+Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000634
+Eval DieAnotherDayEntry A6 cartesianCount=79, elapsed 0:00:00.047289
 solveTop: DieAnotherDayEntry(name=A6,length=4,value: $multiple A,
 	identities=[A6[0]=D1[2],A6[1]=D2[2],A6[2]=D3[2],A6[3]=D4[2]],referrers=[D1,D2,D3,D4,A6,D1,D2,D3,D4,A6,D1,D2,D3,D4],
 	values={3111,3116,3124,3131,3136,3144,3146,3151,3154,3161,3164,3213,3216,3224,3233,3234,3243,3256,3264,3266,112 more,6666},
 	digits=[{3,6},{1..6},{1..6},{1,3,4,6}]
-A={21..24,26..29,31..34,36..39,41..44,44 more,99}
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000688
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001150
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000571
-Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000461
-Eval DieAnotherDayEntry A6 cartesianCount=64, elapsed 0:00:00.034812
-Eval DieAnotherDayEntry A5 cartesianCount=320, elapsed 0:00:00.001472
+Variable A={21..24,26..29,31..34,36..39,41..44,44 more,99}
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001212
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001951
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000848
+Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000576
+Eval DieAnotherDayEntry A6 cartesianCount=64, elapsed 0:00:00.043272
+Eval DieAnotherDayEntry A5 cartesianCount=320, elapsed 0:00:00.001935
 solveRight: DieAnotherDayEntry(name=A5,length=4,value: A^2 - W,
 	identities=[A5[0]=D1[1],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1]],referrers=[D1,D2,D3,D4,A5,D1,D2,D3,D4,A5,D1,D2,D3,D4],
 	values={1152..1155,1364,1365,1442,1443,4352..4355,4622,4623,5324,5325},
 	digits=[{1,4,5},{1,3,4,6},{2,4..6},{2..5}]
-A={34,37,38,66,68,73}
+Variable A={34,37,38,66,68,73}
 solveFront: DieAnotherDayEntry(name=A5,length=4,value: ,
 	identities=[A5[0]=D1[1],A5[1]=D2[1],A5[2]=D3[1],A5[3]=D4[1]],referrers=[D1,D2,D3,D4,A5,D1,D2,D3,D4,A5,D1,D2,D3,D4],
 	values={4111,4121,4131,4141,4151,4161,4211,4221,4231,4241,4251,4261,4311,4321,4331,4341,4351,4361,4411,4421,88 more,6661},
@@ -394,27 +432,27 @@ solveRight: DieAnotherDayEntry(name=D3,length=4,value: ,
 	identities=[D3[0]=A1[2],D3[1]=A5[2],D3[2]=A6[2],D3[3]=A7[2]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D3,A1,A5,A6,A7,D3],
 	values={2211,2221,2231,2241,2251,2261,2411,2421,2431,2441,2451,2461,2511,2521,2531,2541,2551,2561,2611,2621,76 more,5661},
 	digits=[{2..5},{2,4..6},{1..6},{1}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000172
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000748
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000865
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000200
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000803
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001252
 solveRight: DieAnotherDayEntry(name=D2,length=4,value: $multiple (X + Z),
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A6[1],D2[3]=A7[1]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D2,A1,A5,A6,A7,D2],
 	values={1111,1161,1331,1341,1431,1441,1611,1661,2151,2321,2331,2421,2431,2651,3141,3311,3321,3411,3421,3641,10 more,6651},
 	digits=[{1..6},{1,3,4,6},{1..6},{1}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000191
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000604
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000847
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000552
-Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.003939
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000220
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000956
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001217
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000741
+Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.004383
 solveTop: DieAnotherDayEntry(name=A6,length=4,value: $multiple A,
 	identities=[A6[0]=D1[2],A6[1]=D2[2],A6[2]=D3[2],A6[3]=D4[2]],referrers=[D1,D2,D3,D4,A6,D1,D2,D3,D4,A6,D1,D2,D3,D4],
 	values={3116,3154,3234,3256,3264,3344,3366,3431,3434,3441,3534,3536,3564,3626,3663,6154,6156,6216,6253,6256,13 more,6666},
 	digits=[{3,6},{1..6},{1..6},{1,3,4,6}]
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000640
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001027
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000579
-Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.003736
-Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000192
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000781
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001799
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.001536
+Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.006131
+Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000375
 solveFront: DieAnotherDayEntry(name=D1,length=4,value: #square + W*Y*Z,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A6[0],D1[3]=A7[0]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D1,A1,A5,A6,A7,D1],
 	values={2524,3424,3624,4644,4654,4664},
@@ -435,35 +473,35 @@ solveRight: DieAnotherDayEntry(name=D1,length=4,value: ,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A6[0],D1[3]=A7[0]],referrers=[A1,A5,A6,A7,A1,A5,A6,A7,D1,A1,A5,A6,A7,D1],
 	values={2112,2132,2142,2152,2162,2412,2432,2442,2452,2462,2512,2532,2542,2552,2562,3112,3132,3142,3152,3162,40 more,5562},
 	digits=[{2..5},{1,4,5},{1,3..6},{2}]
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000241
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000862
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000926
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000834
-Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.002894
-Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000184
-Eval DieAnotherDayEntry A5 cartesianCount=30, elapsed 0:00:00.000722
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000175
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000573
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000909
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000502
-Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.002955
-Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000142
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000163
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000563
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000903
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000522
-Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.002714
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000159
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000567
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000848
-Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000538
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000158
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000581
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000846
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000172
-Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000577
-Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000249
-Clue/Variable iterations=758, updates=63, elapsed 0:00:02.979458
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000193
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000813
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001110
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000757
+Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.003414
+Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000235
+Eval DieAnotherDayEntry A5 cartesianCount=30, elapsed 0:00:00.000813
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000227
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000975
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001816
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000801
+Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.005932
+Eval DieAnotherDayEntry D1 cartesianCount=20, elapsed 0:00:00.000289
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000446
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000977
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001338
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000858
+Eval DieAnotherDayEntry A6 cartesianCount=6, elapsed 0:00:00.003826
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000256
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000851
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001664
+Eval DieAnotherDayEntry D3 cartesianCount=2, elapsed 0:00:00.000969
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000213
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000792
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.001181
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000230
+Eval DieAnotherDayEntry D2 cartesianCount=2, elapsed 0:00:00.000783
+Eval DieAnotherDayEntry A1 cartesianCount=2, elapsed 0:00:00.000212
+Clue/Variable iterations=803, updates=78, elapsed 0:00:08.714060
 PARTIAL SOLUTION-----------------------------
 Top Puzzle Summary
 A1, #square - Y^2, values={1435,6225,6232,6545,6552}

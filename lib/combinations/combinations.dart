@@ -185,7 +185,7 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
 
     var variables = <Variable>[];
     var variableValues = <List<int>>[];
-    var count = puzzle.getVariables(clue, clue.expressions, possibleValue,
+    var count = puzzle.getVariables([clue], clue.expressions, possibleValue,
         possibleVariables!, variables, variableValues, 1000000);
     if (count == 0) return false;
 
@@ -193,10 +193,10 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
-        for (var valueN in expN.generate(
-            1, clue.max, variableNames, product, clue.values)) {
-          for (var valueK in expK.generate(
-              1, clue.max, variableNames, product, clue.values)) {
+        for (var valueN
+            in expN.generate(1, clue.max, variables, product, clue.values)) {
+          for (var valueK
+              in expK.generate(1, clue.max, variables, product, clue.values)) {
             // Entries are any of three types.
             // i. NCk : the number of ways of choosing k objects from a set of N objects.
             // ii. Sum of the next k primes greater than N
@@ -255,14 +255,14 @@ class Combinations extends Crossnumber<CombinationsPuzzle> {
 
   @override
   bool updateClues(
-      CombinationsPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
+      CombinationsPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order

@@ -357,7 +357,7 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
   }
 
   @override
-  bool solveClue(Variable variable) {
+  Set<Variable> solveClue(Variable variable) {
     var updated = super.solveClue(variable);
 
     var puzzle = puzzleForVariable[variable]!;
@@ -474,10 +474,10 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
 
   @override
   bool updateClues(
-      DieAnotherDayPuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
+      DieAnotherDayPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+        isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     return updated;
   }
 

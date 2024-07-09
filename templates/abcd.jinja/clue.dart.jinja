@@ -4,17 +4,17 @@ import '../variable.dart';
 /// A Puzzle clue
 class {{env['ABCD']}}Clue extends ExpressionClue {
   /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
+  List<String> get letterReferences => this.variableNameReferences;
   addLetterReference(String letter) => this.addVariableReference(letter);
 
   {{env['ABCD']}}Clue(
-      {required String name,
-      VariableType type = VariableType.C,
-      required int? length,
-      String? valueDesc,
-      List<String>? addDesc,
-      SolveFunction? solve,
-      List<String>? entryNames})
+      {required String super.name,
+      VariableType super.type = VariableType.C,
+      required super.length,
+      super.valueDesc,
+      super.addDesc,
+      super.solve,
+      super.entryNames})
       : super(
             name: name,
             type: type,
@@ -26,24 +26,14 @@ class {{env['ABCD']}}Clue extends ExpressionClue {
 }
 
 class {{env['ABCD']}}Entry extends {{env['ABCD']}}Clue with EntryMixin {
-  /// List of referenced primes
-  List<String> get letterReferences => this.variableReferences;
-  addLetterReference(String letter) => this.addVariableReference(letter);
-
   {{env['ABCD']}}Entry({
-    required String name,
-    VariableType type = VariableType.E,
-    required int? length,
-    String? valueDesc,
-    SolveFunction? solve,
-    entryNames,
-  }) : super(
-            name: name,
-            type: type,
-            length: length,
-            valueDesc: valueDesc,
-            solve: solve,
-            entryNames: entryNames) {
+    required super.name,
+    super.type = VariableType.E,
+    required super.length,
+    super.valueDesc,
+    super.solve,
+    super.entryNames,
+  }) {
     initEntry(this);
   }
 }

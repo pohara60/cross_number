@@ -1,5 +1,6 @@
 library twentyfive;
 
+import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
@@ -221,13 +222,12 @@ class TwentyFive extends Crossnumber<TwentyFivePuzzle> {
 
   @override
   bool updateClues(
-      TwentyFivePuzzle thisPuzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
-        isFocus: isFocus, isEntry: isEntry, focusClueName: focusClueName);
+      TwentyFivePuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+        isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (!isEntry && updated) {
       // Digits
-      var clue = thisPuzzle.clues[clueName]!;
       updatePairs(thisPuzzle, clue);
     }
     return updated;

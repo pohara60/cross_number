@@ -237,17 +237,17 @@ Z={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},min=11,max=97
 RemainingValues: [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
 MANUAL UPDATES-----------------------------
-Eval PrimeCutsVariable M cartesianCount=21, elapsed 0:00:00.006942
+Eval PrimeCutsVariable M cartesianCount=21, elapsed 0:00:00.007007
 solve: PrimeCutsVariable(M={11,13,17,31,37,71,73,79,97},$reverse C,min=11,max=97)
 M={11, 13, 17, 31, 37, 71, 73, 79, 97}
 C={11, 13, 17, 31, 37, 71, 73, 79, 97}
 solve: PrimeCutsVariable(N={13,17,19,23,29,37,47,59,67,79,89},#ascending,min=13,max=89)
 N={13, 17, 19, 23, 29, 37, 47, 59, 67, 79, 89}
-Eval PrimeCutsVariable P cartesianCount=21, elapsed 0:00:00.000450
+Eval PrimeCutsVariable P cartesianCount=21, elapsed 0:00:00.000502
 solve: PrimeCutsVariable(P={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,73,79,83,89,97},#triangular - Z,min=11,max=97)
 P={11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 73, 79, 83, 89, 97}
 Z={11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 73, 79, 83, 89, 97}
-Eval PrimeCutsVariable Y cartesianCount=21, elapsed 0:00:00.000114
+Eval PrimeCutsVariable Y cartesianCount=21, elapsed 0:00:00.000146
 solve: PrimeCutsVariable(Y={11,13,17,31,37,71,73,79,97},$reverse Q,min=11,max=97)
 Y={11, 13, 17, 31, 37, 71, 73, 79, 97}
 Q={11, 13, 17, 31, 37, 71, 73, 79, 97}
@@ -549,7 +549,7 @@ solve: PrimeCutsClue(name=D15,prime=Y,length=4,value: #square,
 	entries={21,26,36,56,96},
 	digits=[{2,3,5,9},{1,6}]
 Y={11,31,37,73,79}
-Eval PrimeCutsVariable M cartesianCount=4, elapsed 0:00:00.000043
+Eval PrimeCutsVariable M cartesianCount=4, elapsed 0:00:00.000042
 solve: PrimeCutsVariable(M={13},$reverse C)
 C={31}
 B={11, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97}
@@ -562,11 +562,11 @@ Q={11, 17, 37, 73, 79}
 R={11, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97}
 Y={11, 37, 73, 79}
 Z={11, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 73, 79, 83, 89, 97}
-Eval PrimeCutsVariable Y cartesianCount=5, elapsed 0:00:00.000036
+Eval PrimeCutsVariable Y cartesianCount=5, elapsed 0:00:00.000033
 solve: PrimeCutsVariable(Y={11,37,73},$reverse Q,min=11,max=73)
 Y={11, 37, 73}
 Q={11, 37, 73}
-Eval PrimeCutsVariable Y cartesianCount=3, elapsed 0:00:00.000024
+Eval PrimeCutsVariable Y cartesianCount=3, elapsed 0:00:00.000021
 solve: PrimeCutsClue(name=D1,prime=P,length=4,value: $multiple P,
 	identities=[D1[1]=A7[0]],referrers=[A7,A9],
 	values={1111,1113,1118,1121,1122,1127,1128,1131,1133,1139,1144,1147,1148,1155..1157,1159,1161,1162,1164,1353 more,9983},
@@ -577,7 +577,7 @@ solve: PrimeCutsClue(name=D16,prime=Z,length=4,value: $multiple Z,
 	values={1023,1037,1067,1073,1079,1083,1089,1110,1111,1113,1118,1121,1122,1127,1128,1131,1133,1139,1140,1144,1523 more,9983},
 	entries={10..29,69 more,99},
 	digits=[{1..9},{0..9}]
-Eval PrimeCutsVariable P cartesianCount=18, elapsed 0:00:00.000126
+Eval PrimeCutsVariable P cartesianCount=18, elapsed 0:00:00.000131
 solve: PrimeCutsClue(name=A7,prime=D,length=5,value: $multiple D,
 	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D3[1]],referrers=[D1,D8,D3],
 	values={11154,11176,11264,11286,11374,11396,11451,11484,11561,11594,11671,11774,11781,11891,15114,15371,15411,16123,16441,16683,213 more,99683},
@@ -897,7 +897,7 @@ solve: PrimeCutsClue(name=A2,prime=B,length=5,value: $multiple EA2,
 	values={59792},
 	entries={592},
 	digits=[{5},{9},{2}]
-Clue/Variable iterations=219, updates=87, elapsed 0:00:15.833818
+Clue/Variable iterations=372, updates=187, elapsed 0:00:13.406635
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue A2, $multiple EA2, values={59792}, entry={592}

@@ -293,11 +293,14 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Variable variable) {
+  Set<Variable> solveClue(Variable variable) {
+    var updatedVariables = <Variable>{};
     var clue = variable as PrimeCutsEntry;
     var puzzle = puzzleForVariable[clue]!;
     // If clue solved already then skip it
-    if (clue.values != null && clue.values!.length == 1) return false;
+    if (clue.values != null && clue.values!.length == 1) {
+      return updatedVariables;
+    }
 
     var updated = false;
     if (clue.initialise()) updated = true;
@@ -330,7 +333,10 @@ class PrimeCuts extends Crossnumber<PrimeCutsPuzzle> {
         print("${puzzle.primes[prime]}");
       }
     }
-    return updated;
+
+    if (!updated) return updatedVariables;
+    updatedVariables.add(clue);
+    return updatedVariables;
   }
 
   bool updatePrimes(prime, Set<int> possibleValues) =>

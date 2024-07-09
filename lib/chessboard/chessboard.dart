@@ -151,9 +151,9 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
 
   // Override solveClue to check chessboard
   @override
-  bool solveClue(Variable variable) {
-    var updated = super.solveClue(variable);
-    if (updated) {
+  Set<Variable> solveClue(Variable variable) {
+    var updatedVariables = super.solveClue(variable);
+    if (updatedVariables.isNotEmpty) {
       // Check entry digits for chessboard
       if (variable is Clue) {
         var entry = variable.entry as ChessboardEntry?;
@@ -187,8 +187,7 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
                     }
                   }
                   if (otherUpdated) {
-                    // Add Entry clue to solve queue
-                    addToUpdateQueue(otherEntry);
+                    updatedVariables.add(otherEntry);
                   }
                 }
               }
@@ -197,6 +196,6 @@ class Chessboard extends Crossnumber<ChessboardPuzzle> {
         }
       }
     }
-    return updated;
+    return updatedVariables;
   }
 }

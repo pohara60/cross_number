@@ -352,7 +352,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
     var variables = <Variable>[];
     var variableValues = <List<int>>[];
-    var count = puzzle.getVariables(clue, clue.expressions, possibleValue,
+    var count = puzzle.getVariables([clue], clue.expressions, possibleValue,
         possibleVariables!, variables, variableValues, 1000000);
     if (count == 0) return false;
 
@@ -362,8 +362,14 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     var entryVariableMapsToClueVariable = <int>[];
     var clueRefersToEntryIndex = variables.indexOf(entry);
     if (entry.valueDesc != '') {
-      var count2 = puzzle.getVariables(entry, entry.expressions, possibleValue,
-          possibleEntryVariables, entryVariables, entryVariableValues, 1000000);
+      var count2 = puzzle.getVariables(
+          [entry],
+          entry.expressions,
+          possibleValue,
+          possibleEntryVariables,
+          entryVariables,
+          entryVariableValues,
+          1000000);
       if (count2 == 0) return false;
 
       // Find variables in common for clue and entry
@@ -385,8 +391,8 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
-        for (var clueValue in clue.exp.generate(
-            clue.min, clue.max, variableNames, product, clue.values)) {
+        for (var clueValue in clue.exp
+            .generate(clue.min, clue.max, variables, product, clue.values)) {
           if (!validClue(clue, clueValue, variableNames, product)) continue;
 
           if (entry.valueDesc == '') {
@@ -437,7 +443,7 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
               if (skip) continue;
 
               for (var entryValue in entry.exp.generate(entry.min, entry.max,
-                  entryVariableNames, product2, entry.values)) {
+                  entryVariables, product2, entry.values)) {
                 if (clueRefersToEntryIndex != -1) {
                   if (product[clueRefersToEntryIndex] != entryValue) {
                     continue;
@@ -518,23 +524,24 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Variable variable) {
+  Set<Variable> solveClue(Variable variable) {
     if (variable is Clue) {
       return solveActualClue(variable);
     }
     if (variable is ExpressionVariable) {
       return solveVariable(variable);
     }
-    return false;
+    return {};
   }
 
-  bool solveActualClue(Clue inputClue) {
+  Set<Variable> solveActualClue(Clue inputClue) {
+    var updatedVariables = <Variable>{};
     var clue = inputClue as PrimeCutsClue;
     var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as PrimeCutsEntry;
 
     // If entry solved already then skip it
-    if (entry.isSet) return false;
+    if (entry.isSet) return {};
 
     var updated = false;
     if (clue.initialise()) updated = true;
@@ -588,7 +595,13 @@ class PrimeCuts2 extends Crossnumber<PrimeCuts2Puzzle> {
         }
       }
     }
-    return updated;
+
+    // Return all updated variables
+    if (!updated) return {};
+    var allUpdatedVariables = <Variable>{clue, entry};
+    allUpdatedVariables.addAll(updatedVariables);
+
+    return allUpdatedVariables;
   }
 
   // Variable solver invokes generic expression evaluator

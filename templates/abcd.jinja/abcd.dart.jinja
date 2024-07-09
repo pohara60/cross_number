@@ -18,13 +18,14 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     initCrossnumber();
   }
 
+  @override
   void initCrossnumber() {
 
     {% if env['num_grids']!=1 %}
     for (var i = 0; i < {{env['num_grids']}}; i++) {
     {% endif %}
     var puzzle = {{env['ABCD']}}Puzzle.fromGridString(gridString);
-    this.puzzles.add(puzzle);
+    puzzles.add(puzzle);
 
     // Select the appropriate branch in the test below
     if (separateCluesEntries) {
@@ -41,7 +42,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
-        entryErrors += e.msg + '\n';
+        entryErrors += '${e.msg}\n';
       }
     }
 
@@ -67,7 +68,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
         puzzle.addClue(clue);
         return;
       } on ExpressionError catch (e) {
-        clueErrors += e.msg + '\n';
+        clueErrors += '${e.msg}\n';
         return;
       }
     }
@@ -170,8 +171,9 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
-    if (!super.validClue(clue, value, variableReferences, variableValues))
+    if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
+    }
     return true;
   }
 
@@ -240,31 +242,30 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   @override
-  bool updateClues({{env['ABCD']}}Puzzle puzzle, String clueName, Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
+  bool updateClues({{env['ABCD']}}Puzzle thisPuzzle, Clue clue,  Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(puzzle, clueName, possibleValues,
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
 
     {% if env['num_grids']!=1 %}
       // Pairs
-      var clue = puzzle.clues[clueName]!;
-      updatePairs(puzzle, clue);
+      updatePairs(thisPuzzle, clue);
     {% endif %}
 
       // Maintain clue value order
-      // var clue = puzzle.clues[clueName]!;
+      // var clue = thisPuzzle.clues[clueName]!;
       // var newMin = clue.values!.reduce(min);
       // if (clue.min == null || clue.min! < newMin) clue.min = newMin;
       // var newMax = clue.values!.reduce(max);
       // if (clue.max == null || clue.max! > newMax) clue.max = newMax;
       // // Clues are defined in ascending order of value
-      // for (var otherClue in puzzle.clues.values) {
+      // for (var otherClue in thisPuzzle.clues.values) {
       //   if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
       //     if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
       //       otherClue.min = clue.min! + 1;

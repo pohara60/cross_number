@@ -450,22 +450,22 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
 
   // Override solveClue to manage preValues
   @override
-  bool solveClue(Variable variable) {
+  Set<Variable> solveClue(Variable variable) {
     var clue = variable as Root66_2Clue;
     var puzzle = puzzleForVariable[clue]!;
     var entry = clue.entry as Root66_2Entry;
 
     // If entry solved already then skip it
-    if (entry.isSet) return false;
+    if (entry.isSet) return {};
 
     var updated = false;
     if (clue.initialise()) updated = true;
 
+    var updatedVariables = <Variable>{};
     if (clue.solve != null) {
       var possibleClueValue = <int>{};
       var possibleEntryValue = <int>{};
       var possibleVariables = <Variable, Set<int>>{};
-      var updatedVariables = <Variable>{};
       for (var variableRef in clue.variableReferences) {
         possibleVariables[variableRef] = <int>{};
       }
@@ -499,7 +499,13 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
         }
       }
     }
-    return updated;
+
+    // Return all updated variables
+    if (!updated) return {};
+    var allUpdatedVariables = <Variable>{clue, entry};
+    allUpdatedVariables.addAll(updatedVariables);
+
+    return allUpdatedVariables;
   }
 
   void setEntryType(Root66_2Entry entry, Root66_2EntryType type) {

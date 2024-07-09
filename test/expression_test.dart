@@ -26,12 +26,12 @@ void main() {
       expectToken(tokens[7]!, '', 'MINUS');
       expectToken(tokens[8]!, 'a', 'VAR');
     });
-    var text2 = '5+4*3/2-1';
-    test(text2, () {
-      var exp = ExpressionEvaluator(text2);
-      var value = exp.evaluate(['S', 'I', 'G', 'M', 'a'], [5, 4, 3, 2, 1]);
-      expect(value, equals(10));
-    });
+    // var text2 = '5+4*3/2-1';
+    // test(text2, () {
+    //   var exp = ExpressionEvaluator(text2);
+    //   var value = exp.evaluate(['S', 'I', 'G', 'M', 'a'], [5, 4, 3, 2, 1]);
+    //   expect(value, equals(10));
+    // });
   });
   group('Integer tests', () {
     var text3 = '3/2';

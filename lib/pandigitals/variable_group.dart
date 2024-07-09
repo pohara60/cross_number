@@ -80,4 +80,27 @@ class VariableGroup {
     }
     return variableError;
   }
+
+  void resolveReferences(Puzzle puzzle) {
+    for (var clueExp in clues) {
+      // All references should already have been checked, i.e. valid
+      for (var reference in clueExp.references) {
+        // Clue references may actually be to entries
+        var type = reference.type == VariableType.C && puzzle.cluesAreEntries
+            ? VariableType.E
+            : reference.type;
+        // Entry references may have prefix E
+        var name = reference.name.length > 1 && reference.name[0] == 'E'
+            ? reference.name.substring(1)
+            : reference.name;
+        var key = (type, name);
+        reference.variable = puzzle.allVariables[key]!;
+      }
+
+      // Expressions
+      for (var exp in (clueExp as Expression).expressions) {
+        exp.resolveReferences(puzzle.allVariables);
+      }
+    }
+  }
 }

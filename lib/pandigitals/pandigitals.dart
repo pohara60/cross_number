@@ -205,6 +205,7 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     for (var variableGroup in variableGroups) {
       variableError += variableGroup.checkClueReferences(puzzle);
       variableError += variableGroup.checkVariableReferences(puzzle);
+      variableGroup.resolveReferences(puzzle);
     }
     if (variableError != '') throw PuzzleException(variableError);
 
@@ -470,8 +471,8 @@ class Pandigitals extends Crossnumber<PandigitalsPuzzle> {
     for (var product
         in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
       try {
-        for (var value in clueExp.exp.generate(
-            clue.min, clue.max, clueExp.variableClueNameReferences, product)) {
+        for (var value in clueExp.exp.generate(clue.min, clue.max,
+            clueExp.variableClueReferences.toList(), product)) {
           if (value >= clue.min! && value < clue.max! + 1) {
             var valid = clue.digitsMatch(value);
             if (valid) {

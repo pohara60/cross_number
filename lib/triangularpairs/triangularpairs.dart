@@ -284,13 +284,12 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
   }
 
   @override
-  bool updateClues(TriangularPairsPuzzle thisPuzzle, String clueName,
-      Set<int> possibleValues,
-      {bool isFocus = true, bool isEntry = false, String? focusClueName}) {
-    var updated = super.updateClues(thisPuzzle, clueName, possibleValues,
+  bool updateClues(
+      TriangularPairsPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
     // Maintain clue value order
-    var clue = thisPuzzle.clues[clueName]!;
     if (clue.isSet && clue.length == 2) {
       addKnownTwoDigitTriangular(clue.value!);
     }
