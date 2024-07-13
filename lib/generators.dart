@@ -24,6 +24,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['result'] = Generator('result', generateIntegers);
   generators['palindrome'] = Generator('palindrome', generatePalindromes);
   generators['harshad'] = Generator('harshad', generateHarshads);
+  generators['lucas'] = Generator('lucas', generateLucas);
   generators['odd'] = Generator('odd', generateOddIntegers);
   generators['even'] = Generator('even', generateEvenIntegers);
   generators['prime'] = Generator('prime', generatePrimes);

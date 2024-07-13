@@ -1,7 +1,5 @@
 library opposingdigitsum;
 
-import 'package:collection/collection.dart';
-
 import '../cartesian.dart';
 import '../clue.dart';
 import '../crossnumber.dart';

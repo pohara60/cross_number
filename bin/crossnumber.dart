@@ -12,6 +12,7 @@ import 'package:crossnumber/cubesandwich/cubesandwich.dart';
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/dieanotherday/dieanotherday.dart';
+import 'package:crossnumber/eraser/eraser.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/factors/factors.dart';
 import 'package:crossnumber/frequency/frequency.dart';
@@ -95,7 +96,8 @@ void main(List<String> arguments) async {
     ..addCommand(FactorsCommand())
     ..addCommand(TransformationCommand())
     ..addCommand(SquaresTrianglesCommand())
-    ..addCommand(OpposingDigitSumCommand());
+    ..addCommand(OpposingDigitSumCommand())
+    ..addCommand(EraserCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -980,6 +982,30 @@ class OpposingDigitSumCommand extends Command {
     // Get and print solve
     try {
       final pc = OpposingDigitSum();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class EraserCommand extends Command {
+  @override
+  final name = 'Eraser';
+  @override
+  final description = 'solve hardcoded Eraser puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Eraser();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

@@ -19,6 +19,23 @@ class Cell extends Variable {
     digitsNoUndo = digits;
   }
 
+  int get entryDigit {
+    // Look at entries for digit, used during iteration
+    var digit = 0;
+    for (var i = 0; i < entries.length; i++) {
+      var digits = entries[i].digits[entryDigits[i]];
+      if (digits.length > 1) {
+        return 0;
+      }
+      if (digit == 0) {
+        digit = digits.first;
+      } else if (digit != digits.first) {
+        return 0;
+      }
+    }
+    return digit;
+  }
+
   set digitsNoUndo(Set<int> digits) {
     if (IterableEquality().equals(_digits, digits)) return;
     _digits = digits;
@@ -87,8 +104,7 @@ class Grid {
                 : Cell(row, col, face))));
   }
 
-  Grid.fromGridSpec(this.puzzle,
-      [this.face = '', CellConstructor? constructor])
+  Grid.fromGridSpec(this.puzzle, [this.face = '', CellConstructor? constructor])
       : numRows = puzzle.gridSpec!.cells.length,
         numCols = puzzle.gridSpec!.cells[0].length {
     rows.addAll(List.generate(
@@ -153,9 +169,17 @@ class Grid {
 
   @override
   String toString() =>
-      '${face == '' ? '' : '$face\n'}${rows
-          .map((row) => row.fold('', (str, cell) => str + cell.toDigit()))
-          .join('\n')}';
+      '${face == '' ? '' : '$face\n'}${rows.map((row) => row.fold('', (str, cell) => str + cell.toDigit())).join('\n')}';
   int get sumdigits => rows.fold(
       0, (value, row) => row.fold(value, (value, cell) => value + cell.digit));
+
+  List<Cell> getRowCol(int? row, int? col) {
+    if (row != null) {
+      return rows[row];
+    }
+    if (col != null) {
+      return rows.expand((row) => [row[col]]).toList();
+    }
+    return [];
+  }
 }

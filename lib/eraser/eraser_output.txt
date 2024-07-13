@@ -1,0 +1,339 @@
+Puzzle
+EraserEntry(name=A1,length=2,value: #cube,
+	identities=[A1[0]=D1[0]],referrers=[D1],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+EraserEntry(name=A2,length=3,value: #square,
+	identities=[A2[0]=D2[0],A2[2]=D3[0]],referrers=[D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+EraserEntry(name=A4,length=3,value: #prime,
+	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+EraserEntry(name=A6,length=2,value: #square,
+	identities=[A6[0]=D6[0],A6[1]=D3[1]],referrers=[D6,D3],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+EraserEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D5[1],A7[2]=D6[1]],referrers=[D5,D6],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+EraserEntry(name=A9,length=2,value: #square,
+	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+EraserEntry(name=A10,length=3,value: #cube,
+	identities=[A10[0]=D10[0],A10[1]=D6[2],A10[2]=D8[1]],referrers=[D10,D6,D8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+EraserEntry(name=A11,length=3,value: #cube,
+	identities=[A11[0]=D9[1],A11[2]=D10[1]],referrers=[D9,D10],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+EraserEntry(name=A12,length=2,value: #cube,
+	identities=[A12[1]=D8[2]],referrers=[D8],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+EraserEntry(name=D1,length=3,value: #triangular,
+	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4,D5],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+EraserEntry(name=D2,length=2,value: #Lucas,
+	identities=[D2[0]=A2[0],D2[1]=A4[2]],referrers=[A2,A4],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+EraserEntry(name=D3,length=2,value: #square,
+	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+EraserEntry(name=D5,length=3,value: D1 - D8,
+	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+EraserEntry(name=D6,length=3,value: #square,
+	identities=[D6[0]=A6[0],D6[1]=A7[2],D6[2]=A10[1]],referrers=[A6,A7,A10],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+EraserEntry(name=D8,length=3,value: #prime,
+	identities=[D8[1]=A10[2],D8[2]=A12[1]],referrers=[A10,A12,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+EraserEntry(name=D9,length=2,value: #prime,
+	identities=[D9[0]=A9[0],D9[1]=A11[0]],referrers=[A9,A11],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+EraserEntry(name=D10,length=2,value: #square,
+	identities=[D10[0]=A10[0],D10[1]=A11[2]],referrers=[A10,A11],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+UPDATES-----------------------------
+solve: EraserEntry(name=A1,length=2,value: #cube,
+	identities=[A1[0]=D1[0]],referrers=[D1],
+	values={27,64},
+	digits=[{2,6},{4,7}]
+solve: EraserEntry(name=A2,length=3,value: #square,
+	identities=[A2[0]=D2[0],A2[2]=D3[0]],referrers=[D2,D3],
+	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961},
+	digits=[{1..9},{2,4..9},{1,4..6,9}]
+solve: EraserEntry(name=A4,length=3,value: #prime,
+	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
+	values={113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,108 more,997},
+	digits=[{1..9},{1..9},{1,3,7,9}]
+solve: EraserEntry(name=A6,length=2,value: #square,
+	identities=[A6[0]=D6[0],A6[1]=D3[1]],referrers=[D6,D3],
+	values={16,25,36,49,64,81},
+	digits=[{1..4,6,8},{1,4..6,9}]
+solve: EraserEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D5[1],A7[2]=D6[1]],referrers=[D5,D6],
+	values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561,11 more,990},
+	digits=[{1..9},{0..9},{0,1,3,5,6,8}]
+solve: EraserEntry(name=A9,length=2,value: #square,
+	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5],
+	values={16,25,36,49,64,81},
+	digits=[{1..4,6,8},{1,4..6,9}]
+solve: EraserEntry(name=A10,length=3,value: #cube,
+	identities=[A10[0]=D10[0],A10[1]=D6[2],A10[2]=D8[1]],referrers=[D10,D6,D8],
+	values={125,216,343,512,729},
+	digits=[{1..3,5,7},{1,2,4},{2,3,5,6,9}]
+solve: EraserEntry(name=A11,length=3,value: #cube,
+	identities=[A11[0]=D9[1],A11[2]=D10[1]],referrers=[D9,D10],
+	values={125,216,343,512,729},
+	digits=[{1..3,5,7},{1,2,4},{2,3,5,6,9}]
+solve: EraserEntry(name=A12,length=2,value: #cube,
+	identities=[A12[1]=D8[2]],referrers=[D8],
+	values={27,64},
+	digits=[{2,6},{4,7}]
+solve: EraserEntry(name=D1,length=3,value: #triangular,
+	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4,D5],
+	values={210,231,253,276,630,666},
+	digits=[{2,6},{1,3,5..7},{0,1,3,6}]
+solve: EraserEntry(name=D2,length=2,value: #Lucas,
+	identities=[D2[0]=A2[0],D2[1]=A4[2]],referrers=[A2,A4],
+	values={11,29,47},
+	digits=[{1,2,4},{1,7,9}]
+solve: EraserEntry(name=D3,length=2,value: #square,
+	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
+	values={16,49,64},
+	digits=[{1,4,6},{4,6,9}]
+Eval EraserEntry D5 cartesianCount=540, elapsed 0:00:00.006041
+solve: EraserEntry(name=D5,length=3,value: D1 - D8,
+	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
+	values={116,119,126,129,136,139,149,166,169,176,196,199,229,236,239,266,269,276,296,299,18 more,539},
+	digits=[{1..5},{1..4,6,7,9},{6,9}]
+Entry D1={253,276,630,666}
+Entry D8={124,127,134,137,154,157,164,167,194,197,227,234,237,254,264,267,294,297,327,334,16 more,537}
+solve: EraserEntry(name=D6,length=3,value: #square,
+	identities=[D6[0]=A6[0],D6[1]=A7[2],D6[2]=A10[1]],referrers=[A6,A7,A10],
+	values={361,484},
+	digits=[{3,4},{6,8},{1,4}]
+solve: EraserEntry(name=D8,length=3,value: #prime,
+	identities=[D8[1]=A10[2],D8[2]=A12[1]],referrers=[A10,A12,D5],
+	values={127,137,157,167,197,227,337,367,397,467},
+	digits=[{1..4},{2,3,5,6,9},{7}]
+solve: EraserEntry(name=D9,length=2,value: #prime,
+	identities=[D9[0]=A9[0],D9[1]=A11[0]],referrers=[A9,A11],
+	values={11,13,17,23,31,37,41,43,47,61,67,83},
+	digits=[{1..4,6,8},{1,3,7}]
+solve: EraserEntry(name=D10,length=2,value: #square,
+	identities=[D10[0]=A10[0],D10[1]=A11[2]],referrers=[A10,A11],
+	values={16,25,36},
+	digits=[{1..3},{5,6}]
+solve: EraserEntry(name=A2,length=3,value: #square,
+	identities=[A2[0]=D2[0],A2[2]=D3[0]],referrers=[D2,D3],
+	values={121,144,196,256,441,484},
+	digits=[{1,2,4},{2,4,5,8,9},{1,4,6}]
+solve: EraserEntry(name=A4,length=3,value: #prime,
+	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
+	values={311,317,331,337,347,349,359,521,541,547,557,617,619,631,641,647,659,719,727,739,2 more,757},
+	digits=[{3,5..7},{1..5},{1,7,9}]
+solve: EraserEntry(name=A6,length=2,value: #square,
+	identities=[A6[0]=D6[0],A6[1]=D3[1]],referrers=[D6,D3],
+	values={36,49},
+	digits=[{3,4},{6,9}]
+solve: EraserEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D5[1],A7[2]=D6[1]],referrers=[D5,D6],
+	values={136,276,378,406,496,666,946},
+	digits=[{1..4,6,9},{0,3,4,6,7,9},{6,8}]
+solve: EraserEntry(name=A9,length=2,value: #square,
+	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5],
+	values={16,36,49},
+	digits=[{1,3,4},{6,9}]
+solve: EraserEntry(name=A10,length=3,value: #cube,
+	identities=[A10[0]=D10[0],A10[1]=D6[2],A10[2]=D8[1]],referrers=[D10,D6,D8],
+	values={216,343},
+	digits=[{2,3},{1,4},{3,6}]
+solve: EraserEntry(name=A11,length=3,value: #cube,
+	identities=[A11[0]=D9[1],A11[2]=D10[1]],referrers=[D9,D10],
+	values={125},
+	digits=[{1},{2},{5}]
+solve: EraserEntry(name=A12,length=2,value: #cube,
+	identities=[A12[1]=D8[2]],referrers=[D8],
+	values={27},
+	digits=[{2},{7}]
+solve: EraserEntry(name=D3,length=2,value: #square,
+	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
+	values={16,49},
+	digits=[{1,4},{6,9}]
+Eval EraserEntry D5 cartesianCount=40, elapsed 0:00:00.000237
+solve: EraserEntry(name=D5,length=3,value: D1 - D8,
+	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
+	values={116,119,126,139,149,199,269,299,329,439,469,499,529,539},
+	digits=[{1..5},{1..4,6,9},{6,9}]
+Entry D1={253,276,666}
+solve: EraserEntry(name=D8,length=3,value: #prime,
+	identities=[D8[1]=A10[2],D8[2]=A12[1]],referrers=[A10,A12,D5],
+	values={137,167,337,367,467},
+	digits=[{1,3,4},{3,6},{7}]
+solve: EraserEntry(name=D9,length=2,value: #prime,
+	identities=[D9[0]=A9[0],D9[1]=A11[0]],referrers=[A9,A11],
+	values={11,31,41},
+	digits=[{1,3,4},{1}]
+solve: EraserEntry(name=D10,length=2,value: #square,
+	identities=[D10[0]=A10[0],D10[1]=A11[2]],referrers=[A10,A11],
+	values={25},
+	digits=[{2},{5}]
+solve: EraserEntry(name=A2,length=3,value: #square,
+	identities=[A2[0]=D2[0],A2[2]=D3[0]],referrers=[D2,D3],
+	values={121,144,441,484},
+	digits=[{1,4},{2,4,8},{1,4}]
+solve: EraserEntry(name=A4,length=3,value: #prime,
+	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
+	values={521,541,547,557,617,619,631,641,647,659,719,727,739,751,757},
+	digits=[{5..7},{1..5},{1,7,9}]
+solve: EraserEntry(name=A10,length=3,value: #cube,
+	identities=[A10[0]=D10[0],A10[1]=D6[2],A10[2]=D8[1]],referrers=[D10,D6,D8],
+	values={216},
+	digits=[{2},{1},{6}]
+solve: EraserEntry(name=A1,length=2,value: #cube,
+	identities=[A1[0]=D1[0]],referrers=[D1],
+	values={64},
+	digits=[{6},{4}]
+Eval EraserEntry D5 cartesianCount=15, elapsed 0:00:00.000169
+solve: EraserEntry(name=D5,length=3,value: D1 - D8,
+	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
+	values={116,139,199,299,329,499,529},
+	digits=[{1..5},{1..3,9},{6,9}]
+solve: EraserEntry(name=D1,length=3,value: #triangular,
+	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4,D5],
+	values={666},
+	digits=[{6},{6},{6}]
+solve: EraserEntry(name=D8,length=3,value: #prime,
+	identities=[D8[1]=A10[2],D8[2]=A12[1]],referrers=[A10,A12,D5],
+	values={167,367,467},
+	digits=[{1,3,4},{6},{7}]
+solve: EraserEntry(name=D2,length=2,value: #Lucas,
+	identities=[D2[0]=A2[0],D2[1]=A4[2]],referrers=[A2,A4],
+	values={11,47},
+	digits=[{1,4},{1,7}]
+solve: EraserEntry(name=A4,length=3,value: #prime,
+	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
+	values={617,631,641,647},
+	digits=[{6},{1,3,4},{1,7}]
+solve: EraserEntry(name=D6,length=3,value: #square,
+	identities=[D6[0]=A6[0],D6[1]=A7[2],D6[2]=A10[1]],referrers=[A6,A7,A10],
+	values={361},
+	digits=[{3},{6},{1}]
+Eval EraserEntry D5 cartesianCount=3, elapsed 0:00:00.000099
+solve: EraserEntry(name=D5,length=3,value: D1 - D8,
+	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
+	values={199,499},
+	digits=[{1,4},{9},{9}]
+Entry D8={167,467}
+solve: EraserEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D5[1],A7[2]=D6[1]],referrers=[D5,D6],
+	values={946},
+	digits=[{9},{4},{6}]
+solve: EraserEntry(name=A9,length=2,value: #square,
+	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5],
+	values={49},
+	digits=[{4},{9}]
+solve: EraserEntry(name=A4,length=3,value: #prime,
+	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
+	values={617,641,647},
+	digits=[{6},{1,4},{1,7}]
+solve: EraserEntry(name=A6,length=2,value: #square,
+	identities=[A6[0]=D6[0],A6[1]=D3[1]],referrers=[D6,D3],
+	values={36},
+	digits=[{3},{6}]
+Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000084
+solve: EraserEntry(name=D3,length=2,value: #square,
+	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
+	values={16},
+	digits=[{1},{6}]
+solve: EraserEntry(name=D9,length=2,value: #prime,
+	identities=[D9[0]=A9[0],D9[1]=A11[0]],referrers=[A9,A11],
+	values={41},
+	digits=[{4},{1}]
+solve: EraserEntry(name=A2,length=3,value: #square,
+	identities=[A2[0]=D2[0],A2[2]=D3[0]],referrers=[D2,D3],
+	values={121,441},
+	digits=[{1,4},{2,4},{1}]
+Clue/Variable iterations=84, updates=52, elapsed 0:00:00.050387
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, #cube, values={64}
+A2, #square, values={121,441}
+A4, #prime, values={617,641,647}
+A6, #square, values={36}
+A7, #triangular, values={946}
+A9, #square, values={49}
+A10, #cube, values={216}
+A11, #cube, values={125}
+A12, #cube, values={27}
+D1, #triangular, values={666}
+D2, #Lucas, values={11,47}
+D3, #square, values={16}
+D5, D1 - D8, values={199,499}
+D6, #square, values={361}
+D8, #prime, values={167,467}
+D9, #prime, values={41}
+D10, #square, values={25}
++--+--+--+--+--+
+| 6  4| ?  ?  1|
++   --+   --   +
+| 6  ?  ?| 3  6|
++      --+   --+
+| 6| 9  4  6| ?|
++--+   --   +  +
+| 4  9| 2  1  6|
++   --+   --+  +
+| 1  2  5| 2  7|
++--+--+--+--+--+
+ITERATE SOLUTIONS-----------------------------
+Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000073
+Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000107
+Erased cells (22=4, 41=2, 40=1, 12=7, 03=4, 43=2, 42=5)
+SOLUTION-----------------------------
+Puzzle Summary
+A1, #cube, values={64}
+A2, #square, values={441}
+A4, #prime, values={617}
+A6, #square, values={36}
+A7, #triangular, values={946}
+A9, #square, values={49}
+A10, #cube, values={216}
+A11, #cube, values={125}
+A12, #cube, values={27}
+D1, #triangular, values={666}
+D2, #Lucas, values={47}
+D3, #square, values={16}
+D5, D1 - D8, values={199}
+D6, #square, values={361}
+D8, #prime, values={467}
+D9, #prime, values={41}
+D10, #square, values={25}
++--+--+--+--+--+
+| 6  4| 4  4  1|
++   --+   --   +
+| 6  1  7| 3  6|
++      --+   --+
+| 6| 9  4  6| 4|
++--+   --   +  +
+| 4  9| 2  1  6|
++   --+   --+  +
+| 1  2  5| 2  7|
++--+--+--+--+--+
+Erased cells value 25
+Solution count=1
+
