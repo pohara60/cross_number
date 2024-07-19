@@ -28,6 +28,7 @@ import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
 import 'package:crossnumber/partners/partners.dart';
 import 'package:crossnumber/powerplay/powerplay.dart';
+import 'package:crossnumber/primania/primania.dart';
 import 'package:crossnumber/prime/prime.dart';
 import 'package:crossnumber/primecuts/primecuts.dart';
 import 'package:crossnumber/letters/letters.dart';
@@ -97,7 +98,8 @@ void main(List<String> arguments) async {
     ..addCommand(TransformationCommand())
     ..addCommand(SquaresTrianglesCommand())
     ..addCommand(OpposingDigitSumCommand())
-    ..addCommand(EraserCommand());
+    ..addCommand(EraserCommand())
+    ..addCommand(PrimaniaCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1006,6 +1008,30 @@ class EraserCommand extends Command {
     // Get and print solve
     try {
       final pc = Eraser();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class PrimaniaCommand extends Command {
+  @override
+  final name = 'Primania';
+  @override
+  final description = 'solve hardcoded Primania puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Primania();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

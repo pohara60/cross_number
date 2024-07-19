@@ -12,11 +12,8 @@ import 'variable.dart';
 class Clue extends Variable {
   /// Inherits: name, values, tryValue
 
-  /// Number of digits, min and max values
-  final int? length;
-  @override
-  @override
-  late int? min, max;
+  /// Number of digits, min and max values are inherited
+  int? length;
 
   /// Description of clue
   String? valueDesc;
@@ -30,6 +27,19 @@ class Clue extends Variable {
   Clue? get entry => _entry;
   set entry(Clue? entry) {
     _entry = entry;
+  }
+
+  @override
+  set values(Set<int>? values) {
+    super.values = values;
+    // May update length
+    if (length == null && min != null && max != null) {
+      var minLength = min.toString().length;
+      var maxLength = max.toString().length;
+      if (minLength == maxLength) {
+        length = minLength;
+      }
+    }
   }
 
   EntryMixin? get entryMixin => entry == null ? null : entry as EntryMixin;
@@ -85,8 +95,8 @@ class Clue extends Variable {
     _restrictedValues = null;
   }
 
+  /// Update entry digits from digit references
   bool initialise() {
-    // Update entry digits from digit references
     var updated = false;
     if (entry != null) (entry as EntryMixin).updateDigitsFromOtherEntries();
     return updated;
@@ -105,8 +115,8 @@ class Clue extends Variable {
     return values!.toList();
   }
 
+  /// Update digits from values
   bool finalise() {
-    // Update digits from values
     if (values == null) return false;
     var updated = false;
     if (entry != null) {
@@ -334,6 +344,14 @@ mixin EntryMixin on Clue {
     return _digits;
   }
 
+  void setDigit(int digit, Set<int> digits) {
+    if (hasGrid) {
+      cells[digit].digits = digits;
+    } else {
+      _digits[digit] = digits;
+    }
+  }
+
   List<Set<int>> get digitsFromValue {
     var tryValue = this.tryValue;
     if (tryValue == null) {
@@ -399,7 +417,16 @@ mixin EntryMixin on Clue {
         var digit = int.parse(value.toString()[d]);
         possibleDigits.add(digit);
       }
-      if (updatePossible(digits[d], possibleDigits)) updated = true;
+      if (updatePossibleDigits(d, possibleDigits)) updated = true;
+    }
+    return updated;
+  }
+
+  bool updatePossibleDigits(int d, Set<int> possibleDigits) {
+    var updated = false;
+    if (digits[d].any((element) => !possibleDigits.contains(element))) {
+      setDigit(d, digits[d].intersection(possibleDigits));
+      updated = true;
     }
     return updated;
   }
@@ -411,10 +438,22 @@ mixin EntryMixin on Clue {
         var entry2 = digitIdentities[d]!.entry;
         var d2 = digitIdentities[d]!.digit;
         var possibleDigits = entry2.digits[d2];
-        if (updatePossible(digits[d], possibleDigits)) updated = true;
+        if (updatePossibleDigits(d, possibleDigits)) updated = true;
       }
     }
     return updated;
+  }
+
+  bool okDigitsForOtherEntries() {
+    for (var d = 0; d < length!; d++) {
+      if (digitIdentities[d] != null) {
+        var entry2 = digitIdentities[d]!.entry;
+        var d2 = digitIdentities[d]!.digit;
+        var otherDigits = entry2.digits[d2];
+        if (digits[d].intersection(otherDigits).isEmpty) return false;
+      }
+    }
+    return true;
   }
 
   @override

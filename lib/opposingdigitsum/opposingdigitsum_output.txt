@@ -261,7 +261,7 @@ solve: OpposingDigitSumEntry(name=D7,length=3,value: D7 + $DS ED1,
 	digits=[{2..9},{0..9},{4}]
 Clue D7={220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,489 more,988}
 Eval OpposingDigitSumEntry A8 cartesianCount=16708680 Exception
-Solve Error: clue A8 (A8 + $DS EA5) no solution!
+Solve Error: Entry A8 (A8 + $DS EA5) no solution!
 solve: OpposingDigitSumEntry(name=D8,length=2,value: D8 + $DS ED3,
 	identities=[D8[0]=A8[0],D8[1]=A10[2]],referrers=[A8,A10,D3],
 	values={12..31,66 more,99},
@@ -427,7 +427,7 @@ solve: OpposingDigitSumEntry(name=A3,length=3,value: A3 + $DS EA10,
 Clue A3={256}
 Entry A10={665}
 Clue A10={653}
-Clue/Variable iterations=130, updates=134, elapsed 0:00:18.162389
+Clue/Variable iterations=130, updates=134, elapsed 0:00:21.203047
 SOLUTION-----------------------------
 Puzzle Summary
 Clue A1, $DP EA11 = #square, values={36}

@@ -265,43 +265,43 @@ solve: SquaresTrianglesEntry(name=A20,length=3,value: #square,
 	identities=[A20[0]=D16[2],A20[2]=D12[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D16,D12],
 	values={100,121,196,361,576,625,676,841},
 	digits=[{1,3,5,6,8},{0,2,4,6,7,9},{0,1,5,6}]
-solve: SquaresTrianglesClue(name=A1,length=null,value: ,
+solve: SquaresTrianglesClue(name=A1,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D14],
 	values={32..39,41..46,54..59,33 more,96}, min=32, max=96
-solve: SquaresTrianglesClue(name=A3,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A3,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={11,13,17,19,23,29,31}, min=11, max=31
-solve: SquaresTrianglesClue(name=A6,length=null,value: ,
+solve: SquaresTrianglesClue(name=A6,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D4],
 	values={10..29,2 more,31}, min=10, max=31
-solve: SquaresTrianglesClue(name=A7,length=null,value: #square,
+solve: SquaresTrianglesClue(name=A7,length=2,value: #square,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={16,25}, min=16, max=25
-solve: SquaresTrianglesClue(name=A8,length=null,value: ,
+solve: SquaresTrianglesClue(name=A8,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={34..44,46..54,39 more,99}, min=34, max=99
-solve: SquaresTrianglesClue(name=A10,length=null,value: ,
+solve: SquaresTrianglesClue(name=A10,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={10,11,14..16,19..21,24..26,29..31}, min=10, max=31
-solve: SquaresTrianglesClue(name=A11,length=null,value: ,
+solve: SquaresTrianglesClue(name=A11,length=3,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={100..104,106,108,109,116,117,128,130,137,142,144,146..148,152,153,54 more,310}, min=100, max=310
-solve: SquaresTrianglesClue(name=A13,length=null,value: #square,
+solve: SquaresTrianglesClue(name=A13,length=1,value: #square,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={4,9}, min=4, max=9
-solve: SquaresTrianglesClue(name=A15,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A15,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={37,41,43,47,53,59,61,67,73,79,83,89,97}, min=37, max=97
-solve: SquaresTrianglesClue(name=A17,length=null,value: ,
+solve: SquaresTrianglesClue(name=A17,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={45,46,49..51,54..56,59..61,71,74..76,79..81,84,85,2 more,89}, min=45, max=89
-solve: SquaresTrianglesClue(name=A18,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A18,length=1,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={5,7}, min=5, max=7
-solve: SquaresTrianglesClue(name=A19,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A19,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={37,41,59,83}, min=37, max=83
-solve: SquaresTrianglesClue(name=A20,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A20,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={11,19,29}, min=11, max=29
 solve: SquaresTrianglesClue(name=D1,length=null,value: #prime,
@@ -313,28 +313,28 @@ solve: SquaresTrianglesClue(name=D2,length=null,value: ,
 solve: SquaresTrianglesClue(name=D3,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={45..64,77 more,141}, min=45, max=141
-solve: SquaresTrianglesClue(name=D4,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D4,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,A6],
 	values={11,13}, min=11, max=13
-solve: SquaresTrianglesClue(name=D5,length=null,value: #triangular,
+solve: SquaresTrianglesClue(name=D5,length=2,value: #triangular,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D9],
 	values={15,28,36,45}, min=15, max=45
-solve: SquaresTrianglesClue(name=D7,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D7,length=3,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={149,151,157,163,167,173,179,181,191,193,211,223,227,229,233,239,241,251,257,263,25 more,443}, min=149, max=443
-solve: SquaresTrianglesClue(name=D9,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D9,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D5],
 	values={17,29,37,43}, min=17, max=43
 solve: SquaresTrianglesClue(name=D12,length=null,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139}, min=47, max=139
-solve: SquaresTrianglesClue(name=D13,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D13,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={17,19,23,41}, min=17, max=41
-solve: SquaresTrianglesClue(name=D14,length=null,value: ,
+solve: SquaresTrianglesClue(name=D14,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,A1],
 	values={31..45}, min=31, max=45
-solve: SquaresTrianglesClue(name=D16,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D16,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={17,19,23,29,31,37,41,43}, min=17, max=43
 solve: SquaresTrianglesEntry(name=D1,length=4,value: #triangular,
@@ -425,37 +425,37 @@ solve: SquaresTrianglesEntry(name=A20,length=3,value: #square,
 	identities=[A20[0]=D16[2],A20[2]=D12[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D16,D12],
 	values={121,361},
 	digits=[{1,3},{2,6},{1}]
-solve: SquaresTrianglesClue(name=A1,length=null,value: ,
+solve: SquaresTrianglesClue(name=A1,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D14],
 	values={32..39,41..46}, min=32, max=46
-solve: SquaresTrianglesClue(name=A3,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A3,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={11,13,19,23,29,31}, min=11, max=31
-solve: SquaresTrianglesClue(name=A6,length=null,value: ,
+solve: SquaresTrianglesClue(name=A6,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D4],
 	values={10..14}, min=10, max=14
-solve: SquaresTrianglesClue(name=A7,length=null,value: #square,
+solve: SquaresTrianglesClue(name=A7,length=2,value: #square,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={16}, min=16, max=16
-solve: SquaresTrianglesClue(name=A8,length=null,value: ,
+solve: SquaresTrianglesClue(name=A8,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={34..38,42..44,46..48,52..54,56..58,62,63,65,21 more,98}, min=34, max=98
-solve: SquaresTrianglesClue(name=A10,length=null,value: ,
+solve: SquaresTrianglesClue(name=A10,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={10,15,20,25,30}, min=10, max=30
-solve: SquaresTrianglesClue(name=A11,length=null,value: ,
+solve: SquaresTrianglesClue(name=A11,length=3,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={190,204,213,216}, min=190, max=216
-solve: SquaresTrianglesClue(name=A13,length=null,value: #square,
+solve: SquaresTrianglesClue(name=A13,length=1,value: #square,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={4}, min=4, max=4
-solve: SquaresTrianglesClue(name=A15,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A15,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={59,61,73,79,83,89}, min=59, max=89
-solve: SquaresTrianglesClue(name=A17,length=null,value: ,
+solve: SquaresTrianglesClue(name=A17,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={55,56,59,61,71,75,85,86,89}, min=55, max=89
-solve: SquaresTrianglesClue(name=A20,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A20,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={11,19}, min=11, max=19
 solve: SquaresTrianglesClue(name=D2,length=null,value: ,
@@ -464,25 +464,25 @@ solve: SquaresTrianglesClue(name=D2,length=null,value: ,
 solve: SquaresTrianglesClue(name=D3,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={49,50,53..59,62,63,80,81,83..89,18 more,140}, min=49, max=140
-solve: SquaresTrianglesClue(name=D4,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D4,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,A6],
 	values={11}, min=11, max=11
-solve: SquaresTrianglesClue(name=D5,length=null,value: #triangular,
+solve: SquaresTrianglesClue(name=D5,length=2,value: #triangular,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D9],
 	values={15,45}, min=15, max=45
-solve: SquaresTrianglesClue(name=D7,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D7,length=3,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={223,227,229,241}, min=223, max=241
-solve: SquaresTrianglesClue(name=D9,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D9,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D5],
 	values={17,43}, min=17, max=43
 solve: SquaresTrianglesClue(name=D12,length=null,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={71,79,89,97,101,109,113,131,139}, min=71, max=139
-solve: SquaresTrianglesClue(name=D13,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D13,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={17,19}, min=17, max=19
-solve: SquaresTrianglesClue(name=D16,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D16,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={23,29,31,37,41,43}, min=23, max=43
 solve: SquaresTrianglesEntry(name=A1,length=4,value: #square,
@@ -553,28 +553,28 @@ solve: SquaresTrianglesEntry(name=A20,length=3,value: #square,
 	identities=[A20[0]=D16[2],A20[2]=D12[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D16,D12],
 	values={361},
 	digits=[{3},{6},{1}]
-solve: SquaresTrianglesClue(name=A3,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A3,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={13,31}, min=13, max=31
-solve: SquaresTrianglesClue(name=A6,length=null,value: ,
+solve: SquaresTrianglesClue(name=A6,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D4],
 	values={10..12}, min=10, max=12
-solve: SquaresTrianglesClue(name=A8,length=null,value: ,
+solve: SquaresTrianglesClue(name=A8,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={34,44,46,54,56,63,67,74,75,77,93,97}, min=34, max=97
-solve: SquaresTrianglesClue(name=A10,length=null,value: ,
+solve: SquaresTrianglesClue(name=A10,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={20,30}, min=20, max=30
-solve: SquaresTrianglesClue(name=A11,length=null,value: ,
+solve: SquaresTrianglesClue(name=A11,length=3,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={190,204,213}, min=190, max=213
-solve: SquaresTrianglesClue(name=A15,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A15,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={59,61,79}, min=59, max=79
-solve: SquaresTrianglesClue(name=A17,length=null,value: ,
+solve: SquaresTrianglesClue(name=A17,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={55,61,71,75,85,89}, min=55, max=89
-solve: SquaresTrianglesClue(name=A20,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A20,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={19}, min=19, max=19
 solve: SquaresTrianglesClue(name=D2,length=null,value: ,
@@ -583,25 +583,25 @@ solve: SquaresTrianglesClue(name=D2,length=null,value: ,
 solve: SquaresTrianglesClue(name=D3,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={55..57,138,139}, min=55, max=139
-solve: SquaresTrianglesClue(name=D7,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D7,length=3,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={227,229,241}, min=227, max=241
 solve: SquaresTrianglesClue(name=D12,length=null,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={101}, min=101, max=101
-solve: SquaresTrianglesClue(name=D13,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D13,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={17}, min=17, max=17
-solve: SquaresTrianglesClue(name=D16,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D16,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={23,37}, min=23, max=37
-solve: SquaresTrianglesClue(name=A18,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A18,length=1,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={5}, min=5, max=5
 solve: SquaresTrianglesClue(name=D1,length=null,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={47,53,59,61,67,71,73,79,83,89,97,103,107,109,113,127,131,137,139}, min=47, max=139
-solve: SquaresTrianglesClue(name=D14,length=null,value: ,
+solve: SquaresTrianglesClue(name=D14,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,A1],
 	values={31..33,43,44}, min=31, max=44
 solve: SquaresTrianglesEntry(name=D1,length=4,value: #triangular,
@@ -648,19 +648,19 @@ solve: SquaresTrianglesEntry(name=A19,length=4,value: #square,
 	identities=[A19[0]=D13[2],A19[2]=D14[2]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D13,D14],
 	values={3481,6889},
 	digits=[{3,6},{4,8},{8},{1,9}]
-solve: SquaresTrianglesClue(name=A8,length=null,value: ,
+solve: SquaresTrianglesClue(name=A8,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={46,54}, min=46, max=54
-solve: SquaresTrianglesClue(name=A11,length=null,value: ,
+solve: SquaresTrianglesClue(name=A11,length=3,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={190,213}, min=190, max=213
-solve: SquaresTrianglesClue(name=A15,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A15,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={61,79}, min=61, max=79
 solve: SquaresTrianglesClue(name=D2,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={45..49,53..55,63..66,69..71,76..79,83,25 more,135}, min=45, max=135
-solve: SquaresTrianglesClue(name=D7,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D7,length=3,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={229,241}, min=229, max=241
 solve: SquaresTrianglesEntry(name=A1,length=4,value: #square,
@@ -670,13 +670,13 @@ solve: SquaresTrianglesEntry(name=A1,length=4,value: #square,
 solve: SquaresTrianglesClue(name=D1,length=null,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={47}, min=47, max=47
-solve: SquaresTrianglesClue(name=D14,length=null,value: ,
+solve: SquaresTrianglesClue(name=D14,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,A1],
 	values={32,33,43,44}, min=32, max=44
-solve: SquaresTrianglesClue(name=A1,length=null,value: ,
+solve: SquaresTrianglesClue(name=A1,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D14],
 	values={32..34,42..44}, min=32, max=44
-solve: SquaresTrianglesClue(name=A19,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A19,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={59,83}, min=59, max=83
 solve: SquaresTrianglesEntry(name=D2,length=4,value: #triangular,
@@ -719,45 +719,45 @@ solve: SquaresTrianglesEntry(name=D16,length=3,value: #triangular,
 	identities=[D16[0]=A15[1],D16[2]=A20[0]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A15,A20],
 	values={703},
 	digits=[{7},{0},{3}]
-solve: SquaresTrianglesClue(name=A11,length=null,value: ,
+solve: SquaresTrianglesClue(name=A11,length=3,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={213}, min=213, max=213
-solve: SquaresTrianglesClue(name=A15,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A15,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={61}, min=61, max=61
 solve: SquaresTrianglesClue(name=D2,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={63,64,69,70}, min=63, max=70
-solve: SquaresTrianglesClue(name=D7,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D7,length=3,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={229}, min=229, max=229
 solve: SquaresTrianglesEntry(name=A1,length=4,value: #square,
 	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D1,D2],
 	values={1024},
 	digits=[{1},{0},{2},{4}]
-solve: SquaresTrianglesClue(name=A6,length=null,value: ,
+solve: SquaresTrianglesClue(name=A6,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D4],
 	values={10,12}, min=10, max=12
-solve: SquaresTrianglesClue(name=A17,length=null,value: ,
+solve: SquaresTrianglesClue(name=A17,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={55,75}, min=55, max=75
 solve: SquaresTrianglesClue(name=D3,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={56,57}, min=56, max=57
-solve: SquaresTrianglesClue(name=D16,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D16,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={37}, min=37, max=37
-solve: SquaresTrianglesClue(name=D14,length=null,value: ,
+solve: SquaresTrianglesClue(name=D14,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,A1],
 	values={32,33}, min=32, max=33
-solve: SquaresTrianglesClue(name=A1,length=null,value: ,
+solve: SquaresTrianglesClue(name=A1,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D14],
 	values={32}, min=32, max=32
 solve: SquaresTrianglesEntry(name=D2,length=4,value: #triangular,
 	identities=[D2[0]=A1[2],D2[1]=A6[2],D2[2]=A8[2],D2[3]=A11[1]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A1,A6,A8,A11],
 	values={2415},
 	digits=[{2},{4},{1},{5}]
-solve: SquaresTrianglesClue(name=D9,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=D9,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D5],
 	values={43}, min=43, max=43
 solve: SquaresTrianglesEntry(name=A6,length=3,value: #square,
@@ -776,10 +776,10 @@ solve: SquaresTrianglesEntry(name=A10,length=3,value: #square,
 	identities=[A10[0]=D3[2],A10[2]=D5[2]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D3,D5],
 	values={900},
 	digits=[{9},{0},{0}]
-solve: SquaresTrianglesClue(name=A3,length=null,value: #prime,
+solve: SquaresTrianglesClue(name=A3,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={13}, min=13, max=13
-solve: SquaresTrianglesClue(name=A8,length=null,value: ,
+solve: SquaresTrianglesClue(name=A8,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={54}, min=54, max=54
 solve: SquaresTrianglesEntry(name=D5,length=3,value: #triangular,
@@ -789,16 +789,16 @@ solve: SquaresTrianglesEntry(name=D5,length=3,value: #triangular,
 solve: SquaresTrianglesClue(name=D2,length=null,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={69,70}, min=69, max=70
-solve: SquaresTrianglesClue(name=A6,length=null,value: ,
+solve: SquaresTrianglesClue(name=A6,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D4],
 	values={12}, min=12, max=12
-solve: SquaresTrianglesClue(name=A10,length=null,value: ,
+solve: SquaresTrianglesClue(name=A10,length=2,value: ,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={30}, min=30, max=30
-solve: SquaresTrianglesClue(name=D5,length=null,value: #triangular,
+solve: SquaresTrianglesClue(name=D5,length=2,value: #triangular,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D9],
 	values={45}, min=45, max=45
-Clue/Variable iterations=323, updates=179, elapsed 0:00:00.089924
+Clue/Variable iterations=323, updates=179, elapsed 0:00:00.119468
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue A1, , values={32}

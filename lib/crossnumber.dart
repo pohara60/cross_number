@@ -259,7 +259,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       if (possibleValue.isEmpty) {
         if (variable is Clue) {
           print(
-              'Solve Error: clue ${variable.name} (${variable.valueDesc}) no solution!');
+              'Solve Error: ${variable.variableType.name} ${variable.name} (${variable.valueDesc}) no solution!');
 
           throw SolveException();
         } else {

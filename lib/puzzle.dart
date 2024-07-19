@@ -728,44 +728,51 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   Iterable<bool> mapNextClueToEntry(List<EntryKind> entries, int index) sync* {
-    var entry = entries[index];
-    ClueKind? mappedClue = (entry as EntryMixin).clue as ClueKind?;
+    var noClueForEntry = true;
 
-    for (var clue in mappedClue != null
-        ? [mappedClue]
-        : _clues.values.where((c) =>
-            (c.isUnknown || c.isAcross == entry.isAcross) &&
-            c.length == entry.length &&
-            c.entry == null)) {
-      // Set mapping
-      mapClueToEntry(clue, entry);
+    while (noClueForEntry && index < entries.length) {
+      var entry = entries[index];
+      ClueKind? mappedClue = (entry as EntryMixin).clue as ClueKind?;
 
-      // Save values and entry digits
-      var oldValues = clue.values;
-      var savedDigits = clue.saveDigits();
+      for (var clue in mappedClue != null
+          ? [mappedClue]
+          : _clues.values.where((c) =>
+              (c.isUnknown || c.isAcross == entry.isAcross) &&
+              c.length == entry.length &&
+              c.entry == null)) {
+        // Set mapping
+        noClueForEntry = false;
+        mapClueToEntry(clue, entry);
 
-      // Update entry from clue
-      if (updateEntry(clue)) {
-        // Try to map remaining clues
-        if (index == entries.length - 1) {
-          yield true;
-        } else {
-          yield* mapNextClueToEntry(entries, index + 1);
+        // Save values and entry digits
+        var oldClueValues = clue.values;
+        var oldEntryValues = entry.values;
+        var savedDigits = clue.saveDigits();
+
+        // Update entry from clue
+        if (updateEntry(clue)) {
+          // Try to map remaining clues
+          if (index == entries.length - 1) {
+            yield true;
+          } else {
+            yield* mapNextClueToEntry(entries, index + 1);
+          }
+        } else if (mappedClue != null) {
+          if (Crossnumber.traceSolve) {
+            print(
+                'Clue ${mappedClue.name} mapping to Entry ${entry.name} is invalid');
+          }
         }
-      } else if (mappedClue != null) {
-        if (Crossnumber.traceSolve) {
-          print(
-              'Clue ${mappedClue.name} mapping to Entry ${entry.name} is invalid');
-        }
+
+        // Undo mapping
+        clue.values = oldClueValues;
+        clue.restoreDigits(savedDigits);
+        clue.entry = null;
+        entry.values = oldEntryValues;
+        (entry as EntryMixin).clue = null;
       }
-
-      // Undo mapping
-      clue.values = oldValues;
-      clue.restoreDigits(savedDigits);
-      clue.entry = null;
-      (entry as EntryMixin).clue = null;
+      index++;
     }
-
     if (Crossnumber.traceSolve) {
       // var mapping =
       //     "${entries.where((e) => (e as EntryMixin).clue != null).map((e) {
@@ -796,7 +803,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       if (okValues.isNotEmpty) {
         // Update values and digits
         clue.values = okValues;
+        clue.entry!.values = okValues;
         clue.finalise();
+
+        // Check entry is compatible with other entries
+        if (!(clue.entry as EntryMixin).okDigitsForOtherEntries()) {
+          return false;
+        }
         return true;
       }
     }

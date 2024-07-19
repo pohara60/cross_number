@@ -75,62 +75,62 @@ Entry IncreasingFibonnaciEntry(name=F,length=3,value: null,
 	digits=[{1..9},{0..9},{0..9}]
 
 UPDATES-----------------------------
-Eval IncreasingFibonnaciClue I cartesianCount=8100, elapsed 0:00:00.034745
+Eval IncreasingFibonnaciClue I cartesianCount=8100, elapsed 0:00:00.061468
 solve: IncreasingFibonnaciClue(name=I,length=null,value: e - a,
 	referrers=[],
 	values={6,10,15,16,24,26,30,39,40,48,65,78,80}
 Entry a={10..29,64 more,93}
 Entry e={16..35,64 more,99}
-Eval IncreasingFibonnaciClue II cartesianCount=6804, elapsed 0:00:00.008972
-solve: IncreasingFibonnaciClue(name=II,length=null,value: a - B,
+Eval IncreasingFibonnaciClue II cartesianCount=6804, elapsed 0:00:00.015473
+solve: IncreasingFibonnaciClue(name=II,length=2,value: a - B,
 	referrers=[],
 	values={10,15,16,24,26,30,39,40,48,65,78,80}
 Entry B={11..19,21..29,31,32,46 more,83}
 Entry a={21..40,53 more,93}
-Eval IncreasingFibonnaciClue III cartesianCount=5940, elapsed 0:00:00.011633
+Eval IncreasingFibonnaciClue III cartesianCount=5940, elapsed 0:00:00.010669
 solve: IncreasingFibonnaciClue(name=III,length=null,value: B + c,
 	referrers=[],
 	values={24,26,30,39,40,48,65,78,80,104,120,130}
 Entry c={10..29,70 more,99}
-Eval IncreasingFibonnaciClue IV cartesianCount=75600, elapsed 0:00:00.065396
+Eval IncreasingFibonnaciClue IV cartesianCount=75600, elapsed 0:00:00.116688
 solve: IncreasingFibonnaciClue(name=IV,length=null,value: F - e,
 	referrers=[],
 	values={26,30,39,40,48,65,78,80,104,120,130,195,208,312,520}
 Entry F={100..119,356 more,619}
-Eval IncreasingFibonnaciClue V cartesianCount=7290, elapsed 0:00:00.004067
-solve: IncreasingFibonnaciClue(name=V,length=null,value: d - E,
+Eval IncreasingFibonnaciClue V cartesianCount=7290, elapsed 0:00:00.005512
+solve: IncreasingFibonnaciClue(name=V,length=2,value: d - E,
 	referrers=[],
 	values={30,39,40,48,65,78,80}
 Entry E={10..29,40 more,69}
 Entry d={41..49,51..59,61,62,34 more,99}
-Eval IncreasingFibonnaciClue VI cartesianCount=58320, elapsed 0:00:00.046301
+Eval IncreasingFibonnaciClue VI cartesianCount=58320, elapsed 0:00:00.068312
 solve: IncreasingFibonnaciClue(name=VI,length=null,value: A/2 - c,
 	referrers=[],
 	values={39,40,48,65,78,80,104,120,130,195,208,312}
 Entry A={122,124,126,128,132,134,136,138,142,144,146,148,152,154,156,158,162,164,166,168,196 more,822}
-Eval IncreasingFibonnaciClue VII cartesianCount=84, elapsed 0:00:00.000222
+Eval IncreasingFibonnaciClue VII cartesianCount=84, elapsed 0:00:00.000732
 solve: IncreasingFibonnaciClue(name=VII,length=null,value: e + e,
 	referrers=[],
 	values={40,48,78,80,104,120,130}
 Entry e={20,24,39,40,52,60,65}
-Eval IncreasingFibonnaciClue VIII cartesianCount=22560, elapsed 0:00:00.015194
-solve: IncreasingFibonnaciClue(name=VIII,length=null,value: C + F,
+Eval IncreasingFibonnaciClue VIII cartesianCount=22560, elapsed 0:00:00.021398
+solve: IncreasingFibonnaciClue(name=VIII,length=3,value: C + F,
 	referrers=[],
 	values={195,208,312}
 Entry C={40..59,40 more,99}
 Entry F={100..119,109 more,272}
-Eval IncreasingFibonnaciClue IX cartesianCount=10800, elapsed 0:00:00.006329
-solve: IncreasingFibonnaciClue(name=IX,length=null,value: A + D,
+Eval IncreasingFibonnaciClue IX cartesianCount=10800, elapsed 0:00:00.008164
+solve: IncreasingFibonnaciClue(name=IX,length=3,value: A + D,
 	referrers=[],
 	values={208,312,520}
 Entry A={142,144,146,148,152,154,156,158,162,164,166,168,172,174,176,178,182,184,186,188,40 more,498}
 Entry D={20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,5 more,68}
-Eval IncreasingFibonnaciClue X cartesianCount=475200, elapsed 0:00:00.302962
-solve: IncreasingFibonnaciClue(name=X,length=null,value: B + b + c,
+Eval IncreasingFibonnaciClue X cartesianCount=475200, elapsed 0:00:00.411324
+solve: IncreasingFibonnaciClue(name=X,length=3,value: B + b + c,
 	referrers=[],
 	values={312,520}
 Entry b={201,202,211,212,221,222,231,232,241,242,251,252,261,262,271,272,281,282,291,401,19 more,492}
-Eval IncreasingFibonnaciClue I cartesianCount=511, elapsed 0:00:00.000325
+Eval IncreasingFibonnaciClue I cartesianCount=511, elapsed 0:00:00.000369
 solve: IncreasingFibonnaciClue(name=I,length=null,value: e - a,
 	referrers=[],
 	values={6,10,15,16,24,26,30,39,40}
@@ -160,8 +160,8 @@ solve: IncreasingFibonnaciEntry(name=F,length=3,value: null,
 	identities=[F[0]=b[2],F[1]=e[1]],referrers=[b,e,IV,VIII],
 	values={100..109,120..129,30 more,259},
 	digits=[{1,2},{0,2,5},{0..9}]
-Eval IncreasingFibonnaciClue II cartesianCount=660, elapsed 0:00:00.000360
-solve: IncreasingFibonnaciClue(name=II,length=null,value: a - B,
+Eval IncreasingFibonnaciClue II cartesianCount=660, elapsed 0:00:00.000462
+solve: IncreasingFibonnaciClue(name=II,length=2,value: a - B,
 	referrers=[],
 	values={10,15,16,24,26,30,39,40,48}
 Entry B={11,12,14..19,21..29,31..33,9 more,49}
@@ -169,12 +169,12 @@ solve: IncreasingFibonnaciEntry(name=c,length=2,value: null,
 	identities=[c[0]=B[1],c[1]=D[1]],referrers=[B,D,III,VI,X],
 	values={10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,25 more,98},
 	digits=[{1..9},{0,2,4,6,8}]
-Eval IncreasingFibonnaciClue III cartesianCount=1305, elapsed 0:00:00.000648
+Eval IncreasingFibonnaciClue III cartesianCount=1305, elapsed 0:00:00.000813
 solve: IncreasingFibonnaciClue(name=III,length=null,value: B + c,
 	referrers=[],
 	values={24,26,30,39,40,48,65,78}
 Entry c={10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,8 more,66}
-Eval IncreasingFibonnaciClue IV cartesianCount=200, elapsed 0:00:00.000131
+Eval IncreasingFibonnaciClue IV cartesianCount=200, elapsed 0:00:00.000152
 solve: IncreasingFibonnaciClue(name=IV,length=null,value: F - e,
 	referrers=[],
 	values={39,40,48,65}
@@ -183,8 +183,8 @@ solve: IncreasingFibonnaciEntry(name=b,length=3,value: null,
 	identities=[b[0]=A[2],b[2]=F[0]],referrers=[A,F,X],
 	values={201,211,221,231,241,251,261,271,281,291,401,411,421,431,441,451,461,471,481,491},
 	digits=[{2,4},{0..9},{1}]
-Eval IncreasingFibonnaciClue V cartesianCount=3240, elapsed 0:00:00.001739
-solve: IncreasingFibonnaciClue(name=V,length=null,value: d - E,
+Eval IncreasingFibonnaciClue V cartesianCount=3240, elapsed 0:00:00.001853
+solve: IncreasingFibonnaciClue(name=V,length=2,value: d - E,
 	referrers=[],
 	values={40,48,65,78,80}
 Entry E={10..29,30 more,59}
@@ -193,34 +193,34 @@ solve: IncreasingFibonnaciEntry(name=d,length=2,value: null,
 	identities=[d[0]=C[0],d[1]=E[0]],referrers=[C,E,V],
 	values={51..55,61..65,71..75,81..85,5 more,95},
 	digits=[{5..9},{1..5}]
-Eval IncreasingFibonnaciClue VI cartesianCount=252, elapsed 0:00:00.000204
+Eval IncreasingFibonnaciClue VI cartesianCount=252, elapsed 0:00:00.000195
 solve: IncreasingFibonnaciClue(name=VI,length=null,value: A/2 - c,
 	referrers=[],
 	values={48,65,78,80,104}
 Entry A={144,152,154,244,252,254}
 Entry c={12,18,22,24,28,42,44,46,48,62}
-Eval IncreasingFibonnaciClue VII cartesianCount=4, elapsed 0:00:00.000041
+Eval IncreasingFibonnaciClue VII cartesianCount=4, elapsed 0:00:00.000024
 solve: IncreasingFibonnaciClue(name=VII,length=null,value: e + e,
 	referrers=[],
 	values={80,104,120,130}
-Eval IncreasingFibonnaciClue VIII cartesianCount=210, elapsed 0:00:00.000130
-solve: IncreasingFibonnaciClue(name=VIII,length=null,value: C + F,
+Eval IncreasingFibonnaciClue VIII cartesianCount=210, elapsed 0:00:00.000370
+solve: IncreasingFibonnaciClue(name=VIII,length=3,value: C + F,
 	referrers=[],
 	values={195}
 Entry C={70,90,91,95}
 Entry F={100,104,105,125}
-Eval IncreasingFibonnaciClue IX cartesianCount=90, elapsed 0:00:00.000088
-solve: IncreasingFibonnaciClue(name=IX,length=null,value: A + D,
+Eval IncreasingFibonnaciClue IX cartesianCount=90, elapsed 0:00:00.000095
+solve: IncreasingFibonnaciClue(name=IX,length=3,value: A + D,
 	referrers=[],
 	values={208,312}
 Entry D={54,56,58,60,64,68}
-Eval IncreasingFibonnaciClue X cartesianCount=5800, elapsed 0:00:00.002824
-solve: IncreasingFibonnaciClue(name=X,length=null,value: B + b + c,
+Eval IncreasingFibonnaciClue X cartesianCount=5800, elapsed 0:00:00.003853
+solve: IncreasingFibonnaciClue(name=X,length=3,value: B + b + c,
 	referrers=[],
 	values={312,520}
 Entry B={11,15,17,19,21,23,25,27,29,31,33,35,39,43,45,49}
 Entry b={201,211,221,231,241,251,261,271,281,431,441,451,461,471,481,491}
-Eval IncreasingFibonnaciClue I cartesianCount=40, elapsed 0:00:00.000060
+Eval IncreasingFibonnaciClue I cartesianCount=40, elapsed 0:00:00.000054
 solve: IncreasingFibonnaciClue(name=I,length=null,value: e - a,
 	referrers=[],
 	values={6,10,15,24}
@@ -234,8 +234,8 @@ solve: IncreasingFibonnaciEntry(name=e,length=2,value: null,
 	identities=[e[0]=D[0],e[1]=F[1]],referrers=[D,F,I,IV,VII],
 	values={52,60},
 	digits=[{5,6},{0,2}]
-Eval IncreasingFibonnaciClue II cartesianCount=64, elapsed 0:00:00.000068
-solve: IncreasingFibonnaciClue(name=II,length=null,value: a - B,
+Eval IncreasingFibonnaciClue II cartesianCount=64, elapsed 0:00:00.000063
+solve: IncreasingFibonnaciClue(name=II,length=2,value: a - B,
 	referrers=[],
 	values={10,15,24,26,30,39,40}
 Entry B={11,15,17,19,21,25,29,31,35,45}
@@ -247,7 +247,7 @@ solve: IncreasingFibonnaciEntry(name=D,length=2,value: null,
 	identities=[D[0]=e[0],D[1]=c[1]],referrers=[e,c,IX],
 	values={54,56,58,64,68},
 	digits=[{5,6},{4,6,8}]
-Eval IncreasingFibonnaciClue III cartesianCount=30, elapsed 0:00:00.000048
+Eval IncreasingFibonnaciClue III cartesianCount=30, elapsed 0:00:00.000039
 solve: IncreasingFibonnaciClue(name=III,length=null,value: B + c,
 	referrers=[],
 	values={39}
@@ -257,7 +257,7 @@ solve: IncreasingFibonnaciEntry(name=c,length=2,value: null,
 	identities=[c[0]=B[1],c[1]=D[1]],referrers=[B,D,III,VI,X],
 	values={18},
 	digits=[{1},{8}]
-Eval IncreasingFibonnaciClue IV cartesianCount=8, elapsed 0:00:00.000041
+Eval IncreasingFibonnaciClue IV cartesianCount=8, elapsed 0:00:00.000029
 solve: IncreasingFibonnaciClue(name=IV,length=null,value: F - e,
 	referrers=[],
 	values={40,65}
@@ -267,13 +267,13 @@ solve: IncreasingFibonnaciEntry(name=F,length=3,value: null,
 	identities=[F[0]=b[2],F[1]=e[1]],referrers=[b,e,IV,VIII],
 	values={100},
 	digits=[{1},{0},{0}]
-Eval IncreasingFibonnaciClue V cartesianCount=1250, elapsed 0:00:00.000583
-solve: IncreasingFibonnaciClue(name=V,length=null,value: d - E,
+Eval IncreasingFibonnaciClue V cartesianCount=1250, elapsed 0:00:00.000862
+solve: IncreasingFibonnaciClue(name=V,length=2,value: d - E,
 	referrers=[],
 	values={65,78}
 Entry E={10,13..20,26..30}
 Entry d={75,81..85,91..95}
-Eval IncreasingFibonnaciClue VI cartesianCount=6, elapsed 0:00:00.000054
+Eval IncreasingFibonnaciClue VI cartesianCount=6, elapsed 0:00:00.000032
 solve: IncreasingFibonnaciClue(name=VI,length=null,value: A/2 - c,
 	referrers=[],
 	values={104}
@@ -285,8 +285,8 @@ solve: IncreasingFibonnaciEntry(name=b,length=3,value: null,
 solve: IncreasingFibonnaciClue(name=VII,length=null,value: e + e,
 	referrers=[],
 	values={120}
-Eval IncreasingFibonnaciClue VIII cartesianCount=4, elapsed 0:00:00.000053
-solve: IncreasingFibonnaciClue(name=VIII,length=null,value: C + F,
+Eval IncreasingFibonnaciClue VIII cartesianCount=4, elapsed 0:00:00.000022
+solve: IncreasingFibonnaciClue(name=VIII,length=3,value: C + F,
 	referrers=[],
 	values={195}
 Entry C={95}
@@ -294,50 +294,50 @@ solve: IncreasingFibonnaciEntry(name=d,length=2,value: null,
 	identities=[d[0]=C[0],d[1]=E[0]],referrers=[C,E,V],
 	values={91..93},
 	digits=[{9},{1..3}]
-Eval IncreasingFibonnaciClue IX cartesianCount=5, elapsed 0:00:00.000071
-solve: IncreasingFibonnaciClue(name=IX,length=null,value: A + D,
+Eval IncreasingFibonnaciClue IX cartesianCount=5, elapsed 0:00:00.000031
+solve: IncreasingFibonnaciClue(name=IX,length=3,value: A + D,
 	referrers=[],
 	values={312}
 Entry D={68}
-Eval IncreasingFibonnaciClue X cartesianCount=14, elapsed 0:00:00.000067
-solve: IncreasingFibonnaciClue(name=X,length=null,value: B + b + c,
+Eval IncreasingFibonnaciClue X cartesianCount=14, elapsed 0:00:00.000041
+solve: IncreasingFibonnaciClue(name=X,length=3,value: B + b + c,
 	referrers=[],
 	values={520}
 Entry b={481,491}
-Eval IncreasingFibonnaciClue I cartesianCount=4, elapsed 0:00:00.000058
+Eval IncreasingFibonnaciClue I cartesianCount=4, elapsed 0:00:00.000022
 solve: IncreasingFibonnaciClue(name=I,length=null,value: e - a,
 	referrers=[],
 	values={15}
 Entry a={45}
-Eval IncreasingFibonnaciClue II cartesianCount=2, elapsed 0:00:00.000088
-solve: IncreasingFibonnaciClue(name=II,length=null,value: a - B,
+Eval IncreasingFibonnaciClue II cartesianCount=2, elapsed 0:00:00.000021
+solve: IncreasingFibonnaciClue(name=II,length=2,value: a - B,
 	referrers=[],
 	values={24}
 Entry B={21}
 solve: IncreasingFibonnaciClue(name=IV,length=null,value: F - e,
 	referrers=[],
 	values={40}
-Eval IncreasingFibonnaciClue V cartesianCount=42, elapsed 0:00:00.000056
-solve: IncreasingFibonnaciClue(name=V,length=null,value: d - E,
+Eval IncreasingFibonnaciClue V cartesianCount=42, elapsed 0:00:00.000044
+solve: IncreasingFibonnaciClue(name=V,length=2,value: d - E,
 	referrers=[],
 	values={65}
 Entry E={26..28}
-Eval IncreasingFibonnaciClue X cartesianCount=2, elapsed 0:00:00.000034
-solve: IncreasingFibonnaciClue(name=X,length=null,value: B + b + c,
+Eval IncreasingFibonnaciClue X cartesianCount=2, elapsed 0:00:00.000021
+solve: IncreasingFibonnaciClue(name=X,length=3,value: B + b + c,
 	referrers=[],
 	values={520}
 Entry b={481}
-Eval IncreasingFibonnaciClue V cartesianCount=9, elapsed 0:00:00.000034
+Eval IncreasingFibonnaciClue V cartesianCount=9, elapsed 0:00:00.000021
 solve: IncreasingFibonnaciEntry(name=d,length=2,value: null,
 	identities=[d[0]=C[0],d[1]=E[0]],referrers=[C,E,V],
 	values={92},
 	digits=[{9},{2}]
-Eval IncreasingFibonnaciClue V cartesianCount=3, elapsed 0:00:00.000032
-solve: IncreasingFibonnaciClue(name=V,length=null,value: d - E,
+Eval IncreasingFibonnaciClue V cartesianCount=3, elapsed 0:00:00.000027
+solve: IncreasingFibonnaciClue(name=V,length=2,value: d - E,
 	referrers=[],
 	values={65}
 Entry E={27}
-Clue/Variable iterations=98, updates=101, elapsed 0:00:00.524138
+Clue/Variable iterations=98, updates=101, elapsed 0:00:00.761736
 SOLUTION-----------------------------
 Puzzle Summary
 Clue I, e - a, values={15}

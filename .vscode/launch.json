@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Primania",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Primania"
+            ]
+        },
+        {
             "name": "Eraser",
             "type": "dart",
             "request": "launch",

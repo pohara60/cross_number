@@ -467,4 +467,16 @@ void main() {
       // expect(values, equals([10, 11, 13, 14, 15, 16, 18]));
     });
   });
+  group('ReversePrime', () {
+    var text = r'$prime #result & $prime $reverse #result';
+    test(text, () {
+      var exp = ExpressionEvaluator(text);
+      // var values = exp.generate(100, 999).toSet().toList()..sort();
+      var values = exp.generate(10, 99).toSet();
+      // var values = exp.generate(17, 17).toSet();
+      var values2 = values.toList()..sort();
+      print(values2);
+      // expect(values, equals([10, 11, 13, 14, 15, 16, 18]));
+    });
+  });
 }

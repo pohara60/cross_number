@@ -57,6 +57,7 @@ const EXPONENT = 'EXPONENT', EXPONENT_RE = r'(?<' + EXPONENT + r'>\^)';
 const LPAREN = 'LPAREN', LPAREN_RE = r'(?<' + LPAREN + r'>\()';
 const RPAREN = 'RPAREN', RPAREN_RE = r'(?<' + RPAREN + r'>\))';
 const EQUAL = 'EQUAL', EQUAL_RE = r'(?<' + EQUAL + r'>=)';
+const AND = 'AND', AND_RE = r'(?<' + AND + r'>&)';
 const CLUE = 'CLUE', CLUE_RE = r'(?<' + CLUE + r'>E?[adAD]\d+|[IVX]+)';
 const VAR = 'VAR', VAR_RE = r'(?<' + VAR + r'>\w)';
 const GENERATOR = 'GENERATOR', GENERATOR_RE = r'(?<' + GENERATOR + r'>\#\w+)';
@@ -77,6 +78,7 @@ var regExp = RegExp([
   LPAREN_RE,
   RPAREN_RE,
   EQUAL_RE,
+  AND_RE,
   CLUE_RE,
   VAR_RE,
   GENERATOR_RE,
@@ -199,6 +201,9 @@ class Scanner {
       }
       if (m.namedGroup(EQUAL) != null) {
         yield Token(match!, EQUAL);
+      }
+      if (m.namedGroup(AND) != null) {
+        yield Token(match!, AND);
       }
       if (m.namedGroup(ERROR) != null) {
         throw ExpressionError('Invalid character ${text[m.start]}');
@@ -732,10 +737,10 @@ class ExpressionEvaluator {
   // Grammar rules follow
 
   Node logical() {
-    // logical ::= expr { '=' expr }*
+    // logical ::= expr { ('='|'&') expr }*
 
     var node = expr();
-    while (_accept(EQUAL)) {
+    while (_accept(EQUAL) || _accept(AND)) {
       var token = tok!;
       var right = expr();
       node = Node(token, [node, right]);
@@ -920,6 +925,11 @@ class ExpressionEvaluator {
         if (left != right) {
           throw ExpressionInvalid('Unequal expressions');
         }
+        result = left;
+      case AND:
+        // False child throws exception
+        left = eval(node.operands![0], callback);
+        right = eval(node.operands![1], callback);
         result = left;
       case CLUE:
         var name = node.token.name;
@@ -1306,6 +1316,8 @@ class ExpressionEvaluator {
         }
         break;
       case EQUAL:
+      case AND:
+        var isAnd = node.token.type == AND;
         var lnode = node.operands![0];
         var lvalue =
             lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
@@ -1323,8 +1335,8 @@ class ExpressionEvaluator {
           for (var right in rnode.order == NodeOrder.SINGLE
               ? [rvalue]
               : gen(
-                  left,
-                  left,
+                  isAnd ? 0 : left,
+                  isAnd ? pow(10, max.toString().length) : left,
                   rnode,
                   callback,
                 )) {
@@ -1337,7 +1349,8 @@ class ExpressionEvaluator {
               if (node.order == NodeOrder.DESCENDING) break;
               continue;
             }
-            if (left == right) {
+
+            if (isAnd || node.token.type == EQUAL && left == right) {
               if (callback != null) {
                 result = callback(left, right, result, node);
                 if (result == null) continue;
