@@ -1,0 +1,805 @@
+Puzzle
+ABCDEEntry(name=A1,length=4,value: AB + BD,
+	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+ABCDEEntry(name=A9,length=2,value: AB - E,
+	identities=[A9[0]=D3[1],A9[1]=D4[1]],referrers=[D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A11,length=4,value: CD - A,
+	identities=[A11[1]=D8[1],A11[2]=D2[2],A11[3]=D3[2]],referrers=[D8,D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+ABCDEEntry(name=A12,length=2,value: A + B,
+	identities=[A12[0]=D4[2],A12[1]=D5[2]],referrers=[D4,D5],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A13,length=4,value: A + CD,
+	identities=[A13[0]=D13[0],A13[1]=D8[2],A13[2]=D14[0]],referrers=[D13,D8,D14],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+ABCDEEntry(name=A17,length=2,value: B + C - A,
+	identities=[A17[0]=D17[0],A17[1]=D14[1]],referrers=[D17,D14],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A18,length=4,value: BD - C,
+	identities=[A18[0]=D18[0],A18[1]=D19[0],A18[2]=D16[1]],referrers=[D18,D19,D16],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A21,length=2,value: A + A + A,
+	identities=[A21[0]=D14[2],A21[1]=D18[1]],referrers=[D14,D18],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A22,length=3,value: C + D - A,
+	identities=[A22[0]=D19[1],A22[1]=D16[2],A22[2]=D23[0]],referrers=[D19,D16,D23],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+ABCDEEntry(name=A25,length=4,value: BE - D,
+	identities=[A25[0]=D18[2],A25[1]=D19[2],A25[3]=D23[1]],referrers=[D18,D19,D23],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+ABCDEEntry(name=D1,length=2,value: C,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+ABCDEEntry(name=D3,length=3,value: D + BC,
+	identities=[D3[0]=A1[3],D3[1]=A9[0],D3[2]=A11[3]],referrers=[A1,A9,A11],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+ABCDEEntry(name=D4,length=4,value: BD + CD,
+	identities=[D4[1]=A9[1],D4[2]=A12[0],D4[3]=A15[0]],referrers=[A9,A12,A15],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+ABCDEEntry(name=D5,length=3,value: D + AB,
+	identities=[D5[0]=A5[0],D5[1]=A10[0],D5[2]=A12[1]],referrers=[A5,A10,A12],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+ABCDEEntry(name=D6,length=4,value: B + CD,
+	identities=[D6[0]=A5[1],D6[1]=A10[1],D6[3]=A15[2]],referrers=[A5,A10,A15],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+ABCDEEntry(name=D13,length=4,value: CD - B,
+	identities=[D13[0]=A13[0],D13[2]=A20[0],D13[3]=A24[0]],referrers=[A13,A20,A24],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+ABCDEEntry(name=D14,length=4,value: E + BD,
+	identities=[D14[0]=A13[2],D14[1]=A17[1],D14[2]=A21[0]],referrers=[A13,A17,A21],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+ABCDEEntry(name=D16,length=3,value: BC - A,
+	identities=[D16[0]=A15[1],D16[1]=A18[2],D16[2]=A22[1]],referrers=[A15,A18,A22],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+ABCDEEntry(name=D17,length=3,value: C + E - B,
+	identities=[D17[0]=A17[0],D17[1]=A20[1],D17[2]=A24[1]],referrers=[A17,A20,A24],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+ABCDEEntry(name=D18,length=3,value: A + E - C,
+	identities=[D18[0]=A18[0],D18[1]=A21[1],D18[2]=A25[0]],referrers=[A18,A21,A25],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+ABCDEEntry(name=D19,length=3,value: E - A,
+	identities=[D19[0]=A18[1],D19[1]=A22[0],D19[2]=A25[1]],referrers=[A18,A22,A25],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+ABCDEEntry(name=D23,length=2,value: A + A,
+	identities=[D23[0]=A22[2],D23[1]=A25[3]],referrers=[A22,A25],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Variables:
+A={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,164 more,1097}
+B={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,164 more,1097}
+C={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,164 more,1097}
+D={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,164 more,1097}
+E={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,164 more,1097}
+
+UPDATES-----------------------------
+Eval ABCDEEntry A10 cartesianCount=184, elapsed 0:00:00.009094
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={10,14,22,26,34,38,46,58,62,74,82,86,94},
+	digits=[{1..9},{0,2,4,6,8}]
+Variable B={5,7,11,13,17,19,23,29,31,37,41,43,47}
+Eval ABCDEEntry A24 cartesianCount=13, elapsed 0:00:00.000110
+solve: ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={15,21,33,39,51,57,69,87,93},
+	digits=[{1..3,5,6,8,9},{1,3,5,7,9}]
+Variable B={5,7,11,13,17,19,23,29,31}
+Eval ABCDEEntry A10 cartesianCount=9, elapsed 0:00:00.000103
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={10,14,22,26,34,38,46,58,62},
+	digits=[{1..6},{0,2,4,6,8}]
+Eval ABCDEEntry A24 cartesianCount=9, elapsed 0:00:00.000075
+Eval ABCDEEntry A15 cartesianCount=184, elapsed 0:00:00.000762
+solve: ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={118,122,134,142,146,158,166,178,194,214,218,226,254,262,274,278,298,314,326,334,53 more,998},
+	digits=[{1..9},{1..9},{2,4,6,8}]
+Variable E={59,61,67,71,73,79,83,89,97,107,109,113,127,131,137,139,149,157,163,167,53 more,499}
+Eval ABCDEEntry A20 cartesianCount=184, elapsed 0:00:00.000559
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={15,21,33,39,51,57,69,87,93},
+	digits=[{1..3,5,6,8,9},{1,3,5,7,9}]
+Variable C={5,7,11,13,17,19,23,29,31}
+Eval ABCDEEntry A5 cartesianCount=81, elapsed 0:00:00.000334
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={12,16,18,22,24,26,28,32,34,36,38,42,44,46,48,52,54},
+	digits=[{1..5},{2,4,6,8}]
+Variable B={5,7,11,13,17,19,23}
+Variable C={7,11,13,17,19,23,29,31}
+Eval ABCDEEntry A10 cartesianCount=7, elapsed 0:00:00.000392
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={10,14,22,26,34,38,46},
+	digits=[{1..4},{0,2,4,6,8}]
+Eval ABCDEEntry A24 cartesianCount=7, elapsed 0:00:00.000067
+solve: ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={15,21,33,39,51,57,69},
+	digits=[{1..3,5,6},{1,3,5,7,9}]
+Eval ABCDEEntry A20 cartesianCount=8, elapsed 0:00:00.000055
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={21,33,39,51,57,69,87,93},
+	digits=[{2,3,5,6,8,9},{1,3,7,9}]
+Eval ABCDEEntry D1 cartesianCount=8, elapsed 0:00:00.000096
+solve: ABCDEEntry(name=D1,length=2,value: C,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={11,13,17,19,23,29,31},
+	digits=[{1..3},{1,3,7,9}]
+Variable C={11,13,17,19,23,29,31}
+Eval ABCDEEntry A20 cartesianCount=7, elapsed 0:00:00.000054
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={33,39,51,57,69,87,93},
+	digits=[{3,5,6,8,9},{1,3,7,9}]
+Eval ABCDEEntry D1 cartesianCount=7, elapsed 0:00:00.000046
+Eval ABCDEEntry A5 cartesianCount=49, elapsed 0:00:00.000187
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={16,18,22,24,26,28,32,34,36,38,42,44,46,48,52,54},
+	digits=[{1..5},{2,4,6,8}]
+Eval ABCDEEntry A21 cartesianCount=184, elapsed 0:00:00.000486
+solve: ABCDEEntry(name=A21,length=2,value: A + A + A,
+	identities=[A21[0]=D14[2],A21[1]=D18[1]],referrers=[D14,D18],
+	values={15,21,33,39,51,57,69,87,93},
+	digits=[{1..3,5,6,8,9},{1,3,5,7,9}]
+Variable A={5,7,11,13,17,19,23,29,31}
+Eval ABCDEEntry D23 cartesianCount=9, elapsed 0:00:00.000068
+solve: ABCDEEntry(name=D23,length=2,value: A + A,
+	identities=[D23[0]=A22[2],D23[1]=A25[3]],referrers=[A22,A25],
+	values={10,14,22,26,34,38,46,58,62},
+	digits=[{1..6},{0,2,4,6,8}]
+Eval ABCDEEntry A21 cartesianCount=9, elapsed 0:00:00.000068
+Eval ABCDEEntry D23 cartesianCount=9, elapsed 0:00:00.000058
+Eval ABCDEEntry A12 cartesianCount=63, elapsed 0:00:00.000265
+solve: ABCDEEntry(name=A12,length=2,value: A + B,
+	identities=[A12[0]=D4[2],A12[1]=D5[2]],referrers=[D4,D5],
+	values={12,16,18,20,22,24,26,28,30,32,34,36,40,42},
+	digits=[{1..4},{0,2,4,6,8}]
+Variable A={5,7,11,13,17,19}
+Variable B={7,11,13,17,19,23}
+Eval ABCDEEntry A10 cartesianCount=6, elapsed 0:00:00.000050
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={14,22,26,34,38,46},
+	digits=[{1..4},{2,4,6,8}]
+Eval ABCDEEntry A21 cartesianCount=6, elapsed 0:00:00.000048
+solve: ABCDEEntry(name=A21,length=2,value: A + A + A,
+	identities=[A21[0]=D14[2],A21[1]=D18[1]],referrers=[D14,D18],
+	values={15,21,33,39,51,57},
+	digits=[{1..3,5},{1,3,5,7,9}]
+Eval ABCDEEntry A24 cartesianCount=6, elapsed 0:00:00.000057
+solve: ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={21,33,39,51,57,69},
+	digits=[{2,3,5,6},{1,3,7,9}]
+Eval ABCDEEntry D23 cartesianCount=6, elapsed 0:00:00.000092
+solve: ABCDEEntry(name=D23,length=2,value: A + A,
+	identities=[D23[0]=A22[2],D23[1]=A25[3]],referrers=[A22,A25],
+	values={10,14,22,26,34,38},
+	digits=[{1..3},{0,2,4,6,8}]
+Eval ABCDEEntry A12 cartesianCount=36, elapsed 0:00:00.000134
+Eval ABCDEEntry A5 cartesianCount=42, elapsed 0:00:00.000143
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={18,24,26,28,32,34,36,38,42,44,46,48,52,54},
+	digits=[{1..5},{2,4,6,8}]
+Eval ABCDEEntry A17 cartesianCount=252, elapsed 0:00:00.000850
+solve: ABCDEEntry(name=A17,length=2,value: B + C - A,
+	identities=[A17[0]=D17[0],A17[1]=D14[1]],referrers=[D17,D14],
+	values={13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49},
+	digits=[{1..4},{1,3,5,7,9}]
+Eval ABCDEEntry D16 cartesianCount=252, elapsed 0:00:00.001467
+solve: ABCDEEntry(name=D16,length=3,value: BC - A,
+	identities=[D16[0]=A15[1],D16[1]=A18[2],D16[2]=A22[1]],referrers=[A15,A18,A22],
+	values={114,128,136,138,156,180,182,198,202,204,210,212,214,216,236,240,242,246,248,288,54 more,708},
+	digits=[{1..7},{0..9},{0,2,4,6,8}]
+Variable C={13,17,19,23,29,31}
+Eval ABCDEEntry A20 cartesianCount=6, elapsed 0:00:00.000091
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={39,51,57,69,87,93},
+	digits=[{3,5,6,8,9},{1,3,7,9}]
+Eval ABCDEEntry D1 cartesianCount=6, elapsed 0:00:00.000095
+solve: ABCDEEntry(name=D1,length=2,value: C,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={13,17,19,23,29,31},
+	digits=[{1..3},{1,3,7,9}]
+Eval ABCDEEntry A5 cartesianCount=36, elapsed 0:00:00.000266
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={24,26,28,32,34,36,38,42,44,46,48,52,54},
+	digits=[{2..5},{2,4,6,8}]
+Eval ABCDEEntry A15 cartesianCount=73, elapsed 0:00:00.000251
+solve: ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={118,122,134,142,146,158,166,178,214,218,226,254,262,274,278,314,326,334,346,358,38 more,974},
+	digits=[{1..9},{1..7},{2,4,6,8}]
+Variable E={59,61,67,71,73,79,83,89,107,109,113,127,131,137,139,157,163,167,173,179,38 more,487}
+Eval ABCDEEntry A17 cartesianCount=216, elapsed 0:00:00.000627
+solve: ABCDEEntry(name=A17,length=2,value: B + C - A,
+	identities=[A17[0]=D17[0],A17[1]=D14[1]],referrers=[D17,D14],
+	values={15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49},
+	digits=[{1..4},{1,3,5,7,9}]
+Eval ABCDEEntry D16 cartesianCount=216, elapsed 0:00:00.000575
+Eval ABCDEEntry D19 cartesianCount=348, elapsed 0:00:00.001877
+solve: ABCDEEntry(name=D19,length=3,value: E - A,
+	identities=[D19[0]=A18[1],D19[1]=A22[0],D19[2]=A25[1]],referrers=[A18,A22,A25],
+	values={110,112,114,116,118,120,122,124,126,128,130,132,134,138,140,144,146,148,150,152,118 more,482},
+	digits=[{1..4},{1..9},{0,2,4,6,8}]
+Variable E={127,131,137,139,157,163,167,173,179,181,211,223,227,229,233,239,257,263,269,271,27 more,487}
+Eval ABCDEEntry A15 cartesianCount=47, elapsed 0:00:00.000176
+solve: ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={254,262,274,278,314,326,334,346,358,362,422,446,454,458,466,478,514,526,538,542,27 more,974},
+	digits=[{2..9},{1..7},{2,4,6,8}]
+Eval ABCDEEntry D16 cartesianCount=216, elapsed 0:00:00.000445
+Eval ABCDEEntry D19 cartesianCount=282, elapsed 0:00:00.001578
+Eval ABCDEEntry A7 cartesianCount=1104, elapsed 0:00:00.002917
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,148 more,998},
+	digits=[{1,3,7,9},{1..9},{0,2,4,6,8}]
+Variable D={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,48 more,1021}
+Eval ABCDEEntry D1 cartesianCount=6, elapsed 0:00:00.000043
+Eval ABCDEEntry A7 cartesianCount=408, elapsed 0:00:00.001360
+Eval ABCDEEntry D2 cartesianCount=408, elapsed 0:00:00.000868
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={140,144,146,148,160,162,164,166,168,180,182,184,186,188,200,202,204,206,208,220,76 more,988},
+	digits=[{1..4,7..9},{0,2,4,6,8},{0,2,4,6,8}]
+Variable D={127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,40 more,971}
+Eval ABCDEEntry A7 cartesianCount=360, elapsed 0:00:00.000793
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,128 more,958},
+	digits=[{1,3,7,9},{1..9},{0,2,4,6,8}]
+Eval ABCDEEntry D1 cartesianCount=6, elapsed 0:00:00.000045
+Eval ABCDEEntry A7 cartesianCount=360, elapsed 0:00:00.000855
+Eval ABCDEEntry D2 cartesianCount=360, elapsed 0:00:00.000994
+Eval ABCDEEntry D8 cartesianCount=360, elapsed 0:00:00.001233
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={132,134,136,138,140,142,144,146,148,150,152,154,156,158,160,162,164,166,168,170,168 more,990},
+	digits=[{1..4,7..9},{0..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=360, elapsed 0:00:00.000735
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,95 more,948},
+	digits=[{1,3,7,9},{1..4,7..9},{0,2,4,6,8}]
+Variable D={127,131,137,139,149,151,157,163,167,173,179,191,193,197,199,211,223,227,229,331,39 more,971}
+Eval ABCDEEntry D1 cartesianCount=6, elapsed 0:00:00.000034
+Eval ABCDEEntry A7 cartesianCount=354, elapsed 0:00:00.000577
+Eval ABCDEEntry D2 cartesianCount=354, elapsed 0:00:00.000605
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={140,144,146,148,160,162,164,166,168,180,182,184,186,188,202,204,206,208,220,222,75 more,988},
+	digits=[{1..4,7..9},{0,2,4,6,8},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=354, elapsed 0:00:00.000608
+Eval ABCDEEntry D2 cartesianCount=354, elapsed 0:00:00.000792
+Eval ABCDEEntry D8 cartesianCount=354, elapsed 0:00:00.000580
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={132,134,136,138,140,142,144,146,148,150,152,154,156,158,160,162,164,166,168,170,166 more,990},
+	digits=[{1..4,7..9},{0..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=354, elapsed 0:00:00.000542
+Eval ABCDEEntry D8 cartesianCount=354, elapsed 0:00:00.000627
+Eval ABCDEEntry A9 cartesianCount=1692, elapsed 0:00:00.002183
+solve: ABCDEEntry(name=A9,length=2,value: AB - E,
+	identities=[A9[0]=D3[1],A9[1]=D4[1]],referrers=[D3,D4],
+	values={10,12,14,16,18,20,22,24,26,28,30,32,34,36,40,42,46,48,50,52,20 more,96},
+	digits=[{1..9},{0,2,4,6,8}]
+Variable A={7,11,13,17,19}
+Variable B={13,17,19,23}
+Variable E={127,131,137,139,157,163,167,173,179,181,211,223,227,229,233,239,257,263,269,271,18 more,421}
+Eval ABCDEEntry A10 cartesianCount=4, elapsed 0:00:00.000044
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={26,34,38,46},
+	digits=[{2..4},{4,6,8}]
+Eval ABCDEEntry A24 cartesianCount=4, elapsed 0:00:00.000039
+solve: ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={39,51,57,69},
+	digits=[{3,5,6},{1,7,9}]
+Eval ABCDEEntry A21 cartesianCount=5, elapsed 0:00:00.000035
+solve: ABCDEEntry(name=A21,length=2,value: A + A + A,
+	identities=[A21[0]=D14[2],A21[1]=D18[1]],referrers=[D14,D18],
+	values={21,33,39,51,57},
+	digits=[{2,3,5},{1,3,7,9}]
+Eval ABCDEEntry D23 cartesianCount=5, elapsed 0:00:00.000031
+solve: ABCDEEntry(name=D23,length=2,value: A + A,
+	identities=[D23[0]=A22[2],D23[1]=A25[3]],referrers=[A22,A25],
+	values={14,22,26,34,38},
+	digits=[{1..3},{2,4,6,8}]
+Eval ABCDEEntry A12 cartesianCount=20, elapsed 0:00:00.000543
+solve: ABCDEEntry(name=A12,length=2,value: A + B,
+	identities=[A12[0]=D4[2],A12[1]=D5[2]],referrers=[D4,D5],
+	values={20,24,26,28,30,32,34,36,40,42},
+	digits=[{2..4},{0,2,4,6,8}]
+Eval ABCDEEntry A5 cartesianCount=24, elapsed 0:00:00.000241
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={32,36,42,44,46,48,52,54},
+	digits=[{3..5},{2,4,6,8}]
+Variable C={19,23,29,31}
+Eval ABCDEEntry A20 cartesianCount=4, elapsed 0:00:00.000023
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={57,69,87,93},
+	digits=[{5,6,8,9},{3,7,9}]
+Eval ABCDEEntry D1 cartesianCount=4, elapsed 0:00:00.000020
+solve: ABCDEEntry(name=D1,length=2,value: C,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={19,23,29,31},
+	digits=[{1..3},{1,3,9}]
+Eval ABCDEEntry A5 cartesianCount=16, elapsed 0:00:00.000036
+Eval ABCDEEntry A15 cartesianCount=38, elapsed 0:00:00.000118
+solve: ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={254,262,274,278,314,326,334,346,358,362,422,446,454,458,466,478,514,526,538,542,18 more,842},
+	digits=[{2..8},{1..7},{2,4,6,8}]
+Eval ABCDEEntry A17 cartesianCount=80, elapsed 0:00:00.000123
+solve: ABCDEEntry(name=A17,length=2,value: B + C - A,
+	identities=[A17[0]=D17[0],A17[1]=D14[1]],referrers=[D17,D14],
+	values={21,23,25,27,29,31,33,35,37,39,41,43,45,47},
+	digits=[{2..4},{1,3,5,7,9}]
+Eval ABCDEEntry D16 cartesianCount=80, elapsed 0:00:00.000128
+solve: ABCDEEntry(name=D16,length=3,value: BC - A,
+	identities=[D16[0]=A15[1],D16[1]=A18[2],D16[2]=A22[1]],referrers=[A15,A18,A22],
+	values={236,240,288,292,310,312,316,366,370,378,380,384,392,396,420,424,426,430,480,482,22 more,706},
+	digits=[{2..7},{0..9},{0,2,4,6,8}]
+Eval ABCDEEntry A15 cartesianCount=38, elapsed 0:00:00.000084
+solve: ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={254,262,274,278,326,334,346,358,362,422,446,454,458,466,478,526,538,542,554,562,13 more,842},
+	digits=[{2..8},{2..7},{2,4,6,8}]
+Variable E={127,131,137,139,163,167,173,179,181,211,223,227,229,233,239,263,269,271,277,281,13 more,421}
+Eval ABCDEEntry D16 cartesianCount=80, elapsed 0:00:00.000130
+Eval ABCDEEntry D19 cartesianCount=165, elapsed 0:00:00.000307
+solve: ABCDEEntry(name=D19,length=3,value: E - A,
+	identities=[D19[0]=A18[1],D19[1]=A22[0],D19[2]=A25[1]],referrers=[A18,A22,A25],
+	values={110,112,114,116,118,120,122,124,126,128,130,132,144,146,148,150,152,154,156,160,65 more,414},
+	digits=[{1..4},{1..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=236, elapsed 0:00:00.000344
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,126,128,130,132,134,136,138,140,142,144,148,170,172,55 more,948},
+	digits=[{1,3,9},{1..4,7..9},{0,2,4,6,8}]
+Variable D={131,137,139,149,151,157,163,167,173,179,191,193,197,199,211,223,227,229,331,337,20 more,971}
+Eval ABCDEEntry D1 cartesianCount=4, elapsed 0:00:00.000025
+Eval ABCDEEntry A7 cartesianCount=160, elapsed 0:00:00.000284
+Eval ABCDEEntry D2 cartesianCount=160, elapsed 0:00:00.000291
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={160,162,166,168,180,182,186,188,202,204,208,220,222,224,226,228,240,242,246,248,29 more,986},
+	digits=[{1..4,9},{0,2,4,6,8},{0,2,4,6,8}]
+Variable D={131,137,139,149,151,157,163,167,173,179,191,193,197,199,211,223,227,229,331,337,19 more,967}
+Eval ABCDEEntry A7 cartesianCount=156, elapsed 0:00:00.000232
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,126,128,130,132,134,136,138,140,142,144,148,170,172,53 more,948},
+	digits=[{1,3,9},{1..4,7..9},{0,2,4,6,8}]
+Eval ABCDEEntry D1 cartesianCount=4, elapsed 0:00:00.000039
+Eval ABCDEEntry A7 cartesianCount=156, elapsed 0:00:00.000249
+Eval ABCDEEntry D2 cartesianCount=156, elapsed 0:00:00.000214
+Eval ABCDEEntry D8 cartesianCount=195, elapsed 0:00:00.000325
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={138,142,144,146,148,150,152,154,156,158,160,162,164,166,168,170,174,176,178,180,95 more,986},
+	digits=[{1..4,9},{0..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=156, elapsed 0:00:00.000232
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,126,128,130,132,134,136,138,140,142,144,148,192,194,37 more,948},
+	digits=[{1,3,9},{1..4,9},{0,2,4,6,8}]
+Variable D={131,137,139,149,151,157,163,167,173,179,211,223,227,229,331,337,347,349,353,359,12 more,967}
+Eval ABCDEEntry D1 cartesianCount=4, elapsed 0:00:00.000130
+Eval ABCDEEntry A7 cartesianCount=128, elapsed 0:00:00.000193
+Eval ABCDEEntry D2 cartesianCount=128, elapsed 0:00:00.000146
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={160,162,166,168,180,182,186,188,202,204,208,240,242,246,248,260,360,362,366,368,21 more,986},
+	digits=[{1..4,9},{0,2,4,6,8},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=128, elapsed 0:00:00.000166
+Eval ABCDEEntry D2 cartesianCount=128, elapsed 0:00:00.000159
+Eval ABCDEEntry D8 cartesianCount=160, elapsed 0:00:00.000231
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={138,142,144,146,148,150,152,154,156,158,160,162,164,166,168,170,174,176,178,180,77 more,986},
+	digits=[{1..4,9},{1..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=128, elapsed 0:00:00.000148
+Eval ABCDEEntry D8 cartesianCount=160, elapsed 0:00:00.000178
+Eval ABCDEEntry A18 cartesianCount=512, elapsed 0:00:00.000476
+solve: ABCDEEntry(name=A18,length=4,value: BD - C,
+	identities=[A18[0]=D18[0],A18[1]=D19[0],A18[2]=D16[1]],referrers=[D18,D19,D16],
+	values={2100,2140,2142,2148,2152,2196,2198,2204,2208,2218,2220,2226,2230,2296,2298,2300,2304,2306,2308,2310,94 more,9378},
+	digits=[{2..9},{1..4},{0..9},{0,2,4,6,8}]
+Variable D={131,137,139,149,151,163,167,173,179,223,227,229,331,337,347,359,367,373,379,409,2 more,421}
+Eval ABCDEEntry D16 cartesianCount=80, elapsed 0:00:00.000101
+Eval ABCDEEntry A7 cartesianCount=88, elapsed 0:00:00.000108
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={110,112,114,116,118,120,122,126,128,130,132,134,136,138,140,142,144,148,192,194,19 more,398},
+	digits=[{1,3},{1..4,9},{0,2,4,6,8}]
+Eval ABCDEEntry D1 cartesianCount=4, elapsed 0:00:00.000022
+solve: ABCDEEntry(name=D1,length=2,value: C,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={23,31},
+	digits=[{2,3},{1,3}]
+Variable C={23,31}
+Eval ABCDEEntry A20 cartesianCount=2, elapsed 0:00:00.000019
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={69,93},
+	digits=[{6,9},{3,9}]
+Eval ABCDEEntry D1 cartesianCount=2, elapsed 0:00:00.000019
+Eval ABCDEEntry A5 cartesianCount=8, elapsed 0:00:00.000024
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={36,42,44,48,54},
+	digits=[{3..5},{2,4,6,8}]
+Eval ABCDEEntry A17 cartesianCount=40, elapsed 0:00:00.000082
+solve: ABCDEEntry(name=A17,length=2,value: B + C - A,
+	identities=[A17[0]=D17[0],A17[1]=D14[1]],referrers=[D17,D14],
+	values={25,27,29,31,33,35,37,39,41,43,47},
+	digits=[{2..4},{1,3,5,7,9}]
+Eval ABCDEEntry D16 cartesianCount=40, elapsed 0:00:00.000061
+solve: ABCDEEntry(name=D16,length=3,value: BC - A,
+	identities=[D16[0]=A15[1],D16[1]=A18[2],D16[2]=A22[1]],referrers=[A15,A18,A22],
+	values={288,292,378,380,384,392,396,420,424,426,430,514,516,520,572,576,578,582,694,696,3 more,706},
+	digits=[{2..7},{0..3,7..9},{0,2,4,6,8}]
+Eval ABCDEEntry A15 cartesianCount=33, elapsed 0:00:00.000054
+Eval ABCDEEntry D16 cartesianCount=40, elapsed 0:00:00.000061
+Eval ABCDEEntry A7 cartesianCount=44, elapsed 0:00:00.000081
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={114,116,118,120,126,128,132,136,140,142,144,148,192,196,198,314,316,324,328,336,6 more,398},
+	digits=[{1,3},{1..4,9},{0,2,4,6,8}]
+Variable D={137,139,149,151,163,167,173,179,223,227,229,337,347,359,367,373,379,419,421}
+Eval ABCDEEntry D1 cartesianCount=2, elapsed 0:00:00.000038
+Eval ABCDEEntry A7 cartesianCount=38, elapsed 0:00:00.000079
+Eval ABCDEEntry D2 cartesianCount=38, elapsed 0:00:00.000068
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={160,162,168,180,182,186,202,204,246,260,360,368,382,402,404,442,444},
+	digits=[{1..4},{0,4,6,8},{0,2,4,6,8}]
+Variable D={137,139,149,151,163,173,179,223,229,337,359,373,379,419,421}
+Eval ABCDEEntry A7 cartesianCount=30, elapsed 0:00:00.000063
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={114,116,118,120,126,128,140,148,198,314,328,336,348,390,396,398},
+	digits=[{1,3},{1..4,9},{0,4,6,8}]
+Variable D={137,139,149,151,163,179,229,337,359,379,419,421}
+Eval ABCDEEntry D1 cartesianCount=2, elapsed 0:00:00.000021
+Eval ABCDEEntry A7 cartesianCount=24, elapsed 0:00:00.000047
+Eval ABCDEEntry D2 cartesianCount=24, elapsed 0:00:00.000053
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={160,162,168,180,182,186,202,260,360,368,382,402,442,444},
+	digits=[{1..4},{0,4,6,8},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=24, elapsed 0:00:00.000044
+Eval ABCDEEntry D2 cartesianCount=24, elapsed 0:00:00.000042
+Eval ABCDEEntry D8 cartesianCount=60, elapsed 0:00:00.000093
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={144,146,148,150,152,154,156,158,160,162,164,166,168,170,174,176,180,182,186,190,31 more,440},
+	digits=[{1..4},{2..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=24, elapsed 0:00:00.000045
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={114,116,118,120,126,128,140,148,314,328,336,348},
+	digits=[{1,3},{1..4},{0,4,6,8}]
+Variable D={137,139,149,151,163,179,337,359,379}
+Eval ABCDEEntry D1 cartesianCount=2, elapsed 0:00:00.000019
+Eval ABCDEEntry A7 cartesianCount=18, elapsed 0:00:00.000035
+Eval ABCDEEntry D2 cartesianCount=18, elapsed 0:00:00.000035
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={160,162,168,180,182,186,202,360,368,382,402},
+	digits=[{1..4},{0,6,8},{0,2,6,8}]
+Eval ABCDEEntry A7 cartesianCount=18, elapsed 0:00:00.000037
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={116,118,120,126,128,140,148,328,336,348},
+	digits=[{1,3},{1..4},{0,6,8}]
+Variable D={139,149,151,163,179,359,379}
+Eval ABCDEEntry D1 cartesianCount=2, elapsed 0:00:00.000016
+Eval ABCDEEntry A7 cartesianCount=14, elapsed 0:00:00.000028
+Eval ABCDEEntry D2 cartesianCount=14, elapsed 0:00:00.000027
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={162,180,182,186,202,382,402},
+	digits=[{1..4},{0,6,8},{0,2,6}]
+Eval ABCDEEntry A7 cartesianCount=14, elapsed 0:00:00.000055
+Eval ABCDEEntry D2 cartesianCount=14, elapsed 0:00:00.000031
+Eval ABCDEEntry D8 cartesianCount=35, elapsed 0:00:00.000056
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={146,150,152,156,158,160,162,164,166,168,170,174,176,180,182,186,190,192,196,198,10 more,398},
+	digits=[{1,3},{4..9},{0,2,4,6,8}]
+Eval ABCDEEntry A7 cartesianCount=14, elapsed 0:00:00.000031
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={116,118,336},
+	digits=[{1,3},{1,3},{6,8}]
+Variable D={139,149,359}
+Eval ABCDEEntry D1 cartesianCount=2, elapsed 0:00:00.000018
+Eval ABCDEEntry A7 cartesianCount=6, elapsed 0:00:00.000020
+Eval ABCDEEntry D2 cartesianCount=6, elapsed 0:00:00.000019
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={162,180,382},
+	digits=[{1,3},{6,8},{0,2}]
+Eval ABCDEEntry A7 cartesianCount=6, elapsed 0:00:00.000026
+Eval ABCDEEntry D2 cartesianCount=6, elapsed 0:00:00.000020
+Eval ABCDEEntry D8 cartesianCount=15, elapsed 0:00:00.000039
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={146,150,152,156,158,160,162,166,168,366,370,372,376,378},
+	digits=[{1,3},{4..7},{0,2,6,8}]
+Eval ABCDEEntry A7 cartesianCount=6, elapsed 0:00:00.000025
+Eval ABCDEEntry D8 cartesianCount=15, elapsed 0:00:00.000041
+Eval ABCDEEntry A18 cartesianCount=24, elapsed 0:00:00.000044
+solve: ABCDEEntry(name=A18,length=4,value: BD - C,
+	identities=[A18[0]=D18[0],A18[1]=D19[0],A18[2]=D16[1]],referrers=[D18,D19,D16],
+	values={2332,3396,8226},
+	digits=[{2,3,8},{2,3},{2,3,9},{2,6}]
+Variable B={17,23}
+Variable C={31}
+solve: ABCDEEntry(name=A20,length=2,value: C + C + C,
+	identities=[A20[0]=D13[2],A20[1]=D17[1]],referrers=[D13,D17],
+	values={93},
+	digits=[{9},{3}]
+solve: ABCDEEntry(name=D1,length=2,value: C,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={31},
+	digits=[{3},{1}]
+Eval ABCDEEntry A5 cartesianCount=2, elapsed 0:00:00.000030
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={48,54},
+	digits=[{4,5},{4,8}]
+Eval ABCDEEntry A10 cartesianCount=2, elapsed 0:00:00.000016
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={34,46},
+	digits=[{3,4},{4,6}]
+Eval ABCDEEntry A24 cartesianCount=2, elapsed 0:00:00.000016
+solve: ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={51,69},
+	digits=[{5,6},{1,9}]
+Eval ABCDEEntry A7 cartesianCount=3, elapsed 0:00:00.000020
+solve: ABCDEEntry(name=A7,length=3,value: D - C,
+	identities=[A7[0]=D1[1],A7[1]=D8[0],A7[2]=D2[1]],referrers=[D1,D8,D2],
+	values={118},
+	digits=[{1},{1},{8}]
+Variable D={149}
+solve: ABCDEEntry(name=D2,length=3,value: C + D,
+	identities=[D2[0]=A1[2],D2[1]=A7[2],D2[2]=A11[2]],referrers=[A1,A7,A11],
+	values={180},
+	digits=[{1},{8},{0}]
+Eval ABCDEEntry A18 cartesianCount=2, elapsed 0:00:00.000021
+solve: ABCDEEntry(name=A18,length=4,value: BD - C,
+	identities=[A18[0]=D18[0],A18[1]=D19[0],A18[2]=D16[1]],referrers=[D18,D19,D16],
+	values={3396},
+	digits=[{3},{3},{9},{6}]
+Variable B={23}
+solve: ABCDEEntry(name=A5,length=2,value: B + C,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={54},
+	digits=[{5},{4}]
+solve: ABCDEEntry(name=A10,length=2,value: B + B,
+	identities=[A10[0]=D5[1],A10[1]=D6[1]],referrers=[D5,D6],
+	values={46},
+	digits=[{4},{6}]
+solve: ABCDEEntry(name=A24,length=2,value: B + B + B,
+	identities=[A24[0]=D13[3],A24[1]=D17[2]],referrers=[D13,D17],
+	values={69},
+	digits=[{6},{9}]
+solve: ABCDEEntry(name=D3,length=3,value: D + BC,
+	identities=[D3[0]=A1[3],D3[1]=A9[0],D3[2]=A11[3]],referrers=[A1,A9,A11],
+	values={862},
+	digits=[{8},{6},{2}]
+solve: ABCDEEntry(name=D4,length=4,value: BD + CD,
+	identities=[D4[1]=A9[1],D4[2]=A12[0],D4[3]=A15[0]],referrers=[A9,A12,A15],
+	values={8046},
+	digits=[{8},{0},{4},{6}]
+solve: ABCDEEntry(name=D6,length=4,value: B + CD,
+	identities=[D6[0]=A5[1],D6[1]=A10[1],D6[3]=A15[2]],referrers=[A5,A10,A15],
+	values={4642},
+	digits=[{4},{6},{4},{2}]
+solve: ABCDEEntry(name=D13,length=4,value: CD - B,
+	identities=[D13[0]=A13[0],D13[2]=A20[0],D13[3]=A24[0]],referrers=[A13,A20,A24],
+	values={4596},
+	digits=[{4},{5},{9},{6}]
+Eval ABCDEEntry A1 cartesianCount=5, elapsed 0:00:00.000022
+solve: ABCDEEntry(name=A1,length=4,value: AB + BD,
+	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
+	values={3818},
+	digits=[{3},{8},{1},{8}]
+Variable A={17}
+solve: ABCDEEntry(name=A11,length=4,value: CD - A,
+	identities=[A11[1]=D8[1],A11[2]=D2[2],A11[3]=D3[2]],referrers=[D8,D2,D3],
+	values={4602},
+	digits=[{4},{6},{0},{2}]
+solve: ABCDEEntry(name=A12,length=2,value: A + B,
+	identities=[A12[0]=D4[2],A12[1]=D5[2]],referrers=[D4,D5],
+	values={40},
+	digits=[{4},{0}]
+solve: ABCDEEntry(name=A13,length=4,value: A + CD,
+	identities=[A13[0]=D13[0],A13[1]=D8[2],A13[2]=D14[0]],referrers=[D13,D8,D14],
+	values={4636},
+	digits=[{4},{6},{3},{6}]
+solve: ABCDEEntry(name=A17,length=2,value: B + C - A,
+	identities=[A17[0]=D17[0],A17[1]=D14[1]],referrers=[D17,D14],
+	values={37},
+	digits=[{3},{7}]
+solve: ABCDEEntry(name=A21,length=2,value: A + A + A,
+	identities=[A21[0]=D14[2],A21[1]=D18[1]],referrers=[D14,D18],
+	values={51},
+	digits=[{5},{1}]
+solve: ABCDEEntry(name=A22,length=3,value: C + D - A,
+	identities=[A22[0]=D19[1],A22[1]=D16[2],A22[2]=D23[0]],referrers=[D19,D16,D23],
+	values={163},
+	digits=[{1},{6},{3}]
+solve: ABCDEEntry(name=D5,length=3,value: D + AB,
+	identities=[D5[0]=A5[0],D5[1]=A10[0],D5[2]=A12[1]],referrers=[A5,A10,A12],
+	values={540},
+	digits=[{5},{4},{0}]
+solve: ABCDEEntry(name=D8,length=3,value: A + D,
+	identities=[D8[0]=A7[1],D8[1]=A11[1],D8[2]=A13[1]],referrers=[A7,A11,A13],
+	values={166},
+	digits=[{1},{6},{6}]
+solve: ABCDEEntry(name=D16,length=3,value: BC - A,
+	identities=[D16[0]=A15[1],D16[1]=A18[2],D16[2]=A22[1]],referrers=[A15,A18,A22],
+	values={696},
+	digits=[{6},{9},{6}]
+solve: ABCDEEntry(name=D23,length=2,value: A + A,
+	identities=[D23[0]=A22[2],D23[1]=A25[3]],referrers=[A22,A25],
+	values={34},
+	digits=[{3},{4}]
+Eval ABCDEEntry A9 cartesianCount=33, elapsed 0:00:00.000045
+solve: ABCDEEntry(name=A9,length=2,value: AB - E,
+	identities=[A9[0]=D3[1],A9[1]=D4[1]],referrers=[D3,D4],
+	values={60},
+	digits=[{6},{0}]
+Variable E={331}
+solve: ABCDEEntry(name=A15,length=3,value: E + E,
+	identities=[A15[0]=D4[3],A15[1]=D16[0],A15[2]=D6[3]],referrers=[D4,D16,D6],
+	values={662},
+	digits=[{6},{6},{2}]
+solve: ABCDEEntry(name=A25,length=4,value: BE - D,
+	identities=[A25[0]=D18[2],A25[1]=D19[2],A25[3]=D23[1]],referrers=[D18,D19,D23],
+	values={7464},
+	digits=[{7},{4},{6},{4}]
+solve: ABCDEEntry(name=D14,length=4,value: E + BD,
+	identities=[D14[0]=A13[2],D14[1]=A17[1],D14[2]=A21[0]],referrers=[A13,A17,A21],
+	values={3758},
+	digits=[{3},{7},{5},{8}]
+solve: ABCDEEntry(name=D17,length=3,value: C + E - B,
+	identities=[D17[0]=A17[0],D17[1]=A20[1],D17[2]=A24[1]],referrers=[A17,A20,A24],
+	values={339},
+	digits=[{3},{3},{9}]
+solve: ABCDEEntry(name=D18,length=3,value: A + E - C,
+	identities=[D18[0]=A18[0],D18[1]=A21[1],D18[2]=A25[0]],referrers=[A18,A21,A25],
+	values={317},
+	digits=[{3},{1},{7}]
+solve: ABCDEEntry(name=D19,length=3,value: E - A,
+	identities=[D19[0]=A18[1],D19[1]=A22[0],D19[2]=A25[1]],referrers=[A18,A22,A25],
+	values={314},
+	digits=[{3},{1},{4}]
+Clue/Variable iterations=249, updates=149, elapsed 0:00:00.101749
+SOLUTION-----------------------------
+Puzzle Summary
+A1, AB + BD, values={3818}
+A5, B + C, values={54}
+A7, D - C, values={118}
+A9, AB - E, values={60}
+A10, B + B, values={46}
+A11, CD - A, values={4602}
+A12, A + B, values={40}
+A13, A + CD, values={4636}
+A15, E + E, values={662}
+A17, B + C - A, values={37}
+A18, BD - C, values={3396}
+A20, C + C + C, values={93}
+A21, A + A + A, values={51}
+A22, C + D - A, values={163}
+A24, B + B + B, values={69}
+A25, BE - D, values={7464}
+D1, C, values={31}
+D2, C + D, values={180}
+D3, D + BC, values={862}
+D4, BD + CD, values={8046}
+D5, D + AB, values={540}
+D6, B + CD, values={4642}
+D8, A + D, values={166}
+D13, CD - B, values={4596}
+D14, E + BD, values={3758}
+D16, BC - A, values={696}
+D17, C + E - B, values={339}
+D18, A + E - C, values={317}
+D19, E - A, values={314}
+D23, A + A, values={34}
++--+--+--+--+--+--+--+
+| 3  8  1  8| 8| 5  4|
++   --      +  +     +
+| 1  1  8| 6  0| 4  6|
++--+     +     +     +
+| 4  6  0  2| 4  0| 4|
++--    --+--+   --+  +
+| 4  6  3  6| 6  6  2|
++   --+   --+--+   --+
+| 5| 3  7| 3  3  9  6|
++  +     +         --+
+| 9  3| 5  1| 1  6  3|
++     +     +   --+  +
+| 6  9| 8| 7  4  6  4|
++--+--+--+--+--+--+--+
+Variables:
+A={17}
+B={23}
+C={31}
+D={149}
+E={331}
+

@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "ABCDE",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "ABCDE"
+            ]
+        },
+        {
             "name": "Primania",
             "type": "dart",
             "request": "launch",
