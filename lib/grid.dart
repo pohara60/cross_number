@@ -5,6 +5,8 @@ import 'puzzle.dart';
 import 'undo.dart';
 import 'variable.dart';
 
+typedef Tetromino = List<List<String>>;
+
 class Cell extends Variable {
   final String face;
   final int row, col;
@@ -181,5 +183,223 @@ class Grid {
       return rows.expand((row) => [row[col]]).toList();
     }
     return [];
+  }
+
+  Map<int, int> getDigitCount() {
+    var digitCount = <int, int>{};
+    for (var row in rows) {
+      for (var cell in row) {
+        var digits = cell.digits;
+        if (digits.length == 1) {
+          var digit = digits.first;
+          if (!digitCount.containsKey(digit)) digitCount[digit] = 0;
+          digitCount[digit] = digitCount[digit]! + 1;
+        }
+      }
+    }
+    return digitCount;
+  }
+
+  var cellTetromino = <Cell, Tetromino?>{};
+
+  var tetrominoes = [
+    [
+      ['1', '1', '1', '1'],
+    ],
+    [
+      ['2', '2'],
+      ['2', '2'],
+    ],
+    [
+      ['3', '3', '3'],
+      [' ', '3', ' '],
+    ],
+    [
+      ['4', '4', '4'],
+      ['4', ' ', ' '],
+    ],
+    [
+      ['5', '5', '5'],
+      [' ', ' ', '5'],
+    ],
+    [
+      ['6', '6', ' '],
+      [' ', '6', '6'],
+    ],
+    [
+      [' ', '7', '7'],
+      ['7', '7', ' '],
+    ],
+  ];
+
+  Iterable<int> fitTetrominoesToGrid() sync* {
+    var doneTetrominoe = <Tetromino>[];
+    var count = 0;
+    yield* fitTetrominoes(doneTetrominoe, count, 0, []);
+  }
+
+  int iterationCount = 0;
+  Iterable<int> fitTetrominoes(List<Tetromino> doneTetrominoe, int count,
+      int holes, List<int> rotationList) sync* {
+    iterationCount++;
+    // Try to fit (rotated) tetrominoe at next empty character
+    var (row, col) = firstSpaceInGrid();
+    if (row == -1) return;
+    for (var t1 in tetrominoes) {
+      if (doneTetrominoe.contains(t1)) continue;
+      var rotationCount = 0;
+      for (var t2 in rotations(t1)) {
+        rotationCount++;
+        // Find first character in tetrominoe
+        var (_, offset) = firstNonSpaceInTetromino(t2);
+        assert(offset >= 0);
+        // Does tetrominoe fit?
+        if (fitTetromino(row, col, t2, offset)) {
+          if (!fitTetromino(row, col, t2, offset, copy: true)) {
+            assert(false);
+          } else {
+            doneTetrominoe.add(t1);
+            rotationList.add(rotationCount);
+            if (doneTetrominoe.length < tetrominoes.length) {
+              yield* fitTetrominoes(doneTetrominoe, count, holes, rotationList);
+            } else {
+              // print('iterationCount=$iterationCount');
+              // print(doneTetrominoe.map((t) => getIndex(t)));
+              // print(rotationList);
+              // print(tetrominoString());
+              // print('------');
+              count++;
+              yield count;
+            }
+          }
+          fitTetromino(row, col, t2, offset, remove: true);
+          doneTetrominoe.removeLast();
+          rotationList.removeLast();
+        }
+      }
+    }
+    // There are two holes
+    if (holes < 2) {
+      holes++;
+      cellTetromino[rows[row][col]] = null;
+      yield* fitTetrominoes(doneTetrominoe, count, holes, rotationList);
+      cellTetromino.remove(rows[row][col]);
+    }
+    return;
+  }
+
+  String tetrominoString() {
+    var text = rows
+        .map((row) => row
+            .map((c) =>
+                cellTetromino[c] == null ? ' ' : getIndex(cellTetromino[c]!))
+            .join(''))
+        .join('\n');
+    return text;
+  }
+
+  bool fitTetromino(int row, int col, Tetromino t, int offset,
+      {bool copy = false, bool remove = false}) {
+    var width = t.first.length;
+    var depth = t.length;
+    // transpose
+    for (var r = 0; r < depth; r++) {
+      for (var c = 0; c < width; c++) {
+        if (t[r][c] != ' ') {
+          var gcol = col + c - offset;
+          var grow = row + r;
+          if (remove) {
+            cellTetromino.remove(rows[grow][gcol]);
+            continue;
+          }
+          if (gcol < 0 ||
+              gcol >= numCols ||
+              grow < 0 ||
+              grow >= numRows ||
+              cellTetromino[rows[grow][gcol]] != null) {
+            return false;
+          }
+          if (copy) {
+            cellTetromino[rows[grow][gcol]] = t;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  (int, int) firstSpaceInGrid() {
+    for (var r = 0; r < numRows; r++) {
+      for (var c = 0; c < numCols; c++) {
+        if (!cellTetromino.containsKey(rows[r][c])) return (r, c);
+      }
+    }
+    return (-1, -1);
+  }
+
+  (int, int) firstNonSpaceInTetromino(Tetromino t) {
+    for (var r = 0; r < t.length; r++) {
+      for (var c = 0; c < t[r].length; c++) {
+        if (t[r][c] != ' ') return (r, c);
+      }
+    }
+    return (-1, -1);
+  }
+
+  void printTetrominoes() {
+    for (var t1 in tetrominoes) {
+      for (var t2 in rotations(t1)) {
+        for (var l in t2) {
+          print(l.join(''));
+        }
+        print('----');
+      }
+    }
+  }
+
+  Iterable<Tetromino> rotations(Tetromino t) sync* {
+    yield t;
+    var last = t;
+    var prev = t;
+    for (var i = 0; i < 3; i++) {
+      var result = <List<String>>[];
+      var width = last.first.length;
+      var depth = last.length;
+      // transpose
+      for (var r = 0; r < width; r++) {
+        var row = <String>[];
+        for (var c = 0; c < depth; c++) {
+          row.add(last[depth - c - 1][r]);
+        }
+        result.add(row);
+      }
+      if (!equal(result, last) && !equal(result, prev)) {
+        yield result;
+      }
+      prev = last;
+      last = result;
+    }
+  }
+
+  /// 333 .3 .3. 3.
+  /// .3. 33 333 33
+  /// ... .3 ... 3.
+
+  bool equal(Tetromino t1, Tetromino t2) {
+    if (t1.length != t2.length) return false;
+    if (t1.first.length != t2.first.length) return false;
+    for (var r = 0; r < t1.length; r++) {
+      for (var c = 0; c < t1.first.length; c++) {
+        if (t1[r][c] != t2[r][c]) return false;
+      }
+    }
+    return true;
+  }
+
+  getIndex(Tetromino tetrominoe) {
+    return tetrominoe.first.fold(
+        ' ',
+        (previousValue, element) =>
+            previousValue != ' ' ? previousValue : element);
   }
 }

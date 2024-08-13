@@ -1,5 +1,4 @@
-// ignore: unused_import
-import 'package:crossnumber/set.dart';
+import 'package:basics/basics.dart';
 
 import 'cartesian.dart';
 import 'clue.dart';
@@ -604,7 +603,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       }
     }
     if (unique && this.gridSpec != null) {
-      text += '\n${gridSpec!.solutionToString(clueValues)}';
+      var haveEntries = keys.all((clue) => clue is! Clue || clue.entry != null);
+      if (haveEntries) {
+        text += '\n${gridSpec!.solutionToString(clueValues)}';
+      }
       if (varText != '') {
         text += 'Variables:\n$varText';
       }
@@ -1554,8 +1556,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         }
       }
       if (found) {
-        print(solutionToString());
-        count++;
+        if (checkSolution()) {
+          print(solutionToString());
+          count++;
+        }
       }
     }
     // Clean up

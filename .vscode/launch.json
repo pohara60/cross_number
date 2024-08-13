@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Tetromino",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Tetromino"
+            ]
+        },
+        {
             "name": "ABCDE",
             "type": "dart",
             "request": "launch",

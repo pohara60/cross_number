@@ -42,6 +42,7 @@ import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
 import 'package:crossnumber/squarestriangles/squarestriangles.dart';
 import 'package:crossnumber/sumsquares/sumsquares.dart';
+import 'package:crossnumber/tetromino/tetromino.dart';
 import 'package:crossnumber/thirty/thirty.dart';
 import 'package:crossnumber/transformation/transformation.dart';
 import 'package:crossnumber/triangularpairs/triangularpairs.dart';
@@ -101,7 +102,8 @@ void main(List<String> arguments) async {
     ..addCommand(OpposingDigitSumCommand())
     ..addCommand(EraserCommand())
     ..addCommand(PrimaniaCommand())
-    ..addCommand(ABCDECommand());
+    ..addCommand(ABCDECommand())
+    ..addCommand(TetrominoCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1058,6 +1060,30 @@ class PrimaniaCommand extends Command {
     // Get and print solve
     try {
       final pc = Primania();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class TetrominoCommand extends Command {
+  @override
+  final name = 'Tetromino';
+  @override
+  final description = 'solve hardcoded Tetromino puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Tetromino();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
