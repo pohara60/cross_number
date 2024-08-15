@@ -28,11 +28,6 @@ class TetrominoPuzzle
       : super.fromGridString([], gridString, name: name);
 
   @override
-  postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {
-    super.postProcessing(iteration, callback);
-  }
-
-  @override
   bool checkSolution() {
     // if (!super.checkSolution()) return false;
 
@@ -90,11 +85,11 @@ class TetrominoPuzzle
       var entries = findPossibleEntriesForClue(clue);
       clueEntries[clue] = entries;
     }
-    for (var clue in clues.values) {
-      var entries = clueEntries[clue]!;
-      // print(
-      //     'Clue ${clue.name}, entries, ${this.entries.values.map((e) => entries.contains(e) ? e.name : '').join(',')}');
-    }
+    // for (var clue in clues.values) {
+    // var entries = clueEntries[clue]!;
+    // print(
+    //     'Clue ${clue.name}, entries, ${this.entries.values.map((e) => entries.contains(e) ? e.name : '').join(',')}');
+    // }
     return clueEntries;
   }
 

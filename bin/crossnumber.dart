@@ -16,6 +16,7 @@ import 'package:crossnumber/dieanotherday/dieanotherday.dart';
 import 'package:crossnumber/eraser/eraser.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/factors/factors.dart';
+import 'package:crossnumber/fourseasons/fourseasons.dart';
 import 'package:crossnumber/frequency/frequency.dart';
 import 'package:crossnumber/inbetweeners/inbetweeners.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
@@ -103,7 +104,8 @@ void main(List<String> arguments) async {
     ..addCommand(EraserCommand())
     ..addCommand(PrimaniaCommand())
     ..addCommand(ABCDECommand())
-    ..addCommand(TetrominoCommand());
+    ..addCommand(TetrominoCommand())
+    ..addCommand(FourSeasonsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1084,6 +1086,30 @@ class TetrominoCommand extends Command {
     // Get and print solve
     try {
       final pc = Tetromino();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class FourSeasonsCommand extends Command {
+  @override
+  final name = 'FourSeasons';
+  @override
+  final description = 'solve hardcoded FourSeasons puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = FourSeasons();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

@@ -108,6 +108,7 @@ class ABCDE extends Crossnumber<ABCDEPuzzle> {
   }
 
   @override
+  // ignore: unnecessary_overrides
   void solve([bool iteration = true]) {
     super.solve(iteration);
   }

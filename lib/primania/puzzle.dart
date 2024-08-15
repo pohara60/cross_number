@@ -142,6 +142,7 @@ class PrimaniaPuzzle
     return updated;
   }
 
+  @override
   bool checkSolution() {
     var permittedDownValues = clues.values.map((c) => c.value!).toSet();
     var acrossValues = <int>[];

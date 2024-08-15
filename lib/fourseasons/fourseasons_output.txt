@@ -1,0 +1,606 @@
+Puzzle
+FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9},{1..9}]
+FourSeasonsEntry(name=A5,length=2,value: ,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FourSeasonsEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D1[1],A7[1]=D2[1],A7[2]=D3[1]],referrers=[D1,D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=A8,length=3,value: #palindrome,
+	identities=[A8[0]=D4[1],A8[1]=D5[1],A8[2]=D6[1]],referrers=[D4,D5,D6],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D6[3]],referrers=[D14,D6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FourSeasonsEntry(name=A15,length=3,value: #palindrome,
+	identities=[A15[0]=D9[2],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+FourSeasonsEntry(name=A17,length=3,value: ,
+	identities=[A17[0]=D11[2],A17[1]=D14[1],A17[2]=D18[0]],referrers=[D11,D14,D18],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+FourSeasonsEntry(name=A19,length=2,value: ,
+	identities=[A19[0]=D9[3],A19[1]=D13[2]],referrers=[D9,D13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+FourSeasonsEntry(name=A20,length=4,value: ,
+	identities=[A20[0]=D16[1],A20[1]=D11[3],A20[2]=D14[2],A20[3]=D18[1]],referrers=[D16,D11,D14,D18],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+FourSeasonsEntry(name=D1,length=2,value: ,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[2],D3[2]=A10[0],D3[3]=A12[2]],referrers=[A1,A7,A10,A12],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+FourSeasonsEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A1[3],D4[1]=A8[0]],referrers=[A1,A8],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=D6,length=4,value: ,
+	identities=[D6[0]=A5[1],D6[1]=A8[2],D6[2]=A10[3],D6[3]=A14[1]],referrers=[A5,A8,A10,A14],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9},{1..9}]
+FourSeasonsEntry(name=D11,length=4,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A12[3],D11[2]=A17[0],D11[3]=A20[1]],referrers=[A10,A12,A17,A20],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+FourSeasonsEntry(name=D13,length=3,value: ,
+	identities=[D13[0]=A12[1],D13[1]=A15[1],D13[2]=A19[1]],referrers=[A12,A15,A19],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=D14,length=3,value: #square,
+	identities=[D14[0]=A14[0],D14[1]=A17[1],D14[2]=A20[2]],referrers=[A14,A17,A20],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+FourSeasonsEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[2],D16[1]=A20[0]],referrers=[A15,A20],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+FourSeasonsEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A20[3]],referrers=[A17,A20],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+
+UPDATES-----------------------------
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={1111..1119,1121..1129,1131,1132,6541 more,9999},
+	digits=[{1..9},{1..9},{1..9},{1..9}]
+solve: FourSeasonsEntry(name=A5,length=2,value: ,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+solve: FourSeasonsEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D1[1],A7[1]=D2[1],A7[2]=D3[1]],referrers=[D1,D2,D3],
+	values={120,136,276,300,496,528,780,820},
+	digits=[{1..5,7,8},{0,2,3,7..9},{0,6,8}]
+solve: FourSeasonsEntry(name=A8,length=3,value: #palindrome,
+	identities=[A8[0]=D4[1],A8[1]=D5[1],A8[2]=D6[1]],referrers=[D4,D5,D6],
+	values={171,252,333,414,585,666,747,828,909,999},
+	digits=[{1..9},{0..9},{1..9}]
+solve: FourSeasonsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={1100..1119,8080 more,9999},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+solve: FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={1100..1119,8080 more,9999},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+solve: FourSeasonsEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D6[3]],referrers=[D14,D6],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+solve: FourSeasonsEntry(name=A15,length=3,value: #palindrome,
+	identities=[A15[0]=D9[2],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
+	values={161,252,343,434,525,595,616,686,707,777,868,959},
+	digits=[{1..9},{0..9},{1..9}]
+solve: FourSeasonsEntry(name=A17,length=3,value: ,
+	identities=[A17[0]=D11[2],A17[1]=D14[1],A17[2]=D18[0]],referrers=[D11,D14,D18],
+	values={101..109,111..119,121,122,790 more,999},
+	digits=[{1..9},{0..9},{1..9}]
+solve: FourSeasonsEntry(name=A19,length=2,value: ,
+	identities=[A19[0]=D9[3],A19[1]=D13[2]],referrers=[D9,D13],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+solve: FourSeasonsEntry(name=A20,length=4,value: ,
+	identities=[A20[0]=D16[1],A20[1]=D11[3],A20[2]=D14[2],A20[3]=D18[1]],referrers=[D16,D11,D14,D18],
+	values={1000..1019,8980 more,9999},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+solve: FourSeasonsEntry(name=D1,length=2,value: ,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={11..15,17,18,21..25,27,28,31..35,37,43 more,98},
+	digits=[{1..9},{1..5,7,8}]
+solve: FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={100..109,120..129,520 more,999},
+	digits=[{1..9},{0,2,3,7..9},{0..9}]
+solve: FourSeasonsEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[2],D3[2]=A10[0],D3[3]=A12[2]],referrers=[A1,A7,A10,A12],
+	values={1010..1029,2410 more,9899},
+	digits=[{1..9},{0,6,8},{1..9},{0..9}]
+solve: FourSeasonsEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A1[3],D4[1]=A8[0]],referrers=[A1,A8],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+solve: FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={100..119,880 more,999},
+	digits=[{1..9},{0..9},{0..9}]
+solve: FourSeasonsEntry(name=D6,length=4,value: ,
+	identities=[D6[0]=A5[1],D6[1]=A8[2],D6[2]=A10[3],D6[3]=A14[1]],referrers=[A5,A8,A10,A14],
+	values={1100..1119,8080 more,9999},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={1111..1119,1121..1129,1131,1132,6541 more,9999},
+	digits=[{1..9},{1..9},{1..9},{1..9}]
+solve: FourSeasonsEntry(name=D11,length=4,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A12[3],D11[2]=A17[0],D11[3]=A20[1]],referrers=[A10,A12,A17,A20],
+	values={1010..1029,8080 more,9999},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+solve: FourSeasonsEntry(name=D13,length=3,value: ,
+	identities=[D13[0]=A12[1],D13[1]=A15[1],D13[2]=A19[1]],referrers=[A12,A15,A19],
+	values={100..119,880 more,999},
+	digits=[{1..9},{0..9},{0..9}]
+solve: FourSeasonsEntry(name=D14,length=3,value: #square,
+	identities=[D14[0]=A14[0],D14[1]=A17[1],D14[2]=A20[2]],referrers=[A14,A17,A20],
+	values={100,225,400,625,900},
+	digits=[{1,2,4,6,9},{0,2},{0,5}]
+solve: FourSeasonsEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[2],D16[1]=A20[0]],referrers=[A15,A20],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+solve: FourSeasonsEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A20[3]],referrers=[A17,A20],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={1116,1152,1188,1224,1296,1332,1368,1476,1512,1548,1584,1656,1692,1728,1764,1836,1872,1944,2124,2196,142 more,9972},
+	digits=[{1..9},{1..9},{1..9},{2,4,6,8}]
+solve: FourSeasonsEntry(name=A5,length=2,value: ,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={18,27,36,45,54,63,72,81,99},
+	digits=[{1..9},{1..9}]
+solve: FourSeasonsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,2 more,96},
+	digits=[{1..9},{0,2,4,6,8}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={1116,1152,1188,1224,1260,1296,1332,1368,1404,1440,1476,1512,1548,1584,1620,1656,1692,1728,1764,1800,205 more,9972},
+	digits=[{1..9},{1..9},{0..9},{0,2,4,6,8}]
+solve: FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={1120,1155,1190,1225,1260,1295,1330,1365,1400,1435,1470,1505,1540,1575,1610,1645,1680,1715,1750,1785,212 more,9975},
+	digits=[{1..9},{1..9},{0..9},{0,5}]
+solve: FourSeasonsEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D6[3]],referrers=[D14,D6],
+	values={10,15,20,40,45,60,65,90,95},
+	digits=[{1,2,4,6,9},{0,5}]
+solve: FourSeasonsEntry(name=A17,length=3,value: ,
+	identities=[A17[0]=D11[2],A17[1]=D14[1],A17[2]=D18[0]],referrers=[D11,D14,D18],
+	values={105,205,305,405,505,605,705,805,905},
+	digits=[{1..9},{0},{5}]
+solve: FourSeasonsEntry(name=A19,length=2,value: ,
+	identities=[A19[0]=D9[3],A19[1]=D13[2]],referrers=[D9,D13],
+	values={14,21,28,35,42,49,56,63,70,77,84,91,98},
+	digits=[{1..9},{0..9}]
+solve: FourSeasonsEntry(name=A20,length=4,value: ,
+	identities=[A20[0]=D16[1],A20[1]=D11[3],A20[2]=D14[2],A20[3]=D18[1]],referrers=[D16,D11,D14,D18],
+	values={1155,1505,1855,2205,2555,2905,3255,3605,3955,4305,4655,5005,5355,5705,6055,6405,6755,7105,7455,7805,6 more,9905},
+	digits=[{1..9},{0..9},{0,5},{5}]
+solve: FourSeasonsEntry(name=D1,length=2,value: ,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={28,32,44,52,64,68,88,92},
+	digits=[{2..6,8,9},{2,4,8}]
+solve: FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={100,104,124,128,136,172,176,184,188,196,200,208,220,224,232,236,272,280,284,292,69 more,992},
+	digits=[{1..9},{0,2,3,7..9},{0,2,4,6,8}]
+solve: FourSeasonsEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[2],D3[2]=A10[0],D3[3]=A12[2]],referrers=[A1,A7,A10,A12],
+	values={1036,1064,1624,1652,1876,2044,2072,2632,2828,2884,3052,3668,3836,3892,4088,4648,4676,4816,4844,5012,26 more,9884},
+	digits=[{1..9},{0,6,8},{1..9},{2,4,6,8}]
+solve: FourSeasonsEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A1[3],D4[1]=A8[0]],referrers=[A1,A8],
+	values={27,45,63,81},
+	digits=[{2,4,6,8},{1,3,5,7}]
+solve: FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={117,135,153,171,189,207,225,243,261,279,297,315,333,351,369,387,405,423,441,459,30 more,999},
+	digits=[{1..9},{0..9},{1,3,5,7,9}]
+solve: FourSeasonsEntry(name=D6,length=4,value: ,
+	identities=[D6[0]=A5[1],D6[1]=A8[2],D6[2]=A10[3],D6[3]=A14[1]],referrers=[A5,A8,A10,A14],
+	values={1125,1305,1485,1665,1845,2205,2385,2565,2745,2925,3105,3285,3465,3645,3825,4185,4365,4545,4725,4905,25 more,9945},
+	digits=[{1..9},{1..9},{0,2,4,6,8},{5}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={1148,1176,1232,1288,1316,1344,1372,1428,1456,1484,1512,1568,1596,1624,1652,1736,1764,1792,1848,1876,188 more,9996},
+	digits=[{1..9},{1..9},{1..9},{2,4,6,8}]
+solve: FourSeasonsEntry(name=D11,length=4,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A12[3],D11[2]=A17[0],D11[3]=A20[1]],referrers=[A10,A12,A17,A20],
+	values={1035,2025,2565,3015,3555,4545,5085,5535,6075,6525,7065,7515,8055,8595,9045,9585},
+	digits=[{1..9},{0,5},{1..9},{5}]
+solve: FourSeasonsEntry(name=D13,length=3,value: ,
+	identities=[D13[0]=A12[1],D13[1]=A15[1],D13[2]=A19[1]],referrers=[A12,A15,A19],
+	values={112,119,126,133,147,154,161,168,182,189,196,203,217,224,231,238,252,259,266,273,82 more,994},
+	digits=[{1..9},{0..9},{1..4,6..9}]
+solve: FourSeasonsEntry(name=D14,length=3,value: #square,
+	identities=[D14[0]=A14[0],D14[1]=A17[1],D14[2]=A20[2]],referrers=[A14,A17,A20],
+	values={100,400,900},
+	digits=[{1,4,9},{0},{0}]
+solve: FourSeasonsEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[2],D16[1]=A20[0]],referrers=[A15,A20],
+	values={14,21,28,42,49,56,63,77,84,91,98},
+	digits=[{1,2,4..9},{1..4,6..9}]
+solve: FourSeasonsEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A20[3]],referrers=[A17,A20],
+	values={55},
+	digits=[{5},{5}]
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={2124,2196,2232,2376,2412,2448,2484,2556,2592,2628,2664,2736,2844,2916,2952,2988,3132,3168,3312,3348,90 more,9972},
+	digits=[{2..6,8,9},{1..9},{1..9},{2,4,6,8}]
+solve: FourSeasonsEntry(name=A5,length=2,value: ,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={18,27,36,54,63,72,81,99},
+	digits=[{1..3,5..9},{1..4,6..9}]
+solve: FourSeasonsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={12,16,20,24,32,36,40,44,48,52,60,64,68,72,76,80,88,92,96},
+	digits=[{1..9},{0,2,4,6,8}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={1116,1152,1296,1332,1476,1656,1692,1836,1872,2196,2232,2376,2412,2556,2592,2736,2916,2952,3132,3312,60 more,9972},
+	digits=[{1..9},{1..9},{1,3,5,7,9},{2,6}]
+solve: FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={1225,1645,1925,2345,2485,2765,3185,3325,3745,4165,4445,4585,4865,5285,5425,5845,6125,6265,6545,6685,10 more,9625},
+	digits=[{1..9},{1..9},{2,4,6,8},{5}]
+solve: FourSeasonsEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D6[3]],referrers=[D14,D6],
+	values={95},
+	digits=[{9},{5}]
+solve: FourSeasonsEntry(name=A17,length=3,value: ,
+	identities=[A17[0]=D11[2],A17[1]=D14[1],A17[2]=D18[0]],referrers=[D11,D14,D18],
+	values={205,305,505,805,905},
+	digits=[{2,3,5,8,9},{0},{5}]
+solve: FourSeasonsEntry(name=A19,length=2,value: ,
+	identities=[A19[0]=D9[3],A19[1]=D13[2]],referrers=[D9,D13],
+	values={21,49,63},
+	digits=[{2,4,6},{1,3,9}]
+solve: FourSeasonsEntry(name=A20,length=4,value: ,
+	identities=[A20[0]=D16[1],A20[1]=D11[3],A20[2]=D14[2],A20[3]=D18[1]],referrers=[D16,D11,D14,D18],
+	values={1505},
+	digits=[{1},{5},{0},{5}]
+solve: FourSeasonsEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D1[1],A7[1]=D2[1],A7[2]=D3[1]],referrers=[D1,D2,D3],
+	values={276,496,820},
+	digits=[{2,4,8},{2,7,9},{0,6}]
+solve: FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={124,128,172,176,196,220,224,272,292,296,320,328,376,392,424,428,472,476,496,520,21 more,992},
+	digits=[{1..9},{2,7,9},{0,2,4,6,8}]
+solve: FourSeasonsEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[2],D3[2]=A10[0],D3[3]=A12[2]],referrers=[A1,A7,A10,A12],
+	values={1036,1064,1624,1652,2044,2072,2632,3052,3668,4088,4648,4676,5012,5068,5096,5656,5684,6076,6664,6692,11 more,9688},
+	digits=[{1..9},{0,6},{1..9},{2,4,6,8}]
+solve: FourSeasonsEntry(name=A8,length=3,value: #palindrome,
+	identities=[A8[0]=D4[1],A8[1]=D5[1],A8[2]=D6[1]],referrers=[D4,D5,D6],
+	values={171,333,747},
+	digits=[{1,3,7},{3,4,7},{1,3,7}]
+solve: FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={135,171,243,279,333,531,549,639,675,747,837,873,945},
+	digits=[{1..3,5..9},{3,4,7},{1,3,5,7,9}]
+solve: FourSeasonsEntry(name=D6,length=4,value: ,
+	identities=[D6[0]=A5[1],D6[1]=A8[2],D6[2]=A10[3],D6[3]=A14[1]],referrers=[A5,A8,A10,A14],
+	values={1125,4365,4725,6165,8325,9765},
+	digits=[{1,4,6,8,9},{1,3,7},{2,6},{5}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={1232,1316,1344,1372,1456,1484,1512,1596,1624,1652,1736,1792,1876,1932,2156,2184,2212,2296,2324,2436,132 more,9912},
+	digits=[{1..9},{1..9},{1..9},{2,4,6}]
+solve: FourSeasonsEntry(name=A15,length=3,value: #palindrome,
+	identities=[A15[0]=D9[2],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
+	values={161,525,595,707,777,959},
+	digits=[{1,5,7,9},{0,2,5..7,9},{1,5,7,9}]
+solve: FourSeasonsEntry(name=D11,length=4,value: ,
+	identities=[D11[0]=A10[1],D11[1]=A12[3],D11[2]=A17[0],D11[3]=A20[1]],referrers=[A10,A12,A17,A20],
+	values={3555,5535,6525,8595,9585},
+	digits=[{3,5,6,8,9},{5},{2,3,5,8,9},{5}]
+solve: FourSeasonsEntry(name=D13,length=3,value: ,
+	identities=[D13[0]=A12[1],D13[1]=A15[1],D13[2]=A19[1]],referrers=[A12,A15,A19],
+	values={161,203,259,273,301,329,371,399,469,553,609,623,651,679,693,721,763,791,861,903,2 more,973},
+	digits=[{1..9},{0,2,5..7,9},{1,3,9}]
+solve: FourSeasonsEntry(name=D14,length=3,value: #square,
+	identities=[D14[0]=A14[0],D14[1]=A17[1],D14[2]=A20[2]],referrers=[A14,A17,A20],
+	values={900},
+	digits=[{9},{0},{0}]
+solve: FourSeasonsEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[2],D16[1]=A20[0]],referrers=[A15,A20],
+	values={91},
+	digits=[{9},{1}]
+solve: FourSeasonsEntry(name=A5,length=2,value: ,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={18,36,54,81,99},
+	digits=[{1,3,5,8,9},{1,4,6,8,9}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={1332,1656,1692,1836,1872,2376,2556,2592,2916,2952,3312,3636,3672,3816,3852,3996,4356,4392,4572,4896,24 more,9972},
+	digits=[{1..9},{3,5,6,8,9},{1,3,5,7,9},{2,6}]
+solve: FourSeasonsEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A1[3],D4[1]=A8[0]],referrers=[A1,A8],
+	values={27,63,81},
+	digits=[{2,6,8},{1,3,7}]
+solve: FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={135,171,333,531,549,837,873,945},
+	digits=[{1,3,5,8,9},{3,4,7},{1,3,5,7,9}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={1316,1372,1456,1512,1596,1652,1792,1876,2156,2212,2296,2492,2576,2716,2772,2856,2912,2996,3192,3276,67 more,9912},
+	digits=[{1..9},{1..9},{1,5,7,9},{2,6}]
+solve: FourSeasonsEntry(name=A15,length=3,value: #palindrome,
+	identities=[A15[0]=D9[2],A15[1]=D13[1],A15[2]=D16[0]],referrers=[D9,D13,D16],
+	values={959},
+	digits=[{9},{5},{9}]
+solve: FourSeasonsEntry(name=D13,length=3,value: ,
+	identities=[D13[0]=A12[1],D13[1]=A15[1],D13[2]=A19[1]],referrers=[A12,A15,A19],
+	values={259,553,651},
+	digits=[{2,5,6},{5},{1,3,9}]
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={2196,2232,2376,2412,2448,2556,2592,2628,2736,2916,2952,2988,3132,3168,3312,3348,3456,3492,3636,3672,65 more,9972},
+	digits=[{2..6,8,9},{1..9},{1..9},{2,6,8}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={1596,1792,2296,2492,2996,3192,3696,3892,4396,4592,5796,5992,6496,6692,7196,7392,7896,8596,8792,9296,9492},
+	digits=[{1..9},{1..9},{9},{2,6}]
+solve: FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={1225,1645,4585,5285,6265,6545,6685,7525,8225,8645,9625},
+	digits=[{1,4..9},{2,5,6},{2,4,6,8},{5}]
+solve: FourSeasonsEntry(name=A19,length=2,value: ,
+	identities=[A19[0]=D9[3],A19[1]=D13[2]],referrers=[D9,D13],
+	values={21,63},
+	digits=[{2,6},{1,3}]
+solve: FourSeasonsEntry(name=D13,length=3,value: ,
+	identities=[D13[0]=A12[1],D13[1]=A15[1],D13[2]=A19[1]],referrers=[A12,A15,A19],
+	values={553},
+	digits=[{5},{5},{3}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={1792,2492,2996,3892,4592,5992,6496,6692,7196,8596,8792},
+	digits=[{1..8},{1,4..9},{9},{2,6}]
+solve: FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={4585,6545,7525},
+	digits=[{4,6,7},{5},{2,4,8},{5}]
+solve: FourSeasonsEntry(name=A19,length=2,value: ,
+	identities=[A19[0]=D9[3],A19[1]=D13[2]],referrers=[D9,D13],
+	values={63},
+	digits=[{6},{3}]
+solve: FourSeasonsEntry(name=D9,length=4,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[0],D9[3]=A19[0]],referrers=[A9,A12,A15,A19],
+	values={6496},
+	digits=[{6},{4},{9},{6}]
+solve: FourSeasonsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={60,68},
+	digits=[{6},{0,8}]
+solve: FourSeasonsEntry(name=A12,length=4,value: ,
+	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D3[3],A12[3]=D11[1]],referrers=[D9,D13,D3,D11],
+	values={4585},
+	digits=[{4},{5},{8},{5}]
+solve: FourSeasonsEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[2],D3[2]=A10[0],D3[3]=A12[2]],referrers=[A1,A7,A10,A12],
+	values={4088,4648,5068,7028,9688},
+	digits=[{4,5,7,9},{0,6},{2,4,6,8},{8}]
+solve: FourSeasonsEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A1[3],D4[1]=A8[0]],referrers=[A1,A8],
+	values={27,81},
+	digits=[{2,8},{1,7}]
+solve: FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={128,220,320,328,428,520,620,628,728,820,928},
+	digits=[{1..9},{2},{0,8}]
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={2448,2952,3492,3852,4248,4392,4572,5148,5472,5652,6192,6948,8172,8352,8892,9252,9648,9792,9972},
+	digits=[{2..6,8,9},{1..9},{4,5,7,9},{2,8}]
+solve: FourSeasonsEntry(name=A7,length=3,value: #triangular,
+	identities=[A7[0]=D1[1],A7[1]=D2[1],A7[2]=D3[1]],referrers=[D1,D2,D3],
+	values={820},
+	digits=[{8},{2},{0}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={2376,2556,2592,2916,2952,4356,4392,4572,4896,4932,6336,6372,6516,6696,6876,6912,8352,8532,8676,8856,8892},
+	digits=[{2,4,6,8},{3,5,6,8,9},{1,3,5,7,9},{2,6}]
+solve: FourSeasonsEntry(name=A8,length=3,value: #palindrome,
+	identities=[A8[0]=D4[1],A8[1]=D5[1],A8[2]=D6[1]],referrers=[D4,D5,D6],
+	values={171,747},
+	digits=[{1,7},{4,7},{1,7}]
+solve: FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={128,428,628,728,928},
+	digits=[{1,4,6,7,9},{2},{8}]
+solve: FourSeasonsEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={68},
+	digits=[{6},{8}]
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={2448,2952,3492,5148,5472,5652,6192,6948,8172,9648,9792,9972},
+	digits=[{2,3,5,6,8,9},{1,4,6,7,9},{4,5,7,9},{2,8}]
+solve: FourSeasonsEntry(name=D1,length=2,value: ,
+	identities=[D1[0]=A1[0],D1[1]=A7[0]],referrers=[A1,A7],
+	values={28,88},
+	digits=[{2,8},{8}]
+solve: FourSeasonsEntry(name=D3,length=4,value: ,
+	identities=[D3[0]=A1[2],D3[1]=A7[2],D3[2]=A10[0],D3[3]=A12[2]],referrers=[A1,A7,A10,A12],
+	values={4088,5068,7028},
+	digits=[{4,5,7},{0},{2,6,8},{8}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={2376,2556,2592,2916,2952,6336,6372,6516,6696,6876,6912,8352,8532,8676,8856,8892},
+	digits=[{2,6,8},{3,5,6,8,9},{1,3,5,7,9},{2,6}]
+solve: FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={171,549,873,945},
+	digits=[{1,5,8,9},{4,7},{1,3,5,9}]
+solve: FourSeasonsEntry(name=D6,length=4,value: ,
+	identities=[D6[0]=A5[1],D6[1]=A8[2],D6[2]=A10[3],D6[3]=A14[1]],referrers=[A5,A8,A10,A14],
+	values={1125,4725,6165,9765},
+	digits=[{1,4,6,9},{1,7},{2,6},{5}]
+solve: FourSeasonsEntry(name=A1,length=4,value: ,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
+	values={2448,2952,8172},
+	digits=[{2,8},{1,4,9},{4,5,7},{2,8}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={2556,2592,2916,2952,6336,6516,6696,6912,8352,8532,8856,8892},
+	digits=[{2,6,8},{3,5,6,8,9},{1,3,5,9},{2,6}]
+solve: FourSeasonsEntry(name=A5,length=2,value: ,
+	identities=[A5[0]=D5[0],A5[1]=D6[0]],referrers=[D5,D6],
+	values={54,81,99},
+	digits=[{5,8,9},{1,4,9}]
+solve: FourSeasonsEntry(name=D6,length=4,value: ,
+	identities=[D6[0]=A5[1],D6[1]=A8[2],D6[2]=A10[3],D6[3]=A14[1]],referrers=[A5,A8,A10,A14],
+	values={1125,4725,9765},
+	digits=[{1,4,9},{1,7},{2,6},{5}]
+solve: FourSeasonsEntry(name=D2,length=3,value: ,
+	identities=[D2[0]=A1[1],D2[1]=A7[1],D2[2]=A9[1]],referrers=[A1,A7,A9],
+	values={128,428,928},
+	digits=[{1,4,9},{2},{8}]
+solve: FourSeasonsEntry(name=D5,length=3,value: ,
+	identities=[D5[0]=A5[0],D5[1]=A8[1],D5[2]=A10[2]],referrers=[A5,A8,A10],
+	values={549,873,945},
+	digits=[{5,8,9},{4,7},{3,5,9}]
+solve: FourSeasonsEntry(name=A10,length=4,value: ,
+	identities=[A10[0]=D3[2],A10[1]=D11[0],A10[2]=D5[2],A10[3]=D6[2]],referrers=[D3,D11,D5,D6],
+	values={2556,2592,2952,6336,6696,8352,8532,8856,8892},
+	digits=[{2,6,8},{3,5,6,8,9},{3,5,9},{2,6}]
+Clue/Variable iterations=182, updates=106, elapsed 0:00:36.753233
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, , values={2448,2952,8172}
+A5, , values={54,81,99}
+A7, #triangular, values={820}
+A8, #palindrome, values={171,747}
+A9, , values={68}
+A10, , values={2556,2592,2952,6336,6696,8352,8532,8856,8892}
+A12, , values={4585}
+A14, , values={95}
+A15, #palindrome, values={959}
+A17, , values={205,305,505,805,905}
+A19, , values={63}
+A20, , values={1505}
+D1, , values={28,88}
+D2, , values={128,428,928}
+D3, , values={4088,5068,7028}
+D4, , values={27,81}
+D5, , values={549,873,945}
+D6, , values={1125,4725,9765}
+D9, , values={6496}
+D11, , values={3555,5535,6525,8595,9585}
+D13, , values={553}
+D14, #square, values={900}
+D16, , values={91}
+D18, , values={55}
++--+--+--+--+--+--+
+| ?  ?  ?  ?| ?  ?|
++           +     +
+| 8  2  0| ?  ?  ?|
++--+     +--+     +
+| 6  8| ?  ?  ?  ?|
++   --+      --+  +
+| 4  5  8  5| 9  5|
++      --+  +   --+
+| 9  5  9| ?  0  5|
++        +        +
+| 6  3| 1  5  0  5|
++--+--+--+--+--+--+
+
+ITERATE SOLUTIONS-----------------------------
+SOLUTION-----------------------------
+Puzzle Summary
+A1, , values={8172}
+A5, , values={99}
+A7, #triangular, values={820}
+A8, #palindrome, values={747}
+A9, , values={68}
+A10, , values={2556}
+A12, , values={4585}
+A14, , values={95}
+A15, #palindrome, values={959}
+A17, , values={305}
+A19, , values={63}
+A20, , values={1505}
+D1, , values={88}
+D2, , values={128}
+D3, , values={7028}
+D4, , values={27}
+D5, , values={945}
+D6, , values={9765}
+D9, , values={6496}
+D11, , values={5535}
+D13, , values={553}
+D14, #square, values={900}
+D16, , values={91}
+D18, , values={55}
++--+--+--+--+--+--+
+| 8  1  7  2| 9  9|
++           +     +
+| 8  2  0| 7  4  7|
++--+     +--+     +
+| 6  8| 2  5  5  6|
++   --+      --+  +
+| 4  5  8  5| 9  5|
++      --+  +   --+
+| 9  5  9| 3  0  5|
++        +        +
+| 6  3| 1  5  0  5|
++--+--+--+--+--+--+
+
+Solution count=1

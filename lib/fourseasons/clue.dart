@@ -2,12 +2,12 @@ import '../clue.dart';
 import '../variable.dart';
 
 /// A Puzzle clue
-class TetrominoClue extends ExpressionClue {
+class FourSeasonsClue extends ExpressionClue {
   /// List of referenced primes
   List<String> get letterReferences => variableNameReferences;
   addLetterReference(String letter) => addVariableReference(letter);
 
-  TetrominoClue(
+  FourSeasonsClue(
       {required super.name,
       super.type = VariableType.C,
       required super.length,
@@ -17,8 +17,8 @@ class TetrominoClue extends ExpressionClue {
       super.entryNames});
 }
 
-class TetrominoEntry extends TetrominoClue with EntryMixin {
-  TetrominoEntry({
+class FourSeasonsEntry extends FourSeasonsClue with EntryMixin {
+  FourSeasonsEntry({
     required super.name,
     super.type = VariableType.E,
     required super.length,
