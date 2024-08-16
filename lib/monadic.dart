@@ -28,6 +28,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['sumdigits'] =
       Monadic('sumdigits', sumDigits, int, order: NodeOrder.UNKNOWN);
   monadics['square'] = Monadic('square', square, int);
+  monadics['squareroot'] = Monadic('squareroot', squareroot, int);
   monadics['cube'] = Monadic('cube', cube, int);
   monadics['even'] = Monadic('even', isEven, bool);
   monadics['odd'] = Monadic('odd', isOdd, bool);
@@ -125,6 +126,12 @@ int sumDigits(int value) {
 int square(int value) {
   var result = value * value;
   return result;
+}
+
+int squareroot(int value) {
+  var result = sqrt(value);
+  ExpressionEvaluator.checkInteger(result);
+  return result.toInt();
 }
 
 int cube(int value) {

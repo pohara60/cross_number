@@ -564,11 +564,11 @@ class ExpressionEvaluator {
     if (node!.token.type == VAR) {}
   }
 
-  void integerException() {
+  static void integerException() {
     throw ExpressionInvalid('Non-integer expression');
   }
 
-  void checkInteger(num value) {
+  static void checkInteger(num value) {
     if (!isIntegerValue(value)) {
       integerException();
     }
@@ -704,7 +704,7 @@ class ExpressionEvaluator {
     return result;
   }
 
-  bool isIntegerValue(num value) {
+  static bool isIntegerValue(num value) {
     return value is int || value == value.roundToDouble();
   }
 

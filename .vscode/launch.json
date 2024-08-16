@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Virus",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Virus"
+            ]
+        },
+        {
             "name": "FourSeasons",
             "type": "dart",
             "request": "launch",

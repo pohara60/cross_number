@@ -50,6 +50,7 @@ import 'package:crossnumber/triangularpairs/triangularpairs.dart';
 import 'package:crossnumber/twentyfive/twentyfive.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/undersix/undersix.dart';
+import 'package:crossnumber/virus/virus.dart';
 import 'package:crossnumber/wheels/wheels.dart';
 
 const help = 'help';
@@ -105,7 +106,8 @@ void main(List<String> arguments) async {
     ..addCommand(PrimaniaCommand())
     ..addCommand(ABCDECommand())
     ..addCommand(TetrominoCommand())
-    ..addCommand(FourSeasonsCommand());
+    ..addCommand(FourSeasonsCommand())
+    ..addCommand(VirusCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1110,6 +1112,30 @@ class FourSeasonsCommand extends Command {
     // Get and print solve
     try {
       final pc = FourSeasons();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class VirusCommand extends Command {
+  @override
+  final name = 'Virus';
+  @override
+  final description = 'solve hardcoded Virus puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Virus();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
