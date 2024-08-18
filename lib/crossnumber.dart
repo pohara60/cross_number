@@ -146,11 +146,11 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             }
             if (updatedVariable.isSet) {
               // Find other clues/variables that can no longer have the value
-              var puzzle = puzzleForVariable[updatedVariable]!;
-              for (var referrer
-                  in puzzle.clueOrVariableValueReferences(updatedVariable)) {
-                addToUpdateQueue(referrer);
-              }
+              // var puzzle = puzzleForVariable[updatedVariable]!;
+              // for (var referrer
+              //     in puzzle.clueOrVariableValueReferences(updatedVariable)) {
+              //   addToUpdateQueue(referrer);
+              // }
             }
             updates++;
             firstExceptionVariable = null;
@@ -222,6 +222,16 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
 
     return unfinishedPuzzles[index + 1].iterate(callback);
+  }
+
+  Set<Variable> solveClueNoException(Variable variable) {
+    var result = <Variable>{};
+    try {
+      result = solveClue(variable);
+    } on SolveException {
+      // Swallow exception
+    }
+    return result;
   }
 
   Set<Variable> solveClue(Variable variable) {

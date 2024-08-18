@@ -248,6 +248,15 @@ Iterable<int> generateTriangles(num min, num max) sync* {
   }
 }
 
+bool isTriangular(int value) {
+  if (value > triangles.last) {
+    // ignore: unused_local_variable
+    for (var triangle in generateTriangles(value, value)) {}
+  }
+  var result = triangles.contains(value);
+  return result;
+}
+
 var pyramidals = <int>[1, 5];
 Iterable<int> generateSquarePyramidals(num min, num max) sync* {
   int last = pyramidals.last;

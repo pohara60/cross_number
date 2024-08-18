@@ -1,564 +1,1155 @@
-Connecting to VM Service at ws://127.0.0.1:49953/eGPKsRRPEiE=/ws
-Warning: expression '$prime $jumble #otherentry' has generator with Unknown Order
-Warning: expression '$kv EA6 = #triangular' has generator with Unknown Order
-Warning: expression '$kv EA8 = #prime' has generator with Unknown Order
-Warning: expression '$kv EA10 = #square' has generator with Unknown Order
-Warning: expression '$kv EA12 = $multiple ED10' has generator with Unknown Order
-Warning: expression '$kv ED1 = $multiple EA9' has generator with Unknown Order
-Warning: expression '$kv ED4 = $multiple ED3' has generator with Unknown Order
-Warning: expression '$kv ED7 = $multiple K*10+V' has generator with Unknown Order
-Warning: expression '$kv ED10 = #prime' has generator with Unknown Order
-Warning: expression '$kv ED11 = $factor ED1' has generator with Unknown Order
+Warning: expression '£inversekv(EA2,X) = $prime $jumble #otherentry' has generator with Unknown Order
+Warning: expression '£inversekv(EA6,X) = $triangular #result' has generator with Unknown Order
+Warning: expression '£inversekv(EA8,X) = #prime' has generator with Unknown Order
+Warning: expression '£inversekv(EA9,X) = $DS ED7' has generator with Unknown Order
+Warning: expression '£inversekv(EA10,X) = #square' has generator with Unknown Order
+Warning: expression '£inversekv(EA12,X) = $multiple ED10' has generator with Unknown Order
+Warning: expression '£inversekv(ED1,X) = $multiple EA9' has generator with Unknown Order
+Warning: expression '£inversekv(ED3,X) = $DS EA10' has generator with Unknown Order
+Warning: expression '£inversekv(ED4,X) = $multiple ED3' has generator with Unknown Order
+Warning: expression '£inversekv(ED5,X) = $DP EA12' has generator with Unknown Order
+Warning: expression '£inversekv(ED7,X) = $multiple X' has generator with Unknown Order
+Warning: expression '£inversekv(ED9,X) = $squareroot EA6' has generator with Unknown Order
+Warning: expression '£inversekv(ED10,X) = #prime' has generator with Unknown Order
+Warning: expression '£inversekv(ED11,X) = $divisor ED1' has generator with Unknown Order
 Puzzle
-Clue VirusClue(name=A2,length=3,value: $prime $jumble #otherentry,
+Clue VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
 	referrers=[A2],
 	values={unknown}
-Clue VirusClue(name=A6,length=3,value: $kv EA6 = #triangular,
+Clue VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
 	referrers=[A6],
 	values={unknown}
-Clue VirusClue(name=A8,length=2,value: $kv EA8 = #prime,
+Clue VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
 	referrers=[A8],
 	values={unknown}
-Clue VirusClue(name=A9,length=2,value: $kv EA9 = $DS ED7,
+Clue VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
 	referrers=[A9],
 	values={unknown}
-Clue VirusClue(name=A10,length=3,value: $kv EA10 = #square,
+Clue VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
 	referrers=[A10],
 	values={unknown}
-Clue VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
+Clue VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
 	referrers=[A12],
 	values={unknown}
-Clue VirusClue(name=D1,length=2,value: $kv ED1 = $multiple EA9,
+Clue VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
 	referrers=[D1],
 	values={unknown}
-Clue VirusClue(name=D3,length=2,value: $kv ED3 = $DS ED10,
+Clue VirusClue(name=D3,length=2,value: £inversekv(ED3,X) = $DS EA10,
 	referrers=[D3],
 	values={unknown}
-Clue VirusClue(name=D4,length=3,value: $kv ED4 = $multiple ED3,
+Clue VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
 	referrers=[D4],
 	values={unknown}
-Clue VirusClue(name=D5,length=2,value: $kv ED5 = $DP EA12,
+Clue VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
 	referrers=[D5],
 	values={unknown}
-Clue VirusClue(name=D7,length=3,value: $kv ED7 = $multiple K*10+V,
+Clue VirusClue(name=D7,length=3,value: £inversekv(ED7,X) = $multiple X,
 	referrers=[D7],
 	values={unknown}
-Clue VirusClue(name=D9,length=2,value: $kv ED9 = $squareroot EA6,
+Clue VirusClue(name=D9,length=2,value: £inversekv(ED9,X) = $squareroot EA6,
 	referrers=[D9],
 	values={unknown}
-Clue VirusClue(name=D10,length=2,value: $kv ED10 = #prime,
+Clue VirusClue(name=D10,length=2,value: £inversekv(ED10,X) = #prime,
 	referrers=[D10],
 	values={unknown}
-Clue VirusClue(name=D11,length=2,value: $kv ED11 = $factor ED1,
+Clue VirusClue(name=D11,length=2,value: £inversekv(ED11,X) = $divisor ED1,
 	referrers=[D11],
 	values={unknown}
-Entry VirusEntry(name=D1,length=2,value: $kv D1,
+Entry VirusEntry(name=D1,length=2,value: £kv(D1,X),
 	identities=[D1[1]=A6[0]],referrers=[A6,D1,D11],
 	values={unknown},
 	digits=[{1..9},{1..9}]
-Entry VirusEntry(name=A2,length=3,value: $kv A2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
+Entry VirusEntry(name=A2,length=3,value: £kv(A2,X),
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4,A2],
 	values={unknown},
 	digits=[{1..9},{1..9},{1..9}]
-Entry VirusEntry(name=D3,length=2,value: $kv D3,
+Entry VirusEntry(name=D3,length=2,value: £kv(D3,X),
 	identities=[D3[0]=A2[1],D3[1]=A6[2]],referrers=[A2,A6,D3,D4],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=D4,length=3,value: $kv D4,
+Entry VirusEntry(name=D4,length=3,value: £kv(D4,X),
 	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-Entry VirusEntry(name=D5,length=2,value: $kv D5,
+Entry VirusEntry(name=D5,length=2,value: £kv(D5,X),
 	identities=[D5[1]=A8[1]],referrers=[A8,D5],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=A6,length=3,value: $kv A6,
+Entry VirusEntry(name=A6,length=3,value: £kv(A6,X),
 	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
 	values={unknown},
 	digits=[{1..9},{1..9},{0..9}]
-Entry VirusEntry(name=D7,length=3,value: $kv D7,
+Entry VirusEntry(name=D7,length=3,value: £kv(D7,X),
 	identities=[D7[0]=A6[1],D7[1]=A9[1],D7[2]=A12[0]],referrers=[A6,A9,A12,A9,D7],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-Entry VirusEntry(name=A8,length=2,value: $kv A8,
+Entry VirusEntry(name=A8,length=2,value: £kv(A8,X),
 	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=A9,length=2,value: $kv A9,
+Entry VirusEntry(name=A9,length=2,value: £kv(A9,X),
 	identities=[A9[0]=D9[0],A9[1]=D7[1]],referrers=[D9,D7,A9,D1],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=D9,length=2,value: $kv D9,
+Entry VirusEntry(name=D9,length=2,value: £kv(D9,X),
 	identities=[D9[0]=A9[0]],referrers=[A9,D9],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=A10,length=3,value: $kv A10,
-	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10],
+Entry VirusEntry(name=A10,length=3,value: £kv(A10,X),
+	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10,D3],
 	values={unknown},
 	digits=[{1..9},{0..9},{1..9}]
-Entry VirusEntry(name=D10,length=2,value: $kv D10,
-	identities=[D10[0]=A10[0],D10[1]=A12[1]],referrers=[A10,A12,A12,D3,D10],
+Entry VirusEntry(name=D10,length=2,value: £kv(D10,X),
+	identities=[D10[0]=A10[0],D10[1]=A12[1]],referrers=[A10,A12,A12,D10],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=D11,length=2,value: $kv D11,
+Entry VirusEntry(name=D11,length=2,value: £kv(D11,X),
 	identities=[D11[0]=A10[2]],referrers=[A10,D11],
 	values={unknown},
 	digits=[{1..9},{0..9}]
-Entry VirusEntry(name=A12,length=3,value: $kv A12,
+Entry VirusEntry(name=A12,length=3,value: £kv(A12,X),
 	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
 	values={unknown},
 	digits=[{1..9},{0..9},{0..9}]
 Variables:
-K={1..9}
-V={1..9}
-UPDATES-----------------------------
-solve: VirusClue(name=A2,length=3,value: $prime $jumble #otherentry,
-	referrers=[A2],
-	values={101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,123 more,997}
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.020685
-solve: VirusEntry(name=A2,length=3,value: $kv A2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={112..119,121..129,131..133,632 more,998},
-	digits=[{1..9},{1..9},{1..9}]
-solve: VirusEntry(name=A6,length=3,value: $kv A6,
-	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
-	values={110..129,790 more,999},
-	digits=[{1..9},{1..9},{0..9}]
-Eval VirusClue A6 cartesianCount=810, elapsed 0:00:00.041581
-solve: VirusClue(name=A6,length=3,value: $kv EA6 = #triangular,
+X={12..19,21,23..29,31,32,34,35,52 more,98}
+
+MANUAL UPDATES-----------------------------
+A6={136,171,276,351,496,561,861}
+EA6={121,196,256,361,676}
+X={16,39,41,53,56,72,75,83}
+D9={11,14,16,19,26}
+D7={288,351,504,525,636,664,768,984}
+ED7={288,525,604,636,664,768,951,981}
+A9={10,12,15,16,18,21}
+EA9={10,12,13,15,16,18,26}
+Eval VirusClue A6 cartesianCount=40, elapsed 0:00:00.009614
+solve: VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
 	referrers=[A6],
-	values={120,136,153,171,190,210,231,253,276,325,351,378,435,465,496,528,561,595,630,666,6 more,990}
-Entry A6={110,111,120,121,123,125,126,128,130..132,134,135,137..141,143,146,299 more,999}
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.001021
-Eval VirusClue A8 cartesianCount=90, elapsed 0:00:00.003190
-solve: VirusClue(name=A8,length=2,value: $kv EA8 = #prime,
-	referrers=[A8],
-	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Entry A8={12..19,21..29,31..33,60 more,99}
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000853
-Eval VirusClue A9 cartesianCount=72900, elapsed 0:00:00.195332
-solve: VirusClue(name=A9,length=2,value: $kv EA9 = $DS ED7,
+	values={136,171,276,351,496,561,861}
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000605
+Eval VirusClue D9 cartesianCount=3600, elapsed 0:00:00.023333
+solve: VirusClue(name=D9,length=2,value: £inversekv(ED9,X) = $squareroot EA6,
+	referrers=[D9],
+	values={11,14,16,19,26}
+Entry D9={11,14,16,19,26,64,66,69}
+Eval VirusEntry D9 cartesianCount=40, elapsed 0:00:00.000348
+Eval VirusClue D7 cartesianCount=64, elapsed 0:00:00.000687
+solve: VirusClue(name=D7,length=3,value: £inversekv(ED7,X) = $multiple X,
+	referrers=[D7],
+	values={288,351,504,525,636,664,768,984}
+Eval VirusEntry D7 cartesianCount=64, elapsed 0:00:00.000355
+Eval VirusClue A9 cartesianCount=448, elapsed 0:00:00.003024
+solve: VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
 	referrers=[A9],
-	values={10,11,13..20,22..27}
-Entry A9={10,11,13..17,20..30,33,34,32 more,99}
-Entry D7={109,118,119,127,128,136,137,139,145,146,148,149,154,155,157..159,163,164,166,583 more,999}
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.001805
-Eval VirusClue A9 cartesianCount=31356, elapsed 0:00:00.058758
-Eval VirusEntry A9 cartesianCount=16, elapsed 0:00:00.000284
-solve: VirusEntry(name=A10,length=3,value: $kv A10,
-	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10],
-	values={101..109,111..119,121,122,790 more,999},
-	digits=[{1..9},{0..9},{1..9}]
-Eval VirusClue A10 cartesianCount=810, elapsed 0:00:00.010325
-solve: VirusClue(name=A10,length=3,value: $kv EA10 = #square,
-	referrers=[A10],
-	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961}
-Entry A10={115,122,124..126,129,131,133,136,139,141,146,149,151,155,156,159,161..163,247 more,995}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000937
-Eval VirusClue A12 cartesianCount=81000, elapsed 0:00:01.666367
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={100,102,104..106,108,110..112,114..124,545 more,999}
-Entry A12={100,102..120,871 more,999}
-Entry D10={10..29,70 more,99}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000575
-Eval VirusClue A12 cartesianCount=80190, elapsed 0:00:01.688559
-Eval VirusEntry A12 cartesianCount=565, elapsed 0:00:00.008902
-solve: VirusEntry(name=D1,length=2,value: $kv D1,
-	identities=[D1[1]=A6[0]],referrers=[A6,D1,D11],
-	values={11..19,21..29,31,32,61 more,99},
-	digits=[{1..9},{1..9}]
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000534
-Eval VirusClue D1 cartesianCount=4212, elapsed 0:00:00.048636
-solve: VirusClue(name=D1,length=2,value: $kv ED1 = $multiple EA9,
-	referrers=[D1],
-	values={22,26,28,32..34,39,42,44..46,48,51,52,54..56,58,63,64,21 more,99}
-Entry A9={11,13..17,21..29,33,34,36..38,6 more,49}
-Eval VirusClue A9 cartesianCount=15678, elapsed 0:00:00.032404
-solve: VirusClue(name=A9,length=2,value: $kv EA9 = $DS ED7,
-	referrers=[A9],
-	values={11,13..19,22..27}
-Entry D7={119,128,137,139,146,148,149,155,157..159,164,166..169,173,175..177,502 more,999}
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000440
-Eval VirusClue A9 cartesianCount=13572, elapsed 0:00:00.023910
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000139
-solve: VirusEntry(name=A9,length=2,value: $kv A9,
-	identities=[A9[0]=D9[0],A9[1]=D7[1]],referrers=[D9,D7,A9,D1],
-	values={11,13..17,22..29,33,34,36..39,5 more,49},
-	digits=[{1..4},{1..9}]
-Eval VirusClue A9 cartesianCount=13050, elapsed 0:00:00.025580
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000141
-Eval VirusEntry A12 cartesianCount=565, elapsed 0:00:00.007141
-Eval VirusClue D1 cartesianCount=2025, elapsed 0:00:00.027839
-solve: VirusClue(name=D1,length=2,value: $kv ED1 = $multiple EA9,
-	referrers=[D1],
-	values={22,26,28,32..34,39,42,44..46,48,51,52,54..56,58,64,65,20 more,99}
-Entry D1={11,12,14..19,21..29,31..33,60 more,99}
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000933
-Eval VirusClue D1 cartesianCount=2000, elapsed 0:00:00.032681
-Eval VirusEntry D1 cartesianCount=40, elapsed 0:00:00.000634
-solve: VirusEntry(name=D3,length=2,value: $kv D3,
-	identities=[D3[0]=A2[1],D3[1]=A6[2]],referrers=[A2,A6,D3,D4],
+	values={10,12,15,16,18,21}
+Eval VirusEntry A9 cartesianCount=48, elapsed 0:00:00.000291
+UPDATES-----------------------------
+Eval VirusClue A2 cartesianCount=5832, elapsed 0:00:45.804690
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,108 more,997}
+Entry A2={113,119,123,125,127,129,131..133,135,137,139,149,151..153,157,159,161,162,268 more,997}
+Eval VirusEntry A2 cartesianCount=1024, elapsed 0:00:00.003354
+Eval VirusClue A6 cartesianCount=40, elapsed 0:00:00.000423
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000120
+solve: VirusEntry(name=A8,length=2,value: £kv(A8,X),
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.001994
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000659
-Eval VirusClue D3 cartesianCount=8100, elapsed 0:00:00.012424
-solve: VirusClue(name=D3,length=2,value: $kv ED3 = $DS ED10,
-	referrers=[D3],
-	values={10,11,13..18}
-Entry D10={19,28,29,37,38,46,47,49,55,56,58,59,64,65,67..69,73,74,76,18 more,99}
-Entry D3={20,22..28,30,33..38,40,44..47,17 more,99}
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.001927
-solve: VirusEntry(name=A2,length=3,value: $kv A2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={121..129,131..139,141,142,569 more,998},
-	digits=[{1..9},{2..9},{1..9}]
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000713
-solve: VirusEntry(name=A6,length=3,value: $kv A6,
-	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
-	values={110,120,123,125,126,128,130,132,134,135,137..140,143,146,150,152..154,248 more,999},
-	digits=[{1..9},{1..9},{0,2..9}]
-Eval VirusClue A6 cartesianCount=268, elapsed 0:00:00.005014
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000538
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000425
-Eval VirusEntry A12 cartesianCount=565, elapsed 0:00:00.007785
-solve: VirusEntry(name=A12,length=3,value: $kv A12,
-	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
-	values={110..129,790 more,999},
-	digits=[{1..9},{1..9},{0..9}]
-Eval VirusClue A12 cartesianCount=30780, elapsed 0:00:00.648158
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={110..112,114,116,118,128,130,133,134,136,138,140,141,145..148,152,154,329 more,999}
-Eval VirusEntry A12 cartesianCount=349, elapsed 0:00:00.007429
-Eval VirusClue A12 cartesianCount=30780, elapsed 0:00:00.605278
-Eval VirusEntry D1 cartesianCount=40, elapsed 0:00:00.000559
-Eval VirusEntry D3 cartesianCount=8, elapsed 0:00:00.000104
-Eval VirusClue D3 cartesianCount=1406, elapsed 0:00:00.003468
-Eval VirusClue D4 cartesianCount=26973, elapsed 0:00:00.639510
-solve: VirusClue(name=D4,length=3,value: $kv ED4 = $multiple ED3,
-	referrers=[D4],
-	values={111,112,114..116,125,132,134..136,138,141,144,148,152,154,156,161,162,165,223 more,999}
-Entry D3={22..28,33..38,44..48,55,56,9 more,99}
-Entry D4={111..119,121..129,131,132,707 more,999}
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.002501
-Eval VirusEntry A6 cartesianCount=26, elapsed 0:00:00.000360
-solve: VirusEntry(name=A6,length=3,value: $kv A6,
-	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
-	values={123,125,126,128,132,134,135,137..139,143,146,152..154,156..159,163,185 more,999},
-	digits=[{1..9},{1..9},{2..9}]
-Eval VirusClue A6 cartesianCount=205, elapsed 0:00:00.003023
-solve: VirusClue(name=A6,length=3,value: $kv EA6 = #triangular,
-	referrers=[A6],
-	values={136,153,171,231,253,276,325,351,378,435,465,496,528,561,595,666,741,861,946}
-Eval VirusEntry A6 cartesianCount=19, elapsed 0:00:00.000690
-Eval VirusClue A6 cartesianCount=205, elapsed 0:00:00.002685
-solve: VirusClue(name=A6,length=3,value: $kv EA6 = #triangular,
-	referrers=[A6],
-	values={136,153,171,231,253,276,325,351,378,435,465,496,528,561,595,666,741,861,946}
-Entry A6={123,125,126,128,132,134,135,137..139,143,146,153,159,165,176,178,193,196,213,133 more,999}
-Eval VirusEntry A6 cartesianCount=19, elapsed 0:00:00.000313
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000266
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000567
-Eval VirusEntry D1 cartesianCount=40, elapsed 0:00:00.000843
-Eval VirusClue D3 cartesianCount=1102, elapsed 0:00:00.002094
-solve: VirusClue(name=D3,length=2,value: $kv ED3 = $DS ED10,
-	referrers=[D3],
-	values={11,13..18}
-Entry D10={29,38,47,49,56,58,59,65,67..69,74,76..79,83,85..87,9 more,99}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000354
-solve: VirusEntry(name=A10,length=3,value: $kv A10,
-	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10],
-	values={216,219,221,223,224,226..229,236,239,241,244,246,249,251,253,254,257,258,205 more,995},
-	digits=[{2..9},{1..9},{1..9}]
-Eval VirusClue A10 cartesianCount=225, elapsed 0:00:00.004153
-solve: VirusClue(name=A10,length=3,value: $kv EA10 = #square,
-	referrers=[A10],
-	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961}
-Entry A10={216,219,221,229,236,239,241,244,246,249,251,253,254,257..259,261,269,272,276,165 more,965}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000241
-solve: VirusEntry(name=A10,length=3,value: $kv A10,
-	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10],
-	values={216,219,221,236,239,241,244,246,249,251,253,254,257..259,261,269,272,276,279,139 more,965},
-	digits=[{2..9},{1..9},{1..9}]
-Eval VirusClue A10 cartesianCount=159, elapsed 0:00:00.002650
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000382
-Eval VirusClue A12 cartesianCount=23490, elapsed 0:00:00.425761
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={112,114,116,118,130,134,136,138,141,145,147,148,152,154,156,158,166,168,170,172,256 more,996}
-Eval VirusEntry A12 cartesianCount=276, elapsed 0:00:00.003906
-solve: VirusEntry(name=A12,length=3,value: $kv A12,
-	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
-	values={120..139,700 more,999},
-	digits=[{1..9},{2..9},{0..9}]
-Eval VirusClue A12 cartesianCount=20880, elapsed 0:00:00.374906
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={112,114,116,118,130,134,136,138,141,145,147,148,152,154,156,158,166,168,170,172,256 more,996}
-Entry A12={120..139,698 more,999}
-Eval VirusEntry A12 cartesianCount=276, elapsed 0:00:00.003835
-Eval VirusEntry D3 cartesianCount=7, elapsed 0:00:00.000125
-Eval VirusClue D3 cartesianCount=841, elapsed 0:00:00.001874
-Eval VirusClue D4 cartesianCount=21083, elapsed 0:00:00.416967
-Eval VirusEntry D4 cartesianCount=243, elapsed 0:00:00.003243
-solve: VirusEntry(name=D5,length=2,value: $kv D5,
-	identities=[D5[1]=A8[1]],referrers=[A8,D5],
-	values={11..19,21..29,31,32,61 more,99},
-	digits=[{1..9},{1..9}]
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000344
-Eval VirusClue D5 cartesianCount=58158, elapsed 0:00:00.225454
-solve: VirusClue(name=D5,length=2,value: $kv ED5 = $DP EA12,
-	referrers=[D5],
-	values={14..16,18,24,25,27,28,32,35,36,42,45,48,49,54,56,63,64,72,5 more,98}
-Entry A12={127..129,135,136,138,139,144,146..149,153,155,157,159,163,164,166,167,208 more,991}
-Entry D5={12..19,21,23..26,28,29,31,32,34..36,50 more,98}
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000477
-Eval VirusClue A12 cartesianCount=6612, elapsed 0:00:00.121756
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={112,114,116,118,134,136,138,141,145,147,148,152,154,156,158,166,168,172,174,176,205 more,996}
-Eval VirusEntry A12 cartesianCount=225, elapsed 0:00:00.002671
-solve: VirusEntry(name=A12,length=3,value: $kv A12,
-	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
-	values={127..129,135,136,138,139,144,146..149,153,155,157,159,163,164,166,167,207 more,991},
-	digits=[{1..9},{2..9},{1..9}]
-Eval VirusClue A12 cartesianCount=6583, elapsed 0:00:00.122475
-Eval VirusEntry A12 cartesianCount=225, elapsed 0:00:00.002567
-Eval VirusClue D5 cartesianCount=15890, elapsed 0:00:00.036017
-Eval VirusEntry D5 cartesianCount=25, elapsed 0:00:00.000345
-solve: VirusEntry(name=D9,length=2,value: $kv D9,
-	identities=[D9[0]=A9[0]],referrers=[A9,D9],
-	values={10..29,20 more,49},
-	digits=[{1..4},{0..9}]
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000212
-Eval VirusClue D9 cartesianCount=6120, elapsed 0:00:01.265426
-solve: VirusClue(name=D9,length=2,value: $kv ED9 = $squareroot EA6,
-	referrers=[D9],
-	values={14,18,23..26}
-Entry A6={196,324,529,576,625,676}
-Entry D9={13..16,21,24,28,34..36,38,45,46,48}
-Eval VirusClue A6 cartesianCount=6, elapsed 0:00:00.000211
-solve: VirusClue(name=A6,length=3,value: $kv EA6 = #triangular,
-	referrers=[A6],
-	values={136,171,276,325,496,528}
-Eval VirusEntry A6 cartesianCount=6, elapsed 0:00:00.000065
-solve: VirusEntry(name=A6,length=3,value: $kv A6,
-	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
-	values={196,576,625,676},
-	digits=[{1,5,6},{2,7,9},{5,6}]
-Eval VirusClue A6 cartesianCount=4, elapsed 0:00:00.000062
-solve: VirusClue(name=A6,length=3,value: $kv EA6 = #triangular,
-	referrers=[A6],
-	values={171,276,496}
-Entry A6={196,576,676}
-Eval VirusEntry A6 cartesianCount=3, elapsed 0:00:00.000049
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000143
-Eval VirusEntry D1 cartesianCount=40, elapsed 0:00:00.000622
-solve: VirusEntry(name=D1,length=2,value: $kv D1,
-	identities=[D1[1]=A6[0]],referrers=[A6,D1,D11],
-	values={11,15,16,21,25,26,31,35,36,41,45,46,51,55,56,61,65,66,71,75,7 more,96},
-	digits=[{1..9},{1,5,6}]
-Eval VirusEntry A6 cartesianCount=3, elapsed 0:00:00.000049
-Eval VirusClue D1 cartesianCount=675, elapsed 0:00:00.014654
-Eval VirusEntry D1 cartesianCount=40, elapsed 0:00:00.000955
-Eval VirusEntry D3 cartesianCount=7, elapsed 0:00:00.000070
-solve: VirusEntry(name=D3,length=2,value: $kv D3,
-	identities=[D3[0]=A2[1],D3[1]=A6[2]],referrers=[A2,A6,D3,D4],
-	values={26,36,46,56,66},
-	digits=[{2..6},{6}]
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.002161
-solve: VirusEntry(name=A2,length=3,value: $kv A2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={121..129,131..139,141,142,350 more,969},
-	digits=[{1..9},{2..6},{1..9}]
-Eval VirusEntry A6 cartesianCount=3, elapsed 0:00:00.000043
-Eval VirusEntry D3 cartesianCount=7, elapsed 0:00:00.000047
-Eval VirusClue D3 cartesianCount=145, elapsed 0:00:00.000434
-solve: VirusClue(name=D3,length=2,value: $kv ED3 = $DS ED10,
-	referrers=[D3],
-	values={11,16}
-Entry D10={29,38,47,56,65,74,79,83,88,92,97}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000356
-Eval VirusClue A12 cartesianCount=2497, elapsed 0:00:00.048503
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={112,114,116,141,145,148,152,158,166,168,174,176,184,188,194,195,222,224,228,232,104 more,996}
-Entry A12={128,129,135,136,138,144,146..149,153,155,157,159,163,164,166..169,199 more,991}
-Eval VirusEntry A12 cartesianCount=124, elapsed 0:00:00.002331
-Eval VirusClue D3 cartesianCount=55, elapsed 0:00:00.000333
-Eval VirusEntry D3 cartesianCount=2, elapsed 0:00:00.000092
-Eval VirusClue D4 cartesianCount=3635, elapsed 0:00:00.082051
-solve: VirusClue(name=D4,length=3,value: $kv ED4 = $multiple ED3,
-	referrers=[D4],
-	values={112,132,138,144,156,168,182,184,198,216,224,234,252,264,276,286,288,312,322,324,51 more,988}
-Entry D4={112..119,121,122,124,126,128,132..138,520 more,998}
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.001847
-solve: VirusEntry(name=A2,length=3,value: $kv A2,
-	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4],
-	values={121..129,131..139,141,142,334 more,969},
-	digits=[{1..9},{2..6},{1..9}]
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000322
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000283
-Eval VirusEntry D3 cartesianCount=2, elapsed 0:00:00.000056
-Eval VirusEntry D4 cartesianCount=71, elapsed 0:00:00.002201
-Eval VirusClue D4 cartesianCount=2700, elapsed 0:00:00.051211
-solve: VirusClue(name=D4,length=3,value: $kv ED4 = $multiple ED3,
-	referrers=[D4],
-	values={112,132,138,144,156,168,182,184,198,216,224,234,252,264,276,286,288,312,322,324,51 more,988}
-Entry D4={112,114,116,118,119,121,122,124,126,128,132..139,142,144,497 more,988}
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.002601
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000379
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000226
-Eval VirusClue D4 cartesianCount=2585, elapsed 0:00:00.060133
-Eval VirusEntry D4 cartesianCount=71, elapsed 0:00:00.001967
-solve: VirusEntry(name=D4,length=3,value: $kv D4,
-	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
-	values={112,114,116,118,121,122,124,126,128,132..139,142,144,146,492 more,988},
-	digits=[{1..9},{1..9},{1..9}]
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.002037
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000655
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000259
-Eval VirusClue D4 cartesianCount=2560, elapsed 0:00:00.051979
-Eval VirusEntry D4 cartesianCount=71, elapsed 0:00:00.001439
-Eval VirusClue D5 cartesianCount=15330, elapsed 0:00:00.046407
-Eval VirusClue D9 cartesianCount=42, elapsed 0:00:00.000191
-solve: VirusClue(name=D9,length=2,value: $kv ED9 = $squareroot EA6,
-	referrers=[D9],
-	values={14,24,26}
-Entry D9={14,16,21,24,34,36,46}
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000272
-Eval VirusClue D9 cartesianCount=21, elapsed 0:00:00.000119
-Eval VirusEntry D9 cartesianCount=3, elapsed 0:00:00.000057
-solve: VirusEntry(name=D9,length=2,value: $kv D9,
-	identities=[D9[0]=A9[0]],referrers=[A9,D9],
-	values={14,16,24,34,36,46},
-	digits=[{1..4},{4,6}]
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000089
-Eval VirusClue D9 cartesianCount=18, elapsed 0:00:00.000088
-Eval VirusEntry D9 cartesianCount=3, elapsed 0:00:00.000057
-Eval VirusClue D10 cartesianCount=11, elapsed 0:00:00.000396
-solve: VirusClue(name=D10,length=2,value: $kv ED10 = #prime,
-	referrers=[D10],
-	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,89,97}
-Eval VirusEntry D10 cartesianCount=20, elapsed 0:00:00.000322
-Eval VirusClue D10 cartesianCount=11, elapsed 0:00:00.000260
-solve: VirusClue(name=D10,length=2,value: $kv ED10 = #prime,
-	referrers=[D10],
-	values={11,13,17,19,23,29,37,41,43,53,59,61,67,71,73,79,89,97}
-Entry D10={29,47,56,65,74,79,83,88,92}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000345
-solve: VirusEntry(name=A10,length=3,value: $kv A10,
-	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10],
-	values={216,219,221,236,239,241,244,246,249,251,253,254,257..259,261,269,272,276,279,114 more,965},
-	digits=[{2,4..9},{1..9},{1..9}]
-Eval VirusClue A10 cartesianCount=134, elapsed 0:00:00.002367
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000414
-Eval VirusClue A12 cartesianCount=1971, elapsed 0:00:00.038045
-solve: VirusClue(name=A12,length=3,value: $kv EA12 = $multiple ED10,
-	referrers=[A12],
-	values={112,116,141,145,148,158,166,168,174,176,184,188,195,222,224,232,235,237,249,261,79 more,996}
-Entry A12={128,129,135,136,138,144,146..149,153,155,157,159,163,164,166..169,194 more,991}
-Eval VirusEntry A12 cartesianCount=99, elapsed 0:00:00.001274
-Eval VirusClue D3 cartesianCount=45, elapsed 0:00:00.000169
-Eval VirusEntry D4 cartesianCount=71, elapsed 0:00:00.001298
-Eval VirusClue D5 cartesianCount=14980, elapsed 0:00:00.042610
-Eval VirusEntry D10 cartesianCount=18, elapsed 0:00:00.000261
-Eval VirusClue D10 cartesianCount=9, elapsed 0:00:00.000261
-Eval VirusClue D11 cartesianCount=2430, elapsed 0:00:00.046642
-solve: VirusClue(name=D11,length=2,value: $kv ED11 = $factor ED1,
-	referrers=[D11],
-	values={11,13,17,19,23,31,41,43,61,71}
-Entry D1={11,26,31,41,46,51,55,61,65,66,71,76,85,86,91,95}
-Entry D11={12..19,21..29,31..33,47 more,99}
-Eval VirusEntry A6 cartesianCount=3, elapsed 0:00:00.000056
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000232
-Eval VirusClue D1 cartesianCount=400, elapsed 0:00:00.005365
-Eval VirusEntry D1 cartesianCount=40, elapsed 0:00:00.000308
-Eval VirusClue D11 cartesianCount=1072, elapsed 0:00:00.012540
-solve: VirusClue(name=D11,length=2,value: $kv ED11 = $factor ED1,
-	referrers=[D11],
-	values={11,13,17,19,23,31,41,43,61,71}
-Entry D11={13,21..23,27,29,31..33,37,39,41..44,47,49,51,53,55,20 more,99}
-Eval VirusEntry A10 cartesianCount=19, elapsed 0:00:00.000270
-Eval VirusEntry D11 cartesianCount=10, elapsed 0:00:00.000117
-Eval VirusClue D11 cartesianCount=640, elapsed 0:00:00.008915
-Eval VirusClue D7 cartesianCount=42282, elapsed 0:00:01.680180
-solve: VirusClue(name=D7,length=3,value: $kv ED7 = $multiple K*10+V,
-	referrers=[D7],
-	values={101..109,112..119,121..123,769 more,999}
-Eval VirusEntry D7 cartesianCount=789, elapsed 0:00:00.008620
-solve: VirusEntry(name=D7,length=3,value: $kv D7,
-	identities=[D7[0]=A6[1],D7[1]=A9[1],D7[2]=A12[0]],referrers=[A6,A9,A12,A9,D7],
-	values={713,715..719,722,724..729,731,733..738,107 more,999},
-	digits=[{7,9},{1..9},{1..9}]
-Eval VirusEntry A6 cartesianCount=3, elapsed 0:00:00.000075
-Eval VirusClue A9 cartesianCount=3175, elapsed 0:00:00.006266
-Eval VirusEntry A9 cartesianCount=14, elapsed 0:00:00.000138
-Eval VirusEntry A12 cartesianCount=99, elapsed 0:00:00.001337
-Eval VirusEntry D7 cartesianCount=789, elapsed 0:00:00.005132
-Eval VirusClue D7 cartesianCount=10287, elapsed 0:00:00.426930
-solve: VirusClue(name=D7,length=3,value: $kv ED7 = $multiple K*10+V,
-	referrers=[D7],
-	values={112..119,121..129,132..134,615 more,998}
-Eval VirusEntry D7 cartesianCount=635, elapsed 0:00:00.005848
-Eval VirusClue D7 cartesianCount=10287, elapsed 0:00:00.415457
-Eval VirusEntry A2 cartesianCount=143, elapsed 0:00:00.001711
-Eval VirusClue A6 cartesianCount=3, elapsed 0:00:00.000078
-Eval VirusClue A8 cartesianCount=80, elapsed 0:00:00.001218
-solve: VirusClue(name=A8,length=2,value: $kv EA8 = #prime,
+Eval VirusClue A8 cartesianCount=720, elapsed 0:00:00.003064
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
 	referrers=[A8],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Entry A8={12..17,19,21..27,29,31..35,52 more,99}
-Eval VirusEntry A8 cartesianCount=21, elapsed 0:00:00.000491
-Eval VirusClue A10 cartesianCount=134, elapsed 0:00:00.002021
-Eval VirusClue A12 cartesianCount=1926, elapsed 0:00:00.033769
-Eval VirusEntry D4 cartesianCount=71, elapsed 0:00:00.001485
-Eval VirusEntry D5 cartesianCount=25, elapsed 0:00:00.000415
-Eval VirusClue A8 cartesianCount=72, elapsed 0:00:00.001078
-Clue/Variable iterations=175, updates=95, elapsed 0:00:12.132015
+Entry A8={11..13,15,17,19,21,23,29,31,32,35..37,39,41..43,45,46,22 more,97}
+Eval VirusEntry A8 cartesianCount=168, elapsed 0:00:00.000409
+Eval VirusClue A9 cartesianCount=448, elapsed 0:00:00.002081
+Eval VirusEntry A9 cartesianCount=48, elapsed 0:00:00.000658
+solve: VirusEntry(name=A10,length=3,value: £kv(A10,X),
+	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10,D3],
+	values={101..109,111..119,121,122,790 more,999},
+	digits=[{1..9},{0..9},{1..9}]
+Eval VirusClue A10 cartesianCount=6480, elapsed 0:00:00.021171
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961}
+Entry A10={121,144,169,181,196,223,225,226,236,239,256,284,289,321,324,329,341,361,376,434,22 more,961}
+Eval VirusEntry A10 cartesianCount=152, elapsed 0:00:00.000468
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={100..119,480 more,899},
+	digits=[{1,4..6,8},{0..9},{0..9}]
+Eval VirusClue A12 cartesianCount=360000, elapsed 0:00:01.602998
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={100,102,104..106,108,110..112,114..124,341 more,899}
+Entry A12={100,102..108,110..121,417 more,899}
+Entry D10={10..29,70 more,99}
+Eval VirusEntry A10 cartesianCount=152, elapsed 0:00:00.000361
+Eval VirusClue A12 cartesianCount=314640, elapsed 0:00:01.625144
+Eval VirusEntry A12 cartesianCount=2888, elapsed 0:00:00.004876
+solve: VirusEntry(name=D1,length=2,value: £kv(D1,X),
+	identities=[D1[1]=A6[0]],referrers=[A6,D1,D11],
+	values={11..13,16,21..23,26,31..33,36,41..43,46,51..53,56,16 more,96},
+	digits=[{1..9},{1..3,6}]
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000084
+Eval VirusClue D1 cartesianCount=2016, elapsed 0:00:00.007030
+solve: VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
+	referrers=[D1],
+	values={24,26,32,36,45,48,52,54,64,65,72,75,78,84,91,96}
+Entry A9={12,13,15,16,18,26}
+Entry D1={21,26,32,36,43,46,51,52,61..63,72,73,76,81,91,92,96}
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000092
+Eval VirusClue A9 cartesianCount=384, elapsed 0:00:00.001674
+solve: VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
+	referrers=[A9],
+	values={12,15,16,18,21}
+Entry D7={288,525,636,664,768,951,981}
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000126
+Eval VirusClue A9 cartesianCount=336, elapsed 0:00:00.001831
+Eval VirusEntry A9 cartesianCount=40, elapsed 0:00:00.000247
+Eval VirusEntry A12 cartesianCount=2888, elapsed 0:00:00.004375
+Eval VirusEntry D1 cartesianCount=128, elapsed 0:00:00.000190
+Eval VirusClue D1 cartesianCount=864, elapsed 0:00:00.003742
+solve: VirusEntry(name=D3,length=2,value: £kv(D3,X),
+	identities=[D3[0]=A2[1],D3[1]=A6[2]],referrers=[A2,A6,D3,D4],
+	values={11,16,21,26,31,36,41,46,51,56,61,66,71,76,81,86,91,96},
+	digits=[{1..9},{1,6}]
+Eval VirusEntry A2 cartesianCount=1024, elapsed 0:00:00.001854
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000098
+Eval VirusClue D3 cartesianCount=6048, elapsed 0:00:00.018990
+solve: VirusClue(name=D3,length=2,value: £inversekv(ED3,X) = $DS EA10,
+	referrers=[D3],
+	values={11,15,16}
+Entry A10={169,196,236,376,434,484,529,623,781,924,961}
+Entry D3={11,16,66}
+Eval VirusEntry A2 cartesianCount=1024, elapsed 0:00:00.001588
+solve: VirusEntry(name=A2,length=3,value: £kv(A2,X),
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4,A2],
+	values={113,119,161..163,165,167,169,211,219,261,263,266,267,269,311..313,315,317,46 more,969},
+	digits=[{1..9},{1,6},{1..3,5..7,9}]
+Eval VirusClue A2 cartesianCount=528, elapsed 0:00:03.652102
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,151,157,163,167,211,251,257,263,269,311,313,317,347,349,353,359,367,419,443,31 more,967}
+Eval VirusEntry A2 cartesianCount=408, elapsed 0:00:00.000546
+Eval VirusClue A2 cartesianCount=528, elapsed 0:00:05.646911
+Eval VirusEntry A6 cartesianCount=56, elapsed 0:00:00.000185
+Eval VirusEntry A10 cartesianCount=152, elapsed 0:00:00.000280
+Eval VirusClue A10 cartesianCount=88, elapsed 0:00:00.000488
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,196,256,324,361,484,529,576,625,729,784,961}
+Eval VirusEntry A10 cartesianCount=96, elapsed 0:00:00.000201
+Eval VirusClue A10 cartesianCount=88, elapsed 0:00:00.000460
+Eval VirusEntry D3 cartesianCount=24, elapsed 0:00:00.000084
+Eval VirusClue D3 cartesianCount=264, elapsed 0:00:00.001025
+Eval VirusClue D4 cartesianCount=9072, elapsed 0:00:00.068670
+solve: VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
+	referrers=[D4],
+	values={112,121,128,132,143,165,176,187,192,198,231,242,253,256,272,275,286,288,297,319,56 more,992}
+Entry D4={112,118,123,126,128,129,132,137,143,149,156,162,163,173,176,182,187,192,193,196,120 more,996}
+Eval VirusEntry A2 cartesianCount=408, elapsed 0:00:00.001125
+Eval VirusEntry A8 cartesianCount=168, elapsed 0:00:00.000507
+Eval VirusEntry A10 cartesianCount=96, elapsed 0:00:00.000428
+Eval VirusClue D4 cartesianCount=3360, elapsed 0:00:00.028639
+Eval VirusEntry D4 cartesianCount=608, elapsed 0:00:00.001322
+solve: VirusEntry(name=D5,length=2,value: £kv(D5,X),
+	identities=[D5[1]=A8[1]],referrers=[A8,D5],
+	values={11..13,15..17,19,21..23,25..27,29,31..33,35..37,43 more,99},
+	digits=[{1..9},{1..3,5..7,9}]
+Eval VirusEntry A8 cartesianCount=168, elapsed 0:00:00.000216
+Eval VirusClue D5 cartesianCount=220248, elapsed 0:00:00.781197
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={12,15,16,18,21,24,25,27,28,32,35,36,42,45,48,49,54,56,63,64,5 more,96}
+Entry A12={126,128,129,134..139,143,144,146..149,153,155,159,162,163,115 more,891}
+Entry D5={12,13,15,16,19,21,23,25..27,31,32,35,36,42,43,45,46,49,51,16 more,96}
+Eval VirusEntry A8 cartesianCount=168, elapsed 0:00:00.000365
+Eval VirusClue A12 cartesianCount=97200, elapsed 0:00:00.625216
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={112,121..126,128,129,132..136,138,142..146,162 more,891}
+Entry D10={11..19,21..29,31,32,61 more,99}
+Eval VirusEntry A10 cartesianCount=96, elapsed 0:00:00.000227
+Eval VirusClue A12 cartesianCount=87480, elapsed 0:00:00.651162
+Eval VirusEntry A12 cartesianCount=1456, elapsed 0:00:00.003180
+Eval VirusClue D5 cartesianCount=38880, elapsed 0:00:00.116925
+Eval VirusEntry D5 cartesianCount=200, elapsed 0:00:00.000288
+Eval VirusEntry D7 cartesianCount=64, elapsed 0:00:00.000098
+Eval VirusClue D7 cartesianCount=56, elapsed 0:00:00.000295
+solve: VirusClue(name=D7,length=3,value: £inversekv(ED7,X) = $multiple X,
+	referrers=[D7],
+	values={288,351,525,636,664,768,984}
+Variable X={16,39,41,53,72,75,83}
+Eval VirusClue A2 cartesianCount=462, elapsed 0:00:01.724338
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,163,167,211,263,269,311,317,347,367,419,443,461,463,563,569,613,617,619,643,11 more,967}
+Entry A2={113,119,162,163,165,167,169,211,219,261,263,266,269,311,312,315,317,362,365,366,33 more,969}
+Eval VirusEntry A2 cartesianCount=217, elapsed 0:00:00.000442
+Eval VirusEntry A6 cartesianCount=49, elapsed 0:00:00.000081
+Eval VirusClue A6 cartesianCount=35, elapsed 0:00:00.000221
+solve: VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
+	referrers=[A6],
+	values={136,171,276,496,561,861}
+Eval VirusEntry A6 cartesianCount=42, elapsed 0:00:00.000071
+Eval VirusClue A6 cartesianCount=35, elapsed 0:00:00.000214
+Eval VirusEntry A8 cartesianCount=147, elapsed 0:00:00.000373
+Eval VirusClue A8 cartesianCount=294, elapsed 0:00:00.001474
+Eval VirusClue A9 cartesianCount=294, elapsed 0:00:00.001109
+Eval VirusEntry A9 cartesianCount=35, elapsed 0:00:00.000094
+Eval VirusClue A10 cartesianCount=77, elapsed 0:00:00.000268
+Eval VirusEntry A10 cartesianCount=84, elapsed 0:00:00.000123
+Eval VirusClue A12 cartesianCount=76545, elapsed 0:00:00.332988
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={112,121..124,126,128,129,132..136,138,142..147,149 more,891}
+Entry A12={126,128,129,134..139,143,144,146..149,153,155,159,162,163,113 more,891}
+Eval VirusEntry A12 cartesianCount=1183, elapsed 0:00:00.001565
+Eval VirusClue D1 cartesianCount=756, elapsed 0:00:00.003105
+solve: VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
+	referrers=[D1],
+	values={24,26,32,36,45,48,52,54,64,65,72,75,78,84,91,96}
+Entry D1={21,26,32,36,43,51,52,61,63,72,73,81,91,92,96}
+Eval VirusEntry A6 cartesianCount=42, elapsed 0:00:00.000091
+Eval VirusClue D1 cartesianCount=630, elapsed 0:00:00.002275
+Eval VirusEntry D1 cartesianCount=112, elapsed 0:00:00.000145
+Eval VirusEntry D3 cartesianCount=21, elapsed 0:00:00.000039
+Eval VirusClue D3 cartesianCount=231, elapsed 0:00:00.000543
+solve: VirusClue(name=D3,length=2,value: £inversekv(ED3,X) = $DS EA10,
+	referrers=[D3],
+	values={11,16}
+Entry A10={169,196,236,376,434,484,529,623,781,961}
+Eval VirusClue A10 cartesianCount=70, elapsed 0:00:00.000246
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,196,256,361,484,529,576,625,729,784,961}
+Eval VirusEntry A10 cartesianCount=77, elapsed 0:00:00.000108
+Eval VirusClue A10 cartesianCount=70, elapsed 0:00:00.000234
+Eval VirusClue D3 cartesianCount=210, elapsed 0:00:00.000494
+Eval VirusEntry D3 cartesianCount=14, elapsed 0:00:00.000038
+Eval VirusEntry D4 cartesianCount=532, elapsed 0:00:00.000661
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={112,118,123,126,128,129,132,137,143,149,156,162,163,173,176,182,187,192,193,196,107 more,996},
+	digits=[{1..3,5..7,9},{1..9},{2,3,6..9}]
+Eval VirusEntry A2 cartesianCount=217, elapsed 0:00:00.000308
+Eval VirusEntry A8 cartesianCount=147, elapsed 0:00:00.000198
+Eval VirusEntry A10 cartesianCount=77, elapsed 0:00:00.000100
+Eval VirusClue D4 cartesianCount=2667, elapsed 0:00:00.015323
+solve: VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
+	referrers=[D4],
+	values={112,121,128,132,143,165,176,187,192,198,231,242,253,256,272,275,286,288,297,319,54 more,992}
+Entry D4={112,118,123,126,128,129,132,137,143,149,156,162,163,173,176,182,187,192,193,196,105 more,996}
+Eval VirusEntry A2 cartesianCount=217, elapsed 0:00:00.000328
+Eval VirusEntry A8 cartesianCount=147, elapsed 0:00:00.000202
+Eval VirusEntry A10 cartesianCount=77, elapsed 0:00:00.000104
+Eval VirusClue D4 cartesianCount=2625, elapsed 0:00:00.014870
+Eval VirusEntry D4 cartesianCount=518, elapsed 0:00:00.000689
+Eval VirusEntry D5 cartesianCount=175, elapsed 0:00:00.000209
+solve: VirusEntry(name=D5,length=2,value: £kv(D5,X),
+	identities=[D5[1]=A8[1]],referrers=[A8,D5],
+	values={12,13,15,16,19,21,23,25..27,31,32,35,36,42,43,45,49,51,52,14 more,96},
+	digits=[{1..9},{1..3,5..7,9}]
+Eval VirusEntry A8 cartesianCount=147, elapsed 0:00:00.000195
+Eval VirusClue D5 cartesianCount=31654, elapsed 0:00:00.070851
+Eval VirusEntry D5 cartesianCount=175, elapsed 0:00:00.000288
+Eval VirusClue D7 cartesianCount=49, elapsed 0:00:00.000295
+Eval VirusEntry D7 cartesianCount=49, elapsed 0:00:00.000086
+Eval VirusClue D9 cartesianCount=280, elapsed 0:00:00.000606
+Eval VirusEntry D9 cartesianCount=35, elapsed 0:00:00.000075
+solve: VirusEntry(name=D9,length=2,value: £kv(D9,X),
+	identities=[D9[0]=A9[0]],referrers=[A9,D9],
+	values={11,14,16,19,26},
+	digits=[{1,2},{1,4,6,9}]
+Eval VirusEntry A9 cartesianCount=35, elapsed 0:00:00.000057
+Eval VirusEntry D9 cartesianCount=35, elapsed 0:00:00.000055
+Eval VirusClue D9 cartesianCount=175, elapsed 0:00:00.000687
+Eval VirusClue D10 cartesianCount=567, elapsed 0:00:00.002874
+solve: VirusClue(name=D10,length=2,value: £inversekv(ED10,X) = #prime,
+	referrers=[D10],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Entry D10={11..13,15,17,19,21,23,29,31,32,35..37,39,41..43,45,46,22 more,97}
+Eval VirusEntry A10 cartesianCount=77, elapsed 0:00:00.000225
+Eval VirusClue A12 cartesianCount=39102, elapsed 0:00:00.184508
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={121..124,126,128,129,132..136,138,142..148,144 more,891}
+Entry A12={126,128,129,134..139,143,144,146..149,153,155,159,162,163,112 more,891}
+Eval VirusEntry A12 cartesianCount=1148, elapsed 0:00:00.001609
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={126,128,129,134..139,153,155,159,162..164,166,168,169,173,174,83 more,891},
+	digits=[{1,4..6,8},{1..3,5..7,9},{1..9}]
+Eval VirusClue A12 cartesianCount=30282, elapsed 0:00:00.145253
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={121..124,126,128,129,132..136,138,153..156,158,159,164,122 more,891}
+Eval VirusEntry A12 cartesianCount=994, elapsed 0:00:00.001603
+Eval VirusClue A12 cartesianCount=30282, elapsed 0:00:00.169987
+Eval VirusClue D5 cartesianCount=24514, elapsed 0:00:00.067314
+Eval VirusEntry D7 cartesianCount=49, elapsed 0:00:00.000136
+Eval VirusClue D10 cartesianCount=294, elapsed 0:00:00.000976
+Eval VirusEntry D10 cartesianCount=147, elapsed 0:00:00.000241
+solve: VirusEntry(name=D10,length=2,value: £kv(D10,X),
+	identities=[D10[0]=A10[0],D10[1]=A12[1]],referrers=[A10,A12,A12,D10],
+	values={11..13,15,17,19,21,23,29,31,32,35..37,39,41..43,45,46,20 more,97},
+	digits=[{1..7,9},{1..3,5..7,9}]
+Eval VirusEntry A10 cartesianCount=77, elapsed 0:00:00.000124
+Eval VirusClue A12 cartesianCount=28840, elapsed 0:00:00.141349
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={121..124,126,128,129,132..136,138,153..156,158,159,164,115 more,891}
+Entry A12={126,128,129,134..139,153,155,159,162..164,168,169,173..175,80 more,891}
+Eval VirusEntry A12 cartesianCount=945, elapsed 0:00:00.001566
+Eval VirusClue D5 cartesianCount=23800, elapsed 0:00:00.076881
+Eval VirusEntry D7 cartesianCount=49, elapsed 0:00:00.000132
+Eval VirusClue D10 cartesianCount=280, elapsed 0:00:00.000935
+solve: VirusClue(name=D10,length=2,value: £inversekv(ED10,X) = #prime,
+	referrers=[D10],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,89,97}
+Eval VirusEntry D10 cartesianCount=140, elapsed 0:00:00.000223
+Eval VirusClue D10 cartesianCount=280, elapsed 0:00:00.000914
+solve: VirusEntry(name=D11,length=2,value: £kv(D11,X),
+	identities=[D11[0]=A10[2]],referrers=[A10,D11],
+	values={10..19,30..39,30 more,99},
+	digits=[{1,3,4,6,9},{0..9}]
+Eval VirusEntry A10 cartesianCount=77, elapsed 0:00:00.000126
+Eval VirusClue D11 cartesianCount=5250, elapsed 0:00:00.019737
+solve: VirusClue(name=D11,length=2,value: £inversekv(ED11,X) = $divisor ED1,
+	referrers=[D11],
+	values={12,13,16..18,32,36,46,48}
+Entry D1={26,32,36,51,52,72,91,92,96}
+Entry D11={12,13,15..19,32,36,43,46,48,62,63,67,68,92,96}
+Eval VirusEntry A6 cartesianCount=42, elapsed 0:00:00.000113
+solve: VirusEntry(name=A6,length=3,value: £kv(A6,X),
+	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
+	values={121,196,256,676},
+	digits=[{1,2,6},{2,5,7,9},{1,6}]
+Variable X={16,39,41,72,75}
+Eval VirusClue A2 cartesianCount=265, elapsed 0:00:00.750891
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,163,167,211,263,269,311,317,347,367,419,443,461,463,563,569,613,617,619,643,10 more,967}
+Entry A2={113,119,162,163,165,167,169,211,219,261,263,266,269,311,312,315,317,362,365,366,32 more,969}
+Eval VirusEntry A2 cartesianCount=150, elapsed 0:00:00.000282
+Eval VirusClue A6 cartesianCount=20, elapsed 0:00:00.000164
+solve: VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
+	referrers=[A6],
+	values={136,171,276,496}
+Eval VirusEntry A6 cartesianCount=20, elapsed 0:00:00.000044
+Eval VirusClue A6 cartesianCount=20, elapsed 0:00:00.000112
+Eval VirusEntry A6 cartesianCount=20, elapsed 0:00:00.000042
+Eval VirusClue A8 cartesianCount=210, elapsed 0:00:00.000658
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Entry A8={11..13,15,17,19,21,23,29,31,32,35..37,41..43,45..47,21 more,97}
+Eval VirusEntry A8 cartesianCount=105, elapsed 0:00:00.000181
+Eval VirusClue A9 cartesianCount=210, elapsed 0:00:00.000549
+solve: VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
+	referrers=[A9],
+	values={12,15,16,18,21}
+Entry A9={12,15,16,18,26}
+Eval VirusEntry A9 cartesianCount=25, elapsed 0:00:00.000073
+Eval VirusClue A10 cartesianCount=50, elapsed 0:00:00.000257
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,196,361,484,529,729,784,961}
+Entry A10={169,196,484,529,781,961}
+Eval VirusEntry A10 cartesianCount=40, elapsed 0:00:00.000159
+Eval VirusClue A12 cartesianCount=20000, elapsed 0:00:00.095902
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={121..124,126,128,129,132..136,138,153,155,159,164,168,169,172,85 more,891}
+Entry A12={126,128,129,134..138,153,155,159,162,164,168,169,173..177,71 more,891}
+Entry D10={11..13,15,17,19,21,23,29,31,32,35..37,39,41..43,45,46,18 more,97}
+Eval VirusEntry A10 cartesianCount=40, elapsed 0:00:00.000337
+Eval VirusClue A12 cartesianCount=17290, elapsed 0:00:00.097196
+Eval VirusEntry A12 cartesianCount=525, elapsed 0:00:00.000920
+Eval VirusClue D1 cartesianCount=225, elapsed 0:00:00.000947
+solve: VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
+	referrers=[D1],
+	values={32,36,52,54,72,96}
+Entry A9={12,16,18,26}
+Entry D1={32,36,51,52,72,92,96}
+Eval VirusEntry A6 cartesianCount=20, elapsed 0:00:00.000084
+Eval VirusClue A9 cartesianCount=140, elapsed 0:00:00.000427
+solve: VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
+	referrers=[A9],
+	values={12,16,18,21}
+Entry D7={288,525,664,768,981}
+Eval VirusEntry A6 cartesianCount=20, elapsed 0:00:00.000051
+Eval VirusClue A9 cartesianCount=100, elapsed 0:00:00.000403
+Eval VirusEntry A9 cartesianCount=20, elapsed 0:00:00.000064
+Eval VirusEntry A12 cartesianCount=525, elapsed 0:00:00.000898
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={126,128,129,134..138,153,155,159,162,164,168,169,173..177,54 more,891},
+	digits=[{1,4,5,8},{1..3,5..7,9},{1..9}]
+Eval VirusClue A12 cartesianCount=14060, elapsed 0:00:00.080569
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={123,126,128,129,132..136,138,153,155,159,164,168,169,174..177,67 more,891}
+Eval VirusEntry A12 cartesianCount=435, elapsed 0:00:00.000692
+Eval VirusClue A12 cartesianCount=14060, elapsed 0:00:00.074630
+Eval VirusEntry D1 cartesianCount=30, elapsed 0:00:00.000189
+Eval VirusClue D1 cartesianCount=140, elapsed 0:00:00.001005
+Eval VirusEntry D1 cartesianCount=30, elapsed 0:00:00.000112
+Eval VirusEntry D3 cartesianCount=10, elapsed 0:00:00.000051
+Eval VirusClue D3 cartesianCount=90, elapsed 0:00:00.000495
+solve: VirusClue(name=D3,length=2,value: £inversekv(ED3,X) = $DS EA10,
+	referrers=[D3],
+	values={16}
+Entry D3={16}
+Variable X={39,41,72,75}
+Eval VirusEntry A2 cartesianCount=120, elapsed 0:00:00.000233
+solve: VirusEntry(name=A2,length=3,value: £kv(A2,X),
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4,A2],
+	values={113,119,211,219,311,312,315,317,419,519,612,613,615,617,619,713,719,811,911,917,919},
+	digits=[{1..9},{1},{1..3,5,7,9}]
+Eval VirusClue A2 cartesianCount=84, elapsed 0:00:00.228708
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,211,311,317,347,419,443,613,617,619,643,719,743,811,911,919}
+Eval VirusEntry A2 cartesianCount=64, elapsed 0:00:00.000185
+Eval VirusClue A2 cartesianCount=84, elapsed 0:00:00.221182
+Eval VirusEntry A6 cartesianCount=16, elapsed 0:00:00.000091
+solve: VirusEntry(name=A6,length=3,value: £kv(A6,X),
+	identities=[A6[0]=D1[1],A6[1]=D7[0],A6[2]=D3[1]],referrers=[D1,D7,D3,A6,D9],
+	values={196,256},
+	digits=[{1,2},{5,9},{6}]
+Variable X={39,41,75}
+Eval VirusClue A2 cartesianCount=63, elapsed 0:00:00.153798
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,211,311,317,347,419,443,613,617,619,643,719,743,811,911,919}
+Entry A2={113,119,211,311,315,317,419,519,613,615,617,619,713,719,811,911,917,919}
+Eval VirusEntry A2 cartesianCount=48, elapsed 0:00:00.000140
+Eval VirusClue A6 cartesianCount=6, elapsed 0:00:00.000103
+solve: VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
+	referrers=[A6],
+	values={136,276,496}
+Eval VirusEntry A6 cartesianCount=9, elapsed 0:00:00.000044
+Eval VirusClue A6 cartesianCount=6, elapsed 0:00:00.000056
+Eval VirusClue A8 cartesianCount=123, elapsed 0:00:00.000434
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Entry A8={11,13,15,17,19,23,29,31,35,37,41,43,45,47,49,51,53,59,61,65,9 more,97}
+Eval VirusEntry A8 cartesianCount=63, elapsed 0:00:00.000141
+Eval VirusEntry A9 cartesianCount=9, elapsed 0:00:00.000028
+solve: VirusEntry(name=A9,length=2,value: £kv(A9,X),
+	identities=[A9[0]=D9[0],A9[1]=D7[1]],referrers=[D9,D7,A9,D1],
+	values={12,18},
+	digits=[{1},{2,8}]
+Eval VirusClue A9 cartesianCount=30, elapsed 0:00:00.000133
+solve: VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
+	referrers=[A9],
+	values={12,18}
+Entry D7={288,525,981}
+Eval VirusEntry A6 cartesianCount=9, elapsed 0:00:00.000054
+Eval VirusClue A9 cartesianCount=18, elapsed 0:00:00.000112
+Eval VirusEntry A9 cartesianCount=6, elapsed 0:00:00.000026
+Eval VirusEntry A10 cartesianCount=24, elapsed 0:00:00.000063
+Eval VirusClue A10 cartesianCount=18, elapsed 0:00:00.000111
+Eval VirusEntry A12 cartesianCount=261, elapsed 0:00:00.000455
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={126,128,129,134..138,153,155,159,162,164,168,169,173..177,29 more,891},
+	digits=[{1,5,8},{1..3,5..7,9},{1..9}]
+Eval VirusClue A6 cartesianCount=6, elapsed 0:00:00.000072
+Eval VirusEntry A8 cartesianCount=63, elapsed 0:00:00.000116
+Eval VirusClue A9 cartesianCount=18, elapsed 0:00:00.000095
+Eval VirusEntry A9 cartesianCount=6, elapsed 0:00:00.000033
+Eval VirusClue A10 cartesianCount=18, elapsed 0:00:00.000180
+Eval VirusEntry A12 cartesianCount=261, elapsed 0:00:00.000518
+Eval VirusClue A12 cartesianCount=5586, elapsed 0:00:00.034184
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={123,126,128,129,132..136,138,153,155,159,164,168,169,174..177,51 more,891}
+Eval VirusEntry A12 cartesianCount=213, elapsed 0:00:00.000431
+Eval VirusClue A12 cartesianCount=5586, elapsed 0:00:00.036356
+Eval VirusEntry D1 cartesianCount=18, elapsed 0:00:00.000103
+solve: VirusEntry(name=D1,length=2,value: £kv(D1,X),
+	identities=[D1[1]=A6[0]],referrers=[A6,D1,D11],
+	values={32,51,52,72,92},
+	digits=[{3,5,7,9},{1,2}]
+Eval VirusEntry A6 cartesianCount=9, elapsed 0:00:00.000041
+Eval VirusClue D1 cartesianCount=30, elapsed 0:00:00.000244
+solve: VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
+	referrers=[D1],
+	values={54,72}
+Entry D1={51,52,72}
+Eval VirusEntry A6 cartesianCount=9, elapsed 0:00:00.000126
+Eval VirusClue D1 cartesianCount=18, elapsed 0:00:00.000148
+Eval VirusEntry D1 cartesianCount=6, elapsed 0:00:00.000046
+Eval VirusEntry D3 cartesianCount=3, elapsed 0:00:00.000021
+Eval VirusClue D3 cartesianCount=18, elapsed 0:00:00.000082
+Eval VirusEntry D4 cartesianCount=222, elapsed 0:00:00.000324
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={112,118,128,129,132,149,156,162,176,192,196,198,319,336,352,368,396,512,526,528,30 more,996},
+	digits=[{1,3,5,7,9},{1..9},{2,6,8,9}]
+Eval VirusEntry A2 cartesianCount=48, elapsed 0:00:00.000093
+Eval VirusEntry A8 cartesianCount=63, elapsed 0:00:00.000112
+Eval VirusEntry A10 cartesianCount=24, elapsed 0:00:00.000061
+Eval VirusEntry D4 cartesianCount=222, elapsed 0:00:00.000294
+Eval VirusClue D4 cartesianCount=150, elapsed 0:00:00.001457
+solve: VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
+	referrers=[D4],
+	values={112,128,176,192,336,352,368,432,448,496,512,528,576,592,736,752,768,912,928,976,992}
+Entry D4={112,118,128,132,156,176,192,196,336,352,368,512,528,536,568,576,592,736,752,768,9 more,996}
+Eval VirusEntry A2 cartesianCount=48, elapsed 0:00:00.000099
+Eval VirusEntry A8 cartesianCount=63, elapsed 0:00:00.000127
+solve: VirusEntry(name=A8,length=2,value: £kv(A8,X),
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
+	values={11,13,15,17,19,23,29,31,35,37,51,53,59,61,65,67,71,73,79,91,2 more,97},
+	digits=[{1..3,5..7,9},{1,3,5,7,9}]
+Eval VirusClue A8 cartesianCount=66, elapsed 0:00:00.000266
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,13,17,19,23,29,31,37,43,47,53,59,61,67,71,73,79,97}
+Eval VirusEntry A8 cartesianCount=54, elapsed 0:00:00.000098
+Eval VirusClue A8 cartesianCount=66, elapsed 0:00:00.000449
+Eval VirusEntry A10 cartesianCount=24, elapsed 0:00:00.000067
+solve: VirusEntry(name=A10,length=3,value: £kv(A10,X),
+	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10,D3],
+	values={169,484,529,781,961},
+	digits=[{1,4,5,7,9},{2,6,8},{1,4,9}]
+Eval VirusClue A10 cartesianCount=15, elapsed 0:00:00.000106
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,361,484,529,729,784,961}
+Eval VirusEntry A10 cartesianCount=21, elapsed 0:00:00.000057
+Eval VirusClue A10 cartesianCount=15, elapsed 0:00:00.000077
+Eval VirusClue D3 cartesianCount=15, elapsed 0:00:00.000083
+Eval VirusEntry D4 cartesianCount=63, elapsed 0:00:00.000112
+Eval VirusClue D4 cartesianCount=87, elapsed 0:00:00.000659
+Eval VirusClue D5 cartesianCount=4851, elapsed 0:00:00.012788
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={12,15,21,24,25,27,32,35,36,42,45,49,54,56,63,64,72,75,81,96}
+Entry A12={126,134,135,137,138,153,155,159,162,164,169,173,175..177,193..197,19 more,891}
+Entry D5={12,15,19,21,25,27,32,35,36,42,45,49,51,52,56,61,63,69,72,75,4 more,96}
+Eval VirusEntry A8 cartesianCount=54, elapsed 0:00:00.000133
+Eval VirusClue A12 cartesianCount=4446, elapsed 0:00:00.026719
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={126,133..136,138,153,155,159,164,169,175..177,194..196,198,426,435,35 more,891}
+Entry D10={11,13,15,17,19,21,23,29,31,35,37,39,41..43,45..47,49,51,15 more,97}
+Eval VirusEntry A10 cartesianCount=21, elapsed 0:00:00.000148
+Eval VirusClue A12 cartesianCount=4095, elapsed 0:00:00.026175
+Eval VirusEntry A12 cartesianCount=165, elapsed 0:00:00.000554
+Eval VirusEntry D5 cartesianCount=60, elapsed 0:00:00.000160
+solve: VirusEntry(name=D5,length=2,value: £kv(D5,X),
+	identities=[D5[1]=A8[1]],referrers=[A8,D5],
+	values={15,19,21,25,27,35,45,49,51,61,63,69,75,81,95},
+	digits=[{1..9},{1,3,5,7,9}]
+Eval VirusEntry A8 cartesianCount=54, elapsed 0:00:00.000101
+Eval VirusClue D5 cartesianCount=1755, elapsed 0:00:00.004600
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={15,21,24,25,27,35,45,49,54,63,64,75,81}
+Entry A12={135,137,138,153,155,159,164,169,173,175,177,193,195..197,199,513,517,519,531,6 more,818}
+Eval VirusClue A12 cartesianCount=2730, elapsed 0:00:00.015309
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={133,135,136,138,153,155,159,164,169,175,177,195,196,435,437,438,455,459,469,473,18 more,848}
+Entry D10={11,13,15,17,19,23,29,31,35,39,41,43,45..47,49,51,53,59,61,10 more,95}
+Eval VirusEntry A10 cartesianCount=21, elapsed 0:00:00.000084
+Eval VirusClue A12 cartesianCount=2340, elapsed 0:00:00.013450
+Eval VirusEntry A12 cartesianCount=114, elapsed 0:00:00.000243
+Eval VirusClue D5 cartesianCount=1170, elapsed 0:00:00.003059
+Eval VirusEntry D5 cartesianCount=39, elapsed 0:00:00.000101
+Eval VirusEntry D7 cartesianCount=21, elapsed 0:00:00.000043
+solve: VirusEntry(name=D7,length=3,value: £kv(D7,X),
+	identities=[D7[0]=A6[1],D7[1]=A9[1],D7[2]=A12[0]],referrers=[A6,A9,A12,A9,D7],
+	values={525,981},
+	digits=[{5,9},{2,8},{1,5}]
+Eval VirusEntry A6 cartesianCount=9, elapsed 0:00:00.000034
+Eval VirusClue A9 cartesianCount=12, elapsed 0:00:00.000062
+Eval VirusEntry A9 cartesianCount=6, elapsed 0:00:00.000026
+Eval VirusEntry A12 cartesianCount=114, elapsed 0:00:00.000188
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={135,137,138,153,155,159,164,169,173,175,177,193,195..197,199,513,517,519,531,5 more,591},
+	digits=[{1,5},{1,3,5..7,9},{1,3..9}]
+Eval VirusClue A12 cartesianCount=2250, elapsed 0:00:00.011806
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={133,135,136,138,153,155,159,164,169,175,177,195,196,435,437,438,455,459,469,473,17 more,737}
+Eval VirusEntry A12 cartesianCount=111, elapsed 0:00:00.000190
+Eval VirusClue A12 cartesianCount=2250, elapsed 0:00:00.011359
+Eval VirusClue D5 cartesianCount=1125, elapsed 0:00:00.002928
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={15,21,24,25,27,35,45,49,54,63,75,81}
+Entry D5={15,19,21,25,27,35,45,49,51,63,69,75,81,95}
+Eval VirusEntry A8 cartesianCount=54, elapsed 0:00:00.000145
+Eval VirusClue D5 cartesianCount=1050, elapsed 0:00:00.002788
+Eval VirusEntry D5 cartesianCount=36, elapsed 0:00:00.000086
+Eval VirusEntry D7 cartesianCount=21, elapsed 0:00:00.000040
+Eval VirusClue D7 cartesianCount=6, elapsed 0:00:00.000065
+solve: VirusClue(name=D7,length=3,value: £inversekv(ED7,X) = $multiple X,
+	referrers=[D7],
+	values={525,984}
+Variable X={41,75}
+Eval VirusClue A2 cartesianCount=36, elapsed 0:00:00.036202
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,211,311,317,617,619,719,811,911,919}
+Entry A2={113,211,311,315,317,519,615,617,619,719,811,911,919}
+Eval VirusEntry A2 cartesianCount=20, elapsed 0:00:00.000075
+Eval VirusClue A6 cartesianCount=4, elapsed 0:00:00.000049
+solve: VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
+	referrers=[A6],
+	values={276,496}
+Eval VirusEntry A6 cartesianCount=4, elapsed 0:00:00.000026
+Eval VirusClue A6 cartesianCount=4, elapsed 0:00:00.000038
+Eval VirusClue A8 cartesianCount=44, elapsed 0:00:00.000180
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,13,17,19,23,29,31,37,43,47,53,59,61,67,71,73,79,97}
+Entry A8={11,13,15,17,19,23,29,31,35,37,51,53,59,61,65,67,71,73,79,95,97}
+Eval VirusEntry A8 cartesianCount=36, elapsed 0:00:00.000091
+Eval VirusClue A9 cartesianCount=8, elapsed 0:00:00.000052
+Eval VirusEntry A9 cartesianCount=4, elapsed 0:00:00.000022
+Eval VirusClue A10 cartesianCount=10, elapsed 0:00:00.000069
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,484,529,729,784,961}
+Eval VirusEntry A10 cartesianCount=12, elapsed 0:00:00.000039
+Eval VirusClue A10 cartesianCount=10, elapsed 0:00:00.000068
+Eval VirusClue A12 cartesianCount=1500, elapsed 0:00:00.008072
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={135,138,153,155,159,164,169,175,177,195,196,435,437,438,455,459,469,473,475,477,15 more,737}
+Entry A12={135,137,138,153,155,159,164,169,173,175,177,193,195..197,513,517,519,531,533,4 more,591}
+Eval VirusEntry A12 cartesianCount=70, elapsed 0:00:00.000140
+Eval VirusEntry D1 cartesianCount=4, elapsed 0:00:00.000025
+Eval VirusClue D1 cartesianCount=12, elapsed 0:00:00.000081
+Eval VirusClue D3 cartesianCount=10, elapsed 0:00:00.000058
+Eval VirusEntry D3 cartesianCount=2, elapsed 0:00:00.000019
+Eval VirusEntry D4 cartesianCount=42, elapsed 0:00:00.000092
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={112,118,128,132,156,176,192,196,336,352,368,512,528,536,568,576,592,736,752,768,5 more,992},
+	digits=[{1,3,5,7,9},{1..3,5..7,9},{2,6,8}]
+Eval VirusEntry A2 cartesianCount=20, elapsed 0:00:00.000048
+Eval VirusEntry A8 cartesianCount=36, elapsed 0:00:00.000064
+Eval VirusEntry A10 cartesianCount=12, elapsed 0:00:00.000033
+Eval VirusEntry D4 cartesianCount=42, elapsed 0:00:00.000086
+Eval VirusClue D4 cartesianCount=50, elapsed 0:00:00.000403
+Eval VirusEntry D5 cartesianCount=24, elapsed 0:00:00.000082
+solve: VirusEntry(name=D5,length=2,value: £kv(D5,X),
+	identities=[D5[1]=A8[1]],referrers=[A8,D5],
+	values={15,19,21,25,27,35,45,49,51,63,75,81},
+	digits=[{1..8},{1,3,5,7,9}]
+Eval VirusEntry A8 cartesianCount=36, elapsed 0:00:00.000068
+Eval VirusClue D5 cartesianCount=576, elapsed 0:00:00.001425
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={15,21,24,25,27,35,45,49,54,63,75}
+Entry D5={15,19,21,25,27,35,45,49,51,63,75}
+Eval VirusEntry A8 cartesianCount=36, elapsed 0:00:00.000086
+Eval VirusClue D5 cartesianCount=528, elapsed 0:00:00.001328
+Eval VirusEntry D5 cartesianCount=22, elapsed 0:00:00.000051
+Eval VirusClue D7 cartesianCount=4, elapsed 0:00:00.000045
+Eval VirusEntry D7 cartesianCount=4, elapsed 0:00:00.000023
+Eval VirusClue D9 cartesianCount=16, elapsed 0:00:00.000062
+solve: VirusClue(name=D9,length=2,value: £inversekv(ED9,X) = $squareroot EA6,
+	referrers=[D9],
+	values={14}
+Entry A6={196}
+Entry D9={14}
+Eval VirusClue A6 cartesianCount=2, elapsed 0:00:00.000044
+solve: VirusClue(name=A6,length=3,value: £inversekv(EA6,X) = $triangular #result,
+	referrers=[A6],
+	values={496}
+Variable X={41}
+Eval VirusClue A2 cartesianCount=13, elapsed 0:00:00.016311
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,211,311,317,617,619,719,811}
+Entry A2={113,211,311,317,617,619,719,811}
+Eval VirusEntry A2 cartesianCount=8, elapsed 0:00:00.000077
+Eval VirusEntry A8 cartesianCount=18, elapsed 0:00:00.000050
+solve: VirusEntry(name=A8,length=2,value: £kv(A8,X),
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
+	values={11,13,17,19,23,29,31,37,53,59,61,67,71,73,79,97},
+	digits=[{1..3,5..7,9},{1,3,7,9}]
+Eval VirusClue A8 cartesianCount=16, elapsed 0:00:00.000088
+Eval VirusEntry A8 cartesianCount=18, elapsed 0:00:00.000041
+Eval VirusEntry A9 cartesianCount=2, elapsed 0:00:00.000016
+Eval VirusClue A9 cartesianCount=4, elapsed 0:00:00.000038
+Eval VirusEntry A10 cartesianCount=6, elapsed 0:00:00.000024
+solve: VirusEntry(name=A10,length=3,value: £kv(A10,X),
+	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10,D3],
+	values={169,529,781,961},
+	digits=[{1,5,7,9},{2,6,8},{1,9}]
+Eval VirusClue A10 cartesianCount=4, elapsed 0:00:00.000050
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,529,784,961}
+Eval VirusEntry A10 cartesianCount=4, elapsed 0:00:00.000021
+Eval VirusClue A10 cartesianCount=4, elapsed 0:00:00.000032
+Eval VirusEntry A12 cartesianCount=34, elapsed 0:00:00.000078
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={135,137,138,153,155,159,164,169,173,175,177,193,195,197,513,517,519,531,533,551,2 more,591},
+	digits=[{1,5},{1,3,5..7,9},{1,3..5,7..9}]
+Eval VirusClue A12 cartesianCount=660, elapsed 0:00:00.004041
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={135,138,153,155,159,169,175,177,195,435,437,438,455,459,469,473,475,477,493,495,9 more,594}
+Entry A12={135,137,138,153,155,159,169,173,175,177,193,195,197,513,517,519,531,533,551,553,591}
+Entry D10={11,13,15,17,19,23,29,31,35,39,43,45..47,51,53,59,61,65,66,7 more,95}
+Eval VirusEntry A10 cartesianCount=4, elapsed 0:00:00.000029
+Eval VirusClue A12 cartesianCount=567, elapsed 0:00:00.003511
+Eval VirusEntry A12 cartesianCount=29, elapsed 0:00:00.000071
+Eval VirusClue D1 cartesianCount=6, elapsed 0:00:00.000046
+solve: VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
+	referrers=[D1],
+	values={54,72}
+Entry D1={51,72}
+Eval VirusClue D1 cartesianCount=4, elapsed 0:00:00.000035
+Eval VirusEntry D1 cartesianCount=2, elapsed 0:00:00.000018
+solve: VirusEntry(name=D1,length=2,value: £kv(D1,X),
+	identities=[D1[1]=A6[0]],referrers=[A6,D1,D11],
+	values={51},
+	digits=[{5},{1}]
+Eval VirusClue D1 cartesianCount=2, elapsed 0:00:00.000029
+solve: VirusClue(name=D1,length=2,value: £inversekv(ED1,X) = $multiple EA9,
+	referrers=[D1],
+	values={54}
+Entry A9={18}
+Eval VirusClue A9 cartesianCount=2, elapsed 0:00:00.000092
+solve: VirusClue(name=A9,length=2,value: £inversekv(EA9,X) = $DS ED7,
+	referrers=[A9],
+	values={18}
+Entry D7={981}
+Eval VirusEntry A12 cartesianCount=29, elapsed 0:00:00.000073
+solve: VirusEntry(name=A12,length=3,value: £kv(A12,X),
+	identities=[A12[0]=D7[2],A12[1]=D10[1]],referrers=[D7,D10,A12,D5],
+	values={135,137,138,153,155,159,169,173,175,177,193,195,197},
+	digits=[{1},{3,5..7,9},{3,5,7..9}]
+Eval VirusClue A12 cartesianCount=338, elapsed 0:00:00.002038
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={135,138,153,155,159,169,175,177,195,435,437,438,455,459,469,473,475,477,493,495,497}
+Entry D10={11,13,15,17,19,23,29,31,35,39,43,45,46,53,59,65,67,69,71,73,2 more,95}
+Eval VirusEntry A10 cartesianCount=4, elapsed 0:00:00.000027
+Eval VirusClue A12 cartesianCount=286, elapsed 0:00:00.001771
+Eval VirusEntry A12 cartesianCount=21, elapsed 0:00:00.000058
+Eval VirusClue D3 cartesianCount=4, elapsed 0:00:00.000031
+Eval VirusEntry D4 cartesianCount=20, elapsed 0:00:00.000046
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={112,118,128,132,176,192,336,352,368,736,752,768,912,928,976,992},
+	digits=[{1,3,7,9},{1..3,5..7,9},{2,6,8}]
+Eval VirusEntry A2 cartesianCount=8, elapsed 0:00:00.000026
+Eval VirusEntry A8 cartesianCount=18, elapsed 0:00:00.000038
+Eval VirusEntry A10 cartesianCount=4, elapsed 0:00:00.000018
+Eval VirusEntry D4 cartesianCount=20, elapsed 0:00:00.000049
+Eval VirusClue D4 cartesianCount=16, elapsed 0:00:00.000145
+solve: VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
+	referrers=[D4],
+	values={112,128,176,192,336,352,368,432,448,736,752,768,912,928,976,992}
+Eval VirusEntry D4 cartesianCount=16, elapsed 0:00:00.000043
+Eval VirusClue D4 cartesianCount=16, elapsed 0:00:00.000148
+Eval VirusClue D5 cartesianCount=130, elapsed 0:00:00.000345
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={15,21,24,25,27,35,45,49,63}
+Entry A12={135,137,138,153,155,159,173,175,177,193,195,197}
+Entry D5={15,19,21,25,27,35,45,49,63}
+Eval VirusEntry A8 cartesianCount=18, elapsed 0:00:00.000046
+Eval VirusClue A12 cartesianCount=264, elapsed 0:00:00.001926
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={135,138,153,155,159,175,177,195,435,437,438,455,459,473,475,477,493,495,497}
+Entry D10={11,13,15,17,19,23,29,31,35,39,43,45,46,53,59,65,69,71,73,91,95}
+Eval VirusEntry A10 cartesianCount=4, elapsed 0:00:00.000040
+Eval VirusClue A12 cartesianCount=252, elapsed 0:00:00.001791
+Eval VirusEntry A12 cartesianCount=19, elapsed 0:00:00.000086
+Eval VirusClue D5 cartesianCount=108, elapsed 0:00:00.000341
+Eval VirusEntry D5 cartesianCount=9, elapsed 0:00:00.000030
+solve: VirusEntry(name=D5,length=2,value: £kv(D5,X),
+	identities=[D5[1]=A8[1]],referrers=[A8,D5],
+	values={19,21,27,63},
+	digits=[{1,2,6},{1,3,7,9}]
+Eval VirusEntry A8 cartesianCount=18, elapsed 0:00:00.000040
+Eval VirusClue D5 cartesianCount=48, elapsed 0:00:00.000138
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={21,24,27,49,63}
+Entry A12={137,138,173,177,193,197}
+Eval VirusClue A12 cartesianCount=126, elapsed 0:00:00.000793
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={138,177,437,438,473,477,493,497}
+Entry D10={11,17,19,23,29,43,46,53,59,69,71,73}
+Eval VirusEntry A10 cartesianCount=4, elapsed 0:00:00.000026
+solve: VirusEntry(name=A10,length=3,value: £kv(A10,X),
+	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10,D3],
+	values={169,529,781},
+	digits=[{1,5,7},{2,6,8},{1,9}]
+Eval VirusClue A10 cartesianCount=3, elapsed 0:00:00.000033
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={169,529,784}
+Eval VirusEntry A10 cartesianCount=3, elapsed 0:00:00.000020
+Eval VirusClue A10 cartesianCount=3, elapsed 0:00:00.000039
+Eval VirusClue A12 cartesianCount=72, elapsed 0:00:00.000464
+Eval VirusEntry A12 cartesianCount=8, elapsed 0:00:00.000034
+Eval VirusClue D3 cartesianCount=3, elapsed 0:00:00.000030
+Eval VirusEntry D4 cartesianCount=16, elapsed 0:00:00.000043
+Eval VirusEntry D5 cartesianCount=5, elapsed 0:00:00.000020
+Eval VirusClue D5 cartesianCount=24, elapsed 0:00:00.000091
+solve: VirusClue(name=D7,length=3,value: £inversekv(ED7,X) = $multiple X,
+	referrers=[D7],
+	values={984}
+Eval VirusClue D10 cartesianCount=12, elapsed 0:00:00.000056
+solve: VirusClue(name=D10,length=2,value: £inversekv(ED10,X) = #prime,
+	referrers=[D10],
+	values={11,17,19,23,29,43,47,53,59,71,73}
+Entry D10={11,17,19,23,29,43,53,59,71,73}
+Eval VirusEntry A10 cartesianCount=3, elapsed 0:00:00.000020
+Eval VirusClue A12 cartesianCount=60, elapsed 0:00:00.000584
+Eval VirusEntry A12 cartesianCount=8, elapsed 0:00:00.000047
+Eval VirusEntry D10 cartesianCount=11, elapsed 0:00:00.000028
+solve: VirusEntry(name=D10,length=2,value: £kv(D10,X),
+	identities=[D10[0]=A10[0],D10[1]=A12[1]],referrers=[A10,A12,A12,D10],
+	values={17,19,53,59,73},
+	digits=[{1,5,7},{3,7,9}]
+Eval VirusEntry A10 cartesianCount=3, elapsed 0:00:00.000032
+Eval VirusClue A12 cartesianCount=30, elapsed 0:00:00.000204
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={177,437,438,477,493}
+Entry A12={137,138,177,193}
+Eval VirusEntry A12 cartesianCount=5, elapsed 0:00:00.000031
+Eval VirusClue D5 cartesianCount=16, elapsed 0:00:00.000072
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={21,24,27,49}
+Entry D5={19,21,27}
+Eval VirusEntry A8 cartesianCount=18, elapsed 0:00:00.000043
+solve: VirusEntry(name=A8,length=2,value: £kv(A8,X),
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
+	values={11,17,19,29,31,37,59,61,67,71,79,97},
+	digits=[{1..3,5..7,9},{1,7,9}]
+Eval VirusClue A8 cartesianCount=12, elapsed 0:00:00.000065
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,17,19,29,31,37,47,59,61,67,71,79,97}
+Eval VirusEntry A8 cartesianCount=13, elapsed 0:00:00.000041
+Eval VirusClue A8 cartesianCount=12, elapsed 0:00:00.000062
+Eval VirusEntry D4 cartesianCount=16, elapsed 0:00:00.000040
+Eval VirusEntry D5 cartesianCount=4, elapsed 0:00:00.000022
+Eval VirusClue D5 cartesianCount=12, elapsed 0:00:00.000051
+Eval VirusEntry D10 cartesianCount=11, elapsed 0:00:00.000023
+Eval VirusClue D10 cartesianCount=5, elapsed 0:00:00.000094
+solve: VirusClue(name=D10,length=2,value: £inversekv(ED10,X) = #prime,
+	referrers=[D10],
+	values={17,19,47,53,59,73}
+Eval VirusEntry D10 cartesianCount=6, elapsed 0:00:00.000025
+Eval VirusClue D10 cartesianCount=5, elapsed 0:00:00.000034
+Eval VirusEntry D11 cartesianCount=7, elapsed 0:00:00.000025
+solve: VirusEntry(name=D11,length=2,value: £kv(D11,X),
+	identities=[D11[0]=A10[2]],referrers=[A10,D11],
+	values={12,13,17},
+	digits=[{1},{2,3,7}]
+Eval VirusEntry A10 cartesianCount=3, elapsed 0:00:00.000019
+solve: VirusEntry(name=A10,length=3,value: £kv(A10,X),
+	identities=[A10[0]=D10[0],A10[1]=D4[2],A10[2]=D11[0]],referrers=[D10,D4,D11,A10,D3],
+	values={781},
+	digits=[{7},{8},{1}]
+solve: VirusClue(name=A10,length=3,value: £inversekv(EA10,X) = #square,
+	referrers=[A10],
+	values={784}
+Eval VirusEntry D4 cartesianCount=16, elapsed 0:00:00.000031
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={118,128,368,768,928},
+	digits=[{1,3,7,9},{1,2,6},{8}]
+Eval VirusEntry A2 cartesianCount=8, elapsed 0:00:00.000031
+Eval VirusEntry A8 cartesianCount=13, elapsed 0:00:00.000032
+solve: VirusEntry(name=A8,length=2,value: £kv(A8,X),
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
+	values={11,17,19,29,61,67},
+	digits=[{1,2,6},{1,7,9}]
+Eval VirusClue A8 cartesianCount=6, elapsed 0:00:00.000045
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,17,19,29,47,61,67}
+Eval VirusEntry A8 cartesianCount=7, elapsed 0:00:00.000024
+Eval VirusClue A8 cartesianCount=6, elapsed 0:00:00.000040
+Eval VirusClue D4 cartesianCount=5, elapsed 0:00:00.000053
+solve: VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
+	referrers=[D4],
+	values={128,368,448,768,928}
+Eval VirusEntry D4 cartesianCount=5, elapsed 0:00:00.000046
+Eval VirusClue D4 cartesianCount=5, elapsed 0:00:00.000066
+Eval VirusEntry D5 cartesianCount=4, elapsed 0:00:00.000021
+Eval VirusEntry D10 cartesianCount=6, elapsed 0:00:00.000020
+solve: VirusEntry(name=D10,length=2,value: £kv(D10,X),
+	identities=[D10[0]=A10[0],D10[1]=A12[1]],referrers=[A10,A12,A12,D10],
+	values={73},
+	digits=[{7},{3}]
+Eval VirusClue A12 cartesianCount=4, elapsed 0:00:00.000041
+solve: VirusClue(name=A12,length=3,value: £inversekv(EA12,X) = $multiple ED10,
+	referrers=[A12],
+	values={438}
+Entry A12={138}
+Eval VirusClue D5 cartesianCount=3, elapsed 0:00:00.000027
+solve: VirusClue(name=D5,length=2,value: £inversekv(ED5,X) = $DP EA12,
+	referrers=[D5],
+	values={24}
+Entry D5={21}
+Eval VirusEntry A8 cartesianCount=7, elapsed 0:00:00.000024
+solve: VirusEntry(name=A8,length=2,value: £kv(A8,X),
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5,A8],
+	values={11,61},
+	digits=[{1,6},{1}]
+Eval VirusClue A8 cartesianCount=2, elapsed 0:00:00.000037
+solve: VirusClue(name=A8,length=2,value: £inversekv(EA8,X) = #prime,
+	referrers=[A8],
+	values={11,61}
+Eval VirusEntry A8 cartesianCount=2, elapsed 0:00:00.000017
+Eval VirusClue A8 cartesianCount=2, elapsed 0:00:00.000046
+Eval VirusEntry D4 cartesianCount=5, elapsed 0:00:00.000029
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={118,368,768},
+	digits=[{1,3,7},{1,6},{8}]
+Eval VirusEntry A2 cartesianCount=8, elapsed 0:00:00.000024
+solve: VirusEntry(name=A2,length=3,value: £kv(A2,X),
+	identities=[A2[1]=D3[0],A2[2]=D4[0]],referrers=[D3,D4,A2],
+	values={113,211,311,317,617,811},
+	digits=[{1..3,6,8},{1},{1,3,7}]
+Eval VirusClue A2 cartesianCount=6, elapsed 0:00:00.001335
+solve: VirusClue(name=A2,length=3,value: £inversekv(EA2,X) = $prime $jumble #otherentry,
+	referrers=[A2],
+	values={113,311,811}
+Entry A2={113,311,811}
+Eval VirusEntry A2 cartesianCount=3, elapsed 0:00:00.000022
+Eval VirusEntry A8 cartesianCount=2, elapsed 0:00:00.000019
+Eval VirusEntry D4 cartesianCount=5, elapsed 0:00:00.000016
+solve: VirusEntry(name=D4,length=3,value: £kv(D4,X),
+	identities=[D4[0]=A2[2],D4[1]=A8[0],D4[2]=A10[1]],referrers=[A2,A8,A10,D4],
+	values={118,368},
+	digits=[{1,3},{1,6},{8}]
+Eval VirusEntry A2 cartesianCount=3, elapsed 0:00:00.000018
+Eval VirusEntry A8 cartesianCount=2, elapsed 0:00:00.000015
+Eval VirusClue D4 cartesianCount=2, elapsed 0:00:00.000032
+solve: VirusClue(name=D4,length=3,value: £inversekv(ED4,X) = $multiple ED3,
+	referrers=[D4],
+	values={368,448}
+Eval VirusEntry D4 cartesianCount=2, elapsed 0:00:00.000017
+Eval VirusClue D4 cartesianCount=2, elapsed 0:00:00.000030
+solve: VirusClue(name=D10,length=2,value: £inversekv(ED10,X) = #prime,
+	referrers=[D10],
+	values={73}
+Eval VirusClue D11 cartesianCount=3, elapsed 0:00:00.000031
+solve: VirusClue(name=D11,length=2,value: £inversekv(ED11,X) = $divisor ED1,
+	referrers=[D11],
+	values={17}
+Entry D11={17}
+Eval VirusClue A2 cartesianCount=3, elapsed 0:00:00.000456
+Eval VirusClue A8 cartesianCount=2, elapsed 0:00:00.000022
+Clue/Variable iterations=434, updates=213, elapsed 0:01:05.763953
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
-Clue A2, $prime $jumble #otherentry, values={101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,123 more,997}
-Clue A6, $kv EA6 = #triangular, values={171,276,496}
-Clue A8, $kv EA8 = #prime, values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Clue A9, $kv EA9 = $DS ED7, values={11,13..19,22..27}
-Clue A10, $kv EA10 = #square, values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961}
-Clue A12, $kv EA12 = $multiple ED10, values={112,116,141,145,148,158,166,168,174,176,184,188,195,222,224,232,235,237,249,261,79 more,996}
-Clue D1, $kv ED1 = $multiple EA9, values={22,26,28,32..34,39,42,44..46,48,51,52,54..56,58,64,65,20 more,99}
-Clue D3, $kv ED3 = $DS ED10, values={11,16}
-Clue D4, $kv ED4 = $multiple ED3, values={112,132,138,144,156,168,182,184,198,216,224,234,252,264,276,286,288,312,322,324,51 more,988}
-Clue D5, $kv ED5 = $DP EA12, values={14..16,18,24,25,27,28,32,35,36,42,45,48,49,54,56,63,64,72,5 more,98}
-Clue D7, $kv ED7 = $multiple K*10+V, values={112..119,121..129,132..134,615 more,998}
-Clue D9, $kv ED9 = $squareroot EA6, values={14,24,26}
-Clue D10, $kv ED10 = #prime, values={11,13,17,19,23,29,37,41,43,53,59,61,67,71,73,79,89,97}
-Clue D11, $kv ED11 = $factor ED1, values={11,13,17,19,23,31,41,43,61,71}
-Entry D1, $kv D1, values={11,26,31,41,46,51,55,61,65,66,71,76,85,86,91,95}
-Entry A2, $kv A2, values={121..129,131..139,141,142,334 more,969}
-Entry D3, $kv D3, values={26,36,46,56,66}
-Entry D4, $kv D4, values={112,114,116,118,121,122,124,126,128,132..139,142,144,146,492 more,988}
-Entry D5, $kv D5, values={12..19,21,23..26,28,29,31,32,34..36,50 more,98}
-Entry A6, $kv A6, values={196,576,676}
-Entry D7, $kv D7, values={713,715..719,722,724..729,731,733..738,107 more,999}
-Entry A8, $kv A8, values={12..17,19,21..27,29,31..35,52 more,99}
-Entry A9, $kv A9, values={11,13..17,22..29,33,34,36..39,5 more,49}
-Entry D9, $kv D9, values={14,16,24,34,36,46}
-Entry A10, $kv A10, values={216,219,221,236,239,241,244,246,249,251,253,254,257..259,261,269,272,276,279,114 more,965}
-Entry D10, $kv D10, values={29,47,56,65,74,79,83,88,92}
-Entry D11, $kv D11, values={13,21..23,27,29,31..33,37,39,41..44,47,49,51,53,55,20 more,99}
-Entry A12, $kv A12, values={128,129,135,136,138,144,146..149,153,155,157,159,163,164,166..169,194 more,991}
+Clue A2, £inversekv(EA2,X) = $prime $jumble #otherentry, values={113,311,811}
+Clue A6, £inversekv(EA6,X) = $triangular #result, values={496}
+Clue A8, £inversekv(EA8,X) = #prime, values={11,61}
+Clue A9, £inversekv(EA9,X) = $DS ED7, values={18}
+Clue A10, £inversekv(EA10,X) = #square, values={784}
+Clue A12, £inversekv(EA12,X) = $multiple ED10, values={438}
+Clue D1, £inversekv(ED1,X) = $multiple EA9, values={54}
+Clue D3, £inversekv(ED3,X) = $DS EA10, values={16}
+Clue D4, £inversekv(ED4,X) = $multiple ED3, values={368,448}
+Clue D5, £inversekv(ED5,X) = $DP EA12, values={24}
+Clue D7, £inversekv(ED7,X) = $multiple X, values={984}
+Clue D9, £inversekv(ED9,X) = $squareroot EA6, values={14}
+Clue D10, £inversekv(ED10,X) = #prime, values={73}
+Clue D11, £inversekv(ED11,X) = $divisor ED1, values={17}
+Entry D1, £kv(D1,X), values={51}
+Entry A2, £kv(A2,X), values={113,311,811}
+Entry D3, £kv(D3,X), values={16}
+Entry D4, £kv(D4,X), values={118,368}
+Entry D5, £kv(D5,X), values={21}
+Entry A6, £kv(A6,X), values={196}
+Entry D7, £kv(D7,X), values={981}
+Entry A8, £kv(A8,X), values={11,61}
+Entry A9, £kv(A9,X), values={18}
+Entry D9, £kv(D9,X), values={14}
+Entry A10, £kv(A10,X), values={781}
+Entry D10, £kv(D10,X), values={73}
+Entry D11, £kv(D11,X), values={17}
+Entry A12, £kv(A12,X), values={138}
 +--+--+--+--+--+
-| ?| ?  ?  ?| ?|
+| 5| ?  1  ?| 2|
 +  +--      +  +
-| ?  ?  6| ?  ?|
+| 1  9  6| ?  1|
 +--+   --+   --+
-| ?  ?| ?  ?  ?|
+| 1  8| 7  8  1|
 +     +   --+  +
-| ?| ?  ?  ?| ?|
+| 4| 1  3  8| 7|
 +--+--+--+--+--+
 Variables:
-K={1..9}
-V={1..9}
+X={41}
 
-Exited.
+ITERATE SOLUTIONS-----------------------------
+Eval VirusClue A2 cartesianCount=3, elapsed 0:00:00.000517
+Eval VirusClue A8 cartesianCount=2, elapsed 0:00:00.000056
+Eval VirusClue D4 cartesianCount=2, elapsed 0:00:00.000056
+Eval VirusClue A2 cartesianCount=3, elapsed 0:00:00.000419
+SOLUTION-----------------------------
+Puzzle Summary
+Clue A2, £inversekv(EA2,X) = $prime $jumble #otherentry, values={811}
+Clue A6, £inversekv(EA6,X) = $triangular #result, values={496}
+Clue A8, £inversekv(EA8,X) = #prime, values={11}
+Clue A9, £inversekv(EA9,X) = $DS ED7, values={18}
+Clue A10, £inversekv(EA10,X) = #square, values={784}
+Clue A12, £inversekv(EA12,X) = $multiple ED10, values={438}
+Clue D1, £inversekv(ED1,X) = $multiple EA9, values={54}
+Clue D3, £inversekv(ED3,X) = $DS EA10, values={16}
+Clue D4, £inversekv(ED4,X) = $multiple ED3, values={448}
+Clue D5, £inversekv(ED5,X) = $DP EA12, values={24}
+Clue D7, £inversekv(ED7,X) = $multiple X, values={984}
+Clue D9, £inversekv(ED9,X) = $squareroot EA6, values={14}
+Clue D10, £inversekv(ED10,X) = #prime, values={73}
+Clue D11, £inversekv(ED11,X) = $divisor ED1, values={17}
+Entry D1, £kv(D1,X), values={51}
+Entry A2, £kv(A2,X), values={811}
+Entry D3, £kv(D3,X), values={16}
+Entry D4, £kv(D4,X), values={118}
+Entry D5, £kv(D5,X), values={21}
+Entry A6, £kv(A6,X), values={196}
+Entry D7, £kv(D7,X), values={981}
+Entry A8, £kv(A8,X), values={11}
+Entry A9, £kv(A9,X), values={18}
+Entry D9, £kv(D9,X), values={14}
+Entry A10, £kv(A10,X), values={781}
+Entry D10, £kv(D10,X), values={73}
+Entry D11, £kv(D11,X), values={17}
+Entry A12, £kv(A12,X), values={138}
++--+--+--+--+--+
+| 5| 8  1  1| 2|
++  +--      +  +
+| 1  9  6| 1  1|
++--+   --+   --+
+| 1  8| 7  8  1|
++     +   --+  +
+| 4| 1  3  8| 7|
++--+--+--+--+--+
+Variables:
+X={41}
+
+Eval VirusClue D4 cartesianCount=2, elapsed 0:00:00.000035
+Eval VirusClue A2 cartesianCount=3, elapsed 0:00:00.000420
+Solution count=1

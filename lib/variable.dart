@@ -136,7 +136,7 @@ class Variable with PriorityVariable {
   void checkAnswer(Set<int> values) {
     if (_answer == null) return;
     if (values.contains(_answer)) return;
-    throw SolveException(
+    throw SolveError(
         'Variable $name answer $_answer not in values ${values.toShortString()}');
   }
 

@@ -252,7 +252,7 @@ U={1..9}
 RemainingValues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 SOLVE------------
-Eval Root66_2Clue D14 cartesianCount=14348907, elapsed 0:00:02.115307
+Eval Root66_2Clue D14 cartesianCount=14348907, elapsed 0:00:02.455769
 solve: Root66_2Clue(name=D14,length=4,value: R-(A+I+N+O-U^T)S,
 	identities=[D14[0]=A13[2],D14[1]=A18[2],D14[2]=A20[2],D14[3]=A21[0]],referrers=[A13,A18,A20,A21],
 	values={more than 20}),
@@ -260,7 +260,7 @@ solve: Root66_2Clue(name=D14,length=4,value: R-(A+I+N+O-U^T)S,
 	digits=[{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}]
 T={3, 4, 5, 6, 7, 8, 9}
 U={2, 3, 4, 5, 6, 7, 8, 9}
-Eval Root66_2Clue D2 cartesianCount=29760696, elapsed 0:00:04.131975
+Eval Root66_2Clue D2 cartesianCount=29760696, elapsed 0:00:04.282337
 solve: Root66_2Clue(name=D2,length=4,value: -D+U(R+A)(T^I+O*N^S),
 	identities=[D2[0]=A2[0],D2[1]=A7[2],D2[2]=A8[2],D2[3]=A11[2]],referrers=[A2,A7,A8,A11],
 	values={more than 20}),
@@ -272,7 +272,7 @@ I={1, 4}
 N={1, 2, 3, 4, 5, 6, 7, 8}
 R={2, 3, 4, 5, 6, 7, 8, 9}
 S={1, 2, 3, 4, 5, 8}
-Eval Root66_2Clue A2 cartesianCount=6193152, elapsed 0:00:00.842344
+Eval Root66_2Clue A2 cartesianCount=6193152, elapsed 0:00:00.840687
 solve: Root66_2Clue(name=A2,length=4,value: -D+U*R^(A+T)+I+O*N^S,
 	identities=[A2[0]=D2[0],A2[1]=D3[0],A2[2]=D4[0],A2[3]=D5[0]],referrers=[D2,D3,D4,D5],
 	values={3584, 1793, 1538, 3619, 1835, 1587}),
@@ -287,7 +287,7 @@ U={6, 7}
 I={4}
 N={1, 5, 6, 7, 8}
 S={1, 8}
-Eval Root66_2Clue A12 cartesianCount=72, elapsed 0:00:00.000781
+Eval Root66_2Clue A12 cartesianCount=72, elapsed 0:00:00.000689
 solve: Root66_2Clue(name=A12,length=4,value: (A+S)T(R^O-√(ID)),
 	identities=[A12[0]=D4[3],A12[1]=D5[3],A12[2]=D6[3],A12[3]=D10[1]],referrers=[D4,D5,D6,D10],
 	values={4758}),
@@ -520,13 +520,13 @@ solve: Root66_2Clue(name=D17,length=4,value: A(S^T+OU+N)+D,
 	values={2784}),
 	entries={3647},
 	digits=[{3}, {6}, {4}, {7}]
-Clue/Variable iterations=246, updates=86, elapsed 0:00:00.020369
+Clue/Variable iterations=244, updates=86, elapsed 0:00:00.028686
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue A2, -D+U*R^(A+T)+I+O*N^S, values={1538}, entry={2643}
 Clue A7, , values={unknown}, entry={26741598}
 Clue A8, R+O(TU+N)DA, values={5987}, entry={4198}
-Clue A9, (S+I+T^A+RO-U-N)D, values={}, entry={8765}
+Clue A9, (S+I+T^A+RO-U-N)D, values={2358}, entry={8765}
 Clue A11, U((N+I)^T-(A+R)D)S, values={2976}, entry={1965}
 Clue A12, (A+S)T(R^O-√(ID)), values={4758}, entry={2938}
 Clue A13, S*U^T+(O+R+I)A+N, values={1794}, entry={6329}

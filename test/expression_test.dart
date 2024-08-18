@@ -74,6 +74,27 @@ void main() {
       expectToken(tokens[5]!, 'D', 'VAR');
     });
   });
+  group('Function Enhancements', () {
+    void expectToken(Token token, String name, String type) {
+      expect(token.name, equals(name));
+      expect(token.type, equals(type));
+    }
+
+    var text = r'£gcd(A1,CD)';
+    test(text, () {
+      var tokens = Scanner.generateTokens(text).toList();
+      expectToken(tokens[0]!, 'gcd', 'POLYADIC');
+      expectToken(tokens[2]!, 'A1', 'CLUE');
+      expectToken(tokens[4]!, 'C', 'VAR');
+      expectToken(tokens[5]!, 'D', 'VAR');
+    });
+    var text2 = r'£gcd(24,9)';
+    test(text2, () {
+      var exp = ExpressionEvaluator(text2);
+      var value = exp.evaluate();
+      expect(value, equals(3));
+    });
+  });
   group('Generator Enhancements', () {
     var text1 = '#prime';
     test(text1, () {

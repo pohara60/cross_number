@@ -1,8 +1,14 @@
 library virus;
 
+import 'dart:math';
+
+import 'package:crossnumber/set.dart';
+
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
+import '../generators.dart';
+import '../monadic.dart';
 import '../puzzle.dart';
 import '../variable.dart';
 import 'clue.dart';
@@ -38,7 +44,7 @@ class Virus extends Crossnumber<VirusPuzzle> {
     for (var entrySpec in puzzle.getEntriesFromGrid()) {
       try {
         // Add KV expression
-        var valueDesc = '\$kv ${entrySpec.name}';
+        var valueDesc = '£kv(${entrySpec.name},X)';
         var entry = VirusEntry(
           name: entrySpec.name,
           length: entrySpec.length,
@@ -64,11 +70,11 @@ class Virus extends Crossnumber<VirusPuzzle> {
         {String? name, int? length, String? valueDesc, List<String>? addDesc}) {
       try {
         // Add KV check for entry value
-        var expString = '\$kv E$name = $valueDesc';
+        var expString = '£inversekv(E$name,X) = $valueDesc';
         var clue = VirusClue(
             name: name!,
             length: length,
-            valueDesc: name != 'A2' ? expString : valueDesc,
+            valueDesc: name != 'xA2' ? expString : valueDesc,
             addDesc: addDesc,
             solve: solveVirusClue,
             entryNames: entryNames);
@@ -82,19 +88,19 @@ class Virus extends Crossnumber<VirusPuzzle> {
 
     clueWrapper(
         name: 'A2', length: 3, valueDesc: r'$prime $jumble #otherentry');
-    clueWrapper(name: 'A6', length: 3, valueDesc: r'#triangular');
+    clueWrapper(name: 'A6', length: 3, valueDesc: r'$triangular #result');
     clueWrapper(name: 'A8', length: 2, valueDesc: r'#prime');
     clueWrapper(name: 'A9', length: 2, valueDesc: r'$DS ED7');
     clueWrapper(name: 'A10', length: 3, valueDesc: r'#square');
     clueWrapper(name: 'A12', length: 3, valueDesc: r'$multiple ED10');
     clueWrapper(name: 'D1', length: 2, valueDesc: r'$multiple EA9');
-    clueWrapper(name: 'D3', length: 2, valueDesc: r'$DS ED10');
+    clueWrapper(name: 'D3', length: 2, valueDesc: r'$DS EA10');
     clueWrapper(name: 'D4', length: 3, valueDesc: r'$multiple ED3');
     clueWrapper(name: 'D5', length: 2, valueDesc: r'$DP EA12');
-    clueWrapper(name: 'D7', length: 3, valueDesc: r'$multiple K*10+V');
+    clueWrapper(name: 'D7', length: 3, valueDesc: r'$multiple X');
     clueWrapper(name: 'D9', length: 2, valueDesc: r'$squareroot EA6');
     clueWrapper(name: 'D10', length: 2, valueDesc: r'#prime');
-    clueWrapper(name: 'D11', length: 2, valueDesc: r'$factor ED1');
+    clueWrapper(name: 'D11', length: 2, valueDesc: r'$divisor ED1');
 
     if (clueErrors != '') {
       throw PuzzleException(clueErrors);
@@ -104,7 +110,7 @@ class Virus extends Crossnumber<VirusPuzzle> {
 
     var letters = [
       // variables
-      'K', 'V',
+      'X',
     ];
     for (var letter in letters) {
       puzzle.addVariable(VirusVariable(letter));
@@ -115,9 +121,106 @@ class Virus extends Crossnumber<VirusPuzzle> {
     super.initCrossnumber();
   }
 
+  void initSolve() {
+    var xValues = initXValues();
+    // A6 is 3 digit triangular
+    var a6Values = getThreeDigitTriangles();
+    var goodA6 = <int>{};
+    var goodEA6 = <int>{};
+    var goodX = <int>{};
+    var goodD9 = <int>{};
+    var goodD7 = <int>{};
+    var goodED7 = <int>{};
+    var goodA9 = <int>{};
+    var goodEA9 = <int>{};
+    for (var a6Value in a6Values) {
+      for (var xValue in xValues) {
+        // EA6 is KV(A6)
+        var ea6Value = kvFunc([a6Value, xValue]);
+        // D9 is sqrt EA6
+        var value = sqrt(ea6Value);
+        if (value != value.roundToDouble()) continue;
+        var d9Value = value.toInt();
+        var ed9Value = kvFunc([d9Value, xValue]);
+
+        // ED7[0] is EA6[1] so EA6[1] is not 0
+        var ea6Digit2 = ea6Value ~/ 10 % 10;
+        if (ea6Digit2 == 0) continue;
+
+        // D7 is multiple KV
+        var d7Value = (100 ~/ xValue + 1) * xValue;
+        while (d7Value < 1000) {
+          // ED7 is KV(D7)
+          var ed7Value = kvFunc([d7Value, xValue]);
+          // ED7[0] is EA6[1]
+          var ed7Digit1 = ed7Value ~/ 100;
+          if (ed7Digit1 == ea6Digit2) {
+            // A9 is DS(ED7)
+            var a9Value = digitSum(ed7Value);
+            // EA9 is KV(A9)
+            var ea9Value = kvFunc([a9Value, xValue]);
+            // EA9[1] is ED7[1]
+            var ed7Digit2 = ed7Value ~/ 10 % 10;
+            var ea9Digit2 = ea9Value % 10;
+            if (ea9Digit2 == ed7Digit2) {
+              // EA9[0] is ED9[0]
+              var ed9Digit1 = ed9Value ~/ 10;
+              var ea9Digit1 = ea9Value ~/ 10;
+              if (ea9Digit1 == ed9Digit1) {
+                goodA6.add(a6Value);
+                goodEA6.add(ea6Value);
+                goodX.add(xValue);
+                goodD9.add(d9Value);
+                goodD7.add(d7Value);
+                goodED7.add(ed7Value);
+                goodA9.add(a9Value);
+                goodEA9.add(ea9Value);
+              }
+            }
+          }
+          d7Value += xValue;
+        }
+      }
+    }
+    print('A6=${goodA6.toShortString()}');
+    print('EA6=${goodEA6.toShortString()}');
+    print('X=${goodX.toShortString()}');
+    print('D9=${goodD9.toShortString()}');
+    print('D7=${goodD7.toShortString()}');
+    print('ED7=${goodED7.toShortString()}');
+    print('A9=${goodA9.toShortString()}');
+    print('EA9=${goodEA9.toShortString()}');
+
+    puzzle.clues['A6']!.values = goodA6;
+    puzzle.entries['A6']!.values = goodEA6;
+    puzzle.variables['X']!.values = goodX;
+    puzzle.clues['D9']!.values = goodD9;
+    puzzle.clues['D7']!.values = goodD7;
+    puzzle.entries['D7']!.values = goodED7;
+    puzzle.clues['A9']!.values = goodA9;
+    puzzle.entries['A9']!.values = goodEA9;
+  }
+
   @override
   // ignore: unnecessary_overrides
   void solve([bool iteration = true]) {
+    print('MANUAL UPDATES-----------------------------');
+    initSolve();
+
+    puzzle.clues['A6']!.answer = 496;
+    puzzle.entries['A6']!.answer = 196;
+    puzzle.variables['X']!.answer = 41;
+    puzzle.clues['D9']!.answer = 14;
+    puzzle.clues['D11']!.answer = 17;
+
+    solveClueNoException(puzzle.clues["A6"]!);
+    solveClueNoException(puzzle.entries["A6"]!);
+    solveClueNoException(puzzle.clues["D9"]!);
+    solveClueNoException(puzzle.entries["D9"]!);
+    solveClueNoException(puzzle.clues["D7"]!);
+    solveClueNoException(puzzle.entries["D7"]!);
+    solveClueNoException(puzzle.clues["A9"]!);
+    solveClueNoException(puzzle.entries["A9"]!);
     super.solve(true);
   }
 
@@ -145,45 +248,8 @@ class Virus extends Crossnumber<VirusPuzzle> {
     var clue = v as VirusClue;
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
-      if (clue.expressions.length == 1) {
-        updated = puzzle.solveExpressionEvaluator(
-            clue, clue.exp, possibleValue, possibleVariables!, validClue);
-      } else {
-        var first = true;
-        String? exceptionMessage;
-        for (var exp in clue.expressions) {
-          var possibleValueExp = <int>{};
-          try {
-            // Previous evaluation may have cleared variables
-            if (possibleVariables!.isEmpty) return updated;
-            updated = puzzle.solveExpressionEvaluator(
-              clue,
-              exp,
-              first ? possibleValue : possibleValueExp,
-              possibleVariables,
-              validClue,
-            );
-            // Combine values
-            if (first) {
-              first = false;
-              // Got first values above
-            } else {
-              // Keep intersection of values
-              var remove = possibleValue
-                  .where((value) => !possibleValueExp.contains(value))
-                  .toList();
-              possibleValue.removeAll(remove);
-            }
-          } on SolveException catch (e) {
-            // Keep processing other expressions
-            exceptionMessage = e.msg;
-          }
-        }
-        if (first) {
-          // All expressions threw exception
-          throw SolveException(exceptionMessage);
-        }
-      }
+      updated = puzzle.solveExpressionEvaluator(
+          clue, clue.exp, possibleValue, possibleVariables!, validClue, null);
     } else {
       // Values may have been set by other Clue
       if (clue.values != null) {

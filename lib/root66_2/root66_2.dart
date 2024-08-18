@@ -272,6 +272,7 @@ class Root66_2 extends Crossnumber<Root66_2Puzzle> {
   @override
   void solve([bool iteration = true]) {
     print("SOLVE------------");
+    // puzzle.clues['A9']!.answer = 2358;
 
     // Square roots limit letters I nd D
     for (var letter in ['D', 'I']) {

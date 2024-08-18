@@ -38,6 +38,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['notpalindrome'] = Monadic('notpalindrome', isNotPalindrome, bool);
   monadics['odd'] = Monadic('odd', isOdd, bool);
   monadics['prime'] = Monadic('prime', isPrime, bool);
+  monadics['triangular'] = Monadic('triangular', isTriangular, bool);
   monadics['adjacentprime'] =
       Monadic('adjacentprime', isAdjacentPrime, Iterable<int>);
   monadics['multiple'] = Monadic('multiple', multiple, Iterable<int>);

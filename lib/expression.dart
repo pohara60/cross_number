@@ -7,6 +7,7 @@ import 'dart:math';
 
 import 'generators.dart';
 import 'monadic.dart';
+import 'polyadic.dart';
 import 'variable.dart';
 
 typedef ExpressionCallback = num? Function(
@@ -56,12 +57,14 @@ const REVERSE = 'REVERSE', REVERSE_RE = r'(?<' + REVERSE + r">')";
 const EXPONENT = 'EXPONENT', EXPONENT_RE = r'(?<' + EXPONENT + r'>\^)';
 const LPAREN = 'LPAREN', LPAREN_RE = r'(?<' + LPAREN + r'>\()';
 const RPAREN = 'RPAREN', RPAREN_RE = r'(?<' + RPAREN + r'>\))';
+const COMMA = 'COMMA', COMMA_RE = r'(?<' + COMMA + r'>\,)';
 const EQUAL = 'EQUAL', EQUAL_RE = r'(?<' + EQUAL + r'>=)';
 const AND = 'AND', AND_RE = r'(?<' + AND + r'>&)';
 const CLUE = 'CLUE', CLUE_RE = r'(?<' + CLUE + r'>E?[adAD]\d+|[IVX]+)';
 const VAR = 'VAR', VAR_RE = r'(?<' + VAR + r'>\w)';
 const GENERATOR = 'GENERATOR', GENERATOR_RE = r'(?<' + GENERATOR + r'>\#\w+)';
 const MONADIC = 'MONADIC', MONADIC_RE = r'(?<' + MONADIC + r'>\$\w+)';
+const POLYADIC = 'POLYADIC', POLYADIC_RE = r'(?<' + POLYADIC + r'>\£\w+)';
 const WS = 'WS', WS_RE = r'(?<' + WS + r'>\s+)';
 const ERROR = 'ERROR', ERROR_RE = r'(?<' + ERROR + r'>.)';
 var regExp = RegExp([
@@ -77,18 +80,21 @@ var regExp = RegExp([
   EXPONENT_RE,
   LPAREN_RE,
   RPAREN_RE,
+  COMMA_RE,
   EQUAL_RE,
   AND_RE,
   CLUE_RE,
   VAR_RE,
   GENERATOR_RE,
   MONADIC_RE,
+  POLYADIC_RE,
   WS_RE,
   ERROR_RE,
 ].join('|'));
 
 var generators = <String, Generator>{};
 var monadics = <String, Monadic>{};
+var polyadics = <String, Polyadic>{};
 
 class Token {
   final String type;
@@ -114,6 +120,7 @@ class Scanner {
   static void initialize() {
     initializeGenerators(generators);
     initializeMonadics(monadics);
+    initializePolyadics(polyadics);
     initialized = true;
   }
 
@@ -126,6 +133,12 @@ class Scanner {
   static void addMonadics(List<Monadic> monadicList) {
     for (var monadic in monadicList) {
       monadics[monadic.name] = monadic;
+    }
+  }
+
+  static void addPolyadics(List<Polyadic> polyadicList) {
+    for (var polyadic in polyadicList) {
+      polyadics[polyadic.name] = polyadic;
     }
   }
 
@@ -166,6 +179,14 @@ class Scanner {
           yield Token(match, ERROR, name: 'Unknown Monadic $match');
         }
       }
+      if (m.namedGroup(POLYADIC) != null) {
+        var name = match!.substring(1).toLowerCase();
+        if (polyadics.containsKey(name)) {
+          yield Token(match, POLYADIC, name: name);
+        } else {
+          yield Token(match, ERROR, name: 'Unknown Polyadic $match');
+        }
+      }
       if (m.namedGroup(PLUS) != null) {
         yield Token(match!, PLUS);
       }
@@ -198,6 +219,9 @@ class Scanner {
       }
       if (m.namedGroup(RPAREN) != null) {
         yield Token(match!, RPAREN);
+      }
+      if (m.namedGroup(COMMA) != null) {
+        yield Token(match!, COMMA);
       }
       if (m.namedGroup(EQUAL) != null) {
         yield Token(match!, EQUAL);
@@ -346,7 +370,7 @@ class Node {
   }
 
   void nodeOrder() {
-    if (operands == null) {
+    if (operands == null || operands!.isEmpty) {
       if (token.type == "GENERATOR") {
         // Assume all generators are ascending
         order = NodeOrder.ASCENDING;
@@ -357,26 +381,7 @@ class Node {
       var childOrder = operands!.first.order;
       //if (operands!.first.token.type==MINUS)
       order = childOrder;
-      if (token.type == MONADIC) {
-        var name = token.name;
-        var monadic = monadics[name]!;
-        if (monadic.type == Iterable<int>) {
-          // Descending/Ascending/Unknown generator functions
-          if (order == NodeOrder.SINGLE &&
-              monadic.order == NodeOrder.DESCENDING) {
-            order = NodeOrder.DESCENDING;
-          } else if (order == NodeOrder.SINGLE &&
-              monadic.order == NodeOrder.ASCENDING)
-            order = NodeOrder.ASCENDING;
-          else
-            order = NodeOrder.UNKNOWN;
-        } else {
-          // Non-generator functions that do not preserve operand order
-          if (order != NodeOrder.SINGLE && monadic.order == NodeOrder.UNKNOWN) {
-            order = NodeOrder.UNKNOWN;
-          }
-        }
-      } else if (token.type == REVERSE) {
+      if (token.type == REVERSE) {
         order = NodeOrder.UNKNOWN;
       }
     } else {
@@ -406,10 +411,32 @@ class Node {
           order = NodeOrder.UNKNOWN;
       }
     }
+    if (token.type == MONADIC || token.type == POLYADIC) {
+      var name = token.name;
+      var type =
+          token.type == MONADIC ? monadics[name]!.type : polyadics[name]!.type;
+      var forder = token.type == MONADIC
+          ? monadics[name]!.order
+          : polyadics[name]!.order;
+      if (type == Iterable<int>) {
+        // Descending/Ascending/Unknown generator functions
+        if (order == NodeOrder.SINGLE && forder == NodeOrder.DESCENDING) {
+          order = NodeOrder.DESCENDING;
+        } else if (order == NodeOrder.SINGLE && forder == NodeOrder.ASCENDING)
+          order = NodeOrder.ASCENDING;
+        else
+          order = NodeOrder.UNKNOWN;
+      } else {
+        // Non-generator functions that do not preserve operand order
+        if (order != NodeOrder.SINGLE && forder == NodeOrder.UNKNOWN) {
+          order = NodeOrder.UNKNOWN;
+        }
+      }
+    }
   }
 
   void nodeComplexity() {
-    if (operands == null) {
+    if (operands == null || operands!.isEmpty) {
       if (token.type == "GENERATOR") {
         complexity = NodeComplexity.GENERATOR;
       } else {
@@ -425,17 +452,6 @@ class Node {
         complexity = NodeComplexity.GENERATOR_CHILD;
       else // (childComplexity == NodeComplexity.SIMPLE)
         complexity = NodeComplexity.SIMPLE;
-      if (token.type == MONADIC) {
-        var name = token.name;
-        var monadic = monadics[name]!;
-        if (monadic.type == Iterable<int>) {
-          if (complexity == NodeComplexity.SIMPLE) {
-            complexity = NodeComplexity.GENERATOR;
-          } else {
-            complexity = NodeComplexity.GENERATOR_CHILDREN;
-          }
-        }
-      }
     } else {
       var childComplexity1 = operands![0].complexity;
       var childComplexity2 = operands![1].complexity;
@@ -456,14 +472,28 @@ class Node {
       else // (childComplexity == NodeComplexity.SIMPLE)
         complexity = NodeComplexity.SIMPLE;
     }
+    if (token.type == MONADIC || token.type == POLYADIC) {
+      var name = token.name;
+      var type =
+          token.type == MONADIC ? monadics[name]!.type : polyadics[name]!.type;
+      if (type == Iterable<int>) {
+        if (complexity == NodeComplexity.SIMPLE) {
+          complexity = NodeComplexity.GENERATOR;
+        } else {
+          complexity = NodeComplexity.GENERATOR_CHILDREN;
+        }
+      }
+    }
   }
 
   @override
-  String toString() => operands == null
+  String toString() => operands == null || operands!.isEmpty
       ? '$token'
-      : operands!.length == 1
-          ? '$token${operands![0]}'
-          : '(${operands![0]}$token${operands![1]})';
+      : token.type == POLYADIC
+          ? '$token(${operands!.map((o) => o.toString()).join(',')})'
+          : operands!.length == 1
+              ? '$token${operands![0]}'
+              : '(${operands![0]}$token${operands![1]})';
 
 //      '($token${operands == null ? '' : operands!.map<String>((e) => ' $e')})';
 }
@@ -826,7 +856,7 @@ class ExpressionEvaluator {
   }
 
   Node? factor() {
-    // factor ::= VAR | CLUE | NUM | GENERATOR | ( expr ) | ERROR
+    // factor ::= VAR | CLUE | NUM | GENERATOR | ( expr ) | ERROR | function
     if (_accept(VAR) || _accept(CLUE) || _accept(NUM) || _accept(GENERATOR)) {
       var token = tok!;
       if (token.type == VAR) {
@@ -844,6 +874,25 @@ class ExpressionEvaluator {
       return node;
     } else if (_accept(ERROR)) {
       throw ExpressionError(tok!.name);
+    } else {
+      return function();
+    }
+  }
+
+  Node? function() {
+    // function ::= POLYADIC ( expr {, expr }* )
+    if (_accept(POLYADIC)) {
+      var token = tok!;
+      var operands = <Node>[];
+      _expect(LPAREN);
+      while (true) {
+        var node = expr();
+        operands.add(node);
+        if (!_accept(COMMA)) break;
+      }
+      _expect(RPAREN);
+      var func = Node(token, operands);
+      return func;
     } else {
       return null;
     }
@@ -970,6 +1019,34 @@ class ExpressionEvaluator {
         } else {
           throw ExpressionInvalid(
               'Unexpected value type $funcResult for monadic $name');
+        }
+      case POLYADIC:
+        var name = node.token.name;
+        var polyadic = polyadics[name];
+        if (polyadic == null) {
+          throw ExpressionInvalid('Unknown polyadic $name');
+        }
+        var args = <int>[];
+        for (var operand in node.operands!) {
+          left = eval(operand, callback);
+          checkInteger(left);
+          args.add(left.toInt());
+        }
+        var funcResult = polyadic.func != null
+            ? polyadic.func!(args)
+            : polyadic.funcRange!(args, null, null);
+        if (funcResult is bool) {
+          if (funcResult) {
+            result = args[0];
+          } else {
+            throw ExpressionInvalid(
+                'False bool result for polyadic $name in simple expression');
+          }
+        } else if (funcResult is num) {
+          result = funcResult;
+        } else {
+          throw ExpressionInvalid(
+              'Unexpected value type $funcResult for polyadic $name');
         }
       case GENERATOR:
         throw ExpressionInvalid("GENERATOR should be evaluated using 'gen()'");
@@ -1481,6 +1558,69 @@ class ExpressionEvaluator {
                   'Unexpected value type $result for monadic $name');
             }
           }
+        }
+        break;
+      case POLYADIC:
+        var name = node.token.name;
+        var polyadic = polyadics[name];
+        if (polyadic == null) {
+          throw ExpressionError('Unknown polyadic $name');
+        }
+        // Only cope with simple arguments
+        for (var operand in node.operands!) {
+          if (operand.complexity != NodeComplexity.SIMPLE) {
+            throw ExpressionError(
+                'Polyadic functions ($name) only support simple arguments');
+          }
+        }
+        var args = <int>[];
+        for (var operand in node.operands!) {
+          var value = eval(operand, callback);
+          args.add(value.toInt());
+        }
+        var result = polyadic.func != null
+            ? polyadic.func!(args)
+            : polyadic.funcRange!(args, min, max);
+        if (result is bool) {
+          if (!result) break;
+          // if true then return argument
+          result = args[0];
+        }
+        if (result is num) {
+          if (result > max) break;
+          if (result < min) break;
+          if (callback != null) {
+            result = callback(args[0], null, result, node);
+            if (result == null) break;
+          }
+          yield result;
+        } else if (result is Iterable<int>) {
+          // Override to prevent runaway NodeOrder.UNKNOWN
+          var iterationCount = 0;
+          const iterationLimit = 100000;
+          for (int? fresult in result) {
+            iterationCount++;
+            if (fresult! > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              if (node.order == NodeOrder.UNKNOWN &&
+                  iterationCount > iterationLimit) break;
+              continue;
+            }
+            if (fresult < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              if (node.order == NodeOrder.UNKNOWN &&
+                  iterationCount > iterationLimit) break;
+              continue;
+            }
+            if (callback != null) {
+              fresult = callback(args[0], null, fresult as num, node) as int?;
+              if (fresult == null) continue;
+            }
+            yield fresult;
+          }
+        } else {
+          throw ExpressionError(
+              'Unexpected value type $result for polyadic $name');
         }
         break;
       case NUM:

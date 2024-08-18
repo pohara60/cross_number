@@ -1,5 +1,6 @@
 import '../expression.dart';
 import '../monadic.dart';
+import '../polyadic.dart';
 import 'clue.dart';
 import '../puzzle.dart';
 import '../variable.dart';
@@ -8,7 +9,7 @@ import '../variable.dart';
 
 class VirusVariable extends Variable {
   VirusVariable(super.letter) {
-    values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    values = initXValues();
   }
   String get letter => name;
 }
@@ -27,22 +28,73 @@ class VirusPuzzle extends VariablePuzzle<VirusClue, VirusEntry, VirusVariable> {
       Monadic('kv', kv, Iterable<int>),
     ];
     Scanner.addMonadics(puzzleMonadics);
+    final puzzlePolyadics = [
+      Polyadic('kv', kvFunc, int),
+      Polyadic('inversekv', inversekvFunc, Iterable<int>,
+          order: NodeOrder.UNKNOWN),
+    ];
+    Scanner.addPolyadics(puzzlePolyadics);
     super.initVariablePuzzle(possibleValues);
     staticVariables = variables;
   }
 }
 
 Iterable<int> kv(int value) sync* {
-  var kValues = VirusPuzzle.staticVariables['K']!.values!;
-  var vValues = VirusPuzzle.staticVariables['V']!.values!;
+  var xValues = VirusPuzzle.staticVariables['X']!.values!;
   var strValue = value.toString();
-  for (var k in kValues) {
+  for (var x in xValues) {
+    var k = x ~/ 10;
+    var v = x % 10;
     if (!strValue.contains(k.toString())) continue;
-    for (var v in vValues) {
-      if (v != k && !strValue.contains(v.toString())) {
-        var strResult = strValue.replaceAll(RegExp(k.toString()), v.toString());
-        yield int.parse(strResult);
-      }
+    if (v != k && !strValue.contains(v.toString())) {
+      var strResult = strValue.replaceAll(RegExp(k.toString()), v.toString());
+      yield int.parse(strResult);
     }
   }
+}
+
+Set<int> initXValues() {
+  var digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  var x = <int>{};
+  for (var k in digits) {
+    for (var v in digits) {
+      if (k != v) x.add(k * 10 + v);
+    }
+  }
+  return x;
+}
+
+int kvFunc(List<int> args) {
+  assert(args.length == 2);
+  int value = args[0];
+  int x = args[1];
+  var strValue = value.toString();
+  var k = x ~/ 10;
+  var v = x % 10;
+  if (strValue.contains(k.toString()) &&
+      v != k &&
+      !strValue.contains(v.toString())) {
+    var strResult = strValue.replaceAll(RegExp(k.toString()), v.toString());
+    return int.parse(strResult);
+  }
+  return value;
+}
+
+Iterable<int> inversekvFunc(List<int> args) sync* {
+  assert(args.length == 2);
+  int value = args[0];
+  var x = args[1];
+  // Invert KV
+  x = (x % 10) * 10 + x ~/ 10;
+  var strValue = value.toString();
+  var k = x ~/ 10;
+  var v = x % 10;
+  if (strValue.contains(k.toString()) &&
+      v != k &&
+      !strValue.contains(v.toString())) {
+    var strResult = strValue.replaceAll(RegExp(k.toString()), v.toString());
+    yield int.parse(strResult);
+  }
+  // Original may not have had K, but had V, so always return value
+  yield value;
 }
