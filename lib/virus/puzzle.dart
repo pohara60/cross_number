@@ -39,9 +39,9 @@ class VirusPuzzle extends VariablePuzzle<VirusClue, VirusEntry, VirusVariable> {
   }
 }
 
-Iterable<int> kv(int value) sync* {
+Iterable<int> kv(dynamic value) sync* {
   var xValues = VirusPuzzle.staticVariables['X']!.values!;
-  var strValue = value.toString();
+  var strValue = (value as int).toString();
   for (var x in xValues) {
     var k = x ~/ 10;
     var v = x % 10;
@@ -64,7 +64,7 @@ Set<int> initXValues() {
   return x;
 }
 
-int kvFunc(List<int> args) {
+int kvFunc(List<dynamic> args) {
   assert(args.length == 2);
   int value = args[0];
   int x = args[1];
@@ -80,7 +80,7 @@ int kvFunc(List<int> args) {
   return value;
 }
 
-Iterable<int> inversekvFunc(List<int> args) sync* {
+Iterable<int> inversekvFunc(List<dynamic> args) sync* {
   assert(args.length == 2);
   int value = args[0];
   var x = args[1];

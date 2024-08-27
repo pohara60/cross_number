@@ -115,8 +115,6 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
 
     final stopwatch = Stopwatch()..start();
-    Variable? firstExceptionVariable;
-    bool skipExceptionVariables = false;
     Variable? previousVariable;
     var exceptionVariables = <Variable>[];
     while (remainingVariables.isNotEmpty) {
@@ -144,30 +142,12 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
             for (var referrer in updatedVariable.referrers) {
               addToUpdateQueue(referrer);
             }
-            if (updatedVariable.isSet) {
-              // Find other clues/variables that can no longer have the value
-              // var puzzle = puzzleForVariable[updatedVariable]!;
-              // for (var referrer
-              //     in puzzle.clueOrVariableValueReferences(updatedVariable)) {
-              //   addToUpdateQueue(referrer);
-              // }
-            }
             updates++;
-            firstExceptionVariable = null;
-            skipExceptionVariables = false;
           }
         } on SolveException {
-          // Put clue back at end of queue until no update since this clue
-          if (firstExceptionVariable == clueOrVariable) {
-            skipExceptionVariables = true;
-          } else {
-            if (!skipExceptionVariables) {
-              addToUpdateQueue(clueOrVariable);
-              firstExceptionVariable ??= clueOrVariable;
-            } else {
-              exceptionVariables.add(clueOrVariable);
-            }
-          }
+          exceptionVariables.add(clueOrVariable);
+          // }
+          // }
         }
       }
     }

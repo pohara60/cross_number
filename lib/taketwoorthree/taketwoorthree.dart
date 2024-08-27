@@ -1,4 +1,4 @@
-library {{env['abcd']}};
+library taketwoorthree;
 
 import '../clue.dart';
 import '../crossnumber.dart';
@@ -8,37 +8,41 @@ import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 
-/// Provide access to the {{env['ABCD']}} API.
-class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
-  var gridString = [{% for line in env['grid'].rstrip().split('\n') %}
-    '{{line}}',{% endfor %}
+/// Provide access to the TakeTwoOrThree API.
+class TakeTwoOrThree extends Crossnumber<TakeTwoOrThreePuzzle> {
+  var gridString = [
+    '+--+--+--+--+--+--+--+',
+    '|a |Ab:c |Bd:  |Ce:f |',
+    '+::+::+::+::+--+::+::+',
+    '|D :  |  |E :g :  |  |',
+    '+--+--+::+::+::+--+--+',
+    '|F :  :  |  |G :  :  |',
+    '+--+--+::+::+::+--+--+',
+    '|h |Hk:  :  |  |Km:n |',
+    '+::+::+--+::+::+::+::+',
+    '|L :  |M :  |N :  |  |',
+    '+--+--+--+--+--+--+--+',
   ];
 
-  {{env['ABCD']}}() {
+  TakeTwoOrThree() {
     initCrossnumber();
   }
 
   @override
   void initCrossnumber() {
-
-    {% if env['num_grids']!=1 %}
-    for (var i = 0; i < {{env['num_grids']}}; i++) {
-    {% endif %}
-    var puzzle = {{env['ABCD']}}Puzzle.fromGridString(gridString);
+    var puzzle = TakeTwoOrThreePuzzle.fromGridString(gridString);
     puzzles.add(puzzle);
 
-    // Select the appropriate branch in the test below
-    if (separateCluesEntries) {
     // Entries and Clues have separate definitions
 
     // Get entries from grid
     var entryErrors = '';
     for (var entrySpec in puzzle.getEntriesFromGrid()) {
       try {
-        var entry = {{env['ABCD']}}Entry(
+        var entry = TakeTwoOrThreeEntry(
           name: entrySpec.name,
           length: entrySpec.length,
-          solve: solve{{env['ABCD']}}Clue,
+          solve: solveTakeTwoOrThreeClue,
         );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
@@ -58,12 +62,12 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     void clueWrapper(
         {String? name, int? length, String? valueDesc, List<String>? addDesc}) {
       try {
-        var clue = {{env['ABCD']}}Clue(
-            name: name!, 
-            length: length, 
-            valueDesc: valueDesc, 
+        var clue = TakeTwoOrThreeClue(
+            name: name!,
+            length: length,
+            valueDesc: valueDesc,
             addDesc: addDesc,
-            solve: solve{{env['ABCD']}}Clue,
+            solve: solveTakeTwoOrThreeClue,
             entryNames: entryNames);
         puzzle.addClue(clue);
         return;
@@ -73,7 +77,15 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       }
     }
 
-    {{env['clues']}}
+    clueWrapper(name: 'I', valueDesc: r'(A - B)^2 + L^2 + (C + L - e)^2 = 1~g');
+    clueWrapper(name: 'II', valueDesc: r'B^2 +  M^2 +  N^2 = H~3');
+    clueWrapper(name: 'III', valueDesc: r'e^2 +  C^2 +  f^2 =  14~E');
+    clueWrapper(name: 'IV', valueDesc: r'C^2 + (F - e)^2 +  m^2 = c~3');
+    clueWrapper(name: 'V', valueDesc: r'b^2 +  D^2 +  a^2 = d');
+    clueWrapper(
+        name: 'VI', valueDesc: r'(L + b - a)^2 + (F - n)^2 + L^2 = F~51');
+    clueWrapper(name: 'VII', valueDesc: r'n^2 +  m^2 +  K^2 = 2~k~63');
+    clueWrapper(name: 'VIII', valueDesc: r'N^2 +  k^2 +  h^2 = 4~G    ');
 
     if (clueErrors != '') {
       throw PuzzleException(clueErrors);
@@ -83,44 +95,46 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     // Only needed when Clue expressions refer to Entries
     for (var clue in puzzle.clues.values) {
       for (var exp in clue.expressions) {
-        for (var entryName in clue.entryNameReferences) {
-          // Rearrange expression for new subject
-          var expText = exp.rearrangeExpressionText(entryName, clue.name);
-          if (expText != null) {
+        // Rearrange expression for new subject
+        // e.g. (A - B)^2 + L^2 + (C + L - e)^2 = 1~g
+        var expText = exp.text;
+        var re = RegExp((r'([^=]*)= ([0-9]*)~*([a-zA-Z])~*([0-9]*)$'));
+        var match = re.firstMatch(expText);
+        if (match != null) {
+          var text = match.group(1);
+          var prefix = match.group(2);
+          var entryName = match.group(3);
+          var suffix = match.group(4);
+          if (text != null && entryName != null) {
+            // Split text into three expressions separated by +
+            var depth = 0;
+            var term = "";
+            var terms = <String>[];
+            for (var i = 0; i < text.length; i++) {
+              var ch = text[i];
+              if (ch == '(') {
+                depth++;
+                term += ch;
+              } else if (ch == ')') {
+                depth--;
+                term += ch;
+              } else if (ch == '+' && depth == 0) {
+                terms.add(term.trim());
+                term = "";
+              } else {
+                term += ch;
+              }
+            }
+            if (term != '') terms.add(term.trim());
+            assert(terms.length == 3);
+            // Remove prefix and suffix
+            var entryText =
+                '£remove(${terms[0]},${terms[1]},${terms[2]},"$prefix","$suffix")';
             puzzle.entries[entryName]!
-                .addExpression(expText, entryNames: entryNames);
+                .addExpression(entryText, entryNames: entryNames);
           }
         }
       }
-    }
-
-    } else {
-    // Clue definitions define the Entries
-    var clueErrors = '';
-    void clueWrapper(
-        {String? name, int? length, String? valueDesc}) {
-      try {
-        var clue = {{env['ABCD']}}Entry(
-            name: name!, 
-            length: length, 
-            valueDesc: valueDesc, 
-            solve: solve{{env['ABCD']}}Clue,
-            );
-        puzzle.addEntry(clue);
-        return;
-      } on ExpressionError catch (e) {
-        clueErrors += '${e.msg}\n';
-        return;
-      }
-    }
-
-    {{env['clues']}}
-
-    if (clueErrors != '') {
-      throw PuzzleException(clueErrors);
-    }
-
-    puzzle.validateEntriesFromGrid();
     }
 
     puzzle.linkEntriesToGrid();
@@ -129,13 +143,10 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       // variables
     ];
     for (var letter in letters) {
-      puzzle.addVariable({{env['ABCD']}}Variable(letter));
+      puzzle.addVariable(TakeTwoOrThreeVariable(letter));
     }
 
     puzzle.finalize();
-    {% if env['num_grids']!=1 %}
-    }
-    {% endif %}
 
     super.initCrossnumber();
   }
@@ -143,33 +154,12 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   @override
   // ignore: unnecessary_overrides
   void solve([bool iteration = true]) {
-    // Initialise clue values
-    // var numClues = puzzle.clues.length;
-    // var products = getProduct3Primes();
-    // for (var clue in puzzle.clues.values) {
-    //   var clueIndex = romanToDecimal(clue.name);
-    //   clue.values = Set.from(products.whereIndexed((index, element) =>
-    //       index >= clueIndex - 1 &&
-    //       index <= clueIndex + products.length - numClues - 1));
-    //   clue.min = clue.values!.first;
-    //   clue.max = clue.values!.last;
-    //   if (Crossnumber.traceSolve) {
-    //     print(
-    //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
-    //   }
-
-    {% if env['num_grids']!=1 %}
-    // Pairs
-    // addPairConstraint();
-    {% endif %}
-    super.solve(iteration);
-    {% if env['num_grids']!=1 %}
-    }
-    {% endif %}
+    solveClueNoException(puzzle.entries['F']!);
+    super.solve(false);
   }
 
   // Validate possible clue value
- @override
+  @override
   bool validClue(VariableClue clue, int value, List<String> variableReferences,
       List<int> variableValues) {
     if (!super.validClue(clue, value, variableReferences, variableValues)) {
@@ -179,7 +169,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   // Clue solver invokes generic expression evaluator with validator
-  bool solve{{env['ABCD']}}Clue(
+  bool solveTakeTwoOrThreeClue(
     Puzzle p,
     Variable v,
     Set<int> possibleValue, {
@@ -188,8 +178,8 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     Map<Variable, Set<int>>? possibleVariables2,
     Set<Variable>? updatedVariables,
   }) {
-    var puzzle = p as {{env['ABCD']}}Puzzle;
-    var clue = v as {{env['ABCD']}}Clue;
+    var puzzle = p as TakeTwoOrThreePuzzle;
+    var clue = v as TakeTwoOrThreeClue;
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
       if (clue.expressions.length == 1) {
@@ -252,7 +242,8 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   @override
-  bool updateClues({{env['ABCD']}}Puzzle thisPuzzle, Clue clue,  Set<int> possibleValues,
+  bool updateClues(
+      TakeTwoOrThreePuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
@@ -261,32 +252,6 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     }
     var updated = super.updateClues(thisPuzzle, clue, possibleValues,
         isFocus: isFocus, isEntry: isEntry);
-    if (!isEntry && updated) {
-
-    {% if env['num_grids']!=1 %}
-      // Pairs
-      updatePairs(thisPuzzle, clue);
-    {% endif %}
-
-      // Maintain clue value order
-      // var clue = thisPuzzle.clues[clueName]!;
-      // var newMin = clue.values!.reduce(min);
-      // if (clue.min == null || clue.min! < newMin) clue.min = newMin;
-      // var newMax = clue.values!.reduce(max);
-      // if (clue.max == null || clue.max! > newMax) clue.max = newMax;
-      // // Clues are defined in ascending order of value
-      // for (var otherClue in thisPuzzle.clues.values) {
-      //   if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
-      //     if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
-      //       otherClue.min = clue.min! + 1;
-      //     }
-      //   }
-      //   if (romanToDecimal(otherClue.name) < romanToDecimal(clue.name)) {
-      //     if ((otherClue.max == null || otherClue.max! >= clue.max!)) {
-      //       otherClue.max = clue.max! - 1;
-      //     }
-      //   }
-    }
     return updated;
   }
 }

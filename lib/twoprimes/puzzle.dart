@@ -20,9 +20,9 @@ class TwoPrimesPuzzle
   TwoPrimesPuzzle.fromGridString(List<String> gridString)
       : super.fromGridString([], gridString);
 
-  Iterable<int> variablevalues(int value) sync* {
+  Iterable<int> variablevalues(dynamic value) sync* {
     // Return value and 100-value
-    yield value;
+    yield value as int;
     yield 100 - value;
     return;
   }

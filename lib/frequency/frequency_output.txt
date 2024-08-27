@@ -70,67 +70,68 @@ solve: FrequencyEntry(name=D9,length=2,value: Triangular,
 	identities=[D9[0]=A9[0],D9[1]=A10[1]],referrers=[A9,A10,A6,D8],
 	values={10,15,21,28,36,45,55,66,78,91},
 	digits=[{1..7,9},{0,1,5,6,8}]
-solve: FrequencyEntry(name=A5,length=2,value: Digit product = D2,
-	identities=[A5[0]=D5[0],A5[1]=D2[1]],referrers=[D5,D2,D8],
-	values={25,35,66,95},
-	digits=[{2,3,6,9},{5,6}]
-solve: FrequencyEntry(name=A6,length=2,value: Factor of D9,
-	identities=[A6[0]=D3[1],A6[1]=D4[1]],referrers=[D3,D4,D9,D8],
-	values={11..15,18,22,26,33,39},
-	digits=[{1..3},{1..6,8,9}]
-solve: FrequencyEntry(name=A9,length=2,value: Reverse of D2,
-	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,D2,D8],
-	values={12,19,51,54,55,63,66},
-	digits=[{1,5,6},{1..6,9}]
 solve: FrequencyEntry(name=A10,length=3,value: Triangular,
 	identities=[A10[0]=D8[1],A10[1]=D9[1]],referrers=[D8,D9],
 	values={105,153,210,253,300,351,406,465,561,666,703,780,861,903},
 	digits=[{1..9},{0,1,5,6,8},{0,1,3,5,6}]
-solve: FrequencyEntry(name=D2,length=2,value: Triangular,
-	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,A9,D8],
-	values={15,36,45},
-	digits=[{1,3,4},{5,6}]
-solve: FrequencyEntry(name=D3,length=2,value: Digit sum is square,
-	identities=[D3[0]=A1[2],D3[1]=A6[0]],referrers=[A1,A6,D8],
-	values={13,22,31,63,72,81},
-	digits=[{1..3,6..8},{1..3}]
-Solve Error: Entry D8 (Cube + sum all digits) no solution!
+solve: FrequencyEntry(name=A5,length=2,value: Digit product = D2,
+	identities=[A5[0]=D5[0],A5[1]=D2[1]],referrers=[D5,D2,D8],
+	values={25,35,66,95},
+	digits=[{2,3,6,9},{5,6}]
+solve: FrequencyEntry(name=A9,length=2,value: Reverse of D2,
+	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,D2,D8],
+	values={12,19,51,54,55,63,66},
+	digits=[{1,5,6},{1..6,9}]
+solve: FrequencyEntry(name=A6,length=2,value: Factor of D9,
+	identities=[A6[0]=D3[1],A6[1]=D4[1]],referrers=[D3,D4,D9,D8],
+	values={11..15,18,22,26,33,39},
+	digits=[{1..3},{1..6,8,9}]
 solve: FrequencyEntry(name=D9,length=2,value: Triangular,
 	identities=[D9[0]=A9[0],D9[1]=A10[1]],referrers=[A9,A10,A6,D8],
 	values={55,66},
 	digits=[{5,6},{5,6}]
-solve: FrequencyEntry(name=A1,length=3,value: Palindrome,
-	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
-	values={131,141,212,232,242,313,333,343,616,636,646,737,818,838},
-	digits=[{1..3,6..8},{1,3,4},{1..3,6..8}]
-solve: FrequencyEntry(name=A5,length=2,value: Digit product = D2,
-	identities=[A5[0]=D5[0],A5[1]=D2[1]],referrers=[D5,D2,D8],
-	values={35,66,95},
-	digits=[{3,6,9},{5,6}]
-solve: FrequencyEntry(name=A6,length=2,value: Factor of D9,
-	identities=[A6[0]=D3[1],A6[1]=D4[1]],referrers=[D3,D4,D9,D8],
-	values={11,22,33},
-	digits=[{1..3},{1..3}]
-solve: FrequencyEntry(name=A9,length=2,value: Reverse of D2,
-	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,D2,D8],
-	values={51,54,63},
-	digits=[{5,6},{1,3,4}]
+Solve Error: Entry D8 (Cube + sum all digits) no solution!
 solve: FrequencyEntry(name=A10,length=3,value: Triangular,
 	identities=[A10[0]=D8[1],A10[1]=D9[1]],referrers=[D8,D9],
 	values={153,253,351,465,561,666,861},
 	digits=[{1..6,8},{5,6},{1,3,5,6}]
-solve: FrequencyEntry(name=D5,length=3,value: Same digit product as A1,
-	identities=[D5[0]=A5[0],D5[1]=A7[0]],referrers=[A5,A7,A1,D8],
-	values={311,313,314,319,322,326,331,333,334,341,343,349,362,366,368,377,386,388,391,394,29 more,982},
-	digits=[{3,6,9},{1..4,6..9},{1..4,6..9}]
-Solve Error: Entry D8 (Cube + sum all digits) no solution!
+solve: FrequencyEntry(name=D2,length=2,value: Triangular,
+	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,A9,D8],
+	values={15,36,45},
+	digits=[{1,3,4},{5,6}]
+solve: FrequencyEntry(name=A9,length=2,value: Reverse of D2,
+	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,D2,D8],
+	values={51,54,63},
+	digits=[{5,6},{1,3,4}]
+solve: FrequencyEntry(name=A6,length=2,value: Factor of D9,
+	identities=[A6[0]=D3[1],A6[1]=D4[1]],referrers=[D3,D4,D9,D8],
+	values={11,22,33},
+	digits=[{1..3},{1..3}]
+solve: FrequencyEntry(name=D3,length=2,value: Digit sum is square,
+	identities=[D3[0]=A1[2],D3[1]=A6[0]],referrers=[A1,A6,D8],
+	values={13,22,31,63,72,81},
+	digits=[{1..3,6..8},{1..3}]
 solve: FrequencyEntry(name=A7,length=2,value: Factor of D4,
 	identities=[A7[0]=D5[1],A7[1]=D8[0]],referrers=[D5,D8,D4],
-	values={11..14,16..19,21..24,26..28,31..34,36,25 more,89},
-	digits=[{1..4,6..8},{1..4,6..9}]
+	values={11..14,16..19,21..24,26..28,31..34,36,32 more,89},
+	digits=[{1..8},{1..4,6..9}]
+solve: FrequencyEntry(name=A1,length=3,value: Palindrome,
+	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D5,D8],
+	values={131,141,212,232,242,313,333,343,616,636,646,737,818,838},
+	digits=[{1..3,6..8},{1,3,4},{1..3,6..8}]
+Solve Error: Entry D8 (Cube + sum all digits) no solution!
+solve: FrequencyEntry(name=A5,length=2,value: Digit product = D2,
+	identities=[A5[0]=D5[0],A5[1]=D2[1]],referrers=[D5,D2,D8],
+	values={35,66,95},
+	digits=[{3,6,9},{5,6}]
+solve: FrequencyEntry(name=D5,length=3,value: Same digit product as A1,
+	identities=[D5[0]=A5[0],D5[1]=A7[0]],referrers=[A5,A7,A1,D8],
+	values={311,313,314,319,322,326,331,333,334,341,343,349,362,366,368,377,386,388,612,616,26 more,982},
+	digits=[{3,6,9},{1..4,6..8},{1..4,6..9}]
 Solve Error: Entry D8 (Cube + sum all digits) no solution!
 Solve Error: Entry D8 (Cube + sum all digits) no solution!
-Clue/Variable iterations=57, updates=18, elapsed 0:00:00.071319
+Solve Error: Entry D8 (Cube + sum all digits) no solution!
+Clue/Variable iterations=67, updates=18, elapsed 0:00:00.060755
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Palindrome, values={131,232,313,333,343,616,636,646,737,838}

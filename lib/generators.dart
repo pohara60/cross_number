@@ -188,14 +188,14 @@ Iterable<int> generatePrimesOver(num min) sync* {
   }
 }
 
-bool isPrime(int value) {
-  extendPrimesUpto(value);
+bool isPrime(dynamic value) {
+  extendPrimesUpto(value as int);
   var result = primes.contains(value);
   return result;
 }
 
-Iterable<int> isAdjacentPrime(int value) sync* {
-  extendPrimesUpto(value * 2);
+Iterable<int> isAdjacentPrime(dynamic value) sync* {
+  extendPrimesUpto((value as int) * 2);
   var index = primes.indexOf(value);
   if (index > 0) {
     yield primes[index - 1];
@@ -248,8 +248,8 @@ Iterable<int> generateTriangles(num min, num max) sync* {
   }
 }
 
-bool isTriangular(int value) {
-  if (value > triangles.last) {
+bool isTriangular(dynamic value) {
+  if ((value as int) > triangles.last) {
     // ignore: unused_local_variable
     for (var triangle in generateTriangles(value, value)) {}
   }

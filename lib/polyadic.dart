@@ -1,9 +1,9 @@
 import 'expression.dart';
 import 'gcf.dart';
 
-typedef PolyadicFunc = dynamic Function(List<int> args);
+typedef PolyadicFunc = dynamic Function(List<dynamic> args);
 typedef PolyadicFuncRange = dynamic Function(
-    List<int> args, num? min, num? max);
+    List<dynamic> args, num? min, num? max);
 
 class Polyadic {
   String name;
@@ -20,13 +20,13 @@ void initializePolyadics(Map<String, Polyadic> monadics) {
   monadics['gcd'] = Polyadic('gcd', gcd, int);
 }
 
-int gcf(List<int> values) {
+int gcf(List<dynamic> values) {
   assert(values.length == 2);
 
   return getGCF(values[0], values[1]);
 }
 
-int gcd(List<int> values) {
+int gcd(List<dynamic> values) {
   assert(values.length == 2);
   var a = values[0];
   var b = values[1];

@@ -5,6 +5,8 @@
 // Token specification
 import 'dart:math';
 
+import 'package:basics/string_basics.dart';
+
 import 'generators.dart';
 import 'monadic.dart';
 import 'polyadic.dart';
@@ -50,6 +52,7 @@ const PLUS = 'PLUS', PLUS_RE = r'(?<' + PLUS + r'>\+)';
 const MINUS = 'MINUS', MINUS_RE = r'(?<' + MINUS + r'>-)';
 const TIMES = 'TIMES', TIMES_RE = r'(?<' + TIMES + r'>\*)';
 const DIVIDE = 'DIVIDE', DIVIDE_RE = r'(?<' + DIVIDE + r'>/)';
+const CONCAT = 'CONCAT', CONCAT_RE = r'(?<' + CONCAT + r'>~)';
 const MOD = 'MOD', MOD_RE = r'(?<' + MOD + r'>%)';
 const ROOT = 'ROOT', ROOT_RE = r'(?<' + ROOT + r'>√)';
 const FACTORIAL = 'FACTORIAL', FACTORIAL_RE = r'(?<' + FACTORIAL + r'>!)';
@@ -58,6 +61,7 @@ const EXPONENT = 'EXPONENT', EXPONENT_RE = r'(?<' + EXPONENT + r'>\^)';
 const LPAREN = 'LPAREN', LPAREN_RE = r'(?<' + LPAREN + r'>\()';
 const RPAREN = 'RPAREN', RPAREN_RE = r'(?<' + RPAREN + r'>\))';
 const COMMA = 'COMMA', COMMA_RE = r'(?<' + COMMA + r'>\,)';
+const STRING = 'STRING', STRING_RE = r'(?<' + STRING + r'>\"[^"]*")';
 const EQUAL = 'EQUAL', EQUAL_RE = r'(?<' + EQUAL + r'>=)';
 const AND = 'AND', AND_RE = r'(?<' + AND + r'>&)';
 const CLUE = 'CLUE', CLUE_RE = r'(?<' + CLUE + r'>E?[adAD]\d+|[IVX]+)';
@@ -73,6 +77,7 @@ var regExp = RegExp([
   MINUS_RE,
   TIMES_RE,
   DIVIDE_RE,
+  CONCAT_RE,
   MOD_RE,
   ROOT_RE,
   FACTORIAL_RE,
@@ -81,6 +86,7 @@ var regExp = RegExp([
   LPAREN_RE,
   RPAREN_RE,
   COMMA_RE,
+  STRING_RE,
   EQUAL_RE,
   AND_RE,
   CLUE_RE,
@@ -98,7 +104,7 @@ var polyadics = <String, Polyadic>{};
 
 class Token {
   final String type;
-  final String str;
+  String str;
   final int value;
   final String name;
   bool resolvedVariable = false;
@@ -199,6 +205,9 @@ class Scanner {
       if (m.namedGroup(DIVIDE) != null) {
         yield Token(match!, DIVIDE);
       }
+      if (m.namedGroup(CONCAT) != null) {
+        yield Token(match!, CONCAT);
+      }
       if (m.namedGroup(MOD) != null) {
         yield Token(match!, MOD);
       }
@@ -222,6 +231,9 @@ class Scanner {
       }
       if (m.namedGroup(COMMA) != null) {
         yield Token(match!, COMMA);
+      }
+      if (m.namedGroup(STRING) != null) {
+        yield Token(match!, STRING);
       }
       if (m.namedGroup(EQUAL) != null) {
         yield Token(match!, EQUAL);
@@ -598,10 +610,11 @@ class ExpressionEvaluator {
     throw ExpressionInvalid('Non-integer expression');
   }
 
-  static void checkInteger(num value) {
-    if (!isIntegerValue(value)) {
+  static int checkInteger(dynamic value) {
+    if (value is! num || !isIntegerValue(value)) {
       integerException();
     }
+    return value.toInt();
   }
 
   String? rearrangeExpressionText(String newSubject, String oldSubject) {
@@ -779,10 +792,10 @@ class ExpressionEvaluator {
   }
 
   Node expr() {
-    // expression ::= term { ('+'|'-') term }*
+    // expression ::= term { ('+'|'-'|'~') term }*
 
     var node = term();
-    while (_accept(PLUS) || _accept(MINUS)) {
+    while (_accept(PLUS) || _accept(MINUS) || _accept(CONCAT)) {
       var token = tok!;
       var right = term();
       node = Node(token, [node, right]);
@@ -856,7 +869,7 @@ class ExpressionEvaluator {
   }
 
   Node? factor() {
-    // factor ::= VAR | CLUE | NUM | GENERATOR | ( expr ) | ERROR | function
+    // factor ::= VAR | CLUE | NUM | GENERATOR | ( expr ) | ERROR | function | STRING
     if (_accept(VAR) || _accept(CLUE) || _accept(NUM) || _accept(GENERATOR)) {
       var token = tok!;
       if (token.type == VAR) {
@@ -867,6 +880,10 @@ class ExpressionEvaluator {
       if (token.type == CLUE) {
         if (!clueNameRefs.contains(token.name)) clueNameRefs.add(token.name);
       }
+      return Node(token);
+    } else if (_accept(STRING)) {
+      var token = tok!;
+      token.str = token.str.slice(start: 1, end: token.str.length - 1);
       return Node(token);
     } else if (_accept(LPAREN)) {
       var node = expr();
@@ -898,14 +915,16 @@ class ExpressionEvaluator {
     }
   }
 
-  num eval(Node? node, ExpressionCallback? callback) {
+  dynamic eval(Node? node, ExpressionCallback? callback) {
     if (node == null) return 0;
-    num? left;
-    num? right;
-    num? result;
+    dynamic left;
+    dynamic right;
+    dynamic result;
     switch (node.token.type) {
       case NUM:
         result = node.token.value;
+      case STRING:
+        result = node.token.str;
       case PLUS:
         left = eval(node.operands![0], callback);
         right = eval(node.operands![1], callback);
@@ -926,6 +945,13 @@ class ExpressionEvaluator {
           throw ExpressionInvalid('Divide by zero');
         }
         result = left / right;
+      case CONCAT:
+        // Require exact integer arguments
+        left = eval(node.operands![0], callback);
+        checkInteger(left);
+        right = eval(node.operands![1], callback);
+        checkInteger(right);
+        result = int.parse(left.toString() + right.toString());
       case MOD:
         // Require exact integer operands
         left = eval(node.operands![0], callback);
@@ -1026,11 +1052,10 @@ class ExpressionEvaluator {
         if (polyadic == null) {
           throw ExpressionInvalid('Unknown polyadic $name');
         }
-        var args = <int>[];
+        var args = <dynamic>[];
         for (var operand in node.operands!) {
           left = eval(operand, callback);
-          checkInteger(left);
-          args.add(left.toInt());
+          args.add(left);
         }
         var funcResult = polyadic.func != null
             ? polyadic.func!(args)
@@ -1063,7 +1088,7 @@ class ExpressionEvaluator {
     return result;
   }
 
-  Iterable<num> gen(
+  Iterable<dynamic> gen(
       num min, num max, Node? node, ExpressionCallback? callback) sync* {
     if (node == null) return;
     if (node.complexity == NodeComplexity.SIMPLE) {
@@ -1095,8 +1120,8 @@ class ExpressionEvaluator {
                   rnode,
                   callback,
                 )) {
-            num? result = left + right;
-            if (result > max) {
+            num? result = (left + right)!;
+            if (result! > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
             }
@@ -1138,7 +1163,7 @@ class ExpressionEvaluator {
                   callback,
                 )) {
             num? result = left - right;
-            if (result > max) {
+            if (result! > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
             }
@@ -1178,7 +1203,7 @@ class ExpressionEvaluator {
                   callback,
                 )) {
             num? result = left * right;
-            if (result > max) {
+            if (result! > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
             }
@@ -1221,6 +1246,54 @@ class ExpressionEvaluator {
               continue;
             }
             num? result = left / right;
+            if (result! > max) {
+              if (node.order == NodeOrder.ASCENDING) break;
+              continue;
+            }
+            if (result < min) {
+              if (node.order == NodeOrder.DESCENDING) break;
+              continue;
+            }
+            if (callback != null) {
+              result = callback(left, right, result, node);
+              if (result == null) continue;
+            }
+            yield result;
+          }
+        }
+        break;
+      case CONCAT:
+        var lnode = node.operands![0];
+        var lvalue =
+            lnode.order == NodeOrder.SINGLE ? eval(lnode, callback) : 0;
+        var rnode = node.operands![1];
+        var rvalue =
+            rnode.order == NodeOrder.SINGLE ? eval(rnode, callback) : 0;
+        for (var left in lnode.order == NodeOrder.SINGLE
+            ? [lvalue]
+            : gen(
+                rvalue == 0 ? 1 : min * rvalue,
+                rvalue == 0 ? max : max * rvalue,
+                lnode,
+                callback,
+              )) {
+          for (var right in rnode.order == NodeOrder.SINGLE
+              ? [rvalue]
+              : gen(
+                  left / max,
+                  left / min,
+                  rnode,
+                  callback,
+                )) {
+            if (right == 0) {
+              continue;
+            }
+            // Require exact integer arguments
+            left = eval(node.operands![0], callback);
+            checkInteger(left);
+            right = eval(node.operands![1], callback);
+            checkInteger(right);
+            num? result = int.parse(left.toString() + right.toString());
             if (result > max) {
               if (node.order == NodeOrder.ASCENDING) break;
               continue;
@@ -1262,7 +1335,7 @@ class ExpressionEvaluator {
                 )) {
             if (isIntegerValue(left) && isIntegerValue(right)) {
               num? result = left % right;
-              if (result > max) {
+              if (result! > max) {
                 continue;
               }
               if (result < min) {
@@ -1573,10 +1646,10 @@ class ExpressionEvaluator {
                 'Polyadic functions ($name) only support simple arguments');
           }
         }
-        var args = <int>[];
+        var args = <dynamic>[];
         for (var operand in node.operands!) {
           var value = eval(operand, callback);
-          args.add(value.toInt());
+          args.add(value);
         }
         var result = polyadic.func != null
             ? polyadic.func!(args)
@@ -1624,6 +1697,7 @@ class ExpressionEvaluator {
         }
         break;
       case NUM:
+      case STRING:
       case VAR:
       case CLUE:
         throw ExpressionError(

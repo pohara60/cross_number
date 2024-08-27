@@ -5,8 +5,8 @@ import 'package:powers/powers.dart';
 import 'expression.dart';
 import 'generators.dart';
 
-typedef MonadicFunc = dynamic Function(int arg);
-typedef MonadicFuncRange = dynamic Function(int arg, num? min, num? max);
+typedef MonadicFunc = dynamic Function(dynamic arg);
+typedef MonadicFuncRange = dynamic Function(dynamic arg, num? min, num? max);
 
 class Monadic {
   String name;
@@ -76,22 +76,22 @@ void initializeMonadics(Map<String, Monadic> monadics) {
       order: NodeOrder.UNKNOWN);
 }
 
-int digitSum(int value) {
-  var digits = value.toString().split('').map((e) => int.parse(e));
+int digitSum(dynamic value) {
+  var digits = (value as int).toString().split('').map((e) => int.parse(e));
   var result =
       digits.fold<int>(0, (previousValue, element) => previousValue + element);
   return result;
 }
 
-int digitProduct(int value) {
-  var digits = value.toString().split('').map((e) => int.parse(e));
+int digitProduct(dynamic value) {
+  var digits = (value as int).toString().split('').map((e) => int.parse(e));
   var result =
       digits.fold<int>(1, (previousValue, element) => previousValue * element);
   return result;
 }
 
-int multiplicativePersistence(int value) {
-  var next = value;
+int multiplicativePersistence(dynamic value) {
+  var next = (value as int);
   var result = 0;
   while (next > 9) {
     next = digitProduct(next);
@@ -100,8 +100,8 @@ int multiplicativePersistence(int value) {
   return result;
 }
 
-int reverse(int value) {
-  var valueStr = value.toString();
+int reverse(dynamic value) {
+  var valueStr = (value as int).toString();
   var reverse = '';
   for (var index = 0; index < valueStr.length; index++) {
     reverse = valueStr[index] + reverse;
@@ -115,8 +115,8 @@ int reverse(int value) {
   // return result;
 }
 
-int sumDigits(int value) {
-  var valueStr = value.toString();
+int sumDigits(dynamic value) {
+  var valueStr = (value as int).toString();
   var sumDigits = 0;
   for (var index = 0; index < valueStr.length; index++) {
     sumDigits += int.parse(valueStr[index]);
@@ -124,35 +124,35 @@ int sumDigits(int value) {
   return sumDigits;
 }
 
-int square(int value) {
-  var result = value * value;
+int square(dynamic value) {
+  var result = (value as int) * value;
   return result;
 }
 
-int squareroot(int value) {
-  var result = sqrt(value);
+int squareroot(dynamic value) {
+  var result = sqrt((value as int));
   ExpressionEvaluator.checkInteger(result);
   return result.toInt();
 }
 
-int cube(int value) {
-  var result = value * value * value;
+int cube(dynamic value) {
+  var result = (value as int) * value * value;
   return result;
 }
 
-bool isEven(int value) {
-  var result = value % 2 == 0;
+bool isEven(dynamic value) {
+  var result = (value as int) % 2 == 0;
   return result;
 }
 
-bool isOdd(int value) {
-  var result = value % 2 == 1;
+bool isOdd(dynamic value) {
+  var result = (value as int) % 2 == 1;
   return result;
 }
 
-bool ascending(int value) => isAscending(value);
-bool isAscending(int value) {
-  var valueStr = value.toString();
+bool ascending(dynamic value) => isAscending(value);
+bool isAscending(dynamic value) {
+  var valueStr = (value as int).toString();
   var last = 0;
   for (var index = 0; index < valueStr.length; index++) {
     var next = int.parse(valueStr[index]);
@@ -162,9 +162,9 @@ bool isAscending(int value) {
   return true;
 }
 
-bool descending(int value) => isDescending(value);
-bool isDescending(int value) {
-  var valueStr = value.toString();
+bool descending(dynamic value) => isDescending(value);
+bool isDescending(dynamic value) {
+  var valueStr = (value as int).toString();
   var last = 10;
   for (var index = 0; index < valueStr.length; index++) {
     var next = int.parse(valueStr[index]);
@@ -174,24 +174,24 @@ bool isDescending(int value) {
   return true;
 }
 
-bool isNotPalindrome(int value) => !isPalindrome(value);
-bool isPalindrome(int value) {
-  var valueStr = value.toString();
+bool isNotPalindrome(dynamic value) => !isPalindrome(value);
+bool isPalindrome(dynamic value) {
+  var valueStr = (value as int).toString();
   for (var index = 0; index < valueStr.length ~/ 2; index++) {
     if (valueStr[index] != valueStr[valueStr.length - index - 1]) return false;
   }
   return true;
 }
 
-Iterable<int> multiple(int value) sync* {
-  int last = value;
+Iterable<int> multiple(dynamic value) sync* {
+  int last = value as int;
   while (true) {
     last += value;
     yield last;
   }
 }
 
-Iterable<int> greaterthan(int value) sync* {
+Iterable<int> greaterthan(dynamic value) sync* {
   int last = value;
   while (true) {
     last += 1;
@@ -199,7 +199,7 @@ Iterable<int> greaterthan(int value) sync* {
   }
 }
 
-Iterable<int> greaterthanequal(int value) sync* {
+Iterable<int> greaterthanequal(dynamic value) sync* {
   int last = value;
   while (true) {
     yield last;
@@ -207,7 +207,7 @@ Iterable<int> greaterthanequal(int value) sync* {
   }
 }
 
-Iterable<int> lessthan(int value) sync* {
+Iterable<int> lessthan(dynamic value) sync* {
   int last = value;
   while (true) {
     last -= 1;
@@ -216,7 +216,7 @@ Iterable<int> lessthan(int value) sync* {
   }
 }
 
-Iterable<int> lessthanequal(int value) sync* {
+Iterable<int> lessthanequal(dynamic value) sync* {
   int last = value;
   while (true) {
     if (last < 1) break;
@@ -225,9 +225,9 @@ Iterable<int> lessthanequal(int value) sync* {
   }
 }
 
-Iterable<int> jumble(int value) sync* {
-  var strValue = value.toString();
-  yield* jumbleStr(value, 0, strValue);
+Iterable<int> jumble(dynamic value) sync* {
+  var strValue = (value as int).toString();
+  yield* _jumbleStr(value, 0, strValue);
 }
 
 var tens = [
@@ -242,7 +242,7 @@ var tens = [
   100000000,
   1000000000
 ];
-Iterable<int> jumbleStr(int value, int leftValue, String strValue) sync* {
+Iterable<int> _jumbleStr(int value, int leftValue, String strValue) sync* {
   for (var d = 0; d < strValue.length; d++) {
     var chr = strValue[d];
     var chrVal = int.parse(chr);
@@ -255,14 +255,14 @@ Iterable<int> jumbleStr(int value, int leftValue, String strValue) sync* {
     chrVal *= tens[strValue.length - 1];
     if (leftValue + chrVal != 0) {
       var rest = strValue.substring(0, d) + strValue.substring(d + 1);
-      yield* jumbleStr(value, leftValue + chrVal, rest);
+      yield* _jumbleStr(value, leftValue + chrVal, rest);
     }
   }
 }
 
-Iterable<int> getFactors(int value) => factors(value);
-Iterable<int> factors(int value) sync* {
-  var remaining = value;
+Iterable<int> getFactors(dynamic value) => factors(value);
+Iterable<int> factors(dynamic value) sync* {
+  int remaining = value;
   while (remaining > 1) {
     var prime = true;
     for (var factor = 2; factor <= sqrt(remaining); factor++) {
@@ -281,12 +281,12 @@ Iterable<int> factors(int value) sync* {
   return;
 }
 
-// Iterable<int> divisors(int value) sync* {
+// Iterable<int> divisors(dynamic value) sync* {
 //   var factor = factors(value).toList();
 //   if (factor.length == 1) return; // Prime!
 
 //   var divisors = <int>{};
-//   void getCombinations(int partial, List<int> numbers, List<bool> taken,
+//   void getCombinations(dynamic partial, List<int> numbers, List<bool> taken,
 //       int remaining, Set<int> combinations) {
 //     for (var index = 0; index < numbers.length; index++) {
 //       if (!taken[index]) {
@@ -302,8 +302,8 @@ Iterable<int> factors(int value) sync* {
 //   }
 //}
 
-Iterable<int> divisors(int value, num? min, num? max) sync* {
-  var start = value % 2 == 0 ? 2 : 3;
+Iterable<int> divisors(dynamic value, num? min, num? max) sync* {
+  var start = (value as int) % 2 == 0 ? 2 : 3;
   var end = value ~/ start;
   var inc = 1;
   if (min != null && min > start) start = min.toInt();
@@ -314,43 +314,43 @@ Iterable<int> divisors(int value, num? min, num? max) sync* {
   return;
 }
 
-Iterable<int> powers(int value) sync* {
-  var last = value;
+Iterable<int> powers(dynamic value) sync* {
+  var last = (value as int);
   while (true) {
     last = last * value;
     yield last;
   }
 }
 
-Iterable<int> whereDS(int ds, num? min, num? max) sync* {
+Iterable<int> whereDS(dynamic ds, num? min, num? max) sync* {
   var imin = min!;
   var imax = max!;
   for (var value in generateIntegers(imin, imax)) {
-    if (digitSum(value) == ds) yield value;
+    if (digitSum(value) == (ds as int)) yield value;
   }
   return;
 }
 
-Iterable<int> whereDP(int dp, num? min, num? max) sync* {
+Iterable<int> whereDP(dynamic dp, num? min, num? max) sync* {
   var imin = min!;
   var imax = max!;
   for (var value in generateIntegers(imin, imax)) {
-    if (digitProduct(value) == dp) yield value;
+    if (digitProduct(value) == (dp as int)) yield value;
   }
   return;
 }
 
-bool twoDigitPrimeHasReverse(int prime) {
+bool twoDigitPrimeHasReverse(dynamic prime) {
   return primeHasReverse(prime, twoDigitPrimes);
 }
 
-bool primeHasReverse(int prime, List<int> primes) {
+bool primeHasReverse(dynamic prime, List<int> primes) {
   var other = reverse(prime);
   return primes.contains(other) && other != prime;
 }
 
-bool isJumble(int value, int jumble) {
-  var valueStr = value.toString();
+bool isJumble(dynamic value, int jumble) {
+  var valueStr = (value as int).toString();
   var jumbleStr = jumble.toString();
   for (var index = 0; index < valueStr.length; index++) {
     if (!jumbleStr.contains(valueStr[index])) return false;

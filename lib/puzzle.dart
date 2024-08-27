@@ -1332,8 +1332,9 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         .variableRefs
         .where((variable) => variableReferences.contains(variable))));
     for (var variable in expVariableReferences) {
-      // Do not include the input or exclude variables
-      if (listClues.contains(variable)) continue;
+      // Not including the input variables prevents self-referring clues
+      // if (listClues.contains(variable)) continue;
+      // Do not include the exclude variables
       if (excludeVariables != null && excludeVariables.contains(variable)) {
         continue;
       }
@@ -1405,8 +1406,9 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     List<int>? solvedVariableValues,
   ]) {
     for (var otherClue in clueReferences) {
-      // Do not include the input or exclude variables
-      if (listClues.contains(otherClue)) continue;
+      // Not including the input variables prevents self-referring clues
+      // if (listClues.contains(otherClue)) continue;
+      // Do not include the exclude variables
       if (excludeVariables != null && excludeVariables.contains(otherClue)) {
         continue;
       }

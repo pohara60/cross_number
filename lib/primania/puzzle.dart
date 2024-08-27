@@ -166,17 +166,17 @@ class PrimaniaPuzzle
   }
 }
 
-int firstFactor(int value) {
+int firstFactor(dynamic value) {
   return nthFactor(value, 1);
 }
 
-int secondFactor(int value) {
+int secondFactor(dynamic value) {
   return nthFactor(value, 2);
 }
 
-int nthFactor(int value, int n) {
+int nthFactor(dynamic value, int n) {
   var index = 1;
-  for (var factor in getFactors(value)) {
+  for (var factor in getFactors(value as int)) {
     if (index == n) return factor;
     index++;
   }

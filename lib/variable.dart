@@ -106,7 +106,8 @@ class Variable with PriorityVariable {
   // ignore: unnecessary_getters_setters
   int? get min => _min;
   set min(int? min) => _min = min;
-  int? get max => _max ?? 10000; // Ugh!
+  // ignore: unnecessary_getters_setters
+  int? get max => _max; // Remove hack ?? 10000; // Ugh!
   set max(int? max) => _max = max;
 
   @override

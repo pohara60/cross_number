@@ -123,7 +123,7 @@ TwentyFiveEntry(name=D10,length=3,value: #Square,
 	digits=[{1..9},{0..9},{0..9}]
 
 UPDATES-----------------------------
-Eval TwentyFiveEntry A1 cartesianCount=90, elapsed 0:00:00.649821
+Eval TwentyFiveEntry A1 cartesianCount=90, elapsed 0:00:00.781104
 solveLeft: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11011,11016..11018,11022..11026,11028,11029,11032..11034,11036,11037,11039,11041,11043,11044,41729 more,99999},
@@ -141,7 +141,7 @@ solveLeft: TwentyFiveEntry(name=A9,length=2,value: $Power #prime,
 	identities=[A9[0]=D3[2],A9[1]=D10[0]],referrers=[D3,D10,A9,A11],
 	values={16,25,27,32,49,64,81},
 	digits=[{1..4,6,8},{1,2,4..7,9}]
-Eval TwentyFiveEntry A11 cartesianCount=81, elapsed 0:00:00.005232
+Eval TwentyFiveEntry A11 cartesianCount=81, elapsed 0:00:00.008613
 solveLeft: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
 	values={100,102,104..106,108,110..112,114..124,545 more,999},
@@ -163,13 +163,13 @@ solveLeft: TwentyFiveEntry(name=D2,length=2,value: #Sum2Fibonacci,
 	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,D2],
 	values={10,11,13..19,21..24,26,29,32,34..37,19 more,97},
 	digits=[{1..9},{0..9}]
-Eval TwentyFiveEntry D3 cartesianCount=900, elapsed 0:00:00.080421
+Eval TwentyFiveEntry D3 cartesianCount=900, elapsed 0:00:00.085638
 solveLeft: TwentyFiveEntry(name=D3,length=5,value: $Multiple D10,
 	identities=[D3[0]=A1[3],D3[1]=A5[3],D3[2]=A9[0],D3[3]=A11[2],D3[4]=A13[1]],referrers=[A1,A5,A9,A11,A13,D3],
 	values={10101,10121,10131,10191,10201,10231,10241,10251,10261,10281,10291,10311,10341,10351,10361,10411,10421,10431,10441,10461,2170 more,99841},
 	digits=[{1..9},{0..9},{1..4,6,8},{0..9},{1}]
 Entry D10={101,103,107,109,111,113,117,119,121,123,127,129,131,133,137,139,141,143,147,149,337 more,997}
-Eval TwentyFiveEntry D4 cartesianCount=9846, elapsed 0:00:00.067164
+Eval TwentyFiveEntry D4 cartesianCount=9846, elapsed 0:00:00.084255
 solveLeft: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={10..29,70 more,99},
@@ -187,7 +187,7 @@ solveLeft: TwentyFiveEntry(name=D10,length=3,value: #Square,
 	identities=[D10[0]=A9[1],D10[2]=A13[2]],referrers=[A9,A13,D10,D3],
 	values={196,256,576,676},
 	digits=[{1,2,5,6},{5,7,9},{6}]
-Eval TwentyFiveEntry A1 cartesianCount=90, elapsed 0:00:00.466729
+Eval TwentyFiveEntry A1 cartesianCount=90, elapsed 0:00:00.542019
 solveRight: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11011,11016..11018,11022..11026,11028,11029,11032..11034,11036,11037,11039,11041,11043,11044,41729 more,99999},
@@ -205,7 +205,7 @@ solveRight: TwentyFiveEntry(name=A9,length=2,value: $Power #prime,
 	identities=[A9[0]=D3[2],A9[1]=D10[0]],referrers=[D3,D10,A9,A11],
 	values={16,25,27,32,49,64,81},
 	digits=[{1..4,6,8},{1,2,4..7,9}]
-Eval TwentyFiveEntry A11 cartesianCount=7, elapsed 0:00:00.000426
+Eval TwentyFiveEntry A11 cartesianCount=7, elapsed 0:00:00.000647
 solveRight: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
 	values={100,108,112,125,128,135,144,147,150,160,162,175,176,189,192,196,200,208,216,224,118 more,999},
@@ -226,12 +226,12 @@ solveRight: TwentyFiveEntry(name=D2,length=2,value: #Sum2Fibonacci,
 	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,D2],
 	values={10,11,13..19,21..24,26,29,32,34..37,19 more,97},
 	digits=[{1..9},{0..9}]
-Eval TwentyFiveEntry D3 cartesianCount=4, elapsed 0:00:00.000684
+Eval TwentyFiveEntry D3 cartesianCount=4, elapsed 0:00:00.001582
 solveRight: TwentyFiveEntry(name=D3,length=5,value: $Multiple D10,
 	identities=[D3[0]=A1[3],D3[1]=A5[3],D3[2]=A9[0],D3[3]=A11[2],D3[4]=A13[1]],referrers=[A1,A5,A9,A11,A13,D3],
 	values={10192,11172,11492,12152,12672,13132,13312,14112,14872,15872,17152,18252,18432,21312,21632,22272,24192,24832,24892,25872,100 more,99372},
 	digits=[{1..9},{0..9},{1..4,6,8},{1,3,5,7,9},{2}]
-Eval TwentyFiveEntry D4 cartesianCount=9846, elapsed 0:00:00.043346
+Eval TwentyFiveEntry D4 cartesianCount=9846, elapsed 0:00:00.120815
 solveRight: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={10..29,70 more,99},
@@ -247,9 +247,9 @@ solveRight: TwentyFiveEntry(name=D8,length=3,value: #Square,
 	digits=[{1..9},{2,4..9},{1,4..6,9}]
 solveRight: TwentyFiveEntry(name=D10,length=3,value: #Square,
 	identities=[D10[0]=A9[1],D10[2]=A13[2]],referrers=[A9,A13,D10,D3],
-	values={169,289,529},
-	digits=[{1,2,5},{2,6,8},{9}]
-Eval TwentyFiveEntry A1 cartesianCount=6, elapsed 0:00:00.033657
+	values={169,289,529,729},
+	digits=[{1,2,5,7},{2,6,8},{9}]
+Eval TwentyFiveEntry A1 cartesianCount=6, elapsed 0:00:00.070239
 solveLeft: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11016,11024,11025,11052,11056,11072,11074,11075,11088,11097,11123..11125,11136,11152,11168,11172,11175,11178,11184,8258 more,99984},
@@ -258,43 +258,43 @@ solveLeft: TwentyFiveEntry(name=A9,length=2,value: $Power #prime,
 	identities=[A9[0]=D3[2],A9[1]=D10[0]],referrers=[D3,D10,A9,A11],
 	values={16,25,32},
 	digits=[{1..3},{2,5,6}]
-Eval TwentyFiveEntry A11 cartesianCount=7, elapsed 0:00:00.000284
+Eval TwentyFiveEntry A11 cartesianCount=7, elapsed 0:00:00.000318
 solveLeft: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
-	values={200,208,224,240,250,256,270,272,288,294,400,416,432,448,450,464,480,486,490,496,52 more,992},
+	values={200,208,216,224,240,250,256,270,272,288,294,400,416,432,448,450,464,480,486,490,53 more,992},
 	digits=[{2,4..9},{0..9},{0,2,4,6,8}]
-Eval TwentyFiveEntry D3 cartesianCount=3, elapsed 0:00:00.000214
+Eval TwentyFiveEntry D3 cartesianCount=4, elapsed 0:00:00.000303
 solveLeft: TwentyFiveEntry(name=D3,length=5,value: $Multiple D10,
 	identities=[D3[0]=A1[3],D3[1]=A5[3],D3[2]=A9[0],D3[3]=A11[2],D3[4]=A13[1]],referrers=[A1,A5,A9,A11,A13,D3],
-	values={14161,15341,25181,35321,37281,52221,62361,66181,68241,69121,79261,89301,96161},
-	digits=[{1..3,5..9},{2,4..9},{1..3},{0,2,4,6,8},{1}]
-Eval TwentyFiveEntry D4 cartesianCount=6383, elapsed 0:00:00.034822
+	values={14161,15341,21141,25181,35321,37281,50301,52221,62361,66181,68241,69121,79261,89301,96161},
+	digits=[{1..3,5..9},{0..2,4..9},{1..3},{0,2,4,6,8},{1}]
+Eval TwentyFiveEntry D4 cartesianCount=6383, elapsed 0:00:00.043470
 solveLeft: TwentyFiveEntry(name=D10,length=3,value: #Square,
 	identities=[D10[0]=A9[1],D10[2]=A13[2]],referrers=[A9,A13,D10,D3],
 	values={256,576,676},
 	digits=[{2,5,6},{5,7},{6}]
-Eval TwentyFiveEntry A1 cartesianCount=6, elapsed 0:00:00.029604
+Eval TwentyFiveEntry A1 cartesianCount=6, elapsed 0:00:00.035501
 solveRight: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11016,11024,11025,11052,11056,11072,11074,11075,11088,11097,11123..11125,11136,11152,11168,11172,11175,11178,11184,8258 more,99984},
 	digits=[{1..9},{1..9},{0..9},{1..9},{1..9}]
 solveRight: TwentyFiveEntry(name=A9,length=2,value: $Power #prime,
 	identities=[A9[0]=D3[2],A9[1]=D10[0]],referrers=[D3,D10,A9,A11],
-	values={25,32,81},
-	digits=[{2,3,8},{1,2,5}]
-Eval TwentyFiveEntry A11 cartesianCount=3, elapsed 0:00:00.000152
+	values={25,27,32,81},
+	digits=[{2,3,8},{1,2,5,7}]
+Eval TwentyFiveEntry A11 cartesianCount=3, elapsed 0:00:00.000490
 solveRight: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
 	values={225,275,425,475,525,575,625,675,725,775,825,875,925,975},
 	digits=[{2,4..9},{2,7},{5}]
 Entry A9={25}
-Eval TwentyFiveEntry D3 cartesianCount=3, elapsed 0:00:00.000187
+Eval TwentyFiveEntry D3 cartesianCount=3, elapsed 0:00:00.000457
 solveRight: TwentyFiveEntry(name=D3,length=5,value: $Multiple D10,
 	identities=[D3[0]=A1[3],D3[1]=A5[3],D3[2]=A9[0],D3[3]=A11[2],D3[4]=A13[1]],referrers=[A1,A5,A9,A11,A13,D3],
 	values={36352,44352,68352},
 	digits=[{3,4,6},{4,6,8},{3},{5},{2}]
 Entry D10={256,576}
-Eval TwentyFiveEntry D4 cartesianCount=6383, elapsed 0:00:00.034934
+Eval TwentyFiveEntry D4 cartesianCount=6383, elapsed 0:00:00.080968
 solveRight: TwentyFiveEntry(name=D6,length=4,value: $Multiple 9,
 	identities=[D6[0]=A5[2],D6[1]=A7[2],D6[2]=A11[1],D6[3]=A13[0]],referrers=[A5,A7,A11,A13,D6],
 	values={1377,1827,3177,3627,4077,4527,5877,6327,7677,8127,8577,9027},
@@ -303,15 +303,15 @@ solveRight: TwentyFiveEntry(name=D10,length=3,value: #Square,
 	identities=[D10[0]=A9[1],D10[2]=A13[2]],referrers=[A9,A13,D10,D3],
 	values={289},
 	digits=[{2},{8},{9}]
-Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.019580
+Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.046389
 solveLeft: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11016,11052,11056,11072,11074,11088,11097,11136,11152,11168,11172,11178,11184,11196,11216,11259,11264,11268,11296,11312,4884 more,99984},
 	digits=[{1..9},{1..9},{0..9},{1,3,5..9},{1..9}]
-Eval TwentyFiveEntry A11 cartesianCount=3, elapsed 0:00:00.000120
+Eval TwentyFiveEntry A11 cartesianCount=4, elapsed 0:00:00.000383
 solveLeft: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
-	values={200,288,400,448,480,486,500,544,600,608,640,648,700,704,768,800,864,896,900,960},
+	values={200,288,400,448,480,486,500,540,544,594,600,608,640,648,700,704,768,800,864,896,2 more,960},
 	digits=[{2,4..9},{0,4,6,8,9},{0,4,6,8}]
 solveLeft: TwentyFiveEntry(name=D3,length=5,value: $Multiple D10,
 	identities=[D3[0]=A1[3],D3[1]=A5[3],D3[2]=A9[0],D3[3]=A11[2],D3[4]=A13[1]],referrers=[A1,A5,A9,A11,A13,D3],
@@ -325,7 +325,7 @@ solveLeft: TwentyFiveEntry(name=D10,length=3,value: #Square,
 	identities=[D10[0]=A9[1],D10[2]=A13[2]],referrers=[A9,A13,D10,D3],
 	values={576},
 	digits=[{5},{7},{6}]
-Eval TwentyFiveEntry A1 cartesianCount=6, elapsed 0:00:00.017683
+Eval TwentyFiveEntry A1 cartesianCount=6, elapsed 0:00:00.016020
 solveRight: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11168,11248,11264,11268,11344,11368,11448,11466,11564,11568,11648,11662,11664,11744,11745,11844,11968,12048,12064,12069,1453 more,99968},
@@ -339,7 +339,7 @@ solveRight: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
 	values={275,425,475,525,575,625,675,725,775,825,875,925,975},
 	digits=[{2,4..9},{2,7},{5}]
-Eval TwentyFiveEntry D4 cartesianCount=576, elapsed 0:00:00.002554
+Eval TwentyFiveEntry D4 cartesianCount=576, elapsed 0:00:00.003616
 solveLeft: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={10..19,21,23,24,26..32,63 more,99},
@@ -361,7 +361,7 @@ solveRight: TwentyFiveEntry(name=D8,length=3,value: #Square,
 	identities=[D8[0]=A7[1],D8[1]=A11[0],D8[2]=A12[1]],referrers=[A7,A11,A12,D8],
 	values={121,144,169,196,256,324,361,441,484,529,576,676,729,784,841,961},
 	digits=[{1..9},{2,4..9},{1,4,6,9}]
-Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.005424
+Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.006923
 solveLeft: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11136,11536,11632,11736,11936,12336,12636,12736,12838,12936,13032,13034,13132,13136,13536,13632,13932,13936,14032,14336,633 more,99936},
@@ -386,7 +386,7 @@ solveLeft: TwentyFiveEntry(name=A5,length=5,value: $Jumble #palindrome,
 	identities=[A5[0]=D1[1],A5[1]=D2[1],A5[2]=D6[0],A5[3]=D3[1],A5[4]=D4[1]],referrers=[D1,D2,D6,D3,D4,A5],
 	values={10170,10770,11277,11477,11577,11676,11770..11776,11778,11877,11977,11979,12177,12771,13771,457 more,99979},
 	digits=[{1..9},{0..9},{1,2,4..9},{7},{0..9}]
-Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.004623
+Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.006525
 solveRight: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11248,11344,11448,11648,11744,11745,11844,12048,12144,12348,12446,12448,12544,12744,12848,12944,13041,13248,13344,13446,714 more,99744},
@@ -399,7 +399,7 @@ solveRight: TwentyFiveEntry(name=D2,length=2,value: #Sum2Fibonacci,
 	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,D2],
 	values={10,11,13..19,21,23,24,26,29,34..37,39,42,17 more,97},
 	digits=[{1..9},{0..9}]
-Eval TwentyFiveEntry D4 cartesianCount=564, elapsed 0:00:00.003176
+Eval TwentyFiveEntry D4 cartesianCount=564, elapsed 0:00:00.004807
 solveRight: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={10..21,23,24,26..31,65 more,99},
@@ -412,7 +412,7 @@ solveRight: TwentyFiveEntry(name=A11,length=3,value: $Multiple A9,
 	identities=[A11[0]=D8[1],A11[1]=D6[2],A11[2]=D3[3]],referrers=[D8,D6,D3,A11],
 	values={575,775},
 	digits=[{5,7},{7},{5}]
-Eval TwentyFiveEntry D4 cartesianCount=477, elapsed 0:00:00.002190
+Eval TwentyFiveEntry D4 cartesianCount=477, elapsed 0:00:00.002682
 solveLeft: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={10..19,21,23,24,26..32,61 more,99},
@@ -441,7 +441,7 @@ solveRight: TwentyFiveEntry(name=A7,length=3,value: #Triangular,
 	identities=[A7[0]=D1[2],A7[1]=D8[0],A7[2]=D6[1]],referrers=[D1,D8,D6,A7],
 	values={120,325,465,528,561,666,820,861},
 	digits=[{1,3..6,8},{2,6},{0,1,5,6,8}]
-Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.004035
+Eval TwentyFiveEntry A1 cartesianCount=5, elapsed 0:00:00.004735
 solveLeft: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11136,11536,11632,11736,11936,12336,12636,12736,12838,12936,13032,13034,13132,13136,13536,13632,13932,13936,14032,14336,625 more,99936},
@@ -462,7 +462,7 @@ solveLeft: TwentyFiveEntry(name=A5,length=5,value: $Jumble #palindrome,
 	identities=[A5[0]=D1[1],A5[1]=D2[1],A5[2]=D6[0],A5[3]=D3[1],A5[4]=D4[1]],referrers=[D1,D2,D6,D3,D4,A5],
 	values={10170,11477,11676,11877,12177,14174,14471,14477,16176,16677,17170..17176,17178,17179,17671,205 more,99477},
 	digits=[{1..9},{0..9},{1,4,6,8},{7},{0..9}]
-Eval TwentyFiveEntry A1 cartesianCount=3, elapsed 0:00:00.003394
+Eval TwentyFiveEntry A1 cartesianCount=3, elapsed 0:00:00.004508
 solveRight: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={11248,11344,11448,11648,11744,11844,12048,12144,12348,12448,12544,12744,12848,12944,13248,13344,13644,13648,13744,14048,500 more,99744},
@@ -471,7 +471,7 @@ solveRight: TwentyFiveEntry(name=D1,length=5,value: #different,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A7[0],D1[4]=A12[0]],referrers=[A1,A5,A7,A12,D1],
 	values={12403,12453,12463,12473,12483,12493,12503,12543,12563,12573,12583,12593,12603,12643,12653,12673,12683,12693,12803,12843,2500 more,98673},
 	digits=[{1..9},{1..9},{1,3..6,8},{0..9},{1,3}]
-Eval TwentyFiveEntry D4 cartesianCount=497, elapsed 0:00:00.001885
+Eval TwentyFiveEntry D4 cartesianCount=497, elapsed 0:00:00.002733
 solveRight: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={40..49,80..89},
@@ -481,7 +481,7 @@ solveRight: TwentyFiveEntry(name=A12,length=2,value: #Square,
 	identities=[A12[0]=D1[4],A12[1]=D8[2]],referrers=[D1,D8,A12,A1],
 	values={16,36},
 	digits=[{1,3},{6}]
-Eval TwentyFiveEntry D4 cartesianCount=225, elapsed 0:00:00.000918
+Eval TwentyFiveEntry D4 cartesianCount=225, elapsed 0:00:00.002017
 solveLeft: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={10..19,30..34,36..39,51,17 more,99},
@@ -531,7 +531,7 @@ solveLeft: TwentyFiveEntry(name=D2,length=2,value: #Sum2Fibonacci,
 	identities=[D2[0]=A1[1],D2[1]=A5[1]],referrers=[A1,A5,D2],
 	values={21,91},
 	digits=[{2,9},{1}]
-Eval TwentyFiveEntry A1 cartesianCount=2, elapsed 0:00:00.002780
+Eval TwentyFiveEntry A1 cartesianCount=2, elapsed 0:00:00.003442
 solveRight: TwentyFiveEntry(name=A1,length=5,value: $Multiple A12,
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[3]=D3[0],A1[4]=D4[0]],referrers=[D1,D2,D3,D4,A1],
 	values={12048,12144,12348,12448,12544,12848,12944,14048,14144,14148,14448,14544,14848,14944,18048,18144,18448,18544,18848,18944,192 more,99344},
@@ -540,7 +540,7 @@ solveRight: TwentyFiveEntry(name=D1,length=5,value: #different,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A7[0],D1[4]=A12[0]],referrers=[A1,A5,A7,A12,D1],
 	values={12403,12453,12483,12493,15403,15423,15483,15493,18403,18423,18453,18493,19403,19423,19453,19483,25403,25413,25483,25493,84 more,98453},
 	digits=[{1,2,5..9},{2,5,8,9},{4},{0..2,5,8,9},{3}]
-Eval TwentyFiveEntry D4 cartesianCount=140, elapsed 0:00:00.000785
+Eval TwentyFiveEntry D4 cartesianCount=140, elapsed 0:00:00.000580
 solveRight: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={40,42,44,45,48,49,80,82,84,85,89},
@@ -554,7 +554,7 @@ solveRight: TwentyFiveEntry(name=A12,length=2,value: #Square,
 	identities=[A12[0]=D1[4],A12[1]=D8[2]],referrers=[D1,D8,A12,A1],
 	values={36},
 	digits=[{3},{6}]
-Eval TwentyFiveEntry D4 cartesianCount=2, elapsed 0:00:00.000079
+Eval TwentyFiveEntry D4 cartesianCount=2, elapsed 0:00:00.000043
 solveLeft: TwentyFiveEntry(name=D4,length=2,value: $divisor A5,
 	identities=[D4[0]=A1[4],D4[1]=A5[4]],referrers=[A1,A5,D4],
 	values={99},
@@ -604,7 +604,7 @@ solveLeft: TwentyFiveEntry(name=D1,length=5,value: #different,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A7[0],D1[4]=A12[0]],referrers=[A1,A5,A7,A12,D1],
 	values={49138},
 	digits=[{4},{9},{1},{3},{8}]
-Clue/Variable iterations=178, updates=123, elapsed 0:00:21.993245
+Clue/Variable iterations=178, updates=123, elapsed 0:00:28.697424
 SOLUTION-----------------------------
 Left Puzzle Summary
 A1, $Multiple A12, values={42039}
