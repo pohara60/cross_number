@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Different",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Different"
+            ]
+        },
+        {
             "name": "TakeTwoOrThree",
             "type": "dart",
             "request": "launch",

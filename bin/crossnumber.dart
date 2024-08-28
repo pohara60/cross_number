@@ -13,6 +13,7 @@ import 'package:crossnumber/cubesandwich/cubesandwich.dart';
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
 import 'package:crossnumber/dieanotherday/dieanotherday.dart';
+import 'package:crossnumber/different/different.dart';
 import 'package:crossnumber/eraser/eraser.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
 import 'package:crossnumber/factors/factors.dart';
@@ -109,7 +110,8 @@ void main(List<String> arguments) async {
     ..addCommand(TetrominoCommand())
     ..addCommand(FourSeasonsCommand())
     ..addCommand(VirusCommand())
-    ..addCommand(TakeTwoOrThreeCommand());
+    ..addCommand(TakeTwoOrThreeCommand())
+    ..addCommand(DifferentCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1138,6 +1140,30 @@ class VirusCommand extends Command {
     // Get and print solve
     try {
       final pc = Virus();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class DifferentCommand extends Command {
+  @override
+  final name = 'Different';
+  @override
+  final description = 'solve hardcoded Different puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Different();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

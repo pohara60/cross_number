@@ -38,7 +38,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     for (var puzzle in puzzles) {
       // Puzzles must have been finalized
       if (!puzzle.finalized) {
-        throw PuzzleException('Puzzle not finalized, call fnalize()');
+        throw PuzzleException('Puzzle not finalized, call finalize()');
       }
       for (var variableEntry in puzzle.allVariables.entries) {
         var v = variableEntry.value;
