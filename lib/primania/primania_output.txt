@@ -274,32 +274,15 @@ Solve Error: Entry D4 (null) no solution!
 Solve Error: Entry D5 (null) no solution!
 Solve Error: Entry D6 (null) no solution!
 Solve Error: Entry D7 (null) no solution!
-Solve Error: Entry D8 (null) no solution!
-Solve Error: Entry D12 (null) no solution!
 Solve Error: Entry D13 (null) no solution!
 Solve Error: Entry D14 (null) no solution!
 Solve Error: Entry D15 (null) no solution!
 Solve Error: Entry D16 (null) no solution!
-Solve Error: Entry D17 (null) no solution!
-Solve Error: Entry D18 (null) no solution!
-Solve Error: Entry D19 (null) no solution!
-Solve Error: Entry D1 (null) no solution!
-Solve Error: Entry D2 (null) no solution!
-Solve Error: Entry D3 (null) no solution!
-Solve Error: Entry D4 (null) no solution!
-Solve Error: Entry D5 (null) no solution!
-Solve Error: Entry D6 (null) no solution!
-Solve Error: Entry D7 (null) no solution!
-Solve Error: Entry D8 (null) no solution!
 Solve Error: Entry D12 (null) no solution!
-Solve Error: Entry D13 (null) no solution!
-Solve Error: Entry D14 (null) no solution!
-Solve Error: Entry D15 (null) no solution!
-Solve Error: Entry D16 (null) no solution!
 Solve Error: Entry D17 (null) no solution!
 Solve Error: Entry D18 (null) no solution!
 Solve Error: Entry D19 (null) no solution!
-Clue/Variable iterations=100, updates=26, elapsed 0:00:00.446953
+Clue/Variable iterations=83, updates=26, elapsed 0:00:00.390626
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue D1, $firstfactor 10109, values={11}
@@ -502,7 +485,7 @@ solve: PrimaniaEntry(name=A1,length=4,value: $prime #result & $prime $reverse #r
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0]],referrers=[D1,D2,D3,D4],
 	values={3163,3169,3191,3271,3299,3371,3373,3391,3433,3463,3467,3469,3733,3767,7177,7193,7297,7433,7963,9133,13 more,9967},
 	digits=[{3,7,9},{1..4,7,9},{3,6,7,9},{1,3,7,9}]
-Clue/Variable iterations=69, updates=20, elapsed 0:00:00.030736
+Clue/Variable iterations=69, updates=20, elapsed 0:00:00.037927
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue D1, $firstfactor 10109, values={11}

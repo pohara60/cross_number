@@ -861,7 +861,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   void initVariablePuzzle(List<int>? possibleValues) {
     final puzzleGenerators = [
       Generator('sumdigits', generateSumDigits),
-      Generator('otherentry', generateOtherEntry)
+      Generator('otherentry', generateOtherEntry),
+      Generator('sumtwootherentry', sumTwoOtherEntry)
     ];
     _variableLists[VariableType.V] = (variableList =
         VariableList<VariableKind>(VariableType.V, possibleValues));
@@ -943,6 +944,22 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       if (sum < min) continue;
       if (sum > max) break;
       yield sum;
+    }
+  }
+
+  Iterable<int> sumTwoOtherEntry(num min, num max) sync* {
+    // Generate other entries
+    var otherEntries = generateOtherEntry(min, max).toList();
+    for (var i = 0; i < otherEntries.length - 1; i++) {
+      var anyOK = false;
+      for (var j = i; j < otherEntries.length; j++) {
+        var sum = otherEntries[i] + otherEntries[j];
+        if (sum > max) break;
+        anyOK = true;
+        if (sum < min) continue;
+        yield sum;
+      }
+      if (!anyOK) break;
     }
   }
 

@@ -42,6 +42,7 @@ import 'package:crossnumber/puzzle.dart';
 import 'package:crossnumber/root66/root66.dart';
 import 'package:crossnumber/root66_2/root66_2.dart';
 import 'package:crossnumber/sequences/sequences.dart';
+import 'package:crossnumber/sevenrules/sevenrules.dart';
 import 'package:crossnumber/squarestriangles/squarestriangles.dart';
 import 'package:crossnumber/sumsquares/sumsquares.dart';
 import 'package:crossnumber/taketwoorthree/taketwoorthree.dart';
@@ -111,7 +112,8 @@ void main(List<String> arguments) async {
     ..addCommand(FourSeasonsCommand())
     ..addCommand(VirusCommand())
     ..addCommand(TakeTwoOrThreeCommand())
-    ..addCommand(DifferentCommand());
+    ..addCommand(DifferentCommand())
+    ..addCommand(SevenRulesCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1188,6 +1190,30 @@ class TakeTwoOrThreeCommand extends Command {
     // Get and print solve
     try {
       final pc = TakeTwoOrThree();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class SevenRulesCommand extends Command {
+  @override
+  final name = 'SevenRules';
+  @override
+  final description = 'solve hardcoded SevenRules puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = SevenRules();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

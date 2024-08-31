@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:50710/Th0t5vn9Gqw=/ws
 Puzzle
 Clue DifferentClue(name=1,length=null,value: null,
 	referrers=[],
@@ -202,6 +201,7 @@ Entry DifferentEntry(name=P,length=3,value: null,
 	digits=[{1..9},{0..9},{0..9}]
 Variables:
 A={10..29,79 more,108}
+
 Clue 1, entries, D
 Clue 2, entries, D
 Clue 3, entries, D
@@ -223,13 +223,13 @@ Clue 18, entries,
 Clue 19, entries, 
 Clue 20, entries, 
 Clue 21, entries, 
-Clue 22, entries,
+Clue 22, entries, 
 Clue 23, entries, 
 Clue 24, entries, 
 Clue 25, entries, 
 Clue 26, entries, 
 Clue 27, entries, 
-Clue 28, entries,
+Clue 28, entries, 
 Mapping A=13{356}),a=6{33}),b=17{546}),c=18{663}),B=22{6674}),d=21{6526}),e=24{7127}),f=28{43114}),C=7{34}),D=10{64}),g=27{43106}),E=3{13}),F=16{463}),G=5{32}),H=14{377}),i=25{7147}),j=26{7166}),I=20{671}),J=1{10}),K=12{344}),k=11{336}),l=15{416}),L=8{44}),M=9{63}),N=2{11}),m=4{16}),O=23{6766}),P=19{666})
 +--+--+--+--+--+--+--+
 | 3  5  6| 6  6  7  4|
@@ -246,3 +246,4 @@ Mapping A=13{356}),a=6{33}),b=17{546}),c=18{663}),B=22{6674}),d=21{6526}),e=24{7
 +     +  +--+  +     +
 | 6  7  6  6| 6  6  6|
 +--+--+--+--+--+--+--+
+

@@ -104,7 +104,7 @@ solve: Knights2Entry(name=A1,length=2,value: #prime,
 	values={11,13,23,31,41,43,53,61},
 	digits=[{1..6},{1,3}]
 Solve Error: Entry A4 () no solution!
-Eval Knights2Entry A7 cartesianCount=36, elapsed 0:00:00.005926
+Eval Knights2Entry A7 cartesianCount=36, elapsed 0:00:00.010564
 solve: Knights2Entry(name=A7,length=2,value: $multiple A14,
 	identities=[A7[0]=D2[1],A7[1]=D3[1]],referrers=[D2,D3],
 	values={22,24,26,32,33,36,42,44..46,52,55,56,62..66},
@@ -115,13 +115,13 @@ solve: Knights2Entry(name=A9,length=3,value: #triangular,
 	identities=[A9[0]=D1[2],A9[1]=D2[2],A9[2]=D3[2]],referrers=[D1,D2,D3],
 	values={136,153,231,253,325,351,435,465,561,666},
 	digits=[{1..6},{2,3,5,6},{1,3,5,6}]
-Eval Knights2Entry A10 cartesianCount=216, elapsed 0:00:00.004916
+Eval Knights2Entry A10 cartesianCount=216, elapsed 0:00:00.007344
 solve: Knights2Entry(name=A10,length=2,value: $divisor A18,
 	identities=[A10[0]=D8[1],A10[1]=D5[2]],referrers=[D8,D5],
 	values={11..16,21..26,31..36,41,42,16 more,66},
 	digits=[{1..6},{1..6}]
 Entry A18={112,115,121..126,132,135,136,143,144,153..156,161,162,164,76 more,665}
-Eval Knights2Entry A11 cartesianCount=36, elapsed 0:00:00.024844
+Eval Knights2Entry A11 cartesianCount=36, elapsed 0:00:00.034432
 solve: Knights2Entry(name=A11,length=4,value: $multiple D8,
 	identities=[A11[0]=D11[0],A11[1]=D2[3],A11[2]=D12[0],A11[3]=D13[0]],referrers=[D11,D2,D12,D13],
 	values={1111,1113,1116,1122,1125,1131,1133,1134,1136,1144,1152,1155,1156,1161,1162,1164,1166,1212,1215,1216,657 more,6666},
@@ -135,7 +135,7 @@ solve: Knights2Entry(name=A16,length=2,value: $prime $reverse #fibonacci,
 	identities=[A16[0]=D11[1],A16[1]=D17[0]],referrers=[D11,D17],
 	values={31,43},
 	digits=[{3,4},{1,3}]
-Eval Knights2Entry A18 cartesianCount=36, elapsed 0:00:00.001021
+Eval Knights2Entry A18 cartesianCount=36, elapsed 0:00:00.002080
 solve: Knights2Entry(name=A18,length=3,value: $multiple A21,
 	identities=[A18[0]=D13[1],A18[1]=D19[0],A18[2]=D15[1]],referrers=[D13,D19,D15,A10],
 	values={112,115,121..126,132,135,136,143,144,153..156,161,162,164,76 more,665},
@@ -150,13 +150,13 @@ solve: Knights2Entry(name=D1,length=3,value: #triangular,
 	identities=[D1[0]=A1[0],D1[2]=A9[0]],referrers=[A1,A9],
 	values={136,153,231,253,325,351,435,465,561,666},
 	digits=[{1..6},{2,3,5,6},{1,3,5,6}]
-Eval Knights2Entry D2 cartesianCount=120, elapsed 0:00:00.002243
+Eval Knights2Entry D2 cartesianCount=120, elapsed 0:00:00.004243
 solve: Knights2Entry(name=D2,length=4,value: $multiple D3,
 	identities=[D2[0]=A1[1],D2[1]=A7[0],D2[2]=A9[1],D2[3]=A11[1]],referrers=[A1,A7,A9,A11],
 	values={1224,1225,1252,1255,1262,1263,1265,1266,1322..1326,1331,1332,1335,1353,1356,1364,1365,48 more,3666},
 	digits=[{1,3},{2..6},{2,3,5,6},{1..6}]
 Entry D3={121,123,125,126,133,136,141,143,145,151,153,155,156,163,165,166,221,223,226,231,45 more,666}
-Eval Knights2Entry D3 cartesianCount=36, elapsed 0:00:00.000353
+Eval Knights2Entry D3 cartesianCount=36, elapsed 0:00:00.001086
 solve: Knights2Entry(name=D3,length=3,value: $multiple D13,
 	identities=[D3[1]=A7[1],D3[2]=A9[2]],referrers=[A7,A9,D2],
 	values={121,123,125,126,136,143,153,155,156,165,221,231,245,253,256,265,325,341,363,366,10 more,665},
@@ -196,51 +196,49 @@ solve: Knights2Entry(name=A1,length=2,value: #prime,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
 	values={11,23,41,43,53,61},
 	digits=[{1,2,4..6},{1,3}]
-Solve Error: Entry A4 () no solution!
 solve: Knights2Entry(name=A7,length=2,value: $multiple A14,
 	identities=[A7[0]=D2[1],A7[1]=D3[1]],referrers=[D2,D3],
 	values={62},
 	digits=[{6},{2}]
-Solve Error: Entry A8 () no solution!
 solve: Knights2Entry(name=A9,length=3,value: #triangular,
 	identities=[A9[0]=D1[2],A9[1]=D2[2],A9[2]=D3[2]],referrers=[D1,D2,D3],
 	values={136,153,325,351,561,666},
 	digits=[{1,3,5,6},{2,3,5,6},{1,3,5,6}]
-Eval Knights2Entry A10 cartesianCount=96, elapsed 0:00:00.000627
+Eval Knights2Entry A10 cartesianCount=96, elapsed 0:00:00.001050
 solve: Knights2Entry(name=A10,length=2,value: $divisor A18,
 	identities=[A10[0]=D8[1],A10[1]=D5[2]],referrers=[D8,D5],
 	values={12,14,16,42..44,46,52..54,56},
 	digits=[{1,4,5},{2..4,6}]
 Entry A18={112,126,132,144,154,156,162,212,215,216,224,252,256,264..266,312,322,324,336,26 more,656}
-Eval Knights2Entry A11 cartesianCount=3, elapsed 0:00:00.000194
+Eval Knights2Entry A11 cartesianCount=3, elapsed 0:00:00.000276
 solve: Knights2Entry(name=A11,length=4,value: $multiple D8,
 	identities=[A11[0]=D11[0],A11[1]=D2[3],A11[2]=D12[0],A11[3]=D13[0]],referrers=[D11,D2,D12,D13],
 	values={1122,1156,1326,1462,1512,1632,1666,2121,2142,2226,2312,2331,2346,2352,2436,2516,2541,2562,2646,2652,33 more,6636},
 	digits=[{1..6},{1..6},{1..6},{1,2,6}]
 Entry D8={21,34}
+Solve Error: Entry A8 () no solution!
 solve: Knights2Entry(name=A18,length=3,value: $multiple A21,
 	identities=[A18[0]=D13[1],A18[1]=D19[0],A18[2]=D15[1]],referrers=[D13,D19,D15,A10],
 	values={416,546},
 	digits=[{4,5},{1,4},{6}]
-Solve Error: Entry A20 () no solution!
 solve: Knights2Entry(name=D1,length=3,value: #triangular,
 	identities=[D1[0]=A1[0],D1[2]=A9[0]],referrers=[A1,A9],
 	values={136,153,231,253,435,465,561,666},
 	digits=[{1,2,4..6},{3,5,6},{1,3,5,6}]
-Eval Knights2Entry D2 cartesianCount=30, elapsed 0:00:00.000205
+Eval Knights2Entry D2 cartesianCount=30, elapsed 0:00:00.000423
 solve: Knights2Entry(name=D2,length=4,value: $multiple D3,
 	identities=[D2[0]=A1[1],D2[1]=A7[0],D2[2]=A9[1],D2[3]=A11[1]],referrers=[A1,A7,A9,A11],
 	values={1625,1632,1665,3625,3654},
 	digits=[{1,3},{6},{2,3,5,6},{2,4,5}]
 Entry D3={125,126,136,325,555}
-Eval Knights2Entry D3 cartesianCount=3, elapsed 0:00:00.000045
+Eval Knights2Entry D3 cartesianCount=3, elapsed 0:00:00.000116
 solve: Knights2Entry(name=D3,length=3,value: $multiple D13,
 	identities=[D3[1]=A7[1],D3[2]=A9[2]],referrers=[A7,A9,D2],
 	values={125,325},
 	digits=[{1,3},{2},{5}]
 Entry D13={25}
-Solve Error: Entry D6 () no solution!
-Solve Error: Entry D12 () no solution!
+Solve Error: Entry A4 () no solution!
+Solve Error: Entry A20 () no solution!
 solve: Knights2Entry(name=D15,length=3,value: #prime,
 	identities=[D15[0]=A14[1],D15[1]=A18[2],D15[2]=A21[1]],referrers=[A14,A18,A21],
 	values={163},
@@ -249,27 +247,25 @@ solve: Knights2Entry(name=D19,length=2,value: #prime,
 	identities=[D19[0]=A18[1],D19[1]=A21[0]],referrers=[A18,A21],
 	values={11,41},
 	digits=[{1,4},{1}]
-Solve Error: Entry A4 () no solution!
-Solve Error: Entry A8 () no solution!
 solve: Knights2Entry(name=A9,length=3,value: #triangular,
 	identities=[A9[0]=D1[2],A9[1]=D2[2],A9[2]=D3[2]],referrers=[D1,D2,D3],
 	values={325},
 	digits=[{3},{2},{5}]
-Eval Knights2Entry A10 cartesianCount=2, elapsed 0:00:00.000050
+Eval Knights2Entry A10 cartesianCount=2, elapsed 0:00:00.000101
 solve: Knights2Entry(name=A10,length=2,value: $divisor A18,
 	identities=[A10[0]=D8[1],A10[1]=D5[2]],referrers=[D8,D5],
 	values={14,16,42},
 	digits=[{1,4},{2,4,6}]
-Eval Knights2Entry A11 cartesianCount=2, elapsed 0:00:00.000216
+Eval Knights2Entry A11 cartesianCount=2, elapsed 0:00:00.000345
 solve: Knights2Entry(name=A11,length=4,value: $multiple D8,
 	identities=[A11[0]=D11[0],A11[1]=D2[3],A11[2]=D12[0],A11[3]=D13[0]],referrers=[D11,D2,D12,D13],
 	values={1462,1512,2562,4242,4452,4522,5542,6222,6552,6562},
 	digits=[{1,2,4..6},{2,4,5},{1,2,4..6},{2}]
+Solve Error: Entry D12 () no solution!
 solve: Knights2Entry(name=A18,length=3,value: $multiple A21,
 	identities=[A18[0]=D13[1],A18[1]=D19[0],A18[2]=D15[1]],referrers=[D13,D19,D15,A10],
 	values={546},
 	digits=[{5},{4},{6}]
-Solve Error: Entry A20 () no solution!
 solve: Knights2Entry(name=D1,length=3,value: #triangular,
 	identities=[D1[0]=A1[0],D1[2]=A9[0]],referrers=[A1,A9],
 	values={153,253},
@@ -282,14 +278,10 @@ solve: Knights2Entry(name=D2,length=4,value: $multiple D3,
 	identities=[D2[0]=A1[1],D2[1]=A7[0],D2[2]=A9[1],D2[3]=A11[1]],referrers=[A1,A7,A9,A11],
 	values={1625,3625},
 	digits=[{1,3},{6},{2},{5}]
-Solve Error: Entry D6 () no solution!
-Solve Error: Entry D12 () no solution!
 solve: Knights2Entry(name=D19,length=2,value: #prime,
 	identities=[D19[0]=A18[1],D19[1]=A21[0]],referrers=[A18,A21],
 	values={41},
 	digits=[{4},{1}]
-Solve Error: Entry A4 () no solution!
-Solve Error: Entry A8 () no solution!
 solve: Knights2Entry(name=A10,length=2,value: $divisor A18,
 	identities=[A10[0]=D8[1],A10[1]=D5[2]],referrers=[D8,D5],
 	values={14,42},
@@ -298,7 +290,7 @@ solve: Knights2Entry(name=D5,length=4,value: $multiple A14,
 	identities=[D5[0]=A4[1],D5[1]=A8[1],D5[2]=A10[1],D5[3]=A14[0]],referrers=[A4,A8,A10,A14],
 	values={1643,4123},
 	digits=[{1,4},{1,6},{2,4},{3}]
-Eval Knights2Entry A11 cartesianCount=2, elapsed 0:00:00.000110
+Eval Knights2Entry A11 cartesianCount=2, elapsed 0:00:00.000270
 solve: Knights2Entry(name=A11,length=4,value: $multiple D8,
 	identities=[A11[0]=D11[0],A11[1]=D2[3],A11[2]=D12[0],A11[3]=D13[0]],referrers=[D11,D2,D12,D13],
 	values={1512,2562,4522,5542,6552,6562},
@@ -307,18 +299,12 @@ solve: Knights2Entry(name=D11,length=3,value: #prime,
 	identities=[D11[0]=A11[0],D11[1]=A16[0],D11[2]=A20[0]],referrers=[A11,A16,A20],
 	values={131,233,241,431,433,443,541,631,641,643},
 	digits=[{1,2,4..6},{3,4},{1,3}]
-Solve Error: Entry A20 () no solution!
-Solve Error: Entry D6 () no solution!
-Solve Error: Entry D12 () no solution!
 Solve Error: Entry A4 () no solution!
 Solve Error: Entry A8 () no solution!
-Eval Knights2Entry A11 cartesianCount=2, elapsed 0:00:00.000114
-Solve Error: Entry A20 () no solution!
-Solve Error: Entry D6 () no solution!
+Eval Knights2Entry A11 cartesianCount=2, elapsed 0:00:00.000243
 Solve Error: Entry D12 () no solution!
-Solve Error: Entry A4 () no solution!
-Solve Error: Entry A8 () no solution!
-Clue/Variable iterations=98, updates=52, elapsed 0:00:00.136100
+Solve Error: Entry A20 () no solution!
+Clue/Variable iterations=84, updates=52, elapsed 0:00:00.228501
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, #prime, values={11,23}
@@ -404,7 +390,7 @@ solve: Knights2Entry(name=D17,length=2,value: #square,
 	identities=[D17[0]=A16[1],D17[1]=A20[1]],referrers=[A16,A20],
 	values={36},
 	digits=[{3},{6}]
-Clue/Variable iterations=35, updates=11, elapsed 0:00:00.002236
+Clue/Variable iterations=35, updates=11, elapsed 0:00:00.003063
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #prime, values={23}

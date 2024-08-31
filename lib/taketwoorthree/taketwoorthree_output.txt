@@ -135,7 +135,7 @@ solve: TakeTwoOrThreeEntry(name=B,length=2,value: null,
 	identities=[B[0]=d[0]],referrers=[d,I,II,g,H],
 	values={10..29,70 more,99},
 	digits=[{1..9},{0..9}]
-Eval TakeTwoOrThreeEntry d cartesianCount=656100, elapsed 0:00:02.871970
+Eval TakeTwoOrThreeEntry d cartesianCount=656100, elapsed 0:00:04.654353
 solve: TakeTwoOrThreeEntry(name=d,length=5,value: £remove(b^2,D^2,a^2,"",""),
 	identities=[d[0]=B[0],d[1]=E[0],d[3]=H[2],d[4]=M[1]],referrers=[B,E,H,M,V],
 	values={11251,11859,12483,13123,13779,14451,15139,15843,16563,17299,18051,18819,19603,22051,23763,24643},
@@ -173,7 +173,7 @@ solve: TakeTwoOrThreeEntry(name=h,length=2,value: null,
 	identities=[h[1]=L[0]],referrers=[L,VIII],
 	values={11..19,21..29,31,32,61 more,99},
 	digits=[{1..9},{1..9}]
-Eval TakeTwoOrThreeEntry H cartesianCount=218700, elapsed 0:00:00.981556
+Eval TakeTwoOrThreeEntry H cartesianCount=218700, elapsed 0:00:01.829573
 solve: TakeTwoOrThreeEntry(name=H,length=3,value: £remove(B^2,M^2,N^2,"","3"),
 	identities=[H[0]=k[0],H[1]=c[3],H[2]=d[3]],referrers=[k,c,d,II],
 	values={192,304,336,480,696,744,952},
@@ -181,7 +181,7 @@ solve: TakeTwoOrThreeEntry(name=H,length=3,value: £remove(B^2,M^2,N^2,"","3"),
 Entry B={11,13,15,19,25,27,29,33,37}
 Entry M={23,29,31,33,43,49,51,53,63}
 Entry N={31,35,49,59,61,65,67,73,75,79,81}
-Eval TakeTwoOrThreeEntry k cartesianCount=328050, elapsed 0:00:01.373538
+Eval TakeTwoOrThreeEntry k cartesianCount=328050, elapsed 0:00:02.576168
 solve: TakeTwoOrThreeEntry(name=k,length=2,value: £remove(n^2,m^2,K^2,"2","63"),
 	identities=[k[0]=H[0],k[1]=L[1]],referrers=[H,L,VII,VIII],
 	values={37},
@@ -198,7 +198,7 @@ solve: TakeTwoOrThreeEntry(name=N,length=2,value: null,
 	values={35,65,75},
 	digits=[{3,6,7},{5}]
 Eval TakeTwoOrThreeClue I cartesianCount=89211054240 Exception
-Eval TakeTwoOrThreeClue II cartesianCount=1512, elapsed 0:00:00.008731
+Eval TakeTwoOrThreeClue II cartesianCount=1512, elapsed 0:00:00.012050
 solve: TakeTwoOrThreeClue(name=II,length=4,value: B^2 +  M^2 +  N^2 = H~3,
 	referrers=[],
 	values={1923,3043,7443,9523}
@@ -208,7 +208,7 @@ Entry M={23,33,53}
 Entry N={35,75}
 Eval TakeTwoOrThreeClue III cartesianCount=461288520 Exception
 Eval TakeTwoOrThreeClue IV cartesianCount=21455280000 Exception
-Eval TakeTwoOrThreeClue V cartesianCount=44000, elapsed 0:00:00.177393
+Eval TakeTwoOrThreeClue V cartesianCount=44000, elapsed 0:00:00.321749
 solve: TakeTwoOrThreeClue(name=V,length=5,value: b^2 +  D^2 +  a^2 = d,
 	referrers=[],
 	values={11251,13123,13779,14451,15139,15843,16563,17299,18051,19603,22051,24643}
@@ -219,7 +219,7 @@ Eval TakeTwoOrThreeClue VI cartesianCount=1231200 Exception
 solve: TakeTwoOrThreeClue(name=VII,length=5,value: n^2 +  m^2 +  K^2 = 2~k~63,
 	referrers=[],
 	values={23763}
-Eval TakeTwoOrThreeClue VIII cartesianCount=138600, elapsed 0:00:00.641870
+Eval TakeTwoOrThreeClue VIII cartesianCount=138600, elapsed 0:00:01.104622
 solve: TakeTwoOrThreeClue(name=VIII,length=4,value: N^2 +  k^2 +  h^2 = 4~G    ,
 	referrers=[],
 	values={4115,4275,4358,4443,4530,4619,4710,4803,4898,4995}
@@ -234,12 +234,11 @@ solve: TakeTwoOrThreeEntry(name=A,length=2,value: null,
 	identities=[A[0]=b[0],A[1]=c[0]],referrers=[b,c,I,g],
 	values={11..19,21..29,31,32,41 more,89},
 	digits=[{1..6,8},{1..9}]
-Eval TakeTwoOrThreeEntry c cartesianCount=5814000 Exception
 solve: TakeTwoOrThreeEntry(name=B,length=2,value: null,
 	identities=[B[0]=d[0]],referrers=[d,I,II,g,H],
 	values={13,27},
 	digits=[{1,2},{3,7}]
-Eval TakeTwoOrThreeEntry d cartesianCount=1134, elapsed 0:00:00.006625
+Eval TakeTwoOrThreeEntry d cartesianCount=1134, elapsed 0:00:00.011463
 solve: TakeTwoOrThreeEntry(name=d,length=5,value: £remove(b^2,D^2,a^2,"",""),
 	identities=[d[0]=B[0],d[1]=E[0],d[3]=H[2],d[4]=M[1]],referrers=[B,E,H,M,V],
 	values={15843,24643},
@@ -247,6 +246,7 @@ solve: TakeTwoOrThreeEntry(name=d,length=5,value: £remove(b^2,D^2,a^2,"",""),
 Entry D={77,79,91}
 Entry a={83,89,99}
 Entry b={41,55,81}
+Eval TakeTwoOrThreeEntry c cartesianCount=5814000 Exception
 solve: TakeTwoOrThreeEntry(name=D,length=2,value: null,
 	identities=[D[0]=a[1],D[1]=b[1]],referrers=[a,b,V,d],
 	values={91},
@@ -256,7 +256,14 @@ solve: TakeTwoOrThreeEntry(name=E,length=3,value: null,
 	values={410..429,160 more,599},
 	digits=[{4,5},{1..9},{0..9}]
 Eval TakeTwoOrThreeEntry g cartesianCount=6917400 Exception
-Eval TakeTwoOrThreeEntry F cartesianCount=72900, elapsed 0:00:00.352509
+Eval TakeTwoOrThreeEntry H cartesianCount=6, elapsed 0:00:00.000694
+solve: TakeTwoOrThreeEntry(name=H,length=3,value: £remove(B^2,M^2,N^2,"","3"),
+	identities=[H[0]=k[0],H[1]=c[3],H[2]=d[3]],referrers=[k,c,d,II],
+	values={304},
+	digits=[{3},{0},{4}]
+Entry B={27}
+Entry M={33}
+Eval TakeTwoOrThreeEntry F cartesianCount=64800, elapsed 0:00:00.713213
 solve: TakeTwoOrThreeEntry(name=F,length=3,value: £remove((L + b - a)^2,(F - n)^2,L^2,"","51"),
 	identities=[F[2]=c[2]],referrers=[c,IV,VI,F],
 	values={144},
@@ -265,69 +272,48 @@ Entry F={144}
 Entry L={77,97}
 Entry a={89,99}
 Entry b={41,81}
-solve: TakeTwoOrThreeEntry(name=h,length=2,value: null,
-	identities=[h[1]=L[0]],referrers=[L,VIII],
-	values={39,47,49},
-	digits=[{3,4},{7,9}]
-Eval TakeTwoOrThreeEntry H cartesianCount=6, elapsed 0:00:00.000154
-solve: TakeTwoOrThreeEntry(name=H,length=3,value: £remove(B^2,M^2,N^2,"","3"),
-	identities=[H[0]=k[0],H[1]=c[3],H[2]=d[3]],referrers=[k,c,d,II],
-	values={304},
-	digits=[{3},{0},{4}]
-Entry B={27}
-Entry M={33}
-Eval TakeTwoOrThreeClue I cartesianCount=572141880 Exception
 solve: TakeTwoOrThreeClue(name=II,length=4,value: B^2 +  M^2 +  N^2 = H~3,
 	referrers=[],
 	values={3043}
-Eval TakeTwoOrThreeClue III cartesianCount=88353360 Exception
-Eval TakeTwoOrThreeClue IV cartesianCount=538740, elapsed 0:00:02.437516
-solve: TakeTwoOrThreeClue(name=IV,length=5,value: C^2 + (F - e)^2 +  m^2 = c~3,
-	referrers=[],
-	values={19403,20403,22403,27403,28403}
-Entry C={53,57,63,67,83}
-Entry c={1940,2040,2240,2740,2840}
-Entry e={17,21,47,57,61,77}
-Eval TakeTwoOrThreeClue V cartesianCount=8, elapsed 0:00:00.000299
+Eval TakeTwoOrThreeClue I cartesianCount=572141880 Exception
+Eval TakeTwoOrThreeClue V cartesianCount=8, elapsed 0:00:00.000189
 solve: TakeTwoOrThreeClue(name=V,length=5,value: b^2 +  D^2 +  a^2 = d,
 	referrers=[],
 	values={24643}
 Entry a={99}
 Entry b={81}
 Entry d={24643}
-Eval TakeTwoOrThreeClue VI cartesianCount=2, elapsed 0:00:00.000078
+Eval TakeTwoOrThreeClue VIII cartesianCount=100, elapsed 0:00:00.001757
+Eval TakeTwoOrThreeClue VI cartesianCount=2, elapsed 0:00:00.000199
 solve: TakeTwoOrThreeClue(name=VI,length=5,value: (L + b - a)^2 + (F - n)^2 + L^2 = F~51,
 	referrers=[],
 	values={14451}
 Entry L={77}
-Eval TakeTwoOrThreeClue VIII cartesianCount=30, elapsed 0:00:00.000184
-solve: TakeTwoOrThreeClue(name=VIII,length=4,value: N^2 +  k^2 +  h^2 = 4~G    ,
-	referrers=[],
-	values={4115,4803,4995}
-Entry G={115,803,995}
 solve: TakeTwoOrThreeEntry(name=A,length=2,value: null,
 	identities=[A[0]=b[0],A[1]=c[0]],referrers=[b,c,I,g],
-	values={82},
-	digits=[{8},{2}]
-Eval TakeTwoOrThreeEntry c cartesianCount=25, elapsed 0:00:00.000429
+	values={82..89},
+	digits=[{8},{2..9}]
+solve: TakeTwoOrThreeEntry(name=E,length=3,value: null,
+	identities=[E[0]=d[1],E[1]=g[0],E[2]=e[1]],referrers=[d,g,e,III],
+	values={410..429,70 more,499},
+	digits=[{4},{1..9},{0..9}]
+Eval TakeTwoOrThreeClue III cartesianCount=39318300 Exception
+Eval TakeTwoOrThreeEntry c cartesianCount=5530, elapsed 0:00:00.070325
 solve: TakeTwoOrThreeEntry(name=c,length=4,value: £remove(C^2,(F - e)^2,m^2,"","3"),
 	identities=[c[0]=A[1],c[2]=F[2],c[3]=H[1]],referrers=[A,F,H,IV],
 	values={2040},
 	digits=[{2},{0},{4},{0}]
 Entry C={67}
 Entry e={61}
-solve: TakeTwoOrThreeEntry(name=f,length=2,value: null,
-	identities=[f[0]=C[1]],referrers=[C,III],
-	values={70..72,74..76,78,79},
-	digits=[{7},{0..2,4..6,8,9}]
-solve: TakeTwoOrThreeEntry(name=E,length=3,value: null,
-	identities=[E[0]=d[1],E[1]=g[0],E[2]=e[1]],referrers=[d,g,e,III],
-	values={411,421,431,441,451,461,471,481,491},
-	digits=[{4},{1..9},{1}]
+Eval TakeTwoOrThreeEntry g cartesianCount=8, elapsed 0:00:00.000259
 solve: TakeTwoOrThreeEntry(name=g,length=4,value: £remove((A - B)^2,L^2,(C + L - e)^2,"1",""),
 	identities=[g[0]=E[1],g[1]=G[0],g[3]=N[0]],referrers=[E,G,N,I],
 	values={5843},
 	digits=[{5},{8},{4},{3}]
+Entry A={82}
+solve: TakeTwoOrThreeClue(name=IV,length=5,value: C^2 + (F - e)^2 +  m^2 = c~3,
+	referrers=[],
+	values={20403}
 solve: TakeTwoOrThreeEntry(name=h,length=2,value: null,
 	identities=[h[1]=L[0]],referrers=[L,VIII],
 	values={47},
@@ -335,21 +321,29 @@ solve: TakeTwoOrThreeEntry(name=h,length=2,value: null,
 solve: TakeTwoOrThreeClue(name=I,length=5,value: (A - B)^2 + L^2 + (C + L - e)^2 = 1~g,
 	referrers=[],
 	values={15843}
-Eval TakeTwoOrThreeClue III cartesianCount=72, elapsed 0:00:00.000399
+solve: TakeTwoOrThreeEntry(name=E,length=3,value: null,
+	identities=[E[0]=d[1],E[1]=g[0],E[2]=e[1]],referrers=[d,g,e,III],
+	values={451},
+	digits=[{4},{5},{1}]
+solve: TakeTwoOrThreeEntry(name=f,length=2,value: null,
+	identities=[f[0]=C[1]],referrers=[C,III],
+	values={70..72,74..76,78,79},
+	digits=[{7},{0..2,4..6,8,9}]
+Eval TakeTwoOrThreeClue III cartesianCount=8, elapsed 0:00:00.000259
 solve: TakeTwoOrThreeClue(name=III,length=5,value: e^2 +  C^2 +  f^2 =  14~E,
 	referrers=[],
 	values={14451}
-Entry E={451}
 Entry f={79}
-solve: TakeTwoOrThreeClue(name=IV,length=5,value: C^2 + (F - e)^2 +  m^2 = c~3,
-	referrers=[],
-	values={20403}
-Eval TakeTwoOrThreeClue VIII cartesianCount=3, elapsed 0:00:00.000049
+solve: TakeTwoOrThreeEntry(name=G,length=3,value: null,
+	identities=[G[0]=g[1]],referrers=[g,VIII],
+	values={803,898},
+	digits=[{8},{0,9},{3,8}]
+Eval TakeTwoOrThreeClue VIII cartesianCount=2, elapsed 0:00:00.000207
 solve: TakeTwoOrThreeClue(name=VIII,length=4,value: N^2 +  k^2 +  h^2 = 4~G    ,
 	referrers=[],
 	values={4803}
 Entry G={803}
-Clue/Variable iterations=100, updates=84, elapsed 0:00:08.884983
+Clue/Variable iterations=106, updates=79, elapsed 0:00:11.355400
 SOLUTION-----------------------------
 Puzzle Summary
 Clue I, (A - B)^2 + L^2 + (C + L - e)^2 = 1~g, values={15843}

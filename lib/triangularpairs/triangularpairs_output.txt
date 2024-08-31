@@ -273,35 +273,25 @@ solve: TriangularPairsEntry(name=D10,length=3,value: ,
 	values={266},
 	digits=[{2},{6},{6}]
 Solve Error: Entry D3 (#triangular) no solution!
-Solve Error: Entry D13 (#triangular) no solution!
 Solve Error: Entry D14 (#triangular) no solution!
+Solve Error: Entry D13 (#triangular) no solution!
 Solve Error: Entry A1 (#triangular) no solution!
 Solve Error: Entry A7 ($reverse #triangular) no solution!
 Solve Error: Entry A9 (#triangular) no solution!
-Solve Error: Entry A16 (#triangular) no solution!
 solve: TriangularPairsEntry(name=A11,length=2,value: $reverse #triangular,
 	identities=[A11[0]=D8[1]],referrers=[D8,A1,A4,A6,A7,A9,A12,A15,A16,D1,D2,D3,D4,D5,D9,D10,D13,D14],
 	values={19},
 	digits=[{1},{9}]
+Solve Error: Entry A16 (#triangular) no solution!
 Solve Error: Entry D1 (#triangular) no solution!
-Solve Error: Entry D3 (#triangular) no solution!
-Solve Error: Entry D13 (#triangular) no solution!
-Solve Error: Entry D14 (#triangular) no solution!
+Solve Error: Entry A11 ($reverse #triangular) no solution!
 Solve Error: Entry A1 (#triangular) no solution!
 Solve Error: Entry A7 ($reverse #triangular) no solution!
 Solve Error: Entry A9 (#triangular) no solution!
-Solve Error: Entry A16 (#triangular) no solution!
-Solve Error: Entry A11 ($reverse #triangular) no solution!
-Solve Error: Entry D1 (#triangular) no solution!
 Solve Error: Entry D3 (#triangular) no solution!
 Solve Error: Entry D13 (#triangular) no solution!
 Solve Error: Entry D14 (#triangular) no solution!
-Solve Error: Entry A1 (#triangular) no solution!
-Solve Error: Entry A7 ($reverse #triangular) no solution!
-Solve Error: Entry A9 (#triangular) no solution!
-Solve Error: Entry A16 (#triangular) no solution!
-Solve Error: Entry A11 ($reverse #triangular) no solution!
-Clue/Variable iterations=112, updates=48, elapsed 0:00:00.060814
+Clue/Variable iterations=102, updates=48, elapsed 0:00:00.066911
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #triangular, values={28}

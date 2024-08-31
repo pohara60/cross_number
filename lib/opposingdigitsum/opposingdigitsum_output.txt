@@ -307,15 +307,15 @@ solve: OpposingDigitSumEntry(name=A5,length=4,value: A5 + $DS EA8,
 	values={4116..4119,4121..4129,4131..4137,480 more,8924},
 	digits=[{4,8},{1..9},{0..9},{1..9}]
 Clue A5={4114,4224,4334,4444,4554,4664,4774,4884,4994,8118,8228,8338,8448,8558,8668,8778,8888}
+solve: OpposingDigitSumEntry(name=D8,length=2,value: D8 + $DS ED3,
+	identities=[D8[0]=A8[0],D8[1]=A10[2]],referrers=[A8,A10,D3],
+	values={13..32,65 more,99},
+	digits=[{1..9},{0..9}]
 solve: OpposingDigitSumEntry(name=A8,length=4,value: A8 + $DS EA5,
 	identities=[A8[0]=D8[0],A8[1]=D9[0],A8[2]=D4[2],A8[3]=D7[1]],referrers=[D8,D9,D4,D7,A5],
 	values={1108,1109,1118,1119,1128,1129,1198,1199,1208,1209,1218,1219,1228,1229,1238,1239,1248,1249,1308,1309,873 more,9999},
 	digits=[{1..9},{1..9},{0..9},{8,9}]
 Clue A8={1075..1079,1081..1089,1091..1096,2251 more,9991}
-solve: OpposingDigitSumEntry(name=D8,length=2,value: D8 + $DS ED3,
-	identities=[D8[0]=A8[0],D8[1]=A10[2]],referrers=[A8,A10,D3],
-	values={13..32,65 more,99},
-	digits=[{1..9},{0..9}]
 solve: OpposingDigitSumClue(name=A8,length=4,value: $reverse EA5,
 	referrers=[A8],
 	values={1078,1084,1088,1094,1098,1188,1194,1198,1214,1218,1298,1314,1318,1324,1328,1414,1418,1424,1428,1434,476 more,9988}
@@ -335,17 +335,17 @@ solve: OpposingDigitSumEntry(name=D2,length=2,value: D2 + $DS ED9,
 Clue D2={15,45,66}
 Entry D9={45,48,72,75,77,92}
 Clue D9={36,66,78}
+solve: OpposingDigitSumEntry(name=D8,length=2,value: D8 + $DS ED3,
+	identities=[D8[0]=A8[0],D8[1]=A10[2]],referrers=[A8,A10,D3],
+	values={20..29,50..59,10 more,69},
+	digits=[{2,5,6},{0..9}]
+Clue D8={10,12,14..16,18,20,21,24,25,40,42,45,48..50,54,56,60,63,64}
 solve: OpposingDigitSumEntry(name=D7,length=3,value: D7 + $DS ED1,
 	identities=[D7[1]=A8[3],D7[2]=A11[1]],referrers=[A8,A11,D1],
 	values={894},
 	digits=[{8},{9},{4}]
 Clue D7={884}
 Entry D1={442}
-solve: OpposingDigitSumEntry(name=D8,length=2,value: D8 + $DS ED3,
-	identities=[D8[0]=A8[0],D8[1]=A10[2]],referrers=[A8,A10,D3],
-	values={20..29,50..59,10 more,69},
-	digits=[{2,5,6},{0..9}]
-Clue D8={10,12,14..16,18,20,21,24,25,40,42,45,48..50,54,56,60,63,64}
 solve: OpposingDigitSumEntry(name=D6,length=3,value: D6 + $DS ED4,
 	identities=[D6[0]=A5[1],D6[2]=A10[1]],referrers=[A5,A10,D8,D4],
 	values={215..217,223..229,232..237,242..245,78 more,691},
@@ -385,27 +385,22 @@ solve: OpposingDigitSumEntry(name=D2,length=2,value: D2 + $DS ED9,
 Clue D2={45}
 Entry D9={45}
 Clue D9={36}
+solve: OpposingDigitSumClue(name=D8,length=2,value: $DP ED6,
+	referrers=[D8],
+	values={42,48,50,56,60}
+Entry D6={237,246,247,255,256,264,265,273,274,426,427,453,462,618,642,652,681}
 solve: OpposingDigitSumEntry(name=A8,length=4,value: A8 + $DS EA5,
 	identities=[A8[0]=D8[0],A8[1]=D9[0],A8[2]=D4[2],A8[3]=D7[1]],referrers=[D8,D9,D4,D7,A5],
 	values={5439},
 	digits=[{5},{4},{3},{9}]
 Clue A8={5424}
 Entry A5={4245}
-solve: OpposingDigitSumEntry(name=D8,length=2,value: D8 + $DS ED3,
-	identities=[D8[0]=A8[0],D8[1]=A10[2]],referrers=[A8,A10,D3],
-	values={50,52,53,55..59},
-	digits=[{5},{0,2,3,5..9}]
-Clue D8={42,45,48..50}
-solve: OpposingDigitSumClue(name=D8,length=2,value: $DP ED6,
-	referrers=[D8],
-	values={42,48,50}
-Entry D6={237,246,255,264,273,426,462,618,642,681}
 solve: OpposingDigitSumEntry(name=D6,length=3,value: D6 + $DS ED4,
 	identities=[D6[0]=A5[1],D6[2]=A10[1]],referrers=[A5,A10,D8,D4],
-	values={246},
-	digits=[{2},{4},{6}]
-Clue D6={231}
-Entry D4={168,393,753}
+	values={246,247,265,274},
+	digits=[{2},{4,6,7},{4..7}]
+Clue D6={231,253}
+Entry D4={168,178,183,268,358,363,393,448,673,678,718,753}
 solve: OpposingDigitSumEntry(name=A5,length=4,value: A5 + $DS EA8,
 	identities=[A5[0]=D1[1],A5[1]=D6[0],A5[2]=D2[1],A5[3]=D3[1]],referrers=[D1,D6,D2,D3,A8,A8],
 	values={4245},
@@ -420,6 +415,8 @@ Entry D8={55}
 Entry D4={753}
 Clue D8={48}
 Clue D4={741}
+Entry D6={246}
+Clue D6={231}
 solve: OpposingDigitSumEntry(name=A3,length=3,value: A3 + $DS EA10,
 	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4,A10],
 	values={273},
@@ -427,7 +424,7 @@ solve: OpposingDigitSumEntry(name=A3,length=3,value: A3 + $DS EA10,
 Clue A3={256}
 Entry A10={665}
 Clue A10={653}
-Clue/Variable iterations=130, updates=134, elapsed 0:00:21.203047
+Clue/Variable iterations=131, updates=134, elapsed 0:00:26.366653
 SOLUTION-----------------------------
 Puzzle Summary
 Clue A1, $DP EA11 = #square, values={36}
