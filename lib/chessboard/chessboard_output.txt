@@ -51,13 +51,13 @@ solve: ChessboardEntry(name=A2,length=2,value: #prime,
 	identities=[A2[0]=D2[0],A2[1]=D3[0]],referrers=[D2,D3],
 	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
 	digits=[{1..9},{1,3,7,9}]
-Eval ChessboardEntry A4 cartesianCount=90, elapsed 0:00:00.020529
+Eval ChessboardEntry A4 cartesianCount=90, elapsed 0:00:00.015387
 solve: ChessboardEntry(name=A4,length=3,value: $multiple A8,
 	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
 	values={110..112,114..126,128..130,132,492 more,999},
 	digits=[{1..9},{1..9},{0..9}]
 Entry A8={10..29,70 more,99}
-Eval ChessboardEntry A6 cartesianCount=810, elapsed 0:00:00.009360
+Eval ChessboardEntry A6 cartesianCount=810, elapsed 0:00:00.007446
 solve: ChessboardEntry(name=A6,length=3,value: $divisor D5,
 	identities=[A6[0]=D5[1],A6[1]=D7[0],A6[2]=D3[2]],referrers=[D5,D7,D3,D2],
 	values={110..129,330 more,499},
@@ -67,19 +67,19 @@ solve: ChessboardEntry(name=A8,length=2,value: #square,
 	identities=[A8[1]=D5[2]],referrers=[D5,A4,A9],
 	values={16,25,36,49,64,81},
 	digits=[{1..4,6,8},{1,4..6,9}]
-Eval ChessboardEntry A9 cartesianCount=540, elapsed 0:00:00.013558
+Eval ChessboardEntry A9 cartesianCount=540, elapsed 0:00:00.014284
 solve: ChessboardEntry(name=A9,length=2,value: A8 = A1 % #result,
 	identities=[A9[0]=D7[1]],referrers=[D7],
 	values={17..36,47 more,83},
 	digits=[{1..8},{0..9}]
 Entry A1={33..52,47 more,99}
 Entry A8={16,25,36,49}
-Eval ChessboardEntry D1 cartesianCount=512, elapsed 0:00:00.027969
+Eval ChessboardEntry D1 cartesianCount=512, elapsed 0:00:00.021270
 solve: ChessboardEntry(name=D1,length=3,value: #square - A4,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4],
 	values={310..329,610 more,999},
 	digits=[{3..9},{1..9},{0..9}]
-Eval ChessboardEntry D2 cartesianCount=350, elapsed 0:00:00.002080
+Eval ChessboardEntry D2 cartesianCount=350, elapsed 0:00:00.002268
 solve: ChessboardEntry(name=D2,length=2,value: $dp A6,
 	identities=[D2[0]=A2[0],D2[1]=A4[2]],referrers=[A2,A4],
 	values={10,12,14..16,18,20,21,24,25,27,28,30,32,35,36,40,42,45,48,16 more,98},
@@ -93,18 +93,18 @@ solve: ChessboardEntry(name=D5,length=3,value: #palindrome,
 	identities=[D5[0]=A4[1],D5[1]=A6[0],D5[2]=A8[1]],referrers=[A4,A6,A8],
 	values={525,616,626,636,646,939},
 	digits=[{5,6,9},{1..4},{5,6,9}]
-Eval ChessboardEntry D7 cartesianCount=67, elapsed 0:00:00.001484
+Eval ChessboardEntry D7 cartesianCount=67, elapsed 0:00:00.000514
 solve: ChessboardEntry(name=D7,length=2,value: $multiple A9,
 	identities=[D7[0]=A6[1],D7[1]=A9[0]],referrers=[A6,A9],
 	values={34,36,38,42,44,46,48,51,52,54,56..58,62..64,66,68,72,74,16 more,98},
 	digits=[{3..9},{1..4}]
 Entry A9={17..19,21..29,31..34,36..39,8 more,49}
-Eval ChessboardEntry A4 cartesianCount=4, elapsed 0:00:00.000111
+Eval ChessboardEntry A4 cartesianCount=4, elapsed 0:00:00.000116
 solve: ChessboardEntry(name=A4,length=3,value: $multiple A8,
 	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
 	values={150,160,192,196,250,252,256,294,350,352,360,368,392,396,450,464,468,490,496,550,15 more,992},
 	digits=[{1..9},{5,6,9},{0,2,4,6,8}]
-Eval ChessboardEntry A6 cartesianCount=6, elapsed 0:00:00.000043
+Eval ChessboardEntry A6 cartesianCount=6, elapsed 0:00:00.000050
 solve: ChessboardEntry(name=A6,length=3,value: $divisor D5,
 	identities=[A6[0]=D5[1],A6[1]=D7[0],A6[2]=D3[2]],referrers=[D5,D7,D3,D2],
 	values={154,159},
@@ -114,19 +114,19 @@ solve: ChessboardEntry(name=A8,length=2,value: #square,
 	identities=[A8[1]=D5[2]],referrers=[D5,A4,A9],
 	values={16,36},
 	digits=[{1,3},{6}]
-Eval ChessboardEntry A9 cartesianCount=134, elapsed 0:00:00.001632
+Eval ChessboardEntry A9 cartesianCount=134, elapsed 0:00:00.001531
 solve: ChessboardEntry(name=A9,length=2,value: A8 = A1 % #result,
 	identities=[A9[0]=D7[1]],referrers=[D7],
 	values={17..19,22..29,32..34,36..39,42,43,5 more,49},
 	digits=[{1..4},{2..9}]
 Entry A1={33..35,38..45,48..50,52..55,58,59,26 more,97}
 Solve Error: Entry A1 (#sumdigits) no solution!
-Eval ChessboardEntry D1 cartesianCount=35, elapsed 0:00:00.001656
+Eval ChessboardEntry D1 cartesianCount=35, elapsed 0:00:00.000420
 solve: ChessboardEntry(name=D1,length=3,value: #square - A4,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4],
 	values={316,320,324,326,329,333,334,336,337,339,340,345,346,373..375,377,379,380,382,148 more,999},
 	digits=[{3..9},{1..4,7..9},{0,2..9}]
-Eval ChessboardEntry D2 cartesianCount=2, elapsed 0:00:00.000063
+Eval ChessboardEntry D2 cartesianCount=2, elapsed 0:00:00.000036
 solve: ChessboardEntry(name=D2,length=2,value: $dp A6,
 	identities=[D2[0]=A2[0],D2[1]=A4[2]],referrers=[A2,A4],
 	values={20},
@@ -140,25 +140,25 @@ solve: ChessboardEntry(name=D5,length=3,value: #palindrome,
 	identities=[D5[0]=A4[1],D5[1]=A6[0],D5[2]=A8[1]],referrers=[A4,A6,A8],
 	values={616},
 	digits=[{6},{1},{6}]
-Eval ChessboardEntry D7 cartesianCount=25, elapsed 0:00:00.000117
+Eval ChessboardEntry D7 cartesianCount=25, elapsed 0:00:00.000083
 solve: ChessboardEntry(name=D7,length=2,value: $multiple A9,
 	identities=[D7[0]=A6[1],D7[1]=A9[0]],referrers=[A6,A9],
 	values={51,54},
 	digits=[{5},{1}]
 Entry A9={17,18,27}
-Eval ChessboardEntry A4 cartesianCount=2, elapsed 0:00:00.000130
+Eval ChessboardEntry A4 cartesianCount=2, elapsed 0:00:00.000050
 solve: ChessboardEntry(name=A4,length=3,value: $multiple A8,
 	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
 	values={160,360,960},
 	digits=[{1,3,9},{6},{0}]
-Eval ChessboardEntry A9 cartesianCount=92, elapsed 0:00:00.000432
+Eval ChessboardEntry A9 cartesianCount=92, elapsed 0:00:00.000326
 solve: ChessboardEntry(name=A9,length=2,value: A8 = A1 % #result,
 	identities=[A9[0]=D7[1]],referrers=[D7],
 	values={17,18},
 	digits=[{1},{7,8}]
 Entry A1={33,34,50,52,67,70,84,88}
 Entry A8={16}
-Eval ChessboardEntry D1 cartesianCount=3, elapsed 0:00:00.000071
+Eval ChessboardEntry D1 cartesianCount=3, elapsed 0:00:00.000051
 solve: ChessboardEntry(name=D1,length=3,value: #square - A4,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4],
 	values={316,336,516,796},
@@ -175,7 +175,7 @@ solve: ChessboardEntry(name=D3,length=3,value: #square,
 	identities=[D3[0]=A2[1],D3[2]=A6[2]],referrers=[A2,A6],
 	values={324},
 	digits=[{3},{2},{4}]
-Eval ChessboardEntry D7 cartesianCount=2, elapsed 0:00:00.000040
+Eval ChessboardEntry D7 cartesianCount=2, elapsed 0:00:00.000027
 solve: ChessboardEntry(name=D7,length=2,value: $multiple A9,
 	identities=[D7[0]=A6[1],D7[1]=A9[0]],referrers=[A6,A9],
 	values={51},
@@ -185,19 +185,19 @@ solve: ChessboardEntry(name=A4,length=3,value: $multiple A8,
 	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
 	values={160,960},
 	digits=[{1,9},{6},{0}]
-Eval ChessboardEntry A9 cartesianCount=2, elapsed 0:00:00.000052
+Eval ChessboardEntry A9 cartesianCount=2, elapsed 0:00:00.000036
 solve: ChessboardEntry(name=A9,length=2,value: A8 = A1 % #result,
 	identities=[A9[0]=D7[1]],referrers=[D7],
 	values={17},
 	digits=[{1},{7}]
 Entry A1={50}
-Eval ChessboardEntry D1 cartesianCount=2, elapsed 0:00:00.000041
+Eval ChessboardEntry D1 cartesianCount=2, elapsed 0:00:00.000034
 solve: ChessboardEntry(name=D1,length=3,value: #square - A4,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4],
 	values={516},
 	digits=[{5},{1},{6}]
 Entry A4={160}
-Clue/Variable iterations=47, updates=58, elapsed 0:00:00.119583
+Clue/Variable iterations=47, updates=57, elapsed 0:00:00.099652
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #sumdigits, values={50}

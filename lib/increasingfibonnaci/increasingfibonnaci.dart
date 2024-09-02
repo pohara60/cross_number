@@ -36,7 +36,10 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     for (var entrySpec in puzzle.getEntriesFromGrid()) {
       try {
         var entry = IncreasingFibonnaciEntry(
-            name: entrySpec.name, length: entrySpec.length);
+          name: entrySpec.name,
+          length: entrySpec.length,
+          solve: solveIncreasingFibonnaciClue,
+        );
         puzzle.addEntry(entry);
       } on ExpressionInvalid catch (e) {
         entryErrors += '${e.msg}\n';
@@ -128,6 +131,8 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
 
   Set<int> known5Fibonnaci = {};
   bool check5Fibonnaci(int product) {
+    /// Each answer may be expressed as  F1 x F2 x F3 where the Fi are distinct
+    /// and come from five distinct Fibonacci numbers less than 20 to be determined
     if (!getProduct3FibonnaciLessThan20().contains(product)) return false;
     var unknown = 0;
     for (var f in product3Fibonnaci[product]!) {
@@ -154,7 +159,7 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
     }
-    if (!check5Fibonnaci(value)) return false;
+    if ((clue is! EntryMixin) && !check5Fibonnaci(value)) return false;
     return true;
   }
 
@@ -172,25 +177,34 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     var clue = v as IncreasingFibonnaciClue;
 
     var updated = false;
-    if (clue.valueDesc != '') {
+    if (clue.valueDesc?.isNotEmpty ?? false) {
       updated = puzzle.solveExpressionEvaluator(
           clue, clue.exp, possibleValue, possibleVariables!, validClue);
     } else {
-      // Values may have been set by other Clue
       if (clue.values != null) {
         var values =
             clue.values!.where((value) => validClue(clue, value, [], []));
         possibleValue.addAll(values);
+      } else {
+        // Get values from digits
+        var values = clue.getValuesFromDigits();
+        if (values != null) {
+          possibleValue.addAll(values);
+        } else {
+          // No further action
+          throw SolveException();
+        }
       }
     }
     return updated;
   }
 
   @override
-  bool updateClues(
-      IncreasingFibonnaciPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+  bool updateClues(IncreasingFibonnaciPuzzle thisPuzzle, Clue clue,
+      Set<int> possibleValues, Set<Variable> updatedVariables,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
-    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+    var updated = super.updateClues(
+        thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (!isEntry && updated) {
       var newMin = clue.values!.reduce(min);

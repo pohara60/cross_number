@@ -229,8 +229,9 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       if (d1possible.isEmpty || a3possible.isEmpty) {
         throw SolveException('No possible values!');
       }
-      updateClues(otherPuzzle, d1, d1possible);
-      updateClues(otherPuzzle, a3, a3possible);
+      updatedVariables ??= {};
+      updateClues(otherPuzzle, d1, d1possible, updatedVariables);
+      updateClues(otherPuzzle, a3, a3possible, updatedVariables);
     } else if (clue.name == 'A8') {
       // 8ac = 3ac x 7ac, both from the same grid
       var a3 = puzzle.clues['A3']!;
@@ -259,8 +260,9 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       if (a3possible.isEmpty || a7possible.isEmpty) {
         throw SolveException('No possible values!');
       }
-      updateClues(puzzle, a3, a3possible);
-      updateClues(puzzle, a7, a7possible);
+      updatedVariables ??= {};
+      updateClues(puzzle, a3, a3possible, updatedVariables);
+      updateClues(puzzle, a7, a7possible, updatedVariables);
     } else {
       var values = clue.values;
       values ??= getValuesFromDigits(clue);
@@ -274,8 +276,10 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
 
   @override
   bool updateClues(ThirtyPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+      Set<Variable> updatedVariables,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
-    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+    var updated = super.updateClues(
+        thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (updated) {
       /*

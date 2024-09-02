@@ -131,7 +131,7 @@ solve: FrequencyEntry(name=D5,length=3,value: Same digit product as A1,
 Solve Error: Entry D8 (Cube + sum all digits) no solution!
 Solve Error: Entry D8 (Cube + sum all digits) no solution!
 Solve Error: Entry D8 (Cube + sum all digits) no solution!
-Clue/Variable iterations=67, updates=18, elapsed 0:00:00.060755
+Clue/Variable iterations=67, updates=31, elapsed 0:00:00.047453
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, Palindrome, values={131,232,313,333,343,616,636,646,737,838}

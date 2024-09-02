@@ -9,6 +9,7 @@ import 'package:crossnumber/columns/columns.dart';
 import 'package:crossnumber/combinations/combinations.dart';
 import 'package:crossnumber/couplets/couplets.dart';
 import 'package:crossnumber/cubesandwich/cubesandwich.dart';
+import 'package:crossnumber/cyclingprimes/cyclingprimes.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
@@ -113,7 +114,8 @@ void main(List<String> arguments) async {
     ..addCommand(VirusCommand())
     ..addCommand(TakeTwoOrThreeCommand())
     ..addCommand(DifferentCommand())
-    ..addCommand(SevenRulesCommand());
+    ..addCommand(SevenRulesCommand())
+    ..addCommand(CyclingPrimesCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1214,6 +1216,30 @@ class SevenRulesCommand extends Command {
     // Get and print solve
     try {
       final pc = SevenRules();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class CyclingPrimesCommand extends Command {
+  @override
+  final name = 'CyclingPrimes';
+  @override
+  final description = 'solve hardcoded CyclingPrimes puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = CyclingPrimes();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

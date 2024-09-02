@@ -142,11 +142,11 @@ class Variable with PriorityVariable {
   }
 
   bool updatePossible(Set<int> possibleValues) {
+    checkAnswer(possibleValues);
     if (values == null) {
       values = Set.from(possibleValues);
       return true;
     }
-    checkAnswer(possibleValues);
     // print("!$name=${possibleValues.toShortString()}");
     var updated = values!.any((element) => !possibleValues.contains(element));
     values!.removeWhere((element) => !possibleValues.contains(element));
@@ -194,6 +194,18 @@ class Variable with PriorityVariable {
     // print("!$name=${possibleValues.toShortString()}");
     var updated = _values!.remove(value);
     checkAnswer(_values!);
+    return updated;
+  }
+
+  bool removeValues(Iterable<int> values) {
+    // print("!$name=${possibleValues.toShortString()}");
+    var updated = false;
+    var oldLen = _values!.length;
+    _values!.removeAll(values);
+    if (oldLen != _values!.length) {
+      checkAnswer(_values!);
+      updated = true;
+    }
     return updated;
   }
 }
@@ -245,7 +257,7 @@ class VariableRefList {
 
   addClueReference(String name) {
     // Clue references that start with E are entry references
-    if (name[0] == 'E') {
+    if (name[0] == 'E' && name.length > 1) {
       addEntryReference(name);
     } else {
       addReference(name, VariableType.C);

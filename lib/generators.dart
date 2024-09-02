@@ -194,6 +194,22 @@ bool isPrime(dynamic value) {
   return result;
 }
 
+bool isCyclicPrime(dynamic value) {
+  var valueStr = value.toString();
+  for (var i = 0; i < valueStr.length; i++) {
+    var cycleStr = valueStr.substring(i);
+    if (i > 0) cycleStr += valueStr.substring(0, i);
+    if (cycleStr[0] != '0') {
+      var cycle = int.parse(cycleStr);
+      extendPrimesUpto(cycle);
+      if (primes.contains(cycle)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 Iterable<int> isAdjacentPrime(dynamic value) sync* {
   extendPrimesUpto((value as int) * 2);
   var index = primes.indexOf(value);

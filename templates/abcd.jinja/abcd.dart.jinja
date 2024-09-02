@@ -252,14 +252,16 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
   }
 
   @override
-  bool updateClues({{env['ABCD']}}Puzzle thisPuzzle, Clue clue,  Set<int> possibleValues,
+  bool updateClues({{env['ABCD']}}Puzzle thisPuzzle, Clue clue,
+      Set<int> possibleValues, Set<Variable> updatedVariables,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // If updating Clue values based on Entry, then skip the update as
     // the Clue values are for multiple entry expressions
     if (!isFocus && !isEntry) {
       return false;
     }
-    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+    var updated = super.updateClues(
+        thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
 
@@ -269,7 +271,6 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
     {% endif %}
 
       // Maintain clue value order
-      // var clue = thisPuzzle.clues[clueName]!;
       // var newMin = clue.values!.reduce(min);
       // if (clue.min == null || clue.min! < newMin) clue.min = newMin;
       // var newMax = clue.values!.reduce(max);
@@ -286,6 +287,7 @@ class {{env['ABCD']}} extends Crossnumber<{{env['ABCD']}}Puzzle> {
       //       otherClue.max = clue.max! - 1;
       //     }
       //   }
+      // }
     }
     return updated;
   }

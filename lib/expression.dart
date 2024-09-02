@@ -25,10 +25,11 @@ mixin Expression {
 
   void initExpression(String? valueDesc, String variablePrefix, String name,
       VariableRefList variableRefs,
-      [List<String>? entryNames]) {
+      {List<String>? entryNames, List<String>? clueNames}) {
     if (valueDesc != null && valueDesc != '') {
       try {
-        var exp = ExpressionEvaluator(valueDesc, variablePrefix, entryNames);
+        var exp = ExpressionEvaluator(
+            valueDesc, variablePrefix, entryNames, clueNames);
         expressions.add(exp);
         for (var variableName in exp.variableNameRefs..sort()) {
           variableRefs.addVariableReference(variableName);
@@ -149,7 +150,9 @@ class Scanner {
   }
 
   static Iterable<Token?> generateTokens(String text,
-      [String variablePrefix = '', List<String>? entryNames]) sync* {
+      [String variablePrefix = '',
+      List<String>? entryNames,
+      List<String>? clueNames]) sync* {
     if (!initialized) initialize();
     Iterable<RegExpMatch> matches = regExp.allMatches(text);
     for (final m in matches) {
@@ -161,7 +164,8 @@ class Scanner {
         yield Token(match!, CLUE, name: match.toUpperCase());
       }
       if (m.namedGroup(VAR) != null) {
-        if (entryNames != null && entryNames.contains(match)) {
+        if (entryNames != null && entryNames.contains(match) ||
+            clueNames != null && clueNames.contains(match)) {
           // Simple alpha entry names are scanned as variables
           // The name is case sensitive
           yield Token(match!, CLUE, name: match);
@@ -550,9 +554,11 @@ class ExpressionEvaluator {
   List<int>? knownResults;
 
   ExpressionEvaluator(this.text,
-      [this.variablePrefix = '', List<String>? entryNames]) {
+      [this.variablePrefix = '',
+      List<String>? entryNames,
+      List<String>? clueNames]) {
     var tokenIterable =
-        Scanner.generateTokens(text, variablePrefix, entryNames);
+        Scanner.generateTokens(text, variablePrefix, entryNames, clueNames);
     tokenIterator = tokenIterable.iterator;
     tok = null; // Last symbol consumed
     nexttok = null; // Next symbol tokenized

@@ -378,6 +378,7 @@ solve: CombinationsEntry(name=A14,length=4,value: IJ | H - C,
 	identities=[A14[0]=D14[0],A14[1]=D2[3],A14[2]=D15[0],A14[3]=D4[3]],referrers=[D14,D2,D15,D4],
 	values={1763},
 	digits=[{1},{7},{6},{3}]
+Entry D2={1128,1140,1147,1225,1365,1431,1517,1540,1770,1953,2021,2024,2415,2491,2556,3003,3060,3127,3160,3276,17 more,9880}
 Variable I={8}
 Variable D={9}
 Variable E={2}
@@ -406,14 +407,18 @@ solve: CombinationsEntry(name=A13,length=3,value: DE | F - I,
 	identities=[A13[0]=D10[1],A13[1]=D5[2],A13[2]=D6[2]],referrers=[D10,D5,D6],
 	values={437},
 	digits=[{4},{3},{7}]
+Entry D3={112,119..121,128,131,138,139,143,144,152,153,156,159,161,168,172,173,180,181,90 more,990}
 solve: CombinationsEntry(name=A16,length=4,value: I(D-C) | D - G,
 	identities=[A16[0]=D10[2],A16[1]=D5[3],A16[2]=D17[0],A16[3]=D7[3]],referrers=[D10,D5,D17,D7],
 	values={4757},
 	digits=[{4},{7},{5},{7}]
+Entry D2={1128,1140,1147,1225,1365,1431,1517,1540,1770,1953,2021,2024,2415,2491,2556,3003,3060,3127,3160,3276,16 more,9880}
+Entry D7={1517,2016,2300,2310,2431,3240,4368,4950,7140,7387,7429}
 solve: CombinationsEntry(name=A19,length=3,value: AH | I - C,
 	identities=[A19[0]=D19[0],A19[1]=D17[1],A19[2]=D20[0]],referrers=[D19,D17,D20],
 	values={792},
 	digits=[{7},{9},{2}]
+Entry D3={112,119..121,128,131,138,139,143,144,152,153,156,159,161,168,172,173,180,181,89 more,990}
 solve: CombinationsEntry(name=A22,length=3,value: D+F | F + G,
 	identities=[A22[0]=D4[5],A22[1]=D10[4],A22[2]=D19[1]],referrers=[D4,D10,D19],
 	values={171},
@@ -490,7 +495,7 @@ solve: CombinationsEntry(name=D20,length=3,value: DHJ | J-H,
 	identities=[D20[0]=A19[2],D20[1]=A23[1],D20[2]=A25[2]],referrers=[A19,A23,A25],
 	values={276},
 	digits=[{2},{7},{6}]
-Clue/Variable iterations=194, updates=130, elapsed 0:00:00.212778
+Clue/Variable iterations=207, updates=135, elapsed 0:00:00.273590
 SOLUTION-----------------------------
 Puzzle Summary
 A1, GJ(B+I)-JJ | E, values={946}

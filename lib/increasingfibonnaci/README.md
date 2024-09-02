@@ -4,7 +4,7 @@
 
 Ten Increasing Clues  by Oyler
 
-Each answer may be expressed as  F1 x F2 x F3 where the Fi are distinct and come from five distinct Fibonacci numbers less than 20 to be determined. The answers to the clues are given in ascending order. Upper case letters denote across entries and lower case down entries. No entry starts with zero  and all entries are distinct. The usual rules of algebra apply.
+Each answer may be expressed as F1 x F2 x F3 where the Fi are distinct and come from five distinct Fibonacci numbers less than 20 to be determined. The answers to the clues are given in ascending order. Upper case letters denote across entries and lower case down entries. No entry starts with zero and all entries are distinct. The usual rules of algebra apply.
 
 ```
 +--+--+--+--+--+

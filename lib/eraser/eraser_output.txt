@@ -117,7 +117,7 @@ solve: EraserEntry(name=D3,length=2,value: #square,
 	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
 	values={16,49,64},
 	digits=[{1,4,6},{4,6,9}]
-Eval EraserEntry D5 cartesianCount=540, elapsed 0:00:00.009864
+Eval EraserEntry D5 cartesianCount=540, elapsed 0:00:00.007873
 solve: EraserEntry(name=D5,length=3,value: D1 - D8,
 	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
 	values={116,119,126,129,136,139,149,166,169,176,196,199,229,236,239,266,269,276,296,299,18 more,539},
@@ -172,11 +172,13 @@ solve: EraserEntry(name=A12,length=2,value: #cube,
 	identities=[A12[1]=D8[2]],referrers=[D8],
 	values={27},
 	digits=[{2},{7}]
+Entry A1={64}
+Entry D3={16,49}
 solve: EraserEntry(name=D3,length=2,value: #square,
 	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
 	values={16,49},
 	digits=[{1,4},{6,9}]
-Eval EraserEntry D5 cartesianCount=40, elapsed 0:00:00.000232
+Eval EraserEntry D5 cartesianCount=40, elapsed 0:00:00.000230
 solve: EraserEntry(name=D5,length=3,value: D1 - D8,
 	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
 	values={116,119,126,139,149,199,269,299,329,439,469,499,529,539},
@@ -210,7 +212,7 @@ solve: EraserEntry(name=A1,length=2,value: #cube,
 	identities=[A1[0]=D1[0]],referrers=[D1],
 	values={64},
 	digits=[{6},{4}]
-Eval EraserEntry D5 cartesianCount=15, elapsed 0:00:00.000114
+Eval EraserEntry D5 cartesianCount=15, elapsed 0:00:00.000111
 solve: EraserEntry(name=D5,length=3,value: D1 - D8,
 	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
 	values={116,139,199,299,329,499,529},
@@ -219,6 +221,7 @@ solve: EraserEntry(name=D1,length=3,value: #triangular,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4,D5],
 	values={666},
 	digits=[{6},{6},{6}]
+Entry A7={136,276,378,406,496,946}
 solve: EraserEntry(name=D8,length=3,value: #prime,
 	identities=[D8[1]=A10[2],D8[2]=A12[1]],referrers=[A10,A12,D5],
 	values={167,367,467},
@@ -235,7 +238,7 @@ solve: EraserEntry(name=D6,length=3,value: #square,
 	identities=[D6[0]=A6[0],D6[1]=A7[2],D6[2]=A10[1]],referrers=[A6,A7,A10],
 	values={361},
 	digits=[{3},{6},{1}]
-Eval EraserEntry D5 cartesianCount=3, elapsed 0:00:00.000068
+Eval EraserEntry D5 cartesianCount=3, elapsed 0:00:00.000053
 solve: EraserEntry(name=D5,length=3,value: D1 - D8,
 	identities=[D5[0]=A4[1],D5[1]=A7[0],D5[2]=A9[1]],referrers=[A4,A7,A9],
 	values={199,499},
@@ -249,6 +252,8 @@ solve: EraserEntry(name=A9,length=2,value: #square,
 	identities=[A9[0]=D9[0],A9[1]=D5[2]],referrers=[D9,D5],
 	values={49},
 	digits=[{4},{9}]
+Entry A6={36}
+Entry D3={16}
 solve: EraserEntry(name=A4,length=3,value: #prime,
 	identities=[A4[0]=D1[1],A4[1]=D5[0],A4[2]=D2[1]],referrers=[D1,D5,D2],
 	values={617,641,647},
@@ -257,7 +262,7 @@ solve: EraserEntry(name=A6,length=2,value: #square,
 	identities=[A6[0]=D6[0],A6[1]=D3[1]],referrers=[D6,D3],
 	values={36},
 	digits=[{3},{6}]
-Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000063
+Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000052
 solve: EraserEntry(name=D3,length=2,value: #square,
 	identities=[D3[0]=A2[2],D3[1]=A6[1]],referrers=[A2,A6],
 	values={16},
@@ -266,15 +271,11 @@ solve: EraserEntry(name=D9,length=2,value: #prime,
 	identities=[D9[0]=A9[0],D9[1]=A11[0]],referrers=[A9,A11],
 	values={41},
 	digits=[{4},{1}]
-solve: EraserEntry(name=A2,length=3,value: #square,
-	identities=[A2[0]=D2[0],A2[2]=D3[0]],referrers=[D2,D3],
-	values={121,441},
-	digits=[{1,4},{2,4},{1}]
-Clue/Variable iterations=84, updates=52, elapsed 0:00:00.059055
+Clue/Variable iterations=78, updates=52, elapsed 0:00:00.050461
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, #cube, values={64}
-A2, #square, values={121,441}
+A2, #square, values={121,144,441,484}
 A4, #prime, values={617,641,647}
 A6, #square, values={36}
 A7, #triangular, values={946}
@@ -303,8 +304,8 @@ D10, #square, values={25}
 +--+--+--+--+--+
 
 ITERATE SOLUTIONS-----------------------------
-Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000056
-Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000043
+Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000070
+Eval EraserEntry D5 cartesianCount=2, elapsed 0:00:00.000046
 Erased cells (22=4, 41=2, 40=1, 12=7, 03=4, 43=2, 42=5)
 SOLUTION-----------------------------
 Puzzle Summary

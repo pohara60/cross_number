@@ -212,10 +212,11 @@ class Knights2 extends Crossnumber<Knights2Puzzle> {
   }
 
   @override
-  bool updateClues(
-      Knights2Puzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+  bool updateClues(Knights2Puzzle thisPuzzle, Clue clue,
+      Set<int> possibleValues, Set<Variable> updatedVariables,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
-    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+    var updated = super.updateClues(
+        thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     return updated;
   }

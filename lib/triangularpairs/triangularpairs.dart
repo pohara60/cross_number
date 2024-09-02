@@ -284,10 +284,11 @@ class TriangularPairs extends Crossnumber<TriangularPairsPuzzle> {
   }
 
   @override
-  bool updateClues(
-      TriangularPairsPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+  bool updateClues(TriangularPairsPuzzle thisPuzzle, Clue clue,
+      Set<int> possibleValues, Set<Variable> updatedVariables,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
-    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+    var updated = super.updateClues(
+        thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry);
     // Maintain clue value order
     if (clue.isSet && clue.length == 2) {

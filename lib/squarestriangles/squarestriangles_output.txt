@@ -365,6 +365,8 @@ solve: SquaresTrianglesEntry(name=A7,length=3,value: #square,
 	identities=[A7[0]=D7[0],A7[1]=D3[1],A7[2]=D4[1]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D7,D3,D4],
 	values={256},
 	digits=[{2},{5},{6}]
+Entry A6={100,121,144,169,196,225,289,324,361,400,441,484,529,576,625,676,729,784,841,900,961}
+Entry A10={100,121,196,225,361,400,441,576,625,676,841,900,961}
 solve: SquaresTrianglesEntry(name=D7,length=5,value: #triangular,
 	identities=[D7[0]=A7[0],D7[1]=A8[3],D7[2]=A11[2],D7[3]=A15[0],D7[4]=A17[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A7,A8,A11,A15,A17],
 	values={24976,25651,26335,29161},
@@ -393,6 +395,7 @@ solve: SquaresTrianglesEntry(name=A13,length=2,value: #square,
 	identities=[A13[0]=D13[0],A13[1]=D9[2]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D13,D9],
 	values={16},
 	digits=[{1},{6}]
+Entry A18={25,36,49,64,81}
 solve: SquaresTrianglesEntry(name=D13,length=3,value: #triangular,
 	identities=[D13[0]=A13[0],D13[1]=A17[0],D13[2]=A19[0]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A13,A17,A19],
 	values={136,153,171},
@@ -529,6 +532,8 @@ solve: SquaresTrianglesEntry(name=D12,length=4,value: #triangular,
 	identities=[D12[1]=A15[3],D12[2]=A18[1],D12[3]=A20[2]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A15,A18,A20],
 	values={5151},
 	digits=[{5},{1},{5},{1}]
+Entry D1={1128,1378,1431,1711,1770,1830,1891,2211,2278,2485,2556,2628,3160,3486,3916,4656,4753,5253,5356,5671,12 more,9730}
+Entry D2={1035,1081,1176,1431,1485,1596,2016,2145,2415,2485,2556,2926,3081,3486,3655,3916,4005,4095,4186,4465,13 more,9591}
 solve: SquaresTrianglesEntry(name=D14,length=3,value: #triangular,
 	identities=[D14[1]=A17[2],D14[2]=A19[2]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A17,A19],
 	values={496,528,946},
@@ -553,6 +558,7 @@ solve: SquaresTrianglesEntry(name=A20,length=3,value: #square,
 	identities=[A20[0]=D16[2],A20[2]=D12[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D16,D12],
 	values={361},
 	digits=[{3},{6},{1}]
+Entry A3={169,961}
 solve: SquaresTrianglesClue(name=A3,length=2,value: #prime,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20],
 	values={13,31}, min=13, max=31
@@ -699,6 +705,7 @@ solve: SquaresTrianglesEntry(name=D9,length=3,value: #triangular,
 	identities=[D9[0]=A8[1],D9[1]=A11[0],D9[2]=A13[1]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A8,A11,A13],
 	values={946},
 	digits=[{9},{4},{6}]
+Entry D14={528}
 solve: SquaresTrianglesEntry(name=D3,length=4,value: #triangular,
 	identities=[D3[0]=A3[0],D3[1]=A7[1],D3[2]=A10[0],D3[3]=A11[3]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,A3,A7,A10,A11],
 	values={1596},
@@ -711,6 +718,7 @@ solve: SquaresTrianglesEntry(name=A15,length=4,value: #square,
 	identities=[A15[0]=D7[3],A15[1]=D16[0],A15[3]=D12[1]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D7,D16,D12],
 	values={3721},
 	digits=[{3},{7},{2},{1}]
+Entry A17={3025,5041,5625,7225,7921}
 solve: SquaresTrianglesEntry(name=A17,length=4,value: #square,
 	identities=[A17[0]=D13[1],A17[2]=D14[1],A17[3]=D7[4]],referrers=[A1,A3,A6,A7,A8,A10,A11,A13,A15,A17,A18,A19,A20,D1,D2,D3,D4,D5,D7,D9,D12,D13,D14,D16,D13,D14,D7],
 	values={3025,5625},
@@ -798,7 +806,7 @@ solve: SquaresTrianglesClue(name=A10,length=2,value: ,
 solve: SquaresTrianglesClue(name=D5,length=2,value: #triangular,
 	referrers=[A1,D1,D2,A3,D3,D4,D5,A6,A7,D7,A8,D9,A10,A11,D12,A13,D13,D14,A15,D16,A17,A18,A19,A20,D9],
 	values={45}, min=45, max=45
-Clue/Variable iterations=323, updates=179, elapsed 0:00:00.119468
+Clue/Variable iterations=323, updates=186, elapsed 0:00:00.117813
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue A1, , values={32}

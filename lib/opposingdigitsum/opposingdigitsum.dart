@@ -387,8 +387,8 @@ class OpposingDigitSum extends Crossnumber<OpposingDigitSumPuzzle> {
   }
 
   @override
-  bool updateClues(
-      OpposingDigitSumPuzzle thisPuzzle, Clue clue, Set<int> possibleValues,
+  bool updateClues(OpposingDigitSumPuzzle thisPuzzle, Clue clue,
+      Set<int> possibleValues, Set<Variable> updatedVariables,
       {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
     // This logic does not apply to this puzzle
     // If updating Clue values based on Entry, then skip the update as
@@ -396,7 +396,8 @@ class OpposingDigitSum extends Crossnumber<OpposingDigitSumPuzzle> {
     // if (!isFocus && !isEntry) {
     //   return false;
     // }
-    var updated = super.updateClues(thisPuzzle, clue, possibleValues,
+    var updated = super.updateClues(
+        thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order

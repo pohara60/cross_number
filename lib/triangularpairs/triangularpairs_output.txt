@@ -107,6 +107,7 @@ solve: TriangularPairsEntry(name=A12,length=3,value: #cube,
 	identities=[A12[0]=D9[1],A12[1]=D13[0],A12[2]=D10[1]],referrers=[D9,D13,D10,D8,A6,A1,A4,A7,A9,A11,A15,A16,D1,D2,D3,D4,D5,D14],
 	values={216},
 	digits=[{2},{1},{6}]
+Entry A4={111..119,121..129,131,132,708 more,999}
 solve: TriangularPairsEntry(name=A15,length=3,value: #square,
 	identities=[A15[0]=D8[2],A15[2]=D9[2]],referrers=[D8,D9,A4,A1,A6,A7,A9,A11,A12,A16,D1,D2,D3,D4,D5,D10,D13,D14],
 	values={121,144,169,196,225,256,289,324,361,529,625,676,784,841,961},
@@ -139,6 +140,8 @@ solve: TriangularPairsEntry(name=D8,length=3,value: $reverse A12,
 	identities=[D8[1]=A11[0],D8[2]=A15[0]],referrers=[A11,A15,D5,A1,A4,A6,A7,A9,A12,A16,D1,D2,D3,D4,D9,D10,D13,D14],
 	values={612},
 	digits=[{6},{1},{2}]
+Entry A4={111..119,121..129,131,132,707 more,999}
+Entry D2={111..119,121..129,131,132,303 more,899}
 solve: TriangularPairsEntry(name=D9,length=3,value: #square,
 	identities=[D9[0]=A9[0],D9[1]=A12[0],D9[2]=A15[2]],referrers=[A9,A12,A15,D4,A1,A4,A6,A7,A11,A16,D1,D2,D3,D5,D8,D10,D13,D14],
 	values={121,225,324,529,625},
@@ -151,6 +154,11 @@ solve: TriangularPairsEntry(name=D13,length=2,value: #triangular,
 	identities=[D13[0]=A12[1]],referrers=[A12,A1,A4,A6,A7,A9,A11,A15,A16,D1,D2,D3,D4,D5,D8,D9,D10,D14],
 	values={15},
 	digits=[{1},{5}]
+Entry A1={21,28,36,45,55,66,78,91}
+Entry A9={21,28,36,45,55,66,78,91}
+Entry A16={21,28,36,45,55,66,78,91}
+Entry D1={21,28,36,45,55,66,78,91}
+Entry D3={36,45,55,66}
 solve: TriangularPairsEntry(name=D14,length=2,value: #triangular,
 	identities=[D14[1]=A16[1]],referrers=[A16,A1,A4,A6,A7,A9,A11,A12,A15,D1,D2,D3,D4,D5,D8,D9,D10,D13],
 	values={21,28,36,45,55,66,78,91},
@@ -167,6 +175,7 @@ solve: TriangularPairsEntry(name=A6,length=3,value: #triangular,
 	identities=[A6[0]=D2[1],A6[1]=D3[1],A6[2]=D4[1]],referrers=[D2,D3,D4,A12,A1,A4,A7,A9,A11,A15,A16,D1,D5,D8,D9,D10,D13,D14],
 	values={153},
 	digits=[{1},{5},{3}]
+Entry D2={111..119,121..129,131,132,302 more,899}
 solve: TriangularPairsEntry(name=A7,length=2,value: $reverse #triangular,
 	identities=[A7[1]=D5[1]],referrers=[D5,A1,A4,A6,A9,A11,A12,A15,A16,D1,D2,D3,D4,D8,D9,D10,D13,D14],
 	values={12,19,21,28,36,54,55,63,66,82,87,91,99},
@@ -199,6 +208,7 @@ solve: TriangularPairsEntry(name=D4,length=3,value: ,
 	identities=[D4[0]=A4[0],D4[1]=A6[2],D4[2]=A9[1]],referrers=[A4,A6,A9,D9,A1,A7,A11,A12,A15,A16,D1,D2,D3,D5,D8,D10,D13,D14],
 	values={935},
 	digits=[{9},{3},{5}]
+Entry A4={123,131,155,176,191,195,251,258,278,281,347,378,415,452,453,456,459,521,542,549,13 more,991}
 solve: TriangularPairsEntry(name=D5,length=3,value: #palindrome,
 	identities=[D5[0]=A4[2],D5[1]=A7[1]],referrers=[A4,A7,D8,A1,A6,A9,A11,A12,A15,A16,D1,D2,D3,D4,D9,D10,D13,D14],
 	values={171},
@@ -228,6 +238,11 @@ solve: TriangularPairsEntry(name=A9,length=2,value: #triangular,
 	identities=[A9[0]=D9[0],A9[1]=D4[2]],referrers=[D9,D4,A1,A4,A6,A7,A11,A12,A15,A16,D1,D2,D3,D5,D8,D10,D13,D14],
 	values={55},
 	digits=[{5},{5}]
+Entry A1={28,78}
+Entry A16={21,28,36,66,78,91}
+Entry D1={21,28,36,66,78,91}
+Entry D3={45}
+Entry D14={21,28,36,66,78,91}
 solve: TriangularPairsEntry(name=A15,length=3,value: #square,
 	identities=[A15[0]=D8[2],A15[2]=D9[2]],referrers=[D8,D9,A4,A1,A6,A7,A9,A11,A12,A16,D1,D2,D3,D4,D5,D10,D13,D14],
 	values={289},
@@ -236,6 +251,8 @@ solve: TriangularPairsEntry(name=A16,length=2,value: #triangular,
 	identities=[A16[0]=D10[2],A16[1]=D14[1]],referrers=[D10,D14,A1,A4,A6,A7,A9,A11,A12,A15,D1,D2,D3,D4,D5,D8,D9,D13],
 	values={66},
 	digits=[{6},{6}]
+Entry D1={21,28,36,78,91}
+Entry D14={21,28,36,78,91}
 solve: TriangularPairsEntry(name=D1,length=2,value: #triangular,
 	identities=[D1[0]=A1[0]],referrers=[A1,A4,A6,A7,A9,A11,A12,A15,A16,D2,D3,D4,D5,D8,D9,D10,D13,D14],
 	values={21,28},
@@ -257,6 +274,7 @@ solve: TriangularPairsEntry(name=A1,length=2,value: #triangular,
 	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2,A4,A6,A7,A9,A11,A12,A15,A16,D3,D4,D5,D8,D9,D10,D13,D14],
 	values={28},
 	digits=[{2},{8}]
+Entry D1={21}
 Solve Error: Entry A7 ($reverse #triangular) no solution!
 Solve Error: Entry A9 (#triangular) no solution!
 Solve Error: Entry A16 (#triangular) no solution!
@@ -291,7 +309,7 @@ Solve Error: Entry A9 (#triangular) no solution!
 Solve Error: Entry D3 (#triangular) no solution!
 Solve Error: Entry D13 (#triangular) no solution!
 Solve Error: Entry D14 (#triangular) no solution!
-Clue/Variable iterations=102, updates=48, elapsed 0:00:00.066911
+Clue/Variable iterations=102, updates=62, elapsed 0:00:00.090646
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #triangular, values={28}

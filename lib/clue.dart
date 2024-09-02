@@ -196,8 +196,16 @@ class Clue extends Variable {
   }
 
   Set<int>? getValuesFromDigits() {
-    if (entryMixin == null) return null;
+    if (entryMixin == null) return getValuesFromLength();
     return entryMixin!.getValuesFromDigits();
+  }
+
+  Set<int>? getValuesFromLength() {
+    if (length == null) return null;
+    var minValue = powers[powers.length - length!];
+    var maxValue = powers[powers.length - length! - 1] - 1;
+    return Set.from(
+        List.generate(maxValue - minValue + 1, (index) => minValue + index));
   }
 
   static const powers = [10000000, 1000000, 100000, 10000, 1000, 100, 10, 1];
@@ -238,21 +246,26 @@ class ExpressionClue extends VariableClue with Expression {
     super.solve,
     variablePrefix = '',
     List<String>? entryNames,
+    List<String>? clueNames,
   }) : super(name: name, valueDesc: valueDesc) {
-    initExpression(valueDesc, variablePrefix, name, variableRefs, entryNames);
+    initExpression(valueDesc, variablePrefix, name, variableRefs,
+        entryNames: entryNames, clueNames: clueNames);
     if (addDesc != null) {
       for (var desc in addDesc) {
-        addExpression(desc, entryNames: entryNames);
+        addExpression(desc, entryNames: entryNames, clueNames: clueNames);
       }
     }
   }
 
   addExpression(String valueDesc,
-      {String variablePrefix = '', List<String>? entryNames}) {
+      {String variablePrefix = '',
+      List<String>? entryNames,
+      List<String>? clueNames}) {
     this.valueDesc = this.valueDesc == null || this.valueDesc == ''
         ? valueDesc
         : '${this.valueDesc} | $valueDesc';
-    initExpression(valueDesc, variablePrefix, name, variableRefs, entryNames);
+    initExpression(valueDesc, variablePrefix, name, variableRefs,
+        entryNames: entryNames, clueNames: clueNames);
   }
 
   bool fixReference(clueName) {

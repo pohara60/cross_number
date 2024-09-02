@@ -139,6 +139,8 @@ solveRight: ThirtyEntry(name=RD2,length=3,value: null,
 	identities=[D2[0]=A1[1],D2[1]=A5[0],D2[2]=A7[1]],referrers=[A1,A5,A7],
 	values={240},
 	digits=[{2},{4},{0}]
+Entry D3={200,204,224,228,244,248,260,284,288,400,402,408,422,428,440,442,448,460,468,480,2 more,488}
+Entry D4={200,204,206,224,226,228,244,248,260,266,284,288,400,402,406,408,420,422,428,440,10 more,488}
 solveRight: ThirtyEntry(name=RD3,length=3,value: null,
 	identities=[D3[0]=A3[0],D3[1]=A5[2],D3[2]=A8[1]],referrers=[A3,A5,A8],
 	values={224,228,284,288,408,428,488},
@@ -191,7 +193,7 @@ solveRight: ThirtyEntry(name=RD4,length=3,value: null,
 	identities=[D4[0]=A3[1],D4[2]=A8[2]],referrers=[A3,A8],
 	values={400,480},
 	digits=[{4},{0,8},{0}]
-Clue/Variable iterations=57, updates=27, elapsed 0:00:00.029840
+Clue/Variable iterations=57, updates=28, elapsed 0:00:00.027406
 PARTIAL SOLUTION-----------------------------
 Left Puzzle Summary
 A1, values={866}

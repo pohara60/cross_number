@@ -1,0 +1,441 @@
+Puzzle
+Clue CyclingPrimesClue(name=A,length=2,value: ((L-G)/(B+D)) | ((N-(M+E))/B) | ((N-(M+E))/B) | (O/H),
+	referrers=[B,D,E,G,H,L,M,N,O],
+	values={unknown}
+Clue CyclingPrimesClue(name=B,length=2,value: (C/2) | (((L-G)/A)-D) | ((N-(M+E))/A) | ((N-(M+E))/A) | (O/G),
+	referrers=[A,C,D,E,G,L,M,N,O],
+	values={unknown}
+Clue CyclingPrimesClue(name=C,length=2,value: 2 * B | (N/(B^2)) | (O/F),
+	referrers=[B,F,N,O],
+	values={unknown}
+Clue CyclingPrimesClue(name=D,length=2,value: A^2 - E | ((A^2)-E) | (((L-G)/A)-B),
+	referrers=[A,B,E,G,L],
+	values={unknown}
+Clue CyclingPrimesClue(name=E,length=2,value: ((A^2)-D) | ((N-(AB))-M) | ((N-(AB))-M),
+	referrers=[A,B,D,M,N],
+	values={unknown}
+Clue CyclingPrimesClue(name=F,length=3,value: (O/C),
+	referrers=[C,O],
+	values={unknown}
+Clue CyclingPrimesClue(name=G,length=3,value: (L-(A(B+D))) | (O/B),
+	referrers=[A,B,D,L,O],
+	values={unknown}
+Clue CyclingPrimesClue(name=H,length=3,value: (O/A),
+	referrers=[A,O],
+	values={unknown}
+Clue CyclingPrimesClue(name=I,length=3,value: null,
+	referrers=[],
+	values={unknown}
+Clue CyclingPrimesClue(name=J,length=3,value: null,
+	referrers=[],
+	values={unknown}
+Clue CyclingPrimesClue(name=K,length=4,value: null,
+	referrers=[],
+	values={unknown}
+Clue CyclingPrimesClue(name=L,length=4,value: A( B + D ) + G,
+	referrers=[A,B,D,G],
+	values={unknown}
+Clue CyclingPrimesClue(name=M,length=4,value: N - AB - E | ((N-(AB))-E),
+	referrers=[A,B,E,N],
+	values={unknown}
+Clue CyclingPrimesClue(name=N,length=4,value: (B^2)*C | ((M+E)+(AB)),
+	referrers=[A,B,C,E,M],
+	values={unknown}
+Clue CyclingPrimesClue(name=O,length=4,value: AH | BG | CF,
+	referrers=[A,B,C,F,G,H],
+	values={unknown}
+Entry CyclingPrimesEntry(name=A1,length=4,value: null,
+	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+Entry CyclingPrimesEntry(name=D1,length=3,value: null,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+Entry CyclingPrimesEntry(name=D2,length=4,value: null,
+	identities=[D2[0]=A1[2],D2[1]=A7[0],D2[2]=A8[2],D2[3]=A11[0]],referrers=[A1,A7,A8,A11],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{1..9}]
+Entry CyclingPrimesEntry(name=D3,length=3,value: null,
+	identities=[D3[0]=A1[3],D3[1]=A7[1],D3[2]=A9[0]],referrers=[A1,A7,A9],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+Entry CyclingPrimesEntry(name=D4,length=4,value: null,
+	identities=[D4[1]=A7[2],D4[2]=A9[1],D4[3]=A11[2]],referrers=[A7,A9,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry CyclingPrimesEntry(name=A5,length=2,value: null,
+	identities=[A5[0]=D1[1],A5[1]=D6[0]],referrers=[D1,D6],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry CyclingPrimesEntry(name=D6,length=4,value: null,
+	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A10[1],D6[3]=A13[0]],referrers=[A5,A8,A10,A13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{1..9}]
+Entry CyclingPrimesEntry(name=A7,length=3,value: null,
+	identities=[A7[0]=D2[1],A7[1]=D3[1],A7[2]=D4[1]],referrers=[D2,D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry CyclingPrimesEntry(name=A8,length=3,value: null,
+	identities=[A8[0]=D1[2],A8[1]=D6[1],A8[2]=D2[2]],referrers=[D1,D6,D2],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry CyclingPrimesEntry(name=A9,length=2,value: null,
+	identities=[A9[0]=D3[2],A9[1]=D4[2]],referrers=[D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry CyclingPrimesEntry(name=A10,length=2,value: null,
+	identities=[A10[0]=D10[0],A10[1]=D6[2]],referrers=[D10,D6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry CyclingPrimesEntry(name=D10,length=2,value: null,
+	identities=[D10[0]=A10[0]],referrers=[A10],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry CyclingPrimesEntry(name=A11,length=3,value: null,
+	identities=[A11[0]=D2[3],A11[1]=D12[0],A11[2]=D4[3]],referrers=[D2,D12,D4],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+Entry CyclingPrimesEntry(name=D12,length=2,value: null,
+	identities=[D12[0]=A11[1],D12[1]=A13[2]],referrers=[A11,A13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry CyclingPrimesEntry(name=A13,length=4,value: null,
+	identities=[A13[0]=D6[3],A13[2]=D12[1]],referrers=[D6,D12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+
+UPDATES-----------------------------
+solve: CyclingPrimesEntry(name=A1,length=4,value: null,
+	identities=[A1[0]=D1[0],A1[2]=D2[0],A1[3]=D3[0]],referrers=[D1,D2,D3],
+	values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2659 more,9998},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=D1,length=3,value: null,
+	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
+	values={112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,142,143,146,149,151,280 more,997},
+	digits=[{1..9},{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=D2,length=4,value: null,
+	identities=[D2[0]=A1[2],D2[1]=A7[0],D2[2]=A8[2],D2[3]=A11[0]],referrers=[A1,A7,A8,A11],
+	values={1102,1103,1105,1106,1109,1112,1114,1115,1117,1118,1121,1123,1124,1127,1129,1132,1135,1136,1138,1139,2659 more,9998},
+	digits=[{1..9},{1..9},{0..9},{1..9}]
+solve: CyclingPrimesEntry(name=D3,length=3,value: null,
+	identities=[D3[0]=A1[3],D3[1]=A7[1],D3[2]=A9[0]],referrers=[A1,A7,A9],
+	values={101,103,107,109,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,142,295 more,997},
+	digits=[{1..9},{0..9},{1..9}]
+solve: CyclingPrimesEntry(name=D4,length=4,value: null,
+	identities=[D4[1]=A7[2],D4[2]=A9[1],D4[3]=A11[2]],referrers=[A7,A9,A11],
+	values={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,3027 more,9998},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+solve: CyclingPrimesEntry(name=A5,length=2,value: null,
+	identities=[A5[0]=D1[1],A5[1]=D6[0]],referrers=[D1,D6],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=D6,length=4,value: null,
+	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A10[1],D6[3]=A13[0]],referrers=[A5,A8,A10,A13],
+	values={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,2843 more,9998},
+	digits=[{1..9},{0..9},{0..9},{1..9}]
+solve: CyclingPrimesEntry(name=A7,length=3,value: null,
+	identities=[A7[0]=D2[1],A7[1]=D3[1],A7[2]=D4[1]],referrers=[D2,D3,D4],
+	values={101,103,107,109,110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,310 more,997},
+	digits=[{1..9},{0..9},{0..9}]
+solve: CyclingPrimesEntry(name=A8,length=3,value: null,
+	identities=[A8[0]=D1[2],A8[1]=D6[1],A8[2]=D2[2]],referrers=[D1,D6,D2],
+	values={101,103,107,109,110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,310 more,997},
+	digits=[{1..9},{0..9},{0..9}]
+solve: CyclingPrimesEntry(name=A9,length=2,value: null,
+	identities=[A9[0]=D3[2],A9[1]=D4[2]],referrers=[D3,D4],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=A10,length=2,value: null,
+	identities=[A10[0]=D10[0],A10[1]=D6[2]],referrers=[D10,D6],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=D10,length=2,value: null,
+	identities=[D10[0]=A10[0]],referrers=[A10],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=A11,length=3,value: null,
+	identities=[A11[0]=D2[3],A11[1]=D12[0],A11[2]=D4[3]],referrers=[D2,D12,D4],
+	values={110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,140,142,143,146,295 more,997},
+	digits=[{1..9},{1..9},{0..9}]
+solve: CyclingPrimesEntry(name=D12,length=2,value: null,
+	identities=[D12[0]=A11[1],D12[1]=A13[2]],referrers=[A11,A13],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: CyclingPrimesEntry(name=A13,length=4,value: null,
+	identities=[A13[0]=D6[3],A13[2]=D12[1]],referrers=[D6,D12],
+	values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2830 more,9998},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+Eval CyclingPrimesClue A cartesianCount=65610000000 Exception
+Eval CyclingPrimesClue A cartesianCount=656100000000 Exception
+Eval CyclingPrimesClue A cartesianCount=656100000000 Exception
+Eval CyclingPrimesClue A cartesianCount=8100000 Exception
+Eval CyclingPrimesClue B cartesianCount=90, elapsed 0:00:00.004809
+Eval CyclingPrimesClue B cartesianCount=65610000000 Exception
+Eval CyclingPrimesClue B cartesianCount=656100000000 Exception
+Eval CyclingPrimesClue B cartesianCount=656100000000 Exception
+Eval CyclingPrimesClue B cartesianCount=8100000 Exception
+solve: CyclingPrimesClue(name=B,length=2,value: (C/2) | (((L-G)/A)-D) | ((N-(M+E))/A) | ((N-(M+E))/A) | (O/G),
+	referrers=[A,C,D,E,G,L,M,N,O],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47}
+Clue C={22,26,28,32,34,38,46,58,62,64,68,70,74,76,82,86,94}
+Eval CyclingPrimesClue C cartesianCount=17, elapsed 0:00:00.000204
+Eval CyclingPrimesClue C cartesianCount=153000, elapsed 0:00:00.091263
+Eval CyclingPrimesClue C cartesianCount=8100000 Exception
+solve: CyclingPrimesClue(name=C,length=2,value: 2 * B | (N/(B^2)) | (O/F),
+	referrers=[B,F,N,O],
+	values={32,34,38,74,76}
+Clue B={11,13,14,16,17,19,37,38}
+Clue N={3872,4114,4598,5408,5746,6272,6422,6664,7448,8192,8704,8954,9196,9248,9728,9826}
+Eval CyclingPrimesClue D cartesianCount=8100, elapsed 0:00:00.005531
+Eval CyclingPrimesClue D cartesianCount=8100, elapsed 0:00:00.006013
+Eval CyclingPrimesClue D cartesianCount=5832000000 Exception
+solve: CyclingPrimesClue(name=D,length=2,value: A^2 - E | ((A^2)-E) | (((L-G)/A)-B),
+	referrers=[A,B,E,G,L],
+	values={34,35,37,38,41,43,47,53,59,61,67,71,73,74,76,79,83,89,91,92,3 more,98}
+Clue A={10..14}
+Clue E={11,17,21,23,24,26,27,29,30,32,33,38,39,41,42,45..49,35 more,99}
+Eval CyclingPrimesClue E cartesianCount=115, elapsed 0:00:00.000364
+Eval CyclingPrimesClue E cartesianCount=5760000 Exception
+Eval CyclingPrimesClue E cartesianCount=5760000 Exception
+solve: CyclingPrimesClue(name=E,length=2,value: ((A^2)-D) | ((N-(AB))-M) | ((N-(AB))-M),
+	referrers=[A,B,D,M,N],
+	values={41,47,53,59,61,71,73,74,83,91,95,97,98}
+Clue D={38,41,47,53,59,61,71,73,74,83,89,91,92,95,97}
+Eval CyclingPrimesClue F cartesianCount=45000, elapsed 0:00:00.022609
+solve: CyclingPrimesClue(name=F,length=3,value: (O/C),
+	referrers=[C,O],
+	values={101,103,107,109,110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,59 more,311}
+Clue O={3232,3296,3424,3434,3488,3502,3520,3584,3616,3638,3680,3706,3740,3776,3808,3838,3842,3872,3910,3914,221 more,9994}
+Eval CyclingPrimesClue G cartesianCount=5400000 Exception
+Eval CyclingPrimesClue G cartesianCount=1928, elapsed 0:00:00.003302
+solve: CyclingPrimesClue(name=G,length=3,value: (L-(A(B+D))) | (O/B),
+	referrers=[A,B,D,L,O],
+	values={103,107,109,110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,140,83 more,836}
+Clue O={3914,4046,4066,4114,4142,4180,4256,4294,4352,4370,4448,4484,4522,4576,4598,4624,4672,4712,4726,4750,109 more,9994}
+Eval CyclingPrimesClue H cartesianCount=645, elapsed 0:00:00.000713
+solve: CyclingPrimesClue(name=H,length=3,value: (O/A),
+	referrers=[A,O],
+	values={323,352,361,374,416,437,475,476,494,512,578,736,760,836,893}
+Clue A={10,11,13,14}
+Clue O={4114,4370,4522,4576,4750,4862,4928,5054,5236,5408,5434,5632,5824,6188,6422,6650,6664,6916,8092,8360,3 more,9568}
+Clue N={3872,4114,4598,5408,5746,6272,6422,6664,7448,8192,8704,8954,9196,9248}
+solve: CyclingPrimesClue(name=I,length=3,value: null,
+	referrers=[],
+	values={326,328,329,331,332,334,335,337,338,343,344,346,347,349,350,352,353,356,359,361,224 more,997}
+solve: CyclingPrimesClue(name=J,length=3,value: null,
+	referrers=[],
+	values={328,329,331,332,334,335,337,338,343,344,346,347,349,350,352,353,356,359,361,364,223 more,997}
+Clue I={326,328,329,331,332,334,335,337,338,343,344,346,347,349,350,352,353,356,359,361,223 more,995}
+solve: CyclingPrimesClue(name=K,length=4,value: null,
+	referrers=[],
+	values={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,2708 more,9245}
+Eval CyclingPrimesClue L cartesianCount=49440, elapsed 0:00:00.331659
+solve: CyclingPrimesClue(name=L,length=4,value: A( B + D ) + G,
+	referrers=[A,B,D,G],
+	values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,509 more,2698}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,585 more,2696}
+Eval CyclingPrimesClue M cartesianCount=5824, elapsed 0:00:00.045162
+Eval CyclingPrimesClue M cartesianCount=5824, elapsed 0:00:00.044625
+solve: CyclingPrimesClue(name=M,length=4,value: N - AB - E | ((N-(AB))-E),
+	referrers=[A,B,E,N],
+	values={3242,3257,3259,3263,3266,3269,3271,3280,3283,3293,3295,3296,3299,3301,3307,3308,3313,3317,3319,3320,947 more,9091}
+Eval CyclingPrimesClue N cartesianCount=40, elapsed 0:00:00.000197
+Eval CyclingPrimesClue N cartesianCount=402272, elapsed 0:00:00.237601
+solve: CyclingPrimesClue(name=N,length=4,value: (B^2)*C | ((M+E)+(AB)),
+	referrers=[A,B,C,E,M],
+	values={5746,8192}
+Clue M={5119,5123,5140,5153,5161,5167,5173,5174,5179,5191,5194,5212,5218,5231,5233,5237,5275,5278,5279,5281,147 more,8015}
+Clue O={5824,6188,6422,6650,6664,6916,8092,8360,8930,9196,9568}
+Clue C={32,34}
+Clue B={11,13,14,16,17,19}
+Eval CyclingPrimesClue O cartesianCount=60, elapsed 0:00:00.000169
+Eval CyclingPrimesClue O cartesianCount=618, elapsed 0:00:00.000401
+Eval CyclingPrimesClue O cartesianCount=158, elapsed 0:00:00.000125
+solve: CyclingPrimesClue(name=O,length=4,value: AH | BG | CF,
+	referrers=[A,B,C,F,G,H],
+	values={6188,9568}
+Clue A={10,13,14}
+Clue H={476,494,736,893}
+Clue I={479,487,491,493,494,499,503,509,511,512,517,521,523,533,536,538,539,541,547,557,160 more,995}
+Clue J={487,491,493,494,499,503,509,511,512,517,521,523,533,536,538,539,541,547,557,563,160 more,997}
+Clue B={13,14,16,17,19}
+Clue G={364,476,494,598,736}
+Clue F={182,299}
+solve: CyclingPrimesEntry(name=D4,length=4,value: null,
+	identities=[D4[1]=A7[2],D4[2]=A9[1],D4[3]=A11[2]],referrers=[A7,A9,A11],
+	values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2830 more,9998},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+solve: CyclingPrimesEntry(name=D6,length=4,value: null,
+	identities=[D6[0]=A5[1],D6[1]=A8[1],D6[2]=A10[1],D6[3]=A13[0]],referrers=[A5,A8,A10,A13],
+	values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2659 more,9998},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+Eval CyclingPrimesClue B cartesianCount=2, elapsed 0:00:00.000061
+Eval CyclingPrimesClue B cartesianCount=119025, elapsed 0:00:00.071103
+Eval CyclingPrimesClue B cartesianCount=13026, elapsed 0:00:00.007528
+Eval CyclingPrimesClue B cartesianCount=13026, elapsed 0:00:00.007399
+Eval CyclingPrimesClue B cartesianCount=10, elapsed 0:00:00.000061
+solve: CyclingPrimesClue(name=B,length=2,value: (C/2) | (((L-G)/A)-D) | ((N-(M+E))/A) | ((N-(M+E))/A) | (O/G),
+	referrers=[A,C,D,E,G,L,M,N,O],
+	values={16,17}
+Clue L={1016,1105,1106,1114,1118,1120,1124,1136,1138,1139,1148,1157,1162,1178,1183,1190,1198,1208,1214,1216,137 more,2318}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,494 more,2317}
+Clue M={5383,5407,5413,5417,5419,5431,5437,5438,5441,5443,5449,5473,5476,5477,5479,5483,5491,5494,5497,5503,69 more,8015}
+Eval CyclingPrimesClue A cartesianCount=23550, elapsed 0:00:00.012978
+Eval CyclingPrimesClue A cartesianCount=4628, elapsed 0:00:00.002668
+Eval CyclingPrimesClue A cartesianCount=4628, elapsed 0:00:00.002722
+Eval CyclingPrimesClue A cartesianCount=8, elapsed 0:00:00.000037
+solve: CyclingPrimesClue(name=A,length=2,value: ((L-G)/(B+D)) | ((N-(M+E))/B) | ((N-(M+E))/B) | (O/H),
+	referrers=[B,D,E,G,H,L,M,N,O],
+	values={13}
+Clue L={1105,1118,1120,1162,1178,1183,1217,1235,1274,1292,1300,1306,1330,1339,1354,1358,1372,1373,1376,1390,66 more,2318}
+Clue M={5413,5417,5431,5437,5441,5443,5449,5477,5479,5491,5497,7859,7870,7871,7873,7874,7877,7880,7883,7886,16 more,7943}
+Clue H={476,736}
+Clue G={364,476,494,598}
+Eval CyclingPrimesClue C cartesianCount=2, elapsed 0:00:00.000027
+Eval CyclingPrimesClue C cartesianCount=4, elapsed 0:00:00.000025
+Eval CyclingPrimesClue C cartesianCount=4, elapsed 0:00:00.000024
+solve: CyclingPrimesClue(name=C,length=2,value: 2 * B | (N/(B^2)) | (O/F),
+	referrers=[B,F,N,O],
+	values={32}
+Clue N={8192}
+Clue O={9568}
+Eval CyclingPrimesClue D cartesianCount=13, elapsed 0:00:00.000030
+Eval CyclingPrimesClue D cartesianCount=13, elapsed 0:00:00.000023
+Eval CyclingPrimesClue D cartesianCount=688, elapsed 0:00:00.000456
+solve: CyclingPrimesClue(name=D,length=2,value: A^2 - E | ((A^2)-E) | (((L-G)/A)-B),
+	referrers=[A,B,E,G,L],
+	values={71,74,95}
+Clue E={74,95,98}
+Clue L={1105,1118,1178,1183,1217,1235,1274,1300,1339,1373,1391,1451,1469,1495,1508,1534,1547,1586,1607,1612,12 more,1976}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,384 more,1975}
+Eval CyclingPrimesClue E cartesianCount=3, elapsed 0:00:00.000030
+Eval CyclingPrimesClue E cartesianCount=72, elapsed 0:00:00.000073
+Eval CyclingPrimesClue E cartesianCount=72, elapsed 0:00:00.000069
+solve: CyclingPrimesClue(name=E,length=2,value: ((A^2)-D) | ((N-(AB))-M) | ((N-(AB))-M),
+	referrers=[A,B,D,M,N],
+	values={74,98}
+Clue M={7873,7886,7897}
+solve: CyclingPrimesClue(name=F,length=3,value: (O/C),
+	referrers=[C,O],
+	values={299}
+Eval CyclingPrimesClue G cartesianCount=192, elapsed 0:00:00.000182
+Eval CyclingPrimesClue G cartesianCount=2, elapsed 0:00:00.000026
+solve: CyclingPrimesClue(name=G,length=3,value: (L-(A(B+D))) | (O/B),
+	referrers=[A,B,D,L,O],
+	values={598}
+Clue I={737,739,743,745,746,748,751,754,755,757,758,760,761,764,767,769,772,773,775,776,83 more,995}
+Clue J={739,743,745,746,748,751,754,755,757,758,760,761,764,767,769,772,773,775,776,778,83 more,997}
+Clue H={736}
+Clue L={1495,1508,1534,1547,1607,1729,1742,1768,1781,1937}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,364 more,1934}
+Eval CyclingPrimesClue L cartesianCount=6, elapsed 0:00:00.000065
+solve: CyclingPrimesClue(name=L,length=4,value: A( B + D ) + G,
+	referrers=[A,B,D,G],
+	values={1729,1742,1768,1781}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,302 more,1780}
+Clue D={71,74}
+Eval CyclingPrimesClue M cartesianCount=4, elapsed 0:00:00.000041
+Eval CyclingPrimesClue M cartesianCount=4, elapsed 0:00:00.000040
+Eval CyclingPrimesClue N cartesianCount=2, elapsed 0:00:00.000022
+Eval CyclingPrimesClue N cartesianCount=12, elapsed 0:00:00.000046
+Eval CyclingPrimesClue O cartesianCount=2, elapsed 0:00:00.000015
+solve: CyclingPrimesClue(name=O,length=4,value: AH | BG | CF,
+	referrers=[A,B,C,F,G,H],
+	values={9568}
+Clue B={16}
+Eval CyclingPrimesClue B cartesianCount=8, elapsed 0:00:00.000033
+Eval CyclingPrimesClue B cartesianCount=6, elapsed 0:00:00.000029
+Eval CyclingPrimesClue B cartesianCount=6, elapsed 0:00:00.000032
+solve: CyclingPrimesClue(name=B,length=2,value: (C/2) | (((L-G)/A)-D) | ((N-(M+E))/A) | ((N-(M+E))/A) | (O/G),
+	referrers=[A,C,D,E,G,L,M,N,O],
+	values={16}
+Clue L={1729,1768}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,295 more,1763}
+Clue E={98}
+Clue M={7886}
+Eval CyclingPrimesClue A cartesianCount=4, elapsed 0:00:00.000025
+Eval CyclingPrimesClue D cartesianCount=2, elapsed 0:00:00.000023
+solve: CyclingPrimesClue(name=D,length=2,value: A^2 - E | ((A^2)-E) | (((L-G)/A)-B),
+	referrers=[A,B,E,G,L],
+	values={71}
+Eval CyclingPrimesClue G cartesianCount=2, elapsed 0:00:00.000023
+solve: CyclingPrimesClue(name=G,length=3,value: (L-(A(B+D))) | (O/B),
+	referrers=[A,B,D,L,O],
+	values={598}
+Clue L={1729}
+Clue K={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,277 more,1726}
+Clue/Variable iterations=79, updates=91, elapsed 0:00:01.580108
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+Clue A, ((L-G)/(B+D)) | ((N-(M+E))/B) | ((N-(M+E))/B) | (O/H), values={13}
+Clue B, (C/2) | (((L-G)/A)-D) | ((N-(M+E))/A) | ((N-(M+E))/A) | (O/G), values={16}
+Clue C, 2 * B | (N/(B^2)) | (O/F), values={32}
+Clue D, A^2 - E | ((A^2)-E) | (((L-G)/A)-B), values={71}
+Clue E, ((A^2)-D) | ((N-(AB))-M) | ((N-(AB))-M), values={98}
+Clue F, (O/C), values={299}
+Clue G, (L-(A(B+D))) | (O/B), values={598}
+Clue H, (O/A), values={736}
+Clue I, values={737,739,743,745,746,748,751,754,755,757,758,760,761,764,767,769,772,773,775,776,83 more,995}
+Clue J, values={739,743,745,746,748,751,754,755,757,758,760,761,764,767,769,772,773,775,776,778,83 more,997}
+Clue K, values={1009,1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,277 more,1726}
+Clue L, A( B + D ) + G, values={1729}
+Clue M, N - AB - E | ((N-(AB))-E), values={7886}
+Clue N, (B^2)*C | ((M+E)+(AB)), values={8192}
+Clue O, AH | BG | CF, values={9568}
+Entry A1, values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2659 more,9998}
+Entry D1, values={112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,142,143,146,149,151,280 more,997}
+Entry D2, values={1102,1103,1105,1106,1109,1112,1114,1115,1117,1118,1121,1123,1124,1127,1129,1132,1135,1136,1138,1139,2659 more,9998}
+Entry D3, values={101,103,107,109,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,142,295 more,997}
+Entry D4, values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2830 more,9998}
+Entry A5, values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98}
+Entry D6, values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2659 more,9998}
+Entry A7, values={101,103,107,109,110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,310 more,997}
+Entry A8, values={101,103,107,109,110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,310 more,997}
+Entry A9, values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98}
+Entry A10, values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98}
+Entry D10, values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98}
+Entry A11, values={110,112,113,115,118,119,121,124,125,127,128,131,133,136,137,139,140,142,143,146,295 more,997}
+Entry D12, values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98}
+Entry A13, values={1013,1015,1016,1018,1019,1021,1031,1033,1037,1039,1049,1051,1061,1063,1069,1075,1087,1091,1093,1097,2830 more,9998}
++--+--+--+--+--+
+| ?  ?  ?  ?| ?|
++   --      +  +
+| ?  ?| ?  ?  ?|
++     +        +
+| ?  ?  ?| ?  ?|
++--+     +--+  +
+| ?  ?| ?  ?  ?|
++     +--+   --+
+| ?| ?  ?  ?  ?|
++--+--+--+--+--+
+
+MAPPING CLUES TO ENTRIES-----------------------------
+Mapping
+Entry A1{8192} = Clue N{8192}
+Entry D1{877} = Clue J{877, 977}
+Entry D2{9568} = Clue O{9568}
+Entry D3{299} = Clue F{299}
+Entry D4{7886} = Clue M{7886}
+Entry A5{71} = Clue D{71}
+Entry D6{1361} = Clue K{1361, 1363, 1367, 1369}
+Entry A7{598} = Clue G{598}
+Entry A8{736} = Clue H{736}
+Entry A9{98} = Clue E{98}
+Entry A10{16} = Clue B{16}
+Entry D10{13} = Clue A{13}
+Entry A11{836} = Clue I{737, 739, 832, 833, 836, 838, 839, 931, 932, 934, 937, 938}
+Entry D12{32} = Clue C{32}
+Entry A13{1729} = Clue L{1729}
++--+--+--+--+--+
+| 8  1  9  2| 7|
++   --      +  +
+| 7  1| 5  9  8|
++     +        +
+| 7  3  6| 9  8|
++--+     +--+  +
+| 1  6| 8  3  6|
++     +--+   --+
+| 3| 1  7  2  9|
++--+--+--+--+--+
+

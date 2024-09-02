@@ -174,105 +174,106 @@ Solve Error: Entry D11 (null) no solution!
 Solve Error: Entry D12 (null) no solution!
 Solve Error: Entry D13 (null) no solution!
 Solve Error: Entry D14 (null) no solution!
-Eval TetrominoClue A1 cartesianCount=625, elapsed 0:00:00.023083
+Eval TetrominoClue A1 cartesianCount=625, elapsed 0:00:00.014629
 solve: TetrominoClue(name=A1,length=3,value: EF,
 	referrers=[],
 	values={106,111,115,118,119,122,123,129,133,134,141..143,145,146,155,158,159,161,166,96 more,989}
-Eval TetrominoClue D9 cartesianCount=625, elapsed 0:00:00.003683
+Eval TetrominoClue D9 cartesianCount=625, elapsed 0:00:00.002838
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10,14,15,21,22,26,33..35,38,39,46,51,55,57,58,62,65,69,74,9 more,95}
 Variable F={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
 Variable H={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
-Eval TetrominoClue A1 cartesianCount=375, elapsed 0:00:00.003262
+Eval TetrominoClue A1 cartesianCount=375, elapsed 0:00:00.001465
 solve: TetrominoClue(name=A1,length=3,value: EF,
 	referrers=[],
 	values={106,111,115,118,119,122,123,129,133,134,141..143,145,146,155,158,159,161,166,96 more,989}
 Variable E={3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,4 more,97}
-Eval TetrominoClue D9 cartesianCount=225, elapsed 0:00:00.001397
-Eval TetrominoClue A1 cartesianCount=360, elapsed 0:00:00.001554
-Eval TetrominoClue D11 cartesianCount=375, elapsed 0:00:00.001338
+Eval TetrominoClue D9 cartesianCount=225, elapsed 0:00:00.000797
+Eval TetrominoClue A1 cartesianCount=360, elapsed 0:00:00.002630
+Eval TetrominoClue D11 cartesianCount=375, elapsed 0:00:00.001012
 solve: TetrominoClue(name=D11,length=2,value: AH,
 	referrers=[],
 	values={14,15,21,22,26,33..35,38,39,46,51,55,57,58,62,65,69,74,77,8 more,95}
 Variable A={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47}
-Eval TetrominoClue D10 cartesianCount=375, elapsed 0:00:00.001854
+Eval TetrominoClue D10 cartesianCount=375, elapsed 0:00:00.001393
 solve: TetrominoClue(name=D10,length=2,value: A+K,
 	referrers=[],
 	values={12..16,18..22,24..26,28,30..34,36,42 more,94}
 Variable K={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,4 more,89}
-Eval TetrominoClue D12 cartesianCount=375, elapsed 0:00:00.005193
+Eval TetrominoClue D12 cartesianCount=375, elapsed 0:00:00.002630
 solve: TetrominoClue(name=D12,length=2,value: (D^F)(F^D),
 	referrers=[],
 	values={72}
+Clue D10={12..16,18..22,24..26,28,30..34,36,41 more,94}
 Variable D={2,3}
 Variable F={2,3}
-Eval TetrominoClue D9 cartesianCount=30, elapsed 0:00:00.000344
+Eval TetrominoClue D9 cartesianCount=30, elapsed 0:00:00.000303
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10,14,15,21,22,26,33,34,38,39,46,51,57,58,62,69}
 Variable H={5,7,11,13,17,19,23,29,31}
-Eval TetrominoClue D12 cartesianCount=4, elapsed 0:00:00.000078
-Eval TetrominoClue D9 cartesianCount=18, elapsed 0:00:00.000147
-Eval TetrominoClue A1 cartesianCount=48, elapsed 0:00:00.000257
+Eval TetrominoClue D12 cartesianCount=4, elapsed 0:00:00.000071
+Eval TetrominoClue D9 cartesianCount=18, elapsed 0:00:00.000107
+Eval TetrominoClue A1 cartesianCount=48, elapsed 0:00:00.000207
 solve: TetrominoClue(name=A1,length=3,value: EF,
 	referrers=[],
 	values={106,111,118,122,123,129,134,141,142,146,158,159,166,177,178,183,194,201,213,219,4 more,291}
 Variable E={37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Eval TetrominoClue D15 cartesianCount=100, elapsed 0:00:00.000475
+Eval TetrominoClue D15 cartesianCount=100, elapsed 0:00:00.000276
 solve: TetrominoClue(name=D15,length=3,value: BDF,
 	referrers=[],
 	values={102,114,138,174,186,222,246,258,282,318,354,366,402,426,438,474,498,534,582}
 Variable B={17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
-Eval TetrominoClue D11 cartesianCount=135, elapsed 0:00:00.000754
+Eval TetrominoClue D11 cartesianCount=135, elapsed 0:00:00.000723
 solve: TetrominoClue(name=D11,length=2,value: AH,
 	referrers=[],
 	values={14,15,21,22,26,33..35,38,39,46,51,55,57,58,62,65,69}
 Variable A={2,3,5,7,11,13}
-Eval TetrominoClue D13 cartesianCount=108, elapsed 0:00:00.000416
+Eval TetrominoClue D13 cartesianCount=108, elapsed 0:00:00.000352
 solve: TetrominoClue(name=D13,length=2,value: A(D+H),
 	referrers=[],
 	values={75,77,80,88,91,93,95,98,99}
 Variable A={3,5,7,11,13}
 Variable H={5,7,11,13,17,23,29,31}
-Eval TetrominoClue D9 cartesianCount=16, elapsed 0:00:00.000122
+Eval TetrominoClue D9 cartesianCount=16, elapsed 0:00:00.000103
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10,14,15,21,22,26,33,34,39,46,51,58,62}
-Eval TetrominoClue D11 cartesianCount=40, elapsed 0:00:00.000177
+Eval TetrominoClue D11 cartesianCount=40, elapsed 0:00:00.000425
 solve: TetrominoClue(name=D11,length=2,value: AH,
 	referrers=[],
 	values={15,21,33,35,39,51,55,65,69}
 Variable H={5,7,11,13,17,23}
-Eval TetrominoClue D9 cartesianCount=12, elapsed 0:00:00.000111
+Eval TetrominoClue D9 cartesianCount=12, elapsed 0:00:00.000114
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10,14,15,21,22,26,33,34,39,46,51}
-Eval TetrominoClue D11 cartesianCount=30, elapsed 0:00:00.000590
-Eval TetrominoClue D13 cartesianCount=60, elapsed 0:00:00.000233
+Eval TetrominoClue D11 cartesianCount=30, elapsed 0:00:00.000137
+Eval TetrominoClue D13 cartesianCount=60, elapsed 0:00:00.000229
 solve: TetrominoClue(name=D13,length=2,value: A(D+H),
 	referrers=[],
 	values={75,77,80,88,91,95,98,99}
-Eval TetrominoClue D16 cartesianCount=60, elapsed 0:00:00.000336
+Eval TetrominoClue D16 cartesianCount=60, elapsed 0:00:00.000286
 solve: TetrominoClue(name=D16,length=3,value: D^H-AH,
 	referrers=[],
 	values={107,178,188,208}
 Variable A={3,7,11,13}
 Variable H={5,7}
-Eval TetrominoClue D9 cartesianCount=4, elapsed 0:00:00.000552
+Eval TetrominoClue D9 cartesianCount=4, elapsed 0:00:00.000083
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10,14,15,21}
-Eval TetrominoClue D11 cartesianCount=8, elapsed 0:00:00.000066
+Eval TetrominoClue D11 cartesianCount=8, elapsed 0:00:00.000058
 solve: TetrominoClue(name=D11,length=2,value: AH,
 	referrers=[],
 	values={15,21,35,55,65}
-Eval TetrominoClue D13 cartesianCount=16, elapsed 0:00:00.000088
+Eval TetrominoClue D13 cartesianCount=16, elapsed 0:00:00.000080
 solve: TetrominoClue(name=D13,length=2,value: A(D+H),
 	referrers=[],
 	values={77,88,91,99}
 Variable A={11,13}
-Eval TetrominoClue D11 cartesianCount=4, elapsed 0:00:00.000068
+Eval TetrominoClue D11 cartesianCount=4, elapsed 0:00:00.000042
 solve: TetrominoClue(name=D11,length=2,value: AH,
 	referrers=[],
 	values={55,65}
@@ -283,16 +284,16 @@ Variable I={2,3,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,4 more,97}
 Variable J={2,3,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,4 more,97}
 Variable K={2,3,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,3 more,89}
 Variable L={2,3,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,4 more,97}
-Eval TetrominoClue D9 cartesianCount=2, elapsed 0:00:00.000051
+Eval TetrominoClue D9 cartesianCount=2, elapsed 0:00:00.000042
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10,15}
-Eval TetrominoClue D11 cartesianCount=2, elapsed 0:00:00.000044
-Eval TetrominoClue D13 cartesianCount=4, elapsed 0:00:00.000065
+Eval TetrominoClue D11 cartesianCount=2, elapsed 0:00:00.000034
+Eval TetrominoClue D13 cartesianCount=4, elapsed 0:00:00.000050
 solve: TetrominoClue(name=D13,length=2,value: A(D+H),
 	referrers=[],
 	values={77,88,91}
-Eval TetrominoClue D16 cartesianCount=4, elapsed 0:00:00.000061
+Eval TetrominoClue D16 cartesianCount=4, elapsed 0:00:00.000049
 solve: TetrominoClue(name=D16,length=3,value: D^H-AH,
 	referrers=[],
 	values={178,188}
@@ -307,10 +308,11 @@ Variable L={7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,2 more,97
 solve: TetrominoClue(name=D9,length=2,value: FH,
 	referrers=[],
 	values={10}
-Eval TetrominoClue D13 cartesianCount=2, elapsed 0:00:00.000042
+Eval TetrominoClue D13 cartesianCount=2, elapsed 0:00:00.000044
 solve: TetrominoClue(name=D13,length=2,value: A(D+H),
 	referrers=[],
 	values={88}
+Clue D10={12..16,18..22,24..26,28,30..34,36,40 more,94}
 Variable A={11}
 Variable C={7,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 Variable G={7,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
@@ -321,51 +323,52 @@ Variable L={7,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 solve: TetrominoClue(name=D11,length=2,value: AH,
 	referrers=[],
 	values={55}
+Clue D10={12..16,18..22,24..26,28,30..34,36,39 more,94}
 solve: TetrominoClue(name=D16,length=3,value: D^H-AH,
 	referrers=[],
 	values={188}
-Eval TetrominoClue A1 cartesianCount=14, elapsed 0:00:00.000090
+Eval TetrominoClue A1 cartesianCount=14, elapsed 0:00:00.000078
 solve: TetrominoClue(name=A1,length=3,value: EF,
 	referrers=[],
 	values={106,118,122,134,142,146,158,166,178,194}
 Variable E={53,59,61,67,71,73,79,83,89,97}
-Eval TetrominoClue D15 cartesianCount=19, elapsed 0:00:00.000107
+Eval TetrominoClue D15 cartesianCount=19, elapsed 0:00:00.000097
 solve: TetrominoClue(name=D15,length=3,value: BDF,
 	referrers=[],
 	values={102,114,138,174,186}
 Variable B={17,19,23,29,31}
-Eval TetrominoClue D10 cartesianCount=20, elapsed 0:00:00.000099
+Eval TetrominoClue D10 cartesianCount=20, elapsed 0:00:00.000104
 solve: TetrominoClue(name=D10,length=2,value: A+K,
 	referrers=[],
 	values={18,24,28,30,34,40,42,48,52,54}
 Variable K={7,13,17,19,23,29,31,37,41,43}
-Eval TetrominoClue D14 cartesianCount=21, elapsed 0:00:00.000107
+Eval TetrominoClue D14 cartesianCount=21, elapsed 0:00:00.000117
 solve: TetrominoClue(name=D14,length=2,value: C+FH,
 	referrers=[],
 	values={89,93,99}
 Variable C={79,83,89}
-Eval TetrominoClue A4 cartesianCount=315, elapsed 0:00:00.001063
+Eval TetrominoClue A4 cartesianCount=315, elapsed 0:00:00.001340
 solve: TetrominoClue(name=A4,length=3,value: A(C-I)-B,
 	referrers=[],
 	values={109,113,115,145,147,153,157,159,167,169,175,179,181,189,191,197,201,203,211,213,117 more,885}
 Variable I={7,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73}
-Eval TetrominoClue D20 cartesianCount=255, elapsed 0:00:00.000683
+Eval TetrominoClue D20 cartesianCount=255, elapsed 0:00:00.000750
 solve: TetrominoClue(name=D20,length=3,value: BI+CF,
 	referrers=[],
 	values={277,285,291,297,299,311,319,327,339,361,369,375,379,381,383,387,395,399,405,413,56 more,995}
 Variable I={7,13,17,19,23,29,31,37,41,43,47}
-Eval TetrominoClue A4 cartesianCount=165, elapsed 0:00:00.000922
+Eval TetrominoClue A4 cartesianCount=165, elapsed 0:00:00.000624
 solve: TetrominoClue(name=A4,length=3,value: A(C-I)-B,
 	referrers=[],
 	values={321,323,329,333,335,365,367,373,377,379,387,389,395,399,401,409,411,417,421,423,74 more,885}
-Eval TetrominoClue D20 cartesianCount=165, elapsed 0:00:00.001102
-Eval TetrominoClue A7 cartesianCount=441, elapsed 0:00:00.001126
+Eval TetrominoClue D20 cartesianCount=165, elapsed 0:00:00.000542
+Eval TetrominoClue A7 cartesianCount=441, elapsed 0:00:00.000990
 solve: TetrominoClue(name=A7,length=3,value: FHJL,
 	referrers=[],
 	values={910}
 Variable J={7,13}
 Variable L={7,13}
-Eval TetrominoClue D19 cartesianCount=20, elapsed 0:00:00.000179
+Eval TetrominoClue D19 cartesianCount=20, elapsed 0:00:00.000136
 solve: TetrominoClue(name=D19,length=3,value: (A-J)^H-BL,
 	referrers=[],
 	values={621,647,725,777,803}
@@ -374,51 +377,51 @@ Variable G={17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
 Variable I={17,19,23,29,31,37,41,43,47}
 Variable K={17,19,23,29,31,37,41,43}
 Variable L={13}
-Eval TetrominoClue D19 cartesianCount=5, elapsed 0:00:00.000141
-Eval TetrominoClue D10 cartesianCount=8, elapsed 0:00:00.000093
+Eval TetrominoClue D19 cartesianCount=5, elapsed 0:00:00.000076
+Eval TetrominoClue D10 cartesianCount=8, elapsed 0:00:00.000050
 solve: TetrominoClue(name=D10,length=2,value: A+K,
 	referrers=[],
 	values={28,30,34,40,42,48,52,54}
-Eval TetrominoClue D17 cartesianCount=80, elapsed 0:00:00.002245
+Eval TetrominoClue D17 cartesianCount=80, elapsed 0:00:00.001143
 solve: TetrominoClue(name=D17,length=3,value: KL-E/E,
 	referrers=[],
 	values={220,246,298,376,402,480,532,558}
-Eval TetrominoClue D19 cartesianCount=5, elapsed 0:00:00.000127
-Eval TetrominoClue D17 cartesianCount=80, elapsed 0:00:00.000450
-Eval TetrominoClue D18 cartesianCount=90, elapsed 0:00:00.000644
+Eval TetrominoClue D19 cartesianCount=5, elapsed 0:00:00.000096
+Eval TetrominoClue D17 cartesianCount=80, elapsed 0:00:00.000399
+Eval TetrominoClue D18 cartesianCount=90, elapsed 0:00:00.000474
 solve: TetrominoClue(name=D18,length=3,value: DI+EJ,
 	referrers=[],
 	values={422,428,440,458,464,470,478,482,484,494,496,500,506,512,514,520,524,526,536,538,49 more,802}
-Eval TetrominoClue A4 cartesianCount=135, elapsed 0:00:00.000843
+Eval TetrominoClue A4 cartesianCount=135, elapsed 0:00:00.000627
 solve: TetrominoClue(name=A4,length=3,value: A(C-I)-B,
 	referrers=[],
 	values={321,323,329,333,335,365,367,373,377,379,387,389,395,399,401,409,411,417,421,423,62 more,773}
-Eval TetrominoClue D18 cartesianCount=90, elapsed 0:00:00.000496
-Eval TetrominoClue A4 cartesianCount=135, elapsed 0:00:00.000687
-Eval TetrominoClue D20 cartesianCount=135, elapsed 0:00:00.000683
+Eval TetrominoClue D18 cartesianCount=90, elapsed 0:00:00.001231
+Eval TetrominoClue A4 cartesianCount=135, elapsed 0:00:00.001038
+Eval TetrominoClue D20 cartesianCount=135, elapsed 0:00:00.000719
 solve: TetrominoClue(name=D20,length=3,value: BI+CF,
 	referrers=[],
 	values={651,659,671,685,693,705,709,717,729,747,755,767,787,795,807,825,833,845,855,861,18 more,995}
-Eval TetrominoClue A5 cartesianCount=150, elapsed 0:00:00.000887
+Eval TetrominoClue A5 cartesianCount=150, elapsed 0:00:00.001017
 solve: TetrominoClue(name=A5,length=3,value: D(B+C+E+J),
 	referrers=[],
 	values={468,474,480,486,492,498,504,510,516,522,528,534,540,546,552,558,564,570,576,582,14 more,672}
-Eval TetrominoClue D18 cartesianCount=90, elapsed 0:00:00.000653
-Eval TetrominoClue A5 cartesianCount=150, elapsed 0:00:00.002127
-Eval TetrominoClue A8 cartesianCount=152, elapsed 0:00:00.000929
+Eval TetrominoClue D18 cartesianCount=90, elapsed 0:00:00.000435
+Eval TetrominoClue A5 cartesianCount=150, elapsed 0:00:00.000774
+Eval TetrominoClue A8 cartesianCount=152, elapsed 0:00:00.000454
 solve: TetrominoClue(name=A8,length=3,value: A+GL+K,
 	referrers=[],
 	values={911,913,919,923,925,951,953,957,963,965,971,975,977,979,983,989,991,997}
 Variable G={67,71,73}
-Eval TetrominoClue A3 cartesianCount=27, elapsed 0:00:00.000269
+Eval TetrominoClue A3 cartesianCount=27, elapsed 0:00:00.000153
 solve: TetrominoClue(name=A3,length=3,value: A(G-I+J),
 	referrers=[],
 	values={297,341,363,385,407,429,451,473,495,517,539,561,605,627,649,671}
-Eval TetrominoClue A6 cartesianCount=27, elapsed 0:00:00.000226
+Eval TetrominoClue A6 cartesianCount=27, elapsed 0:00:00.000128
 solve: TetrominoClue(name=A6,length=3,value: GJ+I,
 	referrers=[],
 	values={486,488,492,498,500,506,510,512,514,516,520,526,528,530,534,538,540,542,544,548,3 more,558}
-Eval TetrominoClue A2 cartesianCount=216, elapsed 0:00:00.001251
+Eval TetrominoClue A2 cartesianCount=216, elapsed 0:00:00.001258
 solve: TetrominoClue(name=A2,length=3,value: JK+(G-I)/D,
 	referrers=[],
 	values={127,129,131,133,135,137,141,143,145,147,149,151,169,171,173,175,177,179,211,213,28 more,319}
@@ -442,67 +445,67 @@ Solve Error: Entry D11 (null) no solution!
 Solve Error: Entry D12 (null) no solution!
 Solve Error: Entry D13 (null) no solution!
 Solve Error: Entry D14 (null) no solution!
-Eval TetrominoClue D14 cartesianCount=3, elapsed 0:00:00.000060
-Eval TetrominoClue D15 cartesianCount=5, elapsed 0:00:00.000168
-Eval TetrominoClue D19 cartesianCount=5, elapsed 0:00:00.000107
-Eval TetrominoClue D10 cartesianCount=8, elapsed 0:00:00.000088
-Eval TetrominoClue A1 cartesianCount=10, elapsed 0:00:00.000067
-Eval TetrominoClue A8 cartesianCount=24, elapsed 0:00:00.000133
-Eval TetrominoClue A3 cartesianCount=27, elapsed 0:00:00.000159
+Eval TetrominoClue D14 cartesianCount=3, elapsed 0:00:00.000036
+Eval TetrominoClue D15 cartesianCount=5, elapsed 0:00:00.000049
+Eval TetrominoClue D19 cartesianCount=5, elapsed 0:00:00.000067
+Eval TetrominoClue D10 cartesianCount=8, elapsed 0:00:00.000052
+Eval TetrominoClue A1 cartesianCount=10, elapsed 0:00:00.000059
+Eval TetrominoClue A8 cartesianCount=24, elapsed 0:00:00.000135
+Eval TetrominoClue A3 cartesianCount=27, elapsed 0:00:00.000144
 solve: TetrominoClue(name=A3,length=3,value: A(G-I+J),
 	referrers=[],
 	values={297,341,363,385,407,429,451,473,495,517,539}
 Variable I={29,31,37,41,43,47}
-Eval TetrominoClue A6 cartesianCount=18, elapsed 0:00:00.000251
+Eval TetrominoClue A6 cartesianCount=18, elapsed 0:00:00.000109
 solve: TetrominoClue(name=A6,length=3,value: GJ+I,
 	referrers=[],
 	values={498,500,506,510,512,516,526,528,534,538,540,542,544,548,552,554,558}
-Eval TetrominoClue D18 cartesianCount=60, elapsed 0:00:00.000310
+Eval TetrominoClue D18 cartesianCount=60, elapsed 0:00:00.000328
 solve: TetrominoClue(name=D18,length=3,value: DI+EJ,
 	referrers=[],
 	values={458,464,482,494,500,506,512,514,520,524,536,538,542,550,554,556,562,568,580,584,33 more,802}
-Eval TetrominoClue D17 cartesianCount=80, elapsed 0:00:00.000353
-Eval TetrominoClue A4 cartesianCount=90, elapsed 0:00:00.000340
+Eval TetrominoClue D17 cartesianCount=80, elapsed 0:00:00.000359
+Eval TetrominoClue A4 cartesianCount=90, elapsed 0:00:00.000361
 solve: TetrominoClue(name=A4,length=3,value: A(C-I)-B,
 	referrers=[],
 	values={321,323,329,333,335,365,367,373,377,379,387,389,395,399,401,409,411,417,421,423,24 more,555}
-Eval TetrominoClue D20 cartesianCount=90, elapsed 0:00:00.000323
+Eval TetrominoClue D20 cartesianCount=90, elapsed 0:00:00.000338
 solve: TetrominoClue(name=D20,length=3,value: BI+CF,
 	referrers=[],
 	values={651,659,671,685,693,705,709,717,729,747,755,767,787,795,807,825,833,845,855,861,18 more,995}
 Variable B={17,19,23}
-Eval TetrominoClue D15 cartesianCount=3, elapsed 0:00:00.000073
+Eval TetrominoClue D15 cartesianCount=3, elapsed 0:00:00.000045
 solve: TetrominoClue(name=D15,length=3,value: BDF,
 	referrers=[],
 	values={102,114,138}
-Eval TetrominoClue D19 cartesianCount=3, elapsed 0:00:00.000076
+Eval TetrominoClue D19 cartesianCount=3, elapsed 0:00:00.000245
 solve: TetrominoClue(name=D19,length=3,value: (A-J)^H-BL,
 	referrers=[],
 	values={725,777,803}
-Eval TetrominoClue A4 cartesianCount=54, elapsed 0:00:00.000229
+Eval TetrominoClue A4 cartesianCount=54, elapsed 0:00:00.000258
 solve: TetrominoClue(name=A4,length=3,value: A(C-I)-B,
 	referrers=[],
 	values={329,333,335,373,377,379,395,399,401,417,421,423,439,443,445,483,487,489,505,509,7 more,555}
-Eval TetrominoClue D20 cartesianCount=54, elapsed 0:00:00.000237
+Eval TetrominoClue D20 cartesianCount=54, elapsed 0:00:00.000240
 solve: TetrominoClue(name=D20,length=3,value: BI+CF,
 	referrers=[],
 	values={729,747,755,767,787,795,807,825,833,845,855,861,863,869,871,875,879,881,889,891,10 more,995}
-Eval TetrominoClue A5 cartesianCount=90, elapsed 0:00:00.000389
+Eval TetrominoClue A5 cartesianCount=90, elapsed 0:00:00.000457
 solve: TetrominoClue(name=A5,length=3,value: D(B+C+E+J),
 	referrers=[],
 	values={468,474,480,486,492,498,504,510,516,522,528,534,540,546,552}
 Variable E={53,59,61,67,71,73}
-Eval TetrominoClue A1 cartesianCount=6, elapsed 0:00:00.000054
+Eval TetrominoClue A1 cartesianCount=6, elapsed 0:00:00.000062
 solve: TetrominoClue(name=A1,length=3,value: EF,
 	referrers=[],
 	values={106,118,122,134,142,146}
-Eval TetrominoClue D18 cartesianCount=36, elapsed 0:00:00.000179
+Eval TetrominoClue D18 cartesianCount=36, elapsed 0:00:00.000187
 solve: TetrominoClue(name=D18,length=3,value: DI+EJ,
 	referrers=[],
 	values={458,464,482,494,500,506,512,514,520,524,536,538,542,550,554,556,562,568,580,584,13 more,652}
-Eval TetrominoClue D17 cartesianCount=48, elapsed 0:00:00.000249
-Eval TetrominoClue A5 cartesianCount=54, elapsed 0:00:00.000282
-Eval TetrominoClue A2 cartesianCount=144, elapsed 0:00:00.000666
+Eval TetrominoClue D17 cartesianCount=48, elapsed 0:00:00.000234
+Eval TetrominoClue A5 cartesianCount=54, elapsed 0:00:00.000365
+Eval TetrominoClue A2 cartesianCount=144, elapsed 0:00:00.000753
 solve: TetrominoClue(name=A2,length=3,value: JK+(G-I)/D,
 	referrers=[],
 	values={127,129,131,133,141,143,145,147,169,171,173,175,211,213,215,217,225,227,229,231,12 more,315}
@@ -526,17 +529,17 @@ Solve Error: Entry D11 (null) no solution!
 Solve Error: Entry D12 (null) no solution!
 Solve Error: Entry D13 (null) no solution!
 Solve Error: Entry D14 (null) no solution!
-Eval TetrominoClue D15 cartesianCount=3, elapsed 0:00:00.000093
-Eval TetrominoClue D19 cartesianCount=3, elapsed 0:00:00.000122
-Eval TetrominoClue A1 cartesianCount=6, elapsed 0:00:00.000077
-Eval TetrominoClue A3 cartesianCount=18, elapsed 0:00:00.000115
-Eval TetrominoClue A6 cartesianCount=18, elapsed 0:00:00.000417
-Eval TetrominoClue D18 cartesianCount=36, elapsed 0:00:00.000311
-Eval TetrominoClue A4 cartesianCount=54, elapsed 0:00:00.000269
+Eval TetrominoClue D15 cartesianCount=3, elapsed 0:00:00.000070
+Eval TetrominoClue D19 cartesianCount=3, elapsed 0:00:00.000061
+Eval TetrominoClue A1 cartesianCount=6, elapsed 0:00:00.000051
+Eval TetrominoClue A3 cartesianCount=18, elapsed 0:00:00.000107
+Eval TetrominoClue A6 cartesianCount=18, elapsed 0:00:00.000085
+Eval TetrominoClue D18 cartesianCount=36, elapsed 0:00:00.000187
+Eval TetrominoClue A4 cartesianCount=54, elapsed 0:00:00.000275
 solve: TetrominoClue(name=A4,length=3,value: A(C-I)-B,
 	referrers=[],
 	values={329,333,335,373,377,379,395,399,401,417,421,423,439,443,445,483,487,489,505,509,5 more,549}
-Eval TetrominoClue D20 cartesianCount=54, elapsed 0:00:00.000254
+Eval TetrominoClue D20 cartesianCount=54, elapsed 0:00:00.000235
 Solve Error: Entry A1 (null) no solution!
 Solve Error: Entry A4 (null) no solution!
 Solve Error: Entry A7 (null) no solution!
@@ -557,8 +560,8 @@ Solve Error: Entry D11 (null) no solution!
 Solve Error: Entry D12 (null) no solution!
 Solve Error: Entry D13 (null) no solution!
 Solve Error: Entry D14 (null) no solution!
-Eval TetrominoClue A4 cartesianCount=54, elapsed 0:00:00.000342
-Clue/Variable iterations=180, updates=116, elapsed 0:00:00.133272
+Eval TetrominoClue A4 cartesianCount=54, elapsed 0:00:00.000316
+Clue/Variable iterations=180, updates=117, elapsed 0:00:00.104273
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue A1, EF, values={106,118,122,134,142,146}

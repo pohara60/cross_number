@@ -3,11 +3,9 @@ library different;
 import 'package:collection/collection.dart';
 import 'package:powers/powers.dart';
 
-import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
 import '../puzzle.dart';
-import '../variable.dart';
 import 'clue.dart';
 import 'puzzle.dart';
 

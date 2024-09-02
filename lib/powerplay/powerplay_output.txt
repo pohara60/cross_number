@@ -49,7 +49,7 @@ solve: PowerPlayEntry(name=A7,length=2,value: #square,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
 	values={16,25,36,49,64,81},
 	digits=[{1..4,6,8},{1,4..6,9}]
-Eval PowerPlayEntry A8 cartesianCount=90, elapsed 0:00:00.004156
+Eval PowerPlayEntry A8 cartesianCount=90, elapsed 0:00:00.007911
 solve: PowerPlayEntry(name=A8,length=5,value: $power D6,
 	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
 	values={10000,10648,12167,13824,14641,15625,17576,19683,20736,21952,24389,27000,28561,29791,32768,35937,38416,39304,42875,46656,13 more,97336},
@@ -87,12 +87,13 @@ solve: PowerPlayEntry(name=A7,length=2,value: #square,
 	identities=[A7[0]=D3[1],A7[1]=D4[1]],referrers=[D3,D4],
 	values={16,25,36,49,64},
 	digits=[{1..4,6},{4..6,9}]
-Eval PowerPlayEntry A8 cartesianCount=5, elapsed 0:00:00.000282
+Eval PowerPlayEntry A8 cartesianCount=5, elapsed 0:00:00.000116
 solve: PowerPlayEntry(name=A8,length=5,value: $power D6,
 	identities=[A8[0]=D1[2],A8[1]=D2[2],A8[2]=D6[1],A8[3]=D3[2],A8[4]=D4[2]],referrers=[D1,D2,D6,D3,D4],
 	values={46656},
 	digits=[{4},{6},{6},{5},{6}]
 Entry D6={36}
+Entry A7={16,25,49,64}
 solve: PowerPlayEntry(name=D1,length=3,value: #square,
 	identities=[D1[0]=A1[0],D1[1]=A5[0],D1[2]=A8[0]],referrers=[A1,A5,A8],
 	values={144,324},
@@ -145,7 +146,7 @@ solve: PowerPlayEntry(name=D2,length=3,value: #square,
 	identities=[D2[0]=A1[1],D2[1]=A5[1],D2[2]=A8[1]],referrers=[A1,A5,A8],
 	values={196},
 	digits=[{1},{9},{6}]
-Clue/Variable iterations=39, updates=28, elapsed 0:00:00.032466
+Clue/Variable iterations=39, updates=29, elapsed 0:00:00.052961
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #square, values={11449}

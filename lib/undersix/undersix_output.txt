@@ -64,7 +64,7 @@ UPDATES-----------------------------
 Solve Error: Entry A () no solution!
 Solve Error: Entry B () no solution!
 Eval UnderSixEntry C cartesianCount=421875000 Exception
-Eval UnderSixEntry D cartesianCount=27000, elapsed 0:00:00.289715
+Eval UnderSixEntry D cartesianCount=27000, elapsed 0:00:00.262779
 solve: UnderSixEntry(name=D,length=6,value: ab,
 	identities=[D[0]=g[0],D[2]=e[2],D[3]=f[2],D[5]=h[0]],referrers=[g,e,f,h],
 	values={101153,101453,104342,121223,130005,130325,141102,141152,213332},
@@ -73,7 +73,7 @@ Entry a={203,241,251,253,321,325,351,352,401..403,405,503,514,532}
 Entry b={203,241,251,253,321,325,351,352,401..403,405,503,514,532}
 Solve Error: Entry E () no solution!
 Solve Error: Entry F () no solution!
-Eval UnderSixEntry G cartesianCount=32400, elapsed 0:00:00.310077
+Eval UnderSixEntry G cartesianCount=32400, elapsed 0:00:00.205183
 solve: UnderSixEntry(name=G,length=6,value: Ec',
 	identities=[G[0]=g[2],G[2]=e[4],G[3]=f[4],G[5]=h[2]],referrers=[g,e,f,h],
 	values={101153,101453,103250,104342,112140,113420,114030,115020,121223,123120,124430,125330,130005,130325,132300,133250,140120,140400,141102,141152,10 more,224120},
@@ -81,7 +81,7 @@ solve: UnderSixEntry(name=G,length=6,value: Ec',
 Entry E={203,210,230,240,241,250,251,253,302,310,320,321,325,350..352,401..403,405,12 more,540}
 Entry c={104,123..125,134,135,142,145,152..154,203,204,213,214,234,235,253,254,302,15 more,523}
 Solve Error: Entry d () no solution!
-Eval UnderSixEntry e cartesianCount=3360, elapsed 0:00:00.024417
+Eval UnderSixEntry e cartesianCount=3360, elapsed 0:00:00.020546
 solve: UnderSixEntry(name=e,length=5,value: Ac,
 	identities=[e[1]=C[2],e[2]=D[2],e[3]=E[2],e[4]=G[2]],referrers=[C,D,E,G],
 	values={24440,32400,33350,35420,43400,55350},
@@ -91,7 +91,7 @@ Entry c={104,123,124,135,145,154}
 Eval UnderSixEntry f cartesianCount=2332800 Exception
 Solve Error: Entry g () no solution!
 Solve Error: Entry h () no solution!
-Eval UnderSixEntry D cartesianCount=225, elapsed 0:00:00.001494
+Eval UnderSixEntry D cartesianCount=225, elapsed 0:00:00.001591
 solve: UnderSixEntry(name=D,length=6,value: ab,
 	identities=[D[0]=g[0],D[2]=e[2],D[3]=f[2],D[5]=h[0]],referrers=[g,e,f,h],
 	values={104342,213332},
@@ -102,33 +102,37 @@ solve: UnderSixEntry(name=A,length=3,value: ,
 	identities=[A[0]=a[0],A[1]=b[0]],referrers=[a,b],
 	values={240,450},
 	digits=[{2,4},{4,5},{0}]
-Eval UnderSixEntry C cartesianCount=288000, elapsed 0:00:02.062760
+Eval UnderSixEntry C cartesianCount=288000, elapsed 0:00:01.501716
 solve: UnderSixEntry(name=C,length=6,value: B( F + a - g ),
 	identities=[C[0]=a[2],C[1]=b[2],C[2]=e[1],C[3]=f[1],C[4]=c[2],C[5]=d[2]],referrers=[a,b,e,f,c,d],
 	values={125330},
 	digits=[{1},{2},{5},{3},{3},{0}]
+Entry G={101153,101453,103250,104342,112140,113420,114030,115020,121223,123120,124430,130005,130325,132300,133250,140120,140400,141102,141152,144200,9 more,224120}
 Entry B={415}
+Entry E={203,210,230,240,241,250,251,253,302,310,320,321,325,350..352,401..403,405,11 more,540}
 Entry F={122,123,132,133,142,143,152,153,220,221,230,231,240,241,250,251,320,321,330,331,4 more,351}
 Entry a={203,401}
 Entry g={121,122,131,132,141,142,151,152,221,222,231,232,241,242,251,252}
-Eval UnderSixEntry G cartesianCount=186, elapsed 0:00:00.001550
+Eval UnderSixEntry G cartesianCount=186, elapsed 0:00:00.001145
 solve: UnderSixEntry(name=G,length=6,value: Ec',
 	identities=[G[0]=g[2],G[2]=e[4],G[3]=f[4],G[5]=h[2]],referrers=[g,e,f,h],
 	values={130005,130325},
 	digits=[{1},{3},{0},{0,3},{0,2},{5}]
 Entry E={325,405}
 Entry c={104,123}
-Eval UnderSixEntry e cartesianCount=4, elapsed 0:00:00.000161
+Eval UnderSixEntry e cartesianCount=4, elapsed 0:00:00.000068
 solve: UnderSixEntry(name=e,length=5,value: Ac,
 	identities=[e[1]=C[2],e[2]=D[2],e[3]=E[2],e[4]=G[2]],referrers=[C,D,E,G],
 	values={55350},
 	digits=[{5},{5},{3},{5},{0}]
 Entry A={450}
 Entry c={123}
+Entry F={122,132,133,142,143,152,153,220,221,230,231,240,241,250,251,320,321,330,331,340,3 more,351}
 solve: UnderSixEntry(name=a,length=3,value: ,
 	identities=[a[0]=A[0],a[2]=C[0]],referrers=[A,C],
 	values={401},
 	digits=[{4},{0},{1}]
+Entry b={203,514,532}
 solve: UnderSixEntry(name=b,length=3,value: ,
 	identities=[b[0]=A[1],b[2]=C[1]],referrers=[A,C],
 	values={532},
@@ -141,7 +145,7 @@ solve: UnderSixEntry(name=g,length=3,value: ,
 	identities=[g[0]=D[0],g[1]=E[0],g[2]=G[0]],referrers=[D,E,G],
 	values={231,241},
 	digits=[{2},{3,4},{1}]
-Eval UnderSixEntry f cartesianCount=552, elapsed 0:00:00.003685
+Eval UnderSixEntry f cartesianCount=552, elapsed 0:00:00.002873
 solve: UnderSixEntry(name=f,length=5,value: F(d - h),
 	identities=[f[1]=C[3],f[2]=D[3],f[3]=F[0],f[4]=G[3]],referrers=[C,D,F,G],
 	values={43310},
@@ -153,25 +157,25 @@ solve: UnderSixEntry(name=h,length=3,value: ,
 	identities=[h[0]=D[5],h[1]=F[2],h[2]=G[5]],referrers=[D,F,G],
 	values={225},
 	digits=[{2},{2},{5}]
-Eval UnderSixEntry C cartesianCount=2, elapsed 0:00:00.000145
+Eval UnderSixEntry C cartesianCount=2, elapsed 0:00:00.000057
 solve: UnderSixEntry(name=C,length=6,value: B( F + a - g ),
 	identities=[C[0]=a[2],C[1]=b[2],C[2]=e[1],C[3]=f[1],C[4]=c[2],C[5]=d[2]],referrers=[a,b,e,f,c,d],
 	values={125330},
 	digits=[{1},{2},{5},{3},{3},{0}]
 Entry g={241}
-Eval UnderSixEntry G cartesianCount=2, elapsed 0:00:00.000105
+Eval UnderSixEntry G cartesianCount=2, elapsed 0:00:00.000042
 solve: UnderSixEntry(name=G,length=6,value: Ec',
 	identities=[G[0]=g[2],G[2]=e[4],G[3]=f[4],G[5]=h[2]],referrers=[g,e,f,h],
 	values={130005},
 	digits=[{1},{3},{0},{0},{0},{5}]
 Entry E={405}
-Eval UnderSixEntry f cartesianCount=4, elapsed 0:00:00.000112
+Eval UnderSixEntry f cartesianCount=4, elapsed 0:00:00.000058
 solve: UnderSixEntry(name=f,length=5,value: F(d - h),
 	identities=[f[1]=C[3],f[2]=D[3],f[3]=F[0],f[4]=G[3]],referrers=[C,D,F,G],
 	values={43310},
 	digits=[{4},{3},{3},{1},{0}]
 Entry d={530}
-Clue/Variable iterations=50, updates=39, elapsed 0:00:02.734873
+Clue/Variable iterations=47, updates=41, elapsed 0:00:02.020497
 SOLUTION-----------------------------
 Puzzle Summary
 A, , values={450}

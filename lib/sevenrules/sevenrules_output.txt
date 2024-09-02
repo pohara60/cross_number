@@ -74,7 +74,7 @@ solve: SevenRulesEntry(name=A9,length=2,value: #sumtwootherentry,
 	identities=[A9[1]=D6[2]],referrers=[D6],
 	values={25,34,43,52,59,61,68,70,77,86,95},
 	digits=[{2..9},{0..9}]
-Eval SevenRulesEntry D1 cartesianCount=450, elapsed 0:00:00.018523
+Eval SevenRulesEntry D1 cartesianCount=450, elapsed 0:00:00.024754
 solve: SevenRulesEntry(name=D1,length=3,value: $prime $jumble D6,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4],
 	values={491,563,653},
@@ -88,7 +88,7 @@ solve: SevenRulesEntry(name=D3,length=3,value: ,
 	identities=[D3[0]=A2[1],D3[2]=A7[1]],referrers=[A2,A7,D5],
 	values={102..108,112..118,122..127,610 more,998},
 	digits=[{1..9},{0..9},{2..8}]
-Eval SevenRulesEntry D5 cartesianCount=630, elapsed 0:00:00.070161
+Eval SevenRulesEntry D5 cartesianCount=630, elapsed 0:00:00.081759
 solve: SevenRulesEntry(name=D5,length=3,value: D3 + #prime,
 	identities=[D5[0]=A4[1],D5[2]=A8[1]],referrers=[A4,A8],
 	values={106,115,124,133,142,149,151,158,160,167,176,185,194,205,214,223,232,239,241,248,93 more,894},
@@ -114,6 +114,8 @@ solve: SevenRulesEntry(name=A7,length=3,value: #ascending,
 	identities=[A7[0]=D7[0],A7[1]=D3[2],A7[2]=D6[1]],referrers=[D7,D3,D6],
 	values={124},
 	digits=[{1},{2},{4}]
+Entry D3={102..108,112..118,122,123,125..128,526 more,892}
+Entry D5={106,115,133,142,149,151,158,160,167,176,185,194,205,214,223,232,239,241,248,250,92 more,894}
 solve: SevenRulesEntry(name=A8,length=3,value: #palindrome,
 	identities=[A8[1]=D5[2],A8[2]=D7[1]],referrers=[D5,D7],
 	values={545,626,696},
@@ -122,21 +124,24 @@ solve: SevenRulesEntry(name=A9,length=2,value: #sumtwootherentry,
 	identities=[A9[1]=D6[2]],referrers=[D6],
 	values={59},
 	digits=[{5},{9}]
-Eval SevenRulesEntry D1 cartesianCount=3, elapsed 0:00:00.000373
+Entry A1={43,61}
+Eval SevenRulesEntry D1 cartesianCount=3, elapsed 0:00:00.000374
 solve: SevenRulesEntry(name=D1,length=3,value: $prime $jumble D6,
 	identities=[D1[0]=A1[0],D1[1]=A4[0]],referrers=[A1,A4],
 	values={491},
 	digits=[{4},{9},{1}]
+Entry D5={106,115,133,142,149,151,158,160,167,176,185,194,205,214,223,232,239,241,248,250,91 more,894}
 Entry D6={149,941}
 solve: SevenRulesEntry(name=D2,length=2,value: #square,
 	identities=[D2[0]=A2[0],D2[1]=A4[2]],referrers=[A2,A4],
 	values={25},
 	digits=[{2},{5}]
+Entry D7={16}
 solve: SevenRulesEntry(name=D3,length=3,value: ,
 	identities=[D3[0]=A2[1],D3[2]=A7[1]],referrers=[A2,A7,D5],
 	values={322,392,502,572},
 	digits=[{3,5},{0,2,7,9},{2}]
-Eval SevenRulesEntry D5 cartesianCount=4, elapsed 0:00:00.000188
+Eval SevenRulesEntry D5 cartesianCount=4, elapsed 0:00:00.000185
 solve: SevenRulesEntry(name=D5,length=3,value: D3 + #prime,
 	identities=[D5[0]=A4[1],D5[2]=A8[1]],referrers=[A4,A8],
 	values={759},
@@ -167,7 +172,7 @@ solve: SevenRulesEntry(name=D3,length=3,value: ,
 	identities=[D3[0]=A2[1],D3[2]=A7[1]],referrers=[A2,A7,D5],
 	values={392},
 	digits=[{3},{9},{2}]
-Clue/Variable iterations=41, updates=31, elapsed 0:00:00.134398
+Clue/Variable iterations=41, updates=35, elapsed 0:00:00.155030
 SOLUTION-----------------------------
 Puzzle Summary
 A1, #prime, values={43}
