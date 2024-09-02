@@ -1,7 +1,5 @@
 library increasingfibonnaci;
 
-import 'dart:math';
-
 import 'package:crossnumber/generators.dart';
 
 import '../clue.dart';
@@ -101,6 +99,33 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
     puzzle.finalize();
 
     super.initCrossnumber();
+  }
+
+  @override
+  // ignore: unnecessary_overrides
+  void solve([bool iteration = true]) {
+    puzzle.clues['I']!.answer = 15;
+    puzzle.clues['II']!.answer = 24;
+    puzzle.clues['III']!.answer = 39;
+    puzzle.clues['IV']!.answer = 40;
+    puzzle.clues['V']!.answer = 65;
+    puzzle.clues['VI']!.answer = 104;
+    puzzle.clues['VII']!.answer = 120;
+    puzzle.clues['VIII']!.answer = 195;
+    puzzle.clues['IX']!.answer = 312;
+    puzzle.clues['X']!.answer = 520;
+    puzzle.entries['A']!.answer = 244;
+    puzzle.entries['a']!.answer = 45;
+    puzzle.entries['b']!.answer = 481;
+    puzzle.entries['B']!.answer = 21;
+    puzzle.entries['c']!.answer = 18;
+    puzzle.entries['C']!.answer = 95;
+    puzzle.entries['d']!.answer = 92;
+    puzzle.entries['D']!.answer = 68;
+    puzzle.entries['e']!.answer = 60;
+    puzzle.entries['E']!.answer = 27;
+    puzzle.entries['F']!.answer = 100;
+    super.solve(iteration);
   }
 
   List<int> fibonnaciLessThan20 = [];
@@ -207,23 +232,11 @@ class IncreasingFibonnaci extends Crossnumber<IncreasingFibonnaciPuzzle> {
         thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (!isEntry && updated) {
-      var newMin = clue.values!.reduce(min);
-      if (clue.min == null || clue.min! < newMin) clue.min = newMin;
-      var newMax = clue.values!.reduce(max);
-      if (clue.max == null || clue.max! > newMax) clue.max = newMax;
-      // Clues are defined in ascending order of value
-      for (var otherClue in thisPuzzle.clues.values) {
-        if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
-          if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
-            otherClue.min = clue.min! + 1;
-          }
-        }
-        if (romanToDecimal(otherClue.name) < romanToDecimal(clue.name)) {
-          if ((otherClue.max == null || otherClue.max! >= clue.max!)) {
-            otherClue.max = clue.max! - 1;
-          }
-        }
-      }
+      thisPuzzle.maintainClueValueOrder(
+        clue,
+        updatedVariables,
+        (String a, String b) => romanToDecimal(a) - romanToDecimal(b),
+      );
       if (clue.isSet) {
         set5Fibonnaci(clue.values!.first);
       }

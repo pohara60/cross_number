@@ -1,9 +1,5 @@
 library cyclingprimes;
 
-import 'dart:math';
-
-import 'package:collection/collection.dart';
-
 import '../clue.dart';
 import '../crossnumber.dart';
 import '../expression.dart';
@@ -297,54 +293,11 @@ class CyclingPrimes extends Crossnumber<CyclingPrimesPuzzle> {
         isFocus: isFocus, isEntry: isEntry);
     if (!isEntry && updated) {
       // Maintain clue value order
-      var newMin = clue.values!.reduce(min);
-      if (clue.min == null || clue.min! < newMin) clue.min = newMin;
-      var newMax = clue.values!.reduce(max);
-      if (clue.max == null || clue.max! > newMax) clue.max = newMax;
-      // Clues are defined in ascending order of value
-      var lowerClues = thisPuzzle.clues.values
-          .where((otherClue) => clue.name.compareTo(otherClue.name) > 0)
-          .sorted((clue, otherClue) => -clue.name.compareTo(otherClue.name));
-      var higherClues = thisPuzzle.clues.values
-          .where((otherClue) => clue.name.compareTo(otherClue.name) < 0)
-          .sorted((clue, otherClue) => clue.name.compareTo(otherClue.name));
-
-      var prevMin = clue.min!;
-      var prevMax = clue.max!;
-      for (var otherClue in lowerClues) {
-        if ((otherClue.max == null || otherClue.max! >= prevMax)) {
-          otherClue.max = prevMax - 1;
-          if (otherClue.values != null) {
-            // Remove some values
-            var removeValues = otherClue.values!
-                .where((value) => value > otherClue.max!)
-                .toList();
-            if (removeValues.isNotEmpty) {
-              otherClue.removeValues(removeValues);
-              updatedVariables.add(otherClue);
-              otherClue.max = otherClue.values!.reduce(max);
-            }
-          }
-        }
-        prevMax = otherClue.max!;
-      }
-      for (var otherClue in higherClues) {
-        if ((otherClue.min == null || otherClue.min! <= prevMin)) {
-          otherClue.min = prevMin + 1;
-          if (otherClue.values != null) {
-            // Remove some values
-            var removeValues = otherClue.values!
-                .where((value) => value < otherClue.min!)
-                .toList();
-            if (removeValues.isNotEmpty) {
-              otherClue.removeValues(removeValues);
-              updatedVariables.add(otherClue);
-              otherClue.min = otherClue.values!.reduce(min);
-            }
-          }
-        }
-        prevMin = otherClue.min!;
-      }
+      thisPuzzle.maintainClueValueOrder(
+        clue,
+        updatedVariables,
+        (String a, String b) => a.compareTo(b),
+      );
     }
     return updated;
   }

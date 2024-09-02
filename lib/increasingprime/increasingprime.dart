@@ -1,6 +1,5 @@
 library increasingprime;
 
-import 'dart:math';
 import 'package:collection/collection.dart';
 
 import '../clue.dart';
@@ -256,23 +255,11 @@ class IncreasingPrime extends Crossnumber<IncreasingPrimePuzzle> {
         thisPuzzle, clue, possibleValues, updatedVariables,
         isFocus: isFocus, isEntry: isEntry, focusClue: focusClue);
     if (!isEntry && updated) {
-      var newMin = clue.values!.reduce(min);
-      if (clue.min == null || clue.min! < newMin) clue.min = newMin;
-      var newMax = clue.values!.reduce(max);
-      if (clue.max == null || clue.max! > newMax) clue.max = newMax;
-      // Clues are defined in ascending order of value
-      for (var otherClue in thisPuzzle.clues.values) {
-        if (romanToDecimal(otherClue.name) > romanToDecimal(clue.name)) {
-          if ((otherClue.min == null || otherClue.min! <= clue.min!)) {
-            otherClue.min = clue.min! + 1;
-          }
-        }
-        if (romanToDecimal(otherClue.name) < romanToDecimal(clue.name)) {
-          if ((otherClue.max == null || otherClue.max! >= clue.max!)) {
-            otherClue.max = clue.max! - 1;
-          }
-        }
-      }
+      thisPuzzle.maintainClueValueOrder(
+        clue,
+        updatedVariables,
+        (String a, String b) => romanToDecimal(a) - romanToDecimal(b),
+      );
     }
     return updated;
   }
