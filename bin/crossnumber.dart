@@ -27,6 +27,7 @@ import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/knights2/knights2.dart';
 import 'package:crossnumber/no21/no21.dart';
+import 'package:crossnumber/numeriitaliano/numeriitaliano.dart';
 import 'package:crossnumber/opposingdigitsum/opposingdigitsum.dart';
 import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
@@ -115,7 +116,8 @@ void main(List<String> arguments) async {
     ..addCommand(TakeTwoOrThreeCommand())
     ..addCommand(DifferentCommand())
     ..addCommand(SevenRulesCommand())
-    ..addCommand(CyclingPrimesCommand());
+    ..addCommand(CyclingPrimesCommand())
+    ..addCommand(NumeriItalianoCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1240,6 +1242,30 @@ class CyclingPrimesCommand extends Command {
     // Get and print solve
     try {
       final pc = CyclingPrimes();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class NumeriItalianoCommand extends Command {
+  @override
+  final name = 'NumeriItaliano';
+  @override
+  final description = 'solve hardcoded NumeriItaliano puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = NumeriItaliano();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
