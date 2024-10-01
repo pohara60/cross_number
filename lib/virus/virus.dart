@@ -213,14 +213,46 @@ class Virus extends Crossnumber<VirusPuzzle> {
     puzzle.clues['D9']!.answer = 14;
     puzzle.clues['D11']!.answer = 17;
 
-    solveClueNoException(puzzle.clues["A6"]!);
-    solveClueNoException(puzzle.entries["A6"]!);
-    solveClueNoException(puzzle.clues["D9"]!);
-    solveClueNoException(puzzle.entries["D9"]!);
-    solveClueNoException(puzzle.clues["D7"]!);
-    solveClueNoException(puzzle.entries["D7"]!);
-    solveClueNoException(puzzle.clues["A9"]!);
-    solveClueNoException(puzzle.entries["A9"]!);
+    puzzle.clues['A2']!.answer = 811;
+    puzzle.clues['A6']!.answer = 496;
+    puzzle.clues['A8']!.answer = 11;
+    puzzle.clues['A9']!.answer = 18;
+    puzzle.clues['A10']!.answer = 784;
+    puzzle.clues['A12']!.answer = 438;
+    puzzle.clues['D1']!.answer = 54;
+    puzzle.clues['D3']!.answer = 16;
+    puzzle.clues['D4']!.answer = 448;
+    puzzle.clues['D5']!.answer = 24;
+    puzzle.clues['D7']!.answer = 984;
+    puzzle.clues['D9']!.answer = 14;
+    puzzle.clues['D10']!.answer = 73;
+    puzzle.clues['D11']!.answer = 17;
+    puzzle.entries['D1']!.answer = 51;
+    puzzle.entries['A2']!.answer = 811;
+    puzzle.entries['D3']!.answer = 16;
+    puzzle.entries['D4']!.answer = 118;
+    puzzle.entries['D5']!.answer = 21;
+    puzzle.entries['A6']!.answer = 196;
+    puzzle.entries['D7']!.answer = 981;
+    puzzle.entries['A8']!.answer = 11;
+    puzzle.entries['A9']!.answer = 18;
+    puzzle.entries['D9']!.answer = 14;
+    puzzle.entries['A10']!.answer = 781;
+    puzzle.entries['D10']!.answer = 73;
+    puzzle.entries['D11']!.answer = 17;
+    puzzle.entries['A12']!.answer = 138;
+
+    // solveClueNoException(puzzle.clues["A6"]!);
+    // solveClueNoException(puzzle.entries["A6"]!);
+    // solveClueNoException(puzzle.clues["D9"]!);
+    // solveClueNoException(puzzle.entries["D9"]!);
+    // solveClueNoException(puzzle.clues["D7"]!);
+    // solveClueNoException(puzzle.entries["D7"]!);
+    // solveClueNoException(puzzle.clues["A9"]!);
+    // solveClueNoException(puzzle.entries["A9"]!);
+    for (var clueName in puzzle.clues.keys) {
+      solveClueNoException(puzzle.clues[clueName]!);
+    }
     super.solve(true);
   }
 
@@ -248,7 +280,7 @@ class Virus extends Crossnumber<VirusPuzzle> {
     var clue = v as VirusClue;
     var updated = false;
     if (clue.valueDesc != null && clue.valueDesc != '') {
-      updated = puzzle.solveExpressionEvaluator(
+      updated = puzzle.solveRelatedClues(
           clue, clue.exp, possibleValue, possibleVariables!, validClue, null);
     } else {
       // Values may have been set by other Clue

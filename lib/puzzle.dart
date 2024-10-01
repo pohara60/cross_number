@@ -1335,6 +1335,309 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     return false;
   }
 
+  // Clue solver invokes generic expression evaluator with validator
+  bool solveRelatedClues(
+    ExpressionClue clue,
+    ExpressionEvaluator exp,
+    Set<int> possibleValue,
+    Map<Variable, Set<int>>? possibleVariables, [
+    bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
+    ExpressionCallback? callback,
+    int maxCount = 1000000,
+  ]) {
+    var updated = false;
+
+    // Get related variables
+    var relatedVariables = relatedVariablesForVariable(clue);
+    if (relatedVariables == null) {
+      throw PuzzleException(
+          'Variable ${clue.name} does not have related variables');
+    }
+    // print(
+    //     '${clue.variableType} ${clue.name}, relatedVariables=${relatedVariables.map((e) => e.name)}');
+
+    // solveClue does not know to initialise the relatedVariables
+    for (var variableRef in relatedVariables) {
+      if (variableRef is Clue && variableRef.initialise()) updated = true;
+    }
+
+    var maxCount = 10000000;
+    var maxIndex = relatedVariables.length - 1;
+
+    bool solveNextClue(
+      List<Variable> relatedVariables,
+      int index,
+      List<Variable> variables,
+      List<int> product,
+      List<Variable> solvedVariables,
+      List<int> solvedVariableValues,
+      int maxCount,
+    ) {
+      // Function to solve one variable and recurse for others
+      var updated = false;
+      var variable = relatedVariables[index] as ExpressionClue;
+      var variableIndex = variables.indexOf(variable);
+      var nextVariables = variables;
+      var nextProduct = product;
+      var variableNames = <String>[];
+      var nextVariableNames = variableNames;
+      var newVariables = <Variable>[];
+      var count = 1;
+      var firstVariableIndex = relatedVariables.indexOf(clue);
+      // if (index > 0) {
+      //   print('solveAllClues: index=$index, variable=${variable.name}');
+      // }
+
+      bool solveNextClueValue(int value) {
+        // Check if variable value is constrained by earlier variable evaluation
+        if (variableIndex != -1 && product[variableIndex] != value) {
+          return false;
+        }
+        // Check duplicates for variables of the same type
+        var types = newVariables.map((e) => e.variableType).toSet();
+        for (var type in types) {
+          var values = <int>{};
+          for (var i = 0; i < nextVariables.length; i++) {
+            if (nextVariables[i].variableType == type) {
+              var value = nextProduct[i];
+              if (values.contains(value)) {
+                return false;
+              }
+              values.add(value);
+            }
+          }
+        }
+
+        var valid = validValue == null
+            ? variable.digitsMatch(value)
+            : validValue(variable, value, nextVariableNames, nextProduct);
+        if (!valid) return false;
+        solvedVariableValues.add(value);
+
+        // Recurse to next variable?
+        if (index < maxIndex) {
+          // Add this variable and value to product
+          try {
+            updated = solveNextClue(
+                relatedVariables,
+                index + 1,
+                nextVariables,
+                nextProduct,
+                solvedVariables,
+                solvedVariableValues,
+                maxCount ~/ count);
+          } on SolveException {
+            // Return values so far
+            var i = 0;
+            for (var variable in nextVariables) {
+              possibleVariables![variable]!.add(nextProduct[i++]);
+            }
+            possibleValue.add(solvedVariableValues[firstVariableIndex]);
+            // Do not try this index again
+            maxIndex = index;
+          }
+        } else {
+          var i = 0;
+          for (var variable in nextVariables) {
+            possibleVariables![variable]!.add(nextProduct[i++]);
+          }
+          possibleValue.add(solvedVariableValues[firstVariableIndex]);
+        }
+        solvedVariableValues.removeLast();
+        return true;
+      }
+
+      // Mo expression?
+      if (variable.expressions.isEmpty) {
+        // Values may have been set by other Clue
+        var variableValues = variable.values ?? variable.getValuesFromDigits();
+        if (variableValues != null) {
+          // Recurse for each of the values
+          solvedVariables.add(variable);
+          // With different types of variables, we have to allow duplicates in the product
+          try {
+            // nextProduct = product + newProduct;
+            for (var value in variableValues) {
+              solveNextClueValue(value);
+            }
+          } on ExpressionInvalid {
+            // Illegal values
+          }
+          solvedVariables.removeLast();
+          return updated;
+        } else {
+          // No further action
+          // Should return progress so far?
+          throw SolveException();
+        }
+      } else {
+        // Just support one expression per clue for now
+        var exp = variable.exp;
+
+        var count = 0;
+
+        var newVariableValues = <List<int>>[];
+
+        try {
+          count = getVariables(
+            [variable],
+            [exp],
+            possibleValue,
+            possibleVariables!,
+            newVariables,
+            newVariableValues,
+            maxCount,
+            variables,
+            solvedVariables,
+            solvedVariableValues,
+          );
+        } on SolveException {
+          // Exceeded maxCount
+          count = 0;
+          if (index > 0) rethrow;
+        }
+        // print(
+        //     '${clue.variableType} ${clue.name}, index=$index, variable=${variable.name}, count=$count');
+
+        // No variables, or have variable product count
+        if (newVariableValues.isEmpty || count > 0) {
+          nextVariableNames =
+              variableNames + newVariables.map((e) => e.name).toList();
+          for (var variable in newVariables) {
+            if (!possibleVariables!.containsKey(variable)) {
+              possibleVariables[variable] = <int>{};
+            }
+          }
+          nextVariables = variables + newVariables;
+
+          solvedVariables.add(variable);
+          // With different types of variables, we have to allow duplicates in the product
+          for (var newProduct in newVariableValues.isEmpty
+              ? [<int>[]]
+              : cartesian(newVariableValues, true)) {
+            try {
+              var knownValue =
+                  variableIndex != -1 ? product[variableIndex] : null;
+              nextProduct = product + newProduct;
+              for (var value in exp.generate(
+                  knownValue ?? 1,
+                  knownValue ?? variable.max,
+                  nextVariables,
+                  nextProduct,
+                  variable.values)) {
+                solveNextClueValue(value);
+              }
+            } on ExpressionInvalid {
+              // Illegal values
+            }
+          }
+          solvedVariables.removeLast();
+          return updated;
+        } else {
+          if (index == 0 && clue == variable) {
+            // If count is zero then have possible values, and can check them
+            var removePossibleValue = <int>{};
+            var variable = relatedVariables[0] as ExpressionClue;
+            for (var value in possibleValue) {
+              var valid = validValue == null
+                  ? clue.digitsMatch(value)
+                  : validValue(variable, value, [], []);
+              if (!valid) removePossibleValue.add(value);
+            }
+            if (removePossibleValue.isNotEmpty) {
+              possibleValue.removeAll(removePossibleValue);
+            }
+            // Get values for other variables
+            // variables.clear;
+            // possibleVariables!.clear();
+            // for (var variable
+            //     in relatedVariables.where((element) => element != clue)) {
+            //   if (variable is VariableClue) {
+            //     var variableValues =
+            //         variable.values ?? variable.getValuesFromDigits();
+            //     if (variableValues != null) {
+            //       variables.add(variable);
+            //       possibleVariables[variable] = variableValues
+            //           .where((element) => validClue(variable, element, [], []))
+            //           .toSet();
+            //     }
+            //   }
+            // }
+          } else {
+            possibleValue.clear();
+            throw SolveException('Cannot compute ${variable.name}');
+          }
+          return updated;
+        }
+      }
+    }
+
+    var solveVariables =
+        clue == relatedVariables.first ? relatedVariables : [clue];
+    maxIndex = solveVariables.length - 1;
+    updated = solveNextClue(solveVariables, 0, [], [], [], [], maxCount);
+
+    return updated;
+  }
+
+  var allRelatedVariables = <List<Variable>>[];
+  bool initAllRelatedVariables = true;
+
+  List<Variable>? relatedVariablesForVariable(Variable variable) {
+    if (initAllRelatedVariables) {
+      getRelatedVariables();
+      initAllRelatedVariables = false;
+    }
+    for (var relatedVariables in allRelatedVariables) {
+      if (relatedVariables.contains(variable)) {
+        return relatedVariables;
+      }
+    }
+    return null;
+  }
+
+  void getRelatedVariables() {
+    // Find ordered sets of solvable variables that refer to each other
+    var remainingVariables = allVariables.values
+        .where((variable) => variable.solve != null)
+        .toList();
+    while (remainingVariables.isNotEmpty) {
+      var variable = remainingVariables.removeAt(0);
+      if (variable is Expression) {
+        var relatedVariables = [variable];
+        remainingVariables.remove(variable);
+        var index = 0;
+        while (index < relatedVariables.length) {
+          var variable = relatedVariables[index++];
+
+          // Add variables this variable references
+          for (var variableRef in variable.variableClueReferences) {
+            if (variableRef is Expression) {
+              if (!relatedVariables.contains(variableRef)) {
+                relatedVariables.add(variableRef);
+              }
+              remainingVariables.remove(variableRef);
+            }
+          }
+          // Add variables that reference this variable
+          var variablesToRemove = <Variable>[];
+          for (var otherVariable in remainingVariables) {
+            if (otherVariable.variableClueReferences.contains(variable)) {
+              relatedVariables.add(otherVariable);
+              variablesToRemove.add(otherVariable);
+            }
+          }
+          remainingVariables.removeWhere((v) => variablesToRemove.contains(v));
+        }
+        allRelatedVariables.add(relatedVariables);
+      }
+    }
+    for (var relatedVariables in allRelatedVariables) {
+      print(
+          'relatedVariables=${relatedVariables.map((e) => '${e is EntryMixin ? 'E' : ''}${e.name}').join(',')}');
+    }
+  }
+
   void getVariableValues(
     List<Variable> listClues,
     List<ExpressionEvaluator> exps,

@@ -57,6 +57,7 @@ import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/undersix/undersix.dart';
 import 'package:crossnumber/virus/virus.dart';
 import 'package:crossnumber/wheels/wheels.dart';
+import 'package:crossnumber/workingback/workingback.dart';
 
 const help = 'help';
 const program = 'crossnumber';
@@ -117,7 +118,8 @@ void main(List<String> arguments) async {
     ..addCommand(DifferentCommand())
     ..addCommand(SevenRulesCommand())
     ..addCommand(CyclingPrimesCommand())
-    ..addCommand(NumeriItalianoCommand());
+    ..addCommand(NumeriItalianoCommand())
+    ..addCommand(WorkingBackCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1266,6 +1268,30 @@ class NumeriItalianoCommand extends Command {
     // Get and print solve
     try {
       final pc = NumeriItaliano();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class WorkingBackCommand extends Command {
+  @override
+  final name = 'WorkingBack';
+  @override
+  final description = 'solve hardcoded WorkingBack puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = WorkingBack();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

@@ -1,0 +1,592 @@
+Connecting to VM Service at ws://127.0.0.1:65302/xBLqWnRV4S4=/ws
+Puzzle
+WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+WorkingBackEntry(name=A3,length=3,value: #palindrome,
+	identities=[A3[0]=D3[0],A3[1]=D4[0],A3[2]=D5[0]],referrers=[D3,D4,D5,A1],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=A9,length=2,value: #triangular,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=A10,length=2,value: #triangular,
+	identities=[A10[0]=D10[0],A10[1]=D4[2]],referrers=[D10,D4,A6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=A11,length=2,value: #triangular,
+	identities=[A11[0]=D8[1],A11[1]=D9[1]],referrers=[D8,D9],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=A15,length=3,value: D4 - $reverse D4,
+	identities=[A15[0]=D10[2],A15[2]=D13[1]],referrers=[D10,D13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=D1,length=2,value: #fibonacci,
+	identities=[D1[0]=A1[0]],referrers=[A1],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=D3,length=2,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[2]],referrers=[A3,A6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=D4,length=3,value: $reverse D9,
+	identities=[D4[0]=A3[1],D4[1]=A7[0],D4[2]=A10[1]],referrers=[A3,A7,A10,A15,D5],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+WorkingBackEntry(name=D9,length=3,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A11[1],D9[2]=A14[1]],referrers=[A9,A11,A14,D4],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+WorkingBackEntry(name=D10,length=3,value: #palindrome,
+	identities=[D10[0]=A10[0],D10[1]=A12[1],D10[2]=A15[0]],referrers=[A10,A12,A15,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+WorkingBackEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A12[0],D12[1]=A14[2]],referrers=[A12,A14],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+WorkingBackEntry(name=D13,length=2,value: #cube,
+	identities=[D13[1]=A15[2]],referrers=[A15],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+UPDATES-----------------------------
+relatedVariables=EA1,EA3
+relatedVariables=EA6,EA10
+relatedVariables=EA7,EA12,ED12,EA14
+relatedVariables=EA9,ED2
+relatedVariables=EA11
+relatedVariables=EA15,ED4,ED9,ED5,ED10
+relatedVariables=ED1
+relatedVariables=ED3
+relatedVariables=ED8
+relatedVariables=ED13
+solve: WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={103,105..107,109,111,113,115..117,119,121,124,126,131,136..138,141,143,44 more,449},
+	digits=[{1..4},{0..9},{1..9}]
+Entry A3={212,222,232,242,252,262,272,282,292,333,363,393,414,424,434,444,454,464,474,484,35 more,999}
+solve: WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={100,105,108,110,112,120,126,130,132,135,140,144,147,150,156,160,165,168,170,180,188 more,990},
+	digits=[{1..9},{0..9},{0..9}]
+Entry A10={10,15,21,28,36,45,55,66,78,91}
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15,21,28,36,45,55,66,78,91},
+	digits=[{1..7,9},{0,1,5,6,8}]
+Entry D12={10..29,70 more,99}
+Entry A12={120,130,140,150,160,165,170,180,190,195,200,210,220,230,231,240,250,252,255,260,154 more,990}
+solve: WorkingBackEntry(name=A9,length=2,value: #triangular,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={10,15,21,28,36,45,55,66,78,91},
+	digits=[{1..7,9},{0,1,5,6,8}]
+solve: WorkingBackEntry(name=A11,length=2,value: #triangular,
+	identities=[A11[0]=D8[1],A11[1]=D9[1]],referrers=[D8,D9],
+	values={10,15,21,28,36,45,55,66,78,91},
+	digits=[{1..7,9},{0,1,5,6,8}]
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={100..119,861 more,980},
+	digits=[{1..9},{0..9},{0..9}]
+solve: WorkingBackEntry(name=A15,length=3,value: D4 - $reverse D4,
+	identities=[A15[0]=D10[2],A15[2]=D13[1]],referrers=[D10,D13],
+	values={198,297,396,495,594,693,792},
+	digits=[{1..7},{9},{2..8}]
+Entry D4={311,351,361,411,451,461,511,551,561,611,651,661,711,715,751,755,761,765,811,815,16 more,966}
+Entry D9={113..119,153..159,163..168,16 more,669}
+Entry D10={101,111,131,141,151,161,171,181,191,202,212,222,232,242,252,262,272,282,292,303,43 more,757}
+solve: WorkingBackEntry(name=D1,length=2,value: #fibonacci,
+	identities=[D1[0]=A1[0]],referrers=[A1],
+	values={13,21,34},
+	digits=[{1..3},{1,3,4}]
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={100,105,108,110,120,126,130,135,140,150,156,160,165,168,170,180,190,195,196,198,141 more,990},
+	digits=[{1..9},{0..9},{0,1,5,6,8}]
+solve: WorkingBackEntry(name=D3,length=2,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[2]],referrers=[A3,A6],
+	values={21,28,36,45,55,66,78,91},
+	digits=[{2..7,9},{1,5,6,8}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={200,204..210,214..219,250,251,254..257,187 more,865},
+	digits=[{2..8},{0,1,5,6,8},{0..9}]
+solve: WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={136,153,171,231,253,276,325,351,378,435,465,496,528,561,595,666,741,861,946},
+	digits=[{1..9},{2..7,9},{1,3,5,6,8}]
+solve: WorkingBackEntry(name=D13,length=2,value: #cube,
+	identities=[D13[1]=A15[2]],referrers=[A15],
+	values={27,64},
+	digits=[{2,6},{4,7}]
+solve: WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={106,107,109,111,113,115..117,119,121,126,131,136,141,146,148,158,159,164,169,20 more,348},
+	digits=[{1..3},{0..9},{1..9}]
+Entry A3={232,242,252,262,272,282,292,333,363,393,434,444,454,464,474,484,494,535,545,555,13 more,777}
+solve: WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={105,108,126,135,165,168,195,198,216,225,231,255,275,285,288,315,336,345,375,378,41 more,975},
+	digits=[{1..9},{0..9},{1,5,6,8}]
+Entry A10={15,21,36,45,55,66}
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15,55,66},
+	digits=[{1,5,6},{0,5,6}]
+Entry D12={10..22,24..28,37,38,34 more,99}
+Entry A12={150,160,165,170,180,190,195,200,210,220,360,370,375,380,390,400,405,410,420,430,38 more,990}
+solve: WorkingBackEntry(name=A9,length=2,value: #triangular,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={10,15,55,66},
+	digits=[{1,5,6},{0,5,6}]
+solve: WorkingBackEntry(name=A11,length=2,value: #triangular,
+	identities=[A11[0]=D8[1],A11[1]=D9[1]],referrers=[D8,D9],
+	values={21,36,45,55,66,91},
+	digits=[{2..6,9},{1,5,6}]
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={130..149,330 more,899},
+	digits=[{1,3,5,6,8},{3..9},{0..9}]
+solve: WorkingBackEntry(name=A15,length=3,value: D4 - $reverse D4,
+	identities=[A15[0]=D10[2],A15[2]=D13[1]],referrers=[D10,D13],
+	values={297,594},
+	digits=[{2,5},{9},{4,7}]
+Entry D4={411,451,461,711,751,761,815,855,865,916,956,966}
+Entry D9={114,117,154,157,164,167,518,558,568,619,659,669}
+Entry D10={101,111,151,161,191,202,212,242,252,262,282,292,303,313,343,353,363,383,393,404,18 more,696}
+solve: WorkingBackEntry(name=A3,length=3,value: #palindrome,
+	identities=[A3[0]=D3[0],A3[1]=D4[0],A3[2]=D5[0]],referrers=[D3,D4,D5,A1],
+	values={242,272,282,292,393,444,474,484,494,545,575,585,595,646,676,686,696,747,777},
+	digits=[{2..7},{4,7..9},{2..7}]
+solve: WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={150,160,165,180,190,195,200,210,360,380,390,400,405,410,440,550,585,590,600,605,20 more,990},
+	digits=[{1..7,9},{0,1,4..6,8,9},{0,5}]
+Entry D12={10..16,18..21,24,26,27,38..41,44,46,18 more,99}
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={100,105,110,120,130,135,140,150,160,165,170,180,190,195,200,210,220,225,230,240,107 more,990},
+	digits=[{1..9},{0..9},{0,5,6}]
+solve: WorkingBackEntry(name=D3,length=2,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[2]],referrers=[A3,A6],
+	values={21,28,36,45,55,66,78},
+	digits=[{2..7},{1,5,6,8}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={206,209,250,256,257,259,260,267,300,307,350,351,357,358,360,361,368,401,408,451,28 more,765},
+	digits=[{2..7},{0,5,6},{0..9}]
+solve: WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={136,153,231,253,325,351,435,465,496,528,561,595,666,741,861,946},
+	digits=[{1..9},{2..6,9},{1,3,5,6,8}]
+solve: WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={109,111,115..117,119,121,131,136,141,146,148,158,169,174,195,222,232,237,242,7 more,348},
+	digits=[{1..3},{0..7,9},{1..9}]
+solve: WorkingBackEntry(name=D10,length=3,value: #palindrome,
+	identities=[D10[0]=A10[0],D10[1]=A12[1],D10[2]=A15[0]],referrers=[A10,A12,A15,D5],
+	values={202,212,242,252,262,282,292,505,515,545,555,565,595},
+	digits=[{2,5},{0,1,4..6,8,9},{2,5}]
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15,55},
+	digits=[{1,5},{0,5}]
+Entry D12={10..14,16,19..21,27,38,39,41,44,46,60,61,63..65,6 more,99}
+Entry A12={150,160,190,195,200,210,380,405,440,550,585,600,605,610,615,640,650,660,690,750,7 more,990}
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={140,141,144..149,170..181,132 more,899},
+	digits=[{1,3,5,6,8},{4,7..9},{0..9}]
+solve: WorkingBackEntry(name=A15,length=3,value: D4 - $reverse D4,
+	identities=[A15[0]=D10[2],A15[2]=D13[1]],referrers=[D10,D13],
+	values={297,594},
+	digits=[{2,5},{9},{4,7}]
+Entry D4={411,451,711,751,815,855,916,956}
+Entry D9={114,117,154,157,518,558,619,659}
+Entry D10={202,212,242,252,262,292,505,515,545,555,565}
+solve: WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={150,160,190,195,200,210,405,440,600,605,610,615,640,650,660,690,750,760,900,940,3 more,990},
+	digits=[{1,2,4,6,7,9},{0,1,4..6,9},{0,5}]
+Entry D12={10..14,16,19..21,27,41,44,46,60,61,63..66,75,3 more,99}
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={206,209,250,300,350,351,401,451,459,509,553,603,653,654,704,754},
+	digits=[{2..7},{0,5},{0,1,3,4,6,9}]
+solve: WorkingBackEntry(name=A10,length=2,value: #triangular,
+	identities=[A10[0]=D10[0],A10[1]=D4[2]],referrers=[D10,D4,A6],
+	values={21,55},
+	digits=[{2,5},{1,5}]
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15,55},
+	digits=[{1,5},{0,5}]
+Entry D12={10,11,13,14,16,19..21,41,44,46,60,61,63..66,75,76,94,99}
+Entry A12={150,160,190,195,200,210,440,600,605,610,615,640,650,660,690,750,760,900,940,945,2 more,990}
+solve: WorkingBackEntry(name=D4,length=3,value: $reverse D9,
+	identities=[D4[0]=A3[1],D4[1]=A7[0],D4[2]=A10[1]],referrers=[A3,A7,A10,A15,D5],
+	values={411,451,711,751,815,855},
+	digits=[{4,7,8},{1,5},{1,5}]
+Entry D9={114,117,154,157,518,558}
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={140,141,144..146,149,170,171,174..176,179..181,184..186,189,341,346,52 more,889},
+	digits=[{1,3,5,6,8},{4,7,8},{0,1,4..6,9}]
+Entry A12={150,160,190,195,200,210,440,600,605,610,615,640,650,660,690,750,760,900,940,945,960}
+Entry D12={10,11,14,16,19..21,41,44,46,60,61,64..66,75,76,94,99}
+solve: WorkingBackEntry(name=A9,length=2,value: #triangular,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={10,15,55},
+	digits=[{1,5},{0,5}]
+solve: WorkingBackEntry(name=A11,length=2,value: #triangular,
+	identities=[A11[0]=D8[1],A11[1]=D9[1]],referrers=[D8,D9],
+	values={21,45,55,91},
+	digits=[{2,4,5,9},{1,5}]
+solve: WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={150,160,190,200,210,440,600,605,610,615,640,650,660,690,750,760,900,940,960},
+	digits=[{1,2,4,6,7,9},{0,1,4..6,9},{0,5}]
+Entry D12={10,11,14,16,19..21,41,44,46,60,61,64..66,75,76,94}
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={206,209,250,300,350,459,509,553,603,653},
+	digits=[{2..6},{0,5},{0,3,6,9}]
+solve: WorkingBackEntry(name=A3,length=3,value: #palindrome,
+	identities=[A3[0]=D3[0],A3[1]=D4[0],A3[2]=D5[0]],referrers=[D3,D4,D5,A1],
+	values={242,272,282,444,474,484,545,575,585,646,676,686},
+	digits=[{2,4..6},{4,7,8},{2,4..6}]
+solve: WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={105,126,165,168,231,275,315,336,378,385,441,495,525,546,588,605,651,715,735,756,6 more,966},
+	digits=[{1..9},{0..9},{1,5,6,8}]
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15},
+	digits=[{1},{0,5}]
+Entry D12={10,16,19..21,41,46,60,61,64,65,75,76,94}
+Entry A12={150,160,190,200,210,600,610,615,640,650,690,750,760,900,940}
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={140,141,144..146,149,170,171,174,179..181,184,189,540,545,546,549,574,575,28 more,884},
+	digits=[{1,5,6,8},{4,7,8},{0,1,4..6,9}]
+solve: WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={325,351,496,528,595,741,946},
+	digits=[{3..5,7,9},{2,4,5,9},{1,5,6,8}]
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={100,105,110,120,130,135,140,150,160,165,170,180,190,195,200,210,220,225,230,240,105 more,990},
+	digits=[{1..9},{0..9},{0,5}]
+solve: WorkingBackEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A12[0],D12[1]=A14[2]],referrers=[A12,A14],
+	values={10,16,19..21,60,61,64,65,75,76,94},
+	digits=[{1,2,6,7,9},{0,1,4..6,9}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={206,209,250,459,509,553,603,653},
+	digits=[{2,4..6},{0,5},{0,3,6,9}]
+Entry D10={202,212,242,252,262,292,505,545,565}
+solve: WorkingBackEntry(name=D3,length=2,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[2]],referrers=[A3,A6],
+	values={21,28,45,55,66},
+	digits=[{2,4..6},{1,5,6,8}]
+solve: WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={109,111,115,117,121,136,141,148,158,169,195,222,237,242,323,338,343},
+	digits=[{1..3},{0..6,9},{1..3,5..9}]
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15},
+	digits=[{1},{0,5}]
+Entry A12={150,160,190,200,210,600,610,640,650,750,760,900,940}
+solve: WorkingBackEntry(name=D4,length=3,value: $reverse D9,
+	identities=[D4[0]=A3[1],D4[1]=A7[0],D4[2]=A10[1]],referrers=[A3,A7,A10,A15,D5],
+	values={411,711,815},
+	digits=[{4,7,8},{1},{1,5}]
+Entry D9={114,117,518}
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={140,141,144..146,149,170,171,174,179..181,184,189,540,545,546,549,574,575,23 more,884},
+	digits=[{1,5,6,8},{4,7,8},{0,1,4..6,9}]
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={100,105,110,120,130,135,140,150,160,165,170,180,190,195,200,210,220,225,230,240,91 more,990},
+	digits=[{1..3,5..9},{0..9},{0,5}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={206,209,250,459,509,553,603},
+	digits=[{2,4..6},{0,5},{0,3,6,9}]
+Entry D10={202,212,252,262,505,565}
+solve: WorkingBackEntry(name=A7,length=2,value: #triangular,
+	identities=[A7[0]=D4[1],A7[1]=D5[1]],referrers=[D4,D5,A12],
+	values={10,15},
+	digits=[{1},{0,5}]
+Entry D12={10,16,20,21,60,61,65,75,76}
+Entry A12={150,160,200,210,600,610,650,750,760,900}
+solve: WorkingBackEntry(name=A11,length=2,value: #triangular,
+	identities=[A11[0]=D8[1],A11[1]=D9[1]],referrers=[D8,D9],
+	values={21,91},
+	digits=[{2,9},{1}]
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={140,145,180,540,545,575,580,585,640,675,685,840,880},
+	digits=[{1,5,6,8},{4,7,8},{0,5}]
+Entry D12={10,20,60,65,75}
+solve: WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={150,200,600,650,750},
+	digits=[{1,2,6,7},{0,5},{0}]
+solve: WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={325,496,528,595},
+	digits=[{3..5},{2,9},{5,6,8}]
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={540,575,580,585,640,675,685},
+	digits=[{5,6},{4,7,8},{0,5}]
+Entry A12={600,650,750}
+solve: WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={600,650,750},
+	digits=[{6,7},{0,5},{0}]
+Entry A7={10}
+Entry A9={15,55}
+Entry D12={60,65,75}
+solve: WorkingBackEntry(name=D10,length=3,value: #palindrome,
+	identities=[D10[0]=A10[0],D10[1]=A12[1],D10[2]=A15[0]],referrers=[A10,A12,A15,D5],
+	values={202,252,505},
+	digits=[{2,5},{0,5},{2,5}]
+solve: WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={325,496,595},
+	digits=[{3..5},{2,9},{5,6}]
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={540,575,585,675,685},
+	digits=[{5,6},{4,7,8},{0,5}]
+solve: WorkingBackEntry(name=A9,length=2,value: #triangular,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={15,55},
+	digits=[{1,5},{5}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={206,209,509},
+	digits=[{2,5},{0},{6,9}]
+Entry D10={202,505}
+Entry D4={411,711}
+solve: WorkingBackEntry(name=A12,length=3,value: A7 * D12,
+	identities=[A12[0]=D12[0],A12[1]=D10[1]],referrers=[D12,D10,A14],
+	values={600},
+	digits=[{6},{0},{0}]
+Entry D2={100,105,110,120,130,135,140,150,160,165,170,180,190,195,200,210,220,225,230,240,90 more,990}
+Entry D12={60}
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={105,135,165,195,225,255,275,285,315,345,375,385,525,555,585,605,615,645,675,705,11 more,975},
+	digits=[{1..3,5..9},{0..9},{5}]
+solve: WorkingBackEntry(name=A10,length=2,value: #triangular,
+	identities=[A10[0]=D10[0],A10[1]=D4[2]],referrers=[D10,D4,A6],
+	values={21},
+	digits=[{2},{1}]
+Entry A11={91}
+Entry D1={13,34}
+Entry D3={28,45,55,66}
+solve: WorkingBackEntry(name=A15,length=3,value: D4 - $reverse D4,
+	identities=[A15[0]=D10[2],A15[2]=D13[1]],referrers=[D10,D13],
+	values={297,594},
+	digits=[{2},{9},{4,7}]
+Entry D9={114,117}
+Entry D10={202}
+solve: WorkingBackEntry(name=A14,length=3,value: A12 - D12,
+	identities=[A14[0]=D8[2],A14[1]=D9[2],A14[2]=D12[1]],referrers=[D8,D9,D12],
+	values={540},
+	digits=[{5},{4},{0}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={209,509},
+	digits=[{2,5},{0},{9}]
+solve: WorkingBackEntry(name=A3,length=3,value: #palindrome,
+	identities=[A3[0]=D3[0],A3[1]=D4[0],A3[2]=D5[0]],referrers=[D3,D4,D5,A1],
+	values={242,272,545,575},
+	digits=[{2,5},{4,7},{2,5}]
+solve: WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={109,115,121,136},
+	digits=[{1},{0..3},{1,5,6,9}]
+solve: WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={105,126,168,231,315,336,378,441,525,546,588,651,735,756,798,861,945,966},
+	digits=[{1..9},{0..9},{1,5,6,8}]
+solve: WorkingBackEntry(name=A9,length=2,value: #triangular,
+	identities=[A9[0]=D9[0],A9[1]=D2[2]],referrers=[D9,D2],
+	values={15},
+	digits=[{1},{5}]
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={105,135,165,195,525,555,585,615,645,675,915,945,975},
+	digits=[{1,5,6,9},{0..9},{5}]
+solve: WorkingBackEntry(name=A11,length=2,value: #triangular,
+	identities=[A11[0]=D8[1],A11[1]=D9[1]],referrers=[D8,D9],
+	values={91},
+	digits=[{9},{1}]
+solve: WorkingBackEntry(name=D1,length=2,value: #fibonacci,
+	identities=[D1[0]=A1[0]],referrers=[A1],
+	values={13},
+	digits=[{1},{3}]
+solve: WorkingBackEntry(name=D3,length=2,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[2]],referrers=[A3,A6],
+	values={28,55},
+	digits=[{2,5},{5,8}]
+solve: WorkingBackEntry(name=D9,length=3,value: ,
+	identities=[D9[0]=A9[0],D9[1]=A11[1],D9[2]=A14[1]],referrers=[A9,A11,A14,D4],
+	values={114},
+	digits=[{1},{1},{4}]
+solve: WorkingBackEntry(name=A15,length=3,value: D4 - $reverse D4,
+	identities=[A15[0]=D10[2],A15[2]=D13[1]],referrers=[D10,D13],
+	values={297},
+	digits=[{2},{9},{7}]
+Entry D4={411}
+solve: WorkingBackEntry(name=D8,length=3,value: #triangular,
+	identities=[D8[1]=A11[0],D8[2]=A14[0]],referrers=[A11,A14],
+	values={595},
+	digits=[{5},{9},{5}]
+solve: WorkingBackEntry(name=D5,length=3,value: D4 - D10,
+	identities=[D5[0]=A3[2],D5[1]=A7[1]],referrers=[A3,A7],
+	values={209},
+	digits=[{2},{0},{9}]
+solve: WorkingBackEntry(name=A3,length=3,value: #palindrome,
+	identities=[A3[0]=D3[0],A3[1]=D4[0],A3[2]=D5[0]],referrers=[D3,D4,D5,A1],
+	values={242},
+	digits=[{2},{4},{2}]
+solve: WorkingBackEntry(name=A1,length=3,value: $divisor A3,
+	identities=[A1[0]=D1[0],A1[2]=D2[0]],referrers=[D1,D2],
+	values={121},
+	digits=[{1},{2},{1}]
+solve: WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={105,168,315,378,525,588,735,798,945},
+	digits=[{1,3,5,7,9},{0..4,6..9},{5,8}]
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={105,135,165,195},
+	digits=[{1},{0,3,6,9},{5}]
+solve: WorkingBackEntry(name=D3,length=2,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[2]],referrers=[A3,A6],
+	values={28},
+	digits=[{2},{8}]
+solve: WorkingBackEntry(name=D13,length=2,value: #cube,
+	identities=[D13[1]=A15[2]],referrers=[A15],
+	values={27},
+	digits=[{2},{7}]
+solve: WorkingBackEntry(name=A6,length=3,value: $multiple A10,
+	identities=[A6[1]=D2[1],A6[2]=D3[1]],referrers=[D2,D3],
+	values={168,798},
+	digits=[{1,7},{6,9},{8}]
+solve: WorkingBackEntry(name=D2,length=3,value: $multiple A9,
+	identities=[D2[0]=A1[2],D2[1]=A6[1],D2[2]=A9[1]],referrers=[A1,A6,A9],
+	values={165,195},
+	digits=[{1},{6,9},{5}]
+Clue/Variable iterations=184, updates=136, elapsed 0:00:00.386395
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, $divisor A3, values={121}
+A3, #palindrome, values={242}
+A6, $multiple A10, values={168,798}
+A7, #triangular, values={10}
+A9, #triangular, values={15}
+A10, #triangular, values={21}
+A11, #triangular, values={91}
+A12, A7 * D12, values={600}
+A14, A12 - D12, values={540}
+A15, D4 - $reverse D4, values={297}
+D1, #fibonacci, values={13}
+D2, $multiple A9, values={165,195}
+D3, #triangular, values={28}
+D4, $reverse D9, values={411}
+D5, D4 - D10, values={209}
+D8, #triangular, values={595}
+D9, , values={114}
+D10, #palindrome, values={202}
+D12, , values={60}
+D13, #cube, values={27}
++--+--+--+--+--+--+
+| 1  2  1| 2  4  2|
++   --   +        +
+| 3| ?  ?  8| 1  0|
++--+--    --+     +
+| 5| 1  5| 2  1| 9|
++  +   --+   --+--+
+| 9  1| 6  0  0| 2|
++     +      --+  +
+| 5  4  0| 2  9  7|
++--+--+--+--+--+--+
+a=80, b=1, c=1520, a+b+c=1601
+ITERATE SOLUTIONS-----------------------------
+SOLUTION-----------------------------
+Puzzle Summary
+A1, $divisor A3, values={121}
+A3, #palindrome, values={242}
+A6, $multiple A10, values={168}
+A7, #triangular, values={10}
+A9, #triangular, values={15}
+A10, #triangular, values={21}
+A11, #triangular, values={91}
+A12, A7 * D12, values={600}
+A14, A12 - D12, values={540}
+A15, D4 - $reverse D4, values={297}
+D1, #fibonacci, values={13}
+D2, $multiple A9, values={165}
+D3, #triangular, values={28}
+D4, $reverse D9, values={411}
+D5, D4 - D10, values={209}
+D8, #triangular, values={595}
+D9, , values={114}
+D10, #palindrome, values={202}
+D12, , values={60}
+D13, #cube, values={27}
++--+--+--+--+--+--+
+| 1  2  1| 2  4  2|
++   --   +        +
+| 3| 1  6  8| 1  0|
++--+--    --+     +
+| 5| 1  5| 2  1| 9|
++  +   --+   --+--+
+| 9  1| 6  0  0| 2|
++     +      --+  +
+| 5  4  0| 2  9  7|
++--+--+--+--+--+--+
+a=880, b=801, c=720, a+b+c=2401
+Solution count=1
+
+Exited.
