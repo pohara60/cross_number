@@ -53,6 +53,7 @@ import 'package:crossnumber/thirty/thirty.dart';
 import 'package:crossnumber/transformation/transformation.dart';
 import 'package:crossnumber/triangularpairs/triangularpairs.dart';
 import 'package:crossnumber/twentyfive/twentyfive.dart';
+import 'package:crossnumber/twobytwo/twobytwo.dart';
 import 'package:crossnumber/twoprimes/twoprimes.dart';
 import 'package:crossnumber/undersix/undersix.dart';
 import 'package:crossnumber/virus/virus.dart';
@@ -119,7 +120,8 @@ void main(List<String> arguments) async {
     ..addCommand(SevenRulesCommand())
     ..addCommand(CyclingPrimesCommand())
     ..addCommand(NumeriItalianoCommand())
-    ..addCommand(WorkingBackCommand());
+    ..addCommand(WorkingBackCommand())
+    ..addCommand(TwoByTwoCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1292,6 +1294,30 @@ class WorkingBackCommand extends Command {
     // Get and print solve
     try {
       final pc = WorkingBack();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class TwoByTwoCommand extends Command {
+  @override
+  final name = 'TwoByTwo';
+  @override
+  final description = 'solve hardcoded TwoByTwo puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = TwoByTwo();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

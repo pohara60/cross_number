@@ -35,6 +35,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['cube'] = Generator('cube', generateCubes);
   generators['power'] = Generator('power', generatePowers);
   generators['power3'] = Generator('power3', generatePowers3);
+  generators['powerof2'] = Generator('powerof2', generatePowersOf2);
   generators['product2primes'] =
       Generator('product2primes', generateProduct2Primes);
   generators['product3primes'] =
@@ -397,6 +398,17 @@ Iterable<int> generatePowerN(int power) sync* {
   int next = 2;
   while (true) {
     yield pow(next++, power).toInt();
+  }
+}
+
+Iterable<int> generatePowersOf2(num min, num max) sync* {
+  yield* generatePowerOfN(2);
+}
+
+Iterable<int> generatePowerOfN(int n) sync* {
+  int next = 1;
+  while (true) {
+    yield pow(n, next++).toInt();
   }
 }
 

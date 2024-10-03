@@ -1,0 +1,1241 @@
+
+Exited (-1).
+Connecting to VM Service at ws://127.0.0.1:60077/_AmjkfwgJ9Y=/ws
+Warning: expression 'A8 = $sumDigitSquares #result' has generator with Unknown Order
+Puzzle
+TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+TwoByTwoEntry(name=A4,length=2,value: ,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,A1],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D6[0],A6[1]=D7[0]],referrers=[D6,D7,A1],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=A8,length=2,value: #cube,
+	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2,A10],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D3[1],A9[1]=D4[1]],referrers=[D3,D4,A10],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A10,length=3,value: A8 = $sumDigitSquares #result | £last3digits(A8,A9),
+	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1]],referrers=[D5,D6,D7],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D7[2]],referrers=[D14,D7,A11],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A15,length=2,value: ,
+	identities=[A15[0]=D11[1],A15[1]=D16[0]],referrers=[D11,D16,A17],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+TwoByTwoEntry(name=A19,length=2,value: $prime $reverse A29,
+	identities=[A19[0]=D14[1],A19[1]=D20[0]],referrers=[D14,D20,A17,A29],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A22,length=2,value: ,
+	identities=[A22[0]=D22[0],A22[1]=D13[2]],referrers=[D22,D13,A23],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+TwoByTwoEntry(name=A27,length=2,value: ,
+	identities=[A27[0]=D27[0],A27[1]=D28[0]],referrers=[D27,D28,A25],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=A29,length=2,value: $prime $reverse A19,
+	identities=[A29[0]=D24[1],A29[1]=D30[0]],referrers=[D24,D30,A19,A25],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=A31,length=2,value: ,
+	identities=[A31[0]=D21[2],A31[1]=D26[1]],referrers=[D21,D26,A33],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A32,length=2,value: ,
+	identities=[A32[0]=D22[2],A32[1]=D27[1]],referrers=[D22,D27,A13,A33],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TwoByTwoEntry(name=D1,length=2,value: #powerof2,
+	identities=[D1[0]=A1[0],D1[1]=A8[0]],referrers=[A1,A8,D21],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TwoByTwoEntry(name=D3,length=2,value: #palindrome,
+	identities=[D3[0]=A1[2],D3[1]=A9[0]],referrers=[A1,A9,D22],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A9[1]],referrers=[A4,A9,D13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+TwoByTwoEntry(name=D6,length=2,value: ,
+	identities=[D6[0]=A6[0],D6[1]=A10[1]],referrers=[A6,A10,D24],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TwoByTwoEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A11[0],D11[1]=A15[0]],referrers=[A11,A15,D21],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A11[2],D12[1]=A17[0]],referrers=[A11,A17,D22],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+TwoByTwoEntry(name=D14,length=2,value: ,
+	identities=[D14[0]=A14[0],D14[1]=A19[0]],referrers=[A14,A19,D24],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[1],D16[1]=A21[1]],referrers=[A15,A21,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A23[0]],referrers=[A17,A23,D5],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D20,length=2,value: ,
+	identities=[D20[0]=A19[1],D20[1]=A23[2]],referrers=[A19,A23,D7],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+TwoByTwoEntry(name=D26,length=2,value: ,
+	identities=[D26[0]=A25[1],D26[1]=A31[1]],referrers=[A25,A31,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=D27,length=2,value: ,
+	identities=[D27[0]=A27[0],D27[1]=A32[1]],referrers=[A27,A32,D13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+TwoByTwoEntry(name=D28,length=2,value: ,
+	identities=[D28[0]=A27[1],D28[1]=A33[0]],referrers=[A27,A33,D5],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+TwoByTwoEntry(name=D30,length=2,value: ,
+	identities=[D30[0]=A29[1],D30[1]=A33[2]],referrers=[A29,A33,D7],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+UPDATES-----------------------------
+Eval TwoByTwoEntry A1 cartesianCount=6561, elapsed 0:00:00.085742
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={111..118,121,122,124,125,127,128,131..136,647 more,999},
+	digits=[{1..9},{1..9},{1..9}]
+Entry A4={11..19,21..29,31,32,61 more,99}
+Entry A6={11..19,21..29,31,32,61 more,99}
+solve: TwoByTwoEntry(name=A8,length=2,value: #cube,
+	identities=[A8[0]=D1[1],A8[1]=D2[1]],referrers=[D1,D2,A10],
+	values={27,64},
+	digits=[{2,6},{4,7}]
+solve: TwoByTwoEntry(name=A9,length=2,value: ,
+	identities=[A9[0]=D3[1],A9[1]=D4[1]],referrers=[D3,D4,A10],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+Eval TwoByTwoEntry A10 cartesianCount=2, elapsed 0:00:00.002539
+Eval TwoByTwoEntry A10 cartesianCount=180, elapsed 0:00:00.000766
+solve: TwoByTwoEntry(name=A10,length=3,value: A8 = $sumDigitSquares #result | £last3digits(A8,A9),
+	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1]],referrers=[D5,D6,D7],
+	values={511,800},
+	digits=[{5,8},{0,1},{0,1}]
+Eval TwoByTwoEntry A11 cartesianCount=8100, elapsed 0:00:00.023626
+solve: TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={102..109,111..118,121,122,124,125,719 more,999},
+	digits=[{1..9},{0..9},{1..9}]
+Entry A13={11..19,21..29,31,32,61 more,99}
+Entry A14={11..19,21..29,31,32,61 more,99}
+Eval TwoByTwoEntry A13 cartesianCount=90, elapsed 0:00:00.000727
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+Entry A32={11..19,21..29,31,32,61 more,99}
+solve: TwoByTwoEntry(name=A15,length=2,value: ,
+	identities=[A15[0]=D11[1],A15[1]=D16[0]],referrers=[D11,D16,A17],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+Eval TwoByTwoEntry A17 cartesianCount=6561, elapsed 0:00:00.014780
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={102..109,111..118,121,122,124,125,719 more,999},
+	digits=[{1..9},{0..9},{1..9}]
+Entry A19={11..19,21..29,31,32,61 more,99}
+Eval TwoByTwoEntry A19 cartesianCount=81, elapsed 0:00:04.527827
+solve: TwoByTwoEntry(name=A19,length=2,value: $prime $reverse A29,
+	identities=[A19[0]=D14[1],A19[1]=D20[0]],referrers=[D14,D20,A17,A29],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97},
+	digits=[{1..9},{1,3,7,9}]
+Entry A29={11,13,14,16,17,31,32,34,35,37,38,71,73,74,76,79,91,92,95,97,98}
+Eval TwoByTwoEntry A21 cartesianCount=90, elapsed 0:00:00.000633
+solve: TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={20,22,24,26,28,30,32..34,36,38..40,42,44..46,48,50,51,38 more,99},
+	digits=[{2..9},{0..9}]
+Entry D16={10..29,20 more,49}
+solve: TwoByTwoEntry(name=A22,length=2,value: ,
+	identities=[A22[0]=D22[0],A22[1]=D13[2]],referrers=[D22,D13,A23],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+Eval TwoByTwoEntry A23 cartesianCount=5220, elapsed 0:00:00.008111
+solve: TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={125,216,343,512,729},
+	digits=[{1..3,5,7},{1,2,4},{2,3,5,6,9}]
+Eval TwoByTwoEntry A25 cartesianCount=1701, elapsed 0:00:00.004029
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={110..112,114..118,120,122,124,125,128,130..136,584 more,999},
+	digits=[{1..9},{1..9},{0..9}]
+Entry A27={11..19,21..29,31,32,61 more,99}
+Eval TwoByTwoEntry A29 cartesianCount=21, elapsed 0:00:00.001641
+solve: TwoByTwoEntry(name=A29,length=2,value: $prime $reverse A19,
+	identities=[A29[0]=D24[1],A29[1]=D30[0]],referrers=[D24,D30,A19,A25],
+	values={11,13,17,31,37,71,73,79,97},
+	digits=[{1,3,7,9},{1,3,7,9}]
+Entry A19={11,13,17,31,37,71,73,79,97}
+solve: TwoByTwoEntry(name=A31,length=2,value: ,
+	identities=[A31[0]=D21[2],A31[1]=D26[1]],referrers=[D21,D26,A33],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+Eval TwoByTwoEntry A33 cartesianCount=7290, elapsed 0:00:00.013835
+solve: TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={100,102..118,120,121,809 more,999},
+	digits=[{1..9},{0..9},{0..9}]
+solve: TwoByTwoEntry(name=D1,length=2,value: #powerof2,
+	identities=[D1[0]=A1[0],D1[1]=A8[0]],referrers=[A1,A8,D21],
+	values={16,32},
+	digits=[{1,3},{2,6}]
+Eval TwoByTwoEntry D2 cartesianCount=3600, elapsed 0:00:00.006167
+solve: TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={140,142..149,170,171,173..176,178,240..243,134 more,979},
+	digits=[{1..9},{4,7},{0..9}]
+Entry D26={10..29,68 more,99}
+solve: TwoByTwoEntry(name=D3,length=2,value: #palindrome,
+	identities=[D3[0]=A1[2],D3[1]=A9[0]],referrers=[A1,A9,D22],
+	values={11,22,33,44,55,66,77,88,99},
+	digits=[{1..9},{1..9}]
+solve: TwoByTwoEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A9[1]],referrers=[A4,A9,D13],
+	values={10..29,70 more,99},
+	digits=[{1..9},{0..9}]
+Eval TwoByTwoEntry D5 cartesianCount=3645, elapsed 0:00:00.006088
+solve: TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={152,154..159,182..189,252..256,121 more,989},
+	digits=[{1..9},{5,8},{1..9}]
+Entry D18={11..13,15,17,21..23,27,31..33,35,37,41..43,45,47,51,23 more,97}
+Entry D28={11..19,21..24,26..29,31..33,59 more,99}
+solve: TwoByTwoEntry(name=D6,length=2,value: ,
+	identities=[D6[0]=A6[0],D6[1]=A10[1]],referrers=[A6,A10,D24],
+	values={10,11,20,21,30,31,40,41,50,51,60,61,70,71,80,81,90,91},
+	digits=[{1..9},{0,1}]
+Eval TwoByTwoEntry D7 cartesianCount=141, elapsed 0:00:00.000548
+Eval TwoByTwoEntry D7 cartesianCount=800, elapsed 0:00:00.002342
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={304,312,314,504,508,512,608,616,702,716,912,916},
+	digits=[{3,5..7,9},{0,1},{2,4,6,8}]
+Entry D5={152,154,156..159,183,252..254,256..258,351..354,356..358,7 more,459}
+Entry D20={12,13,16,19,32,33,36,39,72,73,76,79,92,93,95,96,99}
+Entry D30={11..14,16..19,31..34,36..39,71..74,13 more,99}
+solve: TwoByTwoEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A11[0],D11[1]=A15[0]],referrers=[A11,A15,D21],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+solve: TwoByTwoEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A11[2],D12[1]=A17[0]],referrers=[A11,A17,D22],
+	values={11..19,21..29,31,32,61 more,99},
+	digits=[{1..9},{1..9}]
+Eval TwoByTwoEntry D13 cartesianCount=7290, elapsed 0:00:00.022057
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={100,102..118,120,121,809 more,999},
+	digits=[{1..9},{0..9},{0..9}]
+Entry D27={11..19,21..29,31,32,61 more,99}
+solve: TwoByTwoEntry(name=D14,length=2,value: ,
+	identities=[D14[0]=A14[0],D14[1]=A19[0]],referrers=[A14,A19,D24],
+	values={11,13,17,19,21,23,27,29,31,33,37,39,41,43,47,49,51,53,57,59,16 more,99},
+	digits=[{1..9},{1,3,7,9}]
+Eval TwoByTwoEntry D21 cartesianCount=162, elapsed 0:00:00.001230
+solve: TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={216,224,232,248,264,272,288,296,312,328,336,344,352,368,376,384,392,416,424,432,43 more,992},
+	digits=[{2..9},{1..9},{2,4,6,8}]
+Entry D11={11..14,16..18,21..24,26..29,31..34,36,42 more,99}
+Eval TwoByTwoEntry D22 cartesianCount=729, elapsed 0:00:00.001021
+solve: TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={102,104,108,112,115,118,122,124,125,128,132,134..136,138,143..145,148,154,317 more,992},
+	digits=[{1..9},{0..9},{1..9}]
+Entry D12={11..19,21..29,31,32,60 more,99}
+Eval TwoByTwoEntry D24 cartesianCount=648, elapsed 0:00:00.001152
+solve: TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={110,111,113,130,131,139,170,173,177,190,193,197,210,213,230,231,233,237,239,270,19 more,499},
+	digits=[{1,2,4},{1,3,7,9},{0,1,3,7,9}]
+Entry D14={11,13,17,19,21,23,27,29,31,37,39,41,43,47,49,51,53,57,59,61,12 more,91}
+Entry D6={10,11,21,30,31,41,51,61,70,71,81,90,91}
+Eval TwoByTwoEntry A1 cartesianCount=6561, elapsed 0:00:00.010227
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={111..118,121,122,124,125,127,128,131..136,121 more,399},
+	digits=[{1,3},{1..9},{1..9}]
+Eval TwoByTwoEntry A10 cartesianCount=2, elapsed 0:00:00.000285
+Eval TwoByTwoEntry A10 cartesianCount=180, elapsed 0:00:00.000280
+solve: TwoByTwoEntry(name=A10,length=3,value: A8 = $sumDigitSquares #result | £last3digits(A8,A9),
+	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1]],referrers=[D5,D6,D7],
+	values={511,800},
+	digits=[{5,8},{0,1},{0,1}]
+Entry A9={75,93}
+Eval TwoByTwoEntry A11 cartesianCount=6561, elapsed 0:00:00.011011
+Eval TwoByTwoEntry A13 cartesianCount=81, elapsed 0:00:00.000311
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={11..14,16..19,21..24,26..29,31..34,52 more,99},
+	digits=[{1..9},{1..4,6..9}]
+Entry A32={11..19,21..29,31,32,52 more,99}
+solve: TwoByTwoEntry(name=A15,length=2,value: ,
+	identities=[A15[0]=D11[1],A15[1]=D16[0]],referrers=[D11,D16,A17],
+	values={11..14,21..24,31..34,41..44,61..64,12 more,94},
+	digits=[{1..4,6..9},{1..4}]
+Eval TwoByTwoEntry A17 cartesianCount=288, elapsed 0:00:00.001720
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={104,106,108,111,112,118,124,132,134,139,143,147,148,154,156,164,171,178,182,183,197 more,997},
+	digits=[{1..9},{0..9},{1..4,6..9}]
+Eval TwoByTwoEntry A19 cartesianCount=9, elapsed 0:00:00.000121
+Eval TwoByTwoEntry A21 cartesianCount=40, elapsed 0:00:00.000235
+Eval TwoByTwoEntry A23 cartesianCount=5220, elapsed 0:00:00.007445
+solve: TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={125,216,343,512,729},
+	digits=[{1..3,5,7},{1,2,4},{2,3,5,6,9}]
+Entry A21={24,28,32,33,36,38,42,45,48,54..56,62..64,68,72,74..76,8 more,96}
+Entry A22={15,16,18,19,21,24,25,27,28,32,36,38,42,47,48,54,55,62,63,67,9 more,95}
+Eval TwoByTwoEntry A25 cartesianCount=729, elapsed 0:00:00.001074
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={111,112,116..118,122,124,131..136,139,141,143..147,386 more,999},
+	digits=[{1..9},{1..9},{1..9}]
+Eval TwoByTwoEntry A29 cartesianCount=9, elapsed 0:00:00.000111
+solve: TwoByTwoEntry(name=A31,length=2,value: ,
+	identities=[A31[0]=D21[2],A31[1]=D26[1]],referrers=[D21,D26,A33],
+	values={20..29,40..49,20 more,89},
+	digits=[{2,4,6,8},{0..9}]
+Eval TwoByTwoEntry A33 cartesianCount=2880, elapsed 0:00:00.005281
+solve: TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={102..108,111,112,115..118,131..136,138,311 more,999},
+	digits=[{1..9},{0,1,3,7,9},{1..9}]
+Entry A31={21..29,41..49,61,62,16 more,89}
+Eval TwoByTwoEntry D2 cartesianCount=3520, elapsed 0:00:00.003688
+solve: TwoByTwoEntry(name=D3,length=2,value: #palindrome,
+	identities=[D3[0]=A1[2],D3[1]=A9[0]],referrers=[A1,A9,D22],
+	values={77,99},
+	digits=[{7,9},{7,9}]
+solve: TwoByTwoEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A9[1]],referrers=[A4,A9,D13],
+	values={13,15,23,25,33,35,43,45,53,55,63,65,73,75,83,85,93,95},
+	digits=[{1..9},{3,5}]
+solve: TwoByTwoEntry(name=A4,length=2,value: ,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,A1],
+	values={11..14,21..24,31..34,41..44,51..54,16 more,94},
+	digits=[{1..9},{1..4}]
+Eval TwoByTwoEntry D5 cartesianCount=3397, elapsed 0:00:00.005092
+solve: TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={152,154,156..159,183,252..254,256..258,351..354,356..358,7 more,459},
+	digits=[{1..4},{5,8},{1..4,6..9}]
+Entry D18={11..13,17,21..23,27,31..33,37,41..43,47,52,53,57,61,14 more,97}
+Entry D28={11..14,16..19,21..23,26..28,31..34,36,37,36 more,99}
+solve: TwoByTwoEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D6[0],A6[1]=D7[0]],referrers=[D6,D7,A1],
+	values={13,15..17,19,23,25..27,29,33,35..37,39,43,45..47,49,25 more,99},
+	digits=[{1..9},{3,5..7,9}]
+Eval TwoByTwoEntry D7 cartesianCount=27, elapsed 0:00:00.000375
+Eval TwoByTwoEntry D7 cartesianCount=561, elapsed 0:00:00.000692
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={304,312,314,504,508,512,608,616,702,716,912,916},
+	digits=[{3,5..7,9},{0,1},{2,4,6,8}]
+Entry D5={152,154,156,157,252,254,256,351,358,456,458}
+Entry D20={12,16,19,32,33,36,39,72,73,76,92,96,99}
+Entry D30={12,14,16,18,19,32,33,36,38,72,73,76,78,91,92,94,96..99}
+solve: TwoByTwoEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D7[2]],referrers=[D14,D7,A11],
+	values={12,14,16,18,22,24,26,28,32,34,36,38,42,44,46,48,52,54,56,58,16 more,98},
+	digits=[{1..9},{2,4,6,8}]
+Eval TwoByTwoEntry D13 cartesianCount=1458, elapsed 0:00:00.004181
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={102..105,107,111..118,122,125,127,128,131,132,134,466 more,999},
+	digits=[{1..9},{0..9},{1..9}]
+Eval TwoByTwoEntry D21 cartesianCount=124, elapsed 0:00:00.000236
+Eval TwoByTwoEntry D22 cartesianCount=160, elapsed 0:00:00.000319
+solve: TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={118,128,138,148,156..159,161,168,178,188,217,227,232..234,236..238,87 more,928},
+	digits=[{1..9},{1..9},{1..4,6..9}]
+Entry D12={11..14,16..19,21..24,26..29,31..34,50 more,99}
+Eval TwoByTwoEntry D24 cartesianCount=416, elapsed 0:00:00.000690
+Eval TwoByTwoEntry A1 cartesianCount=1620, elapsed 0:00:00.002898
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={117,127,139,147,157,159,177,187,189,197,319,337,339,347,349,357,367,369,377,379,3 more,399},
+	digits=[{1,3},{1..9},{7,9}]
+Entry A4={11,13,21,23,31,41,43,51,53,61,63,71,73,81,83,91,93}
+Entry A6={17,19,23,27,29,37,39,43,47,49,53,57,59,63,69,73,77,79,83,87,2 more,93}
+Eval TwoByTwoEntry A10 cartesianCount=2, elapsed 0:00:00.000089
+Eval TwoByTwoEntry A10 cartesianCount=4, elapsed 0:00:00.000056
+solve: TwoByTwoEntry(name=A10,length=3,value: A8 = $sumDigitSquares #result | £last3digits(A8,A9),
+	identities=[A10[0]=D5[1],A10[1]=D6[1],A10[2]=D7[1]],referrers=[D5,D6,D7],
+	values={511},
+	digits=[{5},{1},{1}]
+Entry A11={102..109,111..118,121,122,124,125,718 more,999}
+Entry A17={104,106,108,111,112,118,124,132,134,139,143,147,148,154,156,164,171,178,182,183,196 more,997}
+Entry A25={111,112,116..118,122,124,131..136,139,141,143..147,385 more,999}
+Entry A33={102..108,111,112,115..118,131..136,138,310 more,999}
+Entry D13={102..105,107,111..118,122,125,127,128,131,132,134,465 more,999}
+Entry A8={27}
+Entry A6={17,19,23,29,37,39,43,47,49,53,57,59,63,69,73,77,79,83,87,89}
+Entry A13={11..14,16..19,21..24,26,28,29,31..34,36,50 more,99}
+Entry A22={15,16,18,19,21,24,25,28,32,36,38,42,47,48,54,55,62,63,67,68,8 more,95}
+Entry A27={11..19,21..26,28,29,31..33,59 more,99}
+Entry A31={21..26,28,29,41..49,61..63,15 more,89}
+Entry A32={11..19,21..26,28,29,31..33,50 more,99}
+Entry D11={11..14,16..18,21..24,26,28,29,31..34,36,37,40 more,99}
+Entry D12={11..14,16..19,21..24,26,28,29,31..34,36,48 more,99}
+Entry D14={11,13,17,19,21,23,29,31,37,39,41,43,47,49,51,53,57,59,61,63,11 more,91}
+Entry D16={10..26,28..30,19 more,49}
+Entry D18={11..13,17,21..23,31..33,37,41..43,47,52,53,57,61,62,12 more,97}
+Entry D26={10..26,28..30,66 more,99}
+Entry D27={11..19,21..26,28,29,31..33,59 more,99}
+Entry D28={11..14,16..19,21..23,26,28,31..34,36..38,35 more,99}
+Entry A9={93}
+Entry A4={11,13,21,23,31,41,43,51,53,61,63,71,73,81,83,91}
+Entry A15={11..14,21..24,31..34,41..44,61..64,11 more,94}
+Entry D4={13,15,23,25,33,35,43,45,53,55,63,65,73,75,83,85,95}
+Eval TwoByTwoEntry A13 cartesianCount=70, elapsed 0:00:00.000258
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={11,12,14,16..18,21,22,24,26,28,31,32,34,36..38,41,42,44,32 more,98},
+	digits=[{1..9},{1,2,4,6..8}]
+Entry A32={11..19,21..26,28,29,41..43,32 more,89}
+Eval TwoByTwoEntry A11 cartesianCount=1872, elapsed 0:00:00.008456
+solve: TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={102,104,106,108,112,116,118,122,124,128,132,134,136,142,144,146,148,152,154,156,297 more,998},
+	digits=[{1..9},{0..9},{2,4,6,8}]
+solve: TwoByTwoEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[1],D16[1]=A21[1]],referrers=[A15,A21,D2],
+	values={11..16,18,21..26,28,31..36,8 more,48},
+	digits=[{1..4},{1..6,8}]
+Eval TwoByTwoEntry A17 cartesianCount=279, elapsed 0:00:00.005696
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={104,106,108,111,112,118,124,132,134,139,143,147,148,154,156,164,171,178,182,183,166 more,997},
+	digits=[{1..4,6..9},{0..9},{1..4,6..9}]
+solve: TwoByTwoEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A23[0]],referrers=[A17,A23,D5],
+	values={11..13,17,21..23,31..33,37,41..43,47,61..63,67,71,9 more,97},
+	digits=[{1..4,6..9},{1..3,7}]
+Eval TwoByTwoEntry A21 cartesianCount=28, elapsed 0:00:00.000208
+solve: TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={24,28,32,33,36,42,45,48,54..56,62..64,68,72,75,76,82,84,3 more,96},
+	digits=[{2..9},{1..6,8}]
+Entry D16={11..16,18,21,22,24,25,28,31,32,34,36,38,41,42,44,48}
+Eval TwoByTwoEntry A23 cartesianCount=644, elapsed 0:00:00.000439
+solve: TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={216,343,729},
+	digits=[{2,3,7},{1,2,4},{3,6,9}]
+Entry A21={32,33,48,62,64,68,76,82,84,88,91}
+Entry A22={16,19,38,62,67,68,71,74,82,88}
+Eval TwoByTwoEntry A25 cartesianCount=711, elapsed 0:00:00.001066
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={111,112,116..118,122,124,131,132,134..136,139,141,143..148,374 more,998},
+	digits=[{1..9},{1..9},{1..9}]
+solve: TwoByTwoEntry(name=D26,length=2,value: ,
+	identities=[D26[0]=A25[1],D26[1]=A31[1]],referrers=[A25,A31,D2],
+	values={11..19,21..26,28,29,31,32,34,58 more,99},
+	digits=[{1..9},{1..9}]
+Eval TwoByTwoEntry A33 cartesianCount=1820, elapsed 0:00:00.001749
+solve: TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={102..104,106..108,112,116..118,131,132,134,136,138,139,173,174,176,177,197 more,996},
+	digits=[{1..4,6..9},{0,1,3,7,9},{1..4,6..9}]
+Entry A31={21..24,26,28,29,41..44,46..49,61..64,66,11 more,89}
+Entry A32={11..14,16..19,21..24,26,28,29,41..44,46,26 more,89}
+solve: TwoByTwoEntry(name=D3,length=2,value: #palindrome,
+	identities=[D3[0]=A1[2],D3[1]=A9[0]],referrers=[A1,A9,D22],
+	values={99},
+	digits=[{9},{9}]
+Entry A27={11..19,21..26,28,29,31..33,58 more,98}
+Entry D11={11..14,16..18,21..24,26,28,29,31..34,36,37,39 more,98}
+Entry D12={11..14,16..19,21..24,26,28,29,31..34,36,47 more,98}
+Entry D20={12,16,19,32,33,36,39,72,73,76,92,96}
+Entry D26={11..19,21..26,28,29,31,32,34,57 more,98}
+Entry D27={11..19,21..26,28,29,31..33,58 more,98}
+Entry D28={11..14,16..19,21..23,26,28,31..34,36..38,34 more,98}
+Entry D30={12,14,16,18,19,32,33,36,38,72,73,76,78,91,92,94,96..98}
+solve: TwoByTwoEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A9[1]],referrers=[A4,A9,D13],
+	values={13,23,33,43,53,63,73,83},
+	digits=[{1..8},{3}]
+solve: TwoByTwoEntry(name=A4,length=2,value: ,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,A1],
+	values={11,13,21,23,31,41,43,51,53,61,63,71,73,81,83},
+	digits=[{1..8},{1,3}]
+Eval TwoByTwoEntry D5 cartesianCount=1566, elapsed 0:00:00.001508
+solve: TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={152,154,156,157,351,358},
+	digits=[{1,3},{5},{1,2,4,6..8}]
+Entry D18={11..13,17,22,32,41,62,67,72,73,77,81,83,87,92,97}
+Entry D28={12..14,16,28,36,38,41,46,56,62,67,68,73,76,77,87,89,96,98}
+solve: TwoByTwoEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D6[0],A6[1]=D7[0]],referrers=[D6,D7,A1],
+	values={17,19,23,29,37,39,43,47,49,53,57,59,63,69,73,77,79,83,87,89},
+	digits=[{1..8},{3,7,9}]
+solve: TwoByTwoEntry(name=D6,length=2,value: ,
+	identities=[D6[0]=A6[0],D6[1]=A10[1]],referrers=[A6,A10,D24],
+	values={11,21,31,41,51,61,71,81},
+	digits=[{1..8},{1}]
+Eval TwoByTwoEntry D7 cartesianCount=6, elapsed 0:00:00.000085
+Eval TwoByTwoEntry D7 cartesianCount=228, elapsed 0:00:00.000175
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={312,314,716,912},
+	digits=[{3,7,9},{1},{2,4,6}]
+Entry D5={152,156,157,358}
+Entry D20={12,32,36,72,73,76,92,96}
+Entry D30={12,18,36,72,73,76,91,92,96,97}
+solve: TwoByTwoEntry(name=D20,length=2,value: ,
+	identities=[D20[0]=A19[1],D20[1]=A23[2]],referrers=[A19,A23,D7],
+	values={36,73,76,96},
+	digits=[{3,7,9},{3,6}]
+Eval TwoByTwoEntry A19 cartesianCount=9, elapsed 0:00:00.000068
+solve: TwoByTwoEntry(name=A19,length=2,value: $prime $reverse A29,
+	identities=[A19[0]=D14[1],A19[1]=D20[0]],referrers=[D14,D20,A17,A29],
+	values={13,17,37,73,79,97},
+	digits=[{1,3,7,9},{3,7,9}]
+Entry A29={31,37,71,73,79,97}
+Eval TwoByTwoEntry A29 cartesianCount=6, elapsed 0:00:00.000043
+solve: TwoByTwoEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D7[2]],referrers=[D14,D7,A11],
+	values={12,14,16,22,24,26,32,34,36,42,44,46,52,54,56,62,64,66,72,74,7 more,96},
+	digits=[{1..9},{2,4,6}]
+Eval TwoByTwoEntry D13 cartesianCount=624, elapsed 0:00:00.000645
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={102,104,107,111,112,116..118,122,127,128,131,132,134,138,139,141,142,144,146,285 more,996},
+	digits=[{1..9},{0..9},{1,2,4,6..9}]
+Entry D27={12..14,16..19,22..24,26,28,29,32..34,36..39,40 more,98}
+Eval TwoByTwoEntry D22 cartesianCount=67, elapsed 0:00:00.000169
+solve: TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={118,128,138,148,158,168,178,188,316,326,336,346,356,366,376,386,712,722,732,742,12 more,881},
+	digits=[{1,3,7,8},{1..8},{1,2,6,8}]
+Entry D12={12,14,18,19,22,24,28,29,32,34,38,39,42,44,48,49,52,54,58,59,12 more,89}
+solve: TwoByTwoEntry(name=A32,length=2,value: ,
+	identities=[A32[0]=D22[2],A32[1]=D27[1]],referrers=[D22,D27,A13,A33],
+	values={12..14,16..19,22..24,26,28,29,62..64,66..69,7 more,89},
+	digits=[{1,2,6,8},{2..4,6..9}]
+solve: TwoByTwoEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A11[2],D12[1]=A17[0]],referrers=[A11,A17,D22],
+	values={22,24,28,29,42,44,48,49,62,64,68,69,82,84,88,89},
+	digits=[{2,4,6,8},{2,4,8,9}]
+Eval TwoByTwoEntry A1 cartesianCount=300, elapsed 0:00:00.000351
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={139,159,189,319,339,349,379,399},
+	digits=[{1,3},{1,3..5,7..9},{9}]
+Entry A4={11,21,31,41,43,53,61,63,71,73,81,83}
+Entry A6={19,29,39,43,53,59,63,69,73,79,83,89}
+solve: TwoByTwoEntry(name=D1,length=2,value: #powerof2,
+	identities=[D1[0]=A1[0],D1[1]=A8[0]],referrers=[A1,A8,D21],
+	values={32},
+	digits=[{3},{2}]
+Entry A13={11,12,14,16..18,21,22,24,26,28,31,34,36..38,41,42,44,46,31 more,98}
+Entry A14={12,14,16,22,24,26,34,36,42,44,46,52,54,56,62,64,66,72,74,76,6 more,96}
+Entry A15={11..14,21..24,31,33,34,41..44,61..64,71,10 more,94}
+Entry A21={33,48,62,64,68,76,82,84,88,91}
+Entry A27={11..19,21..26,28,29,31,33,34,57 more,98}
+Entry D11={11..14,16..18,21..24,26,28,29,31,33,34,36..38,38 more,98}
+Entry D16={11..16,18,21,22,24,25,28,31,34,36,38,41,42,44,48}
+Entry D18={11..13,17,22,41,62,67,72,73,77,81,83,87,92,97}
+Entry D26={11..19,21..26,28,29,31,34,35,56 more,98}
+Entry D27={12..14,16..19,22..24,26,28,29,33,34,36..39,42,39 more,98}
+Eval TwoByTwoEntry D2 cartesianCount=1520, elapsed 0:00:00.001718
+solve: TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={170,173,175,176,178,372,374..378,470,472..476,478,570,572,24 more,979},
+	digits=[{1,3..5,7..9},{7},{0..9}]
+Entry D26={11..19,21,23,25,26,28,29,31,34..37,45 more,98}
+Eval TwoByTwoEntry D21 cartesianCount=58, elapsed 0:00:00.000095
+solve: TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={312,336,344,352,368,376,384,416,432,448,464,472,496,624,632,656,664,672,688,696,19 more,992},
+	digits=[{3,4,6..9},{1..9},{2,4,6,8}]
+Entry D11={11..14,21,23,24,26,28,29,31,41..43,46,51..54,56,19 more,92}
+Eval TwoByTwoEntry D24 cartesianCount=248, elapsed 0:00:00.000274
+solve: TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={131,139,173,177,193,197,231,233,237,239,271,273,293,437,473,477,479,491,499},
+	digits=[{1,2,4},{3,7,9},{1,3,7,9}]
+Entry D14={11,13,21,23,29,31,41,43,49,51,53,57,59,63,69,71,77,79,81,83,87}
+Eval TwoByTwoEntry A13 cartesianCount=27, elapsed 0:00:00.000099
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={22,26,28,36,38,42,46,48,62,66,68,76,78,82,86,88,92,96,98},
+	digits=[{2..4,6..9},{2,6,8}]
+Entry A32={22,24,26,28,29,62..64,66..69,82..84,86..89}
+Eval TwoByTwoEntry A11 cartesianCount=494, elapsed 0:00:00.000588
+solve: TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={104,108,112,116,128,132,144,148,152,156,168,176,184,188,192,196,204,208,212,216,127 more,992},
+	digits=[{1..9},{0..9},{2,4,6,8}]
+solve: TwoByTwoEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[1],D16[1]=A21[1]],referrers=[A15,A21,D2],
+	values={11..14,16,18,21,22,24,28,31,34,36,38,41,42,44,48},
+	digits=[{1..4},{1..4,6,8}]
+Eval TwoByTwoEntry A17 cartesianCount=180, elapsed 0:00:00.000239
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={201,204,207,208,212,221,222,224,231,238,239,241,256..258,261,263,268,273,286,52 more,997},
+	digits=[{2,4,8,9},{0..9},{1..4,6..9}]
+Entry A15={11..14,21..24,31,33,34,41,44,61..64,71..73,8 more,94}
+solve: TwoByTwoEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A23[0]],referrers=[A17,A23,D5],
+	values={12,13,17,22,62,67,72,73,77,83,87,92,97},
+	digits=[{1,2,6..9},{2,3,7}]
+Eval TwoByTwoEntry A21 cartesianCount=18, elapsed 0:00:00.000091
+solve: TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={33,48,62,64,68,76,82,84,88,91},
+	digits=[{3,4,6..9},{1..4,6,8}]
+Entry D16={11..14,16,21,22,24,28,31,34,38,41,42,44}
+Eval TwoByTwoEntry A23 cartesianCount=100, elapsed 0:00:00.000096
+solve: TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={216,343},
+	digits=[{2,3},{1,4},{3,6}]
+Entry A21={33,48,62,64,68,76,82,84,88}
+Entry A22={16,19,62,67,68,71,74,82,88}
+Eval TwoByTwoEntry A25 cartesianCount=462, elapsed 0:00:00.000652
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={111,112,116..118,124,132,134..136,141,145..148,154,161,162,164,168,244 more,998},
+	digits=[{1..9},{1..9},{1..8}]
+solve: TwoByTwoEntry(name=D26,length=2,value: ,
+	identities=[D26[0]=A25[1],D26[1]=A31[1]],referrers=[A25,A31,D2],
+	values={11..14,16..19,21,23,26,28,29,31,34,36..39,41,37 more,98},
+	digits=[{1..9},{1..4,6..9}]
+Eval TwoByTwoEntry A33 cartesianCount=589, elapsed 0:00:00.000663
+solve: TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={112,116,118,132,136,138,176,196,216,218,232,236,272,276,278,292,296,298,312,316,48 more,992},
+	digits=[{1..4,6..9},{1,3,7,9},{2,6,8}]
+Entry A31={22..24,26,28,29,42..44,46..49,62..64,66..69,7 more,89}
+solve: TwoByTwoEntry(name=D30,length=2,value: ,
+	identities=[D30[0]=A29[1],D30[1]=A33[2]],referrers=[A29,A33,D7],
+	values={12,18,36,72,76,92,96},
+	digits=[{1,3,7,9},{2,6,8}]
+Eval TwoByTwoEntry D5 cartesianCount=260, elapsed 0:00:00.000166
+solve: TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={152,156,358},
+	digits=[{1,3},{5},{2,6,8}]
+Entry D18={12,13,17,22,72,73,77,92,97}
+Entry D28={12..14,16,28,46,56,68,96,98}
+Eval TwoByTwoEntry D7 cartesianCount=3, elapsed 0:00:00.000034
+Eval TwoByTwoEntry D7 cartesianCount=28, elapsed 0:00:00.000034
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={312,912},
+	digits=[{3,9},{1},{2}]
+Entry D5={152,156}
+Entry D30={12,18,72,92}
+Eval TwoByTwoEntry A19 cartesianCount=6, elapsed 0:00:00.000030
+solve: TwoByTwoEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D7[2]],referrers=[D14,D7,A11],
+	values={12,22,42,52,62,72,82},
+	digits=[{1,2,4..8},{2}]
+Eval TwoByTwoEntry D13 cartesianCount=472, elapsed 0:00:00.000447
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={201,204,208,211,212,214,219,221,222,226,229,231,234,236,237,241,242,244,247,248,211 more,996},
+	digits=[{2..4,6..9},{0..9},{1,2,4,6..9}]
+solve: TwoByTwoEntry(name=A22,length=2,value: ,
+	identities=[A22[0]=D22[0],A22[1]=D13[2]],referrers=[D22,D13,A23],
+	values={16,19,71,74,82,88},
+	digits=[{1,7,8},{1,2,4,6,8,9}]
+Eval TwoByTwoEntry D22 cartesianCount=16, elapsed 0:00:00.000080
+solve: TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={118,138,158,178,712,732,752,772},
+	digits=[{1,7},{1,3,5,7},{2,8}]
+Entry D12={22,28,42,48,62,68,82,88}
+solve: TwoByTwoEntry(name=A32,length=2,value: ,
+	identities=[A32[0]=D22[2],A32[1]=D27[1]],referrers=[D22,D27,A13,A33],
+	values={22,24,26,28,29,82..84,86..89},
+	digits=[{2,8},{2..4,6..9}]
+Eval TwoByTwoEntry A1 cartesianCount=144, elapsed 0:00:00.000146
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={319,339,349,379,399},
+	digits=[{3},{1,3,4,7,9},{9}]
+Entry A4={11,21,53,61,63,71,81,83}
+Entry A6={19,29,39,53,63,79,83,89}
+Eval TwoByTwoEntry D2 cartesianCount=855, elapsed 0:00:00.001101
+solve: TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={173,176,178,372,374,376..378,472..474,476,478,772,774,776,777,779,972,974,3 more,979},
+	digits=[{1,3,4,7,9},{7},{2..4,6..9}]
+Entry D26={11,12,14,16..19,28,29,31,34,36..38,42,43,47,49,52,53,21 more,98}
+Eval TwoByTwoEntry D21 cartesianCount=39, elapsed 0:00:00.000124
+solve: TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={312,336,344,352,368,376,384,416,432,448,464,472,496,624,632,656,664,672,688,696,13 more,896},
+	digits=[{3,4,6..8},{1..9},{2,4,6,8}]
+Entry D11={11..14,21,23,24,26,28,41..43,46,51..54,56..58,13 more,89}
+Eval TwoByTwoEntry D24 cartesianCount=168, elapsed 0:00:00.000216
+solve: TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={131,139,173,177,193,197,437,473,477,479,491,499},
+	digits=[{1,4},{3,7,9},{1,3,7,9}]
+Entry D14={21,23,29,43,49,51,53,57,63,69,71,81,87}
+Eval TwoByTwoEntry A29 cartesianCount=6, elapsed 0:00:00.000063
+solve: TwoByTwoEntry(name=A29,length=2,value: $prime $reverse A19,
+	identities=[A29[0]=D24[1],A29[1]=D30[0]],referrers=[D24,D30,A19,A25],
+	values={31,37,71,79,97},
+	digits=[{3,7,9},{1,7,9}]
+Entry A19={13,17,73,79,97}
+solve: TwoByTwoEntry(name=D14,length=2,value: ,
+	identities=[D14[0]=A14[0],D14[1]=A19[0]],referrers=[A14,A19,D24],
+	values={21,29,49,51,57,69,71,81,87},
+	digits=[{2,4..8},{1,7,9}]
+Eval TwoByTwoEntry A13 cartesianCount=12, elapsed 0:00:00.000131
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={22,42,62,82,92},
+	digits=[{2,4,6,8,9},{2}]
+Entry A32={22,24,26,28,29}
+Eval TwoByTwoEntry A11 cartesianCount=35, elapsed 0:00:00.000090
+solve: TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={144,184,224,264,444,464,544,584,744,784,864},
+	digits=[{1,2,4,5,7,8},{2,4,6,8},{4}]
+Entry A14={12,42,52,72,82}
+solve: TwoByTwoEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[1],D16[1]=A21[1]],referrers=[A15,A21,D2],
+	values={12..14,16,22,24,28,34,38,42,44},
+	digits=[{1..4},{2..4,6,8}]
+Eval TwoByTwoEntry A17 cartesianCount=140, elapsed 0:00:00.000144
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={201,207,212,221,222,231,239,241,261,299,817,819,827,832,857,862,869,887},
+	digits=[{2,8},{0..6,8,9},{1,2,7,9}]
+Entry A15={11,13,23,33,41,44,61,63,64,71,73,81,91,94}
+solve: TwoByTwoEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A23[0]],referrers=[A17,A23,D5],
+	values={12,13,22,72,73,92},
+	digits=[{1,2,7,9},{2,3}]
+Eval TwoByTwoEntry A21 cartesianCount=11, elapsed 0:00:00.000038
+solve: TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={48,64,68,76,84,88},
+	digits=[{4,6..8},{4,6,8}]
+Entry D16={12,14,16,22,24,28,34,38,42,44}
+Eval TwoByTwoEntry A23 cartesianCount=36, elapsed 0:00:00.000062
+solve: TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={216},
+	digits=[{2},{1},{6}]
+Entry A33={112,116,118,132,136,138,176,196,218,232,236,272,276,278,292,296,298,312,316,332,47 more,992}
+Entry A21={64,76,84,88}
+Entry A22={16,19,74,82}
+Eval TwoByTwoEntry A25 cartesianCount=385, elapsed 0:00:00.000444
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={111,135,141,145,147,171,177,183,185,187,195,215,221,231,245,257,261,263,271,275,86 more,997},
+	digits=[{1..9},{1..9},{1,3,5,7}]
+Entry A27={11,13,15,17,19,21,23,25,29,31,33,35,37,39,41,43,45,47,49,51,22 more,97}
+solve: TwoByTwoEntry(name=D26,length=2,value: ,
+	identities=[D26[0]=A25[1],D26[1]=A31[1]],referrers=[A25,A31,D2],
+	values={12,14,16..19,28,29,34,36..38,42,43,47,49,52..54,56,17 more,98},
+	digits=[{1..9},{2..4,6..9}]
+Eval TwoByTwoEntry A33 cartesianCount=135, elapsed 0:00:00.000156
+solve: TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={218,232,372,378,392,492,612,632,638,672,812,892},
+	digits=[{2..4,6,8},{1,3,7,9},{2,8}]
+Entry A31={22,24,28,29,42,44,48,49,62,63,68,82,86,89}
+Eval TwoByTwoEntry D5 cartesianCount=60, elapsed 0:00:00.000066
+solve: TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={152},
+	digits=[{1},{5},{2}]
+Entry D18={12,72,92}
+Entry D28={16,56,96}
+solve: TwoByTwoEntry(name=A4,length=2,value: ,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,A1],
+	values={11,21,61,71,81},
+	digits=[{1,2,6..8},{1}]
+solve: TwoByTwoEntry(name=A27,length=2,value: ,
+	identities=[A27[0]=D27[0],A27[1]=D28[0]],referrers=[D27,D28,A25],
+	values={11,15,19,21,25,29,31,35,39,41,45,49,51,55,59,61,65,69,71,75,6 more,95},
+	digits=[{1..9},{1,5,9}]
+Eval TwoByTwoEntry D7 cartesianCount=16, elapsed 0:00:00.000040
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={912},
+	digits=[{9},{1},{2}]
+Entry D20={36,76,96}
+Entry D30={12,72,92}
+solve: TwoByTwoEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D6[0],A6[1]=D7[0]],referrers=[D6,D7,A1],
+	values={19,29,39,79,89},
+	digits=[{1..3,7,8},{9}]
+solve: TwoByTwoEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D7[2]],referrers=[D14,D7,A11],
+	values={42,52,72,82},
+	digits=[{4,5,7,8},{2}]
+Eval TwoByTwoEntry D13 cartesianCount=472, elapsed 0:00:00.000526
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={204,212,214,219,222,226,229,234,236,242,244,254,256,284,286,292,299,402,409,414,65 more,996},
+	digits=[{2,4,6,8,9},{0..6,8,9},{2,4,6,9}]
+Entry D27={12..14,18,22..24,28,33,34,38,42..44,48,52..54,58,62,14 more,98}
+solve: TwoByTwoEntry(name=A22,length=2,value: ,
+	identities=[A22[0]=D22[0],A22[1]=D13[2]],referrers=[D22,D13,A23],
+	values={16,19,74},
+	digits=[{1,7},{4,6,9}]
+Eval TwoByTwoEntry D22 cartesianCount=8, elapsed 0:00:00.000069
+solve: TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={712,732,752,772},
+	digits=[{7},{1,3,5,7},{2}]
+Entry D12={28,48,68,88}
+solve: TwoByTwoEntry(name=A32,length=2,value: ,
+	identities=[A32[0]=D22[2],A32[1]=D27[1]],referrers=[D22,D27,A13,A33],
+	values={22,24,28},
+	digits=[{2},{2,4,8}]
+solve: TwoByTwoEntry(name=D27,length=2,value: ,
+	identities=[D27[0]=A27[0],D27[1]=A32[1]],referrers=[A27,A32,D13],
+	values={12,14,18,22,24,28,34,38,42,44,48,52,54,58,62,64,68,72,74,78,6 more,98},
+	digits=[{1..9},{2,4,8}]
+Eval TwoByTwoEntry A1 cartesianCount=25, elapsed 0:00:00.000060
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={319,349,379,399},
+	digits=[{3},{1,4,7,9},{9}]
+solve: TwoByTwoEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A9[1]],referrers=[A4,A9,D13],
+	values={13,23,63,73,83},
+	digits=[{1,2,6..8},{3}]
+solve: TwoByTwoEntry(name=D6,length=2,value: ,
+	identities=[D6[0]=A6[0],D6[1]=A10[1]],referrers=[A6,A10,D24],
+	values={11,21,31,71,81},
+	digits=[{1..3,7,8},{1}]
+Eval TwoByTwoEntry D2 cartesianCount=370, elapsed 0:00:00.000385
+solve: TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={176,472,474,476,478,772,774,776,972,974,976},
+	digits=[{1,4,7,9},{7},{2,4,6,8}]
+Entry D26={14,17,28,34,42,47,49,52,58,59,63,64,66,67,73,74,79,84,92,98}
+Eval TwoByTwoEntry D21 cartesianCount=33, elapsed 0:00:00.000100
+solve: TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={624,632,656,664,672,688,696,728,736,752,768,784,792,816,824,832,848,856,888,896},
+	digits=[{6..8},{1..9},{2,4,6,8}]
+Entry D11={21,23,24,26,28,51..54,56..59,82..84,86..89}
+Eval TwoByTwoEntry D24 cartesianCount=45, elapsed 0:00:00.000076
+solve: TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={131,139,177,197},
+	digits=[{1},{3,7,9},{1,7,9}]
+Entry D14={51,57,69,87}
+Entry D6={21,31,71,81}
+Eval TwoByTwoEntry A19 cartesianCount=5, elapsed 0:00:00.000055
+Eval TwoByTwoEntry A29 cartesianCount=5, elapsed 0:00:00.000049
+solve: TwoByTwoEntry(name=D14,length=2,value: ,
+	identities=[D14[0]=A14[0],D14[1]=A19[0]],referrers=[A14,A19,D24],
+	values={51,57,87},
+	digits=[{5,8},{1,7}]
+Eval TwoByTwoEntry A13 cartesianCount=3, elapsed 0:00:00.000028
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={22,42,82},
+	digits=[{2,4,8},{2}]
+Eval TwoByTwoEntry A11 cartesianCount=12, elapsed 0:00:00.000039
+solve: TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={264,584},
+	digits=[{2,5},{6,8},{4}]
+Entry A13={22,82}
+Entry A14={52,72}
+solve: TwoByTwoEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A11[0],D11[1]=A15[0]],referrers=[A11,A15,D21],
+	values={21,23,24,26,28,51..54,56..59},
+	digits=[{2,5},{1..4,6..9}]
+solve: TwoByTwoEntry(name=D12,length=2,value: ,
+	identities=[D12[0]=A11[2],D12[1]=A17[0]],referrers=[A11,A17,D22],
+	values={48},
+	digits=[{4},{8}]
+Entry A31={22,24,28,29,42,44,49,62,63,68,82,86,89}
+Entry D27={12,14,18,22,24,28,34,38,42,44,52,54,58,62,64,68,72,74,78,82,5 more,98}
+solve: TwoByTwoEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[1],D16[1]=A21[1]],referrers=[A15,A21,D2],
+	values={14,16,34,38,44},
+	digits=[{1,3,4},{4,6,8}]
+Eval TwoByTwoEntry A17 cartesianCount=70, elapsed 0:00:00.000109
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={817,819,827,857,869,887},
+	digits=[{8},{1,2,5,6,8},{7,9}]
+Entry A15={11,23,61,63,71,81,91}
+Entry A19={13,79,97}
+solve: TwoByTwoEntry(name=D18,length=2,value: ,
+	identities=[D18[0]=A17[2],D18[1]=A23[0]],referrers=[A17,A23,D5],
+	values={72,92},
+	digits=[{7,9},{2}]
+Eval TwoByTwoEntry A21 cartesianCount=5, elapsed 0:00:00.000042
+solve: TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={64,76,84,88},
+	digits=[{6..8},{4,6,8}]
+Entry D16={14,16,38,44}
+Eval TwoByTwoEntry A23 cartesianCount=12, elapsed 0:00:00.000037
+solve: TwoByTwoEntry(name=A23,length=3,value: #cube | £last3digits(A21,A22),
+	identities=[A23[0]=D18[1],A23[1]=D24[0],A23[2]=D20[1]],referrers=[D18,D24,D20],
+	values={216},
+	digits=[{2},{1},{6}]
+Entry A21={64,76,84}
+Eval TwoByTwoEntry A25 cartesianCount=130, elapsed 0:00:00.000235
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={135,145,147,183,185,195,215,245,257,271,275,291,293,295,325,331,335,341,345,365,52 more,997},
+	digits=[{1..9},{1..9},{1,3,5,7}]
+solve: TwoByTwoEntry(name=D26,length=2,value: ,
+	identities=[D26[0]=A25[1],D26[1]=A31[1]],referrers=[A25,A31,D2],
+	values={14,28,34,42,49,52,58,59,63,64,66,73,74,79,84,92,98},
+	digits=[{1..9},{2..4,6,8,9}]
+Eval TwoByTwoEntry A33 cartesianCount=39, elapsed 0:00:00.000079
+solve: TwoByTwoEntry(name=A33,length=3,value: £last3digits(A31,A32),
+	identities=[A33[0]=D28[1],A33[1]=D24[2],A33[2]=D30[1]],referrers=[D28,D24,D30],
+	values={672},
+	digits=[{6},{7},{2}]
+Entry D21={624,632,656,664,688,696,728,736,752,768,784,792,816,824,832,848,856,888,896}
+Entry A31={24,28}
+Entry A32={24,28}
+Eval TwoByTwoEntry D5 cartesianCount=6, elapsed 0:00:00.000044
+solve: TwoByTwoEntry(name=D5,length=3,value: £last3digits(D18,D28),
+	identities=[D5[0]=A4[1],D5[1]=A10[0],D5[2]=A13[1]],referrers=[A4,A10,A13,D7],
+	values={152},
+	digits=[{1},{5},{2}]
+Entry D28={16,56}
+solve: TwoByTwoEntry(name=A27,length=2,value: ,
+	identities=[A27[0]=D27[0],A27[1]=D28[0]],referrers=[D27,D28,A25],
+	values={11,15,21,25,31,35,41,45,51,55,61,65,71,75,81,85,91,95},
+	digits=[{1..9},{1,5}]
+Eval TwoByTwoEntry D7 cartesianCount=9, elapsed 0:00:00.000030
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={912},
+	digits=[{9},{1},{2}]
+Entry D20={76,96}
+Entry D30={12,72}
+solve: TwoByTwoEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D6[0],A6[1]=D7[0]],referrers=[D6,D7,A1],
+	values={29,39,79,89},
+	digits=[{2,3,7,8},{9}]
+solve: TwoByTwoEntry(name=A14,length=2,value: ,
+	identities=[A14[0]=D14[0],A14[1]=D7[2]],referrers=[D14,D7,A11],
+	values={52},
+	digits=[{5},{2}]
+Entry D11={21,23,24,26,28,51,53,54,56..59}
+Entry D26={14,28,34,42,49,58,59,63,64,66,73,74,79,84,92,98}
+Entry D27={12,14,18,22,24,28,34,38,42,44,54,58,62,64,68,72,74,78,82,84,4 more,98}
+Eval TwoByTwoEntry D13 cartesianCount=120, elapsed 0:00:00.000106
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={254,256,284,286,814,826,884,886},
+	digits=[{2,8},{1,2,5,8},{4,6}]
+Entry D27={22,58,68,72,82,98}
+solve: TwoByTwoEntry(name=A22,length=2,value: ,
+	identities=[A22[0]=D22[0],A22[1]=D13[2]],referrers=[D22,D13,A23],
+	values={74},
+	digits=[{7},{4}]
+Entry D26={14,28,34,42,49,58,59,63,64,66,73,79,84,92,98}
+solve: TwoByTwoEntry(name=D22,length=3,value: £last3digits(D3,D12),
+	identities=[D22[0]=A22[0],D22[1]=A25[2],D22[2]=A32[0]],referrers=[A22,A25,A32],
+	values={752},
+	digits=[{7},{5},{2}]
+Entry D21={624,632,656,664,688,696,728,736,768,784,792,816,824,832,848,856,888,896}
+solve: TwoByTwoEntry(name=A32,length=2,value: ,
+	identities=[A32[0]=D22[2],A32[1]=D27[1]],referrers=[D22,D27,A13,A33],
+	values={28},
+	digits=[{2},{8}]
+Entry A31={24}
+Entry D11={21,23,26,51,53,54,56..59}
+Entry D26={14,34,42,49,58,59,63,64,66,73,79,84,92,98}
+solve: TwoByTwoEntry(name=D27,length=2,value: ,
+	identities=[D27[0]=A27[0],D27[1]=A32[1]],referrers=[A27,A32,D13],
+	values={58,68,98},
+	digits=[{5,6,9},{8}]
+Eval TwoByTwoEntry A1 cartesianCount=20, elapsed 0:00:00.000072
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={319,349,379,399},
+	digits=[{3},{1,4,7,9},{9}]
+Entry A4={11,61,71,81}
+solve: TwoByTwoEntry(name=D4,length=2,value: ,
+	identities=[D4[0]=A4[0],D4[1]=A9[1]],referrers=[A4,A9,D13],
+	values={13,63,73,83},
+	digits=[{1,6..8},{3}]
+Eval TwoByTwoEntry D2 cartesianCount=56, elapsed 0:00:00.000094
+solve: TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={176,476},
+	digits=[{1,4},{7},{6}]
+Entry D16={14,44}
+Entry D26={34,79,84}
+Eval TwoByTwoEntry D21 cartesianCount=10, elapsed 0:00:00.000045
+solve: TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={632,792,832},
+	digits=[{6..8},{3,9},{2}]
+Entry D11={26,51,56}
+Eval TwoByTwoEntry D24 cartesianCount=12, elapsed 0:00:00.000047
+solve: TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={177,197},
+	digits=[{1},{7,9},{7}]
+Entry D14={57,87}
+Entry D6={21,71}
+solve: TwoByTwoEntry(name=D14,length=2,value: ,
+	identities=[D14[0]=A14[0],D14[1]=A19[0]],referrers=[A14,A19,D24],
+	values={57},
+	digits=[{5},{7}]
+Eval TwoByTwoEntry A19 cartesianCount=5, elapsed 0:00:00.000056
+solve: TwoByTwoEntry(name=A19,length=2,value: $prime $reverse A29,
+	identities=[A19[0]=D14[1],A19[1]=D20[0]],referrers=[D14,D20,A17,A29],
+	values={79},
+	digits=[{7},{9}]
+Entry A6={29,39,89}
+Entry A29={97}
+Entry D26={34,84}
+solve: TwoByTwoEntry(name=A13,length=2,value: $reverse A32,
+	identities=[A13[0]=D13[0],A13[1]=D5[2]],referrers=[D13,D5,A11],
+	values={82},
+	digits=[{8},{2}]
+solve: TwoByTwoEntry(name=A11,length=3,value: £last3digits(A13,A14),
+	identities=[A11[0]=D11[0],A11[1]=D2[2],A11[2]=D12[0]],referrers=[D11,D2,D12],
+	values={264},
+	digits=[{2},{6},{4}]
+solve: TwoByTwoEntry(name=D11,length=2,value: ,
+	identities=[D11[0]=A11[0],D11[1]=A15[0]],referrers=[A11,A15,D21],
+	values={26},
+	digits=[{2},{6}]
+solve: TwoByTwoEntry(name=D16,length=2,value: ,
+	identities=[D16[0]=A15[1],D16[1]=A21[1]],referrers=[A15,A21,D2],
+	values={14},
+	digits=[{1},{4}]
+Eval TwoByTwoEntry A17 cartesianCount=7, elapsed 0:00:00.000024
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={817,819},
+	digits=[{8},{1},{7,9}]
+Entry A15={23,61}
+solve: TwoByTwoEntry(name=D20,length=2,value: ,
+	identities=[D20[0]=A19[1],D20[1]=A23[2]],referrers=[A19,A23,D7],
+	values={96},
+	digits=[{9},{6}]
+solve: TwoByTwoEntry(name=A21,length=2,value: $multiple D16,
+	identities=[A21[0]=D21[0],A21[1]=D16[1]],referrers=[D21,D16,A23],
+	values={84},
+	digits=[{8},{4}]
+Entry D26={34}
+Eval TwoByTwoEntry A25 cartesianCount=18, elapsed 0:00:00.000033
+solve: TwoByTwoEntry(name=A25,length=3,value: £last3digits(A27,A29),
+	identities=[A25[0]=D21[1],A25[1]=D26[0],A25[2]=D22[1]],referrers=[D21,D26,D22],
+	values={335},
+	digits=[{3},{3},{5}]
+Entry A27={55}
+Eval TwoByTwoEntry D5 cartesianCount=4, elapsed 0:00:00.000015
+Eval TwoByTwoEntry D7 cartesianCount=2, elapsed 0:00:00.000012
+solve: TwoByTwoEntry(name=D7,length=3,value: $multiple D5 | £last3digits(D20,D30),
+	identities=[D7[0]=A6[1],D7[1]=A10[2],D7[2]=A14[1]],referrers=[A6,A10,A14],
+	values={912},
+	digits=[{9},{1},{2}]
+Entry D30={72}
+Entry D18={92}
+solve: TwoByTwoEntry(name=A6,length=2,value: ,
+	identities=[A6[0]=D6[0],A6[1]=D7[0]],referrers=[D6,D7,A1],
+	values={29},
+	digits=[{2},{9}]
+solve: TwoByTwoEntry(name=A15,length=2,value: ,
+	identities=[A15[0]=D11[1],A15[1]=D16[0]],referrers=[D11,D16,A17],
+	values={61},
+	digits=[{6},{1}]
+Entry A4={11,71,81}
+Eval TwoByTwoEntry D13 cartesianCount=12, elapsed 0:00:00.000024
+solve: TwoByTwoEntry(name=D13,length=3,value: £last3digits(D4,D27),
+	identities=[D13[0]=A13[0],D13[1]=A17[1],D13[2]=A22[1]],referrers=[A13,A17,A22],
+	values={814},
+	digits=[{8},{1},{4}]
+Entry D27={58}
+Entry D4={83}
+solve: TwoByTwoEntry(name=A4,length=2,value: ,
+	identities=[A4[0]=D4[0],A4[1]=D5[0]],referrers=[D4,D5,A1],
+	values={81},
+	digits=[{8},{1}]
+solve: TwoByTwoEntry(name=A1,length=3,value: £last3digits(A4,A6),
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
+	values={349},
+	digits=[{3},{4},{9}]
+solve: TwoByTwoEntry(name=D2,length=3,value: £last3digits(D16,D26),
+	identities=[D2[0]=A1[1],D2[1]=A8[1],D2[2]=A11[1]],referrers=[A1,A8,A11],
+	values={476},
+	digits=[{4},{7},{6}]
+solve: TwoByTwoEntry(name=D21,length=3,value: £last3digits(D1,D11),
+	identities=[D21[0]=A21[0],D21[1]=A25[0],D21[2]=A31[0]],referrers=[A21,A25,A31],
+	values={832},
+	digits=[{8},{3},{2}]
+Eval TwoByTwoEntry D24 cartesianCount=2, elapsed 0:00:00.000018
+solve: TwoByTwoEntry(name=D24,length=3,value: £last3digits(D6,D14),
+	identities=[D24[0]=A23[1],D24[1]=A29[0],D24[2]=A33[1]],referrers=[A23,A29,A33],
+	values={197},
+	digits=[{1},{9},{7}]
+Entry D6={21}
+solve: TwoByTwoEntry(name=A17,length=3,value: £last3digits(A15,A19),
+	identities=[A17[0]=D12[1],A17[1]=D13[1],A17[2]=D18[0]],referrers=[D12,D13,D18],
+	values={819},
+	digits=[{8},{1},{9}]
+solve: TwoByTwoEntry(name=D28,length=2,value: ,
+	identities=[D28[0]=A27[1],D28[1]=A33[0]],referrers=[A27,A33,D5],
+	values={56},
+	digits=[{5},{6}]
+Clue/Variable iterations=304, updates=338, elapsed 0:00:04.914747
+SOLUTION-----------------------------
+Puzzle Summary
+A1, £last3digits(A4,A6), values={349}
+A4, , values={81}
+A6, , values={29}
+A8, #cube, values={27}
+A9, , values={93}
+A10, A8 = $sumDigitSquares #result | £last3digits(A8,A9), values={511}
+A11, £last3digits(A13,A14), values={264}
+A13, $reverse A32, values={82}
+A14, , values={52}
+A15, , values={61}
+A17, £last3digits(A15,A19), values={819}
+A19, $prime $reverse A29, values={79}
+A21, $multiple D16, values={84}
+A22, , values={74}
+A23, #cube | £last3digits(A21,A22), values={216}
+A25, £last3digits(A27,A29), values={335}
+A27, , values={55}
+A29, $prime $reverse A19, values={97}
+A31, , values={24}
+A32, , values={28}
+A33, £last3digits(A31,A32), values={672}
+D1, #powerof2, values={32}
+D2, £last3digits(D16,D26), values={476}
+D3, #palindrome, values={99}
+D4, , values={83}
+D5, £last3digits(D18,D28), values={152}
+D6, , values={21}
+D7, $multiple D5 | £last3digits(D20,D30), values={912}
+D11, , values={26}
+D12, , values={48}
+D13, £last3digits(D4,D27), values={814}
+D14, , values={57}
+D16, , values={14}
+D18, , values={92}
+D20, , values={96}
+D21, £last3digits(D1,D11), values={832}
+D22, £last3digits(D3,D12), values={752}
+D24, £last3digits(D6,D14), values={197}
+D26, , values={34}
+D27, , values={58}
+D28, , values={56}
+D30, , values={72}
++--+--+--+--+--+--+--+
+| 3  4  9| 8  1| 2  9|
++        +     +     +
+| 2  7| 9  3| 5  1  1|
++--+  +--+--+   --+  +
+| 2  6  4| 8  2| 5  2|
++   --+  +   --+   --+
+| 6  1| 8  1  9| 7  9|
++--+  +--+     +--+  +
+| 8  4| 7  4| 2  1  6|
++   --+   --+--+   --+
+| 3  3  5| 5  5| 9  7|
++        +     +     +
+| 2  4| 2  8| 6  7  2|
++--+--+--+--+--+--+--+
+
+Exited.

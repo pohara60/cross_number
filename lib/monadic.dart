@@ -27,6 +27,8 @@ void initializeMonadics(Map<String, Monadic> monadics) {
       Monadic('reverse', reverse, int, order: NodeOrder.UNKNOWN);
   monadics['sumdigits'] =
       Monadic('sumdigits', sumDigits, int, order: NodeOrder.UNKNOWN);
+  monadics['sumdigitsquares'] = Monadic('sumdigitsquares', sumDigitSquares, int,
+      order: NodeOrder.UNKNOWN);
   monadics['square'] = Monadic('square', square, int);
   monadics['squareroot'] = Monadic('squareroot', squareroot, int);
   monadics['cube'] = Monadic('cube', cube, int);
@@ -122,6 +124,16 @@ int sumDigits(dynamic value) {
     sumDigits += int.parse(valueStr[index]);
   }
   return sumDigits;
+}
+
+int sumDigitSquares(dynamic value) {
+  var valueStr = (value as int).toString();
+  var sumDigitSquares = 0;
+  for (var index = 0; index < valueStr.length; index++) {
+    var digit = int.parse(valueStr[index]);
+    sumDigitSquares += digit * digit;
+  }
+  return sumDigitSquares;
 }
 
 int square(dynamic value) {
