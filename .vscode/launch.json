@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "WorkingBack2",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "WorkingBack2"
+            ]
+        },
+        {
             "name": "TwoByTwo",
             "type": "dart",
             "request": "launch",
