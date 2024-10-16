@@ -59,7 +59,8 @@ class Variable with PriorityVariable {
 
   /// Answer - preset to detect errors in puzzles with known answers
   int? _answer;
-  set answer(int answer) {
+  int? get answer => _answer;
+  set answer(int? answer) {
     _answer = answer;
   }
 

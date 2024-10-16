@@ -356,16 +356,27 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   }
 
   var traceFindSolutions = false;
+  var traceFindAnswer = true;
 
   int findSolutions(List<Variable> order, int next, int count,
-      [Function? callback]) {
+      [Function? callback, bool isAnswer = true]) {
     // Skip variables/clues with value
     while (next < order.length &&
         solution[order[next]] != null &&
         solution[order[next]]!.value != null) {
+      var clue = order[next];
+      var value = solution[order[next]]!.value;
       if (traceFindSolutions) {
         print(
-            'findSolutions: next=$next, skip ${order[next].name}=${solution[order[next]]!.value} next=${next + 1}');
+            'findSolutions: next=$next, skip ${clue.name}=$value next=${next + 1}');
+      }
+      if (traceFindAnswer) {
+        if (isAnswer && clue.answer != null && value == clue.answer) {
+          print(
+              'findSolutions: next=$next, clue=${clue.name}, answer value $value');
+        } else {
+          isAnswer = false;
+        }
       }
       next++;
     }
@@ -455,6 +466,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     // for (var value in solution[clue]!.possible) {
     valueLoop:
     for (var value in values ?? {}) {
+      var stillAnswer = isAnswer;
       // Check that this value is consistent with other clues
       if (clue is Clue) {
         if (!clueValuesMatch(clue, value)) {
@@ -483,7 +495,15 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
       if (traceFindSolutions) {
         print('findSolutions: next=$next, clue=${clue.name}, try value $value');
       }
-      count = findSolutions(order, next + 1, count, callback);
+      if (traceFindAnswer) {
+        if (stillAnswer && clue.answer != null && value == clue.answer) {
+          print(
+              'findSolutions: next=$next, clue=${clue.name}, answer value $value');
+        } else {
+          stillAnswer = false;
+        }
+      }
+      count = findSolutions(order, next + 1, count, callback, stillAnswer);
       solution[clue]!.value = null;
       clue.tryValue = null;
       // Undo other variables

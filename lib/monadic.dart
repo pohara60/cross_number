@@ -197,6 +197,7 @@ bool isPalindrome(dynamic value) {
 
 Iterable<int> multiple(dynamic value) sync* {
   int last = value as int;
+  if (last <= 0) return;
   while (true) {
     last += value;
     yield last;

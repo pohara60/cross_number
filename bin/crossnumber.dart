@@ -26,6 +26,7 @@ import 'package:crossnumber/increasingprime/increasingprime.dart';
 import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/knights2/knights2.dart';
+import 'package:crossnumber/magicarray/magicarray.dart';
 import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/numeriitaliano/numeriitaliano.dart';
 import 'package:crossnumber/opposingdigitsum/opposingdigitsum.dart';
@@ -123,7 +124,8 @@ void main(List<String> arguments) async {
     ..addCommand(NumeriItalianoCommand())
     ..addCommand(WorkingBackCommand())
     ..addCommand(TwoByTwoCommand())
-    ..addCommand(WorkingBack2Command());
+    ..addCommand(WorkingBack2Command())
+    ..addCommand(MagicArrayCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1344,6 +1346,30 @@ class WorkingBack2Command extends Command {
     // Get and print solve
     try {
       final pc = WorkingBack2();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class MagicArrayCommand extends Command {
+  @override
+  final name = 'MagicArray';
+  @override
+  final description = 'solve hardcoded MagicArray puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = MagicArray();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

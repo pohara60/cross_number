@@ -34,8 +34,7 @@ class OpposingDigitSumPuzzle extends VariablePuzzle<OpposingDigitSumClue,
     return oppositeEntry as OpposingDigitSumEntry;
   }
 
-  var allRelatedVariables = <List<Variable>>[];
-
+  @override
   List<Variable>? relatedVariablesForVariable(Variable variable) {
     for (var relatedVariables in allRelatedVariables) {
       if (relatedVariables.contains(variable)) {
@@ -45,6 +44,7 @@ class OpposingDigitSumPuzzle extends VariablePuzzle<OpposingDigitSumClue,
     return null;
   }
 
+  @override
   void getRelatedVariables() {
     // Find ordered sets of solvable variables that refer to each other
     var remainingVariables = allVariables.values
