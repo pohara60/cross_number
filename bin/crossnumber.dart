@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/abcde/abcde.dart';
+import 'package:crossnumber/afternicholas/afternicholas.dart';
 import 'package:crossnumber/almostfermat/almostfermat.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 import 'package:crossnumber/columns/columns.dart';
@@ -125,7 +126,8 @@ void main(List<String> arguments) async {
     ..addCommand(WorkingBackCommand())
     ..addCommand(TwoByTwoCommand())
     ..addCommand(WorkingBack2Command())
-    ..addCommand(MagicArrayCommand());
+    ..addCommand(MagicArrayCommand())
+    ..addCommand(AfterNicholasCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1370,6 +1372,30 @@ class MagicArrayCommand extends Command {
     // Get and print solve
     try {
       final pc = MagicArray();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class AfterNicholasCommand extends Command {
+  @override
+  final name = 'AfterNicholas';
+  @override
+  final description = 'solve hardcoded AfterNicholas puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = AfterNicholas();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
