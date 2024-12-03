@@ -1,0 +1,969 @@
+Puzzle
+Clue ExcusesClue(name=1,length=3,value: f^h + m^h = (l + z)^h,
+	identities=[1[0]=A14[1],1[1]=A19[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}],
+	entry=D15,a=f,b=m,c=(l + z),n=h,isLetter=,
+	diffs={},minDiff=0,maxDiff=25
+Clue ExcusesClue(name=2,length=3,value: (g - n - q)^h + (a + c)^h = f^h,
+	identities=[2[0]=A1[1],2[2]=A11[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=D2,a=(g - n - q),b=(a + c),c=f,n=h,isLetter=,
+	diffs={},minDiff=0,maxDiff=25
+Clue ExcusesClue(name=3,length=4,value: (u + y)^h + (v + x)^h = (c + qz)^h,
+	identities=[3[0]=D12[0],3[1]=D10[1],3[2]=D13[0],3[3]=D7[2]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}],
+	entry=A12,a=(u + y),b=(v + x),c=(c + qz),n=h,isLetter=,
+	diffs={},minDiff=0,maxDiff=25
+Clue ExcusesClue(name=4,length=4,value: (d + g)^h + (l + y)^h = (qz)^h,
+	identities=[4[0]=D22[1],4[1]=D13[4],4[2]=D27[0],4[3]=D18[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}],
+	entry=A26,a=(d + g),b=(l + y),c=(qz),n=h,isLetter=,
+	diffs={},minDiff=0,maxDiff=25
+Clue ExcusesClue(name=5,length=2,value: c^h + p^h = q^h,
+	identities=[5[0]=A30[0],5[1]=A32[2]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9}],
+	entry=D30,a=c,b=p,c=q,n=h,isLetter=,
+	diffs={},minDiff=0,maxDiff=25
+Clue ExcusesClue(name=6,length=2,value: k^i + n^i = (k + n)^i,
+	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9}],
+	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
+	diffs={},minDiff=0,maxDiff=25
+Clue ExcusesClue(name=7,length=3,value: (m - t)^c + (y - l)^c = (qt - kz)^c,
+	identities=[7[0]=A7[1],7[1]=A10[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=D8,a=(m - t),b=(y - l),c=(qt - kz),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=8,length=4,value: (qt - kz)^c + (m - z)^c = (g - r)^c,
+	identities=[8[0]=A19[2],8[1]=A21[1],8[2]=A25[2],8[3]=A28[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}],
+	entry=D20,a=(qt - kz),b=(m - z),c=(g - r),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=9,length=3,value: q^c + (m - t)^c = (x - l)^c,
+	identities=[9[1]=A28[0],9[2]=A31[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}],
+	entry=D24,a=q,b=(m - t),c=(x - l),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=10,length=4,value: d^h + (t + y)^h = (cu)^h,
+	identities=[10[0]=D10[0],10[1]=D6[1],10[2]=D7[1],10[3]=D8[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}],
+	entry=A10,a=d,b=(t + y),c=(cu),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=11,length=2,value: (v - a)^h + d^h = e^h,
+	identities=[11[0]=A1[6],11[1]=A10[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9}],
+	entry=D6,a=(v - a),b=d,c=e,n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=12,length=3,value: (k + n)^h + (i + x)^h = (d + f)^h,
+	identities=[12[0]=D3[1],12[1]=D4[1],12[2]=D5[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=A9,a=(k + n),b=(i + x),c=(d + f),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=13,length=7,value: (t+v) ^c+(jp+r)^c = (cnq)^c,
+	identities=[13[0]=D29[1],13[2]=D30[1],13[3]=D22[3],13[4]=D13[6],13[5]=D27[2],13[6]=D18[5]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9},{0..9}],
+	entry=A32,a=(t+v),b=(jp+r),c=(cnq),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=14,length=4,value: (f + j)^h + (eq)^h = (b + f + g)^h,
+	identities=[14[0]=D24[1],14[1]=D25[1],14[2]=D29[0],14[3]=D20[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}],
+	entry=A28,a=(f + j),b=(eq),c=(b + f + g),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=15,length=2,value: i^h + p^h = q^h,
+	identities=[15[0]=D7[0],15[1]=D8[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9}],
+	entry=A7,a=i,b=p,c=q,n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=16,length=3,value: r^h + v^h = m^h,
+	identities=[16[0]=A25[0],16[1]=A28[1],16[2]=A31[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=D25,a=r,b=v,c=m,n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=17,length=2,value: (e - k)^h + (l - a)^h = (u - n)^h,
+	identities=[17[0]=A28[2],17[1]=A32[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9}],
+	entry=D29,a=(e - k),b=(l - a),c=(u - n),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=18,length=4,value: (e + u)^h + (cj)^h = (b + x + y)^h,
+	identities=[18[0]=A21[3],18[1]=A26[0],18[2]=A30[1],18[3]=A32[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}],
+	entry=D22,a=(e + u),b=(cj),c=(b + x + y),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=19,length=2,value: (x - g)^h + (e - q)^h = (d + q - o)^h,
+	identities=[19[0]=D17[2],19[1]=D18[2]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9}],
+	entry=A23,a=(x - g),b=(e - q),c=(d + q - o),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=20,length=7,value: (k + n)^q + (g - o)^q = (o + u - q)^q,
+	identities=[20[0]=D1[0],20[1]=D2[0],20[2]=D3[0],20[3]=D4[0],20[4]=D5[0],20[6]=D6[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9},{1..9},{1..9},{0..9},{1..9}],
+	entry=A1,a=(k + n),b=(g - o),c=(o + u - q),n=q,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=21,length=4,value: (s - d)^c + (ev - of)^c = z^c,
+	identities=[21[0]=A10[0],21[1]=A12[1],21[2]=A16[3],21[3]=A19[4]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}],
+	entry=D10,a=(s - d),b=(ev - of),c=z,n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=22,length=3,value: p^h + (c + m - e)^h = t^h,
+	identities=[22[1]=A19[6],22[2]=A23[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}],
+	entry=D17,a=p,b=(c + m - e),c=t,n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=23,length=2,value: h^h + (c + q)^h = d^h,
+	identities=[23[0]=D1[3],23[1]=D15[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9}],
+	entry=A14,a=h,b=(c + q),c=d,n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=24,length=5,value: (q^c)^h + (q^c + b)^h = (bd - q)^h,
+	identities=[24[0]=A12[0],24[1]=A16[2],24[2]=A19[3],24[3]=A21[2],24[4]=A25[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}],
+	entry=D12,a=(q^c),b=(q^c + b),c=(bd - q),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=25,length=5,value: (p + w) + (hw + k)^c = (hw + o)^c,
+	identities=[25[0]=D3[5],25[1]=D20[1],25[2]=D12[3],25[3]=D22[0],25[4]=D13[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{1..9},{0..9}],
+	entry=A21,a=(p + w),b=(hw + k),c=(hw + o),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=26,length=2,value: h^h + d^h = e^h,
+	identities=[26[0]=A1[4],26[1]=A9[2]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9}],
+	entry=D5,a=h,b=d,c=e,n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=27,length=6,value: (mq-e)^h + (cez + e)^h = (cez + j)^h,
+	identities=[27[0]=A1[0],27[2]=A11[0],27[3]=A14[0]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{1..9},{0..9},{0..9}],
+	entry=D1,a=(mq-e),b=(cez + e),c=(cez + j),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=28,length=6,value: (r + u)^c + (gh + hu)^c = (nz)^c,
+	identities=[28[2]=A23[1],28[3]=A26[3],28[5]=A32[6]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9}],
+	entry=D18,a=(r + u),b=(gh + hu),c=(nz),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=29,length=3,value: o^h + e^h = (y - u)^h,
+	identities=[29[0]=A7[0],29[1]=A10[2],29[2]=A12[3]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=D7,a=o,b=e,c=(y - u),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=30,length=4,value: (t-p)^c + (t - i)^c = (i + t)^c,
+	identities=[30[0]=D1[2],30[1]=D2[2],30[2]=D3[2],30[3]=D4[2]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}],
+	entry=A11,a=(t-p),b=(t - i),c=(i + t),n=c,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=31,length=3,value: (y - f)^h + u^h = (p + r)^h,
+	identities=[31[0]=D30[0],31[1]=D22[2],31[2]=D13[5]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=A30,a=(y - f),b=u,c=(p + r),n=h,isLetter=Y,
+	diffs={},minDiff=1,maxDiff=26
+Clue ExcusesClue(name=32,length=4,value: (c + h + q)^h + (g + j + m)^h = (l + x + y)^h,
+	identities=[32[0]=D25[0],32[1]=D3[6],32[2]=D20[2],32[3]=D12[4]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}],
+	entry=A25,a=(c + h + q),b=(g + j + m),c=(l + x + y),n=h,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Clue ExcusesClue(name=33,length=4,value: (j + y)^h + (mp)^h = (fq - c)^h,
+	identities=[33[0]=A1[3],33[1]=A9[1],33[2]=A11[3],33[3]=A16[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}],
+	entry=D4,a=(j + y),b=(mp),c=(fq - c),n=h,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Clue ExcusesClue(name=34,length=3,value: o^h + a^h = v^h,
+	identities=[34[0]=A26[2],34[2]=A32[5]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}],
+	entry=D27,a=o,b=a,c=v,n=h,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Clue ExcusesClue(name=35,length=7,value: (hy - k - x)^p + (i + nq)^p = (f + v)^p,
+	identities=[35[0]=A1[2],35[1]=A9[0],35[2]=A11[2],35[3]=A16[0],35[4]=A19[1],35[5]=A21[0],35[6]=A25[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{1..9},{0..9},{1..9},{0..9}],
+	entry=D3,a=(hy - k - x),b=(i + nq),c=(f + v),n=p,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Clue ExcusesClue(name=36,length=7,value: (mqz)^h + (l(q^c)+i)^h= (hjqz)^h,
+	identities=[36[0]=A12[2],36[1]=A16[4],36[2]=A19[5],36[3]=A21[4],36[4]=A26[1],36[5]=A30[2],36[6]=A32[4]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9},{0..9}],
+	entry=D13,a=(mqz),b=(l(q^c)+i),c=(hjqz),n=h,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Clue ExcusesClue(name=37,length=5,value: (bp)^h + (ef)^h = (fz - i)^h,
+	identities=[37[0]=D3[3],37[1]=D4[3],37[2]=D12[1],37[3]=D10[2],37[4]=D13[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}],
+	entry=A16,a=(bp),b=(ef),c=(fz - i),n=h,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Clue ExcusesClue(name=38,length=7,value: (k^p - hk - hn)^h + (k^p + p^p - c)^h = (h(e^c) + c)^h,
+	identities=[38[0]=D15[1],38[1]=D3[4],38[2]=D20[0],38[3]=D12[2],38[4]=D10[3],38[5]=D13[2],38[6]=D17[1]],referrers=[],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9},{0..9},{0..9},{0..9}],
+	entry=A19,a=(k^p - hk - hn),b=(k^p + p^p - c),c=(h(e^c) + c),n=h,isLetter=,
+	diffs={},minDiff=2,maxDiff=null
+Entry ExcusesEntry(name=A1,length=7,value: null,
+	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0],A1[3]=D4[0],A1[4]=D5[0],A1[6]=D6[0]],referrers=[D1,D2,D3,D4,D5,D6],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9},{1..9},{1..9},{0..9},{1..9}]
+Entry ExcusesEntry(name=D1,length=6,value: null,
+	identities=[D1[0]=A1[0],D1[2]=A11[0],D1[3]=A14[0]],referrers=[A1,A11,A14],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D2,length=3,value: null,
+	identities=[D2[0]=A1[1],D2[2]=A11[1]],referrers=[A1,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D3,length=7,value: null,
+	identities=[D3[0]=A1[2],D3[1]=A9[0],D3[2]=A11[2],D3[3]=A16[0],D3[4]=A19[1],D3[5]=A21[0],D3[6]=A25[1]],referrers=[A1,A9,A11,A16,A19,A21,A25],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{1..9},{0..9},{1..9},{0..9}]
+Entry ExcusesEntry(name=D4,length=4,value: null,
+	identities=[D4[0]=A1[3],D4[1]=A9[1],D4[2]=A11[3],D4[3]=A16[1]],referrers=[A1,A9,A11,A16],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D5,length=2,value: null,
+	identities=[D5[0]=A1[4],D5[1]=A9[2]],referrers=[A1,A9],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry ExcusesEntry(name=D6,length=2,value: null,
+	identities=[D6[0]=A1[6],D6[1]=A10[1]],referrers=[A1,A10],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry ExcusesEntry(name=A7,length=2,value: null,
+	identities=[A7[0]=D7[0],A7[1]=D8[0]],referrers=[D7,D8],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry ExcusesEntry(name=D7,length=3,value: null,
+	identities=[D7[0]=A7[0],D7[1]=A10[2],D7[2]=A12[3]],referrers=[A7,A10,A12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D8,length=3,value: null,
+	identities=[D8[0]=A7[1],D8[1]=A10[3]],referrers=[A7,A10],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A9,length=3,value: null,
+	identities=[A9[0]=D3[1],A9[1]=D4[1],A9[2]=D5[1]],referrers=[D3,D4,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A10,length=4,value: null,
+	identities=[A10[0]=D10[0],A10[1]=D6[1],A10[2]=D7[1],A10[3]=D8[1]],referrers=[D10,D6,D7,D8],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D10,length=4,value: null,
+	identities=[D10[0]=A10[0],D10[1]=A12[1],D10[2]=A16[3],D10[3]=A19[4]],referrers=[A10,A12,A16,A19],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A11,length=4,value: null,
+	identities=[A11[0]=D1[2],A11[1]=D2[2],A11[2]=D3[2],A11[3]=D4[2]],referrers=[D1,D2,D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A12,length=4,value: null,
+	identities=[A12[0]=D12[0],A12[1]=D10[1],A12[2]=D13[0],A12[3]=D7[2]],referrers=[D12,D10,D13,D7],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+Entry ExcusesEntry(name=D12,length=5,value: null,
+	identities=[D12[0]=A12[0],D12[1]=A16[2],D12[2]=A19[3],D12[3]=A21[2],D12[4]=A25[3]],referrers=[A12,A16,A19,A21,A25],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D13,length=7,value: null,
+	identities=[D13[0]=A12[2],D13[1]=A16[4],D13[2]=A19[5],D13[3]=A21[4],D13[4]=A26[1],D13[5]=A30[2],D13[6]=A32[4]],referrers=[A12,A16,A19,A21,A26,A30,A32],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A14,length=2,value: null,
+	identities=[A14[0]=D1[3],A14[1]=D15[0]],referrers=[D1,D15],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry ExcusesEntry(name=D15,length=3,value: null,
+	identities=[D15[0]=A14[1],D15[1]=A19[0]],referrers=[A14,A19],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+Entry ExcusesEntry(name=A16,length=5,value: null,
+	identities=[A16[0]=D3[3],A16[1]=D4[3],A16[2]=D12[1],A16[3]=D10[2],A16[4]=D13[1]],referrers=[D3,D4,D12,D10,D13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D17,length=3,value: null,
+	identities=[D17[1]=A19[6],D17[2]=A23[0]],referrers=[A19,A23],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+Entry ExcusesEntry(name=D18,length=6,value: null,
+	identities=[D18[2]=A23[1],D18[3]=A26[3],D18[5]=A32[6]],referrers=[A23,A26,A32],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A19,length=7,value: null,
+	identities=[A19[0]=D15[1],A19[1]=D3[4],A19[2]=D20[0],A19[3]=D12[2],A19[4]=D10[3],A19[5]=D13[2],A19[6]=D17[1]],referrers=[D15,D3,D20,D12,D10,D13,D17],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D20,length=4,value: null,
+	identities=[D20[0]=A19[2],D20[1]=A21[1],D20[2]=A25[2],D20[3]=A28[3]],referrers=[A19,A21,A25,A28],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A21,length=5,value: null,
+	identities=[A21[0]=D3[5],A21[1]=D20[1],A21[2]=D12[3],A21[3]=D22[0],A21[4]=D13[3]],referrers=[D3,D20,D12,D22,D13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{1..9},{0..9}]
+Entry ExcusesEntry(name=D22,length=4,value: null,
+	identities=[D22[0]=A21[3],D22[1]=A26[0],D22[2]=A30[1],D22[3]=A32[3]],referrers=[A21,A26,A30,A32],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A23,length=2,value: null,
+	identities=[A23[0]=D17[2],A23[1]=D18[2]],referrers=[D17,D18],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry ExcusesEntry(name=D24,length=3,value: null,
+	identities=[D24[1]=A28[0],D24[2]=A31[0]],referrers=[A28,A31],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+Entry ExcusesEntry(name=A25,length=4,value: null,
+	identities=[A25[0]=D25[0],A25[1]=D3[6],A25[2]=D20[2],A25[3]=D12[4]],referrers=[D25,D3,D20,D12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D25,length=3,value: null,
+	identities=[D25[0]=A25[0],D25[1]=A28[1],D25[2]=A31[1]],referrers=[A25,A28,A31],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A26,length=4,value: null,
+	identities=[A26[0]=D22[1],A26[1]=D13[4],A26[2]=D27[0],A26[3]=D18[3]],referrers=[D22,D13,D27,D18],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+Entry ExcusesEntry(name=D27,length=3,value: null,
+	identities=[D27[0]=A26[2],D27[2]=A32[5]],referrers=[A26,A32],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=A28,length=4,value: null,
+	identities=[A28[0]=D24[1],A28[1]=D25[1],A28[2]=D29[0],A28[3]=D20[3]],referrers=[D24,D25,D29,D20],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+Entry ExcusesEntry(name=D29,length=2,value: null,
+	identities=[D29[0]=A28[2],D29[1]=A32[0]],referrers=[A28,A32],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry ExcusesEntry(name=A30,length=3,value: null,
+	identities=[A30[0]=D30[0],A30[1]=D22[2],A30[2]=D13[5]],referrers=[D30,D22,D13],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry ExcusesEntry(name=D30,length=2,value: null,
+	identities=[D30[0]=A30[0],D30[1]=A32[2]],referrers=[A30,A32],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry ExcusesEntry(name=A31,length=2,value: null,
+	identities=[A31[0]=D24[2],A31[1]=D25[2]],referrers=[D24,D25],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry ExcusesEntry(name=A32,length=7,value: null,
+	identities=[A32[0]=D29[1],A32[2]=D30[1],A32[3]=D22[3],A32[4]=D13[6],A32[5]=D27[2],A32[6]=D18[5]],referrers=[D29,D30,D22,D13,D27,D18],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{0..9},{0..9},{0..9},{0..9}]
+Variables:
+a={6..25,26}
+b={6..25,26}
+c={1..5}
+d={6..25,26}
+e={6..25,26}
+f={6..25,26}
+g={6..25,26}
+h={1..5}
+i={1..5}
+j={6..25,26}
+k={6..25,26}
+l={6..25,26}
+m={6..25,26}
+n={6..25,26}
+o={6..25,26}
+p={1..5}
+q={1..5}
+r={6..25,26}
+s={6..25,26}
+t={6..25,26}
+u={6..25,26}
+v={6..25,26}
+w={6..25,26}
+x={6..25,26}
+y={6..25,26}
+z={6..25,26}
+
+solve: ExcusesClue(name=15,length=2,value: i^h + p^h = q^h,
+	identities=[15[0]=D7[0],15[1]=D8[0]],referrers=[],
+	values={17},
+	digits=[{1},{7}],
+	entry=A7,a=i,b=p,c=q,n=h,isLetter=Y,
+	diffs={8},minDiff=8,maxDiff=8
+Variable h={2}
+Variable c={3}
+Variable i={1}
+Variable p={4}
+Variable q={5}
+solve: ExcusesClue(name=6,length=2,value: k^i + n^i = (k + n)^i,
+	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
+	values={13..32,19 more,51},
+	digits=[{1..5},{0..9}],
+	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable k={6..25}
+Variable n={7..26}
+solve: ExcusesClue(name=1,length=3,value: f^h + m^h = (l + z)^h,
+	identities=[1[0]=A14[1],1[1]=A19[0]],referrers=[],
+	values={225,289,625,676,841},
+	digits=[{2,6,8},{2,4,7,8},{1,5,6,9}],
+	entry=D15,a=f,b=m,c=(l + z),n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable f={7..10,15,20}
+Variable l={6..20,22,23}
+Variable m={12,15,20,21,24}
+Variable z={6..20,22,23}
+solve: ExcusesClue(name=2,length=3,value: (g - n - q)^h + (a + c)^h = f^h,
+	identities=[2[0]=A1[1],2[2]=A11[1]],referrers=[],
+	values={225,400},
+	digits=[{2,4},{0,2},{0,5}],
+	entry=D2,a=(g - n - q),b=(a + c),c=f,n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable a={9,13}
+Variable f={15,20}
+Variable g={21,22,24..26}
+Variable n={7..12}
+solve: ExcusesClue(name=3,length=4,value: (u + y)^h + (v + x)^h = (c + qz)^h,
+	identities=[3[0]=D12[0],3[1]=D10[1],3[2]=D13[0],3[3]=D7[2]],referrers=[],
+	values={3364},
+	digits=[{3},{3},{6},{4}],
+	entry=A12,a=(u + y),b=(v + x),c=(c + qz),n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable u={14..19,21..26}
+Variable v={16..20,22..26}
+Variable x={16..20,22..26}
+Variable y={14..19,21..26}
+Variable z={11}
+Variable b={6..10,12..26}
+Variable d={6..10,12..26}
+Variable e={6..10,12..26}
+Variable j={6..10,12..26}
+Variable k={6..10,12..25}
+Variable l={6..10,12..20,22,23}
+Variable n={7..10,12}
+Variable o={6..10,12..26}
+Variable r={6..10,12..26}
+Variable s={6..10,12..26}
+Variable t={6..10,12..26}
+Variable w={6..10,12..26}
+solve: ExcusesClue(name=4,length=4,value: (d + g)^h + (l + y)^h = (qz)^h,
+	identities=[4[0]=D22[1],4[1]=D13[4],4[2]=D27[0],4[3]=D18[3]],referrers=[],
+	values={3025},
+	digits=[{3},{0},{2},{5}],
+	entry=A26,a=(d + g),b=(l + y),c=(qz),n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable d={7..9,12}
+Variable g={21,24..26}
+Variable l={18..20,23}
+Variable y={21,24..26}
+solve: ExcusesClue(name=5,length=2,value: c^h + p^h = q^h,
+	identities=[5[0]=A30[0],5[1]=A32[2]],referrers=[],
+	values={25},
+	digits=[{2},{5}],
+	entry=D30,a=c,b=p,c=q,n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+solve: ExcusesClue(name=6,length=2,value: k^i + n^i = (k + n)^i,
+	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
+	values={13..22},
+	digits=[{1,2},{0..9}],
+	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable k={6..10}
+solve: ExcusesClue(name=23,length=2,value: h^h + (c + q)^h = d^h,
+	identities=[23[0]=D1[3],23[1]=D15[0]],referrers=[],
+	values={68},
+	digits=[{6},{8}],
+	entry=A14,a=h,b=(c + q),c=d,n=h,isLetter=Y,
+	diffs={13},minDiff=13,maxDiff=13
+Variable d={9}
+Variable a={13}
+Variable b={6..8,10,12,14..26}
+Variable e={6..8,10,12,14..26}
+Variable j={6..8,10,12,14..26}
+Variable k={6..8,10}
+Variable n={7,8,10,12}
+Variable o={6..8,10,12,14..26}
+Variable r={6..8,10,12,14..26}
+Variable s={6..8,10,12,14..26}
+Variable t={6..8,10,12,14..26}
+Variable w={6..8,10,12,14..26}
+UPDATES-----------------------------
+solve: ExcusesClue(name=6,length=2,value: k^i + n^i = (k + n)^i,
+	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
+	values={13..20,22},
+	digits=[{1,2},{0,2..9}],
+	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+solve: ExcusesClue(name=24,length=5,value: (q^c)^h + (q^c + b)^h = (bd - q)^h,
+	identities=[24[0]=A12[0],24[1]=A16[2],24[2]=A19[3],24[3]=A21[2],24[4]=A25[3]],referrers=[],
+	values={37234},
+	digits=[{3},{7},{2},{3},{4}],
+	entry=D12,a=(q^c),b=(q^c + b),c=(bd - q),n=h,isLetter=Y,
+	diffs={15},minDiff=15,maxDiff=15
+Variable b={22}
+Variable e={6..8,10,12,14..21,23..26}
+Variable j={6..8,10,12,14..21,23..26}
+Variable o={6..8,10,12,14..21,23..26}
+Variable r={6..8,10,12,14..21,23..26}
+Variable s={6..8,10,12,14..21,23..26}
+Variable t={6..8,10,12,14..21,23..26}
+Variable u={14..19,21,23..26}
+Variable v={16..20,23..26}
+Variable w={6..8,10,12,14..21,23..26}
+Variable x={16..20,23..26}
+solve: ExcusesClue(name=26,length=2,value: h^h + d^h = e^h,
+	identities=[26[0]=A1[4],26[1]=A9[2]],referrers=[],
+	values={85},
+	digits=[{8},{5}],
+	entry=D5,a=h,b=d,c=e,n=h,isLetter=Y,
+	diffs={15},minDiff=15,maxDiff=15
+Variable e={10}
+Variable j={6..8,12,14..21,23..26}
+Variable k={6..8}
+Variable n={7,8,12}
+Variable o={6..8,12,14..21,23..26}
+Variable r={6..8,12,14..21,23..26}
+Variable s={6..8,12,14..21,23..26}
+Variable t={6..8,12,14..21,23..26}
+Variable w={6..8,12,14..21,23..26}
+solve: ExcusesClue(name=37,length=5,value: (bp)^h + (ef)^h = (fz - i)^h,
+	identities=[37[0]=D3[3],37[1]=D4[3],37[2]=D12[1],37[3]=D10[2],37[4]=D13[1]],referrers=[],
+	values={47744},
+	digits=[{4},{7},{7},{4},{4}],
+	entry=A16,a=(bp),b=(ef),c=(fz - i),n=h,isLetter=,
+	diffs={217},minDiff=217,maxDiff=217
+Variable f={20}
+Variable j={6..8,12,14..19,21,23..26}
+Variable l={18,19,23}
+Variable m={12,15,21,24}
+Variable o={6..8,12,14..19,21,23..26}
+Variable r={6..8,12,14..19,21,23..26}
+Variable s={6..8,12,14..19,21,23..26}
+Variable t={6..8,12,14..19,21,23..26}
+Variable v={16..19,23..26}
+Variable w={6..8,12,14..19,21,23..26}
+Variable x={16..19,23..26}
+solve: ExcusesClue(name=11,length=2,value: (v - a)^h + d^h = e^h,
+	identities=[11[0]=A1[6],11[1]=A10[1]],referrers=[],
+	values={97},
+	digits=[{9},{7}],
+	entry=D6,a=(v - a),b=d,c=e,n=h,isLetter=Y,
+	diffs={3},minDiff=3,maxDiff=3
+Variable v={17}
+Variable j={6..8,12,14..16,18,19,21,23..26}
+Variable o={6..8,12,14..16,18,19,21,23..26}
+Variable r={6..8,12,14..16,18,19,21,23..26}
+Variable s={6..8,12,14..16,18,19,21,23..26}
+Variable t={6..8,12,14..16,18,19,21,23..26}
+Variable u={14..16,18,19,21,23..26}
+Variable w={6..8,12,14..16,18,19,21,23..26}
+Variable x={16,18,19,23..26}
+solve: ExcusesClue(name=38,length=7,value: (k^p - hk - hn)^h + (k^p + p^p - c)^h = (h(e^c) + c)^h,
+	identities=[38[0]=D15[1],38[1]=D3[4],38[2]=D20[0],38[3]=D12[2],38[4]=D10[3],38[5]=D13[2],38[6]=D17[1]],referrers=[],
+	values={4012301},
+	digits=[{4},{0},{1},{2},{3},{0},{1}],
+	entry=A19,a=(k^p - hk - hn),b=(k^p + p^p - c),c=(h(e^c) + c),n=h,isLetter=,
+	diffs={292},minDiff=292,maxDiff=292
+Variable k={6}
+Variable j={8,12,14..16,18,19,21,23..26}
+Variable o={8,12,14..16,18,19,21,23..26}
+Variable r={8,12,14..16,18,19,21,23..26}
+Variable s={8,12,14..16,18,19,21,23..26}
+Variable t={8,12,14..16,18,19,21,23..26}
+Variable w={8,12,14..16,18,19,21,23..26}
+Variable n={7}
+solve: ExcusesClue(name=6,length=2,value: k^i + n^i = (k + n)^i,
+	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
+	values={13},
+	digits=[{1},{3}],
+	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+solve: ExcusesClue(name=2,length=3,value: (g - n - q)^h + (a + c)^h = f^h,
+	identities=[2[0]=A1[1],2[2]=A11[1]],referrers=[],
+	values={400},
+	digits=[{4},{0},{0}],
+	entry=D2,a=(g - n - q),b=(a + c),c=f,n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable g={24}
+Variable j={8,12,14..16,18,19,21,23,25,26}
+Variable m={12,15,21}
+Variable o={8,12,14..16,18,19,21,23,25,26}
+Variable r={8,12,14..16,18,19,21,23,25,26}
+Variable s={8,12,14..16,18,19,21,23,25,26}
+Variable t={8,12,14..16,18,19,21,23,25,26}
+Variable u={14..16,18,19,21,23,25,26}
+Variable w={8,12,14..16,18,19,21,23,25,26}
+Variable x={16,18,19,23,25,26}
+Variable y={21,25,26}
+solve: ExcusesClue(name=12,length=3,value: (k + n)^h + (i + x)^h = (d + f)^h,
+	identities=[12[0]=D3[1],12[1]=D4[1],12[2]=D5[1]],referrers=[],
+	values={845},
+	digits=[{8},{4},{5}],
+	entry=A9,a=(k + n),b=(i + x),c=(d + f),n=h,isLetter=Y,
+	diffs={4},minDiff=4,maxDiff=4
+Variable x={25}
+Variable j={8,12,14..16,18,19,21,23,26}
+Variable o={8,12,14..16,18,19,21,23,26}
+Variable r={8,12,14..16,18,19,21,23,26}
+Variable s={8,12,14..16,18,19,21,23,26}
+Variable t={8,12,14..16,18,19,21,23,26}
+Variable u={14..16,18,19,21,23,26}
+Variable w={8,12,14..16,18,19,21,23,26}
+Variable y={21,26}
+solve: ExcusesClue(name=35,length=7,value: (hy - k - x)^p + (i + nq)^p = (f + v)^p,
+	identities=[35[0]=A1[2],35[1]=A9[0],35[2]=A11[2],35[3]=A16[0],35[4]=A19[1],35[5]=A21[0],35[6]=A25[1]],referrers=[],
+	values={1874097},
+	digits=[{1},{8},{7},{4},{0},{9},{7}],
+	entry=D3,a=(hy - k - x),b=(i + nq),c=(f + v),n=p,isLetter=,
+	diffs={64},minDiff=64,maxDiff=64
+Variable y={26}
+Variable j={8,12,14..16,18,19,21,23}
+Variable o={8,12,14..16,18,19,21,23}
+Variable r={8,12,14..16,18,19,21,23}
+Variable s={8,12,14..16,18,19,21,23}
+Variable t={8,12,14..16,18,19,21,23}
+Variable u={14..16,18,19,21,23}
+Variable w={8,12,14..16,18,19,21,23}
+solve: ExcusesClue(name=4,length=4,value: (d + g)^h + (l + y)^h = (qz)^h,
+	identities=[4[0]=D22[1],4[1]=D13[4],4[2]=D27[0],4[3]=D18[3]],referrers=[],
+	values={3025},
+	digits=[{3},{0},{2},{5}],
+	entry=A26,a=(d + g),b=(l + y),c=(qz),n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable l={18}
+Variable j={8,12,14..16,19,21,23}
+Variable o={8,12,14..16,19,21,23}
+Variable r={8,12,14..16,19,21,23}
+Variable s={8,12,14..16,19,21,23}
+Variable t={8,12,14..16,19,21,23}
+Variable u={14..16,19,21,23}
+Variable w={8,12,14..16,19,21,23}
+solve: ExcusesClue(name=1,length=3,value: f^h + m^h = (l + z)^h,
+	identities=[1[0]=A14[1],1[1]=A19[0]],referrers=[],
+	values={841},
+	digits=[{8},{4},{1}],
+	entry=D15,a=f,b=m,c=(l + z),n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+Variable m={21}
+Variable j={8,12,14..16,19,23}
+Variable o={8,12,14..16,19,23}
+Variable r={8,12,14..16,19,23}
+Variable s={8,12,14..16,19,23}
+Variable t={8,12,14..16,19,23}
+Variable u={14..16,19,23}
+Variable w={8,12,14..16,19,23}
+solve: ExcusesClue(name=17,length=2,value: (e - k)^h + (l - a)^h = (u - n)^h,
+	identities=[17[0]=A28[2],17[1]=A32[0]],referrers=[],
+	values={41},
+	digits=[{4},{1}],
+	entry=D29,a=(e - k),b=(l - a),c=(u - n),n=h,isLetter=Y,
+	diffs={8},minDiff=8,maxDiff=8
+Variable u={14}
+Variable j={8,12,15,16,19,23}
+Variable o={8,12,15,16,19,23}
+Variable r={8,12,15,16,19,23}
+Variable s={8,12,15,16,19,23}
+Variable t={8,12,15,16,19,23}
+Variable w={8,12,15,16,19,23}
+solve: ExcusesClue(name=22,length=3,value: p^h + (c + m - e)^h = t^h,
+	identities=[22[1]=A19[6],22[2]=A23[0]],referrers=[],
+	values={212},
+	digits=[{2},{1},{2}],
+	entry=D17,a=p,b=(c + m - e),c=t,n=h,isLetter=Y,
+	diffs={13},minDiff=13,maxDiff=13
+Variable t={15}
+Variable j={8,12,16,19,23}
+Variable o={8,12,16,19,23}
+Variable r={8,12,16,19,23}
+Variable s={8,12,16,19,23}
+Variable w={8,12,16,19,23}
+solve: ExcusesClue(name=30,length=4,value: (t-p)^c + (t - i)^c = (i + t)^c,
+	identities=[30[0]=D1[2],30[1]=D2[2],30[2]=D3[2],30[3]=D4[2]],referrers=[],
+	values={4075},
+	digits=[{4},{0},{7},{5}],
+	entry=A11,a=(t-p),b=(t - i),c=(i + t),n=c,isLetter=Y,
+	diffs={21},minDiff=21,maxDiff=21
+solve: ExcusesClue(name=10,length=4,value: d^h + (t + y)^h = (cu)^h,
+	identities=[10[0]=D10[0],10[1]=D6[1],10[2]=D7[1],10[3]=D8[1]],referrers=[],
+	values={1762},
+	digits=[{1},{7},{6},{2}],
+	entry=A10,a=d,b=(t + y),c=(cu),n=h,isLetter=Y,
+	diffs={2},minDiff=2,maxDiff=2
+solve: ExcusesClue(name=9,length=3,value: q^c + (m - t)^c = (x - l)^c,
+	identities=[9[1]=A28[0],9[2]=A31[0]],referrers=[],
+	values={341},
+	digits=[{3},{4},{1}],
+	entry=D24,a=q,b=(m - t),c=(x - l),n=c,isLetter=Y,
+	diffs={2},minDiff=2,maxDiff=2
+solve: ExcusesClue(name=7,length=3,value: (m - t)^c + (y - l)^c = (qt - kz)^c,
+	identities=[7[0]=A7[1],7[1]=A10[3]],referrers=[],
+	values={728},
+	digits=[{7},{2},{8}],
+	entry=D8,a=(m - t),b=(y - l),c=(qt - kz),n=c,isLetter=Y,
+	diffs={1},minDiff=1,maxDiff=1
+solve: ExcusesClue(name=18,length=4,value: (e + u)^h + (cj)^h = (b + x + y)^h,
+	identities=[18[0]=A21[3],18[1]=A26[0],18[2]=A30[1],18[3]=A32[3]],referrers=[],
+	values={5337},
+	digits=[{5},{3},{3},{7}],
+	entry=D22,a=(e + u),b=(cj),c=(b + x + y),n=h,isLetter=Y,
+	diffs={8},minDiff=8,maxDiff=8
+Variable j={23}
+Variable o={8,12,16,19}
+Variable r={8,12,16,19}
+Variable s={8,12,16,19}
+Variable w={8,12,16,19}
+solve: ExcusesClue(name=36,length=7,value: (mqz)^h + (l(q^c)+i)^h= (hjqz)^h,
+	identities=[36[0]=A12[2],36[1]=A16[4],36[2]=A19[5],36[3]=A21[4],36[4]=A26[1],36[5]=A30[2],36[6]=A32[4]],referrers=[],
+	values={6401026},
+	digits=[{6},{4},{0},{1},{0},{2},{6}],
+	entry=D13,a=(mqz),b=(l(q^c)+i),c=(hjqz),n=h,isLetter=,
+	diffs={126},minDiff=126,maxDiff=126
+solve: ExcusesClue(name=33,length=4,value: (j + y)^h + (mp)^h = (fq - c)^h,
+	identities=[33[0]=A1[3],33[1]=A9[1],33[2]=A11[3],33[3]=A16[1]],referrers=[],
+	values={9457},
+	digits=[{9},{4},{5},{7}],
+	entry=D4,a=(j + y),b=(mp),c=(fq - c),n=h,isLetter=,
+	diffs={48},minDiff=48,maxDiff=48
+solve: ExcusesClue(name=32,length=4,value: (c + h + q)^h + (g + j + m)^h = (l + x + y)^h,
+	identities=[32[0]=D25[0],32[1]=D3[6],32[2]=D20[2],32[3]=D12[4]],referrers=[],
+	values={4724},
+	digits=[{4},{7},{2},{4}],
+	entry=A25,a=(c + h + q),b=(g + j + m),c=(l + x + y),n=h,isLetter=,
+	diffs={37},minDiff=37,maxDiff=37
+solve: ExcusesClue(name=14,length=4,value: (f + j)^h + (eq)^h = (b + f + g)^h,
+	identities=[14[0]=D24[1],14[1]=D25[1],14[2]=D29[0],14[3]=D20[3]],referrers=[],
+	values={4349},
+	digits=[{4},{3},{4},{9}],
+	entry=A28,a=(f + j),b=(eq),c=(b + f + g),n=h,isLetter=Y,
+	diffs={7},minDiff=7,maxDiff=7
+solve: ExcusesClue(name=27,length=6,value: (mq-e)^h + (cez + e)^h = (cez + j)^h,
+	identities=[27[0]=A1[0],27[2]=A11[0],27[3]=A14[0]],referrers=[],
+	values={124625},
+	digits=[{1},{2},{4},{6},{2},{5}],
+	entry=D1,a=(mq-e),b=(cez + e),c=(cez + j),n=h,isLetter=Y,
+	diffs={16},minDiff=16,maxDiff=16
+solve: ExcusesClue(name=20,length=7,value: (k + n)^q + (g - o)^q = (o + u - q)^q,
+	identities=[20[0]=D1[0],20[1]=D2[0],20[2]=D3[0],20[3]=D4[0],20[4]=D5[0],20[6]=D6[0]],referrers=[],
+	values={1419869},
+	digits=[{1},{4},{1},{9},{8},{6},{9}],
+	entry=A1,a=(k + n),b=(g - o),c=(o + u - q),n=q,isLetter=Y,
+	diffs={12},minDiff=12,maxDiff=12
+Variable o={8}
+Variable r={12,16,19}
+Variable s={12,16,19}
+Variable w={12,16,19}
+solve: ExcusesClue(name=34,length=3,value: o^h + a^h = v^h,
+	identities=[34[0]=A26[2],34[2]=A32[5]],referrers=[],
+	values={233},
+	digits=[{2},{3},{3}],
+	entry=D27,a=o,b=a,c=v,n=h,isLetter=,
+	diffs={56},minDiff=56,maxDiff=56
+solve: ExcusesClue(name=19,length=2,value: (x - g)^h + (e - q)^h = (d + q - o)^h,
+	identities=[19[0]=D17[2],19[1]=D18[2]],referrers=[],
+	values={26},
+	digits=[{2},{6}],
+	entry=A23,a=(x - g),b=(e - q),c=(d + q - o),n=h,isLetter=Y,
+	diffs={10},minDiff=10,maxDiff=10
+solve: ExcusesClue(name=29,length=3,value: o^h + e^h = (y - u)^h,
+	identities=[29[0]=A7[0],29[1]=A10[2],29[2]=A12[3]],referrers=[],
+	values={164},
+	digits=[{1},{6},{4}],
+	entry=D7,a=o,b=e,c=(y - u),n=h,isLetter=Y,
+	diffs={20},minDiff=20,maxDiff=20
+solve: ExcusesClue(name=28,length=6,value: (r + u)^c + (gh + hu)^c = (nz)^c,
+	identities=[28[2]=A23[1],28[3]=A26[3],28[5]=A32[6]],referrers=[],
+	values={456552},
+	digits=[{4},{5},{6},{5},{5},{2}],
+	entry=D18,a=(r + u),b=(gh + hu),c=(nz),n=c,isLetter=Y,
+	diffs={19},minDiff=19,maxDiff=19
+Variable r={12}
+Variable s={16,19}
+Variable w={16,19}
+solve: ExcusesClue(name=31,length=3,value: (y - f)^h + u^h = (p + r)^h,
+	identities=[31[0]=D30[0],31[1]=D22[2],31[2]=D13[5]],referrers=[],
+	values={232},
+	digits=[{2},{3},{2}],
+	entry=A30,a=(y - f),b=u,c=(p + r),n=h,isLetter=Y,
+	diffs={24},minDiff=24,maxDiff=24
+solve: ExcusesClue(name=16,length=3,value: r^h + v^h = m^h,
+	identities=[16[0]=A25[0],16[1]=A28[1],16[2]=A31[1]],referrers=[],
+	values={433},
+	digits=[{4},{3},{3}],
+	entry=D25,a=r,b=v,c=m,n=h,isLetter=Y,
+	diffs={8},minDiff=8,maxDiff=8
+solve: ExcusesClue(name=13,length=7,value: (t+v) ^c+(jp+r)^c = (cnq)^c,
+	identities=[13[0]=D29[1],13[2]=D30[1],13[3]=D22[3],13[4]=D13[6],13[5]=D27[2],13[6]=D18[5]],referrers=[],
+	values={1157632},
+	digits=[{1},{1},{5},{7},{6},{3},{2}],
+	entry=A32,a=(t+v),b=(jp+r),c=(cnq),n=c,isLetter=Y,
+	diffs={7},minDiff=7,maxDiff=7
+solve: ExcusesClue(name=8,length=4,value: (qt - kz)^c + (m - z)^c = (g - r)^c,
+	identities=[8[0]=A19[2],8[1]=A21[1],8[2]=A25[2],8[3]=A28[3]],referrers=[],
+	values={1729},
+	digits=[{1},{7},{2},{9}],
+	entry=D20,a=(qt - kz),b=(m - z),c=(g - r),n=c,isLetter=Y,
+	diffs={1},minDiff=1,maxDiff=1
+solve: ExcusesClue(name=21,length=4,value: (s - d)^c + (ev - of)^c = z^c,
+	identities=[21[0]=A10[0],21[1]=A12[1],21[2]=A16[3],21[3]=A19[4]],referrers=[],
+	values={1343},
+	digits=[{1},{3},{4},{3}],
+	entry=D10,a=(s - d),b=(ev - of),c=z,n=c,isLetter=Y,
+	diffs={12},minDiff=12,maxDiff=12
+Variable s={16}
+Variable w={19}
+solve: ExcusesClue(name=25,length=5,value: (p + w) + (hw + k)^c = (hw + o)^c,
+	identities=[25[0]=D3[5],25[1]=D20[1],25[2]=D12[3],25[3]=D22[0],25[4]=D13[3]],referrers=[],
+	values={97351},
+	digits=[{9},{7},{3},{5},{1}],
+	entry=A21,a=(p + w),b=(hw + k),c=(hw + o),n=c,isLetter=Y,
+	diffs={15},minDiff=15,maxDiff=15
+Clue/Variable iterations=175, updates=206, elapsed 0:00:00.038748
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+Clue 1, f^h + m^h = (l + z)^h, values={841}, entry={unknown}
+Clue 2, (g - n - q)^h + (a + c)^h = f^h, values={400}, entry={unknown}
+Clue 3, (u + y)^h + (v + x)^h = (c + qz)^h, values={3364}, entry={unknown}
+Clue 4, (d + g)^h + (l + y)^h = (qz)^h, values={3025}, entry={unknown}
+Clue 5, c^h + p^h = q^h, values={25}, entry={unknown}
+Clue 6, k^i + n^i = (k + n)^i, values={13}, entry={unknown}
+Clue 7, (m - t)^c + (y - l)^c = (qt - kz)^c, values={728}, entry={unknown}
+Clue 8, (qt - kz)^c + (m - z)^c = (g - r)^c, values={1729}, entry={unknown}
+Clue 9, q^c + (m - t)^c = (x - l)^c, values={341}, entry={unknown}
+Clue 10, d^h + (t + y)^h = (cu)^h, values={1762}, entry={unknown}
+Clue 11, (v - a)^h + d^h = e^h, values={97}, entry={unknown}
+Clue 12, (k + n)^h + (i + x)^h = (d + f)^h, values={845}, entry={unknown}
+Clue 13, (t+v) ^c+(jp+r)^c = (cnq)^c, values={1157632}, entry={unknown}
+Clue 14, (f + j)^h + (eq)^h = (b + f + g)^h, values={4349}, entry={unknown}
+Clue 15, i^h + p^h = q^h, values={17}, entry={unknown}
+Clue 16, r^h + v^h = m^h, values={433}, entry={unknown}
+Clue 17, (e - k)^h + (l - a)^h = (u - n)^h, values={41}, entry={unknown}
+Clue 18, (e + u)^h + (cj)^h = (b + x + y)^h, values={5337}, entry={unknown}
+Clue 19, (x - g)^h + (e - q)^h = (d + q - o)^h, values={26}, entry={unknown}
+Clue 20, (k + n)^q + (g - o)^q = (o + u - q)^q, values={1419869}, entry={unknown}
+Clue 21, (s - d)^c + (ev - of)^c = z^c, values={1343}, entry={unknown}
+Clue 22, p^h + (c + m - e)^h = t^h, values={212}, entry={unknown}
+Clue 23, h^h + (c + q)^h = d^h, values={68}, entry={unknown}
+Clue 24, (q^c)^h + (q^c + b)^h = (bd - q)^h, values={37234}, entry={unknown}
+Clue 25, (p + w) + (hw + k)^c = (hw + o)^c, values={97351}, entry={unknown}
+Clue 26, h^h + d^h = e^h, values={85}, entry={unknown}
+Clue 27, (mq-e)^h + (cez + e)^h = (cez + j)^h, values={124625}, entry={unknown}
+Clue 28, (r + u)^c + (gh + hu)^c = (nz)^c, values={456552}, entry={unknown}
+Clue 29, o^h + e^h = (y - u)^h, values={164}, entry={unknown}
+Clue 30, (t-p)^c + (t - i)^c = (i + t)^c, values={4075}, entry={unknown}
+Clue 31, (y - f)^h + u^h = (p + r)^h, values={232}, entry={unknown}
+Clue 32, (c + h + q)^h + (g + j + m)^h = (l + x + y)^h, values={4724}, entry={unknown}
+Clue 33, (j + y)^h + (mp)^h = (fq - c)^h, values={9457}, entry={unknown}
+Clue 34, o^h + a^h = v^h, values={233}, entry={unknown}
+Clue 35, (hy - k - x)^p + (i + nq)^p = (f + v)^p, values={1874097}, entry={unknown}
+Clue 36, (mqz)^h + (l(q^c)+i)^h= (hjqz)^h, values={6401026}, entry={unknown}
+Clue 37, (bp)^h + (ef)^h = (fz - i)^h, values={47744}, entry={unknown}
+Clue 38, (k^p - hk - hn)^h + (k^p + p^p - c)^h = (h(e^c) + c)^h, values={4012301}, entry={unknown}
+Entry A1, values={unknown}
+Entry D1, values={unknown}
+Entry D2, values={unknown}
+Entry D3, values={unknown}
+Entry D4, values={unknown}
+Entry D5, values={unknown}
+Entry D6, values={unknown}
+Entry A7, values={unknown}
+Entry D7, values={unknown}
+Entry D8, values={unknown}
+Entry A9, values={unknown}
+Entry A10, values={unknown}
+Entry D10, values={unknown}
+Entry A11, values={unknown}
+Entry A12, values={unknown}
+Entry D12, values={unknown}
+Entry D13, values={unknown}
+Entry A14, values={unknown}
+Entry D15, values={unknown}
+Entry A16, values={unknown}
+Entry D17, values={unknown}
+Entry D18, values={unknown}
+Entry A19, values={unknown}
+Entry D20, values={unknown}
+Entry A21, values={unknown}
+Entry D22, values={unknown}
+Entry A23, values={unknown}
+Entry D24, values={unknown}
+Entry A25, values={unknown}
+Entry D25, values={unknown}
+Entry A26, values={unknown}
+Entry D27, values={unknown}
+Entry A28, values={unknown}
+Entry D29, values={unknown}
+Entry A30, values={unknown}
+Entry D30, values={unknown}
+Entry A31, values={unknown}
+Entry A32, values={unknown}
++--+--+--+--+--+--+--+--+--+
+| 1  4  1  9  8  6  9| 1  7|
++               --   +     +
+| 2| 0| 8  4  5| 1  7  6  2|
++  +  +      --+   --+     +
+| 4  0  7  5| 3  3  6  4| 8|
++   --+     +         --+--+
+| 6  8| 4  7  7  4  4| 2| 4|
++     +   --+        +  +  +
+| 2| 4  0  1  2  3  0  1| 5|
++  +            --+     +  +
+| 5| 1| 9  7  3  5  1| 2  6|
++--+--+              +--+  +
+| 3| 4  7  2  4| 3  0  2  5|
++  +   --+   --+           +
+| 4  3  4  9| 2  3  2| 3| 5|
++         --+        +  +  +
+| 1  3| 1  1  5  7  6  3  2|
++--+--+--+--+--+--+--+--+--+
+Variables:
+a={13}
+b={22}
+c={3}
+d={9}
+e={10}
+f={20}
+g={24}
+h={2}
+i={1}
+j={23}
+k={6}
+l={18}
+m={21}
+n={7}
+o={8}
+p={4}
+q={5}
+r={12}
+s={16}
+t={15}
+u={14}
+v={17}
+w={19}
+x={25}
+y={26}
+z={11}
+
+[[t, h, i, s, m, a, r, g, i, n, i], [s], [t], [f, o], [o, o], [o, n], [r, a], [p, r], [e, r], [h, o], [t, n, i, a, t, n, o, c, o, t, w]]

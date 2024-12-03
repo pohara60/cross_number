@@ -42,7 +42,7 @@ class AfterNicholasPuzzle extends VariablePuzzle<AfterNicholasClue,
 
           // Add variables that references the same variables as this variable
           var varRefs = Set<Variable>.from(variable.variableReferences);
-          Variable? variableSameRefs = null;
+          Variable? variableSameRefs;
           for (var otherVariable in remainingVariables) {
             var otherVarRefs =
                 Set<Variable>.from(otherVariable.variableReferences);

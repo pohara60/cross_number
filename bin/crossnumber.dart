@@ -18,6 +18,7 @@ import 'package:crossnumber/dieanotherday/dieanotherday.dart';
 import 'package:crossnumber/different/different.dart';
 import 'package:crossnumber/eraser/eraser.dart';
 import 'package:crossnumber/evenodder/evenodder.dart';
+import 'package:crossnumber/excuses/excuses.dart';
 import 'package:crossnumber/factors/factors.dart';
 import 'package:crossnumber/fourseasons/fourseasons.dart';
 import 'package:crossnumber/frequency/frequency.dart';
@@ -127,7 +128,8 @@ void main(List<String> arguments) async {
     ..addCommand(TwoByTwoCommand())
     ..addCommand(WorkingBack2Command())
     ..addCommand(MagicArrayCommand())
-    ..addCommand(AfterNicholasCommand());
+    ..addCommand(AfterNicholasCommand())
+    ..addCommand(ExcusesCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1396,6 +1398,30 @@ class AfterNicholasCommand extends Command {
     // Get and print solve
     try {
       final pc = AfterNicholas();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class ExcusesCommand extends Command {
+  @override
+  final name = 'Excuses';
+  @override
+  final description = 'solve hardcoded Excuses puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Excuses();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
