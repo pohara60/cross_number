@@ -88,7 +88,7 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
         var clue = ExcusesClue(
             name: name!,
             length: length,
-            valueDesc: value,
+            // valueDesc: value,
             addDesc: addDesc,
             a: a,
             b: b,
@@ -579,7 +579,7 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
 
     var updatedVariables = <Variable>{};
     var updatedAllVariables = <Variable>[];
-    if (variable is ExcusesClue && variable.exps.isNotEmpty) {
+    if (variable is ExcusesClue && variable.expressions.isNotEmpty) {
       var possibleValue = <int>{};
       var possibleDiff = <int>{};
       var possibleVariables = <Variable, Set<int>>{};
@@ -736,7 +736,7 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
     var updated = false;
 
     var maxCount = 10000000;
-    var maxIndex = clue.exps.length - 1;
+    var maxIndex = clue.expressions.length - 1;
 
     bool solveNextExpression(
       int index,
@@ -829,7 +829,7 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
         return true;
       }
 
-      var exp = clue.exps[index];
+      var exp = clue.expressions[index];
       var newVariableValues = <List<int>>[];
 
       try {

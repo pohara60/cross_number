@@ -17,17 +17,4 @@ class ExcusesPuzzle
   ExcusesPuzzle({String name = ''}) : super(null, name: name);
   ExcusesPuzzle.fromGridString(List<String> gridString, {String name = ''})
       : super.fromGridString([], gridString, name: name);
-
-  @override
-  void resolveReferences(Variable variable) {
-    super.resolveReferences(variable);
-    // Expressions
-    if (variable is ExcusesClue) {
-      if (variable.a != null) {
-        for (var exp in variable.exps) {
-          exp.resolveReferences(allVariables);
-        }
-      }
-    }
-  }
 }

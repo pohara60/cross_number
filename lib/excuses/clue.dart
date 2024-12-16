@@ -15,7 +15,6 @@ class ExcusesClue extends ExpressionClue {
   final String? c;
   final String? n;
   final String? isLetter;
-  final exps = <ExpressionEvaluator>[];
 
   ExcusesClue(
       {required super.name,
@@ -31,10 +30,10 @@ class ExcusesClue extends ExpressionClue {
       super.solve,
       super.entryNames}) {
     if (a != null) {
-      exps.add(ExpressionEvaluator(a!));
-      exps.add(ExpressionEvaluator(b!));
-      exps.add(ExpressionEvaluator(c!));
-      exps.add(ExpressionEvaluator(n!));
+      initExpression(a!, '', name, variableRefs);
+      initExpression(b!, '', name, variableRefs);
+      initExpression(c!, '', name, variableRefs);
+      initExpression(n!, '', name, variableRefs);
     }
   }
 
