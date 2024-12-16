@@ -407,6 +407,7 @@ x={6..25,26}
 y={6..25,26}
 z={6..25,26}
 
+UPDATES-----------------------------
 solve: ExcusesClue(name=15,length=2,value: null,
 	identities=[15[0]=D7[0],15[1]=D8[0]],referrers=[],
 	values={17},
@@ -418,122 +419,12 @@ Variable c={3}
 Variable h={2}
 Variable p={4}
 Variable q={5}
-solve: ExcusesClue(name=6,length=2,value: null,
-	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
-	values={13..32,19 more,51},
-	digits=[{1..5},{0..9}],
-	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable k={6..25}
-Variable n={7..26}
-solve: ExcusesClue(name=1,length=3,value: null,
-	identities=[1[0]=A14[1],1[1]=A19[0]],referrers=[],
-	values={225,289,625,676,841},
-	digits=[{2,6,8},{2,4,7,8},{1,5,6,9}],
-	entry=D15,a=f,b=m,c=(l + z),n=h,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable f={7..10,15,20}
-Variable m={12,15,20,21,24}
-Variable l={6..20,22,23}
-Variable z={6..20,22,23}
-solve: ExcusesClue(name=2,length=3,value: null,
-	identities=[2[0]=A1[1],2[2]=A11[1]],referrers=[],
-	values={225,400},
-	digits=[{2,4},{0,2},{0,5}],
-	entry=D2,a=(g - n - q),b=(a + c),c=f,n=h,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable g={21,22,24..26}
-Variable n={7..12}
-Variable a={9,13}
-Variable f={15,20}
-solve: ExcusesClue(name=3,length=4,value: null,
-	identities=[3[0]=D12[0],3[1]=D10[1],3[2]=D13[0],3[3]=D7[2]],referrers=[],
-	values={3364},
-	digits=[{3},{3},{6},{4}],
-	entry=A12,a=(u + y),b=(v + x),c=(c + qz),n=h,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable u={14..19,21..26}
-Variable y={14..19,21..26}
-Variable v={16..20,22..26}
-Variable x={16..20,22..26}
-Variable z={11}
-Variable b={6..10,12..26}
-Variable d={6..10,12..26}
-Variable e={6..10,12..26}
-Variable j={6..10,12..26}
-Variable k={6..10,12..25}
-Variable l={6..10,12..20,22,23}
-Variable n={7..10,12}
-Variable o={6..10,12..26}
-Variable r={6..10,12..26}
-Variable s={6..10,12..26}
-Variable t={6..10,12..26}
-Variable w={6..10,12..26}
-solve: ExcusesClue(name=4,length=4,value: null,
-	identities=[4[0]=D22[1],4[1]=D13[4],4[2]=D27[0],4[3]=D18[3]],referrers=[],
-	values={3025},
-	digits=[{3},{0},{2},{5}],
-	entry=A26,a=(d + g),b=(l + y),c=(qz),n=h,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable d={7..9,12}
-Variable g={21,24..26}
-Variable l={18..20,23}
-Variable y={21,24..26}
 solve: ExcusesClue(name=5,length=2,value: null,
 	identities=[5[0]=A30[0],5[1]=A32[2]],referrers=[],
 	values={25},
 	digits=[{2},{5}],
 	entry=D30,a=c,b=p,c=q,n=h,isLetter=,
 	diffs={0},minDiff=0,maxDiff=0
-solve: ExcusesClue(name=6,length=2,value: null,
-	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
-	values={13..22},
-	digits=[{1,2},{0..9}],
-	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable k={6..10}
-solve: ExcusesClue(name=23,length=2,value: null,
-	identities=[23[0]=D1[3],23[1]=D15[0]],referrers=[],
-	values={68},
-	digits=[{6},{8}],
-	entry=A14,a=h,b=(c + q),c=d,n=h,isLetter=Y,
-	diffs={13},minDiff=13,maxDiff=13
-Variable d={9}
-Variable a={13}
-Variable b={6..8,10,12,14..26}
-Variable e={6..8,10,12,14..26}
-Variable j={6..8,10,12,14..26}
-Variable k={6..8,10}
-Variable n={7,8,10,12}
-Variable o={6..8,10,12,14..26}
-Variable r={6..8,10,12,14..26}
-Variable s={6..8,10,12,14..26}
-Variable t={6..8,10,12,14..26}
-Variable w={6..8,10,12,14..26}
-UPDATES-----------------------------
-solve: ExcusesClue(name=6,length=2,value: null,
-	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
-	values={13..20,22},
-	digits=[{1,2},{0,2..9}],
-	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-solve: ExcusesClue(name=24,length=5,value: null,
-	identities=[24[0]=A12[0],24[1]=A16[2],24[2]=A19[3],24[3]=A21[2],24[4]=A25[3]],referrers=[],
-	values={37234},
-	digits=[{3},{7},{2},{3},{4}],
-	entry=D12,a=(q^c),b=(q^c + b),c=(bd - q),n=h,isLetter=Y,
-	diffs={15},minDiff=15,maxDiff=15
-Variable b={22}
-Variable e={6..8,10,12,14..21,23..26}
-Variable j={6..8,10,12,14..21,23..26}
-Variable o={6..8,10,12,14..21,23..26}
-Variable r={6..8,10,12,14..21,23..26}
-Variable s={6..8,10,12,14..21,23..26}
-Variable t={6..8,10,12,14..21,23..26}
-Variable u={14..19,21,23..26}
-Variable v={16..20,23..26}
-Variable w={6..8,10,12,14..21,23..26}
-Variable x={16..20,23..26}
 solve: ExcusesClue(name=30,length=4,value: null,
 	identities=[30[0]=D1[2],30[1]=D2[2],30[2]=D3[2],30[3]=D4[2]],referrers=[],
 	values={4075},
@@ -541,115 +432,232 @@ solve: ExcusesClue(name=30,length=4,value: null,
 	entry=A11,a=(t-p),b=(t - i),c=(i + t),n=c,isLetter=Y,
 	diffs={21},minDiff=21,maxDiff=21
 Variable t={15}
-Variable e={6..8,10,12,14,16..19,21,23..26}
+Variable a={6..14,16..26}
+Variable b={6..14,16..26}
+Variable d={6..14,16..26}
+Variable e={6..14,16..26}
+Variable f={6..14,16..26}
+Variable g={6..14,16..26}
+Variable j={6..14,16..26}
+Variable k={6..14,16..26}
+Variable l={6..14,16..26}
+Variable m={6..14,16..26}
+Variable n={6..14,16..26}
+Variable o={6..14,16..26}
+Variable r={6..14,16..26}
+Variable s={6..14,16..26}
+Variable u={6..14,16..26}
+Variable v={6..14,16..26}
+Variable w={6..14,16..26}
+Variable x={6..14,16..26}
+Variable y={6..14,16..26}
+Variable z={6..14,16..26}
+solve: ExcusesClue(name=23,length=2,value: null,
+	identities=[23[0]=D1[3],23[1]=D15[0]],referrers=[],
+	values={68},
+	digits=[{6},{8}],
+	entry=A14,a=h,b=(c + q),c=d,n=h,isLetter=Y,
+	diffs={13},minDiff=13,maxDiff=13
+Variable d={9}
+Variable a={6..8,10..14,16..26}
+Variable b={6..8,10..14,16..26}
+Variable e={6..8,10..14,16..26}
+Variable f={6..8,10..14,16..26}
+Variable g={6..8,10..14,16..26}
+Variable j={6..8,10..14,16..26}
+Variable k={6..8,10..14,16..26}
+Variable l={6..8,10..14,16..26}
+Variable m={6..8,10..14,16..26}
+Variable n={6..8,10..14,16..26}
+Variable o={6..8,10..14,16..26}
+Variable r={6..8,10..14,16..26}
+Variable s={6..8,10..14,16..26}
+Variable u={6..8,10..14,16..26}
+Variable v={6..8,10..14,16..26}
+Variable w={6..8,10..14,16..26}
+Variable x={6..8,10..14,16..26}
+Variable y={6..8,10..14,16..26}
+Variable z={6..8,10..14,16..26}
+solve: ExcusesClue(name=26,length=2,value: null,
+	identities=[26[0]=A1[4],26[1]=A9[2]],referrers=[],
+	values={85},
+	digits=[{8},{5}],
+	entry=D5,a=h,b=d,c=e,n=h,isLetter=Y,
+	diffs={15},minDiff=15,maxDiff=15
+Variable e={10}
+Variable a={6..8,11..14,16..26}
+Variable b={6..8,11..14,16..26}
+Variable f={6..8,11..14,16..26}
+Variable g={6..8,11..14,16..26}
+Variable j={6..8,11..14,16..26}
+Variable k={6..8,11..14,16..26}
+Variable l={6..8,11..14,16..26}
+Variable m={6..8,11..14,16..26}
+Variable n={6..8,11..14,16..26}
+Variable o={6..8,11..14,16..26}
+Variable r={6..8,11..14,16..26}
+Variable s={6..8,11..14,16..26}
+Variable u={6..8,11..14,16..26}
+Variable v={6..8,11..14,16..26}
+Variable w={6..8,11..14,16..26}
+Variable x={6..8,11..14,16..26}
+Variable y={6..8,11..14,16..26}
+Variable z={6..8,11..14,16..26}
+solve: ExcusesClue(name=24,length=5,value: null,
+	identities=[24[0]=A12[0],24[1]=A16[2],24[2]=A19[3],24[3]=A21[2],24[4]=A25[3]],referrers=[],
+	values={37234},
+	digits=[{3},{7},{2},{3},{4}],
+	entry=D12,a=(q^c),b=(q^c + b),c=(bd - q),n=h,isLetter=Y,
+	diffs={15},minDiff=15,maxDiff=15
+Variable b={22}
+Variable a={6..8,11..14,16..21,23..26}
+Variable f={6..8,11..14,16..21,23..26}
+Variable g={6..8,11..14,16..21,23..26}
+Variable j={6..8,11..14,16..21,23..26}
+Variable k={6..8,11..14,16..21,23..26}
+Variable l={6..8,11..14,16..21,23..26}
+Variable m={6..8,11..14,16..21,23..26}
+Variable n={6..8,11..14,16..21,23..26}
+Variable o={6..8,11..14,16..21,23..26}
+Variable r={6..8,11..14,16..21,23..26}
+Variable s={6..8,11..14,16..21,23..26}
+Variable u={6..8,11..14,16..21,23..26}
+Variable v={6..8,11..14,16..21,23..26}
+Variable w={6..8,11..14,16..21,23..26}
+Variable x={6..8,11..14,16..21,23..26}
+Variable y={6..8,11..14,16..21,23..26}
+Variable z={6..8,11..14,16..21,23..26}
+solve: ExcusesClue(name=22,length=3,value: null,
+	identities=[22[1]=A19[6],22[2]=A23[0]],referrers=[],
+	values={212},
+	digits=[{2},{1},{2}],
+	entry=D17,a=p,b=(c + m - e),c=t,n=h,isLetter=Y,
+	diffs={13},minDiff=13,maxDiff=13
+Variable m={21}
+Variable a={6..8,11..14,16..20,23..26}
+Variable f={6..8,11..14,16..20,23..26}
+Variable g={6..8,11..14,16..20,23..26}
+Variable j={6..8,11..14,16..20,23..26}
+Variable k={6..8,11..14,16..20,23..26}
+Variable l={6..8,11..14,16..20,23..26}
+Variable n={6..8,11..14,16..20,23..26}
+Variable o={6..8,11..14,16..20,23..26}
+Variable r={6..8,11..14,16..20,23..26}
+Variable s={6..8,11..14,16..20,23..26}
+Variable u={6..8,11..14,16..20,23..26}
+Variable v={6..8,11..14,16..20,23..26}
+Variable w={6..8,11..14,16..20,23..26}
+Variable x={6..8,11..14,16..20,23..26}
+Variable y={6..8,11..14,16..20,23..26}
+Variable z={6..8,11..14,16..20,23..26}
+solve: ExcusesClue(name=27,length=6,value: null,
+	identities=[27[0]=A1[0],27[2]=A11[0],27[3]=A14[0]],referrers=[],
+	values={124625},
+	digits=[{1},{2},{4},{6},{2},{5}],
+	entry=D1,a=(mq-e),b=(cez + e),c=(cez + j),n=h,isLetter=Y,
+	diffs={16},minDiff=16,maxDiff=16
+Variable z={11}
+Variable a={6..8,12..14,16..20,24..26}
+Variable f={6..8,12..14,16..20,24..26}
+Variable g={6..8,12..14,16..20,24..26}
+Variable j={23}
+Variable k={6..8,12..14,16..20,24..26}
+Variable l={6..8,12..14,16..20,24..26}
+Variable n={6..8,12..14,16..20,24..26}
+Variable o={6..8,12..14,16..20,24..26}
+Variable r={6..8,12..14,16..20,24..26}
+Variable s={6..8,12..14,16..20,24..26}
+Variable u={6..8,12..14,16..20,24..26}
+Variable v={6..8,12..14,16..20,24..26}
+Variable w={6..8,12..14,16..20,24..26}
+Variable x={6..8,12..14,16..20,24..26}
+Variable y={6..8,12..14,16..20,24..26}
+solve: ExcusesClue(name=37,length=5,value: null,
+	identities=[37[0]=D3[3],37[1]=D4[3],37[2]=D12[1],37[3]=D10[2],37[4]=D13[1]],referrers=[],
+	values={47744},
+	digits=[{4},{7},{7},{4},{4}],
+	entry=A16,a=(bp),b=(ef),c=(fz - i),n=h,isLetter=,
+	diffs={217},minDiff=217,maxDiff=217
 Variable f={20}
-Variable j={6..8,10,12,14,16..19,21,23..26}
-Variable m={12,21,24}
-Variable o={6..8,10,12,14,16..19,21,23..26}
-Variable r={6..8,10,12,14,16..19,21,23..26}
-Variable s={6..8,10,12,14,16..19,21,23..26}
-Variable u={14,16..19,21,23..26}
-Variable w={6..8,10,12,14,16..19,21,23..26}
-Variable l={18,19,23}
-Variable v={16..19,23..26}
-Variable x={16..19,23..26}
+Variable a={6..8,12..14,16..19,24..26}
+Variable g={6..8,12..14,16..19,24..26}
+Variable k={6..8,12..14,16..19,24..26}
+Variable l={6..8,12..14,16..19,24..26}
+Variable n={6..8,12..14,16..19,24..26}
+Variable o={6..8,12..14,16..19,24..26}
+Variable r={6..8,12..14,16..19,24..26}
+Variable s={6..8,12..14,16..19,24..26}
+Variable u={6..8,12..14,16..19,24..26}
+Variable v={6..8,12..14,16..19,24..26}
+Variable w={6..8,12..14,16..19,24..26}
+Variable x={6..8,12..14,16..19,24..26}
+Variable y={6..8,12..14,16..19,24..26}
+solve: ExcusesClue(name=36,length=7,value: null,
+	identities=[36[0]=A12[2],36[1]=A16[4],36[2]=A19[5],36[3]=A21[4],36[4]=A26[1],36[5]=A30[2],36[6]=A32[4]],referrers=[],
+	values={6401026},
+	digits=[{6},{4},{0},{1},{0},{2},{6}],
+	entry=D13,a=(mqz),b=(l(q^c)+i),c=(hjqz),n=h,isLetter=,
+	diffs={126},minDiff=126,maxDiff=126
+Variable l={18}
+Variable a={6..8,12..14,16,17,19,24..26}
+Variable g={6..8,12..14,16,17,19,24..26}
+Variable k={6..8,12..14,16,17,19,24..26}
+Variable n={6..8,12..14,16,17,19,24..26}
+Variable o={6..8,12..14,16,17,19,24..26}
+Variable r={6..8,12..14,16,17,19,24..26}
+Variable s={6..8,12..14,16,17,19,24..26}
+Variable u={6..8,12..14,16,17,19,24..26}
+Variable v={6..8,12..14,16,17,19,24..26}
+Variable w={6..8,12..14,16,17,19,24..26}
+Variable x={6..8,12..14,16,17,19,24..26}
+Variable y={6..8,12..14,16,17,19,24..26}
 solve: ExcusesClue(name=1,length=3,value: null,
 	identities=[1[0]=A14[1],1[1]=A19[0]],referrers=[],
 	values={841},
 	digits=[{8},{4},{1}],
 	entry=D15,a=f,b=m,c=(l + z),n=h,isLetter=,
 	diffs={0},minDiff=0,maxDiff=0
-Variable m={21}
-Variable e={6..8,10,12,14,16,17,19,23..26}
-Variable g={24..26}
-Variable j={6..8,10,12,14,16,17,19,23..26}
-Variable o={6..8,10,12,14,16,17,19,23..26}
-Variable r={6..8,10,12,14,16,17,19,23..26}
-Variable s={6..8,10,12,14,16,17,19,23..26}
-Variable u={14,16,17,19,23..26}
-Variable w={6..8,10,12,14,16,17,19,23..26}
-Variable y={24..26}
-Variable l={18}
-Variable v={16,17,19,23..26}
-Variable x={16,17,19,23..26}
-solve: ExcusesClue(name=9,length=3,value: null,
-	identities=[9[1]=A28[0],9[2]=A31[0]],referrers=[],
-	values={341},
-	digits=[{3},{4},{1}],
-	entry=D24,a=q,b=(m - t),c=(x - l),n=c,isLetter=Y,
-	diffs={2},minDiff=2,maxDiff=2
-Variable x={25}
-Variable e={6..8,10,12,14,16,17,19,23,24,26}
-Variable g={24,26}
-Variable j={6..8,10,12,14,16,17,19,23,24,26}
-Variable o={6..8,10,12,14,16,17,19,23,24,26}
-Variable r={6..8,10,12,14,16,17,19,23,24,26}
-Variable s={6..8,10,12,14,16,17,19,23,24,26}
-Variable u={14,16,17,19,23,24,26}
-Variable v={16,17,19,23,24,26}
-Variable w={6..8,10,12,14,16,17,19,23,24,26}
-Variable y={24,26}
+solve: ExcusesClue(name=14,length=4,value: null,
+	identities=[14[0]=D24[1],14[1]=D25[1],14[2]=D29[0],14[3]=D20[3]],referrers=[],
+	values={4349},
+	digits=[{4},{3},{4},{9}],
+	entry=A28,a=(f + j),b=(eq),c=(b + f + g),n=h,isLetter=Y,
+	diffs={7},minDiff=7,maxDiff=7
+Variable g={24}
+Variable a={6..8,12..14,16,17,19,25,26}
+Variable k={6..8,12..14,16,17,19,25,26}
+Variable n={6..8,12..14,16,17,19,25,26}
+Variable o={6..8,12..14,16,17,19,25,26}
+Variable r={6..8,12..14,16,17,19,25,26}
+Variable s={6..8,12..14,16,17,19,25,26}
+Variable u={6..8,12..14,16,17,19,25,26}
+Variable v={6..8,12..14,16,17,19,25,26}
+Variable w={6..8,12..14,16,17,19,25,26}
+Variable x={6..8,12..14,16,17,19,25,26}
+Variable y={6..8,12..14,16,17,19,25,26}
+solve: ExcusesClue(name=33,length=4,value: null,
+	identities=[33[0]=A1[3],33[1]=A9[1],33[2]=A11[3],33[3]=A16[1]],referrers=[],
+	values={9457},
+	digits=[{9},{4},{5},{7}],
+	entry=D4,a=(j + y),b=(mp),c=(fq - c),n=h,isLetter=,
+	diffs={48},minDiff=48,maxDiff=48
+Variable y={26}
+Variable a={6..8,12..14,16,17,19,25}
+Variable k={6..8,12..14,16,17,19,25}
+Variable n={6..8,12..14,16,17,19,25}
+Variable o={6..8,12..14,16,17,19,25}
+Variable r={6..8,12..14,16,17,19,25}
+Variable s={6..8,12..14,16,17,19,25}
+Variable u={6..8,12..14,16,17,19,25}
+Variable v={6..8,12..14,16,17,19,25}
+Variable w={6..8,12..14,16,17,19,25}
+Variable x={6..8,12..14,16,17,19,25}
 solve: ExcusesClue(name=4,length=4,value: null,
 	identities=[4[0]=D22[1],4[1]=D13[4],4[2]=D27[0],4[3]=D18[3]],referrers=[],
 	values={3025},
 	digits=[{3},{0},{2},{5}],
 	entry=A26,a=(d + g),b=(l + y),c=(qz),n=h,isLetter=,
 	diffs={0},minDiff=0,maxDiff=0
-Variable g={24}
-Variable e={6..8,10,12,14,16,17,19,23}
-Variable j={6..8,10,12,14,16,17,19,23}
-Variable o={6..8,10,12,14,16,17,19,23}
-Variable r={6..8,10,12,14,16,17,19,23}
-Variable s={6..8,10,12,14,16,17,19,23}
-Variable u={14,16,17,19,23}
-Variable v={16,17,19,23}
-Variable w={6..8,10,12,14,16,17,19,23}
-Variable y={26}
-solve: ExcusesClue(name=7,length=3,value: null,
-	identities=[7[0]=A7[1],7[1]=A10[3]],referrers=[],
-	values={728},
-	digits=[{7},{2},{8}],
-	entry=D8,a=(m - t),b=(y - l),c=(qt - kz),n=c,isLetter=Y,
-	diffs={1},minDiff=1,maxDiff=1
-Variable k={6}
-Variable e={7,8,10,12,14,16,17,19,23}
-Variable j={7,8,10,12,14,16,17,19,23}
-Variable o={7,8,10,12,14,16,17,19,23}
-Variable r={7,8,10,12,14,16,17,19,23}
-Variable s={7,8,10,12,14,16,17,19,23}
-Variable w={7,8,10,12,14,16,17,19,23}
-solve: ExcusesClue(name=12,length=3,value: null,
-	identities=[12[0]=D3[1],12[1]=D4[1],12[2]=D5[1]],referrers=[],
-	values={845},
-	digits=[{8},{4},{5}],
-	entry=A9,a=(k + n),b=(i + x),c=(d + f),n=h,isLetter=Y,
-	diffs={4},minDiff=4,maxDiff=4
-Variable n={7}
-Variable e={8,10,12,14,16,17,19,23}
-Variable j={8,10,12,14,16,17,19,23}
-Variable o={8,10,12,14,16,17,19,23}
-Variable r={8,10,12,14,16,17,19,23}
-Variable s={8,10,12,14,16,17,19,23}
-Variable w={8,10,12,14,16,17,19,23}
-solve: ExcusesClue(name=2,length=3,value: null,
-	identities=[2[0]=A1[1],2[2]=A11[1]],referrers=[],
-	values={400},
-	digits=[{4},{0},{0}],
-	entry=D2,a=(g - n - q),b=(a + c),c=f,n=h,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-solve: ExcusesClue(name=6,length=2,value: null,
-	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
-	values={13},
-	digits=[{1},{3}],
-	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-solve: ExcusesClue(name=35,length=7,value: null,
-	identities=[35[0]=A1[2],35[1]=A9[0],35[2]=A11[2],35[3]=A16[0],35[4]=A19[1],35[5]=A21[0],35[6]=A25[1]],referrers=[],
-	values={1874097},
-	digits=[{1},{8},{7},{4},{0},{9},{7}],
-	entry=D3,a=(hy - k - x),b=(i + nq),c=(f + v),n=p,isLetter=,
-	diffs={64,439344,1544704},minDiff=64,maxDiff=1544704
-Variable v={17,19,23}
 solve: ExcusesClue(name=10,length=4,value: null,
 	identities=[10[0]=D10[0],10[1]=D6[1],10[2]=D7[1],10[3]=D8[1]],referrers=[],
 	values={1762},
@@ -657,182 +665,183 @@ solve: ExcusesClue(name=10,length=4,value: null,
 	entry=A10,a=d,b=(t + y),c=(cu),n=h,isLetter=Y,
 	diffs={2},minDiff=2,maxDiff=2
 Variable u={14}
-Variable e={8,10,12,16,17,19,23}
-Variable j={8,10,12,16,17,19,23}
-Variable o={8,10,12,16,17,19,23}
-Variable r={8,10,12,16,17,19,23}
-Variable s={8,10,12,16,17,19,23}
-Variable w={8,10,12,16,17,19,23}
-solve: ExcusesClue(name=3,length=4,value: null,
-	identities=[3[0]=D12[0],3[1]=D10[1],3[2]=D13[0],3[3]=D7[2]],referrers=[],
-	values={3364},
-	digits=[{3},{3},{6},{4}],
-	entry=A12,a=(u + y),b=(v + x),c=(c + qz),n=h,isLetter=,
-	diffs={0},minDiff=0,maxDiff=0
-Variable v={17}
-Variable e={8,10,12,16,19,23}
-Variable j={8,10,12,16,19,23}
-Variable o={8,10,12,16,19,23}
-Variable r={8,10,12,16,19,23}
-Variable s={8,10,12,16,19,23}
-Variable w={8,10,12,16,19,23}
-solve: ExcusesClue(name=35,length=7,value: null,
-	identities=[35[0]=A1[2],35[1]=A9[0],35[2]=A11[2],35[3]=A16[0],35[4]=A19[1],35[5]=A21[0],35[6]=A25[1]],referrers=[],
-	values={1874097},
-	digits=[{1},{8},{7},{4},{0},{9},{7}],
-	entry=D3,a=(hy - k - x),b=(i + nq),c=(f + v),n=p,isLetter=,
-	diffs={64},minDiff=64,maxDiff=1544704
-solve: ExcusesClue(name=38,length=7,value: null,
-	identities=[38[0]=D15[1],38[1]=D3[4],38[2]=D20[0],38[3]=D12[2],38[4]=D10[3],38[5]=D13[2],38[6]=D17[1]],referrers=[],
-	values={4012301},
-	digits=[{4},{0},{1},{2},{3},{0},{1}],
-	entry=A19,a=(k^p - hk - hn),b=(k^p + p^p - c),c=(h(e^c) + c),n=h,isLetter=,
-	diffs={292,7952380,63145724,184253540,588277268},minDiff=292,maxDiff=588277268
-Variable e={10,12,16,19,23}
-solve: ExcusesClue(name=11,length=2,value: null,
-	identities=[11[0]=A1[6],11[1]=A10[1]],referrers=[],
-	values={97},
-	digits=[{9},{7}],
-	entry=D6,a=(v - a),b=d,c=e,n=h,isLetter=Y,
-	diffs={3},minDiff=3,maxDiff=3
-Variable e={10}
-Variable j={8,12,16,19,23}
-Variable o={8,12,16,19,23}
-Variable r={8,12,16,19,23}
-Variable s={8,12,16,19,23}
-Variable w={8,12,16,19,23}
-solve: ExcusesClue(name=38,length=7,value: null,
-	identities=[38[0]=D15[1],38[1]=D3[4],38[2]=D20[0],38[3]=D12[2],38[4]=D10[3],38[5]=D13[2],38[6]=D17[1]],referrers=[],
-	values={4012301},
-	digits=[{4},{0},{1},{2},{3},{0},{1}],
-	entry=A19,a=(k^p - hk - hn),b=(k^p + p^p - c),c=(h(e^c) + c),n=h,isLetter=,
-	diffs={292},minDiff=292,maxDiff=588277268
-solve: ExcusesClue(name=37,length=5,value: null,
-	identities=[37[0]=D3[3],37[1]=D4[3],37[2]=D12[1],37[3]=D10[2],37[4]=D13[1]],referrers=[],
-	values={47744},
-	digits=[{4},{7},{7},{4},{4}],
-	entry=A16,a=(bp),b=(ef),c=(fz - i),n=h,isLetter=,
-	diffs={217},minDiff=217,maxDiff=217
-solve: ExcusesClue(name=26,length=2,value: null,
-	identities=[26[0]=A1[4],26[1]=A9[2]],referrers=[],
-	values={85},
-	digits=[{8},{5}],
-	entry=D5,a=h,b=d,c=e,n=h,isLetter=Y,
-	diffs={15},minDiff=15,maxDiff=15
-solve: ExcusesClue(name=22,length=3,value: null,
-	identities=[22[1]=A19[6],22[2]=A23[0]],referrers=[],
-	values={212},
-	digits=[{2},{1},{2}],
-	entry=D17,a=p,b=(c + m - e),c=t,n=h,isLetter=Y,
-	diffs={13},minDiff=13,maxDiff=13
-solve: ExcusesClue(name=17,length=2,value: null,
-	identities=[17[0]=A28[2],17[1]=A32[0]],referrers=[],
-	values={41},
-	digits=[{4},{1}],
-	entry=D29,a=(e - k),b=(l - a),c=(u - n),n=h,isLetter=Y,
-	diffs={8},minDiff=8,maxDiff=8
-solve: ExcusesClue(name=34,length=3,value: null,
-	identities=[34[0]=A26[2],34[2]=A32[5]],referrers=[],
-	values={233},
-	digits=[{2},{3},{3}],
-	entry=D27,a=o,b=a,c=v,n=h,isLetter=,
-	diffs={56},minDiff=56,maxDiff=56
-Variable o={8}
-Variable j={12,16,19,23}
-Variable r={12,16,19,23}
-Variable s={12,16,19,23}
-Variable w={12,16,19,23}
-solve: ExcusesClue(name=19,length=2,value: null,
-	identities=[19[0]=D17[2],19[1]=D18[2]],referrers=[],
-	values={26},
-	digits=[{2},{6}],
-	entry=A23,a=(x - g),b=(e - q),c=(d + q - o),n=h,isLetter=Y,
-	diffs={10},minDiff=10,maxDiff=10
-solve: ExcusesClue(name=29,length=3,value: null,
-	identities=[29[0]=A7[0],29[1]=A10[2],29[2]=A12[3]],referrers=[],
-	values={164},
-	digits=[{1},{6},{4}],
-	entry=D7,a=o,b=e,c=(y - u),n=h,isLetter=Y,
-	diffs={20},minDiff=20,maxDiff=20
-solve: ExcusesClue(name=20,length=7,value: null,
-	identities=[20[0]=D1[0],20[1]=D2[0],20[2]=D3[0],20[3]=D4[0],20[4]=D5[0],20[6]=D6[0]],referrers=[],
-	values={1419869},
-	digits=[{1},{4},{1},{9},{8},{6},{9}],
-	entry=A1,a=(k + n),b=(g - o),c=(o + u - q),n=q,isLetter=Y,
-	diffs={12},minDiff=12,maxDiff=12
-solve: ExcusesClue(name=16,length=3,value: null,
-	identities=[16[0]=A25[0],16[1]=A28[1],16[2]=A31[1]],referrers=[],
-	values={433},
-	digits=[{4},{3},{3}],
-	entry=D25,a=r,b=v,c=m,n=h,isLetter=Y,
-	diffs={8},minDiff=8,maxDiff=8
-Variable r={12}
-Variable j={16,19,23}
-Variable s={16,19,23}
-Variable w={16,19,23}
-solve: ExcusesClue(name=31,length=3,value: null,
-	identities=[31[0]=D30[0],31[1]=D22[2],31[2]=D13[5]],referrers=[],
-	values={232},
-	digits=[{2},{3},{2}],
-	entry=A30,a=(y - f),b=u,c=(p + r),n=h,isLetter=Y,
-	diffs={24},minDiff=24,maxDiff=24
-solve: ExcusesClue(name=28,length=6,value: null,
-	identities=[28[2]=A23[1],28[3]=A26[3],28[5]=A32[6]],referrers=[],
-	values={456552},
-	digits=[{4},{5},{6},{5},{5},{2}],
-	entry=D18,a=(r + u),b=(gh + hu),c=(nz),n=c,isLetter=Y,
-	diffs={19},minDiff=19,maxDiff=19
-solve: ExcusesClue(name=8,length=4,value: null,
-	identities=[8[0]=A19[2],8[1]=A21[1],8[2]=A25[2],8[3]=A28[3]],referrers=[],
-	values={1729},
-	digits=[{1},{7},{2},{9}],
-	entry=D20,a=(qt - kz),b=(m - z),c=(g - r),n=c,isLetter=Y,
-	diffs={1},minDiff=1,maxDiff=1
-solve: ExcusesClue(name=27,length=6,value: null,
-	identities=[27[0]=A1[0],27[2]=A11[0],27[3]=A14[0]],referrers=[],
-	values={124625},
-	digits=[{1},{2},{4},{6},{2},{5}],
-	entry=D1,a=(mq-e),b=(cez + e),c=(cez + j),n=h,isLetter=Y,
-	diffs={16},minDiff=16,maxDiff=16
-Variable j={23}
-Variable s={16,19}
-Variable w={16,19}
-solve: ExcusesClue(name=36,length=7,value: null,
-	identities=[36[0]=A12[2],36[1]=A16[4],36[2]=A19[5],36[3]=A21[4],36[4]=A26[1],36[5]=A30[2],36[6]=A32[4]],referrers=[],
-	values={6401026},
-	digits=[{6},{4},{0},{1},{0},{2},{6}],
-	entry=D13,a=(mqz),b=(l(q^c)+i),c=(hjqz),n=h,isLetter=,
-	diffs={126},minDiff=126,maxDiff=126
-solve: ExcusesClue(name=14,length=4,value: null,
-	identities=[14[0]=D24[1],14[1]=D25[1],14[2]=D29[0],14[3]=D20[3]],referrers=[],
-	values={4349},
-	digits=[{4},{3},{4},{9}],
-	entry=A28,a=(f + j),b=(eq),c=(b + f + g),n=h,isLetter=Y,
-	diffs={7},minDiff=7,maxDiff=7
-solve: ExcusesClue(name=13,length=7,value: null,
-	identities=[13[0]=D29[1],13[2]=D30[1],13[3]=D22[3],13[4]=D13[6],13[5]=D27[2],13[6]=D18[5]],referrers=[],
-	values={1157632},
-	digits=[{1},{1},{5},{7},{6},{3},{2}],
-	entry=A32,a=(t+v),b=(jp+r),c=(cnq),n=c,isLetter=Y,
-	diffs={7},minDiff=7,maxDiff=7
+Variable a={6..8,12,13,16,17,19,25}
+Variable k={6..8,12,13,16,17,19,25}
+Variable n={6..8,12,13,16,17,19,25}
+Variable o={6..8,12,13,16,17,19,25}
+Variable r={6..8,12,13,16,17,19,25}
+Variable s={6..8,12,13,16,17,19,25}
+Variable v={6..8,12,13,16,17,19,25}
+Variable w={6..8,12,13,16,17,19,25}
+Variable x={6..8,12,13,16,17,19,25}
 solve: ExcusesClue(name=32,length=4,value: null,
 	identities=[32[0]=D25[0],32[1]=D3[6],32[2]=D20[2],32[3]=D12[4]],referrers=[],
 	values={4724},
 	digits=[{4},{7},{2},{4}],
 	entry=A25,a=(c + h + q),b=(g + j + m),c=(l + x + y),n=h,isLetter=,
 	diffs={37},minDiff=37,maxDiff=37
-solve: ExcusesClue(name=33,length=4,value: null,
-	identities=[33[0]=A1[3],33[1]=A9[1],33[2]=A11[3],33[3]=A16[1]],referrers=[],
-	values={9457},
-	digits=[{9},{4},{5},{7}],
-	entry=D4,a=(j + y),b=(mp),c=(fq - c),n=h,isLetter=,
-	diffs={48},minDiff=48,maxDiff=48
+Variable x={25}
+Variable a={6..8,12,13,16,17,19}
+Variable k={6..8,12,13,16,17,19}
+Variable n={6..8,12,13,16,17,19}
+Variable o={6..8,12,13,16,17,19}
+Variable r={6..8,12,13,16,17,19}
+Variable s={6..8,12,13,16,17,19}
+Variable v={6..8,12,13,16,17,19}
+Variable w={6..8,12,13,16,17,19}
 solve: ExcusesClue(name=18,length=4,value: null,
 	identities=[18[0]=A21[3],18[1]=A26[0],18[2]=A30[1],18[3]=A32[3]],referrers=[],
 	values={5337},
 	digits=[{5},{3},{3},{7}],
 	entry=D22,a=(e + u),b=(cj),c=(b + x + y),n=h,isLetter=Y,
 	diffs={8},minDiff=8,maxDiff=8
+solve: ExcusesClue(name=9,length=3,value: null,
+	identities=[9[1]=A28[0],9[2]=A31[0]],referrers=[],
+	values={341},
+	digits=[{3},{4},{1}],
+	entry=D24,a=q,b=(m - t),c=(x - l),n=c,isLetter=Y,
+	diffs={2},minDiff=2,maxDiff=2
+solve: ExcusesClue(name=29,length=3,value: null,
+	identities=[29[0]=A7[0],29[1]=A10[2],29[2]=A12[3]],referrers=[],
+	values={164},
+	digits=[{1},{6},{4}],
+	entry=D7,a=o,b=e,c=(y - u),n=h,isLetter=Y,
+	diffs={20},minDiff=20,maxDiff=20
+Variable o={8}
+Variable a={6,7,12,13,16,17,19}
+Variable k={6,7,12,13,16,17,19}
+Variable n={6,7,12,13,16,17,19}
+Variable r={6,7,12,13,16,17,19}
+Variable s={6,7,12,13,16,17,19}
+Variable v={6,7,12,13,16,17,19}
+Variable w={6,7,12,13,16,17,19}
+solve: ExcusesClue(name=19,length=2,value: null,
+	identities=[19[0]=D17[2],19[1]=D18[2]],referrers=[],
+	values={26},
+	digits=[{2},{6}],
+	entry=A23,a=(x - g),b=(e - q),c=(d + q - o),n=h,isLetter=Y,
+	diffs={10},minDiff=10,maxDiff=10
+solve: ExcusesClue(name=31,length=3,value: null,
+	identities=[31[0]=D30[0],31[1]=D22[2],31[2]=D13[5]],referrers=[],
+	values={232},
+	digits=[{2},{3},{2}],
+	entry=A30,a=(y - f),b=u,c=(p + r),n=h,isLetter=Y,
+	diffs={24},minDiff=24,maxDiff=24
+Variable r={12}
+Variable a={6,7,13,16,17,19}
+Variable k={6,7,13,16,17,19}
+Variable n={6,7,13,16,17,19}
+Variable s={6,7,13,16,17,19}
+Variable v={6,7,13,16,17,19}
+Variable w={6,7,13,16,17,19}
+solve: ExcusesClue(name=28,length=6,value: null,
+	identities=[28[2]=A23[1],28[3]=A26[3],28[5]=A32[6]],referrers=[],
+	values={456552},
+	digits=[{4},{5},{6},{5},{5},{2}],
+	entry=D18,a=(r + u),b=(gh + hu),c=(nz),n=c,isLetter=Y,
+	diffs={19},minDiff=19,maxDiff=19
+Variable n={7}
+Variable a={6,13,16,17,19}
+Variable k={6,13,16,17,19}
+Variable s={6,13,16,17,19}
+Variable v={6,13,16,17,19}
+Variable w={6,13,16,17,19}
+solve: ExcusesClue(name=13,length=7,value: null,
+	identities=[13[0]=D29[1],13[2]=D30[1],13[3]=D22[3],13[4]=D13[6],13[5]=D27[2],13[6]=D18[5]],referrers=[],
+	values={1157632},
+	digits=[{1},{1},{5},{7},{6},{3},{2}],
+	entry=A32,a=(t+v),b=(jp+r),c=(cnq),n=c,isLetter=Y,
+	diffs={7},minDiff=7,maxDiff=7
+Variable v={17}
+Variable a={6,13,16,19}
+Variable k={6,13,16,19}
+Variable s={6,13,16,19}
+Variable w={6,13,16,19}
+solve: ExcusesClue(name=16,length=3,value: null,
+	identities=[16[0]=A25[0],16[1]=A28[1],16[2]=A31[1]],referrers=[],
+	values={433},
+	digits=[{4},{3},{3}],
+	entry=D25,a=r,b=v,c=m,n=h,isLetter=Y,
+	diffs={8},minDiff=8,maxDiff=8
+solve: ExcusesClue(name=3,length=4,value: null,
+	identities=[3[0]=D12[0],3[1]=D10[1],3[2]=D13[0],3[3]=D7[2]],referrers=[],
+	values={3364},
+	digits=[{3},{3},{6},{4}],
+	entry=A12,a=(u + y),b=(v + x),c=(c + qz),n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+solve: ExcusesClue(name=12,length=3,value: null,
+	identities=[12[0]=D3[1],12[1]=D4[1],12[2]=D5[1]],referrers=[],
+	values={845},
+	digits=[{8},{4},{5}],
+	entry=A9,a=(k + n),b=(i + x),c=(d + f),n=h,isLetter=Y,
+	diffs={4},minDiff=4,maxDiff=4
+Variable k={6}
+Variable a={13,16,19}
+Variable s={13,16,19}
+Variable w={13,16,19}
+solve: ExcusesClue(name=38,length=7,value: null,
+	identities=[38[0]=D15[1],38[1]=D3[4],38[2]=D20[0],38[3]=D12[2],38[4]=D10[3],38[5]=D13[2],38[6]=D17[1]],referrers=[],
+	values={4012301},
+	digits=[{4},{0},{1},{2},{3},{0},{1}],
+	entry=A19,a=(k^p - hk - hn),b=(k^p + p^p - c),c=(h(e^c) + c),n=h,isLetter=,
+	diffs={292},minDiff=292,maxDiff=292
+solve: ExcusesClue(name=20,length=7,value: null,
+	identities=[20[0]=D1[0],20[1]=D2[0],20[2]=D3[0],20[3]=D4[0],20[4]=D5[0],20[6]=D6[0]],referrers=[],
+	values={1419869},
+	digits=[{1},{4},{1},{9},{8},{6},{9}],
+	entry=A1,a=(k + n),b=(g - o),c=(o + u - q),n=q,isLetter=Y,
+	diffs={12},minDiff=12,maxDiff=12
+solve: ExcusesClue(name=35,length=7,value: null,
+	identities=[35[0]=A1[2],35[1]=A9[0],35[2]=A11[2],35[3]=A16[0],35[4]=A19[1],35[5]=A21[0],35[6]=A25[1]],referrers=[],
+	values={1874097},
+	digits=[{1},{8},{7},{4},{0},{9},{7}],
+	entry=D3,a=(hy - k - x),b=(i + nq),c=(f + v),n=p,isLetter=,
+	diffs={64},minDiff=64,maxDiff=64
+solve: ExcusesClue(name=6,length=2,value: null,
+	identities=[6[0]=D24[2],6[1]=D25[2]],referrers=[],
+	values={13},
+	digits=[{1},{3}],
+	entry=A31,a=k,b=n,c=(k + n),n=i,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
+solve: ExcusesClue(name=7,length=3,value: null,
+	identities=[7[0]=A7[1],7[1]=A10[3]],referrers=[],
+	values={728},
+	digits=[{7},{2},{8}],
+	entry=D8,a=(m - t),b=(y - l),c=(qt - kz),n=c,isLetter=Y,
+	diffs={1},minDiff=1,maxDiff=1
+solve: ExcusesClue(name=8,length=4,value: null,
+	identities=[8[0]=A19[2],8[1]=A21[1],8[2]=A25[2],8[3]=A28[3]],referrers=[],
+	values={1729},
+	digits=[{1},{7},{2},{9}],
+	entry=D20,a=(qt - kz),b=(m - z),c=(g - r),n=c,isLetter=Y,
+	diffs={1},minDiff=1,maxDiff=1
+solve: ExcusesClue(name=34,length=3,value: null,
+	identities=[34[0]=A26[2],34[2]=A32[5]],referrers=[],
+	values={233},
+	digits=[{2},{3},{3}],
+	entry=D27,a=o,b=a,c=v,n=h,isLetter=,
+	diffs={56},minDiff=56,maxDiff=56
+Variable a={13}
+Variable s={16,19}
+Variable w={16,19}
+solve: ExcusesClue(name=17,length=2,value: null,
+	identities=[17[0]=A28[2],17[1]=A32[0]],referrers=[],
+	values={41},
+	digits=[{4},{1}],
+	entry=D29,a=(e - k),b=(l - a),c=(u - n),n=h,isLetter=Y,
+	diffs={8},minDiff=8,maxDiff=8
+solve: ExcusesClue(name=11,length=2,value: null,
+	identities=[11[0]=A1[6],11[1]=A10[1]],referrers=[],
+	values={97},
+	digits=[{9},{7}],
+	entry=D6,a=(v - a),b=d,c=e,n=h,isLetter=Y,
+	diffs={3},minDiff=3,maxDiff=3
+solve: ExcusesClue(name=2,length=3,value: null,
+	identities=[2[0]=A1[1],2[2]=A11[1]],referrers=[],
+	values={400},
+	digits=[{4},{0},{0}],
+	entry=D2,a=(g - n - q),b=(a + c),c=f,n=h,isLetter=,
+	diffs={0},minDiff=0,maxDiff=0
 solve: ExcusesClue(name=21,length=4,value: null,
 	identities=[21[0]=A10[0],21[1]=A12[1],21[2]=A16[3],21[3]=A19[4]],referrers=[],
 	values={1343},
@@ -847,7 +856,7 @@ solve: ExcusesClue(name=25,length=5,value: null,
 	digits=[{9},{7},{3},{5},{1}],
 	entry=A21,a=(p + w),b=(hw + k),c=(hw + o),n=c,isLetter=Y,
 	diffs={15},minDiff=15,maxDiff=15
-Clue/Variable iterations=185, updates=209, elapsed 0:00:00.020359
+Clue/Variable iterations=207, updates=378, elapsed 0:00:00.074397
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 Clue 1, values={841}, entry={unknown}

@@ -537,32 +537,7 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
   @override
   // ignore: unnecessary_overrides
   void solve([bool iteration = true]) {
-    // Initialise clue values
-    // var numClues = puzzle.clues.length;
-    // var products = getProduct3Primes();
-    // for (var clue in puzzle.clues.values) {
-    //   var clueIndex = romanToDecimal(clue.name);
-    //   clue.values = Set.from(products.whereIndexed((index, element) =>
-    //       index >= clueIndex - 1 &&
-    //       index <= clueIndex + products.length - numClues - 1));
-    //   clue.min = clue.values!.first;
-    //   clue.max = clue.values!.last;
-    //   if (Crossnumber.traceSolve) {
-    //     print(
-    //         'solve: ${clue.runtimeType} ${clue.name} values=${clue.values!.toShortString()}');
-    //   }
-
-    solveClueNoException(puzzle.clues['15']!);
-    solveClueNoException(puzzle.clues['6']!);
-    for (var clueName in ['1', '2', '3', '4', '5', '6']) {
-      puzzle.clues[clueName]!.minDiff = 0;
-      puzzle.clues[clueName]!.maxDiff = 0;
-      solveClueNoException(puzzle.clues[clueName]!);
-    }
-    solveClueNoException(puzzle.clues['23']!);
-
     super.solve(false);
-
     postProcessing();
   }
 
