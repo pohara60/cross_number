@@ -155,3 +155,9 @@ Add Excuses puzzle
   difference |c^n - value|
 - updateClues() calls updateClueDiffs() to update minDiff and maxDiff for
   other clues when a clue is updated
+
+Future enhancements
+- The recursive solveNextExpressionEvaluator() and solveNextExpressionValue(), 
+  similar to solveRelatedClue(), could be made reusable with the removal of the unique
+  possibleDiff argument, and with extraction of value checking to a callback
+- This would allow other puzzles to solve multiple expressions recursively

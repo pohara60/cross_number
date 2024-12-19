@@ -4,7 +4,7 @@
 
 5 x 5 by Oyler
 
-Once the grid has been completed, solvers must erase the contents of some cells so that the digits sum to the total given by the letter at the end of the row or bottom of the column. These letters are clued in ascending order after the main clue list. The erased digits must be summed and their total wr itten under the grid. No entry starts with zero and all entries are distinct.
+Once the grid has been completed, solvers must erase the contents of some cells so that the digits sum to the total given by the letter at the end of the row or bottom of the column. These letters are clued in ascending order after the main clue list. The erased digits must be summed and their total written under the grid. No entry starts with zero and all entries are distinct.
 
 ```+--+--+--+--+--+
 |1 :  |2 :  :3 |

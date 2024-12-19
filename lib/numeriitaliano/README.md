@@ -4,7 +4,7 @@
 
 Numeri in Italiano by Moog
 
-The letters used represent the numbers 1 to 13 inclusive in an order to be determined with the same letter representing the same number throughout. The √ represents the square root of the letter immediately after it. No entry starts with zero and all entri es are distinct.
+The letters used represent the numbers 1 to 13 inclusive in an order to be determined with the same letter representing the same number throughout. The √ represents the square root of the letter immediately after it. No entry starts with zero and all entries are distinct.
 
 ```+--+--+--+--+--+
 |1 :2 |3 :4 :5 |

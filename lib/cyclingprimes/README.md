@@ -4,7 +4,7 @@
 
 Cycling Primes by Nod
 
-Every grid entry is a cyclic permutation of a prime number. Each permutation leads to a distinct grid entry of the same length but different from the original prime. For example, the prime number 1279 results in the possible entries 2791, 7912 and 9127 whilst the prime number 1307 results in 3071 and 7130  ( zero starts are excluded ) . Sorted into numerical order, the 15 grid entries have been labelled A to O and clues to some of them are given below  and the normal rules of algebra apply. The grid numbering is for reference only and bear no relationship to clue order.
+Every grid entry is a cyclic permutation of a prime number. Each permutation leads to a distinct grid entry of the same length but different from the original prime. For example, the prime number 1279 results in the possible entries 2791, 7912 and 9127 whilst the prime number 1307 results in 3071 and 7130 (zero starts are excluded). Sorted into numerical order, the 15 grid entries have been labelled A to O and clues to some of them are given below  and the normal rules of algebra apply. The grid numbering is for reference only and bear no relationship to clue order.
 
 ```+--+--+--+--+--+
 |1 :  :2 :3 |4 |

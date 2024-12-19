@@ -563,6 +563,8 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
         possibleVariables[variableRef] = <int>{};
         if (variableRef is Clue && variableRef.initialise()) updated = true;
       }
+
+      // Solve with additional possibleDiffs result
       if (solveExcusesClue(
         puzzle,
         variable,
@@ -573,6 +575,7 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
       // } else {
       //   if (clue.solve!(puzzle, clue, possibleValue)) updated = true;
       // }
+
       // If no Values returned then Solve function could not solve
       if (possibleValue.isEmpty) {
         print(
@@ -580,10 +583,13 @@ class Excuses extends Crossnumber<ExcusesPuzzle> {
 
         throw SolveException();
       }
+
+      // Update clue possibleDiffs
       if (possibleDiff.length != variable.diffs.length) {
         variable.diffs = possibleDiff;
         updated = true;
       }
+
       if (updateClueEntries(
           puzzle, variable, possibleValue, updatedVariables)) {
         updateAllVariables(updatedVariables, updatedAllVariables);

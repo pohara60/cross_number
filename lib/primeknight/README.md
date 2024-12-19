@@ -4,7 +4,7 @@
 
 The Prime Knight by Oyler
 
-Starting in the top left corner cell, the Prime Knight goes on a tour of the grid making knight s moves visiting each cell once and finishing in the bottom right corner cell. The sequence of grid digits covered by the tour forms a concatenation of ten distinct 2-digit primes. The immediate neighbours of any such prime are either both higher or both lower than that prime. The sum of the primes collected is a multiple of 8ac. Entries are distinct but may duplicate tour primes. There are no zeros in the grid.
+Starting in the top left corner cell, the Prime Knight goes on a tour of the grid making knights moves visiting each cell once and finishing in the bottom right corner cell. The sequence of grid digits covered by the tour forms a concatenation of ten distinct 2-digit primes. The immediate neighbours of any such prime are either both higher or both lower than that prime. The sum of the primes collected is a multiple of 8ac. Entries are distinct but may duplicate tour primes. There are no zeros in the grid.
 
 ```+--+--+--+--+--+
 |1 :2 :  |3 :4 |

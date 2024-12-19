@@ -63,11 +63,38 @@ The Clues, Entries and Variables columns refer to whether and how these entities
 | [IncreasingPrime](lib/increasingprime/README.md) | Simple | Expression Solvers | Expression, Constrained | Referenced by Clues |  |
 | [DieAnotherDay](lib/dieanotherday/README.md) | Simple | 3 Grids, Expression Solvers | | Expression, Constrained triples |  |
 | [Thirty](lib/thirty/README.md) | Simple | 2 Grids, Manual Solvers | | Expression, Constrained pairs |  |
-| [PowerPlay](lib/powerplay/README.md) | Simple | Expression Solvers | | Expression |  |
 | [CubeSandwich](lib/cubesandwich/README.md) | Simple | Expression Solvers | | Expression |  |
+| [PowerPlay](lib/powerplay/README.md) | Simple | Expression Solvers | | Expression |  |
 | [AlmostFermat](lib/almostfermat/README.md) | Simple | Expression Solvers, cf [Pandigitals](lib/pandigitals/README.md) | Multiple Expressions, Constrained | Referenced by Clues |  |
 | [Knights2](lib/knights2/README.md) | Simple | Expression Solvers | | Expression | |
+| [TwentyFive](lib/TwentyFive/README.md) | Simple | Pair Puzzles (L+R), Expression Solvers | | Expression, Constrained pairs | |
 | [Couplets](lib/couplets/README.md) | Simple | Expression Solvers | Expression, Constrained | Referenced by Clues |  |
+| [UnderSix](lib/UnderSix/README.md) | Simple | Expression Solvers | | Expression | |
+| [SumSquares](lib/SumSquares/README.md) | Variable | Expression Solvers | Expression, Constrained | Referenced by Clues | Primes |
+| [Combinations](lib/Combinations/README.md) | Variable | Two Expression Solvers for Clues | Expression | Mapped to Clues | Limited |
+| [TriangularPairs](lib/TriangularPairs/README.md) | Simple | Expression Solvers | | Expression, Constrained pairs | |
+| [PrimeKnight](lib/PrimeKnight/README.md) | Simple | Expression Solvers  | | Expression, Constrained by Knights Tour | |
+| [Factors](lib/Factors/README.md) | Variable | Expression Solvers for Cells | | Constrained | Primes |
+| [Transformation](lib/Transformation/README.md) | Variable | Expression Solvers, post-processing | | Expression | Limited Cubes |
+| [SquaresTriangles](lib/SquaresTriangles/README.md) | Simple | Expression Solvers | | Expression, Constrained | |
+| [OpposingDigitSum](lib/OpposingDigitSum/README.md) | Simple | Related Clue Expression Solvers | Expression | Referenced by Clues | |
+| [Eraser](lib/Eraser/README.md) | Simple | Expression Solvers | | Expression | |
+| [Primania](lib/Primania/README.md) | Simple | Expression Solvers | Expression | Mapped to Clues | |
+| [ABCDE](lib/ABCDE/README.md) | Variable | Expression Solvers | | Expression | |
+| [Tetromino](lib/Tetromino/README.md) | Variable | Expression Solvers | Expression | Mapped to Clues using Tetrominoes | |
+| [FourSeasons](lib/FourSeasons/README.md) | Simple | Expression Solvers | | Expression | |
+| [Virus](lib/Virus/README.md) | Simple | Related Clue Expression Solvers | Expression | Clue Expression | |
+| [TakeTwoOrThree](lib/TakeTwoOrThree/README.md) | Simple | Expression Solvers | Expression | Function Expression | |
+| [Different](lib/Different/README.md) | One Variable | | Entry Differences | Mapped to Clues | |
+| [SevenRules](lib/SevenRules/README.md) | Simple | Expression Solvers | | Expression | |
+| [CyclingPrimes](lib/CyclingPrimes/README.md) | Simple | Expression Solvers | Expression | Mapped to Clues | |
+| [NumeriItaliano](lib/NumeriItaliano/README.md) | Variable | Expression Solvers | | Expression | Limited |
+| [WorkingBack](lib/WorkingBack/README.md) | Simple | Expression Solvers | | Expression | |
+| [TwoByTwo](lib/TwoByTwo/README.md) | Simple | Expression Solvers | | Expression, Constrained | |
+| [WorkingBack2](lib/WorkingBack2/README.md) | Simple | Expression Solvers | | Expression | |
+| [MagicArray](lib/MagicArray/README.md) | Simple | Expression Solvers | | Expression, Constrained | |
+| [AfterNicholas](lib/AfterNicholas/README.md) | Variable | Expression Solvers | | Expression | Limited |
+| [Excuses](lib/Excuses/README.md) | Variable | Recursive Expression Solvers | Multiple Expressions | Mapped to Clues | Limited |
 
 
 ## Specific Puzzle Implementation
@@ -96,3 +123,5 @@ It is recommended to use the generic expression solver for simple puzzles, with 
 - Clue numbers also have an expression
 - Clue value has decimals
 - Clue value is fraction with numerator and denominator
+
+The skeleton code for a puzzle can be generated from an Excel definition using https://github.com/pohara60/crossnumber_generator.

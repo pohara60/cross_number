@@ -4,7 +4,7 @@
 
 A2 + B2 + C2 by Nod
 
-Letters in the clues stand for the first fourteen prime numbers in an order to be determined with the same letter representing the same prime throughout. The clue PQR is evaluated as P2 + Q2 +R2 to give the value of the entry. No entry starts with zero and all entries are distinct. Clues are given in ascending order of their entries , i - xxvii  and must be entered where they fit.
+Letters in the clues stand for the first fourteen prime numbers in an order to be determined with the same letter representing the same prime throughout. The clue PQR is evaluated as P2+Q2+R2 to give the value of the entry. No entry starts with zero and all entries are distinct. Clues are given in ascending order of their entries, i-xxvii and must be entered where they fit.
 
 ```+--+--+--+--+--+--+--+
 |1 :  :2 |3 :4 :5 |6 |

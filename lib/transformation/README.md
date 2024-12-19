@@ -2,7 +2,7 @@
 
 ## Puzzle
 
-    The Listener Crossword No 4816 Transformation by Elap
+The Listener Crossword No 4816 Transformation by Elap
 
 Each clue is a normal algebraic expression for the value to be entered, with the number of digits given in brackets. The 28 letters in the clues stand for different cubes that are greater than 1 and less than 100,000. The clues contain only letters, not digits; the lower-case letters are in italics for legibility. Sorted by numeric value, the clue letters will give a two-part message. The first part explains how to change each digit in the grid and the second part explains how solvers must replace the result of that. All the grid entries are different and none of them starts with a zero.
 

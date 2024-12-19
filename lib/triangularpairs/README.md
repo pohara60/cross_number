@@ -4,7 +4,7 @@
 
 Symmetric #triangular Pairs by Oyler
 
-Three-digit entries paired with their symmetric counterparts may be concatenated to form a six-digit #triangular number. Solvers must determine which entry comes first. All 2 -digit entries are the nine valid remaining #triangular numbers two of which , 7ac and 11ac are entered reversed. There are no zeros in the grid and entries are distinct.
+Three-digit entries paired with their symmetric counterparts may be concatenated to form a six-digit triangular number. Solvers must determine which entry comes first. All 2-digit entries are the nine valid remaining triangular numbers two of which, 7ac and 11ac, are entered reversed. There are no zeros in the grid and entries are distinct.
 
 ```+--+--+--+--+--+--+
 |1 :2 |3 |4 :  :5 |

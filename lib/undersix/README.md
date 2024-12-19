@@ -4,7 +4,7 @@
 
 Everything Under Six by Arden
 
-The 5 - or 6 -digit number on the left -hand side of each clue has been expressed as the product of two 3 -digit numbers, together comprising the six distinct digits under six. Every digit in the completed grid is under six. Upper case denotes across entries and lower case down entries. Normal rules of algebra apply, entries ar e distinct and no entry starts with zero. The ' symbol denotes the reverse of the character immediately before it.
+The 5- or 6-digit number on the left-hand side of each clue has been expressed as the product of two 3-digit numbers, together comprising the six distinct digits under six. Every digit in the completed grid is under six. Upper case denotes across entries and lower case down entries. Normal rules of algebra apply, entries ar e distinct and no entry starts with zero. The ' symbol denotes the reverse of the character immediately before it.
 
 ```+--+--+--+--+--+--+
 |Aa:b :  |B :c :d |

@@ -4,7 +4,7 @@
 
 After Nicholas by Czecker
 
-Nicholas Parsons chaired the panel game Just a Minute on BBC Radio for over fifty years.  After he died, the ten people in this puzzle each chaired an episode of Series 86, before Sue Perkins was chosen as the new permanent chair. Each letter used in the puzzle represents a different number from 1 to 16  and the ^ symbol denotes to the power of .  All entries are distinct, and none starts with zero.
+Nicholas Parsons chaired the panel game Just a Minute on BBC Radio for over fifty years.  After he died, the ten people in this puzzle each chaired an episode of Series 86, before Sue Perkins was chosen as the new permanent chair. Each letter used in the puzzle represents a different number from 1 to 16 and the ^ symbol denotes to the power of.  All entries are distinct, and none starts with zero.
 
 ```+--+--+--+--+--+
 |1 :2 :3 |4 :5 |

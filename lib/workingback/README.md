@@ -4,7 +4,7 @@
 
 Working Back by Oyler
 
-When bars are removed the three 4 -digit numbers in the highlighted cells are of the same type. Solvers must use them to find three distinct positive integers such that when taken pairwise their sum equals those 4 -digit numbers. Those integers a, b and c along with their sum should be written below the grid in ascending order. No entry starts with zero and all entries are distinct.
+When bars are removed the three 4-digit numbers in the highlighted cells are of the same type. Solvers must use them to find three distinct positive integers such that when taken pairwise their sum equals those 4-digit numbers. Those integers a, b and c along with their sum should be written below the grid in ascending order. No entry starts with zero and all entries are distinct.
 
 ```+--+--+--+--+--+--+
 |1 :  :2 |3 :4 :5 |
