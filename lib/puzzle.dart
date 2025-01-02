@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:basics/basics.dart';
 import 'package:collection/collection.dart';
+import 'package:crossnumber/monadic.dart';
 
 import 'cartesian.dart';
 import 'clue.dart';
@@ -885,7 +886,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     final puzzleGenerators = [
       Generator('sumdigits', generateSumDigits),
       Generator('otherentry', generateOtherEntry),
-      Generator('sumtwootherentry', sumTwoOtherEntry)
+      Generator('factorotherentry', factorOtherEntry),
+      Generator('sumtwootherentry', sumTwoOtherEntry),
+      Generator('difftwootherentry', diffTwoOtherEntry,
+          order: NodeOrder.UNKNOWN)
     ];
     _variableLists[VariableType.V] = (variableList =
         VariableList<VariableKind>(VariableType.V, possibleValues));
@@ -945,7 +949,7 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
   }
 
-  Iterable<int> generateOtherEntry(num min, num max) sync* {
+  Iterable<int> generateOtherEntry(num? min, num? max) sync* {
     // Generate other entries
     var allEntryValues = <int>{};
     for (var entry in _entries.values) {
@@ -964,9 +968,39 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     }
     var list = allEntryValues.toList()..sort();
     for (var sum in list) {
-      if (sum < min) continue;
-      if (sum > max) break;
+      if (min != null && sum < min) continue;
+      if (max != null && sum > max) break;
       yield sum;
+    }
+  }
+
+  Iterable<int> factorOtherEntry(num min, num max) sync* {
+    // Generate other entries
+    var allEntryValues = <int>{};
+    for (var entry in _entries.values) {
+      if (entry.values != null) {
+        allEntryValues.addAll(entry.values!);
+      } else {
+        // generate values from digits
+        var values = getValuesFromClueDigits(entry);
+        if (values != null) {
+          allEntryValues.addAll(values);
+        } else {
+          // cannot get entry values so give up
+          throw ExpressionInvalid('OtherEntry unknown ${entry.name}');
+        }
+      }
+    }
+    var list = allEntryValues.toList()..sort();
+    var allFactors = <int>{};
+    for (var value in list) {
+      allFactors.addAll(divisors(value, min, max));
+    }
+    var factorList = allFactors.toList()..sort();
+    for (var factor in factorList) {
+      if (factor < min) continue;
+      if (factor > max) break;
+      yield factor;
     }
   }
 
@@ -983,6 +1017,20 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
         yield sum;
       }
       if (!anyOK) break;
+    }
+  }
+
+  Iterable<int> diffTwoOtherEntry(num min, num max) sync* {
+    // Generate other entries
+    var otherEntries = generateOtherEntry(null, null).toList();
+    for (var i = 0; i < otherEntries.length - 1; i++) {
+      for (var j = i; j < otherEntries.length; j++) {
+        var diff = otherEntries[i] - otherEntries[j];
+        if (diff < 0) diff = -diff;
+        if (diff > max) continue;
+        if (diff < min) continue;
+        yield diff;
+      }
     }
   }
 

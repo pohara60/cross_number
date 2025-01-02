@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:powers/powers.dart';
 
+import 'expression.dart';
 import 'merge.dart';
 import 'monadic.dart';
 
@@ -13,7 +14,8 @@ typedef GeneratorFunc = Iterable<int> Function(num min, num max);
 class Generator {
   String name;
   GeneratorFunc func;
-  Generator(this.name, this.func);
+  NodeOrder order;
+  Generator(this.name, this.func, {this.order = NodeOrder.ASCENDING});
 }
 
 void initializeGenerators(Map<String, Generator> generators) {

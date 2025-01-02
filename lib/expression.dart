@@ -389,7 +389,9 @@ class Node {
     if (operands == null || operands!.isEmpty) {
       if (token.type == "GENERATOR") {
         // Assume all generators are ascending
-        order = NodeOrder.ASCENDING;
+        var name = token.name;
+        var generator = generators[name]!;
+        order = generator.order;
       } else {
         order = NodeOrder.SINGLE;
       }

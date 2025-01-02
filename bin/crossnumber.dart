@@ -29,6 +29,7 @@ import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/knights2/knights2.dart';
 import 'package:crossnumber/magicarray/magicarray.dart';
+import 'package:crossnumber/needlematch/needlematch.dart';
 import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/numeriitaliano/numeriitaliano.dart';
 import 'package:crossnumber/opposingdigitsum/opposingdigitsum.dart';
@@ -129,7 +130,8 @@ void main(List<String> arguments) async {
     ..addCommand(WorkingBack2Command())
     ..addCommand(MagicArrayCommand())
     ..addCommand(AfterNicholasCommand())
-    ..addCommand(ExcusesCommand());
+    ..addCommand(ExcusesCommand())
+    ..addCommand(NeedleMatchCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1422,6 +1424,30 @@ class ExcusesCommand extends Command {
     // Get and print solve
     try {
       final pc = Excuses();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class NeedleMatchCommand extends Command {
+  @override
+  final name = 'NeedleMatch';
+  @override
+  final description = 'solve hardcoded NeedleMatch puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = NeedleMatch();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
