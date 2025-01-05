@@ -51,70 +51,22 @@ class Absurd extends Crossnumber<AbsurdPuzzle> {
       }
     }
 
-    clueWrapper(
-        name: 'A1',
-        length: 2,
-        valueDesc: r'=CONCATENATE("(",G19,"+√",H19,")*(",I19,"-√",J19,")")');
-    clueWrapper(
-        name: 'A3',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G20,"+√",H20,")*(",I20,"-√",J20,")")');
-    clueWrapper(
-        name: 'A6',
-        length: 4,
-        valueDesc: r'=CONCATENATE("(",G21,"+√",H21,")*(",I21,"-√",J21,")")');
-    clueWrapper(
-        name: 'A8',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G22,"+√",H22,")*(",I22,"-√",J22,")")');
-    clueWrapper(
-        name: 'A11',
-        length: 4,
-        valueDesc: r'=CONCATENATE("(",G23,"+√",H23,")*(",I23,"-√",J23,")")');
-    clueWrapper(
-        name: 'A13',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G24,"+√",H24,")*(",I24,"-√",J24,")")');
-    clueWrapper(
-        name: 'A14',
-        length: 2,
-        valueDesc: r'=CONCATENATE("(",G25,"+√",H25,")*(",I25,"-√",J25,")")');
-    clueWrapper(
-        name: 'D1',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G28,"+√",H28,")*(",I28,"-√",J28,")")');
-    clueWrapper(
-        name: 'D2',
-        length: 2,
-        valueDesc: r'=CONCATENATE("(",G29,"+√",H29,")*(",I29,"-√",J29,")")');
-    clueWrapper(
-        name: 'D4',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G30,"+√",H30,")*(",I30,"-√",J30,")")');
-    clueWrapper(
-        name: 'D5',
-        length: 2,
-        valueDesc: r'=CONCATENATE("(",G31,"+√",H31,")*(",I31,"-√",J31,")")');
-    clueWrapper(
-        name: 'D7',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G32,"+√",H32,")*(",I32,"-√",J32,")")');
-    clueWrapper(
-        name: 'D8',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G33,"+√",H33,")*(",I33,"-√",J33,")")');
-    clueWrapper(
-        name: 'D9',
-        length: 3,
-        valueDesc: r'=CONCATENATE("(",G34,"+√",H34,")*(",I34,"-√",J34,")")');
-    clueWrapper(
-        name: 'D10',
-        length: 2,
-        valueDesc: r'=CONCATENATE("(",G35,"+√",H35,")*(",I35,"-√",J35,")")');
-    clueWrapper(
-        name: 'D12',
-        length: 2,
-        valueDesc: r'=CONCATENATE("(",G36,"+√",H36,")*(",I36,"-√",J36,")")');
+    clueWrapper(name: 'A1', length: 2, valueDesc: r'(H*H - D)');
+    clueWrapper(name: 'A3', length: 3, valueDesc: r'(D*D - I)');
+    clueWrapper(name: 'A6', length: 4, valueDesc: r'(F*F - F)');
+    clueWrapper(name: 'A8', length: 3, valueDesc: r'(J*J - K)');
+    clueWrapper(name: 'A11', length: 4, valueDesc: r'(K*K - J)');
+    clueWrapper(name: 'A13', length: 3, valueDesc: r'(J*J - D)');
+    clueWrapper(name: 'A14', length: 2, valueDesc: r'(H*H - H)');
+    clueWrapper(name: 'D1', length: 3, valueDesc: r'(B*B - B)');
+    clueWrapper(name: 'D2', length: 2, valueDesc: r'(A*A - E)');
+    clueWrapper(name: 'D4', length: 3, valueDesc: r'(B*B - K)');
+    clueWrapper(name: 'D5', length: 2, valueDesc: r'(A*A - I)');
+    clueWrapper(name: 'D7', length: 3, valueDesc: r'(D*D - G)');
+    clueWrapper(name: 'D8', length: 3, valueDesc: r'(J*J - J)');
+    clueWrapper(name: 'D9', length: 3, valueDesc: r'(D*D - F)');
+    clueWrapper(name: 'D10', length: 2, valueDesc: r'(H*H - C)');
+    clueWrapper(name: 'D12', length: 2, valueDesc: r'(A*A - F)');
 
     if (clueErrors != '') {
       throw PuzzleException(clueErrors);

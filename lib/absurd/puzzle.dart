@@ -9,6 +9,7 @@ import '../variable.dart';
 class AbsurdVariable extends Variable {
   AbsurdVariable(super.letter) {
     values = Set.from(twoDigitPrimes);
+    values!.addAll([2, 3, 5, 7]);
   }
   String get letter => name;
 }
