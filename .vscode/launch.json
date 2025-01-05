@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Absurd",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "Absurd"
+            ]
+        },
+        {
             "name": "NeedleMatch",
             "type": "dart",
             "request": "launch",

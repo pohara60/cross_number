@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:crossnumber/abcd/abcd.dart';
 import 'package:crossnumber/abcde/abcde.dart';
+import 'package:crossnumber/absurd/absurd.dart';
 import 'package:crossnumber/afternicholas/afternicholas.dart';
 import 'package:crossnumber/almostfermat/almostfermat.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
@@ -131,7 +132,8 @@ void main(List<String> arguments) async {
     ..addCommand(MagicArrayCommand())
     ..addCommand(AfterNicholasCommand())
     ..addCommand(ExcusesCommand())
-    ..addCommand(NeedleMatchCommand());
+    ..addCommand(NeedleMatchCommand())
+    ..addCommand(AbsurdCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1448,6 +1450,30 @@ class NeedleMatchCommand extends Command {
     // Get and print solve
     try {
       final pc = NeedleMatch();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class AbsurdCommand extends Command {
+  @override
+  final name = 'Absurd';
+  @override
+  final description = 'solve hardcoded Absurd puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Absurd();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
