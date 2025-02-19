@@ -882,7 +882,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
 
   bool get hasVariables => variableList.hasVariables;
 
-  void initVariablePuzzle(List<int>? possibleValues) {
+  void initVariablePuzzle(List<int>? possibleValues,
+      {bool variableListInitialized = false}) {
     final puzzleGenerators = [
       Generator('sumdigits', generateSumDigits),
       Generator('otherentry', generateOtherEntry),
@@ -891,8 +892,10 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       Generator('difftwootherentry', diffTwoOtherEntry,
           order: NodeOrder.UNKNOWN)
     ];
-    _variableLists[VariableType.V] = (variableList =
-        VariableList<VariableKind>(VariableType.V, possibleValues));
+    if (!variableListInitialized) {
+      variableList = VariableList<VariableKind>(VariableType.V, possibleValues);
+    }
+    _variableLists[VariableType.V] = variableList;
     Scanner.addGenerators(puzzleGenerators);
   }
 
@@ -908,6 +911,8 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   Map<String, Variable> get variables => variableList.variables;
+  Iterable<String> get variableNames => variableList.variableNames;
+  VariableList get variablesList => variableList;
   List<int>? get remainingValues => variableList.restrictedValues;
   Set<Variable> updateVariables(String variable, Set<int> possibleValues) =>
       variableList.updateVariables(variable, possibleValues);
@@ -1347,15 +1352,12 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
   }
 
   // Generic expression evaluator, supports variables, clues, generators and functions
-  bool solveExpressionEvaluator(
-    ExpressionClue clue,
-    ExpressionEvaluator exp,
-    Set<int> possibleValue,
-    Map<Variable, Set<int>>? possibleVariables, [
-    bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
-    ExpressionCallback? callback,
-    int maxCount = 1000000,
-  ]) {
+  bool solveExpressionEvaluator(ExpressionClue clue, ExpressionEvaluator exp,
+      Set<int> possibleValue, Map<Variable, Set<int>>? possibleVariables,
+      [bool Function(ExpressionClue, int, List<String>, List<int>)? validValue,
+      ExpressionCallback? callback,
+      int maxCount = 1000000,
+      Map<int, int>? duplicateLimit]) {
     final stopwatch = Stopwatch()..start();
     var variables = <Variable>[];
     var variableValues = <List<int>>[];
@@ -1364,8 +1366,11 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
     if (count == 0) return false;
 
     var variableNames = variables.map((e) => e.name).toList();
-    for (var product
-        in variableValues.isEmpty ? [<int>[]] : cartesian(variableValues)) {
+    for (var product in variableValues.isEmpty
+        ? [<int>[]]
+        : duplicateLimit == null
+            ? cartesian(variableValues)
+            : cartesianDuplicateLimit(variableValues, duplicateLimit)) {
       try {
         for (var value in exp.generate(
             clue.min, clue.max, variables, product, clue.values, callback)) {
@@ -1970,9 +1975,22 @@ class VariablePuzzle<ClueKind extends Clue, EntryKind extends ClueKind,
       throw SolveException('A variable has no values!');
     }
 
+    // Determine if variables are distinct, and if so how
+    // Get count of known values
+    var distinctType = !variablesList.distinct
+        ? 'Duplicate'
+        : variablesList.distinctValueLimit == 1
+            ? 'Distinct'
+            : 'Limit';
+    // Get count of known values
+    var duplicateLimit =
+        distinctType == 'Limit' ? variablesList.getDuplicateLimit() : null;
     var count = 0;
-    //for (var product in [      [8, 3, 5, 1, 7, 4, 9, 2, 6]    ]) {
-    for (var product in cartesian(variableValues)) {
+    for (var product in distinctType == 'Distinct'
+        ? cartesian(variableValues)
+        : distinctType == 'Limit'
+            ? cartesianDuplicateLimit(variableValues, duplicateLimit!)
+            : cartesian(variableValues, true)) {
       for (var i = 0; i < product.length; i++) {
         this.variables[variableNames[i]]!.tryValue = product[i];
       }

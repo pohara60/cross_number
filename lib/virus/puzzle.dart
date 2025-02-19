@@ -23,7 +23,8 @@ class VirusPuzzle extends VariablePuzzle<VirusClue, VirusEntry, VirusVariable> {
   static var staticVariables = <String, Variable>{};
 
   @override
-  void initVariablePuzzle(List<int>? possibleValues) {
+  void initVariablePuzzle(List<int>? possibleValues,
+      {bool variableListInitialized = false}) {
     final puzzleMonadics = [
       Monadic('kv', kv, Iterable<int>),
     ];

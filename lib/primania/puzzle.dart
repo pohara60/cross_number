@@ -25,7 +25,8 @@ class PrimaniaPuzzle
       : super.fromGridString([], gridString, name: name);
 
   @override
-  void initVariablePuzzle(List<int>? possibleValues) {
+  void initVariablePuzzle(List<int>? possibleValues,
+      {bool variableListInitialized = false}) {
     final puzzleMonadics = [
       Monadic('firstfactor', firstFactor, int),
       Monadic('secondfactor', secondFactor, int)

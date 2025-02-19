@@ -42,6 +42,18 @@ class Clue extends Variable {
     }
   }
 
+  @override
+  set valuesNoUndo(Set<int>? values) {
+    // print("!$name=${values == null ? 'null' : values.toShortString()}");
+    super.valuesNoUndo = values;
+    if (values == null) {
+      if (length != null) {
+        min = 10.pow(length! - 1) as int;
+        max = (10.pow(length!) as int) - 1;
+      }
+    }
+  }
+
   EntryMixin? get entryMixin => entry == null ? null : entry as EntryMixin;
 
   List<DigitIdentity?> get digitIdentities => entry!.digitIdentities;

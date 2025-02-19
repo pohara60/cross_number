@@ -1,4 +1,3 @@
-import 'package:crossnumber/expression.dart';
 import 'package:crossnumber/set.dart';
 
 import '../clue.dart';

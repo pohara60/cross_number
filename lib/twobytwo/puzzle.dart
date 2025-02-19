@@ -21,7 +21,8 @@ class TwoByTwoPuzzle
       : super.fromGridString([], gridString, name: name);
 
   @override
-  void initVariablePuzzle(List<int>? possibleValues) {
+  void initVariablePuzzle(List<int>? possibleValues,
+      {bool variableListInitialized = false}) {
     final puzzlePolyadics = [
       Polyadic('last3digits', last3DigitsFunc, Iterable<int>,
           order: NodeOrder.UNKNOWN),

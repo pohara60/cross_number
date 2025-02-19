@@ -25,7 +25,8 @@ class TakeTwoOrThreePuzzle extends VariablePuzzle<TakeTwoOrThreeClue,
       : super.fromGridString([], gridString, name: name);
 
   @override
-  void initVariablePuzzle(List<int>? possibleValues) {
+  void initVariablePuzzle(List<int>? possibleValues,
+      {bool variableListInitialized = false}) {
     final puzzlePolyadics = [
       Polyadic('remove', removePrefixSuffix, int, order: NodeOrder.UNKNOWN),
     ];

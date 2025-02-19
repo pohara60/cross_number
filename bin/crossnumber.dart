@@ -27,6 +27,7 @@ import 'package:crossnumber/inbetweeners/inbetweeners.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
 import 'package:crossnumber/increasingprime/increasingprime.dart';
 import 'package:crossnumber/instruction/instruction.dart';
+import 'package:crossnumber/justthejob/justthejob.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/knights2/knights2.dart';
 import 'package:crossnumber/magicarray/magicarray.dart';
@@ -133,7 +134,8 @@ void main(List<String> arguments) async {
     ..addCommand(AfterNicholasCommand())
     ..addCommand(ExcusesCommand())
     ..addCommand(NeedleMatchCommand())
-    ..addCommand(AbsurdCommand());
+    ..addCommand(AbsurdCommand())
+    ..addCommand(JustTheJobCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1474,6 +1476,30 @@ class AbsurdCommand extends Command {
     // Get and print solve
     try {
       final pc = Absurd();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class JustTheJobCommand extends Command {
+  @override
+  final name = 'JustTheJob';
+  @override
+  final description = 'solve hardcoded JustTheJob puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = JustTheJob();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

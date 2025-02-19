@@ -299,6 +299,7 @@ class VariableList<VariableKind extends Variable> {
   final Map<String, VariableKind> _variables = {};
 
   Map<String, VariableKind> get variables => _variables;
+  Iterable<String> get variableNames => _variables.keys;
   VariableKind? operator [](String name) => _variables[name]; // get
   void operator []=(String name, VariableKind variable) =>
       _variables[name] = variable; // get
@@ -313,8 +314,10 @@ class VariableList<VariableKind extends Variable> {
       .toSet();
   // = List<int>.generate(9, (i) => i + 1);
 
+  late final int distinctValueLimit;
+
   // Subclass constructor initializes remaining values
-  VariableList(this.type, [this.restrictedValues])
+  VariableList(this.type, [this.restrictedValues, this.distinctValueLimit = 1])
       : distinct = restrictedValues != null;
 
   void add(VariableKind variable) {
@@ -337,27 +340,45 @@ class VariableList<VariableKind extends Variable> {
     var updated = variable.updatePossible(possibleValues);
     if (updated) {
       updatedVariables.add(variable);
-      // Only check for distinct variables when have remainingValues
+      // Check for distinct variables when have restrictedValues
       if (variable.isSet && distinct) {
         List<String> knownLetters = [variableName];
-        int index = 0;
-        while (index < knownLetters.length) {
-          String letterKey = knownLetters[index];
-          int letterValue = variables[letterKey]!.values!.first;
-          // Remove the known variable from all other variable possible values
-          // restrictedValues!.remove(letterValue);
-          for (var entry in unknownVariableEntries) {
-            if (!knownLetters.contains(entry.key)) {
-              var entryVariable = entry.value;
-              if (entryVariable.values != null) {
-                if (entryVariable.removeValue(letterValue)) {
-                  updatedVariables.add(entry.value);
+        int variableValue = variables[variableName]!.value!;
+
+        // Get count of known values
+        var distinctValueCount = getDistinctValueCount();
+
+        // If the new variable is at limit, then update other variables
+        if (distinctValueCount[variableValue] == distinctValueLimit) {
+          int index = 0;
+          while (index < knownLetters.length) {
+            String letterKey = knownLetters[index];
+            int letterValue = variables[letterKey]!.value!;
+            if (distinctValueCount[letterValue] == distinctValueLimit) {
+              // Remove the known variable from all other variable possible values
+              for (var entry in unknownVariableEntries) {
+                if (!knownLetters.contains(entry.key)) {
+                  var entryVariable = entry.value;
+                  if (entryVariable.values != null) {
+                    if (entryVariable.removeValue(letterValue)) {
+                      updatedVariables.add(entry.value);
+                    }
+                    if (entryVariable.isSet) {
+                      knownLetters.add(entry.key);
+                      int variableValue = entryVariable.value!;
+                      if (distinctValueCount.containsKey(variableValue)) {
+                        distinctValueCount[variableValue] =
+                            distinctValueCount[variableValue]! + 1;
+                      } else {
+                        distinctValueCount[variableValue] = 1;
+                      }
+                    }
+                  }
                 }
-                if (entryVariable.isSet) knownLetters.add(entry.key);
               }
             }
+            index++;
           }
-          index++;
         }
       }
       for (var updatedVariable in updatedVariables) {
@@ -369,6 +390,43 @@ class VariableList<VariableKind extends Variable> {
       }
     }
     return updatedVariables;
+  }
+
+  Map<int, int> getDistinctValueCount() {
+    var distinctValueCount = <int, int>{};
+    for (var variable in variables.values) {
+      if (variable.isSet) {
+        var value = variable.value!;
+        if (distinctValueCount.containsKey(value)) {
+          distinctValueCount[value] = distinctValueCount[value]! + 1;
+        } else {
+          distinctValueCount[value] = 1;
+        }
+      }
+    }
+    return distinctValueCount;
+  }
+
+  Map<int, int> initDuplicateLimit() {
+    if (restrictedValues == null) {
+      throw SolveError('Restricted values not set');
+    }
+    var duplicateLimit = <int, int>{};
+    for (var value in restrictedValues!) {
+      duplicateLimit[value] = distinctValueLimit;
+    }
+    return duplicateLimit;
+  }
+
+  Map<int, int> getDuplicateLimit() {
+    var duplicateLimit = initDuplicateLimit();
+    var distinctValueCount = getDistinctValueCount();
+    for (var value in distinctValueCount.keys) {
+      if (duplicateLimit.containsKey(value)) {
+        duplicateLimit[value] = distinctValueLimit - distinctValueCount[value]!;
+      }
+    }
+    return duplicateLimit;
   }
 
   @override
