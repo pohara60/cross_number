@@ -49,67 +49,114 @@ class JustTheJobTest extends JustTheJob {
   }
 
   void getEvaluationOrder(VariablePuzzle puzzle) {
+    variableOrder = <Variable>[];
+    clueOrder = <String>[];
+    // Build variableOrder, iterating over clues in order of increasing variable count
+    while (true) {
+      // Count remaining variables for each clue
+      var clueVariableCount = <String, int>{};
+      for (var clue in puzzle.clues.values) {
+        if (clue is ExpressionClue) {
+          clueVariableCount[clue.name] = clue.exp.variableRefs
+              .where((element) => !variableOrder.contains(element))
+              .length;
+          if (clueVariableCount[clue.name] == 0)
+            clueVariableCount.remove(clue.name);
+        }
+      }
+      if (clueVariableCount.isEmpty) break;
+
+      // Get clues in order of increasing variable count
+      var order = clueVariableCount.entries.toList()
+        ..sort((a, b) => a.value.compareTo(b.value));
+      // Choose clue with lowest remaining variables, and maximum existing variables
+      var numVariables = order.first.value;
+      order.removeWhere((element) => element.value != numVariables);
+      ExpressionClue? nextClue;
+      for (var entry in order) {
+        var clue = puzzle.clues[entry.key] as ExpressionClue;
+        if (nextClue == null ||
+            clue.variableReferences.length >
+                nextClue.variableReferences.length) {
+          nextClue = clue;
+        }
+      }
+      // Add variables for next clue to variableOrder
+      var nextVariables = nextClue!.exp.variableRefs
+          .where((element) => !variableOrder.contains(element));
+      variableOrder.addAll(nextVariables);
+
+      // Add clues where all variables are in variableOrder to clueOrder
+      var allVariablesClues = clueVariableCount.entries
+          .where((element) => element.value == numVariables)
+          .where((element) => puzzle.clues[element.key]!.variableReferences
+              .all((p0) => variableOrder.contains(p0)))
+          .map((e) => e.key);
+      // Add clues with no variables to clueOrder
+      clueOrder.addAll(allVariablesClues);
+    }
+    return;
     // Order the list according to desired execuion order
-    variableOrder = [
-      variables['O']!,
-      variables['C']!,
-      variables['T']!,
-      variables['N']!,
-      variables['U']!,
-      variables['H']!,
-      variables['R']!,
-      variables['D']!,
-      variables['A']!,
-      variables['P']!,
-      variables['I']!,
-      variables['M']!,
-      variables['B']!,
-      variables['E']!,
-      variables['G']!,
-      variables['S']!,
-      variables['F']!,
-      variables['V']!,
-      variables['W']!,
-      variables['L']!,
-    ];
-    clueOrder = [
-      'A9',
-      'D6',
-      'D25',
-      'D22',
-      'A23',
-      'A8',
-      'A24',
-      'A15',
-      'D1',
-      'D23',
-      'A14',
-      'D15',
-      'A28',
-      'D2',
-      'A6',
-      'A11',
-      'D5',
-      'D7',
-      'D17',
-      'A27',
-      'D13',
-      'D3',
-      'D20',
-      'A26',
-      'A4',
-      'D4',
-      'A16',
-      'A17',
-      'A19',
-      'A1',
-      'D9',
-      'D10',
-      'A21',
-      'A12',
-      'D18',
-      'A22',
-    ];
+    // variableOrder = [
+    //   variables['O']!,
+    //   variables['C']!,
+    //   variables['T']!,
+    //   variables['N']!,
+    //   variables['U']!,
+    //   variables['H']!,
+    //   variables['R']!,
+    //   variables['D']!,
+    //   variables['A']!,
+    //   variables['P']!,
+    //   variables['I']!,
+    //   variables['M']!,
+    //   variables['B']!,
+    //   variables['E']!,
+    //   variables['G']!,
+    //   variables['S']!,
+    //   variables['F']!,
+    //   variables['V']!,
+    //   variables['W']!,
+    //   variables['L']!,
+    // ];
+    // clueOrder = [
+    //   'A9',
+    //   'D6',
+    //   'D25',
+    //   'D22',
+    //   'A23',
+    //   'A8',
+    //   'A24',
+    //   'A15',
+    //   'D1',
+    //   'D23',
+    //   'A14',
+    //   'D15',
+    //   'A28',
+    //   'D2',
+    //   'A6',
+    //   'A11',
+    //   'D5',
+    //   'D7',
+    //   'D17',
+    //   'A27',
+    //   'D13',
+    //   'D3',
+    //   'D20',
+    //   'A26',
+    //   'A4',
+    //   'D4',
+    //   'A16',
+    //   'A17',
+    //   'A19',
+    //   'A1',
+    //   'D9',
+    //   'D10',
+    //   'A21',
+    //   'A12',
+    //   'D18',
+    //   'A22',
+    // ];
   }
 
   int backtrack(Map<String, VariablePuzzle> puzzles, List<String> names,

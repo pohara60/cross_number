@@ -151,5 +151,6 @@ Add JustTheJob puzzle
   - Puzzle.solveExpressionEvaluator accepts duplicateLimit argument
   - Puzzle.iterateVariables applies duplicateLimit
 - Add class JustTheJobTest that solves with variable backtracking
-- This solver takes 15 minutes
+- With manual evaluation order, takes 15 minutes
 - Add override Clue.valuesNoUndo to correctly set min/max
+- Compute good evaluation order automatically, takes 4 minutes
