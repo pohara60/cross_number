@@ -30,6 +30,7 @@ import 'package:crossnumber/instruction/instruction.dart';
 import 'package:crossnumber/justthejob/justthejob.dart';
 import 'package:crossnumber/knights/knights.dart';
 import 'package:crossnumber/knights2/knights2.dart';
+import 'package:crossnumber/knowyouronion/knowyouronion.dart';
 import 'package:crossnumber/magicarray/magicarray.dart';
 import 'package:crossnumber/needlematch/needlematch.dart';
 import 'package:crossnumber/no21/no21.dart';
@@ -135,7 +136,8 @@ void main(List<String> arguments) async {
     ..addCommand(ExcusesCommand())
     ..addCommand(NeedleMatchCommand())
     ..addCommand(AbsurdCommand())
-    ..addCommand(JustTheJobCommand());
+    ..addCommand(JustTheJobCommand())
+    ..addCommand(KnowYourOnionCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1500,6 +1502,30 @@ class JustTheJobCommand extends Command {
     // Get and print solve
     try {
       final pc = JustTheJob();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class KnowYourOnionCommand extends Command {
+  @override
+  final name = 'KnowYourOnion';
+  @override
+  final description = 'solve hardcoded KnowYourOnion puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = KnowYourOnion();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

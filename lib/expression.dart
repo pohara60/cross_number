@@ -363,6 +363,19 @@ class Node {
             return right!.rearrangeNode(newSubject, oldSubject, child);
           }
         }
+      case EXPONENT:
+        assert(left != null);
+        assert(right != null);
+        // Just support Square
+        if (right!.token.type == NUM && right!.token.value == 2) {
+          if (left!.findNode(newSubject) != null) {
+            var newToken = Token("√", ROOT);
+            var other = child ?? Node(oldSubject);
+            child = Node(newToken, [other]);
+            return left!.rearrangeNode(newSubject, oldSubject, child);
+          }
+        }
+        break;
       default:
         throw ExpressionInvalid("Cannot rearrange ${token.type}");
     }
@@ -505,15 +518,19 @@ class Node {
   }
 
   @override
-  String toString() => operands == null || operands!.isEmpty
-      ? '$token'
-      : token.type == POLYADIC
-          ? '$token(${operands!.map((o) => o.toString()).join(',')})'
-          : operands!.length == 1
-              ? '$token${operands![0]}'
-              : '(${operands![0]}$token${operands![1]})';
-
-//      '($token${operands == null ? '' : operands!.map<String>((e) => ' $e')})';
+  String toString() {
+    if (operands == null || operands!.isEmpty)
+      return '$token';
+    else if (token.type == POLYADIC)
+      return '$token(${operands!.map((o) => o.toString()).join(',')})';
+    else if (operands!.length == 1) {
+      if (token.type == FACTORIAL || token.type == REVERSE)
+        return '${operands![0]}$token';
+      else
+        return '$token${operands![0]}';
+    } else
+      return '(${operands![0]}$token${operands![1]})';
+  }
 }
 
 class ExpressionError implements Exception {

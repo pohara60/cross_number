@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "KnowYourOnion",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "KnowYourOnion"
+            ]
+        },
+        {
             "name": "JustTheJob",
             "type": "dart",
             "request": "launch",
