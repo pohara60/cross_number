@@ -339,6 +339,6 @@ class Thirty extends Crossnumber<ThirtyPuzzle> {
       return 1;
     }
 
-    return unfinishedPuzzles[index + 1].iterate(callback);
+    return unfinishedPuzzles[index + 1].iterate(callback: callback);
   }
 }

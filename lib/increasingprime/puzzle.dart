@@ -21,9 +21,12 @@ class IncreasingPrimePuzzle extends VariablePuzzle<IncreasingPrimeClue,
       : super.fromGridString([], gridString);
 
   @override
-  postProcessing([bool iteration = false, int Function(Puzzle)? callback]) {
+  postProcessing(
+      {bool iteration = true,
+      int Function(Puzzle)? callback,
+      Function? partialCallback}) {
     // Prevent iteration as too slow
     Crossnumber.traceSolve = false;
-    super.postProcessing(true, callback);
+    super.postProcessing(iteration: true, callback: callback);
   }
 }

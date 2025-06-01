@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:basics/basics.dart';
-import 'package:collection/collection.dart';
 
 import '../clue.dart';
 import '../expression.dart';
@@ -60,8 +59,9 @@ class JustTheJobTest extends JustTheJob {
           clueVariableCount[clue.name] = clue.exp.variableRefs
               .where((element) => !variableOrder.contains(element))
               .length;
-          if (clueVariableCount[clue.name] == 0)
+          if (clueVariableCount[clue.name] == 0) {
             clueVariableCount.remove(clue.name);
+          }
         }
       }
       if (clueVariableCount.isEmpty) break;

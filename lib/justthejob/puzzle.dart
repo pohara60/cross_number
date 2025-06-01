@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'clue.dart';
 import '../puzzle.dart';
 import '../variable.dart';

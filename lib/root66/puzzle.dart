@@ -24,7 +24,10 @@ class Root66Puzzle
       variableList.updateVariables(letter, possibleDigits);
 
   @override
-  postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {
+  postProcessing(
+      {bool iteration = true,
+      int Function(Puzzle)? callback,
+      Function? partialCallback}) {
     if (iteration) {
       print("ITERATE SOLUTIONS-----------------------------");
       // Find ambiguous clues

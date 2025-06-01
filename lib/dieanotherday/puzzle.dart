@@ -34,8 +34,8 @@ class DieAnotherDayPuzzle extends VariablePuzzle<DieAnotherDayClue,
   }
 
   @override
-  int iterate([Function? callback]) {
-    return iterateValues(dieAnotherDay.callback);
+  int iterate({Function? callback, Function? partialCallback}) {
+    return iterateValues(callback: dieAnotherDay.callback);
   }
 
   @override

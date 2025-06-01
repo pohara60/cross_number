@@ -288,10 +288,13 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
   /*-------------------- Post-processing --------------------*/
 
-  postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {
+  postProcessing(
+      {bool iteration = true,
+      int Function(Puzzle)? callback,
+      Function? partialCallback}) {
     if (iteration) {
       print("ITERATE SOLUTIONS-----------------------------");
-      var count = iterate(callback);
+      var count = iterate(callback: callback, partialCallback: partialCallback);
       print('Solution count=$count');
     }
   }
@@ -299,7 +302,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
   Map<Variable, Answer> solution = {};
   List<Variable> order = [];
 
-  int iterate([int Function(Puzzle)? callback]) {
+  int iterate({int Function(Puzzle)? callback, Function? partialCallback}) {
     if (this is VariablePuzzle && (this as VariablePuzzle).hasVariables) {
       var puzzle = this as VariablePuzzle;
       try {
@@ -309,10 +312,11 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         // No variables to iterate, so try values
       }
     }
-    return iterateValues(callback);
+    return iterateValues(callback: callback, partialCallback: partialCallback);
   }
 
-  int iterateValues([int Function(Puzzle)? callback]) {
+  int iterateValues(
+      {int Function(Puzzle)? callback, Function? partialCallback}) {
     var unknownClues = <Variable>[];
     // ignore: unnecessary_cast
     List<Variable> clues = this.clues.values.map((c) => c as Variable).toList();
@@ -352,15 +356,16 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     order.addAll(unknownClues);
     // Find solutions in clue order
     var count = 0;
-    count = findSolutions(order, 0, count, callback);
+    count = findSolutions(order, 0, count,
+        callback: callback, partialCallback: partialCallback);
     return count;
   }
 
-  var traceFindSolutions = false;
+  var traceFindSolutions = true;
   var traceFindAnswer = true;
 
   int findSolutions(List<Variable> order, int next, int count,
-      [Function? callback, bool isAnswer = true]) {
+      {Function? callback, bool isAnswer = true, Function? partialCallback}) {
     // Skip variables/clues with value
     while (next < order.length &&
         solution[order[next]] != null &&
@@ -459,6 +464,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         if (traceFindSolutions) {
           print('findSolutions: next=$next, clue=${clue.name}, exception');
         }
+        if (partialCallback != null) {
+          partialCallback();
+        }
         return count;
       }
     }
@@ -504,7 +512,10 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           stillAnswer = false;
         }
       }
-      count = findSolutions(order, next + 1, count, callback, stillAnswer);
+      count = findSolutions(order, next + 1, count,
+          callback: callback,
+          isAnswer: stillAnswer,
+          partialCallback: partialCallback);
       solution[clue]!.value = null;
       clue.tryValue = null;
       // Undo other variables

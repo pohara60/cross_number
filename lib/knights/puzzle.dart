@@ -24,7 +24,10 @@ class KnightsPuzzle
   }
 
   @override
-  postProcessing([bool iteration = true, int Function(Puzzle)? callback]) {
-    return super.postProcessing(false, callback);
+  postProcessing(
+      {bool iteration = true,
+      int Function(Puzzle)? callback,
+      Function? partialCallback}) {
+    return super.postProcessing(iteration: false, callback: callback);
   }
 }

@@ -6,6 +6,7 @@ import 'package:crossnumber/abcde/abcde.dart';
 import 'package:crossnumber/absurd/absurd.dart';
 import 'package:crossnumber/afternicholas/afternicholas.dart';
 import 'package:crossnumber/almostfermat/almostfermat.dart';
+import 'package:crossnumber/anagrams/anagrams.dart';
 import 'package:crossnumber/chessboard/chessboard.dart';
 import 'package:crossnumber/columns/columns.dart';
 import 'package:crossnumber/combinations/combinations.dart';
@@ -36,6 +37,7 @@ import 'package:crossnumber/needlematch/needlematch.dart';
 import 'package:crossnumber/no21/no21.dart';
 import 'package:crossnumber/numeriitaliano/numeriitaliano.dart';
 import 'package:crossnumber/opposingdigitsum/opposingdigitsum.dart';
+import 'package:crossnumber/pandigitalia/pandigitalia.dart';
 import 'package:crossnumber/pandigitals/pandigitals.dart';
 import 'package:crossnumber/particular/particular.dart';
 import 'package:crossnumber/partners/partners.dart';
@@ -137,7 +139,9 @@ void main(List<String> arguments) async {
     ..addCommand(NeedleMatchCommand())
     ..addCommand(AbsurdCommand())
     ..addCommand(JustTheJobCommand())
-    ..addCommand(KnowYourOnionCommand());
+    ..addCommand(KnowYourOnionCommand())
+    ..addCommand(PandigitaliaCommand())
+    ..addCommand(AnagramsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1526,6 +1530,54 @@ class KnowYourOnionCommand extends Command {
     // Get and print solve
     try {
       final pc = KnowYourOnion();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class PandigitaliaCommand extends Command {
+  @override
+  final name = 'Pandigitalia';
+  @override
+  final description = 'solve hardcoded Pandigitalia puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Pandigitalia();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class AnagramsCommand extends Command {
+  @override
+  final name = 'Anagrams';
+  @override
+  final description = 'solve hardcoded Anagrams puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Anagrams();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

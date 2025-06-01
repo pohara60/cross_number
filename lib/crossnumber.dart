@@ -183,7 +183,8 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
     }
     if (unfinishedPuzzles.isNotEmpty) {
       unfinishedPuzzles = puzzles;
-      unfinishedPuzzles.first.postProcessing(iteration, callback);
+      unfinishedPuzzles.first
+          .postProcessing(iteration: iteration, callback: callback);
     }
   }
 
@@ -201,7 +202,7 @@ class Crossnumber<PuzzleKind extends Puzzle<Clue, Clue>> {
       return 1;
     }
 
-    return unfinishedPuzzles[index + 1].iterate(callback);
+    return unfinishedPuzzles[index + 1].iterate(callback: callback);
   }
 
   Set<Variable> solveClueNoException(Variable variable) {

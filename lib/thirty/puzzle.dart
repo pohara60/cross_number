@@ -30,8 +30,8 @@ class ThirtyPuzzle
   }
 
   @override
-  int iterate([Function? callback]) {
-    return iterateValues(thirty.callback);
+  int iterate({Function? callback, Function? partialCallback}) {
+    return iterateValues(callback: thirty.callback);
   }
 
   int sumdigits() {

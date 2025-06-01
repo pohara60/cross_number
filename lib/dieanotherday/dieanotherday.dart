@@ -516,7 +516,8 @@ class DieAnotherDay extends Crossnumber<DieAnotherDayPuzzle> {
     puzzleRight.clues['A7']!.value = 2116;
     if (unfinishedPuzzles.isNotEmpty) {
       unfinishedPuzzles = [puzzleFront, puzzleRight, puzzleTop];
-      unfinishedPuzzles.first.postProcessing(iteration, callback);
+      unfinishedPuzzles.first
+          .postProcessing(iteration: iteration, callback: callback);
     }
   }
 
