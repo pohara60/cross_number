@@ -465,7 +465,7 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
           print('findSolutions: next=$next, clue=${clue.name}, exception');
         }
         if (partialCallback != null) {
-          partialCallback();
+          count += partialCallback(this) as int;
         }
         return count;
       }

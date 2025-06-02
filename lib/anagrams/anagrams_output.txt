@@ -1,4 +1,3 @@
-Connecting to VM Service at ws://127.0.0.1:58405/ifN5zTKvAuY=/ws
 Puzzle
 AnagramsEntry(name=A1,length=4,value: £primeFactors(6,2,4),
 	identities=[A1[0]=D1[0],A1[1]=D2[0],A1[2]=D3[0]],referrers=[D1,D2,D3],
@@ -233,7 +232,7 @@ solve: AnagramsEntry(name=D1,length=4,value: £primeFactors(4,16,4),
 	identities=[D1[0]=A1[0],D1[2]=A10[0]],referrers=[A1,A10],
 	values={3060,3135,3249,5145,5148,5415,9633},
 	digits=[{3,5,9},{0..2,4,6},{1,3,4,6},{0,3,5,8,9}]
-Clue/Variable iterations=64, updates=34, elapsed 0:00:00.319226
+Clue/Variable iterations=64, updates=34, elapsed 0:00:00.299380
 PARTIAL SOLUTION-----------------------------
 Puzzle Summary
 A1, £primeFactors(6,2,4), values={3375,5625,9375}
@@ -278,10 +277,10 @@ D21, £primeFactors(4,0,2), values={16}
 | 2  8  5  8| 9  2  6  1|
 +--+--+--+--+--+--+--+--+
 ITERATE SOLUTIONS-----------------------------
-Anagrams Callback=1
+Anagrams Solution
 Entry Values=[3375, 5254, 72, 4173, 1430, 1024, 8624, 32, 2858, 9261, 3249, 35, 7776, 2048, 4207, 5132, 4225, 5642, 2401, 16]
-New Entry Values=[3573, 5452, 27, 4371, 3014, 1042, 8264, 23, 5828, 9612, 3942, 53, 7677, 4802, 2740, 3125, 5422, 4256, 1402, 61]
-Six Digit Values=[167982, 671928, 142857, 857142, 137241, 411723, 119883, 839181]
+Anagram  Entry Values=[3573, 5452, 27, 4371, 3014, 1042, 8264, 23, 5828, 9612, 3942, 53, 7677, 4802, 2740, 3125, 5422, 4256, 1402, 61]
+Six Digit Values/Anagrams=[167982, 671928, 142857, 857142, 137241, 411723, 119883, 839181]
 Puzzle Summary
 A1, £primeFactors(6,2,4), values={3375}
 A4, £primeFactors(3,69,4), values={5254}
@@ -324,10 +323,10 @@ D21, £primeFactors(4,0,2), values={16}
 +   --+  +--+--+  +  +  +
 | 2  8  5  8| 9  2  6  1|
 +--+--+--+--+--+--+--+--+
-Anagrams Callback=2
+Anagrams Solution
 Entry Values=[3375, 6264, 72, 4173, 1430, 1024, 8624, 32, 2858, 9261, 3249, 35, 7776, 2048, 4207, 5132, 4225, 5642, 2401, 16]
-New Entry Values=[3573, 6462, 27, 4371, 3014, 1042, 8264, 23, 5828, 9612, 3942, 53, 7677, 4802, 2740, 3125, 5422, 4256, 1402, 61]
-Six Digit Values=[167982, 671928, 142857, 857142, 137241, 411723, 119883, 839181]
+Anagram  Entry Values=[3573, 6462, 27, 4371, 3014, 1042, 8264, 23, 5828, 9612, 3942, 53, 7677, 4802, 2740, 3125, 5422, 4256, 1402, 61]
+Six Digit Values/Anagrams=[167982, 671928, 142857, 857142, 137241, 411723, 119883, 839181]
 Puzzle Summary
 A1, £primeFactors(6,2,4), values={3375}
 A4, £primeFactors(3,69,4), values={6264}
@@ -370,9 +369,5 @@ D21, £primeFactors(4,0,2), values={16}
 +   --+  +--+--+  +  +  +
 | 2  8  5  8| 9  2  6  1|
 +--+--+--+--+--+--+--+--+
-THE SECOND SOLUTION IS INCORRECT
+Solution count=2
 
-
-Solution count=0
-
-Exited.

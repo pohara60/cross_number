@@ -55,8 +55,7 @@ class AnagramsPuzzle
         partialCallback: anagramsCallback);
   }
 
-  int callbackCount = 0;
-  anagramsCallback() {
+  int anagramsCallback(Puzzle puzzle) {
     // Check if the puzzle anagrams can work
     // Two digit clues would be reversed, so any clue that intersects with them
     // will have a changed digit at the intersection, check for other intersections
@@ -78,7 +77,7 @@ class AnagramsPuzzle
             // a possible anagram
             if (!entryDigits.contains(otherDigit)) {
               // This is not a possible anagram
-              return;
+              return 0;
             }
             entryDigits.remove(otherDigit);
             // Now check other intersection entries have a digit in remaining digits
@@ -93,7 +92,7 @@ class AnagramsPuzzle
                 // This is a possible anagram
               } else {
                 // This is not a possible anagram
-                return;
+                return 0;
               }
             }
           }
@@ -102,22 +101,24 @@ class AnagramsPuzzle
     }
     var newEntries = <AnagramsEntry>[];
     var newValues = <int>[];
-    checkEntryPermutations(knownEntries, knownValues, 0, newEntries, newValues);
+    return checkEntryPermutations(
+        knownEntries, knownValues, 0, newEntries, newValues);
   }
 
   var sixDigitEntries = <String, List<int>>{};
   var sixDigitEntryAnagrams = <String, List<int>>{};
 
-  void checkEntryPermutations(
+  int checkEntryPermutations(
       List<AnagramsEntry> knownEntries,
       List<int?> knownValues,
       int index,
       List<AnagramsEntry> newEntries,
       List<int> newValues) {
+    var count = 0;
     if (index >= knownEntries.length) {
       // Check the 6-digit entries
-      checkSixDigitEntries(knownValues, newValues);
-      return;
+      count += checkSixDigitEntries(knownValues, newValues);
+      return count;
     }
     var entry = knownEntries[index];
     // Try anagrams of the entry value
@@ -191,12 +192,13 @@ class AnagramsPuzzle
       if (validAnagram) {
         newEntries.add(entry);
         newValues.add(permValue);
-        checkEntryPermutations(
+        count += checkEntryPermutations(
             knownEntries, knownValues, index + 1, newEntries, newValues);
         newEntries.removeLast();
         newValues.removeLast();
       }
     }
+    return count;
   }
 
   Iterable<List<String>> getPermutations(List<String> items) sync* {
@@ -267,8 +269,8 @@ class AnagramsPuzzle
     }
   }
 
-  void checkSixDigitEntries(List<int?> knownValues, List<int> newValues) {
-    checkEntries(
+  int checkSixDigitEntries(List<int?> knownValues, List<int> newValues) {
+    return checkEntries(
         sixDigitEntries['A12']!,
         sixDigitEntries['A14']!,
         sixDigitEntries['D7']!,
@@ -281,7 +283,7 @@ class AnagramsPuzzle
         newValues);
   }
 
-  void checkEntries(
+  int checkEntries(
       List<int> a12Digits,
       List<int> a14Digits,
       List<int> d7Digits,
@@ -292,6 +294,7 @@ class AnagramsPuzzle
       List<int> d8DigitsAnagram,
       List<int?> knownEntryValues,
       List<int> newEntryValues) {
+    var count = 0;
     // Try possible values for original values and permutations
     var knownValues = <int>[];
     var a12Amalgams = Amalgams(4, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -463,11 +466,13 @@ class AnagramsPuzzle
                                     knownValues.add(d8AnagramValue);
 
                                     // Found a valid anagram set
-                                    callbackCount++;
-                                    print('Anagrams Callback=$callbackCount');
+                                    count++;
+                                    print('Anagrams Solution');
                                     print('Entry Values=$knownEntryValues');
-                                    print('New Entry Values=$newEntryValues');
-                                    print('Six Digit Values=$knownValues');
+                                    print(
+                                        'Anagram  Entry Values=$newEntryValues');
+                                    print(
+                                        'Six Digit Values/Anagrams=$knownValues');
                                     print(toSummary());
 
                                     knownValues.removeLast();
@@ -494,6 +499,7 @@ class AnagramsPuzzle
         }
       }
     }
+    return count;
   }
 
   Iterable<int> getAnagram(List<int> digits, List<int> digitsAnagram,
