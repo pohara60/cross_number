@@ -92,37 +92,34 @@ class Pandigitalia extends Crossnumber<PandigitaliaPuzzle> {
     puzzle.finalize();
 
     super.initCrossnumber();
-    initPandigitalSets();
+    puzzle.initPandigitalSets();
   }
 
-  var pandigitalSets = <PanDigitalSet>[];
-  var pandigitalSetForClue = <Variable, PanDigitalSet>{};
-
-  void createPandigitalSet(String clue2name, String clue4name) {
-    var set = PanDigitalSet(
-      clue2digits: puzzle.clues[clue2name] as PandigitaliaEntry,
-      clue4digits: puzzle.clues[clue4name] as PandigitaliaEntry,
-    );
-    pandigitalSets.add(set);
-    pandigitalSetForClue[set.clue2digits] = set;
-    pandigitalSetForClue[set.clue4digits] = set;
-  }
-
-  void initPandigitalSets() {
-    // The 2-digit member of a set intersects the 4-digit entry symmetrically
-    // opposite the 4-digit member of its own pandigital set. For example, 3dn
-    // intersects 2ac so 14ac and 3dn belong to the same pandigital set.
-    createPandigitalSet('A1', 'D8');
-    createPandigitalSet('A6', 'D5');
-    createPandigitalSet('A11', 'D4');
-    createPandigitalSet('A15', 'D1');
-    createPandigitalSet('D3', 'A14');
-    createPandigitalSet('D12', 'A2');
+  void setAnswers() {
+    puzzle.clues['A1']!.answer = 83;
+    puzzle.clues['A2']!.answer = 6143;
+    puzzle.clues['A4']!.answer = 729;
+    puzzle.clues['A6']!.answer = 26;
+    puzzle.clues['A7']!.answer = 561;
+    puzzle.clues['A9']!.answer = 378;
+    puzzle.clues['A11']!.answer = 52;
+    puzzle.clues['A13']!.answer = 349;
+    puzzle.clues['A14']!.answer = 8971;
+    puzzle.clues['A15']!.answer = 67;
+    puzzle.clues['D1']!.answer = 8521;
+    puzzle.clues['D2']!.answer = 625;
+    puzzle.clues['D3']!.answer = 34;
+    puzzle.clues['D4']!.answer = 7639;
+    puzzle.clues['D5']!.answer = 4159;
+    puzzle.clues['D8']!.answer = 4297;
+    puzzle.clues['D10']!.answer = 841;
+    puzzle.clues['D12']!.answer = 58;
   }
 
   @override
   // ignore: unnecessary_overrides
   void solve([bool iteration = true]) {
+    //setAnswers();
     super.solve(iteration);
   }
 
@@ -133,12 +130,8 @@ class Pandigitalia extends Crossnumber<PandigitaliaPuzzle> {
     if (!super.validClue(clue, value, variableReferences, variableValues)) {
       return false;
     }
-    // No clue can have repeated digits
-    var digits = value.toString().split('').map(int.parse).toSet();
-    if (digits.length != value.toString().length) {
-      return false;
-    }
-    return true;
+
+    return puzzle.validClue(clue as PandigitaliaClue, value);
   }
 
   // Clue solver invokes generic expression evaluator with validator
@@ -214,28 +207,28 @@ class Pandigitalia extends Crossnumber<PandigitaliaPuzzle> {
     return updated;
   }
 
-  @override
-  bool updateClues(PandigitaliaPuzzle thisPuzzle, Clue clue,
-      Set<int> possibleValues, Set<Variable> updatedVariables,
-      {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
-    var updated = super.updateClues(
-        thisPuzzle, clue, possibleValues, updatedVariables,
-        isFocus: isFocus, isEntry: isEntry);
+  // @override
+  // bool updateClues(PandigitaliaPuzzle thisPuzzle, Clue clue,
+  //     Set<int> possibleValues, Set<Variable> updatedVariables,
+  //     {bool isFocus = true, bool isEntry = false, Clue? focusClue}) {
+  //   var updated = super.updateClues(
+  //       thisPuzzle, clue, possibleValues, updatedVariables,
+  //       isFocus: isFocus, isEntry: isEntry);
 
-    // Update pandigital sets for update clues
-    var updatedVars = Set.from(updatedVariables);
-    for (var updatedVar in updatedVars) {
-      if (updatedVar is PandigitaliaEntry) {
-        var set = pandigitalSetForClue[updatedVar];
-        if (set != null) {
-          // Update digits for all clues in the set
-          var setUpdated = set.updateDigits(updatedVariables);
-          if (setUpdated) {
-            updated = true;
-          }
-        }
-      }
-    }
-    return updated;
-  }
+  //   // Update pandigital sets for update clues
+  //   var updatedVars = Set.from(updatedVariables);
+  //   for (var updatedVar in updatedVars) {
+  //     if (updatedVar is PandigitaliaEntry) {
+  //       var set = pandigitalSetForClue[updatedVar];
+  //       if (set != null) {
+  //         // Update digits for all clues in the set
+  //         var setUpdated = set.updateDigits(updatedVariables);
+  //         if (setUpdated) {
+  //           updated = true;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return updated;
+  // }
 }

@@ -361,8 +361,8 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
     return count;
   }
 
-  var traceFindSolutions = true;
-  var traceFindAnswer = true;
+  var traceFindSolutions = false;
+  var traceFindAnswer = false;
 
   int findSolutions(List<Variable> order, int next, int count,
       {Function? callback, bool isAnswer = true, Function? partialCallback}) {
@@ -473,8 +473,9 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
 
     // Try each of the possible values for this clue
     // for (var value in solution[clue]!.possible) {
+    var sortedValues = (values ?? {}).sorted((a, b) => a.compareTo(b));
     valueLoop:
-    for (var value in values ?? {}) {
+    for (var value in sortedValues) {
       var stillAnswer = isAnswer;
       // Check that this value is consistent with other clues
       if (clue is Clue) {
@@ -505,11 +506,15 @@ class Puzzle<ClueKind extends Clue, EntryKind extends ClueKind> {
         print('findSolutions: next=$next, clue=${clue.name}, try value $value');
       }
       if (traceFindAnswer) {
-        if (stillAnswer && clue.answer != null && value == clue.answer) {
-          print(
-              'findSolutions: next=$next, clue=${clue.name}, answer value $value');
-        } else {
-          stillAnswer = false;
+        if (stillAnswer) {
+          if (clue.answer != null && value == clue.answer) {
+            print(
+                'findSolutions: next=$next, clue=${clue.name}, answer value $value');
+          } else {
+            print(
+                'findSolutions: next=$next, clue=${clue.name}, NOT answer value $value');
+            stillAnswer = false;
+          }
         }
       }
       count = findSolutions(order, next + 1, count,

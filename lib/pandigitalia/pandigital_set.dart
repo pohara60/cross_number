@@ -17,6 +17,21 @@ class PanDigitalSet {
     required this.clue4digits,
   });
 
+  bool checkClueValue(int value, PandigitaliaEntry clue) {
+    // Check if digits are already used in other clues of the set
+    var digits = value.toString().split('').map(int.parse).toSet();
+    for (var otherClue in [clue2digits, clue3digits, clue4digits]) {
+      if (otherClue != null && otherClue != clue && otherClue.isSet) {
+        var otherDigits = otherClue.value.toString().split('').map(int.parse);
+        if (otherDigits.any((digit) => digits.contains(digit))) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   bool updateDigits(Set<Variable> updatedVariables) {
     var updated = false;
     // Get used digits from set clues
