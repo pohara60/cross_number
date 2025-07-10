@@ -251,3 +251,4 @@ D12, A15 - #square, values={58}
 Solution count=1
 
 Exited.
+Answer: Post processing time: 288,023 ms

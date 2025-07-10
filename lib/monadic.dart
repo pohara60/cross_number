@@ -25,6 +25,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
       Monadic('mp', multiplicativePersistence, int, order: NodeOrder.UNKNOWN);
   monadics['reverse'] =
       Monadic('reverse', reverse, int, order: NodeOrder.UNKNOWN);
+  monadics['digits'] = Monadic('digits', digits, int, order: NodeOrder.UNKNOWN);
   monadics['sumdigits'] =
       Monadic('sumdigits', sumDigits, int, order: NodeOrder.UNKNOWN);
   monadics['sumdigitsquares'] = Monadic('sumdigitsquares', sumDigitSquares, int,
@@ -41,6 +42,7 @@ void initializeMonadics(Map<String, Monadic> monadics) {
   monadics['odd'] = Monadic('odd', isOdd, bool);
   monadics['prime'] = Monadic('prime', isPrime, bool);
   monadics['triangular'] = Monadic('triangular', isTriangular, bool);
+  monadics['fibonacci'] = Monadic('fibonacci', isFibonacci, bool);
   monadics['adjacentprime'] =
       Monadic('adjacentprime', isAdjacentPrime, Iterable<int>);
   monadics['multiple'] = Monadic('multiple', multiple, Iterable<int>);
@@ -124,6 +126,17 @@ int sumDigits(dynamic value) {
     sumDigits += int.parse(valueStr[index]);
   }
   return sumDigits;
+}
+
+int digits(dynamic value) {
+  var valueStr = (value as int).toString();
+  // Sort the digits
+  var sortedDigits = valueStr.split('')..sort();
+  var digits = 0;
+  for (var index = 0; index < sortedDigits.length; index++) {
+    digits = digits * 10 + int.parse(sortedDigits[index]);
+  }
+  return digits;
 }
 
 int sumDigitSquares(dynamic value) {

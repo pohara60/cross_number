@@ -21,6 +21,8 @@ class Generator {
 void initializeGenerators(Map<String, Generator> generators) {
   generators['integer'] = Generator('integer', generateIntegers);
   generators['ascending'] = Generator('ascending', generateAscending);
+  generators['ascendingconsecutive'] =
+      Generator('ascendingconsecutive', generateAscendingConsecutive);
   generators['descending'] = Generator('descending', generateDescending);
   generators['different'] = Generator('different', generateDifferent);
   generators['result'] = Generator('result', generateIntegers);
@@ -33,6 +35,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['triangular'] = Generator('triangular', generateTriangles);
   generators['pyramidal'] = Generator('pyramidal', generateSquarePyramidals);
   generators['fibonacci'] = Generator('fibonacci', generateFibonacci);
+  generators['catalan'] = Generator('catalan', generateCatalan);
   generators['square'] = Generator('square', generateSquares);
   generators['cube'] = Generator('cube', generateCubes);
   generators['power'] = Generator('power', generatePowers);
@@ -64,6 +67,17 @@ Iterable<int> generateAscending(num min, num max) sync* {
             .split('')
             .reduce((value, char) => char.compareTo(value) > 0 ? char : '?') !=
         '?') yield integer;
+  }
+}
+
+Iterable<int> generateAscendingConsecutive(num min, num max) sync* {
+  for (var integer = min.toInt(); integer <= max.toInt(); integer++) {
+    var integerStr = integer.toString();
+    if (integerStr
+            .split('')
+            .map((e) => int.parse(e))
+            .reduce((value, digit) => digit == value + 1 ? digit : 0) !=
+        0) yield integer;
   }
 }
 
@@ -312,6 +326,38 @@ Iterable<int> generateFibonacci(num min, num max) sync* {
     previous = last;
     last = next;
     fibonacci.add(last);
+  }
+}
+
+bool isFibonacci(dynamic value) {
+  if ((value as int) > fibonacci.last) {
+    // ignore: unused_local_variable
+    for (var _ in generateFibonacci(value, value)) {}
+  }
+  var result = fibonacci.contains(value);
+  return result;
+}
+
+List<int> catalan = [1, 2, 5, 14];
+Iterable<int> generateCatalan(num min, num max) sync* {
+  // Recurrence Relation: Catalan numbers satisfy the recurrence relation
+  // C₀ = 1, and for n > 0, Cₙ = Σᵢ(Cᵢ * Cₙ₋ᵢ₋₁) where the summation goes from i = 0 to n-1
+  // or Cn+1 = Cn*2(2n+1)/n+2
+  // Formula: They can be calculated using the formula: Cₙ = (2n)! / ((n + 1)! * n!).
+  int last = catalan.last;
+  int length = catalan.length;
+  var index = 0;
+  while (true) {
+    while (index < length) {
+      var element = catalan[index++];
+      if (element < min) continue;
+      if (element > max) return;
+      yield element;
+    }
+    length++;
+    var next = last * 2 * (2 * length - 1) ~/ (length + 1);
+    last = next;
+    catalan.add(last);
   }
 }
 

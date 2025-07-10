@@ -500,4 +500,16 @@ void main() {
       // expect(values, equals([10, 11, 13, 14, 15, 16, 18]));
     });
   });
+  group('Catalan', () {
+    var text = r'#catalan';
+    test(text, () {
+      var exp = ExpressionEvaluator(text);
+      // var values = exp.generate(100, 999).toSet().toList()..sort();
+      var values = exp.generate(1, 500).toSet();
+      // var values = exp.generate(17, 17).toSet();
+      var values2 = values.toList()..sort();
+      print(values2);
+      // expect(values, equals([10, 11, 13, 14, 15, 16, 18]));
+    });
+  });
 }

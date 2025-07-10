@@ -24,6 +24,7 @@ import 'package:crossnumber/excuses/excuses.dart';
 import 'package:crossnumber/factors/factors.dart';
 import 'package:crossnumber/fourseasons/fourseasons.dart';
 import 'package:crossnumber/frequency/frequency.dart';
+import 'package:crossnumber/gallivanting/gallivanting.dart';
 import 'package:crossnumber/inbetweeners/inbetweeners.dart';
 import 'package:crossnumber/increasingfibonnaci/increasingfibonnaci.dart';
 import 'package:crossnumber/increasingprime/increasingprime.dart';
@@ -141,7 +142,8 @@ void main(List<String> arguments) async {
     ..addCommand(JustTheJobCommand())
     ..addCommand(KnowYourOnionCommand())
     ..addCommand(PandigitaliaCommand())
-    ..addCommand(AnagramsCommand());
+    ..addCommand(AnagramsCommand())
+    ..addCommand(GallivantingCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1578,6 +1580,30 @@ class AnagramsCommand extends Command {
     // Get and print solve
     try {
       final pc = Anagrams();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class GallivantingCommand extends Command {
+  @override
+  final name = 'Gallivanting';
+  @override
+  final description = 'solve hardcoded Gallivanting puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Gallivanting();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);

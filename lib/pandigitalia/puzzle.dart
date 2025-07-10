@@ -61,35 +61,79 @@ class PandigitaliaPuzzle extends VariablePuzzle<PandigitaliaClue,
 
     // The 18 digits of the six 3-digit entries contain two each of the digits 1-9.
     if (clue.length == 3) {
+      // D2 ia a 3 digit clues that intersect with two other 3 digit clues A4 and A7.
+      // Similarly D10 intersects with A9 and A13.
+      // So the intersecting digits will be used twice in the 3-digit clues, i.e.
+      // they may not appear elsewhere in the 3-digit clues.
+      // var isD2orD10 = clue.name == 'D2' || clue.name == 'D10';
+
       // Get known 3 digit clue values
-      var knownValues = clues.values
+      var knownClues = clues.values
           .whereType<PandigitaliaEntry>()
           .where((c) => c != clue && c.length == 3 && c.isSet)
-          .map((c) => c.value)
-          .toSet();
-      if (knownValues.length < 2) {
-        // Not enough known values to check digit occurrence
-        return true;
-      }
+          .toList();
+      var knownValues = knownClues.map((c) => c.value).toSet();
+      // if (knownValues.length < 2) {
+      //   // Not enough known values to check digit occurrence
+      //   return true;
+      // }
 
       // Get the occurrence count of digits in the values
-      var digitCount = <int, int>{};
+      var digitCount = <String, int>{};
       for (var knownValue in knownValues) {
-        var digits = knownValue.toString().split('').map(int.parse);
+        var digits = knownValue.toString().split('');
         for (var digit in digits) {
           digitCount[digit] = (digitCount[digit] ?? 0) + 1;
         }
       }
-      // Check if thie clue's digits already appear twice in other clues
-      var digits = value.toString().split('').map(int.parse).toSet();
-      for (var digit in digits) {
-        digitCount[digit] = (digitCount[digit] ?? 0) + 1;
-      }
+      // Check first in case previous logic has exceeded the count
       if (digitCount.values.any((element) => element > 2)) {
         return false;
       }
+
+      // Check if this clue's digits already appear twice in other clues
+      var valueStr = value.toString();
+      for (var index = 0; index < valueStr.length; index++) {
+        var digit = valueStr[index];
+        if (clue.length == 3) {
+          // if an intersecting 3 digit clue is not known, then we can
+          // count the digit twice
+          var intersection = clue.digitIdentities[index];
+          if (intersection != null) {
+            var intersectingClue = intersection.clue;
+            if (intersectingClue.length == 3 &&
+                !knownClues.contains(intersectingClue)) {
+              // Count the digit twice
+              digitCount[digit] = (digitCount[digit] ?? 0) + 1;
+            }
+          }
+        }
+        digitCount[digit] = (digitCount[digit] ?? 0) + 1;
+        if (digitCount[digit]! > 2) {
+          // A digit appears more than twice in the 3-digit clues
+          return false;
+        }
+      }
     }
     return true;
+  }
+
+  @override
+  postProcessing(
+      {bool iteration = true,
+      int Function(Puzzle)? callback,
+      Function? partialCallback}) {
+    if (iteration) {
+      traceFindSolutions = true;
+      // traceFindAnswer = true;
+      var stopwatch = Stopwatch()..start();
+      super.postProcessing(
+          iteration: iteration,
+          callback: callback,
+          partialCallback: partialCallback);
+      stopwatch.stop();
+      print('Post processing time: ${stopwatch.elapsedMilliseconds} ms');
+    }
   }
 
   @override
