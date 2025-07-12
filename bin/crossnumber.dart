@@ -13,6 +13,7 @@ import 'package:crossnumber/combinations/combinations.dart';
 import 'package:crossnumber/couplets/couplets.dart';
 import 'package:crossnumber/cubesandwich/cubesandwich.dart';
 import 'package:crossnumber/cyclingprimes/cyclingprimes.dart';
+import 'package:crossnumber/decisions/decisions.dart';
 
 import 'package:crossnumber/dicenets/dicenets.dart';
 import 'package:crossnumber/dicenets2/dicenets2.dart';
@@ -143,7 +144,8 @@ void main(List<String> arguments) async {
     ..addCommand(KnowYourOnionCommand())
     ..addCommand(PandigitaliaCommand())
     ..addCommand(AnagramsCommand())
-    ..addCommand(GallivantingCommand());
+    ..addCommand(GallivantingCommand())
+    ..addCommand(DecisionsCommand());
   try {
     await runner.run(arguments);
   } on UsageException catch (e) {
@@ -1604,6 +1606,30 @@ class GallivantingCommand extends Command {
     // Get and print solve
     try {
       final pc = Gallivanting();
+      pc.solve();
+    } on PuzzleException catch (e) {
+      print(e.msg);
+    } on SolveException catch (e) {
+      print(e.msg);
+    } on SolveError catch (e) {
+      print(e.msg);
+    } catch (e) {
+      print('Exception ${e.toString()}');
+    }
+  }
+}
+
+class DecisionsCommand extends Command {
+  @override
+  final name = 'Decisions';
+  @override
+  final description = 'solve hardcoded Decisions puzzle.';
+
+  @override
+  void run() {
+    // Get and print solve
+    try {
+      final pc = Decisions();
       pc.solve();
     } on PuzzleException catch (e) {
       print(e.msg);
