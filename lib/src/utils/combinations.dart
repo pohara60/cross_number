@@ -16,7 +16,7 @@ List<Map<String, int>> generateCombinations(
 
   final variableNames = variableDomains.keys.toList();
 
-  void _generate(int index, Map<String, int> currentCombination) {
+  void generate(int index, Map<String, int> currentCombination) {
     if (index == variableNames.length) {
       combinations.add(Map.from(currentCombination));
       return;
@@ -27,10 +27,10 @@ List<Map<String, int>> generateCombinations(
 
     for (final value in domain) {
       currentCombination[varName] = value;
-      _generate(index + 1, currentCombination);
+      generate(index + 1, currentCombination);
     }
   }
 
-  _generate(0, {});
+  generate(0, {});
   return combinations;
 }

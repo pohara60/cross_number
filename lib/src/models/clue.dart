@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:crossnumber/src/expressions/evaluator.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
@@ -6,7 +8,6 @@ import 'package:crossnumber/src/utils/combinations.dart';
 
 import 'constraint.dart';
 import 'expression_constraint.dart';
-import 'variable.dart';
 
 /// Represents a single clue in a cross number puzzle.
 ///
@@ -45,7 +46,8 @@ class Clue {
         final Map<String, Set<int>> variableDomains = {};
         for (final varName in variableExtractor.variables) {
           if (puzzle.variables.containsKey(varName)) {
-            variableDomains[varName] = puzzle.variables[varName]!.possibleValues;
+            variableDomains[varName] =
+                puzzle.variables[varName]!.possibleValues;
           } else {
             // Handle error: variable not found
             print('Error: Variable $varName not found in puzzle definition.');
@@ -63,7 +65,8 @@ class Clue {
         } else {
           final combinations = generateCombinations(variableDomains);
           for (final combo in combinations) {
-            final evaluator = Evaluator(combo.cast<String, num>(), puzzle: puzzle); // Always pass puzzle
+            final evaluator = Evaluator(combo.cast<String, num>(),
+                puzzle: puzzle); // Always pass puzzle
             try {
               final result = evaluator.evaluate(expression);
               if (result is int) {
@@ -71,7 +74,7 @@ class Clue {
               }
             } catch (e) {
               // Handle evaluation errors (e.g., division by zero)
-              print('Evaluation error for clue ${id} with combo $combo: $e');
+              print('Evaluation error for clue $id with combo $combo: $e');
             }
           }
         }
@@ -80,7 +83,8 @@ class Clue {
         if (possibleValues.isEmpty) {
           possibleValues = newPossibleValues;
         } else {
-          possibleValues.retainWhere((value) => newPossibleValues.contains(value));
+          possibleValues
+              .retainWhere((value) => newPossibleValues.contains(value));
         }
 
         if (possibleValues.length != oldPossibleValues.length ||

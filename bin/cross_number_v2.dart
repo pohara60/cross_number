@@ -11,7 +11,7 @@ void main(List<String> arguments) {
   solver.solve();
 
   print('\nSolution:');
-  puzzle.clues.values.forEach((clue) {
+  for (var clue in puzzle.clues.values) {
     print('${clue.id}: ${clue.possibleValues}');
-  });
+  }
 }

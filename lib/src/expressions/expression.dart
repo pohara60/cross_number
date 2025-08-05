@@ -2,6 +2,8 @@
 ///
 /// This class uses the Visitor pattern to allow for different operations
 /// to be performed on the expression tree, such as evaluation or variable extraction.
+// ignore_for_file: constant_identifier_names
+
 abstract class Expression {
   /// Accepts a [visitor] and calls the appropriate visit method.
   R accept<R>(ExpressionVisitor<R> visitor);

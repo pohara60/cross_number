@@ -1,12 +1,8 @@
-import 'package:crossnumber/src/models/variable.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/clue.dart';
-import 'package:crossnumber/src/models/entry.dart';
-import 'package:crossnumber/src/models/constraint.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
-import 'package:crossnumber/src/expressions/evaluator.dart';
 
 /// The main solver for cross number puzzles.
 ///
@@ -27,7 +23,7 @@ class Solver {
   /// Creates a new solver for the given [puzzle].
   Solver(this.puzzle) {
     // Initialize variable dependencies
-    puzzle.clues.values.forEach((clue) {
+    for (var clue in puzzle.clues.values) {
       for (final constraint in clue.constraints) {
         if (constraint is ExpressionConstraint) {
           final parser = Parser(constraint.expression);
@@ -39,12 +35,12 @@ class Solver {
           }
         }
       }
-    });
+    }
 
     // Populate the grids
-    puzzle.grids.values.forEach((grid) {
+    for (var grid in puzzle.grids.values) {
       grid.populate(puzzle.entries);
-    });
+    }
   }
 
   /// Solves the puzzle.
@@ -100,11 +96,11 @@ class Solver {
       _updated = false;
 
       // Solve clues first
-      puzzle.clues.values.forEach((clue) {
+      for (var clue in puzzle.clues.values) {
         if (clue.solve(puzzle)) {
           _updated = true;
         }
-      });
+      }
 
       _propagateConstraints();
     } while (_updated);
@@ -116,7 +112,7 @@ class Solver {
       changed = false;
 
       // Propagate clue values to entries
-      puzzle.entries.values.forEach((entry) {
+      for (var entry in puzzle.entries.values) {
         if (entry.clueId != null) {
           final clue = puzzle.clues[entry.clueId!];
           if (clue != null) {
@@ -128,10 +124,10 @@ class Solver {
             }
           }
         }
-      });
+      }
 
       // Enforce grid constraints
-      puzzle.grids.values.forEach((grid) {
+      for (var grid in puzzle.grids.values) {
         for (int r = 0; r < grid.rows; r++) {
           for (int c = 0; c < grid.cols; c++) {
             final cell = grid.cells[r][c];
@@ -180,10 +176,10 @@ class Solver {
             }
           }
         }
-      });
+      }
 
       // Propagate entry values back to clues
-      puzzle.entries.values.forEach((entry) {
+      for (var entry in puzzle.entries.values) {
         if (entry.clueId != null) {
           final clue = puzzle.clues[entry.clueId!];
           if (clue != null) {
@@ -195,21 +191,21 @@ class Solver {
             }
           }
         }
-      });
+      }
 
       // Update variables from clue values
-      puzzle.clues.values.forEach((clue) {
+      for (var clue in puzzle.clues.values) {
         if (clue.updateVariables(puzzle)) {
           changed = true;
         }
-      });
+      }
 
       // Re-solve clues with updated variable values
-      puzzle.clues.values.forEach((clue) {
+      for (var clue in puzzle.clues.values) {
         if (clue.solve(puzzle)) {
           changed = true;
         }
-      });
+      }
     } while (changed);
   }
 
@@ -243,10 +239,10 @@ class Solver {
     // Find available entries for this clue
     final availableEntries = puzzle.entries.values
         .where((entry) =>
-            entry.clueId == null &&
-            entry.length == currentClue.id.length // Simplified length check
-        // Add more sophisticated checks here (e.g., orientation, grid compatibility)
-        )
+                entry.clueId == null &&
+                entry.length == currentClue.id.length // Simplified length check
+            // Add more sophisticated checks here (e.g., orientation, grid compatibility)
+            )
         .toList();
 
     for (final entry in availableEntries) {

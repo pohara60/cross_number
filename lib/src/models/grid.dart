@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, prefer_interpolation_to_compose_strings
+
 import 'cell.dart';
 import 'entry.dart';
 
@@ -38,7 +40,11 @@ class Grid {
     List<List<Cell>>? cells,
   }) {
     return Grid(rows ?? this.rows, cols ?? this.cols)
-      ..cells = cells ?? this.cells.map((row) => row.map((cell) => cell.copyWith()).toList()).toList();
+      ..cells = cells ??
+          this
+              .cells
+              .map((row) => row.map((cell) => cell.copyWith()).toList())
+              .toList();
   }
 
   @override
@@ -79,8 +85,8 @@ class Grid {
           var acrossDigit = '?';
           var downDigit = '?';
           if (acrossEntry.possibleValues.length == 1) {
-            acrossDigit =
-                acrossEntry.possibleValues.first.toString()[c - acrossEntry.col];
+            acrossDigit = acrossEntry.possibleValues.first
+                .toString()[c - acrossEntry.col];
           }
           if (downEntry.possibleValues.length == 1) {
             downDigit =
