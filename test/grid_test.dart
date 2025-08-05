@@ -1,27 +1,23 @@
 import 'package:test/test.dart';
-import 'package:crossnumber/gridspec.dart';
+import 'package:crossnumber/src/models/grid.dart';
+import 'package:crossnumber/src/models/entry.dart';
 
 void main() {
-  group('Grid tests', () {
-    var grid = [
-      '+--+--+--+--+',
-      '|1 :2 :3 |4 |',
-      '+--:::::::::+',
-      '|5 :  |6 :  |',
-      '+:::--+--:::+',
-      '|7 :8 |9 :  |',
-      '+:::::::::--+',
-      '|  |10:  :  |',
-      '+--+--+--+--+',
-    ];
-    test('1st test', () {
-      var spec = GridSpec(grid);
-      // spec.extractClues();
-      expect(
-          spec.entries.toString(),
-          equals(
-              '[A1(3), D2(2), D3(2), D4(3), A5(2), D5(3), A6(2), A7(2), D8(2), A9(2), D9(2), A10(3)]'));
-//identities=[A1[2]=D2[1],A1[3]=D3[1],A5[1]=D5[1],A5[2]=D2[2],A6[1]=D3[2],A6[2]=D4[2],A7[1]=D5[2],A7[2]=D8[1],A9[1]=D9[1],A9[2]=D4[3],A10[1]=D8[2],A10[2]=D9[2],]
+  group('Grid', () {
+    test('should populate the grid correctly', () {
+      final entries = {
+        'A1': Entry(id: 'A1', row: 0, col: 0, length: 2, orientation: EntryOrientation.across, clueId: '1A'),
+        'D1': Entry(id: 'D1', row: 0, col: 0, length: 2, orientation: EntryOrientation.down, clueId: '1D'),
+      };
+      final grid = Grid(2, 2);
+      grid.populate(entries);
+
+      expect(grid.cells[0][0].acrossEntry, equals(entries['A1']));
+      expect(grid.cells[0][0].downEntry, equals(entries['D1']));
+      expect(grid.cells[0][1].acrossEntry, equals(entries['A1']));
+      expect(grid.cells[0][1].downEntry, isNull);
+      expect(grid.cells[1][0].acrossEntry, isNull);
+      expect(grid.cells[1][0].downEntry, equals(entries['D1']));
     });
   });
 }
