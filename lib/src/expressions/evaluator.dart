@@ -8,10 +8,12 @@ import 'generators.dart';
 /// provided that the necessary context ([puzzle]) is given.
 class Evaluator implements ExpressionVisitor<List<int>> {
   final PuzzleDefinition puzzle;
+  final int min;
+  final int max;
   final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
 
   /// Creates a new evaluator with the given [puzzle] context.
-  Evaluator(this.puzzle);
+  Evaluator(this.puzzle, {required this.min, required this.max});
 
   /// Evaluates the given [expression] and returns a list of possible values.
   List<int> evaluate(Expression expression) {
@@ -35,10 +37,7 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   List<int> visitGeneratorExpression(GeneratorExpression expression) {
     final generator = _generatorRegistry.get(expression.name);
     if (generator != null) {
-      // For now, we don't have a clue context here to determine the range.
-      // This will need to be addressed when we integrate with the solver.
-      // As a placeholder, we'll use a wide range.
-      return generator(1, 99999);
+      return generator(min, max);
     }
     throw Exception('Unknown generator: ${expression.name}');
   }

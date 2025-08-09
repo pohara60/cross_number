@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:crossnumber/src/expressions/evaluator.dart';
+import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 
@@ -35,8 +38,18 @@ class Clue {
       if (constraint is ExpressionConstraint) {
         final parser = Parser(constraint.expression);
         final expression = parser.parse();
-        final evaluator = Evaluator(puzzle);
 
+        int min = -10000;
+        int max = 10000;
+        if (expression is GeneratorExpression) {
+          final entry = puzzle.entries[id];
+          if (entry != null) {
+            min = pow(10, entry.length - 1).toInt();
+            max = pow(10, entry.length).toInt() - 1;
+          }
+        }
+
+        final evaluator = Evaluator(puzzle, min: min, max: max);
         final newPossibleValues = evaluator.evaluate(expression);
 
         final oldPossibleValues = Set<int>.from(possibleValues);
