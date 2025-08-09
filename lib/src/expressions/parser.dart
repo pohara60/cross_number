@@ -35,6 +35,7 @@ class Parser {
       case '*': _addToken(TokenType.STAR); break;
       case '/': _addToken(TokenType.SLASH); break;
       case '.': _addToken(TokenType.DOT); break;
+      case '#': _addToken(TokenType.HASH); break;
       case ' ':
       case '\r':
       case '\t':
@@ -165,10 +166,15 @@ class Parser {
       return NumberExpression(_previous().literal as num);
     }
 
+    if (_match([TokenType.HASH])) {
+      _consume(TokenType.IDENTIFIER, "Expect generator name after '#'.");
+      return GeneratorExpression(_previous().lexeme);
+    }
+
     if (_match([TokenType.IDENTIFIER])) {
       final identifierToken = _previous();
       if (_match([TokenType.DOT])) {
-        _consume(TokenType.IDENTIFIER, "Expect entry ID after '.'.");
+        _consume(TokenType.IDENTIFIER, "Expect entry ID after '.'");
         final entryToken = _previous();
         return GridEntryExpression(identifierToken.lexeme, entryToken.lexeme);
       } else {

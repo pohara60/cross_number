@@ -19,6 +19,7 @@ abstract class ExpressionVisitor<R> {
   R visitUnaryExpression(UnaryExpression expression);
   R visitGroupingExpression(GroupingExpression expression);
   R visitGridEntryExpression(GridEntryExpression expression);
+  R visitGeneratorExpression(GeneratorExpression expression);
 }
 
 /// An expression node representing a literal number.
@@ -42,6 +43,18 @@ class VariableExpression extends Expression {
   @override
   R accept<R>(ExpressionVisitor<R> visitor) {
     return visitor.visitVariableExpression(this);
+  }
+}
+
+/// An expression node representing a generator.
+class GeneratorExpression extends Expression {
+  final String name;
+
+  GeneratorExpression(this.name);
+
+  @override
+  R accept<R>(ExpressionVisitor<R> visitor) {
+    return visitor.visitGeneratorExpression(this);
   }
 }
 
@@ -106,6 +119,7 @@ enum TokenType {
   MINUS,
   STAR,
   SLASH,
+  HASH,
 
   // Literals.
   NUMBER,
@@ -163,5 +177,10 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
   @override
   void visitGridEntryExpression(GridEntryExpression expression) {
     gridEntries.add('${expression.gridId}.${expression.entryId}');
+  }
+
+  @override
+  void visitGeneratorExpression(GeneratorExpression expression) {
+    // TODO: Handle generator expressions if needed for variable extraction.
   }
 }
