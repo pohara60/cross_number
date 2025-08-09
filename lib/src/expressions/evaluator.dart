@@ -8,16 +8,14 @@ import 'generators.dart';
 /// provided that the necessary context ([puzzle]) is given.
 class Evaluator implements ExpressionVisitor<List<int>> {
   final PuzzleDefinition puzzle;
-  final int min;
-  final int max;
   final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
 
   /// Creates a new evaluator with the given [puzzle] context.
-  Evaluator(this.puzzle, {required this.min, required this.max});
+  Evaluator(this.puzzle);
 
   /// Evaluates the given [expression] and returns a list of possible values.
-  List<int> evaluate(Expression expression) {
-    return expression.accept(this);
+  List<int> evaluate(Expression expression, {required int min, required int max}) {
+    return expression.accept(this).where((value) => value >= min && value <= max).toList();
   }
 
   @override
@@ -37,15 +35,16 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   List<int> visitGeneratorExpression(GeneratorExpression expression) {
     final generator = _generatorRegistry.get(expression.name);
     if (generator != null) {
-      return generator(min, max);
+      // The range is now passed in from the parent expression.
+      return generator(-10000, 10000);
     }
     throw Exception('Unknown generator: ${expression.name}');
   }
 
   @override
   List<int> visitBinaryExpression(BinaryExpression expression) {
-    final leftValues = evaluate(expression.left);
-    final rightValues = evaluate(expression.right);
+    final leftValues = evaluate(expression.left, min: -10000, max: 10000);
+    final rightValues = evaluate(expression.right, min: -10000, max: 10000);
     final results = <int>{};
 
     for (final left in leftValues) {
@@ -75,7 +74,7 @@ class Evaluator implements ExpressionVisitor<List<int>> {
 
   @override
   List<int> visitUnaryExpression(UnaryExpression expression) {
-    final rightValues = evaluate(expression.right);
+    final rightValues = evaluate(expression.right, min: -10000, max: 10000);
     final results = <int>{};
 
     for (final right in rightValues) {
@@ -92,7 +91,7 @@ class Evaluator implements ExpressionVisitor<List<int>> {
 
   @override
   List<int> visitGroupingExpression(GroupingExpression expression) {
-    return evaluate(expression.expression);
+    return evaluate(expression.expression, min: -10000, max: 10000);
   }
 
   @override

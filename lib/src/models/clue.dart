@@ -39,18 +39,12 @@ class Clue {
         final parser = Parser(constraint.expression);
         final expression = parser.parse();
 
-        int min = -10000;
-        int max = 10000;
-        if (expression is GeneratorExpression) {
-          final entry = puzzle.entries[id];
-          if (entry != null) {
-            min = pow(10, entry.length - 1).toInt();
-            max = pow(10, entry.length).toInt() - 1;
-          }
-        }
+        final entry = puzzle.entries[id];
+        final min = entry != null ? pow(10, entry.length - 1).toInt() : -10000;
+        final max = entry != null ? pow(10, entry.length).toInt() - 1 : 10000;
 
-        final evaluator = Evaluator(puzzle, min: min, max: max);
-        final newPossibleValues = evaluator.evaluate(expression);
+        final evaluator = Evaluator(puzzle);
+        final newPossibleValues = evaluator.evaluate(expression, min: min, max: max);
 
         final oldPossibleValues = Set<int>.from(possibleValues);
         if (possibleValues.isEmpty) {
