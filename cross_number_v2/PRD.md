@@ -17,6 +17,14 @@ This document outlines the requirements for a new, refactored version of the Cro
 *   Support for every single puzzle from the original version. The initial focus will be on migrating a representative subset of puzzles to the new architecture.
 *   A public-facing API for third-party integrations.
 
+## 3.1. Status
+
+**Current Status:** In Progress
+
+*   The core solver engine and puzzle definition components have been implemented.
+*   The CLI is functional for running puzzles with known mappings.
+*   The project is currently in the finalization phase, which includes code cleanup, documentation, and comprehensive testing.
+
 ## 4. Functional Requirements
 
 ### 4.1. Core Solver Engine
