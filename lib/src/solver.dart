@@ -29,7 +29,7 @@ class Solver {
           final parser = Parser(constraint.expression);
           final expression = parser.parse();
           final variableExtractor = VariableExtractorVisitor();
-          expression.accept(variableExtractor);
+          expression.accept(variableExtractor, min: -10000, max: 10000);
           for (final varName in variableExtractor.variables) {
             _variableDependencies.putIfAbsent(varName, () => []).add(clue);
           }

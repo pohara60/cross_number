@@ -6,20 +6,20 @@
 
 abstract class Expression {
   /// Accepts a [visitor] and calls the appropriate visit method.
-  R accept<R>(ExpressionVisitor<R> visitor);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max});
 }
 
 /// A visitor for [Expression] nodes.
 ///
 /// This interface defines a method for each type of expression node.
 abstract class ExpressionVisitor<R> {
-  R visitNumberExpression(NumberExpression expression);
-  R visitVariableExpression(VariableExpression expression);
-  R visitBinaryExpression(BinaryExpression expression);
-  R visitUnaryExpression(UnaryExpression expression);
-  R visitGroupingExpression(GroupingExpression expression);
-  R visitGridEntryExpression(GridEntryExpression expression);
-  R visitGeneratorExpression(GeneratorExpression expression);
+  R visitNumberExpression(NumberExpression expression, {required int min, required int max});
+  R visitVariableExpression(VariableExpression expression, {required int min, required int max});
+  R visitBinaryExpression(BinaryExpression expression, {required int min, required int max});
+  R visitUnaryExpression(UnaryExpression expression, {required int min, required int max});
+  R visitGroupingExpression(GroupingExpression expression, {required int min, required int max});
+  R visitGridEntryExpression(GridEntryExpression expression, {required int min, required int max});
+  R visitGeneratorExpression(GeneratorExpression expression, {required int min, required int max});
 }
 
 /// An expression node representing a literal number.
@@ -29,8 +29,8 @@ class NumberExpression extends Expression {
   NumberExpression(this.value);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitNumberExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitNumberExpression(this, min: min, max: max);
   }
 }
 
@@ -41,8 +41,8 @@ class VariableExpression extends Expression {
   VariableExpression(this.name);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitVariableExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitVariableExpression(this, min: min, max: max);
   }
 }
 
@@ -53,8 +53,8 @@ class GeneratorExpression extends Expression {
   GeneratorExpression(this.name);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitGeneratorExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitGeneratorExpression(this, min: min, max: max);
   }
 }
 
@@ -67,8 +67,8 @@ class BinaryExpression extends Expression {
   BinaryExpression(this.left, this.operator, this.right);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitBinaryExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitBinaryExpression(this, min: min, max: max);
   }
 }
 
@@ -80,8 +80,8 @@ class UnaryExpression extends Expression {
   UnaryExpression(this.operator, this.right);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitUnaryExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitUnaryExpression(this, min: min, max: max);
   }
 }
 
@@ -92,8 +92,8 @@ class GroupingExpression extends Expression {
   GroupingExpression(this.expression);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitGroupingExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitGroupingExpression(this, min: min, max: max);
   }
 }
 
@@ -105,8 +105,8 @@ class GridEntryExpression extends Expression {
   GridEntryExpression(this.gridId, this.entryId);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor) {
-    return visitor.visitGridEntryExpression(this);
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitGridEntryExpression(this, min: min, max: max);
   }
 }
 
@@ -151,36 +151,36 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
   final Set<String> gridEntries = {};
 
   @override
-  void visitNumberExpression(NumberExpression expression) {}
+  void visitNumberExpression(NumberExpression expression, {required int min, required int max}) {}
 
   @override
-  void visitVariableExpression(VariableExpression expression) {
+  void visitVariableExpression(VariableExpression expression, {required int min, required int max}) {
     variables.add(expression.name);
   }
 
   @override
-  void visitBinaryExpression(BinaryExpression expression) {
-    expression.left.accept(this);
-    expression.right.accept(this);
+  void visitBinaryExpression(BinaryExpression expression, {required int min, required int max}) {
+    expression.left.accept(this, min: min, max: max);
+    expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitUnaryExpression(UnaryExpression expression) {
-    expression.right.accept(this);
+  void visitUnaryExpression(UnaryExpression expression, {required int min, required int max}) {
+    expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitGroupingExpression(GroupingExpression expression) {
-    expression.expression.accept(this);
+  void visitGroupingExpression(GroupingExpression expression, {required int min, required int max}) {
+    expression.expression.accept(this, min: min, max: max);
   }
 
   @override
-  void visitGridEntryExpression(GridEntryExpression expression) {
+  void visitGridEntryExpression(GridEntryExpression expression, {required int min, required int max}) {
     gridEntries.add('${expression.gridId}.${expression.entryId}');
   }
 
   @override
-  void visitGeneratorExpression(GeneratorExpression expression) {
+  void visitGeneratorExpression(GeneratorExpression expression, {required int min, required int max}) {
     // TODO: Handle generator expressions if needed for variable extraction.
   }
 }

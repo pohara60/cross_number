@@ -15,39 +15,61 @@ class Evaluator implements ExpressionVisitor<List<int>> {
 
   /// Evaluates the given [expression] and returns a list of possible values.
   List<int> evaluate(Expression expression, {required int min, required int max}) {
-    return expression.accept(this).where((value) => value >= min && value <= max).toList();
+    return expression.accept(this, min: min, max: max);
   }
 
   @override
-  List<int> visitNumberExpression(NumberExpression expression) {
-    return [expression.value.toInt()];
+  List<int> visitNumberExpression(NumberExpression expression, {required int min, required int max}) {
+    final value = expression.value.toInt();
+    return value >= min && value <= max ? [value] : [];
   }
 
   @override
-  List<int> visitVariableExpression(VariableExpression expression) {
+  List<int> visitVariableExpression(VariableExpression expression, {required int min, required int max}) {
     if (puzzle.variables.containsKey(expression.name)) {
-      return puzzle.variables[expression.name]!.possibleValues.toList();
+      return puzzle.variables[expression.name]!.possibleValues.where((value) => value >= min && value <= max).toList();
     }
     throw Exception('Undefined variable: ${expression.name}');
   }
 
   @override
-  List<int> visitGeneratorExpression(GeneratorExpression expression) {
+  List<int> visitGeneratorExpression(GeneratorExpression expression, {required int min, required int max}) {
     final generator = _generatorRegistry.get(expression.name);
     if (generator != null) {
-      // The range is now passed in from the parent expression.
-      return generator(-10000, 10000);
+      return generator(min, max);
     }
     throw Exception('Unknown generator: ${expression.name}');
   }
 
   @override
-  List<int> visitBinaryExpression(BinaryExpression expression) {
-    final leftValues = evaluate(expression.left, min: -10000, max: 10000);
-    final rightValues = evaluate(expression.right, min: -10000, max: 10000);
+  List<int> visitBinaryExpression(BinaryExpression expression, {required int min, required int max}) {
+    final leftValues = expression.left.accept(this, min: -10000, max: 10000);
     final results = <int>{};
-
     for (final left in leftValues) {
+      int rightMin, rightMax;
+      switch (expression.operator.type) {
+        case TokenType.PLUS:
+          rightMin = min - left;
+          rightMax = max - left;
+          break;
+        case TokenType.MINUS:
+          rightMin = left - max;
+          rightMax = left - min;
+          break;
+        case TokenType.STAR:
+          if (left == 0) continue;
+          rightMin = min ~/ left;
+          rightMax = max ~/ left;
+          break;
+        case TokenType.SLASH:
+          if (left == 0) continue;
+          rightMin = left ~/ max;
+          rightMax = left ~/ min;
+          break;
+        default:
+          throw Exception('Unknown binary operator: ${expression.operator.type}');
+      }
+      final rightValues = expression.right.accept(this, min: rightMin, max: rightMax);
       for (final right in rightValues) {
         switch (expression.operator.type) {
           case TokenType.PLUS:
@@ -73,10 +95,9 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   }
 
   @override
-  List<int> visitUnaryExpression(UnaryExpression expression) {
-    final rightValues = evaluate(expression.right, min: -10000, max: 10000);
+  List<int> visitUnaryExpression(UnaryExpression expression, {required int min, required int max}) {
+    final rightValues = expression.right.accept(this, min: -max, max: -min);
     final results = <int>{};
-
     for (final right in rightValues) {
       switch (expression.operator.type) {
         case TokenType.MINUS:
@@ -90,15 +111,15 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   }
 
   @override
-  List<int> visitGroupingExpression(GroupingExpression expression) {
-    return evaluate(expression.expression, min: -10000, max: 10000);
+  List<int> visitGroupingExpression(GroupingExpression expression, {required int min, required int max}) {
+    return expression.expression.accept(this, min: min, max: max);
   }
 
   @override
-  List<int> visitGridEntryExpression(GridEntryExpression expression) {
+  List<int> visitGridEntryExpression(GridEntryExpression expression, {required int min, required int max}) {
     final entry = puzzle.entries[expression.entryId];
     if (entry != null) {
-      return entry.possibleValues.toList();
+      return entry.possibleValues.where((value) => value >= min && value <= max).toList();
     }
     throw Exception('Entry ${expression.entryId} not found in puzzle definition.');
   }
