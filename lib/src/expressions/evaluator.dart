@@ -28,8 +28,10 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   List<int> visitVariableExpression(VariableExpression expression, {required int min, required int max}) {
     if (puzzle.variables.containsKey(expression.name)) {
       return puzzle.variables[expression.name]!.possibleValues.where((value) => value >= min && value <= max).toList();
+    } else if (puzzle.clues.containsKey(expression.name)) {
+      return puzzle.clues[expression.name]!.possibleValues.where((value) => value >= min && value <= max).toList();
     }
-    throw Exception('Undefined variable: ${expression.name}');
+    throw Exception('Undefined variable or clue: ${expression.name}');
   }
 
   @override

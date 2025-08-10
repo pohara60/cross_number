@@ -1,3 +1,5 @@
+import 'dart:math';
+import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -14,6 +16,9 @@ class Solver {
   /// The puzzle definition to be solved.
   final PuzzleDefinition puzzle;
 
+  /// A flag to enable or disable tracing.
+  final bool trace;
+
   /// A flag to track if any updates were made in the last iteration of the solver.
   bool _updated = false;
 
@@ -21,7 +26,18 @@ class Solver {
   final Map<String, List<Clue>> _variableDependencies = {};
 
   /// Creates a new solver for the given [puzzle].
-  Solver(this.puzzle) {
+  Solver(this.puzzle, {this.trace = false}) {
+    // Initialize clues with possible values based on entry length
+    for (var clue in puzzle.clues.values) {
+      final entry =
+          puzzle.entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
+      if (entry != null) {
+        clue.possibleValues = List<int>.generate(
+            pow(10, entry.length).toInt() - pow(10, entry.length - 1).toInt(),
+            (i) => i + pow(10, entry.length - 1).toInt()).toSet();
+      }
+    }
+
     // Initialize variable dependencies
     for (var clue in puzzle.clues.values) {
       for (final constraint in clue.constraints) {
@@ -92,24 +108,38 @@ class Solver {
   /// This method iteratively applies constraints to all clues and propagates
   /// variable changes until no more updates can be made.
   void _solveKnownMapping() {
+    if (trace) print('Solving puzzle with known mapping...');
+    int iteration = 0;
     do {
+      iteration++;
+      if (trace) print('Iteration $iteration');
       _updated = false;
+      if (trace) print('  Solving clues...');
 
       // Solve clues first
       for (var clue in puzzle.clues.values) {
+        final originalCount = clue.possibleValues.length;
         if (clue.solve(puzzle)) {
           _updated = true;
+          if (trace) {
+            print(
+                '    Clue ${clue.id} updated: $originalCount -> ${clue.possibleValues.length}');
+          }
         }
       }
 
-      _propagateConstraints();
+      if (_propagateConstraints()) {
+        _updated = true;
+      }
     } while (_updated);
   }
 
-  void _propagateConstraints() {
-    bool changed;
+  bool _propagateConstraints() {
+    bool changed = false;
+    bool localChanged;
     do {
-      changed = false;
+      localChanged = false;
+      if (trace) print('  Propagating constraints...');
 
       // Propagate clue values to entries
       for (var entry in puzzle.entries.values) {
@@ -120,7 +150,11 @@ class Solver {
             entry.possibleValues
                 .retainWhere((value) => clue.possibleValues.contains(value));
             if (entry.possibleValues.length < originalCount) {
-              changed = true;
+              localChanged = true;
+              if (trace) {
+                print(
+                    '    Entry ${entry.id} updated: $originalCount -> ${entry.possibleValues.length}');
+              }
             }
           }
         }
@@ -154,8 +188,12 @@ class Solver {
 
                 if (newAcrossValues.length < acrossValues.length) {
                   acrossEntry.possibleValues = newAcrossValues;
-                  changed = true;
+                  localChanged = true;
                   crossChanged = true;
+                  if (trace) {
+                    print(
+                        '    Across Entry ${acrossEntry.id} updated by grid constraint: ${acrossValues.length} -> ${newAcrossValues.length}');
+                  }
                 }
 
                 final newDownValues = <int>{};
@@ -169,8 +207,12 @@ class Solver {
 
                 if (newDownValues.length < downValues.length) {
                   downEntry.possibleValues = newDownValues;
-                  changed = true;
+                  localChanged = true;
                   crossChanged = true;
+                  if (trace) {
+                    print(
+                        '    Down Entry ${downEntry.id} updated by grid constraint: ${downValues.length} -> ${newDownValues.length}');
+                  }
                 }
               } while (crossChanged);
             }
@@ -187,7 +229,11 @@ class Solver {
             clue.possibleValues
                 .retainWhere((value) => entry.possibleValues.contains(value));
             if (clue.possibleValues.length < originalSize) {
-              changed = true;
+              localChanged = true;
+              if (trace) {
+                print(
+                    '    Clue ${clue.id} updated: $originalSize -> ${clue.possibleValues.length}');
+              }
             }
           }
         }
@@ -195,18 +241,25 @@ class Solver {
 
       // Update variables from clue values
       for (var clue in puzzle.clues.values) {
-        if (clue.updateVariables(puzzle)) {
-          changed = true;
+        if (clue.updateVariables(puzzle, trace: trace)) {
+          localChanged = true;
         }
       }
 
       // Re-solve clues with updated variable values
       for (var clue in puzzle.clues.values) {
+        final originalSize = clue.possibleValues.length;
         if (clue.solve(puzzle)) {
-          changed = true;
+          localChanged = true;
+          if (trace) {
+            print(
+                '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues.length}');
+          }
         }
       }
-    } while (changed);
+      if (localChanged) changed = true;
+    } while (localChanged);
+    return changed;
   }
 
   /// Solves the puzzle when the clue-to-entry mapping is unknown.

@@ -44,13 +44,28 @@ class Parser {
       case '\n': _line++; break;
       default:
         if (_isDigit(c)) {
-          _number();
+          _numberOrIdentifier();
         } else if (_isAlpha(c)) {
           _identifier();
         } else {
           // Error reporting for unexpected characters.
         }
         break;
+    }
+  }
+
+  void _numberOrIdentifier() {
+    while (_isDigit(_peek())) {
+      _advance();
+    }
+
+    if (_isAlpha(_peek())) {
+      while (_isAlphaNumeric(_peek())) {
+        _advance();
+      }
+      _addToken(TokenType.IDENTIFIER);
+    } else {
+      _addToken(TokenType.NUMBER, num.parse(source.substring(_start, _current)));
     }
   }
 
@@ -61,23 +76,7 @@ class Parser {
     _addToken(TokenType.IDENTIFIER);
   }
 
-  void _number() {
-    while (_isDigit(_peek())) {
-      _advance();
-    }
-
-    // Look for a fractional part.
-    if (_peek() == '.' && _isDigit(_peekNext())) {
-      // Consume the "."
-      _advance();
-
-      while (_isDigit(_peek())) {
-        _advance();
-      }
-    }
-
-    _addToken(TokenType.NUMBER, num.parse(source.substring(_start, _current)));
-  }
+  
 
   bool _isAtEnd() {
     return _current >= source.length;
