@@ -119,7 +119,7 @@ class Pandigitalia extends Crossnumber<PandigitaliaPuzzle> {
   @override
   // ignore: unnecessary_overrides
   void solve([bool iteration = true]) {
-    //setAnswers();
+    setAnswers();
     super.solve(iteration);
   }
 
