@@ -1,0 +1,480 @@
+Puzzle
+DecisionsEntry(name=A1,length=3,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+DecisionsEntry(name=A3,length=2,value: #prime,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+DecisionsEntry(name=A6,length=4,value: #Fibonacci,
+	identities=[A6[0]=D1[1],A6[1]=D2[1],A6[2]=D7[0],A6[3]=D3[1]],referrers=[D1,D2,D7,D3],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+DecisionsEntry(name=A8,length=2,value: #Catalan,
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+DecisionsEntry(name=A9,length=3,value: #prime,
+	identities=[A9[0]=D1[2],A9[1]=D10[0],A9[2]=D7[1]],referrers=[D1,D10,D7],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+DecisionsEntry(name=A11,length=3,value: #prime,
+	identities=[A11[0]=D3[2],A11[1]=D4[2],A11[2]=D5[2]],referrers=[D3,D4,D5],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+DecisionsEntry(name=A12,length=3,value: #triangular,
+	identities=[A12[0]=D12[0],A12[1]=D10[1],A12[2]=D13[0]],referrers=[D12,D10,D13],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+DecisionsEntry(name=A14,length=3,value: #square,
+	identities=[A14[0]=D14[0],A14[1]=D4[3],A14[2]=D15[0]],referrers=[D14,D4,D15],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+DecisionsEntry(name=A16,length=2,value: #cube,
+	identities=[A16[0]=D12[1],A16[1]=D10[2]],referrers=[D12,D10],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+DecisionsEntry(name=A17,length=4,value: #cube,
+	identities=[A17[0]=D13[1],A17[1]=D14[1],A17[2]=D18[0],A17[3]=D15[1]],referrers=[D13,D14,D18,D15],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9},{0..9}]
+DecisionsEntry(name=A19,length=2,value: #perfect,
+	identities=[A19[0]=D10[3],A19[1]=D13[2]],referrers=[D10,D13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+DecisionsEntry(name=A20,length=3,value: #palindrome,
+	identities=[A20[1]=D18[1],A20[2]=D15[2]],referrers=[D18,D15],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+DecisionsEntry(name=D1,length=3,value: #prime,
+	identities=[D1[0]=A1[0],D1[1]=A6[0],D1[2]=A9[0]],referrers=[A1,A6,A9],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+DecisionsEntry(name=D2,length=2,value: #triangular,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+DecisionsEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[3],D3[2]=A11[0]],referrers=[A3,A6,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+DecisionsEntry(name=D4,length=4,value: #perfect,
+	identities=[D4[0]=A3[1],D4[1]=A8[0],D4[2]=A11[1],D4[3]=A14[1]],referrers=[A3,A8,A11,A14],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9},{0..9}]
+DecisionsEntry(name=D5,length=3,value: #square,
+	identities=[D5[1]=A8[1],D5[2]=A11[2]],referrers=[A8,A11],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+DecisionsEntry(name=D7,length=2,value: #cube,
+	identities=[D7[0]=A6[2],D7[1]=A9[2]],referrers=[A6,A9],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+DecisionsEntry(name=D10,length=4,value: #Lucas,
+	identities=[D10[0]=A9[1],D10[1]=A12[1],D10[2]=A16[1],D10[3]=A19[0]],referrers=[A9,A12,A16,A19],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9},{1..9}]
+DecisionsEntry(name=D12,length=3,value: #Lucas,
+	identities=[D12[0]=A12[0],D12[1]=A16[0]],referrers=[A12,A16],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+DecisionsEntry(name=D13,length=3,value: #square,
+	identities=[D13[0]=A12[2],D13[1]=A17[0],D13[2]=A19[1]],referrers=[A12,A17,A19],
+	values={unknown},
+	digits=[{1..9},{1..9},{0..9}]
+DecisionsEntry(name=D14,length=2,value: #prime,
+	identities=[D14[0]=A14[0],D14[1]=A17[1]],referrers=[A14,A17],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+DecisionsEntry(name=D15,length=3,value: #triangular,
+	identities=[D15[0]=A14[2],D15[1]=A17[3],D15[2]=A20[2]],referrers=[A14,A17,A20],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+DecisionsEntry(name=D18,length=2,value: #square,
+	identities=[D18[0]=A17[2],D18[1]=A20[1]],referrers=[A17,A20],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+UPDATES-----------------------------
+solve: DecisionsEntry(name=A1,length=3,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
+	values={121,144,148,163,169,196,225,256,289,324,361,423,441,484,487,522,526,529,576,625,11 more,982},
+	digits=[{1..9},{2,4..9},{1..9}]
+solve: DecisionsEntry(name=A3,length=2,value: #prime,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: DecisionsEntry(name=A6,length=4,value: #Fibonacci,
+	identities=[A6[0]=D1[1],A6[1]=D2[1],A6[2]=D7[0],A6[3]=D3[1]],referrers=[D1,D2,D7,D3],
+	values={1597,1814,2584,4181,4852,5676,6765,7951},
+	digits=[{1,2,4..7},{1,5..9},{1,5..9},{1,2,4..7}]
+solve: DecisionsEntry(name=A8,length=2,value: #Catalan,
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5],
+	values={14,24,41,42},
+	digits=[{1,2,4},{1,2,4}]
+solve: DecisionsEntry(name=A9,length=3,value: #prime,
+	identities=[A9[0]=D1[2],A9[1]=D10[0],A9[2]=D7[1]],referrers=[D1,D10,D7],
+	values={112,113,118,119,124,125,127,128,131,133,134,136,137,139,142,145,146,149,151,152,198 more,997},
+	digits=[{1..9},{1..9},{1..9}]
+solve: DecisionsEntry(name=A11,length=3,value: #prime,
+	identities=[A11[0]=D3[2],A11[1]=D4[2],A11[2]=D5[2]],referrers=[D3,D4,D5],
+	values={101,103,104,106,107,109,112,113,118,119,124,125,127,128,131,133,134,136,137,139,223 more,997},
+	digits=[{1..9},{0..9},{1..9}]
+solve: DecisionsEntry(name=A12,length=3,value: #triangular,
+	identities=[A12[0]=D12[0],A12[1]=D10[1],A12[2]=D13[0]],referrers=[D12,D10,D13],
+	values={105,132,136,147,153,165,168,171,231,253,276,307,309,325,351,352,378,406,435,465,21 more,946},
+	digits=[{1..9},{0,2..7,9},{1..9}]
+solve: DecisionsEntry(name=A14,length=3,value: #square,
+	identities=[A14[0]=D14[0],A14[1]=D4[3],A14[2]=D15[0]],referrers=[D14,D4,D15],
+	values={121,144,148,163,169,196,225,256,289,324,361,423,441,484,487,522,526,529,576,625,11 more,982},
+	digits=[{1..9},{2,4..9},{1..9}]
+solve: DecisionsEntry(name=A16,length=2,value: #cube,
+	identities=[A16[0]=D12[1],A16[1]=D10[2]],referrers=[D12,D10],
+	values={27,46,64,72},
+	digits=[{2,4,6,7},{2,4,6,7}]
+solve: DecisionsEntry(name=A17,length=4,value: #cube,
+	identities=[A17[0]=D13[1],A17[1]=D14[1],A17[2]=D18[0],A17[3]=D15[1]],referrers=[D13,D14,D18,D15],
+	values={1331,1629,1728,2197,2385,2744,3194,3375,4096,4472,4913,5733,5832,6859,6904,7912,8271,9261,9586},
+	digits=[{1..9},{0..9},{1..9},{1..9}]
+solve: DecisionsEntry(name=A19,length=2,value: #perfect,
+	identities=[A19[0]=D10[3],A19[1]=D13[2]],referrers=[D10,D13],
+	values={28,82},
+	digits=[{2,8},{2,8}]
+solve: DecisionsEntry(name=A20,length=3,value: #palindrome,
+	identities=[A20[1]=D18[1],A20[2]=D15[2]],referrers=[D18,D15],
+	values={101,111,121,131,141,151,161,171,181,191,202,212,222,232,242,252,262,272,282,292,70 more,999},
+	digits=[{1..9},{0..9},{1..9}]
+solve: DecisionsEntry(name=D1,length=3,value: #prime,
+	identities=[D1[0]=A1[0],D1[1]=A6[0],D1[2]=A9[0]],referrers=[A1,A6,A9],
+	values={112,113,118,119,124,125,127,128,142,145,146,149,151,152,157,163,164,166,167,172,128 more,977},
+	digits=[{1..9},{1,2,4..7},{1..9}]
+solve: DecisionsEntry(name=D2,length=2,value: #triangular,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={12,15,19,21,28,45,51,54,55,66,78,82,87,91},
+	digits=[{2,4..9},{1,5..9}]
+solve: DecisionsEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[3],D3[2]=A11[0]],referrers=[A3,A6,A11],
+	values={147,153,165,168,171,253,276,325,351,352,378,465,523,528,561,564,649,666,672,741,4 more,946},
+	digits=[{1..9},{2,4..7},{1..9}]
+solve: DecisionsEntry(name=D4,length=4,value: #perfect,
+	identities=[D4[0]=A3[1],D4[1]=A8[0],D4[2]=A11[1],D4[3]=A14[1]],referrers=[A3,A8,A11,A14],
+	values={8128,8218},
+	digits=[{8},{1,2},{1,2},{8}]
+solve: DecisionsEntry(name=D5,length=3,value: #square,
+	identities=[D5[1]=A8[1],D5[2]=A11[2]],referrers=[A8,A11],
+	values={121,144,148,225,324,423,441,522,526,529,625,729,841,925,927},
+	digits=[{1..9},{2,4},{1..9}]
+solve: DecisionsEntry(name=D7,length=2,value: #cube,
+	identities=[D7[0]=A6[2],D7[1]=A9[2]],referrers=[A6,A9],
+	values={27,46,64,72},
+	digits=[{6,7},{2,4,6,7}]
+solve: DecisionsEntry(name=D10,length=4,value: #Lucas,
+	identities=[D10[0]=A9[1],D10[1]=A12[1],D10[2]=A16[1],D10[3]=A19[0]],referrers=[A9,A12,A16,A19],
+	values={2207,5778,7022,8775},
+	digits=[{2,5,7,8},{0,2,7},{2,7},{2,8}]
+solve: DecisionsEntry(name=D12,length=3,value: #Lucas,
+	identities=[D12[0]=A12[0],D12[1]=A16[0]],referrers=[A12,A16],
+	values={123,125,223,321,322,348,521,843},
+	digits=[{1..3,5,8},{2,4},{1..3,5,8}]
+solve: DecisionsEntry(name=D13,length=3,value: #square,
+	identities=[D13[0]=A12[2],D13[1]=A17[0],D13[2]=A19[1]],referrers=[A12,A17,A19],
+	values={148,225,256,289,522,652,841,982},
+	digits=[{1,2,5,6,8,9},{2,4,5,8},{2,8}]
+solve: DecisionsEntry(name=D14,length=2,value: #prime,
+	identities=[D14[0]=A14[0],D14[1]=A17[1]],referrers=[A14,A17],
+	values={11,13,14,16,17,19,23,29,31,32,34,35,37,38,41,43,47,53,59,61,13 more,98},
+	digits=[{1..9},{1..9}]
+solve: DecisionsEntry(name=D15,length=3,value: #triangular,
+	identities=[D15[0]=A14[2],D15[1]=A17[3],D15[2]=A20[2]],referrers=[A14,A17,A20],
+	values={132,136,147,153,165,168,171,231,253,276,325,351,352,378,435,465,496,523,528,534,13 more,946},
+	digits=[{1..9},{2..7,9},{1..9}]
+solve: DecisionsEntry(name=D18,length=2,value: #square,
+	identities=[D18[0]=A17[2],D18[1]=A20[1]],referrers=[A17,A20],
+	values={16,18,25,36,46,49,52,61,63,64,81,94},
+	digits=[{1..6,8,9},{1..6,8,9}]
+solve: DecisionsEntry(name=A1,length=3,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
+	values={121,144,148,163,169,196,225,256,289,324,361,423,441,484,487,522,526,529,576,625,11 more,982},
+	digits=[{1..9},{2,4..9},{1..9}]
+solve: DecisionsEntry(name=A3,length=2,value: #prime,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={38,83,89,98},
+	digits=[{3,8,9},{8}]
+solve: DecisionsEntry(name=A6,length=4,value: #Fibonacci,
+	identities=[A6[0]=D1[1],A6[1]=D2[1],A6[2]=D7[0],A6[3]=D3[1]],referrers=[D1,D2,D7,D3],
+	values={5676,6765},
+	digits=[{5,6},{6,7},{6,7},{5,6}]
+solve: DecisionsEntry(name=A8,length=2,value: #Catalan,
+	identities=[A8[0]=D4[1],A8[1]=D5[1]],referrers=[D4,D5],
+	values={14,24,41,42},
+	digits=[{1,2},{2,4}]
+solve: DecisionsEntry(name=A9,length=3,value: #prime,
+	identities=[A9[0]=D1[2],A9[1]=D10[0],A9[2]=D7[1]],referrers=[D1,D10,D7],
+	values={124,127,152,157,172,182,223,227,229,251,257,271,277,281,283,322,356,376,377,382,41 more,977},
+	digits=[{1..9},{2,5,7,8},{2,4,6,7}]
+solve: DecisionsEntry(name=A11,length=3,value: #prime,
+	identities=[A11[0]=D3[2],A11[1]=D4[2],A11[2]=D5[2]],referrers=[D3,D4,D5],
+	values={112,113,118,119,124,125,127,128,211,223,227,229,311,313,316,317,322,325,328,419,26 more,929},
+	digits=[{1..9},{1,2},{1..9}]
+solve: DecisionsEntry(name=A12,length=3,value: #triangular,
+	identities=[A12[0]=D12[0],A12[1]=D10[1],A12[2]=D13[0]],referrers=[D12,D10,D13],
+	values={105,171,276,309,325,378,501,523,528,672,825,873,903},
+	digits=[{1..3,5,8},{0,2,7},{1,2,5,6,8,9}]
+solve: DecisionsEntry(name=A14,length=3,value: #square,
+	identities=[A14[0]=D14[0],A14[1]=D4[3],A14[2]=D15[0]],referrers=[D14,D4,D15],
+	values={289,484,487,784,982},
+	digits=[{2,4,7,9},{8},{2,4,7,9}]
+solve: DecisionsEntry(name=A16,length=2,value: #cube,
+	identities=[A16[0]=D12[1],A16[1]=D10[2]],referrers=[D12,D10],
+	values={27,72},
+	digits=[{2},{2,7}]
+solve: DecisionsEntry(name=A17,length=4,value: #cube,
+	identities=[A17[0]=D13[1],A17[1]=D14[1],A17[2]=D18[0],A17[3]=D15[1]],referrers=[D13,D14,D18,D15],
+	values={2197,2385,2744,3194,3375,4472,4913,5733,5832,7912},
+	digits=[{2,4,5},{1,3,4,7..9},{1,3,4,8,9},{2..5,7}]
+solve: DecisionsEntry(name=A19,length=2,value: #perfect,
+	identities=[A19[0]=D10[3],A19[1]=D13[2]],referrers=[D10,D13],
+	values={28,82},
+	digits=[{2,8},{2,8}]
+solve: DecisionsEntry(name=A20,length=3,value: #palindrome,
+	identities=[A20[1]=D18[1],A20[2]=D15[2]],referrers=[D18,D15],
+	values={111,121,131,141,151,161,181,191,212,222,232,242,252,262,282,292,313,323,333,343,52 more,999},
+	digits=[{1..9},{1..6,8,9},{1..9}]
+solve: DecisionsEntry(name=D1,length=3,value: #prime,
+	identities=[D1[0]=A1[0],D1[1]=A6[0],D1[2]=A9[0]],referrers=[A1,A6,A9],
+	values={151,152,157,163,164,166,167,251,257,263,269,353,356,358,359,361,362,364,365,367,31 more,967},
+	digits=[{1..9},{5,6},{1..9}]
+solve: DecisionsEntry(name=D2,length=2,value: #triangular,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={66,78,87},
+	digits=[{6..8},{6,7}]
+solve: DecisionsEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[3],D3[2]=A11[0]],referrers=[A3,A6,A11],
+	values={153,168,253,351,352,861},
+	digits=[{3,8},{5,6},{1..3,8}]
+solve: DecisionsEntry(name=D4,length=4,value: #perfect,
+	identities=[D4[0]=A3[1],D4[1]=A8[0],D4[2]=A11[1],D4[3]=A14[1]],referrers=[A3,A8,A11,A14],
+	values={8128,8218},
+	digits=[{8},{1,2},{1,2},{8}]
+solve: DecisionsEntry(name=D5,length=3,value: #square,
+	identities=[D5[1]=A8[1],D5[2]=A11[2]],referrers=[A8,A11],
+	values={121,144,148,225,324,423,441,522,526,529,625,729,841,925,927},
+	digits=[{1..9},{2,4},{1..9}]
+solve: DecisionsEntry(name=D7,length=2,value: #cube,
+	identities=[D7[0]=A6[2],D7[1]=A9[2]],referrers=[A6,A9],
+	values={27,46,64,72},
+	digits=[{6,7},{2,4,6,7}]
+solve: DecisionsEntry(name=D10,length=4,value: #Lucas,
+	identities=[D10[0]=A9[1],D10[1]=A12[1],D10[2]=A16[1],D10[3]=A19[0]],referrers=[A9,A12,A16,A19],
+	values={2207,5778,7022,8775},
+	digits=[{2,5,7,8},{0,2,7},{2,7},{2,8}]
+solve: DecisionsEntry(name=D12,length=3,value: #Lucas,
+	identities=[D12[0]=A12[0],D12[1]=A16[0]],referrers=[A12,A16],
+	values={123,125,223,321,322,521},
+	digits=[{1..3,5},{2},{1..3,5}]
+solve: DecisionsEntry(name=D13,length=3,value: #square,
+	identities=[D13[0]=A12[2],D13[1]=A17[0],D13[2]=A19[1]],referrers=[A12,A17,A19],
+	values={148,225,256,522,652,841},
+	digits=[{1,2,5,6,8},{2,4,5},{2,8}]
+solve: DecisionsEntry(name=D14,length=2,value: #prime,
+	identities=[D14[0]=A14[0],D14[1]=A17[1]],referrers=[A14,A17],
+	values={14,17,19,23,29,32,34,37,41,43,47,71,73,74,79,89,91,92,97,98},
+	digits=[{2,4,7,9},{1,3,4,7..9}]
+solve: DecisionsEntry(name=D15,length=3,value: #triangular,
+	identities=[D15[0]=A14[2],D15[1]=A17[3],D15[2]=A20[2]],referrers=[A14,A17,A20],
+	values={132,147,231,253,276,352,435,534,649,672,741,946},
+	digits=[{2,4,7,9},{3..5,7},{1..7,9}]
+solve: DecisionsEntry(name=D18,length=2,value: #square,
+	identities=[D18[0]=A17[2],D18[1]=A20[1]],referrers=[A17,A20],
+	values={16,18,36,46,49,61,63,64,81,94},
+	digits=[{1,3,4,8,9},{1,3,4,6,8,9}]
+solve: DecisionsEntry(name=A3,length=2,value: #prime,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={38,83},
+	digits=[{3,8},{8}]
+solve: DecisionsEntry(name=A6,length=4,value: #Fibonacci,
+	identities=[A6[0]=D1[1],A6[1]=D2[1],A6[2]=D7[0],A6[3]=D3[1]],referrers=[D1,D2,D7,D3],
+	values={5676,6765},
+	digits=[{5,6},{6,7},{6,7},{5,6}]
+solve: DecisionsEntry(name=A9,length=3,value: #prime,
+	identities=[A9[0]=D1[2],A9[1]=D10[0],A9[2]=D7[1]],referrers=[D1,D10,D7],
+	values={124,127,152,157,172,182,223,227,229,251,257,271,277,281,283,322,356,376,377,382,41 more,977},
+	digits=[{1..9},{2,5,7,8},{2,4,6,7}]
+solve: DecisionsEntry(name=A11,length=3,value: #prime,
+	identities=[A11[0]=D3[2],A11[1]=D4[2],A11[2]=D5[2]],referrers=[D3,D4,D5],
+	values={112,113,118,119,124,125,127,128,211,223,227,229,311,313,316,317,322,325,328,421,15 more,928},
+	digits=[{1..3,8},{1,2},{1..9}]
+solve: DecisionsEntry(name=A12,length=3,value: #triangular,
+	identities=[A12[0]=D12[0],A12[1]=D10[1],A12[2]=D13[0]],referrers=[D12,D10,D13],
+	values={105,171,276,325,378,501,523,528,672,825,873},
+	digits=[{1..3,5},{0,2,7},{1,2,5,6,8}]
+solve: DecisionsEntry(name=A14,length=3,value: #square,
+	identities=[A14[0]=D14[0],A14[1]=D4[3],A14[2]=D15[0]],referrers=[D14,D4,D15],
+	values={289,484,487,784,982},
+	digits=[{2,4,7,9},{8},{2,4,7,9}]
+solve: DecisionsEntry(name=A16,length=2,value: #cube,
+	identities=[A16[0]=D12[1],A16[1]=D10[2]],referrers=[D12,D10],
+	values={27,72},
+	digits=[{2},{2,7}]
+solve: DecisionsEntry(name=A17,length=4,value: #cube,
+	identities=[A17[0]=D13[1],A17[1]=D14[1],A17[2]=D18[0],A17[3]=D15[1]],referrers=[D13,D14,D18,D15],
+	values={2197,2385,2744,3194,3375,4472,4913,5733,5832,7912},
+	digits=[{2,4,5},{1,3,4,7..9},{1,3,4,8,9},{3..5,7}]
+solve: DecisionsEntry(name=A20,length=3,value: #palindrome,
+	identities=[A20[1]=D18[1],A20[2]=D15[2]],referrers=[D18,D15],
+	values={111,131,141,161,181,191,212,232,242,262,282,292,313,333,343,363,383,393,414,434,28 more,999},
+	digits=[{1..7,9},{1,3,4,6,8,9},{1..7,9}]
+solve: DecisionsEntry(name=D1,length=3,value: #prime,
+	identities=[D1[0]=A1[0],D1[1]=A6[0],D1[2]=A9[0]],referrers=[A1,A6,A9],
+	values={151,152,157,163,164,166,167,251,257,263,269,353,356,358,359,361,362,364,365,367,31 more,967},
+	digits=[{1..9},{5,6},{1..9}]
+solve: DecisionsEntry(name=A1,length=3,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
+	values={163,169,289,361,484,487,576,675,676,784,961,982},
+	digits=[{1..7,9},{6..8},{1..7,9}]
+solve: DecisionsEntry(name=D2,length=2,value: #triangular,
+	identities=[D2[0]=A1[1],D2[1]=A6[1]],referrers=[A1,A6],
+	values={66,78,87},
+	digits=[{6..8},{6,7}]
+solve: DecisionsEntry(name=D3,length=3,value: #triangular,
+	identities=[D3[0]=A3[0],D3[1]=A6[3],D3[2]=A11[0]],referrers=[A3,A6,A11],
+	values={153,168,253,351,352,861},
+	digits=[{3,8},{5,6},{1..3,8}]
+solve: DecisionsEntry(name=D12,length=3,value: #Lucas,
+	identities=[D12[0]=A12[0],D12[1]=A16[0]],referrers=[A12,A16],
+	values={123,125,223,321,322,521},
+	digits=[{1..3,5},{2},{1..3,5}]
+solve: DecisionsEntry(name=D13,length=3,value: #square,
+	identities=[D13[0]=A12[2],D13[1]=A17[0],D13[2]=A19[1]],referrers=[A12,A17,A19],
+	values={148,225,256,522,652,841},
+	digits=[{1,2,5,6,8},{2,4,5},{2,8}]
+solve: DecisionsEntry(name=A19,length=2,value: #perfect,
+	identities=[A19[0]=D10[3],A19[1]=D13[2]],referrers=[D10,D13],
+	values={28,82},
+	digits=[{2,8},{2,8}]
+solve: DecisionsEntry(name=D14,length=2,value: #prime,
+	identities=[D14[0]=A14[0],D14[1]=A17[1]],referrers=[A14,A17],
+	values={14,17,19,23,29,32,34,37,41,43,47,71,73,74,79,89,91,92,97,98},
+	digits=[{2,4,7,9},{1,3,4,7..9}]
+solve: DecisionsEntry(name=D15,length=3,value: #triangular,
+	identities=[D15[0]=A14[2],D15[1]=A17[3],D15[2]=A20[2]],referrers=[A14,A17,A20],
+	values={132,147,231,253,276,352,435,534,649,672,741,946},
+	digits=[{2,4,7,9},{3..5,7},{1..7,9}]
+solve: DecisionsEntry(name=D18,length=2,value: #square,
+	identities=[D18[0]=A17[2],D18[1]=A20[1]],referrers=[A17,A20],
+	values={16,18,36,46,49,61,63,64,81,94},
+	digits=[{1,3,4,8,9},{1,3,4,6,8,9}]
+solve: DecisionsEntry(name=A3,length=2,value: #prime,
+	identities=[A3[0]=D3[0],A3[1]=D4[0]],referrers=[D3,D4],
+	values={38,83},
+	digits=[{3,8},{8}]
+solve: DecisionsEntry(name=D4,length=4,value: #perfect,
+	identities=[D4[0]=A3[1],D4[1]=A8[0],D4[2]=A11[1],D4[3]=A14[1]],referrers=[A3,A8,A11,A14],
+	values={8128,8218},
+	digits=[{8},{1,2},{1,2},{8}]
+solve: DecisionsEntry(name=A11,length=3,value: #prime,
+	identities=[A11[0]=D3[2],A11[1]=D4[2],A11[2]=D5[2]],referrers=[D3,D4,D5],
+	values={112,113,118,119,124,125,127,128,211,223,227,229,311,313,316,317,322,325,328,421,15 more,928},
+	digits=[{1..3,8},{1,2},{1..9}]
+solve: DecisionsEntry(name=D5,length=3,value: #square,
+	identities=[D5[1]=A8[1],D5[2]=A11[2]],referrers=[A8,A11],
+	values={121,144,148,225,324,423,441,522,526,529,625,729,841,925,927},
+	digits=[{1..9},{2,4},{1..9}]
+solve: DecisionsEntry(name=A12,length=3,value: #triangular,
+	identities=[A12[0]=D12[0],A12[1]=D10[1],A12[2]=D13[0]],referrers=[D12,D10,D13],
+	values={105,171,276,325,378,501,523,528,672,825,873},
+	digits=[{1..3,5},{0,2,7},{1,2,5,6,8}]
+solve: DecisionsEntry(name=D10,length=4,value: #Lucas,
+	identities=[D10[0]=A9[1],D10[1]=A12[1],D10[2]=A16[1],D10[3]=A19[0]],referrers=[A9,A12,A16,A19],
+	values={2207,5778,7022,8775},
+	digits=[{2,5,7,8},{0,2,7},{2,7},{2,8}]
+solve: DecisionsEntry(name=A1,length=3,value: #square,
+	identities=[A1[0]=D1[0],A1[1]=D2[0]],referrers=[D1,D2],
+	values={163,169,289,361,484,487,576,675,676,784,961,982},
+	digits=[{1..7,9},{6..8},{1..7,9}]
+solve: DecisionsEntry(name=D1,length=3,value: #prime,
+	identities=[D1[0]=A1[0],D1[1]=A6[0],D1[2]=A9[0]],referrers=[A1,A6,A9],
+	values={151,152,157,163,164,166,167,251,257,263,269,353,356,358,359,361,362,364,365,367,31 more,967},
+	digits=[{1..7,9},{5,6},{1..9}]
+Clue/Variable iterations=76, updates=46, elapsed 0:00:00.064742
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+A1, #square, values={163,169,289,361,484,487,576,675,676,784,961,982}
+A3, #prime, values={38,83}
+A6, #Fibonacci, values={5676,6765}
+A8, #Catalan, values={14,24,41,42}
+A9, #prime, values={124,127,152,157,172,182,223,227,229,251,257,271,277,281,283,322,356,376,377,382,41 more,977}
+A11, #prime, values={112,113,118,119,124,125,127,128,211,223,227,229,311,313,316,317,322,325,328,421,15 more,928}
+A12, #triangular, values={105,171,276,325,378,501,523,528,672,825,873}
+A14, #square, values={289,484,487,784,982}
+A16, #cube, values={27,72}
+A17, #cube, values={2197,2385,2744,3194,3375,4472,4913,5733,5832,7912}
+A19, #perfect, values={28,82}
+A20, #palindrome, values={111,131,141,161,181,191,212,232,242,262,282,292,313,333,343,363,383,393,414,434,28 more,999}
+D1, #prime, values={151,152,157,163,164,166,167,251,257,263,269,353,356,358,359,361,362,364,365,367,31 more,967}
+D2, #triangular, values={66,78,87}
+D3, #triangular, values={153,168,253,351,352,861}
+D4, #perfect, values={8128,8218}
+D5, #square, values={121,144,148,225,324,423,441,522,526,529,625,729,841,925,927}
+D7, #cube, values={27,46,64,72}
+D10, #Lucas, values={2207,5778,7022,8775}
+D12, #Lucas, values={123,125,223,321,322,521}
+D13, #square, values={148,225,256,522,652,841}
+D14, #prime, values={14,17,19,23,29,32,34,37,41,43,47,71,73,74,79,89,91,92,97,98}
+D15, #triangular, values={132,147,231,253,276,352,435,534,649,672,741,946}
+D18, #square, values={16,18,36,46,49,61,63,64,81,94}
++--+--+--+--+--+--+
+| ?  ?  ?| ?  8| ?|
++      --+     +  +
+| ?  ?  ?  ?| ?  ?|
++   --+     +     +
+| ?  ?  ?| ?  ?  ?|
++--+   --+--+   --+
+| ?  ?  ?| ?  8  ?|
++        +   --+  +
+| 2  ?| ?  ?  ?  ?|
++     +   --+     +
+| ?| ?  ?| ?  ?  ?|
++--+--+--+--+--+--+
+ITERATE SOLUTIONS-----------------------------
+SOLUTION-----------------------------
+Puzzle Summary
+A1, #square, values={484}
+A3, #prime, values={38}
+A6, #Fibonacci, values={6765}
+A8, #Catalan, values={24}
+A9, #prime, values={754}
+A11, #prime, values={211}
+A12, #triangular, values={276}
+A14, #square, values={982}
+A16, #cube, values={27}
+A17, #cube, values={5733}
+A19, #perfect, values={82}
+A20, #palindrome, values={161}
+D1, #prime, values={467}
+D2, #triangular, values={87}
+D3, #triangular, values={352}
+D4, #perfect, values={8218}
+D5, #square, values={441}
+D7, #cube, values={64}
+D10, #Lucas, values={5778}
+D12, #Lucas, values={223}
+D13, #square, values={652}
+D14, #prime, values={97}
+D15, #triangular, values={231}
+D18, #square, values={36}
++--+--+--+--+--+--+
+| 4  8  4| 3  8| 4|
++      --+     +  +
+| 6  7  6  5| 2  4|
++   --+     +     +
+| 7  5  4| 2  1  1|
++--+   --+--+   --+
+| 2  7  6| 9  8  2|
++        +   --+  +
+| 2  7| 5  7  3  3|
++     +   --+     +
+| 3| 8  2| 1  6  1|
++--+--+--+--+--+--+
+Solution count=1
+

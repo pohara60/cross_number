@@ -3,6 +3,7 @@
 import 'dart:collection';
 import 'dart:math';
 
+import 'package:crossnumber/dieanotherday/dad_test.dart';
 import 'package:powers/powers.dart';
 
 import 'expression.dart';
@@ -36,6 +37,7 @@ void initializeGenerators(Map<String, Generator> generators) {
   generators['pyramidal'] = Generator('pyramidal', generateSquarePyramidals);
   generators['fibonacci'] = Generator('fibonacci', generateFibonacci);
   generators['catalan'] = Generator('catalan', generateCatalan);
+  generators['perfect'] = Generator('perfect', generatePerfect);
   generators['square'] = Generator('square', generateSquares);
   generators['cube'] = Generator('cube', generateCubes);
   generators['power'] = Generator('power', generatePowers);
@@ -358,6 +360,30 @@ Iterable<int> generateCatalan(num min, num max) sync* {
     var next = last * 2 * (2 * length - 1) ~/ (length + 1);
     last = next;
     catalan.add(last);
+  }
+}
+
+List<int> perfect = [
+  6,
+  28,
+  496,
+  8128,
+  33550336,
+  8589869056,
+  137438691328,
+  2305843008139952128
+];
+Iterable<int> generatePerfect(num min, num max) sync* {
+  int length = perfect.length;
+  var index = 0;
+  while (true) {
+    while (index < length) {
+      var element = perfect[index++];
+      if (element < min) continue;
+      if (element > max) return;
+      yield element;
+    }
+    throw SolveException('Perfect numbers are not generated dynamically');
   }
 }
 
