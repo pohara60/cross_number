@@ -5,6 +5,7 @@ import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
+import 'package:crossnumber/src/utils/set.dart';
 
 /// The main solver for cross number puzzles.
 ///
@@ -123,7 +124,7 @@ class Solver {
           _updated = true;
           if (trace) {
             print(
-                '    Clue ${clue.id} updated: $originalCount -> ${clue.possibleValues.length}');
+                '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
           }
         }
       }
@@ -153,7 +154,7 @@ class Solver {
               localChanged = true;
               if (trace) {
                 print(
-                    '    Entry ${entry.id} updated: $originalCount -> ${entry.possibleValues.length}');
+                    '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${clue.possibleValues.toShortString()}');
               }
             }
           }
@@ -192,7 +193,7 @@ class Solver {
                   crossChanged = true;
                   if (trace) {
                     print(
-                        '    Across Entry ${acrossEntry.id} updated by grid constraint: ${acrossValues.length} -> ${newAcrossValues.length}');
+                        '    Across Entry ${acrossEntry.id}: ${acrossValues.length} -> ${newAcrossValues.length} ${newAcrossValues.toShortString()}');
                   }
                 }
 
@@ -211,7 +212,7 @@ class Solver {
                   crossChanged = true;
                   if (trace) {
                     print(
-                        '    Down Entry ${downEntry.id} updated by grid constraint: ${downValues.length} -> ${newDownValues.length}');
+                        '    Down Entry ${downEntry.id}: ${downValues.length} -> ${newDownValues.length} ${newDownValues.toShortString()}');
                   }
                 }
               } while (crossChanged);
@@ -232,7 +233,7 @@ class Solver {
               localChanged = true;
               if (trace) {
                 print(
-                    '    Clue ${clue.id} updated: $originalSize -> ${clue.possibleValues.length}');
+                    '    Clue ${clue.id}: $originalSize -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
               }
             }
           }
@@ -246,14 +247,14 @@ class Solver {
         }
       }
 
-      // Re-solve clues with updated variable values
+      // Re-solve clues with variable val ${clue.possibleValues.toShortString()}ues
       for (var clue in puzzle.clues.values) {
         final originalSize = clue.possibleValues.length;
         if (clue.solve(puzzle)) {
           localChanged = true;
           if (trace) {
             print(
-                '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues.length}');
+                '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
           }
         }
       }

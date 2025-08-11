@@ -1,13 +1,13 @@
 import 'package:crossnumber/src/solver.dart';
-import '../puzzles/simple_puzzle.dart';
+import '../puzzles/puzzle3.dart';
 
 void main(List<String> arguments) {
   print('Cross Number Solver v2 CLI');
 
   // For now, directly load the simple puzzle.
-  final puzzle = simplePuzzle();
+  final puzzle = puzzle3();
 
-  final solver = Solver(puzzle);
+  final solver = Solver(puzzle, trace: true);
   solver.solve();
 
   print('\nSolution:');

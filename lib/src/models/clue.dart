@@ -6,6 +6,7 @@ import 'package:crossnumber/src/expressions/evaluator.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
+import 'package:crossnumber/src/utils/set.dart';
 
 import 'constraint.dart';
 import 'expression_constraint.dart';
@@ -110,7 +111,7 @@ class Clue {
           if (newPossibleValues.length < variable.possibleValues.length) {
             if (trace) {
               print(
-                  '    Variable ${variable.name} updated by clue ${this.id}: ${variable.possibleValues.length} -> ${newPossibleValues.length}');
+                  '    Variable ${variable.name} updated by clue ${this.id}: ${variable.possibleValues.length} -> ${newPossibleValues.length} ${newPossibleValues.toShortString()}');
             }
             variable.possibleValues = newPossibleValues;
             updated = true;
