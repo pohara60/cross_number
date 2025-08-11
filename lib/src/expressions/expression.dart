@@ -20,6 +20,7 @@ abstract class ExpressionVisitor<R> {
   R visitGroupingExpression(GroupingExpression expression, {required int min, required int max});
   R visitGridEntryExpression(GridEntryExpression expression, {required int min, required int max});
   R visitGeneratorExpression(GeneratorExpression expression, {required int min, required int max});
+  R visitMonadicExpression(MonadicExpression expression, {required int min, required int max});
 }
 
 /// An expression node representing a literal number.
@@ -110,6 +111,18 @@ class GridEntryExpression extends Expression {
   }
 }
 
+class MonadicExpression extends Expression {
+  final Token operator;
+  final Expression right;
+
+  MonadicExpression(this.operator, this.right);
+
+  @override
+  R accept<R>(ExpressionVisitor<R> visitor, {required int min, required int max}) {
+    return visitor.visitMonadicExpression(this, min: min, max: max);
+  }
+}
+
 /// The types of tokens that can be produced by the scanner.
 enum TokenType {
   // Single-character tokens.
@@ -120,6 +133,7 @@ enum TokenType {
   STAR,
   SLASH,
   HASH,
+  DOLLAR,
 
   // Literals.
   NUMBER,
@@ -182,5 +196,10 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
   @override
   void visitGeneratorExpression(GeneratorExpression expression, {required int min, required int max}) {
     // TODO: Handle generator expressions if needed for variable extraction.
+  }
+
+  @override
+  void visitMonadicExpression(MonadicExpression expression, {required int min, required int max}) {
+    expression.right.accept(this, min: min, max: max);
   }
 }

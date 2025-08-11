@@ -28,20 +28,41 @@ class Parser {
   void _scanToken() {
     final c = _advance();
     switch (c) {
-      case '(': _addToken(TokenType.LEFT_PAREN); break;
-      case ')': _addToken(TokenType.RIGHT_PAREN); break;
-      case '+': _addToken(TokenType.PLUS); break;
-      case '-': _addToken(TokenType.MINUS); break;
-      case '*': _addToken(TokenType.STAR); break;
-      case '/': _addToken(TokenType.SLASH); break;
-      case '.': _addToken(TokenType.DOT); break;
-      case '#': _addToken(TokenType.HASH); break;
+      case '(':
+        _addToken(TokenType.LEFT_PAREN);
+        break;
+      case ')':
+        _addToken(TokenType.RIGHT_PAREN);
+        break;
+      case '+':
+        _addToken(TokenType.PLUS);
+        break;
+      case '-':
+        _addToken(TokenType.MINUS);
+        break;
+      case '*':
+        _addToken(TokenType.STAR);
+        break;
+      case '/':
+        _addToken(TokenType.SLASH);
+        break;
+      case '.':
+        _addToken(TokenType.DOT);
+        break;
+      case '#':
+        _addToken(TokenType.HASH);
+        break;
+      case '\$':
+        _addToken(TokenType.DOLLAR);
+        break;
+      case '\n':
+        _line++;
+        break;
       case ' ':
       case '\r':
       case '\t':
         // Ignore whitespace.
         break;
-      case '\n': _line++; break;
       default:
         if (_isDigit(c)) {
           _numberOrIdentifier();
@@ -65,7 +86,8 @@ class Parser {
       }
       _addToken(TokenType.IDENTIFIER);
     } else {
-      _addToken(TokenType.NUMBER, num.parse(source.substring(_start, _current)));
+      _addToken(
+          TokenType.NUMBER, num.parse(source.substring(_start, _current)));
     }
   }
 
@@ -75,8 +97,6 @@ class Parser {
     }
     _addToken(TokenType.IDENTIFIER);
   }
-
-  
 
   bool _isAtEnd() {
     return _current >= source.length;
@@ -155,6 +175,12 @@ class Parser {
       final operator = _previous();
       final right = _unary();
       return UnaryExpression(operator, right);
+    }
+    if (_match([TokenType.DOLLAR])) {
+      final operator =
+          _consume(TokenType.IDENTIFIER, "Expect function name after '\$'");
+      final right = _primary();
+      return MonadicExpression(operator, right);
     }
 
     return _primary();

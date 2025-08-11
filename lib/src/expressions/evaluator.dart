@@ -1,6 +1,7 @@
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'expression.dart';
 import 'generators.dart';
+import 'monadic.dart';
 
 /// Evaluates an [Expression] tree to a list of possible numerical results.
 ///
@@ -9,6 +10,7 @@ import 'generators.dart';
 class Evaluator implements ExpressionVisitor<List<int>> {
   final PuzzleDefinition puzzle;
   final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
+  final MonadicFunctionRegistry _monadicFunctionRegistry = MonadicFunctionRegistry();
 
   /// Creates a new evaluator with the given [puzzle] context.
   Evaluator(this.puzzle);
@@ -124,5 +126,15 @@ class Evaluator implements ExpressionVisitor<List<int>> {
       return entry.possibleValues.where((value) => value >= min && value <= max).toList();
     }
     throw Exception('Entry ${expression.entryId} not found in puzzle definition.');
+  }
+
+  @override
+  List<int> visitMonadicExpression(MonadicExpression expression, {required int min, required int max}) {
+    final values = expression.right.accept(this, min: -10000, max: 10000);
+    final function = _monadicFunctionRegistry.get(expression.operator.lexeme);
+    if (function != null) {
+      return function(values).where((value) => value >= min && value <= max).toList();
+    }
+    throw Exception('Unknown monadic function: ${expression.operator.lexeme}');
   }
 }
