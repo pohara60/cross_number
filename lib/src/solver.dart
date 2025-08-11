@@ -81,26 +81,17 @@ class Solver {
     print('Variables:');
     for (var variable in puzzle.variables.values) {
       print(
-          '${variable.name}: ${variable.possibleValues.length} possible values');
-      if (variable.possibleValues.length < 10) {
-        print('  ${variable.possibleValues}');
-      }
+          '${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
     }
     print('Clues:');
     for (var clue in puzzle.clues.values) {
-      print('${clue.id}: ${clue.possibleValues.length} possible values');
-      if (clue.possibleValues.length < 10) {
-        print('  ${clue.possibleValues}');
-      }
+      print(
+          '${clue.id}: ${clue.possibleValues.length}  ${clue.possibleValues.toShortString()}');
     }
     print('Entries:');
     for (var entry in puzzle.entries.values) {
-      print('${entry.id}: ');
-      if (entry.possibleValues.length == 1) {
-        print('  ${entry.possibleValues.first.toString().split('').join(':')}');
-      } else {
-        print('  ?');
-      }
+      print(
+          '${entry.id}: ${entry.possibleValues.length}  ${entry.possibleValues.toShortString()}');
     }
   }
 
