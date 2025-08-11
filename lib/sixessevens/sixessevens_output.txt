@@ -1,0 +1,362 @@
+Puzzle
+Clue SixesSevensClue(name=A1,length=3,value: $multiple ED3,
+	referrers=[A1],
+	values={unknown}
+Clue SixesSevensClue(name=A4,length=3,value: $multiple ED5,
+	referrers=[A4],
+	values={unknown}
+Clue SixesSevensClue(name=A7,length=2,value: ED2 + #prime,
+	referrers=[A7],
+	values={unknown}
+Clue SixesSevensClue(name=A8,length=2,value: $prime $factor ED7,
+	referrers=[A8],
+	values={unknown}
+Clue SixesSevensClue(name=A10,length=2,value: #square - ED5,
+	referrers=[A10],
+	values={unknown}
+Clue SixesSevensClue(name=A12,length=2,value: $divisor ED6,
+	referrers=[A12],
+	values={unknown}
+Clue SixesSevensClue(name=A13,length=3,value: #triangular,
+	referrers=[A13],
+	values={unknown}
+Clue SixesSevensClue(name=A14,length=3,value: EA14 - #triangular,
+	referrers=[A14],
+	values={unknown}
+Clue SixesSevensClue(name=D2,length=2,value: $squareroot EA1,
+	referrers=[D2],
+	values={unknown}
+Clue SixesSevensClue(name=D3,length=2,value: #prime,
+	referrers=[D3],
+	values={unknown}
+Clue SixesSevensClue(name=D4,length=2,value: $divisor EA4,
+	referrers=[D4],
+	values={unknown}
+Clue SixesSevensClue(name=D5,length=2,value: #odd,
+	referrers=[D5],
+	values={unknown}
+Clue SixesSevensClue(name=D6,length=3,value: #triangular,
+	referrers=[D6],
+	values={unknown}
+Clue SixesSevensClue(name=D7,length=3,value: #square,
+	referrers=[D7],
+	values={unknown}
+Clue SixesSevensClue(name=D9,length=2,value: $divisor EA13,
+	referrers=[D9],
+	values={unknown}
+Clue SixesSevensClue(name=D10,length=2,value: #square,
+	referrers=[D10],
+	values={unknown}
+Clue SixesSevensClue(name=D11,length=2,value: $multiple ED5,
+	referrers=[D11],
+	values={unknown}
+Clue SixesSevensClue(name=D12,length=2,value: EA14/ED11,
+	referrers=[D12],
+	values={unknown}
+Entry SixesSevensEntry(name=A1,length=3,value: $jumbledigits6and7 A1,
+	identities=[A1[1]=D2[0],A1[2]=D3[0]],referrers=[D2,D3,D2],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+Entry SixesSevensEntry(name=D2,length=2,value: $jumbledigits6and7 D2 | (A7-#prime),
+	identities=[D2[0]=A1[1],D2[1]=A7[1]],referrers=[A1,A7,A7],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D3,length=2,value: $jumbledigits6and7 D3,
+	identities=[D3[0]=A1[2],D3[1]=A8[0]],referrers=[A1,A8,A1],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry SixesSevensEntry(name=A4,length=3,value: $jumbledigits6and7 A4,
+	identities=[A4[0]=D4[0],A4[1]=D5[0],A4[2]=D6[0]],referrers=[D4,D5,D6,D4],
+	values={unknown},
+	digits=[{1..9},{1..9},{1..9}]
+Entry SixesSevensEntry(name=D4,length=2,value: $jumbledigits6and7 D4,
+	identities=[D4[0]=A4[0],D4[1]=A8[1]],referrers=[A4,A8],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D5,length=2,value: $jumbledigits6and7 D5 | (#square-A10),
+	identities=[D5[0]=A4[1]],referrers=[A4,A4,A10,D11],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D6,length=3,value: $jumbledigits6and7 D6,
+	identities=[D6[0]=A4[2],D6[2]=A12[1]],referrers=[A4,A12,A12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry SixesSevensEntry(name=A7,length=2,value: $jumbledigits6and7 A7,
+	identities=[A7[0]=D7[0],A7[1]=D2[1]],referrers=[D7,D2],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D7,length=3,value: $jumbledigits6and7 D7,
+	identities=[D7[0]=A7[0],D7[2]=A13[0]],referrers=[A7,A13,A8],
+	values={unknown},
+	digits=[{1..9},{0..9},{1..9}]
+Entry SixesSevensEntry(name=A8,length=2,value: $jumbledigits6and7 A8,
+	identities=[A8[0]=D3[1],A8[1]=D4[1]],referrers=[D3,D4],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D9,length=2,value: $jumbledigits6and7 D9,
+	identities=[D9[1]=A13[1]],referrers=[A13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=A10,length=2,value: $jumbledigits6and7 A10,
+	identities=[A10[0]=D10[0],A10[1]=D11[0]],referrers=[D10,D11,D5],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry SixesSevensEntry(name=D10,length=2,value: $jumbledigits6and7 D10,
+	identities=[D10[0]=A10[0],D10[1]=A13[2]],referrers=[A10,A13],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D11,length=2,value: $jumbledigits6and7 D11 | (EA14/D12),
+	identities=[D11[0]=A10[1],D11[1]=A14[0]],referrers=[A10,A14,D12],
+	values={unknown},
+	digits=[{1..9},{1..9}]
+Entry SixesSevensEntry(name=A12,length=2,value: $jumbledigits6and7 A12,
+	identities=[A12[0]=D12[0],A12[1]=D6[2]],referrers=[D12,D6],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=D12,length=2,value: $jumbledigits6and7 D12,
+	identities=[D12[0]=A12[0],D12[1]=A14[1]],referrers=[A12,A14,D11],
+	values={unknown},
+	digits=[{1..9},{0..9}]
+Entry SixesSevensEntry(name=A13,length=3,value: $jumbledigits6and7 A13,
+	identities=[A13[0]=D7[2],A13[1]=D9[1],A13[2]=D10[1]],referrers=[D7,D9,D10,D9],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+Entry SixesSevensEntry(name=A14,length=3,value: $jumbledigits6and7 A14 | (A14+#triangular) | (D12*ED11),
+	identities=[A14[0]=D11[1],A14[1]=D12[1]],referrers=[D11,D12,A14,D12],
+	values={unknown},
+	digits=[{1..9},{0..9},{0..9}]
+UPDATES-----------------------------
+Eval SixesSevensEntry A1 cartesianCount=900, elapsed 0:00:39.362246
+Solve Error: Entry A1 ($jumbledigits6and7 A1) no solution!
+Eval SixesSevensEntry D2 cartesianCount=90, elapsed 0:00:00.008063
+Solve Error: Entry D2 ($jumbledigits6and7 D2 | (A7-#prime)) no solution!
+Eval SixesSevensEntry D3 cartesianCount=90, elapsed 0:00:00.007393
+Solve Error: Entry D3 ($jumbledigits6and7 D3) no solution!
+Eval SixesSevensEntry A4 cartesianCount=900, elapsed 0:00:00.079151
+Solve Error: Entry A4 ($jumbledigits6and7 A4) no solution!
+Eval SixesSevensEntry D4 cartesianCount=90, elapsed 0:00:00.007643
+Solve Error: Entry D4 ($jumbledigits6and7 D4) no solution!
+Eval SixesSevensEntry D5 cartesianCount=90, elapsed 0:00:00.006940
+Solve Error: Entry D5 ($jumbledigits6and7 D5 | (#square-A10)) no solution!
+Eval SixesSevensEntry D6 cartesianCount=900, elapsed 0:00:00.111313
+Solve Error: Entry D6 ($jumbledigits6and7 D6) no solution!
+Eval SixesSevensEntry A7 cartesianCount=90, elapsed 0:00:00.011625
+Solve Error: Entry A7 ($jumbledigits6and7 A7) no solution!
+Eval SixesSevensEntry D7 cartesianCount=900, elapsed 0:00:00.119623
+Solve Error: Entry D7 ($jumbledigits6and7 D7) no solution!
+Eval SixesSevensEntry A8 cartesianCount=90, elapsed 0:00:00.009679
+Solve Error: Entry A8 ($jumbledigits6and7 A8) no solution!
+Eval SixesSevensEntry D9 cartesianCount=90, elapsed 0:00:00.015266
+Solve Error: Entry D9 ($jumbledigits6and7 D9) no solution!
+Eval SixesSevensEntry A10 cartesianCount=90, elapsed 0:00:00.011803
+Solve Error: Entry A10 ($jumbledigits6and7 A10) no solution!
+Eval SixesSevensEntry D10 cartesianCount=90, elapsed 0:00:00.013754
+Solve Error: Entry D10 ($jumbledigits6and7 D10) no solution!
+Eval SixesSevensEntry D11 cartesianCount=90, elapsed 0:00:00.010758
+Eval SixesSevensEntry D11 cartesianCount=900, elapsed 0:00:00.087313
+Solve Error: Entry D11 ($jumbledigits6and7 D11 | (EA14/D12)) no solution!
+Eval SixesSevensEntry A12 cartesianCount=90, elapsed 0:00:00.009639
+Solve Error: Entry A12 ($jumbledigits6and7 A12) no solution!
+Eval SixesSevensEntry D12 cartesianCount=90, elapsed 0:00:00.009891
+Solve Error: Entry D12 ($jumbledigits6and7 D12) no solution!
+Eval SixesSevensEntry A13 cartesianCount=900, elapsed 0:00:00.095913
+Solve Error: Entry A13 ($jumbledigits6and7 A13) no solution!
+Eval SixesSevensEntry A14 cartesianCount=900, elapsed 0:00:00.093648
+Eval SixesSevensEntry A14 cartesianCount=900, elapsed 0:00:00.047331
+Eval SixesSevensEntry A14 cartesianCount=81, elapsed 0:00:00.009934
+Solve Error: Entry A14 ($jumbledigits6and7 A14 | (A14+#triangular) | (D12*ED11)) no solution!
+Eval SixesSevensClue A1 cartesianCount=81, elapsed 0:00:00.001559
+solve: SixesSevensClue(name=A1,length=3,value: $multiple ED3,
+	referrers=[A1],
+	values={100,102,104..106,108,110..112,114..124,545 more,999}
+Entry D3={11..19,21..29,31,32,61 more,99}
+Eval SixesSevensClue A4 cartesianCount=90, elapsed 0:00:00.001141
+solve: SixesSevensClue(name=A4,length=3,value: $multiple ED5,
+	referrers=[A4],
+	values={100,102,104..106,108,110..112,114..124,545 more,999}
+Entry D5={10..29,70 more,99}
+Eval SixesSevensClue A7 cartesianCount=90, elapsed 0:00:00.002672
+solve: SixesSevensClue(name=A7,length=2,value: ED2 + #prime,
+	referrers=[A7],
+	values={12..31,68 more,99}
+Entry D2={10..29,68 more,97}
+Eval SixesSevensClue A8 cartesianCount=810, elapsed 0:00:00.011720
+solve: SixesSevensClue(name=A8,length=2,value: $prime $factor ED7,
+	referrers=[A8],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Entry D7={102,104,106,111,114..119,121..124,129,132..134,136,138,396 more,999}
+Eval SixesSevensClue A10 cartesianCount=90, elapsed 0:00:00.001065
+solve: SixesSevensClue(name=A10,length=2,value: #square - ED5,
+	referrers=[A10],
+	values={10..29,70 more,99}
+Eval SixesSevensClue A12 cartesianCount=900, elapsed 0:00:00.005108
+solve: SixesSevensClue(name=A12,length=2,value: $divisor ED6,
+	referrers=[A12],
+	values={10..29,70 more,99}
+Entry D6={100,102,104..106,108,110..112,114..124,545 more,999}
+solve: SixesSevensClue(name=A13,length=3,value: #triangular,
+	referrers=[A13],
+	values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561,11 more,990}
+Eval SixesSevensClue A14 cartesianCount=900, elapsed 0:00:00.016141
+solve: SixesSevensClue(name=A14,length=3,value: EA14 - #triangular,
+	referrers=[A14],
+	values={100..119,879 more,998}
+Entry A14={101..120,879 more,999}
+Eval SixesSevensClue D2 cartesianCount=729, elapsed 0:00:00.079218
+solve: SixesSevensClue(name=D2,length=2,value: $squareroot EA1,
+	referrers=[D2],
+	values={11..19,21..29,31}
+Entry A1={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961}
+solve: SixesSevensClue(name=D3,length=2,value: #prime,
+	referrers=[D3],
+	values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Eval SixesSevensClue D4 cartesianCount=729, elapsed 0:00:00.001537
+solve: SixesSevensClue(name=D4,length=2,value: $divisor EA4,
+	referrers=[D4],
+	values={11..19,21..29,31,32,61 more,99}
+Entry A4={111,112,114..119,121..126,128,129,132..135,411 more,999}
+solve: SixesSevensClue(name=D5,length=2,value: #odd,
+	referrers=[D5],
+	values={11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,25 more,99}
+solve: SixesSevensClue(name=D6,length=3,value: #triangular,
+	referrers=[D6],
+	values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561,11 more,990}
+solve: SixesSevensClue(name=D7,length=3,value: #square,
+	referrers=[D7],
+	values={100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
+Eval SixesSevensClue D9 cartesianCount=900, elapsed 0:00:00.002412
+solve: SixesSevensClue(name=D9,length=2,value: $divisor EA13,
+	referrers=[D9],
+	values={10..29,70 more,99}
+Entry A13={100,102,104..106,108,110..112,114..124,545 more,999}
+solve: SixesSevensClue(name=D10,length=2,value: #square,
+	referrers=[D10],
+	values={16,25,36,49,64,81}
+Eval SixesSevensClue D11 cartesianCount=90, elapsed 0:00:00.000232
+solve: SixesSevensClue(name=D11,length=2,value: $multiple ED5,
+	referrers=[D11],
+	values={20,22,24,26,28,30,32..34,36,38..40,42,44..46,48,50,51,38 more,99}
+Entry D5={10..29,20 more,49}
+Eval SixesSevensClue D12 cartesianCount=72819, elapsed 0:00:00.035200
+solve: SixesSevensClue(name=D12,length=2,value: EA14/ED11,
+	referrers=[D12],
+	values={10..29,61 more,90}
+Entry A14={110,120,121,130,132,140,143,144,150,154,156,160,165,168..170,176,180,182,187,394 more,999}
+Entry D11={11..19,21..29,31,32,61 more,99}
+Eval SixesSevensClue A1 cartesianCount=81, elapsed 0:00:00.000676
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.064699
+Solve Error: Entry A1 ($jumbledigits6and7 A1) no solution!
+Eval SixesSevensEntry D3 cartesianCount=21, elapsed 0:00:00.002964
+Solve Error: Entry D3 ($jumbledigits6and7 D3) no solution!
+Eval SixesSevensEntry A8 cartesianCount=21, elapsed 0:00:00.002690
+Solve Error: Entry A8 ($jumbledigits6and7 A8) no solution!
+Eval SixesSevensClue A4 cartesianCount=40, elapsed 0:00:00.000519
+solve: SixesSevensClue(name=A4,length=3,value: $multiple ED5,
+	referrers=[A4],
+	values={100,102,104,105,108,110..112,114..117,119..121,123..126,128,465 more,999}
+Eval SixesSevensEntry A4 cartesianCount=485, elapsed 0:00:00.052658
+Solve Error: Entry A4 ($jumbledigits6and7 A4) no solution!
+Eval SixesSevensEntry D5 cartesianCount=45, elapsed 0:00:00.006213
+Solve Error: Entry D5 ($jumbledigits6and7 D5 | (#square-A10)) no solution!
+Eval SixesSevensClue A7 cartesianCount=88, elapsed 0:00:00.000703
+Eval SixesSevensEntry A7 cartesianCount=88, elapsed 0:00:00.012871
+Solve Error: Entry A7 ($jumbledigits6and7 A7) no solution!
+Eval SixesSevensEntry D2 cartesianCount=19, elapsed 0:00:00.002205
+Solve Error: Entry D2 ($jumbledigits6and7 D2 | (A7-#prime)) no solution!
+Eval SixesSevensClue A8 cartesianCount=416, elapsed 0:00:00.001426
+Eval SixesSevensEntry D7 cartesianCount=22, elapsed 0:00:00.002378
+Solve Error: Entry D7 ($jumbledigits6and7 D7) no solution!
+Eval SixesSevensEntry A13 cartesianCount=31, elapsed 0:00:00.004048
+Solve Error: Entry A13 ($jumbledigits6and7 A13) no solution!
+Eval SixesSevensClue A10 cartesianCount=40, elapsed 0:00:00.000197
+Eval SixesSevensEntry A10 cartesianCount=90, elapsed 0:00:00.010076
+Solve Error: Entry A10 ($jumbledigits6and7 A10) no solution!
+Eval SixesSevensClue A12 cartesianCount=565, elapsed 0:00:00.001316
+Eval SixesSevensEntry A12 cartesianCount=90, elapsed 0:00:00.009809
+Solve Error: Entry A12 ($jumbledigits6and7 A12) no solution!
+Eval SixesSevensEntry D6 cartesianCount=31, elapsed 0:00:00.003897
+Solve Error: Entry D6 ($jumbledigits6and7 D6) no solution!
+Eval SixesSevensClue A14 cartesianCount=414, elapsed 0:00:00.003372
+solve: SixesSevensClue(name=A14,length=3,value: EA14 - #triangular,
+	referrers=[A14],
+	values={100..119,876 more,998}
+Eval SixesSevensEntry A14 cartesianCount=896, elapsed 0:00:00.102864
+Eval SixesSevensEntry A14 cartesianCount=896, elapsed 0:00:00.015592
+Eval SixesSevensEntry A14 cartesianCount=81, elapsed 0:00:00.006812
+Solve Error: Entry A14 ($jumbledigits6and7 A14 | (A14+#triangular) | (D12*ED11)) no solution!
+Eval SixesSevensEntry D11 cartesianCount=58, elapsed 0:00:00.006601
+Eval SixesSevensEntry D11 cartesianCount=414, elapsed 0:00:00.047305
+Solve Error: Entry D11 ($jumbledigits6and7 D11 | (EA14/D12)) no solution!
+Eval SixesSevensEntry D12 cartesianCount=81, elapsed 0:00:00.008797
+Solve Error: Entry D12 ($jumbledigits6and7 D12) no solution!
+Eval SixesSevensClue D2 cartesianCount=19, elapsed 0:00:00.000097
+Eval SixesSevensClue D4 cartesianCount=431, elapsed 0:00:00.001131
+Eval SixesSevensEntry D4 cartesianCount=81, elapsed 0:00:00.009374
+Solve Error: Entry D4 ($jumbledigits6and7 D4) no solution!
+Eval SixesSevensClue D9 cartesianCount=565, elapsed 0:00:00.001260
+Eval SixesSevensEntry D9 cartesianCount=90, elapsed 0:00:00.009500
+Solve Error: Entry D9 ($jumbledigits6and7 D9) no solution!
+Eval SixesSevensEntry D10 cartesianCount=6, elapsed 0:00:00.000845
+Solve Error: Entry D10 ($jumbledigits6and7 D10) no solution!
+Eval SixesSevensClue D11 cartesianCount=40, elapsed 0:00:00.000117
+Eval SixesSevensClue D12 cartesianCount=33534, elapsed 0:00:00.014668
+Eval SixesSevensClue A4 cartesianCount=40, elapsed 0:00:00.000459
+Eval SixesSevensClue A14 cartesianCount=414, elapsed 0:00:00.003266
+Clue/Variable iterations=74, updates=32, elapsed 0:00:40.741153
+PARTIAL SOLUTION-----------------------------
+Puzzle Summary
+Clue A1, $multiple ED3, values={100,102,104..106,108,110..112,114..124,545 more,999}
+Clue A4, $multiple ED5, values={100,102,104,105,108,110..112,114..117,119..121,123..126,128,465 more,999}
+Clue A7, ED2 + #prime, values={12..31,68 more,99}
+Clue A8, $prime $factor ED7, values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Clue A10, #square - ED5, values={10..29,70 more,99}
+Clue A12, $divisor ED6, values={10..29,70 more,99}
+Clue A13, #triangular, values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561,11 more,990}
+Clue A14, EA14 - #triangular, values={100..119,876 more,998}
+Clue D2, $squareroot EA1, values={11..19,21..29,31}
+Clue D3, #prime, values={11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}
+Clue D4, $divisor EA4, values={11..19,21..29,31,32,61 more,99}
+Clue D5, #odd, values={11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,25 more,99}
+Clue D6, #triangular, values={105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496,528,561,11 more,990}
+Clue D7, #square, values={100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
+Clue D9, $divisor EA13, values={10..29,70 more,99}
+Clue D10, #square, values={16,25,36,49,64,81}
+Clue D11, $multiple ED5, values={20,22,24,26,28,30,32..34,36,38..40,42,44..46,48,50,51,38 more,99}
+Clue D12, EA14/ED11, values={10..29,61 more,90}
+Entry A1, $jumbledigits6and7 A1, values={121,144,169,196,225,256,289,324,361,441,484,529,576,625,676,729,784,841,961}
+Entry D2, $jumbledigits6and7 D2 | (A7-#prime), values={10..29,68 more,97}
+Entry D3, $jumbledigits6and7 D3, values={11..19,21..29,31,32,61 more,99}
+Entry A4, $jumbledigits6and7 A4, values={111,112,114..119,121..126,128,129,132..135,411 more,999}
+Entry D4, $jumbledigits6and7 D4, values={unknown}
+Entry D5, $jumbledigits6and7 D5 | (#square-A10), values={10..29,20 more,49}
+Entry D6, $jumbledigits6and7 D6, values={100,102,104..106,108,110..112,114..124,545 more,999}
+Entry A7, $jumbledigits6and7 A7, values={unknown}
+Entry D7, $jumbledigits6and7 D7, values={102,104,106,111,114..119,121..124,129,132..134,136,138,396 more,999}
+Entry A8, $jumbledigits6and7 A8, values={unknown}
+Entry D9, $jumbledigits6and7 D9, values={unknown}
+Entry A10, $jumbledigits6and7 A10, values={unknown}
+Entry D10, $jumbledigits6and7 D10, values={unknown}
+Entry D11, $jumbledigits6and7 D11 | (EA14/D12), values={11..19,21..29,31,32,61 more,99}
+Entry A12, $jumbledigits6and7 A12, values={unknown}
+Entry D12, $jumbledigits6and7 D12, values={unknown}
+Entry A13, $jumbledigits6and7 A13, values={100,102,104..106,108,110..112,114..124,545 more,999}
+Entry A14, $jumbledigits6and7 A14 | (A14+#triangular) | (D12*ED11), values={110,120,121,130,132,140,143,144,150,154,156,160,165,168..170,176,180,182,187,394 more,999}
++--+--+--+--+--+--+
+| ?  ?  ?| ?  ?  ?|
++--      +        +
+| ?  ?| ?  ?| ?| ?|
++   --+--+--+--+  +
+| ?| ?| ?  ?| ?  ?|
++  +  +     +   --+
+| ?  ?  ?| ?  ?  ?|
++--+--+--+--+--+--+
+ITERATE SOLUTIONS-----------------------------
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.053696
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.049939
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.050190
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.047924
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.050902
+Eval SixesSevensEntry A1 cartesianCount=565, elapsed 0:00:00.056356
+Solution count=0
+
+Exited.
