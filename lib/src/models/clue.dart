@@ -1,4 +1,7 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:collection/collection.dart';
+// ignore: unused_import
 import 'package:crossnumber/src/utils/combinations.dart';
 import 'dart:math';
 
@@ -24,7 +27,7 @@ class Clue {
 
   /// The set of possible integer values for this clue.
   /// This set is narrowed down by the solver as constraints are applied.
-  Set<int> possibleValues = {};
+  Set<int>? possibleValues;
 
   /// Creates a new clue with the given [id] and [constraints].
   Clue(this.id, this.constraints);
@@ -51,13 +54,20 @@ class Clue {
         final newPossibleValues =
             evaluator.evaluate(expression, min: min, max: max);
 
-        final oldPossibleValues = Set<int>.from(possibleValues);
-        possibleValues
-            .retainWhere((value) => newPossibleValues.contains(value));
-
-        if (possibleValues.length != oldPossibleValues.length ||
-            !possibleValues.containsAll(oldPossibleValues)) {
+        if (possibleValues == null) {
+          possibleValues = Set<int>.from(newPossibleValues);
           updated = true;
+        } else if (newPossibleValues.isEmpty) {
+          // If the new possible values are empty, we have a contradiction
+          possibleValues!.clear();
+          updated = true;
+        } else {
+          final oldPossibleValuesLength = possibleValues!.length;
+          possibleValues!
+              .retainWhere((value) => newPossibleValues.contains(value));
+          if (possibleValues!.length != oldPossibleValuesLength) {
+            updated = true;
+          }
         }
       }
     }
@@ -103,7 +113,7 @@ class Clue {
 
             // If the clue's possible values have any intersection with the new possible values,
             // then the variable value is possible
-            if (possibleValues.any((v) => clueValues.contains(v))) {
+            if (possibleValues!.any((v) => clueValues.contains(v))) {
               newPossibleValues.add(value);
             }
           }
@@ -130,6 +140,10 @@ class Clue {
     return Clue(
       id ?? this.id,
       constraints ?? this.constraints,
-    )..possibleValues = Set<int>.from(possibleValues ?? this.possibleValues);
+    )..possibleValues = possibleValues != null
+        ? Set<int>.from(possibleValues)
+        : this.possibleValues == null
+            ? null
+            : Set<int>.from(this.possibleValues!);
   }
 }

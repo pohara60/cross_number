@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/evaluator.dart';

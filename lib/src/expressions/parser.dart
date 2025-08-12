@@ -116,6 +116,7 @@ class Parser {
     return source[_current];
   }
 
+  // ignore: unused_element
   String _peekNext() {
     if (_current + 1 >= source.length) return '\x00';
     return source[_current + 1];

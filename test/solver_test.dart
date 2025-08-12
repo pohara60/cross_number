@@ -32,7 +32,7 @@ void main() {
         clues: {'1A': clue1, '1D': clue2},
         variables: {},
       );
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, allowBacktracking: false);
       solver.solve();
 
       expect(clue1.solveCalled, isTrue);
@@ -41,7 +41,6 @@ void main() {
 
     test('should evaluate simple expression constraints', () {
       final clue = Clue('1A', [ExpressionConstraint('10 + 5')]);
-      clue.possibleValues = {}; // Ensure it starts empty
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
         grids: {'test': Grid(1, 1)},
@@ -49,17 +48,16 @@ void main() {
         clues: {'1A': clue},
         variables: {},
       );
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, allowBacktracking: false, trace: true);
       solver.solve();
 
       expect(clue.possibleValues, contains(15));
-      expect(clue.possibleValues.length, 1);
+      expect(clue.possibleValues!.length, 1);
     });
 
     test('should evaluate expression constraints with variables', () {
       final variableA = Variable('A', {1, 2, 3});
       final clue = Clue('1A', [ExpressionConstraint('A * 2')]);
-      clue.possibleValues = {}; // Ensure it starts empty
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
         grids: {'test': Grid(1, 1)},
@@ -67,11 +65,11 @@ void main() {
         clues: {'1A': clue},
         variables: {'A': variableA},
       );
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, allowBacktracking: false);
       solver.solve();
 
       expect(clue.possibleValues, containsAll({2, 4, 6}));
-      expect(clue.possibleValues.length, 3);
+      expect(clue.possibleValues!.length, 3);
     });
 
     test('should evaluate multi-grid expression constraints', () {
@@ -91,7 +89,6 @@ void main() {
       entry2.possibleValues = {5}; // Set a known value
 
       final clue = Clue('1A', [ExpressionConstraint('Grid1.A1 + Grid2.B1')]);
-      clue.possibleValues = {}; // Ensure it starts empty
 
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
@@ -103,11 +100,11 @@ void main() {
         clues: {'1A': clue},
         variables: {},
       );
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, allowBacktracking: false);
       solver.solve();
 
       expect(clue.possibleValues, contains(15));
-      expect(clue.possibleValues.length, 1);
+      expect(clue.possibleValues!.length, 1);
     });
 
     test('should propagate variable changes to dependent clues', () {
@@ -124,7 +121,7 @@ void main() {
         clues: {'1A': clue1, '2A': clue2},
         variables: {'A': variableA},
       );
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, allowBacktracking: false);
 
       // Manually reduce variable A's possible values
       variableA.possibleValues = {1};
@@ -132,9 +129,9 @@ void main() {
 
       // Expect clue1 and clue2 to be re-evaluated based on the new variable A value
       expect(clue1.possibleValues, contains(2));
-      expect(clue1.possibleValues.length, 1);
+      expect(clue1.possibleValues!.length, 1);
       expect(clue2.possibleValues, contains(2));
-      expect(clue2.possibleValues.length, 1);
+      expect(clue2.possibleValues!.length, 1);
     });
   });
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/entry.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';

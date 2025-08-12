@@ -36,7 +36,7 @@ class Evaluator implements ExpressionVisitor<List<int>> {
 
     final possibleValues = puzzle.variables.containsKey(currentVariable)
         ? puzzle.variables[currentVariable]!.possibleValues
-        : puzzle.clues[currentVariable]!.possibleValues;
+        : puzzle.clues[currentVariable]!.possibleValues!;
 
     for (final value in possibleValues) {
       // Check for duplicate variable values
@@ -77,7 +77,7 @@ class Evaluator implements ExpressionVisitor<List<int>> {
           .where((value) => value >= min && value <= max)
           .toList();
     } else if (puzzle.clues.containsKey(expression.name)) {
-      return puzzle.clues[expression.name]!.possibleValues
+      return (puzzle.clues[expression.name]!.possibleValues ?? <int>{})
           .where((value) => value >= min && value <= max)
           .toList();
     }

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
@@ -10,14 +12,15 @@ import 'package:crossnumber/src/models/entry.dart'; // Added for SolverState
 import 'package:crossnumber/src/models/grid.dart'; // Added for _printSolution
 
 class SolverState {
-  final Map<String, Set<int>> cluePossibleValues;
+  final Map<String, Set<int>?> cluePossibleValues;
   final Map<String, Set<int>> entryPossibleValues;
 
   SolverState(this.cluePossibleValues, this.entryPossibleValues);
 
   SolverState copy() {
     return SolverState(
-      cluePossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
+      cluePossibleValues.map((key, value) =>
+          MapEntry(key, value == null ? null : Set.from(value))),
       entryPossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
     );
   }
@@ -33,6 +36,9 @@ class Solver {
   /// The puzzle definition to be solved.
   final PuzzleDefinition puzzle;
 
+  /// Allow backtracking
+  final bool allowBacktracking;
+
   /// Flags to enable or disable tracing.
   final bool trace;
   final bool traceBacktrace;
@@ -44,7 +50,12 @@ class Solver {
   final Map<String, List<Clue>> _variableDependencies = {};
 
   /// Creates a new solver for the given [puzzle].
-  Solver(this.puzzle, {this.trace = false, this.traceBacktrace = false}) {
+  Solver(
+    this.puzzle, {
+    this.trace = false,
+    this.allowBacktracking = true,
+    this.traceBacktrace = false,
+  }) {
     // Initialize clues with possible values based on entry length
     for (var clue in puzzle.clues.values) {
       final entry =
@@ -78,9 +89,10 @@ class Solver {
   }
 
   SolverState _saveState() {
-    final clueValues = <String, Set<int>>{};
+    final clueValues = <String, Set<int>?>{};
     for (var clue in puzzle.clues.values) {
-      clueValues[clue.id] = Set.from(clue.possibleValues);
+      clueValues[clue.id] =
+          clue.possibleValues == null ? null : Set.from(clue.possibleValues!);
     }
     final entryValues = <String, Set<int>>{};
     for (var entry in puzzle.entries.values) {
@@ -91,18 +103,27 @@ class Solver {
 
   void _restoreState(SolverState state) {
     for (var clue in puzzle.clues.values) {
-      clue.possibleValues = Set.from(state.cluePossibleValues[clue.id]!);
+      var possibleValues = state.cluePossibleValues[clue.id];
+      clue.possibleValues =
+          possibleValues == null ? null : Set.from(possibleValues);
     }
     for (var entry in puzzle.entries.values) {
       entry.possibleValues = Set.from(state.entryPossibleValues[entry.id]!);
     }
   }
 
-  int _backtrack(int clueIndex, int solutionCount) {
+  int _backtrack(int clueIndex, int solutionCount,
+      [bool Function()? callback]) {
     if (clueIndex == puzzle.clues.length) {
       // Base case: All clues assigned. Check if it's a valid solution.
       if (_isSolutionValid()) {
         if (traceBacktrace) print('Backtracking: Solution found!');
+        if (callback != null) {
+          if (!callback()) {
+            if (traceBacktrace) print('Backtracking: Callback returned false.');
+            return solutionCount; // Stop if callback returns false
+          }
+        }
         _printSolution();
         solutionCount++;
       } else {
@@ -112,15 +133,17 @@ class Solver {
     }
 
     final currentClue = puzzle.clues.values.elementAt(clueIndex);
-    final originalPossibleValues = Set<int>.from(currentClue.possibleValues);
+    final originalPossibleValues = Set<int>.from(currentClue.possibleValues!);
 
-    if (traceBacktrace)
+    if (traceBacktrace) {
       print(
           'Backtracking: Trying clue ${currentClue.id} -> ${originalPossibleValues.length} ${originalPossibleValues.toShortString()}');
+    }
 
     for (final value in originalPossibleValues) {
-      if (traceBacktrace)
+      if (traceBacktrace) {
         print('Backtracking: Trying value $value for clue ${currentClue.id}');
+      }
       final savedState =
           _saveState(); // Save the current state before trying a value
 
@@ -137,12 +160,15 @@ class Solver {
           _propagateConstraints(traceBacktrace); // Propagate the change
 
       if (consistent) {
-        if (traceBacktrace)
+        if (traceBacktrace) {
           print('Backtracking: Propagation consistent. Recursing...');
-        solutionCount = _backtrack(clueIndex + 1, solutionCount); // Recurse
+        }
+        solutionCount =
+            _backtrack(clueIndex + 1, solutionCount, callback); // Recurse
       } else {
-        if (traceBacktrace)
+        if (traceBacktrace) {
           print('Backtracking: Propagation inconsistent. Backtracking...');
+        }
       }
 
       _restoreState(savedState); // Undo the assignment and restore state
@@ -153,7 +179,7 @@ class Solver {
   bool _isSolutionValid() {
     // Check if all clues have a single value
     for (var clue in puzzle.clues.values) {
-      if (clue.possibleValues.length != 1) {
+      if (clue.possibleValues!.length != 1) {
         return false;
       }
     }
@@ -183,10 +209,10 @@ class Solver {
 
     print("Clue values:");
     for (var clue in puzzle.clues.values) {
-      print("${clue.id}: ${clue.possibleValues.single}");
+      print("${clue.id}: ${clue.possibleValues!.single}");
     }
 
-    if (puzzle.variables.length > 0) {
+    if (puzzle.variables.isNotEmpty) {
       print('Variables:');
       for (var variable in puzzle.variables.values) {
         print(
@@ -199,11 +225,11 @@ class Solver {
   ///
   /// This method will delegate to the appropriate solving strategy based on
   /// whether the clue-to-entry mapping is known.
-  void solve() {
+  void solve([bool Function()? callback]) {
     if (puzzle.mappingIsKnown) {
-      _solveKnownMapping();
+      _solveKnownMapping(callback);
     } else {
-      _solveUnknownMapping();
+      _solveUnknownMapping(callback);
     }
   }
 
@@ -220,7 +246,7 @@ class Solver {
     print('Clues:');
     for (var clue in puzzle.clues.values) {
       print(
-          '${clue.id}: ${clue.possibleValues.length}  ${clue.possibleValues.toShortString()}');
+          '${clue.id}: ${clue.possibleValues!.length}  ${clue.possibleValues!.toShortString()}');
     }
     print('Entries:');
     for (var entry in puzzle.entries.values) {
@@ -233,7 +259,7 @@ class Solver {
   ///
   /// This method iteratively applies constraints to all clues and propagates
   /// variable changes until no more updates can be made.
-  void _solveKnownMapping() {
+  void _solveKnownMapping([bool Function()? callback]) {
     if (trace) print('Solving puzzle with known mapping...');
     int iteration = 0;
     do {
@@ -244,12 +270,12 @@ class Solver {
 
       // Solve clues first
       for (var clue in puzzle.clues.values) {
-        final originalCount = clue.possibleValues.length;
+        final originalCount = clue.possibleValues?.length;
         if (clue.solve(puzzle)) {
           _updated = true;
           if (trace) {
             print(
-                '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
+                '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
           }
         }
       }
@@ -269,9 +295,11 @@ class Solver {
     // If solution not exact, start backtracking
     if (_isSolutionValid()) {
       printPuzzle();
+    } else if (!allowBacktracking) {
+      print('Solution not complete, backtracking disabled');
     } else {
-      if (trace) print('Solution not complete, backtracking');
-      var solutionCount = _backtrack(0, 0);
+      print('Solution not complete, backtracking');
+      var solutionCount = _backtrack(0, 0, callback);
       if (solutionCount == 0) {
         print("Backtracking: no solutions found.");
       } else {
@@ -294,14 +322,15 @@ class Solver {
           if (clue != null) {
             final originalCount = entry.possibleValues.length;
             entry.possibleValues
-                .retainWhere((value) => clue.possibleValues.contains(value));
-            if (entry.possibleValues.isEmpty)
+                .retainWhere((value) => clue.possibleValues!.contains(value));
+            if (entry.possibleValues.isEmpty) {
               return (false, true); // Inconsistency
+            }
             if (entry.possibleValues.length < originalCount) {
               localChanged = true;
               if (trace) {
                 print(
-                    '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${clue.possibleValues.toShortString()}');
+                    '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
               }
             }
           }
@@ -336,8 +365,9 @@ class Solver {
 
                 if (newAcrossValues.length < acrossValues.length) {
                   acrossEntry.possibleValues = newAcrossValues;
-                  if (acrossEntry.possibleValues.isEmpty)
+                  if (acrossEntry.possibleValues.isEmpty) {
                     return (false, true); // Inconsistency
+                  }
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
@@ -357,8 +387,9 @@ class Solver {
 
                 if (newDownValues.length < downValues.length) {
                   downEntry.possibleValues = newDownValues;
-                  if (downEntry.possibleValues.isEmpty)
+                  if (downEntry.possibleValues.isEmpty) {
                     return (false, true); // Inconsistency
+                  }
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
@@ -377,16 +408,17 @@ class Solver {
         if (entry.clueId != null) {
           final clue = puzzle.clues[entry.clueId!];
           if (clue != null) {
-            final originalSize = clue.possibleValues.length;
-            clue.possibleValues
+            final originalSize = clue.possibleValues!.length;
+            clue.possibleValues!
                 .retainWhere((value) => entry.possibleValues.contains(value));
-            if (clue.possibleValues.isEmpty)
+            if (clue.possibleValues!.isEmpty) {
               return (false, true); // Inconsistency
-            if (clue.possibleValues.length < originalSize) {
+            }
+            if (clue.possibleValues!.length < originalSize) {
               localChanged = true;
               if (trace) {
                 print(
-                    '    Clue ${clue.id}: $originalSize -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
+                    '    Clue ${clue.id}: $originalSize -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
               }
             }
           }
@@ -398,22 +430,24 @@ class Solver {
         if (clue.updateVariables(puzzle, trace: trace)) {
           localChanged = true;
         }
-        if (clue.possibleValues.isEmpty)
+        if (clue.possibleValues!.isEmpty) {
           return (false, true); // Inconsistency after variable update
+        }
       }
 
       // Re-solve clues with variable val ${clue.possibleValues.toShortString()}ues
       for (var clue in puzzle.clues.values) {
-        final originalSize = clue.possibleValues.length;
+        final originalSize = clue.possibleValues!.length;
         if (clue.solve(puzzle)) {
           localChanged = true;
           if (trace) {
             print(
-                '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
+                '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
           }
         }
-        if (clue.possibleValues.isEmpty)
+        if (clue.possibleValues!.isEmpty) {
           return (false, true); // Inconsistency after re-solve
+        }
       }
       if (localChanged) changed = true;
     } while (localChanged);
@@ -424,7 +458,7 @@ class Solver {
   ///
   /// This method uses a backtracking algorithm to try all possible mappings
   /// of clues to entries until a valid solution is found.
-  void _solveUnknownMapping() {
+  void _solveUnknownMapping([bool Function()? callback]) {
     // This is where the backtracking logic will go.
     // For now, it's a placeholder.
     print("Solving puzzle with unknown mapping...");
@@ -443,7 +477,7 @@ class Solver {
       _solveKnownMapping();
       // Check if a solution was found (e.g., all clues have a single possible value)
       return puzzle.clues.values
-          .every((clue) => clue.possibleValues.length == 1);
+          .every((clue) => clue.possibleValues!.length == 1);
     }
 
     final currentClue = remainingClues[clueIndex];

@@ -15,9 +15,9 @@ void main() {
 
       // Check clue values
       expect(puzzle.clues['1A']!.possibleValues, contains(34));
-      expect(puzzle.clues['1A']!.possibleValues.length, 1);
+      expect(puzzle.clues['1A']!.possibleValues!.length, 1);
       expect(puzzle.clues['1D']!.possibleValues, contains(34));
-      expect(puzzle.clues['1D']!.possibleValues.length, 1);
+      expect(puzzle.clues['1D']!.possibleValues!.length, 1);
 
       // Check entry values
       expect(puzzle.entries['A1']!.possibleValues, contains(34));
