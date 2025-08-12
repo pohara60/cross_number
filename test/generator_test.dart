@@ -9,6 +9,7 @@ import 'package:test/test.dart';
 void main() {
   group('Generator Expressions', () {
     final puzzle = PuzzleDefinition(
+      name: 'Test Puzzle',
       grids: {},
       entries: {
         'A1': Entry(

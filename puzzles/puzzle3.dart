@@ -7,6 +7,7 @@ import 'package:crossnumber/src/models/variable.dart';
 
 PuzzleDefinition puzzle3() {
   return PuzzleDefinition(
+    name: 'Puzzle3',
     grids: {
       'main': Grid(3, 5),
     },

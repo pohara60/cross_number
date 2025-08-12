@@ -6,12 +6,8 @@ void main(List<String> arguments) {
 
   // For now, directly load the simple puzzle.
   final puzzle = puzzle3();
+  print('Puzzle: ${puzzle.name}');
 
-  final solver = Solver(puzzle, trace: true);
+  final solver = Solver(puzzle, trace: false, traceBacktrace: false);
   solver.solve();
-
-  print('\nSolution:');
-  for (var clue in puzzle.clues.values) {
-    print('${clue.id}: ${clue.possibleValues}');
-  }
 }

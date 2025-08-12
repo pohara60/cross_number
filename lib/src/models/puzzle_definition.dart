@@ -8,6 +8,9 @@ import 'variable.dart';
 /// This class brings together the grids, entries, clues, and variables
 /// that define a puzzle.
 class PuzzleDefinition {
+  /// Name
+  final String name;
+
   /// A map of grid IDs to [Grid] objects.
   final Map<String, Grid> grids;
 
@@ -27,6 +30,7 @@ class PuzzleDefinition {
 
   /// Creates a new puzzle definition with the given components.
   PuzzleDefinition({
+    required this.name,
     required this.grids,
     required this.entries,
     required this.clues,
@@ -35,6 +39,7 @@ class PuzzleDefinition {
   });
 
   PuzzleDefinition copyWith({
+    String? name,
     Map<String, Grid>? grids,
     Map<String, Entry>? entries,
     Map<String, Clue>? clues,
@@ -42,10 +47,15 @@ class PuzzleDefinition {
     bool? mappingIsKnown,
   }) {
     return PuzzleDefinition(
-      grids: grids ?? this.grids.map((key, value) => MapEntry(key, value.copyWith())),
-      entries: entries ?? this.entries.map((key, value) => MapEntry(key, value.copyWith())),
-      clues: clues ?? this.clues.map((key, value) => MapEntry(key, value.copyWith())),
-      variables: variables ?? this.variables.map((key, value) => MapEntry(key, value.copyWith())),
+      name: name ?? this.name,
+      grids: grids ??
+          this.grids.map((key, value) => MapEntry(key, value.copyWith())),
+      entries: entries ??
+          this.entries.map((key, value) => MapEntry(key, value.copyWith())),
+      clues: clues ??
+          this.clues.map((key, value) => MapEntry(key, value.copyWith())),
+      variables: variables ??
+          this.variables.map((key, value) => MapEntry(key, value.copyWith())),
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
     );
   }

@@ -26,6 +26,7 @@ void main() {
       final clue1 = MockClue('1A', []);
       final clue2 = MockClue('1D', []);
       final puzzle = PuzzleDefinition(
+        name: 'Test Puzzle',
         grids: {'test': Grid(1, 1)},
         entries: {},
         clues: {'1A': clue1, '1D': clue2},
@@ -42,6 +43,7 @@ void main() {
       final clue = Clue('1A', [ExpressionConstraint('10 + 5')]);
       clue.possibleValues = {}; // Ensure it starts empty
       final puzzle = PuzzleDefinition(
+        name: 'Test Puzzle',
         grids: {'test': Grid(1, 1)},
         entries: {},
         clues: {'1A': clue},
@@ -59,6 +61,7 @@ void main() {
       final clue = Clue('1A', [ExpressionConstraint('A * 2')]);
       clue.possibleValues = {}; // Ensure it starts empty
       final puzzle = PuzzleDefinition(
+        name: 'Test Puzzle',
         grids: {'test': Grid(1, 1)},
         entries: {},
         clues: {'1A': clue},
@@ -72,15 +75,26 @@ void main() {
     });
 
     test('should evaluate multi-grid expression constraints', () {
-      final entry1 = Entry(id: 'A1', row: 0, col: 0, length: 1, orientation: EntryOrientation.across);
+      final entry1 = Entry(
+          id: 'A1',
+          row: 0,
+          col: 0,
+          length: 1,
+          orientation: EntryOrientation.across);
       entry1.possibleValues = {10}; // Set a known value
-      final entry2 = Entry(id: 'B1', row: 0, col: 0, length: 1, orientation: EntryOrientation.across);
+      final entry2 = Entry(
+          id: 'B1',
+          row: 0,
+          col: 0,
+          length: 1,
+          orientation: EntryOrientation.across);
       entry2.possibleValues = {5}; // Set a known value
 
       final clue = Clue('1A', [ExpressionConstraint('Grid1.A1 + Grid2.B1')]);
       clue.possibleValues = {}; // Ensure it starts empty
 
       final puzzle = PuzzleDefinition(
+        name: 'Test Puzzle',
         grids: {
           'Grid1': Grid(1, 1),
           'Grid2': Grid(1, 1),
@@ -104,6 +118,7 @@ void main() {
       clue2.possibleValues = {2, 3}; // Initial possible values
 
       final puzzle = PuzzleDefinition(
+        name: 'Test Puzzle',
         grids: {'test': Grid(1, 1)},
         entries: {},
         clues: {'1A': clue1, '2A': clue2},
@@ -112,7 +127,7 @@ void main() {
       final solver = Solver(puzzle);
 
       // Manually reduce variable A's possible values
-      variableA.possibleValues = {1}; 
+      variableA.possibleValues = {1};
       solver.solve();
 
       // Expect clue1 and clue2 to be re-evaluated based on the new variable A value

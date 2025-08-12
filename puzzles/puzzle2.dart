@@ -39,6 +39,7 @@ PuzzleDefinition puzzle2() {
     30
   };
   return PuzzleDefinition(
+    name: 'Puzzle2',
     grids: {
       'main': Grid(3, 3),
     },

@@ -6,6 +6,22 @@ import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/utils/set.dart';
+import 'package:crossnumber/src/models/entry.dart'; // Added for SolverState
+import 'package:crossnumber/src/models/grid.dart'; // Added for _printSolution
+
+class SolverState {
+  final Map<String, Set<int>> cluePossibleValues;
+  final Map<String, Set<int>> entryPossibleValues;
+
+  SolverState(this.cluePossibleValues, this.entryPossibleValues);
+
+  SolverState copy() {
+    return SolverState(
+      cluePossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
+      entryPossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
+    );
+  }
+}
 
 /// The main solver for cross number puzzles.
 ///
@@ -17,8 +33,9 @@ class Solver {
   /// The puzzle definition to be solved.
   final PuzzleDefinition puzzle;
 
-  /// A flag to enable or disable tracing.
+  /// Flags to enable or disable tracing.
   final bool trace;
+  final bool traceBacktrace;
 
   /// A flag to track if any updates were made in the last iteration of the solver.
   bool _updated = false;
@@ -27,7 +44,7 @@ class Solver {
   final Map<String, List<Clue>> _variableDependencies = {};
 
   /// Creates a new solver for the given [puzzle].
-  Solver(this.puzzle, {this.trace = false}) {
+  Solver(this.puzzle, {this.trace = false, this.traceBacktrace = false}) {
     // Initialize clues with possible values based on entry length
     for (var clue in puzzle.clues.values) {
       final entry =
@@ -60,6 +77,124 @@ class Solver {
     }
   }
 
+  SolverState _saveState() {
+    final clueValues = <String, Set<int>>{};
+    for (var clue in puzzle.clues.values) {
+      clueValues[clue.id] = Set.from(clue.possibleValues);
+    }
+    final entryValues = <String, Set<int>>{};
+    for (var entry in puzzle.entries.values) {
+      entryValues[entry.id] = Set.from(entry.possibleValues);
+    }
+    return SolverState(clueValues, entryValues);
+  }
+
+  void _restoreState(SolverState state) {
+    for (var clue in puzzle.clues.values) {
+      clue.possibleValues = Set.from(state.cluePossibleValues[clue.id]!);
+    }
+    for (var entry in puzzle.entries.values) {
+      entry.possibleValues = Set.from(state.entryPossibleValues[entry.id]!);
+    }
+  }
+
+  int _backtrack(int clueIndex, int solutionCount) {
+    if (clueIndex == puzzle.clues.length) {
+      // Base case: All clues assigned. Check if it's a valid solution.
+      if (_isSolutionValid()) {
+        if (traceBacktrace) print('Backtracking: Solution found!');
+        _printSolution();
+        solutionCount++;
+      } else {
+        if (traceBacktrace) print('Backtracking: Not a valid solution.');
+      }
+      return solutionCount;
+    }
+
+    final currentClue = puzzle.clues.values.elementAt(clueIndex);
+    final originalPossibleValues = Set<int>.from(currentClue.possibleValues);
+
+    if (traceBacktrace)
+      print(
+          'Backtracking: Trying clue ${currentClue.id} -> ${originalPossibleValues.length} ${originalPossibleValues.toShortString()}');
+
+    for (final value in originalPossibleValues) {
+      if (traceBacktrace)
+        print('Backtracking: Trying value $value for clue ${currentClue.id}');
+      final savedState =
+          _saveState(); // Save the current state before trying a value
+
+      // Try assigning the value
+      currentClue.possibleValues = {value};
+      // Also update the associated entry's possible values
+      final entry = puzzle.entries.values
+          .firstWhereOrNull((e) => e.clueId == currentClue.id);
+      if (entry != null) {
+        entry.possibleValues = {value};
+      }
+
+      var (consistent, _) =
+          _propagateConstraints(traceBacktrace); // Propagate the change
+
+      if (consistent) {
+        if (traceBacktrace)
+          print('Backtracking: Propagation consistent. Recursing...');
+        solutionCount = _backtrack(clueIndex + 1, solutionCount); // Recurse
+      } else {
+        if (traceBacktrace)
+          print('Backtracking: Propagation inconsistent. Backtracking...');
+      }
+
+      _restoreState(savedState); // Undo the assignment and restore state
+    }
+    return solutionCount;
+  }
+
+  bool _isSolutionValid() {
+    // Check if all clues have a single value
+    for (var clue in puzzle.clues.values) {
+      if (clue.possibleValues.length != 1) {
+        return false;
+      }
+    }
+    // Check if all entries have a single value
+    for (var entry in puzzle.entries.values) {
+      if (entry.possibleValues.length != 1) {
+        return false;
+      }
+    }
+    // Additional check: Ensure consistency after all assignments
+    // This is implicitly handled by _propagateConstraints returning false on inconsistency
+    // but a final check for any remaining inconsistencies is good.
+    // For now, if all possibleValues are singletons, and propagation was consistent, it's valid.
+    return true;
+  }
+
+  void _printSolution() {
+    print("Solution:");
+    // Assuming puzzle.grids has a single grid for simplicity, or iterate if multiple
+    if (puzzle.grids.isNotEmpty) {
+      final solvedGrid = puzzle.grids.values.first; // Get the first grid
+      print(solvedGrid
+          .toString()); // Grid's toString() already displays solved values
+    } else {
+      print("No grid to display.");
+    }
+
+    print("Clue values:");
+    for (var clue in puzzle.clues.values) {
+      print("${clue.id}: ${clue.possibleValues.single}");
+    }
+
+    if (puzzle.variables.length > 0) {
+      print('Variables:');
+      for (var variable in puzzle.variables.values) {
+        print(
+            '${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+      }
+    }
+  }
+
   /// Solves the puzzle.
   ///
   /// This method will delegate to the appropriate solving strategy based on
@@ -70,7 +205,6 @@ class Solver {
     } else {
       _solveUnknownMapping();
     }
-    printPuzzle();
   }
 
   void printPuzzle() {
@@ -120,13 +254,33 @@ class Solver {
         }
       }
 
-      if (_propagateConstraints()) {
-        _updated = true;
+      var (consistent, updated) = _propagateConstraints(trace);
+      if (consistent) {
+        if (updated) _updated = true;
+      } else {
+        // If propagation leads to inconsistency, this path is invalid.
+        // In the context of _solveKnownMapping, this means the initial state
+        // was inconsistent, or a previous step made it inconsistent.
+        // Here, we just break the loop as no further progress can be made.
+        _updated = false; // Stop iterating if inconsistent
       }
     } while (_updated);
+
+    // If solution not exact, start backtracking
+    if (_isSolutionValid()) {
+      printPuzzle();
+    } else {
+      if (trace) print('Solution not complete, backtracking');
+      var solutionCount = _backtrack(0, 0);
+      if (solutionCount == 0) {
+        print("Backtracking: no solutions found.");
+      } else {
+        print("Backtracking: $solutionCount solutions found.");
+      }
+    }
   }
 
-  bool _propagateConstraints() {
+  (bool consistent, bool updated) _propagateConstraints(bool trace) {
     bool changed = false;
     bool localChanged;
     do {
@@ -141,6 +295,8 @@ class Solver {
             final originalCount = entry.possibleValues.length;
             entry.possibleValues
                 .retainWhere((value) => clue.possibleValues.contains(value));
+            if (entry.possibleValues.isEmpty)
+              return (false, true); // Inconsistency
             if (entry.possibleValues.length < originalCount) {
               localChanged = true;
               if (trace) {
@@ -180,6 +336,8 @@ class Solver {
 
                 if (newAcrossValues.length < acrossValues.length) {
                   acrossEntry.possibleValues = newAcrossValues;
+                  if (acrossEntry.possibleValues.isEmpty)
+                    return (false, true); // Inconsistency
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
@@ -199,6 +357,8 @@ class Solver {
 
                 if (newDownValues.length < downValues.length) {
                   downEntry.possibleValues = newDownValues;
+                  if (downEntry.possibleValues.isEmpty)
+                    return (false, true); // Inconsistency
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
@@ -220,6 +380,8 @@ class Solver {
             final originalSize = clue.possibleValues.length;
             clue.possibleValues
                 .retainWhere((value) => entry.possibleValues.contains(value));
+            if (clue.possibleValues.isEmpty)
+              return (false, true); // Inconsistency
             if (clue.possibleValues.length < originalSize) {
               localChanged = true;
               if (trace) {
@@ -236,6 +398,8 @@ class Solver {
         if (clue.updateVariables(puzzle, trace: trace)) {
           localChanged = true;
         }
+        if (clue.possibleValues.isEmpty)
+          return (false, true); // Inconsistency after variable update
       }
 
       // Re-solve clues with variable val ${clue.possibleValues.toShortString()}ues
@@ -248,10 +412,12 @@ class Solver {
                 '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues.length} ${clue.possibleValues.toShortString()}');
           }
         }
+        if (clue.possibleValues.isEmpty)
+          return (false, true); // Inconsistency after re-solve
       }
       if (localChanged) changed = true;
     } while (localChanged);
-    return changed;
+    return (true, changed);
   }
 
   /// Solves the puzzle when the clue-to-entry mapping is unknown.
@@ -263,6 +429,7 @@ class Solver {
     // For now, it's a placeholder.
     print("Solving puzzle with unknown mapping...");
     _solveWithBacktracking(puzzle.clues.values.toList(), 0);
+    printPuzzle();
   }
 
   /// The recursive backtracking function for solving puzzles with unknown mappings.

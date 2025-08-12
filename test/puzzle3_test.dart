@@ -1,3 +1,4 @@
+import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:test/test.dart';
 import 'package:crossnumber/src/solver.dart';
 import '../puzzles/puzzle3.dart';
@@ -9,29 +10,32 @@ void main() {
       final solver = Solver(puzzle);
       solver.solve();
 
-      // check variable values
-      // expect(puzzle.variables['A']!.possibleValues, contains(4));
-      // // expect(puzzle.variables['A']!.possibleValues.length, 1);
-      // expect(puzzle.variables['B']!.possibleValues, contains(25));
-      // // expect(puzzle.variables['B']!.possibleValues.length, 1);
-      // expect(puzzle.variables['C']!.possibleValues, contains(9));
-      // expect(puzzle.variables['C']!.possibleValues.length, 1);
-      // expect(puzzle.variables['D']!.possibleValues, contains(11));
-      // expect(puzzle.variables['D']!.possibleValues.length, 1);
-      // expect(puzzle.variables['E']!.possibleValues, contains(14));
-      // // expect(puzzle.variables['E']!.possibleValues.length, 1);
-
-      // // Check clue values
-      // expect(puzzle.clues['1A']!.possibleValues, contains(16));
-      // // expect(puzzle.clues['1A']!.possibleValues.length, 1);
-      // expect(puzzle.clues['2D']!.possibleValues, contains(625));
-      // // expect(puzzle.clues['2D']!.possibleValues.length, 1);
-
-      // // Check entry values
-      // expect(puzzle.entries['A1']!.possibleValues, contains(16));
-      // // expect(puzzle.entries['A1']!.possibleValues.length, 1);
-      // expect(puzzle.entries['D2']!.possibleValues, contains(625));
-      // // expect(puzzle.entries['D2']!.possibleValues.length, 1);
+      // Check clue values
+      expectEntryValues(puzzle, 'A1', [324]);
+      expectEntryValues(puzzle, 'A3', [21]);
+      expectEntryValues(puzzle, 'A5', [1416]);
+      expectEntryValues(puzzle, 'A6', [121]);
+      expectEntryValues(puzzle, 'A7', [19]);
+      expectEntryValues(puzzle, 'D1', [361]);
+      expectEntryValues(puzzle, 'D2', [441]);
+      expectEntryValues(puzzle, 'D3', [169]);
     });
   });
+}
+
+void expectValues(Set<int> possibleValues, List<int> expected) {
+  expect(possibleValues.length, expected.length);
+  expect(possibleValues, containsAll(expected));
+}
+
+void expectEntryValues(
+    PuzzleDefinition puzzle, String entryId, List<int> expectedValues) {
+  // Check entry values
+  var entry = puzzle.entries[entryId]!;
+  expectValues(entry.possibleValues, expectedValues);
+  if (entry.clueId != null) {
+    // Check clue values
+    var clue = puzzle.clues[entry.clueId]!;
+    expectValues(clue.possibleValues, expectedValues);
+  }
 }

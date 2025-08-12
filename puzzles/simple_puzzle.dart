@@ -7,12 +7,25 @@ import 'package:crossnumber/src/models/variable.dart';
 
 PuzzleDefinition simplePuzzle() {
   return PuzzleDefinition(
+    name: 'Simple Puzzle',
     grids: {
       'main': Grid(2, 2),
     },
     entries: {
-      'A1': Entry(id: 'A1', row: 0, col: 0, length: 2, orientation: EntryOrientation.across, clueId: '1A'),
-      'D1': Entry(id: 'D1', row: 0, col: 0, length: 2, orientation: EntryOrientation.down, clueId: '1D'),
+      'A1': Entry(
+          id: 'A1',
+          row: 0,
+          col: 0,
+          length: 2,
+          orientation: EntryOrientation.across,
+          clueId: '1A'),
+      'D1': Entry(
+          id: 'D1',
+          row: 0,
+          col: 0,
+          length: 2,
+          orientation: EntryOrientation.down,
+          clueId: '1D'),
     },
     clues: {
       '1A': Clue('1A', [ExpressionConstraint('A * 2')]),

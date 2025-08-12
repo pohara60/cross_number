@@ -49,6 +49,7 @@ class Grid {
 
   @override
   String toString() {
+    const separator = " "; // Alternative is ":"
     var buffer = StringBuffer();
     for (var r = 0; r < rows; r++) {
       // Draw top border
@@ -59,7 +60,7 @@ class Grid {
         if (cell.downEntry != null &&
             r > 0 &&
             cells[r - 1][c].downEntry == cell.downEntry) {
-          buffer.write(' : ');
+          buffer.write(' $separator ');
         } else {
           buffer.write('---');
         }
@@ -73,7 +74,7 @@ class Grid {
         if (cell.acrossEntry != null &&
             prevCell != null &&
             prevCell.acrossEntry == cell.acrossEntry) {
-          buffer.write(':');
+          buffer.write(separator);
         } else {
           buffer.write('|');
         }
@@ -117,7 +118,7 @@ class Grid {
       buffer.writeln('|');
     }
     // Draw bottom border
-    buffer.writeln('+' + List.generate(cols, (_) => '---').join('+') + '+');
+    buffer.write('+' + List.generate(cols, (_) => '---').join('+') + '+');
     return buffer.toString();
   }
 }
