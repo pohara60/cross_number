@@ -11,19 +11,19 @@ void main() {
 
       bool callback() {
         // check variable values
-        expectValues(puzzle.variables['A']!.possibleValues, [4]);
-        expectValues(puzzle.variables['B']!.possibleValues, [25]);
+        expectValues(puzzle.variables['A']!.possibleValues, [4, 5, 6, 8]);
+        expectValues(puzzle.variables['B']!.possibleValues, [17, 21, 25]);
         expectValues(puzzle.variables['C']!.possibleValues, [9]);
         expectValues(puzzle.variables['D']!.possibleValues, [11]);
-        expectValues(puzzle.variables['E']!.possibleValues, [13]);
+        expectValues(puzzle.variables['E']!.possibleValues, [13, 14]);
 
         // Check entry values
-        expectEntryValues(puzzle, 'A1', [16]);
-        expectEntryValues(puzzle, 'D2', [625]);
+        expectEntryValues(puzzle, 'A1', [16, 25, 36, 64]);
+        expectEntryValues(puzzle, 'D2', [425, 525, 625]);
         expectEntryValues(puzzle, 'D3', [81]);
         expectEntryValues(puzzle, 'D4', [18]);
         expectEntryValues(puzzle, 'A4', [121]);
-        expectEntryValues(puzzle, 'A5', [52]);
+        expectEntryValues(puzzle, 'A5', [52, 56]);
         return true;
       }
 

@@ -14,14 +14,18 @@ import 'package:crossnumber/src/models/grid.dart'; // Added for _printSolution
 class SolverState {
   final Map<String, Set<int>?> cluePossibleValues;
   final Map<String, Set<int>> entryPossibleValues;
+  final Map<String, Set<int>> variablePossibleValues;
 
-  SolverState(this.cluePossibleValues, this.entryPossibleValues);
+  SolverState(this.cluePossibleValues, this.entryPossibleValues,
+      this.variablePossibleValues);
 
   SolverState copy() {
     return SolverState(
       cluePossibleValues.map((key, value) =>
           MapEntry(key, value == null ? null : Set.from(value))),
       entryPossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
+      variablePossibleValues
+          .map((key, value) => MapEntry(key, Set.from(value))),
     );
   }
 }
@@ -98,7 +102,11 @@ class Solver {
     for (var entry in puzzle.entries.values) {
       entryValues[entry.id] = Set.from(entry.possibleValues);
     }
-    return SolverState(clueValues, entryValues);
+    final variableValues = <String, Set<int>>{};
+    for (var variable in puzzle.variables.values) {
+      variableValues[variable.name] = Set.from(variable.possibleValues);
+    }
+    return SolverState(clueValues, entryValues, variableValues);
   }
 
   void _restoreState(SolverState state) {
@@ -109,6 +117,10 @@ class Solver {
     }
     for (var entry in puzzle.entries.values) {
       entry.possibleValues = Set.from(state.entryPossibleValues[entry.id]!);
+    }
+    for (var variable in puzzle.variables.values) {
+      variable.possibleValues =
+          Set.from(state.variablePossibleValues[variable.name]!);
     }
   }
 
@@ -179,7 +191,7 @@ class Solver {
   bool _isSolutionValid() {
     // Check if all clues have a single value
     for (var clue in puzzle.clues.values) {
-      if (clue.possibleValues!.length != 1) {
+      if (clue.possibleValues == null || clue.possibleValues!.length != 1) {
         return false;
       }
     }
@@ -313,27 +325,32 @@ class Solver {
 
     // Enforce distinct clue values
     final solvedClues = puzzle.clues.values
-        .where((clue) => clue.possibleValues?.length == 1)
+        .where((clue) =>
+            clue.possibleValues != null && clue.possibleValues!.length == 1)
         .toList();
     if (solvedClues.isNotEmpty) {
       final solvedClueValues =
           solvedClues.map((clue) => clue.possibleValues!.single).toSet();
       if (solvedClueValues.length < solvedClues.length) {
-        return (false, true); // Inconsistency - duplicate values
+        return (false, true); // Inconsistency
       }
+
       for (var clue in puzzle.clues.values) {
-        if ((clue.possibleValues?.length ?? 0) > 1) {
+        if (clue.possibleValues == null) {
+          continue; // Skip if clue has no values yet
+        }
+        if (clue.possibleValues!.length > 1) {
           final originalCount = clue.possibleValues!.length;
           clue.possibleValues!.removeAll(solvedClueValues);
-          if (clue.possibleValues!.isEmpty) {
-            return (false, true); // Inconsistency
-          }
           if (clue.possibleValues!.length < originalCount) {
             changed = true;
             if (trace) {
               print(
                   '    Clue ${clue.id} distinct values: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
             }
+          }
+          if (clue.possibleValues!.isEmpty) {
+            return (false, true); // Inconsistency
           }
         }
       }
@@ -355,9 +372,6 @@ class Solver {
         if (variable.possibleValues.length > 1) {
           final originalCount = variable.possibleValues.length;
           variable.possibleValues.removeAll(solvedVariableValues);
-          if (variable.possibleValues.isEmpty) {
-            return (false, true); // Inconsistency
-          }
           if (variable.possibleValues.length < originalCount) {
             changed = true;
             if (trace) {
@@ -365,6 +379,9 @@ class Solver {
                   '    Variable ${variable.name} distinct values: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
             }
           }
+        }
+        if (variable.possibleValues.isEmpty) {
+          return (false, true); // Inconsistency
         }
       }
     }
@@ -384,18 +401,21 @@ class Solver {
         if (entry.clueId != null) {
           final clue = puzzle.clues[entry.clueId!];
           if (clue != null) {
-            final originalCount = entry.possibleValues.length;
+            if (clue.possibleValues == null) {
+              continue; // Skip if clue has no values yet
+            }
+            final originalCount = clue.possibleValues!.length;
             entry.possibleValues
                 .retainWhere((value) => clue.possibleValues!.contains(value));
-            if (entry.possibleValues.isEmpty) {
-              return (false, true); // Inconsistency
-            }
             if (entry.possibleValues.length < originalCount) {
               localChanged = true;
               if (trace) {
                 print(
                     '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
               }
+            }
+            if (entry.possibleValues.isEmpty) {
+              return (false, true); // Inconsistency
             }
           }
         }
@@ -472,6 +492,9 @@ class Solver {
         if (entry.clueId != null) {
           final clue = puzzle.clues[entry.clueId!];
           if (clue != null) {
+            if (clue.possibleValues == null) {
+              continue; // Skip if clue has no values yet
+            }
             final originalSize = clue.possibleValues!.length;
             clue.possibleValues!
                 .retainWhere((value) => entry.possibleValues.contains(value));
@@ -491,6 +514,9 @@ class Solver {
 
       // Update variables from clue values
       for (var clue in puzzle.clues.values) {
+        if (clue.possibleValues == null) {
+          continue; // Skip if clue has no values yet
+        }
         if (clue.updateVariables(puzzle, trace: trace)) {
           localChanged = true;
         }

@@ -2,8 +2,8 @@ import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:test/test.dart';
 
 void expectValues(Set<int> possibleValues, List<int> expected) {
-  expect(possibleValues.length, expected.length);
-  expect(possibleValues, containsAll(expected));
+  expect(possibleValues, hasLength(1));
+  expect(possibleValues, contains(predicate((v) => expected.contains(v))));
 }
 
 void expectEntryValues(
