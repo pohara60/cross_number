@@ -29,7 +29,7 @@ PuzzleDefinition simplePuzzle() {
     },
     clues: {
       '1A': Clue('1A', [ExpressionConstraint('A * 2')]),
-      '1D': Clue('1D', [ExpressionConstraint('A * 6 - 68')]),
+      '1D': Clue('1D', [ExpressionConstraint('A * 6 - 67')]),
     },
     variables: {
       'A': Variable('A', {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}),

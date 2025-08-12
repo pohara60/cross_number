@@ -308,6 +308,70 @@ class Solver {
     }
   }
 
+  (bool consistent, bool updated) _enforceDistinctValues(bool trace) {
+    bool changed = false;
+
+    // Enforce distinct clue values
+    final solvedClues = puzzle.clues.values
+        .where((clue) => clue.possibleValues?.length == 1)
+        .toList();
+    if (solvedClues.isNotEmpty) {
+      final solvedClueValues =
+          solvedClues.map((clue) => clue.possibleValues!.single).toSet();
+      if (solvedClueValues.length < solvedClues.length) {
+        return (false, true); // Inconsistency - duplicate values
+      }
+      for (var clue in puzzle.clues.values) {
+        if ((clue.possibleValues?.length ?? 0) > 1) {
+          final originalCount = clue.possibleValues!.length;
+          clue.possibleValues!.removeAll(solvedClueValues);
+          if (clue.possibleValues!.isEmpty) {
+            return (false, true); // Inconsistency
+          }
+          if (clue.possibleValues!.length < originalCount) {
+            changed = true;
+            if (trace) {
+              print(
+                  '    Clue ${clue.id} distinct values: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+            }
+          }
+        }
+      }
+    }
+
+    // Enforce distinct variable values
+    final solvedVariables = puzzle.variables.values
+        .where((variable) => variable.possibleValues.length == 1)
+        .toList();
+    if (solvedVariables.isNotEmpty) {
+      final solvedVariableValues = solvedVariables
+          .map((variable) => variable.possibleValues.single)
+          .toSet();
+      if (solvedVariableValues.length < solvedVariables.length) {
+        return (false, true); // Inconsistency
+      }
+
+      for (var variable in puzzle.variables.values) {
+        if (variable.possibleValues.length > 1) {
+          final originalCount = variable.possibleValues.length;
+          variable.possibleValues.removeAll(solvedVariableValues);
+          if (variable.possibleValues.isEmpty) {
+            return (false, true); // Inconsistency
+          }
+          if (variable.possibleValues.length < originalCount) {
+            changed = true;
+            if (trace) {
+              print(
+                  '    Variable ${variable.name} distinct values: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+            }
+          }
+        }
+      }
+    }
+
+    return (true, changed);
+  }
+
   (bool consistent, bool updated) _propagateConstraints(bool trace) {
     bool changed = false;
     bool localChanged;
@@ -435,7 +499,7 @@ class Solver {
         }
       }
 
-      // Re-solve clues with variable val ${clue.possibleValues.toShortString()}ues
+      // Re-solve clues with variable values
       for (var clue in puzzle.clues.values) {
         final originalSize = clue.possibleValues!.length;
         if (clue.solve(puzzle)) {
@@ -449,6 +513,12 @@ class Solver {
           return (false, true); // Inconsistency after re-solve
         }
       }
+
+      // Enforce distinct values
+      var (distinctConsistent, distinctUpdated) = _enforceDistinctValues(trace);
+      if (!distinctConsistent) return (false, true);
+      if (distinctUpdated) localChanged = true;
+
       if (localChanged) changed = true;
     } while (localChanged);
     return (true, changed);

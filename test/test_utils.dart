@@ -17,3 +17,10 @@ void expectEntryValues(
     expectValues(clue.possibleValues!, expectedValues);
   }
 }
+
+void expectVariableValues(
+    PuzzleDefinition puzzle, String variableId, List<int> expectedValues) {
+  // Check variable values
+  var variable = puzzle.variables[variableId]!;
+  expectValues(variable.possibleValues, expectedValues);
+}
