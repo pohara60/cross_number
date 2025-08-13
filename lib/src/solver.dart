@@ -68,6 +68,8 @@ class Solver {
         clue.possibleValues = List<int>.generate(
             pow(10, entry.length).toInt() - pow(10, entry.length - 1).toInt(),
             (i) => i + pow(10, entry.length - 1).toInt()).toSet();
+      } else {
+        // If no entry is found, leave it null to indicate uninitialised
       }
     }
 
@@ -527,7 +529,7 @@ class Solver {
 
       // Re-solve clues with variable values
       for (var clue in puzzle.clues.values) {
-        final originalSize = clue.possibleValues!.length;
+        final originalSize = clue.possibleValues?.length ?? 0;
         if (clue.solve(puzzle)) {
           localChanged = true;
           if (trace) {
@@ -535,7 +537,7 @@ class Solver {
                 '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
           }
         }
-        if (clue.possibleValues!.isEmpty) {
+        if (clue.possibleValues != null && clue.possibleValues!.isEmpty) {
           return (false, true); // Inconsistency after re-solve
         }
       }

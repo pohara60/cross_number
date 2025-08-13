@@ -28,6 +28,44 @@ class PuzzleDefinition {
   /// If `false`, the solver will use a backtracking algorithm to find the mapping.
   final bool mappingIsKnown;
 
+  factory PuzzleDefinition.fromString({
+    required String name,
+    required String gridString,
+    required Map<String, Clue> clues,
+    required Map<String, Variable> variables,
+  }) {
+    final grid = Grid.fromString(gridString);
+    final Map<String, Entry> entries = {};
+
+    // Extract entries from the grid
+    for (var r = 0; r < grid.rows; r++) {
+      for (var c = 0; c < grid.cols; c++) {
+        final cell = grid.cells[r][c];
+        if (cell.acrossEntry != null) {
+          var entryId = cell.acrossEntry!.id;
+          if (!entries.containsKey(entryId)) {
+            entries[entryId] = cell.acrossEntry!;
+          }
+        }
+        if (cell.downEntry != null) {
+          var entryId = cell.downEntry!.id;
+          if (!entries.containsKey(entryId)) {
+            entries[entryId] = cell.downEntry!;
+          }
+        }
+      }
+    }
+
+    return PuzzleDefinition(
+      name: name,
+      grids: {'main': grid}, // Assuming a single grid named 'main'
+      entries: entries,
+      clues: clues,
+      variables: variables,
+      mappingIsKnown: true, // Assuming mapping is known from gridString
+    );
+  }
+
   /// Creates a new puzzle definition with the given components.
   PuzzleDefinition({
     required this.name,
