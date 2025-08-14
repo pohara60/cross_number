@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'expression.dart';
 import 'generators.dart';
@@ -14,6 +16,9 @@ class Evaluator implements ExpressionVisitor<List<int>> {
       MonadicFunctionRegistry();
   final Map<String, int> _pinnedVariables;
 
+  /// Maximum possible result value
+  int? maxResult;
+
   /// Creates a new evaluator with the given [puzzle] context.
   Evaluator(this.puzzle, [Map<String, int>? pinnedVariables])
       : _pinnedVariables = pinnedVariables ?? {};
@@ -21,6 +26,9 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   /// Evaluates the given [expression] and returns a list of possible values.
   List<int> evaluate(Expression expression,
       {required int min, required int max}) {
+    // Maximum possible result value
+    maxResult = max;
+
     final variableVisitor = _VariableVisitor();
     expression.accept(variableVisitor, min: min, max: max);
     final variables = variableVisitor.variables
@@ -97,8 +105,16 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   @override
   List<int> visitBinaryExpression(BinaryExpression expression,
       {required int min, required int max}) {
-    final leftValues =
-        _evaluateWithPinnedVariables(expression.left, min: -10000, max: 10000);
+    var leftMin = -max;
+    var leftMax = max;
+    if (expression.operator.type == TokenType.MINUS) {
+      // Arbitrary min/max limit when do not know what values are to be subtracted
+      const arbitraryLimit = 10000;
+      leftMin = -arbitraryLimit;
+      leftMax = arbitraryLimit;
+    }
+    final leftValues = _evaluateWithPinnedVariables(expression.left,
+        min: leftMin, max: leftMax);
     final results = <int>{};
     for (final left in leftValues) {
       int rightMin, rightMax;
@@ -119,7 +135,15 @@ class Evaluator implements ExpressionVisitor<List<int>> {
         case TokenType.SLASH:
           if (left == 0) continue;
           rightMin = left ~/ max;
+          if (min < 1) min = 1;
           rightMax = left ~/ min;
+          break;
+        case TokenType.EXPONENT:
+          if (left == 0) continue;
+          if (min < 1) min = 1;
+          rightMin = left <= 1 ? 2 : log(min) ~/ log(left);
+          if (rightMin == 0) rightMin = 1; // Avoid zero exponent
+          rightMax = left <= 1 ? max : log(max) ~/ log(left);
           break;
         default:
           throw Exception(
@@ -142,6 +166,10 @@ class Evaluator implements ExpressionVisitor<List<int>> {
             if (right != 0) {
               results.add(left ~/ right);
             }
+            break;
+          case TokenType.EXPONENT:
+            var exp = pow(left, right);
+            results.add(exp.toInt());
             break;
           default:
             throw Exception(
@@ -193,9 +221,16 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   @override
   List<int> visitMonadicExpression(MonadicExpression expression,
       {required int min, required int max}) {
+    // Heuristic for min/max of argument to function
+    var fmin = 1;
+    var fmax = max;
+    var fname = expression.operator.lexeme;
+    if (fname.startsWith('is') && fname != 'jumble') {
+      fmax = maxResult! * maxResult!;
+    }
     final values =
-        _evaluateWithPinnedVariables(expression.right, min: -10000, max: 10000);
-    final function = _monadicFunctionRegistry.get(expression.operator.lexeme);
+        _evaluateWithPinnedVariables(expression.right, min: fmin, max: fmax);
+    final function = _monadicFunctionRegistry.get(fname);
     if (function != null) {
       return function(values)
           .where((value) => value >= min && value <= max)

@@ -80,7 +80,8 @@ class Solver {
           final parser = Parser(constraint.expression);
           final expression = parser.parse();
           final variableExtractor = VariableExtractorVisitor();
-          expression.accept(variableExtractor, min: -10000, max: 10000);
+          expression.accept(variableExtractor,
+              min: 1, max: 1); // min, max not used here
           for (final varName in variableExtractor.variables) {
             _variableDependencies.putIfAbsent(varName, () => []).add(clue);
           }

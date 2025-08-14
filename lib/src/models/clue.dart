@@ -1,9 +1,7 @@
 // ignore_for_file: unnecessary_this
-
-import 'package:collection/collection.dart';
 // ignore: unused_import
 import 'package:crossnumber/src/utils/combinations.dart';
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:crossnumber/src/expressions/evaluator.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
@@ -12,6 +10,7 @@ import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/utils/set.dart';
 
 import 'constraint.dart';
+import 'entry.dart';
 import 'expression_constraint.dart';
 
 /// Represents a single clue in a cross number puzzle.
@@ -22,6 +21,8 @@ class Clue {
   /// The unique identifier for the clue (e.g., "A1", "B2").
   final String id;
 
+  Entry? entry;
+
   /// The list of constraints that apply to this clue.
   final List<Constraint> constraints;
 
@@ -29,8 +30,27 @@ class Clue {
   /// This set is narrowed down by the solver as constraints are applied.
   Set<int>? possibleValues;
 
+  /// Min and max values for the clue.
+  /// Determined by the puzzle entry length, if any.
+  /// Restricted by current possibleValues if they are set.
+  int? get min {
+    if (possibleValues != null && possibleValues!.isNotEmpty) {
+      return possibleValues!.reduce(math.min);
+    }
+    if (entry != null) return math.pow(10, entry!.length - 1).toInt();
+    return null;
+  }
+
+  int? get max {
+    if (possibleValues != null && possibleValues!.isNotEmpty) {
+      return possibleValues!.reduce(math.max);
+    }
+    if (entry != null) return math.pow(10, entry!.length).toInt() - 1;
+    return null;
+  }
+
   /// Creates a new clue with the given [id] and [constraints].
-  Clue(this.id, this.constraints);
+  Clue(this.id, this.constraints, [this.entry]);
 
   /// Solves the clue by applying its constraints.
   ///
@@ -45,14 +65,12 @@ class Clue {
         final parser = Parser(constraint.expression);
         final expression = parser.parse();
 
-        final entry =
-            puzzle.entries.values.firstWhereOrNull((e) => e.clueId == id);
-        final min = entry != null ? pow(10, entry.length - 1).toInt() : -10000;
-        final max = entry != null ? pow(10, entry.length).toInt() - 1 : 10000;
+        final solveMin = min ?? 1;
+        final solveMax = max ?? 100000; // Arbitrarily large
 
         final evaluator = Evaluator(puzzle);
         final newPossibleValues =
-            evaluator.evaluate(expression, min: min, max: max);
+            evaluator.evaluate(expression, min: solveMin, max: solveMax);
 
         if (possibleValues == null) {
           possibleValues = Set<int>.from(newPossibleValues);
@@ -86,7 +104,8 @@ class Clue {
 
         // Get all variables in the expression
         final variableExtractor = VariableExtractorVisitor();
-        expression.accept(variableExtractor, min: -10000, max: 10000);
+        expression.accept(variableExtractor,
+            min: 1, max: 1); // min, max not used here
         final expressionVariables = variableExtractor.variables;
 
         if (expressionVariables.isEmpty) continue;
@@ -109,7 +128,7 @@ class Clue {
             // Evaluate the expression with this temporary state
             final tempEvaluator = Evaluator(tempPuzzle);
             final clueValues =
-                tempEvaluator.evaluate(expression, min: -10000, max: 10000);
+                tempEvaluator.evaluate(expression, min: min!, max: max!);
 
             // If the clue's possible values have any intersection with the new possible values,
             // then the variable value is possible

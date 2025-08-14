@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -74,7 +75,15 @@ class PuzzleDefinition {
     required this.clues,
     required this.variables,
     this.mappingIsKnown = true,
-  });
+  }) {
+    // Set clue entry references where applicable
+    for (final clue in clues.values) {
+      var entry = entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
+      if (entry != null) {
+        clue.entry = entry;
+      }
+    }
+  }
 
   PuzzleDefinition copyWith({
     String? name,

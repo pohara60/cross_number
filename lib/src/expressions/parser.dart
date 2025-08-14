@@ -46,6 +46,9 @@ class Parser {
       case '/':
         _addToken(TokenType.SLASH);
         break;
+      case '^':
+        _addToken(TokenType.EXPONENT);
+        break;
       case '.':
         _addToken(TokenType.DOT);
         break;
@@ -160,9 +163,21 @@ class Parser {
   }
 
   Expression _factor() {
-    var expr = _unary();
+    var expr = _exponent();
 
     while (_match([TokenType.SLASH, TokenType.STAR])) {
+      final operator = _previous();
+      final right = _exponent();
+      expr = BinaryExpression(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+  Expression _exponent() {
+    var expr = _unary();
+
+    while (_match([TokenType.EXPONENT])) {
       final operator = _previous();
       final right = _unary();
       expr = BinaryExpression(expr, operator, right);
