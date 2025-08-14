@@ -1,4 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:crossnumber/src/expressions/parser.dart';
+import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -81,6 +83,15 @@ class PuzzleDefinition {
       var entry = entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
       if (entry != null) {
         clue.entry = entry;
+      }
+    }
+    // Parse all expressions
+    for (final clue in clues.values) {
+      for (final constraint in clue.constraints) {
+        if (constraint is ExpressionConstraint) {
+          final parser = Parser(constraint.expression);
+          constraint.expressionTree = parser.parse();
+        }
       }
     }
   }

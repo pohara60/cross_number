@@ -1,3 +1,5 @@
+import 'package:crossnumber/src/expressions/expression.dart';
+
 import 'constraint.dart';
 
 /// A constraint that is defined by a mathematical or logical expression.
@@ -7,6 +9,9 @@ import 'constraint.dart';
 class ExpressionConstraint extends Constraint {
   /// The expression string that defines the constraint.
   final String expression;
+
+  /// The parsed expression tree.
+  Expression? expressionTree;
 
   /// Creates a new expression constraint with the given [expression].
   ExpressionConstraint(this.expression);

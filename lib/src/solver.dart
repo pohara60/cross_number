@@ -77,8 +77,7 @@ class Solver {
     for (var clue in puzzle.clues.values) {
       for (final constraint in clue.constraints) {
         if (constraint is ExpressionConstraint) {
-          final parser = Parser(constraint.expression);
-          final expression = parser.parse();
+          final expression = constraint.expressionTree!;
           final variableExtractor = VariableExtractorVisitor();
           expression.accept(variableExtractor,
               min: 1, max: 1); // min, max not used here

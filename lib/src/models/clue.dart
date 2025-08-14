@@ -62,8 +62,7 @@ class Clue {
     bool updated = false;
     for (final constraint in constraints) {
       if (constraint is ExpressionConstraint) {
-        final parser = Parser(constraint.expression);
-        final expression = parser.parse();
+        final expression = constraint.expressionTree!;
 
         final solveMin = min ?? 1;
         final solveMax = max ?? 100000; // Arbitrarily large
@@ -99,8 +98,7 @@ class Clue {
     bool updated = false;
     for (final constraint in constraints) {
       if (constraint is ExpressionConstraint) {
-        final parser = Parser(constraint.expression);
-        final expression = parser.parse();
+        final expression = constraint.expressionTree!;
 
         // Get all variables in the expression
         final variableExtractor = VariableExtractorVisitor();
