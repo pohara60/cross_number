@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
+import '../expressions/variable_visitor.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -90,7 +91,12 @@ class PuzzleDefinition {
       for (final constraint in clue.constraints) {
         if (constraint is ExpressionConstraint) {
           final parser = Parser(constraint.expression);
-          constraint.expressionTree = parser.parse();
+          final expression = parser.parse();
+          constraint.expressionTree = expression;
+          final variableVisitor = VariableVisitor();
+          expression.accept(variableVisitor,
+              min: 1, max: 1); // min, max not used here
+          constraint.variables = variableVisitor.variables.toList();
         }
       }
     }

@@ -13,6 +13,9 @@ class ExpressionConstraint extends Constraint {
   /// The parsed expression tree.
   Expression? expressionTree;
 
+  /// The list of variables in the expression.
+  List<String> variables = [];
+
   /// Creates a new expression constraint with the given [expression].
   ExpressionConstraint(this.expression);
 }

@@ -24,16 +24,10 @@ class Evaluator implements ExpressionVisitor<List<int>> {
       : _pinnedVariables = pinnedVariables ?? {};
 
   /// Evaluates the given [expression] and returns a list of possible values.
-  List<int> evaluate(Expression expression,
+  List<int> evaluate(Expression expression, List<String> variables,
       {required int min, required int max}) {
     // Maximum possible result value
     maxResult = max;
-
-    final variableVisitor = _VariableVisitor();
-    expression.accept(variableVisitor, min: min, max: max);
-    final variables = variableVisitor.variables
-        .where((v) => !_pinnedVariables.containsKey(v))
-        .toList();
 
     if (variables.isEmpty) {
       return _evaluateWithPinnedVariables(expression, min: min, max: max);
@@ -41,6 +35,7 @@ class Evaluator implements ExpressionVisitor<List<int>> {
 
     final results = <int>{};
     final currentVariable = variables.first;
+    final unpinnedVariables = variables.sublist(1);
 
     final possibleValues = puzzle.variables.containsKey(currentVariable)
         ? puzzle.variables[currentVariable]!.possibleValues
@@ -54,7 +49,8 @@ class Evaluator implements ExpressionVisitor<List<int>> {
       newPinnedVariables[currentVariable] = value;
 
       final evaluator = Evaluator(puzzle, newPinnedVariables);
-      final result = evaluator.evaluate(expression, min: min, max: max);
+      final result =
+          evaluator.evaluate(expression, unpinnedVariables, min: min, max: max);
       results.addAll(result);
     }
 
@@ -237,54 +233,5 @@ class Evaluator implements ExpressionVisitor<List<int>> {
           .toList();
     }
     throw Exception('Unknown monadic function: ${expression.operator.lexeme}');
-  }
-}
-
-class _VariableVisitor implements ExpressionVisitor<void> {
-  final Set<String> _variables = {};
-
-  Set<String> get variables => _variables;
-
-  @override
-  void visitBinaryExpression(BinaryExpression expression,
-      {required int min, required int max}) {
-    expression.left.accept(this, min: min, max: max);
-    expression.right.accept(this, min: min, max: max);
-  }
-
-  @override
-  void visitGroupingExpression(GroupingExpression expression,
-      {required int min, required int max}) {
-    expression.expression.accept(this, min: min, max: max);
-  }
-
-  @override
-  void visitNumberExpression(NumberExpression expression,
-      {required int min, required int max}) {}
-
-  @override
-  void visitUnaryExpression(UnaryExpression expression,
-      {required int min, required int max}) {
-    expression.right.accept(this, min: min, max: max);
-  }
-
-  @override
-  void visitVariableExpression(VariableExpression expression,
-      {required int min, required int max}) {
-    _variables.add(expression.name);
-  }
-
-  @override
-  void visitGeneratorExpression(GeneratorExpression expression,
-      {required int min, required int max}) {}
-
-  @override
-  void visitGridEntryExpression(GridEntryExpression expression,
-      {required int min, required int max}) {}
-
-  @override
-  void visitMonadicExpression(MonadicExpression expression,
-      {required int min, required int max}) {
-    expression.right.accept(this, min: min, max: max);
   }
 }

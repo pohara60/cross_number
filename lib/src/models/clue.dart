@@ -4,8 +4,6 @@ import 'package:crossnumber/src/utils/combinations.dart';
 import 'dart:math' as math;
 
 import 'package:crossnumber/src/expressions/evaluator.dart';
-import 'package:crossnumber/src/expressions/expression.dart';
-import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/utils/set.dart';
 
@@ -68,8 +66,9 @@ class Clue {
         final solveMax = max ?? 100000; // Arbitrarily large
 
         final evaluator = Evaluator(puzzle);
-        final newPossibleValues =
-            evaluator.evaluate(expression, min: solveMin, max: solveMax);
+        final newPossibleValues = evaluator.evaluate(
+            expression, constraint.variables,
+            min: solveMin, max: solveMax);
 
         if (possibleValues == null) {
           possibleValues = Set<int>.from(newPossibleValues);
@@ -100,11 +99,7 @@ class Clue {
       if (constraint is ExpressionConstraint) {
         final expression = constraint.expressionTree!;
 
-        // Get all variables in the expression
-        final variableExtractor = VariableExtractorVisitor();
-        expression.accept(variableExtractor,
-            min: 1, max: 1); // min, max not used here
-        final expressionVariables = variableExtractor.variables;
+        final expressionVariables = constraint.variables;
 
         if (expressionVariables.isEmpty) continue;
 
@@ -125,8 +120,9 @@ class Clue {
 
             // Evaluate the expression with this temporary state
             final tempEvaluator = Evaluator(tempPuzzle);
-            final clueValues =
-                tempEvaluator.evaluate(expression, min: min!, max: max!);
+            final clueValues = tempEvaluator.evaluate(
+                expression, expressionVariables,
+                min: min!, max: max!);
 
             // If the clue's possible values have any intersection with the new possible values,
             // then the variable value is possible

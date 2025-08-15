@@ -77,11 +77,7 @@ class Solver {
     for (var clue in puzzle.clues.values) {
       for (final constraint in clue.constraints) {
         if (constraint is ExpressionConstraint) {
-          final expression = constraint.expressionTree!;
-          final variableExtractor = VariableExtractorVisitor();
-          expression.accept(variableExtractor,
-              min: 1, max: 1); // min, max not used here
-          for (final varName in variableExtractor.variables) {
+          for (final varName in constraint.variables) {
             _variableDependencies.putIfAbsent(varName, () => []).add(clue);
           }
         }

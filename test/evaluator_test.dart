@@ -1,7 +1,6 @@
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:test/test.dart';
 import 'package:crossnumber/src/expressions/evaluator.dart';
-import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 
 void main() {
@@ -28,6 +27,7 @@ void expectExpression(String text, int min, int max, int result) {
   final parser = Parser(text);
   final expression = parser.parse();
   final evaluator = Evaluator(puzzle);
-  final evaluatedResult = evaluator.evaluate(expression, min: min, max: max);
+  final evaluatedResult =
+      evaluator.evaluate(expression, [], min: min, max: max);
   expect(evaluatedResult.single, result);
 }
