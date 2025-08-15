@@ -1,18 +1,141 @@
-/// A function that generates a sequence of numbers based on a given range.
-typedef Generator = List<int> Function(int min, int max);
+import 'dart:math';
+
+abstract class Generator {
+  List<int> getValues(int min, int max);
+}
+
+abstract class CachedGenerator extends Generator {
+  final List<int> _values = [];
+  void _extend(int max);
+
+  List<int> getValues(int min, int max) {
+    _extend(max);
+    return _values.where((p) => p >= min && p <= max).toList();
+  }
+
+  bool contains(int n) {
+    _extend(n);
+    return _values.contains(n);
+  }
+}
+
+class PrimeGenerator extends CachedGenerator {
+  PrimeGenerator() {
+    _values.addAll([2, 3]);
+  }
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.last;
+    if (max > maxCached) {
+      for (var i = maxCached + 2; i <= max; i = i + 2) {
+        if (_isPrime(i)) {
+          _values.add(i);
+        }
+      }
+    }
+  }
+
+  bool _isPrime(int n) {
+    if (n <= 1) return false;
+    var root = sqrt(n).toInt();
+    for (var i in _values) {
+      if (i > root) break;
+      if (n % i == 0) return false;
+    }
+    return true;
+  }
+}
+
+class TriangularGenerator extends CachedGenerator {
+  int _i = 1; // The current index for triangular numbers
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.isEmpty ? 0 : _values.last;
+    if (max > maxCached) {
+      var triangular = maxCached + _i;
+      while (triangular <= max) {
+        if (triangular > maxCached) _values.add(triangular);
+        _i++;
+        triangular = maxCached + _i;
+      }
+    }
+  }
+}
+
+class FibonacciGenerator extends CachedGenerator {
+  int _a = 0;
+  int _b = 1;
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.isEmpty ? 0 : _values.last;
+    if (max > maxCached) {
+      while (_b <= max) {
+        if (_b > maxCached) _values.add(_b);
+        var next = _a + _b;
+        _a = _b;
+        _b = next;
+      }
+    }
+  }
+}
+
+class SquareGenerator extends CachedGenerator {
+  int _i = 1;
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.isEmpty ? 0 : _values.last;
+    if (max > maxCached) {
+      var square = _i * _i;
+      while (square <= max) {
+        if (square > maxCached) _values.add(square);
+        _i++;
+        square = _i * _i;
+      }
+    }
+  }
+}
+
+class CubeGenerator extends CachedGenerator {
+  int _i = 1;
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.isEmpty ? 0 : _values.last;
+    if (max > maxCached) {
+      var cube = _i * _i * _i;
+      while (cube <= max) {
+        if (cube > maxCached) _values.add(cube);
+        _i++;
+        cube = _i * _i * _i;
+      }
+    }
+  }
+}
 
 /// A registry for generator functions.
 ///
 /// This class holds a map of generator names to their corresponding
 /// functions. It also provides a method to get a generator by its name.
 class GeneratorRegistry {
-  final Map<String, Generator> _generators = {};
+  static final GeneratorRegistry _instance =
+      GeneratorRegistry._privateConstructor();
 
-  GeneratorRegistry() {
-    _register('prime', _generatePrimes);
-    _register('triangular', _generateTriangulars);
-    _register('fibonacci', _generateFibonacci);
-    _register('square', _generateSquares);
+  factory GeneratorRegistry() {
+    return _instance;
+  }
+
+  static final Map<String, Generator> _generators = {};
+
+  GeneratorRegistry._privateConstructor() {
+    _register('prime', PrimeGenerator());
+    _register('triangular', TriangularGenerator());
+    _register('fibonacci', FibonacciGenerator());
+    _register('square', SquareGenerator());
+    _register('cube', CubeGenerator());
   }
 
   void _register(String name, Generator generator) {
@@ -22,65 +145,4 @@ class GeneratorRegistry {
   Generator? get(String name) {
     return _generators[name];
   }
-}
-
-List<int> _generatePrimes(int min, int max) {
-  final primes = <int>[];
-  for (var i = min; i <= max; i++) {
-    if (_isPrime(i)) {
-      primes.add(i);
-    }
-  }
-  return primes;
-}
-
-bool _isPrime(int n) {
-  if (n <= 1) return false;
-  for (var i = 2; i * i <= n; i++) {
-    if (n % i == 0) return false;
-  }
-  return true;
-}
-
-List<int> _generateTriangulars(int min, int max) {
-  final triangulars = <int>[];
-  var i = 1;
-  var triangular = 1;
-  while (triangular <= max) {
-    if (triangular >= min) {
-      triangulars.add(triangular);
-    }
-    i++;
-    triangular = i * (i + 1) ~/ 2;
-  }
-  return triangulars;
-}
-
-List<int> _generateFibonacci(int min, int max) {
-  final fibs = <int>[];
-  var a = 0;
-  var b = 1;
-  while (b <= max) {
-    if (b >= min) {
-      fibs.add(b);
-    }
-    final next = a + b;
-    a = b;
-    b = next;
-  }
-  return fibs;
-}
-
-List<int> _generateSquares(int min, int max) {
-  final squares = <int>[];
-  var i = 1;
-  var square = 1;
-  while (square <= max) {
-    if (square >= min) {
-      squares.add(square);
-    }
-    i++;
-    square = i * i;
-  }
-  return squares;
 }

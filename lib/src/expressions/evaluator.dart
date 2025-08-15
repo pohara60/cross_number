@@ -89,11 +89,11 @@ class Evaluator implements ExpressionVisitor<List<int>> {
   }
 
   @override
-  List<int> visitGeneratorExpression(GeneratorExpression expression,
+    List<int> visitGeneratorExpression(GeneratorExpression expression,
       {required int min, required int max}) {
     final generator = _generatorRegistry.get(expression.name);
     if (generator != null) {
-      return generator(min, max);
+      return generator.getValues(min, max);
     }
     throw Exception('Unknown generator: ${expression.name}');
   }
