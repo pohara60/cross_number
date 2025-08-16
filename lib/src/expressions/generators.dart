@@ -8,6 +8,7 @@ abstract class CachedGenerator extends Generator {
   final List<int> _values = [];
   void _extend(int max);
 
+  @override
   List<int> getValues(int min, int max) {
     _extend(max);
     return _values.where((p) => p >= min && p <= max).toList();
