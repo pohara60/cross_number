@@ -7,44 +7,44 @@ class VariableVisitor implements ExpressionVisitor<void> {
 
   @override
   void visitBinaryExpression(BinaryExpression expression,
-      {required int min, required int max}) {
+      {required num min, required num max}) {
     expression.left.accept(this, min: min, max: max);
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
   void visitGroupingExpression(GroupingExpression expression,
-      {required int min, required int max}) {
+      {required num min, required num max}) {
     expression.expression.accept(this, min: min, max: max);
   }
 
   @override
   void visitNumberExpression(NumberExpression expression,
-      {required int min, required int max}) {}
+      {required num min, required num max}) {}
 
   @override
   void visitUnaryExpression(UnaryExpression expression,
-      {required int min, required int max}) {
+      {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
   void visitVariableExpression(VariableExpression expression,
-      {required int min, required int max}) {
+      {required num min, required num max}) {
     _variables.add(expression.name);
   }
 
   @override
   void visitGeneratorExpression(GeneratorExpression expression,
-      {required int min, required int max}) {}
+      {required num min, required num max}) {}
 
   @override
   void visitGridEntryExpression(GridEntryExpression expression,
-      {required int min, required int max}) {}
+      {required num min, required num max}) {}
 
   @override
   void visitMonadicExpression(MonadicExpression expression,
-      {required int min, required int max}) {
+      {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
   }
 }
