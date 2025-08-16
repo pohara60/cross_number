@@ -87,18 +87,28 @@ class PuzzleDefinition {
       }
     }
     // Parse all expressions
+    var exception = false;
     for (final clue in clues.values) {
       for (final constraint in clue.constraints) {
         if (constraint is ExpressionConstraint) {
           final parser = Parser(constraint.expression);
-          final expression = parser.parse();
-          constraint.expressionTree = expression;
-          final variableVisitor = VariableVisitor();
-          expression.accept(variableVisitor,
-              min: 1, max: 1); // min, max not used here
-          constraint.variables = variableVisitor.variables.toList();
+          try {
+            final expression = parser.parse();
+            constraint.expressionTree = expression;
+            final variableVisitor = VariableVisitor();
+            expression.accept(variableVisitor,
+                min: 1, max: 1); // min, max not used here
+            constraint.variables = variableVisitor.variables.toList();
+          } on ParseException catch (e) {
+            exception = true;
+            print(
+                'Error parsing clue ${clue.id} expression "${constraint.expression}": ${e.msg}');
+          }
         }
       }
+    }
+    if (exception) {
+      throw PuzzleException('One or more clues could not be parsed.');
     }
   }
 
@@ -123,4 +133,10 @@ class PuzzleDefinition {
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
     );
   }
+}
+
+/// An error thrown when the parser encounters a syntax error.
+class PuzzleException implements Exception {
+  String? msg;
+  PuzzleException([this.msg]);
 }

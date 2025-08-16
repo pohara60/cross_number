@@ -143,7 +143,11 @@ class Parser {
   Expression parse() {
     scanTokens();
     _current = 0; // Reset for the parser.
-    return _expression();
+    var expr = _expression();
+    if (!_isAtEndParser()) {
+      throw _error(_peekParser(), "Unexpected token after expression.");
+    }
+    return expr;
   }
 
   Expression _expression() {
@@ -271,11 +275,15 @@ class Parser {
     return _tokens[_current - 1];
   }
 
-  ParseError _error(Token token, String message) {
+  ParseException _error(Token token, String message) {
     // In a real application, you would report this error to the user.
-    return ParseError();
+    var msg = 'Parse error at token ${token.lexeme}: $message';
+    return ParseException(msg);
   }
 }
 
 /// An error thrown when the parser encounters a syntax error.
-class ParseError extends Error {}
+class ParseException implements Exception {
+  String? msg;
+  ParseException([this.msg]);
+}
