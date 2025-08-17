@@ -129,8 +129,10 @@ class Evaluator implements ExpressionVisitor<List<dynamic>> {
 
   List<EvaluationResult> _evaluateWithPinnedVariablesV(Expression expression,
       {required num min, required num max}) {
-    return expression.accept(this, min: min, max: max, withVariables: true)
-        as List<EvaluationResult>;
+    return expression
+        .accept(this, min: min, max: max, withVariables: true)
+        .map((e) => e as EvaluationResult)
+        .toList();
   }
 
   @override

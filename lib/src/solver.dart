@@ -159,6 +159,14 @@ class Solver {
 
       // Try assigning the value
       currentClue.possibleValues = {value};
+
+      // Solve the clue with this value, to update variables
+      var updatedVariables = <String>[];
+      currentClue.solveWithVariables(puzzle, updatedVariables);
+      if (traceBacktrace) {
+        _printUpdatedVariables(updatedVariables);
+      }
+
       // Also update the associated entry's possible values
       final entry = puzzle.entries.values
           .firstWhereOrNull((e) => e.clueId == currentClue.id);
@@ -281,11 +289,12 @@ class Solver {
       // Solve clues first
       for (var clue in puzzle.clues.values) {
         final originalCount = clue.possibleValues?.length;
-        if (clue.solve(puzzle)) {
+        final updatedVariables = <String>[];
+        if (clue.solveWithVariables(puzzle, updatedVariables)) {
           _updated = true;
           if (trace) {
-            print(
-                '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+            _printUpdatedClue(clue, originalCount);
+            _printUpdatedVariables(updatedVariables);
           }
         }
       }
@@ -316,6 +325,19 @@ class Solver {
         print("Backtracking: $solutionCount solutions found.");
       }
     }
+  }
+
+  void _printUpdatedVariables(List<String> updatedVariables) {
+    for (var variableName in updatedVariables) {
+      var variable = puzzle.variables[variableName]!;
+      print(
+          '      Updated Variable: $variableName: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+    }
+  }
+
+  void _printUpdatedClue(Clue clue, int? originalCount) {
+    print(
+        '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
   }
 
   (bool consistent, bool updated) _enforceDistinctValues(bool trace) {
@@ -511,17 +533,17 @@ class Solver {
       }
 
       // Update variables from clue values
-      for (var clue in puzzle.clues.values) {
-        if (clue.possibleValues == null) {
-          continue; // Skip if clue has no values yet
-        }
-        if (clue.updateVariables(puzzle, trace: trace)) {
-          localChanged = true;
-        }
-        if (clue.possibleValues!.isEmpty) {
-          return (false, true); // Inconsistency after variable update
-        }
-      }
+      // for (var clue in puzzle.clues.values) {
+      //   if (clue.possibleValues == null) {
+      //     continue; // Skip if clue has no values yet
+      //   }
+      //   if (clue.updateVariables(puzzle, trace: trace)) {
+      //     localChanged = true;
+      //   }
+      //   if (clue.possibleValues!.isEmpty) {
+      //     return (false, true); // Inconsistency after variable update
+      //   }
+      // }
 
       // Re-solve clues with variable values
       for (var clue in puzzle.clues.values) {

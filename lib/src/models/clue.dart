@@ -90,7 +90,9 @@ class Clue {
     return updated;
   }
 
-  bool solveWithVariables(PuzzleDefinition puzzle) {
+  bool solveWithVariables(
+      PuzzleDefinition puzzle, List<String> updatedVariables,
+      {bool trace = false}) {
     bool updated = false;
     for (final constraint in constraints) {
       if (constraint is ExpressionConstraint) {
@@ -138,6 +140,7 @@ class Clue {
               .retainWhere((value) => newVariableValues.contains(value));
           if (variable.possibleValues.length != oldVariableValuesLength) {
             updated = true;
+            updatedVariables.add(variableName);
           }
         }
       }
