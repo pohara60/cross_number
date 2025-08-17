@@ -32,11 +32,12 @@ This document outlines the requirements for a new, refactored version of the Cro
 *   The system shall have a single, unified solver engine capable of solving all supported puzzle types.
 *   The solver must be able to handle puzzles with complex logical and mathematical constraints.
 *   The solver must support puzzles with variables that are shared across multiple clues.
+*   The solver must be able to use backtracking to solve puzzles where the initial constraints are not sufficient to find a unique solution.
 
 ### 4.2. Puzzle Definition
 
 *   The system shall use a clear, composable structure for defining puzzles, based on the following components:
-    *   **Grid:** Represents the puzzle grid.
+    *   **Grid:** Represents the puzzle grid. Can be defined from a string representation.
     *   **Entry:** Represents a single entry in the grid.
     *   **Clue:** Represents the logic of a single clue.
     *   **Variable:** Represents a variable in the puzzle.
@@ -44,7 +45,43 @@ This document outlines the requirements for a new, refactored version of the Cro
 *   The system must support puzzles with multiple grids and relationships between them.
 *   The system must be able to handle puzzles where the mapping between clues and entries is not known initially and must be determined by the solver.
 
-### 4.3. Command-Line Interface (CLI)
+### 4.3. Expression Language
+
+*   The system shall support a simple expression language for defining clue constraints.
+*   The expression language shall support:
+    *   Basic arithmetic operations: `+`, `-`, `*`, `/`, `^` (exponent).
+    *   Variables, identified by name (e.g., `A`, `B`, `MyVariable`).
+    *   References to grid entries, using the format `gridId.entryId` (e.g., `main.A1`).
+    *   Generators for sequences of numbers, using the format `#generatorName` (e.g., `#prime`, `#fibonacci`).
+    *   Monadic functions, using the format `$functionName` (e.g., `$squareroot`, `$isOdd`).
+
+### 4.4. Monadic Functions
+
+The system shall provide a set of monadic functions that can be used in expressions to test properties of numbers. The following functions shall be supported:
+
+*   `squareroot`: Returns the integer square root of a number, if it is a perfect square.
+*   `isOdd`: Returns the number if it is odd.
+*   `isEven`: Returns the number if it is even.
+*   `isAscendingDigits`: Returns the number if its digits are in ascending order.
+*   `isDescendingDigits`: Returns the number if its digits are in descending order.
+*   `isUniqueDigits`: Returns the number if its digits are all unique.
+*   `isPrime`: Returns the number if it is prime.
+*   `isFibonacci`: Returns the number if it is a Fibonacci number.
+*   `isTriangular`: Returns the number if it is a triangular number.
+*   `isSquare`: Returns the number if it is a perfect square.
+*   `isCube`: Returns the number if it is a perfect cube.
+
+### 4.5. Generators
+
+The system shall provide a set of generators that can be used in expressions to produce sequences of numbers. The following generators shall be supported:
+
+*   `prime`: Generates prime numbers.
+*   `triangular`: Generates triangular numbers.
+*   `fibonacci`: Generates Fibonacci numbers.
+*   `square`: Generates square numbers.
+*   `cube`: Generates cube numbers.
+
+### 4.6. Command-Line Interface (CLI)
 
 *   The project shall provide a CLI for solving puzzles.
 *   The CLI shall allow users to select a puzzle to solve and view the solution.
