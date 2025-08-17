@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:crossnumber/src/models/evaluation_result.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'expression.dart';
 import 'generators.dart';
@@ -9,7 +10,7 @@ import 'monadic.dart';
 ///
 /// The evaluator can handle variables, generators, and references to grid entries,
 /// provided that the necessary context ([puzzle]) is given.
-class Evaluator implements ExpressionVisitor<List<num>> {
+class Evaluator implements ExpressionVisitor<List<dynamic>> {
   final PuzzleDefinition puzzle;
   final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
   final MonadicFunctionRegistry _monadicFunctionRegistry =
@@ -17,6 +18,7 @@ class Evaluator implements ExpressionVisitor<List<num>> {
   final Map<String, int> _pinnedVariables;
 
   num? maxResult;
+  bool withVariables = false;
 
   /// Creates a new evaluator with the given [puzzle] context.
   Evaluator(this.puzzle, [Map<String, int>? pinnedVariables])
@@ -25,12 +27,27 @@ class Evaluator implements ExpressionVisitor<List<num>> {
   /// Evaluates the given [expression] and returns a list of possible values.
   List<int> evaluate(Expression expression, List<String> variables,
       {required int min, required int max}) {
+    withVariables = false;
     final numResult = _internalEvaluate(expression, variables,
         min: min as num, max: max as num);
     return numResult
         .where((n) => n.isFinite && n.truncate() == n)
         .map((n) => n.toInt())
         .where((value) => value >= min && value <= max)
+        .toSet()
+        .toList();
+  }
+
+  List<EvaluationFinalResult> evaluateWithVariables(
+      Expression expression, List<String> variables,
+      {required int min, required int max}) {
+    withVariables = true;
+    final results = _internalEvaluateV(expression, variables,
+        min: min as num, max: max as num);
+    return results
+        .where((r) => r.value.isFinite && r.value.truncate() == r.value)
+        .map((r) => EvaluationFinalResult(r.value.toInt(), r.variableValues))
+        .where((r) => r.value >= min && r.value <= max)
         .toSet()
         .toList();
   }
@@ -68,55 +85,110 @@ class Evaluator implements ExpressionVisitor<List<num>> {
     return results.toList();
   }
 
+  List<EvaluationResult> _internalEvaluateV(
+      Expression expression, List<String> variables,
+      {required num min, required num max}) {
+    // Maximum possible result value
+    maxResult = max;
+
+    if (variables.isEmpty) {
+      return _evaluateWithPinnedVariablesV(expression, min: min, max: max);
+    }
+
+    final results = <EvaluationResult>{};
+    final currentVariable = variables.first;
+    final unpinnedVariables = variables.sublist(1);
+
+    final possibleValues = puzzle.variables.containsKey(currentVariable)
+        ? puzzle.variables[currentVariable]!.possibleValues
+        : puzzle.clues[currentVariable]!.possibleValues!;
+
+    for (final value in possibleValues) {
+      // Check for duplicate variable values
+      if (_pinnedVariables.containsValue(value)) continue;
+
+      final newPinnedVariables = Map<String, int>.from(_pinnedVariables);
+      newPinnedVariables[currentVariable] = value;
+
+      final evaluator = Evaluator(puzzle, newPinnedVariables);
+      final result = evaluator._internalEvaluateV(expression, unpinnedVariables,
+          min: min, max: max);
+      results.addAll(result);
+    }
+
+    return results.toList();
+  }
+
   List<num> _evaluateWithPinnedVariables(Expression expression,
       {required num min, required num max}) {
-    return expression.accept(this, min: min, max: max);
+    return expression
+        .accept(this, min: min, max: max, withVariables: false)
+        .map((e) => e as num)
+        .toList();
+  }
+
+  List<EvaluationResult> _evaluateWithPinnedVariablesV(Expression expression,
+      {required num min, required num max}) {
+    return expression.accept(this, min: min, max: max, withVariables: true)
+        as List<EvaluationResult>;
   }
 
   @override
-  List<num> visitNumberExpression(NumberExpression expression,
-      {required num min, required num max}) {
+  List<dynamic> visitNumberExpression(NumberExpression expression,
+      {required num min, required num max, required bool withVariables}) {
     final value = expression.value;
-    return value >= min && value <= max ? [value] : [];
+    if (value >= min && value <= max) {
+      return withVariables ? [EvaluationResult(value, {})] : [value];
+    }
+    return [];
   }
 
   @override
-  List<num> visitVariableExpression(VariableExpression expression,
-      {required num min, required num max}) {
+  List<dynamic> visitVariableExpression(VariableExpression expression,
+      {required num min, required num max, required bool withVariables}) {
     if (_pinnedVariables.containsKey(expression.name)) {
       final value = _pinnedVariables[expression.name]!;
-      return value >= min && value <= max ? [value] : [];
+      if (value >= min && value <= max) {
+        return withVariables
+            ? [
+                EvaluationResult(value, {expression.name: value})
+              ]
+            : [value];
+      }
+      return [];
     }
     if (puzzle.variables.containsKey(expression.name)) {
       return puzzle.variables[expression.name]!.possibleValues
           .where((value) => value >= min && value <= max)
-          .map((e) => e as num)
+          .map((e) =>
+              withVariables ? EvaluationResult(e, {expression.name: e}) : e)
           .toList();
     } else if (puzzle.clues.containsKey(expression.name)) {
       return (puzzle.clues[expression.name]!.possibleValues ?? <int>{})
           .where((value) => value >= min && value <= max)
-          .map((e) => e as num)
+          .map((e) =>
+              withVariables ? EvaluationResult(e, {expression.name: e}) : e)
           .toList();
     }
     throw Exception('Undefined variable or clue: ${expression.name}');
   }
 
   @override
-  List<num> visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max}) {
+  List<dynamic> visitGeneratorExpression(GeneratorExpression expression,
+      {required num min, required num max, required bool withVariables}) {
     final generator = _generatorRegistry.get(expression.name);
     if (generator != null) {
       return generator
           .getValues(min.ceil(), max.floor())
-          .map((e) => e as num)
+          .map((e) => withVariables ? EvaluationResult(e, {}) : e)
           .toList();
     }
     throw Exception('Unknown generator: ${expression.name}');
   }
 
   @override
-  List<num> visitBinaryExpression(BinaryExpression expression,
-      {required num min, required num max}) {
+  List<dynamic> visitBinaryExpression(BinaryExpression expression,
+      {required num min, required num max, required bool withVariables}) {
     num leftMin = -max;
     num leftMax = max;
     if (expression.operator.type == TokenType.MINUS ||
@@ -126,10 +198,16 @@ class Evaluator implements ExpressionVisitor<List<num>> {
       leftMin = -arbitraryLimit;
       leftMax = arbitraryLimit;
     }
-    final leftValues = _evaluateWithPinnedVariables(expression.left,
-        min: leftMin, max: leftMax);
-    final results = <num>{};
-    for (final left in leftValues) {
+    final leftValues = withVariables
+        ? _evaluateWithPinnedVariablesV(expression.left,
+            min: leftMin, max: leftMax)
+        : _evaluateWithPinnedVariables(expression.left,
+            min: leftMin, max: leftMax);
+    final results = withVariables ? <EvaluationResult>{} : <num>{};
+    for (final leftResult in leftValues) {
+      final left = withVariables
+          ? (leftResult as EvaluationResult).value
+          : leftResult as num;
       num rightMin, rightMax;
       switch (expression.operator.type) {
         case TokenType.PLUS:
@@ -173,30 +251,48 @@ class Evaluator implements ExpressionVisitor<List<num>> {
           throw Exception(
               'Unknown binary operator: ${expression.operator.type}');
       }
-      final rightValues = _evaluateWithPinnedVariables(expression.right,
-          min: rightMin, max: rightMax);
-      for (final right in rightValues) {
+      final rightValues = withVariables
+          ? _evaluateWithPinnedVariablesV(expression.right,
+              min: rightMin, max: rightMax)
+          : _evaluateWithPinnedVariables(expression.right,
+              min: rightMin, max: rightMax);
+      for (final rightResult in rightValues) {
+        final right = withVariables
+            ? (rightResult as EvaluationResult).value
+            : (rightResult as num);
+        num resultValue;
         switch (expression.operator.type) {
           case TokenType.PLUS:
-            results.add(left + right);
+            resultValue = left + right;
             break;
           case TokenType.MINUS:
-            results.add(left - right);
+            resultValue = left - right;
             break;
           case TokenType.STAR:
-            results.add(left * right);
+            resultValue = left * right;
             break;
           case TokenType.SLASH:
             if (right != 0) {
-              results.add(left / right);
+              resultValue = left / right;
+            } else {
+              continue;
             }
             break;
           case TokenType.EXPONENT:
-            results.add(pow(left, right));
+            resultValue = pow(left, right);
             break;
           default:
             throw Exception(
                 'Unknown binary operator: ${expression.operator.type}');
+        }
+        if (withVariables) {
+          // TODO compute the intersection of leftResult and rightResult variableValues with common variables
+          final variableValues = Map<String, int>.from(
+              (leftResult as EvaluationResult).variableValues)
+            ..addAll((rightResult as EvaluationResult).variableValues);
+          results.add(EvaluationResult(resultValue, variableValues));
+        } else {
+          results.add(resultValue);
         }
       }
     }
@@ -204,15 +300,24 @@ class Evaluator implements ExpressionVisitor<List<num>> {
   }
 
   @override
-  List<num> visitUnaryExpression(UnaryExpression expression,
-      {required num min, required num max}) {
-    final rightValues =
-        _evaluateWithPinnedVariables(expression.right, min: -max, max: -min);
-    final results = <num>{};
-    for (final right in rightValues) {
+  List<dynamic> visitUnaryExpression(UnaryExpression expression,
+      {required num min, required num max, required bool withVariables}) {
+    final rightValues = withVariables
+        ? _evaluateWithPinnedVariablesV(expression.right, min: -max, max: -min)
+        : _evaluateWithPinnedVariables(expression.right, min: -max, max: -min);
+    final results = withVariables ? <EvaluationResult>{} : <num>{};
+    for (final rightResult in rightValues) {
+      final right = withVariables
+          ? (rightResult as EvaluationResult).value
+          : rightResult as num;
       switch (expression.operator.type) {
         case TokenType.MINUS:
-          results.add(-right);
+          if (withVariables) {
+            results.add(EvaluationResult(
+                -right, (rightResult as EvaluationResult).variableValues));
+          } else {
+            results.add(-right);
+          }
           break;
         default:
           throw Exception('Invalid unary operator.');
@@ -222,20 +327,23 @@ class Evaluator implements ExpressionVisitor<List<num>> {
   }
 
   @override
-  List<num> visitGroupingExpression(GroupingExpression expression,
-      {required num min, required num max}) {
-    return _evaluateWithPinnedVariables(expression.expression,
-        min: min, max: max);
+  List<dynamic> visitGroupingExpression(GroupingExpression expression,
+      {required num min, required num max, required bool withVariables}) {
+    return withVariables
+        ? _evaluateWithPinnedVariablesV(expression.expression,
+            min: min, max: max)
+        : _evaluateWithPinnedVariables(expression.expression,
+            min: min, max: max);
   }
 
   @override
-  List<num> visitGridEntryExpression(GridEntryExpression expression,
-      {required num min, required num max}) {
+  List<dynamic> visitGridEntryExpression(GridEntryExpression expression,
+      {required num min, required num max, required bool withVariables}) {
     final entry = puzzle.entries[expression.entryId];
     if (entry != null) {
       return entry.possibleValues
           .where((value) => value >= min && value <= max)
-          .map((e) => e as num)
+          .map((e) => withVariables ? EvaluationResult(e, {}) : e)
           .toList();
     }
     throw Exception(
@@ -243,8 +351,8 @@ class Evaluator implements ExpressionVisitor<List<num>> {
   }
 
   @override
-  List<num> visitMonadicExpression(MonadicExpression expression,
-      {required num min, required num max}) {
+  List<dynamic> visitMonadicExpression(MonadicExpression expression,
+      {required num min, required num max, required bool withVariables}) {
     // Heuristic for min/max of argument to function
     num fmin = 1;
     num fmax = max;
@@ -252,17 +360,20 @@ class Evaluator implements ExpressionVisitor<List<num>> {
     if (fname.startsWith('is') && fname != 'jumble') {
       fmax = maxResult! * maxResult!;
     }
-    final values =
-        _evaluateWithPinnedVariables(expression.right, min: fmin, max: fmax);
+    final values = withVariables
+        ? _evaluateWithPinnedVariablesV(expression.right, min: fmin, max: fmax)
+        : _evaluateWithPinnedVariables(expression.right, min: fmin, max: fmax);
     final function = _monadicFunctionRegistry.get(fname);
     if (function != null) {
       // Monadic functions return int, convert to num
       return function(values
-              .map((e) => e.round())
+              .map((e) => withVariables
+                  ? (e as EvaluationResult).value.round()
+                  : (e as num).round())
               .where((e) => e == e.truncate())
               .toList())
           .where((value) => value >= min && value <= max)
-          .map((e) => e as num)
+          .map((e) => withVariables ? EvaluationResult(e, {}) : e)
           .toList();
     }
     throw Exception('Unknown monadic function: ${expression.operator.lexeme}');

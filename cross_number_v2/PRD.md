@@ -54,6 +54,7 @@ This document outlines the requirements for a new, refactored version of the Cro
     *   References to grid entries, using the format `gridId.entryId` (e.g., `main.A1`).
     *   Generators for sequences of numbers, using the format `#generatorName` (e.g., `#prime`, `#fibonacci`).
     *   Monadic functions, using the format `$functionName` (e.g., `$squareroot`, `$isOdd`).
+*   Intermediate calculations are performed using the `num` type, and the final results are converted to `int`.
 
 ### 4.4. Monadic Functions
 

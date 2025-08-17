@@ -7,44 +7,49 @@ class VariableVisitor implements ExpressionVisitor<void> {
 
   @override
   void visitBinaryExpression(BinaryExpression expression,
-      {required num min, required num max}) {
-    expression.left.accept(this, min: min, max: max);
-    expression.right.accept(this, min: min, max: max);
+      {required num min, required num max, required bool withVariables}) {
+    expression.left
+        .accept(this, min: min, max: max, withVariables: withVariables);
+    expression.right
+        .accept(this, min: min, max: max, withVariables: withVariables);
   }
 
   @override
   void visitGroupingExpression(GroupingExpression expression,
-      {required num min, required num max}) {
-    expression.expression.accept(this, min: min, max: max);
+      {required num min, required num max, required bool withVariables}) {
+    expression.expression
+        .accept(this, min: min, max: max, withVariables: withVariables);
   }
 
   @override
   void visitNumberExpression(NumberExpression expression,
-      {required num min, required num max}) {}
+      {required num min, required num max, required bool withVariables}) {}
 
   @override
   void visitUnaryExpression(UnaryExpression expression,
-      {required num min, required num max}) {
-    expression.right.accept(this, min: min, max: max);
+      {required num min, required num max, required bool withVariables}) {
+    expression.right
+        .accept(this, min: min, max: max, withVariables: withVariables);
   }
 
   @override
   void visitVariableExpression(VariableExpression expression,
-      {required num min, required num max}) {
+      {required num min, required num max, required bool withVariables}) {
     _variables.add(expression.name);
   }
 
   @override
   void visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max}) {}
+      {required num min, required num max, required bool withVariables}) {}
 
   @override
   void visitGridEntryExpression(GridEntryExpression expression,
-      {required num min, required num max}) {}
+      {required num min, required num max, required bool withVariables}) {}
 
   @override
   void visitMonadicExpression(MonadicExpression expression,
-      {required num min, required num max}) {
-    expression.right.accept(this, min: min, max: max);
+      {required num min, required num max, required bool withVariables}) {
+    expression.right
+        .accept(this, min: min, max: max, withVariables: withVariables);
   }
 }
