@@ -56,42 +56,7 @@ class Clue {
   /// to narrow down the set of [possibleValues].
   ///
   /// Returns `true` if the set of possible values was updated, `false` otherwise.
-  bool solve(PuzzleDefinition puzzle) {
-    bool updated = false;
-    for (final constraint in constraints) {
-      if (constraint is ExpressionConstraint) {
-        final expression = constraint.expressionTree!;
-
-        final solveMin = min ?? 1;
-        final solveMax = max ?? 100000; // Arbitrarily large
-
-        final evaluator = Evaluator(puzzle);
-        final newPossibleValues = evaluator.evaluate(
-            expression, constraint.variables,
-            min: solveMin, max: solveMax);
-
-        if (newPossibleValues.isEmpty) {
-          // If the new possible values are empty, we have a contradiction
-          possibleValues!.clear();
-          updated = true;
-        } else if (possibleValues == null) {
-          possibleValues = Set<int>.from(newPossibleValues);
-          updated = true;
-        } else {
-          final oldPossibleValuesLength = possibleValues!.length;
-          possibleValues!
-              .retainWhere((value) => newPossibleValues.contains(value));
-          if (possibleValues!.length != oldPossibleValuesLength) {
-            updated = true;
-          }
-        }
-      }
-    }
-    return updated;
-  }
-
-  bool solveWithVariables(
-      PuzzleDefinition puzzle, List<String> updatedVariables,
+  bool solve(PuzzleDefinition puzzle, List<String> updatedVariables,
       {bool trace = false}) {
     bool updated = false;
     for (final constraint in constraints) {
@@ -102,8 +67,7 @@ class Clue {
         final solveMax = max ?? 100000; // Arbitrarily large
 
         final evaluator = Evaluator(puzzle);
-        final results = evaluator.evaluateWithVariables(
-            expression, constraint.variables,
+        final results = evaluator.evaluate(expression, constraint.variables,
             min: solveMin, max: solveMax);
 
         final newPossibleValues = results.map((r) => r.value).toSet();
@@ -114,10 +78,6 @@ class Clue {
           updated = true;
         } else if (possibleValues == null) {
           possibleValues = newPossibleValues;
-          updated = true;
-        } else if (newPossibleValues.isEmpty) {
-          // If the new possible values are empty, we have a contradiction
-          possibleValues!.clear();
           updated = true;
         } else {
           final oldPossibleValuesLength = possibleValues!.length;

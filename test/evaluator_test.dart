@@ -47,7 +47,9 @@ void main() {
       // For A=3, (3/2)*4 = 6
       // For A=4, (4/2)*4 = 8
       // For A=5, (5/2)*4 = 10
-      expect(evaluatedResult, unorderedEquals([6, 8, 10]));
+      expect(evaluatedResult.map((r) => r.value), unorderedEquals([6, 8, 10]));
+      expect(evaluatedResult.map((r) => r.variableValues['A']),
+          unorderedEquals([3, 4, 5]));
     });
   });
 }
@@ -60,7 +62,7 @@ void expectExpression(
   final expression = parser.parse();
   final evaluator = Evaluator(puzzle);
   final evaluatedResult =
-      evaluator.evaluate(expression, variables, min: min, max: max);
+      evaluator.evaluateNoVariables(expression, variables, min: min, max: max);
   if (result == null) {
     expect(evaluatedResult, isEmpty);
   } else {

@@ -14,9 +14,10 @@ class MockClue extends Clue {
   MockClue(String id, List<Constraint> constraints) : super(id, constraints);
 
   @override
-  bool solve(PuzzleDefinition puzzle) {
+  bool solve(PuzzleDefinition puzzle, List<String> updatedVariables,
+      {bool trace = false}) {
     solveCalled = true;
-    return super.solve(puzzle);
+    return super.solve(puzzle, updatedVariables, trace: trace);
   }
 }
 

@@ -97,7 +97,7 @@ class PuzzleDefinition {
             constraint.expressionTree = expression;
             final variableVisitor = VariableVisitor();
             expression.accept(variableVisitor,
-                min: 1, max: 1, withVariables: false); // min, max not used here
+                min: 1, max: 1); // min, max not used here
             constraint.variables = variableVisitor.variables.toList();
           } on ParseException catch (e) {
             exception = true;

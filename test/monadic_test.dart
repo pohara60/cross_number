@@ -13,7 +13,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$squareroot 4').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([2]));
     });
 
@@ -22,7 +23,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isOdd 3').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([3]));
     });
 
@@ -31,7 +33,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isEven 4').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([4]));
     });
 
@@ -40,7 +43,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isAscendingDigits 123').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 1000);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 1000);
       expect(result, equals([123]));
     });
 
@@ -49,7 +53,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isDescendingDigits 321').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 1000);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 1000);
       expect(result, equals([321]));
     });
 
@@ -58,7 +63,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isUniqueDigits 123').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 1000);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 1000);
       expect(result, equals([123]));
     });
 
@@ -67,7 +73,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isPrime 7').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([7]));
     });
 
@@ -76,7 +83,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isSquare 9').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([9]));
     });
 
@@ -85,7 +93,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isCube 8').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([8]));
     });
 
@@ -94,7 +103,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isFibonacci 13').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, equals([13]));
     });
 
@@ -103,7 +113,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isAscendingDigits 132').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 1000);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 1000);
       expect(result, isEmpty);
     });
 
@@ -112,7 +123,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isDescendingDigits 312').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 1000);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 1000);
       expect(result, isEmpty);
     });
 
@@ -121,7 +133,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isUniqueDigits 121').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 1000);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 1000);
       expect(result, isEmpty);
     });
 
@@ -130,7 +143,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isPrime 6').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, isEmpty);
     });
 
@@ -139,7 +153,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isSquare 10').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, isEmpty);
     });
 
@@ -148,7 +163,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isCube 9').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, isEmpty);
     });
 
@@ -157,7 +173,8 @@ void main() {
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
       final evaluator = Evaluator(puzzle);
       final expression = Parser('\$isFibonacci 12').parse();
-      final result = evaluator.evaluate(expression, [], min: 0, max: 100);
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, isEmpty);
     });
   });

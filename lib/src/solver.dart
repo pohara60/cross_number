@@ -162,7 +162,7 @@ class Solver {
 
       // Solve the clue with this value, to update variables
       var updatedVariables = <String>[];
-      currentClue.solveWithVariables(puzzle, updatedVariables);
+      currentClue.solve(puzzle, updatedVariables);
       if (traceBacktrace) {
         _printUpdatedVariables(updatedVariables);
       }
@@ -290,7 +290,7 @@ class Solver {
       for (var clue in puzzle.clues.values) {
         final originalCount = clue.possibleValues?.length;
         final updatedVariables = <String>[];
-        if (clue.solveWithVariables(puzzle, updatedVariables)) {
+        if (clue.solve(puzzle, updatedVariables)) {
           _updated = true;
           if (trace) {
             _printUpdatedClue(clue, originalCount);
@@ -548,11 +548,12 @@ class Solver {
       // Re-solve clues with variable values
       for (var clue in puzzle.clues.values) {
         final originalSize = clue.possibleValues?.length ?? 0;
-        if (clue.solve(puzzle)) {
+        var updatedVariables = <String>[];
+        if (clue.solve(puzzle, updatedVariables)) {
           localChanged = true;
           if (trace) {
-            print(
-                '    Clue ${clue.id} re-solved: $originalSize -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+            _printUpdatedClue(clue, originalSize);
+            _printUpdatedVariables(updatedVariables);
           }
         }
         if (clue.possibleValues != null && clue.possibleValues!.isEmpty) {
