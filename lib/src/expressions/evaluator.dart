@@ -286,10 +286,22 @@ class Evaluator implements ExpressionVisitor<List<dynamic>> {
                 'Unknown binary operator: ${expression.operator.type}');
         }
         if (withVariables) {
-          // TODO compute the intersection of leftResult and rightResult variableValues with common variables
-          final variableValues = Map<String, int>.from(
-              (leftResult as EvaluationResult).variableValues)
-            ..addAll((rightResult as EvaluationResult).variableValues);
+          // compute the intersection of left and right variableValues for common variables
+          final leftVariableValues =
+              (leftResult as EvaluationResult).variableValues;
+          final rightVariableValues =
+              (rightResult as EvaluationResult).variableValues;
+          var consistent = true;
+          for (var key in leftVariableValues.keys) {
+            if (rightVariableValues.containsKey(key) &&
+                leftVariableValues[key] != rightVariableValues[key]) {
+              consistent = false;
+              break;
+            }
+          }
+          if (!consistent) continue;
+
+          var variableValues = {...leftVariableValues, ...rightVariableValues};
           results.add(EvaluationResult(resultValue, variableValues));
         } else {
           results.add(resultValue);

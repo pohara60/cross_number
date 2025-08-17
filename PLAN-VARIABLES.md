@@ -12,10 +12,10 @@ To keep the code stable, we will introduce the changes incrementally.
 2.  **Create `Evaluator.evaluateWithVariables`:** Create a new method `evaluateWithVariables` in `evaluator.dart` that returns a list of `EvaluationResult` objects. This will be a copy of the existing `evaluate` method, but with the new return type.
 3.  **Update `Evaluator` private methods:** Update the private methods in the `Evaluator` to work with the new `EvaluationResult` class.
 
-## Step 2: Create a New `Clue.solve2` Method
+## Step 2: Create a New `Clue.solveWithVariables` Method
 
-1.  **Create `Clue.solve2`:** Create a new method `solve2` in `clue.dart` that uses the new `evaluateWithVariables` method.
-2.  **Update variable values:** In `Clue.solve2`, after evaluating the expression, iterate through the results and collect all possible values for each variable. Update the `possibleValues` of each variable in the puzzle with the new, more restricted set of values.
+1.  **Create `Clue.solveWithVariables`:** Create a new method `solveWithVariables` in `clue.dart` that uses the new `evaluateWithVariables` method.
+2.  **Update variable values:** In `Clue.solveWithVariables`, after evaluating the expression, iterate through the results and collect all possible values for each variable. Update the `possibleValues` of each variable in the puzzle with the new, more restricted set of values.
 
 ## Step 3: Refactor the `Solver`
 

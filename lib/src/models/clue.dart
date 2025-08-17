@@ -70,8 +70,48 @@ class Clue {
             expression, constraint.variables,
             min: solveMin, max: solveMax);
 
-        if (possibleValues == null) {
+        if (newPossibleValues.isEmpty) {
+          // If the new possible values are empty, we have a contradiction
+          possibleValues!.clear();
+          updated = true;
+        } else if (possibleValues == null) {
           possibleValues = Set<int>.from(newPossibleValues);
+          updated = true;
+        } else {
+          final oldPossibleValuesLength = possibleValues!.length;
+          possibleValues!
+              .retainWhere((value) => newPossibleValues.contains(value));
+          if (possibleValues!.length != oldPossibleValuesLength) {
+            updated = true;
+          }
+        }
+      }
+    }
+    return updated;
+  }
+
+  bool solveWithVariables(PuzzleDefinition puzzle) {
+    bool updated = false;
+    for (final constraint in constraints) {
+      if (constraint is ExpressionConstraint) {
+        final expression = constraint.expressionTree!;
+
+        final solveMin = min ?? 1;
+        final solveMax = max ?? 100000; // Arbitrarily large
+
+        final evaluator = Evaluator(puzzle);
+        final results = evaluator.evaluateWithVariables(
+            expression, constraint.variables,
+            min: solveMin, max: solveMax);
+
+        final newPossibleValues = results.map((r) => r.value).toSet();
+
+        if (newPossibleValues.isEmpty) {
+          // If the new possible values are empty, we have a contradiction
+          possibleValues!.clear();
+          updated = true;
+        } else if (possibleValues == null) {
+          possibleValues = newPossibleValues;
           updated = true;
         } else if (newPossibleValues.isEmpty) {
           // If the new possible values are empty, we have a contradiction
@@ -82,6 +122,21 @@ class Clue {
           possibleValues!
               .retainWhere((value) => newPossibleValues.contains(value));
           if (possibleValues!.length != oldPossibleValuesLength) {
+            updated = true;
+          }
+        }
+
+        // Update variables
+        for (var variableName in constraint.variables) {
+          var variable = puzzle.variables[variableName];
+          if (variable == null) continue;
+
+          final newVariableValues =
+              results.map((r) => r.variableValues[variableName]).toSet();
+          final oldVariableValuesLength = variable.possibleValues.length;
+          variable.possibleValues
+              .retainWhere((value) => newVariableValues.contains(value));
+          if (variable.possibleValues.length != oldVariableValuesLength) {
             updated = true;
           }
         }
