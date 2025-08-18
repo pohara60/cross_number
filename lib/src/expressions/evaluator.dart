@@ -28,7 +28,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   List<EvaluationFinalResult> evaluate(
       Expression expression, List<String> variables,
       {required int min, required int max}) {
-    final results = _internalEvaluate(expression, variables,
+    // Some variables may be pinned already
+    var unpinnedVariables =
+        variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
+    final results = _internalEvaluate(expression, unpinnedVariables,
         min: min as num, max: max as num);
     return results
         .where((r) => r.value.isFinite && r.value.truncate() == r.value)
@@ -42,7 +45,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// a list of integer results that fall within the specified [min] and [max] range.
   List<int> evaluateNoVariables(Expression expression, List<String> variables,
       {required int min, required int max}) {
-    final results = _internalEvaluate(expression, variables,
+    // Some variables may be pinned already
+    var unpinnedVariables =
+        variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
+    final results = _internalEvaluate(expression, unpinnedVariables,
         min: min as num, max: max as num);
     return results
         .where((r) => r.value.isFinite && r.value.truncate() == r.value)
@@ -53,18 +59,18 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   }
 
   List<EvaluationResult> _internalEvaluate(
-      Expression expression, List<String> variables,
+      Expression expression, List<String> unpinnedVariables,
       {required num min, required num max}) {
     // Maximum possible result value
     maxResult = max;
 
-    if (variables.isEmpty) {
+    if (unpinnedVariables.isEmpty) {
       return _evaluateWithPinnedVariables(expression, min: min, max: max);
     }
 
     final results = <EvaluationResult>{};
-    final currentVariable = variables.first;
-    final unpinnedVariables = variables.sublist(1);
+    final currentVariable = unpinnedVariables.first;
+    final newUnpinnedVariables = unpinnedVariables.sublist(1);
 
     final possibleValues = puzzle.variables.containsKey(currentVariable)
         ? puzzle.variables[currentVariable]!.possibleValues
@@ -78,7 +84,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       newPinnedVariables[currentVariable] = value;
 
       final evaluator = Evaluator(puzzle, newPinnedVariables);
-      final result = evaluator._internalEvaluate(expression, unpinnedVariables,
+      final result = evaluator._internalEvaluate(
+          expression, newUnpinnedVariables,
           min: min, max: max);
       results.addAll(result);
     }
@@ -124,7 +131,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           .map((e) => EvaluationResult(e, {expression.name: e}))
           .toList();
     }
-    throw Exception('Undefined variable or clue: ${expression.name}');
+    throw EvaluatorException('Undefined variable or clue: ${expression.name}');
   }
 
   @override
@@ -139,7 +146,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           .map((e) => EvaluationResult(e, {}))
           .toList();
     }
-    throw Exception('Unknown generator: ${expression.name}');
+    throw EvaluatorException('Unknown generator: ${expression.name}');
   }
 
   @override
@@ -147,13 +154,11 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       {required num min, required num max}) {
     num leftMin = -max;
     num leftMax = max;
-    if (expression.operator.type == TokenType.MINUS ||
-        expression.operator.type == TokenType.SLASH) {
-      // Arbitrary min/max limit when do not know what values are to be subtracted or divided
-      const arbitraryLimit = 10000;
-      leftMin = -arbitraryLimit;
-      leftMax = arbitraryLimit;
-    }
+    // TODO If child nodes only have one value, then we can compute it and use that value to compuute the min/max for the other side.
+    // Arbitrary min/max limit when do not know what values are to be operated on
+    const arbitraryLimit = 10000;
+    leftMin = -arbitraryLimit;
+    leftMax = arbitraryLimit;
     final leftValues = _evaluateWithPinnedVariables(expression.left,
         min: leftMin, max: leftMax);
     final results = <EvaluationResult>{};
@@ -199,7 +204,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           rightMax = left <= 1 ? max : log(max) / log(left);
           break;
         default:
-          throw Exception(
+          throw EvaluatorException(
               'Unknown binary operator: ${expression.operator.type}');
       }
       final rightValues = _evaluateWithPinnedVariables(expression.right,
@@ -228,7 +233,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
             resultValue = pow(left, right);
             break;
           default:
-            throw Exception(
+            throw EvaluatorException(
                 'Unknown binary operator: ${expression.operator.type}');
         }
         // compute the intersection of left and right variableValues for common variables
@@ -264,7 +269,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           results.add(EvaluationResult(-right, rightResult.variableValues));
           break;
         default:
-          throw Exception('Invalid unary operator.');
+          throw EvaluatorException('Invalid unary operator.');
       }
     }
     return results.toList();
@@ -289,7 +294,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           .map((e) => EvaluationResult(e, {}))
           .toList();
     }
-    throw Exception(
+    throw EvaluatorException(
         'Entry ${expression.entryId} not found in puzzle definition.');
   }
 
@@ -300,7 +305,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     num fmin = 1;
     num fmax = max;
     var fname = expression.operator.lexeme;
-    if (fname.startsWith('is') && fname != 'jumble') {
+    if (!fname.startsWith('is') && fname != 'jumble') {
       fmax = maxResult! * maxResult!;
     }
     final values =
@@ -316,6 +321,13 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           .map((e) => EvaluationResult(e, {}))
           .toList();
     }
-    throw Exception('Unknown monadic function: ${expression.operator.lexeme}');
+    throw EvaluatorException(
+        'Unknown monadic function: ${expression.operator.lexeme}');
   }
+}
+
+/// An error thrown when the evaluator encounters an error.
+class EvaluatorException implements Exception {
+  String? msg;
+  EvaluatorException([this.msg]);
 }

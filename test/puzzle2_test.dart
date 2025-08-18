@@ -7,7 +7,8 @@ void main() {
   group('Puzzle2', () {
     test('should solve the second puzzle correctly', () {
       final puzzle = puzzle2();
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, trace: false, traceBacktrace: false);
+      int solveCount = 0;
 
       bool callback() {
         // check variable values
@@ -24,10 +25,13 @@ void main() {
         expectEntryValues(puzzle, 'D4', [18]);
         expectEntryValues(puzzle, 'A4', [121]);
         expectEntryValues(puzzle, 'A5', [52, 56]);
+
+        solveCount++;
         return true;
       }
 
       solver.solve(callback);
+      expect(solveCount, 8);
     });
   });
 }

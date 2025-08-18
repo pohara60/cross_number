@@ -2,6 +2,7 @@
 
 import 'dart:math';
 import 'package:collection/collection.dart';
+import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -9,7 +10,9 @@ import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/utils/set.dart';
 import 'package:crossnumber/src/models/entry.dart'; // Added for SolverState
-import 'package:crossnumber/src/models/grid.dart'; // Added for _printSolution
+import 'package:crossnumber/src/models/grid.dart';
+
+import 'expressions/evaluator.dart'; // Added for _printSolution
 
 class SolverState {
   final Map<String, Set<int>?> cluePossibleValues;
@@ -126,7 +129,7 @@ class Solver {
       [bool Function()? callback]) {
     if (clueIndex == puzzle.clues.length) {
       // Base case: All clues assigned. Check if it's a valid solution.
-      if (_isSolutionValid()) {
+      if (isSolutionValid()) {
         if (traceBacktrace) print('Backtracking: Solution found!');
         if (callback != null) {
           if (!callback()) {
@@ -194,7 +197,7 @@ class Solver {
     return solutionCount;
   }
 
-  bool _isSolutionValid() {
+  bool isSolutionValid() {
     // Check if all clues have a single value
     for (var clue in puzzle.clues.values) {
       if (clue.possibleValues == null || clue.possibleValues!.length != 1) {
@@ -284,10 +287,21 @@ class Solver {
       iteration++;
       if (trace) print('Iteration $iteration');
       _updated = false;
-      if (trace) print('  Solving clues...');
 
-      // Solve clues first
+      // Solve clue groups
+      final clueGroups = puzzle.findClueGroups();
+      for (var group in clueGroups) {
+        if (solveClueGroup(group)) {
+          _updated = true;
+        }
+      }
+
+      // Solve clues that are not in groups
+      if (trace) print('  Solving clues...');
       for (var clue in puzzle.clues.values) {
+        if (clueGroups.any((g) => g.clues.contains(clue.id))) {
+          continue; // Skip clues already in groups
+        }
         final originalCount = clue.possibleValues?.length;
         final updatedVariables = <String>[];
         if (clue.solve(puzzle, updatedVariables)) {
@@ -312,7 +326,7 @@ class Solver {
     } while (_updated);
 
     // If solution not exact, start backtracking
-    if (_isSolutionValid()) {
+    if (isSolutionValid()) {
       printPuzzle();
     } else if (!allowBacktracking) {
       printPuzzle();
@@ -340,6 +354,81 @@ class Solver {
   void _printUpdatedClue(Clue clue, int? originalCount) {
     print(
         '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+  }
+
+  bool solveClueGroup(ClueGroup group) {
+    if (trace) print('  Solving group with clues: ${group.clues}');
+
+    var updated = false;
+    final validCombinations = <Map<String, int>>[];
+    var consistent = _solveClueGroup(
+        group.clues.map((e) => puzzle.clues[e]!).toList(),
+        {},
+        validCombinations);
+    if (consistent && validCombinations.isNotEmpty) {
+      // Update clue values
+      for (var clueId in group.clues) {
+        final clue = puzzle.clues[clueId]!;
+        final newPossibleValues = validCombinations
+            .map((combination) => combination[clueId]!)
+            .toSet();
+        if (newPossibleValues.length < clue.possibleValues!.length) {
+          final originalCount = clue.possibleValues?.length ?? 0;
+          clue.possibleValues = newPossibleValues;
+          updated = true;
+          if (trace) _printUpdatedClue(clue, originalCount);
+        }
+      }
+      // Update variable values
+      var updateVariables = <String>[];
+      for (var variableName in group.variables) {
+        final variable = puzzle.variables[variableName]!;
+        final newPossibleValues = validCombinations
+            .map((combination) => combination[variableName]!)
+            .toSet();
+        if (newPossibleValues.length < variable.possibleValues.length) {
+          variable.possibleValues = newPossibleValues;
+          updated = true;
+        }
+      }
+      if (trace) _printUpdatedVariables(updateVariables);
+    }
+    return updated;
+  }
+
+  bool _solveClueGroup(List<Clue> clues, Map<String, int> pinnedVariables,
+      List<Map<String, int>> validCombinations) {
+    if (clues.isEmpty) {
+      validCombinations.add(pinnedVariables);
+      return true;
+    }
+
+    final clue = clues.first;
+    final remainingClues = clues.sublist(1);
+    final evaluator = Evaluator(puzzle, pinnedVariables);
+    // Assume the clue has only one expression constraint for simplicity
+    final constraint = clue.constraints
+        .firstWhere((c) => c is ExpressionConstraint) as ExpressionConstraint;
+    final results = evaluator.evaluate(
+        constraint.expressionTree!, constraint.variables,
+        min: clue.min!, max: clue.max!);
+
+    var anyConsistent = false;
+    for (var result in results) {
+      if (clue.possibleValues!.contains(result.value)) {
+        final newPinnedVariables = {
+          ...pinnedVariables,
+          clue.id: result.value,
+          ...result.variableValues
+        };
+        var consistent = _solveClueGroup(
+            remainingClues, newPinnedVariables, validCombinations);
+        if (consistent) {
+          anyConsistent = true;
+        }
+      }
+    }
+    return anyConsistent;
   }
 
   (bool consistent, bool updated) _enforceDistinctValues(bool trace) {
@@ -393,7 +482,8 @@ class Solver {
       for (var variable in puzzle.variables.values) {
         if (variable.possibleValues.length > 1) {
           final originalCount = variable.possibleValues.length;
-          variable.possibleValues.removeAll(solvedVariableValues);
+          variable.possibleValues = Set.from(variable.possibleValues)
+            ..removeAll(solvedVariableValues);
           if (variable.possibleValues.length < originalCount) {
             changed = true;
             if (trace) {

@@ -10,7 +10,9 @@ void main() {
   group('Puzzle3', () {
     test('should solve the third puzzle correctly', () {
       final puzzle = puzzle3();
-      final solver = Solver(puzzle);
+      final solver = Solver(puzzle, trace: false, traceBacktrace: false);
+      // final solver = Solver(puzzle, trace: true, traceBacktrace: false);
+      int solveCount = 0;
 
       bool callback() {
         // Check entry/clue values
@@ -22,10 +24,13 @@ void main() {
         expectEntryValues(puzzle, 'D1', [361]);
         expectEntryValues(puzzle, 'D2', [441]);
         expectEntryValues(puzzle, 'D4', [169]);
+
+        solveCount++;
         return true;
       }
 
       solver.solve(callback);
+      expect(solveCount, 1);
     });
   });
 }

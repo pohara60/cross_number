@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
+import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import '../expressions/variable_visitor.dart';
 import 'clue.dart';
@@ -110,6 +111,43 @@ class PuzzleDefinition {
     if (exception) {
       throw PuzzleException('One or more clues could not be parsed.');
     }
+  }
+
+  List<ClueGroup> findClueGroups() {
+    final clueGroups = <ClueGroup>[];
+    final clueVariables = <String, List<String>>{};
+
+    // Find variables for each clue
+    for (var clue in clues.values) {
+      final variables = <String>{};
+      for (var constraint in clue.constraints) {
+        if (constraint is ExpressionConstraint) {
+          variables.addAll(constraint.variables);
+        }
+      }
+      if (variables.isNotEmpty) {
+        var sortedVariables = variables.toList()..sort();
+        clueVariables[clue.id] = sortedVariables;
+      }
+    }
+
+    // Group clues by common variables
+    final variableGroups = <String, List<String>>{};
+    for (var clueId in clueVariables.keys) {
+      final variables = clueVariables[clueId]!.join(',');
+      variableGroups.putIfAbsent(variables, () => []).add(clueId);
+    }
+
+    // Create ClueGroup objects
+    for (var variables in variableGroups.keys) {
+      final clueIds = variableGroups[variables]!;
+      if (clueIds.length > 1) {
+        clueGroups
+            .add(ClueGroup(clues: clueIds, variables: variables.split(',')));
+      }
+    }
+
+    return clueGroups;
   }
 
   PuzzleDefinition copyWith({
