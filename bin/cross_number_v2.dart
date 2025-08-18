@@ -14,7 +14,8 @@ void main(List<String> arguments) {
     // final puzzle = puzzle2();
     print('Puzzle: ${puzzle.name}');
 
-    final solver = Solver(puzzle, trace: true, traceBacktrace: false);
+    final solver = Solver(puzzle,
+        trace: true, allowBacktracking: false, traceBacktrace: false);
     solver.solve();
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');

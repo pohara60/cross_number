@@ -315,8 +315,10 @@ class Solver {
     if (_isSolutionValid()) {
       printPuzzle();
     } else if (!allowBacktracking) {
+      printPuzzle();
       print('Solution not complete, backtracking disabled');
     } else {
+      printPuzzle();
       print('Solution not complete, backtracking');
       var solutionCount = _backtrack(0, 0, callback);
       if (solutionCount == 0) {
