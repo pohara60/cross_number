@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
+import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import '../expressions/variable_visitor.dart';
 import 'clue.dart';
@@ -27,6 +28,9 @@ class PuzzleDefinition {
 
   /// A map of variable names to [Variable] objects.
   final Map<String, Variable> variables;
+
+  /// A map of expressable IDs to [Expressable] objects.
+  final Map<String, Expressable> expressables = {};
 
   /// A flag indicating whether the mapping between clues and entries is known.
   /// If `true`, the solver will use a direct solving method.
@@ -100,10 +104,31 @@ class PuzzleDefinition {
             expression.accept(variableVisitor,
                 min: 1, max: 1); // min, max not used here
             constraint.variables = variableVisitor.variables.toList();
+            expressables[clue.id] = clue;
           } on ParseException catch (e) {
             exception = true;
             print(
                 'Error parsing clue ${clue.id} expression "${constraint.expression}": ${e.msg}');
+          }
+        }
+      }
+    }
+    for (final variable in variables.values) {
+      for (final constraint in variable.constraints) {
+        if (constraint is ExpressionConstraint) {
+          final parser = Parser(constraint.expression);
+          try {
+            final expression = parser.parse();
+            constraint.expressionTree = expression;
+            final variableVisitor = VariableVisitor();
+            expression.accept(variableVisitor,
+                min: 1, max: 1); // min, max not used here
+            constraint.variables = variableVisitor.variables.toList();
+            expressables[variable.name] = variable;
+          } on ParseException catch (e) {
+            exception = true;
+            print(
+                'Error parsing variable ${variable.name} expression "${constraint.expression}": ${e.msg}');
           }
         }
       }

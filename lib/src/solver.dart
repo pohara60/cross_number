@@ -13,7 +13,8 @@ import 'package:crossnumber/src/utils/set.dart';
 import 'package:crossnumber/src/models/entry.dart'; // Added for SolverState
 import 'package:crossnumber/src/models/grid.dart';
 
-import 'expressions/evaluator.dart'; // Added for _printSolution
+import 'expressions/evaluator.dart';
+import 'models/variable.dart'; // Added for _printSolution
 
 class SolverState {
   final Map<String, Set<int>?> cluePossibleValues;
@@ -297,32 +298,19 @@ class Solver {
         }
       }
 
-      // Solve clues that are not in groups
-      if (trace) print('  Solving clues...');
-      for (var clue in puzzle.clues.values) {
-        if (clueGroups.any((g) => g.clues.contains(clue.id))) {
+      // Solve expressables
+      if (trace) print('  Solving expressables...');
+      for (var expressable in puzzle.expressables.values) {
+        if (expressable is Clue &&
+            clueGroups.any((g) => g.clues.contains(expressable.id))) {
           continue; // Skip clues already in groups
         }
-        if (clue.constraints.isEmpty) continue;
         final updatedVariables = <String>[];
-        if (solveExpression(clue, updatedVariables)) {
+        if (solveExpression(expressable, updatedVariables)) {
           _updated = true;
           if (trace) {
-            _printUpdatedClue(clue, clue.possibleValues?.length);
-            _printUpdatedVariables(updatedVariables);
-          }
-        }
-      }
-
-      // Solve variables
-      if (trace) print('  Solving variables...');
-      for (var variable in puzzle.variables.values) {
-        if (variable.constraints.isEmpty) continue;
-        final updatedVariables = <String>[];
-        if (solveExpression(variable, updatedVariables)) {
-          _updated = true;
-          if (trace) {
-            //_printUpdatedClue(clue, originalCount);
+            _printUpdatedExpressable(
+                expressable, expressable.possibleValues?.length);
             _printUpdatedVariables(updatedVariables);
           }
         }
@@ -369,6 +357,25 @@ class Solver {
   void _printUpdatedClue(Clue clue, int? originalCount) {
     print(
         '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+  }
+
+  void _printUpdatedVariable(Variable variable, int originalCount) {
+    print(
+        '    Clue ${variable.name}: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+  }
+
+  void _printUpdatedEntry(Entry entry, int originalSize) {
+    print(
+        '    ${entry.orientation == EntryOrientation.across ? 'Across' : 'Down'} Entry ${entry.id}: $originalSize -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
+  }
+
+  void _printUpdatedExpressable(Expressable expressable, int? originalCount) {
+    if (expressable is Clue) {
+      _printUpdatedClue(expressable, originalCount);
+    }
+    if (expressable is Variable) {
+      _printUpdatedVariable(expressable, originalCount!);
+    }
   }
 
   bool solveExpression(Expressable expressable, List<String> updatedVariables) {
@@ -628,8 +635,7 @@ class Solver {
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
-                    print(
-                        '    Across Entry ${acrossEntry.id}: ${acrossValues.length} -> ${newAcrossValues.length} ${newAcrossValues.toShortString()}');
+                    _printUpdatedEntry(acrossEntry, acrossValues.length);
                   }
                 }
 
@@ -650,8 +656,7 @@ class Solver {
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
-                    print(
-                        '    Down Entry ${downEntry.id}: ${downValues.length} -> ${newDownValues.length} ${newDownValues.toShortString()}');
+                    _printUpdatedEntry(downEntry, downValues.length);
                   }
                 }
               } while (crossChanged);
@@ -677,8 +682,7 @@ class Solver {
             if (clue.possibleValues!.length < originalSize) {
               localChanged = true;
               if (trace) {
-                print(
-                    '    Clue ${clue.id}: $originalSize -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+                _printUpdatedClue(clue, originalSize);
               }
             }
           }
