@@ -2,6 +2,7 @@
 
 import 'dart:math';
 import 'package:collection/collection.dart';
+import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/clue.dart';
@@ -165,7 +166,7 @@ class Solver {
 
       // Solve the clue with this value, to update variables
       var updatedVariables = <String>[];
-      currentClue.solve(puzzle, updatedVariables);
+      solveExpression(currentClue, updatedVariables);
       if (traceBacktrace) {
         _printUpdatedVariables(updatedVariables);
       }
@@ -302,12 +303,26 @@ class Solver {
         if (clueGroups.any((g) => g.clues.contains(clue.id))) {
           continue; // Skip clues already in groups
         }
-        final originalCount = clue.possibleValues?.length;
+        if (clue.constraints.isEmpty) continue;
         final updatedVariables = <String>[];
-        if (clue.solve(puzzle, updatedVariables)) {
+        if (solveExpression(clue, updatedVariables)) {
           _updated = true;
           if (trace) {
-            _printUpdatedClue(clue, originalCount);
+            _printUpdatedClue(clue, clue.possibleValues?.length);
+            _printUpdatedVariables(updatedVariables);
+          }
+        }
+      }
+
+      // Solve variables
+      if (trace) print('  Solving variables...');
+      for (var variable in puzzle.variables.values) {
+        if (variable.constraints.isEmpty) continue;
+        final updatedVariables = <String>[];
+        if (solveExpression(variable, updatedVariables)) {
+          _updated = true;
+          if (trace) {
+            //_printUpdatedClue(clue, originalCount);
             _printUpdatedVariables(updatedVariables);
           }
         }
@@ -354,6 +369,52 @@ class Solver {
   void _printUpdatedClue(Clue clue, int? originalCount) {
     print(
         '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+  }
+
+  bool solveExpression(Expressable expressable, List<String> updatedVariables) {
+    var updated = false;
+
+    // if expressable.possibleValues == null then the min and max are not known
+    final solveMin = expressable.min ?? 1;
+    final solveMax = expressable.max ?? 100000; // Arbitrarily large
+
+    final evaluator = Evaluator(puzzle);
+    final results = evaluator.evaluate(
+        expressable.expressionTree, expressable.variables,
+        min: solveMin, max: solveMax);
+
+    final newPossibleValues = results.map((r) => r.value).toSet();
+
+    if (expressable.possibleValues == null) {
+      expressable.possibleValues = newPossibleValues;
+      updated = true;
+    } else {
+      final oldPossibleValuesLength = expressable.possibleValues!.length;
+      if (newPossibleValues.length < oldPossibleValuesLength) {
+        expressable.possibleValues =
+            expressable.possibleValues!.intersection(newPossibleValues);
+        updated = true;
+      }
+    }
+
+    // Update variables
+    for (var variableName in expressable.variables) {
+      var variable = puzzle.variables[variableName];
+      if (variable == null) continue;
+
+      final newVariableValues = results
+          .map((r) => r.variableValues[variableName])
+          .where((v) => v != null)
+          .toSet();
+      final oldVariableValuesLength = variable.possibleValues.length;
+      if (newVariableValues.length < oldVariableValuesLength) {
+        variable.possibleValues = variable.possibleValues
+            .intersection(newVariableValues.map((e) => e!).toSet());
+        updated = true;
+        updatedVariables.add(variableName);
+      }
+    }
+    return updated;
   }
 
   bool solveClueGroup(ClueGroup group) {
@@ -639,9 +700,10 @@ class Solver {
 
       // Re-solve clues with variable values
       for (var clue in puzzle.clues.values) {
+        if (clue.constraints.isEmpty) continue;
         final originalSize = clue.possibleValues?.length ?? 0;
         var updatedVariables = <String>[];
-        if (clue.solve(puzzle, updatedVariables)) {
+        if (solveExpression(clue, updatedVariables)) {
           localChanged = true;
           if (trace) {
             _printUpdatedClue(clue, originalSize);

@@ -3,43 +3,12 @@ import 'package:crossnumber/src/solver.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/grid.dart';
 import 'package:crossnumber/src/models/clue.dart';
-import 'package:crossnumber/src/models/constraint.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/variable.dart';
 import 'package:crossnumber/src/models/entry.dart';
 
-class MockClue extends Clue {
-  bool solveCalled = false;
-
-  MockClue(String id, List<Constraint> constraints) : super(id, constraints);
-
-  @override
-  bool solve(PuzzleDefinition puzzle, List<String> updatedVariables,
-      {bool trace = false}) {
-    solveCalled = true;
-    return super.solve(puzzle, updatedVariables, trace: trace);
-  }
-}
-
 void main() {
   group('Solver', () {
-    test('should call solve on each clue', () {
-      final clue1 = MockClue('1A', []);
-      final clue2 = MockClue('1D', []);
-      final puzzle = PuzzleDefinition(
-        name: 'Test Puzzle',
-        grids: {'test': Grid(1, 1)},
-        entries: {},
-        clues: {'1A': clue1, '1D': clue2},
-        variables: {},
-      );
-      final solver = Solver(puzzle, allowBacktracking: false);
-      solver.solve();
-
-      expect(clue1.solveCalled, isTrue);
-      expect(clue2.solveCalled, isTrue);
-    });
-
     test('should evaluate simple expression constraints', () {
       final clue = Clue('1A', [ExpressionConstraint('10 + 5')]);
       final puzzle = PuzzleDefinition(

@@ -1,12 +1,7 @@
-// ignore_for_file: unnecessary_this
-// ignore: unused_import
-import 'package:crossnumber/src/utils/combinations.dart';
 import 'dart:math' as math;
-
-import 'package:crossnumber/src/expressions/evaluator.dart';
-import 'package:crossnumber/src/models/puzzle_definition.dart';
-import 'package:crossnumber/src/utils/set.dart';
-
+import '../expressions/expression.dart';
+import 'expressable.dart';
+import '../expressions/evaluator.dart';
 import 'constraint.dart';
 import 'entry.dart';
 import 'expression_constraint.dart';
@@ -15,7 +10,7 @@ import 'expression_constraint.dart';
 ///
 /// A clue has an [id], a set of [constraints] that define its value,
 /// and a set of [_possibleValues] that the clue can take.
-class Clue {
+class Clue implements Expressable {
   /// The unique identifier for the clue (e.g., "A1", "B2").
   final String id;
 
@@ -28,7 +23,9 @@ class Clue {
   /// The set of possible integer values for this clue.
   /// This set is narrowed down by the solver as constraints are applied.
   Set<int>? _possibleValues;
+  @override
   Set<int>? get possibleValues => _possibleValues;
+  @override
   set possibleValues(Set<int>? values) {
     _checkAnswer(values);
     _possibleValues = values;
@@ -37,6 +34,7 @@ class Clue {
   /// Min and max values for the clue.
   /// Determined by the puzzle entry length, if any.
   /// Restricted by current possibleValues if they are set.
+  @override
   int? get min {
     if (_possibleValues != null && _possibleValues!.isNotEmpty) {
       return _possibleValues!.reduce(math.min);
@@ -45,6 +43,7 @@ class Clue {
     return null;
   }
 
+  @override
   int? get max {
     if (_possibleValues != null && _possibleValues!.isNotEmpty) {
       return _possibleValues!.reduce(math.max);
@@ -72,117 +71,25 @@ class Clue {
   /// Creates a new clue with the given [id] and [constraints].
   Clue(this.id, this.constraints, [this.entry]);
 
+  @override
+  Expression get expressionTree =>
+      (constraints.first as ExpressionConstraint).expressionTree!;
+
+  @override
+  List<String> get variables =>
+      (constraints.first as ExpressionConstraint).variables;
+
   /// Solves the clue by applying its constraints.
   ///
   /// This method iterates through the constraints of the clue and uses them
   /// to narrow down the set of [_possibleValues].
   ///
   /// Returns `true` if the set of possible values was updated, `false` otherwise.
-  bool solve(PuzzleDefinition puzzle, List<String> updatedVariables,
-      {bool trace = false}) {
-    bool updated = false;
-    for (final constraint in constraints) {
-      if (constraint is ExpressionConstraint) {
-        final expression = constraint.expressionTree!;
-
-        final solveMin = min ?? 1;
-        final solveMax = max ?? 100000; // Arbitrarily large
-
-        final evaluator = Evaluator(puzzle);
-        final results = evaluator.evaluate(expression, constraint.variables,
-            min: solveMin, max: solveMax);
-
-        final newPossibleValues = results.map((r) => r.value).toSet();
-
-        if (newPossibleValues.isEmpty) {
-          // If the new possible values are empty, we have a contradiction
-          possibleValues = {};
-          updated = true;
-        } else if (_possibleValues == null) {
-          possibleValues = newPossibleValues;
-          updated = true;
-        } else {
-          final oldPossibleValuesLength = _possibleValues!.length;
-          possibleValues = _possibleValues!.intersection(newPossibleValues);
-          if (_possibleValues!.length != oldPossibleValuesLength) {
-            updated = true;
-          }
-        }
-
-        // Update variables
-        for (var variableName in constraint.variables) {
-          var variable = puzzle.variables[variableName];
-          if (variable == null) continue;
-
-          final newVariableValues =
-              results.map((r) => r.variableValues[variableName]).toSet();
-          final oldVariableValuesLength = variable.possibleValues.length;
-          variable.possibleValues =
-              variable.possibleValues.intersection(newVariableValues);
-          if (variable.possibleValues.length != oldVariableValuesLength) {
-            updated = true;
-            updatedVariables.add(variableName);
-          }
-        }
-      }
-    }
-    return updated;
-  }
-
-  /// Updates the possible values of variables based on the clue's possible values.
-  ///
-  /// Returns `true` if any variable's possible values were updated, `false` otherwise.
-  bool updateVariables(PuzzleDefinition puzzle, {bool trace = false}) {
-    bool updated = false;
-    for (final constraint in constraints) {
-      if (constraint is ExpressionConstraint) {
-        final expression = constraint.expressionTree!;
-
-        final expressionVariables = constraint.variables;
-
-        if (expressionVariables.isEmpty) continue;
-
-        // For each variable, try to narrow down its possible values
-        for (var variableName in expressionVariables) {
-          var variable = puzzle.variables[variableName];
-          if (variable == null) {
-            // This is a clue, not a variable
-            continue;
-          }
-          var newPossibleValues = <int>{};
-
-          // Try each possible value of the variable
-          for (var value in variable.possibleValues) {
-            // Create a temporary puzzle state with the variable fixed to this value
-            var tempPuzzle = puzzle.copyWith();
-            tempPuzzle.variables[variableName]!.possibleValues = {value};
-
-            // Evaluate the expression with this temporary state
-            final tempEvaluator = Evaluator(tempPuzzle);
-            final clueValues = tempEvaluator.evaluate(
-                expression, expressionVariables,
-                min: min!, max: max!);
-
-            // If the clue's possible values have any intersection with the new possible values,
-            // then the variable value is possible
-            if (_possibleValues!.any((v) => clueValues.contains(v))) {
-              newPossibleValues.add(value);
-            }
-          }
-
-          if (newPossibleValues.length < variable.possibleValues.length) {
-            if (trace) {
-              print(
-                  '    Variable ${variable.name} updated by clue ${this.id}: ${variable.possibleValues.length} -> ${newPossibleValues.length} ${newPossibleValues.toShortString()}');
-            }
-            variable.possibleValues = newPossibleValues;
-            updated = true;
-          }
-        }
-      }
-    }
-    return updated;
-  }
+  // bool solve(PuzzleDefinition puzzle, List<String> updatedVariables,
+  //     {bool trace = false}) {
+  //       return solveExpression(this, updatedVariables,
+  //           trace: trace, puzzle: puzzle);
+  //     }
 
   Clue copyWith({
     String? id,
@@ -194,8 +101,8 @@ class Clue {
       constraints ?? this.constraints,
     ).._possibleValues = possibleValues != null
         ? Set<int>.from(possibleValues)
-        : this._possibleValues == null
+        : _possibleValues == null
             ? null
-            : Set<int>.from(this._possibleValues!);
+            : Set<int>.from(_possibleValues!);
   }
 }
