@@ -91,6 +91,15 @@ class PuzzleDefinition {
         clue.entry = entry;
       }
     }
+    // Check all entries with clues have a matching clue
+    var errorEntries = entries.values
+        .where(
+            (entry) => entry.clueId != null && !clues.containsKey(entry.clueId))
+        .toList();
+    if (errorEntries.isNotEmpty) {
+      throw PuzzleException(
+          'Entries with clues not found in clues map: ${errorEntries.map((e) => e.id).join(', ')}');
+    }
     // Parse all expressions
     var exception = false;
     for (final clue in clues.values) {
@@ -133,6 +142,16 @@ class PuzzleDefinition {
         }
       }
     }
+    // Check all variables are defined for expressables
+    for (final expressable in expressables.values) {
+      for (final variable in expressable.variables) {
+        if (!clues.containsKey(variable) && !variables.containsKey(variable)) {
+          exception = true;
+          print(
+              'Variable $variable used in expression for ${expressable.id} is not defined.');
+        }
+      }
+    }
     if (exception) {
       throw PuzzleException('One or more clues could not be parsed.');
     }
@@ -164,11 +183,12 @@ class PuzzleDefinition {
     }
 
     // Create ClueGroup objects
-    for (var variables in variableGroups.keys) {
-      final clueIds = variableGroups[variables]!;
+    for (var group in variableGroups.keys) {
+      var variables = group.split(',');
+      if (variables.length == 1) continue; // Skip single variable groups
+      final clueIds = variableGroups[group]!;
       if (clueIds.length > 1) {
-        clueGroups
-            .add(ClueGroup(clues: clueIds, variables: variables.split(',')));
+        clueGroups.add(ClueGroup(clues: clueIds, variables: variables));
       }
     }
 
@@ -195,6 +215,11 @@ class PuzzleDefinition {
           this.variables.map((key, value) => MapEntry(key, value.copyWith())),
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
     );
+  }
+
+  @override
+  String toString() {
+    return 'PuzzleDefinition(name: $name, grids: $grids, entries: $entries, clues: $clues, variables: $variables, expressables: $expressables, mappingIsKnown: $mappingIsKnown)';
   }
 }
 

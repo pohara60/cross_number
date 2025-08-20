@@ -1,9 +1,9 @@
-import 'package:crossnumber/src/models/constraint.dart';
-import 'package:crossnumber/src/models/expression_constraint.dart';
-import 'package:crossnumber/src/models/expressable.dart';
-
 import '../expressions/evaluator.dart';
 import '../expressions/expression.dart';
+import '../utils/set.dart';
+import 'constraint.dart';
+import 'expressable.dart';
+import 'expression_constraint.dart';
 
 /// Represents a variable in a cross number puzzle.
 ///
@@ -12,6 +12,9 @@ import '../expressions/expression.dart';
 class Variable implements Expressable {
   /// The name of the variable.
   final String name;
+
+  @override
+  String get id => name;
 
   /// The list of constraints that apply to this variable.
   final List<Constraint> constraints;
@@ -56,10 +59,14 @@ class Variable implements Expressable {
       (constraints.first as ExpressionConstraint).variables;
 
   @override
-  int? get min => possibleValues.reduce((a, b) => a < b ? a : b);
+  int? get min => possibleValues.isEmpty
+      ? null
+      : possibleValues.reduce((a, b) => a < b ? a : b);
 
   @override
-  int? get max => possibleValues.reduce((a, b) => a > b ? a : b);
+  int? get max => possibleValues.isEmpty
+      ? null
+      : possibleValues.reduce((a, b) => a > b ? a : b);
 
   Variable copyWith({
     String? name,
@@ -71,5 +78,10 @@ class Variable implements Expressable {
       possibleValues ?? _possibleValues,
       constraints: constraints ?? this.constraints,
     );
+  }
+
+  @override
+  String toString() {
+    return '$name: ${possibleValues.length} ${possibleValues.toShortString()}';
   }
 }

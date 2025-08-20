@@ -3,6 +3,11 @@ class EvaluationResult {
   final Map<String, int> variableValues;
 
   EvaluationResult(this.value, this.variableValues);
+
+  @override
+  String toString() {
+    return 'EvaluationResult($value, $variableValues)';
+  }
 }
 
 class EvaluationFinalResult {
@@ -10,4 +15,9 @@ class EvaluationFinalResult {
   final Map<String, int> variableValues;
 
   EvaluationFinalResult(this.value, this.variableValues);
+
+  @override
+  String toString() {
+    return 'EvaluationFinalResult($value, $variableValues)';
+  }
 }

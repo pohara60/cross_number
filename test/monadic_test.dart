@@ -3,7 +3,10 @@
 import 'package:crossnumber/src/expressions/expression.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/evaluator.dart';
+import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
+import 'package:crossnumber/src/models/variable.dart';
+import 'package:crossnumber/src/solver.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -176,6 +179,55 @@ void main() {
       final result =
           evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
       expect(result, isEmpty);
+    });
+  });
+  group('Monadic Functions', () {
+    test(r'$lte', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$lte(5)').parse();
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
+      expect(result, equals({1, 2, 3, 4, 5}));
+    });
+
+    test(r'$lt', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$lt(5)').parse();
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
+      expect(result, equals({1, 2, 3, 4}));
+    });
+
+    test(r'$lte', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test',
+          grids: {},
+          entries: {},
+          clues: {},
+          variables: {
+            'A': Variable('A', {14, 15, 16, 17, 18, 19, 20}),
+            'B':
+                Variable('B', {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}),
+            'b': Variable('b', {4, 5}),
+            'C': Variable('C', {3},
+                constraints: [ExpressionConstraint(r'$lte(60-A +b -B +c)')]),
+            'c': Variable('c', {17, 18, 19, 20, 21, 22, 23, 24, 25}),
+          });
+      // final evaluator = Evaluator(puzzle);
+      // final expression = Parser(r'$lte(60-A +b -B +c)').parse();
+      // final result = evaluator.evaluate(expression, [], min: 10, max: 100);
+      // expect(result, equals({1, 2, 3, 4, 5}));
+      final solver = Solver(puzzle, trace: true, allowBacktracking: false);
+      puzzle.variables['A']!.answer = 14;
+      puzzle.variables['b']!.answer = 4;
+      puzzle.variables['B']!.answer = 26;
+      puzzle.variables['c']!.answer = 17;
+      solver.solve();
+      print('result');
     });
   });
 }

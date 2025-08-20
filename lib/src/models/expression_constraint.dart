@@ -18,4 +18,9 @@ class ExpressionConstraint extends Constraint {
 
   /// Creates a new expression constraint with the given [expression].
   ExpressionConstraint(this.expression);
+
+  @override
+  String toString() {
+    return 'ExpressionConstraint($expression)';
+  }
 }

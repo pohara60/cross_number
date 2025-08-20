@@ -1,9 +1,11 @@
 import 'dart:math' as math;
-import '../expressions/expression.dart';
-import 'expressable.dart';
+
 import '../expressions/evaluator.dart';
+import '../expressions/expression.dart';
+import '../utils/set.dart';
 import 'constraint.dart';
 import 'entry.dart';
+import 'expressable.dart';
 import 'expression_constraint.dart';
 
 /// Represents a single clue in a cross number puzzle.
@@ -12,6 +14,7 @@ import 'expression_constraint.dart';
 /// and a set of [_possibleValues] that the clue can take.
 class Clue implements Expressable {
   /// The unique identifier for the clue (e.g., "A1", "B2").
+  @override
   final String id;
 
   /// The entry associated with this clue, if any.
@@ -104,5 +107,10 @@ class Clue implements Expressable {
         : _possibleValues == null
             ? null
             : Set<int>.from(_possibleValues!);
+  }
+
+  @override
+  String toString() {
+    return '$id: ${_possibleValues?.length} ${_possibleValues?.toShortString()}';
   }
 }

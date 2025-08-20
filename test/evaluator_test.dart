@@ -51,6 +51,22 @@ void main() {
       expect(evaluatedResult.map((r) => r.variableValues['A']),
           unorderedEquals([3, 4, 5]));
     });
+
+    test('Equality Operator', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {},
+      );
+      final parser = Parser('1+2 = 3+0');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final evaluatedResult =
+          evaluator.evaluate(expression, [], min: 1, max: 20);
+      expect(evaluatedResult.map((r) => r.value), equals({3}));
+    });
   });
 }
 

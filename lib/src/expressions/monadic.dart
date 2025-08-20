@@ -33,6 +33,14 @@ class MonadicFunctionRegistry {
     _functions['isSquare'] =
         (values) => values.where((v) => _isSquare(v)).toList();
     _functions['isCube'] = (values) => values.where((v) => _isCube(v)).toList();
+    _functions['lte'] =
+        (values) => List.generate(values.reduce(max), (i) => i + 1);
+    _functions['lt'] =
+        (values) => List.generate(values.reduce(max) - 1, (i) => i + 1);
+    _functions['factor'] =
+        (values) => values.expand((value) => factors(value)).toSet().toList();
+    _functions['square'] = (values) => values.map((v) => v * v).toList();
+    _functions['cube'] = (values) => values.map((v) => v * v * v).toList();
   }
 
   MonadicFunction? get(String name) {
@@ -96,5 +104,16 @@ class MonadicFunctionRegistry {
   bool _isCube(int n) {
     cubeGenerator ??= GeneratorRegistry().get('cube') as CubeGenerator;
     return cubeGenerator!.contains(n);
+  }
+
+  List<int> factors(int value) {
+    var start = value % 2 == 0 ? 2 : 3;
+    var end = value ~/ start;
+    var inc = 1;
+    var results = <int>[];
+    for (var factor = start; factor <= end; factor += inc) {
+      if (value % factor == 0) results.add(factor);
+    }
+    return results;
   }
 }

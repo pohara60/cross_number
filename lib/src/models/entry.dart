@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import '../utils/set.dart';
+
 /// The orientation of an entry in the grid.
 enum EntryOrientation { across, down }
 
@@ -63,5 +65,10 @@ class Entry {
       orientation: orientation ?? this.orientation,
       clueId: clueId ?? this.clueId,
     )..possibleValues = Set<int>.from(possibleValues ?? this.possibleValues);
+  }
+
+  @override
+  String toString() {
+    return '$id: ${possibleValues.length} ${possibleValues.toShortString()}';
   }
 }

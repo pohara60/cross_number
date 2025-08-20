@@ -2,6 +2,7 @@
 
 import 'dart:math';
 import 'package:collection/collection.dart';
+import 'package:crossnumber/src/models/evaluation_result.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
@@ -167,9 +168,10 @@ class Solver {
 
       // Solve the clue with this value, to update variables
       var updatedVariables = <String>[];
-      solveExpression(currentClue, updatedVariables);
+      var originalCounts = <String, int?>{};
+      solveExpression(currentClue, updatedVariables, originalCounts);
       if (traceBacktrace) {
-        _printUpdatedVariables(updatedVariables);
+        _printUpdatedExpressables(updatedVariables, originalCounts);
       }
 
       // Also update the associated entry's possible values
@@ -300,26 +302,15 @@ class Solver {
 
       // Solve expressables
       if (trace) print('  Solving expressables...');
-      for (var expressable in puzzle.expressables.values) {
-        if (expressable is Clue &&
-            clueGroups.any((g) => g.clues.contains(expressable.id))) {
-          continue; // Skip clues already in groups
-        }
-        final updatedVariables = <String>[];
-        if (solveExpression(expressable, updatedVariables)) {
-          _updated = true;
-          if (trace) {
-            _printUpdatedExpressable(
-                expressable, expressable.possibleValues?.length);
-            _printUpdatedVariables(updatedVariables);
-          }
-        }
-      }
-
-      var (consistent, updated) = _propagateConstraints(trace);
+      var (consistent, updated) = _solveExpressables(clueGroups);
       if (consistent) {
         if (updated) _updated = true;
-      } else {
+        (consistent, updated) = _propagateConstraints(trace);
+        if (consistent) {
+          if (updated) _updated = true;
+        }
+      }
+      if (!consistent) {
         // If propagation leads to inconsistency, this path is invalid.
         // In the context of _solveKnownMapping, this means the initial state
         // was inconsistent, or a previous step made it inconsistent.
@@ -346,6 +337,32 @@ class Solver {
     }
   }
 
+  (bool consistent, bool updated) _solveExpressables(
+      List<ClueGroup>? clueGroups) {
+    var updated = false;
+    for (var expressable in puzzle.expressables.values) {
+      if (expressable is Clue &&
+          clueGroups != null &&
+          clueGroups.any((g) => g.clues.contains(expressable.id))) {
+        continue; // Skip clues already in groups
+      }
+      final updatedVariables = <String>[];
+      var originalCounts = <String, int?>{};
+      var (consistent, changed) =
+          solveExpression(expressable, updatedVariables, originalCounts);
+      if (!consistent) return (false, true);
+      if (changed) {
+        updated = true;
+        if (trace) {
+          _printUpdatedExpressable(
+              expressable, expressable.possibleValues?.length);
+          _printUpdatedExpressables(updatedVariables, originalCounts);
+        }
+      }
+    }
+    return (true, updated);
+  }
+
   void _printUpdatedVariables(List<String> updatedVariables) {
     for (var variableName in updatedVariables) {
       var variable = puzzle.variables[variableName]!;
@@ -359,7 +376,7 @@ class Solver {
         '    Clue ${clue.id}: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
   }
 
-  void _printUpdatedVariable(Variable variable, int originalCount) {
+  void _printUpdatedVariable(Variable variable, int? originalCount) {
     print(
         '    Clue ${variable.name}: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
   }
@@ -374,11 +391,21 @@ class Solver {
       _printUpdatedClue(expressable, originalCount);
     }
     if (expressable is Variable) {
-      _printUpdatedVariable(expressable, originalCount!);
+      _printUpdatedVariable(expressable, originalCount);
     }
   }
 
-  bool solveExpression(Expressable expressable, List<String> updatedVariables) {
+  void _printUpdatedExpressables(
+      List<String> expressables, Map<String, int?> originalCounts) {
+    for (var expressableName in expressables) {
+      var expressable = puzzle.variables[expressableName] as Expressable?;
+      expressable ??= puzzle.clues[expressableName];
+      _printUpdatedExpressable(expressable!, originalCounts[expressableName]);
+    }
+  }
+
+  (bool consistent, bool updated) solveExpression(Expressable expressable,
+      List<String> updatedVariables, Map<String, int?> originalCounts) {
     var updated = false;
 
     // if expressable.possibleValues == null then the min and max are not known
@@ -386,39 +413,90 @@ class Solver {
     final solveMax = expressable.max ?? 100000; // Arbitrarily large
 
     final evaluator = Evaluator(puzzle);
-    final results = evaluator.evaluate(
-        expressable.expressionTree, expressable.variables,
-        min: solveMin, max: solveMax);
+
+    var results = <EvaluationFinalResult>[];
+    try {
+      results = evaluator.evaluate(
+          expressable.expressionTree, expressable.variables,
+          min: solveMin, max: solveMax);
+    } on EvaluatorNotPossiblexception catch (e) {
+      if (trace) {
+        print(
+            '    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
+      }
+      return (true, false);
+    }
 
     final newPossibleValues = results.map((r) => r.value).toSet();
-
-    if (expressable.possibleValues == null) {
-      expressable.possibleValues = newPossibleValues;
-      updated = true;
-    } else {
-      final oldPossibleValuesLength = expressable.possibleValues!.length;
-      if (newPossibleValues.length < oldPossibleValuesLength) {
-        expressable.possibleValues =
-            expressable.possibleValues!.intersection(newPossibleValues);
-        updated = true;
+    var possibleValues =
+        _updatePossibleValues(expressable.possibleValues, newPossibleValues);
+    if (possibleValues.isEmpty) {
+      if (trace) {
+        print(
+            '    Expression for ${expressable.id} has no possible values after evaluation');
       }
+      return (false, false); // Inconsistency
+    }
+    if (expressable.possibleValues != possibleValues) {
+      expressable.possibleValues = possibleValues;
+      updated = true;
     }
 
     // Update variables
-    for (var variableName in expressable.variables) {
-      var variable = puzzle.variables[variableName];
-      if (variable == null) continue;
+    updated = _updateVariablesFromResults(expressable.variables, results,
+        updated, updatedVariables, originalCounts);
+    return (true, updated);
+  }
+
+  Set<int> _updatePossibleValues(
+      Set<int>? possibleValues, Set<int> newPossibleValues) {
+    if (possibleValues == null) {
+      possibleValues = newPossibleValues;
+    } else {
+      final oldPossibleValuesLength = possibleValues.length;
+      if (newPossibleValues.length < oldPossibleValuesLength) {
+        possibleValues = possibleValues.intersection(newPossibleValues);
+      }
+    }
+    return possibleValues;
+  }
+
+  bool _updateVariablesFromResults(
+      List<String> variables,
+      List<EvaluationFinalResult> results,
+      bool updated,
+      List<String> updatedVariables,
+      Map<String, int?> originalCounts) {
+    var variableValues = results.map((r) => r.variableValues).toList();
+    return _updateVariables(
+        variables, variableValues, updated, updatedVariables, originalCounts);
+  }
+
+  bool _updateVariables(
+      List<String> variables,
+      List<Map<String, int>> results,
+      bool updated,
+      List<String> updatedVariables,
+      Map<String, int?> originalCounts) {
+    for (var variableName in variables) {
+      var expressable = puzzle.variables[variableName] as Expressable?;
+      if (expressable == null) {
+        expressable = puzzle.clues[variableName] as Expressable?;
+        if (expressable == null) continue;
+      }
 
       final newVariableValues = results
-          .map((r) => r.variableValues[variableName])
-          .where((v) => v != null)
+          .map((r) => r[variableName]!)
+          // .where((v) => v != null)
           .toSet();
-      final oldVariableValuesLength = variable.possibleValues.length;
-      if (newVariableValues.length < oldVariableValuesLength) {
-        variable.possibleValues = variable.possibleValues
-            .intersection(newVariableValues.map((e) => e!).toSet());
+      var originalCount = expressable.possibleValues?.length;
+      var possibleValues =
+          _updatePossibleValues(expressable.possibleValues, newVariableValues);
+      if (expressable.possibleValues != possibleValues) {
+        expressable.possibleValues = possibleValues;
         updated = true;
         updatedVariables.add(variableName);
+        originalCounts[variableName] = originalCount;
       }
     }
     return updated;
@@ -447,19 +525,13 @@ class Solver {
           if (trace) _printUpdatedClue(clue, originalCount);
         }
       }
-      // Update variable values
+
+      // Update variables
       var updateVariables = <String>[];
-      for (var variableName in group.variables) {
-        final variable = puzzle.variables[variableName]!;
-        final newPossibleValues = validCombinations
-            .map((combination) => combination[variableName]!)
-            .toSet();
-        if (newPossibleValues.length < variable.possibleValues.length) {
-          variable.possibleValues = newPossibleValues;
-          updated = true;
-        }
-      }
-      if (trace) _printUpdatedVariables(updateVariables);
+      var originalCounts = <String, int?>{};
+      updated = _updateVariables(group.variables, validCombinations, updated,
+          updateVariables, originalCounts);
+      if (trace) _printUpdatedExpressables(updateVariables, originalCounts);
     }
     return updated;
   }
@@ -477,9 +549,18 @@ class Solver {
     // Assume the clue has only one expression constraint for simplicity
     final constraint = clue.constraints
         .firstWhere((c) => c is ExpressionConstraint) as ExpressionConstraint;
-    final results = evaluator.evaluate(
-        constraint.expressionTree!, constraint.variables,
-        min: clue.min!, max: clue.max!);
+
+    var results = <EvaluationFinalResult>[];
+    try {
+      results = evaluator.evaluate(
+          constraint.expressionTree!, constraint.variables,
+          min: clue.min!, max: clue.max!);
+    } on EvaluatorNotPossiblexception catch (e) {
+      if (trace) {
+        print('    Expression for ${clue.id} could not be evaluated: ${e.msg}');
+      }
+      return false;
+    }
 
     var anyConsistent = false;
     for (var result in results) {
@@ -702,22 +783,10 @@ class Solver {
       //   }
       // }
 
-      // Re-solve clues with variable values
-      for (var clue in puzzle.clues.values) {
-        if (clue.constraints.isEmpty) continue;
-        final originalSize = clue.possibleValues?.length ?? 0;
-        var updatedVariables = <String>[];
-        if (solveExpression(clue, updatedVariables)) {
-          localChanged = true;
-          if (trace) {
-            _printUpdatedClue(clue, originalSize);
-            _printUpdatedVariables(updatedVariables);
-          }
-        }
-        if (clue.possibleValues != null && clue.possibleValues!.isEmpty) {
-          return (false, true); // Inconsistency after re-solve
-        }
-      }
+      // Re-solve expressions
+      var (consistent, changed) = _solveExpressables(null);
+      if (changed) localChanged = true;
+      if (!consistent) return (false, true); // Inconsistency after re-solve
 
       // Enforce distinct values
       var (distinctConsistent, distinctUpdated) = _enforceDistinctValues(trace);

@@ -143,6 +143,7 @@ enum TokenType {
   EXPONENT,
   HASH,
   DOLLAR,
+  EQUAL,
 
   // Literals.
   NUMBER,

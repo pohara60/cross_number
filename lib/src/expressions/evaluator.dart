@@ -5,14 +5,17 @@ import 'expression.dart';
 import 'generators.dart';
 import 'monadic.dart';
 
+// Arbitrary min/max limit when do not know what values are to be operated on
+const arbitraryLimit = 10000;
+
 /// Evaluates an [Expression] tree to a list of possible numerical results.
 ///
 /// The evaluator can handle variables, generators, and references to grid entries,
 /// provided that the necessary context ([puzzle]) is given.
 class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   final PuzzleDefinition puzzle;
-  final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
-  final MonadicFunctionRegistry _monadicFunctionRegistry =
+  static final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
+  static final MonadicFunctionRegistry _monadicFunctionRegistry =
       MonadicFunctionRegistry();
   final Map<String, int> _pinnedVariables;
 
@@ -31,6 +34,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     // Some variables may be pinned already
     var unpinnedVariables =
         variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
+    if (tooManyCombinations(unpinnedVariables)) {
+      throw EvaluatorNotPossiblexception(
+          'Too many combinations for variables: ${unpinnedVariables.join(', ')}');
+    }
     final results = _internalEvaluate(expression, unpinnedVariables,
         min: min as num, max: max as num);
     return results
@@ -155,8 +162,6 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     num leftMin = -max;
     num leftMax = max;
     // TODO If child nodes only have one value, then we can compute it and use that value to compuute the min/max for the other side.
-    // Arbitrary min/max limit when do not know what values are to be operated on
-    const arbitraryLimit = 10000;
     leftMin = -arbitraryLimit;
     leftMax = arbitraryLimit;
     final leftValues = _evaluateWithPinnedVariables(expression.left,
@@ -203,6 +208,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           if (rightMin == 0) rightMin = 1; // Avoid zero exponent
           rightMax = left <= 1 ? max : log(max) / log(left);
           break;
+        case TokenType.EQUAL:
+          rightMin = leftMin;
+          rightMax = leftMax;
+          break;
         default:
           throw EvaluatorException(
               'Unknown binary operator: ${expression.operator.type}');
@@ -231,6 +240,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
             break;
           case TokenType.EXPONENT:
             resultValue = pow(left, right);
+            break;
+          case TokenType.EQUAL:
+            if (left != right) continue;
+            resultValue = left;
             break;
           default:
             throw EvaluatorException(
@@ -306,23 +319,51 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     num fmax = max;
     var fname = expression.operator.lexeme;
     if (!fname.startsWith('is') && fname != 'jumble') {
-      fmax = maxResult! * maxResult!;
+      if (fname.startsWith('lt')) {
+        fmax = arbitraryLimit;
+      } else {
+        fmax = maxResult! * maxResult!;
+      }
     }
     final values =
         _evaluateWithPinnedVariables(expression.right, min: fmin, max: fmax);
     final function = _monadicFunctionRegistry.get(fname);
     if (function != null) {
-      // Monadic functions return int, convert to num
-      return function(values
-              .map((e) => e.value.round())
-              .where((e) => e == e.truncate())
-              .toList())
-          .where((value) => value >= min && value <= max)
-          .map((e) => EvaluationResult(e, {}))
-          .toList();
+      var results = <EvaluationResult>[];
+      for (var valueResult in values) {
+        // Monadic functions return int, convert to num
+        var valueValue = valueResult.value.toInt();
+        var resultValue = function([valueValue]);
+        var result = resultValue
+            .where((value) => value >= min && value <= max)
+            .map((e) => EvaluationResult(e, valueResult.variableValues))
+            .toList();
+        if (result.isEmpty) continue;
+        results.addAll(result);
+      }
+      return results;
     }
     throw EvaluatorException(
         'Unknown monadic function: ${expression.operator.lexeme}');
+  }
+
+  bool tooManyCombinations(List<String> unpinnedVariables) {
+    // Heuristic: if more than 100000 combinations, consider it too many
+    const maxCombinations = 100000;
+    int combinations = 1;
+    for (var variable in unpinnedVariables) {
+      final possibleValues = puzzle.variables.containsKey(variable)
+          ? puzzle.variables[variable]!.possibleValues
+          : puzzle.clues[variable]!.possibleValues;
+      if (possibleValues == null) {
+        return true; // No possible values means cannot evaluate yet
+      }
+      combinations *= possibleValues.length;
+      if (combinations > maxCombinations) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
@@ -330,4 +371,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
 class EvaluatorException implements Exception {
   String? msg;
   EvaluatorException([this.msg]);
+}
+
+/// An error thrown when the evaluator encounters an expression that is too slow
+class EvaluatorNotPossiblexception implements Exception {
+  String? msg;
+  EvaluatorNotPossiblexception([this.msg]);
 }

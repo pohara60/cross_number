@@ -49,6 +49,9 @@ class Parser {
       case '^':
         _addToken(TokenType.EXPONENT);
         break;
+      case '=':
+        _addToken(TokenType.EQUAL);
+        break;
       case '.':
         _addToken(TokenType.DOT);
         break;
@@ -151,7 +154,19 @@ class Parser {
   }
 
   Expression _expression() {
-    return _term();
+    return _equality();
+  }
+
+  Expression _equality() {
+    var expr = _term();
+
+    while (_match([TokenType.EQUAL])) {
+      final operator = _previous();
+      final right = _term();
+      expr = BinaryExpression(expr, operator, right);
+    }
+
+    return expr;
   }
 
   Expression _term() {
