@@ -383,7 +383,7 @@ class Solver {
 
   void _printUpdatedVariable(Variable variable, int? originalCount) {
     print(
-        '    Clue ${variable.name}: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+        '    Variable ${variable.name}: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
   }
 
   void _printUpdatedEntry(Entry entry, int originalSize) {
@@ -445,6 +445,13 @@ class Solver {
     if (expressable.possibleValues != possibleValues) {
       expressable.possibleValues = possibleValues;
       updated = true;
+    }
+
+    // Reduce resutls to only those that match the possible values
+    if (possibleValues.length < newPossibleValues.length) {
+      results = results
+          .where((r) => expressable.possibleValues!.contains(r.value))
+          .toList();
     }
 
     // Update variables

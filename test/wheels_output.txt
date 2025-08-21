@@ -1,6 +1,6 @@
 
 Exited (-1).
-Connecting to VM Service at ws://127.0.0.1:57821/v0dExkBIaSU=/ws
+Connecting to VM Service at ws://127.0.0.1:58551/dswTVqK8NE0=/ws
 Cross Number Solver v2 CLI
 Puzzle: Wheels
 Solving puzzle with known mapping...
@@ -9,42 +9,42 @@ Iteration 1
     Clue 1A: 22 -> 22 {100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
     Clue 1D: 90 -> 22 {10..29,2 more,31}
     Clue 3A: 51 -> 51 {10..29,31 more,60}
-    Clue B: 60 -> 51 {10..29,31 more,60}
+    Variable B: 60 -> 51 {10..29,31 more,60}
     Clue 5A: 90 -> 90 {10..29,70 more,99}
-    Clue T: 240 -> 90 {10..29,70 more,99}
+    Variable T: 240 -> 90 {10..29,70 more,99}
     Clue 6A: 90 -> 90 {10..29,70 more,99}
-    Clue F: 99 -> 90 {10..29,70 more,99}
+    Variable F: 99 -> 90 {10..29,70 more,99}
     Clue 7A: 6 -> 6 {16,25,36,49,64,81}
-    Clue b: 60 -> 6 {4..9}
+    Variable b: 60 -> 6 {4..9}
     Clue 8A: 90 -> 90 {10..29,70 more,99}
-    Clue f: 99 -> 90 {10..29,70 more,99}
+    Variable f: 99 -> 90 {10..29,70 more,99}
     Clue 9A: 2 -> 2 {27,64}
-    Clue C: 60 -> 2 {3,4}
+    Variable C: 60 -> 2 {3,4}
     Clue 10A: 51 -> 51 {10..29,31 more,60}
-    Clue e: 60 -> 51 {10..29,31 more,60}
+    Variable e: 60 -> 51 {10..29,31 more,60}
     Clue 12A: 21 -> 21 {10..29,30}
     Clue 3A: 51 -> 27 {20,22,24,26,28,30,32..34,36,38..40,42,44..46,48,50,51,7 more,60}
     Clue 13A: 22 -> 22 {100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
     Clue 11D: 90 -> 22 {10..29,2 more,31}
     Clue 1D: 22 -> 22 {10..29,2 more,31}
-    Clue A: 60 -> 22 {10..29,2 more,31}
+    Variable A: 60 -> 22 {10..29,2 more,31}
     Clue 2D: 33 -> 33 {340,360,380,400,420,440,460,480,500,520,540,560,580,600,620,640,660,680,700,720,13 more,980}
-    Clue Y: 34 -> 33 {17..36,13 more,49}
+    Variable Y: 34 -> 33 {17..36,13 more,49}
     Clue 4D: 6 -> 6 {400,484,576,676,784,900}
     Clue 3A: 27 -> 6 {20,22,24,26,28,30}
     Clue 6D: 20 -> 20 {10..29}
     Clue 7D: 51 -> 51 {10..29,31 more,60}
-    Clue c: 60 -> 51 {10..29,31 more,60}
+    Variable c: 60 -> 51 {10..29,31 more,60}
     Clue 8D: 22 -> 22 {100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
     Clue 8A: 90 -> 22 {10..29,2 more,31}
     Clue 9D: 5 -> 5 {125,216,343,512,729}
-    Clue d: 60 -> 5 {5..9}
+    Variable d: 60 -> 5 {5..9}
     Clue 11D: 22 -> 22 {10..29,2 more,31}
-    Clue D: 60 -> 22 {10..29,2 more,31}
-    Clue B: 50 -> 50 {10..29,30 more,59}
+    Variable D: 60 -> 22 {10..29,2 more,31}
+    Variable B: 50 -> 50 {10..29,30 more,59}
     Expression for T could not be evaluated: Too many combinations for variables: A, B, C, D, b, c, d, e
-    Clue f: 89 -> 89 {10..29,69 more,98}
-    Clue F: 90 -> 89 {11..30,69 more,99}
+    Variable f: 89 -> 89 {10..29,69 more,98}
+    Variable F: 90 -> 89 {11..30,69 more,99}
     Expression for C could not be evaluated: Too many combinations for variables: A, b, B, c
     Expression for e could not be evaluated: Too many combinations for variables: A, B, C, D, b, c, d
     Expression for d could not be evaluated: Too many combinations for variables: A, b, B, c, C
@@ -90,42 +90,42 @@ Iteration 1
     Clue 1A: 7 -> 7 {144,169,196,225,256,289,324}
     Clue 1D: 22 -> 7 {12..18}
     Clue 3A: 2 -> 2 {24,26}
-    Clue B: 50 -> 3 {24..26}
+    Variable B: 50 -> 2 {24,26}
     Clue 5A: 40 -> 40 {20..29,40..49,20 more,89}
-    Clue T: 90 -> 70 {20..39,50 more,89}
+    Variable T: 90 -> 40 {20..29,40..49,20 more,89}
     Clue 6A: 2 -> 2 {10,20}
-    Clue F: 89 -> 10 {11..20}
+    Variable F: 89 -> 1 {20}
     Clue 7A: 3 -> 3 {16,36,64}
-    Clue b: 6 -> 5 {4..8}
+    Variable b: 6 -> 3 {4,6,8}
     Clue 8A: 22 -> 22 {10..29,2 more,31}
-    Clue f: 89 -> 22 {10..29,2 more,31}
+    Variable f: 89 -> 22 {10..29,2 more,31}
     Clue 9A: 1 -> 1 {27}
-    Clue C: 2 -> 1 {3}
+    Variable C: 2 -> 1 {3}
     Clue 10A: 5 -> 5 {11,21,31,41,51}
-    Clue e: 51 -> 41 {11..30,21 more,51}
+    Variable e: 51 -> 5 {11,21,31,41,51}
     Clue 12A: 2 -> 2 {12,13}
     Clue 13A: 2 -> 2 {625,676}
     Clue 11D: 4 -> 2 {25,26}
     Clue 1D: 7 -> 7 {12..18}
-    Clue A: 22 -> 7 {12..18}
+    Variable A: 22 -> 7 {12..18}
     Clue 2D: 16 -> 16 {420,440,460,480,520,540,560,580,620,640,660,680,920,940,960,980}
-    Clue Y: 33 -> 29 {21..40,9 more,49}
+    Variable Y: 33 -> 16 {21..24,26..29,31..34,46..49}
     Clue 6D: 16 -> 16 {10..25}
     Clue 7D: 4 -> 4 {17,27,37,47}
-    Clue c: 51 -> 31 {17..36,11 more,47}
+    Variable c: 51 -> 4 {17,27,37,47}
     Clue 8D: 2 -> 2 {121,361}
-    Clue 8A: 22 -> 9 {11..19}
+    Clue 8A: 22 -> 2 {11,19}
     Clue 9D: 1 -> 1 {216}
-    Clue d: 5 -> 1 {6}
+    Variable d: 5 -> 1 {6}
     Clue 11D: 2 -> 2 {25,26}
-    Clue D: 22 -> 2 {25,26}
-    Expression for T could not be evaluated: Too many combinations for variables: A, B, C, D, b, c, d, e
-    Clue f: 10 -> 10 {10..19}
-    Clue e: 35 -> 35 {11..30,15 more,45}
-    Clue b: 5 -> 4 {4,5,7,8}
-    Clue c: 24 -> 24 {17..36,4 more,40}
-    Clue d: 1 -> 1 {6}
-    Clue c: 24 -> 21 {17..36,37}
+    Variable D: 22 -> 2 {25,26}
+    Variable T: 1 -> 1 {68}
+    Variable A: 7 -> 3 {14..16}
+    Variable b: 3 -> 1 {4}
+    Variable e: 5 -> 4 {11,21,31,41}
+    Variable f: 10 -> 10 {10..19}
+    Variable d: 1 -> 1 {6}
+    Variable c: 4 -> 2 {17,27}
     Clue 5A distinct values: 40 -> 39 {20..26,28,29,40..49,60,19 more,89}
     Clue 7D distinct values: 4 -> 3 {17,37,47}
   Propagating constraints...
@@ -135,176 +135,67 @@ Iteration 1
     Down Entry D7: 3 -> 2 {17,37}
     Down Entry D4: 2 -> 1 {676}
     Down Entry D8: 2 -> 1 {121}
-    Down Entry D6: 16 -> 14 {11..19,21..25}
+    Down Entry D6: 16 -> 3 {11,19,21}
     Clue 1A: 7 -> 3 {144,169,196}
     Clue 2D: 16 -> 12 {420,440,460,480,620,640,660,680,920,940,960,980}
     Clue 4D: 2 -> 1 {676}
-    Clue 6D: 16 -> 14 {11..19,21..25}
+    Clue 6D: 16 -> 3 {11,19,21}
     Clue 7A: 3 -> 2 {16,36}
     Clue 7D: 3 -> 2 {17,37}
     Clue 8D: 2 -> 1 {121}
     Clue 1A: 3 -> 3 {144,169,196}
     Clue 1D: 7 -> 3 {12..14}
-    Clue 7A: 2 -> 2 {16,36}
-    Clue b: 4 -> 2 {4,5}
-    Clue 8A: 9 -> 9 {11..19}
-    Clue f: 10 -> 9 {11..19}
-    Clue 1D: 3 -> 3 {12..14}
-    Clue A: 7 -> 3 {12..14}
+    Clue 5A: 1 -> 1 {68}
+    Clue 6A: 1 -> 1 {20}
+    Clue 7A: 1 -> 1 {16}
+    Clue 8A: 2 -> 2 {11,19}
+    Variable f: 10 -> 2 {11,19}
+    Clue 10A: 4 -> 4 {11,21,31,41}
+    Clue 1D: 1 -> 1 {14}
+    Variable A: 3 -> 1 {14}
+    Clue 2D: 12 -> 12 {420,440,460,480,620,640,660,680,920,940,960,980}
+    Variable Y: 16 -> 12 {21..24,31..34,46..49}
     Clue 4D: 1 -> 1 {676}
     Clue 3A: 2 -> 1 {26}
     Clue 8D: 1 -> 1 {121}
-    Clue 8A: 9 -> 1 {11}
-    Clue T: 5 -> 5 {64..68}
-    Clue e: 35 -> 26 {16..35,6 more,41}
-    Clue f: 9 -> 9 {11..19}
-    Clue F: 10 -> 9 {12..20}
-    Clue c: 20 -> 20 {17..36}
-    Clue d: 1 -> 1 {6}
-    Clue c: 20 -> 17 {17..33}
-    Clue 5A distinct values: 39 -> 38 {20..25,28,29,40..49,60,61,18 more,89}
-    Clue 10A distinct values: 5 -> 4 {21,31,41,51}
+    Clue 8A: 2 -> 1 {11}
+    Variable T: 1 -> 1 {68}
+    Variable B: 2 -> 1 {26}
+    Variable D: 2 -> 1 {25}
+    Variable e: 4 -> 2 {31,41}
+    Clue 10A distinct values: 4 -> 3 {21,31,41}
     Clue 13A distinct values: 2 -> 1 {625}
-    Clue 6D distinct values: 14 -> 13 {12..19,21..25}
+    Clue 6D distinct values: 3 -> 2 {19,21}
     Clue 11D distinct values: 2 -> 1 {25}
   Propagating constraints...
-    Down Entry D6: 13 -> 1 {21}
-    Clue 6D: 13 -> 1 {21}
-    Clue 3A: 1 -> 1 {26}
-    Clue B: 3 -> 1 {26}
-    Clue 5A: 5 -> 5 {64..68}
-    Clue 8A: 1 -> 1 {11}
-    Clue f: 9 -> 1 {11}
-    Clue 10A: 4 -> 4 {21,31,41,51}
-    Clue e: 26 -> 21 {21..40,41}
-    Clue 12A: 1 -> 1 {13}
-    Clue 11D: 1 -> 1 {25}
-    Clue D: 2 -> 1 {25}
-    Clue T: 3 -> 3 {66..68}
-    Clue c: 17 -> 15 {17..24,27..33}
-    Clue e: 21 -> 18 {22..24,27..41}
-    Clue 10A distinct values: 4 -> 3 {31,41,51}
-    Clue 1D distinct values: 3 -> 2 {12,14}
-    Variable Y distinct values: 29 -> 27 {21..24,27..42,7 more,49}
-  Propagating constraints...
     Down Entry D2: 12 -> 3 {460,660,960}
-    Across Entry A6: 2 -> 1 {20}
+    Down Entry D6: 2 -> 1 {21}
+    Down Entry D7: 2 -> 1 {17}
     Clue 2D: 12 -> 3 {460,660,960}
-    Clue 6A: 2 -> 1 {20}
-    Clue 1A: 2 -> 2 {144,196}
-    Clue 5A: 3 -> 3 {66..68}
-    Clue 6A: 1 -> 1 {20}
-    Clue F: 9 -> 1 {20}
-    Clue 10A: 3 -> 3 {31,41,51}
-    Clue e: 18 -> 11 {31..41}
+    Clue 6D: 2 -> 1 {21}
+    Clue 7D: 2 -> 1 {17}
+    Clue 1A: 1 -> 1 {196}
+    Clue 8A: 1 -> 1 {11}
+    Variable f: 2 -> 1 {11}
+    Clue 10A: 2 -> 2 {31,41}
+    Clue 12A: 1 -> 1 {13}
     Clue 2D: 3 -> 3 {460,660,960}
-    Clue Y: 27 -> 24 {23,24,27..44,4 more,48}
-    Clue T: 3 -> 3 {66..68}
-    Clue c: 15 -> 9 {17..24,27}
-    Variable c distinct values: 9 -> 8 {17..19,21..24,27}
+    Variable Y: 12 -> 3 {23,33,48}
+    Clue 7D: 1 -> 1 {17}
+    Variable c: 2 -> 1 {17}
+    Variable T: 1 -> 1 {68}
+    Variable e: 2 -> 1 {41}
   Propagating constraints...
-    Down Entry D2: 3 -> 2 {460,660}
-    Clue 2D: 3 -> 2 {460,660}
-    Clue 2D: 2 -> 2 {460,660}
-    Clue Y: 24 -> 9 {23,24,27..33}
+    Down Entry D2: 3 -> 1 {660}
+    Clue 2D: 3 -> 1 {660}
+    Clue 10A: 1 -> 1 {41}
+    Clue 2D: 1 -> 1 {660}
+    Variable Y: 3 -> 1 {33}
   Propagating constraints...
 Iteration 2
   Solving expressables...
   Propagating constraints...
 Grid:
-+---+---+---+---+---+---+
-| ?   ?   ? |   | 2   6 |
-+   +---+   +---+---+   +
-| ? |   | ?   ? |   | 7 |
-+---+---+   +---+---+   +
-|   | 2   ? |   | ?   ? |
-+---+   +---+---+   +---+
-| 1   1 |   | 2   ? |   |
-+   +---+---+   +---+---+
-| 2 |   | ?   ? |   | 2 |
-+   +---+---+   +---+   +
-| 1   3 |   | 6   2   5 |
-+---+---+---+---+---+---+
-Variables:
-B: 1 {26}
-T: 3 {66..68}
-F: 1 {20}
-b: 2 {4,5}
-f: 1 {11}
-C: 1 {3}
-e: 11 {31..41}
-A: 3 {12..14}
-Y: 9 {23,24,27..33}
-c: 8 {17..19,21..24,27}
-d: 1 {6}
-D: 1 {25}
-Clues:
-1A: 2  {144,196}
-3A: 1  {26}
-5A: 3  {66..68}
-6A: 1  {20}
-7A: 2  {16,36}
-8A: 1  {11}
-9A: 1  {27}
-10A: 3  {31,41,51}
-12A: 1  {13}
-13A: 1  {625}
-1D: 2  {12,14}
-2D: 2  {460,660}
-4D: 1  {676}
-6D: 1  {21}
-7D: 2  {17,37}
-8D: 1  {121}
-9D: 1  {216}
-11D: 1  {25}
-Entries:
-A1: 2  {144,196}
-D1: 2  {12,14}
-D2: 2  {460,660}
-A3: 1  {26}
-D4: 1  {676}
-A5: 3  {66..68}
-A6: 1  {20}
-D6: 1  {21}
-A7: 2  {16,36}
-D7: 2  {17,37}
-A8: 1  {11}
-D8: 1  {121}
-A9: 1  {27}
-D9: 1  {216}
-A10: 3  {31,41,51}
-D11: 1  {25}
-A12: 1  {13}
-A13: 1  {625}
-Solution not complete, backtracking
-    Clue 1D: 1 -> 1 {12}
-    Clue A: 3 -> 1 {12}
-    Clue 2D: 1 -> 1 {460}
-    Clue Y: 9 -> 1 {23}
-    Clue T: 1 -> 1 {66}
-    Clue c: 8 -> 7 {17..19,21..24}
-    Clue e: 11 -> 9 {31..39}
-    Clue 5A: 1 -> 1 {66}
-    Clue 7D: 1 -> 1 {17}
-    Clue c: 6 -> 1 {17}
-    Clue T: 1 -> 1 {66}
-    Clue e: 9 -> 1 {39}
-    Expression for 10A has no possible values after evaluation
-    Expression for 7A has no possible values after evaluation
-    Expression for 7A has no possible values after evaluation
-    Clue 1D: 1 -> 1 {14}
-    Clue A: 3 -> 1 {14}
-    Clue 2D: 1 -> 1 {660}
-    Clue Y: 9 -> 1 {33}
-    Clue T: 1 -> 1 {68}
-    Clue e: 11 -> 10 {31,33..41}
-    Clue 5A: 1 -> 1 {68}
-    Clue 7D: 1 -> 1 {17}
-    Clue c: 8 -> 1 {17}
-    Clue T: 1 -> 1 {68}
-    Clue e: 9 -> 1 {41}
-    Clue 10A: 1 -> 1 {41}
-Solution:
 +---+---+---+---+---+---+
 | 1   9   6 |   | 2   6 |
 +   +---+   +---+---+   +
@@ -318,25 +209,6 @@ Solution:
 +   +---+---+   +---+   +
 | 1   3 |   | 6   2   5 |
 +---+---+---+---+---+---+
-Clue values:
-1A: 196
-3A: 26
-5A: 68
-6A: 20
-7A: 16
-8A: 11
-9A: 27
-10A: 41
-12A: 13
-13A: 625
-1D: 14
-2D: 660
-4D: 676
-6D: 21
-7D: 17
-8D: 121
-9D: 216
-11D: 25
 Variables:
 B: 1 {26}
 T: 1 {68}
@@ -350,8 +222,43 @@ Y: 1 {33}
 c: 1 {17}
 d: 1 {6}
 D: 1 {25}
-    Expression for 7A has no possible values after evaluation
-    Expression for 7A has no possible values after evaluation
-Backtracking: 1 solutions found.
+Clues:
+1A: 1  {196}
+3A: 1  {26}
+5A: 1  {68}
+6A: 1  {20}
+7A: 1  {16}
+8A: 1  {11}
+9A: 1  {27}
+10A: 1  {41}
+12A: 1  {13}
+13A: 1  {625}
+1D: 1  {14}
+2D: 1  {660}
+4D: 1  {676}
+6D: 1  {21}
+7D: 1  {17}
+8D: 1  {121}
+9D: 1  {216}
+11D: 1  {25}
+Entries:
+A1: 1  {196}
+D1: 1  {14}
+D2: 1  {660}
+A3: 1  {26}
+D4: 1  {676}
+A5: 1  {68}
+A6: 1  {20}
+D6: 1  {21}
+A7: 1  {16}
+D7: 1  {17}
+A8: 1  {11}
+D8: 1  {121}
+A9: 1  {27}
+D9: 1  {216}
+A10: 1  {41}
+D11: 1  {25}
+A12: 1  {13}
+A13: 1  {625}
 
 Exited.
