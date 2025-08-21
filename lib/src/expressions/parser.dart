@@ -214,7 +214,7 @@ class Parser {
     if (_match([TokenType.DOLLAR])) {
       final operator =
           _consume(TokenType.IDENTIFIER, "Expect function name after '\$'");
-      final right = _primary();
+      final right = _unary();
       return MonadicExpression(operator, right);
     }
 

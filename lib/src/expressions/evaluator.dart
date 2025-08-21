@@ -333,7 +333,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       for (var valueResult in values) {
         // Monadic functions return int, convert to num
         var valueValue = valueResult.value.toInt();
-        var resultValue = function([valueValue]);
+        var resultValue = function([valueValue], min: min.toInt(), max: max.toInt());
         var result = resultValue
             .where((value) => value >= min && value <= max)
             .map((e) => EvaluationResult(e, valueResult.variableValues))

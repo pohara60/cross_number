@@ -188,7 +188,7 @@ void main() {
       final evaluator = Evaluator(puzzle);
       final expression = Parser(r'$lte(5)').parse();
       final result =
-          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
+          evaluator.evaluateNoVariables(expression, [], min: 1, max: 100);
       expect(result, equals({1, 2, 3, 4, 5}));
     });
 
@@ -198,7 +198,7 @@ void main() {
       final evaluator = Evaluator(puzzle);
       final expression = Parser(r'$lt(5)').parse();
       final result =
-          evaluator.evaluateNoVariables(expression, [], min: 0, max: 100);
+          evaluator.evaluateNoVariables(expression, [], min: 1, max: 100);
       expect(result, equals({1, 2, 3, 4}));
     });
 
@@ -228,6 +228,52 @@ void main() {
       puzzle.variables['c']!.answer = 17;
       solver.solve();
       print('result');
+    });
+
+    test(r'$factor 50', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$factor 50').parse();
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 1, max: 100);
+      expect(result, equals([2, 5, 10, 25]));
+    });
+
+    test(r'$factor $lt 50', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$factor $lt 50').parse();
+      final result =
+          evaluator.evaluateNoVariables(expression, [], min: 1, max: 100);
+      expect(
+          result,
+          equals([
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ]));
     });
   });
 }
