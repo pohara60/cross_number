@@ -221,7 +221,7 @@ void main() {
       // final expression = Parser(r'$lte(60-A +b -B +c)').parse();
       // final result = evaluator.evaluate(expression, [], min: 10, max: 100);
       // expect(result, equals({1, 2, 3, 4, 5}));
-      final solver = Solver(puzzle, trace: true, allowBacktracking: false);
+      final solver = Solver(puzzle, traceSolve: true, allowBacktracking: false);
       puzzle.variables['A']!.answer = 14;
       puzzle.variables['b']!.answer = 4;
       puzzle.variables['B']!.answer = 26;

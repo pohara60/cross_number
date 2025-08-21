@@ -7,7 +7,7 @@ void main() {
   group('Puzzle2', () {
     test('should solve the second puzzle correctly', () {
       final puzzle = puzzle2();
-      final solver = Solver(puzzle, trace: false, traceBacktrace: false);
+      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: false);
       int solveCount = 0;
 
       bool callback() {

@@ -1,4 +1,3 @@
-import '../expressions/evaluator.dart';
 import '../expressions/expression.dart';
 import '../utils/set.dart';
 import 'constraint.dart';
@@ -9,46 +8,23 @@ import 'expression_constraint.dart';
 ///
 /// A variable is a named quantity that can take on a range of possible integer values.
 /// Variables are often used in clues that are defined by mathematical expressions.
-class Variable implements Expressable {
+class Variable extends Expressable {
   /// The name of the variable.
   final String name;
 
   @override
   String get id => name;
 
+  @override
+  Set<int> get possibleValues => super.possibleValues!;
+
   /// The list of constraints that apply to this variable.
   final List<Constraint> constraints;
 
-  /// The set of possible integer values for this clue.
-  /// This set is narrowed down by the solver as constraints are applied.
-  Set<int> _possibleValues;
-  @override
-  Set<int> get possibleValues => _possibleValues;
-  @override
-  set possibleValues(Set<int>? values) {
-    assert(values != null, 'Possible values cannot be null for variable $name');
-    _checkAnswer(values);
-    _possibleValues = values!;
-  }
-
-  /// Answer used for debugging
-  /// This is not used in the solver.
-  int? _answer;
-  set answer(int value) {
-    _answer = value;
-  }
-
-  void _checkAnswer(Set<int>? values) {
-    if (values != null && _answer != null) {
-      if (!values.contains(_answer)) {
-        throw EvaluatorException(
-            'Variable $name: Answer $_answer is not in the possible values $values');
-      }
-    }
-  }
-
   /// Creates a new variable with the given [name] and [possibleValues].
-  Variable(this.name, this._possibleValues, {this.constraints = const []});
+  Variable(this.name, Set<int>? possibleValues, {this.constraints = const []}) {
+    super.possibleValues = possibleValues;
+  }
 
   @override
   Expression get expressionTree =>
@@ -58,16 +34,6 @@ class Variable implements Expressable {
   List<String> get variables =>
       (constraints.first as ExpressionConstraint).variables;
 
-  @override
-  int? get min => possibleValues.isEmpty
-      ? null
-      : possibleValues.reduce((a, b) => a < b ? a : b);
-
-  @override
-  int? get max => possibleValues.isEmpty
-      ? null
-      : possibleValues.reduce((a, b) => a > b ? a : b);
-
   Variable copyWith({
     String? name,
     Set<int>? possibleValues,
@@ -75,7 +41,7 @@ class Variable implements Expressable {
   }) {
     return Variable(
       name ?? this.name,
-      possibleValues ?? _possibleValues,
+      possibleValues ?? possibleValues,
       constraints: constraints ?? this.constraints,
     );
   }

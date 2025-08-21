@@ -18,7 +18,7 @@ void main() {
         clues: {'1A': clue},
         variables: {},
       );
-      final solver = Solver(puzzle, allowBacktracking: false, trace: true);
+      final solver = Solver(puzzle, allowBacktracking: false, traceSolve: true);
       solver.solve();
 
       expect(clue.possibleValues, contains(15));

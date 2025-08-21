@@ -8,8 +8,8 @@ void main() {
   group('After Nicholas', () {
     test('should solve the puzzle', () {
       final puzzle = afterNicholas();
-      // final solver = Solver(puzzle, trace: true);
-      final solver = Solver(puzzle, trace: false, traceBacktrace: false);
+      // final solver = Solver(puzzle, traceSolve: true);
+      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: false);
       setAnswers(puzzle);
       solver.solve();
       expect(solver.isSolutionValid(), isTrue);

@@ -50,7 +50,8 @@ class Solver {
   final bool allowBacktracking;
 
   /// Flags to enable or disable tracing.
-  final bool trace;
+  bool trace; // Currently tracing
+  final bool traceSolve;
   final bool traceBacktrace;
 
   /// A flag to track if any updates were made in the last iteration of the solver.
@@ -62,10 +63,10 @@ class Solver {
   /// Creates a new solver for the given [puzzle].
   Solver(
     this.puzzle, {
-    this.trace = false,
+    this.traceSolve = false,
     this.allowBacktracking = true,
     this.traceBacktrace = false,
-  }) {
+  }) : trace = traceSolve {
     // Initialize clues with possible values based on entry length
     for (var clue in puzzle.clues.values) {
       final entry =
@@ -321,6 +322,7 @@ class Solver {
 
     // If solution not exact, start backtracking
     if (isSolutionValid()) {
+      if (callback != null) callback.call();
       printPuzzle();
     } else if (!allowBacktracking) {
       printPuzzle();
@@ -328,6 +330,9 @@ class Solver {
     } else {
       printPuzzle();
       print('Solution not complete, backtracking');
+      Expressable.checkAnswer =
+          false; // Disable answer checking during backtracking
+      trace = traceBacktrace; // Use traceBacktrace for backtracking
       var solutionCount = _backtrack(0, 0, callback);
       if (solutionCount == 0) {
         print("Backtracking: no solutions found.");

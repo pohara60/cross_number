@@ -10,8 +10,8 @@ void main() {
   group('Puzzle3', () {
     test('should solve the third puzzle correctly', () {
       final puzzle = puzzle3();
-      final solver = Solver(puzzle, trace: false, traceBacktrace: false);
-      // final solver = Solver(puzzle, trace: true, traceBacktrace: false);
+      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: false);
+      // final solver = Solver(puzzle, traceSolve: true, traceBacktrace: false);
       int solveCount = 0;
 
       bool callback() {
