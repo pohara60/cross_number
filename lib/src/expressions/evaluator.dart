@@ -81,7 +81,9 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
 
     final possibleValues = puzzle.variables.containsKey(currentVariable)
         ? puzzle.variables[currentVariable]!.possibleValues
-        : puzzle.clues[currentVariable]!.possibleValues!;
+        : puzzle.clues.containsKey(currentVariable)
+            ? puzzle.clues[currentVariable]!.possibleValues!
+            : puzzle.entries[currentVariable]!.possibleValues;
 
     for (final value in possibleValues) {
       // Check for duplicate variable values
@@ -137,8 +139,14 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           .where((value) => value >= min && value <= max)
           .map((e) => EvaluationResult(e, {expression.name: e}))
           .toList();
+    } else if (puzzle.entries.containsKey(expression.name)) {
+      return puzzle.entries[expression.name]!.possibleValues
+          .where((value) => value >= min && value <= max)
+          .map((e) => EvaluationResult(e, {expression.name: e}))
+          .toList();
     }
-    throw EvaluatorException('Undefined variable or clue: ${expression.name}');
+    throw EvaluatorException(
+        'Undefined variable, clue, or entry: ${expression.name}');
   }
 
   @override
@@ -333,7 +341,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       for (var valueResult in values) {
         // Monadic functions return int, convert to num
         var valueValue = valueResult.value.toInt();
-        var resultValue = function([valueValue], min: min.toInt(), max: max.toInt());
+        var resultValue =
+            function([valueValue], min: min.toInt(), max: max.toInt());
         var result = resultValue
             .where((value) => value >= min && value <= max)
             .map((e) => EvaluationResult(e, valueResult.variableValues))
@@ -354,7 +363,9 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     for (var variable in unpinnedVariables) {
       final possibleValues = puzzle.variables.containsKey(variable)
           ? puzzle.variables[variable]!.possibleValues
-          : puzzle.clues[variable]!.possibleValues;
+          : puzzle.clues.containsKey(variable)
+              ? puzzle.clues[variable]!.possibleValues
+              : puzzle.entries[variable]!.possibleValues;
       if (possibleValues == null) {
         return true; // No possible values means cannot evaluate yet
       }

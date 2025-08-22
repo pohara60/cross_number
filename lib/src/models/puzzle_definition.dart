@@ -42,6 +42,7 @@ class PuzzleDefinition {
     required String gridString,
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
+    mappingIsKnown = true,
   }) {
     final grid = Grid.fromString(gridString);
     final Map<String, Entry> entries = {};
@@ -71,7 +72,8 @@ class PuzzleDefinition {
       entries: entries,
       clues: clues,
       variables: variables,
-      mappingIsKnown: true, // Assuming mapping is known from gridString
+      mappingIsKnown:
+          mappingIsKnown, // Assuming mapping is known from gridString
     );
   }
 
@@ -145,7 +147,9 @@ class PuzzleDefinition {
     // Check all variables are defined for expressables
     for (final expressable in expressables.values) {
       for (final variable in expressable.variables) {
-        if (!clues.containsKey(variable) && !variables.containsKey(variable)) {
+        if (!clues.containsKey(variable) &&
+            !variables.containsKey(variable) &&
+            !entries.containsKey(variable)) {
           exception = true;
           print(
               'Variable $variable used in expression for ${expressable.id} is not defined.');

@@ -150,8 +150,16 @@ class Solver {
     }
 
     final currentClue = puzzle.clues.values.elementAt(clueIndex);
-    final originalPossibleValues = Set<int>.from(currentClue.possibleValues!);
+    if (currentClue.possibleValues == null ||
+        currentClue.possibleValues!.isEmpty) {
+      if (traceBacktrace) {
+        print(
+            'Backtracking: Clue ${currentClue.id} has no possible values, backtracking.');
+      }
+      return solutionCount; // No possible values, backtrack
+    }
 
+    final originalPossibleValues = Set<int>.from(currentClue.possibleValues!);
     if (traceBacktrace) {
       print(
           'Backtracking: Trying clue ${currentClue.id} -> ${originalPossibleValues.length} ${originalPossibleValues.toShortString()}');
@@ -271,6 +279,10 @@ class Solver {
     }
     print('Clues:');
     for (var clue in puzzle.clues.values) {
+      if (clue.possibleValues == null) {
+        print('${clue.id}: uninitialised');
+        continue;
+      }
       print(
           '${clue.id}: ${clue.possibleValues!.length}  ${clue.possibleValues!.toShortString()}');
     }
@@ -405,6 +417,7 @@ class Solver {
     for (var expressableName in expressables) {
       var expressable = puzzle.variables[expressableName] as Expressable?;
       expressable ??= puzzle.clues[expressableName];
+      expressable ??= puzzle.entries[expressableName];
       _printUpdatedExpressable(expressable!, originalCounts[expressableName]);
     }
   }
@@ -494,7 +507,10 @@ class Solver {
       var expressable = puzzle.variables[variableName] as Expressable?;
       if (expressable == null) {
         expressable = puzzle.clues[variableName] as Expressable?;
-        if (expressable == null) continue;
+        if (expressable == null) {
+          expressable = puzzle.entries[variableName] as Expressable?;
+          if (expressable == null) continue;
+        }
       }
 
       final newVariableValues = results

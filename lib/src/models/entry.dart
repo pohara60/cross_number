@@ -1,6 +1,9 @@
 import 'dart:math';
 
+import 'package:crossnumber/src/expressions/expression.dart';
+
 import '../utils/set.dart';
+import 'expressable.dart';
 
 /// The orientation of an entry in the grid.
 enum EntryOrientation { across, down }
@@ -9,7 +12,7 @@ enum EntryOrientation { across, down }
 ///
 /// An entry is a location in the grid where a number can be placed.
 /// It has a specific [id], position ([row], [col]), [length], and [orientation].
-class Entry {
+class Entry extends Expressable {
   /// The unique identifier for the entry (e.g., "A1", "B2").
   final String id;
 
@@ -29,9 +32,8 @@ class Entry {
   /// This can be null if the mapping is not known initially.
   String? clueId;
 
-  /// The set of possible integer values for this entry.
-  /// This is used when the clue-to-entry mapping is being determined by the solver.
-  Set<int> possibleValues = {}; // Added for dynamic mapping
+  @override
+  Set<int> get possibleValues => super.possibleValues!;
 
   /// Creates a new entry with the given properties.
   Entry({
@@ -71,4 +73,10 @@ class Entry {
   String toString() {
     return '$id: ${possibleValues.length} ${possibleValues.toShortString()}';
   }
+
+  @override
+  Expression get expressionTree => throw UnimplementedError();
+
+  @override
+  List<String> get variables => throw UnimplementedError();
 }

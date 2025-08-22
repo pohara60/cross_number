@@ -1,11 +1,13 @@
 // ignore_for_file: unused_import
 
+import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/entry.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/grid.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/variable.dart';
+import 'package:crossnumber/src/utils/set.dart';
 
 PuzzleDefinition wheels() {
 // The Wheels on the Bus by Moog

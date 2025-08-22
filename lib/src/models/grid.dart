@@ -90,12 +90,41 @@ class Grid {
       for (var c = 0; c < actualCols; c++) {
         final cellContent = getCellContent(r, c);
 
-        // Check for Across entry start
-        if (cellContent.isNotEmpty && grid.cells[r][c].acrossEntry == null) {
-          final clueId = cellContent + 'A';
-          final entryId = 'A' + cellContent;
-          int length = 1;
+        String? acrossLetter;
+        String? downLetter;
+        int? number;
+
+        if (cellContent.isNotEmpty) {
+          // Check if the cell content is a number
+          final numValue = int.tryParse(cellContent);
+          if (numValue != null) {
+            number = numValue;
+          } else if (cellContent.length == 1) {
+            if (cellContent.toUpperCase() == cellContent) {
+              acrossLetter = cellContent;
+            } else {
+              downLetter = cellContent;
+            }
+          } else if (cellContent.length == 2) {
+            // Assume first char is across, second is down
+            if (cellContent[0].toUpperCase() == cellContent) {
+              acrossLetter = cellContent[0];
+              downLetter = cellContent[1];
+            } else {
+              acrossLetter = cellContent[1];
+              downLetter = cellContent[0];
+            }
+          }
+        }
+
+        // Create Across entry if applicable
+        if (acrossLetter != null ||
+            number != null && grid.cells[r][c].acrossEntry == null) {
+          assert(grid.cells[r][c].acrossEntry == null);
+          final entryId = acrossLetter ?? 'A' + cellContent;
+          final clueId = acrossLetter != null ? null : cellContent + 'A';
           // Extend length by checking horizontal separators
+          int length = 1;
           for (var k = c; k < actualCols - 1; k++) {
             final separator = getHorizontalSeparator(r, k);
             if (separator == ':') {
@@ -120,10 +149,12 @@ class Grid {
           }
         }
 
-        // Check for Down entry start
-        if (cellContent.isNotEmpty && grid.cells[r][c].downEntry == null) {
-          final clueId = cellContent + 'D';
-          final entryId = 'D' + cellContent;
+        // Create Down entry if applicable
+        if (downLetter != null ||
+            number != null && grid.cells[r][c].downEntry == null) {
+          assert(grid.cells[r][c].downEntry == null);
+          final entryId = downLetter ?? 'D' + cellContent;
+          final clueId = downLetter != null ? null : cellContent + 'D';
           int length = 1;
           // Extend length by checking vertical separators
           for (var k = r; k < actualRows - 1; k++) {

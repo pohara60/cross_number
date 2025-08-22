@@ -1,0 +1,133 @@
+Connecting to VM Service at ws://127.0.0.1:62876/Rr30qnEhq1s=/ws
+Cross Number Solver v2 CLI
+solve: Clue I values={165}
+solve: Clue II values={255}
+solve: Clue III values={345}
+solve: Clue IV values={561}
+solve: Clue V values={759}
+solve: Clue VI values={935}
+solve: Clue VII values={1173}
+solve: Clue VIII values={1265}
+solve: Clue IX values={1955}
+solve: Clue X values={4301}
+Puzzle: IncreasingPrimes
+Solving puzzle with known mapping...
+Iteration 1
+  Solving expressables...
+    Expression for I could not be evaluated: Too many combinations for variables: j, f, C
+    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
+    Clue III: 1 -> 1 {345}
+    Expression for IV could not be evaluated: Too many combinations for variables: G, J, K
+    Expression for V could not be evaluated: Too many combinations for variables: D, H, j
+    Expression for VI could not be evaluated: Too many combinations for variables: A, B, K
+    Expression for VII could not be evaluated: Too many combinations for variables: d, e, K
+    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
+    Expression for IX could not be evaluated: Too many combinations for variables: b, E, G
+    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
+  Propagating constraints...
+    Across Entry A: 900 -> 810 {110..129,790 more,999}
+    Across Entry A: 810 -> 729 {111..119,121..129,131,132,709 more,999}
+    Across Entry B: 90 -> 81 {11..19,21..29,31,32,61 more,99}
+    Down Entry b: 90 -> 81 {11..19,21..29,31,32,61 more,99}
+    Across Entry D: 900 -> 810 {110..129,790 more,999}
+    Down Entry a: 900 -> 810 {101..109,111..119,121,122,790 more,999}
+    Across Entry E: 9000 -> 8100 {1100..1119,8080 more,9999}
+    Down Entry e: 9000 -> 8100 {1100..1119,8080 more,9999}
+    Across Entry F: 9000 -> 8100 {1100..1119,8080 more,9999}
+    Across Entry F: 8100 -> 7290 {1101..1109,1111..1119,1121,1122,7270 more,9999}
+    Down Entry e: 8100 -> 2430 {1130..1149,2410 more,9959}
+    Down Entry j: 90 -> 50 {10..19,30..39,30 more,99}
+    Down Entry h: 900 -> 810 {110..129,790 more,999}
+    Down Entry e: 2430 -> 2187 {1131..1139,1141..1149,1151,1152,2167 more,9959}
+    Down Entry j: 50 -> 45 {11..19,31..39,51,52,25 more,99}
+    Expression for I could not be evaluated: Too many combinations for variables: j, f, C
+    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
+    Clue III: 1 -> 1 {345}
+    Expression for IV could not be evaluated: Too many combinations for variables: G, J, K
+    Expression for V could not be evaluated: Too many combinations for variables: D, H, j
+    Expression for VI could not be evaluated: Too many combinations for variables: A, B, K
+    Expression for VII could not be evaluated: Too many combinations for variables: d, e, K
+    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
+    Expression for IX could not be evaluated: Too many combinations for variables: b, E, G
+    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
+  Propagating constraints...
+    Expression for I could not be evaluated: Too many combinations for variables: j, f, C
+    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
+    Expression for IV could not be evaluated: Too many combinations for variables: G, J, K
+    Expression for V could not be evaluated: Too many combinations for variables: D, H, j
+    Expression for VI could not be evaluated: Too many combinations for variables: A, B, K
+    Expression for VII could not be evaluated: Too many combinations for variables: d, e, K
+    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
+    Expression for IX could not be evaluated: Too many combinations for variables: b, E, G
+    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
+Iteration 2
+  Solving expressables...
+    Expression for I could not be evaluated: Too many combinations for variables: j, f, C
+    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
+    Expression for IV could not be evaluated: Too many combinations for variables: G, J, K
+    Expression for V could not be evaluated: Too many combinations for variables: D, H, j
+    Expression for VI could not be evaluated: Too many combinations for variables: A, B, K
+    Expression for VII could not be evaluated: Too many combinations for variables: d, e, K
+    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
+    Expression for IX could not be evaluated: Too many combinations for variables: b, E, G
+    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
+  Propagating constraints...
+    Expression for I could not be evaluated: Too many combinations for variables: j, f, C
+    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
+    Expression for IV could not be evaluated: Too many combinations for variables: G, J, K
+    Expression for V could not be evaluated: Too many combinations for variables: D, H, j
+    Expression for VI could not be evaluated: Too many combinations for variables: A, B, K
+    Expression for VII could not be evaluated: Too many combinations for variables: d, e, K
+    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
+    Expression for IX could not be evaluated: Too many combinations for variables: b, E, G
+    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
+Grid:
++---+---+---+---+---+
+| ?   ?   ? | ?   ? |
++---+   +   +---+   +
+| ?   ? | ?   ?   ? |
++---+   +---+   +   +
+| ? | ?   ?   ?   ? |
++   +---+   +---+   +
+| ?   ?   ?   ? | ? |
++   +   +---+   +---+
+| ?   ?   ? | ?   ? |
++   +---+   +   +---+
+| ?   ? | ?   ?   ? |
++---+---+---+---+---+
+Variables:
+Clues:
+I: 1  {165}
+II: 1  {255}
+III: 1  {345}
+IV: 1  {561}
+V: 1  {759}
+VI: 1  {935}
+VII: 1  {1173}
+VIII: 1  {1265}
+IX: 1  {1955}
+X: 1  {4301}
+Entries:
+A: 729  {111..119,121..129,131,132,709 more,999}
+a: 810  {101..109,111..119,121,122,790 more,999}
+b: 81  {11..19,21..29,31,32,61 more,99}
+B: 81  {11..19,21..29,31,32,61 more,99}
+c: 9000  {1000..1019,8980 more,9999}
+C: 90  {10..29,70 more,99}
+D: 810  {110..129,790 more,999}
+d: 90  {10..29,70 more,99}
+e: 2187  {1131..1139,1141..1149,1151,1152,2167 more,9959}
+E: 8100  {1100..1119,8080 more,9999}
+f: 90  {10..29,70 more,99}
+F: 7290  {1101..1109,1111..1119,1121,1122,7270 more,9999}
+g: 90  {10..29,70 more,99}
+h: 810  {110..129,790 more,999}
+G: 81  {367,369,371,373,375,377,379,381,383,387,389,391,393,395,397,399,401,403,407,409,61 more,543}
+j: 45  {11..19,31..39,51,52,25 more,99}
+H: 90  {10..29,70 more,99}
+J: 90  {10..29,70 more,99}
+K: 900  {100..119,880 more,999}
+Solution not complete, backtracking
+Backtracking: no solutions found.
+
+Exited.
