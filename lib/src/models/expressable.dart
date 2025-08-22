@@ -1,6 +1,10 @@
 import 'package:crossnumber/src/expressions/expression.dart';
+import 'package:crossnumber/src/expressions/parser.dart';
 
 import '../expressions/evaluator.dart';
+import '../expressions/variable_visitor.dart';
+import 'constraint.dart';
+import 'expression_constraint.dart';
 
 abstract class Expressable {
   String get id;
@@ -23,10 +27,34 @@ abstract class Expressable {
       ? null
       : possibleValues!.reduce((a, b) => a > b ? a : b);
 
-  /// The expression tree from the expression constraint for this expressable.
-  /// Only set if there is an expression constraint
-  Expression get expressionTree;
-  List<String> get variables;
+  /// The expression trees from the expression constraints for this expressable.
+  Iterable<Constraint> get constraints;
+  Iterable<ExpressionConstraint> get expressionConstraints =>
+      constraints.whereType<ExpressionConstraint>();
+
+  final expressionTrees = <Expression>[];
+  Expression get expressionTree => expressionTrees.first;
+  final variableLists = <List<String>>[];
+  List<String> get variables => variableLists.first;
+
+  bool addExpression(ExpressionConstraint constraint) {
+    final parser = Parser(constraint.expression);
+    try {
+      final expressionTree = parser.parse();
+      constraint.expressionTree = expressionTree;
+      final variableVisitor = VariableVisitor();
+      expressionTree.accept(variableVisitor,
+          min: 1, max: 1); // min, max not used here
+      constraint.variables = variableVisitor.variables.toList();
+      expressionTrees.add(constraint.expressionTree!);
+      variableLists.add(constraint.variables);
+    } on ParseException catch (e) {
+      print(
+          'Error parsing expressable $id expression "${constraint.expression}": ${e.msg}');
+      return false;
+    }
+    return true;
+  }
 
   /// Answer used for debugging
   /// This is not used in the solver.

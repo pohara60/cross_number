@@ -43,7 +43,7 @@ void main() {
       final expression = parser.parse();
       final evaluator = Evaluator(puzzle);
       final evaluatedResult =
-          evaluator.evaluate(expression, ['A'], min: 1, max: 20);
+          evaluator.evaluateExpression(expression, ['A'], min: 1, max: 20);
       // For A=3, (3/2)*4 = 6
       // For A=4, (4/2)*4 = 8
       // For A=5, (5/2)*4 = 10
@@ -64,7 +64,7 @@ void main() {
       final expression = parser.parse();
       final evaluator = Evaluator(puzzle);
       final evaluatedResult =
-          evaluator.evaluate(expression, [], min: 1, max: 20);
+          evaluator.evaluateExpression(expression, [], min: 1, max: 20);
       expect(evaluatedResult.map((r) => r.value), equals({3}));
     });
   });
@@ -77,8 +77,8 @@ void expectExpression(
   final parser = Parser(text);
   final expression = parser.parse();
   final evaluator = Evaluator(puzzle);
-  final evaluatedResult =
-      evaluator.evaluateNoVariables(expression, variables, min: min, max: max);
+  final evaluatedResult = evaluator
+      .evaluateExpressionNoVariables(expression, variables, min: min, max: max);
   if (result == null) {
     expect(evaluatedResult, isEmpty);
   } else {

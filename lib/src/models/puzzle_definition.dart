@@ -1,9 +1,7 @@
 import 'package:collection/collection.dart';
-import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
-import '../expressions/variable_visitor.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -104,43 +102,17 @@ class PuzzleDefinition {
     }
     // Parse all expressions
     var exception = false;
-    for (final clue in clues.values) {
-      for (final constraint in clue.constraints) {
-        if (constraint is ExpressionConstraint) {
-          final parser = Parser(constraint.expression);
-          try {
-            final expression = parser.parse();
-            constraint.expressionTree = expression;
-            final variableVisitor = VariableVisitor();
-            expression.accept(variableVisitor,
-                min: 1, max: 1); // min, max not used here
-            constraint.variables = variableVisitor.variables.toList();
-            expressables[clue.id] = clue;
-          } on ParseException catch (e) {
-            exception = true;
-            print(
-                'Error parsing clue ${clue.id} expression "${constraint.expression}": ${e.msg}');
-          }
-        }
-      }
-    }
-    for (final variable in variables.values) {
-      for (final constraint in variable.constraints) {
-        if (constraint is ExpressionConstraint) {
-          final parser = Parser(constraint.expression);
-          try {
-            final expression = parser.parse();
-            constraint.expressionTree = expression;
-            final variableVisitor = VariableVisitor();
-            expression.accept(variableVisitor,
-                min: 1, max: 1); // min, max not used here
-            constraint.variables = variableVisitor.variables.toList();
-            expressables[variable.name] = variable;
-          } on ParseException catch (e) {
-            exception = true;
-            print(
-                'Error parsing variable ${variable.name} expression "${constraint.expression}": ${e.msg}');
-          }
+    final allExpressables = [
+      ...clues.values,
+      ...variables.values,
+      ...entries.values
+    ];
+    for (final expressable in allExpressables) {
+      for (final constraint in expressable.expressionConstraints) {
+        if (expressable.addExpression(constraint)) {
+          expressables.putIfAbsent(expressable.id, () => expressable);
+        } else {
+          exception = true;
         }
       }
     }

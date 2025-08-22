@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:crossnumber/src/models/evaluation_result.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
+import '../models/expressable.dart';
 import 'expression.dart';
 import 'generators.dart';
 import 'monadic.dart';
@@ -25,10 +26,29 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   Evaluator(this.puzzle, [Map<String, int>? pinnedVariables])
       : _pinnedVariables = pinnedVariables ?? {};
 
+  /// Evaluates the given [expressable] and returns a list of [EvaluationFinalResult]
+  /// containing the evaluated values and their corresponding variable values.
+  List<EvaluationFinalResult> evaluate(Expressable expressable,
+      {required int min, required int max}) {
+    var results = <EvaluationFinalResult>{};
+    for (var i = 0; i < expressable.expressionTrees.length; i++) {
+      final expression = expressable.expressionTrees[i];
+      final variables = expressable.variableLists[i];
+      final expressionResults =
+          evaluateExpression(expression, variables, min: min, max: max);
+      if (i == 0) {
+        results = expressionResults.toSet();
+      } else {
+        results = results.intersection(expressionResults.toSet());
+      }
+    }
+    return results.toList();
+  }
+
   /// Evaluates the given [expression] with the provided [variables] and returns
   /// a list of [EvaluationFinalResult] containing the evaluated values and their
   /// corresponding variable values.
-  List<EvaluationFinalResult> evaluate(
+  List<EvaluationFinalResult> evaluateExpression(
       Expression expression, List<String> variables,
       {required int min, required int max}) {
     // Some variables may be pinned already
@@ -48,9 +68,30 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
         .toList();
   }
 
+  /// Evaluates the given [expressable] and returns a list of integer results
+  /// that fall within the specified [min] and [max] range.
+  List<int> evaluateNoVariables(Expressable expressable,
+      {required int min, required int max}) {
+    var results = <int>{};
+    for (var i = 0; i < expressable.expressionTrees.length; i++) {
+      final expression = expressable.expressionTrees[i];
+      final variables = expressable.variableLists[i];
+      final expressionResults = evaluateExpressionNoVariables(
+          expression, variables,
+          min: min, max: max);
+      if (i == 0) {
+        results = expressionResults.toSet();
+      } else {
+        results = results.intersection(expressionResults.toSet());
+      }
+    }
+    return results.toList();
+  }
+
   /// Evaluates the given [expression] with the provided [variables] and returns
   /// a list of integer results that fall within the specified [min] and [max] range.
-  List<int> evaluateNoVariables(Expression expression, List<String> variables,
+  List<int> evaluateExpressionNoVariables(
+      Expression expression, List<String> variables,
       {required int min, required int max}) {
     // Some variables may be pinned already
     var unpinnedVariables =

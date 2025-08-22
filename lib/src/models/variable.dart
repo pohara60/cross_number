@@ -1,8 +1,6 @@
-import '../expressions/expression.dart';
 import '../utils/set.dart';
 import 'constraint.dart';
 import 'expressable.dart';
-import 'expression_constraint.dart';
 
 /// Represents a variable in a cross number puzzle.
 ///
@@ -19,20 +17,13 @@ class Variable extends Expressable {
   Set<int> get possibleValues => super.possibleValues!;
 
   /// The list of constraints that apply to this variable.
+  @override
   final List<Constraint> constraints;
 
   /// Creates a new variable with the given [name] and [possibleValues].
   Variable(this.name, Set<int>? possibleValues, {this.constraints = const []}) {
     super.possibleValues = possibleValues;
   }
-
-  @override
-  Expression get expressionTree =>
-      (constraints.first as ExpressionConstraint).expressionTree!;
-
-  @override
-  List<String> get variables =>
-      (constraints.first as ExpressionConstraint).variables;
 
   Variable copyWith({
     String? name,

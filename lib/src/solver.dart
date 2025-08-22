@@ -434,9 +434,7 @@ class Solver {
 
     var results = <EvaluationFinalResult>[];
     try {
-      results = evaluator.evaluate(
-          expressable.expressionTree, expressable.variables,
-          min: solveMin, max: solveMax);
+      results = evaluator.evaluate(expressable, min: solveMin, max: solveMax);
     } on EvaluatorNotPossiblexception catch (e) {
       if (trace) {
         print(
@@ -574,15 +572,10 @@ class Solver {
     final clue = clues.first;
     final remainingClues = clues.sublist(1);
     final evaluator = Evaluator(puzzle, pinnedVariables);
-    // Assume the clue has only one expression constraint for simplicity
-    final constraint = clue.constraints
-        .firstWhere((c) => c is ExpressionConstraint) as ExpressionConstraint;
 
     var results = <EvaluationFinalResult>[];
     try {
-      results = evaluator.evaluate(
-          constraint.expressionTree!, constraint.variables,
-          min: clue.min!, max: clue.max!);
+      results = evaluator.evaluate(clue, min: clue.min!, max: clue.max!);
     } on EvaluatorNotPossiblexception catch (e) {
       if (trace) {
         print('    Expression for ${clue.id} could not be evaluated: ${e.msg}');

@@ -1,11 +1,9 @@
 import 'dart:math' as math;
 
-import '../expressions/expression.dart';
 import '../utils/set.dart';
 import 'constraint.dart';
 import 'entry.dart';
 import 'expressable.dart';
-import 'expression_constraint.dart';
 
 /// Represents a single clue in a cross number puzzle.
 ///
@@ -20,6 +18,7 @@ class Clue extends Expressable {
   Entry? entry;
 
   /// The list of constraints that apply to this clue.
+  @override
   final List<Constraint> constraints;
 
   /// Min and max values for the clue.
@@ -45,14 +44,6 @@ class Clue extends Expressable {
 
   /// Creates a new clue with the given [id] and [constraints].
   Clue(this.id, this.constraints, [this.entry]);
-
-  @override
-  Expression get expressionTree =>
-      (constraints.first as ExpressionConstraint).expressionTree!;
-
-  @override
-  List<String> get variables =>
-      (constraints.first as ExpressionConstraint).variables;
 
   /// Solves the clue by applying its constraints.
   ///

@@ -1,8 +1,7 @@
 import 'dart:math';
 
-import 'package:crossnumber/src/expressions/expression.dart';
-
 import '../utils/set.dart';
+import 'constraint.dart';
 import 'expressable.dart';
 
 /// The orientation of an entry in the grid.
@@ -14,6 +13,7 @@ enum EntryOrientation { across, down }
 /// It has a specific [id], position ([row], [col]), [length], and [orientation].
 class Entry extends Expressable {
   /// The unique identifier for the entry (e.g., "A1", "B2").
+  @override
   final String id;
 
   /// The starting row of the entry in the grid (0-based).
@@ -35,6 +35,10 @@ class Entry extends Expressable {
   @override
   Set<int> get possibleValues => super.possibleValues!;
 
+  /// The list of constraints that apply to this entry.
+  @override
+  final List<Constraint> constraints;
+
   /// Creates a new entry with the given properties.
   Entry({
     required this.id,
@@ -43,6 +47,7 @@ class Entry extends Expressable {
     required this.length,
     required this.orientation,
     this.clueId,
+    this.constraints = const [],
   }) {
     // Initialize possible values based on length
     final min = pow(10, length - 1).toInt();
@@ -73,10 +78,4 @@ class Entry extends Expressable {
   String toString() {
     return '$id: ${possibleValues.length} ${possibleValues.toShortString()}';
   }
-
-  @override
-  Expression get expressionTree => throw UnimplementedError();
-
-  @override
-  List<String> get variables => throw UnimplementedError();
 }
