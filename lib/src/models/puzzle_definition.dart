@@ -41,10 +41,11 @@ class PuzzleDefinition {
     required String gridString,
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
+    Map<String, Entry>? entries,
     mappingIsKnown = true,
   }) {
     final grid = Grid.fromString(gridString);
-    final Map<String, Entry> entries = {};
+    final Map<String, Entry> gridEntries = {};
 
     // Extract entries from the grid
     for (var r = 0; r < grid.rows; r++) {
@@ -52,15 +53,33 @@ class PuzzleDefinition {
         final cell = grid.cells[r][c];
         if (cell.acrossEntry != null) {
           var entryId = cell.acrossEntry!.id;
-          if (!entries.containsKey(entryId)) {
-            entries[entryId] = cell.acrossEntry!;
+          if (!gridEntries.containsKey(entryId)) {
+            gridEntries[entryId] = cell.acrossEntry!;
           }
         }
         if (cell.downEntry != null) {
           var entryId = cell.downEntry!.id;
-          if (!entries.containsKey(entryId)) {
-            entries[entryId] = cell.downEntry!;
+          if (!gridEntries.containsKey(entryId)) {
+            gridEntries[entryId] = cell.downEntry!;
           }
+        }
+      }
+    }
+
+    // If entries provided, validate against grid entries
+    if (entries != null) {
+      for (var entry in entries.values) {
+        if (!gridEntries.containsKey(entry.id)) {
+          throw PuzzleException(
+              'Entry ${entry.id} not found in grid definition.');
+        }
+        // Override grid entry with provided entry clue and constraints
+        // Keep position, length, orientation from grid
+        var gridEntry = gridEntries[entry.id]!;
+        gridEntry.clueId = entry.clueId;
+        if (entry.constraints.isNotEmpty) {
+          gridEntry = gridEntry.copyWith(constraints: entry.constraints);
+          gridEntries[entry.id] = gridEntry;
         }
       }
     }
@@ -68,7 +87,7 @@ class PuzzleDefinition {
     return PuzzleDefinition(
       name: name,
       grids: {'main': grid}, // Assuming a single grid named 'main'
-      entries: entries,
+      entries: gridEntries,
       clues: clues,
       variables: variables,
       mappingIsKnown:
@@ -118,7 +137,7 @@ class PuzzleDefinition {
       }
     }
     // Check all variables are defined for expressables
-    // Invert expressions for entries
+    // Invert clue expressions for entries
     for (final expressable in List<Expressable>.from(expressables.values)) {
       var index = 0;
       // ignore: unused_local_variable
@@ -133,7 +152,7 @@ class PuzzleDefinition {
             print(
                 'Variable $variable used in expression for ${expressable.id} is not defined.');
           }
-          if (entries.containsKey(variable)) {
+          if (expressable is Clue && entries.containsKey(variable)) {
             var entry = entries[variable]!;
             final inverter =
                 ExpressionInverter(expressionTree, expressable, entry);

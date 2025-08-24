@@ -5,6 +5,7 @@ import 'package:crossnumber/src/solver.dart';
 import '../puzzles/after_nicholas.dart';
 import '../puzzles/increasing_prime.dart';
 import '../puzzles/puzzle2.dart';
+import '../puzzles/puzzle3.dart';
 import '../puzzles/wheels.dart';
 
 void main(List<String> arguments) {
@@ -12,10 +13,11 @@ void main(List<String> arguments) {
 
   // For now, directly load the simple puzzle.
   try {
-    final puzzle = increasingPrimes();
+    // final puzzle = increasingPrimes();
     // final puzzle = wheels();
     // final puzzle = afterNicholas();
     // final puzzle = puzzle2();
+    final puzzle = puzzle3();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,

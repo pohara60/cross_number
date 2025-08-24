@@ -20,15 +20,28 @@ PuzzleDefinition puzzle3() {
   return PuzzleDefinition.fromString(
     name: 'Puzzle3',
     gridString: gridString.join('\n'),
+    entries: {
+      'A1': Entry(id: 'A1', constraints: [ExpressionConstraint('#square')]),
+      'D1': Entry(id: 'D1', constraints: [ExpressionConstraint('A7 * A7')]),
+      'D2': Entry(id: 'D2', constraints: [ExpressionConstraint('A3 * A3')]),
+      'A3': Entry(
+          id: 'A3', constraints: [ExpressionConstraint('\$squareroot D2')]),
+      'D4': Entry(id: 'D4', constraints: [ExpressionConstraint('#square')]),
+      'A6': Entry(id: 'A6', constraints: [ExpressionConstraint('#square')]),
+      'A7': Entry(
+          id: 'A7', constraints: [ExpressionConstraint('\$squareroot D1')]),
+      'A5': Entry(
+          id: 'A5', constraints: [ExpressionConstraint('A1+D1+D2+D4+A6')]),
+    },
     clues: {
-      '1A': Clue('1A', [ExpressionConstraint('#square')]),
-      '1D': Clue('1D', [ExpressionConstraint('7A * 7A')]),
-      '2D': Clue('2D', [ExpressionConstraint('3A * 3A')]),
-      '3A': Clue('3A', [ExpressionConstraint('\$squareroot 2D')]),
-      '4D': Clue('4D', [ExpressionConstraint('#square')]),
-      '6A': Clue('6A', [ExpressionConstraint('#square')]),
-      '7A': Clue('7A', [ExpressionConstraint('\$squareroot 1D')]),
-      '5A': Clue('5A', [ExpressionConstraint('1A+1D+2D+4D+6A')]),
+      // '1A': Clue('1A', [ExpressionConstraint('#square')]),
+      // '1D': Clue('1D', [ExpressionConstraint('7A * 7A')]),
+      // '2D': Clue('2D', [ExpressionConstraint('3A * 3A')]),
+      // '3A': Clue('3A', [ExpressionConstraint('\$squareroot 2D')]),
+      // '4D': Clue('4D', [ExpressionConstraint('#square')]),
+      // '6A': Clue('6A', [ExpressionConstraint('#square')]),
+      // '7A': Clue('7A', [ExpressionConstraint('\$squareroot 1D')]),
+      // '5A': Clue('5A', [ExpressionConstraint('1A+1D+2D+4D+6A')]),
     },
     variables: {},
   );

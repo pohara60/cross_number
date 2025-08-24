@@ -40,12 +40,13 @@ class Entry extends Expressable {
   final List<Constraint> constraints;
 
   /// Creates a new entry with the given properties.
+  /// The position, length and orientation ,ay come from a grid definition.
   Entry({
     required this.id,
-    required this.row,
-    required this.col,
-    required this.length,
-    required this.orientation,
+    this.row = 0,
+    this.col = 0,
+    this.length = 1,
+    this.orientation = EntryOrientation.across,
     this.clueId,
     this.constraints = const [],
   }) {
@@ -63,6 +64,7 @@ class Entry extends Expressable {
     EntryOrientation? orientation,
     String? clueId,
     Set<int>? possibleValues,
+    List<Constraint>? constraints,
   }) {
     return Entry(
       id: id ?? this.id,
@@ -71,6 +73,7 @@ class Entry extends Expressable {
       length: length ?? this.length,
       orientation: orientation ?? this.orientation,
       clueId: clueId ?? this.clueId,
+      constraints: constraints ?? this.constraints,
     )..possibleValues = Set<int>.from(possibleValues ?? this.possibleValues);
   }
 
