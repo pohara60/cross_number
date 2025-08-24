@@ -76,6 +76,12 @@ class Entry extends Expressable {
 
   @override
   String toString() {
-    return '$id: ${possibleValues.length} ${possibleValues.toShortString()}';
+    var b = StringBuffer();
+    b.write('$id: ');
+    if (expressionTrees.isNotEmpty) {
+      b.write(expressionTrees.map((e) => e.toString()).join(', '));
+    }
+    b.write(' ${possibleValues.length} ${possibleValues.toShortString()}');
+    return b.toString();
   }
 }

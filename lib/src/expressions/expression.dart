@@ -6,21 +6,30 @@
 
 abstract class Expression {
   /// Accepts a [visitor] and calls the appropriate visit method.
-  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max});
+  R accept<R>(ExpressionVisitor<R> visitor,
+      {required num min, required num max});
 }
 
 /// A visitor for [Expression] nodes.
 ///
 /// This interface defines a method for each type of expression node.
 abstract class ExpressionVisitor<R> {
-  R visitNumberExpression(NumberExpression expression, {required num min, required num max});
-  R visitVariableExpression(VariableExpression expression, {required num min, required num max});
-  R visitBinaryExpression(BinaryExpression expression, {required num min, required num max});
-  R visitUnaryExpression(UnaryExpression expression, {required num min, required num max});
-  R visitGroupingExpression(GroupingExpression expression, {required num min, required num max});
-  R visitGridEntryExpression(GridEntryExpression expression, {required num min, required num max});
-  R visitGeneratorExpression(GeneratorExpression expression, {required num min, required num max});
-  R visitMonadicExpression(MonadicExpression expression, {required num min, required num max});
+  R visitNumberExpression(NumberExpression expression,
+      {required num min, required num max});
+  R visitVariableExpression(VariableExpression expression,
+      {required num min, required num max});
+  R visitBinaryExpression(BinaryExpression expression,
+      {required num min, required num max});
+  R visitUnaryExpression(UnaryExpression expression,
+      {required num min, required num max});
+  R visitGroupingExpression(GroupingExpression expression,
+      {required num min, required num max});
+  R visitGridEntryExpression(GridEntryExpression expression,
+      {required num min, required num max});
+  R visitGeneratorExpression(GeneratorExpression expression,
+      {required num min, required num max});
+  R visitMonadicExpression(MonadicExpression expression,
+      {required num min, required num max});
 }
 
 /// An expression node representing a literal number.
@@ -34,6 +43,9 @@ class NumberExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitNumberExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => value.toString();
 }
 
 /// An expression node representing a variable.
@@ -47,6 +59,9 @@ class VariableExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitVariableExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => name;
 }
 
 /// An expression node representing a generator.
@@ -60,6 +75,9 @@ class GeneratorExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitGeneratorExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => '#$name';
 }
 
 /// An expression node representing a binary operation.
@@ -75,6 +93,9 @@ class BinaryExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitBinaryExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => '($left${operator.lexeme}$right)';
 }
 
 /// An expression node representing a unary operation.
@@ -89,6 +110,9 @@ class UnaryExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitUnaryExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => '(${operator.lexeme}$right)';
 }
 
 /// An expression node representing a grouping of expressions.
@@ -102,6 +126,9 @@ class GroupingExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitGroupingExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => '($expression)';
 }
 
 /// An expression node representing a reference to a grid entry.
@@ -116,6 +143,9 @@ class GridEntryExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitGridEntryExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => '$gridId.$entryId';
 }
 
 class MonadicExpression extends Expression {
@@ -129,6 +159,9 @@ class MonadicExpression extends Expression {
       {required num min, required num max}) {
     return visitor.visitMonadicExpression(this, min: min, max: max);
   }
+
+  @override
+  String toString() => '${operator.lexeme}($right)';
 }
 
 /// The types of tokens that can be produced by the scanner.
@@ -159,9 +192,9 @@ class Token {
   final TokenType type;
   final String lexeme;
   final Object? literal;
-  final int line; // For error reporting.
+  final int? line; // For error reporting.
 
-  Token(this.type, this.lexeme, this.literal, this.line);
+  Token(this.type, this.lexeme, {this.literal, this.line});
 
   @override
   String toString() {

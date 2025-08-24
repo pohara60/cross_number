@@ -39,6 +39,12 @@ class Variable extends Expressable {
 
   @override
   String toString() {
-    return '$name: ${possibleValues.length} ${possibleValues.toShortString()}';
+    var b = StringBuffer();
+    b.write('$name: ');
+    if (expressionTrees.isNotEmpty) {
+      b.write(expressionTrees.map((e) => e.toString()).join(', '));
+    }
+    b.write(' ${possibleValues.length} ${possibleValues.toShortString()}');
+    return b.toString();
   }
 }

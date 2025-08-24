@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
+import '../expressions/inverter.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -117,20 +118,41 @@ class PuzzleDefinition {
       }
     }
     // Check all variables are defined for expressables
-    for (final expressable in expressables.values) {
-      for (final variable in expressable.variables) {
-        if (!clues.containsKey(variable) &&
-            !variables.containsKey(variable) &&
-            !entries.containsKey(variable)) {
-          exception = true;
-          print(
-              'Variable $variable used in expression for ${expressable.id} is not defined.');
+    // Invert expressions for entries
+    for (final expressable in List<Expressable>.from(expressables.values)) {
+      var index = 0;
+      // ignore: unused_local_variable
+      for (final constraint in expressable.expressionConstraints) {
+        var expressionTree = expressable.expressionTrees[index];
+        var variableList = expressable.variableLists[index];
+        for (final variable in variableList) {
+          if (!clues.containsKey(variable) &&
+              !variables.containsKey(variable) &&
+              !entries.containsKey(variable)) {
+            exception = true;
+            print(
+                'Variable $variable used in expression for ${expressable.id} is not defined.');
+          }
+          if (entries.containsKey(variable)) {
+            var entry = entries[variable]!;
+            final inverter =
+                ExpressionInverter(expressionTree, expressable, entry);
+            final invertedExpression = inverter.invert();
+            if (invertedExpression != null) {
+              entry.addExpressionFromTree(invertedExpression);
+              expressables.putIfAbsent(entry.id, () => entry);
+            }
+          }
         }
+        index++;
       }
     }
+
     if (exception) {
       throw PuzzleException('One or more clues could not be parsed.');
     }
+
+    print(this);
   }
 
   List<ClueGroup> findClueGroups() {
@@ -195,7 +217,25 @@ class PuzzleDefinition {
 
   @override
   String toString() {
-    return 'PuzzleDefinition(name: $name, grids: $grids, entries: $entries, clues: $clues, variables: $variables, expressables: $expressables, mappingIsKnown: $mappingIsKnown)';
+    var b = StringBuffer();
+    b.writeln('Puzzle: $name');
+    b.writeln('Grids: ${grids.keys}');
+    b.writeln('Entries:{');
+    for (var entry in entries.values) {
+      b.writeln('  $entry');
+    }
+    b.writeln('}');
+    b.writeln('Clues:{');
+    for (var clue in clues.values) {
+      b.writeln('  $clue');
+    }
+    b.writeln('}');
+    b.writeln('Variables:{');
+    for (var variable in variables.values) {
+      b.writeln('  $variable');
+    }
+    b.writeln('}');
+    return b.toString();
   }
 }
 

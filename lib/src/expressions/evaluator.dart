@@ -30,16 +30,16 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// containing the evaluated values and their corresponding variable values.
   List<EvaluationFinalResult> evaluate(Expressable expressable,
       {required int min, required int max}) {
-    var results = <EvaluationFinalResult>{};
+    var results = <EvaluationFinalResult>[];
     for (var i = 0; i < expressable.expressionTrees.length; i++) {
       final expression = expressable.expressionTrees[i];
       final variables = expressable.variableLists[i];
       final expressionResults =
           evaluateExpression(expression, variables, min: min, max: max);
       if (i == 0) {
-        results = expressionResults.toSet();
+        results = expressionResults;
       } else {
-        results = results.intersection(expressionResults.toSet());
+        results = resultsIntersection(results, expressionResults);
       }
     }
     return results.toList();
@@ -399,7 +399,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
 
   bool tooManyCombinations(List<String> unpinnedVariables) {
     // Heuristic: if more than 100000 combinations, consider it too many
-    const maxCombinations = 100000;
+    const maxCombinations = 1000000;
     int combinations = 1;
     for (var variable in unpinnedVariables) {
       final possibleValues = puzzle.variables.containsKey(variable)
@@ -417,6 +417,31 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     }
     return false;
   }
+}
+
+List<EvaluationFinalResult> resultsIntersection(
+    List<EvaluationFinalResult> results,
+    List<EvaluationFinalResult> expressionResults) {
+  var resultMap = <int, List<Map<String, int>>>{};
+  for (var r in results) {
+    resultMap
+        .putIfAbsent(r.value, () => <Map<String, int>>[])
+        .add(r.variableValues);
+  }
+  for (var r in expressionResults) {
+    if (resultMap.containsKey(r.value)) {
+      resultMap[r.value]!.add(r.variableValues);
+    } else {
+      resultMap.remove(r.value);
+    }
+  }
+  var finalResults = <EvaluationFinalResult>[];
+  resultMap.forEach((value, variableValuesSet) {
+    for (var variableValues in variableValuesSet) {
+      finalResults.add(EvaluationFinalResult(value, variableValues));
+    }
+  });
+  return finalResults;
 }
 
 /// An error thrown when the evaluator encounters an error.

@@ -21,7 +21,7 @@ class Parser {
       _scanToken();
     }
 
-    _tokens.add(Token(TokenType.EOF, "", null, _line));
+    _tokens.add(Token(TokenType.EOF, "", line: _line));
     return _tokens;
   }
 
@@ -114,7 +114,7 @@ class Parser {
 
   void _addToken(TokenType type, [Object? literal]) {
     final text = source.substring(_start, _current);
-    _tokens.add(Token(type, text, literal, _line));
+    _tokens.add(Token(type, text, literal: literal, line: _line));
   }
 
   String _peek() {

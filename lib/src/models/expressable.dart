@@ -35,6 +35,7 @@ abstract class Expressable {
   final expressionTrees = <Expression>[];
   Expression get expressionTree => expressionTrees.first;
   final variableLists = <List<String>>[];
+  final allVariables = <String>[];
   List<String> get variables => variableLists.first;
 
   bool addExpression(ExpressionConstraint constraint) {
@@ -48,12 +49,31 @@ abstract class Expressable {
       constraint.variables = variableVisitor.variables.toList();
       expressionTrees.add(constraint.expressionTree!);
       variableLists.add(constraint.variables);
+      for (var v in constraint.variables) {
+        if (!allVariables.contains(v)) {
+          allVariables.add(v);
+        }
+      }
     } on ParseException catch (e) {
       print(
           'Error parsing expressable $id expression "${constraint.expression}": ${e.msg}');
       return false;
     }
     return true;
+  }
+
+  void addExpressionFromTree(Expression expressionTree) {
+    final variableVisitor = VariableVisitor();
+    expressionTree.accept(variableVisitor,
+        min: 1, max: 1); // min, max not used here
+    expressionTrees.add(expressionTree);
+    var variableList = variableVisitor.variables.toList();
+    variableLists.add(variableList);
+    for (var v in variableList) {
+      if (!allVariables.contains(v)) {
+        allVariables.add(v);
+      }
+    }
   }
 
   /// Answer used for debugging

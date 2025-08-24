@@ -398,9 +398,9 @@ class Solver {
         '    Variable ${variable.name}: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
   }
 
-  void _printUpdatedEntry(Entry entry, int originalSize) {
+  void _printUpdatedEntry(Entry entry, int? originalCount) {
     print(
-        '    ${entry.orientation == EntryOrientation.across ? 'Across' : 'Down'} Entry ${entry.id}: $originalSize -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
+        '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
   }
 
   void _printUpdatedExpressable(Expressable expressable, int? originalCount) {
@@ -409,6 +409,9 @@ class Solver {
     }
     if (expressable is Variable) {
       _printUpdatedVariable(expressable, originalCount);
+    }
+    if (expressable is Entry) {
+      _printUpdatedEntry(expressable, originalCount);
     }
   }
 
@@ -466,8 +469,10 @@ class Solver {
     }
 
     // Update variables
-    updated = _updateVariablesFromResults(expressable.variables, results,
-        updated, updatedVariables, originalCounts);
+    if (_updateVariablesFromResults(expressable.allVariables, results, updated,
+        updatedVariables, originalCounts)) {
+      updated = true;
+    }
     return (true, updated);
   }
 
@@ -512,9 +517,11 @@ class Solver {
       }
 
       final newVariableValues = results
-          .map((r) => r[variableName]!)
-          // .where((v) => v != null)
+          .map((r) => r[variableName])
+          .where((v) => v != null)
+          .map((v) => v as int)
           .toSet();
+      if (newVariableValues.isEmpty) continue;
       var originalCount = expressable.possibleValues?.length;
       var possibleValues =
           _updatePossibleValues(expressable.possibleValues, newVariableValues);
