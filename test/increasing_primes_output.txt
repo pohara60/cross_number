@@ -1,7 +1,3 @@
-
-Exited (-1).
-Connecting to VM Service at ws://127.0.0.1:63305/JJXoiOAXah8=/ws
-Cross Number Solver v2 CLI
 Puzzle: IncreasingPrimes
 Grids: (main)
 Entries:{
@@ -49,174 +45,6 @@ solve: Clue VII values={1173}
 solve: Clue VIII values={1265}
 solve: Clue IX values={1955}
 solve: Clue X values={4301}
-Puzzle: IncreasingPrimes
-Solving puzzle with known mapping...
-Iteration 1
-  Solving expressables...
-    Clue I: 1 -> 1 {165}
-    Entry j: 90 -> 4 {11,15,33,55}
-    Entry f: 90 -> 87 {13..32,67 more,99}
-    Entry C: 90 -> 87 {10..29,67 more,96}
-    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
-    Clue III: 1 -> 1 {345}
-    Entry G: 900 -> 90 {365,367,369,371,373,375,377,379,381,383,385,387,389,391,393,395,397,399,401,403,70 more,543}
-    Expression for IV could not be evaluated: Too many combinations for variables: G, J, K
-    Clue V: 1 -> 1 {759}
-    Entry D: 900 -> 133 {780,782..800,113 more,913}
-    Expression for VI could not be evaluated: Too many combinations for variables: A, B, K
-    Expression for VII could not be evaluated: Too many combinations for variables: d, e, K
-    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
-    Expression for IX could not be evaluated: Too many combinations for variables: b, E, G
-    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
-    Expression for C could not be evaluated: Too many combinations for variables: II, h, g, e
-    Expression for e could not be evaluated: Too many combinations for variables: II, h, g, C
-    Expression for g could not be evaluated: Too many combinations for variables: C, e, II, h
-    Expression for h could not be evaluated: Too many combinations for variables: C, e, g, II
-    Entry G: 90 -> 90 {365,367,369,371,373,375,377,379,381,383,385,387,389,391,393,395,397,399,401,403,70 more,543}
-    Entry K: 900 -> 196 {100..119,176 more,295}
-    Entry E: 9000 -> 268 {2221..2240,248 more,2488}
-    Entry K: 196 -> 196 {100..119,176 more,295}
-    Entry A: 900 -> 64 {936..955,44 more,999}
-    Entry B: 90 -> 64 {36..55,44 more,99}
-    Entry e: 9000 -> 285 {1174..1193,265 more,1458}
-    Expression for H could not be evaluated: Too many combinations for variables: F, a, VIII
-    Entry A: 64 -> 64 {936..955,44 more,999}
-    Entry K: 196 -> 64 {100..119,44 more,163}
-    Entry d: 90 -> 90 {10..29,70 more,99}
-    Entry e: 285 -> 153 {1174..1193,133 more,1326}
-    Entry F: 989 -> 989 {1375..1394,969 more,2363}
-    Entry c: 986 -> 986 {3206..3225,966 more,4191}
-  Propagating constraints...
-    Entry a: 900 -> 700 {300..319,680 more,999}
-    Entry A: 64 -> 58 {936..939,941..949,951..957,38 more,999}
-    Entry B: 64 -> 12 {43,44,53,54,63,64,73,74,83,84,93,94}
-    Entry b: 90 -> 27 {17..19,27..29,37..39,47..49,57..59,67..69,77,78,7 more,99}
-    Entry D: 133 -> 113 {780,782..799,810,93 more,913}
-    Entry a: 700 -> 70 {302,312,322,332,342,352,362,372,382,392,402,412,422,432,442,452,462,472,482,492,50 more,992}
-    Entry f: 87 -> 30 {20..39,10 more,49}
-    Entry e: 153 -> 126 {1174..1193,106 more,1299}
-    Entry F: 989 -> 889 {1375..1394,869 more,2363}
-    Entry F: 889 -> 800 {1375..1379,1381..1389,1391..1396,780 more,2363}
-    Entry e: 126 -> 30 {1230..1249,10 more,1259}
-    Entry G: 90 -> 54 {365,371,373,375,381,383,385,391,393,395,401,403,405,411,413,415,421,423,425,431,34 more,543}
-    Entry h: 900 -> 810 {110..129,790 more,999}
-    Entry e: 30 -> 27 {1231..1239,1241..1249,1251,1252,7 more,1259}
-    Entry j: 4 -> 1 {11}
-    Entry h: 810 -> 567 {110..116,120..126,130..135,547 more,996}
-    Clue I: 1 -> 1 {165}
-    Entry f: 30 -> 24 {25,27..45,4 more,49}
-    Entry C: 87 -> 24 {10,12..30,4 more,34}
-    Expression for II could not be evaluated: Too many combinations for variables: C, e, g, h
-    Clue III: 1 -> 1 {345}
-    Entry G: 54 -> 18 {381,383,401,403,421,423,441,443,461,463,481,483,501,503,521,523,541,543}
-    Entry b: 27 -> 18 {18,19,28,29,38,39,48,49,58,59,68,69,78,79,88,89,98,99}
-    Clue IV: 1 -> 1 {561}
-    Entry G: 18 -> 14 {421,423,441,443,461,463,481,483,501,503,521,523,541,543}
-    Clue V: 1 -> 1 {759}
-    Entry D: 113 -> 79 {780,782..799,810,59 more,869}
-    Entry H: 90 -> 79 {10,12..29,40,59 more,99}
-    Clue VI: 1 -> 1 {935}
-    Entry A: 58 -> 54 {941..949,951..959,961,962,34 more,999}
-    Entry K: 64 -> 59 {100..119,39 more,158}
-    Clue VII: 1 -> 1 {1173}
-    Entry d: 90 -> 86 {14..33,66 more,99}
-    Expression for VIII could not be evaluated: Too many combinations for variables: F, a, H
-    Clue IX: 1 -> 1 {1955}
-    Entry E: 268 -> 84 {2277..2280,2287..2290,2297..2300,2307..2310,2317..2320,64 more,2480}
-    Expression for X could not be evaluated: Too many combinations for variables: C, c, h
-    Expression for C could not be evaluated: Too many combinations for variables: II, h, g, e
-    Expression for e could not be evaluated: Too many combinations for variables: II, h, g, C
-    Entry g: 90 -> 90 {10..29,70 more,99}
-    Entry h: 567 -> 70 {890..896,910..916,920..925,50 more,996}
-    Entry h: 70 -> 70 {890..896,910..916,920..925,50 more,996}
-    Entry c: 986 -> 131 {3271..3290,111 more,3401}
-    Entry b: 14 -> 14 {38,39,48,49,58,59,68,69,78,79,88,89,98,99}
-    Entry E: 84 -> 76 {2277..2280,2287..2290,2297..2300,2307..2310,2317..2320,56 more,2460}
-    Entry H: 79 -> 79 {10,12..29,40,59 more,99}
-    Entry F: 800 -> 611 {1577,1579,1581..1589,1591..1599,591 more,2356}
-    Entry a: 70 -> 69 {302,312,322,332,342,352,362,372,382,392,402,412,422,432,442,452,462,472,482,492,49 more,992}
-    Entry F: 611 -> 611 {1577,1579,1581..1589,1591..1599,591 more,2356}
-    Entry H: 79 -> 71 {10,12,14..22,24..29,40..42,51 more,99}
-  Propagating constraints...
-    Entry a: 69 -> 59 {402,412,422,432,442,452,462,472,482,492,502,512,522,532,542,552,562,572,582,592,39 more,992}
-    Entry A: 54 -> 42 {943..949,953..959,963..968,22 more,999}
-    Entry B: 12 -> 6 {43,53,63,73,83,93}
-    Entry D: 79 -> 60 {810..829,40 more,869}
-    Entry b: 14 -> 7 {38,48,58,68,78,88,98}
-    Entry d: 86 -> 56 {14..33,36 more,69}
-    Entry D: 60 -> 18 {812..814,822..824,832..834,842..844,852..854,862..864}
-    Entry c: 131 -> 71 {3271..3290,51 more,3401}
-    Entry F: 611 -> 231 {2101..2109,2111..2119,2121,2122,211 more,2356}
-    Entry g: 90 -> 30 {10..29,10 more,39}
-    Entry F: 231 -> 50 {2108,2109,2118,2119,2128,2129,2138,2139,2148,2149,2158,2159,2168,2169,2178,2179,2188,2189,2198,2199,30 more,2349}
-    Entry e: 27 -> 18 {1241..1249,1251..1259}
-    Entry g: 30 -> 15 {10,12,14,16,18,20,22,24,26,28,30,32,34,36,38}
-    Entry G: 14 -> 7 {421,441,461,481,501,521,541}
-    Entry h: 70 -> 63 {890..896,910..916,920..925,43 more,996}
-    Entry h: 63 -> 54 {890..895,910..915,920..925,940,941,34 more,995}
-    Clue II: 1 -> 1 {255}
-    Entry h: 54 -> 24 {960..965,970..975,980..985,990,991,4 more,995}
-    Clue V: 1 -> 1 {759}
-    Entry D: 18 -> 12 {812,814,822,824,832,834,842,844,852,854,862,864}
-    Entry H: 71 -> 12 {42,44,52,54,62,64,72,74,82,84,92,94}
-    Clue VI: 1 -> 1 {935}
-    Entry K: 59 -> 42 {101..107,111..117,121..126,22 more,157}
-    Clue VII: 1 -> 1 {1173}
-    Entry d: 56 -> 55 {15..34,35 more,69}
-    Entry K: 42 -> 40 {101..107,111..117,121..126,20 more,155}
-    Clue VIII: 1 -> 1 {1265}
-    Entry F: 50 -> 25 {2109,2119,2129,2139,2149,2159,2169,2179,2189,2199,2209,2219,2229,2239,2249,2259,2269,2279,2289,2299,5 more,2349}
-    Entry a: 59 -> 25 {752,762,772,782,792,802,812,822,832,842,852,862,872,882,892,902,912,922,932,942,5 more,992}
-    Entry H: 12 -> 6 {42,52,62,72,82,92}
-    Clue IX: 1 -> 1 {1955}
-    Entry E: 76 -> 19 {2278,2288,2298,2308,2318,2328,2338,2348,2358,2368,2378,2388,2398,2408,2418,2428,2438,2448,2458}
-    Clue X: 1 -> 1 {4301}
-    Entry c: 71 -> 38 {3272..3291,18 more,3309}
-    Entry j: 1 -> 1 {11}
-    Entry D: 12 -> 6 {812,822,832,842,852,862}
-    Entry G: 7 -> 7 {421,441,461,481,501,521,541}
-    Entry J: 90 -> 63 {11..17,21..27,31..36,43 more,97}
-  Propagating constraints...
-    Entry A: 42 -> 21 {973..979,983..989,993..998,999}
-    Entry c: 38 -> 28 {3272..3291,8 more,3299}
-    Entry c: 28 -> 10 {3280..3289}
-    Entry H: 6 -> 4 {62,72,82,92}
-    Clue V: 1 -> 1 {759}
-    Entry D: 6 -> 4 {832,842,852,862}
-    Clue X: 1 -> 1 {4301}
-    Entry C: 24 -> 18 {17..34}
-    Entry h: 24 -> 12 {980..985,990..995}
-    Entry j: 1 -> 1 {11}
-    Entry f: 24 -> 18 {32..49}
-  Propagating constraints...
-    Entry d: 55 -> 40 {30..49,20 more,69}
-    Entry E: 19 -> 16 {2308,2318,2328,2338,2348,2358,2368,2378,2388,2398,2408,2418,2428,2438,2448,2458}
-    Entry H: 4 -> 2 {82,92}
-    Clue V: 1 -> 1 {759}
-    Entry D: 4 -> 2 {852,862}
-  Propagating constraints...
-    Entry d: 40 -> 20 {50..69}
-    Clue VII: 1 -> 1 {1173}
-    Entry K: 40 -> 26 {121..127,131..137,141..146,6 more,155}
-    Entry J: 63 -> 63 {11..17,21..27,31..36,43 more,97}
-    Entry G: 7 -> 6 {421,441,461,481,501,521}
-    Entry K: 26 -> 26 {121..127,131..137,141..146,6 more,155}
-    Entry B: 6 -> 4 {63,73,83,93}
-    Entry E: 14 -> 14 {2308,2318,2328,2338,2348,2358,2368,2378,2388,2398,2408,2418,2428,2438}
-  Propagating constraints...
-    Entry h: 12 -> 8 {982..985,992..995}
-    Clue III: 1 -> 1 {345}
-    Entry b: 7 -> 6 {38,48,58,68,78,88}
-  Propagating constraints...
-    Entry A: 21 -> 18 {973..978,983..988,993..998}
-    Clue VI: 1 -> 1 {935}
-    Entry K: 26 -> 23 {121..126,131..136,141..146,151,152,3 more,155}
-    Entry G: 6 -> 6 {421,441,461,481,501,521}
-    Entry J: 63 -> 54 {11..16,21..26,31..36,41,42,34 more,96}
-  Propagating constraints...
-Iteration 2
-  Solving expressables...
-  Propagating constraints...
 Grid:
 +---+---+---+---+---+
 | ?   ?   ? | ?   ? |
@@ -264,6 +92,29 @@ H: 2  {82,92}
 J: 54  {11..16,21..26,31..36,41,42,34 more,96}
 K: 23  {121..126,131..136,141..146,151,152,3 more,155}
 Solution not complete, backtracking
-Backtracking: no solutions found.
-
-Exited.
+Solution:
++---+---+---+---+---+
+| 9   8   4 | 8   3 |
++---+   +   +---+   +
+| 2   1 | 8   6   2 |
++---+   +---+   +   +
+| 1 | 2   3   4   8 |
++   +---+   +---+   +
+| 2   1   6   9 | 7 |
++   +   +---+   +---+
+| 4   4   1 | 9   2 |
++   +---+   +   +---+
+| 1   2 | 1   3   2 |
++---+---+---+---+---+
+Clue values:
+I: 165
+II: 255
+III: 345
+IV: 561
+V: 759
+VI: 935
+VII: 1173
+VIII: 1265
+IX: 1955
+X: 4301
+Backtracking: 1 solutions found.

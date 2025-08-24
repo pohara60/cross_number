@@ -129,10 +129,10 @@ class Solver {
     }
   }
 
-  int _backtrack(int clueIndex, int solutionCount,
+  int _backtrack(int expressableIndex, int solutionCount,
       [bool Function()? callback]) {
-    if (clueIndex == puzzle.clues.length) {
-      // Base case: All clues assigned. Check if it's a valid solution.
+    if (expressableIndex == puzzle.expressables.length) {
+      // Base case: All expressables assigned. Check if it's a valid solution.
       if (isSolutionValid()) {
         if (traceBacktrace) print('Backtracking: Solution found!');
         if (callback != null) {
@@ -149,45 +149,50 @@ class Solver {
       return solutionCount;
     }
 
-    final currentClue = puzzle.clues.values.elementAt(clueIndex);
-    if (currentClue.possibleValues == null ||
-        currentClue.possibleValues!.isEmpty) {
+    final currentExpressable =
+        puzzle.expressables.values.elementAt(expressableIndex);
+    if (currentExpressable.possibleValues == null ||
+        currentExpressable.possibleValues!.isEmpty) {
       if (traceBacktrace) {
         print(
-            'Backtracking: Clue ${currentClue.id} has no possible values, backtracking.');
+            'Backtracking: Clue ${currentExpressable.id} has no possible values, backtracking.');
       }
       return solutionCount; // No possible values, backtrack
     }
 
-    final originalPossibleValues = Set<int>.from(currentClue.possibleValues!);
+    final originalPossibleValues =
+        Set<int>.from(currentExpressable.possibleValues!);
     if (traceBacktrace) {
       print(
-          'Backtracking: Trying clue ${currentClue.id} -> ${originalPossibleValues.length} ${originalPossibleValues.toShortString()}');
+          'Backtracking: Trying expressable ${currentExpressable.id} -> ${originalPossibleValues.length} ${originalPossibleValues.toShortString()}');
     }
 
     for (final value in originalPossibleValues) {
       if (traceBacktrace) {
-        print('Backtracking: Trying value $value for clue ${currentClue.id}');
+        print(
+            'Backtracking: Trying value $value for expressable ${currentExpressable.id}');
       }
       final savedState =
           _saveState(); // Save the current state before trying a value
 
       // Try assigning the value
-      currentClue.possibleValues = {value};
+      currentExpressable.possibleValues = {value};
 
-      // Solve the clue with this value, to update variables
+      // Solve the expressable with this value, to update variables
       var updatedVariables = <String>[];
       var originalCounts = <String, int?>{};
-      solveExpression(currentClue, updatedVariables, originalCounts);
+      solveExpression(currentExpressable, updatedVariables, originalCounts);
       if (traceBacktrace) {
         _printUpdatedExpressables(updatedVariables, originalCounts);
       }
 
-      // Also update the associated entry's possible values
-      final entry = puzzle.entries.values
-          .firstWhereOrNull((e) => e.clueId == currentClue.id);
-      if (entry != null) {
-        entry.possibleValues = {value};
+      // For clues update the associated entry's possible values
+      if (currentExpressable is Clue) {
+        final entry = puzzle.entries.values
+            .firstWhereOrNull((e) => e.clueId == currentExpressable.id);
+        if (entry != null) {
+          entry.possibleValues = {value};
+        }
       }
 
       var (consistent, _) =
@@ -197,8 +202,8 @@ class Solver {
         if (traceBacktrace) {
           print('Backtracking: Propagation consistent. Recursing...');
         }
-        solutionCount =
-            _backtrack(clueIndex + 1, solutionCount, callback); // Recurse
+        solutionCount = _backtrack(
+            expressableIndex + 1, solutionCount, callback); // Recurse
       } else {
         if (traceBacktrace) {
           print('Backtracking: Propagation inconsistent. Backtracking...');
