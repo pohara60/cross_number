@@ -23,6 +23,7 @@ This document outlines the requirements for a new, refactored version of the Cro
 
 *   The core solver engine and puzzle definition components have been implemented.
 *   The CLI is functional for running puzzles with known mappings.
+*   The solver now supports expression inversion, allowing it to solve a wider range of puzzles.
 *   The project is currently in the finalization phase, which includes code cleanup, documentation, and comprehensive testing.
 
 ## 4. Functional Requirements
@@ -38,7 +39,7 @@ This document outlines the requirements for a new, refactored version of the Cro
 
 *   The system shall use a clear, composable structure for defining puzzles, based on the following components:
     *   **Grid:** Represents the puzzle grid. Can be defined from a string representation.
-    *   **Entry:** Represents a single entry in the grid.
+    *   **Entry:** Represents a single entry in the grid. Entries can now have their own constraints.
     *   **Clue:** Represents the logic of a single clue.
     *   **Variable:** Represents a variable in the puzzle.
     *   **Constraint:** A new concept to define the rules and relationships between clues, entries, and variables.
@@ -56,7 +57,15 @@ This document outlines the requirements for a new, refactored version of the Cro
     *   Monadic functions, using the format `$functionName` (e.g., `$squareroot`, `$isOdd`).
 *   Intermediate calculations are performed using the `num` type, and the final results are converted to `int`.
 
-### 4.4. Monadic Functions
+### 4.4. Expression Inversion
+
+*   The solver can now automatically invert expressions. 
+*   When a clue's expression involves entries, the solver will automatically derive expressions for those entries.
+*   For example, if a clue `1A` is defined as `B1 + C1`, the solver will automatically derive `B1` as `1A - C1` and `C1` as `A1 - B1`.
+*   If more than one clue references an entry, then the entry will have multiple expressions.
+*   This allows the solver to handle a wider range of puzzles where direct evaluation of clues is not possible.
+
+### 4.5. Monadic Functions
 
 The system shall provide a set of monadic functions that can be used in expressions to test properties of numbers. The following functions shall be supported:
 
@@ -72,7 +81,7 @@ The system shall provide a set of monadic functions that can be used in expressi
 *   `isSquare`: Returns the number if it is a perfect square.
 *   `isCube`: Returns the number if it is a perfect cube.
 
-### 4.5. Generators
+### 4.6. Generators
 
 The system shall provide a set of generators that can be used in expressions to produce sequences of numbers. The following generators shall be supported:
 
@@ -82,7 +91,7 @@ The system shall provide a set of generators that can be used in expressions to 
 *   `square`: Generates square numbers.
 *   `cube`: Generates cube numbers.
 
-### 4.6. Command-Line Interface (CLI)
+### 4.7. Command-Line Interface (CLI)
 
 *   The project shall provide a CLI for solving puzzles.
 *   The CLI shall allow users to select a puzzle to solve and view the solution.
@@ -110,6 +119,7 @@ The new architecture will be based on a decoupled, component-based design. The c
 
 *   **`PuzzleDefinition`**: A container for all the elements of a puzzle.
 *   **`Solver`**: The engine that solves the puzzle.
+*   **`Expressable`**: An abstract class representing any puzzle element that can have a value derived from an expression. `Clue`, `Variable`, and `Entry` are all `Expressable`.
 *   **Components**: `Grid`, `Entry`, `Clue`, `Variable`, and `Constraint` classes that can be composed to define a puzzle.
 
 This architecture will provide a solid foundation for the future development of the Cross Number Solver.
