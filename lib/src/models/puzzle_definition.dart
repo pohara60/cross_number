@@ -67,27 +67,31 @@ class PuzzleDefinition {
     }
 
     // If entries provided, validate against grid entries
+    // Maintain order of provided entries (in case of ordering constraints)
+    var puzzleEntries = gridEntries;
     if (entries != null) {
+      puzzleEntries = {};
       for (var entry in entries.values) {
         if (!gridEntries.containsKey(entry.id)) {
           throw PuzzleException(
               'Entry ${entry.id} not found in grid definition.');
         }
-        // Override grid entry with provided entry clue and constraints
-        // Keep position, length, orientation from grid
+        // Override entry with grid entry  position, length, orientation
         var gridEntry = gridEntries[entry.id]!;
-        gridEntry.clueId = entry.clueId;
-        if (entry.constraints.isNotEmpty) {
-          gridEntry = gridEntry.copyWith(constraints: entry.constraints);
-          gridEntries[entry.id] = gridEntry;
-        }
+        puzzleEntries[entry.id] = entry.copyWith(
+          row: gridEntry.row,
+          col: gridEntry.col,
+          length: gridEntry.length,
+          orientation: gridEntry.orientation,
+          possibleValues: gridEntry.possibleValues,
+        );
       }
     }
 
     return PuzzleDefinition(
       name: name,
       grids: {'main': grid}, // Assuming a single grid named 'main'
-      entries: gridEntries,
+      entries: puzzleEntries,
       clues: clues,
       variables: variables,
       mappingIsKnown:

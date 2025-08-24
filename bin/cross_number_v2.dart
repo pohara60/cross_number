@@ -6,6 +6,7 @@ import '../puzzles/after_nicholas.dart';
 import '../puzzles/increasing_prime.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
+import '../puzzles/threes.dart';
 import '../puzzles/wheels.dart';
 
 void main(List<String> arguments) {
@@ -17,7 +18,8 @@ void main(List<String> arguments) {
     // final puzzle = wheels();
     // final puzzle = afterNicholas();
     // final puzzle = puzzle2();
-    final puzzle = puzzle3();
+    // final puzzle = puzzle3();
+    final puzzle = threes();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
