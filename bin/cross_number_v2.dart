@@ -2,8 +2,10 @@
 
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/solver.dart';
+import '../puzzles/abcd.dart';
 import '../puzzles/after_nicholas.dart';
 import '../puzzles/increasing_prime.dart';
+import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
 import '../puzzles/threes.dart';
@@ -19,7 +21,9 @@ void main(List<String> arguments) {
     // final puzzle = afterNicholas();
     // final puzzle = puzzle2();
     // final puzzle = puzzle3();
-    final puzzle = threes();
+    // final puzzle = threes();
+    // final puzzle = abcd();
+    final puzzle = primania();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
