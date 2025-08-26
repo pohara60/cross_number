@@ -1,0 +1,29 @@
+Puzzle: Simple Puzzle
+Grids: (main)
+Entries:{
+  A1:  90 {10..29,70 more,99}
+  D1:  90 {10..29,70 more,99}
+}
+Clues:{
+  1A: (A*2) null null
+  1D: ((A*6)-67) null null
+}
+Variables:{
+  A:  11 {10..20}
+}
+Grid:
++--+--+
+| 3  4|
++  +--+
+| 5|  |
++--+--+
+Variables:
+A: 1 {17}
+Clues:
+1A: 1  {34}
+1D: 1  {35}
+Entries:
+A1: 1  {34}
+D1: 1  {35}
+
+Exited.

@@ -227,9 +227,9 @@ class Grid {
         if (cell.downEntry != null &&
             r > 0 &&
             cells[r - 1][c].downEntry == cell.downEntry) {
-          buffer.write(' $separator ');
+          buffer.write(' $separator');
         } else {
-          buffer.write('---');
+          buffer.write('--');
         }
         buffer.write('+');
       }
@@ -280,12 +280,12 @@ class Grid {
             value = '?';
           }
         }
-        buffer.write(' $value ');
+        buffer.write(' $value');
       }
       buffer.writeln('|');
     }
     // Draw bottom border
-    buffer.write('+' + List.generate(cols, (_) => '---').join('+') + '+');
+    buffer.write('+' + List.generate(cols, (_) => '--').join('+') + '+');
     return buffer.toString();
   }
 }

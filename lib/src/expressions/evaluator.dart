@@ -152,10 +152,9 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   List<EvaluationResult> visitNumberExpression(NumberExpression expression,
       {required num min, required num max}) {
     final value = expression.value;
-    if (value >= min && value <= max) {
-      return [EvaluationResult(value, {})];
-    }
-    return [];
+    // Hack! Do not impose range check for constants
+    // if (value >= min && value <= max)
+    return [EvaluationResult(value, {})];
   }
 
   @override

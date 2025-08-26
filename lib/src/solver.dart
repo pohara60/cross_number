@@ -266,7 +266,7 @@ class Solver {
   /// whether the clue-to-entry mapping is known.
   void solve([bool Function()? callback]) {
     if (puzzle.mappingIsKnown) {
-      _solveKnownMapping(callback);
+      _solveKnownMapping(callback, allowBacktracking);
     } else {
       _solveUnknownMapping(callback);
     }
@@ -298,11 +298,8 @@ class Solver {
     }
   }
 
-  /// Solves the puzzle when the clue-to-entry mapping is known.
-  ///
-  /// This method iteratively applies constraints to all clues and propagates
-  /// variable changes until no more updates can be made.
-  void _solveKnownMapping([bool Function()? callback]) {
+  void _solveKnownMapping(
+      [bool Function()? callback, bool valueBacktracking = true]) {
     if (trace) print('Solving puzzle with known mapping...');
     int iteration = 0;
     do {
@@ -341,7 +338,7 @@ class Solver {
     if (isSolutionValid()) {
       if (callback != null) callback.call();
       printPuzzle();
-    } else if (!allowBacktracking) {
+    } else if (!valueBacktracking) {
       printPuzzle();
       print('Solution not complete, backtracking disabled');
     } else {
@@ -435,10 +432,10 @@ class Solver {
     var updated = false;
 
     // If solved then do not re-evaluate
-    if (expressable.possibleValues != null &&
-        expressable.possibleValues!.length == 1) {
-      return (true, false);
-    }
+    // if (expressable.possibleValues != null &&
+    //     expressable.possibleValues!.length == 1) {
+    //   return (true, false);
+    // }
 
     // if expressable.possibleValues == null then the min and max are not known
     final solveMin = expressable.min ?? 1;
@@ -621,72 +618,66 @@ class Solver {
 
   (bool consistent, bool updated) _enforceDistinctValues(bool trace) {
     bool changed = false;
+    bool consistent = true;
+    bool updated = false;
 
     // Enforce distinct clue values
-    final solvedClues = puzzle.clues.values
-        .where((clue) =>
-            clue.possibleValues != null && clue.possibleValues!.length == 1)
+    (consistent, updated) =
+        _enforceDistinctValuesForExressable(puzzle, puzzle.clues.values, trace);
+    if (updated) changed = true;
+    if (!consistent) return (false, changed);
+
+    // Enforce distinct variable values
+    (consistent, updated) = _enforceDistinctValuesForExressable(
+        puzzle, puzzle.variables.values, trace);
+    if (updated) changed = true;
+    if (!consistent) return (false, changed);
+
+    // Enforce distinct entry values - necessary when not mapped to clues
+    (consistent, updated) = _enforceDistinctValuesForExressable(
+        puzzle, puzzle.entries.values, trace);
+    if (updated) changed = true;
+    if (!consistent) return (false, changed);
+
+    return (true, changed);
+  }
+
+  (bool consistent, bool updated) _enforceDistinctValuesForExressable(
+      PuzzleDefinition puzzle, Iterable<Expressable> expressables, bool trace) {
+    var updated = false;
+    final solvedExpressables = expressables
+        .where((expressable) =>
+            expressable.possibleValues != null &&
+            expressable.possibleValues!.length == 1)
         .toList();
-    if (solvedClues.isNotEmpty) {
-      final solvedClueValues =
-          solvedClues.map((clue) => clue.possibleValues!.single).toSet();
-      if (solvedClueValues.length < solvedClues.length) {
+    if (solvedExpressables.isNotEmpty) {
+      final solvedExpressableValues =
+          solvedExpressables.map((clue) => clue.possibleValues!.single).toSet();
+      if (solvedExpressableValues.length < solvedExpressables.length) {
         return (false, true); // Inconsistency
       }
 
-      for (var clue in puzzle.clues.values) {
-        if (clue.possibleValues == null) {
-          continue; // Skip if clue has no values yet
+      for (var expressable in expressables) {
+        if (expressable.possibleValues == null) {
+          continue; // Skip if expressable has no values yet
         }
-        if (clue.possibleValues!.length > 1) {
-          final originalCount = clue.possibleValues!.length;
-          clue.possibleValues!.removeAll(solvedClueValues);
-          if (clue.possibleValues!.length < originalCount) {
-            changed = true;
+        if (expressable.possibleValues!.length > 1) {
+          final originalCount = expressable.possibleValues!.length;
+          expressable.possibleValues!.removeAll(solvedExpressableValues);
+          if (expressable.possibleValues!.length < originalCount) {
+            updated = true;
             if (trace) {
               print(
-                  '    Clue ${clue.id} distinct values: $originalCount -> ${clue.possibleValues!.length} ${clue.possibleValues!.toShortString()}');
+                  '    ${expressable.runtimeType} ${expressable.id} distinct values: $originalCount -> ${expressable.possibleValues!.length} ${expressable.possibleValues!.toShortString()}');
             }
           }
-          if (clue.possibleValues!.isEmpty) {
+          if (expressable.possibleValues!.isEmpty) {
             return (false, true); // Inconsistency
           }
         }
       }
     }
-
-    // Enforce distinct variable values
-    final solvedVariables = puzzle.variables.values
-        .where((variable) => variable.possibleValues.length == 1)
-        .toList();
-    if (solvedVariables.isNotEmpty) {
-      final solvedVariableValues = solvedVariables
-          .map((variable) => variable.possibleValues.single)
-          .toSet();
-      if (solvedVariableValues.length < solvedVariables.length) {
-        return (false, true); // Inconsistency
-      }
-
-      for (var variable in puzzle.variables.values) {
-        if (variable.possibleValues.length > 1) {
-          final originalCount = variable.possibleValues.length;
-          variable.possibleValues = Set.from(variable.possibleValues)
-            ..removeAll(solvedVariableValues);
-          if (variable.possibleValues.length < originalCount) {
-            changed = true;
-            if (trace) {
-              print(
-                  '    Variable ${variable.name} distinct values: $originalCount -> ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
-            }
-          }
-        }
-        if (variable.possibleValues.isEmpty) {
-          return (false, true); // Inconsistency
-        }
-      }
-    }
-
-    return (true, changed);
+    return (true, updated);
   }
 
   (bool consistent, bool updated) _propagateConstraints(bool trace) {
@@ -837,16 +828,37 @@ class Solver {
     return (true, changed);
   }
 
-  /// Solves the puzzle when the clue-to-entry mapping is unknown.
-  ///
-  /// This method uses a backtracking algorithm to try all possible mappings
-  /// of clues to entries until a valid solution is found.
   void _solveUnknownMapping([bool Function()? callback]) {
-    // This is where the backtracking logic will go.
-    // For now, it's a placeholder.
-    print("Solving puzzle with unknown mapping...");
-    _solveWithBacktracking(puzzle.clues.values.toList(), 0);
-    printPuzzle();
+    if (trace) print('Solving puzzle with unknown mapping...');
+
+    // First, solve as much as possible without any mappings
+    _solveKnownMapping(callback, false);
+
+    // Get unmapped clues and available entries
+    final unmappedClues =
+        puzzle.clues.values.where((c) => c.entry == null).toList();
+    final availableEntries =
+        puzzle.entries.values.where((e) => e.clueId == null).toList();
+
+    if (traceBacktrace) {
+      print(
+          'Backtracking mappings: ${unmappedClues.length} clues, ${availableEntries.length} entries');
+    }
+
+    // Get possible entries for clues
+    Map<Clue, List<Entry>> cluePossibleEntries =
+        puzzle.getPossibleEntriesForClues(unmappedClues, availableEntries);
+    final unmappedCluesSorted = cluePossibleEntries.keys.toList();
+
+    // Start backtracking to find a valid mapping
+    var solutionCount = 0;
+    solutionCount = _solveWithBacktracking(unmappedCluesSorted,
+        availableEntries, cluePossibleEntries, solutionCount, callback);
+    if (solutionCount > 0) {
+      print('Backtracking mappings: $solutionCount solution(s) found!');
+    } else {
+      if (traceBacktrace) print('Backtracking mappings: No solution found.');
+    }
   }
 
   /// The recursive backtracking function for solving puzzles with unknown mappings.
@@ -854,39 +866,98 @@ class Solver {
   /// This function tries to map each clue to an available entry and then
   /// recursively calls itself to map the next clue. If a dead end is reached,
   /// it backtracks and tries a different mapping.
-  bool _solveWithBacktracking(List<Clue> remainingClues, int clueIndex) {
-    if (clueIndex == remainingClues.length) {
+  int _solveWithBacktracking(
+    List<Clue> unmappedClues,
+    List<Entry> availableEntries,
+    Map<Clue, List<Entry>> cluePossibleEntries,
+    int solutionCount,
+    bool Function()? callback,
+  ) {
+    if (unmappedClues.isEmpty) {
+      // Base case: All expressables assigned. Check if it's a valid solution.
       // All clues have been mapped, now try to solve the puzzle.
-      _solveKnownMapping();
-      // Check if a solution was found (e.g., all clues have a single possible value)
-      return puzzle.clues.values
-          .every((clue) => clue.possibleValues!.length == 1);
+      // _solveKnownMapping(callback);
+      if (isSolutionValid()) {
+        if (traceBacktrace) print('Backtracking: Solution found!');
+        if (callback != null) {
+          if (!callback()) {
+            if (traceBacktrace) print('Backtracking: Callback returned false.');
+            return solutionCount; // Stop if callback returns false
+          }
+        }
+        _printSolution();
+        // Print mapping
+        print(
+            'Clue mapping: ${puzzle.clues.values.map((clue) => '${clue.id}->${clue.entry?.id}').join(', ')}');
+
+        solutionCount++;
+      } else {
+        if (traceBacktrace) print('Backtracking: Not a valid solution.');
+      }
+      return solutionCount;
     }
 
-    final currentClue = remainingClues[clueIndex];
+    final currentClue = unmappedClues.first;
+    final remainingClues = unmappedClues.sublist(1);
 
-    // Find available entries for this clue
-    final availableEntries = puzzle.entries.values
-        .where((entry) =>
-                entry.clueId == null &&
-                entry.length == currentClue.id.length // Simplified length check
-            // Add more sophisticated checks here (e.g., orientation, grid compatibility)
-            )
+    final matchingEntries = cluePossibleEntries[currentClue]!
+        .where((entry) => availableEntries.contains(entry))
         .toList();
 
-    for (final entry in availableEntries) {
-      // Try mapping the current clue to this entry
-      entry.clueId = currentClue.id;
-
-      // Recursively try to solve with the new mapping
-      if (_solveWithBacktracking(remainingClues, clueIndex + 1)) {
-        return true; // Found a solution
-      }
-
-      // Backtrack: unmap the clue from the entry
-      entry.clueId = null;
+    if (traceBacktrace) {
+      print(
+          'Backtracking mappings: Trying to map clue ${currentClue.id} to one of ${matchingEntries.length} entries');
     }
 
-    return false; // No solution found with this branch
+    for (final entry in matchingEntries) {
+      if (traceBacktrace) {
+        print('Backtracking mappings:   Trying entry ${entry.id}');
+      }
+      final savedState = _saveState();
+
+      // Try mapping the current clue to this entry
+      entry.clueId = currentClue.id;
+      currentClue.entry = entry;
+
+      // Update clue's possible values based on entry length
+      final min = pow(10, entry.length - 1).toInt();
+      final max = pow(10, entry.length).toInt() - 1;
+      if (currentClue.possibleValues != null) {
+        var originalCount = currentClue.possibleValues!.length;
+        currentClue.possibleValues!.retainWhere((v) => v >= min && v <= max);
+        if (traceBacktrace) {
+          print(
+              'Backtracking mappings:     Clue ${currentClue.id} values reduced from $originalCount to ${currentClue.possibleValues!.length}');
+        }
+        if (currentClue.possibleValues!.isEmpty) {
+          // This mapping is not possible, backtrack
+          _restoreState(savedState);
+          entry.clueId = null;
+          currentClue.entry = null;
+          continue;
+        }
+      }
+
+      // Propagate constraints
+      var (consistent, _) = _propagateConstraints(traceBacktrace);
+      if (traceBacktrace) {
+        print(
+            'Backtracking mappings:     Propagation is ${consistent ? 'consistent' : 'inconsistent'}');
+      }
+
+      if (consistent) {
+        final remainingEntries =
+            availableEntries.where((e) => e != entry).toList();
+        solutionCount = _solveWithBacktracking(remainingClues, remainingEntries,
+            cluePossibleEntries, solutionCount, callback);
+      }
+
+      // Backtrack
+      _restoreState(savedState);
+      entry.clueId = null;
+      currentClue.entry = null;
+    }
+
+    return solutionCount;
   }
 }

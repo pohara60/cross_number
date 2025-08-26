@@ -76,7 +76,7 @@ class PuzzleDefinition {
           throw PuzzleException(
               'Entry ${entry.id} not found in grid definition.');
         }
-        // Override entry with grid entry  position, length, orientation
+        // Override entry with grid entry position, length, orientation
         var gridEntry = gridEntries[entry.id]!;
         puzzleEntries[entry.id] = entry.copyWith(
           row: gridEntry.row,
@@ -85,6 +85,15 @@ class PuzzleDefinition {
           orientation: gridEntry.orientation,
           possibleValues: gridEntry.possibleValues,
         );
+      }
+
+      // Check all grid entries are provided, add any missing ones
+      var additionalEntries = gridEntries.values
+          .where((entry) => !puzzleEntries.containsKey(entry.id))
+          .toList();
+      for (var entry in additionalEntries) {
+        entry.clueId = null; // Ensure no default clue mapping
+        puzzleEntries[entry.id] = entry;
       }
     }
 
@@ -259,6 +268,52 @@ class PuzzleDefinition {
     }
     b.writeln('}');
     return b.toString();
+  }
+
+  /// For each clue in [unmappedClues], find the list of possible entries
+  /// from [availableEntries] that match the clue's length and constraints.
+  Map<Clue, List<Entry>> getPossibleEntriesForClues(
+      List<Clue> unmappedClues, List<Entry> availableEntries) {
+    final Map<Clue, List<Entry>> cluePossibleEntries = {};
+    for (var clue in unmappedClues) {
+      var matchAcross = clue.id.startsWith('A') || clue.id.endsWith('A');
+      var matchDown = clue.id.startsWith('D') || clue.id.endsWith('D');
+      if (!matchDown && !matchAcross) {
+        // No heuristic mapping
+        matchAcross = true;
+        matchDown = true;
+      }
+      final possibleEntries = availableEntries.where((entry) {
+        // Check orientation
+        if ((matchAcross && entry.orientation != EntryOrientation.across) ||
+            (matchDown && entry.orientation != EntryOrientation.down)) {
+          return false;
+        }
+        // Check possible values, if known
+        if (clue.possibleValues != null) {
+          assert(entry.possibleValues.isNotEmpty);
+          if (clue.possibleValues!.intersection(entry.possibleValues).isEmpty) {
+            return false;
+          }
+        } else {
+          // If entry has no possible values, but clue does, filter by length
+          if (!clue.possibleValues!
+              .any((v) => v.toString().length == entry.length)) {
+            return false;
+          }
+        }
+        return true;
+      }).toList();
+      assert(possibleEntries.isNotEmpty);
+      cluePossibleEntries[clue] = possibleEntries;
+    }
+    // Order the map by number of entries (fewest first)
+    var sortedEntries = cluePossibleEntries.entries.toList()
+      ..sort((a, b) => a.value.length.compareTo(b.value.length));
+    cluePossibleEntries
+      ..clear()
+      ..addEntries(sortedEntries);
+    return cluePossibleEntries;
   }
 }
 

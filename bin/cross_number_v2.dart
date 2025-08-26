@@ -8,6 +8,7 @@ import '../puzzles/increasing_prime.dart';
 import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
+import '../puzzles/simple_puzzle.dart';
 import '../puzzles/threes.dart';
 import '../puzzles/wheels.dart';
 
@@ -19,6 +20,7 @@ void main(List<String> arguments) {
     // final puzzle = increasingPrimes();
     // final puzzle = wheels();
     // final puzzle = afterNicholas();
+    // final puzzle = simplePuzzle();
     // final puzzle = puzzle2();
     // final puzzle = puzzle3();
     // final puzzle = threes();

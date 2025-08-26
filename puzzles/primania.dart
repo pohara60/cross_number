@@ -50,8 +50,16 @@ PuzzleDefinition primania() {
   _monadicFunctionRegistry.registerFunction('secondfactor',
       (values, {int? min, int? max}) => getNthPrimeFactorList(values, 2));
 
+  final reversiblePrimes2Digits = getReversiblePrimesNDigits(2);
+  final reversiblePrimes3Digits = getReversiblePrimesNDigits(3);
+  final reversiblePrimes4Digits = getReversiblePrimesNDigits(4);
+  print('reversiblePrimes2Digits = $reversiblePrimes2Digits');
+  print('reversiblePrimes3Digits = $reversiblePrimes3Digits');
+  print('reversiblePrimes4Digits = $reversiblePrimes4Digits');
+
   final puzzle = PuzzleDefinition.fromString(
     name: 'Primania',
+    mappingIsKnown: false,
     gridString: gridString.join('\n'),
     entries: {
       'A1': Entry(
@@ -86,22 +94,22 @@ PuzzleDefinition primania() {
           constraints: [ExpressionConstraint(r"$isPrime A21 & $isPrime 'A21")]),
     },
     clues: {
-      '1': Clue('1', [ExpressionConstraint(r"$firstfactor 10109")]),
-      '2': Clue('2', [ExpressionConstraint(r"$secondfactor 10109")]),
-      '3': Clue('3', [ExpressionConstraint(r"$firstfactor 14687")]),
-      '4': Clue('4', [ExpressionConstraint(r"$secondfactor 14687")]),
-      '5': Clue('5', [ExpressionConstraint(r"$firstfactor 15479")]),
-      '6': Clue('6', [ExpressionConstraint(r"$secondfactor 15479")]),
-      '7': Clue('7', [ExpressionConstraint(r"$firstfactor 22681")]),
-      '8': Clue('8', [ExpressionConstraint(r"$secondfactor 22681")]),
-      '9': Clue('9', [ExpressionConstraint(r"$firstfactor 24067")]),
-      '10': Clue('10', [ExpressionConstraint(r"$secondfactor 24067")]),
-      '11': Clue('11', [ExpressionConstraint(r"$firstfactor 25043")]),
-      '12': Clue('12', [ExpressionConstraint(r"$secondfactor 25043")]),
-      '13': Clue('13', [ExpressionConstraint(r"$firstfactor 30167")]),
-      '14': Clue('14', [ExpressionConstraint(r"$secondfactor 30167")]),
-      '15': Clue('15', [ExpressionConstraint(r"$firstfactor 38179")]),
-      '16': Clue('16', [ExpressionConstraint(r"$secondfactor 38179")]),
+      '1D': Clue('1D', [ExpressionConstraint(r"$firstfactor 10109")]),
+      '2D': Clue('2D', [ExpressionConstraint(r"$secondfactor 10109")]),
+      '3D': Clue('3D', [ExpressionConstraint(r"$firstfactor 14687")]),
+      '4D': Clue('4D', [ExpressionConstraint(r"$secondfactor 14687")]),
+      '5D': Clue('5D', [ExpressionConstraint(r"$firstfactor 15479")]),
+      '6D': Clue('6D', [ExpressionConstraint(r"$secondfactor 15479")]),
+      '7D': Clue('7D', [ExpressionConstraint(r"$firstfactor 22681")]),
+      '8D': Clue('8D', [ExpressionConstraint(r"$secondfactor 22681")]),
+      '9D': Clue('9D', [ExpressionConstraint(r"$firstfactor 24067")]),
+      '10D': Clue('10D', [ExpressionConstraint(r"$secondfactor 24067")]),
+      '11D': Clue('11D', [ExpressionConstraint(r"$firstfactor 25043")]),
+      '12D': Clue('12D', [ExpressionConstraint(r"$secondfactor 25043")]),
+      '13D': Clue('13D', [ExpressionConstraint(r"$firstfactor 30167")]),
+      '14D': Clue('14D', [ExpressionConstraint(r"$secondfactor 30167")]),
+      '15D': Clue('15D', [ExpressionConstraint(r"$firstfactor 38179")]),
+      '16D': Clue('16D', [ExpressionConstraint(r"$secondfactor 38179")]),
     },
     variables: {},
   );
@@ -142,22 +150,36 @@ int? getNthPrimeFactor(int value, int n) {
   return null;
 }
 
+PrimeGenerator? primeGenerator;
+
+List<int> getReversiblePrimesNDigits(int n) {
+  primeGenerator ??= GeneratorRegistry().get('prime') as PrimeGenerator;
+  var min = pow(10, n - 1).toInt();
+  var max = pow(10, n).toInt() - 1;
+  var primes = primeGenerator!.getValues(min, max);
+  return primes.where((p) {
+    var s = p.toString();
+    var rs = s.split('').reversed.join('');
+    return s != rs && primes.contains(int.parse(rs));
+  }).toList();
+}
+
 void setAnswers(PuzzleDefinition puzzle) {
-  puzzle.clues['1']!.answer = 11;
-  puzzle.clues['1']!.answer = 11;
-  puzzle.clues['2']!.answer = 919;
-  puzzle.clues['3']!.answer = 19;
-  puzzle.clues['4']!.answer = 773;
-  puzzle.clues['5']!.answer = 23;
-  puzzle.clues['6']!.answer = 673;
-  puzzle.clues['7']!.answer = 37;
-  puzzle.clues['8']!.answer = 613;
-  puzzle.clues['9']!.answer = 41;
-  puzzle.clues['10']!.answer = 587;
-  puzzle.clues['11']!.answer = 79;
-  puzzle.clues['12']!.answer = 317;
-  puzzle.clues['13']!.answer = 97;
-  puzzle.clues['14']!.answer = 311;
-  puzzle.clues['15']!.answer = 73;
-  puzzle.clues['16']!.answer = 523;
+  puzzle.clues['1D']!.answer = 11;
+  puzzle.clues['1D']!.answer = 11;
+  puzzle.clues['2D']!.answer = 919;
+  puzzle.clues['3D']!.answer = 19;
+  puzzle.clues['4D']!.answer = 773;
+  puzzle.clues['5D']!.answer = 23;
+  puzzle.clues['6D']!.answer = 673;
+  puzzle.clues['7D']!.answer = 37;
+  puzzle.clues['8D']!.answer = 613;
+  puzzle.clues['9D']!.answer = 41;
+  puzzle.clues['10D']!.answer = 587;
+  puzzle.clues['11D']!.answer = 79;
+  puzzle.clues['12D']!.answer = 317;
+  puzzle.clues['13D']!.answer = 97;
+  puzzle.clues['14D']!.answer = 311;
+  puzzle.clues['15D']!.answer = 73;
+  puzzle.clues['16D']!.answer = 523;
 }
