@@ -6,13 +6,20 @@ typedef MonadicFunction = List<int> Function(List<int> values,
     {int? min, int? max});
 
 class MonadicFunctionRegistry {
-  final Map<String, MonadicFunction> _functions = {};
+  static final MonadicFunctionRegistry _instance =
+      MonadicFunctionRegistry._privateConstructor();
 
-  MonadicFunctionRegistry() {
-    _registerFunctions();
+  factory MonadicFunctionRegistry() {
+    return _instance;
   }
 
-  void _registerFunctions() {
+  static final Map<String, MonadicFunction> _functions = {};
+
+  void registerFunction(String name, MonadicFunction function) {
+    _functions[name] = function;
+  }
+
+  MonadicFunctionRegistry._privateConstructor() {
     _functions['squareroot'] = (values, {min, max}) => values
         .where((v) => v >= 0 && math.sqrt(v) == math.sqrt(v).floor())
         .map((v) => math.sqrt(v).toInt())

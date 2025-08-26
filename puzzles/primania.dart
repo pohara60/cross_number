@@ -14,6 +14,7 @@ import 'dart:collection';
 import 'dart:math';
 
 import 'package:crossnumber/src/expressions/generators.dart';
+import 'package:crossnumber/src/expressions/monadic.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/entry.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -41,59 +42,122 @@ PuzzleDefinition primania() {
     '+--+--+--+--+--+--+--+--+',
   ];
 
-  return PuzzleDefinition.fromString(
+  // Register puzzle specific functions
+  final MonadicFunctionRegistry _monadicFunctionRegistry =
+      MonadicFunctionRegistry();
+  _monadicFunctionRegistry.registerFunction('firstfactor',
+      (values, {int? min, int? max}) => getNthPrimeFactorList(values, 1));
+  _monadicFunctionRegistry.registerFunction('secondfactor',
+      (values, {int? min, int? max}) => getNthPrimeFactorList(values, 2));
+
+  final puzzle = PuzzleDefinition.fromString(
     name: 'Primania',
     gridString: gridString.join('\n'),
     entries: {
-      'A1': Entry(id: 'A1', constraints: [
-        ExpressionConstraint(r'$prime A1 & $prime $reverse A1')
-      ]),
-      'A6': Entry(id: 'A6', constraints: [
-        ExpressionConstraint(r'$prime A6 & $prime $reverse A6')
-      ]),
-      'A9': Entry(id: 'A9', constraints: [
-        ExpressionConstraint(r'$prime A9 & $prime $reverse A9')
-      ]),
-      'A10': Entry(id: 'A10', constraints: [
-        ExpressionConstraint(r'$prime A10 & $prime $reverse A10')
-      ]),
-      'A11': Entry(id: 'A11', constraints: [
-        ExpressionConstraint(r'$prime A11 & $prime $reverse A11')
-      ]),
-      'A14': Entry(id: 'A14', constraints: [
-        ExpressionConstraint(r'$prime A14 & $prime $reverse A14')
-      ]),
-      'A17': Entry(id: 'A17', constraints: [
-        ExpressionConstraint(r'$prime A17 & $prime $reverse A17')
-      ]),
-      'A19': Entry(id: 'A19', constraints: [
-        ExpressionConstraint(r'$prime A19 & $prime $reverse A19')
-      ]),
-      'A20': Entry(id: 'A20', constraints: [
-        ExpressionConstraint(r'$prime A20 & $prime $reverse A20')
-      ]),
-      'A21': Entry(id: 'A21', constraints: [
-        ExpressionConstraint(r'$prime A21 & $prime $reverse A21')
-      ]),
+      'A1': Entry(
+          id: 'A1',
+          constraints: [ExpressionConstraint(r"$isPrime A1 & $isPrime 'A1")]),
+      'A6': Entry(
+          id: 'A6',
+          constraints: [ExpressionConstraint(r"$isPrime A6 & $isPrime 'A6")]),
+      'A9': Entry(
+          id: 'A9',
+          constraints: [ExpressionConstraint(r"$isPrime A9 & $isPrime 'A9")]),
+      'A10': Entry(
+          id: 'A10',
+          constraints: [ExpressionConstraint(r"$isPrime A10 & $isPrime 'A10")]),
+      'A11': Entry(
+          id: 'A11',
+          constraints: [ExpressionConstraint(r"$isPrime A11 & $isPrime 'A11")]),
+      'A14': Entry(
+          id: 'A14',
+          constraints: [ExpressionConstraint(r"$isPrime A14 & $isPrime 'A14")]),
+      'A17': Entry(
+          id: 'A17',
+          constraints: [ExpressionConstraint(r"$isPrime A17 & $isPrime 'A17")]),
+      'A19': Entry(
+          id: 'A19',
+          constraints: [ExpressionConstraint(r"$isPrime A19 & $isPrime 'A19")]),
+      'A20': Entry(
+          id: 'A20',
+          constraints: [ExpressionConstraint(r"$isPrime A20 & $isPrime 'A20")]),
+      'A21': Entry(
+          id: 'A21',
+          constraints: [ExpressionConstraint(r"$isPrime A21 & $isPrime 'A21")]),
     },
     clues: {
-      '1': Clue('1', [ExpressionConstraint(r'$firstfactor 10109')]),
-      '2': Clue('2', [ExpressionConstraint(r'$secondfactor 10109')]),
-      '3': Clue('3', [ExpressionConstraint(r'$firstfactor 14687')]),
-      '4': Clue('4', [ExpressionConstraint(r'$secondfactor 14687')]),
-      '5': Clue('5', [ExpressionConstraint(r'$firstfactor 15479')]),
-      '6': Clue('6', [ExpressionConstraint(r'$secondfactor 15479')]),
-      '7': Clue('7', [ExpressionConstraint(r'$firstfactor 22681')]),
-      '8': Clue('8', [ExpressionConstraint(r'$secondfactor 22681')]),
-      '9': Clue('9', [ExpressionConstraint(r'$firstfactor 24067')]),
-      '10': Clue('10', [ExpressionConstraint(r'$secondfactor 24067')]),
-      '11': Clue('11', [ExpressionConstraint(r'$firstfactor 25043')]),
-      '12': Clue('12', [ExpressionConstraint(r'$secondfactor 25043')]),
-      '13': Clue('13', [ExpressionConstraint(r'$firstfactor 30167')]),
-      '14': Clue('14', [ExpressionConstraint(r'$secondfactor 30167')]),
-      '15': Clue('15', [ExpressionConstraint(r'$firstfactor 38179')]),
-      '16': Clue('16', [ExpressionConstraint(r'$secondfactor 38179')]),
+      '1': Clue('1', [ExpressionConstraint(r"$firstfactor 10109")]),
+      '2': Clue('2', [ExpressionConstraint(r"$secondfactor 10109")]),
+      '3': Clue('3', [ExpressionConstraint(r"$firstfactor 14687")]),
+      '4': Clue('4', [ExpressionConstraint(r"$secondfactor 14687")]),
+      '5': Clue('5', [ExpressionConstraint(r"$firstfactor 15479")]),
+      '6': Clue('6', [ExpressionConstraint(r"$secondfactor 15479")]),
+      '7': Clue('7', [ExpressionConstraint(r"$firstfactor 22681")]),
+      '8': Clue('8', [ExpressionConstraint(r"$secondfactor 22681")]),
+      '9': Clue('9', [ExpressionConstraint(r"$firstfactor 24067")]),
+      '10': Clue('10', [ExpressionConstraint(r"$secondfactor 24067")]),
+      '11': Clue('11', [ExpressionConstraint(r"$firstfactor 25043")]),
+      '12': Clue('12', [ExpressionConstraint(r"$secondfactor 25043")]),
+      '13': Clue('13', [ExpressionConstraint(r"$firstfactor 30167")]),
+      '14': Clue('14', [ExpressionConstraint(r"$secondfactor 30167")]),
+      '15': Clue('15', [ExpressionConstraint(r"$firstfactor 38179")]),
+      '16': Clue('16', [ExpressionConstraint(r"$secondfactor 38179")]),
     },
     variables: {},
   );
+  setAnswers(puzzle);
+  return puzzle;
+}
+
+List<int> getNthPrimeFactorList(List<int> values, int n) {
+  return values
+      .map((v) => getNthPrimeFactor(v, n))
+      .where((v) => v != null)
+      .map((v) => v as int)
+      .toList();
+}
+
+int? getNthPrimeFactor(int value, int n) {
+  int remaining = value;
+  int index = 0;
+  while (remaining > 1) {
+    var prime = true;
+    for (var factor = 2; factor <= sqrt(remaining); factor++) {
+      var divisor = remaining / factor;
+      if (divisor.toInt() == divisor) {
+        index++;
+        if (index == n) return factor;
+        remaining = divisor.toInt();
+        prime = false;
+        break;
+      }
+    }
+    if (prime) break;
+  }
+  if (remaining != 1) {
+    index++;
+    if (index == n) return remaining;
+  }
+
+  return null;
+}
+
+void setAnswers(PuzzleDefinition puzzle) {
+  puzzle.clues['1']!.answer = 11;
+  puzzle.clues['1']!.answer = 11;
+  puzzle.clues['2']!.answer = 919;
+  puzzle.clues['3']!.answer = 19;
+  puzzle.clues['4']!.answer = 773;
+  puzzle.clues['5']!.answer = 23;
+  puzzle.clues['6']!.answer = 673;
+  puzzle.clues['7']!.answer = 37;
+  puzzle.clues['8']!.answer = 613;
+  puzzle.clues['9']!.answer = 41;
+  puzzle.clues['10']!.answer = 587;
+  puzzle.clues['11']!.answer = 79;
+  puzzle.clues['12']!.answer = 317;
+  puzzle.clues['13']!.answer = 97;
+  puzzle.clues['14']!.answer = 311;
+  puzzle.clues['15']!.answer = 73;
+  puzzle.clues['16']!.answer = 523;
 }

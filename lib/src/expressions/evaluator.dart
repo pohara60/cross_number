@@ -258,6 +258,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           rightMax = left <= 1 ? max : log(max) / log(left);
           break;
         case TokenType.EQUAL:
+        case TokenType.AMPERSAND:
           rightMin = leftMin;
           rightMax = leftMax;
           break;
@@ -294,6 +295,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
             if (left != right) continue;
             resultValue = left;
             break;
+          case TokenType.AMPERSAND:
+            // Existence of both sides is enough to return a value
+            resultValue = left;
+            break;
           default:
             throw EvaluatorException(
                 'Unknown binary operator: ${expression.operator.type}');
@@ -321,14 +326,22 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   @override
   List<EvaluationResult> visitUnaryExpression(UnaryExpression expression,
       {required num min, required num max}) {
-    final rightValues =
-        _evaluateWithPinnedVariables(expression.right, min: -max, max: -min);
+    var type = expression.operator.type;
+    var rightMin = type == TokenType.MINUS ? -max : min;
+    var rightMax = type == TokenType.MINUS ? -min : max;
+    final rightValues = _evaluateWithPinnedVariables(expression.right,
+        min: rightMin, max: rightMax);
     final results = <EvaluationResult>{};
     for (final rightResult in rightValues) {
       final right = rightResult.value;
-      switch (expression.operator.type) {
+      switch (type) {
         case TokenType.MINUS:
           results.add(EvaluationResult(-right, rightResult.variableValues));
+          break;
+        case TokenType.REVERSE:
+          final reversed =
+              int.parse(right.toInt().toString().split('').reversed.join(''));
+          results.add(EvaluationResult(reversed, rightResult.variableValues));
           break;
         default:
           throw EvaluatorException('Invalid unary operator.');

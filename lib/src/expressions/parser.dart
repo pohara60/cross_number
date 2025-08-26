@@ -52,6 +52,12 @@ class Parser {
       case '=':
         _addToken(TokenType.EQUAL);
         break;
+      case '&':
+        _addToken(TokenType.AMPERSAND);
+        break;
+      case "'":
+        _addToken(TokenType.REVERSE);
+        break;
       case '.':
         _addToken(TokenType.DOT);
         break;
@@ -158,9 +164,21 @@ class Parser {
   }
 
   Expression _equality() {
-    var expr = _term();
+    var expr = _logicalAnd();
 
     while (_match([TokenType.EQUAL])) {
+      final operator = _previous();
+      final right = _logicalAnd();
+      expr = BinaryExpression(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+  Expression _logicalAnd() {
+    var expr = _term();
+
+    while (_match([TokenType.AMPERSAND])) {
       final operator = _previous();
       final right = _term();
       expr = BinaryExpression(expr, operator, right);
@@ -206,7 +224,7 @@ class Parser {
   }
 
   Expression _unary() {
-    if (_match([TokenType.MINUS])) {
+    if (_match([TokenType.MINUS, TokenType.REVERSE])) {
       final operator = _previous();
       final right = _unary();
       return UnaryExpression(operator, right);

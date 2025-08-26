@@ -434,6 +434,12 @@ class Solver {
       List<String> updatedVariables, Map<String, int?> originalCounts) {
     var updated = false;
 
+    // If solved then do not re-evaluate
+    if (expressable.possibleValues != null &&
+        expressable.possibleValues!.length == 1) {
+      return (true, false);
+    }
+
     // if expressable.possibleValues == null then the min and max are not known
     final solveMin = expressable.min ?? 1;
     final solveMax = expressable.max ?? 100000; // Arbitrarily large

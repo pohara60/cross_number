@@ -67,6 +67,44 @@ void main() {
           evaluator.evaluateExpression(expression, [], min: 1, max: 20);
       expect(evaluatedResult.map((r) => r.value), equals({3}));
     });
+
+    test('Logical AND Operator', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {
+          'A': Variable('A', {1, 2, 3}),
+          'B': Variable('B', {2, 3, 4}),
+        },
+      );
+      final parser = Parser(r'$isEven A & $isOdd B');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final evaluatedResult =
+          evaluator.evaluateExpression(expression, ['A', 'B'], min: 1, max: 20);
+      expect(evaluatedResult.map((r) => r.value), unorderedEquals([2]));
+    });
+
+    test('Reverse Operator', () {
+      expectExpression("'123", [], 1, 999, 321);
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {
+          'A': Variable('A', {12, 345}),
+        },
+      );
+      final parser = Parser("'A");
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final evaluatedResult =
+          evaluator.evaluateExpression(expression, ['A'], min: 1, max: 999);
+      expect(evaluatedResult.map((r) => r.value), unorderedEquals([21, 543]));
+    });
   });
 }
 

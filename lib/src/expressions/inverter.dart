@@ -90,6 +90,8 @@ class ExpressionInverter {
               }
               return _rearrange(right, child);
             }
+          case TokenType.AMPERSAND:
+            throw InvertException('Cannot invert logical AND expressions');
           default:
             throw InvertException(
                 'Unsupported operator for inversion: ${expressionToSolve.operator.lexeme}');
@@ -111,6 +113,8 @@ class ExpressionInverter {
           var other = child ?? VariableExpression(subject.id);
           child = UnaryExpression(newToken, other);
           return _rearrange(right, child);
+        } else if (operator.type == TokenType.REVERSE) {
+          throw InvertException('Cannot invert REVERSE expressions');
         } else {
           throw InvertException(
               'Unsupported unary operator for inversion: ${unary.operator.lexeme}');

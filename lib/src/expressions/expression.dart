@@ -177,6 +177,8 @@ enum TokenType {
   HASH,
   DOLLAR,
   EQUAL,
+  AMPERSAND,
+  REVERSE,
 
   // Literals.
   NUMBER,
