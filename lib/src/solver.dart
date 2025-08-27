@@ -344,8 +344,9 @@ class Solver {
     } else {
       printPuzzle();
       print('Solution not complete, backtracking');
-      Expressable.checkAnswer =
-          false; // Disable answer checking during backtracking
+
+      // Disable answer checking during backtracking
+      Expressable.checkAnswer = false;
       trace = traceBacktrace; // Use traceBacktrace for backtracking
       var solutionCount = _backtrack(0, 0, callback);
       if (solutionCount == 0) {
@@ -382,13 +383,13 @@ class Solver {
     return (true, updated);
   }
 
-  void _printUpdatedVariables(List<String> updatedVariables) {
-    for (var variableName in updatedVariables) {
-      var variable = puzzle.variables[variableName]!;
-      print(
-          '      Updated Variable: $variableName: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
-    }
-  }
+  // void _printUpdatedVariables(List<String> updatedVariables) {
+  //   for (var variableName in updatedVariables) {
+  //     var variable = puzzle.variables[variableName]!;
+  //     print(
+  //         '      Updated Variable: $variableName: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+  //   }
+  // }
 
   void _printUpdatedClue(Clue clue, int? originalCount) {
     print(
@@ -420,10 +421,8 @@ class Solver {
   void _printUpdatedExpressables(
       List<String> expressables, Map<String, int?> originalCounts) {
     for (var expressableName in expressables) {
-      var expressable = puzzle.variables[expressableName] as Expressable?;
-      expressable ??= puzzle.clues[expressableName];
-      expressable ??= puzzle.entries[expressableName];
-      _printUpdatedExpressable(expressable!, originalCounts[expressableName]);
+      Expressable expressable = puzzle.getExpressable(expressableName);
+      _printUpdatedExpressable(expressable, originalCounts[expressableName]);
     }
   }
 
@@ -515,14 +514,7 @@ class Solver {
       List<String> updatedVariables,
       Map<String, int?> originalCounts) {
     for (var variableName in variables) {
-      var expressable = puzzle.variables[variableName] as Expressable?;
-      if (expressable == null) {
-        expressable = puzzle.clues[variableName] as Expressable?;
-        if (expressable == null) {
-          expressable = puzzle.entries[variableName] as Expressable?;
-          if (expressable == null) continue;
-        }
-      }
+      var expressable = puzzle.getExpressable(variableName);
 
       final newVariableValues = results
           .map((r) => r[variableName])
@@ -687,6 +679,12 @@ class Solver {
       localChanged = false;
       if (trace) print('  Propagating constraints...');
 
+      // Enforce ordering constraints
+      var (orderingConsistent, orderingUpdated) =
+          _enforceOrderingConstraints(trace);
+      if (!orderingConsistent) return (false, true);
+      if (orderingUpdated) localChanged = true;
+
       // Propagate clue values to entries
       for (var entry in puzzle.entries.values) {
         if (entry.clueId != null) {
@@ -828,6 +826,65 @@ class Solver {
     return (true, changed);
   }
 
+  (bool consistent, bool updated) _enforceOrderingConstraints(bool trace) {
+    var updated = false;
+    for (var constraint in puzzle.orderingConstraints) {
+      var expressables = <Expressable>[];
+      if (constraint.allClues) {
+        expressables = puzzle.clues.values.toList();
+      } else if (constraint.allVariables) {
+        expressables = puzzle.variables.values.toList();
+      } else {
+        expressables =
+            constraint.ids!.map((id) => puzzle.getExpressable(id)).toList();
+      }
+
+      var oldCounts = {
+        for (var e in expressables) e.id: e.possibleValues?.length
+      };
+      expressables.map((e) => e.possibleValues?.length ?? 0).toList();
+      var prevMin = -1;
+      for (var expressable in expressables) {
+        if (expressable.possibleValues == null ||
+            expressable.possibleValues!.isEmpty) {
+          continue;
+        }
+        var currentMin = expressable.possibleValues!.reduce(min);
+        if (prevMin >= 0 && currentMin <= prevMin) {
+          expressable.possibleValues!.retainWhere((v) => v > prevMin);
+          currentMin = expressable.possibleValues!.reduce(min);
+          updated = true;
+        }
+        prevMin = currentMin;
+      }
+      var prevMax = 1000000; // Arbitrarily large
+      for (var expressable in expressables.reversed) {
+        if (expressable.possibleValues == null ||
+            expressable.possibleValues!.isEmpty) {
+          continue;
+        }
+        var currentMax = expressable.possibleValues!.reduce(max);
+        if (prevMax < 1000000 && currentMax >= prevMax) {
+          expressable.possibleValues!.retainWhere((v) => v < prevMax);
+          currentMax = expressable.possibleValues!.reduce(max);
+          updated = true;
+        }
+        prevMax = currentMax;
+      }
+      if (updated && trace) {
+        for (var expressable in expressables) {
+          var oldLength = oldCounts[expressable.id];
+          if (oldLength != null &&
+              expressable.possibleValues != null &&
+              expressable.possibleValues!.length < oldLength) {
+            _printUpdatedExpressable(expressable, oldLength);
+          }
+        }
+      }
+    }
+    return (true, updated);
+  }
+
   void _solveUnknownMapping([bool Function()? callback]) {
     if (trace) print('Solving puzzle with unknown mapping...');
 
@@ -851,6 +908,9 @@ class Solver {
     final unmappedCluesSorted = cluePossibleEntries.keys.toList();
 
     // Start backtracking to find a valid mapping
+    // Disable answer checking during backtracking
+    Expressable.checkAnswer = false;
+    trace = traceBacktrace; // Use traceBacktrace for backtracking
     var solutionCount = 0;
     solutionCount = _solveWithBacktracking(unmappedCluesSorted,
         availableEntries, cluePossibleEntries, solutionCount, callback);

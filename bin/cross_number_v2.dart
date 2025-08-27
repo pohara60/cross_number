@@ -9,6 +9,7 @@ import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
 import '../puzzles/simple_puzzle.dart';
+import '../puzzles/sum_squares.dart';
 import '../puzzles/threes.dart';
 import '../puzzles/wheels.dart';
 
@@ -25,7 +26,8 @@ void main(List<String> arguments) {
     // final puzzle = puzzle3();
     // final puzzle = threes();
     // final puzzle = abcd();
-    final puzzle = primania();
+    // final puzzle = primania();
+    final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,

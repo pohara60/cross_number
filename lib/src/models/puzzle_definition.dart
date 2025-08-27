@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
+import 'package:crossnumber/src/models/ordering_constraint.dart';
 import '../expressions/inverter.dart';
 import 'clue.dart';
 import 'entry.dart';
@@ -28,6 +29,9 @@ class PuzzleDefinition {
   /// A map of variable names to [Variable] objects.
   final Map<String, Variable> variables;
 
+  /// A list of ordering constraints.
+  final List<OrderingConstraint> orderingConstraints;
+
   /// A map of expressable IDs to [Expressable] objects.
   final Map<String, Expressable> expressables = {};
 
@@ -42,6 +46,7 @@ class PuzzleDefinition {
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
+    List<OrderingConstraint> orderingConstraints = const [],
     mappingIsKnown = true,
   }) {
     final grid = Grid.fromString(gridString);
@@ -103,6 +108,7 @@ class PuzzleDefinition {
       entries: puzzleEntries,
       clues: clues,
       variables: variables,
+      orderingConstraints: orderingConstraints,
       mappingIsKnown:
           mappingIsKnown, // Assuming mapping is known from gridString
     );
@@ -115,6 +121,7 @@ class PuzzleDefinition {
     required this.entries,
     required this.clues,
     required this.variables,
+    this.orderingConstraints = const [],
     this.mappingIsKnown = true,
   }) {
     // Set clue entry references where applicable
@@ -231,6 +238,7 @@ class PuzzleDefinition {
     Map<String, Entry>? entries,
     Map<String, Clue>? clues,
     Map<String, Variable>? variables,
+    List<OrderingConstraint>? orderingConstraints,
     bool? mappingIsKnown,
   }) {
     return PuzzleDefinition(
@@ -243,6 +251,7 @@ class PuzzleDefinition {
           this.clues.map((key, value) => MapEntry(key, value.copyWith())),
       variables: variables ??
           this.variables.map((key, value) => MapEntry(key, value.copyWith())),
+      orderingConstraints: orderingConstraints ?? this.orderingConstraints,
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
     );
   }
@@ -285,8 +294,8 @@ class PuzzleDefinition {
       }
       final possibleEntries = availableEntries.where((entry) {
         // Check orientation
-        if ((matchAcross && entry.orientation != EntryOrientation.across) ||
-            (matchDown && entry.orientation != EntryOrientation.down)) {
+        if (!(matchAcross && entry.orientation == EntryOrientation.across ||
+            matchDown && entry.orientation == EntryOrientation.down)) {
           return false;
         }
         // Check possible values, if known
@@ -314,6 +323,13 @@ class PuzzleDefinition {
       ..clear()
       ..addEntries(sortedEntries);
     return cluePossibleEntries;
+  }
+
+  Expressable getExpressable(String expressableName) {
+    var expressable = variables[expressableName] as Expressable?;
+    expressable ??= clues[expressableName];
+    expressable ??= entries[expressableName];
+    return expressable!;
   }
 }
 

@@ -120,11 +120,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     final currentVariable = unpinnedVariables.first;
     final newUnpinnedVariables = unpinnedVariables.sublist(1);
 
-    final possibleValues = puzzle.variables.containsKey(currentVariable)
-        ? puzzle.variables[currentVariable]!.possibleValues
-        : puzzle.clues.containsKey(currentVariable)
-            ? puzzle.clues[currentVariable]!.possibleValues!
-            : puzzle.entries[currentVariable]!.possibleValues;
+    var expressable = puzzle.getExpressable(currentVariable);
+    final possibleValues = expressable.possibleValues!;
 
     for (final value in possibleValues) {
       // Check for duplicate variable values
@@ -169,24 +166,11 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       }
       return [];
     }
-    if (puzzle.variables.containsKey(expression.name)) {
-      return puzzle.variables[expression.name]!.possibleValues
-          .where((value) => value >= min && value <= max)
-          .map((e) => EvaluationResult(e, {expression.name: e}))
-          .toList();
-    } else if (puzzle.clues.containsKey(expression.name)) {
-      return (puzzle.clues[expression.name]!.possibleValues ?? <int>{})
-          .where((value) => value >= min && value <= max)
-          .map((e) => EvaluationResult(e, {expression.name: e}))
-          .toList();
-    } else if (puzzle.entries.containsKey(expression.name)) {
-      return puzzle.entries[expression.name]!.possibleValues
-          .where((value) => value >= min && value <= max)
-          .map((e) => EvaluationResult(e, {expression.name: e}))
-          .toList();
-    }
-    throw EvaluatorException(
-        'Undefined variable, clue, or entry: ${expression.name}');
+    var expressable = puzzle.getExpressable(expression.name);
+    return (expressable.possibleValues ?? <int>{})
+        .where((value) => value >= min && value <= max)
+        .map((e) => EvaluationResult(e, {expression.name: e}))
+        .toList();
   }
 
   @override
@@ -414,11 +398,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     const maxCombinations = 1000000;
     int combinations = 1;
     for (var variable in unpinnedVariables) {
-      final possibleValues = puzzle.variables.containsKey(variable)
-          ? puzzle.variables[variable]!.possibleValues
-          : puzzle.clues.containsKey(variable)
-              ? puzzle.clues[variable]!.possibleValues
-              : puzzle.entries[variable]!.possibleValues;
+      var expressable = puzzle.getExpressable(variable);
+      final possibleValues = expressable.possibleValues;
       if (possibleValues == null) {
         return true; // No possible values means cannot evaluate yet
       }

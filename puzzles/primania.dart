@@ -43,11 +43,11 @@ PuzzleDefinition primania() {
   ];
 
   // Register puzzle specific functions
-  final MonadicFunctionRegistry _monadicFunctionRegistry =
+  final MonadicFunctionRegistry monadicFunctionRegistry =
       MonadicFunctionRegistry();
-  _monadicFunctionRegistry.registerFunction('firstfactor',
+  monadicFunctionRegistry.registerFunction('firstfactor',
       (values, {int? min, int? max}) => getNthPrimeFactorList(values, 1));
-  _monadicFunctionRegistry.registerFunction('secondfactor',
+  monadicFunctionRegistry.registerFunction('secondfactor',
       (values, {int? min, int? max}) => getNthPrimeFactorList(values, 2));
 
   final reversiblePrimes2Digits = getReversiblePrimesNDigits(2);

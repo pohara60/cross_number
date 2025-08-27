@@ -17,6 +17,9 @@ class Clue extends Expressable {
   /// The entry associated with this clue, if any.
   Entry? entry;
 
+  /// Length of the clue, if known.
+  final int? length;
+
   /// The list of constraints that apply to this clue.
   @override
   final List<Constraint> constraints;
@@ -29,7 +32,8 @@ class Clue extends Expressable {
     if (possibleValues != null && possibleValues!.isNotEmpty) {
       return possibleValues!.reduce(math.min);
     }
-    if (entry != null) return math.pow(10, entry!.length - 1).toInt();
+    var length = this.length ?? entry?.length;
+    if (length != null) return math.pow(10, length - 1).toInt();
     return null;
   }
 
@@ -38,12 +42,13 @@ class Clue extends Expressable {
     if (possibleValues != null && possibleValues!.isNotEmpty) {
       return possibleValues!.reduce(math.max);
     }
-    if (entry != null) return math.pow(10, entry!.length).toInt() - 1;
+    var length = this.length ?? entry?.length;
+    if (length != null) return math.pow(10, length).toInt() - 1;
     return null;
   }
 
   /// Creates a new clue with the given [id] and [constraints].
-  Clue(this.id, this.constraints, [this.entry]);
+  Clue(this.id, this.constraints, {this.entry, this.length});
 
   /// Solves the clue by applying its constraints.
   ///

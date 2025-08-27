@@ -30,15 +30,15 @@ void main() {
           if (entry.length == 2) {
             expect(reversiblePrimes2Digits.contains(value), true,
                 reason:
-                    'Entry ${entry.id} value ${value} is not a 2-digit reversible prime');
+                    'Entry ${entry.id} value $value is not a 2-digit reversible prime');
           } else if (entry.length == 3) {
             expect(reversiblePrimes3Digits.contains(value), true,
                 reason:
-                    'Entry ${entry.id} value ${value} is not a 3-digit reversible prime');
+                    'Entry ${entry.id} value $value is not a 3-digit reversible prime');
           } else if (entry.length == 4) {
             expect(reversiblePrimes4Digits.contains(value), true,
                 reason:
-                    'Entry ${entry.id} value ${value} is not a 4-digit reversible prime');
+                    'Entry ${entry.id} value $value is not a 4-digit reversible prime');
           } else {
             fail('Entry ${entry.id} has unexpected length ${entry.length}');
           }
@@ -47,7 +47,7 @@ void main() {
               .length;
           expect(count, 1,
               reason:
-                  'Entry ${entry.id} value ${value} is not unique, occurs $count times');
+                  'Entry ${entry.id} value $value is not unique, occurs $count times');
 
           // Check for entries where the reverse is present
           // This reduces the solution count to 2
