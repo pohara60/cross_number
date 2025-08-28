@@ -842,35 +842,54 @@ class Solver {
       var oldCounts = {
         for (var e in expressables) e.id: e.possibleValues?.length
       };
-      expressables.map((e) => e.possibleValues?.length ?? 0).toList();
-      var prevMin = -1;
-      for (var expressable in expressables) {
-        if (expressable.possibleValues == null ||
-            expressable.possibleValues!.isEmpty) {
-          continue;
+
+      bool changedInPass;
+      do {
+        changedInPass = false;
+
+        // Forward pass
+        var prevMin = -1;
+        for (var expressable in expressables) {
+          if (expressable.possibleValues == null ||
+              expressable.possibleValues!.isEmpty) {
+            continue;
+          }
+          var currentMin = expressable.possibleValues!.reduce(min);
+          if (prevMin >= 0 && currentMin <= prevMin) {
+            final originalLength = expressable.possibleValues!.length;
+            expressable.possibleValues!.retainWhere((v) => v > prevMin);
+            if (expressable.possibleValues!.isEmpty) return (false, true);
+            if (expressable.possibleValues!.length < originalLength) {
+              updated = true;
+              changedInPass = true;
+            }
+          }
+          if (expressable.possibleValues!.isEmpty) return (false, true);
+          prevMin = expressable.possibleValues!.reduce(min);
         }
-        var currentMin = expressable.possibleValues!.reduce(min);
-        if (prevMin >= 0 && currentMin <= prevMin) {
-          expressable.possibleValues!.retainWhere((v) => v > prevMin);
-          currentMin = expressable.possibleValues!.reduce(min);
-          updated = true;
+
+        // Backward pass
+        var nextMax = 1000000; // Arbitrarily large
+        for (var expressable in expressables.reversed) {
+          if (expressable.possibleValues == null ||
+              expressable.possibleValues!.isEmpty) {
+            continue;
+          }
+          var currentMax = expressable.possibleValues!.reduce(max);
+          if (nextMax < 1000000 && currentMax >= nextMax) {
+            final originalLength = expressable.possibleValues!.length;
+            expressable.possibleValues!.retainWhere((v) => v < nextMax);
+            if (expressable.possibleValues!.isEmpty) return (false, true);
+            if (expressable.possibleValues!.length < originalLength) {
+              updated = true;
+              changedInPass = true;
+            }
+          }
+          if (expressable.possibleValues!.isEmpty) return (false, true);
+          nextMax = expressable.possibleValues!.reduce(max);
         }
-        prevMin = currentMin;
-      }
-      var prevMax = 1000000; // Arbitrarily large
-      for (var expressable in expressables.reversed) {
-        if (expressable.possibleValues == null ||
-            expressable.possibleValues!.isEmpty) {
-          continue;
-        }
-        var currentMax = expressable.possibleValues!.reduce(max);
-        if (prevMax < 1000000 && currentMax >= prevMax) {
-          expressable.possibleValues!.retainWhere((v) => v < prevMax);
-          currentMax = expressable.possibleValues!.reduce(max);
-          updated = true;
-        }
-        prevMax = currentMax;
-      }
+      } while (changedInPass);
+
       if (updated && trace) {
         for (var expressable in expressables) {
           var oldLength = oldCounts[expressable.id];
@@ -980,21 +999,23 @@ class Solver {
       currentClue.entry = entry;
 
       // Update clue's possible values based on entry length
-      final min = pow(10, entry.length - 1).toInt();
-      final max = pow(10, entry.length).toInt() - 1;
-      if (currentClue.possibleValues != null) {
-        var originalCount = currentClue.possibleValues!.length;
-        currentClue.possibleValues!.retainWhere((v) => v >= min && v <= max);
-        if (traceBacktrace) {
-          print(
-              'Backtracking mappings:     Clue ${currentClue.id} values reduced from $originalCount to ${currentClue.possibleValues!.length}');
-        }
-        if (currentClue.possibleValues!.isEmpty) {
-          // This mapping is not possible, backtrack
-          _restoreState(savedState);
-          entry.clueId = null;
-          currentClue.entry = null;
-          continue;
+      if (currentClue.length == null) {
+        final min = pow(10, entry.length - 1).toInt();
+        final max = pow(10, entry.length).toInt() - 1;
+        if (currentClue.possibleValues != null) {
+          var originalCount = currentClue.possibleValues!.length;
+          currentClue.possibleValues!.retainWhere((v) => v >= min && v <= max);
+          if (traceBacktrace) {
+            print(
+                'Backtracking mappings:     Clue ${currentClue.id} values reduced from $originalCount to ${currentClue.possibleValues!.length}');
+          }
+          if (currentClue.possibleValues!.isEmpty) {
+            // This mapping is not possible, backtrack
+            _restoreState(savedState);
+            entry.clueId = null;
+            currentClue.entry = null;
+            continue;
+          }
         }
       }
 

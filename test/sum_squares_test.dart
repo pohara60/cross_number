@@ -5,7 +5,7 @@ import '../puzzles/sum_squares.dart';
 
 void main() {
   // Disable slow test
-  final disabled = true;
+  final disabled = false;
   group('SumSquares', () {
     test('should solve the puzzle', () {
       final puzzle = sumsquares();
