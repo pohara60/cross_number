@@ -9,7 +9,7 @@ import '../puzzles/primania.dart';
 
 void main() {
   // Disable slow test
-  final disabled = true;
+  final disabled = false;
   group('Primania', () {
     test('should solve the puzzle', () {
       final puzzle = primania();

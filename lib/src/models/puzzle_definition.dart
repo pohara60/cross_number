@@ -325,6 +325,51 @@ class PuzzleDefinition {
     return cluePossibleEntries;
   }
 
+  /// For each entry in [availableEntries], find the list of possible clues
+  /// from [unmappedClues] that match the entry's length and constraints.
+  Map<Entry, List<Clue>> getPossibleCluesForEntries(
+      List<Clue> unmappedClues, List<Entry> availableEntries) {
+    final Map<Entry, List<Clue>> entryPossibleClues = {};
+    for (var entry in availableEntries) {
+      final possibleClues = <Clue>[];
+      for (var clue in unmappedClues) {
+        var matchAcross = clue.id.startsWith('A') || clue.id.endsWith('A');
+        var matchDown = clue.id.startsWith('D') || clue.id.endsWith('D');
+        if (!matchDown && !matchAcross) {
+          // No heuristic mapping
+          matchAcross = true;
+          matchDown = true;
+        }
+        // Check orientation
+        if (!(matchAcross && entry.orientation == EntryOrientation.across ||
+            matchDown && entry.orientation == EntryOrientation.down)) {
+          continue;
+        }
+        // Filter by length if available
+        if (clue.length != null && clue.length! != entry.length) {
+          continue;
+        }
+        // Check possible values, if known
+        if (clue.possibleValues != null) {
+          assert(entry.possibleValues.isNotEmpty);
+          if (clue.possibleValues!.intersection(entry.possibleValues).isEmpty) {
+            continue;
+          }
+        }
+        possibleClues.add(clue);
+      }
+      if (possibleClues.isEmpty) continue;
+      entryPossibleClues[entry] = possibleClues;
+    }
+    // Order the map by number of clues (fewest first)
+    var sortedEntries = entryPossibleClues.entries.toList()
+      ..sort((a, b) => a.value.length.compareTo(b.value.length));
+    entryPossibleClues
+      ..clear()
+      ..addEntries(sortedEntries);
+    return entryPossibleClues;
+  }
+
   Expressable getExpressable(String expressableName) {
     var expressable = variables[expressableName] as Expressable?;
     expressable ??= clues[expressableName];

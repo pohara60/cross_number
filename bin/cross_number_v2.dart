@@ -26,13 +26,13 @@ void main(List<String> arguments) {
     // final puzzle = puzzle3();
     // final puzzle = threes();
     // final puzzle = abcd();
-    // final puzzle = primania();
-    final puzzle = sumsquares();
+    final puzzle = primania();
+    // final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
-        traceSolve: true, allowBacktracking: true, traceBacktrace: true);
-    solver.solve();
+        traceSolve: true, allowBacktracking: true, traceBacktrace: false);
+    solver.solve(null, MappingStrategy.entryPriority);
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');
     return;

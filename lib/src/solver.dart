@@ -36,6 +36,11 @@ class SolverState {
   }
 }
 
+enum MappingStrategy {
+  cluePriority,
+  entryPriority,
+}
+
 /// The main solver for cross number puzzles.
 ///
 /// The solver orchestrates the process of solving a puzzle by iteratively
@@ -264,11 +269,13 @@ class Solver {
   ///
   /// This method will delegate to the appropriate solving strategy based on
   /// whether the clue-to-entry mapping is known.
-  void solve([bool Function()? callback]) {
+  void solve(
+      [bool Function()? callback,
+      MappingStrategy strategy = MappingStrategy.entryPriority]) {
     if (puzzle.mappingIsKnown) {
       _solveKnownMapping(callback, allowBacktracking);
     } else {
-      _solveUnknownMapping(callback);
+      _solveUnknownMapping(callback, strategy);
     }
   }
 
@@ -301,6 +308,7 @@ class Solver {
   void _solveKnownMapping(
       [bool Function()? callback, bool valueBacktracking = true]) {
     if (trace) print('Solving puzzle with known mapping...');
+    final stopwatch = Stopwatch()..start();
     int iteration = 0;
     do {
       iteration++;
@@ -335,6 +343,8 @@ class Solver {
     } while (_updated);
 
     // If solution not exact, start backtracking
+    stopwatch.stop();
+    print('Solve time: ${stopwatch.elapsedMilliseconds}ms');
     if (isSolutionValid()) {
       if (callback != null) callback.call();
       printPuzzle();
@@ -348,12 +358,15 @@ class Solver {
       // Disable answer checking during backtracking
       Expressable.checkAnswer = false;
       trace = traceBacktrace; // Use traceBacktrace for backtracking
+      stopwatch.reset();
       var solutionCount = _backtrack(0, 0, callback);
       if (solutionCount == 0) {
         print("Backtracking: no solutions found.");
       } else {
         print("Backtracking: $solutionCount solutions found.");
       }
+      stopwatch.stop();
+      print('Backtracking time: ${stopwatch.elapsedMilliseconds}ms');
     }
   }
 
@@ -904,7 +917,9 @@ class Solver {
     return (true, updated);
   }
 
-  void _solveUnknownMapping([bool Function()? callback]) {
+  void _solveUnknownMapping(
+      [bool Function()? callback,
+      MappingStrategy strategy = MappingStrategy.cluePriority]) {
     if (trace) print('Solving puzzle with unknown mapping...');
 
     // First, solve as much as possible without any mappings
@@ -921,18 +936,31 @@ class Solver {
           'Backtracking mappings: ${unmappedClues.length} clues, ${availableEntries.length} entries');
     }
 
-    // Get possible entries for clues
-    Map<Clue, List<Entry>> cluePossibleEntries =
-        puzzle.getPossibleEntriesForClues(unmappedClues, availableEntries);
-    final unmappedCluesSorted = cluePossibleEntries.keys.toList();
-
     // Start backtracking to find a valid mapping
-    // Disable answer checking during backtracking
     Expressable.checkAnswer = false;
     trace = traceBacktrace; // Use traceBacktrace for backtracking
     var solutionCount = 0;
-    solutionCount = _solveWithBacktracking(unmappedCluesSorted,
-        availableEntries, cluePossibleEntries, solutionCount, callback);
+    final stopwatch = Stopwatch()..start();
+
+    switch (strategy) {
+      case MappingStrategy.cluePriority:
+        Map<Clue, List<Entry>> cluePossibleEntries =
+            puzzle.getPossibleEntriesForClues(unmappedClues, availableEntries);
+        final unmappedCluesSorted = cluePossibleEntries.keys.toList();
+        solutionCount = _solveWithBacktrackingByClue(unmappedCluesSorted,
+            availableEntries, cluePossibleEntries, solutionCount, callback);
+        break;
+      case MappingStrategy.entryPriority:
+        final entryGroups = _groupEntriesByIntersection(availableEntries);
+        Map<Entry, List<Clue>> entryPossibleClues =
+            puzzle.getPossibleCluesForEntries(unmappedClues, availableEntries);
+        solutionCount = _solveWithBacktrackingByEntry(entryGroups, 0, 0,
+            unmappedClues, entryPossibleClues, solutionCount, callback);
+        break;
+    }
+
+    stopwatch.stop();
+    print('Backtracking time: ${stopwatch.elapsedMilliseconds}ms');
     if (solutionCount > 0) {
       print('Backtracking mappings: $solutionCount solution(s) found!');
     } else {
@@ -940,12 +968,177 @@ class Solver {
     }
   }
 
+  List<List<Entry>> _groupEntriesByIntersection(List<Entry> entries) {
+    final adj = <Entry, List<Entry>>{};
+    for (var e1 in entries) {
+      adj[e1] = [];
+      for (var e2 in entries) {
+        if (e1 != e2 && e1.intersects(e2)) {
+          adj[e1]!.add(e2);
+        }
+      }
+    }
+
+    final groups = <List<Entry>>[];
+    final visited = <Entry>{};
+
+    void findGroup(Entry entry, List<Entry> currentGroup) {
+      visited.add(entry);
+      currentGroup.add(entry);
+      if (adj[entry] == null) return; // No neighbors, unlikely!
+      var neighbors = adj[entry]!;
+      for (var neighbor in neighbors) {
+        if (!visited.contains(neighbor)) {
+          // Do not follow links to entries with only one other intersection
+          var neighborNeighbors =
+              adj[neighbor]!.where((n) => n != entry).toList();
+          var neighborNeighborsNeighbors =
+              neighborNeighbors.expand((e) => adj[e]!).toList();
+          var overlap = neighborNeighborsNeighbors
+              .firstWhereOrNull((n) => n != neighbor && neighbors.contains(n));
+          if (overlap == null) {
+            continue;
+          }
+          // Skip entries with 2 or fewer intersections to avoid chains
+          if (adj[neighbor]!.length <= 2) continue;
+          findGroup(neighbor, currentGroup);
+        }
+      }
+    }
+
+    for (var entry in entries) {
+      if (!visited.contains(entry)) {
+        final newGroup = <Entry>[];
+        findGroup(entry, newGroup);
+        groups.add(newGroup);
+      }
+    }
+
+    // Sort groups by size descending
+    groups.sort((a, b) => b.length.compareTo(a.length));
+    return groups;
+  }
+
+  int _solveWithBacktrackingByEntry(
+    List<List<Entry>> entryGroups,
+    int groupIndex,
+    int entryIndex,
+    List<Clue> availableClues,
+    Map<Entry, List<Clue>> entryPossibleClues,
+    int solutionCount,
+    bool Function()? callback,
+  ) {
+    if (groupIndex == entryGroups.length) {
+      // Base case: All entries have been mapped
+      if (isSolutionValid()) {
+        if (traceBacktrace) print('Backtracking: Solution found!');
+        if (callback != null) {
+          if (!callback()) {
+            if (traceBacktrace) print('Backtracking: Callback returned false.');
+            return solutionCount;
+          }
+        }
+        _printSolution();
+        print(
+            'Clue mapping: ${puzzle.clues.values.where((c) => c.entry != null).map((clue) => '${clue.id}->${clue.entry!.id}').join(', ')}');
+        solutionCount++;
+      } else {
+        if (traceBacktrace) print('Backtracking: Not a valid solution.');
+      }
+      return solutionCount;
+    }
+
+    final currentGroup = entryGroups[groupIndex];
+    final currentEntry = currentGroup[entryIndex];
+
+    if (entryPossibleClues[currentEntry] == null) {
+      int nextEntryIndex = entryIndex + 1;
+      int nextGroupIndex = groupIndex;
+      if (nextEntryIndex == currentGroup.length) {
+        nextGroupIndex++;
+        nextEntryIndex = 0;
+      }
+      solutionCount = _solveWithBacktrackingByEntry(
+          entryGroups,
+          nextGroupIndex,
+          nextEntryIndex,
+          availableClues,
+          entryPossibleClues,
+          solutionCount,
+          callback);
+    } else {
+      final matchingClues = entryPossibleClues[currentEntry]!
+          .where((clue) => availableClues.contains(clue))
+          .toList();
+
+      if (traceBacktrace) {
+        print(
+            'Backtracking mappings: Trying to map entry ${currentEntry.id} to one of ${matchingClues.length} clues');
+      }
+
+      for (final clue in matchingClues) {
+        if (traceBacktrace) {
+          print('Backtracking mappings:   Trying clue ${clue.id}');
+        }
+        final savedState = _saveState();
+
+        // Map entry to clue
+        currentEntry.clueId = clue.id;
+        clue.entry = currentEntry;
+
+        // Reduce possible values
+        final intersection =
+            clue.possibleValues!.intersection(currentEntry.possibleValues);
+        if (intersection.isEmpty) {
+          _restoreState(savedState);
+          currentEntry.clueId = null;
+          clue.entry = null;
+          continue;
+        }
+        clue.possibleValues = intersection;
+        currentEntry.possibleValues = Set.from(intersection);
+
+        var (consistent, _) = _propagateConstraints(traceBacktrace);
+        if (traceBacktrace) {
+          print(
+              'Backtracking mappings:     Propagation is ${consistent ? 'consistent' : 'inconsistent'}');
+        }
+
+        if (consistent) {
+          final remainingClues =
+              availableClues.where((c) => c != clue).toList();
+          int nextEntryIndex = entryIndex + 1;
+          int nextGroupIndex = groupIndex;
+          if (nextEntryIndex == currentGroup.length) {
+            nextGroupIndex++;
+            nextEntryIndex = 0;
+          }
+          solutionCount = _solveWithBacktrackingByEntry(
+              entryGroups,
+              nextGroupIndex,
+              nextEntryIndex,
+              remainingClues,
+              entryPossibleClues,
+              solutionCount,
+              callback);
+        }
+
+        // Backtrack
+        _restoreState(savedState);
+        currentEntry.clueId = null;
+        clue.entry = null;
+      }
+    }
+
+    return solutionCount;
+  }
+
   /// The recursive backtracking function for solving puzzles with unknown mappings.
   ///
   /// This function tries to map each clue to an available entry and then
   /// recursively calls itself to map the next clue. If a dead end is reached,
   /// it backtracks and tries a different mapping.
-  int _solveWithBacktracking(
+  int _solveWithBacktrackingByClue(
     List<Clue> unmappedClues,
     List<Entry> availableEntries,
     Map<Clue, List<Entry>> cluePossibleEntries,
@@ -1019,6 +1212,19 @@ class Solver {
         }
       }
 
+      // New check:
+      final intersection =
+          currentClue.possibleValues!.intersection(entry.possibleValues);
+      if (intersection.isEmpty) {
+        // This mapping is not possible, backtrack
+        _restoreState(savedState);
+        entry.clueId = null;
+        currentClue.entry = null;
+        continue;
+      }
+      currentClue.possibleValues = intersection;
+      entry.possibleValues = Set.from(intersection);
+
       // Propagate constraints
       var (consistent, _) = _propagateConstraints(traceBacktrace);
       if (traceBacktrace) {
@@ -1029,8 +1235,8 @@ class Solver {
       if (consistent) {
         final remainingEntries =
             availableEntries.where((e) => e != entry).toList();
-        solutionCount = _solveWithBacktracking(remainingClues, remainingEntries,
-            cluePossibleEntries, solutionCount, callback);
+        solutionCount = _solveWithBacktrackingByClue(remainingClues,
+            remainingEntries, cluePossibleEntries, solutionCount, callback);
       }
 
       // Backtrack

@@ -56,6 +56,25 @@ class Entry extends Expressable {
     possibleValues = List<int>.generate(max - min + 1, (i) => i + min).toSet();
   }
 
+  bool intersects(Entry other) {
+    if (orientation == other.orientation) {
+      return false;
+    }
+    if (orientation == EntryOrientation.across) {
+      // this is across, other is down
+      return other.col >= col &&
+          other.col < col + length &&
+          row >= other.row &&
+          row < other.row + other.length;
+    } else {
+      // this is down, other is across
+      return col >= other.col &&
+          col < other.col + other.length &&
+          other.row >= row &&
+          other.row < row + length;
+    }
+  }
+
   Entry copyWith({
     String? id,
     int? row,
