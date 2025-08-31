@@ -106,6 +106,148 @@ void main() {
       expect(evaluatedResult.map((r) => r.value), unorderedEquals([21, 543]));
     });
   });
+
+  group('Relational Operators', () {
+    test('Less Than Operator', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {},
+      );
+      var parser = Parser('2 < 3');
+      var expression = parser.parse();
+      var evaluator = Evaluator(puzzle);
+      var evaluatedResult =
+          evaluator.evaluateExpression(expression, [], min: 1, max: 20);
+      expect(evaluatedResult.map((r) => r.value), equals({2}));
+
+      parser = Parser('3 < 2');
+      expression = parser.parse();
+      evaluator = Evaluator(puzzle);
+      evaluatedResult =
+          evaluator.evaluateExpression(expression, [], min: 1, max: 20);
+      expect(evaluatedResult.map((r) => r.value), isEmpty);
+    });
+
+    test('Greater Than Operator', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {},
+      );
+      var parser = Parser('3 > 2');
+      var expression = parser.parse();
+      var evaluator = Evaluator(puzzle);
+      var evaluatedResult =
+          evaluator.evaluateExpression(expression, [], min: 1, max: 20);
+      expect(evaluatedResult.map((r) => r.value), equals({3}));
+
+      parser = Parser('2 > 3');
+      expression = parser.parse();
+      evaluator = Evaluator(puzzle);
+      evaluatedResult =
+          evaluator.evaluateExpression(expression, [], min: 1, max: 20);
+      expect(evaluatedResult.map((r) => r.value), isEmpty);
+    });
+
+    test('Less Than with variables', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {
+          'A': Variable('A', {1, 2, 3}),
+          'B': Variable('B', {2, 3, 4}),
+        },
+      );
+      final parser = Parser('A < B');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final evaluatedResult =
+          evaluator.evaluateExpression(expression, ['A', 'B'], min: 1, max: 20);
+      // A=1, B=2,3,4 -> 1
+      // A=2, B=3,4 -> 2
+      // A=3, B=4 -> 3
+      expect(evaluatedResult.map((r) => r.value).toSet(),
+          unorderedEquals({1, 2, 3}));
+      expect(
+          evaluatedResult
+              .where((r) => r.value == 1)
+              .map((r) => r.variableValues),
+          unorderedEquals([
+            {'A': 1, 'B': 2},
+            {'A': 1, 'B': 3},
+            {'A': 1, 'B': 4},
+          ]));
+      expect(
+          evaluatedResult
+              .where((r) => r.value == 2)
+              .map((r) => r.variableValues),
+          unorderedEquals([
+            {'A': 2, 'B': 3},
+            {'A': 2, 'B': 4},
+          ]));
+      expect(
+          evaluatedResult
+              .where((r) => r.value == 3)
+              .map((r) => r.variableValues),
+          unorderedEquals([
+            {'A': 3, 'B': 4},
+          ]));
+    });
+
+    test('Greater Than with variables', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {
+          'A': Variable('A', {1, 2, 3}),
+          'B': Variable('B', {2, 3, 4}),
+        },
+      );
+      final parser = Parser('B > A');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final evaluatedResult =
+          evaluator.evaluateExpression(expression, ['A', 'B'], min: 1, max: 20);
+      // B=2, A=1 -> 2
+      // B=3, A=1,2 -> 3
+      // B=4, A=1,2,3 -> 4
+      expect(evaluatedResult.map((r) => r.value).toSet(),
+          unorderedEquals([2, 3, 4]));
+      expect(
+          evaluatedResult
+              .where((r) => r.value == 2)
+              .map((r) => r.variableValues),
+          unorderedEquals([
+            {'A': 1, 'B': 2},
+          ]));
+      expect(
+          evaluatedResult
+              .where((r) => r.value == 3)
+              .map((r) => r.variableValues),
+          unorderedEquals([
+            {'A': 1, 'B': 3},
+            {'A': 2, 'B': 3},
+          ]));
+      expect(
+          evaluatedResult
+              .where((r) => r.value == 4)
+              .map((r) => r.variableValues),
+          unorderedEquals([
+            {'A': 1, 'B': 4},
+            {'A': 2, 'B': 4},
+            {'A': 3, 'B': 4},
+          ]));
+    });
+  });
 }
 
 void expectExpression(

@@ -11,6 +11,16 @@ import 'package:test/test.dart';
 
 void main() {
   group('Monadic functions', () {
+    test('should evaluate multiple', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$multiple 7').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 30);
+      expect(result, equals([14, 21, 28]));
+    });
+
     test('should evaluate squareroot', () {
       final puzzle = PuzzleDefinition(
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});

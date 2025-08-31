@@ -69,6 +69,21 @@ class MonadicFunctionRegistry {
         (values, {min, max}) => values.map((v) => v * v).toList();
     _functions['cube'] =
         (values, {min, max}) => values.map((v) => v * v * v).toList();
+    _functions['multiple'] = (values, {min, max}) {
+      if (values.isEmpty) return [];
+      final base = values.first;
+      if (base == 0) return [];
+      final results = <int>[];
+      final start = (min ?? 1) / base;
+      final end = (max ?? 100000) / base;
+      for (var i = start.ceil(); i <= end; i++) {
+        final multiple = base * i;
+        if (multiple >= (min ?? 1) && multiple <= (max ?? 100000)) {
+          results.add(multiple);
+        }
+      }
+      return results;
+    };
   }
 
   MonadicFunction? get(String name) {

@@ -16,7 +16,11 @@ class ExpressionInverter {
     final expressableVisitor = _ExpressableVisitor(target);
     expression.accept(expressableVisitor, min: 1, max: 1);
     if (expressableVisitor.found) {
-      return _rearrange(expression);
+      try {
+        return _rearrange(expression);
+      } on InvertException catch (e) {
+        print(e.message);
+      }
     }
     return null;
   }
@@ -91,7 +95,13 @@ class ExpressionInverter {
               return _rearrange(right, child);
             }
           case TokenType.AMPERSAND:
-            throw InvertException('Cannot invert logical AND expressions');
+          case TokenType.EQUAL:
+            if (leftContainsEntry) {
+              return _rearrange(left, null);
+            }
+            if (rightContainsEntry) {
+              return _rearrange(right, null);
+            }
           default:
             throw InvertException(
                 'Unsupported operator for inversion: ${expressionToSolve.operator.lexeme}');

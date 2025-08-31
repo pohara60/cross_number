@@ -179,6 +179,8 @@ enum TokenType {
   EQUAL,
   AMPERSAND,
   REVERSE,
+  LESS,
+  GREATER,
 
   // Literals.
   NUMBER,
@@ -246,9 +248,7 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
 
   @override
   void visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max}) {
-    // TODO: Handle generator expressions if needed for variable extraction.
-  }
+      {required num min, required num max}) {}
 
   @override
   void visitMonadicExpression(MonadicExpression expression,

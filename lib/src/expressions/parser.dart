@@ -52,6 +52,12 @@ class Parser {
       case '=':
         _addToken(TokenType.EQUAL);
         break;
+      case '<':
+        _addToken(TokenType.LESS);
+        break;
+      case '>':
+        _addToken(TokenType.GREATER);
+        break;
       case '&':
         _addToken(TokenType.AMPERSAND);
         break;
@@ -160,25 +166,25 @@ class Parser {
   }
 
   Expression _expression() {
-    return _equality();
+    return _logicalAnd();
   }
 
-  Expression _equality() {
-    var expr = _logicalAnd();
+  Expression _logicalAnd() {
+    var expr = _comparison();
 
-    while (_match([TokenType.EQUAL])) {
+    while (_match([TokenType.AMPERSAND])) {
       final operator = _previous();
-      final right = _logicalAnd();
+      final right = _comparison();
       expr = BinaryExpression(expr, operator, right);
     }
 
     return expr;
   }
 
-  Expression _logicalAnd() {
+  Expression _comparison() {
     var expr = _term();
 
-    while (_match([TokenType.AMPERSAND])) {
+    while (_match([TokenType.EQUAL, TokenType.LESS, TokenType.GREATER])) {
       final operator = _previous();
       final right = _term();
       expr = BinaryExpression(expr, operator, right);

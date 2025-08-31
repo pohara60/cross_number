@@ -1,0 +1,224 @@
+
+Exited (-1).
+Connecting to VM Service at ws://127.0.0.1:63035/43yAc5BuMZ4=/ws
+Cross Number Solver v2 CLI
+Unsupported expression for inversion: MonadicExpression
+Unsupported expression for inversion: MonadicExpression
+Unsupported expression for inversion: MonadicExpression
+Unsupported expression for inversion: MonadicExpression
+Unsupported expression for inversion: MonadicExpression
+Unsupported expression for inversion: MonadicExpression
+Puzzle: CouplesDifferences
+Grids: (main)
+Entries:{
+  A1: (A1>D4), (I+D4) 90 {10..29,70 more,99}
+  A2: (A2<D1), (D1-VI), (D1-(X/2)) 900 {100..119,880 more,999}
+  A5: (A5>D14), (II+D14) 90 {10..29,70 more,99}
+  A7: (A7<D10), (D10-IX) 9000 {1000..1019,8980 more,9999}
+  A9: (A9>D6), (III+D6) 9000 {1000..1019,8980 more,9999}
+  A13: (A13<D2), (D2-VII) 9000 {1000..1019,8980 more,9999}
+  A15: (A15<D3), (D3-VIII) 90 {10..29,70 more,99}
+  A16: (A16<D12), (D12-X) 900 {100..119,880 more,999}
+  A17: (A17>D13), (V+D13) 90 {10..29,70 more,99}
+  D1: (D1>A2), (VI+A2), ((X/2)+A2) 900 {100..119,880 more,999}
+  D2: (D2>A13), (VII+A13) 9000 {1000..1019,8980 more,9999}
+  D3: (D3>A15), (VIII+A15) 90 {10..29,70 more,99}
+  D4: (D4<A1), (A1-I) 90 {10..29,70 more,99}
+  D6: (D6<A9), (A9-III) 9000 {1000..1019,8980 more,9999}
+  D10: (D10>A7), (IX+A7) 9000 {1000..1019,8980 more,9999}
+  D12: (D12>A16), (X+A16) 900 {100..119,880 more,999}
+  D13: (D13<A17), (A17-V) 90 {10..29,70 more,99}
+  D14: (D14<A5), (A5-II) 90 {10..29,70 more,99}
+  D8: (A11-IV) 9000 {1000..1019,8980 more,9999}
+  A11: (IV+D8) 9000 {1000..1019,8980 more,9999}
+}
+Clues:{
+  I: ((A1-D4)=#square) null null
+  II: ((A5-D14)=#square) null null
+  III: ((A9-D6)=#triangular) null null
+  IV: ((A11-D8)=#triangular) null null
+  V: ((A17-D13)=#triangular) null null
+  VI: ((D1-A2)=multiple(((D3-A15)))) null null
+  VII: ((D2-A13)=multiple(((A1-D4)))) null null
+  VIII: ((D3-A15)=#cube) null null
+  IX: ((D10-A7)=multiple(('((A1-D4))))) null null
+  X: ((D12-A16)=(2*((D1-A2)))) null null
+}
+Variables:{
+}
+Puzzle: CouplesDifferences
+Solving puzzle with known mapping...
+Iteration 1
+  Solving expressables...
+    Clue I: 6 -> 6 {16,25,36,49,64,81}
+    Entry A1: 90 -> 74 {26..45,54 more,99}
+    Entry D4: 90 -> 74 {10..29,54 more,83}
+    Clue II: 6 -> 6 {16,25,36,49,64,81}
+    Entry A5: 90 -> 74 {26..45,54 more,99}
+    Entry D14: 90 -> 74 {10..29,54 more,83}
+    Expression for III could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations for variables: A11, D8
+    Clue V: 80 -> 80 {10..29,60 more,89}
+    Entry A17: 90 -> 80 {20..39,60 more,99}
+    Entry D13: 90 -> 80 {10..29,60 more,89}
+    Expression for VI could not be evaluated: Too many combinations for variables: D1, A2, D3, A15
+    Expression for VII could not be evaluated: Too many combinations for variables: D2, A13, A1, D4
+    Clue VIII: 2 -> 2 {27,64}
+    Entry D3: 90 -> 63 {37..56,43 more,99}
+    Entry A15: 90 -> 63 {10..29,43 more,72}
+    Expression for IX could not be evaluated: Too many combinations for variables: D10, A7, A1, D4
+    Expression for X could not be evaluated: Too many combinations for variables: D12, A16, D1, A2
+    Expression for A2 could not be evaluated: Too many combinations for variables: D1, VI
+    Expression for A7 could not be evaluated: Too many combinations for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations for variables: A13, D2
+    Expression for A16 could not be evaluated: Too many combinations for variables: D12, X
+    Expression for D1 could not be evaluated: Too many combinations for variables: VI, A2
+    Expression for D2 could not be evaluated: Too many combinations for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations for variables: D10, A7
+    Expression for D12 could not be evaluated: Too many combinations for variables: X, A16
+    Expression for A11 could not be evaluated: Too many combinations for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations for variables: A11, IV
+  Propagating constraints...
+    Entry D1: 900 -> 800 {200..219,780 more,999}
+    Entry A2: 900 -> 630 {130..149,610 more,999}
+    Entry D1: 800 -> 640 {220..239,620 more,999}
+    Entry A5: 74 -> 67 {26..29,31..39,41..47,47 more,99}
+    Entry D2: 9000 -> 8100 {1100..1119,8080 more,9999}
+    Entry A7: 9000 -> 8100 {1010..1029,8080 more,9999}
+    Entry D2: 8100 -> 7290 {1110..1129,7270 more,9999}
+    Entry A9: 9000 -> 8100 {1100..1119,8080 more,9999}
+    Entry A13: 9000 -> 8000 {1000..1019,7980 more,8999}
+    Entry A13: 8000 -> 6400 {1010..1029,6380 more,8989}
+    Entry D8: 9000 -> 6300 {1001..1007,1011..1017,1021..1026,6280 more,9997}
+    Expression for III could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations for variables: A11, D8
+    Expression for VI could not be evaluated: Too many combinations for variables: D1, A2, D3, A15
+    Expression for VII could not be evaluated: Too many combinations for variables: D2, A13, A1, D4
+    Expression for IX could not be evaluated: Too many combinations for variables: D10, A7, A1, D4
+    Expression for X could not be evaluated: Too many combinations for variables: D12, A16, D1, A2
+    Expression for A2 could not be evaluated: Too many combinations for variables: D1, VI
+    Expression for A7 could not be evaluated: Too many combinations for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations for variables: A13, D2
+    Expression for A16 could not be evaluated: Too many combinations for variables: D12, X
+    Expression for D1 could not be evaluated: Too many combinations for variables: VI, A2
+    Expression for D2 could not be evaluated: Too many combinations for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations for variables: D10, A7
+    Expression for D12 could not be evaluated: Too many combinations for variables: X, A16
+    Expression for A11 could not be evaluated: Too many combinations for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations for variables: A11, IV
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations for variables: A11, D8
+    Expression for VI could not be evaluated: Too many combinations for variables: D1, A2, D3, A15
+    Expression for VII could not be evaluated: Too many combinations for variables: D2, A13, A1, D4
+    Expression for IX could not be evaluated: Too many combinations for variables: D10, A7, A1, D4
+    Expression for X could not be evaluated: Too many combinations for variables: D12, A16, D1, A2
+    Expression for A2 could not be evaluated: Too many combinations for variables: D1, VI
+    Expression for A7 could not be evaluated: Too many combinations for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations for variables: A13, D2
+    Expression for A16 could not be evaluated: Too many combinations for variables: D12, X
+    Expression for D1 could not be evaluated: Too many combinations for variables: VI, A2
+    Expression for D2 could not be evaluated: Too many combinations for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations for variables: D10, A7
+    Expression for D12 could not be evaluated: Too many combinations for variables: X, A16
+    Expression for A11 could not be evaluated: Too many combinations for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations for variables: A11, IV
+Iteration 2
+  Solving expressables...
+    Expression for III could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations for variables: A11, D8
+    Expression for VI could not be evaluated: Too many combinations for variables: D1, A2, D3, A15
+    Expression for VII could not be evaluated: Too many combinations for variables: D2, A13, A1, D4
+    Expression for IX could not be evaluated: Too many combinations for variables: D10, A7, A1, D4
+    Expression for X could not be evaluated: Too many combinations for variables: D12, A16, D1, A2
+    Expression for A2 could not be evaluated: Too many combinations for variables: D1, VI
+    Expression for A7 could not be evaluated: Too many combinations for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations for variables: A13, D2
+    Expression for A16 could not be evaluated: Too many combinations for variables: D12, X
+    Expression for D1 could not be evaluated: Too many combinations for variables: VI, A2
+    Expression for D2 could not be evaluated: Too many combinations for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations for variables: D10, A7
+    Expression for D12 could not be evaluated: Too many combinations for variables: X, A16
+    Expression for A11 could not be evaluated: Too many combinations for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations for variables: A11, IV
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations for variables: A11, D8
+    Expression for VI could not be evaluated: Too many combinations for variables: D1, A2, D3, A15
+    Expression for VII could not be evaluated: Too many combinations for variables: D2, A13, A1, D4
+    Expression for IX could not be evaluated: Too many combinations for variables: D10, A7, A1, D4
+    Expression for X could not be evaluated: Too many combinations for variables: D12, A16, D1, A2
+    Expression for A2 could not be evaluated: Too many combinations for variables: D1, VI
+    Expression for A7 could not be evaluated: Too many combinations for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations for variables: A13, D2
+    Expression for A16 could not be evaluated: Too many combinations for variables: D12, X
+    Expression for D1 could not be evaluated: Too many combinations for variables: VI, A2
+    Expression for D2 could not be evaluated: Too many combinations for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations for variables: D10, A7
+    Expression for D12 could not be evaluated: Too many combinations for variables: X, A16
+    Expression for A11 could not be evaluated: Too many combinations for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations for variables: A11, IV
+Solve time: 35822ms
+Grid:
++--+--+--+--+--+--+
+| ?  ?| ?  ?  ?| ?|
++  +--+  +  +--+  +
+| ?  ?| ?  ?  ?  ?|
++  +  +  +--+  +--+
+| ?| ?| ?  ?  ?  ?|
++--+  +  +  +  +--+
+| ?  ?  ?  ?| ?| ?|
++--+  +--+  +  +  +
+| ?  ?  ?  ?| ?  ?|
++  +--+  +  +--+  +
+| ?| ?  ?  ?| ?  ?|
++--+--+--+--+--+--+
+Variables:
+Clues:
+I: 6  {16,25,36,49,64,81}
+II: 6  {16,25,36,49,64,81}
+III: uninitialised
+IV: uninitialised
+V: 80  {10..29,60 more,89}
+VI: uninitialised
+VII: uninitialised
+VIII: 2  {27,64}
+IX: uninitialised
+X: uninitialised
+Entries:
+A1: 74  {26..45,54 more,99}
+A2: 630  {130..149,610 more,999}
+A5: 67  {26..29,31..39,41..47,47 more,99}
+A7: 8100  {1010..1029,8080 more,9999}
+A9: 8100  {1100..1119,8080 more,9999}
+A13: 6400  {1010..1029,6380 more,8989}
+A15: 63  {10..29,43 more,72}
+A16: 900  {100..119,880 more,999}
+A17: 80  {20..39,60 more,99}
+D1: 640  {220..239,620 more,999}
+D2: 7290  {1110..1129,7270 more,9999}
+D3: 63  {37..56,43 more,99}
+D4: 74  {10..29,54 more,83}
+D6: 9000  {1000..1019,8980 more,9999}
+D10: 9000  {1000..1019,8980 more,9999}
+D12: 900  {100..119,880 more,999}
+D13: 80  {10..29,60 more,89}
+D14: 74  {10..29,54 more,83}
+D8: 6300  {1001..1007,1011..1017,1021..1026,6280 more,9997}
+A11: 9000  {1000..1019,8980 more,9999}
+Solution not complete, backtracking
+Backtracking: Trying expressable I -> 6 {16,25,36,49,64,81}
+Backtracking: Trying value 16 for expressable I
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations for variables: A11, D8

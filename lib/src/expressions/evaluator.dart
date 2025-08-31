@@ -54,9 +54,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     // Some variables may be pinned already
     var unpinnedVariables =
         variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
-    if (tooManyCombinations(unpinnedVariables)) {
+    var combinations = tooManyCombinations(unpinnedVariables);
+    if (combinations != null) {
       throw EvaluatorNotPossiblexception(
-          'Too many combinations for variables: ${unpinnedVariables.join(', ')}');
+          'Too many combinations $combinations for variables: ${unpinnedVariables.join(', ')}');
     }
     final results = _internalEvaluate(expression, unpinnedVariables,
         min: min as num, max: max as num);
@@ -242,6 +243,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           break;
         case TokenType.EQUAL:
         case TokenType.AMPERSAND:
+        case TokenType.LESS:
+        case TokenType.GREATER:
           rightMin = leftMin;
           rightMax = leftMax;
           break;
@@ -276,6 +279,14 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
             break;
           case TokenType.EQUAL:
             if (left != right) continue;
+            resultValue = left;
+            break;
+          case TokenType.LESS:
+            if (left >= right) continue;
+            resultValue = left;
+            break;
+          case TokenType.GREATER:
+            if (left <= right) continue;
             resultValue = left;
             break;
           case TokenType.AMPERSAND:
@@ -393,7 +404,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
         'Unknown monadic function: ${expression.operator.lexeme}');
   }
 
-  bool tooManyCombinations(List<String> unpinnedVariables) {
+  int? tooManyCombinations(List<String> unpinnedVariables) {
     // Heuristic: if more than 100000 combinations, consider it too many
     const maxCombinations = 1000000;
     int combinations = 1;
@@ -401,14 +412,14 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       var expressable = puzzle.getExpressable(variable);
       final possibleValues = expressable.possibleValues;
       if (possibleValues == null) {
-        return true; // No possible values means cannot evaluate yet
+        return 0; // No possible values means cannot evaluate yet
       }
       combinations *= possibleValues.length;
-      if (combinations > maxCombinations) {
-        return true;
-      }
     }
-    return false;
+    if (combinations > maxCombinations) {
+      return combinations;
+    }
+    return null;
   }
 }
 

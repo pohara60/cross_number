@@ -4,6 +4,7 @@ import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/solver.dart';
 import '../puzzles/abcd.dart';
 import '../puzzles/after_nicholas.dart';
+import '../puzzles/couples_differences.dart';
 import '../puzzles/increasing_prime.dart';
 import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
@@ -26,13 +27,14 @@ void main(List<String> arguments) {
     // final puzzle = puzzle3();
     // final puzzle = threes();
     // final puzzle = abcd();
-    final puzzle = primania();
+    // final puzzle = primania();
+    final puzzle = couplesDifferences();
     // final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
-        traceSolve: true, allowBacktracking: true, traceBacktrace: false);
-    solver.solve(null, MappingStrategy.entryPriority);
+        traceSolve: true, allowBacktracking: true, traceBacktrace: true);
+    solver.solve();
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');
     return;
