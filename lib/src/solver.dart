@@ -16,6 +16,7 @@ import 'package:crossnumber/src/models/grid.dart';
 
 import 'expressions/evaluator.dart';
 import 'models/variable.dart'; // Added for _printSolution
+import 'grouper.dart';
 
 class SolverState {
   final Map<String, Set<int>?> cluePossibleValues;
@@ -65,12 +66,15 @@ class Solver {
   /// A map of variable names to the clues that depend on them.
   final Map<String, List<Clue>> _variableDependencies = {};
 
+  final bool useTransitiveGrouping;
+
   /// Creates a new solver for the given [puzzle].
   Solver(
     this.puzzle, {
     this.traceSolve = false,
     this.allowBacktracking = true,
     this.traceBacktrace = false,
+    this.useTransitiveGrouping = false,
   }) : trace = traceSolve {
     // Initialize clues with possible values based on entry length
     for (var clue in puzzle.clues.values) {
@@ -309,23 +313,41 @@ class Solver {
       [bool Function()? callback, bool valueBacktracking = true]) {
     if (trace) print('Solving puzzle with known mapping...');
     final stopwatch = Stopwatch()..start();
+
+    // Calculate groups once
+    final List<List<Expressable>> expressableGroups;
+    if (useTransitiveGrouping) {
+      final grouper = TransitiveExpressableGrouper();
+      expressableGroups = grouper.findGroups(puzzle, trace);
+    } else {
+      final clueGroups = puzzle.findClueGroups();
+      if (trace) {
+        print('Found ${clueGroups.length} clue groups:');
+        for (final group in clueGroups) {
+          print('  Group: ${group.clues.join(', ')}');
+        }
+      }
+      expressableGroups = clueGroups
+          .map((g) => g.clues.map((c) => puzzle.clues[c]!).toList())
+          .toList();
+    }
+
     int iteration = 0;
     do {
       iteration++;
       if (trace) print('Iteration $iteration');
       _updated = false;
 
-      // Solve clue groups
-      final clueGroups = puzzle.findClueGroups();
-      for (var group in clueGroups) {
-        if (solveClueGroup(group)) {
+      // Solve groups
+      for (var group in expressableGroups) {
+        if (solveExpressableGroup(group)) {
           _updated = true;
         }
       }
 
-      // Solve expressables
+      // Solve expressables not in groups
       if (trace) print('  Solving expressables...');
-      var (consistent, updated) = _solveExpressables(clueGroups);
+      var (consistent, updated) = _solveExpressables(expressableGroups);
       if (consistent) {
         if (updated) _updated = true;
         (consistent, updated) = _propagateConstraints(trace);
@@ -371,13 +393,14 @@ class Solver {
   }
 
   (bool consistent, bool updated) _solveExpressables(
-      List<ClueGroup>? clueGroups) {
+      List<List<Expressable>>? groups) {
     var updated = false;
+    final groupedExpressableIds =
+        groups?.expand((g) => g.map((e) => e.id)).toSet() ?? <String>{};
+
     for (var expressable in puzzle.expressables.values) {
-      if (expressable is Clue &&
-          clueGroups != null &&
-          clueGroups.any((g) => g.clues.contains(expressable.id))) {
-        continue; // Skip clues already in groups
+      if (groupedExpressableIds.contains(expressable.id)) {
+        continue; // Skip expressables already in groups
       }
       final updatedVariables = <String>[];
       var originalCounts = <String, int?>{};
@@ -549,70 +572,90 @@ class Solver {
   }
 
   bool solveClueGroup(ClueGroup group) {
-    if (trace) print('  Solving group with clues: ${group.clues}');
+    var expressables = group.clues.map((e) => puzzle.clues[e]!).toList();
+    return solveExpressableGroup(expressables);
+  }
+
+  bool solveExpressableGroup(List<Expressable> group) {
+    if (trace) {
+      print(
+          '  Solving group with expressables: ${group.map((e) => e.id).join(', ')}');
+    }
 
     var updated = false;
     final validCombinations = <Map<String, int>>[];
-    var consistent = _solveClueGroup(
-        group.clues.map((e) => puzzle.clues[e]!).toList(),
-        {},
-        validCombinations);
-    if (consistent && validCombinations.isNotEmpty) {
-      // Update clue values
-      for (var clueId in group.clues) {
-        final clue = puzzle.clues[clueId]!;
-        final newPossibleValues = validCombinations
-            .map((combination) => combination[clueId]!)
-            .toSet();
-        if (newPossibleValues.length < clue.possibleValues!.length) {
-          final originalCount = clue.possibleValues?.length ?? 0;
-          clue.possibleValues = newPossibleValues;
-          updated = true;
-          if (trace) _printUpdatedClue(clue, originalCount);
+    try {
+      var consistent = _solveExpressableGroup(group, {}, validCombinations);
+      if (consistent && validCombinations.isNotEmpty) {
+        // Update expressable values
+        for (var expressable in group) {
+          final newPossibleValues = validCombinations
+              .map((combination) => combination[expressable.id])
+              .where((value) => value != null)
+              .map((v) => v as int)
+              .toSet();
+          if (newPossibleValues.isNotEmpty &&
+              (expressable.possibleValues == null ||
+                  newPossibleValues.length <
+                      expressable.possibleValues!.length)) {
+            final originalCount = expressable.possibleValues?.length;
+            expressable.possibleValues = newPossibleValues;
+            updated = true;
+            if (trace) _printUpdatedExpressable(expressable, originalCount);
+          }
         }
-      }
 
-      // Update variables
-      var updateVariables = <String>[];
-      var originalCounts = <String, int?>{};
-      updated = _updateVariables(group.variables, validCombinations, updated,
-          updateVariables, originalCounts);
-      if (trace) _printUpdatedExpressables(updateVariables, originalCounts);
+        // Update variables
+        var variables = group.expand((e) => e.allVariables).toSet().toList();
+        var updateVariables = <String>[];
+        var originalCounts = <String, int?>{};
+        if (_updateVariables(variables, validCombinations, updated,
+            updateVariables, originalCounts)) {
+          updated = true;
+        }
+        if (trace) _printUpdatedExpressables(updateVariables, originalCounts);
+      }
+    } on EvaluatorNotPossiblexception {
+      // Message already printed where it occurred
     }
     return updated;
   }
 
-  bool _solveClueGroup(List<Clue> clues, Map<String, int> pinnedVariables,
+  bool _solveExpressableGroup(
+      List<Expressable> expressables,
+      Map<String, int> pinnedVariables,
       List<Map<String, int>> validCombinations) {
-    if (clues.isEmpty) {
+    if (expressables.isEmpty) {
       validCombinations.add(pinnedVariables);
       return true;
     }
 
-    final clue = clues.first;
-    final remainingClues = clues.sublist(1);
+    final expressable = expressables.first;
+    final remainingExpressables = expressables.sublist(1);
     final evaluator = Evaluator(puzzle, pinnedVariables);
 
     var results = <EvaluationFinalResult>[];
     try {
-      results = evaluator.evaluate(clue, min: clue.min!, max: clue.max!);
+      results = evaluator.evaluate(expressable,
+          min: expressable.min ?? 1, max: expressable.max ?? 99999);
     } on EvaluatorNotPossiblexception catch (e) {
       if (trace) {
-        print('    Expression for ${clue.id} could not be evaluated: ${e.msg}');
+        print(
+            '    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
       }
-      return false;
+      rethrow;
     }
 
     var anyConsistent = false;
     for (var result in results) {
-      if (clue.possibleValues!.contains(result.value)) {
+      if (expressable.possibleValues?.contains(result.value) ?? true) {
         final newPinnedVariables = {
           ...pinnedVariables,
-          clue.id: result.value,
+          expressable.id: result.value,
           ...result.variableValues
         };
-        var consistent = _solveClueGroup(
-            remainingClues, newPinnedVariables, validCombinations);
+        var consistent = _solveExpressableGroup(
+            remainingExpressables, newPinnedVariables, validCombinations);
         if (consistent) {
           anyConsistent = true;
         }

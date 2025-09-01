@@ -33,7 +33,10 @@ void main(List<String> arguments) {
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
-        traceSolve: true, allowBacktracking: true, traceBacktrace: true);
+        // useTransitiveGrouping: true,
+        traceSolve: true,
+        allowBacktracking: true,
+        traceBacktrace: true);
     solver.solve();
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');

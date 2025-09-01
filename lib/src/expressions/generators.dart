@@ -57,7 +57,10 @@ class TriangularGenerator extends CachedGenerator {
     if (max > maxCached) {
       var triangular = maxCached + _i;
       while (triangular <= max) {
-        if (triangular > maxCached) _values.add(triangular);
+        if (triangular > maxCached) {
+          _values.add(triangular);
+          maxCached = triangular;
+        }
         _i++;
         triangular = maxCached + _i;
       }

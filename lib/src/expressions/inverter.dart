@@ -139,6 +139,16 @@ class ExpressionInverter {
               'Cannot invert grouping expression without entry: $expressionToSolve');
         }
         return _rearrange(expression, child);
+      case MonadicExpression:
+        final monadic = expressionToSolve as MonadicExpression;
+        final fname = monadic.operator.lexeme;
+        if (fname.startsWith('is')) {
+          // Can invert filters by simply ignoring them
+          return _rearrange(monadic.right, child);
+        } else {
+          throw InvertException(
+              'Unsupported monadic for inversion: ${monadic.operator.lexeme}');
+        }
       default:
         throw InvertException(
             'Unsupported expression for inversion: ${expressionToSolve.runtimeType}');

@@ -373,7 +373,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     // Heuristic for min/max of argument to function
     num fmin = 1;
     num fmax = max;
-    var fname = expression.operator.lexeme;
+    final fname = expression.operator.lexeme;
     if (!fname.startsWith('is') && fname != 'jumble') {
       if (fname.startsWith('lt')) {
         fmax = arbitraryLimit;
@@ -427,18 +427,38 @@ List<EvaluationFinalResult> resultsIntersection(
     List<EvaluationFinalResult> results,
     List<EvaluationFinalResult> expressionResults) {
   var resultMap = <int, List<Map<String, int>>>{};
+  var resultVariables = <int, List<String>>{};
   for (var r in results) {
     resultMap
         .putIfAbsent(r.value, () => <Map<String, int>>[])
         .add(r.variableValues);
+    resultVariables
+        .putIfAbsent(r.value, () => <String>[])
+        .addAll(r.variableValues.keys);
   }
+  var resultValues = <int>[];
   for (var r in expressionResults) {
     if (resultMap.containsKey(r.value)) {
-      resultMap[r.value]!.add(r.variableValues);
-    } else {
-      resultMap.remove(r.value);
+      var listVariables = resultVariables[r.value]!;
+      var listVariableValues = resultMap[r.value]!;
+      // If new result variables intersect, then check these for match
+      var matchVariables =
+          listVariables.where((v) => r.variableValues.containsKey(v));
+      if (matchVariables.isNotEmpty) {
+        var match = r.variableValues.entries.every((e) =>
+            !matchVariables.contains(e.key) ||
+            listVariableValues
+                .any((m) => m.containsKey(e.key) && m[e.key]! == e.value));
+        if (!match) {
+          continue;
+        }
+        matchVariables.every((v) => false);
+      }
+      listVariableValues.add(r.variableValues);
+      resultValues.add(r.value);
     }
   }
+  resultMap.removeWhere((key, value) => !resultValues.contains(key));
   var finalResults = <EvaluationFinalResult>[];
   resultMap.forEach((value, variableValuesSet) {
     for (var variableValues in variableValuesSet) {

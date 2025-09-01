@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:collection/collection.dart';
+import 'package:crossnumber/src/expressions/monadic.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/entry.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -28,6 +29,14 @@ PuzzleDefinition couplesDifferences() {
     '|  |16:  :  |17:  |',
     '+--+--+--+--+--+--+',
   ];
+
+  // Register puzzle specific functions
+  final MonadicFunctionRegistry monadicFunctionRegistry =
+      MonadicFunctionRegistry();
+  monadicFunctionRegistry.registerFunction(
+      'isDivisibleNine',
+      (values, {int? min, int? max}) =>
+          values.where((v) => v % 9 == 0).toList());
 
   var puzzle = PuzzleDefinition.fromString(
     name: 'CouplesDifferences',
@@ -85,35 +94,39 @@ PuzzleDefinition couplesDifferences() {
     // 4 digits: (1000a+100b+10c+d)-(1000d+100c+10b+a) = 999(a-d)+90(b-c)
     // So all are multiple of 9
     clues: {
-      'I': Clue('I', [ExpressionConstraint(r'A1 -D4 = $multiple 9 = #square')]),
+      'I': Clue(
+          'I', [ExpressionConstraint(r'$isDivisibleNine (A1-D4) = #square')]),
       'II': Clue(
-          'II', [ExpressionConstraint(r'A5 - D14 = $multiple 9 = #square')]),
-      'III': Clue(
-          'III', [ExpressionConstraint(r'A9-D6 = $multiple 9 = #triangular')]),
-      'IV': Clue(
-          'IV', [ExpressionConstraint(r'A11-D8 = $multiple 9 = #triangular')]),
-      'V': Clue(
-          'V', [ExpressionConstraint(r'A17-D13 = $multiple 9 = #triangular')]),
+          'II', [ExpressionConstraint(r'$isDivisibleNine (A5-D14) = #square')]),
+      'III': Clue('III',
+          [ExpressionConstraint(r'$isDivisibleNine (A9-D6) = #triangular')]),
+      'IV': Clue('IV',
+          [ExpressionConstraint(r'$isDivisibleNine (A11-D8) = #triangular')]),
+      'V': Clue('V',
+          [ExpressionConstraint(r'$isDivisibleNine (A17-D13) = #triangular')]),
       'VI': Clue(
         'VI',
         [
-          ExpressionConstraint(r'D1-A2 = $multiple 9 = $multiple (VIII)')
+          ExpressionConstraint(r'$isDivisibleNine (D1-A2) = $multiple (VIII)')
         ], // D3-A1
       ),
       'VII': Clue(
         'VII',
-        [ExpressionConstraint(r'D2-A13 = $multiple 9 = $multiple (I)')], // A1-D
+        [
+          ExpressionConstraint(r'$isDivisibleNine (D2-A13) = $multiple (I)')
+        ], // A1-D
       ),
-      'VIII':
-          Clue('VIII', [ExpressionConstraint(r'D3-A15 = $multiple 9 = #cube')]),
+      'VIII': Clue(
+          'VIII', [ExpressionConstraint(r'$isDivisibleNine (D3-A15) = #cube')]),
       'IX': Clue(
         'IX',
         [
-          ExpressionConstraint(r"D10-A7 = $multiple 9 = $multiple '(I)")
+          ExpressionConstraint(r"$isDivisibleNine (D10-A7) = $multiple '(I)")
         ], // A1-D
       ),
-      'X': Clue('X',
-          [ExpressionConstraint(r'D12-A16 = $multiple 9 = 2*(VI)')]), // D1-A2
+      'X': Clue('X', [
+        ExpressionConstraint(r'$isDivisibleNine (D12-A16) = 2*(VI)')
+      ]), // D1-A2
     },
     variables: {},
   );
@@ -123,5 +136,34 @@ PuzzleDefinition couplesDifferences() {
 }
 
 void setAnswers(PuzzleDefinition puzzle) {
-  // puzzle.clues['1A']!.answer = 113;
+  puzzle.clues['I']!.answer = 36;
+  puzzle.clues['II']!.answer = 9;
+  puzzle.clues['III']!.answer = 630;
+  puzzle.clues['IV']!.answer = 2628;
+  puzzle.clues['V']!.answer = 45;
+  puzzle.clues['VI']!.answer = 297;
+  puzzle.clues['VII']!.answer = 3996;
+  puzzle.clues['VIII']!.answer = 27;
+  puzzle.clues['IX']!.answer = 819;
+  puzzle.clues['X']!.answer = 594;
+  puzzle.entries['A1']!.answer = 84;
+  puzzle.entries['A2']!.answer = 588;
+  puzzle.entries['A5']!.answer = 87;
+  puzzle.entries['A7']!.answer = 7538;
+  puzzle.entries['A9']!.answer = 7817;
+  puzzle.entries['A11']!.answer = 5813;
+  puzzle.entries['A13']!.answer = 1775;
+  puzzle.entries['A15']!.answer = 58;
+  puzzle.entries['A16']!.answer = 187;
+  puzzle.entries['A17']!.answer = 61;
+  puzzle.entries['D1']!.answer = 885;
+  puzzle.entries['D2']!.answer = 5771;
+  puzzle.entries['D3']!.answer = 85;
+  puzzle.entries['D4']!.answer = 48;
+  puzzle.entries['D6']!.answer = 7187;
+  puzzle.entries['D8']!.answer = 3185;
+  puzzle.entries['D10']!.answer = 8357;
+  puzzle.entries['D12']!.answer = 781;
+  puzzle.entries['D13']!.answer = 16;
+  puzzle.entries['D14']!.answer = 78;
 }
