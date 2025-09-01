@@ -693,6 +693,68 @@ class Solver {
   (bool consistent, bool updated) _enforceDistinctValuesForExressable(
       PuzzleDefinition puzzle, Iterable<Expressable> expressables, bool trace) {
     var updated = false;
+    var consistent = true;
+
+    // Find expressables with more than one possible value and less than 5
+    final unsolved = expressables
+        .where((expressable) =>
+            expressable.possibleValues != null &&
+            expressable.possibleValues!.length > 1 &&
+            expressable.possibleValues!.length < 5)
+        .toList();
+
+    // Group unsolved expressables by their possible values
+    final valueGroups = <String, Map<String, dynamic>>{};
+    for (var expressable in unsolved) {
+      final key = expressable.possibleValues!.toList()..sort();
+      final keyString = key.join(',');
+      valueGroups.putIfAbsent(
+          keyString,
+          () => {
+                'values': expressable.possibleValues!,
+                'expressables': <Expressable>[]
+              });
+      valueGroups[keyString]!['expressables'].add(expressable);
+    }
+
+    // Look for groups of size N with N values
+    for (var entry in valueGroups.entries) {
+      final possibleValues = entry.value['values'] as Set<int>;
+      final group = entry.value['expressables'] as List<Expressable>;
+      final n = possibleValues.length;
+      if (n > 1 && n == group.length) {
+        // Found a group of N expressables with N values.
+        // Remove these values from all other expressables.
+        bool traced = false;
+        for (var expressable in unsolved) {
+          if (!group.contains(expressable)) {
+            final originalCount = expressable.possibleValues!.length;
+            if (expressable.possibleValues!
+                .any((v) => possibleValues.contains(v))) {
+              expressable.possibleValues = expressable.possibleValues!
+                  .where((v) => !possibleValues.contains(v))
+                  .toSet();
+              updated = true;
+              if (trace) {
+                if (!traced) {
+                  traced = true;
+                  print(
+                      '    Found group of $n expressables (${group.map((e) => e.id).join(', ')}) with $n values');
+                }
+                _printUpdatedExpressable(expressable, originalCount);
+              }
+              if (expressable.possibleValues!.isEmpty) {
+                consistent = false;
+                break;
+              }
+            }
+          }
+        }
+      }
+      if (!consistent) break;
+    }
+
+    // Original logic for solved expressables (N=1)
     final solvedExpressables = expressables
         .where((expressable) =>
             expressable.possibleValues != null &&
@@ -710,22 +772,26 @@ class Solver {
           continue; // Skip if expressable has no values yet
         }
         if (expressable.possibleValues!.length > 1) {
-          final originalCount = expressable.possibleValues!.length;
-          expressable.possibleValues!.removeAll(solvedExpressableValues);
-          if (expressable.possibleValues!.length < originalCount) {
+          if (expressable.possibleValues!
+              .any((v) => solvedExpressableValues.contains(v))) {
+            final originalCount = expressable.possibleValues!.length;
+            expressable.possibleValues = expressable.possibleValues!
+                .where((v) => !solvedExpressableValues.contains(v))
+                .toSet();
             updated = true;
             if (trace) {
-              print(
-                  '    ${expressable.runtimeType} ${expressable.id} distinct values: $originalCount -> ${expressable.possibleValues!.length} ${expressable.possibleValues!.toShortString()}');
+              _printUpdatedExpressable(expressable, originalCount);
             }
-          }
-          if (expressable.possibleValues!.isEmpty) {
-            return (false, true); // Inconsistency
+            if (expressable.possibleValues!.isEmpty) {
+              consistent = false;
+              break;
+            }
           }
         }
       }
     }
-    return (true, updated);
+
+    return (consistent, updated);
   }
 
   (bool consistent, bool updated) _propagateConstraints(bool trace) {
