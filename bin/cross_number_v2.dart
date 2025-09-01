@@ -34,9 +34,9 @@ void main(List<String> arguments) {
 
     final solver = Solver(puzzle,
         // useTransitiveGrouping: true,
-        traceSolve: true,
+        traceSolve: false,
         allowBacktracking: true,
-        traceBacktrace: true);
+        traceBacktrace: false);
     solver.solve();
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');

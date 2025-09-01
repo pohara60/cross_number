@@ -1,6 +1,4 @@
-
-Exited (-1).
-Connecting to VM Service at ws://127.0.0.1:62658/tNxuN0TBS3Q=/ws
+Connecting to VM Service at ws://127.0.0.1:61062/EVlXGntSsUk=/ws
 Cross Number Solver v2 CLI
 Puzzle: CouplesDifferences
 Grids: (main)
@@ -45,9 +43,9 @@ Solving puzzle with known mapping...
 Found 0 clue groups:
 Iteration 1
   Solving expressables...
-    Clue I: 3 -> 3 {9,36,81}
-    Entry A1: 90 -> 81 {19..38,61 more,99}
-    Entry D4: 90 -> 81 {10..29,61 more,90}
+    Clue I: 2 -> 2 {36,81}
+    Entry A1: 90 -> 54 {46..65,34 more,99}
+    Entry D4: 90 -> 54 {10..29,34 more,63}
     Clue II: 3 -> 3 {9,36,81}
     Entry A5: 90 -> 81 {19..38,61 more,99}
     Entry D14: 90 -> 81 {10..29,61 more,90}
@@ -57,15 +55,15 @@ Iteration 1
     Entry A17: 90 -> 54 {46..65,34 more,99}
     Entry D13: 90 -> 54 {10..29,34 more,63}
     Expression for VI could not be evaluated: Too many combinations 0 for variables: D1, A2, VIII
-    Expression for VII could not be evaluated: Too many combinations 243000000 for variables: D2, A13, I
+    Expression for VII could not be evaluated: Too many combinations 162000000 for variables: D2, A13, I
     Clue VIII: 1 -> 1 {27}
     Entry D3: 90 -> 63 {37..56,43 more,99}
     Entry A15: 90 -> 63 {10..29,43 more,72}
-    Expression for IX could not be evaluated: Too many combinations 243000000 for variables: D10, A7, I
+    Expression for IX could not be evaluated: Too many combinations 162000000 for variables: D10, A7, I
     Expression for X could not be evaluated: Too many combinations 0 for variables: D12, A16, VI
-    Entry A1: 13 -> 13 {21,32,43,51,54,62,65,73,76,84,87,95,98}
-    Entry D4: 81 -> 13 {12,15,23,26,34,37,45,48,56,59,67,78,89}
-    Clue I: 3 -> 2 {9,36}
+    Entry A1: 5 -> 5 {51,62,73,84,95}
+    Entry D4: 54 -> 5 {15,26,37,48,59}
+    Clue I: 2 -> 1 {36}
     Expression for A2 could not be evaluated: Too many combinations 0 for variables: D1, VI
     Entry A5: 13 -> 13 {21,32,43,51,54,62,65,73,76,84,87,95,98}
     Entry D14: 81 -> 13 {12,15,23,26,34,37,45,48,56,59,67,78,89}
@@ -86,14 +84,14 @@ Iteration 1
     Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
     Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
   Propagating constraints...
-    Entry D1: 900 -> 800 {200..219,780 more,999}
+    Entry D1: 900 -> 500 {500..519,480 more,999}
     Entry A2: 900 -> 540 {140..159,520 more,999}
-    Entry D1: 800 -> 640 {220..239,620 more,999}
+    Entry D1: 500 -> 400 {520..539,380 more,999}
     Entry D6: 9000 -> 8000 {1000..1019,7980 more,8999}
     Entry D2: 9000 -> 8100 {1100..1119,8080 more,9999}
     Entry A7: 9000 -> 5400 {1100..1119,5380 more,9699}
     Entry A7: 5400 -> 4860 {1110..1129,4840 more,9699}
-    Entry A7: 4860 -> 3888 {1112..1119,1122..1129,1132..1135,3868 more,9699}
+    Entry A7: 4860 -> 2430 {1115..1119,1125..1129,1135..1139,1145..1149,2410 more,9699}
     Entry D2: 8100 -> 7290 {1110..1129,7270 more,9999}
     Entry A9: 9000 -> 8100 {1100..1119,8080 more,9999}
     Entry A13: 9000 -> 5000 {1000..1019,4980 more,5999}
@@ -106,338 +104,75 @@ Iteration 1
     Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
     Clue VI: 31 -> 31 {27,54,81,108,135,162,189,216,243,270,297,324,351,378,405,432,459,486,513,540,11 more,837}
     Entry A2: 540 -> 513 {140..159,493 more,972}
-    Expression for VII could not be evaluated: Too many combinations 58320000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 69984000 for variables: D10, A7, I
+    Expression for VII could not be evaluated: Too many combinations 29160000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 21870000 for variables: D10, A7, I
     Expression for X could not be evaluated: Too many combinations 6026400 for variables: D12, A16, VI
-    Entry A2: 54 -> 54 {144,147,154,157,164,167,174,177,184,187,194,197,245,248,255,258,265,268,275,278,34 more,699}
-    Entry D1: 640 -> 54 {441,451,461,471,481,491,542,552,562,572,582,592,643,653,663,673,683,693,741,744,34 more,996}
+    Entry A2: 48 -> 48 {147,157,167,177,187,197,245,248,255,258,265,268,275,278,285,288,295,298,346,349,28 more,699}
+    Entry D1: 400 -> 48 {542,552,562,572,582,592,643,653,663,673,683,693,741,744,751,754,761,764,771,774,28 more,996}
     Clue VI: 31 -> 2 {297,594}
-    Expression for A7 could not be evaluated: Too many combinations 34992000 for variables: A7, D10
+    Expression for A7 could not be evaluated: Too many combinations 21870000 for variables: A7, D10
     Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
     Expression for A13 could not be evaluated: Too many combinations 29160000 for variables: A13, D2
     Expression for A16 could not be evaluated: Too many combinations 0 for variables: D12, X
     Expression for D2 could not be evaluated: Too many combinations 29160000 for variables: D2, A13
     Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 34992000 for variables: D10, A7
+    Expression for D10 could not be evaluated: Too many combinations 21870000 for variables: D10, A7
     Expression for D12 could not be evaluated: Too many combinations 0 for variables: X, A16
     Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
     Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Found group of 2 expressables (I, II) with 2 values
+    Clue II: 2 -> 1 {9}
     Clue V: 2 -> 1 {45}
   Propagating constraints...
-    Entry A1: 13 -> 11 {43,51,54,62,65,73,76,84,87,95,98}
     Entry D2: 7290 -> 4860 {1110..1129,4840 more,6999}
     Entry A5: 13 -> 11 {43,51,54,62,65,73,76,84,87,95,98}
-    Clue I: 2 -> 2 {9,36}
-    Entry D4: 13 -> 11 {15,26,34,37,45,48,56,59,67,78,89}
-    Clue II: 2 -> 2 {9,36}
-    Entry D14: 13 -> 11 {15,26,34,37,45,48,56,59,67,78,89}
+    Clue II: 1 -> 1 {9}
+    Entry A5: 11 -> 6 {43,54,65,76,87,98}
+    Entry D14: 13 -> 6 {34,45,56,67,78,89}
     Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
     Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
     Clue V: 1 -> 1 {45}
     Entry A17: 9 -> 4 {61,72,83,94}
     Entry D13: 9 -> 4 {16,27,38,49}
-    Expression for VII could not be evaluated: Too many combinations 38880000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 69984000 for variables: D10, A7, I
+    Expression for VII could not be evaluated: Too many combinations 19440000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 21870000 for variables: D10, A7, I
     Clue X: 1 -> 1 {594}
     Entry D12: 270 -> 83 {741..745,751..755,761..765,771..775,63 more,993}
     Entry A16: 720 -> 83 {147..151,157..161,167..171,177..181,63 more,399}
     Clue VI: 2 -> 1 {297}
-    Entry A2: 36 -> 36 {144,154,164,174,184,194,245,255,265,275,285,295,346,356,366,376,386,396,447,457,16 more,699}
-    Entry D1: 54 -> 36 {441,451,461,471,481,491,542,552,562,572,582,592,643,653,663,673,683,693,744,754,16 more,996}
-    Expression for A7 could not be evaluated: Too many combinations 34992000 for variables: A7, D10
+    Entry A2: 30 -> 30 {245,255,265,275,285,295,346,356,366,376,386,396,447,457,467,477,487,497,548,558,10 more,699}
+    Entry D1: 48 -> 30 {542,552,562,572,582,592,643,653,663,673,683,693,744,754,764,774,784,794,845,855,10 more,996}
+    Expression for A7 could not be evaluated: Too many combinations 21870000 for variables: A7, D10
     Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
     Expression for A13 could not be evaluated: Too many combinations 19440000 for variables: A13, D2
     Entry A16: 18 -> 18 {147,157,167,177,187,197,248,258,268,278,288,298,349,359,369,379,389,399}
     Entry D12: 83 -> 18 {741,751,761,771,781,791,842,852,862,872,882,892,943,953,963,973,983,993}
     Expression for D2 could not be evaluated: Too many combinations 19440000 for variables: D2, A13
     Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 34992000 for variables: D10, A7
+    Expression for D10 could not be evaluated: Too many combinations 21870000 for variables: D10, A7
     Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
     Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Found group of 2 expressables (I, II) with 2 values
   Propagating constraints...
-    Entry A7: 3888 -> 2916 {1114..1119,1124..1129,1134..1139,1144,1145,2896 more,9699}
+    Entry D2: 4860 -> 4050 {2110..2129,4030 more,6999}
+    Entry D6: 8000 -> 6000 {3000..3019,5980 more,8999}
     Entry A13: 4000 -> 3200 {1010..1029,3180 more,4989}
+    Entry A13: 3200 -> 2400 {1030..1049,2380 more,4989}
     Entry D10: 9000 -> 2700 {1007..1009,1017..1019,1027..1029,1037..1039,1047..1049,1057..1059,1067,1068,2680 more,9999}
     Entry A17: 4 -> 3 {61,72,83}
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
     Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
     Clue V: 1 -> 1 {45}
     Entry D13: 4 -> 3 {16,27,38}
-    Expression for VII could not be evaluated: Too many combinations 31104000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 15746400 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 15552000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 15552000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Found group of 2 expressables (I, II) with 2 values
-  Propagating constraints...
-    Entry A13: 3200 -> 2400 {1010..1029,2380 more,3989}
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 23328000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 15746400 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Found group of 2 expressables (I, II) with 2 values
-  Propagating constraints...
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 23328000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 15746400 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Found group of 2 expressables (I, II) with 2 values
-Iteration 2
-  Solving expressables...
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 23328000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 15746400 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-  Propagating constraints...
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 23328000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 15746400 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Found group of 2 expressables (I, II) with 2 values
-Solve time: 85013ms
-Grid:
-+--+--+--+--+--+--+
-| ?  ?| ?  ?  ?| ?|
-+  +--+  +  +--+  +
-| ?  ?| ?  ?  ?  ?|
-+  +  +  +--+  +--+
-| ?| ?| ?  ?  ?  ?|
-+--+  +  +  +  +--+
-| ?  ?  ?  ?| ?| ?|
-+--+  +--+  +  +  +
-| ?  ?  ?  ?| ?  ?|
-+  +--+  +  +--+  +
-| ?| ?  ?  ?| ?  ?|
-+--+--+--+--+--+--+
-Variables:
-Clues:
-I: 2  {9,36}
-II: 2  {9,36}
-III: uninitialised
-IV: uninitialised
-V: 1  {45}
-VI: 1  {297}
-VII: uninitialised
-VIII: 1  {27}
-IX: uninitialised
-X: 1  {594}
-Entries:
-A1: 11  {43,51,54,62,65,73,76,84,87,95,98}
-A2: 36  {144,154,164,174,184,194,245,255,265,275,285,295,346,356,366,376,386,396,447,457,16 more,699}
-A5: 11  {43,51,54,62,65,73,76,84,87,95,98}
-A7: 2916  {1114..1119,1124..1129,1134..1139,1144,1145,2896 more,9699}
-A9: 8100  {1100..1119,8080 more,9999}
-A13: 2400  {1010..1029,2380 more,3989}
-A15: 6  {14,25,36,47,58,69}
-A16: 18  {147,157,167,177,187,197,248,258,268,278,288,298,349,359,369,379,389,399}
-A17: 3  {61,72,83}
-D1: 36  {441,451,461,471,481,491,542,552,562,572,582,592,643,653,663,673,683,693,744,754,16 more,996}
-D2: 4860  {1110..1129,4840 more,6999}
-D3: 6  {41,52,63,74,85,96}
-D4: 11  {15,26,34,37,45,48,56,59,67,78,89}
-D6: 8000  {1000..1019,7980 more,8999}
-D10: 2700  {1007..1009,1017..1019,1027..1029,1037..1039,1047..1049,1057..1059,1067,1068,2680 more,9999}
-D12: 18  {741,751,761,771,781,791,842,852,862,872,882,892,943,953,963,973,983,993}
-D13: 3  {16,27,38}
-D14: 11  {15,26,34,37,45,48,56,59,67,78,89}
-D8: 5400  {1001..1006,1011..1016,1021..1026,1031,1032,5380 more,9996}
-A11: 9000  {1000..1019,8980 more,9999}
-Solution not complete, backtracking
-Backtracking: Trying expressable I -> 2 {9,36}
-Backtracking: Trying value 9 for expressable I
-    Entry A1: 11 -> 6 {43,54,65,76,87,98}
-    Entry D4: 11 -> 6 {34,45,56,67,78,89}
-  Propagating constraints...
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 11664000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 7873200 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Clue II: 2 -> 1 {36}
-  Propagating constraints...
-    Clue II: 1 -> 1 {36}
-    Entry A5: 11 -> 5 {51,62,73,84,95}
-    Entry D14: 11 -> 5 {15,26,37,48,59}
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 11664000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 7873200 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-  Propagating constraints...
-    Entry D1: 36 -> 30 {451,461,471,481,491,552,562,572,582,592,653,663,673,683,693,754,764,774,784,794,10 more,996}
-    Entry D6: 8000 -> 5000 {1000..1019,4980 more,5999}
-    Entry A13: 2400 -> 1500 {1010..1029,1480 more,3959}
-    Entry A16: 18 -> 15 {157,167,177,187,197,258,268,278,288,298,359,369,379,389,399}
-    Expression for III could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Clue VI: 1 -> 1 {297}
-    Entry A2: 36 -> 30 {154,164,174,184,194,255,265,275,285,295,356,366,376,386,396,457,467,477,487,497,10 more,699}
-    Expression for VII could not be evaluated: Too many combinations 7290000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 7873200 for variables: D10, A7, I
-    Clue X: 1 -> 1 {594}
-    Entry D12: 18 -> 15 {751,761,771,781,791,852,862,872,882,892,953,963,973,983,993}
-    Expression for A7 could not be evaluated: Too many combinations 7873200 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 7290000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 7290000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 40500000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 7873200 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-  Propagating constraints...
-    Entry D3: 6 -> 5 {52,63,74,85,96}
-    Entry A7: 2916 -> 2430 {1214..1219,1224..1229,1234..1239,1244,1245,2410 more,9699}
-    Entry A15: 6 -> 5 {25,36,47,58,69}
-    Expression for III could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 7290000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 7290000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 7290000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 40500000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-  Propagating constraints...
-    Entry D8: 5400 -> 4500 {1002..1006,1012..1016,1022..1026,1032..1036,4480 more,9996}
-    Expression for III could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 40500000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 7290000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 7290000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 7290000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 40500000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-  Propagating constraints...
-    Expression for III could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 40500000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 7290000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 7290000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 7290000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 40500000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-Backtracking: Propagation consistent. Recursing...
-Backtracking: Trying expressable II -> 1 {36}
-Backtracking: Trying value 36 for expressable II
-  Propagating constraints...
-    Expression for III could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 40500000 for variables: A11, D8
-    Expression for VII could not be evaluated: Too many combinations 7290000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 40500000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 7290000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 7290000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 40500000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-Backtracking: Propagation consistent. Recursing...
-Backtracking: Clue III has no possible values, backtracking.
-Backtracking: Trying value 36 for expressable I
-    Entry A1: 11 -> 5 {51,62,73,84,95}
-    Entry D4: 11 -> 5 {15,26,37,48,59}
-  Propagating constraints...
-    Entry D1: 36 -> 30 {542,552,562,572,582,592,643,653,663,673,683,693,744,754,764,774,784,794,845,855,10 more,996}
-    Entry A7: 2916 -> 2430 {1115..1119,1125..1129,1135..1139,1145..1149,2410 more,9699}
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
-    Clue VI: 1 -> 1 {297}
-    Entry A2: 36 -> 30 {245,255,265,275,285,295,346,356,366,376,386,396,447,457,467,477,487,497,548,558,10 more,699}
-    Expression for VII could not be evaluated: Too many combinations 11664000 for variables: D2, A13, I
-    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
-    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for A13 could not be evaluated: Too many combinations 11664000 for variables: A13, D2
-    Expression for D2 could not be evaluated: Too many combinations 11664000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
-    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
-    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
-    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-    Clue II: 2 -> 1 {9}
-  Propagating constraints...
-    Entry D2: 4860 -> 4050 {2110..2129,4030 more,6999}
-    Clue II: 1 -> 1 {9}
-    Entry A5: 11 -> 6 {43,54,65,76,87,98}
-    Entry D14: 11 -> 6 {34,45,56,67,78,89}
-    Expression for III could not be evaluated: Too many combinations 64800000 for variables: A9, D6
-    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
     Expression for VII could not be evaluated: Too many combinations 9720000 for variables: D2, A13, I
     Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
     Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
-    Expression for A9 could not be evaluated: Too many combinations 64800000 for variables: A9, D6
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
     Expression for A13 could not be evaluated: Too many combinations 9720000 for variables: A13, D2
     Expression for D2 could not be evaluated: Too many combinations 9720000 for variables: D2, A13
-    Expression for D6 could not be evaluated: Too many combinations 64800000 for variables: D6, A9
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
     Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
     Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
     Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
   Propagating constraints...
-    Entry D6: 8000 -> 6000 {3000..3019,5980 more,8999}
     Entry A13: 2400 -> 1800 {1030..1049,1780 more,3989}
     Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
     Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
@@ -464,9 +199,20 @@ Backtracking: Trying value 36 for expressable I
     Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
     Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
     Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
-Backtracking: Propagation consistent. Recursing...
-Backtracking: Trying expressable II -> 1 {9}
-Backtracking: Trying value 9 for expressable II
+Iteration 2
+  Solving expressables...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 7290000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 7290000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 7290000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
   Propagating constraints...
     Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
     Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
@@ -480,9 +226,902 @@ Backtracking: Trying value 9 for expressable II
     Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
     Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
     Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+Solve time: 15037ms
+Grid:
++--+--+--+--+--+--+
+| ?  ?| ?  ?  ?| ?|
++  +--+  +  +--+  +
+| ?  ?| ?  ?  ?  ?|
++  +  +  +--+  +--+
+| ?| ?| ?  ?  ?  ?|
++--+  +  +  +  +--+
+| ?  ?  ?  ?| ?| ?|
++--+  +--+  +  +  +
+| ?  ?  ?  ?| ?  ?|
++  +--+  +  +--+  +
+| ?| ?  ?  ?| ?  ?|
++--+--+--+--+--+--+
+Variables:
+Clues:
+I: 1  {36}
+II: 1  {9}
+III: uninitialised
+IV: uninitialised
+V: 1  {45}
+VI: 1  {297}
+VII: uninitialised
+VIII: 1  {27}
+IX: uninitialised
+X: 1  {594}
+Entries:
+A1: 5  {51,62,73,84,95}
+A2: 30  {245,255,265,275,285,295,346,356,366,376,386,396,447,457,467,477,487,497,548,558,10 more,699}
+A5: 6  {43,54,65,76,87,98}
+A7: 2430  {1115..1119,1125..1129,1135..1139,1145..1149,2410 more,9699}
+A9: 8100  {1100..1119,8080 more,9999}
+A13: 1800  {1030..1049,1780 more,3989}
+A15: 6  {14,25,36,47,58,69}
+A16: 18  {147,157,167,177,187,197,248,258,268,278,288,298,349,359,369,379,389,399}
+A17: 3  {61,72,83}
+D1: 30  {542,552,562,572,582,592,643,653,663,673,683,693,744,754,764,774,784,794,845,855,10 more,996}
+D2: 4050  {2110..2129,4030 more,6999}
+D3: 6  {41,52,63,74,85,96}
+D4: 5  {15,26,37,48,59}
+D6: 6000  {3000..3019,5980 more,8999}
+D10: 2700  {1007..1009,1017..1019,1027..1029,1037..1039,1047..1049,1057..1059,1067,1068,2680 more,9999}
+D12: 18  {741,751,761,771,781,791,842,852,862,872,882,892,943,953,963,973,983,993}
+D13: 3  {16,27,38}
+D14: 6  {34,45,56,67,78,89}
+D8: 5400  {1001..1006,1011..1016,1021..1026,1031,1032,5380 more,9996}
+A11: 9000  {1000..1019,8980 more,9999}
+Solution not complete, backtracking
+Backtracking: Trying expressable A17 -> 3 {61,72,83}
+Backtracking: Trying value 61 for expressable A17
+    Entry D13: 3 -> 1 {16}
+  Propagating constraints...
+    Entry A13: 1800 -> 600 {1030..1049,580 more,1989}
+    Entry D12: 18 -> 6 {741,751,761,771,781,791}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
+    Clue X: 1 -> 1 {594}
+    Entry A16: 18 -> 6 {147,157,167,177,187,197}
+    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D10: 2700 -> 900 {1007,1017,1027,1037,1047,1057,1067,1077,1087,1097,1107,1117,1127,1137,1147,1157,1167,1177,1187,1197,880 more,9997}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
 Backtracking: Propagation consistent. Recursing...
-Backtracking: Clue III has no possible values, backtracking.
-Backtracking: no solutions found.
+Backtracking: Trying expressable D13 -> 1 {16}
+Backtracking: Trying value 16 for expressable D13
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A1 -> 5 {51,62,73,84,95}
+Backtracking: Trying value 51 for expressable A1
+    Entry D4: 5 -> 1 {15}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {542,552,562,572,582,592}
+    Entry A7: 2430 -> 486 {1115,1125,1135,1145,1155,1165,1175,1185,1195,1215,1225,1235,1245,1255,1265,1275,1285,1295,1315,1325,466 more,9695}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {245,255,265,275,285,295}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {252,882,1512,2142,2772,3402,4032,4662,5292,5922,6552,7182,7812,8442}
+    Entry D10: 900 -> 852 {1367,1377,1387,1397,1407,1417,1427,1437,1447,1467,1477,1487,1497,1507,1517,1527,1537,1547,1567,1577,832 more,9997}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 62 for expressable A1
+    Entry D4: 5 -> 1 {26}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {643,653,663,673,683,693}
+    Entry A7: 2430 -> 486 {1116,1126,1136,1146,1156,1166,1176,1186,1196,1216,1226,1236,1246,1256,1266,1276,1286,1296,1316,1326,466 more,9696}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {346,356,366,376,386,396}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {441,1071,1701,2331,2961,3591,4221,4851,5481,6111,6741,7371,8001,8631}
+    Entry D10: 900 -> 833 {1557,1567,1577,1587,1597,1607,1617,1627,1637,1657,1667,1677,1687,1697,1707,1717,1727,1737,1757,1767,813 more,9997}
+    Entry A7: 486 -> 473 {1116,1126,1136,1146,1156,1166,1176,1186,1196,1216,1226,1236,1246,1256,1266,1276,1286,1296,1316,1326,453 more,9556}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 73 for expressable A1
+    Entry D4: 5 -> 1 {37}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {744,754,764,774,784,794}
+    Entry A7: 2430 -> 486 {1117,1127,1137,1147,1157,1167,1177,1187,1197,1217,1227,1237,1247,1257,1267,1277,1287,1297,1317,1327,466 more,9697}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {447,457,467,477,487,497}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {630,1260,1890,2520,3150,3780,4410,5040,5670,6300,6930,7560,8190,8820}
+    Entry D10: 900 -> 814 {1747,1757,1767,1777,1787,1797,1807,1817,1827,1847,1857,1867,1877,1887,1897,1907,1917,1927,1947,1957,794 more,9997}
+    Entry A7: 486 -> 456 {1117,1127,1137,1147,1157,1167,1177,1187,1197,1217,1227,1237,1247,1257,1267,1277,1287,1297,1317,1327,436 more,9367}
+    Entry A7: 2 -> 2 {7187,7297}
+    Entry D10: 814 -> 2 {7817,7927}
+    Clue IX: 14 -> 1 {630}
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D2: 4050 -> 810 {4110..4129,790 more,4999}
+    Entry D2: 810 -> 90 {4710..4729,70 more,4799}
+    Entry D3: 6 -> 2 {41,52}
+    Entry D8: 5400 -> 1200 {8001..8006,8011..8016,8021..8026,8031,8032,1180 more,9996}
+    Entry A9: 8100 -> 900 {1700..1719,880 more,9799}
+    Entry A11: 9000 -> 1800 {1008,1009,1018,1019,1028,1029,1038,1039,1048,1049,1058,1059,1068,1069,1078,1079,1088,1089,1098,1099,1780 more,9999}
+    Entry A13: 600 -> 120 {1031,1032,1041,1042,1051,1052,1061,1062,1071,1072,1081,1082,1131,1132,1141,1142,1151,1152,1161,1162,100 more,1982}
+    Expression for III could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 2160000 for variables: A11, D8
+    Clue VII: 29 -> 29 {2736,2772,2808,2844,2880,2916,2952,2988,3024,3060,3096,3132,3168,3204,3240,3276,3312,3348,3384,3420,9 more,3744}
+    Clue VIII: 1 -> 1 {27}
+    Entry A15: 6 -> 2 {14,25}
+    Expression for A9 could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for A13 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 84 for expressable A1
+    Entry D4: 5 -> 1 {48}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {845,855,865,875,885,895}
+    Entry A7: 2430 -> 486 {1118,1128,1138,1148,1158,1168,1178,1188,1198,1218,1228,1238,1248,1258,1268,1278,1288,1298,1318,1328,466 more,9698}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {548,558,568,578,588,598}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {189,819,1449,2079,2709,3339,3969,4599,5229,5859,6489,7119,7749,8379}
+    Entry D10: 900 -> 858 {1307,1317,1327,1337,1347,1357,1367,1377,1387,1407,1417,1427,1437,1447,1457,1467,1477,1487,1507,1517,838 more,9997}
+    Entry A7: 8 -> 8 {7168,7278,7318,7388,7428,7498,7538,7648}
+    Entry D10: 858 -> 8 {8137,8247,8357,8467,8617,8727,8837,8947}
+    Clue IX: 14 -> 2 {819,1449}
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D2: 4050 -> 810 {5110..5129,790 more,5999}
+    Entry D2: 810 -> 90 {5710..5729,70 more,5799}
+    Entry D8: 5400 -> 4800 {1001..1006,1011..1016,1021..1026,1031,1032,4780 more,9996}
+    Entry A9: 8100 -> 900 {1800..1819,880 more,9899}
+    Entry A11: 9000 -> 7200 {1001..1004,1006..1009,1011..1014,1016..1019,1021..1024,7180 more,9999}
+    Entry A13: 600 -> 360 {1031..1036,1041..1046,1051..1056,1061,1062,340 more,1986}
+    Expression for III could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 34560000 for variables: A11, D8
+    Clue VII: 29 -> 29 {3744,3780,3816,3852,3888,3924,3960,3996,4032,4068,4104,4140,4176,4212,4248,4284,4320,4356,4392,4428,9 more,4752}
+    Expression for A9 could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Entry A13: 5 -> 5 {1175,1375,1575,1775,1975}
+    Entry D2: 90 -> 5 {5711,5731,5751,5771,5791}
+    Clue VII: 29 -> 5 {3816,3996,4176,4356,4536}
+    Expression for D6 could not be evaluated: Too many combinations 5400000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry A9: 900 -> 500 {1800..1819,480 more,9899}
+    Entry A11: 7200 -> 720 {1011..1014,1016..1019,1111..1114,1116..1119,1211..1214,700 more,9919}
+    Entry D6: 6000 -> 3000 {3001,3003,3005,3007,3009,3011,3013,3015,3017,3019,3021,3023,3025,3027,3029,3031,3033,3035,3037,3039,2980 more,8999}
+    Entry D14: 6 -> 1 {78}
+    Entry D10: 8 -> 1 {8357}
+    Entry A16: 6 -> 1 {187}
+    Clue II: 1 -> 1 {9}
+    Entry A5: 6 -> 1 {87}
+    Expression for III could not be evaluated: Too many combinations 1500000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 3456000 for variables: A11, D8
+    Clue IX: 1 -> 1 {819}
+    Entry A7: 8 -> 1 {7538}
+    Clue X: 1 -> 1 {594}
+    Entry D12: 6 -> 1 {781}
+    Expression for A9 could not be evaluated: Too many combinations 1500000 for variables: A9, D6
+    Expression for D6 could not be evaluated: Too many combinations 1500000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+    Entry D6: 3000 -> 2999 {3001,3003,3005,3007,3009,3011,3013,3015,3017,3019,3021,3023,3025,3027,3029,3031,3033,3035,3037,3039,2979 more,8999}
+  Propagating constraints...
+    Entry D1: 6 -> 1 {885}
+    Entry D6: 2999 -> 500 {7001,7003,7005,7007,7009,7011,7013,7015,7017,7019,7021,7023,7025,7027,7029,7031,7033,7035,7037,7039,480 more,7999}
+    Entry D3: 6 -> 1 {85}
+    Entry D8: 4800 -> 600 {3001..3006,3011..3016,3021..3026,3031,3032,580 more,3996}
+    Entry A11: 720 -> 90 {1013,1113,1213,1313,1413,1513,1613,1713,1813,1913,2013,2113,2213,2313,2413,2513,2613,2713,2813,2913,70 more,9913}
+    Entry A15: 6 -> 1 {58}
+    Clue III: 12 -> 12 {36,45,153,171,351,378,630,666,1953,2016,2556,2628}
+    Entry A9: 500 -> 200 {7800..7819,180 more,9899}
+    Entry D6: 500 -> 323 {7135,7137,7139,7141,7143,7145,7147,7149,7151,7153,7155,7157,7159,7161,7163,7165,7167,7169,7171,7173,303 more,7945}
+    Clue IV: 12 -> 12 {171,351,378,630,990,1431,2628,3240,3321,4851,4950,5778}
+    Entry A11: 90 -> 59 {3213,3313,3413,3513,3613,3713,3813,3913,4013,4113,4213,4313,4413,4513,4613,4713,4813,4913,5013,5113,39 more,9713}
+    Entry D8: 600 -> 100 {3023,3035,3042,3062,3063,3073,3082,3083,3085,3092,3123,3135,3142,3162,3163,3173,3182,3183,3185,3192,80 more,3992}
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 6 -> 1 {588}
+    Entry A9: 2 -> 2 {7817,9817}
+    Entry D6: 323 -> 2 {7187,7189}
+    Clue III: 12 -> 2 {630,2628}
+  Propagating constraints...
+    Entry D2: 5 -> 2 {5771,5791}
+    Entry D8: 100 -> 10 {3123,3135,3142,3162,3163,3173,3182,3183,3185,3192}
+    Entry A11: 59 -> 5 {3813,4813,5813,6813,8813}
+    Entry A13: 5 -> 2 {1775,1975}
+    Entry D8: 10 -> 2 {3135,3185}
+    Clue IV: 1 -> 1 {2628}
+    Entry A11: 5 -> 1 {5813}
+    Entry D8: 2 -> 1 {3185}
+    Clue VII: 2 -> 2 {3816,3996}
+    Clue III: 2 -> 1 {630}
+  Propagating constraints...
+    Clue III: 1 -> 1 {630}
+    Entry A9: 2 -> 1 {7817}
+    Entry D6: 2 -> 1 {7187}
+  Propagating constraints...
+    Entry D2: 2 -> 1 {5771}
+    Entry A13: 2 -> 1 {1775}
+    Clue VII: 1 -> 1 {3996}
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D4 -> 1 {48}
+Backtracking: Trying value 48 for expressable D4
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A5 -> 1 {87}
+Backtracking: Trying value 87 for expressable A5
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A15 -> 1 {58}
+Backtracking: Trying value 58 for expressable A15
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D3 -> 1 {85}
+Backtracking: Trying value 85 for expressable D3
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D14 -> 1 {78}
+Backtracking: Trying value 78 for expressable D14
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A16 -> 1 {187}
+Backtracking: Trying value 187 for expressable A16
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D12 -> 1 {781}
+Backtracking: Trying value 781 for expressable D12
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A2 -> 1 {588}
+Backtracking: Trying value 588 for expressable A2
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D1 -> 1 {885}
+Backtracking: Trying value 885 for expressable D1
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A13 -> 1 {1775}
+Backtracking: Trying value 1775 for expressable A13
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A7 -> 1 {7538}
+Backtracking: Trying value 7538 for expressable A7
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D10 -> 1 {8357}
+Backtracking: Trying value 8357 for expressable D10
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D2 -> 1 {5771}
+Backtracking: Trying value 5771 for expressable D2
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D8 -> 1 {3185}
+Backtracking: Trying value 3185 for expressable D8
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D6 -> 1 {7187}
+Backtracking: Trying value 7187 for expressable D6
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A9 -> 1 {7817}
+Backtracking: Trying value 7817 for expressable A9
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A11 -> 1 {5813}
+Backtracking: Trying value 5813 for expressable A11
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Grid sum digits 198
+Backtracking: Solution found!
+Solution:
++--+--+--+--+--+--+
+| 8  4| 5  8  8| 4|
++  +--+  +  +--+  +
+| 8  7| 7  5  3  8|
++  +  +  +--+  +--+
+| 5| 1| 7  8  1  7|
++--+  +  +  +  +--+
+| 5  8  1  3| 8| 7|
++--+  +--+  +  +  +
+| 1  7  7  5| 5  8|
++  +--+  +  +--+  +
+| 6| 1  8  7| 6  1|
++--+--+--+--+--+--+
+Clue values:
+I: 36
+II: 9
+III: 630
+IV: 2628
+V: 45
+VI: 297
+VII: 3996
+VIII: 27
+IX: 819
+X: 594
+Backtracking: Trying value 95 for expressable A1
+    Entry D4: 5 -> 1 {59}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {946,956,966,976,986,996}
+    Entry A7: 2430 -> 486 {1119,1129,1139,1149,1159,1169,1179,1189,1199,1219,1229,1239,1249,1259,1269,1279,1289,1299,1319,1329,466 more,9699}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {649,659,669,679,689,699}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {378,1008,1638,2268,2898,3528,4158,4788,5418,6048,6678,7308,7938,8568}
+    Entry D10: 900 -> 839 {1497,1507,1517,1527,1537,1547,1557,1567,1577,1597,1607,1617,1627,1637,1647,1657,1667,1677,1697,1707,819 more,9997}
+    Entry A7: 486 -> 478 {1119,1129,1139,1149,1159,1169,1179,1189,1199,1219,1229,1239,1249,1259,1269,1279,1289,1299,1319,1329,458 more,9619}
+    Entry A7: 8 -> 8 {7149,7259,7369,7479,7519,7589,7629,7699}
+    Entry D10: 839 -> 8 {9157,9267,9417,9527,9637,9747,9857,9967}
+    Clue IX: 14 -> 2 {1638,2268}
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D2: 4050 -> 810 {6110..6129,790 more,6999}
+    Entry D2: 810 -> 90 {6710..6729,70 more,6799}
+    Entry D8: 5400 -> 4800 {1001..1006,1011..1016,1021..1026,1031,1032,4780 more,9996}
+    Entry A9: 8100 -> 900 {1900..1919,880 more,9999}
+    Entry A11: 9000 -> 7200 {1001,1002,1004..1009,1011,1012,1014..1019,1021,1022,1024,1025,7180 more,9999}
+    Entry A13: 600 -> 360 {1031..1036,1041..1046,1051..1056,1061,1062,340 more,1986}
+    Expression for III could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 34560000 for variables: A11, D8
+    Clue VII: 29 -> 29 {4752,4788,4824,4860,4896,4932,4968,5004,5040,5076,5112,5148,5184,5220,5256,5292,5328,5364,5400,5436,9 more,5760}
+    Expression for A9 could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for A13 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 72 for expressable A17
+    Entry D13: 3 -> 1 {27}
+  Propagating constraints...
+    Entry A13: 1800 -> 600 {2030..2049,580 more,2989}
+    Entry D12: 18 -> 6 {842,852,862,872,882,892}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
+    Clue X: 1 -> 1 {594}
+    Entry A16: 18 -> 6 {248,258,268,278,288,298}
+    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D10: 2700 -> 900 {1008,1018,1028,1038,1048,1058,1068,1078,1088,1098,1108,1118,1128,1138,1148,1158,1168,1178,1188,1198,880 more,9998}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D13 -> 1 {27}
+Backtracking: Trying value 27 for expressable D13
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A1 -> 5 {51,62,73,84,95}
+Backtracking: Trying value 51 for expressable A1
+    Entry D4: 5 -> 1 {15}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {542,552,562,572,582,592}
+    Entry A7: 2430 -> 486 {1115,1125,1135,1145,1155,1165,1175,1185,1195,1215,1225,1235,1245,1255,1265,1275,1285,1295,1315,1325,466 more,9695}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {245,255,265,275,285,295}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 15 -> 15 {63,693,1323,1953,2583,3213,3843,4473,5103,5733,6363,6993,7623,8253,8883}
+    Entry D10: 900 -> 871 {1178,1188,1198,1208,1218,1228,1238,1248,1258,1278,1288,1298,1308,1318,1328,1338,1348,1358,1378,1388,851 more,9998}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 62 for expressable A1
+    Entry D4: 5 -> 1 {26}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {643,653,663,673,683,693}
+    Entry A7: 2430 -> 486 {1116,1126,1136,1146,1156,1166,1176,1186,1196,1216,1226,1236,1246,1256,1266,1276,1286,1296,1316,1326,466 more,9696}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {346,356,366,376,386,396}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {252,882,1512,2142,2772,3402,4032,4662,5292,5922,6552,7182,7812,8442}
+    Entry D10: 900 -> 852 {1368,1378,1388,1398,1408,1418,1428,1438,1448,1468,1478,1488,1498,1508,1518,1528,1538,1548,1568,1578,832 more,9998}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 73 for expressable A1
+    Entry D4: 5 -> 1 {37}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {744,754,764,774,784,794}
+    Entry A7: 2430 -> 486 {1117,1127,1137,1147,1157,1167,1177,1187,1197,1217,1227,1237,1247,1257,1267,1277,1287,1297,1317,1327,466 more,9697}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {447,457,467,477,487,497}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {441,1071,1701,2331,2961,3591,4221,4851,5481,6111,6741,7371,8001,8631}
+    Entry D10: 900 -> 833 {1558,1568,1578,1588,1598,1608,1618,1628,1638,1658,1668,1678,1688,1698,1708,1718,1728,1738,1758,1768,813 more,9998}
+    Entry A7: 486 -> 473 {1117,1127,1137,1147,1157,1167,1177,1187,1197,1217,1227,1237,1247,1257,1267,1277,1287,1297,1317,1327,453 more,9557}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 84 for expressable A1
+    Entry D4: 5 -> 1 {48}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {845,855,865,875,885,895}
+    Entry A7: 2430 -> 486 {1118,1128,1138,1148,1158,1168,1178,1188,1198,1218,1228,1238,1248,1258,1268,1278,1288,1298,1318,1328,466 more,9698}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {548,558,568,578,588,598}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {630,1260,1890,2520,3150,3780,4410,5040,5670,6300,6930,7560,8190,8820}
+    Entry D10: 900 -> 814 {1748,1758,1768,1778,1788,1798,1808,1818,1828,1848,1858,1868,1878,1888,1898,1908,1918,1928,1948,1958,794 more,9998}
+    Entry A7: 486 -> 456 {1118,1128,1138,1148,1158,1168,1178,1188,1198,1218,1228,1238,1248,1258,1268,1278,1288,1298,1318,1328,436 more,9368}
+    Entry A7: 2 -> 2 {8188,8298}
+    Entry D10: 814 -> 2 {8818,8928}
+    Clue IX: 14 -> 1 {630}
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D2: 4050 -> 810 {5110..5129,790 more,5999}
+    Entry D2: 810 -> 90 {5810..5829,70 more,5899}
+    Entry D3: 6 -> 2 {41,52}
+    Entry D8: 5400 -> 1200 {8001..8006,8011..8016,8021..8026,8031,8032,1180 more,9996}
+    Entry A9: 8100 -> 900 {1800..1819,880 more,9899}
+    Entry A11: 9000 -> 1800 {1008,1009,1018,1019,1028,1029,1038,1039,1048,1049,1058,1059,1068,1069,1078,1079,1088,1089,1098,1099,1780 more,9999}
+    Entry A13: 600 -> 120 {2031,2032,2041,2042,2051,2052,2061,2062,2071,2072,2081,2082,2131,2132,2141,2142,2151,2152,2161,2162,100 more,2982}
+    Expression for III could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 2160000 for variables: A11, D8
+    Clue VII: 29 -> 29 {2844,2880,2916,2952,2988,3024,3060,3096,3132,3168,3204,3240,3276,3312,3348,3384,3420,3456,3492,3528,9 more,3852}
+    Clue VIII: 1 -> 1 {27}
+    Entry A15: 6 -> 2 {14,25}
+    Expression for A9 could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for A13 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 95 for expressable A1
+    Entry D4: 5 -> 1 {59}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {946,956,966,976,986,996}
+    Entry A7: 2430 -> 486 {1119,1129,1139,1149,1159,1169,1179,1189,1199,1219,1229,1239,1249,1259,1269,1279,1289,1299,1319,1329,466 more,9699}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {649,659,669,679,689,699}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {189,819,1449,2079,2709,3339,3969,4599,5229,5859,6489,7119,7749,8379}
+    Entry D10: 900 -> 858 {1308,1318,1328,1338,1348,1358,1368,1378,1388,1408,1418,1428,1438,1448,1458,1468,1478,1488,1508,1518,838 more,9998}
+    Entry A7: 8 -> 8 {8169,8279,8319,8389,8429,8499,8539,8649}
+    Entry D10: 858 -> 8 {9138,9248,9358,9468,9618,9728,9838,9948}
+    Clue IX: 14 -> 2 {819,1449}
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D2: 4050 -> 810 {6110..6129,790 more,6999}
+    Entry D2: 810 -> 90 {6810..6829,70 more,6899}
+    Entry D8: 5400 -> 4800 {1001..1006,1011..1016,1021..1026,1031,1032,4780 more,9996}
+    Entry A9: 8100 -> 900 {1900..1919,880 more,9999}
+    Entry A11: 9000 -> 7200 {1001..1004,1006..1009,1011..1014,1016..1019,1021..1024,7180 more,9999}
+    Entry A13: 600 -> 360 {2031..2036,2041..2046,2051..2056,2061,2062,340 more,2986}
+    Expression for III could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 34560000 for variables: A11, D8
+    Clue VII: 29 -> 29 {3852,3888,3924,3960,3996,4032,4068,4104,4140,4176,4212,4248,4284,4320,4356,4392,4428,4464,4500,4536,9 more,4860}
+    Expression for A9 could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Entry A13: 4 -> 4 {2286,2486,2686,2886}
+    Entry D2: 90 -> 4 {6822,6842,6862,6882}
+    Clue VII: 29 -> 4 {3996,4176,4356,4536}
+    Expression for D6 could not be evaluated: Too many combinations 5400000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry A9: 900 -> 400 {2900..2919,380 more,8999}
+    Entry A11: 7200 -> 720 {1021..1024,1026..1029,1121..1124,1126..1129,1221..1224,700 more,9929}
+    Entry D6: 6000 -> 2400 {3002,3004,3006,3008,3012,3014,3016,3018,3022,3024,3026,3028,3032,3034,3036,3038,3042,3044,3046,3048,2380 more,8998}
+    Entry D14: 6 -> 1 {89}
+    Entry D10: 8 -> 1 {9468}
+    Entry A16: 6 -> 1 {298}
+    Clue II: 1 -> 1 {9}
+    Entry A5: 6 -> 1 {98}
+    Clue III: 24 -> 24 {36,45,153,171,351,378,630,666,990,1035,1431,1485,1953,2016,2556,2628,3240,3321,4005,4095,4 more,5886}
+    Entry A9: 400 -> 300 {4900..4919,280 more,8999}
+    Entry D6: 2400 -> 1365 {3002,3004,3006,3008,3012,3014,3016,3018,3022,3024,3026,3028,3032,3034,3036,3038,3042,3044,3046,3048,1345 more,8962}
+    Expression for IV could not be evaluated: Too many combinations 3456000 for variables: A11, D8
+    Clue IX: 1 -> 1 {819}
+    Entry A7: 8 -> 1 {8649}
+    Clue X: 1 -> 1 {594}
+    Entry D12: 6 -> 1 {892}
+    Entry A9: 5 -> 5 {4924,6924,6926,8926,8928}
+    Entry D6: 1365 -> 5 {4294,4296,6296,6298,8298}
+    Clue III: 24 -> 2 {630,2628}
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D1: 6 -> 1 {996}
+    Entry D6: 5 -> 1 {8298}
+    Entry D3: 6 -> 1 {96}
+    Entry D8: 4800 -> 600 {4001..4006,4011..4016,4021..4026,4031,4032,580 more,4996}
+    Entry D2: 4 -> 3 {6842,6862,6882}
+    Entry D8: 600 -> 60 {4201..4206,4211..4216,4221..4226,4231,4232,40 more,4296}
+    Entry A11: 720 -> 72 {1921..1924,1926..1929,2921..2924,2926..2929,3921..3924,52 more,9929}
+    Entry A11: 72 -> 9 {1924,2924,3924,4924,5924,6924,7924,8924,9924}
+    Entry A13: 4 -> 1 {2886}
+    Entry A15: 6 -> 1 {69}
+    Clue III: 1 -> 1 {630}
+    Entry A9: 5 -> 1 {8928}
+    Clue IV: 2 -> 2 {630,2628}
+    Entry A11: 9 -> 2 {4924,6924}
+    Entry D8: 60 -> 2 {4294,4296}
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 6 -> 1 {699}
+    Clue VII: 1 -> 1 {3996}
+    Entry D2: 3 -> 1 {6882}
+    Clue IV: 2 -> 1 {2628}
+  Propagating constraints...
+    Entry D8: 2 -> 1 {4296}
+    Clue IV: 1 -> 1 {2628}
+    Entry A11: 2 -> 1 {6924}
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D4 -> 1 {59}
+Backtracking: Trying value 59 for expressable D4
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A5 -> 1 {98}
+Backtracking: Trying value 98 for expressable A5
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A15 -> 1 {69}
+Backtracking: Trying value 69 for expressable A15
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D3 -> 1 {96}
+Backtracking: Trying value 96 for expressable D3
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D14 -> 1 {89}
+Backtracking: Trying value 89 for expressable D14
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A16 -> 1 {298}
+Backtracking: Trying value 298 for expressable A16
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D12 -> 1 {892}
+Backtracking: Trying value 892 for expressable D12
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A2 -> 1 {699}
+Backtracking: Trying value 699 for expressable A2
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D1 -> 1 {996}
+Backtracking: Trying value 996 for expressable D1
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A13 -> 1 {2886}
+Backtracking: Trying value 2886 for expressable A13
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A7 -> 1 {8649}
+Backtracking: Trying value 8649 for expressable A7
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D10 -> 1 {9468}
+Backtracking: Trying value 9468 for expressable D10
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D2 -> 1 {6882}
+Backtracking: Trying value 6882 for expressable D2
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D8 -> 1 {4296}
+Backtracking: Trying value 4296 for expressable D8
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D6 -> 1 {8298}
+Backtracking: Trying value 8298 for expressable D6
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A9 -> 1 {8928}
+Backtracking: Trying value 8928 for expressable A9
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A11 -> 1 {6924}
+Backtracking: Trying value 6924 for expressable A11
+  Propagating constraints...
+Backtracking: Propagation consistent. Recursing...
+Grid sum digits 234
+Backtracking: Solution found!
+Solution:
++--+--+--+--+--+--+
+| 9  5| 6  9  9| 5|
++  +--+  +  +--+  +
+| 9  8| 8  6  4  9|
++  +  +  +--+  +--+
+| 6| 2| 8  9  2  8|
++--+  +  +  +  +--+
+| 6  9  2  4| 9| 8|
++--+  +--+  +  +  +
+| 2  8  8  6| 6  9|
++  +--+  +  +--+  +
+| 7| 2  9  8| 7  2|
++--+--+--+--+--+--+
+Clue values:
+I: 36
+II: 9
+III: 630
+IV: 2628
+V: 45
+VI: 297
+VII: 3996
+VIII: 27
+IX: 819
+X: 594
+Backtracking: Trying value 83 for expressable A17
+    Entry D13: 3 -> 1 {38}
+  Propagating constraints...
+    Entry A13: 1800 -> 600 {3030..3049,580 more,3989}
+    Entry D12: 18 -> 6 {943,953,963,973,983,993}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 6561000 for variables: D10, A7, I
+    Clue X: 1 -> 1 {594}
+    Entry A16: 18 -> 6 {349,359,369,379,389,399}
+    Expression for A7 could not be evaluated: Too many combinations 6561000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 6561000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D10: 2700 -> 900 {1009,1019,1029,1039,1049,1059,1069,1079,1089,1099,1109,1119,1129,1139,1149,1159,1169,1179,1189,1199,880 more,9999}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable D13 -> 1 {38}
+Backtracking: Trying value 38 for expressable D13
+  Propagating constraints...
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Expression for IX could not be evaluated: Too many combinations 2187000 for variables: D10, A7, I
+    Expression for A7 could not be evaluated: Too many combinations 2187000 for variables: A7, D10
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for D10 could not be evaluated: Too many combinations 2187000 for variables: D10, A7
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+Backtracking: Propagation consistent. Recursing...
+Backtracking: Trying expressable A1 -> 5 {51,62,73,84,95}
+Backtracking: Trying value 51 for expressable A1
+    Entry D4: 5 -> 1 {15}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {542,552,562,572,582,592}
+    Entry A7: 2430 -> 486 {1115,1125,1135,1145,1155,1165,1175,1185,1195,1215,1225,1235,1245,1255,1265,1275,1285,1295,1315,1325,466 more,9695}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {245,255,265,275,285,295}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {504,1134,1764,2394,3024,3654,4284,4914,5544,6174,6804,7434,8064,8694}
+    Entry D10: 900 -> 827 {1619,1629,1639,1649,1659,1669,1679,1689,1699,1719,1729,1739,1749,1759,1769,1779,1789,1799,1819,1829,807 more,9999}
+    Entry A7: 486 -> 468 {1115,1125,1135,1145,1155,1165,1175,1185,1195,1215,1225,1235,1245,1255,1265,1275,1285,1295,1315,1325,448 more,9495}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 62 for expressable A1
+    Entry D4: 5 -> 1 {26}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {643,653,663,673,683,693}
+    Entry A7: 2430 -> 486 {1116,1126,1136,1146,1156,1166,1176,1186,1196,1216,1226,1236,1246,1256,1266,1276,1286,1296,1316,1326,466 more,9696}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {346,356,366,376,386,396}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 15 -> 15 {63,693,1323,1953,2583,3213,3843,4473,5103,5733,6363,6993,7623,8253,8883}
+    Entry D10: 900 -> 871 {1179,1189,1199,1209,1219,1229,1239,1249,1259,1279,1289,1299,1309,1319,1329,1339,1349,1359,1379,1389,851 more,9999}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 73 for expressable A1
+    Entry D4: 5 -> 1 {37}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {744,754,764,774,784,794}
+    Entry A7: 2430 -> 486 {1117,1127,1137,1147,1157,1167,1177,1187,1197,1217,1227,1237,1247,1257,1267,1277,1287,1297,1317,1327,466 more,9697}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {447,457,467,477,487,497}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {252,882,1512,2142,2772,3402,4032,4662,5292,5922,6552,7182,7812,8442}
+    Entry D10: 900 -> 852 {1369,1379,1389,1399,1409,1419,1429,1439,1449,1469,1479,1489,1499,1509,1519,1529,1539,1549,1569,1579,832 more,9999}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 84 for expressable A1
+    Entry D4: 5 -> 1 {48}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {845,855,865,875,885,895}
+    Entry A7: 2430 -> 486 {1118,1128,1138,1148,1158,1168,1178,1188,1198,1218,1228,1238,1248,1258,1268,1278,1288,1298,1318,1328,466 more,9698}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {548,558,568,578,588,598}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {441,1071,1701,2331,2961,3591,4221,4851,5481,6111,6741,7371,8001,8631}
+    Entry D10: 900 -> 833 {1559,1569,1579,1589,1599,1609,1619,1629,1639,1659,1669,1679,1689,1699,1709,1719,1729,1739,1759,1769,813 more,9999}
+    Entry A7: 486 -> 473 {1118,1128,1138,1148,1158,1168,1178,1188,1198,1218,1228,1238,1248,1258,1268,1278,1288,1298,1318,1328,453 more,9558}
+    Expression for A7 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 95 for expressable A1
+    Entry D4: 5 -> 1 {59}
+  Propagating constraints...
+    Entry D1: 30 -> 6 {946,956,966,976,986,996}
+    Entry A7: 2430 -> 486 {1119,1129,1139,1149,1159,1169,1179,1189,1199,1219,1229,1239,1249,1259,1269,1279,1289,1299,1319,1329,466 more,9699}
+    Expression for III could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 48600000 for variables: A11, D8
+    Clue VI: 1 -> 1 {297}
+    Entry A2: 30 -> 6 {649,659,669,679,689,699}
+    Expression for VII could not be evaluated: Too many combinations 2430000 for variables: D2, A13, I
+    Clue IX: 14 -> 14 {630,1260,1890,2520,3150,3780,4410,5040,5670,6300,6930,7560,8190,8820}
+    Entry D10: 900 -> 814 {1749,1759,1769,1779,1789,1799,1809,1819,1829,1849,1859,1869,1879,1889,1899,1909,1919,1929,1949,1959,794 more,9999}
+    Entry A7: 486 -> 456 {1119,1129,1139,1149,1159,1169,1179,1189,1199,1219,1229,1239,1249,1259,1269,1279,1289,1299,1319,1329,436 more,9369}
+    Entry A7: 2 -> 2 {9189,9299}
+    Entry D10: 814 -> 2 {9819,9929}
+    Clue IX: 14 -> 1 {630}
+    Expression for A9 could not be evaluated: Too many combinations 48600000 for variables: A9, D6
+    Expression for A13 could not be evaluated: Too many combinations 2430000 for variables: A13, D2
+    Expression for D2 could not be evaluated: Too many combinations 2430000 for variables: D2, A13
+    Expression for D6 could not be evaluated: Too many combinations 48600000 for variables: D6, A9
+    Expression for A11 could not be evaluated: Too many combinations 0 for variables: IV, D8
+    Expression for D8 could not be evaluated: Too many combinations 0 for variables: A11, IV
+  Propagating constraints...
+    Entry D2: 4050 -> 810 {6110..6129,790 more,6999}
+    Entry D2: 810 -> 90 {6910..6929,70 more,6999}
+    Entry D3: 6 -> 2 {41,52}
+    Entry D8: 5400 -> 1200 {8001..8006,8011..8016,8021..8026,8031,8032,1180 more,9996}
+    Entry A9: 8100 -> 900 {1900..1919,880 more,9999}
+    Entry A11: 9000 -> 1800 {1008,1009,1018,1019,1028,1029,1038,1039,1048,1049,1058,1059,1068,1069,1078,1079,1088,1089,1098,1099,1780 more,9999}
+    Entry A13: 600 -> 120 {3031,3032,3041,3042,3051,3052,3061,3062,3071,3072,3081,3082,3131,3132,3141,3142,3151,3152,3161,3162,100 more,3982}
+    Expression for III could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for IV could not be evaluated: Too many combinations 2160000 for variables: A11, D8
+    Clue VII: 29 -> 29 {2952,2988,3024,3060,3096,3132,3168,3204,3240,3276,3312,3348,3384,3420,3456,3492,3528,3564,3600,3636,9 more,3960}
+    Clue VIII: 1 -> 1 {27}
+    Entry A15: 6 -> 2 {14,25}
+    Expression for A9 could not be evaluated: Too many combinations 5400000 for variables: A9, D6
+    Expression for A13 has no possible values after evaluation
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: 2 solutions found.
 Backtracking time: 0ms
 
 Exited.

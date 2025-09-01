@@ -32,7 +32,10 @@ class PuzzleDefinition {
   /// A list of ordering constraints.
   final List<OrderingConstraint> orderingConstraints;
 
-  /// A map of expressable IDs to [Expressable] objects.
+  /// All Expressables, i.e. clue, expressions and variables
+  final List<Expressable> allExpressables = [];
+
+  /// A map of expressable IDs to [Expressable] objects that have expressions.
   final Map<String, Expressable> expressables = {};
 
   /// A flag indicating whether the mapping between clues and entries is known.
@@ -41,6 +44,36 @@ class PuzzleDefinition {
   final bool mappingIsKnown;
 
   factory PuzzleDefinition.fromString({
+    required String name,
+    required String gridString,
+    required Map<String, Clue> clues,
+    required Map<String, Variable> variables,
+    Map<String, Entry>? entries,
+    List<OrderingConstraint> orderingConstraints = const [],
+    mappingIsKnown = true,
+  }) {
+    final (grid, puzzleEntries) = fromStringInternal(
+      name: name,
+      gridString: gridString,
+      clues: clues,
+      variables: variables,
+      entries: entries,
+      orderingConstraints: orderingConstraints,
+      mappingIsKnown: mappingIsKnown,
+    );
+    return PuzzleDefinition(
+      name: name,
+      grids: {'main': grid}, // Assuming a single grid named 'main'
+      entries: puzzleEntries,
+      clues: clues,
+      variables: variables,
+      orderingConstraints: orderingConstraints,
+      mappingIsKnown:
+          mappingIsKnown, // Assuming mapping is known from gridString
+    );
+  }
+
+  static (Grid grid, Map<String, Entry> entries) fromStringInternal({
     required String name,
     required String gridString,
     required Map<String, Clue> clues,
@@ -101,17 +134,7 @@ class PuzzleDefinition {
         puzzleEntries[entry.id] = entry;
       }
     }
-
-    return PuzzleDefinition(
-      name: name,
-      grids: {'main': grid}, // Assuming a single grid named 'main'
-      entries: puzzleEntries,
-      clues: clues,
-      variables: variables,
-      orderingConstraints: orderingConstraints,
-      mappingIsKnown:
-          mappingIsKnown, // Assuming mapping is known from gridString
-    );
+    return (grid, puzzleEntries);
   }
 
   /// Creates a new puzzle definition with the given components.
@@ -142,11 +165,9 @@ class PuzzleDefinition {
     }
     // Parse all expressions
     var exception = false;
-    final allExpressables = [
-      ...clues.values,
-      ...variables.values,
-      ...entries.values
-    ];
+    allExpressables.addAll(clues.values);
+    allExpressables.addAll(variables.values);
+    allExpressables.addAll(entries.values);
     for (final expressable in allExpressables) {
       for (final constraint in expressable.expressionConstraints) {
         if (expressable.addExpression(constraint)) {
@@ -375,6 +396,11 @@ class PuzzleDefinition {
     expressable ??= clues[expressableName];
     expressable ??= entries[expressableName];
     return expressable!;
+  }
+
+  bool isSolutionValid() {
+    // Check if all expressables have a single value
+    return allExpressables.every((expressable) => expressable.isSolved);
   }
 }
 

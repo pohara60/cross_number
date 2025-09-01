@@ -138,9 +138,24 @@ class Solver {
     }
   }
 
-  int _backtrack(int expressableIndex, int solutionCount,
+  List<Expressable> _backtrackExpressables() {
+    // Order expressables for backtracking
+    final expressables = puzzle.expressables.values;
+    final unsolved =
+        expressables.where((expressable) => expressable.isNotSolved).toList();
+    // Order with least possible values first
+    unsolved.sort((a, b) => a.possibleValues == null
+        ? 1
+        : b.possibleValues == null
+            ? -1
+            : a.possibleValues!.length - b.possibleValues!.length);
+    return unsolved;
+  }
+
+  int _backtrack(
+      List<Expressable> expressables, expressableIndex, int solutionCount,
       [bool Function()? callback]) {
-    if (expressableIndex == puzzle.expressables.length) {
+    if (expressableIndex == expressables.length) {
       // Base case: All expressables assigned. Check if it's a valid solution.
       if (isSolutionValid()) {
         if (traceBacktrace) print('Backtracking: Solution found!');
@@ -158,8 +173,7 @@ class Solver {
       return solutionCount;
     }
 
-    final currentExpressable =
-        puzzle.expressables.values.elementAt(expressableIndex);
+    final currentExpressable = expressables.elementAt(expressableIndex);
     if (currentExpressable.possibleValues == null ||
         currentExpressable.possibleValues!.isEmpty) {
       if (traceBacktrace) {
@@ -211,8 +225,8 @@ class Solver {
         if (traceBacktrace) {
           print('Backtracking: Propagation consistent. Recursing...');
         }
-        solutionCount = _backtrack(
-            expressableIndex + 1, solutionCount, callback); // Recurse
+        solutionCount = _backtrack(expressables, expressableIndex + 1,
+            solutionCount, callback); // Recurse
       } else {
         if (traceBacktrace) {
           print('Backtracking: Propagation inconsistent. Backtracking...');
@@ -225,23 +239,7 @@ class Solver {
   }
 
   bool isSolutionValid() {
-    // Check if all clues have a single value
-    for (var clue in puzzle.clues.values) {
-      if (clue.possibleValues == null || clue.possibleValues!.length != 1) {
-        return false;
-      }
-    }
-    // Check if all entries have a single value
-    for (var entry in puzzle.entries.values) {
-      if (entry.possibleValues.length != 1) {
-        return false;
-      }
-    }
-    // Additional check: Ensure consistency after all assignments
-    // This is implicitly handled by _propagateConstraints returning false on inconsistency
-    // but a final check for any remaining inconsistencies is good.
-    // For now, if all possibleValues are singletons, and propagation was consistent, it's valid.
-    return true;
+    return puzzle.isSolutionValid();
   }
 
   void _printSolution() {
@@ -366,22 +364,26 @@ class Solver {
 
     // If solution not exact, start backtracking
     stopwatch.stop();
-    print('Solve time: ${stopwatch.elapsedMilliseconds}ms');
     if (isSolutionValid()) {
       if (callback != null) callback.call();
       printPuzzle();
+      print('Solve time: ${stopwatch.elapsedMilliseconds}ms');
     } else if (!valueBacktracking) {
       printPuzzle();
+      print('Solve time: ${stopwatch.elapsedMilliseconds}ms');
       print('Solution not complete, backtracking disabled');
     } else {
       printPuzzle();
+      print('Solve time: ${stopwatch.elapsedMilliseconds}ms');
       print('Solution not complete, backtracking');
 
       // Disable answer checking during backtracking
       Expressable.checkAnswer = false;
       trace = traceBacktrace; // Use traceBacktrace for backtracking
       stopwatch.reset();
-      var solutionCount = _backtrack(0, 0, callback);
+      stopwatch.start();
+      var expressables = _backtrackExpressables();
+      var solutionCount = _backtrack(expressables, 0, 0, callback);
       if (solutionCount == 0) {
         print("Backtracking: no solutions found.");
       } else {
@@ -696,16 +698,14 @@ class Solver {
     var consistent = true;
 
     // Find expressables with more than one possible value and less than 5
-    final unsolved = expressables
-        .where((expressable) =>
-            expressable.possibleValues != null &&
-            expressable.possibleValues!.length > 1 &&
-            expressable.possibleValues!.length < 5)
-        .toList();
+    final unsolved =
+        expressables.where((expressable) => expressable.isNotSolved).toList();
+    final consider =
+        unsolved.where((expressable) => expressable.possibleValues!.length < 5);
 
     // Group unsolved expressables by their possible values
     final valueGroups = <String, Map<String, dynamic>>{};
-    for (var expressable in unsolved) {
+    for (var expressable in consider) {
       final key = expressable.possibleValues!.toList()..sort();
       final keyString = key.join(',');
       valueGroups.putIfAbsent(
@@ -755,11 +755,8 @@ class Solver {
     }
 
     // Original logic for solved expressables (N=1)
-    final solvedExpressables = expressables
-        .where((expressable) =>
-            expressable.possibleValues != null &&
-            expressable.possibleValues!.length == 1)
-        .toList();
+    final solvedExpressables =
+        expressables.where((expressable) => expressable.isSolved).toList();
     if (solvedExpressables.isNotEmpty) {
       final solvedExpressableValues =
           solvedExpressables.map((clue) => clue.possibleValues!.single).toSet();
@@ -771,7 +768,7 @@ class Solver {
         if (expressable.possibleValues == null) {
           continue; // Skip if expressable has no values yet
         }
-        if (expressable.possibleValues!.length > 1) {
+        if (expressable.isNotSolved) {
           if (expressable.possibleValues!
               .any((v) => solvedExpressableValues.contains(v))) {
             final originalCount = expressable.possibleValues!.length;

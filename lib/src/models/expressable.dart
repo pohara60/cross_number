@@ -19,6 +19,10 @@ abstract class Expressable {
     _possibleValues = values;
   }
 
+  bool get isSolved => (possibleValues?.length ?? 0) == 1;
+  bool get isNotSolved => (possibleValues?.length ?? 1) != 1;
+  int? get solution => isSolved ? possibleValues!.single : null;
+
   int? get min => possibleValues == null || possibleValues!.isEmpty
       ? null
       : possibleValues!.reduce((a, b) => a < b ? a : b);

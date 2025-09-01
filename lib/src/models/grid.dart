@@ -288,4 +288,57 @@ class Grid {
     buffer.write('+' + List.generate(cols, (_) => '--').join('+') + '+');
     return buffer.toString();
   }
+
+  String getDigits() {
+    var buffer = StringBuffer();
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var cell = cells[r][c];
+        var prevCell = c > 0 ? cells[r][c - 1] : null;
+        var value = ' ';
+        if (cell.acrossEntry != null && cell.downEntry != null) {
+          // This cell is an intersection
+          var acrossEntry = cell.acrossEntry!;
+          var downEntry = cell.downEntry!;
+          var acrossDigit = '?';
+          var downDigit = '?';
+          if (acrossEntry.isSolved) {
+            acrossDigit = acrossEntry.solution!.toString()[c - acrossEntry.col];
+          }
+          if (downEntry.isSolved) {
+            downDigit = downEntry.solution!.toString()[r - downEntry.row];
+          }
+          if (acrossDigit == downDigit) {
+            value = acrossDigit;
+          } else {
+            value = '?';
+          }
+        } else if (cell.acrossEntry != null) {
+          var entry = cell.acrossEntry!;
+          if (entry.isSolved) {
+            value = entry.solution!.toString()[c - entry.col];
+          } else {
+            value = '?';
+          }
+        } else if (cell.downEntry != null) {
+          var entry = cell.downEntry!;
+          if (entry.isSolved) {
+            value = entry.solution!.toString()[r - entry.row];
+          } else {
+            value = '?';
+          }
+        }
+        buffer.write(value);
+      }
+    }
+    return buffer.toString();
+  }
+
+  int? getDigitsSum() {
+    final digits = getDigits();
+    if (digits.contains('?')) return null;
+    return digits
+        .split('')
+        .fold(0, (total, value) => total! + int.parse(value));
+  }
 }
