@@ -15,15 +15,17 @@ class CouplesDifferencesPuzzle extends PuzzleDefinition {
   factory CouplesDifferencesPuzzle.fromString({
     required String name,
     required String gridString,
+    List<String>? gridNames,
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
     mappingIsKnown = true,
   }) {
-    final (grid, puzzleEntries) = PuzzleDefinition.fromStringInternal(
+    final (grids, puzzleEntries) = PuzzleDefinition.fromStringInternal(
       name: name,
       gridString: gridString,
+      gridNames: gridNames,
       clues: clues,
       variables: variables,
       entries: entries,
@@ -32,7 +34,7 @@ class CouplesDifferencesPuzzle extends PuzzleDefinition {
     );
     return CouplesDifferencesPuzzle(
       name: name,
-      grids: {'main': grid}, // Assuming a single grid named 'main'
+      grids: grids, // Assuming a single grid named 'main'
       entries: puzzleEntries,
       clues: clues,
       variables: variables,

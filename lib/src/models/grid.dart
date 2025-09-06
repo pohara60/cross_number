@@ -14,6 +14,9 @@ class Grid {
   /// The cells of the grid.
   late List<List<Cell>> cells;
 
+  /// The entries in the grid.
+  Map<String, Entry> entries = {};
+
   /// Creates a new grid with the given number of [rows] and [cols].
   Grid(this.rows, this.cols) {
     cells = List.generate(rows, (_) => List.generate(cols, (_) => Cell()));
@@ -142,6 +145,7 @@ class Grid {
               orientation: EntryOrientation.across,
               clueId: clueId,
             );
+            grid.entries[entry.id] = entry;
             // Assign this entry to all cells it spans
             for (var k = 0; k < length; k++) {
               grid.cells[r][c + k].acrossEntry = entry;
@@ -174,6 +178,7 @@ class Grid {
               orientation: EntryOrientation.down,
               clueId: clueId,
             );
+            grid.entries[entry.id] = entry;
             // Assign this entry to all cells it spans
             for (var k = 0; k < length; k++) {
               grid.cells[r + k][c].downEntry = entry;

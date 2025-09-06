@@ -46,15 +46,17 @@ class PuzzleDefinition {
   factory PuzzleDefinition.fromString({
     required String name,
     required String gridString,
+    List<String>? gridNames,
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
     mappingIsKnown = true,
   }) {
-    final (grid, puzzleEntries) = fromStringInternal(
+    final (grids, puzzleEntries) = fromStringInternal(
       name: name,
       gridString: gridString,
+      gridNames: gridNames,
       clues: clues,
       variables: variables,
       entries: entries,
@@ -63,7 +65,7 @@ class PuzzleDefinition {
     );
     return PuzzleDefinition(
       name: name,
-      grids: {'main': grid}, // Assuming a single grid named 'main'
+      grids: grids,
       entries: puzzleEntries,
       clues: clues,
       variables: variables,
@@ -73,68 +75,93 @@ class PuzzleDefinition {
     );
   }
 
-  static (Grid grid, Map<String, Entry> entries) fromStringInternal({
+  static (Map<String, Grid> grid, Map<String, Entry> entries)
+      fromStringInternal({
     required String name,
     required String gridString,
+    List<String>? gridNames,
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
     mappingIsKnown = true,
   }) {
-    final grid = Grid.fromString(gridString);
-    final Map<String, Entry> gridEntries = {};
+    final Map<String, Grid> grids = {};
+    final Map<String, Entry> puzzleEntries = {};
 
-    // Extract entries from the grid
-    for (var r = 0; r < grid.rows; r++) {
-      for (var c = 0; c < grid.cols; c++) {
-        final cell = grid.cells[r][c];
-        if (cell.acrossEntry != null) {
-          var entryId = cell.acrossEntry!.id;
-          if (!gridEntries.containsKey(entryId)) {
-            gridEntries[entryId] = cell.acrossEntry!;
+    if (gridNames == null || gridNames.isEmpty) {
+      // Backward compatibility: single grid
+      final grid = Grid.fromString(gridString);
+      grids['main'] = grid;
+      final gridEntries = grid.entries;
+      if (entries != null) {
+        for (var entry in entries.values) {
+          if (!gridEntries.containsKey(entry.id)) {
+            throw PuzzleException(
+                'Entry ${entry.id} not found in grid definition.');
           }
+          // Override entry with grid entry position, length, orientation
+          var gridEntry = gridEntries[entry.id]!;
+          puzzleEntries[entry.id] = entry.copyWith(
+            row: gridEntry.row,
+            col: gridEntry.col,
+            length: gridEntry.length,
+            orientation: gridEntry.orientation,
+            possibleValues: gridEntry.possibleValues,
+          );
         }
-        if (cell.downEntry != null) {
-          var entryId = cell.downEntry!.id;
-          if (!gridEntries.containsKey(entryId)) {
-            gridEntries[entryId] = cell.downEntry!;
+        // Check all grid entries are provided, add any missing ones
+        var additionalEntries = gridEntries.values
+            .where((entry) => !puzzleEntries.containsKey(entry.id))
+            .toList();
+        for (var entry in additionalEntries) {
+          entry.clueId = null; // Ensure no default clue mapping
+          puzzleEntries[entry.id] = entry;
+        }
+      } else {
+        puzzleEntries.addAll(gridEntries);
+      }
+    } else {
+      // Multiple grids
+      final Map<String, Entry> gridEntries = {};
+      for (var gridName in gridNames) {
+        final grid = Grid.fromString(gridString);
+        grids[gridName] = grid;
+        for (var entry in grid.entries.values) {
+          final prefixedId = '$gridName.${entry.id}';
+          gridEntries[prefixedId] = entry.copyWith(id: prefixedId);
+        }
+      }
+
+      if (entries != null) {
+        for (var entry in entries.values) {
+          if (!gridEntries.containsKey(entry.id)) {
+            throw PuzzleException(
+                'Entry ${entry.id} not found in grid definitions.');
           }
+          var gridEntry = gridEntries[entry.id]!;
+          puzzleEntries[entry.id] = entry.copyWith(
+            row: gridEntry.row,
+            col: gridEntry.col,
+            length: gridEntry.length,
+            orientation: gridEntry.orientation,
+            possibleValues: gridEntry.possibleValues,
+          );
         }
+        // Add any grid entries that were not in the provided entries
+        var additionalEntries = gridEntries.values
+            .where((entry) => !puzzleEntries.containsKey(entry.id))
+            .toList();
+        for (var entry in additionalEntries) {
+          entry.clueId = null; // Ensure no default clue mapping
+          puzzleEntries[entry.id] = entry;
+          puzzleEntries[entry.id] = entry;
+        }
+      } else {
+        puzzleEntries.addAll(gridEntries);
       }
     }
-
-    // If entries provided, validate against grid entries
-    // Maintain order of provided entries (in case of ordering constraints)
-    var puzzleEntries = gridEntries;
-    if (entries != null) {
-      puzzleEntries = {};
-      for (var entry in entries.values) {
-        if (!gridEntries.containsKey(entry.id)) {
-          throw PuzzleException(
-              'Entry ${entry.id} not found in grid definition.');
-        }
-        // Override entry with grid entry position, length, orientation
-        var gridEntry = gridEntries[entry.id]!;
-        puzzleEntries[entry.id] = entry.copyWith(
-          row: gridEntry.row,
-          col: gridEntry.col,
-          length: gridEntry.length,
-          orientation: gridEntry.orientation,
-          possibleValues: gridEntry.possibleValues,
-        );
-      }
-
-      // Check all grid entries are provided, add any missing ones
-      var additionalEntries = gridEntries.values
-          .where((entry) => !puzzleEntries.containsKey(entry.id))
-          .toList();
-      for (var entry in additionalEntries) {
-        entry.clueId = null; // Ensure no default clue mapping
-        puzzleEntries[entry.id] = entry;
-      }
-    }
-    return (grid, puzzleEntries);
+    return (grids, puzzleEntries);
   }
 
   /// Creates a new puzzle definition with the given components.
@@ -186,13 +213,14 @@ class PuzzleDefinition {
         var expressionTree = expressable.expressionTrees[index];
         var variableList = expressable.variableLists[index];
         for (final variable in variableList) {
-          if (!clues.containsKey(variable) &&
-              !variables.containsKey(variable) &&
-              !entries.containsKey(variable)) {
+          try {
+            getExpressable(variable);
+          } on PuzzleException {
             exception = true;
             print(
                 'Variable $variable used in expression for ${expressable.id} is not defined.');
           }
+
           if (expressable is Clue && entries.containsKey(variable)) {
             var entry = entries[variable]!;
             final inverter =
@@ -392,10 +420,28 @@ class PuzzleDefinition {
   }
 
   Expressable getExpressable(String expressableName) {
+    if (expressableName.contains('.')) {
+      // Grid-specific reference
+      var expressable = entries[expressableName] ?? clues[expressableName];
+      if (expressable != null) return expressable;
+    }
+
+    // Non-prefixed reference
     var expressable = variables[expressableName] as Expressable?;
     expressable ??= clues[expressableName];
     expressable ??= entries[expressableName];
-    return expressable!;
+
+    // Backward compatibility for single-grid puzzles
+    if (expressable == null &&
+        grids.length == 1 &&
+        grids.keys.first == 'main') {
+      // Already checked entries and clues without prefix
+    }
+
+    if (expressable == null) {
+      throw PuzzleException('Expressable $expressableName not found.');
+    }
+    return expressable;
   }
 
   bool isSolutionValid() {

@@ -34,18 +34,18 @@ PuzzleDefinition thirty() {
     '+--+--+--+--+--+',
   ];
   return PuzzleDefinition.fromString(
-    name: 'Puzzle3',
+    name: 'Thirty',
     gridString: gridString.join('\n'),
     gridNames: ['L', 'R'], // Left, Right
     entries: {
-      'L.A1': Entry(
-          id: 'L.A1', constraints: [ExpressionConstraint('L.A1 = R.D1+R.A3')]),
-      'L.A8': Entry(
-          id: 'L.A8', constraints: [ExpressionConstraint('L.A8 = L.A2+L.A&')]),
-      'R.A1': Entry(
-          id: 'R.A1', constraints: [ExpressionConstraint('R.A1 = L.D1+L.A3')]),
-      'R.A8': Entry(
-          id: 'R.A8', constraints: [ExpressionConstraint('R.A8 = R.A2+R.A&')]),
+      'L.A1':
+          Entry(id: 'L.A1', constraints: [ExpressionConstraint('R.D1+R.A3')]),
+      'L.A8':
+          Entry(id: 'L.A8', constraints: [ExpressionConstraint('L.A3+L.A7')]),
+      'R.A1':
+          Entry(id: 'R.A1', constraints: [ExpressionConstraint('L.D1+L.A3')]),
+      'R.A8':
+          Entry(id: 'R.A8', constraints: [ExpressionConstraint('R.A3+R.A7')])
     },
     clues: {},
     variables: {},

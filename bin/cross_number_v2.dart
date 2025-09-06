@@ -11,6 +11,7 @@ import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
 import '../puzzles/simple_puzzle.dart';
 import '../puzzles/sum_squares.dart';
+import '../puzzles/thirty.dart';
 import '../puzzles/threes.dart';
 import '../puzzles/wheels.dart';
 
@@ -28,15 +29,16 @@ void main(List<String> arguments) {
     // final puzzle = threes();
     // final puzzle = abcd();
     // final puzzle = primania();
-    final puzzle = couplesDifferences();
+    // final puzzle = couplesDifferences();
+    final puzzle = thirty();
     // final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
         // useTransitiveGrouping: true,
-        traceSolve: false,
+        traceSolve: true,
         allowBacktracking: true,
-        traceBacktrace: false);
+        traceBacktrace: true);
     solver.solve();
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');
