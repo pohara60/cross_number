@@ -352,20 +352,17 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   }
 
   @override
-  List<EvaluationResult> visitGridEntryExpression(
-      GridEntryExpression expression,
+  List<EvaluationResult> visitGridReferenceExpression(
+      GridReferenceExpression expression,
       {required num min,
       required num max}) {
-    final entryId = '${expression.gridId}.${expression.entryId}';
-    final entry = puzzle.entries[entryId];
-    if (entry != null) {
-      return entry.possibleValues
-          .where((value) => value >= min && value <= max)
-          .map((e) => EvaluationResult(e, {}))
-          .toList();
-    }
-    throw EvaluatorException(
-        'Entry $entryId not found in puzzle definition.');
+    final referenceId = '${expression.gridId}.${expression.referenceId}';
+    final expressable = puzzle.getExpressable(referenceId);
+    if (expressable.possibleValues == null) return [];
+    return expressable.possibleValues!
+        .where((value) => value >= min && value <= max)
+        .map((e) => EvaluationResult(e, {}))
+        .toList();
   }
 
   @override

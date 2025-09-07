@@ -38,7 +38,41 @@ void main() {
     );
     final solver = Solver(puzzle);
     solver.solve();
-    expect(puzzle.clues['L.A1']!.possibleValues, equals({11}));
-    expect(puzzle.clues['R.A1']!.possibleValues, equals({10}));
+    expect(puzzle.clues['L.1A']!.possibleValues, equals({11}));
+    expect(puzzle.clues['R.1A']!.possibleValues, equals({10}));
+  });
+  test('Multi-grid puzzle validation', () {
+    PuzzleDefinition getPuzzle() {
+      return PuzzleDefinition(
+        name: 'Multi-grid test',
+        grids: {
+          'L': Grid(1, 2),
+          'R': Grid(1, 2),
+        },
+        entries: {
+          'A1': Entry(
+              id: 'A1',
+              clueId: '1A',
+              row: 0,
+              col: 0,
+              length: 2,
+              orientation: EntryOrientation.across),
+          'X.A1': Entry(
+              id: 'X.A1',
+              clueId: 'X.1A',
+              row: 0,
+              col: 0,
+              length: 2,
+              orientation: EntryOrientation.across),
+        },
+        clues: {
+          'L.1A': Clue('L.1A', [ExpressionConstraint('R.1A + 1')]),
+          'R.1A': Clue('R.1A', [ExpressionConstraint('10')]),
+        },
+        variables: {},
+      );
+    }
+
+    expect(() => getPuzzle(), throwsA(TypeMatcher<PuzzleException>()));
   });
 }

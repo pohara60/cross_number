@@ -44,14 +44,14 @@ void main() {
 
     test('should evaluate multi-grid expression constraints', () {
       final entry1 = Entry(
-          id: 'A1',
+          id: 'Grid1.A1',
           row: 0,
           col: 0,
           length: 1,
           orientation: EntryOrientation.across);
       entry1.possibleValues = {10}; // Set a known value
       final entry2 = Entry(
-          id: 'B1',
+          id: 'Grid2.B1',
           row: 0,
           col: 0,
           length: 1,
@@ -66,7 +66,7 @@ void main() {
           'Grid1': Grid(1, 1),
           'Grid2': Grid(1, 1),
         },
-        entries: {'A1': entry1, 'B1': entry2},
+        entries: {'Grid1.A1': entry1, 'Grid2.B1': entry2},
         clues: {'1A': clue},
         variables: {},
       );

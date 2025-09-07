@@ -260,7 +260,8 @@ class Parser {
       if (_match([TokenType.DOT])) {
         _consume(TokenType.IDENTIFIER, "Expect entry ID after '.'");
         final entryToken = _previous();
-        return GridEntryExpression(identifierToken.lexeme, entryToken.lexeme);
+        return GridReferenceExpression(
+            identifierToken.lexeme, entryToken.lexeme);
       } else {
         return VariableExpression(identifierToken.lexeme);
       }

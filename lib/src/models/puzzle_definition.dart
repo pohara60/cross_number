@@ -19,6 +19,7 @@ class PuzzleDefinition {
 
   /// A map of grid IDs to [Grid] objects.
   final Map<String, Grid> grids;
+  bool get isMultiGrid => grids.length > 1;
 
   /// A map of entry IDs to [Entry] objects.
   final Map<String, Entry> entries;
@@ -174,6 +175,7 @@ class PuzzleDefinition {
     this.orderingConstraints = const [],
     this.mappingIsKnown = true,
   }) {
+    var exception = false;
     // Set clue entry references where applicable
     for (final clue in clues.values) {
       var entry = entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
@@ -187,11 +189,20 @@ class PuzzleDefinition {
             (entry) => entry.clueId != null && !clues.containsKey(entry.clueId))
         .toList();
     if (errorEntries.isNotEmpty) {
-      throw PuzzleException(
+      exception = true;
+      print(
           'Entries with clues not found in clues map: ${errorEntries.map((e) => e.id).join(', ')}');
     }
+    // If multi-grid, then entries and linked clues must have grid prefix
+    for (final entry in entries.values) {
+      if (checkGridReference('Entry', entry.id)) exception = true;
+      if (entry.clueId != null && entry.clueId!.isNotEmpty) {
+        if (checkGridReference('Entry ${entry.id} Clue', entry.clueId!)) {
+          exception = true;
+        }
+      }
+    }
     // Parse all expressions
-    var exception = false;
     allExpressables.addAll(clues.values);
     allExpressables.addAll(variables.values);
     allExpressables.addAll(entries.values);
@@ -241,6 +252,21 @@ class PuzzleDefinition {
     }
 
     print(this);
+  }
+
+  bool checkGridReference(String type, String name) {
+    var exception = false;
+    if (name.contains('.')) {
+      final names = name.split('.');
+      if (!grids.containsKey(names[0])) {
+        exception = true;
+        print('$type $name has unknown grid prefix ${names[0]}');
+      }
+    } else if (isMultiGrid) {
+      exception = true;
+      print('$type $name should have grid prefix');
+    }
+    return exception;
   }
 
   List<ClueGroup> findClueGroups() {

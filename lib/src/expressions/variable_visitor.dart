@@ -39,8 +39,10 @@ class VariableVisitor implements ExpressionVisitor<void> {
       {required num min, required num max}) {}
 
   @override
-  void visitGridEntryExpression(GridEntryExpression expression,
-      {required num min, required num max}) {}
+  void visitGridReferenceExpression(GridReferenceExpression expression,
+      {required num min, required num max}) {
+    _variables.add('${expression.gridId}.${expression.referenceId}');
+  }
 
   @override
   void visitMonadicExpression(MonadicExpression expression,

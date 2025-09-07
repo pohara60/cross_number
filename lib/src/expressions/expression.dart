@@ -24,7 +24,7 @@ abstract class ExpressionVisitor<R> {
       {required num min, required num max});
   R visitGroupingExpression(GroupingExpression expression,
       {required num min, required num max});
-  R visitGridEntryExpression(GridEntryExpression expression,
+  R visitGridReferenceExpression(GridReferenceExpression expression,
       {required num min, required num max});
   R visitGeneratorExpression(GeneratorExpression expression,
       {required num min, required num max});
@@ -131,21 +131,21 @@ class GroupingExpression extends Expression {
   String toString() => '($expression)';
 }
 
-/// An expression node representing a reference to a grid entry.
-class GridEntryExpression extends Expression {
+/// An expression node representing a reference to a grid entry or clue.
+class GridReferenceExpression extends Expression {
   final String gridId;
-  final String entryId;
+  final String referenceId;
 
-  GridEntryExpression(this.gridId, this.entryId);
+  GridReferenceExpression(this.gridId, this.referenceId);
 
   @override
   R accept<R>(ExpressionVisitor<R> visitor,
       {required num min, required num max}) {
-    return visitor.visitGridEntryExpression(this, min: min, max: max);
+    return visitor.visitGridReferenceExpression(this, min: min, max: max);
   }
 
   @override
-  String toString() => '$gridId.$entryId';
+  String toString() => '$gridId.$referenceId';
 }
 
 class MonadicExpression extends Expression {
@@ -241,9 +241,9 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
   }
 
   @override
-  void visitGridEntryExpression(GridEntryExpression expression,
+  void visitGridReferenceExpression(GridReferenceExpression expression,
       {required num min, required num max}) {
-    gridEntries.add('${expression.gridId}.${expression.entryId}');
+    gridEntries.add('${expression.gridId}.${expression.referenceId}');
   }
 
   @override
