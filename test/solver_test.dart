@@ -13,7 +13,7 @@ void main() {
       final clue = Clue('1A', [ExpressionConstraint('10 + 5')]);
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
-        grids: {'test': Grid(1, 1)},
+        grids: {'test': Grid(1, 1, name: 'test')},
         entries: {},
         clues: {'1A': clue},
         variables: {},
@@ -30,7 +30,7 @@ void main() {
       final clue = Clue('1A', [ExpressionConstraint('A * 2')]);
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
-        grids: {'test': Grid(1, 1)},
+        grids: {'test': Grid(1, 1, name: 'test')},
         entries: {},
         clues: {'1A': clue},
         variables: {'A': variableA},
@@ -63,8 +63,8 @@ void main() {
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
         grids: {
-          'Grid1': Grid(1, 1),
-          'Grid2': Grid(1, 1),
+          'Grid1': Grid(1, 1, name: 'Grid1'),
+          'Grid2': Grid(1, 1, name: 'Grid2'),
         },
         entries: {'Grid1.A1': entry1, 'Grid2.B1': entry2},
         clues: {'1A': clue},
@@ -86,7 +86,7 @@ void main() {
 
       final puzzle = PuzzleDefinition(
         name: 'Test Puzzle',
-        grids: {'test': Grid(1, 1)},
+        grids: {'test': Grid(1, 1, name: 'test')},
         entries: {},
         clues: {'1A': clue1, '2A': clue2},
         variables: {'A': variableA},

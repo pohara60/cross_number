@@ -5,6 +5,9 @@ import 'entry.dart';
 
 /// Represents the physical grid of a cross number puzzle.
 class Grid {
+  /// The grid name
+  final String name;
+
   /// The number of rows in the grid.
   final int rows;
 
@@ -17,17 +20,20 @@ class Grid {
   /// The entries in the grid.
   Map<String, Entry> entries = {};
 
+  /// The cells for the entries in the grid
+  Map<String, List<Cell>> entryCells = {};
+
   /// Creates a new grid with the given number of [rows] and [cols].
-  Grid(this.rows, this.cols) {
+  Grid(this.rows, this.cols, {this.name = "main"}) {
     cells = List.generate(rows, (_) => List.generate(cols, (_) => Cell()));
   }
 
-  factory Grid.fromString(String gridString) {
+  factory Grid.fromString(String gridString, {String name = "main"}) {
     final lines = gridString.split('\n');
     final rows = (lines.length - 1) ~/ 2; // Integer division
     final cols = (lines[0].length - 1) ~/ 3; // Integer division
 
-    final grid = Grid(rows, cols);
+    final grid = Grid(rows, cols, name: name);
 
     // Data structures to hold parsed information temporarily
     final List<List<String>> cellContents = []; // 2D array of 2-char strings
@@ -148,7 +154,9 @@ class Grid {
             grid.entries[entry.id] = entry;
             // Assign this entry to all cells it spans
             for (var k = 0; k < length; k++) {
-              grid.cells[r][c + k].acrossEntry = entry;
+              final cell = grid.cells[r][c + k];
+              cell.acrossEntry = entry;
+              grid.entryCells.putIfAbsent(entry.id, () => <Cell>[]).add(cell);
             }
           }
         }
@@ -181,7 +189,9 @@ class Grid {
             grid.entries[entry.id] = entry;
             // Assign this entry to all cells it spans
             for (var k = 0; k < length; k++) {
-              grid.cells[r + k][c].downEntry = entry;
+              final cell = grid.cells[r + k][c];
+              cell.downEntry = entry;
+              grid.entryCells.putIfAbsent(entry.id, () => <Cell>[]).add(cell);
             }
           }
         }
@@ -223,6 +233,7 @@ class Grid {
   String toString() {
     const separator = " "; // Alternative is ":"
     var buffer = StringBuffer();
+    if (name != "main") buffer.writeln(name);
     for (var r = 0; r < rows; r++) {
       // Draw top border
       buffer.write('+');
@@ -345,5 +356,15 @@ class Grid {
     return digits
         .split('')
         .fold(0, (total, value) => total! + int.parse(value));
+  }
+
+  // Replace grid entry as used when propagating constraints
+  void replaceEntry(Entry puzzleEntry) {
+    var id = puzzleEntry.id;
+    if (id.contains('.')) id = id.split('.').elementAt(1);
+    for (final cell in entryCells[id]!) {
+      if (cell.acrossEntry?.id == id) cell.acrossEntry = puzzleEntry;
+      if (cell.downEntry?.id == id) cell.downEntry = puzzleEntry;
+    }
   }
 }

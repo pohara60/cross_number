@@ -837,6 +837,8 @@ class Solver {
             if (cell.acrossEntry != null && cell.downEntry != null) {
               final acrossEntry = cell.acrossEntry!;
               final downEntry = cell.downEntry!;
+              checkCellEntry(grid, acrossEntry);
+              checkCellEntry(grid, downEntry);
               final acrossDigitIndex = c - acrossEntry.col;
               final downDigitIndex = r - downEntry.row;
 
@@ -1352,5 +1354,14 @@ class Solver {
     }
 
     return solutionCount;
+  }
+
+  void checkCellEntry(Grid grid, Entry entry) {
+    // Check that the cell entry is a puzzle entry, i.e. not stale
+    var entryId = entry.id;
+    if (puzzle.isMultiGrid) entryId = '${grid.name}.$entryId';
+    if (!puzzle.entries.containsKey(entryId)) {
+      throw PuzzleException('Cell entry $entryId not in puzzle entries');
+    }
   }
 }

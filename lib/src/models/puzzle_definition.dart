@@ -103,13 +103,8 @@ class PuzzleDefinition {
           }
           // Override entry with grid entry position, length, orientation
           var gridEntry = gridEntries[entry.id]!;
-          puzzleEntries[entry.id] = entry.copyWith(
-            row: gridEntry.row,
-            col: gridEntry.col,
-            length: gridEntry.length,
-            orientation: gridEntry.orientation,
-            possibleValues: gridEntry.possibleValues,
-          );
+          var puzzleEntry = updateEntry(entry, gridEntry, grid);
+          puzzleEntries[entry.id] = puzzleEntry;
         }
         // Check all grid entries are provided, add any missing ones
         var additionalEntries = gridEntries.values
@@ -126,7 +121,7 @@ class PuzzleDefinition {
       // Multiple grids
       final Map<String, Entry> gridEntries = {};
       for (var gridName in gridNames) {
-        final grid = Grid.fromString(gridString);
+        final grid = Grid.fromString(gridString, name: gridName);
         grids[gridName] = grid;
         for (var entry in grid.entries.values) {
           final prefixedId = '$gridName.${entry.id}';
@@ -141,13 +136,9 @@ class PuzzleDefinition {
                 'Entry ${entry.id} not found in grid definitions.');
           }
           var gridEntry = gridEntries[entry.id]!;
-          puzzleEntries[entry.id] = entry.copyWith(
-            row: gridEntry.row,
-            col: gridEntry.col,
-            length: gridEntry.length,
-            orientation: gridEntry.orientation,
-            possibleValues: gridEntry.possibleValues,
-          );
+          var grid = grids[gridEntry.id.split('.').first]!;
+          var puzzleEntry = updateEntry(entry, gridEntry, grid);
+          puzzleEntries[entry.id] = puzzleEntry;
         }
         // Add any grid entries that were not in the provided entries
         var additionalEntries = gridEntries.values
@@ -473,6 +464,18 @@ class PuzzleDefinition {
   bool isSolutionValid() {
     // Check if all expressables have a single value
     return allExpressables.every((expressable) => expressable.isSolved);
+  }
+
+  static Entry updateEntry(Entry entry, Entry gridEntry, Grid grid) {
+    var puzzleEntry = entry.copyWith(
+      row: gridEntry.row,
+      col: gridEntry.col,
+      length: gridEntry.length,
+      orientation: gridEntry.orientation,
+      possibleValues: gridEntry.possibleValues,
+    );
+    grid.replaceEntry(puzzleEntry);
+    return puzzleEntry;
   }
 }
 

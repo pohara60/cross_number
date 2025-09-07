@@ -11,8 +11,8 @@ void main() {
     final puzzle = PuzzleDefinition(
       name: 'Multi-grid test',
       grids: {
-        'L': Grid(1, 2),
-        'R': Grid(1, 2),
+        'L': Grid(1, 2, name: 'L'),
+        'R': Grid(1, 2, name: 'R'),
       },
       entries: {
         'L.A1': Entry(
@@ -46,8 +46,8 @@ void main() {
       return PuzzleDefinition(
         name: 'Multi-grid test',
         grids: {
-          'L': Grid(1, 2),
-          'R': Grid(1, 2),
+          'L': Grid(1, 2, name: 'L'),
+          'R': Grid(1, 2, name: 'R'),
         },
         entries: {
           'A1': Entry(
