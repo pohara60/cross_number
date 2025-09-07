@@ -7,6 +7,7 @@ import '../expressions/inverter.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
+import 'puzzle_constraint.dart';
 import 'variable.dart';
 
 /// A container for all the components of a cross number puzzle.
@@ -33,6 +34,9 @@ class PuzzleDefinition {
   /// A list of ordering constraints.
   final List<OrderingConstraint> orderingConstraints;
 
+  /// A list of puzzle constraints.
+  final List<PuzzleConstraint> puzzleConstraints;
+
   /// All Expressables, i.e. clue, expressions and variables
   final List<Expressable> allExpressables = [];
 
@@ -52,6 +56,7 @@ class PuzzleDefinition {
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
+    List<PuzzleConstraint> puzzleConstraints = const [],
     mappingIsKnown = true,
   }) {
     final (grids, puzzleEntries) = fromStringInternal(
@@ -62,6 +67,7 @@ class PuzzleDefinition {
       variables: variables,
       entries: entries,
       orderingConstraints: orderingConstraints,
+      puzzleConstraints: puzzleConstraints,
       mappingIsKnown: mappingIsKnown,
     );
     return PuzzleDefinition(
@@ -85,6 +91,7 @@ class PuzzleDefinition {
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
+    List<PuzzleConstraint> puzzleConstraints = const [],
     mappingIsKnown = true,
   }) {
     final Map<String, Grid> grids = {};
@@ -164,6 +171,7 @@ class PuzzleDefinition {
     required this.clues,
     required this.variables,
     this.orderingConstraints = const [],
+    this.puzzleConstraints = const [],
     this.mappingIsKnown = true,
   }) {
     var exception = false;

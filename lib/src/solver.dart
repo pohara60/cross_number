@@ -804,6 +804,13 @@ class Solver {
       if (!orderingConsistent) return (false, true);
       if (orderingUpdated) localChanged = true;
 
+      // Propagate puzzle-specific constraints
+      for (var constraint in puzzle.puzzleConstraints) {
+        if (constraint.propagate(puzzle, trace: trace)) {
+          localChanged = true;
+        }
+      }
+
       // Propagate clue values to entries
       for (var entry in puzzle.entries.values) {
         if (entry.clueId != null) {
