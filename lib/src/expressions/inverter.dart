@@ -27,7 +27,7 @@ class ExpressionInverter {
 
   Expression? _rearrange(Expression expressionToSolve, [Expression? child]) {
     if (expressionToSolve is GridReferenceExpression &&
-            expressionToSolve.referenceId == target.id ||
+            expressionToSolve.gridReferenceId == target.id ||
         expressionToSolve is VariableExpression &&
             expressionToSolve.name == target.id) {
       if (child != null) return child;
@@ -183,7 +183,7 @@ class _ExpressableVisitor implements ExpressionVisitor<void> {
   @override
   void visitGridReferenceExpression(GridReferenceExpression expression,
       {required num min, required num max}) {
-    if (expression.referenceId == entry.id) {
+    if (expression.gridReferenceId == entry.id) {
       found = true;
     }
   }

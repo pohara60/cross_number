@@ -77,8 +77,8 @@ class PuzzleDefinition {
       clues: clues,
       variables: variables,
       orderingConstraints: orderingConstraints,
-      mappingIsKnown:
-          mappingIsKnown, // Assuming mapping is known from gridString
+      puzzleConstraints: puzzleConstraints,
+      mappingIsKnown: mappingIsKnown,
     );
   }
 
@@ -216,6 +216,11 @@ class PuzzleDefinition {
     }
     // Check all variables are defined for expressables
     // Invert clue expressions for entries
+    // Invert entry expressions for other entries that do not have expressions
+    final entriesWithExpressions = entries.values
+        .where((e) => e.expressionTrees.isNotEmpty)
+        .map((e) => e.id)
+        .toList();
     for (final expressable in List<Expressable>.from(expressables.values)) {
       var index = 0;
       // ignore: unused_local_variable
@@ -231,7 +236,9 @@ class PuzzleDefinition {
                 'Variable $variable used in expression for ${expressable.id} is not defined.');
           }
 
-          if (expressable is Clue && entries.containsKey(variable)) {
+          // if (expressable is Clue && entries.containsKey(variable)) {
+          if (entries.containsKey(variable) &&
+              !entriesWithExpressions.contains(variable)) {
             var entry = entries[variable]!;
             final inverter =
                 ExpressionInverter(expressionTree, expressable, entry);

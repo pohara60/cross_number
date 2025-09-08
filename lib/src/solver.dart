@@ -104,6 +104,11 @@ class Solver {
     for (var grid in puzzle.grids.values) {
       grid.populate(puzzle.entries);
     }
+
+    // Enforce puzzle-specific distinct constraints
+    for (var constraint in puzzle.puzzleConstraints) {
+      constraint.initialise(puzzle, trace: trace);
+    }
   }
 
   SolverState _saveState() {
@@ -140,7 +145,7 @@ class Solver {
 
   List<Expressable> _backtrackExpressables() {
     // Order expressables for backtracking
-    final expressables = puzzle.expressables.values;
+    final expressables = puzzle.allExpressables;
     final unsolved =
         expressables.where((expressable) => expressable.isNotSolved).toList();
     // Order with least possible values first
@@ -202,11 +207,13 @@ class Solver {
       currentExpressable.possibleValues = {value};
 
       // Solve the expressable with this value, to update variables
-      var updatedVariables = <String>[];
-      var originalCounts = <String, int?>{};
-      solveExpression(currentExpressable, updatedVariables, originalCounts);
-      if (traceBacktrace) {
-        _printUpdatedExpressables(updatedVariables, originalCounts);
+      if (currentExpressable.expressionTrees.isNotEmpty) {
+        var updatedVariables = <String>[];
+        var originalCounts = <String, int?>{};
+        solveExpression(currentExpressable, updatedVariables, originalCounts);
+        if (traceBacktrace) {
+          _printUpdatedExpressables(updatedVariables, originalCounts);
+        }
       }
 
       // For clues update the associated entry's possible values
@@ -467,6 +474,9 @@ class Solver {
   (bool consistent, bool updated) solveExpression(Expressable expressable,
       List<String> updatedVariables, Map<String, int?> originalCounts) {
     var updated = false;
+
+    // If no expression, then nothing to do
+    if (expressable.expressionTrees.isEmpty) return (true, false);
 
     // If solved then do not re-evaluate
     // if (expressable.possibleValues != null &&
@@ -1378,7 +1388,6 @@ class Solver {
   void checkCellEntry(Grid grid, Entry entry) {
     // Check that the cell entry is a puzzle entry, i.e. not stale
     var entryId = entry.id;
-    if (puzzle.isMultiGrid) entryId = '${grid.name}.$entryId';
     if (!puzzle.entries.containsKey(entryId)) {
       throw PuzzleException('Cell entry $entryId not in puzzle entries');
     }

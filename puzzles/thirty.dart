@@ -43,11 +43,11 @@ PuzzleDefinition thirty() {
       'L.A1':
           Entry(id: 'L.A1', constraints: [ExpressionConstraint('R.D1+R.A3')]),
       'L.A8':
-          Entry(id: 'L.A8', constraints: [ExpressionConstraint('L.A3+L.A7')]),
+          Entry(id: 'L.A8', constraints: [ExpressionConstraint('L.A3*L.A7')]),
       'R.A1':
           Entry(id: 'R.A1', constraints: [ExpressionConstraint('L.D1+L.A3')]),
       'R.A8':
-          Entry(id: 'R.A8', constraints: [ExpressionConstraint('R.A3+R.A7')])
+          Entry(id: 'R.A8', constraints: [ExpressionConstraint('R.A3*R.A7')])
     },
     clues: {},
     variables: {},

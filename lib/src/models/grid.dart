@@ -204,6 +204,10 @@ class Grid {
   /// Populates the grid with the given entries.
   void populate(Map<String, Entry> entries) {
     for (final entry in entries.values) {
+      if (entry.id.contains('.')) {
+        var gridName = entry.id.split('.').first;
+        if (gridName != name) continue;
+      }
       if (entry.orientation == EntryOrientation.across) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row][entry.col + i].acrossEntry = entry;

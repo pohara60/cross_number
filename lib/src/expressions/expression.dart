@@ -135,8 +135,10 @@ class GroupingExpression extends Expression {
 class GridReferenceExpression extends Expression {
   final String gridId;
   final String referenceId;
+  final String gridReferenceId;
 
-  GridReferenceExpression(this.gridId, this.referenceId);
+  GridReferenceExpression(this.gridId, this.referenceId)
+      : gridReferenceId = '$gridId.$referenceId';
 
   @override
   R accept<R>(ExpressionVisitor<R> visitor,

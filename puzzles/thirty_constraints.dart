@@ -4,12 +4,16 @@ import 'package:crossnumber/src/utils/set.dart';
 
 class ThirtyConstraint extends PuzzleConstraint {
   @override
+  void initialise(PuzzleDefinition puzzle, {bool trace = false}) {
+    var (evenConsistent, _) = propagateEvenDigits(puzzle, trace);
+    if (!evenConsistent) {
+      throw PuzzleException('Entry has no even values');
+    }
+  }
+
+  @override
   (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) {
     var updated = false;
-
-    var (evenConsistent, evenUpdated) = propagateEvenDigits(puzzle, trace);
-    if (!evenConsistent) return (false, updated);
-    if (evenUpdated) updated = true;
 
     var (sumConsistent, sumUpdated) = propagateEqualDigitSum(puzzle, trace);
     if (!sumConsistent) return (false, updated);
@@ -33,7 +37,8 @@ class ThirtyConstraint extends PuzzleConstraint {
 
     for (var entry in puzzle.entries.values) {
       final originalCount = entry.possibleValues.length;
-      entry.possibleValues.retainWhere((v) => isEven(v));
+      entry.possibleValues =
+          entry.possibleValues.where((v) => isEven(v)).toSet();
       if (entry.possibleValues.isEmpty && originalCount > 0) {
         return (false, updated);
       }
@@ -72,6 +77,7 @@ class ThirtyConstraint extends PuzzleConstraint {
     }
 
     final lGrid = puzzle.grids['L']!;
+    final rGrid = puzzle.grids['R']!;
     final knownPairs = <String>{};
     final unknownCells = <(int, int)>[];
     final allPossiblePairs = <(int, int), Set<String>>{};
@@ -111,7 +117,6 @@ class ThirtyConstraint extends PuzzleConstraint {
         possiblePairs.removeAll(knownPairs);
 
         if (possiblePairs.length < originalCount) {
-          updated = true;
           // Propagate this back to the digits
           final lDigits = _getPossibleDigits(puzzle, 'L', r, c);
           final rDigits = _getPossibleDigits(puzzle, 'R', r, c);
