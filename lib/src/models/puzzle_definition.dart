@@ -478,7 +478,16 @@ class PuzzleDefinition {
 
   bool isSolutionValid() {
     // Check if all expressables have a single value
-    return allExpressables.every((expressable) => expressable.isSolved);
+    if (!allExpressables.every((expressable) => expressable.isSolved)) {
+      return false;
+    }
+    // Check puzzle-specific constraints
+    for (var constraint in puzzleConstraints) {
+      if (!constraint.checkSolution(this)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   static Entry updateEntry(Entry entry, Entry gridEntry, Grid grid) {

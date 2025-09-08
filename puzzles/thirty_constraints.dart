@@ -5,7 +5,7 @@ import 'package:crossnumber/src/utils/set.dart';
 class ThirtyConstraint extends PuzzleConstraint {
   @override
   void initialise(PuzzleDefinition puzzle, {bool trace = false}) {
-    var (evenConsistent, _) = propagateEvenDigits(puzzle, trace);
+    var (evenConsistent, _) = initialiseEvenDigits(puzzle, trace);
     if (!evenConsistent) {
       throw PuzzleException('Entry has no even values');
     }
@@ -27,7 +27,15 @@ class ThirtyConstraint extends PuzzleConstraint {
     return enforceFifteenPairs(puzzle, trace);
   }
 
-  (bool, bool) propagateEvenDigits(PuzzleDefinition puzzle, bool trace) {
+  @override
+  bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) {
+    if (!checkDigitSum(puzzle, trace: trace)) return false;
+    if (!checkEvenPairs(puzzle, trace: trace)) return false;
+    if (!checkJumble(puzzle, trace: trace)) return false;
+    return true;
+  }
+
+  (bool, bool) initialiseEvenDigits(PuzzleDefinition puzzle, bool trace) {
     var updated = false;
     final evenDigits = [0, 2, 4, 6, 8];
     final evenDigitString = evenDigits.join('');
@@ -53,28 +61,29 @@ class ThirtyConstraint extends PuzzleConstraint {
     return (true, updated);
   }
 
+  static const fifteenPairs = {
+    '0,0',
+    '0,2',
+    '0,4',
+    '0,6',
+    '0,8',
+    '2,2',
+    '2,4',
+    '2,6',
+    '2,8',
+    '4,4',
+    '4,6',
+    '4,8',
+    '6,6',
+    '6,8',
+    '8,8',
+  };
+  String toPair(int d1, int d2) {
+    return d1 <= d2 ? '$d1,$d2' : '$d2,$d1';
+  }
+
   (bool, bool) enforceFifteenPairs(PuzzleDefinition puzzle, bool trace) {
     var updated = false;
-    const fifteenPairs = {
-      '0,0',
-      '0,2',
-      '0,4',
-      '0,6',
-      '0,8',
-      '2,2',
-      '2,4',
-      '2,6',
-      '2,8',
-      '4,4',
-      '4,6',
-      '4,8',
-      '6,6',
-      '6,8',
-      '8,8',
-    };
-    String toPair(int d1, int d2) {
-      return d1 <= d2 ? '$d1,$d2' : '$d2,$d1';
-    }
 
     final lGrid = puzzle.grids['L']!;
     final rGrid = puzzle.grids['R']!;
@@ -153,6 +162,41 @@ class ThirtyConstraint extends PuzzleConstraint {
     return (true, updated);
   }
 
+  bool checkEvenPairs(PuzzleDefinition puzzle, {bool trace = false}) {
+    // Check fifteen pairs
+
+    final lGrid = puzzle.grids['L']!;
+    final pairs = <String>{};
+    for (var r = 0; r < lGrid.rows; r++) {
+      for (var c = 0; c < lGrid.cols; c++) {
+        final lDigits = _getPossibleDigits(puzzle, 'L', r, c);
+        final rDigits = _getPossibleDigits(puzzle, 'R', r, c);
+        if (lDigits.length != 1 || rDigits.length != 1) {
+          if (trace) {
+            print('ThirtyConstraint: Unsolved cell [$r,$c] in solution');
+          }
+          return false;
+        }
+        pairs.add(toPair(lDigits.single, rDigits.single));
+      }
+    }
+    if (pairs.length != 15) {
+      if (trace) {
+        print('ThirtyConstraint: Only ${pairs.length} pairs in solution');
+      }
+      return false;
+    }
+    var invalidPairs = pairs.where((p) => !fifteenPairs.contains(p)).toList();
+    if (invalidPairs.isNotEmpty) {
+      if (trace) {
+        print('ThirtyConstraint: Invalid pairs $invalidPairs in solution');
+      }
+      return false;
+    }
+
+    return true;
+  }
+
   (bool, bool) propagateEqualDigitSum(PuzzleDefinition puzzle, bool trace) {
     final (minSumL, maxSumL) = _getDigitSumRange(puzzle, 'L');
     final (minSumR, maxSumR) = _getDigitSumRange(puzzle, 'R');
@@ -164,6 +208,53 @@ class ThirtyConstraint extends PuzzleConstraint {
       return (false, false);
     }
     return (true, false);
+  }
+
+  bool checkDigitSum(PuzzleDefinition puzzle, {bool trace = false}) {
+    // Check equal digit sum
+    final (minSumL, maxSumL) = _getDigitSumRange(puzzle, 'L');
+    final (minSumR, maxSumR) = _getDigitSumRange(puzzle, 'R');
+    if (minSumL != maxSumL || minSumR != maxSumR || minSumL != minSumR) {
+      if (trace) {
+        print(
+            'ThirtyConstraint: Different digit sum $minSumL, $maxSumR in solution');
+      }
+      return false;
+    }
+    return true;
+  }
+
+  bool checkJumble(PuzzleDefinition puzzle, {bool trace = false}) {
+    // No entry is a jumble of another entry
+    var entryList = puzzle.entries.values.toList();
+    for (var entryIndex1 = 0;
+        entryIndex1 < entryList.length - 1;
+        entryIndex1++) {
+      var entry1 = entryList[entryIndex1];
+      var entry1Value = entry1.solution!;
+      for (var entryIndex2 = entryIndex1 + 1;
+          entryIndex2 < entryList.length;
+          entryIndex2++) {
+        var entry2 = entryList[entryIndex2];
+        if (entry1.length != entry2.length) continue;
+        var entry2Value = entry2.solution!;
+        if (isJumble(entry1Value, entry2Value)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  bool isJumble(dynamic value, int jumble) {
+    var valueStr = (value as int).toString();
+    var jumbleStr = jumble.toString();
+    for (var index = 0; index < valueStr.length; index++) {
+      if (!jumbleStr.contains(valueStr[index])) return false;
+      jumbleStr = jumbleStr.replaceFirst(RegExp(valueStr[index]), '');
+    }
+    if (jumbleStr.isNotEmpty) return false;
+    return true;
   }
 
   Set<int> _getPossibleDigits(

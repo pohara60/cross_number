@@ -250,28 +250,48 @@ class Solver {
   }
 
   void _printSolution() {
-    print("Solution:");
+    var buffer = StringBuffer();
+    buffer.writeln("Solution:");
     // Assuming puzzle.grids has a single grid for simplicity, or iterate if multiple
     if (puzzle.grids.isNotEmpty) {
-      final solvedGrid = puzzle.grids.values.first; // Get the first grid
-      print(solvedGrid
-          .toString()); // Grid's toString() already displays solved values
+      // final solvedGrid = puzzle.grids.values.first; // Get the first grid
+      // buffer.writeln(solvedGrid.toString());
+      var allGridLines = <List<String>>[];
+      var maxWidth = 0;
+      for (var grid in puzzle.grids.values) {
+        var gridLines = grid.toString().split('\n');
+        allGridLines.add(gridLines);
+        maxWidth = gridLines.fold(
+            maxWidth, (prev, line) => prev > line.length ? prev : line.length);
+      }
+      for (var lineIndex = 0;
+          lineIndex < allGridLines.first.length;
+          lineIndex++) {
+        for (var gridIndex = 0; gridIndex < puzzle.grids.length; gridIndex++) {
+          buffer.write(allGridLines[gridIndex][lineIndex].padRight(maxWidth));
+          buffer.write('  ');
+        }
+        buffer.writeln();
+      }
     } else {
-      print("No grid to display.");
+      buffer.writeln("No grid to display.");
     }
 
-    print("Clue values:");
-    for (var clue in puzzle.clues.values) {
-      print("${clue.id}: ${clue.possibleValues!.single}");
+    if (puzzle.clues.isNotEmpty) {
+      buffer.writeln("Clue values:");
+      for (var clue in puzzle.clues.values) {
+        buffer.writeln("${clue.id}: ${clue.possibleValues!.single}");
+      }
     }
 
     if (puzzle.variables.isNotEmpty) {
-      print('Variables:');
+      buffer.writeln('Variables:');
       for (var variable in puzzle.variables.values) {
-        print(
+        buffer.writeln(
             '${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
       }
     }
+    print(buffer.toString());
   }
 
   /// Solves the puzzle.
