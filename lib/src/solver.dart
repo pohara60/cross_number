@@ -689,6 +689,16 @@ class Solver {
     if (updated) changed = true;
     if (!consistent) return (false, changed);
 
+    // Enforce puzzle-specific distinct constraints
+    for (var constraint in puzzle.puzzleConstraints) {
+      var (consistent, updated) =
+          constraint.enforceDistinct(puzzle, trace: trace);
+      if (!consistent) return (false, true);
+      if (updated) {
+        changed = true;
+      }
+    }
+
     return (true, changed);
   }
 
@@ -806,7 +816,9 @@ class Solver {
 
       // Propagate puzzle-specific constraints
       for (var constraint in puzzle.puzzleConstraints) {
-        if (constraint.propagate(puzzle, trace: trace)) {
+        var (consistent, updated) = constraint.propagate(puzzle, trace: trace);
+        if (!consistent) return (false, true);
+        if (updated) {
           localChanged = true;
         }
       }

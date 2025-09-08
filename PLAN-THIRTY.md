@@ -6,32 +6,32 @@ This document outlines the plan to implement puzzle-specific constraints and sol
 
 A generic mechanism will be created to allow puzzles to define their own specific constraints.
 
--   **`PuzzleConstraint` Class**: An abstract class `PuzzleConstraint` will be created with a `propagate(PuzzleDefinition puzzle, {bool trace = false})` method. Puzzles can provide a list of `PuzzleConstraint` objects.
+-   **`PuzzleConstraint` Class**: An abstract class `PuzzleConstraint` will be created with two methods:
+    -   `propagate(PuzzleDefinition puzzle, {bool trace = false})` for general constraints.
+    -   `enforceDistinct(PuzzleDefinition puzzle, {bool trace = false})` for constraints related to value uniqueness.
 -   **`PuzzleDefinition`**: The `PuzzleDefinition` class will be extended to include a list of `PuzzleConstraint`s.
--   **`Solver`**: The solver's `_propagateConstraints` method will be updated to iterate through the puzzle's `PuzzleConstraint`s and call their `propagate` method in each iteration of the main solving loop.
+-   **`Solver`**: The solver will be updated to call the new constraint methods:
+    -   `_propagateConstraints` will call the `propagate` method on the puzzle-specific constraints.
+    -   `_enforceDistinctValues` will call the `enforceDistinct` method on the puzzle-specific constraints.
 
 ## 2. "Thirty" Puzzle Constraints Implementation
 
 The specific constraints for the "Thirty" puzzle will be implemented in a new `ThirtyConstraint` class that extends `PuzzleConstraint`.
 
--   **Even Digits**: The `propagate` method will filter the `possibleValues` of all entries in both grids to ensure they only contain numbers with even digits.
--   **Fifteen Pairs of Even Digits**: This is a key constraint. The `propagate` method will:
-    1.  For each pair of matching cells in the two grids, determine the set of possible digits for each cell based on the `possibleValues` of the entries passing through it.
-    2.  Filter the possible digits for each cell based on the 15 allowed pairs. For example, if a digit in one cell has no valid partner in the other cell, it will be removed.
-    3.  Propagate these digit-level changes back to the `possibleValues` of the affected entries.
--   **Equal Digit Sum**: The `propagate` method will:
-    1.  Calculate the minimum and maximum possible sum of digits for each grid.
-    2.  Enforce the constraint that the possible ranges of the two sums must overlap. This can help prune the search space.
+-   **`propagate` method**:
+    -   **Even Digits**: This method will filter the `possibleValues` of all entries in both grids to ensure they only contain numbers with even digits.
+    -   **Equal Digit Sum**: This method will calculate the min/max possible digit sum for each grid and enforce that the ranges overlap.
+-   **`enforceDistinct` method**:
+    -   **Fifteen Pairs of Even Digits**: This method will contain the logic for the fifteen pairs constraint. It will be called during the distinct value enforcement phase of the solver, allowing it to leverage the most up-to-date `possibleValues` of the entries.
 -   **No Jumble**: This constraint is complex and will be deferred for now.
 
 ## 3. Implementation Steps
 
-1.  **Create `PuzzleConstraint`**: Create the abstract class `PuzzleConstraint` in a new file `lib/src/models/puzzle_constraint.dart`.
-2.  **Update `PuzzleDefinition`**: Add `List<PuzzleConstraint> puzzleConstraints` to the `PuzzleDefinition` class.
-3.  **Update `Solver`**: Modify `_propagateConstraints` to call the `propagate` method on the puzzle-specific constraints.
-4.  **Implement `ThirtyConstraint`**: Create the `ThirtyConstraint` class in `puzzles/thirty_constraints.dart` and implement the logic for the "Even Digits", "Fifteen Pairs", and "Equal Digit Sum" constraints.
-5.  **Update `thirty.dart`**: Update the `thirty` puzzle definition to include an instance of `ThirtyConstraint`.
-6.  **Testing**:
+1.  **Update `PuzzleConstraint`**: Modify the abstract class `PuzzleConstraint` in `lib/src/models/puzzle_constraint.dart` to include the `enforceDistinct` method.
+2.  **Update `Solver`**: Modify `_enforceDistinctValues` to call the `enforceDistinct` method on the puzzle-specific constraints.
+3.  **Implement `ThirtyConstraint`**: Create the `ThirtyConstraint` class in `puzzles/thirty_constraints.dart` and implement the logic for the "Even Digits", "Equal Digit Sum", and "Fifteen Pairs" constraints in the appropriate methods.
+4.  **Update `thirty.dart`**: Update the `thirty` puzzle definition to include an instance of `ThirtyConstraint`.
+5.  **Testing**:
     -   Update the existing `test/thirty_test.dart` to test the "Thirty" puzzle.
     -   Add assertions to verify that the puzzle is solved correctly.
     -   Ensure that existing tests continue to pass.

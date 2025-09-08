@@ -9,6 +9,6 @@ void main() {
     final puzzle = thirty();
     final solver = Solver(puzzle, traceSolve: true, allowBacktracking: false);
     solver.solve();
-    // TODO: Add assertions
+    expect(puzzle.isSolutionValid(), isTrue);
   }, skip: disabled);
 }
