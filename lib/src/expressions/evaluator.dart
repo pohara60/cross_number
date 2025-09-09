@@ -1,7 +1,8 @@
 import 'dart:math';
-import 'package:crossnumber/src/models/evaluation_result.dart';
-import 'package:crossnumber/src/models/puzzle_definition.dart';
+
+import '../models/evaluation_result.dart';
 import '../models/expressable.dart';
+import '../models/puzzle_definition.dart';
 import 'expression.dart';
 import 'generators.dart';
 import 'monadic.dart';

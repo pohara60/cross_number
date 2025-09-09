@@ -7,64 +7,34 @@ import 'package:crossnumber/src/models/entry.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/grid.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
+import 'package:crossnumber/src/models/puzzle_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/variable.dart';
 import 'package:crossnumber/src/utils/set.dart';
 
-class CouplesDifferencesPuzzle extends PuzzleDefinition {
-  factory CouplesDifferencesPuzzle.fromString({
-    required String name,
-    required String gridString,
-    List<String>? gridNames,
-    required Map<String, Clue> clues,
-    required Map<String, Variable> variables,
-    Map<String, Entry>? entries,
-    List<OrderingConstraint> orderingConstraints = const [],
-    mappingIsKnown = true,
-  }) {
-    final (grids, puzzleEntries) = PuzzleDefinition.fromStringInternal(
-      name: name,
-      gridString: gridString,
-      gridNames: gridNames,
-      clues: clues,
-      variables: variables,
-      entries: entries,
-      orderingConstraints: orderingConstraints,
-      mappingIsKnown: mappingIsKnown,
-    );
-    return CouplesDifferencesPuzzle(
-      name: name,
-      grids: grids, // Assuming a single grid named 'main'
-      entries: puzzleEntries,
-      clues: clues,
-      variables: variables,
-      orderingConstraints: orderingConstraints,
-      mappingIsKnown:
-          mappingIsKnown, // Assuming mapping is known from gridString
-    );
-  }
-  CouplesDifferencesPuzzle({
-    required super.name,
-    required super.grids,
-    required super.entries,
-    required super.clues,
-    required super.variables,
-    super.orderingConstraints = const [],
-    super.mappingIsKnown = true,
-  });
+class CouplesDifferencesConstraint extends PuzzleConstraint {
+  @override
+  void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
 
   @override
-  bool isSolutionValid() {
-    if (!super.isSolutionValid()) return false;
+  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) =>
+      (true, false);
+
+  @override
+  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) =>
+      (true, false);
+
+  @override
+  bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) {
     // Get sum of digits
-    final sum = grids.values.first.getDigitsSum()!;
+    final sum = puzzle.grids.values.first.getDigitsSum()!;
     final valid = sum % 99 == 0;
     print('Solution grid sum digits $sum, valid is $valid');
     return valid;
   }
 }
 
-CouplesDifferencesPuzzle couplesDifferences() {
+PuzzleDefinition couplesDifferences() {
 // Couples Differences by Moog
 // Each clue refers to an across entry and a down entry, which are reverses of one another with the larger number first. The clue answer is the difference of the two entries with the number in brackets referring to the entry length. There are no leading zeros and all answers and entries are distinct. The solution that solvers require is the one in which the sum of the entered digits could be a clue answer in this puzzle.
 
@@ -92,7 +62,7 @@ CouplesDifferencesPuzzle couplesDifferences() {
       (values, {int? min, int? max}) =>
           values.where((v) => v % 9 == 0).toList());
 
-  var puzzle = CouplesDifferencesPuzzle.fromString(
+  var puzzle = PuzzleDefinition.fromString(
     name: 'CouplesDifferences',
     mappingIsKnown: true, // No mapping of Clues to Entries needed
     gridString: gridString.join('\n'),
@@ -185,6 +155,7 @@ CouplesDifferencesPuzzle couplesDifferences() {
       ]), // D1-A2
     },
     variables: {},
+    puzzleConstraints: [CouplesDifferencesConstraint()],
   );
   setAnswers(puzzle);
 
