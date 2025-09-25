@@ -135,14 +135,14 @@ class GeneratorRegistry {
   static final Map<String, Generator> _generators = {};
 
   GeneratorRegistry._privateConstructor() {
-    _register('prime', PrimeGenerator());
-    _register('triangular', TriangularGenerator());
-    _register('fibonacci', FibonacciGenerator());
-    _register('square', SquareGenerator());
-    _register('cube', CubeGenerator());
+    register('prime', PrimeGenerator());
+    register('triangular', TriangularGenerator());
+    register('fibonacci', FibonacciGenerator());
+    register('square', SquareGenerator());
+    register('cube', CubeGenerator());
   }
 
-  void _register(String name, Generator generator) {
+  void register(String name, Generator generator) {
     _generators[name] = generator;
   }
 

@@ -5,6 +5,7 @@ import 'package:crossnumber/src/solver.dart';
 import '../puzzles/abcd.dart';
 import '../puzzles/after_nicholas.dart';
 import '../puzzles/couples_differences.dart';
+import '../puzzles/die_another_day.dart';
 import '../puzzles/increasing_prime.dart';
 import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
@@ -30,7 +31,8 @@ void main(List<String> arguments) {
     // final puzzle = abcd();
     // final puzzle = primania();
     // final puzzle = couplesDifferences();
-    final puzzle = thirty();
+    // final puzzle = thirty();
+    final puzzle = dieAnotherDay();
     // final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 

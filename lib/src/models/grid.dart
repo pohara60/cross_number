@@ -371,4 +371,51 @@ class Grid {
       if (cell.downEntry?.id == id) cell.downEntry = puzzleEntry;
     }
   }
+
+  Set<int> getPossibleDigits(int r, int c) {
+    final cell = cells[r][c];
+    Set<int>? acrossDigits;
+    if (cell.acrossEntry != null) {
+      final entry = cell.acrossEntry!;
+      final digitIndex = c - entry.col;
+      acrossDigits = entry.possibleValues
+          .map((v) => int.parse(v.toString()[digitIndex]))
+          .toSet();
+    }
+    Set<int>? downDigits;
+    if (cell.downEntry != null) {
+      final entry = cell.downEntry!;
+      final digitIndex = r - entry.row;
+      downDigits = entry.possibleValues
+          .map((v) => int.parse(v.toString()[digitIndex]))
+          .toSet();
+    }
+
+    if (acrossDigits != null && downDigits != null) {
+      return acrossDigits.intersection(downDigits);
+    } else if (acrossDigits != null) {
+      return acrossDigits;
+    } else if (downDigits != null) {
+      return downDigits;
+    } else {
+      // This cell is not part of any entry, so it has no digits.
+      // However, in the Thirty puzzle, all cells are part of entries.
+      return {};
+    }
+  }
+
+  (int, int) getDigitSumRange() {
+    int minSum = 0;
+    int maxSum = 0;
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        final digits = getPossibleDigits(r, c);
+        if (digits.isNotEmpty) {
+          minSum += digits.reduce((a, b) => a < b ? a : b);
+          maxSum += digits.reduce((a, b) => a > b ? a : b);
+        }
+      }
+    }
+    return (minSum, maxSum);
+  }
 }

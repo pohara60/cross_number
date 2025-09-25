@@ -3,7 +3,9 @@ import 'package:crossnumber/src/models/clue_group.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
+import '../expressions/generators.dart';
 import '../expressions/inverter.dart';
+import '../expressions/monadic.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -253,6 +255,8 @@ class PuzzleDefinition {
       }
     }
 
+    registerPuzzleFunctions();
+
     if (exception) {
       throw PuzzleException('One or more clues could not be parsed.');
     }
@@ -500,6 +504,45 @@ class PuzzleDefinition {
     );
     grid.replaceEntry(puzzleEntry);
     return puzzleEntry;
+  }
+
+  void registerPuzzleFunctions() {
+    // Register puzzle specific functions
+    // final MonadicFunctionRegistry monadicFunctionRegistry =
+    //     MonadicFunctionRegistry();
+    // monadicFunctionRegistry.registerFunction(
+    //     'isDivisibleNine',
+    //     (values, {int? min, int? max}) =>
+    //         values.where((v) => v % 9 == 0).toList());
+
+    // Register puzzle specific functions
+    final GeneratorRegistry generatorRegistry = GeneratorRegistry();
+    generatorRegistry.register('sumdigits', SumDigitsGenerator(this));
+  }
+}
+
+class SumDigitsGenerator extends Generator {
+  final PuzzleDefinition puzzle;
+  SumDigitsGenerator(this.puzzle);
+  @override
+  List<int> getValues(int min, int max) {
+    var minSumAll = 0;
+    var maxSumAll = 0;
+    // Accumulate the min and max digit sums across all grids
+    for (var gridName in puzzle.grids.keys) {
+      var (minSum, maxSum) = puzzle.grids[gridName]!.getDigitSumRange();
+      if (minSumAll == 0) {
+        minSumAll = minSum;
+        maxSumAll = maxSum;
+      } else {
+        minSumAll += minSum;
+        maxSumAll += maxSum;
+      }
+    }
+    if (minSumAll < min) minSumAll = min;
+    if (maxSumAll > max) maxSumAll = max;
+    return List.generate(
+        maxSumAll - minSumAll + 1, (index) => minSumAll + index).toList();
   }
 }
 

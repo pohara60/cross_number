@@ -84,6 +84,20 @@ class MonadicFunctionRegistry {
       }
       return results;
     };
+    _functions['power'] = (values, {min, max}) {
+      if (values.isEmpty) return [];
+      final base = values.first;
+      if (base == 0) return [];
+      final results = <int>[];
+      var power = 1;
+      while (true) {
+        power = power * base;
+        if (power < (min ?? 1)) continue;
+        if (power > (max ?? 100000)) break;
+        results.add(power);
+      }
+      return results;
+    };
   }
 
   MonadicFunction? get(String name) {
