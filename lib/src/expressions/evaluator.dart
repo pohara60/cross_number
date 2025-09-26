@@ -373,7 +373,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     num fmin = 1;
     num fmax = max;
     final fname = expression.operator.lexeme;
-    if (!fname.startsWith('is') && fname != 'jumble') {
+    if (!fname.startsWith('is')) {
       if (fname.startsWith('lt')) {
         fmax = arbitraryLimit;
       } else {

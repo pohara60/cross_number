@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:crossnumber/src/expressions/expression.dart';
+import 'package:crossnumber/src/expressions/monadic.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/evaluator.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -190,8 +191,6 @@ void main() {
           min: 0, max: 100);
       expect(result, isEmpty);
     });
-  });
-  group('Monadic Functions', () {
     test(r'$lte', () {
       final puzzle = PuzzleDefinition(
           name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
@@ -294,6 +293,50 @@ void main() {
       final result = evaluator.evaluateExpressionNoVariables(expression, [],
           min: 10, max: 100);
       expect(result, equals([16, 27, 32, 64, 81]));
+    });
+
+    test(r'$digitsum', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$digitsum #prime').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 1, max: 11)
+        ..sort();
+      expect(result, equals([2, 3, 4, 5, 7, 8, 10, 11]));
+    });
+
+    test(r'$digitproduct', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$digitproduct #prime').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 1, max: 11)
+        ..sort();
+      expect(result, equals([1, 2, 3, 4, 5, 6, 7, 9]));
+    });
+
+    test(r'$jumble', () {
+      var monadicFunctionRegistry = MonadicFunctionRegistry();
+      var jumble = monadicFunctionRegistry.get('jumble')!;
+      var result1 = jumble([123, 789]);
+      expect(
+          result1, equals([132, 213, 231, 312, 321, 798, 879, 897, 978, 987]));
+
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression2 = Parser(r'$jumble 123').parse();
+      final result2 = evaluator.evaluateExpressionNoVariables(expression2, [],
+          min: 100, max: 999)
+        ..sort();
+      expect(result2, equals([132, 213, 231, 312, 321]));
+      final expression3 = Parser(r'$jumble 789').parse();
+      final result3 = evaluator.evaluateExpressionNoVariables(expression3, [],
+          min: 100, max: 999)
+        ..sort();
+      expect(result3, equals([798, 879, 897, 978, 987]));
     });
   });
 }

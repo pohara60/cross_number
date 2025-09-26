@@ -865,8 +865,9 @@ class Solver {
               continue; // Skip if clue has no values yet
             }
             final originalCount = clue.possibleValues!.length;
-            entry.possibleValues
-                .retainWhere((value) => clue.possibleValues!.contains(value));
+            entry.possibleValues = entry.possibleValues
+                .where((value) => clue.possibleValues!.contains(value))
+                .toSet();
             if (entry.possibleValues.length < originalCount) {
               localChanged = true;
               if (trace) {
@@ -956,8 +957,9 @@ class Solver {
               continue; // Skip if clue has no values yet
             }
             final originalSize = clue.possibleValues!.length;
-            clue.possibleValues!
-                .retainWhere((value) => entry.possibleValues.contains(value));
+            clue.possibleValues = clue.possibleValues!
+                .where((value) => entry.possibleValues.contains(value))
+                .toSet();
             if (clue.possibleValues!.isEmpty) {
               return (false, true); // Inconsistency
             }
@@ -1030,7 +1032,8 @@ class Solver {
           var currentMin = expressable.possibleValues!.reduce(min);
           if (prevMin >= 0 && currentMin <= prevMin) {
             final originalLength = expressable.possibleValues!.length;
-            expressable.possibleValues!.retainWhere((v) => v > prevMin);
+            expressable.possibleValues =
+                expressable.possibleValues!.where((v) => v > prevMin).toSet();
             if (expressable.possibleValues!.isEmpty) return (false, true);
             if (expressable.possibleValues!.length < originalLength) {
               updated = true;
@@ -1051,7 +1054,8 @@ class Solver {
           var currentMax = expressable.possibleValues!.reduce(max);
           if (nextMax < 1000000 && currentMax >= nextMax) {
             final originalLength = expressable.possibleValues!.length;
-            expressable.possibleValues!.retainWhere((v) => v < nextMax);
+            expressable.possibleValues =
+                expressable.possibleValues!.where((v) => v < nextMax).toSet();
             if (expressable.possibleValues!.isEmpty) return (false, true);
             if (expressable.possibleValues!.length < originalLength) {
               updated = true;
@@ -1357,7 +1361,9 @@ class Solver {
         final max = pow(10, entry.length).toInt() - 1;
         if (currentClue.possibleValues != null) {
           var originalCount = currentClue.possibleValues!.length;
-          currentClue.possibleValues!.retainWhere((v) => v >= min && v <= max);
+          currentClue.possibleValues = currentClue.possibleValues!
+              .where((v) => v >= min && v <= max)
+              .toSet();
           if (traceBacktrace) {
             print(
                 'Backtracking mappings:     Clue ${currentClue.id} values reduced from $originalCount to ${currentClue.possibleValues!.length}');

@@ -7,6 +7,7 @@ import '../puzzles/after_nicholas.dart';
 import '../puzzles/couples_differences.dart';
 import '../puzzles/die_another_day.dart';
 import '../puzzles/increasing_prime.dart';
+import '../puzzles/mathematical_inspiration.dart';
 import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
@@ -32,7 +33,8 @@ void main(List<String> arguments) {
     // final puzzle = primania();
     // final puzzle = couplesDifferences();
     // final puzzle = thirty();
-    final puzzle = dieAnotherDay();
+    // final puzzle = dieAnotherDay();
+    final puzzle = mathematicalInspiration();
     // final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 

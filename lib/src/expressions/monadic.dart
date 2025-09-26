@@ -65,7 +65,8 @@ class MonadicFunctionRegistry {
     _functions['factor'] = (values, {min, max}) => values
         .expand((value) => factors(value, min: min, max: max))
         .toSet()
-        .toList();
+        .toList()
+      ..sort();
     _functions['square'] =
         (values, {min, max}) => values.map((v) => v * v).toList();
     _functions['cube'] =
@@ -109,6 +110,24 @@ class MonadicFunctionRegistry {
       }
       return results..sort();
     };
+    _functions['digitsum'] = (values, {min, max}) => values
+        .map((v) =>
+            v.toString().split('').map(int.parse).reduce((a, b) => a + b))
+        .toSet()
+        .toList()
+      ..sort();
+    _functions['digitproduct'] = (values, {min, max}) => values
+        .map((v) =>
+            v.toString().split('').map(int.parse).reduce((a, b) => a * b))
+        .toSet()
+        .toList()
+      ..sort();
+    _functions['jumble'] = (values, {min, max}) => values
+        .expand((v) => jumble(v).where(
+            (v) => (min == null || v >= min) && (max == null || v <= max)))
+        .toSet()
+        .toList()
+      ..sort();
   }
 
   MonadicFunction? get(String name) {
@@ -185,5 +204,40 @@ class MonadicFunctionRegistry {
       if (value % factor == 0) results.add(factor);
     }
     return results.toList()..sort();
+  }
+
+  Iterable<int> jumble(int value) sync* {
+    var strValue = (value).toString();
+    yield* _jumbleStr(value, 0, strValue);
+  }
+
+  var tens = [
+    1,
+    10,
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    10000000,
+    100000000,
+    1000000000
+  ];
+  Iterable<int> _jumbleStr(int value, int leftValue, String strValue) sync* {
+    for (var d = 0; d < strValue.length; d++) {
+      var chr = strValue[d];
+      var chrVal = int.parse(chr);
+      if (strValue.length == 1) {
+        if (value != leftValue + chrVal) yield leftValue + chrVal;
+        return;
+      }
+
+      assert(strValue.length <= tens.length);
+      chrVal *= tens[strValue.length - 1];
+      if (leftValue + chrVal != 0) {
+        var rest = strValue.substring(0, d) + strValue.substring(d + 1);
+        yield* _jumbleStr(value, leftValue + chrVal, rest);
+      }
+    }
   }
 }

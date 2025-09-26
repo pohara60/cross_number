@@ -87,6 +87,71 @@ void main() {
       expect(result, containsAll([13, 21, 34, 55, 89]));
     });
 
+    test('#harshad generator with clue length', () {
+      final parser = Parser('#harshad');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 99);
+      expect(
+          result,
+          containsAll([
+            10,
+            12,
+            18,
+            20,
+            21,
+            24,
+            27,
+            30,
+            36,
+            40,
+            42,
+            45,
+            48,
+            50,
+            54,
+            60,
+            63,
+            70,
+            72,
+            80,
+            81,
+            84,
+            90
+          ]));
+    });
+
+    test('#palindrome generator with clue length', () {
+      final parser = Parser('#palindrome');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final result1 = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 50);
+      expect(result1, containsAll([11, 22, 33, 44]));
+      final result2 = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 100, max: 250);
+      expect(
+          result2,
+          containsAll([
+            101,
+            111,
+            121,
+            131,
+            141,
+            151,
+            161,
+            171,
+            181,
+            191,
+            202,
+            212,
+            222,
+            232,
+            242
+          ]));
+    });
+
     test('Generator with binary operation', () {
       final parser = Parser('#prime + A');
       final expression = parser.parse();
