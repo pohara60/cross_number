@@ -309,57 +309,54 @@ class Grid {
     return buffer.toString();
   }
 
-  String getDigits() {
-    var buffer = StringBuffer();
+  Iterable<int> getDigits() sync* {
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
         var cell = cells[r][c];
         var prevCell = c > 0 ? cells[r][c - 1] : null;
-        var value = ' ';
+        var value = 0;
         if (cell.acrossEntry != null && cell.downEntry != null) {
           // This cell is an intersection
           var acrossEntry = cell.acrossEntry!;
           var downEntry = cell.downEntry!;
-          var acrossDigit = '?';
-          var downDigit = '?';
+          var acrossDigit = 0;
+          var downDigit = 0;
           if (acrossEntry.isSolved) {
-            acrossDigit = acrossEntry.solution!.toString()[c - acrossEntry.col];
+            acrossDigit = int.parse(
+                acrossEntry.solution!.toString()[c - acrossEntry.col]);
+            value = acrossDigit;
           }
           if (downEntry.isSolved) {
-            downDigit = downEntry.solution!.toString()[r - downEntry.row];
-          }
-          if (acrossDigit == downDigit) {
-            value = acrossDigit;
-          } else {
-            value = '?';
+            downDigit =
+                int.parse(downEntry.solution!.toString()[r - downEntry.row]);
+            value = downDigit;
           }
         } else if (cell.acrossEntry != null) {
           var entry = cell.acrossEntry!;
           if (entry.isSolved) {
-            value = entry.solution!.toString()[c - entry.col];
+            value = int.parse(entry.solution!.toString()[c - entry.col]);
           } else {
-            value = '?';
+            value = 0;
           }
         } else if (cell.downEntry != null) {
           var entry = cell.downEntry!;
           if (entry.isSolved) {
-            value = entry.solution!.toString()[r - entry.row];
+            value = int.parse(entry.solution!.toString()[r - entry.row]);
           } else {
-            value = '?';
+            value = 0;
           }
         }
-        buffer.write(value);
+        yield value;
       }
     }
-    return buffer.toString();
   }
 
   int? getDigitsSum() {
     final digits = getDigits();
-    if (digits.contains('?')) return null;
-    return digits
-        .split('')
-        .fold(0, (total, value) => total! + int.parse(value));
+    var result =
+        digits.fold(0, (total, value) => value == 0 ? 0 : total + value);
+    if (result == 0) return null;
+    return result;
   }
 
   // Replace grid entry as used when propagating constraints

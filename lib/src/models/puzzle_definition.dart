@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/clue_group.dart';
+import 'package:crossnumber/src/models/digit_range_constraint.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
@@ -59,6 +60,7 @@ class PuzzleDefinition {
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
     List<PuzzleConstraint> puzzleConstraints = const [],
+    String? digitConstraint,
     mappingIsKnown = true,
   }) {
     final (grids, puzzleEntries) = fromStringInternal(
@@ -80,6 +82,7 @@ class PuzzleDefinition {
       variables: variables,
       orderingConstraints: orderingConstraints,
       puzzleConstraints: puzzleConstraints,
+      digitConstraint: digitConstraint,
       mappingIsKnown: mappingIsKnown,
     );
   }
@@ -173,9 +176,10 @@ class PuzzleDefinition {
     required this.clues,
     required this.variables,
     this.orderingConstraints = const [],
-    this.puzzleConstraints = const [],
+    puzzleConstraints = const [],
+    String? digitConstraint,
     this.mappingIsKnown = true,
-  }) {
+  }) : this.puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
     var exception = false;
     // Set clue entry references where applicable
     for (final clue in clues.values) {
@@ -252,6 +256,24 @@ class PuzzleDefinition {
           }
         }
         index++;
+      }
+    }
+
+    if (digitConstraint != null) {
+      var parts = digitConstraint.split(',');
+      var valid = false;
+      if (parts.length == 2) {
+        var min = int.tryParse(parts[0]);
+        var max = int.tryParse(parts[1]);
+        if (min != null && max != null && min <= max) {
+          this.puzzleConstraints.add(DigitRangeConstraint(min: min, max: max));
+          valid = true;
+        }
+      }
+      if (!valid) {
+        exception = true;
+        print(
+            'Invalid digit constraint "$digitConstraint". Should be "min,max" with min <= max.');
       }
     }
 

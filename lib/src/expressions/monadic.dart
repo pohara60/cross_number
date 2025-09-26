@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:math';
 
 import 'generators.dart';
 
@@ -86,17 +87,27 @@ class MonadicFunctionRegistry {
     };
     _functions['power'] = (values, {min, max}) {
       if (values.isEmpty) return [];
-      final base = values.first;
-      if (base == 0) return [];
       final results = <int>[];
-      var power = 1;
-      while (true) {
-        power = power * base;
-        if (power < (min ?? 1)) continue;
-        if (power > (max ?? 100000)) break;
-        results.add(power);
+      // Find values in the range that are powers of the given exponent
+      // e.g. for exponent 3, find 1, 8, 27, 64, 125, ...
+      // Stop when power exceeds max  or 100000 if max not given
+      // or when power is less than min or 1 if min not given (so start at 1)
+
+      bool updated = true;
+      var exponent = values.first;
+      while (updated) {
+        var base = 2; // Ignore trivial base 1
+        updated = false;
+        while (true) {
+          var power = pow(base++, exponent).toInt();
+          if (power > (max ?? 100000)) break;
+          updated = true; // Continue
+          if (power < (min ?? 1)) continue;
+          results.add(power);
+        }
+        exponent++;
       }
-      return results;
+      return results..sort();
     };
   }
 

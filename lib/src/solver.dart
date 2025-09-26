@@ -701,31 +701,34 @@ class Solver {
     bool consistent = true;
     bool updated = false;
 
-    // Enforce distinct clue values
-    (consistent, updated) =
-        _enforceDistinctValuesForExressable(puzzle, puzzle.clues.values, trace);
-    if (updated) changed = true;
-    if (!consistent) return (false, changed);
+    var loopChanged = true;
+    while (loopChanged) {
+      loopChanged = false;
 
-    // Enforce distinct variable values
-    (consistent, updated) = _enforceDistinctValuesForExressable(
-        puzzle, puzzle.variables.values, trace);
-    if (updated) changed = true;
-    if (!consistent) return (false, changed);
+      // Enforce distinct clue values
+      (consistent, updated) = _enforceDistinctValuesForExressable(
+          puzzle, puzzle.clues.values, trace);
+      if (updated) loopChanged = changed = true;
+      if (!consistent) return (false, changed);
 
-    // Enforce distinct entry values - necessary when not mapped to clues
-    (consistent, updated) = _enforceDistinctValuesForExressable(
-        puzzle, puzzle.entries.values, trace);
-    if (updated) changed = true;
-    if (!consistent) return (false, changed);
+      // Enforce distinct variable values
+      (consistent, updated) = _enforceDistinctValuesForExressable(
+          puzzle, puzzle.variables.values, trace);
+      if (updated) loopChanged = changed = true;
+      if (!consistent) return (false, changed);
 
-    // Enforce puzzle-specific distinct constraints
-    for (var constraint in puzzle.puzzleConstraints) {
-      var (consistent, updated) =
-          constraint.enforceDistinct(puzzle, trace: trace);
-      if (!consistent) return (false, true);
-      if (updated) {
-        changed = true;
+      // Enforce distinct entry values - necessary when not mapped to clues
+      (consistent, updated) = _enforceDistinctValuesForExressable(
+          puzzle, puzzle.entries.values, trace);
+      if (updated) loopChanged = changed = true;
+      if (!consistent) return (false, changed);
+
+      // Enforce puzzle-specific distinct constraints
+      for (var constraint in puzzle.puzzleConstraints) {
+        var (consistent, updated) =
+            constraint.enforceDistinct(puzzle, trace: trace);
+        if (updated) loopChanged = changed = true;
+        if (!consistent) return (false, changed);
       }
     }
 

@@ -285,5 +285,15 @@ void main() {
             24
           ]));
     });
+
+    test(r'$power 3', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$power 3').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 100);
+      expect(result, equals([16, 27, 32, 64, 81]));
+    });
   });
 }
