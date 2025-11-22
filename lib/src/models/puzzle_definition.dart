@@ -6,7 +6,6 @@ import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
 import '../expressions/generators.dart';
 import '../expressions/inverter.dart';
-import '../expressions/monadic.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -424,8 +423,12 @@ class PuzzleDefinition {
       cluePossibleEntries[clue] = possibleEntries;
     }
     // Order the map by number of entries (fewest first)
+    // var sortedEntries = cluePossibleEntries.entries.toList()
+    //   ..sort((a, b) => a.value.length.compareTo(b.value.length));
+    // Order the map by number of values (fewest first)
     var sortedEntries = cluePossibleEntries.entries.toList()
-      ..sort((a, b) => a.value.length.compareTo(b.value.length));
+      ..sort((a, b) =>
+          a.key.possibleValues!.length.compareTo(b.key.possibleValues!.length));
     cluePossibleEntries
       ..clear()
       ..addEntries(sortedEntries);
@@ -504,6 +507,8 @@ class PuzzleDefinition {
 
   bool isSolutionValid() {
     // Check if all expressables have a single value
+    print(
+        'isSolutionValid solved ${allExpressables.where((expressable) => expressable.isSolved).length}');
     if (!allExpressables.every((expressable) => expressable.isSolved)) {
       return false;
     }

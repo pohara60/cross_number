@@ -415,4 +415,28 @@ class Grid {
     }
     return (minSum, maxSum);
   }
+
+  bool isEntryValueCompatibleSolvedEntries(Entry entry, int value) {
+    var row = entry.row;
+    var col = entry.col;
+    for (var index = 0; index < entry.length; index++) {
+      var r = row + (entry.orientation == EntryOrientation.down ? index : 0);
+      var c = col + (entry.orientation == EntryOrientation.across ? index : 0);
+      var cell = cells[r][c];
+      var digit = int.parse(value.toString()[index]);
+      var otherEntry = entry.orientation == EntryOrientation.across
+          ? cell.downEntry
+          : cell.acrossEntry;
+      if (otherEntry != null) {
+        if (otherEntry.isSolved) {
+          var otherDigit = int.parse(otherEntry.solution!
+              .toString()[r - otherEntry.row + c - otherEntry.col]);
+          if (otherDigit != digit) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
 }

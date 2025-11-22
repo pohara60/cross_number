@@ -39,6 +39,11 @@ class Entry extends Expressable {
   @override
   final List<Constraint> constraints;
 
+  /// Skip grid entry propagation if no clue or expression is attached.
+  bool forcePropagation = false;
+  bool get skipGridPropagation =>
+      clueId == null && expressionTrees.isEmpty && !forcePropagation;
+
   /// Creates a new entry with the given properties.
   /// The position, length and orientation ,ay come from a grid definition.
   Entry({

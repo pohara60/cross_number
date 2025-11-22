@@ -88,6 +88,9 @@ class ThirtyConstraint extends PuzzleConstraint {
     return true;
   }
 
+  @override
+  void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
+
   (bool, bool) initialiseEvenDigits(PuzzleDefinition puzzle, bool trace) {
     var updated = false;
     final evenDigits = [0, 2, 4, 6, 8];

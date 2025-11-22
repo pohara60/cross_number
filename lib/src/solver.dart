@@ -882,6 +882,21 @@ class Solver {
         }
       }
 
+      // Cache to avoid repeated toString calls
+      final haveEntryValueStrings = <Entry, bool>{};
+      final valueStrings = <int, String>{};
+      String getValueString(Entry entry, int value) {
+        if (!haveEntryValueStrings.containsKey(entry)) {
+          haveEntryValueStrings[entry] = true;
+          for (var v in entry.possibleValues) {
+            if (!valueStrings.containsKey(v)) {
+              valueStrings[v] = v.toString();
+            }
+          }
+        }
+        return valueStrings[value]!;
+      }
+
       // Enforce grid constraints
       for (var grid in puzzle.grids.values) {
         for (int r = 0; r < grid.rows; r++) {
@@ -889,9 +904,11 @@ class Solver {
             final cell = grid.cells[r][c];
             if (cell.acrossEntry != null && cell.downEntry != null) {
               final acrossEntry = cell.acrossEntry!;
+              if (acrossEntry.skipGridPropagation) continue;
               final downEntry = cell.downEntry!;
-              checkCellEntry(grid, acrossEntry);
-              checkCellEntry(grid, downEntry);
+              if (downEntry.skipGridPropagation) continue;
+              // checkCellEntry(grid, acrossEntry);
+              // checkCellEntry(grid, downEntry);
               final acrossDigitIndex = c - acrossEntry.col;
               final downDigitIndex = r - downEntry.row;
 
@@ -903,9 +920,11 @@ class Solver {
 
                 final newAcrossValues = <int>{};
                 for (final acrossValue in acrossValues) {
-                  final acrossDigit = acrossValue.toString()[acrossDigitIndex];
+                  final acrossDigit = getValueString(
+                      acrossEntry, acrossValue)[acrossDigitIndex];
                   if (downValues.any((downValue) =>
-                      downValue.toString()[downDigitIndex] == acrossDigit)) {
+                      getValueString(downEntry, downValue)[downDigitIndex] ==
+                      acrossDigit)) {
                     newAcrossValues.add(acrossValue);
                   }
                 }
@@ -924,9 +943,12 @@ class Solver {
 
                 final newDownValues = <int>{};
                 for (final downValue in downValues) {
-                  final downDigit = downValue.toString()[downDigitIndex];
+                  final downDigit =
+                      getValueString(downEntry, downValue)[downDigitIndex];
                   if (acrossEntry.possibleValues.any((acrossValue) =>
-                      acrossValue.toString()[acrossDigitIndex] == downDigit)) {
+                      getValueString(
+                          acrossEntry, acrossValue)[acrossDigitIndex] ==
+                      downDigit)) {
                     newDownValues.add(downValue);
                   }
                 }
@@ -1106,6 +1128,20 @@ class Solver {
     var solutionCount = 0;
     final stopwatch = Stopwatch()..start();
 
+    // Invoke any backtracking constraint logic
+    var updated = false;
+    for (var constraint in puzzle.puzzleConstraints) {
+      constraint.onBacktrackingStart(puzzle, trace: traceBacktrace);
+      updated = true;
+    }
+    if (updated) {
+      var (consistent, _) = _propagateConstraints(traceBacktrace);
+      if (!consistent) {
+        print(
+            'Backtracking mappings:     onBacktrackingStart is ${consistent ? 'consistent' : 'inconsistent'}');
+        return;
+      }
+    }
     switch (strategy) {
       case MappingStrategy.cluePriority:
         Map<Clue, List<Entry>> cluePossibleEntries =
@@ -1241,54 +1277,69 @@ class Solver {
       }
 
       for (final clue in matchingClues) {
-        if (traceBacktrace) {
-          print('Backtracking mappings:   Trying clue ${clue.id}');
-        }
-        final savedState = _saveState();
-
         // Map entry to clue
         currentEntry.clueId = clue.id;
         clue.entry = currentEntry;
 
         // Reduce possible values
-        final intersection =
-            clue.possibleValues!.intersection(currentEntry.possibleValues);
-        if (intersection.isEmpty) {
-          _restoreState(savedState);
-          currentEntry.clueId = null;
-          clue.entry = null;
-          continue;
-        }
-        clue.possibleValues = intersection;
-        currentEntry.possibleValues = Set.from(intersection);
+        // final intersection =
+        //     clue.possibleValues!.intersection(currentEntry.possibleValues);
+        // if (intersection.isEmpty) {
+        //   currentEntry.clueId = null;
+        //   clue.entry = null;
+        //   continue;
+        // }
 
-        var (consistent, _) = _propagateConstraints(traceBacktrace);
-        if (traceBacktrace) {
-          print(
-              'Backtracking mappings:     Propagation is ${consistent ? 'consistent' : 'inconsistent'}');
-        }
-
-        if (consistent) {
-          final remainingClues =
-              availableClues.where((c) => c != clue).toList();
-          int nextEntryIndex = entryIndex + 1;
-          int nextGroupIndex = groupIndex;
-          if (nextEntryIndex == currentGroup.length) {
-            nextGroupIndex++;
-            nextEntryIndex = 0;
+        for (final value in clue.possibleValues!) {
+          // Check if value is compatible with other set entries
+          var consistent = puzzle.grids.values.first
+              .isEntryValueCompatibleSolvedEntries(currentEntry, value);
+          if (!consistent) {
+            if (traceBacktrace) {
+              print(
+                  'Backtracking mappings:   Value $value for clue ${clue.id} is not compatible with other entries');
+            }
+            continue;
           }
-          solutionCount = _solveWithBacktrackingByEntry(
-              entryGroups,
-              nextGroupIndex,
-              nextEntryIndex,
-              remainingClues,
-              entryPossibleClues,
-              solutionCount,
-              callback);
+
+          final savedState = _saveState();
+          clue.possibleValues = {value};
+          currentEntry.possibleValues = {value};
+          if (traceBacktrace) {
+            print(
+                'Backtracking mappings:   Trying clue ${clue.id} value $value');
+          }
+
+          // var (consistent, _) = _propagateConstraints(traceBacktrace);
+          // if (traceBacktrace) {
+          //   print(
+          //       'Backtracking mappings:     Propagation is ${consistent ? 'consistent' : 'inconsistent'}');
+          // }
+
+          if (consistent) {
+            final remainingClues =
+                availableClues.where((c) => c != clue).toList();
+            int nextEntryIndex = entryIndex + 1;
+            int nextGroupIndex = groupIndex;
+            if (nextEntryIndex == currentGroup.length) {
+              nextGroupIndex++;
+              nextEntryIndex = 0;
+            }
+            solutionCount = _solveWithBacktrackingByEntry(
+                entryGroups,
+                nextGroupIndex,
+                nextEntryIndex,
+                remainingClues,
+                entryPossibleClues,
+                solutionCount,
+                callback);
+          }
+
+          // Backtrack values
+          _restoreState(savedState);
         }
 
-        // Backtrack
-        _restoreState(savedState);
+        // Backtrack mapping
         currentEntry.clueId = null;
         clue.entry = null;
       }
@@ -1349,64 +1400,87 @@ class Solver {
       if (traceBacktrace) {
         print('Backtracking mappings:   Trying entry ${entry.id}');
       }
-      final savedState = _saveState();
+      // final savedState = _saveState();
 
       // Try mapping the current clue to this entry
       entry.clueId = currentClue.id;
       currentClue.entry = entry;
 
       // Update clue's possible values based on entry length
-      if (currentClue.length == null) {
-        final min = pow(10, entry.length - 1).toInt();
-        final max = pow(10, entry.length).toInt() - 1;
-        if (currentClue.possibleValues != null) {
-          var originalCount = currentClue.possibleValues!.length;
-          currentClue.possibleValues = currentClue.possibleValues!
-              .where((v) => v >= min && v <= max)
-              .toSet();
-          if (traceBacktrace) {
-            print(
-                'Backtracking mappings:     Clue ${currentClue.id} values reduced from $originalCount to ${currentClue.possibleValues!.length}');
-          }
-          if (currentClue.possibleValues!.isEmpty) {
-            // This mapping is not possible, backtrack
-            _restoreState(savedState);
-            entry.clueId = null;
-            currentClue.entry = null;
-            continue;
-          }
-        }
-      }
+      // if (currentClue.length == null) {
+      //   final min = pow(10, entry.length - 1).toInt();
+      //   final max = pow(10, entry.length).toInt() - 1;
+      //   if (currentClue.possibleValues != null) {
+      //     var originalCount = currentClue.possibleValues!.length;
+      //     currentClue.possibleValues = currentClue.possibleValues!
+      //         .where((v) => v >= min && v <= max)
+      //         .toSet();
+      //     if (traceBacktrace) {
+      //       print(
+      //           'Backtracking mappings:     Clue ${currentClue.id} values reduced from $originalCount to ${currentClue.possibleValues!.length}');
+      //     }
+      //     if (currentClue.possibleValues!.isEmpty) {
+      //       // This mapping is not possible, backtrack
+      //       _restoreState(savedState);
+      //       entry.clueId = null;
+      //       currentClue.entry = null;
+      //       continue;
+      //     }
+      //   }
+      // }
 
       // New check:
-      final intersection =
-          currentClue.possibleValues!.intersection(entry.possibleValues);
-      if (intersection.isEmpty) {
-        // This mapping is not possible, backtrack
+      // final intersection =
+      //     currentClue.possibleValues!.intersection(entry.possibleValues);
+      // if (intersection.isEmpty) {
+      //   // This mapping is not possible, backtrack
+      //   _restoreState(savedState);
+      //   entry.clueId = null;
+      //   currentClue.entry = null;
+      //   continue;
+      // }
+      // currentClue.possibleValues = intersection;
+      // entry.possibleValues = Set.from(intersection);
+
+      for (final value in currentClue.possibleValues!) {
+        // Check if value is compatible with other set entries
+        var consistent = puzzle.grids.values.first
+            .isEntryValueCompatibleSolvedEntries(entry, value);
+        if (!consistent) {
+          if (traceBacktrace) {
+            print(
+                'Backtracking mappings:   Value $value for clue ${currentClue.id} is not compatible with other entries');
+          }
+          continue;
+        }
+
+        final savedState = _saveState();
+        currentClue.possibleValues = {value};
+        entry.possibleValues = {value};
+        if (traceBacktrace) {
+          print(
+              'Backtracking mappings:   Trying clue ${currentClue.id} value $value');
+        }
+
+        // // Propagate constraints
+        // var (consistent, _) = _propagateConstraints(traceBacktrace);
+        // if (traceBacktrace) {
+        //   print(
+        //       'Backtracking mappings:     Propagation is ${consistent ? 'consistent' : 'inconsistent'}');
+        // }
+
+        if (consistent) {
+          final remainingEntries =
+              availableEntries.where((e) => e != entry).toList();
+          solutionCount = _solveWithBacktrackingByClue(remainingClues,
+              remainingEntries, cluePossibleEntries, solutionCount, callback);
+        }
+
+        // Backtrack values
         _restoreState(savedState);
-        entry.clueId = null;
-        currentClue.entry = null;
-        continue;
-      }
-      currentClue.possibleValues = intersection;
-      entry.possibleValues = Set.from(intersection);
-
-      // Propagate constraints
-      var (consistent, _) = _propagateConstraints(traceBacktrace);
-      if (traceBacktrace) {
-        print(
-            'Backtracking mappings:     Propagation is ${consistent ? 'consistent' : 'inconsistent'}');
       }
 
-      if (consistent) {
-        final remainingEntries =
-            availableEntries.where((e) => e != entry).toList();
-        solutionCount = _solveWithBacktrackingByClue(remainingClues,
-            remainingEntries, cluePossibleEntries, solutionCount, callback);
-      }
-
-      // Backtrack
-      _restoreState(savedState);
+      // Backtrack mapping
       entry.clueId = null;
       currentClue.entry = null;
     }

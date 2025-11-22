@@ -12,6 +12,7 @@ import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
 import '../puzzles/simple_puzzle.dart';
+import '../puzzles/splits.dart';
 import '../puzzles/sum_squares.dart';
 import '../puzzles/thirty.dart';
 import '../puzzles/threes.dart';
@@ -34,7 +35,8 @@ void main(List<String> arguments) {
     // final puzzle = couplesDifferences();
     // final puzzle = thirty();
     // final puzzle = dieAnotherDay();
-    final puzzle = mathematicalInspiration();
+    // final puzzle = mathematicalInspiration();
+    final puzzle = splits();
     // final puzzle = sumsquares();
     print('Puzzle: ${puzzle.name}');
 
@@ -43,7 +45,7 @@ void main(List<String> arguments) {
         traceSolve: true,
         allowBacktracking: true,
         traceBacktrace: false);
-    solver.solve();
+    solver.solve(null, MappingStrategy.cluePriority);
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');
     return;

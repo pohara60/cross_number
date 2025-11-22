@@ -32,6 +32,9 @@ class CouplesDifferencesConstraint extends PuzzleConstraint {
     print('Solution grid sum digits $sum, valid is $valid');
     return valid;
   }
+
+  @override
+  void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
 }
 
 PuzzleDefinition couplesDifferences() {

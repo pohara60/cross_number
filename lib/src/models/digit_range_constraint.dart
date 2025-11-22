@@ -47,4 +47,7 @@ class DigitRangeConstraint extends PuzzleConstraint {
     }
     return true;
   }
+
+  @override
+  void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
 }

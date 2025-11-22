@@ -101,4 +101,7 @@ class MathematicalInspirationConstraint extends PuzzleConstraint {
     }
     return true;
   }
+
+  @override
+  void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
 }
