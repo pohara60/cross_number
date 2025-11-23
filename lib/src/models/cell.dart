@@ -8,17 +8,22 @@ class Cell {
   /// The entry that passes through this cell vertically (if any).
   Entry? downEntry;
 
+  /// The entry that passes through this cell vertically (if any).
+  Entry? upEntry;
+
   /// The character representing this cell (e.g., a digit or a block).
   String char = '';
 
   Cell copyWith({
     Entry? acrossEntry,
     Entry? downEntry,
+    Entry? upEntry,
     String? char,
   }) {
     return Cell()
       ..acrossEntry = acrossEntry ?? this.acrossEntry
       ..downEntry = downEntry ?? this.downEntry
+      ..upEntry = upEntry ?? this.upEntry
       ..char = char ?? this.char;
   }
 }

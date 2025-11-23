@@ -225,8 +225,12 @@ class Solver {
         }
       }
 
-      var (consistent, _) =
+      var (consistent, updated) =
           _propagateConstraints(traceBacktrace); // Propagate the change
+      if (traceBacktrace) {
+        print(
+            'Backtracking: Propagation result: consistent=$consistent, updated=$updated');
+      }
 
       if (consistent) {
         if (traceBacktrace) {
@@ -435,7 +439,13 @@ class Solver {
       var originalCounts = <String, int?>{};
       var (consistent, changed) =
           solveExpression(expressable, updatedVariables, originalCounts);
-      if (!consistent) return (false, true);
+      if (!consistent) {
+        if (trace) {
+          print(
+              '    Inconsistency: _solveExpressables detected inconsistency after solving expression for ${expressable.id}.');
+        }
+        return (false, true);
+      }
       if (changed) {
         updated = true;
         if (trace) {
@@ -707,28 +717,61 @@ class Solver {
 
       // Enforce distinct clue values
       (consistent, updated) = _enforceDistinctValuesForExressable(
-          puzzle, puzzle.clues.values, trace);
+        puzzle,
+        puzzle.clues.values,
+        trace,
+      );
       if (updated) loopChanged = changed = true;
-      if (!consistent) return (false, changed);
+      if (!consistent) {
+        if (trace) {
+          print(
+              '    Inconsistency: _enforceDistinctValuesForExressable (clues) returned inconsistent.');
+        }
+        return (false, changed);
+      }
 
       // Enforce distinct variable values
       (consistent, updated) = _enforceDistinctValuesForExressable(
-          puzzle, puzzle.variables.values, trace);
+        puzzle,
+        puzzle.variables.values,
+        trace,
+      );
       if (updated) loopChanged = changed = true;
-      if (!consistent) return (false, changed);
+      if (!consistent) {
+        if (trace) {
+          print(
+              '    Inconsistency: _enforceDistinctValuesForExressable (variables) returned inconsistent.');
+        }
+        return (false, changed);
+      }
 
       // Enforce distinct entry values - necessary when not mapped to clues
       (consistent, updated) = _enforceDistinctValuesForExressable(
-          puzzle, puzzle.entries.values, trace);
+        puzzle,
+        puzzle.entries.values,
+        trace,
+      );
       if (updated) loopChanged = changed = true;
-      if (!consistent) return (false, changed);
+      if (!consistent) {
+        if (trace) {
+          print(
+              '    Inconsistency: _enforceDistinctValuesForExressable (entries) returned inconsistent.');
+        }
+        return (false, changed);
+      }
 
       // Enforce puzzle-specific distinct constraints
       for (var constraint in puzzle.puzzleConstraints) {
         var (consistent, updated) =
             constraint.enforceDistinct(puzzle, trace: trace);
         if (updated) loopChanged = changed = true;
-        if (!consistent) return (false, changed);
+        if (!consistent) {
+          if (trace) {
+            print(
+                '    Inconsistency: Puzzle-specific distinct constraint returned inconsistent.');
+          }
+          return (false, changed);
+        }
       }
     }
 
@@ -876,6 +919,10 @@ class Solver {
               }
             }
             if (entry.possibleValues.isEmpty) {
+              if (trace) {
+                print(
+                    '    Inconsistency: Clue ${clue.id} leads to empty entry ${entry.id} possible values.');
+              }
               return (false, true); // Inconsistency
             }
           }
@@ -932,6 +979,10 @@ class Solver {
                 if (newAcrossValues.length < acrossValues.length) {
                   acrossEntry.possibleValues = newAcrossValues;
                   if (acrossEntry.possibleValues.isEmpty) {
+                    if (trace) {
+                      print(
+                          '    Inconsistency: Grid constraint for acrossEntry ${acrossEntry.id} leads to empty possible values (across-down intersection).');
+                    }
                     return (false, true); // Inconsistency
                   }
                   localChanged = true;
@@ -956,12 +1007,80 @@ class Solver {
                 if (newDownValues.length < downValues.length) {
                   downEntry.possibleValues = newDownValues;
                   if (downEntry.possibleValues.isEmpty) {
+                    if (trace) {
+                      print(
+                          '    Inconsistency: Grid constraint for downEntry ${downEntry.id} leads to empty possible values (across-down intersection).');
+                    }
                     return (false, true); // Inconsistency
                   }
                   localChanged = true;
                   crossChanged = true;
                   if (trace) {
                     _printUpdatedEntry(downEntry, downValues.length);
+                  }
+                }
+              } while (crossChanged);
+            }
+            if (cell.acrossEntry != null && cell.upEntry != null) {
+              final acrossEntry = cell.acrossEntry!;
+              if (acrossEntry.skipGridPropagation) continue;
+              final upEntry = cell.upEntry!;
+              if (upEntry.skipGridPropagation) continue;
+              // checkCellEntry(grid, acrossEntry);
+              // checkCellEntry(grid, upEntry);
+              final acrossDigitIndex = c - acrossEntry.col;
+              final upDigitIndex = upEntry.row - r;
+
+              bool crossChanged;
+              do {
+                crossChanged = false;
+                final acrossValues = acrossEntry.possibleValues;
+                final upValues = upEntry.possibleValues;
+
+                final newAcrossValues = <int>{};
+                for (final acrossValue in acrossValues) {
+                  final acrossDigit = getValueString(
+                      acrossEntry, acrossValue)[acrossDigitIndex];
+                  if (upValues.any((upValue) =>
+                      getValueString(upEntry, upValue)[upDigitIndex] ==
+                      acrossDigit)) {
+                    newAcrossValues.add(acrossValue);
+                  }
+                }
+
+                if (newAcrossValues.length < acrossValues.length) {
+                  acrossEntry.possibleValues = newAcrossValues;
+                  if (acrossEntry.possibleValues.isEmpty) {
+                    return (false, true); // Inconsistency
+                  }
+                  localChanged = true;
+                  crossChanged = true;
+                  if (trace) {
+                    _printUpdatedEntry(acrossEntry, acrossValues.length);
+                  }
+                }
+
+                final newUpValues = <int>{};
+                for (final upValue in upValues) {
+                  final upDigit =
+                      getValueString(upEntry, upValue)[upDigitIndex];
+                  if (acrossEntry.possibleValues.any((acrossValue) =>
+                      getValueString(
+                          acrossEntry, acrossValue)[acrossDigitIndex] ==
+                      upDigit)) {
+                    newUpValues.add(upValue);
+                  }
+                }
+
+                if (newUpValues.length < upValues.length) {
+                  upEntry.possibleValues = newUpValues;
+                  if (upEntry.possibleValues.isEmpty) {
+                    return (false, true); // Inconsistency
+                  }
+                  localChanged = true;
+                  crossChanged = true;
+                  if (trace) {
+                    _printUpdatedEntry(upEntry, upValues.length);
                   }
                 }
               } while (crossChanged);
@@ -983,6 +1102,10 @@ class Solver {
                 .where((value) => entry.possibleValues.contains(value))
                 .toSet();
             if (clue.possibleValues!.isEmpty) {
+              if (trace) {
+                print(
+                    '    Inconsistency: Entry ${entry.id} leads to empty clue ${clue.id} possible values.');
+              }
               return (false, true); // Inconsistency
             }
             if (clue.possibleValues!.length < originalSize) {
@@ -1011,7 +1134,13 @@ class Solver {
       // Re-solve expressions
       var (consistent, changed) = _solveExpressables(null);
       if (changed) localChanged = true;
-      if (!consistent) return (false, true); // Inconsistency after re-solve
+      if (!consistent) {
+        if (trace) {
+          print(
+              '    Inconsistency: _solveExpressables returned inconsistent after re-solve.');
+        }
+        return (false, true); // Inconsistency after re-solve
+      }
 
       // Enforce distinct values
       var (distinctConsistent, distinctUpdated) = _enforceDistinctValues(trace);
@@ -1056,13 +1185,25 @@ class Solver {
             final originalLength = expressable.possibleValues!.length;
             expressable.possibleValues =
                 expressable.possibleValues!.where((v) => v > prevMin).toSet();
-            if (expressable.possibleValues!.isEmpty) return (false, true);
+            if (expressable.possibleValues!.isEmpty) {
+              if (trace) {
+                print(
+                    '    Inconsistency: Ordering constraint for ${expressable.id} leads to empty possible values (forward pass).');
+              }
+              return (false, true);
+            }
             if (expressable.possibleValues!.length < originalLength) {
               updated = true;
               changedInPass = true;
             }
           }
-          if (expressable.possibleValues!.isEmpty) return (false, true);
+          if (expressable.possibleValues!.isEmpty) {
+            if (trace) {
+              print(
+                  '    Inconsistency: Ordering constraint for ${expressable.id} leads to empty possible values (forward pass, after min check).');
+            }
+            return (false, true);
+          }
           prevMin = expressable.possibleValues!.reduce(min);
         }
 
@@ -1078,13 +1219,25 @@ class Solver {
             final originalLength = expressable.possibleValues!.length;
             expressable.possibleValues =
                 expressable.possibleValues!.where((v) => v < nextMax).toSet();
-            if (expressable.possibleValues!.isEmpty) return (false, true);
+            if (expressable.possibleValues!.isEmpty) {
+              if (trace) {
+                print(
+                    '    Inconsistency: Ordering constraint for ${expressable.id} leads to empty possible values (backward pass).');
+              }
+              return (false, true);
+            }
             if (expressable.possibleValues!.length < originalLength) {
               updated = true;
               changedInPass = true;
             }
           }
-          if (expressable.possibleValues!.isEmpty) return (false, true);
+          if (expressable.possibleValues!.isEmpty) {
+            if (trace) {
+              print(
+                  '    Inconsistency: Ordering constraint for ${expressable.id} leads to empty possible values (backward pass, after max check).');
+            }
+            return (false, true);
+          }
           nextMax = expressable.possibleValues!.reduce(max);
         }
       } while (changedInPass);

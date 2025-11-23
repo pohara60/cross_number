@@ -212,9 +212,13 @@ class Grid {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row][entry.col + i].acrossEntry = entry;
         }
-      } else {
+      } else if (entry.orientation == EntryOrientation.down) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row + i][entry.col].downEntry = entry;
+        }
+      } else if (entry.orientation == EntryOrientation.up) {
+        for (int i = 0; i < entry.length; i++) {
+          cells[entry.row - i][entry.col].upEntry = entry;
         }
       }
     }
@@ -366,6 +370,7 @@ class Grid {
     for (final cell in entryCells[id]!) {
       if (cell.acrossEntry?.id == id) cell.acrossEntry = puzzleEntry;
       if (cell.downEntry?.id == id) cell.downEntry = puzzleEntry;
+      if (cell.upEntry?.id == id) cell.upEntry = puzzleEntry;
     }
   }
 
@@ -420,17 +425,33 @@ class Grid {
     var row = entry.row;
     var col = entry.col;
     for (var index = 0; index < entry.length; index++) {
-      var r = row + (entry.orientation == EntryOrientation.down ? index : 0);
-      var c = col + (entry.orientation == EntryOrientation.across ? index : 0);
+      var r = row;
+      var c = col;
+      if (entry.orientation == EntryOrientation.down) {
+        r += index;
+      } else if (entry.orientation == EntryOrientation.across) {
+        c += index;
+      } else if (entry.orientation == EntryOrientation.up) {
+        r -= index;
+      }
       var cell = cells[r][c];
       var digit = int.parse(value.toString()[index]);
       var otherEntry = entry.orientation == EntryOrientation.across
-          ? cell.downEntry
+          ? cell.downEntry ?? cell.upEntry
           : cell.acrossEntry;
       if (otherEntry != null) {
         if (otherEntry.isSolved) {
-          var otherDigit = int.parse(otherEntry.solution!
-              .toString()[r - otherEntry.row + c - otherEntry.col]);
+          var otherDigit = 0;
+          if (otherEntry.orientation == EntryOrientation.across) {
+            otherDigit = int.parse(otherEntry.solution!
+                .toString()[c - otherEntry.col]);
+          } else if (otherEntry.orientation == EntryOrientation.down) {
+            otherDigit = int.parse(otherEntry.solution!
+                .toString()[r - otherEntry.row]);
+          } else if (otherEntry.orientation == EntryOrientation.up) {
+            otherDigit = int.parse(otherEntry.solution!
+                .toString()[otherEntry.row - r]);
+          }
           if (otherDigit != digit) {
             return false;
           }

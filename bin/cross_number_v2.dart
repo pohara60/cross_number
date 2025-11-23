@@ -12,6 +12,7 @@ import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
 import '../puzzles/simple_puzzle.dart';
+import '../puzzles/snakes_and_ladders.dart';
 import '../puzzles/splits.dart';
 import '../puzzles/sum_squares.dart';
 import '../puzzles/thirty.dart';
@@ -36,15 +37,17 @@ void main(List<String> arguments) {
     // final puzzle = thirty();
     // final puzzle = dieAnotherDay();
     // final puzzle = mathematicalInspiration();
-    final puzzle = splits();
+    // final puzzle = splits();
     // final puzzle = sumsquares();
+    final puzzle = snakesAndLadders();
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
         // useTransitiveGrouping: true,
         traceSolve: true,
         allowBacktracking: true,
-        traceBacktrace: false);
+        traceBacktrace: true);
+    // var solutions = 0;
     solver.solve(null, MappingStrategy.cluePriority);
   } on PuzzleException catch (e) {
     print('Error loading puzzle: ${e.msg}');

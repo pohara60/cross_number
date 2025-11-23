@@ -5,7 +5,7 @@ import 'constraint.dart';
 import 'expressable.dart';
 
 /// The orientation of an entry in the grid.
-enum EntryOrientation { across, down }
+enum EntryOrientation { across, down, up }
 
 /// Represents a single entry in the cross number grid.
 ///
@@ -66,14 +66,22 @@ class Entry extends Expressable {
       return false;
     }
     if (orientation == EntryOrientation.across) {
-      // this is across, other is down
+      // this is across, other is down or up
       return other.col >= col &&
           other.col < col + length &&
           row >= other.row &&
           row < other.row + other.length;
-    } else {
+    } else if (orientation == EntryOrientation.down) {
       // this is down, other is across
-      return col >= other.col &&
+      return other.orientation == EntryOrientation.across &&
+          col >= other.col &&
+          col < other.col + other.length &&
+          other.row >= row &&
+          other.row < row + length;
+    } else {
+      // this is up, other is across
+      return other.orientation == EntryOrientation.across &&
+          col >= other.col &&
           col < other.col + other.length &&
           other.row >= row &&
           other.row < row + length;
