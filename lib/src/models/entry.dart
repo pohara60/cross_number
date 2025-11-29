@@ -32,8 +32,8 @@ class Entry extends Expressable {
   /// This can be null if the mapping is not known initially.
   String? clueId;
 
-  @override
-  Set<int> get possibleValues => super.possibleValues!;
+  // @override
+  // Set<int>? get possibleValues => super.possibleValues;
 
   /// The list of constraints that apply to this entry.
   @override
@@ -55,10 +55,13 @@ class Entry extends Expressable {
     this.clueId,
     this.constraints = const [],
   }) {
-    // Initialize possible values based on length
-    final min = pow(10, length - 1).toInt();
-    final max = pow(10, length).toInt() - 1;
-    possibleValues = List<int>.generate(max - min + 1, (i) => i + min).toSet();
+    if (length <= 5) {
+      // Initialize possible values based on length
+      final min = pow(10, length - 1).toInt();
+      final max = pow(10, length).toInt() - 1;
+      possibleValues =
+          List<int>.generate(max - min + 1, (i) => i + min).toSet();
+    }
   }
 
   bool intersects(Entry other) {
@@ -106,7 +109,9 @@ class Entry extends Expressable {
       orientation: orientation ?? this.orientation,
       clueId: clueId ?? this.clueId,
       constraints: constraints ?? this.constraints,
-    )..possibleValues = Set<int>.from(possibleValues ?? this.possibleValues);
+    )..possibleValues = possibleValues == null && this.possibleValues == null
+        ? null
+        : Set<int>.from(possibleValues ?? this.possibleValues!);
   }
 
   @override
@@ -116,7 +121,9 @@ class Entry extends Expressable {
     if (expressionTrees.isNotEmpty) {
       b.write(expressionTrees.map((e) => e.toString()).join(', '));
     }
-    b.write(' ${possibleValues.length} ${possibleValues.toShortString()}');
+    if (possibleValues != null) {
+      b.write(' ${possibleValues!.length} ${possibleValues!.toShortString()}');
+    }
     return b.toString();
   }
 }

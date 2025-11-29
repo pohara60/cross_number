@@ -1,10 +1,18 @@
 import 'dart:math' as math;
-import 'dart:math';
+import 'package:powers/powers.dart';
 
 import 'generators.dart';
 
 typedef MonadicFunction = List<int> Function(List<int> values,
     {int? min, int? max});
+
+enum MonadicMaxOp {
+  same,
+  double,
+  limit,
+  square,
+  cube,
+}
 
 class MonadicFunctionRegistry {
   static final MonadicFunctionRegistry _instance =
@@ -15,9 +23,14 @@ class MonadicFunctionRegistry {
   }
 
   static final Map<String, MonadicFunction> _functions = {};
+  static final Map<String, MonadicMaxOp> _maxOp = {};
 
-  void registerFunction(String name, MonadicFunction function) {
+  void registerFunction(String name, MonadicFunction function,
+      [MonadicMaxOp? maxOp]) {
     _functions[name] = function;
+    if (maxOp != null) {
+      _maxOp[name] = maxOp;
+    }
   }
 
   MonadicFunctionRegistry._privateConstructor() {
@@ -25,6 +38,12 @@ class MonadicFunctionRegistry {
         .where((v) => v >= 0 && math.sqrt(v) == math.sqrt(v).floor())
         .map((v) => math.sqrt(v).toInt())
         .toList();
+    _maxOp['squareroot'] = MonadicMaxOp.square;
+    _functions['cuberoot'] = (values, {min, max}) => values
+        .where((v) => v >= 0 && v.cbrt() == v.cbrt().floor())
+        .map((v) => v.cbrt().toInt())
+        .toList();
+    _maxOp['cuberoot'] = MonadicMaxOp.cube;
     _functions['isOdd'] =
         (values, {min, max}) => values.where((v) => v.isOdd).toList();
     _functions['isEven'] =
@@ -54,6 +73,7 @@ class MonadicFunctionRegistry {
       if (upperLimit < lowerLimit) return [];
       return List.generate(upperLimit - lowerLimit + 1, (i) => i + lowerLimit);
     };
+    _maxOp['lte'] = MonadicMaxOp.limit;
     _functions['lt'] = (values, {min, max}) {
       var upperLimit = values.reduce(math.max);
       if (max != null && max + 1 < upperLimit) upperLimit = max + 1;
@@ -62,15 +82,22 @@ class MonadicFunctionRegistry {
       if (upperLimit <= lowerLimit) return [];
       return List.generate(upperLimit - lowerLimit, (i) => i + lowerLimit);
     };
+    _maxOp['lt'] = MonadicMaxOp.limit;
     _functions['factor'] = (values, {min, max}) => values
         .expand((value) => factors(value, min: min, max: max))
         .toSet()
         .toList()
       ..sort();
+    _maxOp['factor'] = MonadicMaxOp.square;
     _functions['square'] =
         (values, {min, max}) => values.map((v) => v * v).toList();
     _functions['cube'] =
         (values, {min, max}) => values.map((v) => v * v * v).toList();
+    _functions['double'] =
+        (values, {min, max}) => values.map((v) => v * 2).toList();
+    _functions['half'] = (values, {min, max}) =>
+        values.where((v) => v >= 0 && v % 2 == 0).map((v) => v ~/ 2).toList();
+    _maxOp['factor'] = MonadicMaxOp.double;
     _functions['multiple'] = (values, {min, max}) {
       if (values.isEmpty) return [];
       final base = values.first;
@@ -100,7 +127,7 @@ class MonadicFunctionRegistry {
         var base = 2; // Ignore trivial base 1
         updated = false;
         while (true) {
-          var power = pow(base++, exponent).toInt();
+          var power = math.pow(base++, exponent).toInt();
           if (power > (max ?? 100000)) break;
           updated = true; // Continue
           if (power < (min ?? 1)) continue;
@@ -110,28 +137,65 @@ class MonadicFunctionRegistry {
       }
       return results..sort();
     };
+    _functions['primepower'] = (values, {min, max}) {
+      if (values.isEmpty) return [];
+      // Find values in the range that are prime powers of the given exponent
+      // e.g. for value 3, find 3, 27, 243, ...
+      // Stop when power exceeds max or 100000 if max not given
+      // or when power is less than min or 1 if min not given (so start at 1)
+
+      final PrimeGenerator primeGenerator =
+          GeneratorRegistry().get('prime') as PrimeGenerator;
+
+      final results = <int>[];
+      final maxResult = (max ?? 10000);
+      final maxPrime = math.sqrt(maxResult).toInt() + 1;
+      for (var value in values) {
+        var lastResult = value;
+        var lastPrime = 1;
+        for (var prime in primeGenerator.getValues(2, maxPrime)) {
+          while (lastPrime < prime) {
+            lastResult = lastResult * value;
+            lastPrime++;
+          }
+          if (lastResult > maxResult) break;
+          if (lastResult < (min ?? 1)) {
+            continue;
+          }
+          results.add(lastResult);
+        }
+      }
+      return results..sort();
+    };
     _functions['digitsum'] = (values, {min, max}) => values
         .map((v) =>
             v.toString().split('').map(int.parse).reduce((a, b) => a + b))
         .toSet()
         .toList()
       ..sort();
+    _maxOp['digitsum'] = MonadicMaxOp.square;
     _functions['digitproduct'] = (values, {min, max}) => values
         .map((v) =>
             v.toString().split('').map(int.parse).reduce((a, b) => a * b))
         .toSet()
         .toList()
       ..sort();
+    _maxOp['digitproduct'] = MonadicMaxOp.square;
     _functions['jumble'] = (values, {min, max}) => values
         .expand((v) => jumble(v).where(
             (v) => (min == null || v >= min) && (max == null || v <= max)))
         .toSet()
         .toList()
       ..sort();
+    _maxOp['jumble'] = MonadicMaxOp.square;
   }
 
   MonadicFunction? get(String name) {
     return _functions[name];
+  }
+
+  MonadicMaxOp? getMaxOp(String name) {
+    return _maxOp[name];
   }
 
   bool _isAscendingDigits(int n) {

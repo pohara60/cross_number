@@ -20,7 +20,8 @@ class DigitRangeConstraint extends PuzzleConstraint {
   @override
   void initialise(PuzzleDefinition puzzle, {bool trace = false}) {
     for (var entry in puzzle.entries.values) {
-      entry.possibleValues = entry.possibleValues
+      if (entry.possibleValues == null) continue;
+      entry.possibleValues = entry.possibleValues!
           .where((value) => isDigitsInRange(value.toString()))
           .toSet();
     }

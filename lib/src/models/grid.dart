@@ -270,39 +270,15 @@ class Grid {
           buffer.write('|');
         }
         var value = ' ';
-        if (cell.acrossEntry != null && cell.downEntry != null) {
-          // This cell is an intersection
-          var acrossEntry = cell.acrossEntry!;
-          var downEntry = cell.downEntry!;
-          var acrossDigit = '?';
-          var downDigit = '?';
-          if (acrossEntry.possibleValues.length == 1) {
-            acrossDigit = acrossEntry.possibleValues.first
-                .toString()[c - acrossEntry.col];
-          }
-          if (downEntry.possibleValues.length == 1) {
-            downDigit =
-                downEntry.possibleValues.first.toString()[r - downEntry.row];
-          }
-          if (acrossDigit == downDigit) {
-            value = acrossDigit;
-          } else {
-            value = '?';
-          }
-        } else if (cell.acrossEntry != null) {
-          var entry = cell.acrossEntry!;
-          if (entry.possibleValues.length == 1) {
-            value = entry.possibleValues.first.toString()[c - entry.col];
-          } else {
-            value = '?';
-          }
-        } else if (cell.downEntry != null) {
-          var entry = cell.downEntry!;
-          if (entry.possibleValues.length == 1) {
-            value = entry.possibleValues.first.toString()[r - entry.row];
-          } else {
-            value = '?';
-          }
+        if (cell.acrossEntry != null && cell.acrossEntry!.isSolved) {
+          value =
+              cell.acrossEntry!.solution.toString()[c - cell.acrossEntry!.col];
+        }
+        if (cell.downEntry != null && cell.downEntry!.isSolved) {
+          value = cell.downEntry!.solution.toString()[r - cell.downEntry!.row];
+        }
+        if (cell.upEntry != null && cell.upEntry!.isSolved) {
+          value = cell.upEntry!.solution.toString()[cell.upEntry!.row - r];
         }
         buffer.write(' $value');
       }
@@ -380,17 +356,25 @@ class Grid {
     if (cell.acrossEntry != null) {
       final entry = cell.acrossEntry!;
       final digitIndex = c - entry.col;
-      acrossDigits = entry.possibleValues
-          .map((v) => int.parse(v.toString()[digitIndex]))
-          .toSet();
+      if (entry.possibleValues == null) {
+        acrossDigits = Set.from(List.generate(10, (index) => index - 1));
+      } else {
+        acrossDigits = entry.possibleValues!
+            .map((v) => int.parse(v.toString()[digitIndex]))
+            .toSet();
+      }
     }
     Set<int>? downDigits;
     if (cell.downEntry != null) {
       final entry = cell.downEntry!;
       final digitIndex = r - entry.row;
-      downDigits = entry.possibleValues
-          .map((v) => int.parse(v.toString()[digitIndex]))
-          .toSet();
+      if (entry.possibleValues == null) {
+        acrossDigits = Set.from(List.generate(10, (index) => index - 1));
+      } else {
+        downDigits = entry.possibleValues!
+            .map((v) => int.parse(v.toString()[digitIndex]))
+            .toSet();
+      }
     }
 
     if (acrossDigits != null && downDigits != null) {
@@ -443,14 +427,14 @@ class Grid {
         if (otherEntry.isSolved) {
           var otherDigit = 0;
           if (otherEntry.orientation == EntryOrientation.across) {
-            otherDigit = int.parse(otherEntry.solution!
-                .toString()[c - otherEntry.col]);
+            otherDigit =
+                int.parse(otherEntry.solution!.toString()[c - otherEntry.col]);
           } else if (otherEntry.orientation == EntryOrientation.down) {
-            otherDigit = int.parse(otherEntry.solution!
-                .toString()[r - otherEntry.row]);
+            otherDigit =
+                int.parse(otherEntry.solution!.toString()[r - otherEntry.row]);
           } else if (otherEntry.orientation == EntryOrientation.up) {
-            otherDigit = int.parse(otherEntry.solution!
-                .toString()[otherEntry.row - r]);
+            otherDigit =
+                int.parse(otherEntry.solution!.toString()[otherEntry.row - r]);
           }
           if (otherDigit != digit) {
             return false;
@@ -459,5 +443,26 @@ class Grid {
       }
     }
     return true;
+  }
+
+  (int, int) getEvenDigitCountRange() {
+    int minCount = 0;
+    int maxCount = 0;
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        final digits = getPossibleDigits(r, c);
+        if (digits.isNotEmpty) {
+          if (digits.intersection({1, 3, 5, 7, 9}).isEmpty) {
+            minCount += 1;
+          }
+          if (digits.intersection({0, 2, 4, 6, 8}).isNotEmpty) {
+            maxCount += 1;
+          }
+        } else {
+          // Cell not part of any entry, ignore
+        }
+      }
+    }
+    return (minCount, maxCount);
   }
 }

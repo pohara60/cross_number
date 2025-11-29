@@ -13,9 +13,8 @@ class SnakesAndLaddersGrid extends Grid {
       throw ArgumentError('Square number must be between 1 and 100.');
     }
     final row = 9 - ((square - 1) ~/ 10);
-    final col = (9 - row) % 2 == 0
-        ? (square - 1) % 10
-        : 9 - ((square - 1) % 10);
+    final col =
+        (9 - row) % 2 == 0 ? (square - 1) % 10 : 9 - ((square - 1) % 10);
     return (row, col);
   }
 
@@ -52,37 +51,61 @@ class SnakesAndLaddersGrid extends Grid {
     }
   }
 
-  @override
-  String toString() {
-    var buffer = StringBuffer();
-    if (name != "main") buffer.writeln(name);
-    for (var r = 0; r < rows; r++) {
-      // Draw top border
-      buffer.write('+');
-      for (var c = 0; c < cols; c++) {
-        buffer.write('---'); // 3 dashes for 3-digit numbers
-        buffer.write('+');
-      }
-      buffer.writeln();
+  Map<int, List<int>> getWinningRolls() {
+    final winningRollPaths = <int, List<int>>{};
+    final snakes = <int, int>{};
+    final ladders = <int, int>{};
 
+    for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
-        buffer.write('|');
         final cell = cells[r][c];
-        var value = getSquare(r, c).toString();
-        if (cell.acrossEntry != null && cell.acrossEntry!.isSolved) {
-          value = cell.acrossEntry!.solution.toString()[c - cell.acrossEntry!.col];
-        } else if (cell.downEntry != null && cell.downEntry!.isSolved) {
-          value = cell.downEntry!.solution.toString()[r - cell.downEntry!.row];
-        } else if (cell.upEntry != null && cell.upEntry!.isSolved) {
-          value = cell.upEntry!.solution.toString()[cell.upEntry!.row - r];
+        final square = getSquare(r, c);
+
+        if (cell.downEntry != null) {
+          final entry = cell.downEntry!;
+          if (entry.row == r && entry.col == c) {
+            final start = square;
+            final end = getSquare(r + entry.length - 1, c);
+            snakes[start] = end;
+          }
         }
-        buffer.write('${value.padLeft(3)}');
+
+        if (cell.upEntry != null) {
+          final entry = cell.upEntry!;
+          if (entry.row == r && entry.col == c) {
+            final start = square;
+            final end = getSquare(r - entry.length + 1, c);
+            ladders[start] = end;
+          }
+        }
       }
-      buffer.writeln('|');
     }
-    // Draw bottom border
-    buffer.write('+' + List.generate(cols, (_) => '---').join('+') + '+');
-    buffer.writeln();
-    return buffer.toString();
+    print('Snakes: $snakes');
+    print('Ladders: $ladders');
+
+    final winningRolls = <int>[];
+    for (var die = 1; die <= 6; die++) {
+      var path = <int>[];
+      var position = 0;
+      final visited = <int>{};
+      while (position < 100) {
+        position += die;
+        if (snakes.containsKey(position)) {
+          position = snakes[position]!;
+        } else if (ladders.containsKey(position)) {
+          position = ladders[position]!;
+        }
+        path.add(position);
+        if (!visited.add(position)) {
+          // Cycle detected
+          break;
+        }
+      }
+      if (position == 100) {
+        winningRolls.add(die);
+        winningRollPaths[die] = path;
+      }
+    }
+    return winningRollPaths;
   }
 }

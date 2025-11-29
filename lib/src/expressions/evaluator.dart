@@ -373,12 +373,17 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     num fmin = 1;
     num fmax = max;
     final fname = expression.operator.lexeme;
-    if (!fname.startsWith('is')) {
-      if (fname.startsWith('lt')) {
-        fmax = arbitraryLimit;
-      } else {
-        fmax = maxResult! * maxResult!;
-      }
+    final maxOp = _monadicFunctionRegistry.getMaxOp(fname);
+    if (maxOp == MonadicMaxOp.double) {
+      fmax = max * 2;
+    } else if (maxOp == MonadicMaxOp.limit) {
+      fmax = arbitraryLimit;
+    } else if (maxOp == MonadicMaxOp.square) {
+      fmax = maxResult! * maxResult!;
+    } else if (maxOp == MonadicMaxOp.cube) {
+      fmax = maxResult! * maxResult! * maxResult!;
+    } else {
+      fmax = max;
     }
     final values =
         _evaluateWithPinnedVariables(expression.right, min: fmin, max: fmax);

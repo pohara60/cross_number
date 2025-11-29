@@ -20,7 +20,7 @@ import 'grouper.dart';
 
 class SolverState {
   final Map<String, Set<int>?> cluePossibleValues;
-  final Map<String, Set<int>> entryPossibleValues;
+  final Map<String, Set<int>?> entryPossibleValues;
   final Map<String, Set<int>> variablePossibleValues;
 
   SolverState(this.cluePossibleValues, this.entryPossibleValues,
@@ -30,7 +30,8 @@ class SolverState {
     return SolverState(
       cluePossibleValues.map((key, value) =>
           MapEntry(key, value == null ? null : Set.from(value))),
-      entryPossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
+      entryPossibleValues.map((key, value) =>
+          MapEntry(key, value == null ? null : Set.from(value))),
       variablePossibleValues
           .map((key, value) => MapEntry(key, Set.from(value))),
     );
@@ -81,9 +82,11 @@ class Solver {
       final entry =
           puzzle.entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
       if (entry != null) {
-        clue.possibleValues = List<int>.generate(
-            pow(10, entry.length).toInt() - pow(10, entry.length - 1).toInt(),
-            (i) => i + pow(10, entry.length - 1).toInt()).toSet();
+        if (entry.length <= 5) {
+          clue.possibleValues = List<int>.generate(
+              pow(10, entry.length).toInt() - pow(10, entry.length - 1).toInt(),
+              (i) => i + pow(10, entry.length - 1).toInt()).toSet();
+        }
       } else {
         // If no entry is found, leave it null to indicate uninitialised
       }
@@ -117,9 +120,10 @@ class Solver {
       clueValues[clue.id] =
           clue.possibleValues == null ? null : Set.from(clue.possibleValues!);
     }
-    final entryValues = <String, Set<int>>{};
+    final entryValues = <String, Set<int>?>{};
     for (var entry in puzzle.entries.values) {
-      entryValues[entry.id] = Set.from(entry.possibleValues);
+      entryValues[entry.id] =
+          entry.possibleValues == null ? null : Set.from(entry.possibleValues!);
     }
     final variableValues = <String, Set<int>>{};
     for (var variable in puzzle.variables.values) {
@@ -333,8 +337,12 @@ class Solver {
     }
     print('Entries:');
     for (var entry in puzzle.entries.values) {
+      if (entry.possibleValues == null) {
+        print('${entry.id}: uninitialised');
+        continue;
+      }
       print(
-          '${entry.id}: ${entry.possibleValues.length}  ${entry.possibleValues.toShortString()}');
+          '${entry.id}:! ${entry.possibleValues!.length}!  ${entry.possibleValues!.toShortString()}');
     }
   }
 
@@ -478,7 +486,7 @@ class Solver {
 
   void _printUpdatedEntry(Entry entry, int? originalCount) {
     print(
-        '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
+        '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues!.length} ${entry.possibleValues!.toShortString()}');
   }
 
   void _printUpdatedExpressable(Expressable expressable, int? originalCount) {
@@ -908,17 +916,18 @@ class Solver {
               continue; // Skip if clue has no values yet
             }
             final originalCount = clue.possibleValues!.length;
-            entry.possibleValues = entry.possibleValues
+            entry.possibleValues ??= Set.from(clue.possibleValues!);
+            entry.possibleValues = entry.possibleValues!
                 .where((value) => clue.possibleValues!.contains(value))
                 .toSet();
-            if (entry.possibleValues.length < originalCount) {
+            if (entry.possibleValues!.length < originalCount) {
               localChanged = true;
               if (trace) {
                 print(
-                    '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
+                    '    Entry ${entry.id}: $originalCount -> ${entry.possibleValues!.length} ${entry.possibleValues!.toShortString()}');
               }
             }
-            if (entry.possibleValues.isEmpty) {
+            if (entry.possibleValues!.isEmpty) {
               if (trace) {
                 print(
                     '    Inconsistency: Clue ${clue.id} leads to empty entry ${entry.id} possible values.');
@@ -935,7 +944,7 @@ class Solver {
       String getValueString(Entry entry, int value) {
         if (!haveEntryValueStrings.containsKey(entry)) {
           haveEntryValueStrings[entry] = true;
-          for (var v in entry.possibleValues) {
+          for (var v in entry.possibleValues ?? {}) {
             if (!valueStrings.containsKey(v)) {
               valueStrings[v] = v.toString();
             }
@@ -951,9 +960,11 @@ class Solver {
             final cell = grid.cells[r][c];
             if (cell.acrossEntry != null && cell.downEntry != null) {
               final acrossEntry = cell.acrossEntry!;
-              if (acrossEntry.skipGridPropagation) continue;
+              if (acrossEntry.skipGridPropagation ||
+                  acrossEntry.possibleValues == null) continue;
               final downEntry = cell.downEntry!;
-              if (downEntry.skipGridPropagation) continue;
+              if (downEntry.skipGridPropagation ||
+                  downEntry.possibleValues == null) continue;
               // checkCellEntry(grid, acrossEntry);
               // checkCellEntry(grid, downEntry);
               final acrossDigitIndex = c - acrossEntry.col;
@@ -962,8 +973,8 @@ class Solver {
               bool crossChanged;
               do {
                 crossChanged = false;
-                final acrossValues = acrossEntry.possibleValues;
-                final downValues = downEntry.possibleValues;
+                final acrossValues = acrossEntry.possibleValues!;
+                final downValues = downEntry.possibleValues!;
 
                 final newAcrossValues = <int>{};
                 for (final acrossValue in acrossValues) {
@@ -978,7 +989,7 @@ class Solver {
 
                 if (newAcrossValues.length < acrossValues.length) {
                   acrossEntry.possibleValues = newAcrossValues;
-                  if (acrossEntry.possibleValues.isEmpty) {
+                  if (acrossEntry.possibleValues!.isEmpty) {
                     if (trace) {
                       print(
                           '    Inconsistency: Grid constraint for acrossEntry ${acrossEntry.id} leads to empty possible values (across-down intersection).');
@@ -996,7 +1007,7 @@ class Solver {
                 for (final downValue in downValues) {
                   final downDigit =
                       getValueString(downEntry, downValue)[downDigitIndex];
-                  if (acrossEntry.possibleValues.any((acrossValue) =>
+                  if (acrossEntry.possibleValues!.any((acrossValue) =>
                       getValueString(
                           acrossEntry, acrossValue)[acrossDigitIndex] ==
                       downDigit)) {
@@ -1006,7 +1017,7 @@ class Solver {
 
                 if (newDownValues.length < downValues.length) {
                   downEntry.possibleValues = newDownValues;
-                  if (downEntry.possibleValues.isEmpty) {
+                  if (downEntry.possibleValues!.isEmpty) {
                     if (trace) {
                       print(
                           '    Inconsistency: Grid constraint for downEntry ${downEntry.id} leads to empty possible values (across-down intersection).');
@@ -1023,9 +1034,11 @@ class Solver {
             }
             if (cell.acrossEntry != null && cell.upEntry != null) {
               final acrossEntry = cell.acrossEntry!;
-              if (acrossEntry.skipGridPropagation) continue;
+              if (acrossEntry.skipGridPropagation ||
+                  acrossEntry.possibleValues == null) continue;
               final upEntry = cell.upEntry!;
-              if (upEntry.skipGridPropagation) continue;
+              if (upEntry.skipGridPropagation || upEntry.possibleValues == null)
+                continue;
               // checkCellEntry(grid, acrossEntry);
               // checkCellEntry(grid, upEntry);
               final acrossDigitIndex = c - acrossEntry.col;
@@ -1034,8 +1047,8 @@ class Solver {
               bool crossChanged;
               do {
                 crossChanged = false;
-                final acrossValues = acrossEntry.possibleValues;
-                final upValues = upEntry.possibleValues;
+                final acrossValues = acrossEntry.possibleValues!;
+                final upValues = upEntry.possibleValues!;
 
                 final newAcrossValues = <int>{};
                 for (final acrossValue in acrossValues) {
@@ -1050,7 +1063,7 @@ class Solver {
 
                 if (newAcrossValues.length < acrossValues.length) {
                   acrossEntry.possibleValues = newAcrossValues;
-                  if (acrossEntry.possibleValues.isEmpty) {
+                  if (acrossEntry.possibleValues!.isEmpty) {
                     return (false, true); // Inconsistency
                   }
                   localChanged = true;
@@ -1064,7 +1077,7 @@ class Solver {
                 for (final upValue in upValues) {
                   final upDigit =
                       getValueString(upEntry, upValue)[upDigitIndex];
-                  if (acrossEntry.possibleValues.any((acrossValue) =>
+                  if (acrossEntry.possibleValues!.any((acrossValue) =>
                       getValueString(
                           acrossEntry, acrossValue)[acrossDigitIndex] ==
                       upDigit)) {
@@ -1074,7 +1087,7 @@ class Solver {
 
                 if (newUpValues.length < upValues.length) {
                   upEntry.possibleValues = newUpValues;
-                  if (upEntry.possibleValues.isEmpty) {
+                  if (upEntry.possibleValues!.isEmpty) {
                     return (false, true); // Inconsistency
                   }
                   localChanged = true;
@@ -1094,12 +1107,12 @@ class Solver {
         if (entry.clueId != null) {
           final clue = puzzle.clues[entry.clueId!];
           if (clue != null) {
-            if (clue.possibleValues == null) {
+            if (clue.possibleValues == null || entry.possibleValues == null) {
               continue; // Skip if clue has no values yet
             }
             final originalSize = clue.possibleValues!.length;
             clue.possibleValues = clue.possibleValues!
-                .where((value) => entry.possibleValues.contains(value))
+                .where((value) => entry.possibleValues!.contains(value))
                 .toSet();
             if (clue.possibleValues!.isEmpty) {
               if (trace) {

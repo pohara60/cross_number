@@ -59,6 +59,54 @@ void main() {
             97
           ]));
     });
+    test('#twodigitprime generator', () {
+      final parser = Parser('#twodigitprime');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 1, max: 999);
+      expect(
+          result,
+          containsAll([
+            11,
+            13,
+            17,
+            19,
+            23,
+            29,
+            31,
+            37,
+            41,
+            43,
+            47,
+            53,
+            59,
+            61,
+            67,
+            71,
+            73,
+            79,
+            83,
+            89,
+            97
+          ]));
+    });
+    test('#productfiveprimes generator', () {
+      final parser = Parser('#productfiveprimes');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 2000, max: 5000);
+      expect(result, containsAll([2310, 2730, 3570, 3990, 4290, 4830]));
+    });
+    test('#twodigitprimetoprimepower generator', () {
+      final parser = Parser('#twodigitprimetoprimepower');
+      final expression = parser.parse();
+      final evaluator = Evaluator(puzzle);
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 1000, max: 2999);
+      expect(result, containsAll([1331, 1369, 1681, 1849, 2197, 2209, 2809]));
+    });
 
     test('#triangular generator with clue length', () {
       final parser = Parser('#triangular');

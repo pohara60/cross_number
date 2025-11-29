@@ -21,6 +21,24 @@ void main() {
           min: 10, max: 30);
       expect(result, equals([14, 21, 28]));
     });
+    test('should evaluate double', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$double 7').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 30);
+      expect(result, equals([14]));
+    });
+    test('should evaluate half', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$half 42').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 30);
+      expect(result, equals([21]));
+    });
 
     test('should evaluate squareroot', () {
       final puzzle = PuzzleDefinition(
@@ -293,6 +311,16 @@ void main() {
       final result = evaluator.evaluateExpressionNoVariables(expression, [],
           min: 10, max: 100);
       expect(result, equals([16, 27, 32, 64, 81]));
+    });
+
+    test(r'$primepower 3', () {
+      final puzzle = PuzzleDefinition(
+          name: 'Test', grids: {}, entries: {}, clues: {}, variables: {});
+      final evaluator = Evaluator(puzzle);
+      final expression = Parser(r'$primepower 3').parse();
+      final result = evaluator.evaluateExpressionNoVariables(expression, [],
+          min: 10, max: 10000);
+      expect(result, equals([27, 243, 2187]));
     });
 
     test(r'$digitsum', () {

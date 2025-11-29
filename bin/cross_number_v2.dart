@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:crossnumber/src/models/puzzle_definition.dart';
+import 'package:crossnumber/src/models/snakes_and_ladders_grid.dart';
 import 'package:crossnumber/src/solver.dart';
 import '../puzzles/abcd.dart';
 import '../puzzles/after_nicholas.dart';
@@ -40,13 +41,17 @@ void main(List<String> arguments) {
     // final puzzle = splits();
     // final puzzle = sumsquares();
     final puzzle = snakesAndLadders();
+    final grid = puzzle.grids['main']! as SnakesAndLaddersGrid;
+    grid.populate(puzzle.entries);
+    final result = grid.getWinningRolls();
+    print('Winning die rolls: $result');
     print('Puzzle: ${puzzle.name}');
 
     final solver = Solver(puzzle,
         // useTransitiveGrouping: true,
         traceSolve: true,
         allowBacktracking: true,
-        traceBacktrace: true);
+        traceBacktrace: false);
     // var solutions = 0;
     solver.solve(null, MappingStrategy.cluePriority);
   } on PuzzleException catch (e) {

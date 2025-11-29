@@ -10,7 +10,7 @@ void expectEntryValues(
     PuzzleDefinition puzzle, String entryId, List<int> expectedValues) {
   // Check entry values
   var entry = puzzle.entries[entryId]!;
-  expectValues(entry.possibleValues, expectedValues);
+  expectValues(entry.possibleValues!, expectedValues);
   if (entry.clueId != null) {
     // Check clue values
     var clue = puzzle.clues[entry.clueId]!;

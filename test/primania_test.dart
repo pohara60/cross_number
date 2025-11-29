@@ -26,7 +26,7 @@ void main() {
         for (final entry in puzzle.entries.values) {
           if (entry.orientation == EntryOrientation.down) continue;
 
-          var value = entry.possibleValues.single;
+          var value = entry.possibleValues!.single;
           if (entry.length == 2) {
             expect(reversiblePrimes2Digits.contains(value), true,
                 reason:
@@ -43,7 +43,7 @@ void main() {
             fail('Entry ${entry.id} has unexpected length ${entry.length}');
           }
           var count = puzzle.entries.values
-              .where((e) => e.possibleValues.single == value)
+              .where((e) => e.possibleValues!.single == value)
               .length;
           expect(count, 1,
               reason:
@@ -56,7 +56,7 @@ void main() {
           if (s != rs) {
             var rvalue = int.parse(rs);
             var rcount = puzzle.entries.values
-                .where((e) => e.possibleValues.single == rvalue)
+                .where((e) => e.possibleValues!.single == rvalue)
                 .length;
             if (rcount > 0) {
               // return false;

@@ -6,6 +6,7 @@ import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
 import '../expressions/generators.dart';
 import '../expressions/inverter.dart';
+import '../expressions/monadic.dart';
 import 'clue.dart';
 import 'entry.dart';
 import 'grid.dart';
@@ -178,7 +179,7 @@ class PuzzleDefinition {
     puzzleConstraints = const [],
     String? digitConstraint,
     this.mappingIsKnown = true,
-  }) : this.puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
+  }) : puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
     var exception = false;
     // Set clue entry references where applicable
     for (final clue in clues.values) {
@@ -405,9 +406,11 @@ class PuzzleDefinition {
           return false;
         }
         // Check possible values, if known
-        if (clue.possibleValues != null) {
-          assert(entry.possibleValues.isNotEmpty);
-          if (clue.possibleValues!.intersection(entry.possibleValues).isEmpty) {
+        if (clue.possibleValues != null && entry.possibleValues != null) {
+          assert(entry.possibleValues!.isNotEmpty);
+          if (clue.possibleValues!
+              .intersection(entry.possibleValues!)
+              .isEmpty) {
             return false;
           }
         } else {
@@ -460,9 +463,11 @@ class PuzzleDefinition {
           continue;
         }
         // Check possible values, if known
-        if (clue.possibleValues != null) {
-          assert(entry.possibleValues.isNotEmpty);
-          if (clue.possibleValues!.intersection(entry.possibleValues).isEmpty) {
+        if (clue.possibleValues != null && entry.possibleValues != null) {
+          assert(entry.possibleValues!.isNotEmpty);
+          if (clue.possibleValues!
+              .intersection(entry.possibleValues!)
+              .isEmpty) {
             continue;
           }
         }
@@ -507,8 +512,8 @@ class PuzzleDefinition {
 
   bool isSolutionValid() {
     // Check if all expressables have a single value
-    print(
-        'isSolutionValid solved ${allExpressables.where((expressable) => expressable.isSolved).length}');
+    // print(
+    //     'isSolutionValid solved ${allExpressables.where((expressable) => expressable.isSolved).length}');
     if (!allExpressables.every((expressable) => expressable.isSolved)) {
       return false;
     }
@@ -535,16 +540,48 @@ class PuzzleDefinition {
 
   void registerPuzzleFunctions() {
     // Register puzzle specific functions
-    // final MonadicFunctionRegistry monadicFunctionRegistry =
-    //     MonadicFunctionRegistry();
-    // monadicFunctionRegistry.registerFunction(
-    //     'isDivisibleNine',
-    //     (values, {int? min, int? max}) =>
-    //         values.where((v) => v % 9 == 0).toList());
+    final MonadicFunctionRegistry monadicFunctionRegistry =
+        MonadicFunctionRegistry();
+    monadicFunctionRegistry.registerFunction('islowestacross', lowestAcross);
+    monadicFunctionRegistry.registerFunction('ishighestacross', highestAcross);
 
     // Register puzzle specific functions
     final GeneratorRegistry generatorRegistry = GeneratorRegistry();
     generatorRegistry.register('sumdigits', SumDigitsGenerator(this));
+    generatorRegistry.register(
+        'numberevendigits', NumberEvenDigitsDigitsGenerator(this));
+  }
+
+  List<int> lowestAcross(List<int> values, {int? max, int? min}) {
+    // Remove values that are higher than a known across entry
+    var lowestAcrossEntry = entries.values
+        .where((e) => e.orientation == EntryOrientation.across)
+        .map((e) => e.max)
+        .whereType<int>()
+        .fold<int?>(null, (prev, element) {
+      if (prev == null) return element;
+      return element < prev ? element : prev;
+    });
+    if (lowestAcrossEntry != null) {
+      return values.where((v) => v <= lowestAcrossEntry).toList();
+    }
+    return values;
+  }
+
+  List<int> highestAcross(List<int> values, {int? max, int? min}) {
+    // Remove values that are lower than a known across entry
+    var highestAcrossEntry = entries.values
+        .where((e) => e.orientation == EntryOrientation.across)
+        .map((e) => e.min)
+        .whereType<int>()
+        .fold<int?>(null, (prev, element) {
+      if (prev == null) return element;
+      return element > prev ? element : prev;
+    });
+    if (highestAcrossEntry != null) {
+      return values.where((v) => v >= highestAcrossEntry).toList();
+    }
+    return values;
   }
 }
 
@@ -570,6 +607,32 @@ class SumDigitsGenerator extends Generator {
     if (maxSumAll > max) maxSumAll = max;
     return List.generate(
         maxSumAll - minSumAll + 1, (index) => minSumAll + index).toList();
+  }
+}
+
+class NumberEvenDigitsDigitsGenerator extends Generator {
+  final PuzzleDefinition puzzle;
+  NumberEvenDigitsDigitsGenerator(this.puzzle);
+  @override
+  List<int> getValues(int min, int max) {
+    var minCountAll = 0;
+    var maxCountAll = 0;
+    // Accumulate the min and max digit sums across all grids
+    for (var gridName in puzzle.grids.keys) {
+      var (minCount, maxCount) =
+          puzzle.grids[gridName]!.getEvenDigitCountRange();
+      if (minCountAll == 0) {
+        minCountAll = minCount;
+        maxCountAll = maxCount;
+      } else {
+        minCountAll += minCount;
+        maxCountAll += maxCount;
+      }
+    }
+    if (minCountAll < min) minCountAll = min;
+    if (maxCountAll > max) maxCountAll = max;
+    return List.generate(
+        maxCountAll - minCountAll + 1, (index) => minCountAll + index).toList();
   }
 }
 

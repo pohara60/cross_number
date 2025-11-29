@@ -100,17 +100,17 @@ class ThirtyConstraint extends PuzzleConstraint {
     }
 
     for (var entry in puzzle.entries.values) {
-      final originalCount = entry.possibleValues.length;
+      final originalCount = entry.possibleValues!.length;
       entry.possibleValues =
-          entry.possibleValues.where((v) => isEven(v)).toSet();
-      if (entry.possibleValues.isEmpty && originalCount > 0) {
+          entry.possibleValues!.where((v) => isEven(v)).toSet();
+      if (entry.possibleValues!.isEmpty && originalCount > 0) {
         return (false, updated);
       }
-      if (entry.possibleValues.length < originalCount) {
+      if (entry.possibleValues!.length < originalCount) {
         updated = true;
         if (trace) {
           print(
-              'ThirtyConstraint: Entry ${entry.id} even digits: $originalCount -> ${entry.possibleValues.length} ${entry.possibleValues.toShortString()}');
+              'ThirtyConstraint: Entry ${entry.id} even digits: $originalCount -> ${entry.possibleValues!.length} ${entry.possibleValues!.toShortString()}');
         }
       }
     }
@@ -320,7 +320,7 @@ class ThirtyConstraint extends PuzzleConstraint {
     if (cell.acrossEntry != null) {
       final entry = cell.acrossEntry!;
       final digitIndex = c - entry.col;
-      acrossDigits = entry.possibleValues
+      acrossDigits = entry.possibleValues!
           .map((v) => int.parse(v.toString()[digitIndex]))
           .toSet();
     }
@@ -328,7 +328,7 @@ class ThirtyConstraint extends PuzzleConstraint {
     if (cell.downEntry != null) {
       final entry = cell.downEntry!;
       final digitIndex = r - entry.row;
-      downDigits = entry.possibleValues
+      downDigits = entry.possibleValues!
           .map((v) => int.parse(v.toString()[digitIndex]))
           .toSet();
     }
@@ -354,30 +354,30 @@ class ThirtyConstraint extends PuzzleConstraint {
     final acrossEntry = cell.acrossEntry;
     if (acrossEntry != null) {
       final digitIndex = c - acrossEntry.col;
-      final originalCount = acrossEntry.possibleValues.length;
-      acrossEntry.possibleValues = acrossEntry.possibleValues
+      final originalCount = acrossEntry.possibleValues!.length;
+      acrossEntry.possibleValues = acrossEntry.possibleValues!
           .where((v) =>
               !removedDigits.contains(int.parse(v.toString()[digitIndex])))
           .toSet();
-      if (acrossEntry.possibleValues.isEmpty && originalCount > 0) {
+      if (acrossEntry.possibleValues!.isEmpty && originalCount > 0) {
         return (false, updated);
       }
-      if (acrossEntry.possibleValues.length < originalCount) {
+      if (acrossEntry.possibleValues!.length < originalCount) {
         updated = true;
       }
     }
     final downEntry = cell.downEntry;
     if (downEntry != null) {
       final digitIndex = r - downEntry.row;
-      final originalCount = downEntry.possibleValues.length;
-      downEntry.possibleValues = downEntry.possibleValues
+      final originalCount = downEntry.possibleValues!.length;
+      downEntry.possibleValues = downEntry.possibleValues!
           .where((v) =>
               !removedDigits.contains(int.parse(v.toString()[digitIndex])))
           .toSet();
-      if (downEntry.possibleValues.isEmpty && originalCount > 0) {
+      if (downEntry.possibleValues!.isEmpty && originalCount > 0) {
         return (false, updated);
       }
-      if (downEntry.possibleValues.length < originalCount) {
+      if (downEntry.possibleValues!.length < originalCount) {
         updated = true;
       }
     }

@@ -166,7 +166,7 @@ PuzzleDefinition couplesDifferences() {
 }
 
 void setAnswers(PuzzleDefinition puzzle) {
-  puzzle.clues['I']!.answer = 36;
+  puzzle.clues['A11']!.answer = 1;
   puzzle.clues['II']!.answer = 9;
   puzzle.clues['III']!.answer = 630;
   puzzle.clues['IV']!.answer = 2628;
