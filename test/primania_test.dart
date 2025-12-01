@@ -14,7 +14,7 @@ void main() {
     test('should solve the puzzle', () {
       final puzzle = primania();
       // final solver = Solver(puzzle, traceSolve: true);
-      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: false);
+      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: true);
       int solveCount = 0;
 
       final reversiblePrimes2Digits = getReversiblePrimesNDigits(2);
@@ -67,7 +67,7 @@ void main() {
         return true;
       }
 
-      solver.solve(callback);
+      solver.solve(callback, MappingStrategy.cluePriority);
       // expect(solveCount, 2); // Without reversible pairs
       expect(solveCount, 6);
     }, skip: disabled);
