@@ -380,7 +380,8 @@ bool isJumble(dynamic value, int jumble) {
   var jumbleStr = jumble.toString();
   for (var index = 0; index < valueStr.length; index++) {
     if (!jumbleStr.contains(valueStr[index])) return false;
-    jumbleStr.replaceFirst(RegExp(valueStr[index]), '');
+    jumbleStr = jumbleStr.replaceFirst(RegExp(valueStr[index]), '');
   }
+  if (jumbleStr.isNotEmpty) return false;
   return true;
 }

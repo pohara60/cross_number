@@ -6,7 +6,8 @@ Primania by Arden
 
 The prime factors of each of the numbers given below must be found. Each value is the product of a 2-digit prime and a 3-digit prime. The factors must be used as the down entries in the diagram. Across entries are prime both forwards and backwards. All entries are distinct.
 
-```+--+--+--+--+--+--+--+--+
+```
++--+--+--+--+--+--+--+--+
 +1 :2 :3 :4 |5 |6 :7 :8 +
 +::+::+::+::+::+::+::+::+
 +9 :  |10:  :  :  |11:  +

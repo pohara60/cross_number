@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "SummingSquares",
+            "type": "dart",
+            "request": "launch",
+            "program": "bin/crossnumber.dart",
+            "args": [
+                "SummingSquares"
+            ]
+        },
+        {
             "name": "SixesSevens",
             "type": "dart",
             "request": "launch",
