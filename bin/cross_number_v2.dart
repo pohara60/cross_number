@@ -16,6 +16,7 @@ import '../puzzles/mathematical_inspiration.dart';
 import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
+import '../puzzles/relationship.dart';
 import '../puzzles/simple_puzzle.dart';
 import '../puzzles/snakes_and_ladders.dart';
 import '../puzzles/splits.dart';
@@ -34,6 +35,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'primania': primania,
   'puzzle2': puzzle2,
   'puzzle3': puzzle3,
+  'relationship': relationship,
   'simple_puzzle': simplePuzzle,
   'snakes_and_ladders': snakesAndLadders,
   'splits': splits,
@@ -46,8 +48,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
 void main(List<String> arguments) {
   final parser = ArgParser()
     ..addOption('puzzle', abbr: 'p', help: 'The name of the puzzle to solve.')
-    ..addFlag('list',
-        abbr: 'l', negatable: false, help: 'List available puzzles.')
+    ..addFlag('list', abbr: 'l', negatable: false, help: 'List available puzzles.')
     ..addFlag('trace', abbr: 't', help: 'Enable solver tracing.')
     ..addFlag('backtrace', abbr: 'b', help: 'Enable backtrace tracing.')
     ..addFlag('help', abbr: 'h', negatable: false, help: 'Show this help.');

@@ -8,7 +8,8 @@
             "name": "Dart",
             "type": "dart",
             "request": "launch",
-            "program": "bin/cross_number_v2.dart"
+            "program": "bin/cross_number_v2.dart",
+            "args": ["-p", "relationship", "-t"]
         }
     ]
 }

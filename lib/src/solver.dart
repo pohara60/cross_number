@@ -19,17 +19,13 @@ class SolverState {
   final Map<String, Set<int>?> entryPossibleValues;
   final Map<String, Set<int>> variablePossibleValues;
 
-  SolverState(this.cluePossibleValues, this.entryPossibleValues,
-      this.variablePossibleValues);
+  SolverState(this.cluePossibleValues, this.entryPossibleValues, this.variablePossibleValues);
 
   SolverState copy() {
     return SolverState(
-      cluePossibleValues.map((key, value) =>
-          MapEntry(key, value == null ? null : Set.from(value))),
-      entryPossibleValues.map((key, value) =>
-          MapEntry(key, value == null ? null : Set.from(value))),
-      variablePossibleValues
-          .map((key, value) => MapEntry(key, Set.from(value))),
+      cluePossibleValues.map((key, value) => MapEntry(key, value == null ? null : Set.from(value))),
+      entryPossibleValues.map((key, value) => MapEntry(key, value == null ? null : Set.from(value))),
+      variablePossibleValues.map((key, value) => MapEntry(key, Set.from(value))),
     );
   }
 }
@@ -72,17 +68,13 @@ class Solver {
     // Deprecated flags, use tracer instead
     bool traceSolve = false,
     bool traceBacktrace = false,
-  }) : tracer = tracer ??
-            SolverTracer(
-                traceSolve: traceSolve, traceBacktrace: traceBacktrace) {
+  }) : tracer = tracer ?? SolverTracer(traceSolve: traceSolve, traceBacktrace: traceBacktrace) {
     // Initialize clues with possible values based on entry length
     for (var clue in puzzle.clues.values) {
-      final entry =
-          puzzle.entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
+      final entry = puzzle.entries.values.firstWhereOrNull((e) => e.clueId == clue.id);
       if (entry != null) {
         if (entry.length <= 5) {
-          clue.possibleValues = List<int>.generate(
-              pow(10, entry.length).toInt() - pow(10, entry.length - 1).toInt(),
+          clue.possibleValues = List<int>.generate(pow(10, entry.length).toInt() - pow(10, entry.length - 1).toInt(),
               (i) => i + pow(10, entry.length - 1).toInt()).toSet();
         }
       } else {
@@ -115,13 +107,11 @@ class Solver {
   SolverState _saveState() {
     final clueValues = <String, Set<int>?>{};
     for (var clue in puzzle.clues.values) {
-      clueValues[clue.id] =
-          clue.possibleValues == null ? null : Set.from(clue.possibleValues!);
+      clueValues[clue.id] = clue.possibleValues == null ? null : Set.from(clue.possibleValues!);
     }
     final entryValues = <String, Set<int>?>{};
     for (var entry in puzzle.entries.values) {
-      entryValues[entry.id] =
-          entry.possibleValues == null ? null : Set.from(entry.possibleValues!);
+      entryValues[entry.id] = entry.possibleValues == null ? null : Set.from(entry.possibleValues!);
     }
     final variableValues = <String, Set<int>>{};
     for (var variable in puzzle.variables.values) {
@@ -133,23 +123,20 @@ class Solver {
   void _restoreState(SolverState state) {
     for (var clue in puzzle.clues.values) {
       var possibleValues = state.cluePossibleValues[clue.id];
-      clue.possibleValues =
-          possibleValues == null ? null : Set.from(possibleValues);
+      clue.possibleValues = possibleValues == null ? null : Set.from(possibleValues);
     }
     for (var entry in puzzle.entries.values) {
       entry.possibleValues = Set.from(state.entryPossibleValues[entry.id]!);
     }
     for (var variable in puzzle.variables.values) {
-      variable.possibleValues =
-          Set.from(state.variablePossibleValues[variable.name]!);
+      variable.possibleValues = Set.from(state.variablePossibleValues[variable.name]!);
     }
   }
 
   List<Expressable> _backtrackExpressables() {
     // Order expressables for backtracking
     final expressables = puzzle.allExpressables;
-    final unsolved =
-        expressables.where((expressable) => expressable.isNotSolved).toList();
+    final unsolved = expressables.where((expressable) => expressable.isNotSolved).toList();
     // Order with least possible values first
     unsolved.sort((a, b) => a.possibleValues == null
         ? 1
@@ -159,9 +146,7 @@ class Solver {
     return unsolved;
   }
 
-  int _backtrack(
-      List<Expressable> expressables, expressableIndex, int solutionCount,
-      [bool Function()? callback]) {
+  int _backtrack(List<Expressable> expressables, expressableIndex, int solutionCount, [bool Function()? callback]) {
     if (expressableIndex == expressables.length) {
       // Base case: All expressables assigned. Check if it's a valid solution.
       if (isSolutionValid()) {
@@ -181,23 +166,18 @@ class Solver {
     }
 
     final currentExpressable = expressables.elementAt(expressableIndex);
-    if (currentExpressable.possibleValues == null ||
-        currentExpressable.possibleValues!.isEmpty) {
-      tracer.logBacktrace(
-          'Backtracking: Clue ${currentExpressable.id} has no possible values, backtracking.');
+    if (currentExpressable.possibleValues == null || currentExpressable.possibleValues!.isEmpty) {
+      tracer.logBacktrace('Backtracking: Clue ${currentExpressable.id} has no possible values, backtracking.');
       return solutionCount; // No possible values, backtrack
     }
 
-    final originalPossibleValues =
-        Set<int>.from(currentExpressable.possibleValues!);
+    final originalPossibleValues = Set<int>.from(currentExpressable.possibleValues!);
     tracer.logBacktrace(
         'Backtracking: Trying expressable ${currentExpressable.id} -> ${originalPossibleValues.length} ${originalPossibleValues.toShortString()}');
 
     for (final value in originalPossibleValues) {
-      tracer.logBacktrace(
-          'Backtracking: Trying value $value for expressable ${currentExpressable.id}');
-      final savedState =
-          _saveState(); // Save the current state before trying a value
+      tracer.logBacktrace('Backtracking: Trying value $value for expressable ${currentExpressable.id}');
+      final savedState = _saveState(); // Save the current state before trying a value
 
       // Try assigning the value
       currentExpressable.possibleValues = {value};
@@ -208,33 +188,26 @@ class Solver {
         var originalCounts = <String, int?>{};
         solveExpression(currentExpressable, updatedVariables, originalCounts);
         if (tracer.traceBacktrace) {
-          tracer.printUpdatedExpressables(
-              puzzle, updatedVariables, originalCounts);
+          tracer.printUpdatedExpressables(puzzle, updatedVariables, originalCounts);
         }
       }
 
       // For clues update the associated entry's possible values
       if (currentExpressable is Clue) {
-        final entry = puzzle.entries.values
-            .firstWhereOrNull((e) => e.clueId == currentExpressable.id);
+        final entry = puzzle.entries.values.firstWhereOrNull((e) => e.clueId == currentExpressable.id);
         if (entry != null) {
           entry.possibleValues = {value};
         }
       }
 
-      var (consistent, updated) =
-          _propagateConstraints(tracer.traceBacktrace); // Propagate the change
-      tracer.logBacktrace(
-          'Backtracking: Propagation result: consistent=$consistent, updated=$updated');
+      var (consistent, updated) = _propagateConstraints(tracer.traceBacktrace); // Propagate the change
+      tracer.logBacktrace('Backtracking: Propagation result: consistent=$consistent, updated=$updated');
 
       if (consistent) {
-        tracer
-            .logBacktrace('Backtracking: Propagation consistent. Recursing...');
-        solutionCount = _backtrack(expressables, expressableIndex + 1,
-            solutionCount, callback); // Recurse
+        tracer.logBacktrace('Backtracking: Propagation consistent. Recursing...');
+        solutionCount = _backtrack(expressables, expressableIndex + 1, solutionCount, callback); // Recurse
       } else {
-        tracer.logBacktrace(
-            'Backtracking: Propagation inconsistent. Backtracking...');
+        tracer.logBacktrace('Backtracking: Propagation inconsistent. Backtracking...');
       }
 
       _restoreState(savedState); // Undo the assignment and restore state
@@ -250,9 +223,7 @@ class Solver {
   ///
   /// This method will delegate to the appropriate solving strategy based on
   /// whether the clue-to-entry mapping is known.
-  void solve(
-      [bool Function()? callback,
-      MappingStrategy strategy = MappingStrategy.entryPriority]) {
+  void solve([bool Function()? callback, MappingStrategy strategy = MappingStrategy.entryPriority]) {
     if (puzzle.mappingIsKnown) {
       _solveKnownMapping(callback, allowBacktracking);
     } else {
@@ -260,8 +231,7 @@ class Solver {
     }
   }
 
-  void _solveKnownMapping(
-      [bool Function()? callback, bool valueBacktracking = true]) {
+  void _solveKnownMapping([bool Function()? callback, bool valueBacktracking = true]) {
     tracer.logSolve('Solving puzzle with known mapping...');
     final stopwatch = Stopwatch()..start();
 
@@ -278,9 +248,7 @@ class Solver {
           tracer.logSolve('  Group: ${group.clues.join(', ')}');
         }
       }
-      expressableGroups = clueGroups
-          .map((g) => g.clues.map((c) => puzzle.clues[c]!).toList())
-          .toList();
+      expressableGroups = clueGroups.map((g) => g.clues.map((c) => puzzle.clues[c]!).toList()).toList();
     }
 
     int iteration = 0;
@@ -333,8 +301,7 @@ class Solver {
       // Disable answer checking during backtracking
       Expressable.checkAnswer = false;
       var originalTrace = tracer.trace;
-      tracer.trace =
-          tracer.traceBacktrace; // Use tracer.logBacktrace for backtracking
+      tracer.trace = tracer.traceBacktrace; // Use tracer.logBacktrace for backtracking
       stopwatch.reset();
       stopwatch.start();
       var expressables = _backtrackExpressables();
@@ -350,11 +317,9 @@ class Solver {
     }
   }
 
-  (bool consistent, bool updated) _solveExpressables(
-      List<List<Expressable>>? groups) {
+  (bool consistent, bool updated) _solveExpressables(List<List<Expressable>>? groups) {
     var updated = false;
-    final groupedExpressableIds =
-        groups?.expand((g) => g.map((e) => e.id)).toSet() ?? <String>{};
+    final groupedExpressableIds = groups?.expand((g) => g.map((e) => e.id)).toSet() ?? <String>{};
 
     for (var expressable in puzzle.expressables.values) {
       if (groupedExpressableIds.contains(expressable.id)) {
@@ -362,8 +327,7 @@ class Solver {
       }
       final updatedVariables = <String>[];
       var originalCounts = <String, int?>{};
-      var (consistent, changed) =
-          solveExpression(expressable, updatedVariables, originalCounts);
+      var (consistent, changed) = solveExpression(expressable, updatedVariables, originalCounts);
       if (!consistent) {
         if (tracer.trace) {
           tracer.logSolve(
@@ -374,18 +338,16 @@ class Solver {
       if (changed) {
         updated = true;
         if (tracer.trace) {
-          tracer.printUpdatedExpressable(
-              expressable, expressable.possibleValues?.length);
-          tracer.printUpdatedExpressables(
-              puzzle, updatedVariables, originalCounts);
+          tracer.printUpdatedExpressable(expressable, expressable.possibleValues?.length);
+          tracer.printUpdatedExpressables(puzzle, updatedVariables, originalCounts);
         }
       }
     }
     return (true, updated);
   }
 
-  (bool consistent, bool updated) solveExpression(Expressable expressable,
-      List<String> updatedVariables, Map<String, int?> originalCounts) {
+  (bool consistent, bool updated) solveExpression(
+      Expressable expressable, List<String> updatedVariables, Map<String, int?> originalCounts) {
     var updated = false;
 
     // If no expression, then nothing to do
@@ -408,19 +370,16 @@ class Solver {
       results = evaluator.evaluate(expressable, min: solveMin, max: solveMax);
     } on EvaluatorNotPossiblexception catch (e) {
       if (tracer.trace) {
-        tracer.logSolve(
-            '    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
+        tracer.logSolve('    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
       }
       return (true, false);
     }
 
     final newPossibleValues = results.map((r) => r.value).toSet();
-    var possibleValues =
-        _updatePossibleValues(expressable.possibleValues, newPossibleValues);
+    var possibleValues = _updatePossibleValues(expressable.possibleValues, newPossibleValues);
     if (possibleValues.isEmpty) {
       if (tracer.trace) {
-        tracer.logSolve(
-            '    Expression for ${expressable.id} has no possible values after evaluation');
+        tracer.logSolve('    Expression for ${expressable.id} has no possible values after evaluation');
       }
       return (false, false); // Inconsistency
     }
@@ -431,21 +390,17 @@ class Solver {
 
     // Reduce resutls to only those that match the possible values
     if (possibleValues.length < newPossibleValues.length) {
-      results = results
-          .where((r) => expressable.possibleValues!.contains(r.value))
-          .toList();
+      results = results.where((r) => expressable.possibleValues!.contains(r.value)).toList();
     }
 
     // Update variables
-    if (_updateVariablesFromResults(expressable.allVariables, results, updated,
-        updatedVariables, originalCounts)) {
+    if (_updateVariablesFromResults(expressable.allVariables, results, updated, updatedVariables, originalCounts)) {
       updated = true;
     }
     return (true, updated);
   }
 
-  Set<int> _updatePossibleValues(
-      Set<int>? possibleValues, Set<int> newPossibleValues) {
+  Set<int> _updatePossibleValues(Set<int>? possibleValues, Set<int> newPossibleValues) {
     if (possibleValues == null) {
       possibleValues = newPossibleValues;
     } else {
@@ -457,35 +412,22 @@ class Solver {
     return possibleValues;
   }
 
-  bool _updateVariablesFromResults(
-      List<String> variables,
-      List<EvaluationFinalResult> results,
-      bool updated,
-      List<String> updatedVariables,
-      Map<String, int?> originalCounts) {
+  bool _updateVariablesFromResults(List<String> variables, List<EvaluationFinalResult> results, bool updated,
+      List<String> updatedVariables, Map<String, int?> originalCounts) {
     var variableValues = results.map((r) => r.variableValues).toList();
-    return _updateVariables(
-        variables, variableValues, updated, updatedVariables, originalCounts);
+    return _updateVariables(variables, variableValues, updated, updatedVariables, originalCounts);
   }
 
-  bool _updateVariables(
-      List<String> variables,
-      List<Map<String, int>> results,
-      bool updated,
-      List<String> updatedVariables,
-      Map<String, int?> originalCounts) {
+  bool _updateVariables(List<String> variables, List<Map<String, int>> results, bool updated,
+      List<String> updatedVariables, Map<String, int?> originalCounts) {
     for (var variableName in variables) {
       var expressable = puzzle.getExpressable(variableName);
 
-      final newVariableValues = results
-          .map((r) => r[variableName])
-          .where((v) => v != null)
-          .map((v) => v as int)
-          .toSet();
+      final newVariableValues =
+          results.map((r) => r[variableName]).where((v) => v != null).map((v) => v as int).toSet();
       if (newVariableValues.isEmpty) continue;
       var originalCount = expressable.possibleValues?.length;
-      var possibleValues =
-          _updatePossibleValues(expressable.possibleValues, newVariableValues);
+      var possibleValues = _updatePossibleValues(expressable.possibleValues, newVariableValues);
       if (expressable.possibleValues != possibleValues) {
         expressable.possibleValues = possibleValues;
         updated = true;
@@ -503,8 +445,7 @@ class Solver {
 
   bool solveExpressableGroup(List<Expressable> group) {
     if (tracer.trace) {
-      tracer.logSolve(
-          '  Solving group with expressables: ${group.map((e) => e.id).join(', ')}');
+      tracer.logSolve('  Solving group with expressables: ${group.map((e) => e.id).join(', ')}');
     }
 
     var updated = false;
@@ -520,9 +461,7 @@ class Solver {
               .map((v) => v as int)
               .toSet();
           if (newPossibleValues.isNotEmpty &&
-              (expressable.possibleValues == null ||
-                  newPossibleValues.length <
-                      expressable.possibleValues!.length)) {
+              (expressable.possibleValues == null || newPossibleValues.length < expressable.possibleValues!.length)) {
             final originalCount = expressable.possibleValues?.length;
             expressable.possibleValues = newPossibleValues;
             updated = true;
@@ -536,13 +475,11 @@ class Solver {
         var variables = group.expand((e) => e.allVariables).toSet().toList();
         var updateVariables = <String>[];
         var originalCounts = <String, int?>{};
-        if (_updateVariables(variables, validCombinations, updated,
-            updateVariables, originalCounts)) {
+        if (_updateVariables(variables, validCombinations, updated, updateVariables, originalCounts)) {
           updated = true;
         }
         if (tracer.trace) {
-          tracer.printUpdatedExpressables(
-              puzzle, updateVariables, originalCounts);
+          tracer.printUpdatedExpressables(puzzle, updateVariables, originalCounts);
         }
       }
     } on EvaluatorNotPossiblexception {
@@ -552,9 +489,7 @@ class Solver {
   }
 
   bool _solveExpressableGroup(
-      List<Expressable> expressables,
-      Map<String, int> pinnedVariables,
-      List<Map<String, int>> validCombinations) {
+      List<Expressable> expressables, Map<String, int> pinnedVariables, List<Map<String, int>> validCombinations) {
     if (expressables.isEmpty) {
       validCombinations.add(pinnedVariables);
       return true;
@@ -566,12 +501,10 @@ class Solver {
 
     var results = <EvaluationFinalResult>[];
     try {
-      results = evaluator.evaluate(expressable,
-          min: expressable.min ?? 1, max: expressable.max ?? 99999);
+      results = evaluator.evaluate(expressable, min: expressable.min ?? 1, max: expressable.max ?? 99999);
     } on EvaluatorNotPossiblexception catch (e) {
       if (tracer.trace) {
-        tracer.logSolve(
-            '    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
+        tracer.logSolve('    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
       }
       rethrow;
     }
@@ -579,13 +512,8 @@ class Solver {
     var anyConsistent = false;
     for (var result in results) {
       if (expressable.possibleValues?.contains(result.value) ?? true) {
-        final newPinnedVariables = {
-          ...pinnedVariables,
-          expressable.id: result.value,
-          ...result.variableValues
-        };
-        var consistent = _solveExpressableGroup(
-            remainingExpressables, newPinnedVariables, validCombinations);
+        final newPinnedVariables = {...pinnedVariables, expressable.id: result.value, ...result.variableValues};
+        var consistent = _solveExpressableGroup(remainingExpressables, newPinnedVariables, validCombinations);
         if (consistent) {
           anyConsistent = true;
         }
@@ -612,8 +540,7 @@ class Solver {
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
-          tracer.logSolve(
-              '    Inconsistency: _enforceDistinctValuesForExressable (clues) returned inconsistent.');
+          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExressable (clues) returned inconsistent.');
         }
         return (false, changed);
       }
@@ -627,8 +554,7 @@ class Solver {
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
-          tracer.logSolve(
-              '    Inconsistency: _enforceDistinctValuesForExressable (variables) returned inconsistent.');
+          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExressable (variables) returned inconsistent.');
         }
         return (false, changed);
       }
@@ -642,21 +568,18 @@ class Solver {
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
-          tracer.logSolve(
-              '    Inconsistency: _enforceDistinctValuesForExressable (entries) returned inconsistent.');
+          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExressable (entries) returned inconsistent.');
         }
         return (false, changed);
       }
 
       // Enforce puzzle-specific distinct constraints
       for (var constraint in puzzle.puzzleConstraints) {
-        var (consistent, updated) =
-            constraint.enforceDistinct(puzzle, trace: trace);
+        var (consistent, updated) = constraint.enforceDistinct(puzzle, trace: trace);
         if (updated) loopChanged = changed = true;
         if (!consistent) {
           if (trace) {
-            tracer.logSolve(
-                '    Inconsistency: Puzzle-specific distinct constraint returned inconsistent.');
+            tracer.logSolve('    Inconsistency: Puzzle-specific distinct constraint returned inconsistent.');
           }
           return (false, changed);
         }
@@ -672,10 +595,8 @@ class Solver {
     var consistent = true;
 
     // Find expressables with more than one possible value and less than 5
-    final unsolved =
-        expressables.where((expressable) => expressable.isNotSolved).toList();
-    final consider =
-        unsolved.where((expressable) => expressable.possibleValues!.length < 5);
+    final unsolved = expressables.where((expressable) => expressable.isNotSolved).toList();
+    final consider = unsolved.where((expressable) => expressable.possibleValues!.length < 5);
 
     // Group unsolved expressables by their possible values
     final valueGroups = <String, Map<String, dynamic>>{};
@@ -683,11 +604,7 @@ class Solver {
       final key = expressable.possibleValues!.toList()..sort();
       final keyString = key.join(',');
       valueGroups.putIfAbsent(
-          keyString,
-          () => {
-                'values': expressable.possibleValues!,
-                'expressables': <Expressable>[]
-              });
+          keyString, () => {'values': expressable.possibleValues!, 'expressables': <Expressable>[]});
       valueGroups[keyString]!['expressables'].add(expressable);
     }
 
@@ -703,17 +620,14 @@ class Solver {
         for (var expressable in unsolved) {
           if (!group.contains(expressable)) {
             final originalCount = expressable.possibleValues!.length;
-            if (expressable.possibleValues!
-                .any((v) => possibleValues.contains(v))) {
-              expressable.possibleValues = expressable.possibleValues!
-                  .where((v) => !possibleValues.contains(v))
-                  .toSet();
+            if (expressable.possibleValues!.any((v) => possibleValues.contains(v))) {
+              expressable.possibleValues =
+                  expressable.possibleValues!.where((v) => !possibleValues.contains(v)).toSet();
               updated = true;
               if (trace) {
                 if (!traced) {
                   traced = true;
-                  print(
-                      '    Found group of $n expressables (${group.map((e) => e.id).join(', ')}) with $n values');
+                  print('    Found group of $n expressables (${group.map((e) => e.id).join(', ')}) with $n values');
                 }
                 tracer.printUpdatedExpressable(expressable, originalCount);
               }
@@ -729,11 +643,9 @@ class Solver {
     }
 
     // Original logic for solved expressables (N=1)
-    final solvedExpressables =
-        expressables.where((expressable) => expressable.isSolved).toList();
+    final solvedExpressables = expressables.where((expressable) => expressable.isSolved).toList();
     if (solvedExpressables.isNotEmpty) {
-      final solvedExpressableValues =
-          solvedExpressables.map((clue) => clue.possibleValues!.single).toSet();
+      final solvedExpressableValues = solvedExpressables.map((clue) => clue.possibleValues!.single).toSet();
       if (solvedExpressableValues.length < solvedExpressables.length) {
         return (false, true); // Inconsistency
       }
@@ -743,12 +655,10 @@ class Solver {
           continue; // Skip if expressable has no values yet
         }
         if (expressable.isNotSolved) {
-          if (expressable.possibleValues!
-              .any((v) => solvedExpressableValues.contains(v))) {
+          if (expressable.possibleValues!.any((v) => solvedExpressableValues.contains(v))) {
             final originalCount = expressable.possibleValues!.length;
-            expressable.possibleValues = expressable.possibleValues!
-                .where((v) => !solvedExpressableValues.contains(v))
-                .toSet();
+            expressable.possibleValues =
+                expressable.possibleValues!.where((v) => !solvedExpressableValues.contains(v)).toSet();
             updated = true;
             if (trace) {
               tracer.printUpdatedExpressable(expressable, originalCount);
@@ -773,8 +683,7 @@ class Solver {
       if (trace) print('  Propagating constraints...');
 
       // Enforce ordering constraints
-      var (orderingConsistent, orderingUpdated) =
-          _enforceOrderingConstraints(trace);
+      var (orderingConsistent, orderingUpdated) = _enforceOrderingConstraints(trace);
       if (!orderingConsistent) return (false, true);
       if (orderingUpdated) localChanged = true;
 
@@ -797,9 +706,7 @@ class Solver {
             }
             final originalCount = clue.possibleValues!.length;
             entry.possibleValues ??= Set.from(clue.possibleValues!);
-            entry.possibleValues = entry.possibleValues!
-                .where((value) => clue.possibleValues!.contains(value))
-                .toSet();
+            entry.possibleValues = entry.possibleValues!.where((value) => clue.possibleValues!.contains(value)).toSet();
             if (entry.possibleValues!.length < originalCount) {
               localChanged = true;
               if (trace) {
@@ -809,8 +716,7 @@ class Solver {
             }
             if (entry.possibleValues!.isEmpty) {
               if (trace) {
-                print(
-                    '    Inconsistency: Clue ${clue.id} leads to empty entry ${entry.id} possible values.');
+                print('    Inconsistency: Clue ${clue.id} leads to empty entry ${entry.id} possible values.');
               }
               return (false, true); // Inconsistency
             }
@@ -840,11 +746,9 @@ class Solver {
             final cell = grid.cells[r][c];
             if (cell.acrossEntry != null && cell.downEntry != null) {
               final acrossEntry = cell.acrossEntry!;
-              if (acrossEntry.skipGridPropagation ||
-                  acrossEntry.possibleValues == null) continue;
+              if (acrossEntry.skipGridPropagation || acrossEntry.possibleValues == null) continue;
               final downEntry = cell.downEntry!;
-              if (downEntry.skipGridPropagation ||
-                  downEntry.possibleValues == null) continue;
+              if (downEntry.skipGridPropagation || downEntry.possibleValues == null) continue;
               // checkCellEntry(grid, acrossEntry);
               // checkCellEntry(grid, downEntry);
               final acrossDigitIndex = c - acrossEntry.col;
@@ -858,11 +762,9 @@ class Solver {
 
                 final newAcrossValues = <int>{};
                 for (final acrossValue in acrossValues) {
-                  final acrossDigit = getValueString(
-                      acrossEntry, acrossValue)[acrossDigitIndex];
-                  if (downValues.any((downValue) =>
-                      getValueString(downEntry, downValue)[downDigitIndex] ==
-                      acrossDigit)) {
+                  final acrossDigit = getValueString(acrossEntry, acrossValue)[acrossDigitIndex];
+                  if (downValues
+                      .any((downValue) => getValueString(downEntry, downValue)[downDigitIndex] == acrossDigit)) {
                     newAcrossValues.add(acrossValue);
                   }
                 }
@@ -885,12 +787,9 @@ class Solver {
 
                 final newDownValues = <int>{};
                 for (final downValue in downValues) {
-                  final downDigit =
-                      getValueString(downEntry, downValue)[downDigitIndex];
-                  if (acrossEntry.possibleValues!.any((acrossValue) =>
-                      getValueString(
-                          acrossEntry, acrossValue)[acrossDigitIndex] ==
-                      downDigit)) {
+                  final downDigit = getValueString(downEntry, downValue)[downDigitIndex];
+                  if (acrossEntry.possibleValues!
+                      .any((acrossValue) => getValueString(acrossEntry, acrossValue)[acrossDigitIndex] == downDigit)) {
                     newDownValues.add(downValue);
                   }
                 }
@@ -914,11 +813,9 @@ class Solver {
             }
             if (cell.acrossEntry != null && cell.upEntry != null) {
               final acrossEntry = cell.acrossEntry!;
-              if (acrossEntry.skipGridPropagation ||
-                  acrossEntry.possibleValues == null) continue;
+              if (acrossEntry.skipGridPropagation || acrossEntry.possibleValues == null) continue;
               final upEntry = cell.upEntry!;
-              if (upEntry.skipGridPropagation || upEntry.possibleValues == null)
-                continue;
+              if (upEntry.skipGridPropagation || upEntry.possibleValues == null) continue;
               // checkCellEntry(grid, acrossEntry);
               // checkCellEntry(grid, upEntry);
               final acrossDigitIndex = c - acrossEntry.col;
@@ -932,11 +829,8 @@ class Solver {
 
                 final newAcrossValues = <int>{};
                 for (final acrossValue in acrossValues) {
-                  final acrossDigit = getValueString(
-                      acrossEntry, acrossValue)[acrossDigitIndex];
-                  if (upValues.any((upValue) =>
-                      getValueString(upEntry, upValue)[upDigitIndex] ==
-                      acrossDigit)) {
+                  final acrossDigit = getValueString(acrossEntry, acrossValue)[acrossDigitIndex];
+                  if (upValues.any((upValue) => getValueString(upEntry, upValue)[upDigitIndex] == acrossDigit)) {
                     newAcrossValues.add(acrossValue);
                   }
                 }
@@ -955,12 +849,9 @@ class Solver {
 
                 final newUpValues = <int>{};
                 for (final upValue in upValues) {
-                  final upDigit =
-                      getValueString(upEntry, upValue)[upDigitIndex];
-                  if (acrossEntry.possibleValues!.any((acrossValue) =>
-                      getValueString(
-                          acrossEntry, acrossValue)[acrossDigitIndex] ==
-                      upDigit)) {
+                  final upDigit = getValueString(upEntry, upValue)[upDigitIndex];
+                  if (acrossEntry.possibleValues!
+                      .any((acrossValue) => getValueString(acrossEntry, acrossValue)[acrossDigitIndex] == upDigit)) {
                     newUpValues.add(upValue);
                   }
                 }
@@ -991,13 +882,10 @@ class Solver {
               continue; // Skip if clue has no values yet
             }
             final originalSize = clue.possibleValues!.length;
-            clue.possibleValues = clue.possibleValues!
-                .where((value) => entry.possibleValues!.contains(value))
-                .toSet();
+            clue.possibleValues = clue.possibleValues!.where((value) => entry.possibleValues!.contains(value)).toSet();
             if (clue.possibleValues!.isEmpty) {
               if (trace) {
-                print(
-                    '    Inconsistency: Entry ${entry.id} leads to empty clue ${clue.id} possible values.');
+                print('    Inconsistency: Entry ${entry.id} leads to empty clue ${clue.id} possible values.');
               }
               return (false, true); // Inconsistency
             }
@@ -1029,8 +917,7 @@ class Solver {
       if (changed) localChanged = true;
       if (!consistent) {
         if (trace) {
-          print(
-              '    Inconsistency: _solveExpressables returned inconsistent after re-solve.');
+          print('    Inconsistency: _solveExpressables returned inconsistent after re-solve.');
         }
         return (false, true); // Inconsistency after re-solve
       }
@@ -1054,13 +941,10 @@ class Solver {
       } else if (constraint.allVariables) {
         expressables = puzzle.variables.values.toList();
       } else {
-        expressables =
-            constraint.ids!.map((id) => puzzle.getExpressable(id)).toList();
+        expressables = constraint.ids!.map((id) => puzzle.getExpressable(id)).toList();
       }
 
-      var oldCounts = {
-        for (var e in expressables) e.id: e.possibleValues?.length
-      };
+      var oldCounts = {for (var e in expressables) e.id: e.possibleValues?.length};
 
       bool changedInPass;
       do {
@@ -1069,15 +953,13 @@ class Solver {
         // Forward pass
         var prevMin = -1;
         for (var expressable in expressables) {
-          if (expressable.possibleValues == null ||
-              expressable.possibleValues!.isEmpty) {
+          if (expressable.possibleValues == null || expressable.possibleValues!.isEmpty) {
             continue;
           }
           var currentMin = expressable.possibleValues!.reduce(min);
           if (prevMin >= 0 && currentMin <= prevMin) {
             final originalLength = expressable.possibleValues!.length;
-            expressable.possibleValues =
-                expressable.possibleValues!.where((v) => v > prevMin).toSet();
+            expressable.possibleValues = expressable.possibleValues!.where((v) => v > prevMin).toSet();
             if (expressable.possibleValues!.isEmpty) {
               if (trace) {
                 print(
@@ -1103,15 +985,13 @@ class Solver {
         // Backward pass
         var nextMax = 1000000; // Arbitrarily large
         for (var expressable in expressables.reversed) {
-          if (expressable.possibleValues == null ||
-              expressable.possibleValues!.isEmpty) {
+          if (expressable.possibleValues == null || expressable.possibleValues!.isEmpty) {
             continue;
           }
           var currentMax = expressable.possibleValues!.reduce(max);
           if (nextMax < 1000000 && currentMax >= nextMax) {
             final originalLength = expressable.possibleValues!.length;
-            expressable.possibleValues =
-                expressable.possibleValues!.where((v) => v < nextMax).toSet();
+            expressable.possibleValues = expressable.possibleValues!.where((v) => v < nextMax).toSet();
             if (expressable.possibleValues!.isEmpty) {
               if (trace) {
                 print(
@@ -1149,27 +1029,21 @@ class Solver {
     return (true, updated);
   }
 
-  void _solveUnknownMapping(
-      [bool Function()? callback,
-      MappingStrategy strategy = MappingStrategy.cluePriority]) {
+  void _solveUnknownMapping([bool Function()? callback, MappingStrategy strategy = MappingStrategy.cluePriority]) {
     tracer.logSolve('Solving puzzle with unknown mapping...');
 
     // First, solve as much as possible without any mappings
     _solveKnownMapping(callback, false);
 
     // Get unmapped clues and available entries
-    final unmappedClues =
-        puzzle.clues.values.where((c) => c.entry == null).toList();
-    final availableEntries =
-        puzzle.entries.values.where((e) => e.clueId == null).toList();
+    final unmappedClues = puzzle.clues.values.where((c) => c.entry == null).toList();
+    final availableEntries = puzzle.entries.values.where((e) => e.clueId == null).toList();
 
-    tracer.logBacktrace(
-        'Backtracking mappings: ${unmappedClues.length} clues, ${availableEntries.length} entries');
+    tracer.logBacktrace('Backtracking mappings: ${unmappedClues.length} clues, ${availableEntries.length} entries');
 
     // Start backtracking to find a valid mapping
     Expressable.checkAnswer = false;
-    tracer.trace =
-        tracer.traceBacktrace; // Use tracer.logBacktrace for backtracking
+    tracer.trace = tracer.traceBacktrace; // Use tracer.logBacktrace for backtracking
     var solutionCount = 0;
     final stopwatch = Stopwatch()..start();
 
@@ -1182,25 +1056,22 @@ class Solver {
     if (updated) {
       var (consistent, _) = _propagateConstraints(tracer.traceBacktrace);
       if (!consistent) {
-        print(
-            'Backtracking mappings:     onBacktrackingStart is ${consistent ? 'consistent' : 'inconsistent'}');
+        print('Backtracking mappings:     onBacktrackingStart is ${consistent ? 'consistent' : 'inconsistent'}');
         return;
       }
     }
     switch (strategy) {
       case MappingStrategy.cluePriority:
-        Map<Clue, List<Entry>> cluePossibleEntries =
-            puzzle.getPossibleEntriesForClues(unmappedClues, availableEntries);
+        Map<Clue, List<Entry>> cluePossibleEntries = puzzle.getPossibleEntriesForClues(unmappedClues, availableEntries);
         final unmappedCluesSorted = cluePossibleEntries.keys.toList();
-        solutionCount = _solveWithBacktrackingByClue(unmappedCluesSorted,
-            availableEntries, cluePossibleEntries, solutionCount, callback);
+        solutionCount = _solveWithBacktrackingByClue(
+            unmappedCluesSorted, availableEntries, cluePossibleEntries, solutionCount, callback);
         break;
       case MappingStrategy.entryPriority:
         final entryGroups = _groupEntriesByIntersection(availableEntries);
-        Map<Entry, List<Clue>> entryPossibleClues =
-            puzzle.getPossibleCluesForEntries(unmappedClues, availableEntries);
-        solutionCount = _solveWithBacktrackingByEntry(entryGroups, 0, 0,
-            unmappedClues, entryPossibleClues, solutionCount, callback);
+        Map<Entry, List<Clue>> entryPossibleClues = puzzle.getPossibleCluesForEntries(unmappedClues, availableEntries);
+        solutionCount = _solveWithBacktrackingByEntry(
+            entryGroups, 0, 0, unmappedClues, entryPossibleClues, solutionCount, callback);
         break;
     }
 
@@ -1235,12 +1106,9 @@ class Solver {
       for (var neighbor in neighbors) {
         if (!visited.contains(neighbor)) {
           // Do not follow links to entries with only one other intersection
-          var neighborNeighbors =
-              adj[neighbor]!.where((n) => n != entry).toList();
-          var neighborNeighborsNeighbors =
-              neighborNeighbors.expand((e) => adj[e]!).toList();
-          var overlap = neighborNeighborsNeighbors
-              .firstWhereOrNull((n) => n != neighbor && neighbors.contains(n));
+          var neighborNeighbors = adj[neighbor]!.where((n) => n != entry).toList();
+          var neighborNeighborsNeighbors = neighborNeighbors.expand((e) => adj[e]!).toList();
+          var overlap = neighborNeighborsNeighbors.firstWhereOrNull((n) => n != neighbor && neighbors.contains(n));
           if (overlap == null) {
             continue;
           }
@@ -1304,17 +1172,9 @@ class Solver {
         nextEntryIndex = 0;
       }
       solutionCount = _solveWithBacktrackingByEntry(
-          entryGroups,
-          nextGroupIndex,
-          nextEntryIndex,
-          availableClues,
-          entryPossibleClues,
-          solutionCount,
-          callback);
+          entryGroups, nextGroupIndex, nextEntryIndex, availableClues, entryPossibleClues, solutionCount, callback);
     } else {
-      final matchingClues = entryPossibleClues[currentEntry]!
-          .where((clue) => availableClues.contains(clue))
-          .toList();
+      final matchingClues = entryPossibleClues[currentEntry]!.where((clue) => availableClues.contains(clue)).toList();
 
       tracer.logBacktrace(
           'Backtracking mappings: Trying to map entry ${currentEntry.id} to one of ${matchingClues.length} clues');
@@ -1335,8 +1195,7 @@ class Solver {
 
         for (final value in clue.possibleValues!) {
           // Check if value is compatible with other set entries
-          var consistent = puzzle.grids.values.first
-              .isEntryValueCompatibleSolvedEntries(currentEntry, value);
+          var consistent = puzzle.grids.values.first.isEntryValueCompatibleSolvedEntries(currentEntry, value);
           if (!consistent) {
             tracer.logBacktrace(
                 'Backtracking mappings:   Value $value for clue ${clue.id} is not compatible with other entries');
@@ -1347,8 +1206,7 @@ class Solver {
           final savedState = _saveState();
           clue.possibleValues = {value};
           currentEntry.possibleValues = {value};
-          tracer.logBacktrace(
-              'Backtracking mappings:   Trying clue ${clue.id} value $value');
+          tracer.logBacktrace('Backtracking mappings:   Trying clue ${clue.id} value $value');
 
           // var (consistent, _) = _propagateConstraints(tracer.logBacktrace);
           // if (tracer.logBacktrace) {
@@ -1357,22 +1215,15 @@ class Solver {
           // }
 
           if (consistent) {
-            final remainingClues =
-                availableClues.where((c) => c != clue).toList();
+            final remainingClues = availableClues.where((c) => c != clue).toList();
             int nextEntryIndex = entryIndex + 1;
             int nextGroupIndex = groupIndex;
             if (nextEntryIndex == currentGroup.length) {
               nextGroupIndex++;
               nextEntryIndex = 0;
             }
-            solutionCount = _solveWithBacktrackingByEntry(
-                entryGroups,
-                nextGroupIndex,
-                nextEntryIndex,
-                remainingClues,
-                entryPossibleClues,
-                solutionCount,
-                callback);
+            solutionCount = _solveWithBacktrackingByEntry(entryGroups, nextGroupIndex, nextEntryIndex, remainingClues,
+                entryPossibleClues, solutionCount, callback);
           }
 
           // Backtrack values
@@ -1414,8 +1265,7 @@ class Solver {
         }
         tracer.printSolution(puzzle);
         // Print mapping
-        print(
-            'Clue mapping: ${puzzle.clues.values.map((clue) => '${clue.id}->${clue.entry?.id}').join(', ')}');
+        print('Clue mapping: ${puzzle.clues.values.map((clue) => '${clue.id}->${clue.entry?.id}').join(', ')}');
 
         solutionCount++;
       } else {
@@ -1427,9 +1277,8 @@ class Solver {
     final currentClue = unmappedClues.first;
     final remainingClues = unmappedClues.sublist(1);
 
-    final matchingEntries = cluePossibleEntries[currentClue]!
-        .where((entry) => availableEntries.contains(entry))
-        .toList();
+    final matchingEntries =
+        cluePossibleEntries[currentClue]!.where((entry) => availableEntries.contains(entry)).toList();
 
     tracer.logBacktrace(
         'Backtracking mappings: Trying to map clue ${currentClue.id} to one of ${matchingEntries.length} entries');
@@ -1481,8 +1330,7 @@ class Solver {
 
       for (final value in currentClue.possibleValues!) {
         // Check if value is compatible with other set entries
-        var consistent = puzzle.grids.values.first
-            .isEntryValueCompatibleSolvedEntries(entry, value);
+        var consistent = puzzle.grids.values.first.isEntryValueCompatibleSolvedEntries(entry, value);
         if (!consistent) {
           tracer.logBacktrace(
               'Backtracking mappings:   Value $value for clue ${currentClue.id} is not compatible with other entries');
@@ -1492,8 +1340,7 @@ class Solver {
         final savedState = _saveState();
         currentClue.possibleValues = {value};
         entry.possibleValues = {value};
-        tracer.logBacktrace(
-            'Backtracking mappings:   Trying clue ${currentClue.id} value $value');
+        tracer.logBacktrace('Backtracking mappings:   Trying clue ${currentClue.id} value $value');
 
         // // Propagate constraints
         // var (consistent, _) = _propagateConstraints(tracer.logBacktrace);
@@ -1503,10 +1350,9 @@ class Solver {
         // }
 
         if (consistent) {
-          final remainingEntries =
-              availableEntries.where((e) => e != entry).toList();
-          solutionCount = _solveWithBacktrackingByClue(remainingClues,
-              remainingEntries, cluePossibleEntries, solutionCount, callback);
+          final remainingEntries = availableEntries.where((e) => e != entry).toList();
+          solutionCount = _solveWithBacktrackingByClue(
+              remainingClues, remainingEntries, cluePossibleEntries, solutionCount, callback);
         }
 
         // Backtrack values
