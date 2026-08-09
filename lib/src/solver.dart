@@ -368,7 +368,7 @@ class Solver {
     var results = <EvaluationFinalResult>[];
     try {
       results = evaluator.evaluate(expressable, min: solveMin, max: solveMax);
-    } on EvaluatorNotPossiblexception catch (e) {
+    } on EvaluatorNotPossibleException catch (e) {
       if (tracer.trace) {
         tracer.logSolve('    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
       }
@@ -388,7 +388,7 @@ class Solver {
       updated = true;
     }
 
-    // Reduce resutls to only those that match the possible values
+    // Reduce results to only those that match the possible values
     if (possibleValues.length < newPossibleValues.length) {
       results = results.where((r) => expressable.possibleValues!.contains(r.value)).toList();
     }
@@ -482,7 +482,7 @@ class Solver {
           tracer.printUpdatedExpressables(puzzle, updateVariables, originalCounts);
         }
       }
-    } on EvaluatorNotPossiblexception {
+    } on EvaluatorNotPossibleException {
       // Message already printed where it occurred
     }
     return updated;
@@ -502,7 +502,7 @@ class Solver {
     var results = <EvaluationFinalResult>[];
     try {
       results = evaluator.evaluate(expressable, min: expressable.min ?? 1, max: expressable.max ?? 99999);
-    } on EvaluatorNotPossiblexception catch (e) {
+    } on EvaluatorNotPossibleException catch (e) {
       if (tracer.trace) {
         tracer.logSolve('    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
       }
@@ -532,7 +532,7 @@ class Solver {
       loopChanged = false;
 
       // Enforce distinct clue values
-      (consistent, updated) = _enforceDistinctValuesForExressable(
+      (consistent, updated) = _enforceDistinctValuesForExpressable(
         puzzle,
         puzzle.clues.values,
         trace,
@@ -540,13 +540,13 @@ class Solver {
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
-          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExressable (clues) returned inconsistent.');
+          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExpressable (clues) returned inconsistent.');
         }
         return (false, changed);
       }
 
       // Enforce distinct variable values
-      (consistent, updated) = _enforceDistinctValuesForExressable(
+      (consistent, updated) = _enforceDistinctValuesForExpressable(
         puzzle,
         puzzle.variables.values,
         trace,
@@ -554,13 +554,13 @@ class Solver {
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
-          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExressable (variables) returned inconsistent.');
+          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExpressable (variables) returned inconsistent.');
         }
         return (false, changed);
       }
 
       // Enforce distinct entry values - necessary when not mapped to clues
-      (consistent, updated) = _enforceDistinctValuesForExressable(
+      (consistent, updated) = _enforceDistinctValuesForExpressable(
         puzzle,
         puzzle.entries.values,
         trace,
@@ -568,7 +568,7 @@ class Solver {
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
-          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExressable (entries) returned inconsistent.');
+          tracer.logSolve('    Inconsistency: _enforceDistinctValuesForExpressable (entries) returned inconsistent.');
         }
         return (false, changed);
       }
@@ -589,7 +589,7 @@ class Solver {
     return (true, changed);
   }
 
-  (bool consistent, bool updated) _enforceDistinctValuesForExressable(
+  (bool consistent, bool updated) _enforceDistinctValuesForExpressable(
       PuzzleDefinition puzzle, Iterable<Expressable> expressables, bool trace) {
     var updated = false;
     var consistent = true;
@@ -1103,18 +1103,18 @@ class Solver {
       currentGroup.add(entry);
       if (adj[entry] == null) return; // No neighbors, unlikely!
       var neighbors = adj[entry]!;
-      for (var neighbor in neighbors) {
-        if (!visited.contains(neighbor)) {
+      for (var neighbour in neighbors) {
+        if (!visited.contains(neighbour)) {
           // Do not follow links to entries with only one other intersection
-          var neighborNeighbors = adj[neighbor]!.where((n) => n != entry).toList();
-          var neighborNeighborsNeighbors = neighborNeighbors.expand((e) => adj[e]!).toList();
-          var overlap = neighborNeighborsNeighbors.firstWhereOrNull((n) => n != neighbor && neighbors.contains(n));
+          var neighbourNeighbors = adj[neighbour]!.where((n) => n != entry).toList();
+          var neighbourNeighboursNeighbours = neighbourNeighbors.expand((e) => adj[e]!).toList();
+          var overlap = neighbourNeighboursNeighbours.firstWhereOrNull((n) => n != neighbour && neighbors.contains(n));
           if (overlap == null) {
             continue;
           }
           // Skip entries with 2 or fewer intersections to avoid chains
-          if (adj[neighbor]!.length <= 2) continue;
-          findGroup(neighbor, currentGroup);
+          if (adj[neighbour]!.length <= 2) continue;
+          findGroup(neighbour, currentGroup);
         }
       }
     }

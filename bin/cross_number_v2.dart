@@ -21,6 +21,7 @@ import '../puzzles/simple_puzzle.dart';
 import '../puzzles/snakes_and_ladders.dart';
 import '../puzzles/splits.dart';
 import '../puzzles/sum_squares.dart';
+import '../puzzles/summingsquares.dart';
 import '../puzzles/thirty.dart';
 import '../puzzles/threes.dart';
 import '../puzzles/wheels.dart';
@@ -43,6 +44,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'thirty': thirty,
   'threes': threes,
   'wheels': wheels,
+  'summingsquares': summingsquares,
 };
 
 void main(List<String> arguments) {

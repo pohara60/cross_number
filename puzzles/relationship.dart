@@ -231,7 +231,6 @@ class RelationshipConstraint extends PuzzleConstraint {
     return true;
   }
 
-  @override
   bool printSets() {
     // Print all sets
     for (var clueSet in allClueSets) {
@@ -268,11 +267,11 @@ class RelationshipConstraint extends PuzzleConstraint {
     return (true, false);
   }
 
-  @override
   var numSolutions = 0;
   var savedVariableValueStrings = <int, String>{};
   var savedEntryValueStrings = <int, String>{};
   var savedMessage = <int, String>{};
+  @override
   bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) {
     if (!checkSets()) return false;
     // Sort variables by numeric value and check message
@@ -280,10 +279,8 @@ class RelationshipConstraint extends PuzzleConstraint {
     var sortedVariableWithValues = List.from(variableWithValues);
     sortedVariableWithValues.sort((a, b) => a.possibleValues!.first.compareTo(b.possibleValues!.first));
     var message = sortedVariableWithValues.map((v) => v.id).join();
-    var variableValues = variableWithValues.map((v) => v.possibleValues!.first).toList();
-    var variableValueString = variableWithValues.map((v) => '${v.id}=${v.possibleValues!.first}').join(', ');
+    var variableValueString = variableWithValues.map((v) => '${v.id}=${v.possibleValues.first}').join(', ');
     var entryWithValues = puzzle.entries.values.where((e) => e.isSolved && e.expressionConstraints.isNotEmpty).toList();
-    var entryValues = entryWithValues.map((e) => e.possibleValues!.first).toList();
     var entryValueString = entryWithValues.map((e) => '${e.id}=${e.possibleValues!.first}').join(', ');
     // Message: By usInG WoNKY wORDS PiTCH a LAter clUE
     // If new solution, save message, variable and cell values

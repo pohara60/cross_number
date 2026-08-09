@@ -1,6 +1,5 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:crossnumber/src/expressions/monadic.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/entry.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -26,41 +25,11 @@ PuzzleDefinition snakesAndLadders() {
     grids: {'main': grid},
     puzzleConstraints: [SnakesAndLaddersConstraint()],
     entries: {
-      'D94': Entry(
-          id: 'D94',
-          row: 0,
-          col: 6,
-          length: 3,
-          orientation: EntryOrientation.down,
-          clueId: 'D94'),
-      'D68': Entry(
-          id: 'D68',
-          row: 3,
-          col: 7,
-          length: 4,
-          orientation: EntryOrientation.down,
-          clueId: 'D68'),
-      'D61': Entry(
-          id: 'D61',
-          row: 3,
-          col: 0,
-          length: 4,
-          orientation: EntryOrientation.down,
-          clueId: 'D61'),
-      'D42': Entry(
-          id: 'D42',
-          row: 5,
-          col: 1,
-          length: 4,
-          orientation: EntryOrientation.down,
-          clueId: 'D42'),
-      'U45': Entry(
-          id: 'U45',
-          row: 5,
-          col: 4,
-          length: 5,
-          orientation: EntryOrientation.up,
-          clueId: 'U45'),
+      'D94': Entry(id: 'D94', row: 0, col: 6, length: 3, orientation: EntryOrientation.down, clueId: 'D94'),
+      'D68': Entry(id: 'D68', row: 3, col: 7, length: 4, orientation: EntryOrientation.down, clueId: 'D68'),
+      'D61': Entry(id: 'D61', row: 3, col: 0, length: 4, orientation: EntryOrientation.down, clueId: 'D61'),
+      'D42': Entry(id: 'D42', row: 5, col: 1, length: 4, orientation: EntryOrientation.down, clueId: 'D42'),
+      'U45': Entry(id: 'U45', row: 5, col: 4, length: 5, orientation: EntryOrientation.up, clueId: 'U45'),
       // 'U38': Entry(
       //     id: 'U38',
       //     row: 6,
@@ -68,20 +37,8 @@ PuzzleDefinition snakesAndLadders() {
       //     length: 3,
       //     orientation: EntryOrientation.up,
       //     clueId: 'U38'),
-      'U15': Entry(
-          id: 'U15',
-          row: 8,
-          col: 5,
-          length: 4,
-          orientation: EntryOrientation.up,
-          clueId: 'U15'),
-      'U11': Entry(
-          id: 'U11',
-          row: 8,
-          col: 9,
-          length: 4,
-          orientation: EntryOrientation.up,
-          clueId: 'U11'),
+      'U15': Entry(id: 'U15', row: 8, col: 5, length: 4, orientation: EntryOrientation.up, clueId: 'U15'),
+      'U11': Entry(id: 'U11', row: 8, col: 9, length: 4, orientation: EntryOrientation.up, clueId: 'U11'),
       'A1': Entry(
         id: 'A1',
         clueId: 'A1',
@@ -164,20 +121,17 @@ PuzzleDefinition snakesAndLadders() {
       ),
     },
     clues: {
-      'D42':
-          Clue('D42', [ExpressionConstraint(r'$multiple #numberevendigits')]),
+      'D42': Clue('D42', [ExpressionConstraint(r'$multiple #numberevendigits')]),
       'D61': Clue('D61', [ExpressionConstraint(r'$square #square')]),
       'D68': Clue('D68', [ExpressionConstraint(r'#productfiveprimes')]),
-      'D94':
-          Clue('D94', [ExpressionConstraint(r'$multiple #numberevendigits')]),
+      'D94': Clue('D94', [ExpressionConstraint(r'$multiple #numberevendigits')]),
       'U11': Clue('U11', [ExpressionConstraint(r'$cuberoot A41')]),
       'U15': Clue('U15', [ExpressionConstraint(r'$double #square')]),
       // 'U38': Clue('U38', [ExpressionConstraint(r'$half #sumdigits')]),
       'U45': Clue('U45', [ExpressionConstraint(r'#square')]),
       'A1': Clue('A1', [ExpressionConstraint(r'$ishighestacross #cube')]),
       'A20': Clue('A20', [ExpressionConstraint(r'$islowestacross #cube')]),
-      'A21': Clue(
-          'A21', [ExpressionConstraint(r'1 + $primepower #twodigitprime')]),
+      'A21': Clue('A21', [ExpressionConstraint(r'1 + $primepower #twodigitprime')]),
       'A40': Clue('A40', [ExpressionConstraint(r'$cube #square')]),
       'A41': Clue('A41', [ExpressionConstraint(r'#cube')]),
       'A60': Clue('A60', [ExpressionConstraint(r'$primepower #twodigitprime')]),
@@ -218,12 +172,10 @@ class SnakesAndLaddersConstraint extends PuzzleConstraint {
   void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
 
   @override
-  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) =>
-      (true, false);
+  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
 
   @override
-  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) =>
-      (true, false);
+  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
 
   @override
   bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) {
@@ -271,7 +223,6 @@ class SnakesAndLaddersConstraint extends PuzzleConstraint {
       }
     }
     if (duplicate) return false;
-    ;
 
     // Check d94 has multiple of number of even digits
     var numberOfEvenDigits = countEvenDigits(a1Str) +

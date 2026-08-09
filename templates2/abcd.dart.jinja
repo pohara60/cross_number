@@ -1,0 +1,114 @@
+/*
+# {{env['ABCD']}} Puzzle Solver
+
+## Puzzle
+
+{{env['title']}}
+
+{{env['instructions']}}
+
+```{{env['grid']}}
+{% for line in env['clue_text'].rstrip().split('\n') %}
+{{line}}{% endfor %}
+```
+
+## Solution
+
+```
+```
+
+## Lessons Learned
+
+
+ */
+
+// ignore_for_file: unused_import
+import 'dart:collection';
+import 'dart:math';
+import 'package:crossnumber/src/expressions/generators.dart';
+import 'package:crossnumber/src/expressions/monadic.dart';
+import 'package:crossnumber/src/models/clue.dart';
+import 'package:crossnumber/src/models/entry.dart';
+import 'package:crossnumber/src/models/expression_constraint.dart';
+import 'package:crossnumber/src/models/grid.dart';
+import 'package:crossnumber/src/models/puzzle_constraint.dart';
+import 'package:crossnumber/src/models/puzzle_definition.dart';
+import 'package:crossnumber/src/models/variable.dart';
+
+PuzzleDefinition {{env['abcd']}}() {
+
+  var gridString = [{% for line in env['grid'].rstrip().split('\n') %}
+    '{{line}}',{% endfor %}
+  ];
+
+  // Register puzzle specific functions
+  // ignore: unused_local_variable
+  final MonadicFunctionRegistry monadicFunctionRegistry =
+      MonadicFunctionRegistry();
+  // monadicFunctionRegistry.registerFunction('firstfactor',
+  //     (values, {int? min, int? max}) => getNthPrimeFactorList(values, 1));
+
+  final puzzle = PuzzleDefinition.fromString(
+    name: '{{env['ABCD']}}',
+    gridString: gridString.join('\n'),
+    mappingIsKnown: true,
+    puzzleConstraints: [{{env['ABCD']}}Constraint()],
+    // orderingConstraints: [OrderingConstraint(allClues: true)],
+    entries: {
+    },
+    clues: {
+      {{env['clues']}}
+    },
+    variables: {
+      // 'A': Variable('A', getVariableValues(2)),
+    },
+  );
+  setAnswers(puzzle);
+  return puzzle;
+}
+
+// PrimeGenerator? primeGenerator;
+// Set<int> getVariableValues(int length) {
+// // get primes of length
+//   var min = pow(10, length - 1).toInt();
+//   var max = pow(10, length).toInt() - 1;
+//   primeGenerator ??= GeneratorRegistry().get('prime') as PrimeGenerator;
+//   final variableList = primeGenerator!.getValues(min, max).toSet();
+//   return variableList;
+// }
+
+// List<int> getReversiblePrimesNDigits(int n) {
+//   primeGenerator ??= GeneratorRegistry().get('prime') as PrimeGenerator;
+//   var min = pow(10, n - 1).toInt();
+//   var max = pow(10, n).toInt() - 1;
+//   var primes = primeGenerator!.getValues(min, max);
+//   return primes.where((p) {
+//     var s = p.toString();
+//     var rs = s.split('').reversed.join('');
+//     return s != rs && primes.contains(int.parse(rs));
+//   }).toList();
+// }
+
+void setAnswers(PuzzleDefinition puzzle) {
+  // puzzle.clues['1D']!.answer = 11;
+}
+
+
+class {{env['ABCD']}}Constraint extends PuzzleConstraint {
+  @override
+  void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
+
+  @override
+  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) =>
+      (true, false);
+
+  @override
+  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) =>
+      (true, false);
+
+  @override
+  bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) => true;
+
+  @override
+  void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
+}

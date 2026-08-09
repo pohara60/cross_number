@@ -18,7 +18,6 @@ import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
-import 'package:crossnumber/src/utils/set.dart';
 
 PuzzleDefinition splits() {
   var gridString = [

@@ -314,7 +314,7 @@ void main(List<String> args) {
                                 u38NewValues.add(u38);
                                 d94NewValues.add(d94);
                                 d42NewValues.add(d42);
-                                [
+                                for (var element in [
                                   'a1=$a1',
                                   'a20=$a20',
                                   'a21=$a21',
@@ -333,9 +333,9 @@ void main(List<String> args) {
                                   'd68=$d68',
                                   'd61=$d61',
                                   'd42=$d42'
-                                ].forEach((element) {
+                                ]) {
                                   print(element);
-                                });
+                                }
 
                                 pathDigits.removeWhere(
                                     (digit) => newPathDigits.contains(digit));
@@ -568,9 +568,9 @@ Set<int> cubeCube10Digits() {
 }
 
 Set<int> twoDigitPrimeToPrimePower10Digits() {
-  var _generator = GeneratorRegistry().get('twodigitprimetoprimepower')
+  var generator = GeneratorRegistry().get('twodigitprimetoprimepower')
       as TwoDigitPrimeToPrimePowerGenerator;
-  var results = _generator.getValues(1000000000, 9999999999).toSet();
+  var results = generator.getValues(1000000000, 9999999999).toSet();
   return results;
 }
 

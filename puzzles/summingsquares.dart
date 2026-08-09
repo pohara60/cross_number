@@ -1,0 +1,137 @@
+/*
+# SummingSquares Puzzle Solver
+
+## Puzzle
+
+Summing Squares
+
+The sum in question is 5ac which is the total of the five 3-digit entries.
+
+```+--+--+--+--+--+
+|1 :  :2 |3 :4 |
++::+--+::+--+::+
+|  |5 :  :  :  |
++::+--+::+--+::+
+|6 :  :  |7 :  |
++--+--+--+--+--+
+
+
+Across
+1	#square
+3	
+5	A1+A6+D1+D2+D4
+6	#square
+7	
+Down
+1	$square A7
+2	$square A3
+4	#square
+```
+
+## Solution
+
+```
+```
+
+## Lessons Learned
+
+
+ */
+
+// ignore_for_file: unused_import
+import 'dart:collection';
+import 'dart:math';
+import 'package:crossnumber/src/expressions/generators.dart';
+import 'package:crossnumber/src/expressions/monadic.dart';
+import 'package:crossnumber/src/models/clue.dart';
+import 'package:crossnumber/src/models/entry.dart';
+import 'package:crossnumber/src/models/expression_constraint.dart';
+import 'package:crossnumber/src/models/grid.dart';
+import 'package:crossnumber/src/models/puzzle_constraint.dart';
+import 'package:crossnumber/src/models/puzzle_definition.dart';
+import 'package:crossnumber/src/models/variable.dart';
+
+PuzzleDefinition summingsquares() {
+  var gridString = [
+    '+--+--+--+--+--+',
+    '|1 :  :2 |3 :4 |',
+    '+::+--+::+--+::+',
+    '|  |5 :  :  :  |',
+    '+::+--+::+--+::+',
+    '|6 :  :  |7 :  |',
+    '+--+--+--+--+--+',
+  ];
+
+  // Register puzzle specific functions
+  // ignore: unused_local_variable
+  final MonadicFunctionRegistry monadicFunctionRegistry = MonadicFunctionRegistry();
+  // monadicFunctionRegistry.registerFunction('firstfactor',
+  //     (values, {int? min, int? max}) => getNthPrimeFactorList(values, 1));
+
+  final puzzle = PuzzleDefinition.fromString(
+    name: 'SummingSquares',
+    gridString: gridString.join('\n'),
+    mappingIsKnown: true,
+    puzzleConstraints: [SummingSquaresConstraint()],
+    // orderingConstraints: [OrderingConstraint(allClues: true)],
+    entries: {},
+    clues: {
+      'A1': Clue('A1', [ExpressionConstraint(r'#square')], length: 3),
+      'A3': Clue('A3', [], length: 2),
+      'A5': Clue('A5', [ExpressionConstraint(r'A1+A6+D1+D2+D4')], length: 4),
+      'A6': Clue('A6', [ExpressionConstraint(r'#square')], length: 3),
+      'A7': Clue('A7', [], length: 2),
+      'D1': Clue('D1', [ExpressionConstraint(r'#square'), ExpressionConstraint(r'$square A7')], length: 3),
+      'D2': Clue('D2', [ExpressionConstraint(r'#square'), ExpressionConstraint(r'$square A3')], length: 3),
+      'D4': Clue('D4', [ExpressionConstraint(r'#square')], length: 3),
+    },
+    variables: {
+      // 'A': Variable('A', getVariableValues(2)),
+    },
+  );
+  setAnswers(puzzle);
+  return puzzle;
+}
+
+// PrimeGenerator? primeGenerator;
+// Set<int> getVariableValues(int length) {
+// // get primes of length
+//   var min = pow(10, length - 1).toInt();
+//   var max = pow(10, length).toInt() - 1;
+//   primeGenerator ??= GeneratorRegistry().get('prime') as PrimeGenerator;
+//   final variableList = primeGenerator!.getValues(min, max).toSet();
+//   return variableList;
+// }
+
+// List<int> getReversiblePrimesNDigits(int n) {
+//   primeGenerator ??= GeneratorRegistry().get('prime') as PrimeGenerator;
+//   var min = pow(10, n - 1).toInt();
+//   var max = pow(10, n).toInt() - 1;
+//   var primes = primeGenerator!.getValues(min, max);
+//   return primes.where((p) {
+//     var s = p.toString();
+//     var rs = s.split('').reversed.join('');
+//     return s != rs && primes.contains(int.parse(rs));
+//   }).toList();
+// }
+
+void setAnswers(PuzzleDefinition puzzle) {
+  // puzzle.clues['1D']!.answer = 11;
+}
+
+class SummingSquaresConstraint extends PuzzleConstraint {
+  @override
+  void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
+
+  @override
+  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
+
+  @override
+  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
+
+  @override
+  bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) => true;
+
+  @override
+  void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
+}
