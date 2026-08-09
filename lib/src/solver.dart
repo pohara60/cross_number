@@ -157,7 +157,7 @@ class Solver {
             return solutionCount; // Stop if callback returns false
           }
         }
-        if (tracer.traceBacktrace) tracer.printSolution(puzzle);
+        tracer.printSolution(puzzle);
         solutionCount++;
       } else {
         tracer.logBacktrace('Backtracking: Not a valid solution.');
@@ -200,7 +200,18 @@ class Solver {
         }
       }
 
+      bool forcedPropagation = false;
+      if (currentExpressable is Entry) {
+        // Force propagation of the entry's value
+        if (!currentExpressable.forcePropagation) {
+          currentExpressable.forcePropagation = true;
+          forcedPropagation = true;
+        }
+      }
       var (consistent, updated) = _propagateConstraints(tracer.traceBacktrace); // Propagate the change
+      if (currentExpressable is Entry && forcedPropagation == true) {
+        currentExpressable.forcePropagation = false; // Reset the forcePropagation flag
+      }
       tracer.logBacktrace('Backtracking: Propagation result: consistent=$consistent, updated=$updated');
 
       if (consistent) {
