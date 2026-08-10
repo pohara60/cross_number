@@ -31,54 +31,64 @@ PuzzleDefinition wheels() {
     '|12:  |  |13:  :  |',
     '+--+--+--+--+--+--+',
   ];
-  Set<int> getVariableValues(min, max) =>
-      Set.from(List.generate(max - min + 1, (index) => index + min));
+  Set<int> getVariableValues(min, max) => Set.from(List.generate(max - min + 1, (index) => index + min));
   final variableValues60 = getVariableValues(1, 60);
   final puzzle = PuzzleDefinition.fromString(
     name: 'Wheels',
     gridString: gridString.join('\n'),
+    entries: {
+      'A1': Entry(id: 'A1', constraints: [ExpressionConstraint(r"$square D1")]),
+      'A3': Entry(id: 'A3', constraints: [ExpressionConstraint("B")]),
+      'A5': Entry(id: 'A5', constraints: [ExpressionConstraint("T")]),
+      'A6': Entry(id: 'A6', constraints: [ExpressionConstraint("F")]),
+      'A7': Entry(id: 'A7', constraints: [ExpressionConstraint(r"$square b")]),
+      'A8': Entry(id: 'A8', constraints: [ExpressionConstraint("f")]),
+      'A9': Entry(id: 'A9', constraints: [ExpressionConstraint(r"$cube C")]),
+      'A10': Entry(id: 'A10', constraints: [ExpressionConstraint("e")]),
+      'A12': Entry(id: 'A12', constraints: [ExpressionConstraint(r"$factor A3")]),
+      'A13': Entry(id: 'A13', constraints: [ExpressionConstraint(r"$square D11")]),
+      'D1': Entry(id: 'D1', constraints: [ExpressionConstraint("A")]),
+      'D2': Entry(id: 'D2', constraints: [ExpressionConstraint("20 * Y")]),
+      'D4': Entry(id: 'D4', constraints: [ExpressionConstraint(r"$square A3")]),
+      'D6': Entry(id: 'D6', constraints: [ExpressionConstraint(r"$lt A3")]),
+      'D7': Entry(id: 'D7', constraints: [ExpressionConstraint("c")]),
+      'D8': Entry(id: 'D8', constraints: [ExpressionConstraint(r"$square A8")]),
+      'D9': Entry(id: 'D9', constraints: [ExpressionConstraint(r"$cube d")]),
+      'D11': Entry(id: 'D11', constraints: [ExpressionConstraint("D")]),
+    },
     clues: {
-      '1A': Clue('1A', [ExpressionConstraint(r"$square 1D")]),
-      '3A': Clue('3A', [ExpressionConstraint("B")]),
-      '5A': Clue('5A', [ExpressionConstraint("T")]),
-      '6A': Clue('6A', [ExpressionConstraint("F")]),
-      '7A': Clue('7A', [ExpressionConstraint(r"$square b")]),
-      '8A': Clue('8A', [ExpressionConstraint("f")]),
-      '9A': Clue('9A', [ExpressionConstraint(r"$cube C")]),
-      '10A': Clue('10A', [ExpressionConstraint("e")]),
-      '12A': Clue('12A', [ExpressionConstraint(r"$factor 3A")]),
-      '13A': Clue('13A', [ExpressionConstraint(r"$square 11D")]),
-      '1D': Clue('1D', [ExpressionConstraint("A")]),
-      '2D': Clue('2D', [ExpressionConstraint("20 * Y")]),
-      '4D': Clue('4D', [ExpressionConstraint(r"$square 3A")]),
-      '6D': Clue('6D', [ExpressionConstraint(r"$lt 3A")]),
-      '7D': Clue('7D', [ExpressionConstraint("c")]),
-      '8D': Clue('8D', [ExpressionConstraint(r"$square 8A")]),
-      '9D': Clue('9D', [ExpressionConstraint(r"$cube d")]),
-      '11D': Clue('11D', [ExpressionConstraint("D")]),
+      // '1A': Clue('1A', [ExpressionConstraint(r"$square 1D")]),
+      // '3A': Clue('3A', [ExpressionConstraint("B")]),
+      // '5A': Clue('5A', [ExpressionConstraint("T")]),
+      // '6A': Clue('6A', [ExpressionConstraint("F")]),
+      // '7A': Clue('7A', [ExpressionConstraint(r"$square b")]),
+      // '8A': Clue('8A', [ExpressionConstraint("f")]),
+      // '9A': Clue('9A', [ExpressionConstraint(r"$cube C")]),
+      // '10A': Clue('10A', [ExpressionConstraint("e")]),
+      // '12A': Clue('12A', [ExpressionConstraint(r"$factor 3A")]),
+      // '13A': Clue('13A', [ExpressionConstraint(r"$square 11D")]),
+      // '1D': Clue('1D', [ExpressionConstraint("A")]),
+      // '2D': Clue('2D', [ExpressionConstraint("20 * Y")]),
+      // '4D': Clue('4D', [ExpressionConstraint(r"$square 3A")]),
+      // '6D': Clue('6D', [ExpressionConstraint(r"$lt 3A")]),
+      // '7D': Clue('7D', [ExpressionConstraint("c")]),
+      // '8D': Clue('8D', [ExpressionConstraint(r"$square 8A")]),
+      // '9D': Clue('9D', [ExpressionConstraint(r"$cube d")]),
+      // '11D': Clue('11D', [ExpressionConstraint("D")]),
     },
     variables: {
-      "B": Variable("B", variableValues60,
-          constraints: [ExpressionConstraint(r"$lte (60-A+b)")]),
-      "T": Variable("T", getVariableValues(1, 240),
-          constraints: [ExpressionConstraint("A+B+C+D = b+c+d+e")]),
+      "B": Variable("B", variableValues60, constraints: [ExpressionConstraint(r"$lte (60-A+b)")]),
+      "T": Variable("T", getVariableValues(1, 240), constraints: [ExpressionConstraint("A+B+C+D = b+c+d+e")]),
       "F": Variable("F", getVariableValues(1, 99)),
-      "b": Variable("b", variableValues60,
-          constraints: [ExpressionConstraint(r"$lte A")]),
-      "f": Variable("f", getVariableValues(1, 99),
-          constraints: [ExpressionConstraint(r"$lt F")]),
-      "C": Variable("C", variableValues60,
-          constraints: [ExpressionConstraint(r"$lte (60-A+b-B+c)")]),
-      "e": Variable("e", variableValues60,
-          constraints: [ExpressionConstraint("A+B+C+D-b-c-d")]),
+      "b": Variable("b", variableValues60, constraints: [ExpressionConstraint(r"$lte A")]),
+      "f": Variable("f", getVariableValues(1, 99), constraints: [ExpressionConstraint(r"$lt F")]),
+      "C": Variable("C", variableValues60, constraints: [ExpressionConstraint(r"$lte (60-A+b-B+c)")]),
+      "e": Variable("e", variableValues60, constraints: [ExpressionConstraint("A+B+C+D-b-c-d")]),
       "A": Variable("A", variableValues60),
       "Y": Variable("Y", getVariableValues(17, 50)),
-      "c": Variable("c", variableValues60,
-          constraints: [ExpressionConstraint(r"$lte (A-b+B)")]),
-      "d": Variable("d", variableValues60,
-          constraints: [ExpressionConstraint(r"$lte (A-b+B-c+C)")]),
-      "D": Variable("D", variableValues60,
-          constraints: [ExpressionConstraint(r"$lte (60-A+b-B+c-C+d)")]),
+      "c": Variable("c", variableValues60, constraints: [ExpressionConstraint(r"$lte (A-b+B)")]),
+      "d": Variable("d", variableValues60, constraints: [ExpressionConstraint(r"$lte (A-b+B-c+C)")]),
+      "D": Variable("D", variableValues60, constraints: [ExpressionConstraint(r"$lte (60-A+b-B+c-C+d)")]),
     },
   );
 
@@ -89,24 +99,43 @@ PuzzleDefinition wheels() {
 }
 
 void setAnswers(PuzzleDefinition puzzle) {
-  puzzle.clues['1A']!.answer = 196;
-  puzzle.clues['3A']!.answer = 26;
-  puzzle.clues['5A']!.answer = 68;
-  puzzle.clues['6A']!.answer = 20;
-  puzzle.clues['7A']!.answer = 16;
-  puzzle.clues['8A']!.answer = 11;
-  puzzle.clues['9A']!.answer = 27;
-  puzzle.clues['10A']!.answer = 41;
-  puzzle.clues['12A']!.answer = 13;
-  puzzle.clues['13A']!.answer = 625;
-  puzzle.clues['1D']!.answer = 14;
-  puzzle.clues['2D']!.answer = 660;
-  puzzle.clues['4D']!.answer = 676;
-  puzzle.clues['6D']!.answer = 21;
-  puzzle.clues['7D']!.answer = 17;
-  puzzle.clues['8D']!.answer = 121;
-  puzzle.clues['9D']!.answer = 216;
-  puzzle.clues['11D']!.answer = 25;
+  puzzle.entries['A1']!.answer = 196;
+  puzzle.entries['A3']!.answer = 26;
+  puzzle.entries['A5']!.answer = 68;
+  puzzle.entries['A6']!.answer = 20;
+  puzzle.entries['A7']!.answer = 16;
+  puzzle.entries['A8']!.answer = 11;
+  puzzle.entries['A9']!.answer = 27;
+  puzzle.entries['A10']!.answer = 41;
+  puzzle.entries['A12']!.answer = 13;
+  puzzle.entries['A13']!.answer = 625;
+  puzzle.entries['D1']!.answer = 14;
+  puzzle.entries['D2']!.answer = 660;
+  puzzle.entries['D4']!.answer = 676;
+  puzzle.entries['D6']!.answer = 21;
+  puzzle.entries['D7']!.answer = 17;
+  puzzle.entries['D8']!.answer = 121;
+  puzzle.entries['D9']!.answer = 216;
+  puzzle.entries['D11']!.answer = 25;
+
+  // puzzle.clues['1A']!.answer = 196;
+  // puzzle.clues['3A']!.answer = 26;
+  // puzzle.clues['5A']!.answer = 68;
+  // puzzle.clues['6A']!.answer = 20;
+  // puzzle.clues['7A']!.answer = 16;
+  // puzzle.clues['8A']!.answer = 11;
+  // puzzle.clues['9A']!.answer = 27;
+  // puzzle.clues['10A']!.answer = 41;
+  // puzzle.clues['12A']!.answer = 13;
+  // puzzle.clues['13A']!.answer = 625;
+  // puzzle.clues['1D']!.answer = 14;
+  // puzzle.clues['2D']!.answer = 660;
+  // puzzle.clues['4D']!.answer = 676;
+  // puzzle.clues['6D']!.answer = 21;
+  // puzzle.clues['7D']!.answer = 17;
+  // puzzle.clues['8D']!.answer = 121;
+  // puzzle.clues['9D']!.answer = 216;
+  // puzzle.clues['11D']!.answer = 25;
 
   puzzle.variables['A']!.answer = 14;
   puzzle.variables['B']!.answer = 26;
