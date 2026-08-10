@@ -36,15 +36,13 @@ import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/variable.dart';
 
 PuzzleDefinition {{env['abcd']}}() {
-
   var gridString = [{% for line in env['grid'].rstrip().split('\n') %}
     '{{line}}',{% endfor %}
   ];
 
   // Register puzzle specific functions
   // ignore: unused_local_variable
-  final MonadicFunctionRegistry monadicFunctionRegistry =
-      MonadicFunctionRegistry();
+  final MonadicFunctionRegistry monadicFunctionRegistry = MonadicFunctionRegistry();
   // monadicFunctionRegistry.registerFunction('firstfactor',
   //     (values, {int? min, int? max}) => getNthPrimeFactorList(values, 1));
 
@@ -55,10 +53,9 @@ PuzzleDefinition {{env['abcd']}}() {
     puzzleConstraints: [{{env['ABCD']}}Constraint()],
     // orderingConstraints: [OrderingConstraint(allClues: true)],
     entries: {
-    },
+      {{env['entries']}}    },
     clues: {
-      {{env['clues']}}
-    },
+      {{env['clues']}}    },
     variables: {
       // 'A': Variable('A', getVariableValues(2)),
     },
@@ -94,18 +91,15 @@ void setAnswers(PuzzleDefinition puzzle) {
   // puzzle.entries['D1']!.answer = 11;
 }
 
-
 class {{env['ABCD']}}Constraint extends PuzzleConstraint {
   @override
   void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
 
   @override
-  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) =>
-      (true, false);
+  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
 
   @override
-  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) =>
-      (true, false);
+  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
 
   @override
   bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) => true;

@@ -1,0 +1,36 @@
+Cross Number Solver v2 CLI
+Loading puzzle: summingsquares
+Unsupported monadic for inversion: square
+Unsupported monadic for inversion: square
+Puzzle: SummingSquares
+Grids: (main)
+Entries:{
+  A1: #square 900 {100..119,880 more,999}
+  A3:  90 {10..29,70 more,99}
+  A5: ((((A1+A6)+D1)+D2)+D4) 9000 {1000..1019,8980 more,9999}
+  A6: #square 900 {100..119,880 more,999}
+  A7:  90 {10..29,70 more,99}
+  D1: #square, square(A7) 900 {100..119,880 more,999}
+  D2: #square, square(A3) 900 {100..119,880 more,999}
+  D4: #square 900 {100..119,880 more,999}
+}
+Clues:{
+}
+Variables:{
+}
+
+Puzzle: SummingSquares
+Solve time: 74ms
+Solution not complete, backtracking
+Solution:
++--+--+--+--+--+
+| 3  2  4| 2  1|
++  +--+  +--+  +
+| 6| 1  4  1  6|
++  +--+  +--+  +
+| 1  2  1| 1  9|
++--+--+--+--+--+
+
+Backtracking: 1 solutions found.
+Backtracking time: 5604ms
+

@@ -75,7 +75,6 @@ PuzzleDefinition summingsquares() {
     puzzleConstraints: [SummingSquaresConstraint()],
     // orderingConstraints: [OrderingConstraint(allClues: true)],
     entries: {
-      // 'L.A1': Entry(id: 'L.A1', constraints: [ExpressionConstraint('R.D1+R.A3')]),
       'A1': Entry(id: 'A1', constraints: [ExpressionConstraint(r'#square')]),
       'A3': Entry(id: 'A3', constraints: []),
       'A5': Entry(id: 'A5', constraints: [ExpressionConstraint(r'A1+A6+D1+D2+D4')]),
@@ -86,7 +85,14 @@ PuzzleDefinition summingsquares() {
       'D4': Entry(id: 'D4', constraints: [ExpressionConstraint(r'#square')]),
     },
     clues: {
-      // 'A1': Clue('A1', [ExpressionConstraint(r'#square')], length: 3),
+      // '1A': Clue('1A', [ExpressionConstraint(r'#square')], length: 3),
+      // '3A': Clue('3A', [], length: 2),
+      // '5A': Clue('5A', [ExpressionConstraint(r'A1+A6+D1+D2+D4')], length: 4),
+      // '6A': Clue('6A', [ExpressionConstraint(r'#square')], length: 3),
+      // '7A': Clue('7A', [], length: 2),
+      // '1D': Clue('1D', [ExpressionConstraint(r'$square A7')], length: 3),
+      // '2D': Clue('2D', [ExpressionConstraint(r'$square A3')], length: 3),
+      // '4D': Clue('4D', [ExpressionConstraint(r'#square')], length: 3),
     },
     variables: {
       // 'A': Variable('A', getVariableValues(2)),
@@ -120,6 +126,7 @@ PuzzleDefinition summingsquares() {
 
 void setAnswers(PuzzleDefinition puzzle) {
   // puzzle.clues['1D']!.answer = 11;
+  // puzzle.entries['D1']!.answer = 11;
 }
 
 class SummingSquaresConstraint extends PuzzleConstraint {
