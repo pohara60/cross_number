@@ -17,12 +17,10 @@ class CouplesDifferencesConstraint extends PuzzleConstraint {
   void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
 
   @override
-  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) =>
-      (true, false);
+  (bool, bool) propagate(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
 
   @override
-  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) =>
-      (true, false);
+  (bool, bool) enforceDistinct(PuzzleDefinition puzzle, {bool trace = false}) => (true, false);
 
   @override
   bool checkSolution(PuzzleDefinition puzzle, {bool trace = false}) {
@@ -58,62 +56,33 @@ PuzzleDefinition couplesDifferences() {
   ];
 
   // Register puzzle specific functions
-  final MonadicFunctionRegistry monadicFunctionRegistry =
-      MonadicFunctionRegistry();
+  final MonadicFunctionRegistry monadicFunctionRegistry = MonadicFunctionRegistry();
   monadicFunctionRegistry.registerFunction(
-      'isDivisibleNine',
-      (values, {int? min, int? max}) =>
-          values.where((v) => v % 9 == 0).toList());
+      'isDivisibleNine', (values, {int? min, int? max}) => values.where((v) => v % 9 == 0).toList());
 
   var puzzle = PuzzleDefinition.fromString(
     name: 'CouplesDifferences',
     mappingIsKnown: true, // No mapping of Clues to Entries needed
     gridString: gridString.join('\n'),
     entries: {
-      'A1': Entry(
-          id: 'A1', constraints: [ExpressionConstraint(r"A1>D4 & A1 = 'D4")]),
-      'A2': Entry(
-          id: 'A2', constraints: [ExpressionConstraint(r"A2<D1 & A2 = 'D1")]),
-      'A5': Entry(
-          id: 'A5', constraints: [ExpressionConstraint(r"A5>D14 & A5 = 'D14")]),
-      'A7': Entry(
-          id: 'A7', constraints: [ExpressionConstraint(r"A7<D10 & A7 = 'D10")]),
-      'A9': Entry(
-          id: 'A9', constraints: [ExpressionConstraint(r"A9>D6 & A9 = 'D6")]),
-      'A13': Entry(
-          id: 'A13',
-          constraints: [ExpressionConstraint(r"A13<D2 & A13 = 'D2")]),
-      'A15': Entry(
-          id: 'A15',
-          constraints: [ExpressionConstraint(r"A15<D3 & A15 = 'D3")]),
-      'A16': Entry(
-          id: 'A16',
-          constraints: [ExpressionConstraint(r"A16<D12 & A16 = 'D12")]),
-      'A17': Entry(
-          id: 'A17',
-          constraints: [ExpressionConstraint(r"A17>D13 & A17 = 'D13")]),
-      'D1': Entry(
-          id: 'D1', constraints: [ExpressionConstraint(r"D1>A2 & D1 = 'A2")]),
-      'D2': Entry(
-          id: 'D2', constraints: [ExpressionConstraint(r"D2>A13 & D2 = 'A13")]),
-      'D3': Entry(
-          id: 'D3', constraints: [ExpressionConstraint(r"D3>A15 & D3 = 'A15")]),
-      'D4': Entry(
-          id: 'D4', constraints: [ExpressionConstraint(r"D4<A1 & D4 = 'A1")]),
-      'D6': Entry(
-          id: 'D6', constraints: [ExpressionConstraint(r"D6<A9 & D6 = 'A9")]),
-      'D10': Entry(
-          id: 'D10',
-          constraints: [ExpressionConstraint(r"D10>A7 & D10 = 'A7")]),
-      'D12': Entry(
-          id: 'D12',
-          constraints: [ExpressionConstraint(r"D12>A16 & D12 = 'A16")]),
-      'D13': Entry(
-          id: 'D13',
-          constraints: [ExpressionConstraint(r"D13<A17 & D13 = 'A17")]),
-      'D14': Entry(
-          id: 'D14',
-          constraints: [ExpressionConstraint(r"D14<A5 & D14 = 'A5")]),
+      'A1': Entry(id: 'A1', constraints: [ExpressionConstraint(r"A1>D4 & A1 = 'D4")]),
+      'A2': Entry(id: 'A2', constraints: [ExpressionConstraint(r"A2<D1 & A2 = 'D1")]),
+      'A5': Entry(id: 'A5', constraints: [ExpressionConstraint(r"A5>D14 & A5 = 'D14")]),
+      'A7': Entry(id: 'A7', constraints: [ExpressionConstraint(r"A7<D10 & A7 = 'D10")]),
+      'A9': Entry(id: 'A9', constraints: [ExpressionConstraint(r"A9>D6 & A9 = 'D6")]),
+      'A13': Entry(id: 'A13', constraints: [ExpressionConstraint(r"A13<D2 & A13 = 'D2")]),
+      'A15': Entry(id: 'A15', constraints: [ExpressionConstraint(r"A15<D3 & A15 = 'D3")]),
+      'A16': Entry(id: 'A16', constraints: [ExpressionConstraint(r"A16<D12 & A16 = 'D12")]),
+      'A17': Entry(id: 'A17', constraints: [ExpressionConstraint(r"A17>D13 & A17 = 'D13")]),
+      'D1': Entry(id: 'D1', constraints: [ExpressionConstraint(r"D1>A2 & D1 = 'A2")]),
+      'D2': Entry(id: 'D2', constraints: [ExpressionConstraint(r"D2>A13 & D2 = 'A13")]),
+      'D3': Entry(id: 'D3', constraints: [ExpressionConstraint(r"D3>A15 & D3 = 'A15")]),
+      'D4': Entry(id: 'D4', constraints: [ExpressionConstraint(r"D4<A1 & D4 = 'A1")]),
+      'D6': Entry(id: 'D6', constraints: [ExpressionConstraint(r"D6<A9 & D6 = 'A9")]),
+      'D10': Entry(id: 'D10', constraints: [ExpressionConstraint(r"D10>A7 & D10 = 'A7")]),
+      'D12': Entry(id: 'D12', constraints: [ExpressionConstraint(r"D12>A16 & D12 = 'A16")]),
+      'D13': Entry(id: 'D13', constraints: [ExpressionConstraint(r"D13<A17 & D13 = 'A17")]),
+      'D14': Entry(id: 'D14', constraints: [ExpressionConstraint(r"D14<A5 & D14 = 'A5")]),
     },
     // Difference of reversed numbers
     // 2 digits: (10a+b)-(10b+a) = 9(a-b)
@@ -122,40 +91,26 @@ PuzzleDefinition couplesDifferences() {
     // So all are multiple of 9
     // Clue I is reversed in clue IX, so its length must be greater than 1
     clues: {
-      'I': Clue(
-          'I', [ExpressionConstraint(r'$isDivisibleNine (A1-D4) = #square')],
+      'I': Clue('I', [ExpressionConstraint(r'$isDivisibleNine (A1-D4) = #square')],
           length: 2), // length 2 as it is reversed in clue IX
-      'II': Clue(
-          'II', [ExpressionConstraint(r'$isDivisibleNine (A5-D14) = #square')]),
-      'III': Clue('III',
-          [ExpressionConstraint(r'$isDivisibleNine (A9-D6) = #triangular')]),
-      'IV': Clue('IV',
-          [ExpressionConstraint(r'$isDivisibleNine (A11-D8) = #triangular')]),
-      'V': Clue('V',
-          [ExpressionConstraint(r'$isDivisibleNine (A17-D13) = #triangular')]),
+      'II': Clue('II', [ExpressionConstraint(r'$isDivisibleNine (A5-D14) = #square')]),
+      'III': Clue('III', [ExpressionConstraint(r'$isDivisibleNine (A9-D6) = #triangular')]),
+      'IV': Clue('IV', [ExpressionConstraint(r'$isDivisibleNine (A11-D8) = #triangular')]),
+      'V': Clue('V', [ExpressionConstraint(r'$isDivisibleNine (A17-D13) = #triangular')]),
       'VI': Clue(
         'VI',
-        [
-          ExpressionConstraint(r'$isDivisibleNine (D1-A2) = $multiple (VIII)')
-        ], // D3-A1
+        [ExpressionConstraint(r'$isDivisibleNine (D1-A2) = $multiple (VIII)')], // D3-A1
       ),
       'VII': Clue(
         'VII',
-        [
-          ExpressionConstraint(r'$isDivisibleNine (D2-A13) = $multiple (I)')
-        ], // A1-D
+        [ExpressionConstraint(r'$isDivisibleNine (D2-A13) = $multiple (I)')], // A1-D
       ),
-      'VIII': Clue(
-          'VIII', [ExpressionConstraint(r'$isDivisibleNine (D3-A15) = #cube')]),
+      'VIII': Clue('VIII', [ExpressionConstraint(r'$isDivisibleNine (D3-A15) = #cube')]),
       'IX': Clue(
         'IX',
-        [
-          ExpressionConstraint(r"$isDivisibleNine (D10-A7) = $multiple '(I)")
-        ], // A1-D
+        [ExpressionConstraint(r"$isDivisibleNine (D10-A7) = $multiple '(I)")], // A1-D
       ),
-      'X': Clue('X', [
-        ExpressionConstraint(r'$isDivisibleNine (D12-A16) = 2*(VI)')
-      ]), // D1-A2
+      'X': Clue('X', [ExpressionConstraint(r'$isDivisibleNine (D12-A16) = 2*(VI)')]), // D1-A2
     },
     variables: {},
     puzzleConstraints: [CouplesDifferencesConstraint()],
@@ -166,7 +121,7 @@ PuzzleDefinition couplesDifferences() {
 }
 
 void setAnswers(PuzzleDefinition puzzle) {
-  puzzle.clues['A11']!.answer = 1;
+  puzzle.clues['I']!.answer = 36;
   puzzle.clues['II']!.answer = 9;
   puzzle.clues['III']!.answer = 630;
   puzzle.clues['IV']!.answer = 2628;

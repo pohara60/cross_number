@@ -904,6 +904,10 @@ t
 u
 w
 
+
+wordspitchalaterclue => CALCULATE THIRD POWERS 
+
+
 https://www.ssynth.co.uk/~gay/cgi-bin/nph-an?line=wordspitchalaterclue&ck=&words=3&wl0=9&wl1=5&wl2=6&dict=engp&drn=forwards%2C+starting&c1=ch&time=12&d=1
 
 replicate
@@ -959,5 +963,3 @@ worspalaterclue
 
 pitch
 wordsalaterclue
-
-wordspitchalaterclue

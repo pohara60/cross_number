@@ -1,8 +1,3 @@
-/*
-
-A, B and C correspond to 2 digit clues. D corresponds to a 3 digit clue.
-*/
-
 // ignore_for_file: unused_import
 
 import 'dart:collection';
@@ -94,6 +89,9 @@ Notes
 21dn ss + w(3), so 4<=w<=983
 13dn s - B(2), 3dn=12,16,21, s=16,25, B=4,9
 15dn B + s + y(2), B+s=20,29,34, 4<=y<=79, y=4,9,16,25,36,49,64
+
+Solution:
+https://www.listenercrossword.com/Solutions/S2026/Notes_4922.html
 */
 
 PuzzleDefinition relationship() {
@@ -241,6 +239,47 @@ class RelationshipConstraint extends PuzzleConstraint {
             '${clue.id}=${value.toString().padLeft(4)} ${clue.constraints.map((c) => (c as ExpressionConstraint).expression).join(', ')}');
       }
     }
+    // Print set values with third powers of each value
+    for (var clueSet in allClueSets) {
+      var values = clueSet.clues.map((clue) => clue.isSolved ? clue.possibleValues!.first : 0).toList();
+      var valuesCubed = values.map((v) => v * v * v).toList();
+      var smallestCube = valuesCubed.reduce((a, b) => a < b ? a : b);
+      var largestCube = valuesCubed.reduce((a, b) => a > b ? a : b);
+      var middleCubes = valuesCubed.where((v) => v != smallestCube && v != largestCube).toList();
+      // Is sum smallestCube + largestCube equal to sum of middleCubes?
+      var sumSmallestLargest = smallestCube + largestCube;
+      var sumMiddle = middleCubes.reduce((a, b) => a + b);
+      var valid = sumSmallestLargest == sumMiddle;
+      print(
+          'Set ${clueSet.name} values: ${values.map((v) => v.toString().padLeft(4)).join(', ')} -  values cubed: ${valuesCubed.map((v) => v.toString().padLeft(9)).join(', ')}, sum1+4 = $sumSmallestLargest, sum 2+3 = $sumMiddle, valid = $valid');
+    }
+
+    return true;
+  }
+
+  bool setValid(ClueSet clueSet) {
+    if (clueSet.clues.any((clue) => clue.isNotSolved)) {
+      return true; // Skip if any clue is not yet assigned
+    }
+    var values = clueSet.clues.map((clue) => clue.isSolved ? clue.possibleValues!.first : 0).toList();
+    var valuesCubed = values.map((v) => v * v * v).toList();
+    var smallestCube = valuesCubed.reduce((a, b) => a < b ? a : b);
+    var largestCube = valuesCubed.reduce((a, b) => a > b ? a : b);
+    var middleCubes = valuesCubed.where((v) => v != smallestCube && v != largestCube).toList();
+    // Is sum smallestCube + largestCube equal to sum of middleCubes?
+    var sumSmallestLargest = smallestCube + largestCube;
+    var sumMiddle = middleCubes.reduce((a, b) => a + b);
+    var valid = sumSmallestLargest == sumMiddle;
+    return valid;
+  }
+
+  bool allSetsValid() {
+    // Check all sets
+    for (var clueSet in allClueSets) {
+      if (!setValid(clueSet)) {
+        return false;
+      }
+    }
     return true;
   }
 
@@ -306,7 +345,8 @@ class RelationshipConstraint extends PuzzleConstraint {
       printSets();
     }
 
-    return true;
+    bool valid = allSetsValid();
+    return valid;
   }
 
   @override

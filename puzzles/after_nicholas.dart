@@ -10,7 +10,10 @@ import 'package:crossnumber/src/models/variable.dart';
 PuzzleDefinition afterNicholas() {
 // After Nicholas by Czecker
 
-// Nicholas Parsons chaired the panel game Just a Minute on BBC Radio for over fifty years.  After he died, the ten people in this puzzle each chaired an episode of Series 86, before Sue Perkins was chosen as the new permanent chair. Each letter used in the puzzle represents a different number from 1 to 16 and the ^ symbol denotes to the power of.  All entries are distinct, and none starts with zero.
+// Nicholas Parsons chaired the panel game Just a Minute on BBC Radio for over fifty years.  After he died, the ten
+// people in this puzzle each chaired an episode of Series 86, before Sue Perkins was chosen as the new permanent chair.
+// Each letter used in the puzzle represents a different number from 1 to 16 and the ^ symbol denotes to the power of.
+// All entries are distinct, and none starts with zero.
 
   var gridString = [
     '+--+--+--+--+--+',
@@ -29,27 +32,49 @@ PuzzleDefinition afterNicholas() {
   return PuzzleDefinition.fromString(
     name: 'AfterNicholas',
     gridString: gridString.join('\n'),
+    entries: {
+      'A1': Entry(id: 'A1', constraints: [ExpressionConstraint('P*A + U*L')]),
+      'A4': Entry(id: 'A4', constraints: [ExpressionConstraint('S^(U/E)')]),
+      'A6': Entry(id: 'A6', constraints: [ExpressionConstraint('-N + I*S - H')]),
+      'A7': Entry(id: 'A7', constraints: [ExpressionConstraint('( J + E*N ) * ( N - Y )')]),
+      'A8': Entry(id: 'A8', constraints: [ExpressionConstraint('G * ( Y - L/E + S )')]),
+      'A9': Entry(id: 'A9', constraints: [ExpressionConstraint('L - U + C*Y')]),
+      'A10': Entry(id: 'A10', constraints: [ExpressionConstraint('S^(T/E) + P + ( H - E )*N')]),
+      'A13': Entry(id: 'A13', constraints: [ExpressionConstraint('-J + U + L + I - A + N')]),
+      'A15': Entry(id: 'A15', constraints: [ExpressionConstraint('T*O + M')]),
+      'A16': Entry(id: 'A16', constraints: [ExpressionConstraint('J*O')]),
+      'D1': Entry(id: 'D1', constraints: [ExpressionConstraint('P*A - U*L')]),
+      'D2': Entry(id: 'D2', constraints: [ExpressionConstraint('( S + U ) ^E')]),
+      'D3': Entry(id: 'D3', constraints: [ExpressionConstraint('N + ( I - S ) * H')]),
+      'D4': Entry(id: 'D4', constraints: [ExpressionConstraint('J + E*N - N*Y')]),
+      'D5': Entry(id: 'D5', constraints: [ExpressionConstraint('( G + Y )*L + E^S')]),
+      'D8': Entry(id: 'D8', constraints: [ExpressionConstraint('L*U*( C - Y )')]),
+      'D9': Entry(id: 'D9', constraints: [ExpressionConstraint('S*(( T/E )*P - H ) - E*N')]),
+      'D11': Entry(id: 'D11', constraints: [ExpressionConstraint('J + ( U + ( L - I )/A )*N')]),
+      'D12': Entry(id: 'D12', constraints: [ExpressionConstraint('T*O/M')]),
+      'D14': Entry(id: 'D14', constraints: [ExpressionConstraint('J + O')]),
+    },
     clues: {
-      '1A': Clue('1A', [ExpressionConstraint('P*A + U*L')]),
-      '4A': Clue('4A', [ExpressionConstraint('S^(U/E)')]),
-      '6A': Clue('6A', [ExpressionConstraint('-N + I*S - H')]),
-      '7A': Clue('7A', [ExpressionConstraint('( J + E*N ) * ( N - Y )')]),
-      '8A': Clue('8A', [ExpressionConstraint('G * ( Y - L/E + S )')]),
-      '9A': Clue('9A', [ExpressionConstraint('L - U + C*Y')]),
-      '10A': Clue('10A', [ExpressionConstraint('S^(T/E) + P + ( H - E )*N')]),
-      '13A': Clue('13A', [ExpressionConstraint('-J + U + L + I - A + N')]),
-      '15A': Clue('15A', [ExpressionConstraint('T*O + M')]),
-      '16A': Clue('16A', [ExpressionConstraint('J*O')]),
-      '1D': Clue('1D', [ExpressionConstraint('P*A - U*L')]),
-      '2D': Clue('2D', [ExpressionConstraint('( S + U ) ^E')]),
-      '3D': Clue('3D', [ExpressionConstraint('N + ( I - S ) * H')]),
-      '4D': Clue('4D', [ExpressionConstraint('J + E*N - N*Y')]),
-      '5D': Clue('5D', [ExpressionConstraint('( G + Y )*L + E^S')]),
-      '8D': Clue('8D', [ExpressionConstraint('L*U*( C - Y )')]),
-      '9D': Clue('9D', [ExpressionConstraint('S*(( T/E )*P - H ) - E*N')]),
-      '11D': Clue('11D', [ExpressionConstraint('J + ( U + ( L - I )/A )*N')]),
-      '12D': Clue('12D', [ExpressionConstraint('T*O/M')]),
-      '14D': Clue('14D', [ExpressionConstraint('J + O')]),
+      // '1A': Clue('1A', [ExpressionConstraint('P*A + U*L')]),
+      // '4A': Clue('4A', [ExpressionConstraint('S^(U/E)')]),
+      // '6A': Clue('6A', [ExpressionConstraint('-N + I*S - H')]),
+      // '7A': Clue('7A', [ExpressionConstraint('( J + E*N ) * ( N - Y )')]),
+      // '8A': Clue('8A', [ExpressionConstraint('G * ( Y - L/E + S )')]),
+      // '9A': Clue('9A', [ExpressionConstraint('L - U + C*Y')]),
+      // '10A': Clue('10A', [ExpressionConstraint('S^(T/E) + P + ( H - E )*N')]),
+      // '13A': Clue('13A', [ExpressionConstraint('-J + U + L + I - A + N')]),
+      // '15A': Clue('15A', [ExpressionConstraint('T*O + M')]),
+      // '16A': Clue('16A', [ExpressionConstraint('J*O')]),
+      // '1D': Clue('1D', [ExpressionConstraint('P*A - U*L')]),
+      // '2D': Clue('2D', [ExpressionConstraint('( S + U ) ^E')]),
+      // '3D': Clue('3D', [ExpressionConstraint('N + ( I - S ) * H')]),
+      // '4D': Clue('4D', [ExpressionConstraint('J + E*N - N*Y')]),
+      // '5D': Clue('5D', [ExpressionConstraint('( G + Y )*L + E^S')]),
+      // '8D': Clue('8D', [ExpressionConstraint('L*U*( C - Y )')]),
+      // '9D': Clue('9D', [ExpressionConstraint('S*(( T/E )*P - H ) - E*N')]),
+      // '11D': Clue('11D', [ExpressionConstraint('J + ( U + ( L - I )/A )*N')]),
+      // '12D': Clue('12D', [ExpressionConstraint('T*O/M')]),
+      // '14D': Clue('14D', [ExpressionConstraint('J + O')]),
     },
     variables: {
       'A': Variable('A', Set.from(variableValues)),

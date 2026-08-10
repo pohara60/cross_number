@@ -7,15 +7,22 @@ import 'package:crossnumber/src/models/puzzle_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/snakes_and_ladders_grid.dart';
 
-/// You throw a standard die and gradually work up the board, climbing a ladder
-/// if you land at the foot of it, and sliding down a snake if you land on its
-/// head. So, for example, if you consistently threw a 3 on your die you would
-/// land on cells 3, 6, 9, 12, 46, 49 and so on. In one special game I
-/// consistently threw the same particular number and ended up landing on 100.
-/// Your task today is to use the following clues to fill in the grid in such a
-/// way that the cells I landed on in that special game all contain different
-/// digits. The clue answers are all different and none of them starts with
-/// zero.
+/*
+  Listener Crossword No. 4895: Snakes and Ladders by IOA 
+
+  You throw a standard die and gradually work up the board, climbing a ladder
+  if you land at the foot of it, and sliding down a snake if you land on its
+  head. So, for example, if you consistently threw a 3 on your die you would
+  land on cells 3, 6, 9, 12, 46, 49 and so on. In one special game I
+  consistently threw the same particular number and ended up landing on 100.
+  Your task today is to use the following clues to fill in the grid in such a
+  way that the cells I landed on in that special game all contain different
+  digits. The clue answers are all different and none of them starts with
+  zero.
+
+  Solution: https://www.listenercrossword.com/Solutions/S2025/Notes_4895.html
+  
+*/
 
 PuzzleDefinition snakesAndLadders() {
   final grid = SnakesAndLaddersGrid(10, 10);
