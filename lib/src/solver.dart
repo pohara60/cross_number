@@ -126,7 +126,12 @@ class Solver {
       clue.possibleValues = possibleValues == null ? null : Set.from(possibleValues);
     }
     for (var entry in puzzle.entries.values) {
-      entry.possibleValues = Set.from(state.entryPossibleValues[entry.id]!);
+      var possibleValues = state.entryPossibleValues[entry.id];
+      if (possibleValues == null) {
+        entry.possibleValues = null;
+      } else {
+        entry.possibleValues = Set.from(possibleValues);
+      }
     }
     for (var variable in puzzle.variables.values) {
       variable.possibleValues = Set.from(state.variablePossibleValues[variable.name]!);

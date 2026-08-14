@@ -37,10 +37,8 @@ class Grid {
 
     // Data structures to hold parsed information temporarily
     final List<List<String>> cellContents = []; // 2D array of 2-char strings
-    final List<List<String>> horizontalSeparators =
-        []; // 2D array of 1-char strings
-    final List<List<String>> verticalSeparators =
-        []; // 2D array of 2-char strings
+    final List<List<String>> horizontalSeparators = []; // 2D array of 1-char strings
+    final List<List<String>> verticalSeparators = []; // 2D array of 2-char strings
 
     // Parse lines
     // First line is the header, skip it
@@ -79,8 +77,7 @@ class Grid {
 
     // Helper to get horizontal separator after cell (r, c)
     String? getHorizontalSeparator(int r, int c) {
-      if (r < horizontalSeparators.length &&
-          c < horizontalSeparators[r].length) {
+      if (r < horizontalSeparators.length && c < horizontalSeparators[r].length) {
         return horizontalSeparators[r][c];
       }
       return null;
@@ -116,7 +113,7 @@ class Grid {
             }
           } else if (cellContent.length == 2) {
             // Assume first char is across, second is down
-            if (cellContent[0].toUpperCase() == cellContent) {
+            if (cellContent[0].toUpperCase() == cellContent[0]) {
               acrossLetter = cellContent[0];
               downLetter = cellContent[1];
             } else {
@@ -127,8 +124,7 @@ class Grid {
         }
 
         // Create Across entry if applicable
-        if (acrossLetter != null ||
-            number != null && grid.cells[r][c].acrossEntry == null) {
+        if (acrossLetter != null || number != null && grid.cells[r][c].acrossEntry == null) {
           assert(grid.cells[r][c].acrossEntry == null);
           final entryId = acrossLetter ?? 'A' + cellContent;
           final clueId = acrossLetter != null ? null : cellContent + 'A';
@@ -162,8 +158,7 @@ class Grid {
         }
 
         // Create Down entry if applicable
-        if (downLetter != null ||
-            number != null && grid.cells[r][c].downEntry == null) {
+        if (downLetter != null || number != null && grid.cells[r][c].downEntry == null) {
           assert(grid.cells[r][c].downEntry == null);
           final entryId = downLetter ?? 'D' + cellContent;
           final clueId = downLetter != null ? null : cellContent + 'D';
@@ -230,11 +225,7 @@ class Grid {
     List<List<Cell>>? cells,
   }) {
     return Grid(rows ?? this.rows, cols ?? this.cols)
-      ..cells = cells ??
-          this
-              .cells
-              .map((row) => row.map((cell) => cell.copyWith()).toList())
-              .toList();
+      ..cells = cells ?? this.cells.map((row) => row.map((cell) => cell.copyWith()).toList()).toList();
   }
 
   @override
@@ -248,9 +239,7 @@ class Grid {
       for (var c = 0; c < cols; c++) {
         var cell = cells[r][c];
         var prevCell = c > 0 ? cells[r][c - 1] : null;
-        if (cell.downEntry != null &&
-            r > 0 &&
-            cells[r - 1][c].downEntry == cell.downEntry) {
+        if (cell.downEntry != null && r > 0 && cells[r - 1][c].downEntry == cell.downEntry) {
           buffer.write(' $separator');
         } else {
           buffer.write('--');
@@ -262,17 +251,14 @@ class Grid {
       for (var c = 0; c < cols; c++) {
         var cell = cells[r][c];
         var prevCell = c > 0 ? cells[r][c - 1] : null;
-        if (cell.acrossEntry != null &&
-            prevCell != null &&
-            prevCell.acrossEntry == cell.acrossEntry) {
+        if (cell.acrossEntry != null && prevCell != null && prevCell.acrossEntry == cell.acrossEntry) {
           buffer.write(separator);
         } else {
           buffer.write('|');
         }
         var value = ' ';
         if (cell.acrossEntry != null && cell.acrossEntry!.isSolved) {
-          value =
-              cell.acrossEntry!.solution.toString()[c - cell.acrossEntry!.col];
+          value = cell.acrossEntry!.solution.toString()[c - cell.acrossEntry!.col];
         }
         if (cell.downEntry != null && cell.downEntry!.isSolved) {
           value = cell.downEntry!.solution.toString()[r - cell.downEntry!.row];
@@ -302,13 +288,11 @@ class Grid {
           var acrossDigit = 0;
           var downDigit = 0;
           if (acrossEntry.isSolved) {
-            acrossDigit = int.parse(
-                acrossEntry.solution!.toString()[c - acrossEntry.col]);
+            acrossDigit = int.parse(acrossEntry.solution!.toString()[c - acrossEntry.col]);
             value = acrossDigit;
           }
           if (downEntry.isSolved) {
-            downDigit =
-                int.parse(downEntry.solution!.toString()[r - downEntry.row]);
+            downDigit = int.parse(downEntry.solution!.toString()[r - downEntry.row]);
             value = downDigit;
           }
         } else if (cell.acrossEntry != null) {
@@ -333,8 +317,7 @@ class Grid {
 
   int? getDigitsSum() {
     final digits = getDigits();
-    var result =
-        digits.fold(0, (total, value) => value == 0 ? 0 : total + value);
+    var result = digits.fold(0, (total, value) => value == 0 ? 0 : total + value);
     if (result == 0) return null;
     return result;
   }
@@ -359,9 +342,7 @@ class Grid {
       if (entry.possibleValues == null) {
         acrossDigits = Set.from(List.generate(10, (index) => index - 1));
       } else {
-        acrossDigits = entry.possibleValues!
-            .map((v) => int.parse(v.toString()[digitIndex]))
-            .toSet();
+        acrossDigits = entry.possibleValues!.map((v) => int.parse(v.toString()[digitIndex])).toSet();
       }
     }
     Set<int>? downDigits;
@@ -371,9 +352,7 @@ class Grid {
       if (entry.possibleValues == null) {
         acrossDigits = Set.from(List.generate(10, (index) => index - 1));
       } else {
-        downDigits = entry.possibleValues!
-            .map((v) => int.parse(v.toString()[digitIndex]))
-            .toSet();
+        downDigits = entry.possibleValues!.map((v) => int.parse(v.toString()[digitIndex])).toSet();
       }
     }
 
@@ -420,21 +399,16 @@ class Grid {
       }
       var cell = cells[r][c];
       var digit = int.parse(value.toString()[index]);
-      var otherEntry = entry.orientation == EntryOrientation.across
-          ? cell.downEntry ?? cell.upEntry
-          : cell.acrossEntry;
+      var otherEntry = entry.orientation == EntryOrientation.across ? cell.downEntry ?? cell.upEntry : cell.acrossEntry;
       if (otherEntry != null) {
         if (otherEntry.isSolved) {
           var otherDigit = 0;
           if (otherEntry.orientation == EntryOrientation.across) {
-            otherDigit =
-                int.parse(otherEntry.solution!.toString()[c - otherEntry.col]);
+            otherDigit = int.parse(otherEntry.solution!.toString()[c - otherEntry.col]);
           } else if (otherEntry.orientation == EntryOrientation.down) {
-            otherDigit =
-                int.parse(otherEntry.solution!.toString()[r - otherEntry.row]);
+            otherDigit = int.parse(otherEntry.solution!.toString()[r - otherEntry.row]);
           } else if (otherEntry.orientation == EntryOrientation.up) {
-            otherDigit =
-                int.parse(otherEntry.solution!.toString()[otherEntry.row - r]);
+            otherDigit = int.parse(otherEntry.solution!.toString()[otherEntry.row - r]);
           }
           if (otherDigit != digit) {
             return false;

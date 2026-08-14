@@ -6,30 +6,22 @@
 
 abstract class Expression {
   /// Accepts a [visitor] and calls the appropriate visit method.
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max});
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max});
 }
 
 /// A visitor for [Expression] nodes.
 ///
 /// This interface defines a method for each type of expression node.
 abstract class ExpressionVisitor<R> {
-  R visitNumberExpression(NumberExpression expression,
-      {required num min, required num max});
-  R visitVariableExpression(VariableExpression expression,
-      {required num min, required num max});
-  R visitBinaryExpression(BinaryExpression expression,
-      {required num min, required num max});
-  R visitUnaryExpression(UnaryExpression expression,
-      {required num min, required num max});
-  R visitGroupingExpression(GroupingExpression expression,
-      {required num min, required num max});
-  R visitGridReferenceExpression(GridReferenceExpression expression,
-      {required num min, required num max});
-  R visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max});
-  R visitMonadicExpression(MonadicExpression expression,
-      {required num min, required num max});
+  R visitNumberExpression(NumberExpression expression, {required num min, required num max});
+  R visitVariableExpression(VariableExpression expression, {required num min, required num max});
+  R visitBinaryExpression(BinaryExpression expression, {required num min, required num max});
+  R visitUnaryExpression(UnaryExpression expression, {required num min, required num max});
+  R visitGroupingExpression(GroupingExpression expression, {required num min, required num max});
+  R visitGridReferenceExpression(GridReferenceExpression expression, {required num min, required num max});
+  R visitGeneratorExpression(GeneratorExpression expression, {required num min, required num max});
+  R visitMonadicExpression(MonadicExpression expression, {required num min, required num max});
+  R visitPolyadicExpression(PolyadicExpression expression, {required num min, required num max});
 }
 
 /// An expression node representing a literal number.
@@ -39,8 +31,7 @@ class NumberExpression extends Expression {
   NumberExpression(this.value);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitNumberExpression(this, min: min, max: max);
   }
 
@@ -55,8 +46,7 @@ class VariableExpression extends Expression {
   VariableExpression(this.name);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitVariableExpression(this, min: min, max: max);
   }
 
@@ -71,8 +61,7 @@ class GeneratorExpression extends Expression {
   GeneratorExpression(this.name);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitGeneratorExpression(this, min: min, max: max);
   }
 
@@ -89,8 +78,7 @@ class BinaryExpression extends Expression {
   BinaryExpression(this.left, this.operator, this.right);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitBinaryExpression(this, min: min, max: max);
   }
 
@@ -106,8 +94,7 @@ class UnaryExpression extends Expression {
   UnaryExpression(this.operator, this.right);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitUnaryExpression(this, min: min, max: max);
   }
 
@@ -122,8 +109,7 @@ class GroupingExpression extends Expression {
   GroupingExpression(this.expression);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitGroupingExpression(this, min: min, max: max);
   }
 
@@ -137,12 +123,10 @@ class GridReferenceExpression extends Expression {
   final String referenceId;
   final String gridReferenceId;
 
-  GridReferenceExpression(this.gridId, this.referenceId)
-      : gridReferenceId = '$gridId.$referenceId';
+  GridReferenceExpression(this.gridId, this.referenceId) : gridReferenceId = '$gridId.$referenceId';
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitGridReferenceExpression(this, min: min, max: max);
   }
 
@@ -157,13 +141,27 @@ class MonadicExpression extends Expression {
   MonadicExpression(this.operator, this.right);
 
   @override
-  R accept<R>(ExpressionVisitor<R> visitor,
-      {required num min, required num max}) {
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
     return visitor.visitMonadicExpression(this, min: min, max: max);
   }
 
   @override
   String toString() => '${operator.lexeme}($right)';
+}
+
+class PolyadicExpression extends Expression {
+  final Token operator;
+  final List<Expression> operands;
+
+  PolyadicExpression(this.operator, this.operands);
+
+  @override
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
+    return visitor.visitPolyadicExpression(this, min: min, max: max);
+  }
+
+  @override
+  String toString() => '${operator.lexeme}(${operands.join(', ')})';
 }
 
 /// The types of tokens that can be produced by the scanner.
@@ -178,6 +176,8 @@ enum TokenType {
   EXPONENT,
   HASH,
   DOLLAR,
+  POUND,
+  COMMA,
   EQUAL,
   AMPERSAND,
   REVERSE,
@@ -214,47 +214,46 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
   final Set<String> gridEntries = {};
 
   @override
-  void visitNumberExpression(NumberExpression expression,
-      {required num min, required num max}) {}
+  void visitNumberExpression(NumberExpression expression, {required num min, required num max}) {}
 
   @override
-  void visitVariableExpression(VariableExpression expression,
-      {required num min, required num max}) {
+  void visitVariableExpression(VariableExpression expression, {required num min, required num max}) {
     variables.add(expression.name);
   }
 
   @override
-  void visitBinaryExpression(BinaryExpression expression,
-      {required num min, required num max}) {
+  void visitBinaryExpression(BinaryExpression expression, {required num min, required num max}) {
     expression.left.accept(this, min: min, max: max);
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitUnaryExpression(UnaryExpression expression,
-      {required num min, required num max}) {
+  void visitUnaryExpression(UnaryExpression expression, {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitGroupingExpression(GroupingExpression expression,
-      {required num min, required num max}) {
+  void visitGroupingExpression(GroupingExpression expression, {required num min, required num max}) {
     expression.expression.accept(this, min: min, max: max);
   }
 
   @override
-  void visitGridReferenceExpression(GridReferenceExpression expression,
-      {required num min, required num max}) {
+  void visitGridReferenceExpression(GridReferenceExpression expression, {required num min, required num max}) {
     gridEntries.add('${expression.gridId}.${expression.referenceId}');
   }
 
   @override
-  void visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max}) {}
+  void visitGeneratorExpression(GeneratorExpression expression, {required num min, required num max}) {}
 
   @override
-  void visitMonadicExpression(MonadicExpression expression,
-      {required num min, required num max}) {
+  void visitMonadicExpression(MonadicExpression expression, {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
+  }
+
+  @override
+  void visitPolyadicExpression(PolyadicExpression expression, {required num min, required num max}) {
+    for (final operand in expression.operands) {
+      operand.accept(this, min: min, max: max);
+    }
   }
 }

@@ -41,8 +41,7 @@ class Entry extends Expressable {
 
   /// Skip grid entry propagation if no clue or expression is attached.
   bool forcePropagation = false;
-  bool get skipGridPropagation =>
-      clueId == null && expressionTrees.isEmpty && !forcePropagation;
+  bool get skipGridPropagation => clueId == null && expressionTrees.isEmpty && !forcePropagation;
 
   /// Creates a new entry with the given properties.
   /// The position, length and orientation ,ay come from a grid definition.
@@ -55,13 +54,18 @@ class Entry extends Expressable {
     this.clueId,
     this.constraints = const [],
   }) {
+    initPossibleValues();
+  }
+
+  void initPossibleValues() {
+    Set<int>? values;
     if (length <= 5) {
       // Initialize possible values based on length
       final min = pow(10, length - 1).toInt();
       final max = pow(10, length).toInt() - 1;
-      possibleValues =
-          List<int>.generate(max - min + 1, (i) => i + min).toSet();
+      values = List<int>.generate(max - min + 1, (i) => i + min).toSet();
     }
+    possibleValues = values;
   }
 
   bool intersects(Entry other) {
@@ -70,10 +74,7 @@ class Entry extends Expressable {
     }
     if (orientation == EntryOrientation.across) {
       // this is across, other is down or up
-      return other.col >= col &&
-          other.col < col + length &&
-          row >= other.row &&
-          row < other.row + other.length;
+      return other.col >= col && other.col < col + length && row >= other.row && row < other.row + other.length;
     } else if (orientation == EntryOrientation.down) {
       // this is down, other is across
       return other.orientation == EntryOrientation.across &&
@@ -101,7 +102,7 @@ class Entry extends Expressable {
     Set<int>? possibleValues,
     List<Constraint>? constraints,
   }) {
-    return Entry(
+    var newEntry = Entry(
       id: id ?? this.id,
       row: row ?? this.row,
       col: col ?? this.col,
@@ -109,9 +110,9 @@ class Entry extends Expressable {
       orientation: orientation ?? this.orientation,
       clueId: clueId ?? this.clueId,
       constraints: constraints ?? this.constraints,
-    )..possibleValues = possibleValues == null && this.possibleValues == null
-        ? null
-        : Set<int>.from(possibleValues ?? this.possibleValues!);
+    );
+    newEntry.initPossibleValues();
+    return newEntry;
   }
 
   @override

@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'package:crossnumber/src/expressions/cartesian.dart';
+import 'package:crossnumber/src/expressions/polyadic.dart';
+
 import '../models/evaluation_result.dart';
 import '../models/expressable.dart';
 import '../models/puzzle_definition.dart';
@@ -18,6 +21,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   final PuzzleDefinition puzzle;
   static final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
   static final MonadicFunctionRegistry _monadicFunctionRegistry = MonadicFunctionRegistry();
+  static final PolyadicFunctionRegistry _polyadicFunctionRegistry = PolyadicFunctionRegistry();
   final Map<String, int> _pinnedVariables;
 
   num? maxResult;
@@ -82,6 +86,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
         results = expressionResults.toSet();
       } else {
         results = results.intersection(expressionResults.toSet());
+      }
+      if (results.isEmpty) {
+        // No results possible, so no need to continue evaluating other expressions
+        break;
       }
     }
     return results.toList();
@@ -372,6 +380,61 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       return results;
     }
     throw EvaluatorException('Unknown monadic function: ${expression.operator.lexeme}');
+  }
+
+  @override
+  List<EvaluationResult> visitPolyadicExpression(PolyadicExpression expression, {required num min, required num max}) {
+    // Heuristic for min/max of argument to function
+    num fmin = 1;
+    num fmax = max;
+    final fname = expression.operator.lexeme;
+    final maxOp = _polyadicFunctionRegistry.getMaxOp(fname);
+    if (maxOp == PolyadicMaxOp.double) {
+      fmax = max * 2;
+    } else if (maxOp == PolyadicMaxOp.limit) {
+      fmax = arbitraryLimit;
+    } else if (maxOp == PolyadicMaxOp.square) {
+      fmax = maxResult! * maxResult!;
+    } else if (maxOp == PolyadicMaxOp.cube) {
+      fmax = maxResult! * maxResult! * maxResult!;
+    } else {
+      fmax = max;
+    }
+    var args = <List<EvaluationResult>>[];
+    for (final operand in expression.operands) {
+      args.add(_evaluateWithPinnedVariables(operand, min: fmin, max: fmax));
+    }
+    final function = _polyadicFunctionRegistry.get(fname);
+    if (function != null) {
+      var results = <EvaluationResult>[];
+      for (var arguments in cartesian(args)) {
+        // Check that all variableValues are consistent across arguments
+        var variableValues = <String, int>{};
+        var consistent = true;
+        var values = <int>[];
+        for (var arg in arguments) {
+          for (var key in arg.variableValues.keys) {
+            if (variableValues.containsKey(key) && variableValues[key] != arg.variableValues[key]) {
+              consistent = false;
+              break;
+            }
+            variableValues[key] = arg.variableValues[key]!;
+          }
+          if (!consistent) break;
+          values.add(arg.value.toInt());
+        }
+        if (!consistent) continue;
+        var resultValue = function(values, min: min.toInt(), max: max.toInt());
+        var result = resultValue
+            .where((value) => value >= min && value <= max)
+            .map((e) => EvaluationResult(e, variableValues))
+            .toList();
+        if (result.isEmpty) continue;
+        results.addAll(result);
+      }
+      return results;
+    }
+    throw EvaluatorException('Unknown Polyadic function: ${expression.operator.lexeme}');
   }
 
   int? tooManyCombinations(List<String> unpinnedVariables) {

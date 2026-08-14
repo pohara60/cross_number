@@ -73,6 +73,12 @@ class Parser {
       case '\$':
         _addToken(TokenType.DOLLAR);
         break;
+      case '£':
+        _addToken(TokenType.POUND);
+        break;
+      case ',':
+        _addToken(TokenType.COMMA);
+        break;
       case '\n':
         _line++;
         break;
@@ -104,8 +110,7 @@ class Parser {
       }
       _addToken(TokenType.IDENTIFIER);
     } else {
-      _addToken(
-          TokenType.NUMBER, num.parse(source.substring(_start, _current)));
+      _addToken(TokenType.NUMBER, num.parse(source.substring(_start, _current)));
     }
   }
 
@@ -235,12 +240,6 @@ class Parser {
       final right = _unary();
       return UnaryExpression(operator, right);
     }
-    if (_match([TokenType.DOLLAR])) {
-      final operator =
-          _consume(TokenType.IDENTIFIER, "Expect function name after '\$'");
-      final right = _unary();
-      return MonadicExpression(operator, right);
-    }
 
     return _primary();
   }
@@ -260,8 +259,7 @@ class Parser {
       if (_match([TokenType.DOT])) {
         _consume(TokenType.IDENTIFIER, "Expect entry ID after '.'");
         final entryToken = _previous();
-        return GridReferenceExpression(
-            identifierToken.lexeme, entryToken.lexeme);
+        return GridReferenceExpression(identifierToken.lexeme, entryToken.lexeme);
       } else {
         return VariableExpression(identifierToken.lexeme);
       }
@@ -272,8 +270,30 @@ class Parser {
       _consume(TokenType.RIGHT_PAREN, "Expect ')' after expression.");
       return GroupingExpression(expr);
     }
+    return _function();
+  }
 
-    throw _error(_peekParser(), "Expect expression.");
+  Expression _function() {
+    if (_match([TokenType.DOLLAR, TokenType.POUND])) {
+      final bool isMonadic = _previous().type == TokenType.DOLLAR;
+      final operator = _consume(TokenType.IDENTIFIER, "Expect function name after '\$' or '£'.");
+      _consume(TokenType.LEFT_PAREN, "Expect '(' after function name.");
+      final operands = <Expression>[];
+      while (true) {
+        final operand = _expression();
+        operands.add(operand);
+        if (!_match([TokenType.COMMA])) {
+          break;
+        }
+      }
+      _consume(TokenType.RIGHT_PAREN, "Expect ')' after function arguments.");
+      if (isMonadic) {
+        return MonadicExpression(operator, operands[0]);
+      } else {
+        return PolyadicExpression(operator, operands);
+      }
+    }
+    throw _error(_peekParser(), "Unexpected input. Expecting a number, variable, or function.");
   }
 
   bool _match(List<TokenType> types) {

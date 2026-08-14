@@ -13,6 +13,7 @@ import '../puzzles/couples_differences.dart';
 import '../puzzles/die_another_day.dart';
 import '../puzzles/increasing_prime.dart';
 import '../puzzles/mathematical_inspiration.dart';
+import '../puzzles/onesumamuse.dart';
 import '../puzzles/primania.dart';
 import '../puzzles/puzzle2.dart';
 import '../puzzles/puzzle3.dart';
@@ -45,6 +46,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'threes': threes,
   'wheels': wheels,
   'summingsquares': summingsquares,
+  'onesumamuse': onesumamuse,
 };
 
 void main(List<String> arguments) {

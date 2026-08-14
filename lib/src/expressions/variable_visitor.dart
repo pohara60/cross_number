@@ -6,47 +6,46 @@ class VariableVisitor implements ExpressionVisitor<void> {
   Set<String> get variables => _variables;
 
   @override
-  void visitBinaryExpression(BinaryExpression expression,
-      {required num min, required num max}) {
+  void visitBinaryExpression(BinaryExpression expression, {required num min, required num max}) {
     expression.left.accept(this, min: min, max: max);
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitGroupingExpression(GroupingExpression expression,
-      {required num min, required num max}) {
+  void visitGroupingExpression(GroupingExpression expression, {required num min, required num max}) {
     expression.expression.accept(this, min: min, max: max);
   }
 
   @override
-  void visitNumberExpression(NumberExpression expression,
-      {required num min, required num max}) {}
+  void visitNumberExpression(NumberExpression expression, {required num min, required num max}) {}
 
   @override
-  void visitUnaryExpression(UnaryExpression expression,
-      {required num min, required num max}) {
+  void visitUnaryExpression(UnaryExpression expression, {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitVariableExpression(VariableExpression expression,
-      {required num min, required num max}) {
+  void visitVariableExpression(VariableExpression expression, {required num min, required num max}) {
     _variables.add(expression.name);
   }
 
   @override
-  void visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max}) {}
+  void visitGeneratorExpression(GeneratorExpression expression, {required num min, required num max}) {}
 
   @override
-  void visitGridReferenceExpression(GridReferenceExpression expression,
-      {required num min, required num max}) {
+  void visitGridReferenceExpression(GridReferenceExpression expression, {required num min, required num max}) {
     _variables.add('${expression.gridId}.${expression.referenceId}');
   }
 
   @override
-  void visitMonadicExpression(MonadicExpression expression,
-      {required num min, required num max}) {
+  void visitMonadicExpression(MonadicExpression expression, {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
+  }
+
+  @override
+  void visitPolyadicExpression(PolyadicExpression expression, {required num min, required num max}) {
+    for (final operand in expression.operands) {
+      operand.accept(this, min: min, max: max);
+    }
   }
 }

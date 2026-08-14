@@ -26,10 +26,8 @@ class ExpressionInverter {
   }
 
   Expression? _rearrange(Expression expressionToSolve, [Expression? child]) {
-    if (expressionToSolve is GridReferenceExpression &&
-            expressionToSolve.gridReferenceId == target.id ||
-        expressionToSolve is VariableExpression &&
-            expressionToSolve.name == target.id) {
+    if (expressionToSolve is GridReferenceExpression && expressionToSolve.gridReferenceId == target.id ||
+        expressionToSolve is VariableExpression && expressionToSolve.name == target.id) {
       if (child != null) return child;
       return VariableExpression(subject.id);
     }
@@ -50,11 +48,9 @@ class ExpressionInverter {
         if (leftContainsEntry && !rightContainsEntry) {
         } else if (!leftContainsEntry && rightContainsEntry) {}
         if (leftContainsEntry && rightContainsEntry) {
-          throw InvertException(
-              'Cannot invert expression with entry on both sides: $expressionToSolve');
+          throw InvertException('Cannot invert expression with entry on both sides: $expressionToSolve');
         } else if (!leftContainsEntry && !rightContainsEntry) {
-          throw InvertException(
-              'Cannot invert expression without entry: $expressionToSolve');
+          throw InvertException('Cannot invert expression without entry: $expressionToSolve');
         }
         var operator = expressionToSolve.operator;
         switch (operator.type) {
@@ -64,30 +60,21 @@ class ExpressionInverter {
           case TokenType.SLASH:
             var newToken = operator;
             if (leftContainsEntry) {
-              if (operator.type == TokenType.PLUS)
-                newToken = Token(TokenType.MINUS, "-");
-              if (operator.type == TokenType.MINUS)
-                newToken = Token(TokenType.PLUS, "+");
-              if (operator.type == TokenType.STAR)
-                newToken = Token(TokenType.SLASH, "/");
-              if (operator.type == TokenType.SLASH)
-                newToken = Token(TokenType.STAR, "*");
+              if (operator.type == TokenType.PLUS) newToken = Token(TokenType.MINUS, "-");
+              if (operator.type == TokenType.MINUS) newToken = Token(TokenType.PLUS, "+");
+              if (operator.type == TokenType.STAR) newToken = Token(TokenType.SLASH, "/");
+              if (operator.type == TokenType.SLASH) newToken = Token(TokenType.STAR, "*");
               var other = child ?? VariableExpression(subject.id);
               child = BinaryExpression(other, newToken, right);
               return _rearrange(left, child);
             }
             if (rightContainsEntry) {
-              if (operator.type == TokenType.PLUS)
-                newToken = Token(TokenType.MINUS, "-");
-              if (operator.type == TokenType.MINUS)
-                newToken = Token(TokenType.MINUS, "-");
-              if (operator.type == TokenType.STAR)
-                newToken = Token(TokenType.SLASH, "/");
-              if (operator.type == TokenType.SLASH)
-                newToken = Token(TokenType.SLASH, "/");
+              if (operator.type == TokenType.PLUS) newToken = Token(TokenType.MINUS, "-");
+              if (operator.type == TokenType.MINUS) newToken = Token(TokenType.MINUS, "-");
+              if (operator.type == TokenType.STAR) newToken = Token(TokenType.SLASH, "/");
+              if (operator.type == TokenType.SLASH) newToken = Token(TokenType.SLASH, "/");
               var other = child ?? VariableExpression(subject.id);
-              if (operator.type == TokenType.PLUS ||
-                  operator.type == TokenType.STAR) {
+              if (operator.type == TokenType.PLUS || operator.type == TokenType.STAR) {
                 child = BinaryExpression(other, newToken, left);
               } else {
                 child = BinaryExpression(left, newToken, other);
@@ -103,8 +90,7 @@ class ExpressionInverter {
               return _rearrange(right, null);
             }
           default:
-            throw InvertException(
-                'Unsupported operator for inversion: ${expressionToSolve.operator.lexeme}');
+            throw InvertException('Unsupported operator for inversion: ${expressionToSolve.operator.lexeme}');
         }
       case UnaryExpression:
         final unary = expressionToSolve as UnaryExpression;
@@ -113,8 +99,7 @@ class ExpressionInverter {
         right.accept(entryVisitor, min: 1, max: 1);
         final rightContainsEntry = entryVisitor.found;
         if (!rightContainsEntry) {
-          throw InvertException(
-              'Cannot invert unary expression without entry: $expressionToSolve');
+          throw InvertException('Cannot invert unary expression without entry: $expressionToSolve');
         }
         // For unary expressions, we can only handle negation
         var operator = unary.operator;
@@ -126,8 +111,7 @@ class ExpressionInverter {
         } else if (operator.type == TokenType.REVERSE) {
           throw InvertException('Cannot invert REVERSE expressions');
         } else {
-          throw InvertException(
-              'Unsupported unary operator for inversion: ${unary.operator.lexeme}');
+          throw InvertException('Unsupported unary operator for inversion: ${unary.operator.lexeme}');
         }
       case GroupingExpression:
         final grouping = expressionToSolve as GroupingExpression;
@@ -135,8 +119,7 @@ class ExpressionInverter {
         expression.accept(entryVisitor, min: 1, max: 1);
         final containsEntry = entryVisitor.found;
         if (!containsEntry) {
-          throw InvertException(
-              'Cannot invert grouping expression without entry: $expressionToSolve');
+          throw InvertException('Cannot invert grouping expression without entry: $expressionToSolve');
         }
         return _rearrange(expression, child);
       case MonadicExpression:
@@ -146,12 +129,10 @@ class ExpressionInverter {
           // Can invert filters by simply ignoring them
           return _rearrange(monadic.right, child);
         } else {
-          throw InvertException(
-              'Unsupported monadic for inversion: ${monadic.operator.lexeme}');
+          throw InvertException('Unsupported monadic for inversion: ${monadic.operator.lexeme}');
         }
       default:
-        throw InvertException(
-            'Unsupported expression for inversion: ${expressionToSolve.runtimeType}');
+        throw InvertException('Unsupported expression for inversion: ${expressionToSolve.runtimeType}');
     }
 
     return null;
@@ -170,49 +151,48 @@ class _ExpressableVisitor implements ExpressionVisitor<void> {
   _ExpressableVisitor(this.entry);
 
   @override
-  void visitBinaryExpression(BinaryExpression expression,
-      {required num min, required num max}) {
+  void visitBinaryExpression(BinaryExpression expression, {required num min, required num max}) {
     expression.left.accept(this, min: min, max: max);
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitGeneratorExpression(GeneratorExpression expression,
-      {required num min, required num max}) {}
+  void visitGeneratorExpression(GeneratorExpression expression, {required num min, required num max}) {}
 
   @override
-  void visitGridReferenceExpression(GridReferenceExpression expression,
-      {required num min, required num max}) {
+  void visitGridReferenceExpression(GridReferenceExpression expression, {required num min, required num max}) {
     if (expression.gridReferenceId == entry.id) {
       found = true;
     }
   }
 
   @override
-  void visitGroupingExpression(GroupingExpression expression,
-      {required num min, required num max}) {
+  void visitGroupingExpression(GroupingExpression expression, {required num min, required num max}) {
     expression.expression.accept(this, min: min, max: max);
   }
 
   @override
-  void visitMonadicExpression(MonadicExpression expression,
-      {required num min, required num max}) {
+  void visitMonadicExpression(MonadicExpression expression, {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitNumberExpression(NumberExpression expression,
-      {required num min, required num max}) {}
+  void visitPolyadicExpression(PolyadicExpression expression, {required num min, required num max}) {
+    for (final operand in expression.operands) {
+      operand.accept(this, min: min, max: max);
+    }
+  }
 
   @override
-  void visitUnaryExpression(UnaryExpression expression,
-      {required num min, required num max}) {
+  void visitNumberExpression(NumberExpression expression, {required num min, required num max}) {}
+
+  @override
+  void visitUnaryExpression(UnaryExpression expression, {required num min, required num max}) {
     expression.right.accept(this, min: min, max: max);
   }
 
   @override
-  void visitVariableExpression(VariableExpression expression,
-      {required num min, required num max}) {
+  void visitVariableExpression(VariableExpression expression, {required num min, required num max}) {
     if (expression.name == entry.id) {
       found = true;
     }

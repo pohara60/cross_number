@@ -87,8 +87,7 @@ class PuzzleDefinition {
     );
   }
 
-  static (Map<String, Grid> grid, Map<String, Entry> entries)
-      fromStringInternal({
+  static (Map<String, Grid> grid, Map<String, Entry> entries) fromStringInternal({
     required String name,
     required String gridString,
     List<String>? gridNames,
@@ -110,8 +109,7 @@ class PuzzleDefinition {
       if (entries != null) {
         for (var entry in entries.values) {
           if (!gridEntries.containsKey(entry.id)) {
-            throw PuzzleException(
-                'Entry ${entry.id} not found in grid definition.');
+            throw PuzzleException('Entry ${entry.id} not found in grid definition.');
           }
           // Override entry with grid entry position, length, orientation
           var gridEntry = gridEntries[entry.id]!;
@@ -119,9 +117,7 @@ class PuzzleDefinition {
           puzzleEntries[entry.id] = puzzleEntry;
         }
         // Check all grid entries are provided, add any missing ones
-        var additionalEntries = gridEntries.values
-            .where((entry) => !puzzleEntries.containsKey(entry.id))
-            .toList();
+        var additionalEntries = gridEntries.values.where((entry) => !puzzleEntries.containsKey(entry.id)).toList();
         for (var entry in additionalEntries) {
           entry.clueId = null; // Ensure no default clue mapping
           puzzleEntries[entry.id] = entry;
@@ -144,8 +140,7 @@ class PuzzleDefinition {
       if (entries != null) {
         for (var entry in entries.values) {
           if (!gridEntries.containsKey(entry.id)) {
-            throw PuzzleException(
-                'Entry ${entry.id} not found in grid definitions.');
+            throw PuzzleException('Entry ${entry.id} not found in grid definitions.');
           }
           var gridEntry = gridEntries[entry.id]!;
           var grid = grids[gridEntry.id.split('.').first]!;
@@ -153,9 +148,7 @@ class PuzzleDefinition {
           puzzleEntries[entry.id] = puzzleEntry;
         }
         // Add any grid entries that were not in the provided entries
-        var additionalEntries = gridEntries.values
-            .where((entry) => !puzzleEntries.containsKey(entry.id))
-            .toList();
+        var additionalEntries = gridEntries.values.where((entry) => !puzzleEntries.containsKey(entry.id)).toList();
         for (var entry in additionalEntries) {
           entry.clueId = null; // Ensure no default clue mapping
           puzzleEntries[entry.id] = entry;
@@ -189,14 +182,11 @@ class PuzzleDefinition {
       }
     }
     // Check all entries with clues have a matching clue
-    var errorEntries = entries.values
-        .where(
-            (entry) => entry.clueId != null && !clues.containsKey(entry.clueId))
-        .toList();
+    var errorEntries =
+        entries.values.where((entry) => entry.clueId != null && !clues.containsKey(entry.clueId)).toList();
     if (errorEntries.isNotEmpty) {
       exception = true;
-      print(
-          'Entries with clues not found in clues map: ${errorEntries.map((e) => e.id).join(', ')}');
+      print('Entries with clues not found in clues map: ${errorEntries.map((e) => e.id).join(', ')}');
     }
     // If multi-grid, then entries and linked clues must have grid prefix
     for (final entry in entries.values) {
@@ -220,13 +210,15 @@ class PuzzleDefinition {
         }
       }
     }
+
+    if (exception) {
+      throw PuzzleException('One or more clues could not be parsed.');
+    }
+
     // Check all variables are defined for expressables
     // Invert clue expressions for entries
     // Invert entry expressions for other entries that do not have expressions
-    final entriesWithExpressions = entries.values
-        .where((e) => e.expressionTrees.isNotEmpty)
-        .map((e) => e.id)
-        .toList();
+    final entriesWithExpressions = entries.values.where((e) => e.expressionTrees.isNotEmpty).map((e) => e.id).toList();
     for (final expressable in List<Expressable>.from(expressables.values)) {
       var index = 0;
       // ignore: unused_local_variable
@@ -238,16 +230,13 @@ class PuzzleDefinition {
             getExpressable(variable);
           } on PuzzleException {
             exception = true;
-            print(
-                'Variable $variable used in expression for ${expressable.id} is not defined.');
+            print('Variable $variable used in expression for ${expressable.id} is not defined.');
           }
 
           // if (expressable is Clue && entries.containsKey(variable)) {
-          if (entries.containsKey(variable) &&
-              !entriesWithExpressions.contains(variable)) {
+          if (entries.containsKey(variable) && !entriesWithExpressions.contains(variable)) {
             var entry = entries[variable]!;
-            final inverter =
-                ExpressionInverter(expressionTree, expressable, entry);
+            final inverter = ExpressionInverter(expressionTree, expressable, entry);
             final invertedExpression = inverter.invert();
             if (invertedExpression != null) {
               entry.addExpressionFromTree(invertedExpression);
@@ -272,8 +261,7 @@ class PuzzleDefinition {
       }
       if (!valid) {
         exception = true;
-        print(
-            'Invalid digit constraint "$digitConstraint". Should be "min,max" with min <= max.');
+        print('Invalid digit constraint "$digitConstraint". Should be "min,max" with min <= max.');
       }
     }
 
@@ -350,14 +338,10 @@ class PuzzleDefinition {
   }) {
     return PuzzleDefinition(
       name: name ?? this.name,
-      grids: grids ??
-          this.grids.map((key, value) => MapEntry(key, value.copyWith())),
-      entries: entries ??
-          this.entries.map((key, value) => MapEntry(key, value.copyWith())),
-      clues: clues ??
-          this.clues.map((key, value) => MapEntry(key, value.copyWith())),
-      variables: variables ??
-          this.variables.map((key, value) => MapEntry(key, value.copyWith())),
+      grids: grids ?? this.grids.map((key, value) => MapEntry(key, value.copyWith())),
+      entries: entries ?? this.entries.map((key, value) => MapEntry(key, value.copyWith())),
+      clues: clues ?? this.clues.map((key, value) => MapEntry(key, value.copyWith())),
+      variables: variables ?? this.variables.map((key, value) => MapEntry(key, value.copyWith())),
       orderingConstraints: orderingConstraints ?? this.orderingConstraints,
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
     );
@@ -388,8 +372,7 @@ class PuzzleDefinition {
 
   /// For each clue in [unmappedClues], find the list of possible entries
   /// from [availableEntries] that match the clue's length and constraints.
-  Map<Clue, List<Entry>> getPossibleEntriesForClues(
-      List<Clue> unmappedClues, List<Entry> availableEntries) {
+  Map<Clue, List<Entry>> getPossibleEntriesForClues(List<Clue> unmappedClues, List<Entry> availableEntries) {
     final Map<Clue, List<Entry>> cluePossibleEntries = {};
     for (var clue in unmappedClues) {
       var matchAcross = clue.id.startsWith('A') || clue.id.endsWith('A');
@@ -408,15 +391,12 @@ class PuzzleDefinition {
         // Check possible values, if known
         if (clue.possibleValues != null && entry.possibleValues != null) {
           assert(entry.possibleValues!.isNotEmpty);
-          if (clue.possibleValues!
-              .intersection(entry.possibleValues!)
-              .isEmpty) {
+          if (clue.possibleValues!.intersection(entry.possibleValues!).isEmpty) {
             return false;
           }
         } else {
           // If entry has no possible values, but clue does, filter by length
-          if (!clue.possibleValues!
-              .any((v) => v.toString().length == entry.length)) {
+          if (!clue.possibleValues!.any((v) => v.toString().length == entry.length)) {
             return false;
           }
         }
@@ -430,8 +410,7 @@ class PuzzleDefinition {
     //   ..sort((a, b) => a.value.length.compareTo(b.value.length));
     // Order the map by number of values (fewest first)
     var sortedEntries = cluePossibleEntries.entries.toList()
-      ..sort((a, b) =>
-          a.key.possibleValues!.length.compareTo(b.key.possibleValues!.length));
+      ..sort((a, b) => a.key.possibleValues!.length.compareTo(b.key.possibleValues!.length));
     cluePossibleEntries
       ..clear()
       ..addEntries(sortedEntries);
@@ -440,8 +419,7 @@ class PuzzleDefinition {
 
   /// For each entry in [availableEntries], find the list of possible clues
   /// from [unmappedClues] that match the entry's length and constraints.
-  Map<Entry, List<Clue>> getPossibleCluesForEntries(
-      List<Clue> unmappedClues, List<Entry> availableEntries) {
+  Map<Entry, List<Clue>> getPossibleCluesForEntries(List<Clue> unmappedClues, List<Entry> availableEntries) {
     final Map<Entry, List<Clue>> entryPossibleClues = {};
     for (var entry in availableEntries) {
       final possibleClues = <Clue>[];
@@ -465,9 +443,7 @@ class PuzzleDefinition {
         // Check possible values, if known
         if (clue.possibleValues != null && entry.possibleValues != null) {
           assert(entry.possibleValues!.isNotEmpty);
-          if (clue.possibleValues!
-              .intersection(entry.possibleValues!)
-              .isEmpty) {
+          if (clue.possibleValues!.intersection(entry.possibleValues!).isEmpty) {
             continue;
           }
         }
@@ -477,8 +453,7 @@ class PuzzleDefinition {
       entryPossibleClues[entry] = possibleClues;
     }
     // Order the map by number of clues (fewest first)
-    var sortedEntries = entryPossibleClues.entries.toList()
-      ..sort((a, b) => a.value.length.compareTo(b.value.length));
+    var sortedEntries = entryPossibleClues.entries.toList()..sort((a, b) => a.value.length.compareTo(b.value.length));
     entryPossibleClues
       ..clear()
       ..addEntries(sortedEntries);
@@ -498,9 +473,7 @@ class PuzzleDefinition {
     expressable ??= entries[expressableName];
 
     // Backward compatibility for single-grid puzzles
-    if (expressable == null &&
-        grids.length == 1 &&
-        grids.keys.first == 'main') {
+    if (expressable == null && grids.length == 1 && grids.keys.first == 'main') {
       // Already checked entries and clues without prefix
     }
 
@@ -540,16 +513,14 @@ class PuzzleDefinition {
 
   void registerPuzzleFunctions() {
     // Register puzzle specific functions
-    final MonadicFunctionRegistry monadicFunctionRegistry =
-        MonadicFunctionRegistry();
+    final MonadicFunctionRegistry monadicFunctionRegistry = MonadicFunctionRegistry();
     monadicFunctionRegistry.registerFunction('islowestacross', lowestAcross);
     monadicFunctionRegistry.registerFunction('ishighestacross', highestAcross);
 
     // Register puzzle specific functions
     final GeneratorRegistry generatorRegistry = GeneratorRegistry();
     generatorRegistry.register('sumdigits', SumDigitsGenerator(this));
-    generatorRegistry.register(
-        'numberevendigits', NumberEvenDigitsDigitsGenerator(this));
+    generatorRegistry.register('numberevendigits', NumberEvenDigitsDigitsGenerator(this));
   }
 
   List<int> lowestAcross(List<int> values, {int? max, int? min}) {
@@ -605,8 +576,7 @@ class SumDigitsGenerator extends Generator {
     }
     if (minSumAll < min) minSumAll = min;
     if (maxSumAll > max) maxSumAll = max;
-    return List.generate(
-        maxSumAll - minSumAll + 1, (index) => minSumAll + index).toList();
+    return List.generate(maxSumAll - minSumAll + 1, (index) => minSumAll + index).toList();
   }
 }
 
@@ -619,8 +589,7 @@ class NumberEvenDigitsDigitsGenerator extends Generator {
     var maxCountAll = 0;
     // Accumulate the min and max digit sums across all grids
     for (var gridName in puzzle.grids.keys) {
-      var (minCount, maxCount) =
-          puzzle.grids[gridName]!.getEvenDigitCountRange();
+      var (minCount, maxCount) = puzzle.grids[gridName]!.getEvenDigitCountRange();
       if (minCountAll == 0) {
         minCountAll = minCount;
         maxCountAll = maxCount;
@@ -631,8 +600,7 @@ class NumberEvenDigitsDigitsGenerator extends Generator {
     }
     if (minCountAll < min) minCountAll = min;
     if (maxCountAll > max) maxCountAll = max;
-    return List.generate(
-        maxCountAll - minCountAll + 1, (index) => minCountAll + index).toList();
+    return List.generate(maxCountAll - minCountAll + 1, (index) => minCountAll + index).toList();
   }
 }
 
