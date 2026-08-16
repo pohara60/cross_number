@@ -401,12 +401,17 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       fmax = max;
     }
     var args = <List<EvaluationResult>>[];
+    var results = <EvaluationResult>[];
     for (final operand in expression.operands) {
-      args.add(_evaluateWithPinnedVariables(operand, min: fmin, max: fmax));
+      var operandValues = _evaluateWithPinnedVariables(operand, min: fmin, max: fmax);
+      if (operandValues.isEmpty) {
+        // No results
+        return results;
+      }
+      args.add(operandValues);
     }
     final function = _polyadicFunctionRegistry.get(fname);
     if (function != null) {
-      var results = <EvaluationResult>[];
       for (var arguments in cartesian(args)) {
         // Check that all variableValues are consistent across arguments
         var variableValues = <String, int>{};

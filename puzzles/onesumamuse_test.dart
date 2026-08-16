@@ -1,130 +1,9 @@
 // cspell: disable
-import 'dart:collection';
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:collection/collection.dart';
-
-Map<List<int>, int> getSumOfSquares({String cacheFilePath = 'cache.json'}) {
-  final cacheFile = File(cacheFilePath);
-
-  // Define the map with value-equality for keys
-  final results = LinkedHashMap<List<int>, int>(
-    equals: const ListEquality().equals,
-    hashCode: const ListEquality().hash,
-  );
-
-  // 1. READ FROM DISK (If cache file exists)
-  if (cacheFile.existsSync()) {
-    try {
-      final jsonString = cacheFile.readAsStringSync();
-      final Map<String, dynamic> rawMap = json.decode(jsonString);
-
-      for (final entry in rawMap.entries) {
-        // Decode the string key back into List<int>
-        final List<int> key = List<int>.from(json.decode(entry.key) as List);
-        results[key] = entry.value as int;
-      }
-      return results;
-    } catch (e) {
-      // If reading/parsing fails, fall back to recalculating
-      print('Failed to read cache, recalculating: $e');
-    }
-  }
-
-  // 2. COMPUTE RESULTS (If cache doesn't exist)
-  for (var a = 100; a <= 999; a++) {
-    for (var b = a + 1; b <= 999; b++) {
-      for (var c = b + 1; c <= 999; c++) {
-        final sumOfSquares = a * a + b * b + c * c;
-        if (sumOfSquares < 1000000 || sumOfSquares > 9999999) continue;
-        final digits = (a.toString() + b.toString() + c.toString()).split('').map(int.parse).toSet();
-        if (digits.length != 9) continue;
-        if (digits.contains(0)) continue;
-        final reversedA = int.parse(a.toString().split('').reversed.join(''));
-        final reversedB = int.parse(b.toString().split('').reversed.join(''));
-        final reversedC = int.parse(c.toString().split('').reversed.join(''));
-        final reversedSumOfSquares = reversedA * reversedA + reversedB * reversedB + reversedC * reversedC;
-        if (reversedSumOfSquares < 1000000 || reversedSumOfSquares > 9999999) continue;
-        if (reversedSumOfSquares != sumOfSquares) continue;
-        // final reversedDigits =
-        //     (reversedA.toString() + reversedB.toString() + reversedC.toString()).split('').map(int.parse).toSet();
-        // if (reversedDigits.length != 9) continue;
-        // if (reversedDigits.contains(0)) continue;
-        // print('Found: $a, $b, $c => Sum of squares: $sumOfSquares');
-        var ordered = [a, b, c];
-        results[ordered] = sumOfSquares;
-      }
-    }
-  }
-
-  // 3. WRITE TO DISK
-  try {
-    // Standard JSON requires string keys, so we stringify the List<int> keys
-    final rawMap = <String, int>{};
-    for (final entry in results.entries) {
-      rawMap[json.encode(entry.key)] = entry.value;
-    }
-
-    cacheFile.writeAsStringSync(json.encode(rawMap));
-  } catch (e) {
-    print('Failed to write cache to disk: $e');
-  }
-
-  return results;
-}
-
-Map<List<int>, int> results = {};
-var firstArg = <int>{};
-var secondArg = <int>{};
-var thirdArg = <int>{};
-var sumOfSquares = <int>{};
-var allArgs = <int>{};
-
-void computeSumOfSquares() {
-  results = getSumOfSquares();
-  print('Total results found: ${results.length}');
-  firstArg = results.keys.map((k) => k[0]).toSet();
-  secondArg = results.keys.map((k) => k[1]).toSet();
-  thirdArg = results.keys.map((k) => k[2]).toSet();
-  sumOfSquares = results.values.toSet();
-  allArgs = firstArg.union(secondArg).union(thirdArg);
-  print('Unique A value count: ${firstArg.length}');
-  print('Unique B value count: ${secondArg.length}');
-  print('Unique C value count: ${thirdArg.length}');
-  print('Unique Sum value count: ${sumOfSquares.length}');
-  print('Unique All Args value count: ${allArgs.length}');
-}
-
-int? getSumOfSquaresForOrdered(List<int> ordered) {
-  return results[ordered];
-}
-
-int? sum3DigitSquares(List<dynamic> values) {
-  // In each clue the first three elements are 3-digit numbers that together comprise the nine non-zero digits. The
-  // fourth element is the sum of the squares of the other three.
-  // Clues are given in pairs, in each pair one set of 3-digit numbers are the reverses of the other set.
-  assert(values.length == 3);
-  final a = values[0] as int;
-  final b = values[1] as int;
-  final c = values[2] as int;
-
-  var ordered = [a, b, c]..sort();
-  final sumOfSquares = getSumOfSquaresForOrdered(ordered);
-  return sumOfSquares;
-}
-
-int reverse(int value) {
-  var valueStr = value.toString();
-  var reverseValue = 0;
-  for (var index = valueStr.length - 1; index >= 0; index--) {
-    reverseValue = reverseValue * 10 + int.parse(valueStr[index]);
-  }
-  return reverseValue;
-}
+import "onesumamuse_sum_squares.dart";
 
 void main(List<String> args) {
 /*
+      A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
       a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
       d = sum3digitsquares(G,h,M) = sum3digitsquares(E+f+H,'G,L-F)
       N = sum3digitsquares(7*D/12,G,g) = sum3digitsquares(f-b/2,'G,K)
@@ -135,8 +14,16 @@ void main(List<String> args) {
 
   computeSumOfSquares();
 
+// allArgs
+// B, C, g, G, h, J, K, M
+// 100-999
+// D, E, L
+// b, c, e, f, j
+// 10-99
+// F, H
   var argValues = <String, int>{};
-  for (var e in allArgs) {
+  var any3DigitValue = List.generate(900, (i) => 100 + i);
+  for (var e in any3DigitValue) {
     argValues['e'] = e;
     var argA1a = e;
     for (var G in allArgs) {
@@ -144,7 +31,7 @@ void main(List<String> args) {
       argValues['G'] = G;
       var argA1b = G;
       var argA2b = reverse(G);
-      for (var L = 100; L <= 999; L++) {
+      for (var L in any3DigitValue) {
         if (argValues.containsValue(L)) continue; // Distinct
         argValues['L'] = L;
         var argA1c = L;
@@ -154,8 +41,9 @@ void main(List<String> args) {
         var reversedArgA1 = argA1.map((e) => reverse(e)).toSet();
         reversedArgA1.remove(argA2b); // Remove G from the reversed list since we already have it as argA2b
         assert(reversedArgA1.length == 2);
-        for (var b in allArgs) {
+        for (var b in any3DigitValue) {
           if (argValues.containsValue(b)) continue; // Distinct
+          if (b % 2 != 0) continue; // N requires this
           argValues['b'] = b;
           var argA2a = b;
           if (!reversedArgA1.contains(argA2a)) continue;
@@ -165,7 +53,7 @@ void main(List<String> args) {
           var argA2 = [argA2a, argA2b, argA2c];
           var sumA2 = sum3DigitSquares(argA2);
           if (sumA1 == sumA2) {
-            for (var H = 100; H <= 999; H++) {
+            for (var H = 10; H <= 99; H++) {
               if (argValues.containsValue(H)) continue; // Distinct
               argValues['H'] = H;
               var j = argA2c - H;
@@ -200,7 +88,7 @@ void main(List<String> args) {
                     var arga2 = [arga2a, arga2b, arga2c];
                     var suma2 = sum3DigitSquares(arga2);
                     if (suma1 == suma2) {
-                      for (var M = 100; M <= 999; M++) {
+                      for (var M in allArgs) {
                         if (argValues.containsValue(M)) continue; // Distinct
                         argValues['M'] = M;
                         var c = M - arga2c;
@@ -225,13 +113,14 @@ void main(List<String> args) {
                           var reversedArgd1 = argd1.map((e) => reverse(e)).toSet();
                           reversedArgd1.remove(argd2b);
                           assert(reversedArgd1.length == 2);
-                          for (var E in allArgs) {
+                          for (var E in any3DigitValue) {
                             if (argValues.containsValue(E)) continue; // Distinct
                             argValues['E'] = E;
-                            for (var f in allArgs) {
+                            for (var f in any3DigitValue) {
                               if (argValues.containsValue(f)) continue; // Distinct
                               argValues['f'] = f;
                               var argd2a = E + f + H;
+                              if (argd2a < 100 || argd2a > 999) continue;
                               if (!reversedArgd1.contains(argd2a)) continue;
                               reversedArgd1.remove(argd2a);
                               assert(reversedArgd1.length == 1,
@@ -241,7 +130,7 @@ void main(List<String> args) {
                               var sumd2 = sum3DigitSquares(argd2);
                               if (sumd1 == sumd2) {
                                 var F = L - argd2c;
-                                if (F >= 100 && F <= 999 && !argValues.containsValue(F)) {
+                                if (F >= 10 && F <= 99 && !argValues.containsValue(F)) {
                                   argValues['F'] = F;
                                   // a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
 // e, G, L, b, H, j => A
@@ -250,13 +139,69 @@ void main(List<String> args) {
                                   // d = sum3digitsquares(G,h,M) = sum3digitsquares(E+f+H,'G,L-F)
 // D, g, K => N
                                   // N = sum3digitsquares(7*D/12,G,g) = sum3digitsquares(f-b/2,'G,K)}
-                                  print(
-                                      'Found: e=$e, G=$G, L=$L, b=$b, H=$H, j=$j => A: $sumA1, Args are reverses of each other: $argA1 and $argA2');
-                                  print(
-                                      'Found: C=$C, B=$B, J=$J, M=$M, c=$c => a: $suma1, Args are reverses of each other: $arga1 and $arga2');
-                                  print(
-                                      'Found: h=$h, E=$E, f=$f, F=$F => d: $sumd1, Args are reverses of each other: $argd1 and $argd2');
-                                  argValues.remove('F');
+                                  var argN1b = G;
+                                  var argN2b = reverse(G);
+                                  var argN2a = f - (b / 2).toInt();
+                                  if (argN2a >= 100 && argN2a <= 999) {
+                                    var reverseArgN2a = reverse(argN2a);
+                                    for (var D in any3DigitValue) {
+                                      if (argValues.containsValue(D)) continue; // Distinct
+                                      argValues['D'] = D;
+                                      if (7 * D % 12 != 0) continue;
+                                      var argN1a = (7 * D / 12).toInt();
+                                      if (argN1a < 100 || argN1a > 999) continue;
+                                      var gValues = argN1a == reverseArgN2a ? allArgs : {reverseArgN2a};
+                                      for (var g in gValues) {
+                                        if (argValues.containsValue(g)) continue; // Distinct
+                                        argValues['g'] = g;
+                                        var argN1c = g;
+                                        var argN1 = [argN1a, argN1b, argN1c];
+                                        var sumN1 = sum3DigitSquares(argN1);
+                                        if (sumN1 == null || sumN1 == sumd1 || sumN1 == suma1 || sumN1 == sumA1)
+                                          continue; // Distinct
+                                        var reversedArgN1 = argN1.map((e) => reverse(e)).toSet();
+                                        reversedArgN1.remove(argN2b);
+                                        assert(reversedArgN1.length == 2);
+                                        if (!reversedArgN1.contains(argN2a)) continue;
+                                        reversedArgN1.remove(argN2a);
+                                        var kValues = {reversedArgN1.first};
+                                        for (var K in kValues) {
+                                          if (argValues.containsValue(K)) continue; // Distinct
+                                          argValues['K'] = K;
+                                          var argN2c = K;
+                                          var argN2 = [argN2a, argN2b, argN2c];
+                                          var sumN2 = sum3DigitSquares(argN2);
+                                          if (sumN1 == sumN2) {
+                                            // a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
+// e, G, L, b, H, j => A
+// C, B, J, M, c => a
+// h, E, f, F => d
+                                            // d = sum3digitsquares(G,h,M) = sum3digitsquares(E+f+H,'G,L-F)
+// D, g, K => N
+                                            // N = sum3digitsquares(7*D/12,G,g) = sum3digitsquares(f-b/2,'G,K)}
+                                            print(
+                                                'Found: e=$e, G=$G, L=$L, b=$b, H=$H, j=$j => A: $sumA1, Args are reverses of each other: $argA1 and $argA2');
+                                            print(
+                                                'Found: C=$C, B=$B, J=$J, M=$M, c=$c => a: $suma1, Args are reverses of each other: $arga1 and $arga2');
+                                            print(
+                                                'Found: h=$h, E=$E, f=$f, F=$F => d: $sumd1, Args are reverses of each other: $argN1 and $argd2');
+                                            print(
+                                                'Found: D=$D, g=$g, K=$K => N: $sumN1, Args are reverses of each other: $argN1 and $argd2');
+                                          }
+                                          argValues.remove('K');
+                                        }
+                                        argValues.remove('K');
+                                        reversedArgN1.add(argd2a);
+                                        assert(reversedArgN1.length == 2);
+                                        reversedArgN1.add(argN2b);
+                                        assert(reversedArgN1.length == 3);
+                                        argValues.remove('g');
+                                      }
+                                      argValues.remove('g');
+                                    }
+                                    argValues.remove('D');
+                                    argValues.remove('F');
+                                  }
                                 }
                               }
                               reversedArgd1.add(argd2a);

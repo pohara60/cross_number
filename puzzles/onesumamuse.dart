@@ -62,6 +62,8 @@ import 'package:crossnumber/src/models/puzzle_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/variable.dart';
 
+import "onesumamuse_sum_squares.dart";
+
 PuzzleDefinition onesumamuse() {
   var gridString = [
     '+--+--+--+--+--+--+--+',
@@ -211,34 +213,6 @@ class OneSumAmuseConstraint extends PuzzleConstraint {
 
   @override
   void onBacktrackingStart(PuzzleDefinition puzzle, {bool trace = false}) {}
-}
-
-Map<List<int>, int> getSumOfSquares() {
-  var results = <List<int>, int>{};
-  for (var a = 100; a <= 999; a++) {
-    for (var b = a + 1; b <= 999; b++) {
-      for (var c = b + 1; c <= 999; c++) {
-        final sumOfSquares = a * a + b * b + c * c;
-        if (sumOfSquares < 1000000 || sumOfSquares > 9999999) continue;
-        final digits = (a.toString() + b.toString() + c.toString()).split('').map(int.parse).toSet();
-        if (digits.length != 9) continue;
-        if (digits.contains(0)) continue;
-        final reversedA = int.parse(a.toString().split('').reversed.join(''));
-        final reversedB = int.parse(b.toString().split('').reversed.join(''));
-        final reversedC = int.parse(c.toString().split('').reversed.join(''));
-        final reversedSumOfSquares = reversedA * reversedA + reversedB * reversedB + reversedC * reversedC;
-        if (reversedSumOfSquares < 1000000 || reversedSumOfSquares > 9999999) continue;
-        final reversedDigits =
-            (reversedA.toString() + reversedB.toString() + reversedC.toString()).split('').map(int.parse).toSet();
-        if (reversedDigits.length != 9) continue;
-        if (reversedDigits.contains(0)) continue;
-        // print('Found: $a, $b, $c => Sum of squares: $sumOfSquares');
-        var ordered = [a, b, c];
-        results[ordered] = sumOfSquares;
-      }
-    }
-  }
-  return results;
 }
 
 Map<List<int>, int> results = {};
