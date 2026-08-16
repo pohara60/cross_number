@@ -67,12 +67,6 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       possibleValues = possibleValues.where((value) => arg23.contains(value)).toSet();
       break;
     case 'B':
-      var e = expressableValues['e']!;
-      var digit0 = e.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var b = expressableValues['b']!;
-      var digit1 = b.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
       var G = expressableValues['G']!;
       var C = expressableValues['C']!;
       // a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
@@ -86,19 +80,11 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       possibleValues = possibleValues.where((value) => arg23.contains(value)).toSet();
       break;
     case 'M':
-      var j = expressableValues['j']!;
-      var digit1 = j.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
-      // d = sum3digitsquares(G,h,M) = sum3digitsquares(E+f+H,'G,L-F)
       var G = expressableValues['G']!;
       var arg23 = getOthersForOne(G);
       possibleValues = possibleValues.where((value) => arg23.contains(value)).toSet();
       break;
     case 'c':
-      var C = expressableValues['C']!;
-      var digit1 = C.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
-      // a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
       var G = expressableValues['G']!;
       var J = expressableValues['J']!;
       var M = expressableValues['M']!;
@@ -106,20 +92,8 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       possibleValues = possibleValues.where((value) => arg3.contains(M - value)).toSet();
       break;
     case 'a':
-      var A = expressableValues['A']!;
-      var digit0 = A.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var L = expressableValues['L']!;
-      var digit5 = L.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[5] == digit5).toSet();
       break;
     case 'h':
-      var J = expressableValues['J']!;
-      var digit0 = J.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var L = expressableValues['L']!;
-      var digit1 = L.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
       var G = expressableValues['G']!;
       var M = expressableValues['M']!;
       // d = sum3digitsquares(G,h,M) = sum3digitsquares(E+f+H,'G,L-F)
@@ -133,14 +107,7 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       break;
     case 'f':
       var E = expressableValues['E']!;
-      var digit0 = E.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
       var G = expressableValues['G']!;
-      var digit1 = G.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
-      var J = expressableValues['J']!;
-      var digit2 = J.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[2] == digit2).toSet();
       var H = expressableValues['H']!;
       // d = sum3digitsquares(G,h,M) = sum3digitsquares(E+f+H,'G,L-F)
       var arg23 = getOthersForOne(reverse(G));
@@ -150,12 +117,6 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       possibleValues = possibleValues.where((value) => arg23.contains(value - (b / 2).toInt())).toSet();
       break;
     case 'F':
-      var a = expressableValues['a']!;
-      var digit0 = a.toString()[3];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var e = expressableValues['e']!;
-      var digit1 = e.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
       var E = expressableValues['E']!;
       var f = expressableValues['f']!;
       var H = expressableValues['H']!;
@@ -166,57 +127,21 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       possibleValues = possibleValues.where((value) => arg3.contains(L - value)).toSet();
       break;
     case 'd':
-      var A = expressableValues['A']!;
-      var digit0 = A.toString()[6];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var C = expressableValues['C']!;
-      var digit1 = C.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
-      var H = expressableValues['H']!;
-      var digit3 = H.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[3] == digit3).toSet();
       break;
     // a, e, b
     case 'D':
-      var a = expressableValues['a']!;
-      var digit0 = a.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var e = expressableValues['e']!;
-      var digit1 = e.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
-      var b = expressableValues['b']!;
-      var digit2 = b.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[2] == digit2).toSet();
-      // N = sum3digitsquares(7*D/12,G,g) = sum3digitsquares(f-b/2,'G,K)
       possibleValues = possibleValues.where((value) => value % 12 == 0).toSet();
       var G = expressableValues['G']!;
       var arg23 = getOthersForOne(G);
       possibleValues = possibleValues.where((value) => arg23.contains((7 * value / 12).toInt())).toSet();
       break;
     case 'g':
-      var H = expressableValues['H']!;
-      var digit0 = H.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var M = expressableValues['M']!;
-      var digit2 = M.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[2] == digit2).toSet();
-      // N = sum3digitsquares(7*D/12,G,g) = sum3digitsquares(f-b/2,'G,K)
       var G = expressableValues['G']!;
       var D = expressableValues['D']!;
       var arg3 = getRemainingForTwo(G, (7 * D / 12).toInt());
       possibleValues = possibleValues.where((value) => arg3.contains(value)).toSet();
       break;
     case 'K':
-      var j = expressableValues['j']!;
-      var digit0 = j.toString()[0];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var g = expressableValues['g']!;
-      var digit1 = g.toString()[1];
-      possibleValues = possibleValues.where((value) => value.toString()[1] == digit1).toSet();
-      var d = expressableValues['d']!;
-      var digit2 = d.toString()[4];
-      possibleValues = possibleValues.where((value) => value.toString()[2] == digit2).toSet();
-      // N = sum3digitsquares(7*D/12,G,g) = sum3digitsquares(f-b/2,'G,K)
       var G = expressableValues['G']!;
       var f = expressableValues['f']!;
       var b = expressableValues['b']!;
@@ -224,20 +149,7 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
       possibleValues = possibleValues.where((value) => arg3.contains(value)).toSet();
       break;
     case 'N':
-      var a = expressableValues['a']!;
-      var digit0 = a.toString()[6];
-      possibleValues = possibleValues.where((value) => value.toString()[0] == digit0).toSet();
-      var h = expressableValues['h']!;
-      var digit2 = h.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[2] == digit2).toSet();
-      var j = expressableValues['j']!;
-      var digit4 = j.toString()[2];
-      possibleValues = possibleValues.where((value) => value.toString()[4] == digit4).toSet();
-      var d = expressableValues['d']!;
-      var digit6 = d.toString()[6];
-      possibleValues = possibleValues.where((value) => value.toString()[6] == digit6).toSet();
       break;
-    // 'G,e,L,b,H,j,A,C,B,J,M,c,a,h,E,f,F,d,D,g,K,N'
     default:
   }
   return possibleValues;
