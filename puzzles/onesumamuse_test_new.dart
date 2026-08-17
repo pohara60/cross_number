@@ -1,4 +1,6 @@
 // cspell: disable
+import 'package:expressions/expressions.dart';
+
 import "onesumamuse_sum_squares.dart";
 // ignore: avoid_relative_lib_imports
 import '../lib/src/backtracking_solver.dart';
@@ -158,13 +160,20 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
 bool checkValue(BacktrackingSolver solver, Expressable expressable, int value) {
   var id = expressable.id;
   var expressableValues = solver.expressableValues;
+
+  int evaluateExpression(String expressionString) {
+    var expression = Expression.parse(expressionString);
+    final evaluator = const ExpressionEvaluator();
+    expressableValues[id] = value;
+    var result = evaluator.eval(expression, expressableValues);
+    expressableValues.remove(id);
+    return result;
+  }
+
   switch (id) {
     case 'L':
-      var L = value;
-      var e = expressableValues['e']!;
-      var G = expressableValues['G']!;
       // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
-      var sumSquares1 = e * e + G * G + L * L;
+      var sumSquares1 = evaluateExpression('e * e + G * G + L * L');
       if (!sumOfSquares.contains(sumSquares1)) return false;
       break;
     case 'b':
@@ -181,7 +190,7 @@ bool checkValue(BacktrackingSolver solver, Expressable expressable, int value) {
       // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
       var arg3 = H + j;
       if (arg3 < 100 || arg3 > 999) return false;
-      var sumSquares1 = e * e + G * G + L * L;
+      var sumSquares1 = evaluateExpression('e * e + G * G + L * L');
       var sumSquares2 = b * b + reverse(G) * reverse(G) + arg3 * arg3;
       if (!sumOfSquares.contains(sumSquares2)) return false;
       if (sumSquares1 != sumSquares2) return false;
@@ -192,7 +201,7 @@ bool checkValue(BacktrackingSolver solver, Expressable expressable, int value) {
       var G = expressableValues['G']!;
       var L = expressableValues['L']!;
       // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
-      var sumSquares1 = e * e + G * G + L * L;
+      var sumSquares1 = evaluateExpression('e * e + G * G + L * L');
       if (A != sumSquares1) return false;
       break;
     case 'B':

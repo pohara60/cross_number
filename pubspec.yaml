@@ -9,6 +9,7 @@ environment:
 dependencies:
   args: ^2.7.0
   collection: ^1.18.0
+  expressions: ^0.2.5+3
   powers: ^1.0.0+2
 
 dev_dependencies:
