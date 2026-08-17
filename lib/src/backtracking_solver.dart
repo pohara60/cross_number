@@ -45,7 +45,7 @@ class BacktrackingSolver {
 
   BacktrackingSolver({required this.expressables});
 
-  var expressableValues = <String, int>{};
+  var expressableValues = <String, dynamic>{};
 
   void solve({bool trace = false, List<String> expressableOrder = const [], CheckSolution? checkSolution}) {
     if (expressableOrder.isEmpty) {

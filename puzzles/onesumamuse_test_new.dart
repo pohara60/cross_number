@@ -157,75 +157,78 @@ Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
   return possibleValues;
 }
 
+class MyExpressionEvaluator extends ExpressionEvaluator {
+  const MyExpressionEvaluator();
+
+  @override
+  dynamic evalMemberExpression(MemberExpression expression, Map<String, dynamic> context) {
+    var object = eval(expression.object, context);
+    if (expression.property.name == 'contains') return object.contains;
+    throw ArgumentError('Unknown member ${expression.object.toString()}${expression.property.name} in expression');
+  }
+}
+
 bool checkValue(BacktrackingSolver solver, Expressable expressable, int value) {
   var id = expressable.id;
   var expressableValues = solver.expressableValues;
 
-  int evaluateExpression(String expressionString) {
+  dynamic evaluateExpression(String expressionString) {
     var expression = Expression.parse(expressionString);
-    final evaluator = const ExpressionEvaluator();
+    final evaluator = const MyExpressionEvaluator();
     expressableValues[id] = value;
+    expressableValues['reverse'] = reverse;
     var result = evaluator.eval(expression, expressableValues);
     expressableValues.remove(id);
+    expressableValues.remove('reverse');
     return result;
+  }
+
+  int evaluateSumOfSquares(String a1, String a2, String a3) {
+    return evaluateExpression('$a1*$a1 + $a2*$a2 + $a3*$a3');
+  }
+
+  bool checkSumOfSquares(String a1, String a2, String a3) {
+    expressableValues['sumOfSquares'] = sumOfSquares;
+    var ok = evaluateExpression('sumOfSquares.contains($a1*$a1 + $a2*$a2 + $a3*$a3)') as bool;
+    expressableValues.remove('sumOfSquares');
+    return ok;
+  }
+
+  bool checkSumOfSquaresIsEqual(String a1, String a2, String a3, String b1, String b2, String b3) {
+    var ok = evaluateExpression('($a1*$a1 + $a2*$a2 + $a3*$a3) == ($b1*$b1 + $b2*$b2 + $b3*$b3)') as bool;
+    return ok;
   }
 
   switch (id) {
     case 'L':
       // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
-      var sumSquares1 = evaluateExpression('e * e + G * G + L * L');
-      if (!sumOfSquares.contains(sumSquares1)) return false;
+      if (!checkSumOfSquares('e', 'G', '$value')) return false;
       break;
     case 'b':
       var b = value;
       if (b % 2 != 0) return false;
       break;
     case 'j':
-      var j = value;
-      var e = expressableValues['e']!;
-      var G = expressableValues['G']!;
-      var L = expressableValues['L']!;
-      var b = expressableValues['b']!;
-      var H = expressableValues['H']!;
       // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
-      var arg3 = H + j;
-      if (arg3 < 100 || arg3 > 999) return false;
-      var sumSquares1 = evaluateExpression('e * e + G * G + L * L');
-      var sumSquares2 = b * b + reverse(G) * reverse(G) + arg3 * arg3;
-      if (!sumOfSquares.contains(sumSquares2)) return false;
-      if (sumSquares1 != sumSquares2) return false;
+      var arg3Ok = evaluateExpression('H+$value>=100 && H+$value<=999');
+      if (!arg3Ok) return false;
+      if (!checkSumOfSquaresIsEqual('e', 'G', 'L', 'b', 'reverse(G)', '(H+$value)')) return false;
       break;
     case 'A':
       var A = value;
-      var e = expressableValues['e']!;
-      var G = expressableValues['G']!;
-      var L = expressableValues['L']!;
       // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
-      var sumSquares1 = evaluateExpression('e * e + G * G + L * L');
+      var sumSquares1 = evaluateSumOfSquares('e', 'G', 'L');
       if (A != sumSquares1) return false;
       break;
     case 'B':
-      var B = value;
-      var C = expressableValues['C']!;
-      var G = expressableValues['G']!;
       // a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
-      var sumSquares1 = C * C + B * B + G * G;
-      if (!sumOfSquares.contains(sumSquares1)) return false;
+      if (!checkSumOfSquares('C', '$value', 'G')) return false;
       break;
     case 'c':
-      var c = value;
-      var C = expressableValues['C']!;
-      var B = expressableValues['B']!;
-      var G = expressableValues['G']!;
-      var J = expressableValues['J']!;
-      var M = expressableValues['M']!;
       // a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
-      var arg3 = M - c;
-      if (arg3 < 100 || arg3 > 999) return false;
-      var sumSquares1 = C * C + B * B + G * G;
-      var sumSquares2 = reverse(G) * reverse(G) + J * J + arg3 * arg3;
-      if (!sumOfSquares.contains(sumSquares2)) return false;
-      if (sumSquares1 != sumSquares2) return false;
+      var arg3Ok = evaluateExpression('M-$value>=100 && M-$value<=999');
+      if (!arg3Ok) return false;
+      if (!checkSumOfSquaresIsEqual('C', 'B', 'G', 'reverse(G)', 'J', '(M-$value)')) return false;
       break;
     case 'a':
       var a = value;
