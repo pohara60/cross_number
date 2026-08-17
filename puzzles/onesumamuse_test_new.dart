@@ -15,16 +15,11 @@ import '../lib/src/backtracking_solver.dart';
    Clues are given in pairs, in each pair one set of 3-digit numbers are the reverses of the other set.
 */
 
-// allArgs
-// B, C, g, G, h, J, K, M,
-// e, L, b
-// 100-999
-// D, E
-// c, f, j
-// 10-99
-// F, H
+// allArgs: B, C, g, G, h, J, K, M, e, L, b
+// 100-999: D, E, c, f, j
+// 10-99: F, H
 
-// Order is
+// Order of evaluation is baked into getValues and checkValues below!
 var expressableOrder = 'G,e,L,b,H,j,A,C,B,J,M,c,a,h,E,f,F,d,D,g,K,N'.split(',');
 
 Set<int> getValues(BacktrackingSolver solver, Expressable expressable) {
@@ -168,11 +163,13 @@ class MyExpressionEvaluator extends ExpressionEvaluator {
   }
 }
 
-int sumSquares(num a, num b, num c) => (a != a.toInt() || b != b.toInt() || c != c.toInt())
-    ? 0
-    : (a.toInt() * a.toInt() + b.toInt() * b.toInt() + c.toInt() * c.toInt());
+bool isInt(num x) => x == x.toInt();
 
-bool isThreeDigits(num x) => x == x.toInt() && x >= 100 && x <= 999;
+int toInt(num x) => x.toInt();
+
+int sumSquares(int a, int b, int c) => (a * a + b * b + c * c);
+
+bool isThreeDigits(int x) => x >= 100 && x <= 999;
 
 bool checkValue(BacktrackingSolver solver, Expressable expressable, int value) {
   return true;
@@ -190,7 +187,11 @@ CheckValue getCheckValue(String expressionString) {
       expressableValues['sumSquares'] = sumSquares;
       expressableValues['sumOfSquares'] = sumOfSquares;
       expressableValues['isThreeDigits'] = isThreeDigits;
+      expressableValues['toInt'] = toInt;
+      expressableValues['isInt'] = isInt;
       var result = evaluator.eval(expression, expressableValues);
+      expressableValues.remove('isInt');
+      expressableValues.remove('toInt');
       expressableValues.remove('isThreeDigits');
       expressableValues.remove('sumOfSquares');
       expressableValues.remove('sumSquares');
@@ -209,6 +210,24 @@ void main(List<String> args) {
   var any3DigitValue = List.generate(900, (i) => 100 + i).toSet();
   var any2DigitValue = List.generate(90, (i) => 10 + i).toSet();
 
+  var gridString = [
+    '+--+--+--+--+--+--+--+',
+    '|Aa:  :b :  :c :  :d |',
+    '+::+--+::+--+::+--+::+',
+    '|  |Be:  :  |C :  :  |',
+    '+::+::+::+--+::+--+::+',
+    '|D :  :  |Ef:  :  |  |',
+    '+::+::+--+::+--+--+::+',
+    '|F :  |G :  :  |Hg:  |',
+    '+::+--+--+::+--+::+::+',
+    '|  |J :h :  |Kj:  :  |',
+    '+::+--+::+--+::+::+::+',
+    '|L :  :  |M :  :  |  |',
+    '+::+--+::+--+::+--+::+',
+    '|N :  :  :  :  :  :  |',
+    '+--+--+--+--+--+--+--+',
+  ];
+
 /*
       A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
       a = sum3digitsquares(C,B,G) = sum3digitsquares('G,J,M-c)
@@ -220,148 +239,72 @@ void main(List<String> args) {
 */
   var expressables = <String, Expressable>{};
   expressables['A'] = Expressable(
-      checkValue: getCheckValue('A == sumSquares(e,G,L)'),
-      getValues: getValues,
-      id: 'A',
-      intersections: [
-        Intersection(0, 'a', 0),
-        Intersection(2, 'b', 0),
-        Intersection(4, 'c', 0),
-        Intersection(6, 'd', 0)
-      ],
-      possibleValues: sumOfSquares);
+      checkValue: getCheckValue('A == sumSquares(e,G,L)'), getValues: getValues, id: 'A', possibleValues: sumOfSquares);
   expressables['B'] = Expressable(
       checkValue: getCheckValue('sumOfSquares.contains(sumSquares(C,B,G))'),
       getValues: getValues,
       id: 'B',
-      intersections: [Intersection(0, 'e', 0), Intersection(1, 'b', 1)],
       possibleValues: allArgs);
-  expressables['C'] = Expressable(
-      getValues: getValues,
-      id: 'C',
-      intersections: [Intersection(0, 'c', 1), Intersection(2, 'd', 1)],
-      possibleValues: allArgs);
+  expressables['C'] = Expressable(getValues: getValues, id: 'C', possibleValues: allArgs);
   expressables['D'] = Expressable(
-      checkValue: getCheckValue('isThreeDigits(7*D/12)'),
+      checkValue: getCheckValue('isInt(7*D/12) && isThreeDigits(toInt(7*D/12))'),
       getValues: getValues,
       id: 'D',
-      intersections: [Intersection(0, 'a', 2), Intersection(1, 'e', 1), Intersection(2, 'b', 2)],
       possibleValues: any3DigitValue);
-  expressables['E'] = Expressable(
-      getValues: getValues,
-      id: 'E',
-      intersections: [Intersection(0, 'f', 0), Intersection(1, 'c', 2)],
-      possibleValues: any3DigitValue);
+  expressables['E'] = Expressable(getValues: getValues, id: 'E', possibleValues: any3DigitValue);
   expressables['F'] = Expressable(
       checkValue: getCheckValue(
           'isThreeDigits(E+f+H) && isThreeDigits(L-F) && sumSquares(G,h,M)==sumSquares(E+f+H,reverse(G),L-F)'),
       getValues: getValues,
       id: 'F',
-      intersections: [Intersection(0, 'a', 3), Intersection(1, 'e', 2)],
       possibleValues: any2DigitValue);
   expressables['G'] =
       Expressable(getValues: getValues, id: 'G', intersections: [Intersection(1, 'f', 1)], possibleValues: gArg);
-  expressables['H'] = Expressable(
-      getValues: getValues,
-      id: 'H',
-      intersections: [Intersection(0, 'g', 0), Intersection(1, 'd', 3)],
-      possibleValues: any2DigitValue);
-  expressables['J'] = Expressable(
-      getValues: getValues,
-      id: 'J',
-      intersections: [Intersection(1, 'h', 0), Intersection(2, 'f', 2)],
-      possibleValues: allArgs);
-  expressables['K'] = Expressable(
-      getValues: getValues,
-      id: 'K',
-      intersections: [Intersection(0, 'j', 0), Intersection(1, 'g', 1), Intersection(2, 'd', 4)],
-      possibleValues: allArgs);
+  expressables['H'] = Expressable(getValues: getValues, id: 'H', possibleValues: any2DigitValue);
+  expressables['J'] = Expressable(getValues: getValues, id: 'J', possibleValues: allArgs);
+  expressables['K'] = Expressable(getValues: getValues, id: 'K', possibleValues: allArgs);
   expressables['L'] = Expressable(
       checkValue: getCheckValue('sumOfSquares.contains(sumSquares(e,G,L))'),
       getValues: getValues,
       id: 'L',
-      intersections: [Intersection(0, 'a', 5), Intersection(2, 'h', 1)],
       possibleValues: allArgs);
-  expressables['M'] = Expressable(
-      getValues: getValues,
-      id: 'M',
-      intersections: [Intersection(1, 'j', 1), Intersection(2, 'g', 1)],
-      possibleValues: allArgs);
+  expressables['M'] = Expressable(getValues: getValues, id: 'M', possibleValues: allArgs);
   expressables['N'] = Expressable(
-      checkValue: getCheckValue('N == sumSquares(7*D/12,G,g)'),
+      checkValue: getCheckValue('N == sumSquares(toInt(7*D/12),G,g)'),
       getValues: getValues,
       id: 'N',
-      intersections: [
-        Intersection(0, 'a', 6),
-        Intersection(2, 'h', 2),
-        Intersection(4, 'j', 2),
-        Intersection(6, 'd', 6)
-      ],
       possibleValues: sumOfSquares);
   expressables['a'] = Expressable(
-      checkValue: getCheckValue('a == sumSquares(C,B,G)'),
-      getValues: getValues,
-      id: 'a',
-      intersections: [
-        Intersection(0, 'A', 0),
-        Intersection(2, 'D', 0),
-        Intersection(3, 'E', 0),
-        Intersection(5, 'L', 0),
-        Intersection(6, 'N', 0)
-      ],
-      possibleValues: sumOfSquares);
-  expressables['b'] = Expressable(
-      checkValue: getCheckValue('b % 2 == 0'),
-      getValues: getValues,
-      id: 'b',
-      intersections: [Intersection(0, 'A', 2), Intersection(1, 'B', 1)],
-      possibleValues: allArgs);
+      checkValue: getCheckValue('a == sumSquares(C,B,G)'), getValues: getValues, id: 'a', possibleValues: sumOfSquares);
+  expressables['b'] =
+      Expressable(checkValue: getCheckValue('b % 2 == 0'), getValues: getValues, id: 'b', possibleValues: allArgs);
   expressables['c'] = Expressable(
       checkValue: getCheckValue('isThreeDigits(M-c) && sumSquares(C,B,G)==sumSquares(reverse(G),J,M-c)'),
       getValues: getValues,
       id: 'c',
-      intersections: [Intersection(0, 'A', 4), Intersection(1, 'C', 0), Intersection(2, 'E', 1)],
       possibleValues: any3DigitValue);
   expressables['d'] = Expressable(
-      checkValue: getCheckValue('d == sumSquares(G,h,M)'),
-      getValues: getValues,
-      id: 'd',
-      intersections: [
-        Intersection(0, 'A', 6),
-        Intersection(1, 'C', 2),
-        Intersection(3, 'H', 1),
-        Intersection(4, 'K', 2),
-        Intersection(6, 'N', 6)
-      ],
-      possibleValues: sumOfSquares);
-  expressables['e'] = Expressable(
-      getValues: getValues,
-      id: 'e',
-      intersections: [Intersection(0, 'B', 0), Intersection(1, 'D', 1), Intersection(2, 'F', 1)],
-      possibleValues: allArgs);
+      checkValue: getCheckValue('d == sumSquares(G,h,M)'), getValues: getValues, id: 'd', possibleValues: sumOfSquares);
+  expressables['e'] = Expressable(getValues: getValues, id: 'e', possibleValues: allArgs);
   expressables['f'] = Expressable(
-      checkValue: getCheckValue('b%2==0 && isThreeDigits(f-b/2) && isThreeDigits(E+f+H)'),
+      checkValue: getCheckValue('isInt(b/2) && isThreeDigits(f-toInt(b/2)) && isThreeDigits(E+f+H)'),
       getValues: getValues,
       id: 'f',
-      intersections: [Intersection(0, 'E', 0), Intersection(1, 'G', 1), Intersection(2, 'J', 2)],
       possibleValues: any3DigitValue);
   expressables['g'] = Expressable(
-      checkValue: getCheckValue('sumOfSquares.contains(sumSquares(7*D/12,G,g))'),
+      checkValue: getCheckValue('sumOfSquares.contains(sumSquares(toInt(7*D/12),G,g))'),
       getValues: getValues,
       id: 'g',
-      intersections: [Intersection(0, 'H', 0), Intersection(1, 'K', 1), Intersection(2, 'M', 2)],
       possibleValues: any3DigitValue);
   expressables['h'] = Expressable(
       checkValue: getCheckValue('sumOfSquares.contains(sumSquares(G,h,M))'),
       getValues: getValues,
       id: 'h',
-      intersections: [Intersection(0, 'J', 1), Intersection(1, 'L', 2), Intersection(2, 'N', 2)],
       possibleValues: allArgs);
   expressables['j'] = Expressable(
       checkValue: getCheckValue('isThreeDigits(H+j) && sumSquares(e,G,L)==sumSquares(b,reverse(G),H+j)'),
       getValues: getValues,
       id: 'j',
-      intersections: [Intersection(0, 'K', 0), Intersection(1, 'M', 1), Intersection(2, 'N', 4)],
       possibleValues: any3DigitValue);
 
   // A = sum3digitsquares(e,G,L) = sum3digitsquares(b,'G,H+j)
@@ -374,7 +317,12 @@ void main(List<String> args) {
   // D, g, K => N
 
   var solver = BacktrackingSolver(expressables: expressables);
-  solver.solve(trace: true, expressableOrder: expressableOrder, checkSolution: null);
+  var ok = solver.updateExpressablesFromGrid(gridString.join('\n'));
+  if (!ok) {
+    print('Abort due to intersection errors');
+  } else {
+    solver.solve(trace: true, expressableOrder: expressableOrder, checkSolution: null);
+  }
 }
 
 /*
