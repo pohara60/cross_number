@@ -14,6 +14,12 @@
             "request": "launch",
             "program": "bin/cross_number_v2.dart",
             "args": ["-p", "${fileBasenameNoExtension}", "-t", "-b"]
+        },
+        {
+            "name": "Current file",
+            "type": "dart",
+            "request": "launch",
+            "program": "${file}"
         }
     ]
 }

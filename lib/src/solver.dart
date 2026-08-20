@@ -1211,7 +1211,12 @@ class Solver {
 
         for (final value in clue.possibleValues!) {
           // Check if value is compatible with other set entries
-          var consistent = puzzle.grids.values.first.isEntryValueCompatibleSolvedEntries(currentEntry, value);
+          var entryValue = value;
+          if (puzzle.mappingFunction != null) entryValue = puzzle.mappingFunction!(value);
+          var consistent = currentEntry.possibleValues == null || currentEntry.possibleValues!.contains(entryValue);
+          if (consistent) {
+            consistent = puzzle.grids.values.first.isEntryValueCompatibleSolvedEntries(currentEntry, entryValue);
+          }
           if (!consistent) {
             tracer.logBacktrace(
                 'Backtracking mappings:   Value $value for clue ${clue.id} is not compatible with other entries');
@@ -1221,7 +1226,7 @@ class Solver {
 
           final savedState = _saveState();
           clue.possibleValues = {value};
-          currentEntry.possibleValues = {value};
+          currentEntry.possibleValues = {entryValue};
           tracer.logBacktrace('Backtracking mappings:   Trying clue ${clue.id} value $value');
 
           // var (consistent, _) = _propagateConstraints(tracer.logBacktrace);
@@ -1345,8 +1350,9 @@ class Solver {
       // entry.possibleValues = Set.from(intersection);
 
       for (final value in currentClue.possibleValues!) {
+        var entryValue = puzzle.mappingFunction == null ? value : puzzle.mappingFunction!(value);
         // Check if value is compatible with other set entries
-        var consistent = puzzle.grids.values.first.isEntryValueCompatibleSolvedEntries(entry, value);
+        var consistent = puzzle.grids.values.first.isEntryValueCompatibleSolvedEntries(entry, entryValue);
         if (!consistent) {
           tracer.logBacktrace(
               'Backtracking mappings:   Value $value for clue ${currentClue.id} is not compatible with other entries');
@@ -1355,7 +1361,7 @@ class Solver {
 
         final savedState = _saveState();
         currentClue.possibleValues = {value};
-        entry.possibleValues = {value};
+        entry.possibleValues = {entryValue};
         tracer.logBacktrace('Backtracking mappings:   Trying clue ${currentClue.id} value $value');
 
         // // Propagate constraints

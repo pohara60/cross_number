@@ -9,6 +9,7 @@ import 'package:crossnumber/src/solver.dart';
 import 'package:crossnumber/src/solver_tracer.dart';
 import '../puzzles/abcd.dart';
 import '../puzzles/after_nicholas.dart';
+import '../puzzles/allsquare.dart';
 import '../puzzles/couples_differences.dart';
 import '../puzzles/die_another_day.dart';
 import '../puzzles/increasing_prime.dart';
@@ -30,6 +31,7 @@ import '../puzzles/wheels.dart';
 final puzzleMap = <String, PuzzleDefinition Function()>{
   'abcd': abcd,
   'after_nicholas': afterNicholas,
+  'allsquare': allsquare,
   'couples_differences': couplesDifferences,
   'die_another_day': dieAnotherDay,
   'increasing_prime': increasingPrimes,
@@ -112,7 +114,9 @@ void main(List<String> arguments) {
       tracer: tracer,
     );
 
-    solver.solve(null, MappingStrategy.cluePriority);
+    var mappingStrategy = puzzleName == 'allsquare' ? MappingStrategy.entryPriority : MappingStrategy.cluePriority;
+
+    solver.solve(null, mappingStrategy);
   } on FormatException catch (e) {
     print(e.message);
     print('');

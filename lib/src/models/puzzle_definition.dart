@@ -13,6 +13,8 @@ import 'grid.dart';
 import 'puzzle_constraint.dart';
 import 'variable.dart';
 
+typedef MappingFunction = int Function(int clueValue);
+
 /// A container for all the components of a cross number puzzle.
 ///
 /// This class brings together the grids, entries, clues, and variables
@@ -50,6 +52,7 @@ class PuzzleDefinition {
   /// If `true`, the solver will use a direct solving method.
   /// If `false`, the solver will use a backtracking algorithm to find the mapping.
   final bool mappingIsKnown;
+  MappingFunction? mappingFunction;
 
   factory PuzzleDefinition.fromString({
     required String name,
@@ -62,17 +65,13 @@ class PuzzleDefinition {
     List<PuzzleConstraint> puzzleConstraints = const [],
     String? digitConstraint,
     mappingIsKnown = true,
+    mappingFunction,
   }) {
     final (grids, puzzleEntries) = fromStringInternal(
       name: name,
       gridString: gridString,
       gridNames: gridNames,
-      clues: clues,
-      variables: variables,
       entries: entries,
-      orderingConstraints: orderingConstraints,
-      puzzleConstraints: puzzleConstraints,
-      mappingIsKnown: mappingIsKnown,
     );
     return PuzzleDefinition(
       name: name,
@@ -84,6 +83,7 @@ class PuzzleDefinition {
       puzzleConstraints: puzzleConstraints,
       digitConstraint: digitConstraint,
       mappingIsKnown: mappingIsKnown,
+      mappingFunction: mappingFunction,
     );
   }
 
@@ -91,12 +91,7 @@ class PuzzleDefinition {
     required String name,
     required String gridString,
     List<String>? gridNames,
-    required Map<String, Clue> clues,
-    required Map<String, Variable> variables,
     Map<String, Entry>? entries,
-    List<OrderingConstraint> orderingConstraints = const [],
-    List<PuzzleConstraint> puzzleConstraints = const [],
-    mappingIsKnown = true,
   }) {
     final Map<String, Grid> grids = {};
     final Map<String, Entry> puzzleEntries = {};
@@ -162,17 +157,18 @@ class PuzzleDefinition {
   }
 
   /// Creates a new puzzle definition with the given components.
-  PuzzleDefinition({
-    required this.name,
-    required this.grids,
-    required this.entries,
-    required this.clues,
-    required this.variables,
-    this.orderingConstraints = const [],
-    puzzleConstraints = const [],
-    String? digitConstraint,
-    this.mappingIsKnown = true,
-  }) : puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
+  PuzzleDefinition(
+      {required this.name,
+      required this.grids,
+      required this.entries,
+      required this.clues,
+      required this.variables,
+      this.orderingConstraints = const [],
+      puzzleConstraints = const [],
+      String? digitConstraint,
+      this.mappingIsKnown = true,
+      this.mappingFunction})
+      : puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
     var exception = false;
     // Set clue entry references where applicable
     for (final clue in clues.values) {
@@ -197,6 +193,7 @@ class PuzzleDefinition {
         }
       }
     }
+
     // Parse all expressions
     allExpressables.addAll(clues.values);
     allExpressables.addAll(variables.values);
@@ -262,6 +259,33 @@ class PuzzleDefinition {
       if (!valid) {
         exception = true;
         print('Invalid digit constraint "$digitConstraint". Should be "min,max" with min <= max.');
+      }
+    }
+
+    // Initial update of entry digits
+    for (var grid in grids.values) {
+      for (var row = 0; row < grid.rows; row++) {
+        for (var col = 0; col < grid.cols; col++) {
+          var cell = grid.cells[row][col];
+          if (cell.acrossEntry != null && cell.downEntry != null) {
+            if (cell.acrossEntry!.col == col && cell.downEntry!.row != row) {
+              // The down entry cannot have zero in this row
+              var entry = cell.downEntry!;
+              var digit = row - entry.row;
+              if (entry.possibleValues != null) {
+                entry.possibleValues = entry.possibleValues!.where((v) => v.toString()[digit] != '0').toSet();
+              }
+            }
+            if (cell.acrossEntry!.col != col && cell.downEntry!.row == row) {
+              // The across entry cannot have zero in this row
+              var entry = cell.acrossEntry!;
+              var digit = col - entry.col;
+              if (entry.possibleValues != null) {
+                entry.possibleValues = entry.possibleValues!.where((v) => v.toString()[digit] != '0').toSet();
+              }
+            }
+          }
+        }
       }
     }
 
@@ -335,6 +359,7 @@ class PuzzleDefinition {
     Map<String, Variable>? variables,
     List<OrderingConstraint>? orderingConstraints,
     bool? mappingIsKnown,
+    MappingFunction? mappingFunction,
   }) {
     return PuzzleDefinition(
       name: name ?? this.name,
@@ -344,6 +369,7 @@ class PuzzleDefinition {
       variables: variables ?? this.variables.map((key, value) => MapEntry(key, value.copyWith())),
       orderingConstraints: orderingConstraints ?? this.orderingConstraints,
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
+      mappingFunction: mappingFunction ?? this.mappingFunction,
     );
   }
 
@@ -389,14 +415,18 @@ class PuzzleDefinition {
           return false;
         }
         // Check possible values, if known
+        var entryValues = clue.possibleValues!;
+        if (mappingFunction != null) {
+          entryValues = clue.possibleValues!.map((v) => mappingFunction!(v)).toSet();
+        }
         if (clue.possibleValues != null && entry.possibleValues != null) {
           assert(entry.possibleValues!.isNotEmpty);
-          if (clue.possibleValues!.intersection(entry.possibleValues!).isEmpty) {
+          if (entryValues.intersection(entry.possibleValues!).isEmpty) {
             return false;
           }
         } else {
           // If entry has no possible values, but clue does, filter by length
-          if (!clue.possibleValues!.any((v) => v.toString().length == entry.length)) {
+          if (!entryValues.any((v) => v.toString().length == entry.length)) {
             return false;
           }
         }
@@ -443,7 +473,9 @@ class PuzzleDefinition {
         // Check possible values, if known
         if (clue.possibleValues != null && entry.possibleValues != null) {
           assert(entry.possibleValues!.isNotEmpty);
-          if (clue.possibleValues!.intersection(entry.possibleValues!).isEmpty) {
+          var entryValues = clue.possibleValues!;
+          if (mappingFunction != null) entryValues = clue.possibleValues!.map((v) => mappingFunction!(v)).toSet();
+          if (entryValues.intersection(entry.possibleValues!).isEmpty) {
             continue;
           }
         }

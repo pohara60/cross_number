@@ -19,22 +19,23 @@ abstract class Expressable {
     _possibleValues = values;
   }
 
+  set value(int value) {
+    possibleValues = {value};
+  }
+
   bool get isSolved => (possibleValues?.length ?? 0) == 1;
   bool get isNotSolved => (possibleValues?.length ?? 1) != 1;
   int? get solution => isSolved ? possibleValues!.single : null;
 
-  int? get min => possibleValues == null || possibleValues!.isEmpty
-      ? null
-      : possibleValues!.reduce((a, b) => a < b ? a : b);
+  int? get min =>
+      possibleValues == null || possibleValues!.isEmpty ? null : possibleValues!.reduce((a, b) => a < b ? a : b);
 
-  int? get max => possibleValues == null || possibleValues!.isEmpty
-      ? null
-      : possibleValues!.reduce((a, b) => a > b ? a : b);
+  int? get max =>
+      possibleValues == null || possibleValues!.isEmpty ? null : possibleValues!.reduce((a, b) => a > b ? a : b);
 
   /// The expression trees from the expression constraints for this expressable.
   Iterable<Constraint> get constraints;
-  Iterable<ExpressionConstraint> get expressionConstraints =>
-      constraints.whereType<ExpressionConstraint>();
+  Iterable<ExpressionConstraint> get expressionConstraints => constraints.whereType<ExpressionConstraint>();
 
   final expressionTrees = <Expression>[];
   Expression get expressionTree => expressionTrees.first;
@@ -48,8 +49,7 @@ abstract class Expressable {
       final expressionTree = parser.parse();
       constraint.expressionTree = expressionTree;
       final variableVisitor = VariableVisitor();
-      expressionTree.accept(variableVisitor,
-          min: 1, max: 1); // min, max not used here
+      expressionTree.accept(variableVisitor, min: 1, max: 1); // min, max not used here
       constraint.variables = variableVisitor.variables.toList();
       expressionTrees.add(constraint.expressionTree!);
       variableLists.add(constraint.variables);
@@ -59,8 +59,7 @@ abstract class Expressable {
         }
       }
     } on ParseException catch (e) {
-      print(
-          'Error parsing expressable $id expression "${constraint.expression}": ${e.msg}');
+      print('Error parsing expressable $id expression "${constraint.expression}": ${e.msg}');
       return false;
     }
     return true;
@@ -68,8 +67,7 @@ abstract class Expressable {
 
   void addExpressionFromTree(Expression expressionTree) {
     final variableVisitor = VariableVisitor();
-    expressionTree.accept(variableVisitor,
-        min: 1, max: 1); // min, max not used here
+    expressionTree.accept(variableVisitor, min: 1, max: 1); // min, max not used here
     expressionTrees.add(expressionTree);
     var variableList = variableVisitor.variables.toList();
     variableLists.add(variableList);
@@ -90,8 +88,7 @@ abstract class Expressable {
   void _checkAnswer(Set<int>? values) {
     if (values != null && _answer != null) {
       if (!values.contains(_answer)) {
-        throw EvaluatorException(
-            'Expressable $id: Answer $_answer is not in the possible values $values');
+        throw EvaluatorException('Expressable $id: Answer $_answer is not in the possible values $values');
       }
     }
   }

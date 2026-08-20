@@ -215,13 +215,19 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           break;
         case TokenType.SLASH:
           if (left == 0) continue;
-          if (left > 0) {
+          if (min > 0 && max > 0) {
             rightMin = left / max;
-            rightMax = left / (min > 0 ? min : 1);
-          } else {
-            // left < 0
-            rightMin = left / (min > 0 ? min : 1);
+            rightMax = left / min;
+          } else if (min < 0 && max < 0) {
             rightMax = left / max;
+            rightMin = left / min;
+          } else {
+            // Really there are two ranges that do not include a range around zero
+            rightMin = -1000;
+            rightMax = 1000;
+          }
+          if (rightMin > rightMax) {
+            (rightMin, rightMax) = (rightMax, rightMin);
           }
           break;
         case TokenType.EXPONENT:
