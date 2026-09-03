@@ -2,8 +2,7 @@ import 'entry.dart';
 import 'grid.dart';
 
 class SnakesAndLaddersGrid extends Grid {
-  SnakesAndLaddersGrid(int rows, int cols, {String name = "main"})
-      : super(rows, cols, name: name);
+  SnakesAndLaddersGrid(int rows, int cols, {String name = "main"}) : super(rows, cols, name: name);
 
   /// Converts a square number (1-100) to a (row, col) coordinate.
   /// The grid is 10x10, and the numbering starts from the bottom left.
@@ -12,8 +11,7 @@ class SnakesAndLaddersGrid extends Grid {
       throw ArgumentError('Square number must be between 1 and 100.');
     }
     final row = 9 - ((square - 1) ~/ 10);
-    final col =
-        (9 - row) % 2 == 0 ? (square - 1) % 10 : 9 - ((square - 1) % 10);
+    final col = (9 - row) % 2 == 0 ? (square - 1) % 10 : 9 - ((square - 1) % 10);
     return (row, col);
   }
 
@@ -37,14 +35,17 @@ class SnakesAndLaddersGrid extends Grid {
       if (entry.orientation == EntryOrientation.across) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row][entry.col + i].acrossEntry = entry;
+          cells[entry.row][entry.col + i].acrossIndex = i;
         }
       } else if (entry.orientation == EntryOrientation.down) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row + i][entry.col].downEntry = entry;
+          cells[entry.row + i][entry.col].downIndex = i;
         }
       } else if (entry.orientation == EntryOrientation.up) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row - i][entry.col].upEntry = entry;
+          cells[entry.row - i][entry.col].upIndex = i;
         }
       }
     }

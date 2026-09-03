@@ -277,16 +277,20 @@ class Parser {
     if (_match([TokenType.DOLLAR, TokenType.POUND])) {
       final bool isMonadic = _previous().type == TokenType.DOLLAR;
       final operator = _consume(TokenType.IDENTIFIER, "Expect function name after '\$' or '£'.");
-      _consume(TokenType.LEFT_PAREN, "Expect '(' after function name.");
+      if (!isMonadic) {
+        _consume(TokenType.LEFT_PAREN, "Expect '(' after function name.");
+      }
       final operands = <Expression>[];
       while (true) {
         final operand = _expression();
         operands.add(operand);
-        if (!_match([TokenType.COMMA])) {
+        if (isMonadic || !_match([TokenType.COMMA])) {
           break;
         }
       }
-      _consume(TokenType.RIGHT_PAREN, "Expect ')' after function arguments.");
+      if (!isMonadic) {
+        _consume(TokenType.RIGHT_PAREN, "Expect ')' after function arguments.");
+      }
       if (isMonadic) {
         return MonadicExpression(operator, operands[0]);
       } else {

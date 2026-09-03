@@ -228,8 +228,7 @@ class BacktrackingSolver {
 
         // Create Across entry if applicable
         if (acrossLetter != null || number != null) {
-          final entryId = acrossLetter ?? 'A' + cellContent;
-          final clueId = acrossLetter != null ? null : cellContent + 'A';
+          final entryId = acrossLetter ?? 'A$cellContent';
           // Extend length by checking horizontal separators
           int length = 1;
           for (var k = c; k < actualCols - 1; k++) {
@@ -259,8 +258,7 @@ class BacktrackingSolver {
 
         // Create Down entry if applicable
         if (downLetter != null || number != null) {
-          final entryId = downLetter ?? 'D' + cellContent;
-          final clueId = downLetter != null ? null : cellContent + 'D';
+          final entryId = downLetter ?? 'D$cellContent';
           int length = 1;
           // Extend length by checking vertical separators
           for (var k = r; k < actualRows - 1; k++) {

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:crossnumber/src/expressions/merge.dart';
+
 abstract class Generator {
   List<int> getValues(int min, int max);
 }
@@ -72,8 +74,7 @@ class TwoDigitPrimeToPrimePowerGenerator extends CachedGenerator {
 
   @override
   void _extend(int max) {
-    var twoDigitPrimeGenerator =
-        GeneratorRegistry().get('twodigitprime') as TwoDigitPrimeGenerator;
+    var twoDigitPrimeGenerator = GeneratorRegistry().get('twodigitprime') as TwoDigitPrimeGenerator;
     var primeGenerator = GeneratorRegistry().get('prime') as PrimeGenerator;
 
     var twoDigitPrimes = twoDigitPrimeGenerator.getValues(10, 99);
@@ -228,11 +229,7 @@ class HarshadGenerator extends CachedGenerator {
     if (max > maxCached) {
       var harshad = maxCached + 1;
       while (harshad <= max) {
-        var sumDigits = harshad
-            .toString()
-            .split('')
-            .map(int.parse)
-            .reduce((value, element) => value + element);
+        var sumDigits = harshad.toString().split('').map(int.parse).reduce((value, element) => value + element);
         if (harshad % sumDigits == 0) {
           if (harshad > maxCached) {
             _values.add(harshad);
@@ -249,8 +246,7 @@ class PalindromeGenerator extends CachedGenerator {
   @override
   void _extend(int max) {
     var maxCached = _values.isEmpty ? 0 : _values.last;
-    var minDigits =
-        maxCached == 0 ? 1 : maxCached.toInt().toString().length + 1;
+    var minDigits = maxCached == 0 ? 1 : maxCached.toInt().toString().length + 1;
     var maxDigits = max.toInt().toString().length;
     for (var digits = minDigits; digits <= maxDigits; digits++) {
       for (var palindrome in getPalindromes(digits)) {
@@ -259,20 +255,8 @@ class PalindromeGenerator extends CachedGenerator {
     }
   }
 
-  static const powers10 = <int>[
-    1,
-    10,
-    100,
-    1000,
-    10000,
-    100000,
-    1000000,
-    10000000,
-    100000000,
-    1000000000
-  ];
-  Iterable<int> getPalindromes(int digits,
-      [bool allowLeadingZero = false]) sync* {
+  static const powers10 = <int>[1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000];
+  Iterable<int> getPalindromes(int digits, [bool allowLeadingZero = false]) sync* {
     for (var digit = 0; digit < 10; digit++) {
       if (digits == 1) {
         yield digit;
@@ -291,13 +275,86 @@ class PalindromeGenerator extends CachedGenerator {
   }
 }
 
+class CatalanGenerator extends CachedGenerator {
+  @override
+  void _extend(int max) {
+    var maxCached = _values.isEmpty ? 0 : _values.last;
+    while (max > maxCached) {
+      var numCached = _values.length;
+      var next = catalanNumber(numCached + 1);
+      _values.add(next);
+      maxCached = next;
+    }
+  }
+
+  int catalanNumber(int n) {
+    if (n <= 1) return 1;
+
+    // Using the formula: C_n = (2n)! / ((n+1)! * n!)
+    // Optimized iteratively to prevent integer overflow midway
+    int result = 1;
+
+    for (int i = 0; i < n; i++) {
+      result = result * (2 * n - i) ~/ (i + 1);
+    }
+
+    return result ~/ (n + 1);
+  }
+}
+
+var powers = <int>[1, 2, 4, 8, 9];
+
+class PowersGenerator extends CachedGenerator {
+  final int minPower;
+  PowersGenerator({this.minPower = 2});
+
+  @override
+  void _extend(int max) {
+    var index = 0;
+    int length = _values.length;
+    if (_values.isNotEmpty && _values.last >= max) return;
+
+    // Generate from beginning
+    int previous = 0;
+    for (var element in merge(generatePowerAll(minPower))) {
+      // Skip duplicates
+      if (element == previous) continue;
+      previous = element;
+
+      // Add to list if not already there
+      if (index <= length) {
+        length++;
+        _values.add(element);
+      }
+      index++;
+
+      // yield elements in range
+      if (element > max) return;
+      _values.add(element);
+    }
+  }
+
+  Iterable<Iterable<int>> generatePowerAll([int minPower = 2]) sync* {
+    int next = minPower;
+    while (true) {
+      yield generatePowerN(next++);
+    }
+  }
+
+  Iterable<int> generatePowerN(int power) sync* {
+    int next = 2;
+    while (true) {
+      yield pow(next++, power).toInt();
+    }
+  }
+}
+
 /// A registry for generator functions.
 ///
 /// This class holds a map of generator names to their corresponding
 /// functions. It also provides a method to get a generator by its name.
 class GeneratorRegistry {
-  static final GeneratorRegistry _instance =
-      GeneratorRegistry._privateConstructor();
+  static final GeneratorRegistry _instance = GeneratorRegistry._privateConstructor();
 
   factory GeneratorRegistry() {
     return _instance;
@@ -316,6 +373,8 @@ class GeneratorRegistry {
     register('harshad', HarshadGenerator());
     register('palindrome', PalindromeGenerator());
     register('productfiveprimes', ProductFivePrimesGenerator());
+    register('catalan', CatalanGenerator());
+    register('powers3', PowersGenerator(minPower: 3));
   }
 
   void register(String name, Generator generator) {

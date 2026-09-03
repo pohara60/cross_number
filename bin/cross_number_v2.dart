@@ -10,6 +10,7 @@ import 'package:crossnumber/src/solver_tracer.dart';
 import '../puzzles/abcd.dart';
 import '../puzzles/after_nicholas.dart';
 import '../puzzles/allsquare.dart';
+import '../puzzles/asp.dart';
 import '../puzzles/couples_differences.dart';
 import '../puzzles/die_another_day.dart';
 import '../puzzles/increasing_prime.dart';
@@ -27,15 +28,18 @@ import '../puzzles/summingsquares.dart';
 import '../puzzles/thirty.dart';
 import '../puzzles/threes.dart';
 import '../puzzles/wheels.dart';
+import '../puzzles/yet_another_sudoku.dart';
 
 final puzzleMap = <String, PuzzleDefinition Function()>{
   'abcd': abcd,
   'after_nicholas': afterNicholas,
   'allsquare': allsquare,
+  'asp': asp,
   'couples_differences': couplesDifferences,
   'die_another_day': dieAnotherDay,
   'increasing_prime': increasingPrimes,
   'mathematical_inspiration': mathematicalInspiration,
+  'onesumamuse': onesumamuse,
   'primania': primania,
   'puzzle2': puzzle2,
   'puzzle3': puzzle3,
@@ -48,7 +52,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'threes': threes,
   'wheels': wheels,
   'summingsquares': summingsquares,
-  'onesumamuse': onesumamuse,
+  'yet_another_sudoku': yet_another_sudoku,
 };
 
 void main(List<String> arguments) {
@@ -108,11 +112,10 @@ void main(List<String> arguments) {
       traceBacktrace: results['backtrace'] as bool,
     );
 
-    final solver = Solver(
-      puzzle,
-      allowBacktracking: true,
-      tracer: tracer,
-    );
+    var useTransitiveGrouping = puzzleName == 'asp';
+
+    final solver =
+        Solver(puzzle, allowBacktracking: true, tracer: tracer, useTransitiveGrouping: useTransitiveGrouping);
 
     var mappingStrategy = puzzleName == 'allsquare' ? MappingStrategy.entryPriority : MappingStrategy.cluePriority;
 

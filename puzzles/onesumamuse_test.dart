@@ -157,8 +157,9 @@ void main(List<String> args) {
                                         var argN1c = g;
                                         var argN1 = [argN1a, argN1b, argN1c];
                                         var sumN1 = sum3DigitSquares(argN1);
-                                        if (sumN1 == null || sumN1 == sumd1 || sumN1 == suma1 || sumN1 == sumA1)
+                                        if (sumN1 == null || sumN1 == sumd1 || sumN1 == suma1 || sumN1 == sumA1) {
                                           continue; // Distinct
+                                        }
                                         var reversedArgN1 = argN1.map((e) => reverse(e)).toSet();
                                         reversedArgN1.remove(argN2b);
                                         assert(reversedArgN1.length == 2);

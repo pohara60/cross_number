@@ -48,7 +48,20 @@ class Clue extends Expressable {
   }
 
   /// Creates a new clue with the given [id] and [constraints].
-  Clue(this.id, this.constraints, {this.entry, this.length});
+  Clue(this.id, this.constraints, {this.entry, this.length}) {
+    initPossibleValues();
+  }
+
+  void initPossibleValues() {
+    Set<int>? values;
+    if (length != null && length! <= 5) {
+      // Initialize possible values based on length
+      final min = math.pow(10, length! - 1).toInt();
+      final max = math.pow(10, length!).toInt() - 1;
+      values = List<int>.generate(max - min + 1, (i) => i + min).toSet();
+    }
+    possibleValues = values;
+  }
 
   /// Solves the clue by applying its constraints.
   ///

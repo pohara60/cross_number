@@ -152,6 +152,7 @@ class Grid {
             for (var k = 0; k < length; k++) {
               final cell = grid.cells[r][c + k];
               cell.acrossEntry = entry;
+              cell.acrossIndex = k;
               grid.entryCells.putIfAbsent(entry.id, () => <Cell>[]).add(cell);
             }
           }
@@ -186,6 +187,7 @@ class Grid {
             for (var k = 0; k < length; k++) {
               final cell = grid.cells[r + k][c];
               cell.downEntry = entry;
+              cell.downIndex = k;
               grid.entryCells.putIfAbsent(entry.id, () => <Cell>[]).add(cell);
             }
           }
@@ -194,6 +196,27 @@ class Grid {
     }
 
     return grid;
+  }
+
+  Iterable<Region> get regions sync* {
+    for (var row = 0; row < rows; row++) {
+      var cells = this.cells[row];
+      yield Region('R$row', cells);
+    }
+    for (var col = 0; col < cols; col++) {
+      var cells = [for (var row = 0; row < rows; row++) this.cells[row][col]];
+      yield Region('C$col', cells);
+    }
+    for (var box = 0; box < 9; box++) {
+      var rowMin = (box ~/ 3) * 3;
+      var rowMax = rowMin + 3;
+      var colMin = (box % 3) * 3;
+      var colMax = colMin + 3;
+      var cells = [
+        for (var row = rowMin; row < rowMax; row++) [for (var col = colMin; col < colMax; col++) this.cells[row][col]]
+      ].expand((e) => e).toList();
+      yield Region('B$box', cells);
+    }
   }
 
   /// Populates the grid with the given entries.
@@ -206,14 +229,17 @@ class Grid {
       if (entry.orientation == EntryOrientation.across) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row][entry.col + i].acrossEntry = entry;
+          cells[entry.row][entry.col + i].acrossIndex = i;
         }
       } else if (entry.orientation == EntryOrientation.down) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row + i][entry.col].downEntry = entry;
+          cells[entry.row + i][entry.col].downIndex = i;
         }
       } else if (entry.orientation == EntryOrientation.up) {
         for (int i = 0; i < entry.length; i++) {
           cells[entry.row - i][entry.col].upEntry = entry;
+          cells[entry.row - i][entry.col].upIndex = i;
         }
       }
     }
@@ -258,13 +284,13 @@ class Grid {
         }
         var value = ' ';
         if (cell.acrossEntry != null && cell.acrossEntry!.isSolved) {
-          value = cell.acrossEntry!.solution.toString()[c - cell.acrossEntry!.col];
+          value = cell.acrossEntry!.solution.toString()[cell.acrossIndex];
         }
         if (cell.downEntry != null && cell.downEntry!.isSolved) {
-          value = cell.downEntry!.solution.toString()[r - cell.downEntry!.row];
+          value = cell.downEntry!.solution.toString()[cell.downIndex];
         }
         if (cell.upEntry != null && cell.upEntry!.isSolved) {
-          value = cell.upEntry!.solution.toString()[cell.upEntry!.row - r];
+          value = cell.upEntry!.solution.toString()[cell.upIndex];
         }
         buffer.write(' $value');
       }
@@ -438,5 +464,29 @@ class Grid {
       }
     }
     return (minCount, maxCount);
+  }
+
+  (int, int) getDiagonalDigitSumRange(bool isSWNE) {
+    int minSum = 0;
+    int maxSum = 0;
+    for (var r = 0; r < rows; r++) {
+      var c = isSWNE ? cols - 1 - r : r;
+      final digits = getPossibleDigits(r, c);
+      if (digits.isNotEmpty) {
+        minSum += digits.reduce((a, b) => a < b ? a : b);
+        maxSum += digits.reduce((a, b) => a > b ? a : b);
+      }
+    }
+    return (minSum, maxSum);
+  }
+}
+
+class Region {
+  final String id;
+  final List<Cell> cells;
+  Region(this.id, this.cells);
+  @override
+  String toString() {
+    return 'Region(id: $id, cells: $cells)';
   }
 }

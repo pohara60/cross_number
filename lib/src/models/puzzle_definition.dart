@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
-import 'package:crossnumber/src/models/clue_group.dart';
+import 'package:crossnumber/src/models/expressable_group.dart';
 import 'package:crossnumber/src/models/digit_range_constraint.dart';
+import 'package:crossnumber/src/models/distinct_constraint.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
@@ -26,6 +27,7 @@ class PuzzleDefinition {
   /// A map of grid IDs to [Grid] objects.
   final Map<String, Grid> grids;
   bool get isMultiGrid => grids.length > 1;
+  Grid get grid => grids.values.first;
 
   /// A map of entry IDs to [Entry] objects.
   final Map<String, Entry> entries;
@@ -41,6 +43,9 @@ class PuzzleDefinition {
 
   /// A list of puzzle constraints.
   final List<PuzzleConstraint> puzzleConstraints;
+
+  /// Digit constraint
+  late final DistinctConstraint distinctConstraint;
 
   /// All Expressables, i.e. clue, expressions and variables
   final List<Expressable> allExpressables = [];
@@ -63,6 +68,7 @@ class PuzzleDefinition {
     Map<String, Entry>? entries,
     List<OrderingConstraint> orderingConstraints = const [],
     List<PuzzleConstraint> puzzleConstraints = const [],
+    DistinctConstraint? distinctConstraint,
     String? digitConstraint,
     mappingIsKnown = true,
     mappingFunction,
@@ -82,6 +88,7 @@ class PuzzleDefinition {
       orderingConstraints: orderingConstraints,
       puzzleConstraints: puzzleConstraints,
       digitConstraint: digitConstraint,
+      distinctConstraint: distinctConstraint,
       mappingIsKnown: mappingIsKnown,
       mappingFunction: mappingFunction,
     );
@@ -165,10 +172,12 @@ class PuzzleDefinition {
       required this.variables,
       this.orderingConstraints = const [],
       puzzleConstraints = const [],
+      distinctConstraint,
       String? digitConstraint,
       this.mappingIsKnown = true,
       this.mappingFunction})
-      : puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
+      : distinctConstraint = distinctConstraint ?? DistinctConstraint(),
+        puzzleConstraints = List<PuzzleConstraint>.from(puzzleConstraints) {
     var exception = false;
     // Set clue entry references where applicable
     for (final clue in clues.values) {
@@ -313,42 +322,42 @@ class PuzzleDefinition {
     return exception;
   }
 
-  List<ClueGroup> findClueGroups() {
-    final clueGroups = <ClueGroup>[];
-    final clueVariables = <String, List<String>>{};
+  List<ExpressableGroup> findExpressableGroups() {
+    final expressableGroups = <ExpressableGroup>[];
+    final expressableVariables = <String, List<String>>{};
 
     // Find variables for each clue
-    for (var clue in clues.values) {
+    for (var expressable in expressables.values) {
       final variables = <String>{};
-      for (var constraint in clue.constraints) {
+      for (var constraint in expressable.constraints) {
         if (constraint is ExpressionConstraint) {
           variables.addAll(constraint.variables);
         }
       }
       if (variables.isNotEmpty) {
         var sortedVariables = variables.toList()..sort();
-        clueVariables[clue.id] = sortedVariables;
+        expressableVariables[expressable.id] = sortedVariables;
       }
     }
 
-    // Group clues by common variables
+    // Group expressables by common variables
     final variableGroups = <String, List<String>>{};
-    for (var clueId in clueVariables.keys) {
-      final variables = clueVariables[clueId]!.join(',');
-      variableGroups.putIfAbsent(variables, () => []).add(clueId);
+    for (var expressableId in expressableVariables.keys) {
+      final variables = expressableVariables[expressableId]!.join(',');
+      variableGroups.putIfAbsent(variables, () => []).add(expressableId);
     }
 
-    // Create ClueGroup objects
+    // Create ExpressableGroup objects
     for (var group in variableGroups.keys) {
       var variables = group.split(',');
       if (variables.length == 1) continue; // Skip single variable groups
-      final clueIds = variableGroups[group]!;
-      if (clueIds.length > 1) {
-        clueGroups.add(ClueGroup(clues: clueIds, variables: variables));
+      final expressableIds = variableGroups[group]!;
+      if (expressableIds.length > 1) {
+        expressableGroups.add(ExpressableGroup(expressables: expressableIds, variables: variables));
       }
     }
 
-    return clueGroups;
+    return expressableGroups;
   }
 
   PuzzleDefinition copyWith({

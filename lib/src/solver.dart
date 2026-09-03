@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:crossnumber/src/models/evaluation_result.dart';
 import 'package:crossnumber/src/models/expressable.dart';
-import 'package:crossnumber/src/models/clue_group.dart';
+import 'package:crossnumber/src/models/expressable_group.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
@@ -257,14 +257,14 @@ class Solver {
       final grouper = TransitiveExpressableGrouper();
       expressableGroups = grouper.findGroups(puzzle, tracer.trace);
     } else {
-      final clueGroups = puzzle.findClueGroups();
+      final clueGroups = puzzle.findExpressableGroups();
       if (tracer.trace) {
         tracer.logSolve('Found ${clueGroups.length} clue groups:');
         for (final group in clueGroups) {
-          tracer.logSolve('  Group: ${group.clues.join(', ')}');
+          tracer.logSolve('  Group: ${group.expressables.join(', ')}');
         }
       }
-      expressableGroups = clueGroups.map((g) => g.clues.map((c) => puzzle.clues[c]!).toList()).toList();
+      expressableGroups = clueGroups.map((g) => g.expressables.map((c) => puzzle.clues[c]!).toList()).toList();
     }
 
     int iteration = 0;
@@ -454,8 +454,8 @@ class Solver {
     return updated;
   }
 
-  bool solveClueGroup(ClueGroup group) {
-    var expressables = group.clues.map((e) => puzzle.clues[e]!).toList();
+  bool solveClueGroup(ExpressableGroup group) {
+    var expressables = group.expressables.map((e) => puzzle.clues[e]!).toList();
     return solveExpressableGroup(expressables);
   }
 
@@ -548,11 +548,13 @@ class Solver {
       loopChanged = false;
 
       // Enforce distinct clue values
-      (consistent, updated) = _enforceDistinctValuesForExpressable(
-        puzzle,
-        puzzle.clues.values,
-        trace,
-      );
+      if (puzzle.distinctConstraint.allClues) {
+        (consistent, updated) = _enforceDistinctValuesForExpressable(
+          puzzle,
+          puzzle.clues.values,
+          trace,
+        );
+      }
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
@@ -562,11 +564,13 @@ class Solver {
       }
 
       // Enforce distinct variable values
-      (consistent, updated) = _enforceDistinctValuesForExpressable(
-        puzzle,
-        puzzle.variables.values,
-        trace,
-      );
+      if (puzzle.distinctConstraint.allVariables) {
+        (consistent, updated) = _enforceDistinctValuesForExpressable(
+          puzzle,
+          puzzle.variables.values,
+          trace,
+        );
+      }
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
@@ -576,11 +580,13 @@ class Solver {
       }
 
       // Enforce distinct entry values - necessary when not mapped to clues
-      (consistent, updated) = _enforceDistinctValuesForExpressable(
-        puzzle,
-        puzzle.entries.values,
-        trace,
-      );
+      if (puzzle.distinctConstraint.allEntries) {
+        (consistent, updated) = _enforceDistinctValuesForExpressable(
+          puzzle,
+          puzzle.entries.values,
+          trace,
+        );
+      }
       if (updated) loopChanged = changed = true;
       if (!consistent) {
         if (trace) {
