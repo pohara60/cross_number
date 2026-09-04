@@ -52,7 +52,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'threes': threes,
   'wheels': wheels,
   'summingsquares': summingsquares,
-  'yet_another_sudoku': yet_another_sudoku,
+  'yet_another_sudoku': yetAnotherSudoku,
 };
 
 void main(List<String> arguments) {

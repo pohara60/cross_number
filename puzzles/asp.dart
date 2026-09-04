@@ -51,6 +51,8 @@ Down
 
 ## Lessons Learned
 
+Support expressable groups, not just clue groups.
+Support Catalan number generator.
 
  */
 

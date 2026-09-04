@@ -36,8 +36,13 @@ class Cell {
     var possibleDigits = <int>{1, 2, 3, 4, 5, 6, 7, 8, 9};
     for (var entry in [acrossEntry, downEntry, upEntry]) {
       if (entry != null && entry.possibleValues != null) {
-        possibleDigits =
-            possibleDigits.intersection(entry.possibleValues!.map((v) => v.toString()[acrossIndex]).toSet());
+        var index = entry == acrossEntry
+            ? acrossIndex
+            : entry == downEntry
+                ? downIndex
+                : upIndex;
+        var entryDigits = entry.possibleValues!.map((v) => int.parse(v.toString()[index])).toSet();
+        possibleDigits = possibleDigits.intersection(entryDigits);
       }
     }
     return possibleDigits;
@@ -45,12 +50,24 @@ class Cell {
 
   get value => possibleDigits.length == 1 ? possibleDigits.first : null;
 
-  bool removeDigits(Set<int> knownValues) {
+  bool removeDigits(Set<int> digits) {
     var updated = false;
     for (var entry in [acrossEntry, downEntry, upEntry]) {
       if (entry != null && entry.possibleValues != null) {
-        if (entry.possibleValues!.intersection(knownValues).isNotEmpty) {
-          entry.possibleValues!.removeAll(knownValues);
+        var index = entry == acrossEntry
+            ? acrossIndex
+            : entry == downEntry
+                ? downIndex
+                : upIndex;
+        var valuesToRemove = [];
+        for (var value in entry.possibleValues!) {
+          var digit = int.parse(value.toString()[index]);
+          if (digits.contains(digit)) {
+            valuesToRemove.add(value);
+          }
+        }
+        if (valuesToRemove.isNotEmpty) {
+          entry.possibleValues!.removeAll(valuesToRemove);
           updated = true;
         }
       }
