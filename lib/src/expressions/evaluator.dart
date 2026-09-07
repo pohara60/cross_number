@@ -38,6 +38,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       final variables = expressable.variableLists[i];
       try {
         final expressionResults = evaluateExpression(expression, variables, min: min, max: max);
+        // If expression involved this expressable, then the result value must match the expressable's value
+        if (variables.contains(expressable.id)) {
+          expressionResults.removeWhere((r) => r.value != r.variableValues[expressable.id]);
+        }
         if (i == 0) {
           results = expressionResults;
         } else {

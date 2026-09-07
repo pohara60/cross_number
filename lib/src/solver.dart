@@ -303,7 +303,7 @@ class Solver {
     stopwatch.stop();
     if (isSolutionValid()) {
       if (callback != null) callback.call();
-      if (tracer.trace) tracer.printPuzzle(puzzle);
+      tracer.printPuzzle(puzzle);
       tracer.log('Solve time: ${stopwatch.elapsedMilliseconds}ms');
     } else if (!valueBacktracking) {
       if (tracer.trace) tracer.printPuzzle(puzzle);

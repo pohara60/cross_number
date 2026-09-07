@@ -7,7 +7,7 @@ ASP by Oyler
 
 Symmetrically opposite pairs have the same answer which must be modified to form the grid entries. One entry has the
 digit product of its partner entry  added to the answer whilst the other entry has the digit sum of its partner entry
-added to  the answer.  Answers (not symmetrically opposite) and entries are distinct and of the same length. There are
+added to the answer. Answers (not symmetrically opposite) and entries are distinct and of the same length. There are
 no zeros entered in the grid. 7ac is considered symmetrically opposite to itself.
 
 ```+--+--+--+--+--+
@@ -47,12 +47,26 @@ Down
 ## Solution
 
 ```
++--+--+--+--+--+
+| 2  1| 4  4| 4|
++  +--+  +--+  +
+| 3  2  9| 2  5|
++  +  +--+  +--+
+| 9| 2  3  1| 2|
++--+  +--+  +  +
+| 3  1| 3  6  7|
++  +--+  +--+  +
+| 6| 4  8| 1  7|
++--+--+--+--+--+
 ```
 
 ## Lessons Learned
 
-Support expressable groups, not just clue groups.
+Support expressable groups, not just clue groups. 
 Support Catalan number generator.
+On successful solution, print the puzzle to the console even if no trace.
+Cope with expressions that include the variable being solved for.
+Puzzle specific Polyadic functions are the key to solving the puzzle.
 
  */
 
@@ -89,7 +103,8 @@ PuzzleDefinition asp() {
   // Register puzzle specific functions
   // ignore: unused_local_variable
   final PolyadicFunctionRegistry polyadicFunctionRegistry = PolyadicFunctionRegistry();
-  polyadicFunctionRegistry.registerFunction('aspCheck', aspCheck);
+  polyadicFunctionRegistry.registerFunction('aspCheck', aspCheck, PolyadicMaxOp.limit);
+  polyadicFunctionRegistry.registerFunction('aspCheck2', aspCheck2, PolyadicMaxOp.limit);
   final MonadicFunctionRegistry monadicFunctionRegistry = MonadicFunctionRegistry();
   monadicFunctionRegistry.registerFunction('digitSumEqualProduct', digitSumEqualProduct);
 
@@ -106,38 +121,30 @@ PuzzleDefinition asp() {
       'A2': Entry(id: 'A2', constraints: [ExpressionConstraint(r'£aspCheck(A11,2A)')]),
       'A4': Entry(id: 'A4', constraints: [ExpressionConstraint(r'£aspCheck(A10,4A)')]),
       'A6': Entry(id: 'A6', constraints: [ExpressionConstraint(r'£aspCheck(A9,6A)')]),
-      'A7': Entry(id: 'A7', constraints: [ExpressionConstraint(r'£aspCheck(A7,7A)')]),
-      'A9': Entry(id: 'A9', constraints: [ExpressionConstraint(r'£aspCheck(A6,9A)')]),
-      'A10': Entry(id: 'A10', constraints: [ExpressionConstraint(r'£aspCheck(A4,10A)')]),
-      'A11': Entry(id: 'A11', constraints: [ExpressionConstraint(r'£aspCheck(A2,11A)')]),
-      'A12': Entry(id: 'A12', constraints: [ExpressionConstraint(r'£aspCheck(A1,12A)')]),
+      'A7': Entry(id: 'A7', constraints: [ExpressionConstraint(r'£aspCheck2(A7,7A)')]),
+      'A9': Entry(id: 'A9', constraints: [ExpressionConstraint(r'£aspCheck(A6,6A)')]),
+      'A10': Entry(id: 'A10', constraints: [ExpressionConstraint(r'£aspCheck(A4,4A)')]),
+      'A11': Entry(id: 'A11', constraints: [ExpressionConstraint(r'£aspCheck(A2,2A)')]),
+      'A12': Entry(id: 'A12', constraints: [ExpressionConstraint(r'£aspCheck(A1,1A)')]),
       'D1': Entry(id: 'D1', constraints: [ExpressionConstraint(r'£aspCheck(D8,1D)')]),
       'D2': Entry(id: 'D2', constraints: [ExpressionConstraint(r'£aspCheck(D10,2D)')]),
       'D3': Entry(id: 'D3', constraints: [ExpressionConstraint(r'£aspCheck(D9,3D)')]),
       'D5': Entry(id: 'D5', constraints: [ExpressionConstraint(r'£aspCheck(D6,5D)')]),
-      'D6': Entry(id: 'D6', constraints: [ExpressionConstraint(r'£aspCheck(D5,6D)')]),
-      'D8': Entry(id: 'D8', constraints: [ExpressionConstraint(r'£aspCheck(D1,8D)')]),
-      'D9': Entry(id: 'D9', constraints: [ExpressionConstraint(r'£aspCheck(D3,9D)')]),
-      'D10': Entry(id: 'D10', constraints: [ExpressionConstraint(r'£aspCheck(D2,10D)')]),
+      'D6': Entry(id: 'D6', constraints: [ExpressionConstraint(r'£aspCheck(D5,5D)')]),
+      'D8': Entry(id: 'D8', constraints: [ExpressionConstraint(r'£aspCheck(D1,1D)')]),
+      'D9': Entry(id: 'D9', constraints: [ExpressionConstraint(r'£aspCheck(D3,3D)')]),
+      'D10': Entry(id: 'D10', constraints: [ExpressionConstraint(r'£aspCheck(D2,2D)')]),
     },
     clues: {
-      '1A': Clue('1A', [ExpressionConstraint(r'12A = #catalan')], length: 2),
-      '2A': Clue('2A', [ExpressionConstraint(r'11A = $power 2')], length: 2),
-      '4A': Clue('4A', [ExpressionConstraint(r'10A = #palindrome')], length: 3),
-      '6A': Clue('6A', [ExpressionConstraint(r'9A = #triangular')], length: 2),
+      '1A': Clue('1A', [ExpressionConstraint(r'#catalan')], length: 2),
+      '2A': Clue('2A', [ExpressionConstraint(r'$power 2')], length: 2),
+      '4A': Clue('4A', [ExpressionConstraint(r'#palindrome')], length: 3),
+      '6A': Clue('6A', [ExpressionConstraint(r'#triangular')], length: 2),
       '7A': Clue('7A', [ExpressionConstraint(r'#square')], length: 3),
-      '9A': Clue('9A', [ExpressionConstraint(r'6A = #triangular')], length: 2),
-      '10A': Clue('10A', [ExpressionConstraint(r'4A = #palindrome')], length: 3),
-      '11A': Clue('11A', [ExpressionConstraint(r'2A = $power 2')], length: 2),
-      '12A': Clue('12A', [ExpressionConstraint(r'1A = #catalan')], length: 2),
-      '1D': Clue('1D', [ExpressionConstraint(r'8D = #prime')], length: 3),
-      '2D': Clue('2D', [ExpressionConstraint(r'10D = #square')], length: 2),
-      '3D': Clue('3D', [ExpressionConstraint(r'9D = #cube')], length: 2),
-      '5D': Clue('5D', [ExpressionConstraint(r'6D = #palindrome')], length: 3),
-      '6D': Clue('6D', [ExpressionConstraint(r'5D = #palindrome')], length: 3),
-      '8D': Clue('8D', [ExpressionConstraint(r'1D = #prime')], length: 3),
-      '9D': Clue('9D', [ExpressionConstraint(r'3D = #cube')], length: 2),
-      '10D': Clue('10D', [ExpressionConstraint(r'2D = #square')], length: 2),
+      '1D': Clue('1D', [ExpressionConstraint(r'#prime')], length: 3),
+      '2D': Clue('2D', [ExpressionConstraint(r'#square')], length: 2),
+      '3D': Clue('3D', [ExpressionConstraint(r'#cube')], length: 2),
+      '5D': Clue('5D', [ExpressionConstraint(r'#palindrome')], length: 3),
     },
     variables: {
       // 'A': Variable('A', getVariableValues(2)),
@@ -207,16 +214,38 @@ int digitProduct(int value) => value.toString().split('').map(int.parse).reduce(
 
 // One entry has the digit product of its partner entry added to the answer whilst the other entry has the digit sum of
 // its partner entry added to the answer.
-// 7ac is considered symmetrically opposite to itself.
 List<int> aspCheck(List<dynamic> args, {int? max, int? min}) {
   assert(args.length == 2);
   var otherEntryValue = args[0] as int;
   var clueValue = args[1] as int;
   var clueValuePlusDigitSum = clueValue + digitSum(otherEntryValue);
   var clueValuePlusDigitProduct = clueValue + digitProduct(otherEntryValue);
-  return [clueValuePlusDigitProduct, clueValuePlusDigitSum];
+  var results = <int>[];
+  if (otherEntryValue == clueValue + digitProduct(clueValuePlusDigitSum)) {
+    results.add(clueValuePlusDigitSum);
+  }
+  if (otherEntryValue == clueValue + digitSum(clueValuePlusDigitProduct)) {
+    results.add(clueValuePlusDigitProduct);
+  }
+  return results;
+}
+
+// One entry has the digit product of its partner entry added to the answer whilst the other entry has the digit sum of
+// its partner entry added to the answer.
+// 7ac is considered symmetrically opposite to itself, so the digit sum and digit product of the entry must be equal.
+List<int> aspCheck2(List<dynamic> args, {int? max, int? min}) {
+  assert(args.length == 2);
+  var otherEntryValue = args[0] as int;
+  var clueValue = args[1] as int;
+  var clueValuePlusDigitSum = clueValue + digitSum(otherEntryValue);
+  var clueValuePlusDigitProduct = clueValue + digitProduct(otherEntryValue);
+  if (clueValuePlusDigitSum != clueValuePlusDigitProduct) return [];
+  return [clueValuePlusDigitProduct];
 }
 
 List<int> digitSumEqualProduct(List<int> values, {int? max, int? min}) {
-  return values.where((value) => digitSum(value) == digitProduct(value)).toList();
+  return values
+      .where((value) => digitSum(value) == digitProduct(value))
+      .map((value) => value + digitSum(value))
+      .toList();
 }
