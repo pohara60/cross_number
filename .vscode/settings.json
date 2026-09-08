@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "allsquare",
         "cbrt",
         "crossnumber",
         "digitproduct",
@@ -12,6 +13,7 @@
         "firstfactor",
         "fmax",
         "fmin",
+        "harshad",
         "ishighestacross",
         "islowestacross",
         "math",
@@ -31,6 +33,7 @@
         "SWNE",
         "twodigitprime",
         "twodigitprimetoprimepower",
+        "twosquares",
         "unclued"
     ]
 }

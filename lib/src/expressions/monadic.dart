@@ -3,8 +3,7 @@ import 'package:powers/powers.dart';
 
 import 'generators.dart';
 
-typedef MonadicFunction = List<int> Function(List<int> values,
-    {int? min, int? max});
+typedef MonadicFunction = List<int> Function(List<int> values, {int? min, int? max});
 
 enum MonadicMaxOp {
   same,
@@ -15,8 +14,7 @@ enum MonadicMaxOp {
 }
 
 class MonadicFunctionRegistry {
-  static final MonadicFunctionRegistry _instance =
-      MonadicFunctionRegistry._privateConstructor();
+  static final MonadicFunctionRegistry _instance = MonadicFunctionRegistry._privateConstructor();
 
   factory MonadicFunctionRegistry() {
     return _instance;
@@ -25,8 +23,7 @@ class MonadicFunctionRegistry {
   static final Map<String, MonadicFunction> _functions = {};
   static final Map<String, MonadicMaxOp> _maxOp = {};
 
-  void registerFunction(String name, MonadicFunction function,
-      [MonadicMaxOp? maxOp]) {
+  void registerFunction(String name, MonadicFunction function, [MonadicMaxOp? maxOp]) {
     _functions[name] = function;
     if (maxOp != null) {
       _maxOp[name] = maxOp;
@@ -34,36 +31,23 @@ class MonadicFunctionRegistry {
   }
 
   MonadicFunctionRegistry._privateConstructor() {
-    _functions['squareroot'] = (values, {min, max}) => values
-        .where((v) => v >= 0 && math.sqrt(v) == math.sqrt(v).floor())
-        .map((v) => math.sqrt(v).toInt())
-        .toList();
+    _functions['squareroot'] = (values, {min, max}) =>
+        values.where((v) => v >= 0 && math.sqrt(v) == math.sqrt(v).floor()).map((v) => math.sqrt(v).toInt()).toList();
     _maxOp['squareroot'] = MonadicMaxOp.square;
-    _functions['cuberoot'] = (values, {min, max}) => values
-        .where((v) => v >= 0 && v.cbrt() == v.cbrt().floor())
-        .map((v) => v.cbrt().toInt())
-        .toList();
+    _functions['cuberoot'] = (values, {min, max}) =>
+        values.where((v) => v >= 0 && v.cbrt() == v.cbrt().floor()).map((v) => v.cbrt().toInt()).toList();
     _maxOp['cuberoot'] = MonadicMaxOp.cube;
-    _functions['isOdd'] =
-        (values, {min, max}) => values.where((v) => v.isOdd).toList();
-    _functions['isEven'] =
-        (values, {min, max}) => values.where((v) => v.isEven).toList();
-    _functions['isAscendingDigits'] = (values, {min, max}) =>
-        values.where((v) => _isAscendingDigits(v)).toList();
-    _functions['isDescendingDigits'] = (values, {min, max}) =>
-        values.where((v) => _isDescendingDigits(v)).toList();
-    _functions['isUniqueDigits'] = (values, {min, max}) =>
-        values.where((v) => _isUniqueDigits(v)).toList();
-    _functions['isPrime'] =
-        (values, {min, max}) => values.where((v) => _isPrime(v)).toList();
-    _functions['isFibonacci'] =
-        (values, {min, max}) => values.where((v) => _isFibonacci(v)).toList();
-    _functions['isTriangular'] =
-        (values, {min, max}) => values.where((v) => _isTriangular(v)).toList();
-    _functions['isSquare'] =
-        (values, {min, max}) => values.where((v) => _isSquare(v)).toList();
-    _functions['isCube'] =
-        (values, {min, max}) => values.where((v) => _isCube(v)).toList();
+    _functions['isOdd'] = (values, {min, max}) => values.where((v) => v.isOdd).toList();
+    _functions['isEven'] = (values, {min, max}) => values.where((v) => v.isEven).toList();
+    _functions['isAscendingDigits'] = (values, {min, max}) => values.where((v) => _isAscendingDigits(v)).toList();
+    _functions['isDescendingDigits'] = (values, {min, max}) => values.where((v) => _isDescendingDigits(v)).toList();
+    _functions['isUniqueDigits'] = (values, {min, max}) => values.where((v) => _isUniqueDigits(v)).toList();
+    _functions['isPrime'] = (values, {min, max}) => values.where((v) => _isPrime(v)).toList();
+    _functions['isFibonacci'] = (values, {min, max}) => values.where((v) => _isFibonacci(v)).toList();
+    _functions['isTriangular'] = (values, {min, max}) => values.where((v) => _isTriangular(v)).toList();
+    _functions['isPalindrome'] = (values, {min, max}) => values.where((v) => _isPalindrome(v)).toList();
+    _functions['isSquare'] = (values, {min, max}) => values.where((v) => _isSquare(v)).toList();
+    _functions['isCube'] = (values, {min, max}) => values.where((v) => _isCube(v)).toList();
     _functions['lte'] = (values, {min, max}) {
       var upperLimit = values.reduce(math.max);
       if (max != null && max < upperLimit) upperLimit = max;
@@ -83,20 +67,16 @@ class MonadicFunctionRegistry {
       return List.generate(upperLimit - lowerLimit, (i) => i + lowerLimit);
     };
     _maxOp['lt'] = MonadicMaxOp.limit;
-    _functions['factor'] = (values, {min, max}) => values
-        .expand((value) => factors(value, min: min, max: max))
-        .toSet()
-        .toList()
-      ..sort();
+    _functions['factor'] =
+        (values, {min, max}) => values.expand((value) => factors(value, min: min, max: max)).toSet().toList()..sort();
     _maxOp['factor'] = MonadicMaxOp.square;
-    _functions['square'] =
-        (values, {min, max}) => values.map((v) => v * v).toList();
-    _functions['cube'] =
-        (values, {min, max}) => values.map((v) => v * v * v).toList();
-    _functions['double'] =
-        (values, {min, max}) => values.map((v) => v * 2).toList();
-    _functions['half'] = (values, {min, max}) =>
-        values.where((v) => v >= 0 && v % 2 == 0).map((v) => v ~/ 2).toList();
+    _functions['square'] = (values, {min, max}) => values.map((v) => v * v).toList();
+    _functions['cube'] = (values, {min, max}) => values.map((v) => v * v * v).toList();
+    _functions['double'] = (values, {min, max}) => values.map((v) => v * 2).toList();
+    _functions['reverse'] =
+        (values, {min, max}) => values.map((v) => int.parse(v.toInt().toString().split('').reversed.join(''))).toList();
+    _maxOp['reverse'] = MonadicMaxOp.limit;
+    _functions['half'] = (values, {min, max}) => values.where((v) => v >= 0 && v % 2 == 0).map((v) => v ~/ 2).toList();
     _maxOp['factor'] = MonadicMaxOp.double;
     _functions['multiple'] = (values, {min, max}) {
       if (values.isEmpty) return [];
@@ -144,8 +124,7 @@ class MonadicFunctionRegistry {
       // Stop when power exceeds max or 100000 if max not given
       // or when power is less than min or 1 if min not given (so start at 1)
 
-      final PrimeGenerator primeGenerator =
-          GeneratorRegistry().get('prime') as PrimeGenerator;
+      final PrimeGenerator primeGenerator = GeneratorRegistry().get('prime') as PrimeGenerator;
 
       final results = <int>[];
       final maxResult = (max ?? 10000);
@@ -167,23 +146,14 @@ class MonadicFunctionRegistry {
       }
       return results..sort();
     };
-    _functions['digitsum'] = (values, {min, max}) => values
-        .map((v) =>
-            v.toString().split('').map(int.parse).reduce((a, b) => a + b))
-        .toSet()
-        .toList()
-      ..sort();
+    _functions['digitsum'] = (values, {min, max}) =>
+        values.map((v) => v.toString().split('').map(int.parse).reduce((a, b) => a + b)).toSet().toList()..sort();
     _maxOp['digitsum'] = MonadicMaxOp.square;
-    _functions['digitproduct'] = (values, {min, max}) => values
-        .map((v) =>
-            v.toString().split('').map(int.parse).reduce((a, b) => a * b))
-        .toSet()
-        .toList()
-      ..sort();
+    _functions['digitproduct'] = (values, {min, max}) =>
+        values.map((v) => v.toString().split('').map(int.parse).reduce((a, b) => a * b)).toSet().toList()..sort();
     _maxOp['digitproduct'] = MonadicMaxOp.square;
     _functions['jumble'] = (values, {min, max}) => values
-        .expand((v) => jumble(v).where(
-            (v) => (min == null || v >= min) && (max == null || v <= max)))
+        .expand((v) => jumble(v).where((v) => (min == null || v >= min) && (max == null || v <= max)))
         .toSet()
         .toList()
       ..sort();
@@ -233,15 +203,19 @@ class MonadicFunctionRegistry {
 
   TriangularGenerator? triangularGenerator;
   bool _isTriangular(int n) {
-    triangularGenerator ??=
-        GeneratorRegistry().get('triangular') as TriangularGenerator;
+    triangularGenerator ??= GeneratorRegistry().get('triangular') as TriangularGenerator;
     return triangularGenerator!.contains(n);
+  }
+
+  PalindromeGenerator? palindromeGenerator;
+  bool _isPalindrome(int n) {
+    palindromeGenerator ??= GeneratorRegistry().get('palindrome') as PalindromeGenerator;
+    return palindromeGenerator!.contains(n);
   }
 
   FibonacciGenerator? fibonacciGenerator;
   bool _isFibonacci(int n) {
-    fibonacciGenerator ??=
-        GeneratorRegistry().get('fibonacci') as FibonacciGenerator;
+    fibonacciGenerator ??= GeneratorRegistry().get('fibonacci') as FibonacciGenerator;
     return fibonacciGenerator!.contains(n);
   }
 
@@ -275,18 +249,7 @@ class MonadicFunctionRegistry {
     yield* _jumbleStr(value, 0, strValue);
   }
 
-  var tens = [
-    1,
-    10,
-    100,
-    1000,
-    10000,
-    100000,
-    1000000,
-    10000000,
-    100000000,
-    1000000000
-  ];
+  var tens = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000];
   Iterable<int> _jumbleStr(int value, int leftValue, String strValue) sync* {
     for (var d = 0; d < strValue.length; d++) {
       var chr = strValue[d];

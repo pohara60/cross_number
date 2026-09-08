@@ -27,6 +27,9 @@ class Entry extends Expressable {
 
   /// The orientation of the entry (across or down).
   final EntryOrientation orientation;
+  bool get isAcross => orientation == EntryOrientation.across;
+  bool get isDown => orientation == EntryOrientation.down;
+  bool get isUp => orientation == EntryOrientation.up;
 
   /// The ID of the clue that corresponds to this entry.
   /// This can be null if the mapping is not known initially.

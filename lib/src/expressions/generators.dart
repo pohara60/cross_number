@@ -188,6 +188,23 @@ class FibonacciGenerator extends CachedGenerator {
   }
 }
 
+class FactorialGenerator extends CachedGenerator {
+  int _i = 1;
+  int _factorial = 1;
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.isEmpty ? 0 : _values.last;
+    if (max > maxCached) {
+      while (_factorial <= max) {
+        if (_factorial > maxCached) _values.add(_factorial);
+        _i++;
+        _factorial *= _i;
+      }
+    }
+  }
+}
+
 class SquareGenerator extends CachedGenerator {
   int _i = 1;
 
@@ -368,6 +385,7 @@ class GeneratorRegistry {
     register('twodigitprimetoprimepower', TwoDigitPrimeToPrimePowerGenerator());
     register('triangular', TriangularGenerator());
     register('fibonacci', FibonacciGenerator());
+    register('factorial', FactorialGenerator());
     register('square', SquareGenerator());
     register('cube', CubeGenerator());
     register('harshad', HarshadGenerator());

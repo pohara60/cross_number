@@ -27,6 +27,7 @@ import '../puzzles/sum_squares.dart';
 import '../puzzles/summingsquares.dart';
 import '../puzzles/thirty.dart';
 import '../puzzles/threes.dart';
+import '../puzzles/twosquares.dart';
 import '../puzzles/wheels.dart';
 import '../puzzles/yet_another_sudoku.dart';
 
@@ -50,6 +51,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'sum_squares': sumsquares,
   'thirty': thirty,
   'threes': threes,
+  'twosquares': twosquares,
   'wheels': wheels,
   'summingsquares': summingsquares,
   'yet_another_sudoku': yetAnotherSudoku,

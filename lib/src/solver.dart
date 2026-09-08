@@ -306,11 +306,11 @@ class Solver {
       tracer.printPuzzle(puzzle);
       tracer.log('Solve time: ${stopwatch.elapsedMilliseconds}ms');
     } else if (!valueBacktracking) {
-      if (tracer.trace) tracer.printPuzzle(puzzle);
+      tracer.printPuzzle(puzzle);
       tracer.log('Solve time: ${stopwatch.elapsedMilliseconds}ms');
       tracer.log('Solution not complete, backtracking disabled');
     } else {
-      if (tracer.trace) tracer.printPuzzle(puzzle);
+      tracer.printPuzzle(puzzle);
       tracer.log('Solve time: ${stopwatch.elapsedMilliseconds}ms');
       tracer.log('Solution not complete, backtracking');
 
