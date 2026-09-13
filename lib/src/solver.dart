@@ -383,7 +383,8 @@ class Solver {
 
     var results = <EvaluationFinalResult>[];
     try {
-      results = evaluator.evaluate(expressable, min: solveMin, max: solveMax);
+      results =
+          evaluator.evaluate(expressable, min: solveMin, max: solveMax, previousResults: expressable.possibleValues);
     } on EvaluatorNotPossibleException catch (e) {
       if (tracer.trace) {
         tracer.logSolve('    Expression for ${expressable.id} could not be evaluated: ${e.msg}');
@@ -517,7 +518,8 @@ class Solver {
 
     var results = <EvaluationFinalResult>[];
     try {
-      results = evaluator.evaluate(expressable, min: expressable.min ?? 1, max: expressable.max ?? 99999);
+      results = evaluator.evaluate(expressable,
+          min: expressable.min ?? 1, max: expressable.max ?? 99999, previousResults: expressable.possibleValues);
     } on EvaluatorNotPossibleException catch (e) {
       if (tracer.trace) {
         tracer.logSolve('    Expression for ${expressable.id} could not be evaluated: ${e.msg}');

@@ -30,6 +30,7 @@ import '../puzzles/threes.dart';
 import '../puzzles/twosquares.dart';
 import '../puzzles/wheels.dart';
 import '../puzzles/yet_another_sudoku.dart';
+import '../puzzles/elementary_number_theory.dart';
 
 final puzzleMap = <String, PuzzleDefinition Function()>{
   'abcd': abcd,
@@ -55,6 +56,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'wheels': wheels,
   'summingsquares': summingsquares,
   'yet_another_sudoku': yetAnotherSudoku,
+  'elementary_number_theory': elementary_number_theory,
 };
 
 void main(List<String> arguments) {

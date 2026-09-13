@@ -1,0 +1,141 @@
+Cross Number Solver v2 CLI
+Loading puzzle: elementary_number_theory
+entries
+Puzzle: elementary_number_theory
+Grids: (main)
+Entries:{
+  A1: (#prime+#prime), #cube, #square 81 {11..19,21..29,31,32,61 more,99}
+  A3: (#prime+#prime), #triangular, #square, multiple(9) 90 {10..29,70 more,99}
+  A4: (#prime+#prime), #cube 810 {101..109,111..119,121,122,790 more,999}
+  A6: isOdd(digitproduct(#result)), multiple(11) 900 {100..119,880 more,999}
+  A8: (#prime+#prime), #prime, isOdd(digitproduct(#result)) 810 {110..129,790 more,999}
+  A10: (#prime+#prime) 90 {10..29,70 more,99}
+  A11: (#prime+#prime), multiple(11), multiple(7), multiple(9) 900 {100..119,880 more,999}
+  A12: #prime, isOdd(digitproduct(#result)) 81 {11..19,21..29,31,32,61 more,99}
+  A14:  81000 {10001..10009,10011..10019,10021,10022,80980 more,99999}
+  A16: (#prime+#prime), #square, multiple(7) 81 {11..19,21..29,31,32,61 more,99}
+  A18: #palindrome, (#prime*#prime), (#prime+#prime) 810 {101..109,111..119,121,122,790 more,999}
+  A20: #prime 90 {10..29,70 more,99}
+  A21: (#prime*#prime), multiple(11) 900 {100..119,880 more,999}
+  A22: #palindrome, #prime 900 {100..119,880 more,999}
+  A23: (#prime+#prime), #prime, isOdd(digitproduct(#result)) 900 {100..119,880 more,999}
+  A24: (#prime*#prime), (#prime+#prime), #triangular 90 {10..29,70 more,99}
+  A25: #prime, isOdd(digitproduct(#result)) 90 {10..29,70 more,99}
+  D2: (#prime*#prime), #fibonacci 8100 {1001..1009,1011..1019,1021,1022,8080 more,9999}
+  D3: (#prime+#prime) 810 {101..109,111..119,121,122,790 more,999}
+  D4: (#prime*#prime), isOdd(digitproduct(#result)), multiple(7) 810 {110..129,790 more,999}
+  D5: (#prime*#prime), (#prime+#prime), #triangular, multiple(7), #fibonacci 90 {10..29,70 more,99}
+  D7:  90000 {10000..10019,89980 more,99999}
+  D9: #palindrome, (#prime*#prime), isOdd(digitproduct(#result)), multiple(11), multiple(7) 81 {11..19,21..29,31,32,61 more,99}
+  D10: #palindrome, (#prime+#prime), multiple(11), #square 810 {101..109,111..119,121,122,790 more,999}
+  D13: #prime, isOdd(digitproduct(#result)) 900 {100..119,880 more,999}
+  D15: (#prime+#prime), #triangular, multiple(11), multiple(9) 7290 {1101..1109,1111..1119,1121,1122,7270 more,9999}
+  D17: (#prime+#prime) 90 {10..29,70 more,99}
+  D18: (#prime*#prime) 900 {100..119,880 more,999}
+  D19: (#prime+#prime) 810 {110..129,790 more,999}
+  D21: (#prime+#prime), #square, multiple(9) 81 {11..19,21..29,31,32,61 more,99}
+}
+Clues:{
+}
+Variables:{
+}
+
+Puzzle: elementary_number_theory
+Solving puzzle with known mapping...
+Found 0 clue groups:
+Iteration 1
+  Solving expressables...
+    Entry A1: 1 -> 1 {64}
+    Entry A3: 1 -> 1 {36}
+    Entry A4: 3 -> 3 {216,512,729}
+    Expression for A6 has no possible values after evaluation
+    Inconsistency: _solveExpressables detected inconsistency after solving expression for A6.
+Grid:
++--+--+--+--+--+--+--+
+| 6  4| 3  6|        |
++--+  +  +--+  +--+  +
+|        |  |        |
++--+  +  +  +  +  +--+
+|     |        |     |
++  +  +--+  +--+--+  +
+|  |              |  |
++  +--+--+  +--+  +  +
+|     |        |     |
++--+  +  +  +  +  +--+
+|        |  |        |
++  +--+  +--+  +  +--+
+|        |     |     |
++--+--+--+--+--+--+--+
+Variables:
+Clues:
+Entries:
+A1:! 1!  {64}
+A3:! 1!  {36}
+A4:! 3!  {216,512,729}
+A6:! 900!  {100..119,880 more,999}
+A8:! 810!  {110..129,790 more,999}
+A10:! 90!  {10..29,70 more,99}
+A11:! 900!  {100..119,880 more,999}
+A12:! 81!  {11..19,21..29,31,32,61 more,99}
+A14:! 81000!  {10001..10009,10011..10019,10021,10022,80980 more,99999}
+A16:! 81!  {11..19,21..29,31,32,61 more,99}
+A18:! 810!  {101..109,111..119,121,122,790 more,999}
+A20:! 90!  {10..29,70 more,99}
+A21:! 900!  {100..119,880 more,999}
+A22:! 900!  {100..119,880 more,999}
+A23:! 900!  {100..119,880 more,999}
+A24:! 90!  {10..29,70 more,99}
+A25:! 90!  {10..29,70 more,99}
+D2:! 8100!  {1001..1009,1011..1019,1021,1022,8080 more,9999}
+D3:! 810!  {101..109,111..119,121,122,790 more,999}
+D4:! 810!  {110..129,790 more,999}
+D5:! 90!  {10..29,70 more,99}
+D7:! 90000!  {10000..10019,89980 more,99999}
+D9:! 81!  {11..19,21..29,31,32,61 more,99}
+D10:! 810!  {101..109,111..119,121,122,790 more,999}
+D13:! 900!  {100..119,880 more,999}
+D15:! 7290!  {1101..1109,1111..1119,1121,1122,7270 more,9999}
+D17:! 90!  {10..29,70 more,99}
+D18:! 900!  {100..119,880 more,999}
+D19:! 810!  {110..129,790 more,999}
+D21:! 81!  {11..19,21..29,31,32,61 more,99}
+Solve time: 83ms
+Solution not complete, backtracking
+Backtracking: Trying expressable A4 -> 3 {216,512,729}
+Backtracking: Trying value 216 for expressable A4
+  Propagating constraints...
+    Entry D2: 8100 -> 900 {4001..4009,4011..4019,4021,4022,880 more,4999}
+    Entry D3: 810 -> 90 {301..309,311..319,321,322,70 more,399}
+    Entry D4: 810 -> 90 {210..229,70 more,299}
+    Entry D5: 90 -> 10 {60..69}
+    Expression for A6 has no possible values after evaluation
+    Inconsistency: _solveExpressables detected inconsistency after solving expression for A6.
+    Inconsistency: _solveExpressables returned inconsistent after re-solve.
+Backtracking: Propagation result: consistent=false, updated=true
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 512 for expressable A4
+  Propagating constraints...
+    Entry D2: 8100 -> 900 {4001..4009,4011..4019,4021,4022,880 more,4999}
+    Entry D3: 810 -> 90 {301..309,311..319,321,322,70 more,399}
+    Entry D4: 810 -> 90 {510..529,70 more,599}
+    Entry D5: 90 -> 10 {20..29}
+    Expression for A6 has no possible values after evaluation
+    Inconsistency: _solveExpressables detected inconsistency after solving expression for A6.
+    Inconsistency: _solveExpressables returned inconsistent after re-solve.
+Backtracking: Propagation result: consistent=false, updated=true
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: Trying value 729 for expressable A4
+  Propagating constraints...
+    Entry D2: 8100 -> 900 {4001..4009,4011..4019,4021,4022,880 more,4999}
+    Entry D3: 810 -> 90 {301..309,311..319,321,322,70 more,399}
+    Entry D4: 810 -> 90 {710..729,70 more,799}
+    Entry D5: 90 -> 10 {90..99}
+    Expression for A6 has no possible values after evaluation
+    Inconsistency: _solveExpressables detected inconsistency after solving expression for A6.
+    Inconsistency: _solveExpressables returned inconsistent after re-solve.
+Backtracking: Propagation result: consistent=false, updated=true
+Backtracking: Propagation inconsistent. Backtracking...
+Backtracking: no solutions found.
+Backtracking time: 540ms
+
+Exited.

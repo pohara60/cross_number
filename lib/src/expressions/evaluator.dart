@@ -24,14 +24,30 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   static final PolyadicFunctionRegistry _polyadicFunctionRegistry = PolyadicFunctionRegistry();
   final Map<String, int> _pinnedVariables;
 
+  // The minimum and maximum result values for the evaluation
+  num? minResult;
   num? maxResult;
+  // Previously known results for the evaluation, used for hard-coded #result generator
+  List<int>? knownResults;
 
   /// Creates a new evaluator with the given [puzzle] context.
   Evaluator(this.puzzle, [Map<String, int>? pinnedVariables]) : _pinnedVariables = pinnedVariables ?? {};
 
   /// Evaluates the given [expressable] and returns a list of [EvaluationFinalResult]
   /// containing the evaluated values and their corresponding variable values.
-  List<EvaluationFinalResult> evaluate(Expressable expressable, {required int min, required int max}) {
+  List<EvaluationFinalResult> evaluate(Expressable expressable,
+      {required int min, required int max, Set<int>? previousResults}) {
+    // Previous Results
+    minResult = min;
+    maxResult = max;
+    if (previousResults != null) {
+      knownResults = previousResults.toList()..sort();
+      if (knownResults!.isNotEmpty) {
+        minResult = knownResults!.first;
+        maxResult = knownResults!.last;
+      }
+    }
+
     var results = <EvaluationFinalResult>[];
     for (var i = 0; i < expressable.expressionTrees.length; i++) {
       final expression = expressable.expressionTrees[i];
@@ -116,9 +132,6 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
 
   List<EvaluationResult> _internalEvaluate(Expression expression, List<String> unpinnedVariables,
       {required num min, required num max}) {
-    // Maximum possible result value
-    maxResult = max;
-
     if (unpinnedVariables.isEmpty) {
       return _evaluateWithPinnedVariables(expression, min: min, max: max);
     }
@@ -178,6 +191,13 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   @override
   List<EvaluationResult> visitGeneratorExpression(GeneratorExpression expression,
       {required num min, required num max}) {
+    // Hard-coded #results generator returns previous values
+    if (expression.name == 'result') {
+      if (knownResults == null) {
+        throw EvaluatorException('No known results for generator #result');
+      }
+      return knownResults!.map((e) => EvaluationResult(e, {})).toList();
+    }
     final generator = _generatorRegistry.get(expression.name);
     if (generator != null) {
       return generator.getValues(min.ceil(), max.floor()).map((e) => EvaluationResult(e, {})).toList();

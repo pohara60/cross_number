@@ -5,6 +5,7 @@ import 'package:crossnumber/src/models/distinct_constraint.dart';
 import 'package:crossnumber/src/models/expressable.dart';
 import 'package:crossnumber/src/models/expression_constraint.dart';
 import 'package:crossnumber/src/models/ordering_constraint.dart';
+import 'package:crossnumber/src/models/statement.dart';
 import '../expressions/generators.dart';
 import '../expressions/inverter.dart';
 import '../expressions/monadic.dart';
@@ -47,6 +48,9 @@ class PuzzleDefinition {
   /// Digit constraint
   late final DistinctConstraint distinctConstraint;
 
+  /// Statements
+  final Map<String, Statement> statements;
+
   /// All Expressables, i.e. clue, expressions and variables
   final List<Expressable> allExpressables = [];
 
@@ -66,6 +70,7 @@ class PuzzleDefinition {
     required Map<String, Clue> clues,
     required Map<String, Variable> variables,
     Map<String, Entry>? entries,
+    Map<String, Statement>? statements,
     List<OrderingConstraint> orderingConstraints = const [],
     List<PuzzleConstraint> puzzleConstraints = const [],
     DistinctConstraint? distinctConstraint,
@@ -91,6 +96,7 @@ class PuzzleDefinition {
       distinctConstraint: distinctConstraint,
       mappingIsKnown: mappingIsKnown,
       mappingFunction: mappingFunction,
+      statements: statements ?? {},
     );
   }
 
@@ -170,6 +176,7 @@ class PuzzleDefinition {
       required this.entries,
       required this.clues,
       required this.variables,
+      this.statements = const {},
       this.orderingConstraints = const [],
       puzzleConstraints = const [],
       distinctConstraint,
@@ -199,6 +206,24 @@ class PuzzleDefinition {
       if (entry.clueId != null && entry.clueId!.isNotEmpty) {
         if (checkGridReference('Entry ${entry.id} Clue', entry.clueId!)) {
           exception = true;
+        }
+      }
+    }
+
+    // Add entry statements to expression constraints
+    for (final entry in entries.values) {
+      if (entry.statements.isNotEmpty) {
+        for (final statementId in entry.statements.split(' ')) {
+          if (!statements.containsKey(statementId)) {
+            exception = true;
+            print('Entry ${entry.id} references unknown statement $statementId');
+          } else {
+            var statement = statements[statementId]!;
+            if (statement.expression.isNotEmpty) {
+              if (entry.constraints.isEmpty) entry.constraints = []; // Replace const []
+              entry.constraints.add(ExpressionConstraint.fromStatement(statement));
+            }
+          }
         }
       }
     }
@@ -366,6 +391,7 @@ class PuzzleDefinition {
     Map<String, Entry>? entries,
     Map<String, Clue>? clues,
     Map<String, Variable>? variables,
+    Map<String, Statement>? statements,
     List<OrderingConstraint>? orderingConstraints,
     bool? mappingIsKnown,
     MappingFunction? mappingFunction,
@@ -376,6 +402,7 @@ class PuzzleDefinition {
       entries: entries ?? this.entries.map((key, value) => MapEntry(key, value.copyWith())),
       clues: clues ?? this.clues.map((key, value) => MapEntry(key, value.copyWith())),
       variables: variables ?? this.variables.map((key, value) => MapEntry(key, value.copyWith())),
+      statements: statements ?? this.statements.map((key, value) => MapEntry(key, value.copyWith())),
       orderingConstraints: orderingConstraints ?? this.orderingConstraints,
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
       mappingFunction: mappingFunction ?? this.mappingFunction,

@@ -1,4 +1,5 @@
 import 'package:crossnumber/src/expressions/expression.dart';
+import 'package:crossnumber/src/models/statement.dart';
 
 import 'constraint.dart';
 
@@ -22,5 +23,9 @@ class ExpressionConstraint extends Constraint {
   @override
   String toString() {
     return 'ExpressionConstraint($expression)';
+  }
+
+  static ExpressionConstraint fromStatement(Statement statement) {
+    return ExpressionConstraint(statement.expression);
   }
 }

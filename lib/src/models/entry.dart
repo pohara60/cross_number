@@ -40,10 +40,14 @@ class Entry extends Expressable {
 
   /// The list of constraints that apply to this entry.
   @override
-  final List<Constraint> constraints;
+  List<Constraint> constraints;
 
   /// Skip grid entry propagation if no clue or expression is attached.
   bool forcePropagation = false;
+
+  // Statements to construct expressions
+  final String statements;
+
   bool get skipGridPropagation => clueId == null && expressionTrees.isEmpty && !forcePropagation;
 
   /// Creates a new entry with the given properties.
@@ -56,6 +60,7 @@ class Entry extends Expressable {
     this.orientation = EntryOrientation.across,
     this.clueId,
     this.constraints = const [],
+    this.statements = '',
   }) {
     initPossibleValues();
   }
@@ -104,6 +109,7 @@ class Entry extends Expressable {
     String? clueId,
     Set<int>? possibleValues,
     List<Constraint>? constraints,
+    String? statements,
   }) {
     var newEntry = Entry(
       id: id ?? this.id,
@@ -113,6 +119,7 @@ class Entry extends Expressable {
       orientation: orientation ?? this.orientation,
       clueId: clueId ?? this.clueId,
       constraints: constraints ?? this.constraints,
+      statements: statements ?? this.statements,
     );
     newEntry.initPossibleValues();
     return newEntry;
@@ -130,4 +137,6 @@ class Entry extends Expressable {
     }
     return b.toString();
   }
+
+  void addExpressionConstraint(fromStatement) {}
 }
