@@ -16,6 +16,7 @@ abstract class ExpressionVisitor<R> {
   R visitNumberExpression(NumberExpression expression, {required num min, required num max});
   R visitVariableExpression(VariableExpression expression, {required num min, required num max});
   R visitBinaryExpression(BinaryExpression expression, {required num min, required num max});
+  R visitIfExpression(IfExpression expression, {required num min, required num max});
   R visitUnaryExpression(UnaryExpression expression, {required num min, required num max});
   R visitGroupingExpression(GroupingExpression expression, {required num min, required num max});
   R visitGridReferenceExpression(GridReferenceExpression expression, {required num min, required num max});
@@ -84,6 +85,22 @@ class BinaryExpression extends Expression {
 
   @override
   String toString() => '($left${operator.lexeme}$right)';
+}
+
+/// An expression that returns [value] only when [condition] produces a result.
+class IfExpression extends Expression {
+  final Expression value;
+  final Expression condition;
+
+  IfExpression(this.value, this.condition);
+
+  @override
+  R accept<R>(ExpressionVisitor<R> visitor, {required num min, required num max}) {
+    return visitor.visitIfExpression(this, min: min, max: max);
+  }
+
+  @override
+  String toString() => '($value IF $condition)';
 }
 
 /// An expression node representing a unary operation.
@@ -174,6 +191,7 @@ enum TokenType {
   STAR,
   SLASH,
   EXPONENT,
+  IF,
   HASH,
   DOLLAR,
   POUND,
@@ -225,6 +243,12 @@ class VariableExtractorVisitor implements ExpressionVisitor<void> {
   void visitBinaryExpression(BinaryExpression expression, {required num min, required num max}) {
     expression.left.accept(this, min: min, max: max);
     expression.right.accept(this, min: min, max: max);
+  }
+
+  @override
+  void visitIfExpression(IfExpression expression, {required num min, required num max}) {
+    expression.value.accept(this, min: min, max: max);
+    expression.condition.accept(this, min: min, max: max);
   }
 
   @override

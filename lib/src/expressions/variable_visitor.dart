@@ -12,6 +12,12 @@ class VariableVisitor implements ExpressionVisitor<void> {
   }
 
   @override
+  void visitIfExpression(IfExpression expression, {required num min, required num max}) {
+    expression.value.accept(this, min: min, max: max);
+    expression.condition.accept(this, min: min, max: max);
+  }
+
+  @override
   void visitGroupingExpression(GroupingExpression expression, {required num min, required num max}) {
     expression.expression.accept(this, min: min, max: max);
   }

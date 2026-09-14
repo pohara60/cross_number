@@ -92,6 +92,8 @@ class ExpressionInverter {
           default:
             throw InvertException('Unsupported operator for inversion: ${expressionToSolve.operator.lexeme}');
         }
+      case IfExpression:
+        throw InvertException('IF expressions cannot be inverted: $expressionToSolve');
       case UnaryExpression:
         final unary = expressionToSolve as UnaryExpression;
         entryVisitor.found = false;
@@ -154,6 +156,12 @@ class _ExpressableVisitor implements ExpressionVisitor<void> {
   void visitBinaryExpression(BinaryExpression expression, {required num min, required num max}) {
     expression.left.accept(this, min: min, max: max);
     expression.right.accept(this, min: min, max: max);
+  }
+
+  @override
+  void visitIfExpression(IfExpression expression, {required num min, required num max}) {
+    expression.value.accept(this, min: min, max: max);
+    expression.condition.accept(this, min: min, max: max);
   }
 
   @override

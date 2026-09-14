@@ -34,5 +34,40 @@ void main() {
       expect(binaryExpression.right, isA<NumberExpression>());
       expect((binaryExpression.right as NumberExpression).value, 3);
     });
+
+    test('should parse IF as a reserved token', () {
+      final parser = Parser('10 IF 1 = 1');
+      final tokens = parser.scanTokens();
+
+      expect(tokens.map((token) => token.type), [
+        TokenType.NUMBER,
+        TokenType.IF,
+        TokenType.NUMBER,
+        TokenType.EQUAL,
+        TokenType.NUMBER,
+        TokenType.EOF,
+      ]);
+
+      final expression = parser.parse();
+      expect(expression, isA<IfExpression>());
+      final ifExpression = expression as IfExpression;
+      expect(ifExpression.value, isA<NumberExpression>());
+      expect(ifExpression.condition, isA<BinaryExpression>());
+    });
+
+    test('should parse IF with low precedence and right associativity', () {
+      final expression = Parser('A + 1 IF B > 2').parse() as IfExpression;
+      expect(expression.value, isA<BinaryExpression>());
+      expect(expression.condition, isA<BinaryExpression>());
+
+      final chained = Parser('A IF B IF C').parse() as IfExpression;
+      expect(chained.value, isA<VariableExpression>());
+      expect(chained.condition, isA<IfExpression>());
+    });
+
+    test('should leave lowercase if as an identifier', () {
+      final tokens = Parser('if').scanTokens();
+      expect(tokens.first.type, TokenType.IDENTIFIER);
+    });
   });
 }

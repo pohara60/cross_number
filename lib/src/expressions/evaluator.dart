@@ -345,6 +345,37 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   }
 
   @override
+  List<EvaluationResult> visitIfExpression(IfExpression expression, {required num min, required num max}) {
+    final conditionResults = _evaluateWithPinnedVariables(
+      expression.condition,
+      min: -arbitraryLimit,
+      max: arbitraryLimit,
+    );
+    if (conditionResults.isEmpty) return [];
+
+    final valueResults = _evaluateWithPinnedVariables(expression.value, min: min, max: max);
+    final results = <EvaluationResult>{};
+    for (final conditionResult in conditionResults) {
+      for (final valueResult in valueResults) {
+        final variableValues = <String, int>{...conditionResult.variableValues};
+        var consistent = true;
+        for (final entry in valueResult.variableValues.entries) {
+          final existingValue = variableValues[entry.key];
+          if (existingValue != null && existingValue != entry.value) {
+            consistent = false;
+            break;
+          }
+          variableValues[entry.key] = entry.value;
+        }
+        if (consistent) {
+          results.add(EvaluationResult(valueResult.value, variableValues));
+        }
+      }
+    }
+    return results.toList();
+  }
+
+  @override
   List<EvaluationResult> visitUnaryExpression(UnaryExpression expression, {required num min, required num max}) {
     var type = expression.operator.type;
     var rightMin = type == TokenType.MINUS ? -max : min;

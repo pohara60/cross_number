@@ -118,7 +118,8 @@ class Parser {
     while (_isAlphaNumeric(_peek())) {
       _advance();
     }
-    _addToken(TokenType.IDENTIFIER);
+    final lexeme = source.substring(_start, _current);
+    _addToken(lexeme == 'IF' ? TokenType.IF : TokenType.IDENTIFIER);
   }
 
   bool _isAtEnd() {
@@ -171,7 +172,16 @@ class Parser {
   }
 
   Expression _expression() {
-    return _logicalAnd();
+    return _if();
+  }
+
+  Expression _if() {
+    final value = _logicalAnd();
+    if (_match([TokenType.IF])) {
+      final condition = _if();
+      return IfExpression(value, condition);
+    }
+    return value;
   }
 
   Expression _logicalAnd() {
