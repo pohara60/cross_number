@@ -264,7 +264,7 @@ class Solver {
           tracer.logSolve('  Group: ${group.expressables.join(', ')}');
         }
       }
-      expressableGroups = clueGroups.map((g) => g.expressables.map((c) => puzzle.clues[c]!).toList()).toList();
+      expressableGroups = clueGroups.map((g) => g.expressables.map((c) => puzzle.expressables[c]!).toList()).toList();
     }
 
     int iteration = 0;
@@ -514,7 +514,10 @@ class Solver {
 
     final expressable = expressables.first;
     final remainingExpressables = expressables.sublist(1);
-    final evaluator = Evaluator(puzzle, pinnedVariables);
+    var evaluator = Evaluator(puzzle);
+    if (pinnedVariables.isNotEmpty) {
+      evaluator = evaluator.copyWith(pinnedVariables: pinnedVariables);
+    }
 
     var results = <EvaluationFinalResult>[];
     try {

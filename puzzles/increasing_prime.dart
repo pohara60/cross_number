@@ -15,7 +15,7 @@ PuzzleDefinition increasingPrimes() {
 // Each answer may be expressed as p1 x p2 x p3 where the pi are distinct primes
 // and come from the set {3, 5, 11, 17, 23}. The answers to the clues are in
 // ascending order. Upper case letters denote across entries and lower case down
-// entries. The usual rules o f algebra apply, entries are distinct and there are
+// entries. The usual rules of algebra apply, entries are distinct and there are
 // no zeros in the grid.
 
   var gridString = [
@@ -94,12 +94,10 @@ void initialiseClues(PuzzleDefinition puzzle, {traceSolve = false}) {
   var products = getProduct3Primes();
   for (var clue in puzzle.clues.values) {
     var clueIndex = romanToDecimal(clue.id);
-    clue.possibleValues = Set.from(products.whereIndexed((index, element) =>
-        index >= clueIndex - 1 &&
-        index <= clueIndex + products.length - numClues - 1));
+    clue.possibleValues = Set.from(products.whereIndexed(
+        (index, element) => index >= clueIndex - 1 && index <= clueIndex + products.length - numClues - 1));
     if (traceSolve) {
-      print(
-          'solve: ${clue.runtimeType} ${clue.id} values=${clue.possibleValues!.toShortString()}');
+      print('solve: ${clue.runtimeType} ${clue.id} values=${clue.possibleValues!.toShortString()}');
     }
   }
 }

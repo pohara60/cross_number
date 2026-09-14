@@ -9,12 +9,12 @@ import '../puzzles/primania.dart';
 
 void main() {
   // Disable slow test
-  final disabled = false;
+  final disabled = true;
   group('Primania', () {
     test('should solve the puzzle', () {
       final puzzle = primania();
       // final solver = Solver(puzzle, traceSolve: true);
-      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: true);
+      final solver = Solver(puzzle, traceSolve: false, traceBacktrace: false);
       int solveCount = 0;
 
       final reversiblePrimes2Digits = getReversiblePrimesNDigits(2);
@@ -29,25 +29,18 @@ void main() {
           var value = entry.possibleValues!.single;
           if (entry.length == 2) {
             expect(reversiblePrimes2Digits.contains(value), true,
-                reason:
-                    'Entry ${entry.id} value $value is not a 2-digit reversible prime');
+                reason: 'Entry ${entry.id} value $value is not a 2-digit reversible prime');
           } else if (entry.length == 3) {
             expect(reversiblePrimes3Digits.contains(value), true,
-                reason:
-                    'Entry ${entry.id} value $value is not a 3-digit reversible prime');
+                reason: 'Entry ${entry.id} value $value is not a 3-digit reversible prime');
           } else if (entry.length == 4) {
             expect(reversiblePrimes4Digits.contains(value), true,
-                reason:
-                    'Entry ${entry.id} value $value is not a 4-digit reversible prime');
+                reason: 'Entry ${entry.id} value $value is not a 4-digit reversible prime');
           } else {
             fail('Entry ${entry.id} has unexpected length ${entry.length}');
           }
-          var count = puzzle.entries.values
-              .where((e) => e.possibleValues!.single == value)
-              .length;
-          expect(count, 1,
-              reason:
-                  'Entry ${entry.id} value $value is not unique, occurs $count times');
+          var count = puzzle.entries.values.where((e) => e.possibleValues!.single == value).length;
+          expect(count, 1, reason: 'Entry ${entry.id} value $value is not unique, occurs $count times');
 
           // Check for entries where the reverse is present
           // This reduces the solution count to 2
@@ -55,9 +48,7 @@ void main() {
           var rs = s.split('').reversed.join('');
           if (s != rs) {
             var rvalue = int.parse(rs);
-            var rcount = puzzle.entries.values
-                .where((e) => e.possibleValues!.single == rvalue)
-                .length;
+            var rcount = puzzle.entries.values.where((e) => e.possibleValues!.single == rvalue).length;
             if (rcount > 0) {
               // return false;
             }

@@ -22,7 +22,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   static final GeneratorRegistry _generatorRegistry = GeneratorRegistry();
   static final MonadicFunctionRegistry _monadicFunctionRegistry = MonadicFunctionRegistry();
   static final PolyadicFunctionRegistry _polyadicFunctionRegistry = PolyadicFunctionRegistry();
-  final Map<String, int> _pinnedVariables;
+  Map<String, int> _pinnedVariables;
 
   // The minimum and maximum result values for the evaluation
   num? minResult;
@@ -31,7 +31,14 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   List<int>? knownResults;
 
   /// Creates a new evaluator with the given [puzzle] context.
-  Evaluator(this.puzzle, [Map<String, int>? pinnedVariables]) : _pinnedVariables = pinnedVariables ?? {};
+  Evaluator(this.puzzle) : _pinnedVariables = {};
+  Evaluator copyWith({Map<String, int>? pinnedVariables}) {
+    return Evaluator(puzzle)
+      .._pinnedVariables = pinnedVariables ?? _pinnedVariables
+      ..minResult = minResult
+      ..maxResult = maxResult
+      ..knownResults = knownResults;
+  }
 
   /// Evaluates the given [expressable] and returns a list of [EvaluationFinalResult]
   /// containing the evaluated values and their corresponding variable values.
@@ -49,6 +56,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     }
 
     var results = <EvaluationFinalResult>[];
+    var haveResults = false;
     for (var i = 0; i < expressable.expressionTrees.length; i++) {
       final expression = expressable.expressionTrees[i];
       final variables = expressable.variableLists[i];
@@ -58,14 +66,15 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
         if (variables.contains(expressable.id)) {
           expressionResults.removeWhere((r) => r.value != r.variableValues[expressable.id]);
         }
-        if (i == 0) {
+        if (!haveResults) {
           results = expressionResults;
+          haveResults = true;
         } else {
           results = resultsIntersection(results, expressionResults);
         }
       } on EvaluatorNotPossibleException {
         // If all expressions cannot be evaluated, then rethrow the exception
-        if (results.isEmpty && i == expressable.expressionTrees.length - 1) {
+        if (!haveResults && i == expressable.expressionTrees.length - 1) {
           rethrow;
         }
       }
@@ -97,6 +106,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// Evaluates the given [expressable] and returns a list of integer results
   /// that fall within the specified [min] and [max] range.
   List<int> evaluateNoVariables(Expressable expressable, {required int min, required int max}) {
+    ensureMaxResultSet(min, max);
     var results = <int>{};
     for (var i = 0; i < expressable.expressionTrees.length; i++) {
       final expression = expressable.expressionTrees[i];
@@ -119,6 +129,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// a list of integer results that fall within the specified [min] and [max] range.
   List<int> evaluateExpressionNoVariables(Expression expression, List<String> variables,
       {required int min, required int max}) {
+    ensureMaxResultSet(min, max);
     // Some variables may be pinned already
     var unpinnedVariables = variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
     final results = _internalEvaluate(expression, unpinnedVariables, min: min as num, max: max as num);
@@ -150,7 +161,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       final newPinnedVariables = Map<String, int>.from(_pinnedVariables);
       newPinnedVariables[currentVariable] = value;
 
-      final evaluator = Evaluator(puzzle, newPinnedVariables);
+      final evaluator = copyWith(pinnedVariables: newPinnedVariables);
       final result = evaluator._internalEvaluate(expression, newUnpinnedVariables, min: min, max: max);
       results.addAll(result);
     }
@@ -488,6 +499,11 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       return combinations;
     }
     return null;
+  }
+
+  void ensureMaxResultSet(int min, int max) {
+    minResult ??= min;
+    maxResult ??= max;
   }
 }
 

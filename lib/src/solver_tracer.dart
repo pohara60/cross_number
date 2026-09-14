@@ -42,12 +42,9 @@ class SolverTracer {
       for (var grid in puzzle.grids.values) {
         var gridLines = grid.toString().split('\n');
         allGridLines.add(gridLines);
-        maxWidth = gridLines.fold(
-            maxWidth, (prev, line) => prev > line.length ? prev : line.length);
+        maxWidth = gridLines.fold(maxWidth, (prev, line) => prev > line.length ? prev : line.length);
       }
-      for (var lineIndex = 0;
-          lineIndex < allGridLines.first.length;
-          lineIndex++) {
+      for (var lineIndex = 0; lineIndex < allGridLines.first.length; lineIndex++) {
         for (var gridIndex = 0; gridIndex < puzzle.grids.length; gridIndex++) {
           buffer.write(allGridLines[gridIndex][lineIndex].padRight(maxWidth));
           buffer.write('  ');
@@ -68,8 +65,8 @@ class SolverTracer {
     if (puzzle.variables.isNotEmpty) {
       buffer.writeln('Variables:');
       for (var variable in puzzle.variables.values) {
-        buffer.writeln(
-            '${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+        buffer
+            .writeln('${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
       }
     }
     print(buffer.toString());
@@ -82,8 +79,7 @@ class SolverTracer {
     }
     print('Variables:');
     for (var variable in puzzle.variables.values) {
-      print(
-          '${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
+      print('${variable.name}: ${variable.possibleValues.length} ${variable.possibleValues.toShortString()}');
     }
     print('Clues:');
     for (var clue in puzzle.clues.values) {
@@ -91,8 +87,7 @@ class SolverTracer {
         print('${clue.id}: uninitialised');
         continue;
       }
-      print(
-          '${clue.id}: ${clue.possibleValues!.length}  ${clue.possibleValues!.toShortString()}');
+      print('${clue.id}: ${clue.possibleValues!.length}  ${clue.possibleValues!.toShortString()}');
     }
     print('Entries:');
     for (var entry in puzzle.entries.values) {
@@ -100,8 +95,7 @@ class SolverTracer {
         print('${entry.id}: uninitialised');
         continue;
       }
-      print(
-          '${entry.id}:! ${entry.possibleValues!.length}!  ${entry.possibleValues!.toShortString()}');
+      print('${entry.id}: ${entry.possibleValues!.length}  ${entry.possibleValues!.toShortString()}');
     }
   }
 
@@ -117,8 +111,7 @@ class SolverTracer {
     }
   }
 
-  void printUpdatedExpressables(
-      PuzzleDefinition puzzle, List<String> expressables, Map<String, int?> originalCounts) {
+  void printUpdatedExpressables(PuzzleDefinition puzzle, List<String> expressables, Map<String, int?> originalCounts) {
     for (var expressableName in expressables) {
       Expressable expressable = puzzle.getExpressable(expressableName);
       printUpdatedExpressable(expressable, originalCounts[expressableName]);
