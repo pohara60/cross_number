@@ -44,16 +44,18 @@ abstract class Expressable {
   List<String> get variables => variableLists.first;
 
   bool addExpression(ExpressionConstraint constraint) {
-    final parser = Parser(constraint.expression);
+    final parser = Parser(constraint.expression, currentExpressableId: id);
     try {
       final expressionTree = parser.parse();
       constraint.expressionTree = expressionTree;
+      constraint.expressionTreeOwnerId = id;
       final variableVisitor = VariableVisitor();
       expressionTree.accept(variableVisitor, min: 1, max: 1); // min, max not used here
       constraint.variables = variableVisitor.variables.toList();
       expressionTrees.add(constraint.expressionTree!);
-      variableLists.add(constraint.variables);
-      for (var v in constraint.variables) {
+      final variables = constraint.variables.toList();
+      variableLists.add(variables);
+      for (var v in variables) {
         if (!allVariables.contains(v)) {
           allVariables.add(v);
         }

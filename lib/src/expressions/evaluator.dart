@@ -44,16 +44,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// containing the evaluated values and their corresponding variable values.
   List<EvaluationFinalResult> evaluate(Expressable expressable,
       {required int min, required int max, Set<int>? previousResults}) {
-    // Previous Results
-    minResult = min;
-    maxResult = max;
-    if (previousResults != null) {
-      knownResults = previousResults.toList()..sort();
-      if (knownResults!.isNotEmpty) {
-        minResult = knownResults!.first;
-        maxResult = knownResults!.last;
-      }
-    }
+    ensureKnownResultSet(min, max, previousResults);
 
     var results = <EvaluationFinalResult>[];
     var haveResults = false;
@@ -61,6 +52,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       final expression = expressable.expressionTrees[i];
       final variables = expressable.variableLists[i];
       try {
+        // TODO Can pass current possible values to be used when pinning the expressable
         final expressionResults = evaluateExpression(expression, variables, min: min, max: max);
         // If expression involved this expressable, then the result value must match the expressable's value
         if (variables.contains(expressable.id)) {
@@ -86,7 +78,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// a list of [EvaluationFinalResult] containing the evaluated values and their
   /// corresponding variable values.
   List<EvaluationFinalResult> evaluateExpression(Expression expression, List<String> variables,
-      {required int min, required int max}) {
+      {required int min, required int max, Set<int>? previousResults}) {
+    ensureKnownResultSet(min, max, previousResults);
     // Some variables may be pinned already
     var unpinnedVariables = variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
     var combinations = tooManyCombinations(unpinnedVariables);
@@ -106,7 +99,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// Evaluates the given [expressable] and returns a list of integer results
   /// that fall within the specified [min] and [max] range.
   List<int> evaluateNoVariables(Expressable expressable, {required int min, required int max}) {
-    ensureMaxResultSet(min, max);
+    ensureKnownResultSet(min, max);
     var results = <int>{};
     for (var i = 0; i < expressable.expressionTrees.length; i++) {
       final expression = expressable.expressionTrees[i];
@@ -129,7 +122,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   /// a list of integer results that fall within the specified [min] and [max] range.
   List<int> evaluateExpressionNoVariables(Expression expression, List<String> variables,
       {required int min, required int max}) {
-    ensureMaxResultSet(min, max);
+    ensureKnownResultSet(min, max);
     // Some variables may be pinned already
     var unpinnedVariables = variables.where((v) => !_pinnedVariables.containsKey(v)).toList();
     final results = _internalEvaluate(expression, unpinnedVariables, min: min as num, max: max as num);
@@ -265,6 +258,10 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
             (rightMin, rightMax) = (rightMax, rightMin);
           }
           break;
+        case TokenType.MODULUS:
+          rightMin = 1;
+          rightMax = leftMax;
+          break;
         case TokenType.EXPONENT:
           if (left == 0) continue;
           if (min < 1) min = 1;
@@ -299,6 +296,13 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
           case TokenType.SLASH:
             if (right != 0) {
               resultValue = left / right;
+            } else {
+              continue;
+            }
+            break;
+          case TokenType.MODULUS:
+            if (right != 0) {
+              resultValue = left % right;
             } else {
               continue;
             }
@@ -348,8 +352,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   List<EvaluationResult> visitIfExpression(IfExpression expression, {required num min, required num max}) {
     final conditionResults = _evaluateWithPinnedVariables(
       expression.condition,
-      min: -arbitraryLimit,
-      max: arbitraryLimit,
+      min: -arbitraryLimit > min ? min : -arbitraryLimit,
+      max: arbitraryLimit < max ? max : arbitraryLimit,
     );
     if (conditionResults.isEmpty) return [];
 
@@ -532,9 +536,16 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
     return null;
   }
 
-  void ensureMaxResultSet(int min, int max) {
+  void ensureKnownResultSet(int min, int max, [Set<int>? previousResults]) {
     minResult ??= min;
     maxResult ??= max;
+    if (previousResults != null && knownResults == null) {
+      knownResults = previousResults.toList()..sort();
+      if (knownResults!.isNotEmpty) {
+        minResult = knownResults!.first;
+        maxResult = knownResults!.last;
+      }
+    }
   }
 }
 

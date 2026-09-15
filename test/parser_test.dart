@@ -1,6 +1,8 @@
 import 'package:test/test.dart';
 import 'package:crossnumber/src/expressions/parser.dart';
 import 'package:crossnumber/src/expressions/expression.dart';
+import 'package:crossnumber/src/models/expression_constraint.dart';
+import 'package:crossnumber/src/models/variable.dart';
 
 void main() {
   group('Parser', () {
@@ -33,6 +35,15 @@ void main() {
       expect(binaryExpression.operator.type, TokenType.EXPONENT);
       expect(binaryExpression.right, isA<NumberExpression>());
       expect((binaryExpression.right as NumberExpression).value, 3);
+    });
+
+    test('should parse modulus with multiplicative precedence', () {
+      final expression = Parser('10 + 8 % 3 * 2').parse() as BinaryExpression;
+
+      expect(expression.operator.type, TokenType.PLUS);
+      final right = expression.right as BinaryExpression;
+      expect(right.operator.type, TokenType.STAR);
+      expect((right.left as BinaryExpression).operator.type, TokenType.MODULUS);
     });
 
     test('should parse IF as a reserved token', () {
@@ -68,6 +79,42 @@ void main() {
     test('should leave lowercase if as an identifier', () {
       final tokens = Parser('if').scanTokens();
       expect(tokens.first.type, TokenType.IDENTIFIER);
+    });
+
+    test('should resolve self-reference to a variable', () {
+      final expression = Parser('@ IF 1 = 1', currentExpressableId: 'A').parse() as IfExpression;
+
+      expect(expression.value, isA<VariableExpression>());
+      expect((expression.value as VariableExpression).name, 'A');
+      expect(expression.toString(), '(A IF (1=1))');
+    });
+
+    test('should resolve a grid self-reference', () {
+      final expression = Parser('@', currentExpressableId: 'left.A1').parse();
+
+      expect(expression, isA<GridReferenceExpression>());
+      expect((expression as GridReferenceExpression).gridReferenceId, 'left.A1');
+    });
+
+    test('should reject self-reference without an owner', () {
+      expect(() => Parser('@').parse(), throwsA(isA<ParseException>()));
+    });
+
+    test('should resolve a reused constraint for each expressable', () {
+      final constraint = ExpressionConstraint('@');
+      final first = Variable('A', {1});
+      final second = Variable('B', {2});
+
+      expect(first.addExpression(constraint), isTrue);
+      expect(second.addExpression(constraint), isTrue);
+
+      expect(first.expressionTrees.single, isA<VariableExpression>());
+      expect((first.expressionTrees.single as VariableExpression).name, 'A');
+      expect(first.variableLists.single, ['A']);
+      expect(second.expressionTrees.single, isA<VariableExpression>());
+      expect((second.expressionTrees.single as VariableExpression).name, 'B');
+      expect(second.variableLists.single, ['B']);
+      expect(constraint.expressionTreeOwnerId, 'B');
     });
   });
 }

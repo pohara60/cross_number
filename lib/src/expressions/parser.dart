@@ -6,12 +6,13 @@ import 'expression.dart';
 /// of tokens, and a parser to build an expression tree from those tokens.
 class Parser {
   final String source;
+  final String? currentExpressableId;
   final List<Token> _tokens = [];
   int _start = 0;
   int _current = 0;
   int _line = 1;
 
-  Parser(this.source);
+  Parser(this.source, {this.currentExpressableId});
 
   /// Scans the source string and returns a list of tokens.
   List<Token> scanTokens() {
@@ -46,6 +47,9 @@ class Parser {
       case '/':
         _addToken(TokenType.SLASH);
         break;
+      case '%':
+        _addToken(TokenType.MODULUS);
+        break;
       case '^':
         _addToken(TokenType.EXPONENT);
         break;
@@ -78,6 +82,9 @@ class Parser {
         break;
       case ',':
         _addToken(TokenType.COMMA);
+        break;
+      case '@':
+        _addToken(TokenType.SELF_REFERENCE);
         break;
       case '\n':
         _line++;
@@ -223,7 +230,7 @@ class Parser {
   Expression _factor() {
     var expr = _exponent();
 
-    while (_match([TokenType.SLASH, TokenType.STAR])) {
+    while (_match([TokenType.SLASH, TokenType.STAR, TokenType.MODULUS])) {
       final operator = _previous();
       final right = _exponent();
       expr = BinaryExpression(expr, operator, right);
@@ -259,6 +266,18 @@ class Parser {
       return NumberExpression(_previous().literal as num);
     }
 
+    if (_match([TokenType.SELF_REFERENCE])) {
+      final ownerId = currentExpressableId;
+      if (ownerId == null || !_isValidExpressableId(ownerId)) {
+        throw _error(_previous(), 'Self-reference requires a valid expressable ID.');
+      }
+      final parts = ownerId.split('.');
+      if (parts.length == 1) {
+        return VariableExpression(ownerId);
+      }
+      return GridReferenceExpression(parts[0], parts[1]);
+    }
+
     if (_match([TokenType.HASH])) {
       _consume(TokenType.IDENTIFIER, "Expect generator name after '#'.");
       return GeneratorExpression(_previous().lexeme);
@@ -281,6 +300,15 @@ class Parser {
       return GroupingExpression(expr);
     }
     return _function();
+  }
+
+  bool _isValidExpressableId(String id) {
+    final parts = id.split('.');
+    return parts.length <= 2 && parts.every((part) => part.isNotEmpty && part.split('').every(_isIdentifierCharacter));
+  }
+
+  bool _isIdentifierCharacter(String character) {
+    return _isAlphaNumeric(character) || character == '_';
   }
 
   Expression _function() {

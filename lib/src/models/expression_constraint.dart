@@ -14,6 +14,9 @@ class ExpressionConstraint extends Constraint {
   /// The parsed expression tree.
   Expression? expressionTree;
 
+  /// The expressable ID used when [expressionTree] was parsed.
+  String? expressionTreeOwnerId;
+
   /// The list of variables in the expression.
   List<String> variables = [];
 
