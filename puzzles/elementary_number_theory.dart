@@ -181,16 +181,16 @@ PuzzleDefinition elementary_number_theory() {
       'B': Statement('B', r'#prime * #prime'),
       'C': Statement('C', r'#prime + #prime'),
       'D': Statement('D', r'#prime'),
-      'E': Statement('E', r'#triangular'),
-      'F': Statement('F', r'#cube'),
+      'E': Statement('E', r'#triangular', priority: 6),
+      'F': Statement('F', r'#cube', priority: 10),
       'G': Statement('G', r'@ IF @ % 4 = 1'), // It has a remainder of 1 when divided by 4
       'H': Statement('H', r'@ IF $isOdd $digitproduct @'),
       'I': Statement('I', r'$multiple 11'),
-      'J': Statement('J', r'#square'),
+      'J': Statement('J', r'#square', priority: 8),
       'K': Statement('K', r'$multiple 7'),
       'L': Statement('L', r'$multiple 9'),
       'M': Statement('M', r'@ IF @ % 10 = 3'), // Its units digit is 3
-      'N': Statement('N', r'#fibonacci'),
+      'N': Statement('N', r'#fibonacci', priority: 5),
       'O': Statement('O', r'@ IF ($digitsum @) > 24'), // Its digit sum is greater than 24
     },
   );

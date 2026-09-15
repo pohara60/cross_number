@@ -1,3 +1,4 @@
+import 'package:crossnumber/src/models/clue.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/variable.dart';
 import 'package:test/test.dart';
@@ -318,6 +319,64 @@ void main() {
 
       expect(results.map((result) => result.value), unorderedEquals([1, 3, 5, 7, 9]));
       expect(results.every((result) => result.variableValues['A'] == result.value), isTrue);
+    });
+
+    test('reuses correlated assignments between expressions', () {
+      final variableA = Variable('A', {1, 2, 3});
+      final variableB = Variable('B', {1, 2, 3});
+      final clue = Clue('C', [
+        ExpressionConstraint('A * 10 + B'),
+        ExpressionConstraint('A * 10 + B IF A + B = 4'),
+      ]);
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {'C': clue},
+        variables: {'A': variableA, 'B': variableB},
+      );
+
+      final optimized = Evaluator(puzzle).evaluate(clue, min: 1, max: 99);
+      final first =
+          Evaluator(puzzle).evaluateExpression(clue.expressionTrees[0], clue.variableLists[0], min: 1, max: 99);
+      final second =
+          Evaluator(puzzle).evaluateExpression(clue.expressionTrees[1], clue.variableLists[1], min: 1, max: 99);
+      final unoptimized = resultsIntersection(first, second);
+
+      expect(optimized.map((result) => result.value), unorderedEquals([13, 31]));
+      expect(
+        optimized.map((result) => result.variableValues),
+        unorderedEquals(unoptimized.map((result) => result.variableValues)),
+      );
+    });
+
+    test('uses earlier values for a later self-reference', () {
+      final variable = Variable('A', {1, 2, 3});
+      final clue = Clue('C', [
+        ExpressionConstraint('A'),
+        ExpressionConstraint('@ IF @ = 2'),
+      ]);
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {'C': clue},
+        variables: {'A': variable},
+      );
+
+      final results = Evaluator(puzzle).evaluate(clue, min: 1, max: 3);
+
+      expect(results.map((result) => result.value), equals([2]));
+      expect(results.single.variableValues, {'A': 2, 'C': 2});
+    });
+
+    test('restricts the first self-reference from previous results', () {
+      final clue = Clue('C', [ExpressionConstraint('@ IF @ % 2 = 0')]);
+      final puzzle = PuzzleDefinition(name: 'test', grids: {}, entries: {}, clues: {'C': clue}, variables: {});
+
+      final results = Evaluator(puzzle).evaluate(clue, min: 1, max: 4, previousResults: {2, 3, 4});
+
+      expect(results.map((result) => result.value), unorderedEquals([2, 4]));
     });
   });
 }

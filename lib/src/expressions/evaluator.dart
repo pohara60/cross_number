@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:crossnumber/src/expressions/cartesian.dart';
 import 'package:crossnumber/src/expressions/polyadic.dart';
-
 import '../models/evaluation_result.dart';
 import '../models/expressable.dart';
 import '../models/puzzle_definition.dart';
@@ -23,6 +22,8 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   static final MonadicFunctionRegistry _monadicFunctionRegistry = MonadicFunctionRegistry();
   static final PolyadicFunctionRegistry _polyadicFunctionRegistry = PolyadicFunctionRegistry();
   Map<String, int> _pinnedVariables;
+  String? _selfReferenceId;
+  Set<int>? _selfValues;
 
   // The minimum and maximum result values for the evaluation
   num? minResult;
@@ -37,7 +38,9 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       .._pinnedVariables = pinnedVariables ?? _pinnedVariables
       ..minResult = minResult
       ..maxResult = maxResult
-      ..knownResults = knownResults;
+      ..knownResults = knownResults
+      .._selfReferenceId = _selfReferenceId
+      .._selfValues = _selfValues;
   }
 
   /// Evaluates the given [expressable] and returns a list of [EvaluationFinalResult]
@@ -52,11 +55,27 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       final expression = expressable.expressionTrees[i];
       final variables = expressable.variableLists[i];
       try {
-        // TODO Can pass current possible values to be used when pinning the expressable
-        final expressionResults = evaluateExpression(expression, variables, min: min, max: max);
+        final selfReferences = variables.contains(expressable.id);
+        final candidates = haveResults
+            ? _candidatesForExpression(results, variables, selfReferences)
+            : _initialCandidates(previousResults, selfReferences);
+        final useCandidates = candidates.isNotEmpty && _candidateSearchIsSmaller(variables, candidates);
+        final expressionResults = _evaluateExpressionWithCandidates(
+          expression,
+          variables,
+          min: min,
+          max: max,
+          candidates: useCandidates ? candidates : const [],
+          restrictSelfReference: useCandidates && (haveResults || previousResults != null),
+          selfReferenceId: useCandidates && selfReferences ? expressable.id : null,
+        );
         // If expression involved this expressable, then the result value must match the expressable's value
-        if (variables.contains(expressable.id)) {
+        if (variables.contains(expressable.id) &&
+            expressionResults.every((r) => r.variableValues.containsKey(expressable.id))) {
           expressionResults.removeWhere((r) => r.value != r.variableValues[expressable.id]);
+        }
+        if (selfReferences && previousResults != null && i == 0) {
+          expressionResults.removeWhere((r) => !previousResults.contains(r.value));
         }
         if (!haveResults) {
           results = expressionResults;
@@ -72,6 +91,75 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       }
     }
     return results.toList();
+  }
+
+  bool _candidateSearchIsSmaller(List<String> variables, List<_EvaluationCandidate> candidates) {
+    var combinations = 1;
+    for (final variable in variables) {
+      if (_pinnedVariables.containsKey(variable)) continue;
+      final possibleValues = puzzle.getExpressable(variable).possibleValues;
+      if (possibleValues == null) return true;
+      combinations *= possibleValues.length;
+      if (combinations >= candidates.length * 2) continue;
+    }
+    return candidates.length * 2 < combinations;
+  }
+
+  List<_EvaluationCandidate> _initialCandidates(Set<int>? previousResults, bool selfReferences) {
+    if (!selfReferences || previousResults == null) return const [];
+    return previousResults.map((value) => _EvaluationCandidate({}, value)).toList();
+  }
+
+  List<_EvaluationCandidate> _candidatesForExpression(
+      List<EvaluationFinalResult> results, List<String> variables, bool selfReferences) {
+    final candidates = <_EvaluationCandidate>[];
+    for (final result in results) {
+      final assignment = <String, int>{};
+      for (final variable in variables) {
+        final value = result.variableValues[variable];
+        if (value != null) assignment[variable] = value;
+      }
+      final candidate = _EvaluationCandidate(assignment, selfReferences ? result.value : null);
+      if (!candidates.contains(candidate)) candidates.add(candidate);
+    }
+    return candidates;
+  }
+
+  List<EvaluationFinalResult> _evaluateExpressionWithCandidates(Expression expression, List<String> variables,
+      {required int min,
+      required int max,
+      required List<_EvaluationCandidate> candidates,
+      required bool restrictSelfReference,
+      String? selfReferenceId}) {
+    if (candidates.isEmpty && selfReferenceId != null && restrictSelfReference) return [];
+    if (candidates.isEmpty) return evaluateExpression(expression, variables, min: min, max: max);
+
+    final results = <EvaluationFinalResult>[];
+    for (final candidate in candidates) {
+      final pinnedVariables = Map<String, int>.from(_pinnedVariables);
+      var consistent = true;
+      for (final entry in candidate.variableValues.entries) {
+        final existingValue = pinnedVariables[entry.key];
+        if (existingValue != null && existingValue != entry.value) {
+          consistent = false;
+          break;
+        }
+        pinnedVariables[entry.key] = entry.value;
+      }
+      if (selfReferenceId != null && candidate.selfValue != null) {
+        final existingValue = pinnedVariables[selfReferenceId];
+        if (existingValue != null && existingValue != candidate.selfValue) continue;
+        pinnedVariables[selfReferenceId] = candidate.selfValue!;
+      }
+      if (!consistent) continue;
+
+      final evaluator = copyWith(pinnedVariables: pinnedVariables)
+        .._selfReferenceId = selfReferenceId
+        .._selfValues = candidate.selfValue == null ? null : {candidate.selfValue!};
+      final candidateResults = evaluator.evaluateExpression(expression, variables, min: min, max: max);
+      results.addAll(candidateResults);
+    }
+    return results.toSet().toList();
   }
 
   /// Evaluates the given [expression] with the provided [variables] and returns
@@ -176,6 +264,7 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
 
   @override
   List<EvaluationResult> visitVariableExpression(VariableExpression expression, {required num min, required num max}) {
+    // Check for pinned variable first
     if (_pinnedVariables.containsKey(expression.name)) {
       final value = _pinnedVariables[expression.name]!;
       if (value >= min && value <= max) {
@@ -185,6 +274,14 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
       }
       return [];
     }
+    // If not pinned, self-reference values may be restricted
+    if (expression.name == _selfReferenceId && _selfValues != null) {
+      return _selfValues!
+          .where((value) => value >= min && value <= max)
+          .map((value) => EvaluationResult(value, {expression.name: value}))
+          .toList();
+    }
+    // Expressale possible values
     var expressable = puzzle.getExpressable(expression.name);
     return (expressable.possibleValues ?? <int>{})
         .where((value) => value >= min && value <= max)
@@ -412,6 +509,12 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   List<EvaluationResult> visitGridReferenceExpression(GridReferenceExpression expression,
       {required num min, required num max}) {
     final referenceId = '${expression.gridId}.${expression.referenceId}';
+    if (referenceId == _selfReferenceId && _selfValues != null) {
+      return _selfValues!
+          .where((value) => value >= min && value <= max)
+          .map((value) => EvaluationResult(value, {}))
+          .toList();
+    }
     final expressable = puzzle.getExpressable(referenceId);
     if (expressable.possibleValues == null) return [];
     return expressable.possibleValues!
@@ -551,40 +654,89 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
 
 List<EvaluationFinalResult> resultsIntersection(
     List<EvaluationFinalResult> results, List<EvaluationFinalResult> expressionResults) {
-  var resultMap = <int, List<Map<String, int>>>{};
+  final resultMap = <int, List<Map<String, int>>>{};
   var resultVariables = <int, List<String>>{};
   for (var r in results) {
     resultMap.putIfAbsent(r.value, () => <Map<String, int>>[]).add(r.variableValues);
     resultVariables.putIfAbsent(r.value, () => <String>[]).addAll(r.variableValues.keys);
   }
-  var resultValues = <int>[];
+  final matchingResults = <int, List<EvaluationFinalResult>>{};
   for (var r in expressionResults) {
     if (resultMap.containsKey(r.value)) {
       var listVariables = resultVariables[r.value]!;
       var listVariableValues = resultMap[r.value]!;
-      // If new result variables intersect, then check these for match
       var matchVariables = listVariables.where((v) => r.variableValues.containsKey(v));
       if (matchVariables.isNotEmpty) {
         var match = r.variableValues.entries.every((e) =>
             !matchVariables.contains(e.key) ||
             listVariableValues.any((m) => m.containsKey(e.key) && m[e.key]! == e.value));
-        if (!match) {
-          continue;
-        }
+        if (!match) continue;
         matchVariables.every((v) => false);
       }
-      listVariableValues.add(r.variableValues);
-      resultValues.add(r.value);
+      matchingResults.putIfAbsent(r.value, () => []).add(r);
     }
   }
-  resultMap.removeWhere((key, value) => !resultValues.contains(key));
-  var finalResults = <EvaluationFinalResult>[];
-  resultMap.forEach((value, variableValuesSet) {
-    for (var variableValues in variableValuesSet) {
-      finalResults.add(EvaluationFinalResult(value, variableValues));
+  final finalResults = <EvaluationFinalResult>[];
+  final seen = <String>{};
+  const maxMergedPairs = 1000;
+  matchingResults.forEach((value, rightResults) {
+    final leftResults = resultMap[value]!;
+    if (leftResults.length * rightResults.length > maxMergedPairs) {
+      for (final left in leftResults) {
+        final resultKey = '$value:${left.entries.map((entry) => '${entry.key}=${entry.value}').join(',')}';
+        if (seen.add(resultKey)) finalResults.add(EvaluationFinalResult(value, left));
+      }
+      for (final right in rightResults) {
+        final resultKey =
+            '$value:${right.variableValues.entries.map((entry) => '${entry.key}=${entry.value}').join(',')}';
+        if (seen.add(resultKey)) finalResults.add(EvaluationFinalResult(value, right.variableValues));
+      }
+      return;
+    }
+    for (final right in rightResults) {
+      for (final left in leftResults) {
+        final variableValues = <String, int>{...left};
+        var consistent = true;
+        for (final entry in right.variableValues.entries) {
+          final existingValue = variableValues[entry.key];
+          if (existingValue != null && existingValue != entry.value) {
+            consistent = false;
+            break;
+          }
+          variableValues[entry.key] = entry.value;
+        }
+        if (!consistent) continue;
+        final resultKey = '$value:${variableValues.entries.map((entry) => '${entry.key}=${entry.value}').join(',')}';
+        if (seen.add(resultKey)) {
+          finalResults.add(EvaluationFinalResult(value, variableValues));
+        }
+      }
     }
   });
   return finalResults;
+}
+
+bool _mapsEqual(Map<String, int> first, Map<String, int> second) {
+  if (first.length != second.length) return false;
+  return first.entries.every((entry) => second[entry.key] == entry.value);
+}
+
+class _EvaluationCandidate {
+  final Map<String, int> variableValues;
+  final int? selfValue;
+
+  _EvaluationCandidate(this.variableValues, this.selfValue);
+
+  @override
+  bool operator ==(Object other) {
+    return other is _EvaluationCandidate &&
+        selfValue == other.selfValue &&
+        _mapsEqual(variableValues, other.variableValues);
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      selfValue, Object.hashAll(variableValues.entries.map((entry) => Object.hash(entry.key, entry.value))));
 }
 
 /// An error thrown when the evaluator encounters an error.

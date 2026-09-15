@@ -213,16 +213,27 @@ class PuzzleDefinition {
     // Add entry statements to expression constraints
     for (final entry in entries.values) {
       if (entry.statements.isNotEmpty) {
-        for (final statementId in entry.statements.split(' ')) {
+        final entryStatements = <({Statement statement, int index})>[];
+        final statementIds = entry.statements.split(' ');
+        for (var index = 0; index < statementIds.length; index++) {
+          final statementId = statementIds[index];
           if (!statements.containsKey(statementId)) {
             exception = true;
             print('Entry ${entry.id} references unknown statement $statementId');
           } else {
             var statement = statements[statementId]!;
             if (statement.expression.isNotEmpty) {
-              if (entry.constraints.isEmpty) entry.constraints = []; // Replace const []
-              entry.constraints.add(ExpressionConstraint.fromStatement(statement));
+              entryStatements.add((statement: statement, index: index));
             }
+          }
+        }
+        entryStatements.sort((a, b) => b.statement.priority != a.statement.priority
+            ? b.statement.priority.compareTo(a.statement.priority)
+            : a.index.compareTo(b.index));
+        if (entryStatements.isNotEmpty) {
+          if (entry.constraints.isEmpty) entry.constraints = []; // Replace const []
+          for (final item in entryStatements) {
+            entry.constraints.add(ExpressionConstraint.fromStatement(item.statement));
           }
         }
       }
