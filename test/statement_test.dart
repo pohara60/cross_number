@@ -35,6 +35,66 @@ void main() {
     expect(statement.copyWith(priority: 8).priority, 8);
   });
 
+  test('optionally adds unspecified statements as NOT constraints', () {
+    final entry = Entry(id: 'A1', length: 1, statements: 'first');
+    final puzzle = PuzzleDefinition(
+      name: 'test',
+      grids: {'main': Grid(1, 1)},
+      entries: {'A1': entry},
+      clues: <String, Clue>{},
+      variables: {},
+      addNotStatements: true,
+      statements: {
+        'first': Statement('first', '1'),
+        'second': Statement('second', '2'),
+      },
+    );
+
+    expect(
+      puzzle.entries['A1']!.expressionConstraints.map((constraint) => constraint.expression),
+      ['1', 'NOT (2)'],
+    );
+  });
+
+  test('puts all NOT constraints after explicit statements', () {
+    final entry = Entry(id: 'A1', length: 1, statements: 'first');
+    final puzzle = PuzzleDefinition(
+      name: 'test',
+      grids: {'main': Grid(1, 1)},
+      entries: {'A1': entry},
+      clues: <String, Clue>{},
+      variables: {},
+      addNotStatements: true,
+      statements: {
+        'first': Statement('first', '1', priority: 1),
+        'second': Statement('second', '2', priority: 10),
+      },
+    );
+
+    expect(
+      puzzle.entries['A1']!.expressionConstraints.map((constraint) => constraint.expression),
+      ['1', 'NOT (2)'],
+    );
+  });
+
+  test('does not add NOT constraints to entries without explicit statements', () {
+    final entry = Entry(id: 'A1', length: 1);
+    final puzzle = PuzzleDefinition(
+      name: 'test',
+      grids: {'main': Grid(1, 1)},
+      entries: {'A1': entry},
+      clues: <String, Clue>{},
+      variables: {},
+      addNotStatements: true,
+      statements: {'statement': Statement('statement', '1')},
+    );
+
+    expect(
+      puzzle.entries['A1']!.expressionConstraints.map((constraint) => constraint.expression),
+      isEmpty,
+    );
+  });
+
   test('keeps direct constraints before reordered statement constraints', () {
     final entry = Entry(
       id: 'A1',

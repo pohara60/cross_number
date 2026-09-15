@@ -201,6 +201,7 @@ enum TokenType {
   EQUAL,
   AMPERSAND,
   REVERSE,
+  NOT,
   LESS,
   GREATER,
 

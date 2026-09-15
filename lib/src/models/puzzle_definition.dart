@@ -51,6 +51,9 @@ class PuzzleDefinition {
   /// Statements
   final Map<String, Statement> statements;
 
+  /// Whether unspecified statements are added as negated constraints.
+  final bool addNotStatements;
+
   /// All Expressables, i.e. clue, expressions and variables
   final List<Expressable> allExpressables = [];
 
@@ -75,6 +78,7 @@ class PuzzleDefinition {
     List<PuzzleConstraint> puzzleConstraints = const [],
     DistinctConstraint? distinctConstraint,
     String? digitConstraint,
+    bool addNotStatements = false,
     mappingIsKnown = true,
     mappingFunction,
   }) {
@@ -97,6 +101,7 @@ class PuzzleDefinition {
       mappingIsKnown: mappingIsKnown,
       mappingFunction: mappingFunction,
       statements: statements ?? {},
+      addNotStatements: addNotStatements,
     );
   }
 
@@ -181,6 +186,7 @@ class PuzzleDefinition {
       puzzleConstraints = const [],
       distinctConstraint,
       String? digitConstraint,
+      this.addNotStatements = false,
       this.mappingIsKnown = true,
       this.mappingFunction})
       : distinctConstraint = distinctConstraint ?? DistinctConstraint(),
@@ -213,8 +219,9 @@ class PuzzleDefinition {
     // Add entry statements to expression constraints
     for (final entry in entries.values) {
       if (entry.statements.isNotEmpty) {
-        final entryStatements = <({Statement statement, int index})>[];
-        final statementIds = entry.statements.split(' ');
+        final entryStatements = <({Statement statement, int index, bool negated})>[];
+        final statementIds =
+            entry.statements.trim().isEmpty ? <String>[] : entry.statements.trim().split(RegExp(r'\s+'));
         for (var index = 0; index < statementIds.length; index++) {
           final statementId = statementIds[index];
           if (!statements.containsKey(statementId)) {
@@ -223,17 +230,29 @@ class PuzzleDefinition {
           } else {
             var statement = statements[statementId]!;
             if (statement.expression.isNotEmpty) {
-              entryStatements.add((statement: statement, index: index));
+              entryStatements.add((statement: statement, index: index, negated: false));
             }
           }
         }
-        entryStatements.sort((a, b) => b.statement.priority != a.statement.priority
-            ? b.statement.priority.compareTo(a.statement.priority)
-            : a.index.compareTo(b.index));
+        if (addNotStatements) {
+          for (final statement in statements.values) {
+            if (!statementIds.contains(statement.id) && statement.expression.isNotEmpty) {
+              entryStatements.add((statement: statement, index: entryStatements.length, negated: true));
+            }
+          }
+        }
+        entryStatements.sort((a, b) {
+          if (a.negated != b.negated) return a.negated ? 1 : -1;
+          if (a.negated) return a.index.compareTo(b.index);
+          return b.statement.priority != a.statement.priority
+              ? b.statement.priority.compareTo(a.statement.priority)
+              : a.index.compareTo(b.index);
+        });
         if (entryStatements.isNotEmpty) {
           if (entry.constraints.isEmpty) entry.constraints = []; // Replace const []
           for (final item in entryStatements) {
-            entry.constraints.add(ExpressionConstraint.fromStatement(item.statement));
+            final expression = item.negated ? 'NOT (${item.statement.expression})' : item.statement.expression;
+            entry.constraints.add(ExpressionConstraint(expression));
           }
         }
       }
@@ -414,6 +433,7 @@ class PuzzleDefinition {
       clues: clues ?? this.clues.map((key, value) => MapEntry(key, value.copyWith())),
       variables: variables ?? this.variables.map((key, value) => MapEntry(key, value.copyWith())),
       statements: statements ?? this.statements.map((key, value) => MapEntry(key, value.copyWith())),
+      addNotStatements: addNotStatements,
       orderingConstraints: orderingConstraints ?? this.orderingConstraints,
       mappingIsKnown: mappingIsKnown ?? this.mappingIsKnown,
       mappingFunction: mappingFunction ?? this.mappingFunction,

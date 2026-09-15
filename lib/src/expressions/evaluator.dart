@@ -479,6 +479,18 @@ class Evaluator implements ExpressionVisitor<List<EvaluationResult>> {
   @override
   List<EvaluationResult> visitUnaryExpression(UnaryExpression expression, {required num min, required num max}) {
     var type = expression.operator.type;
+    if (type == TokenType.NOT) {
+      final operandValues = _evaluateWithPinnedVariables(expression.right, min: min, max: max);
+      final excludedValues = operandValues.map((result) => result.value).toSet();
+      final candidateValues = _selfValues ??
+          {
+            for (var value = min.ceil(); value <= max.floor(); value++) value,
+          };
+      return [
+        for (var value in candidateValues)
+          if (!excludedValues.contains(value)) EvaluationResult(value, {})
+      ];
+    }
     var rightMin = type == TokenType.MINUS ? -max : min;
     var rightMax = type == TokenType.MINUS ? -min : max;
     final rightValues = _evaluateWithPinnedVariables(expression.right, min: rightMin, max: rightMax);

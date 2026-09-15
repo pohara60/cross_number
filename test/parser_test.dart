@@ -37,6 +37,14 @@ void main() {
       expect((binaryExpression.right as NumberExpression).value, 3);
     });
 
+    test('should parse NOT as a unary operator', () {
+      final expression = Parser('NOT #prime').parse() as UnaryExpression;
+
+      expect(expression.operator.type, TokenType.NOT);
+      expect(expression.right, isA<GeneratorExpression>());
+      expect(expression.toString(), '(NOT#prime)');
+    });
+
     test('should parse modulus with multiplicative precedence', () {
       final expression = Parser('10 + 8 % 3 * 2').parse() as BinaryExpression;
 

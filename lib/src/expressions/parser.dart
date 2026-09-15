@@ -126,7 +126,11 @@ class Parser {
       _advance();
     }
     final lexeme = source.substring(_start, _current);
-    _addToken(lexeme == 'IF' ? TokenType.IF : TokenType.IDENTIFIER);
+    _addToken(lexeme == 'IF'
+        ? TokenType.IF
+        : lexeme == 'NOT'
+            ? TokenType.NOT
+            : TokenType.IDENTIFIER);
   }
 
   bool _isAtEnd() {
@@ -252,7 +256,7 @@ class Parser {
   }
 
   Expression _unary() {
-    if (_match([TokenType.MINUS, TokenType.REVERSE])) {
+    if (_match([TokenType.MINUS, TokenType.REVERSE, TokenType.NOT])) {
       final operator = _previous();
       final right = _unary();
       return UnaryExpression(operator, right);

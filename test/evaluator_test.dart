@@ -14,6 +14,19 @@ void main() {
       expectExpression('-15 + 11*9 - 10', [], 10, 99, 74);
     });
 
+    test('should evaluate NOT as the bounded complement of its operand', () {
+      final puzzle = PuzzleDefinition(
+        name: 'test',
+        grids: {},
+        entries: {},
+        clues: {},
+        variables: {},
+      );
+
+      final results = Evaluator(puzzle).evaluateExpressionNoVariables(Parser('NOT 11').parse(), [], min: 10, max: 12);
+      expect(results, unorderedEquals([10, 12]));
+    });
+
     test('should evaluate a complex expression', () {
       expectExpression('6/2', [], 1, 9, 3);
       expectExpression('( 6/2 )*13', [], 10, 99, 39);
@@ -377,6 +390,15 @@ void main() {
       final results = Evaluator(puzzle).evaluate(clue, min: 1, max: 4, previousResults: {2, 3, 4});
 
       expect(results.map((result) => result.value), unorderedEquals([2, 4]));
+    });
+
+    test('restricts NOT to known self values', () {
+      final clue = Clue('C', [ExpressionConstraint('NOT (@ IF @ = 2)')]);
+      final puzzle = PuzzleDefinition(name: 'test', grids: {}, entries: {}, clues: {'C': clue}, variables: {});
+
+      final results = Evaluator(puzzle).evaluate(clue, min: 1, max: 4, previousResults: {2, 3, 4});
+
+      expect(results.map((result) => result.value), unorderedEquals([3, 4]));
     });
   });
 }

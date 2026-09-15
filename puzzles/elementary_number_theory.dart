@@ -115,6 +115,7 @@ PuzzleDefinition elementary_number_theory() {
     name: 'elementary_number_theory',
     gridString: gridString.join('\n'),
     mappingIsKnown: true,
+    addNotStatements: true,
     puzzleConstraints: [elementary_number_theoryConstraint()],
     // orderingConstraints: [OrderingConstraint(allClues: true)],
     entries: {
@@ -178,8 +179,8 @@ PuzzleDefinition elementary_number_theory() {
     },
     statements: {
       'A': Statement('A', r'#palindrome'),
-      'B': Statement('B', r'#prime * #prime'),
-      'C': Statement('C', r'#prime + #prime'),
+      'B': Statement('B', r'#producttwoprimes'),
+      'C': Statement('C', r'#sumtwoprimes'),
       'D': Statement('D', r'#prime'),
       'E': Statement('E', r'#triangular', priority: 6),
       'F': Statement('F', r'#cube', priority: 10),

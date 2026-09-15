@@ -99,6 +99,72 @@ class TwoDigitPrimeToPrimePowerGenerator extends CachedGenerator {
   }
 }
 
+class SumTwoPrimesGenerator extends CachedGenerator {
+  SumTwoPrimesGenerator() {
+    _values.addAll([5, 7, 8, 9]);
+  }
+
+  @override
+  void _extend(int max) {
+    if (max <= _values.last) return;
+    var maxPrime = max - 2;
+    if (maxPrime < 7) {
+      return;
+    }
+    var primeGenerator = GeneratorRegistry().get('prime') as PrimeGenerator;
+    final primes = primeGenerator.getValues(2, maxPrime);
+    var newValues = <int>[];
+    for (var p1 in primes) {
+      if (p1 > maxPrime) break;
+      var maxP2 = max - p1;
+      for (var p2 in primes) {
+        if (p2 <= p1) continue;
+        if (p2 > maxP2) break;
+        var sum12 = p1 + p2;
+        if (sum12 <= _values.last) continue;
+        if (sum12 > max) break;
+        // print('Adding sum of $p1+$p2: $sum12');
+        newValues.add(sum12);
+      }
+    }
+    newValues.sort();
+    _values.addAll(newValues);
+  }
+}
+
+class ProductTwoPrimesGenerator extends CachedGenerator {
+  ProductTwoPrimesGenerator() {
+    _values.addAll([6, 10, 14, 15, 21]);
+  }
+
+  @override
+  void _extend(int max) {
+    if (max <= _values.last) return;
+    var maxPrime = max ~/ 2;
+    if (maxPrime < 7) {
+      return;
+    }
+    var primeGenerator = GeneratorRegistry().get('prime') as PrimeGenerator;
+    final primes = primeGenerator.getValues(2, maxPrime);
+    var newValues = <int>[];
+    for (var p1 in primes) {
+      if (p1 > maxPrime) break;
+      var maxP2 = max ~/ p1;
+      for (var p2 in primes) {
+        if (p2 <= p1) continue;
+        if (p2 > maxP2) break;
+        var prod12 = p1 * p2;
+        if (prod12 <= _values.last) continue;
+        if (prod12 > max) break;
+        // print('Adding product of $p1*$p2: $prod12');
+        newValues.add(prod12);
+      }
+    }
+    newValues.sort();
+    _values.addAll(newValues);
+  }
+}
+
 class ProductFivePrimesGenerator extends CachedGenerator {
   ProductFivePrimesGenerator() {
     _values.addAll([2310]);
@@ -390,6 +456,8 @@ class GeneratorRegistry {
     register('cube', CubeGenerator());
     register('harshad', HarshadGenerator());
     register('palindrome', PalindromeGenerator());
+    register('sumtwoprimes', SumTwoPrimesGenerator());
+    register('producttwoprimes', ProductTwoPrimesGenerator());
     register('productfiveprimes', ProductFivePrimesGenerator());
     register('catalan', CatalanGenerator());
     register('powers3', PowersGenerator(minPower: 3));
