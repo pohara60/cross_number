@@ -158,6 +158,12 @@ class MonadicFunctionRegistry {
         .toList()
       ..sort();
     _maxOp['jumble'] = MonadicMaxOp.square;
+    _functions['derange'] = (values, {min, max}) => values
+        .expand((v) => derange(v).where((v) => (min == null || v >= min) && (max == null || v <= max)))
+        .toSet()
+        .toList()
+      ..sort();
+    _maxOp['derange'] = MonadicMaxOp.square;
   }
 
   MonadicFunction? get(String name) {
@@ -264,6 +270,55 @@ class MonadicFunctionRegistry {
       if (leftValue + chrVal != 0) {
         var rest = strValue.substring(0, d) + strValue.substring(d + 1);
         yield* _jumbleStr(value, leftValue + chrVal, rest);
+      }
+    }
+  }
+
+  Iterable<int> derange(int value) sync* {
+    var strValue = value.toString();
+    var indexedDigits = List.generate(
+      strValue.length,
+      (i) => MapEntry(i, strValue[i]),
+    );
+    yield* _derangeStr(value, 0, indexedDigits, 0);
+  }
+
+  Iterable<int> _derangeStr(
+    int originalValue,
+    int leftValue,
+    List<MapEntry<int, String>> remainingDigits,
+    int currentPosition,
+  ) sync* {
+    for (var d = 0; d < remainingDigits.length; d++) {
+      var entry = remainingDigits[d];
+      var origIdx = entry.key;
+      var chrVal = int.parse(entry.value);
+
+      // Disallow putting a digit back at its original index position
+      if (origIdx == currentPosition) {
+        continue;
+      }
+
+      if (remainingDigits.length == 1) {
+        var finalVal = leftValue + chrVal;
+        if (finalVal != originalValue) {
+          yield finalVal;
+        }
+        return;
+      }
+
+      var placeValue = chrVal * tens[remainingDigits.length - 1];
+      var nextLeftValue = leftValue + placeValue;
+
+      // Disallow leading zero in the final constructed number
+      if (nextLeftValue != 0) {
+        var nextRemaining = List<MapEntry<int, String>>.from(remainingDigits)..removeAt(d);
+        yield* _derangeStr(
+          originalValue,
+          nextLeftValue,
+          nextRemaining,
+          currentPosition + 1,
+        );
       }
     }
   }

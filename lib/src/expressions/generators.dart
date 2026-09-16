@@ -50,6 +50,20 @@ class PrimeGenerator extends CachedGenerator {
   }
 }
 
+class PerfectGenerator extends CachedGenerator {
+  PerfectGenerator() {
+    _values.addAll([6, 28, 496, 8128, 33550336, 8589869056]);
+  }
+
+  @override
+  void _extend(int max) {
+    var maxCached = _values.last;
+    if (max > maxCached) {
+      throw GeneratorException('Perfect numbers are hard-code up to $maxCached');
+    }
+  }
+}
+
 class TwoDigitPrimeGenerator extends CachedGenerator {
   TwoDigitPrimeGenerator() {
     _values.addAll([11, 13]);
@@ -461,6 +475,7 @@ class GeneratorRegistry {
     register('productfiveprimes', ProductFivePrimesGenerator());
     register('catalan', CatalanGenerator());
     register('powers3', PowersGenerator(minPower: 3));
+    register('perfect', PerfectGenerator());
   }
 
   void register(String name, Generator generator) {
@@ -470,4 +485,10 @@ class GeneratorRegistry {
   Generator? get(String name) {
     return _generators[name];
   }
+}
+
+/// An error thrown when a generator encounters an error.
+class GeneratorException implements Exception {
+  String? msg;
+  GeneratorException([this.msg]);
 }

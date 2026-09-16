@@ -586,9 +586,15 @@ class PuzzleDefinition {
     // Check if all expressables have a single value
     // print(
     //     'isSolutionValid solved ${allExpressables.where((expressable) => expressable.isSolved).length}');
-    if (!allExpressables.every((expressable) => expressable.isSolved)) {
+    // if (!allExpressables.every((expressable) => expressable.isSolved)) {
+    //   return false;
+    // }
+
+    // Check if all entries have a single value
+    if (!entries.values.every((expressable) => expressable.isSolved)) {
       return false;
     }
+
     // Check puzzle-specific constraints
     for (var constraint in puzzleConstraints) {
       if (!constraint.checkSolution(this)) {
