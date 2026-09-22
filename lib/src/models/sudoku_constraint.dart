@@ -1,6 +1,4 @@
-import 'package:crossnumber/src/models/cell.dart';
 import 'package:crossnumber/src/models/entry.dart';
-import 'package:crossnumber/src/models/grid.dart';
 import 'package:crossnumber/src/models/puzzle_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 
@@ -101,7 +99,7 @@ class SudokuConstraint extends PuzzleConstraint {
       while (localChanged) {
         localChanged = false;
         for (var region in grid.regions) {
-          final (consistent, updated) = propagateRegion(region, trace: trace);
+          final (consistent, updated) = region.propagate(trace: trace);
           if (updated) localChanged = true;
           if (!consistent) {
             if (trace) print('    Inconsistency: Grid constraint for row ${region.id} leads to empty possible values.');
@@ -112,31 +110,6 @@ class SudokuConstraint extends PuzzleConstraint {
       }
     }
     return (true, changed);
-  }
-
-  (bool, bool) propagateRegion(Region region, {bool trace = false}) {
-    var updated = false;
-    // Get known and unknown cells in the region
-    var knownValues = <int>{};
-    var knownCells = <Cell>[];
-    var unknownCells = <Cell>[];
-    for (var cell in region.cells) {
-      if (cell.value != null) {
-        if (knownValues.contains(cell.value)) return (false, updated);
-        knownValues.add(cell.value!);
-        knownCells.add(cell);
-      } else {
-        unknownCells.add(cell);
-      }
-    }
-    if (knownValues.isEmpty) return (true, false); // No known values to propagate
-
-    // Remove known value from possible values of unknown cells in the region
-    for (var cell in unknownCells) {
-      if (cell.removeDigits(knownValues)) updated = true;
-    }
-
-    return (true, updated);
   }
 
   @override

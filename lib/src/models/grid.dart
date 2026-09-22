@@ -25,7 +25,7 @@ class Grid {
 
   /// Creates a new grid with the given number of [rows] and [cols].
   Grid(this.rows, this.cols, {this.name = "main"}) {
-    cells = List.generate(rows, (_) => List.generate(cols, (_) => Cell()));
+    cells = List.generate(rows, (row) => List.generate(cols, (col) => Cell(row, col)));
   }
 
   factory Grid.fromString(String gridString, {String name = "main"}) {
@@ -216,6 +216,21 @@ class Grid {
         for (var row = rowMin; row < rowMax; row++) [for (var col = colMin; col < colMax; col++) this.cells[row][col]]
       ].expand((e) => e).toList();
       yield Region('B$box', cells);
+    }
+  }
+
+  Iterable<Region> get quadrants sync* {
+    var height = rows ~/ 2;
+    var width = cols ~/ 2;
+    for (var quadrant = 0; quadrant < 4; quadrant++) {
+      var rowMin = (quadrant ~/ 2) * height;
+      var rowMax = rowMin + height;
+      var colMin = (quadrant % 2) * width;
+      var colMax = colMin + width;
+      var cells = [
+        for (var row = rowMin; row < rowMax; row++) [for (var col = colMin; col < colMax; col++) this.cells[row][col]]
+      ].expand((e) => e).toList();
+      yield Region('Q$quadrant', cells);
     }
   }
 
@@ -488,5 +503,30 @@ class Region {
   @override
   String toString() {
     return 'Region(id: $id, cells: $cells)';
+  }
+
+  (bool, bool) propagate({bool trace = false}) {
+    var updated = false;
+    // Get known and unknown cells in the region
+    var knownValues = <int>{};
+    var knownCells = <Cell>[];
+    var unknownCells = <Cell>[];
+    for (var cell in cells) {
+      if (cell.value != null) {
+        if (knownValues.contains(cell.value)) return (false, updated);
+        knownValues.add(cell.value!);
+        knownCells.add(cell);
+      } else {
+        unknownCells.add(cell);
+      }
+    }
+    if (knownValues.isEmpty) return (true, false); // No known values to propagate
+
+    // Remove known value from possible values of unknown cells in the region
+    for (var cell in unknownCells) {
+      if (cell.removeDigits(knownValues)) updated = true;
+    }
+
+    return (true, updated);
   }
 }

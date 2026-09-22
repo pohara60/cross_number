@@ -283,7 +283,6 @@ List<(int, int)> getTwoSquareYearPairs() {
     return twoSquareYearPairs;
   }
   var squareYears = getSquareYears();
-  var pairs = <int>[];
   for (var i = 0; i < squareYears.length; i++) {
     for (var j = i + 1; j < squareYears.length && (squareYears[j] - squareYears[i]) <= 90; j++) {
       twoSquareYearPairs.add((squareYears[i], squareYears[j]));

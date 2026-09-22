@@ -35,6 +35,7 @@ import 'package:crossnumber/src/models/puzzle_constraint.dart';
 import 'package:crossnumber/src/models/puzzle_definition.dart';
 import 'package:crossnumber/src/models/variable.dart';
 
+// ignore: non_constant_identifier_names
 PuzzleDefinition {{env['abcd']}}() {
   var gridString = [{% for line in env['grid'].rstrip().split('\n') %}
     '{{line}}',{% endfor %}

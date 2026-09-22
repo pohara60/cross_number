@@ -73,8 +73,7 @@ class MonadicFunctionRegistry {
     _functions['square'] = (values, {min, max}) => values.map((v) => v * v).toList();
     _functions['cube'] = (values, {min, max}) => values.map((v) => v * v * v).toList();
     _functions['double'] = (values, {min, max}) => values.map((v) => v * 2).toList();
-    _functions['reverse'] =
-        (values, {min, max}) => values.map((v) => int.parse(v.toInt().toString().split('').reversed.join(''))).toList();
+    _functions['reverse'] = (values, {min, max}) => values.map((v) => reverse(v)).toList();
     _maxOp['reverse'] = MonadicMaxOp.limit;
     _functions['half'] = (values, {min, max}) => values.where((v) => v >= 0 && v % 2 == 0).map((v) => v ~/ 2).toList();
     _maxOp['factor'] = MonadicMaxOp.double;
@@ -323,3 +322,5 @@ class MonadicFunctionRegistry {
     }
   }
 }
+
+int reverse(int v) => int.parse(v.toInt().toString().split('').reversed.join(''));

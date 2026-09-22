@@ -309,6 +309,8 @@ class PuzzleDefinition {
       }
     }
 
+    var minDigit = 0;
+    var maxDigit = 9;
     if (digitConstraint != null) {
       var parts = digitConstraint.split(',');
       var valid = false;
@@ -318,6 +320,8 @@ class PuzzleDefinition {
         if (min != null && max != null && min <= max) {
           this.puzzleConstraints.add(DigitRangeConstraint(min: min, max: max));
           valid = true;
+          minDigit = min;
+          maxDigit = max;
         }
       }
       if (!valid) {
@@ -346,6 +350,17 @@ class PuzzleDefinition {
               var digit = col - entry.col;
               if (entry.possibleValues != null) {
                 entry.possibleValues = entry.possibleValues!.where((v) => v.toString()[digit] != '0').toSet();
+              }
+            }
+          }
+          // Digit constraints
+          if (minDigit > 0 || maxDigit < 9) {
+            var digits = List.generate(maxDigit - minDigit + 1, (index) => "0123456789"[minDigit + index]);
+            if (cell.acrossEntry != null) {
+              var entry = cell.acrossEntry!;
+              var digit = row - entry.row;
+              if (entry.possibleValues != null) {
+                entry.possibleValues = entry.possibleValues!.where((v) => digits.contains(v.toString()[digit])).toSet();
               }
             }
           }

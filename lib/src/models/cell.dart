@@ -2,6 +2,10 @@ import 'entry.dart';
 
 /// Represents a single cell in the puzzle grid.
 class Cell {
+  /// grid coordinates
+  final int row;
+  final int col;
+
   /// The entry that passes through this cell horizontally (if any).
   Entry? acrossEntry;
   int acrossIndex = 0;
@@ -14,6 +18,8 @@ class Cell {
   Entry? upEntry;
   int upIndex = 0;
 
+  Cell(this.row, this.col);
+
   Cell copyWith({
     Entry? acrossEntry,
     int? acrossIndex,
@@ -23,7 +29,7 @@ class Cell {
     int? upIndex,
     String? char,
   }) {
-    return Cell()
+    return Cell(row, col)
       ..acrossEntry = acrossEntry ?? this.acrossEntry
       ..downEntry = downEntry ?? this.downEntry
       ..upEntry = upEntry ?? this.upEntry
@@ -73,5 +79,10 @@ class Cell {
       }
     }
     return updated;
+  }
+
+  @override
+  String toString() {
+    return 'C[$row,$col]';
   }
 }
