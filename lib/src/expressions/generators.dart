@@ -339,6 +339,49 @@ class HarshadGenerator extends CachedGenerator {
   }
 }
 
+class LuckyGenerator extends CachedGenerator {
+  LuckyGenerator() {
+    _values.addAll([1, 3]);
+  }
+
+  @override
+  void _extend(int max) {
+    if (max <= _values.last) return;
+
+    // 1. Build initial list of odd numbers up to max (simulating Step 1: eliminate evens)
+    List<int> candidates = [];
+    for (var i = 1; i <= max; i += 2) {
+      candidates.add(i);
+    }
+
+    // 2. Perform positional eliminations
+    // Start at index 1 (value 3), which dictates removing every 3rd element
+    int sieveIndex = 1;
+
+    while (sieveIndex < candidates.length) {
+      int step = candidates[sieveIndex];
+
+      // If the step size is larger than remaining items, no more elements can be removed
+      if (step > candidates.length) break;
+
+      // Filter out every `step`-th item (1-based index: step, 2*step, 3*step, ...)
+      List<int> nextCandidates = [];
+      for (int i = 0; i < candidates.length; i++) {
+        if ((i + 1) % step != 0) {
+          nextCandidates.add(candidates[i]);
+        }
+      }
+
+      candidates = nextCandidates;
+      sieveIndex++;
+    }
+
+    // 3. Update cached values with newly calculated lucky numbers
+    _values.clear();
+    _values.addAll(candidates);
+  }
+}
+
 class PalindromeGenerator extends CachedGenerator {
   @override
   void _extend(int max) {
@@ -469,6 +512,7 @@ class GeneratorRegistry {
     register('square', SquareGenerator());
     register('cube', CubeGenerator());
     register('harshad', HarshadGenerator());
+    register('lucky', LuckyGenerator());
     register('palindrome', PalindromeGenerator());
     register('sumtwoprimes', SumTwoPrimesGenerator());
     register('producttwoprimes', ProductTwoPrimesGenerator());

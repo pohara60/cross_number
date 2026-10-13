@@ -116,7 +116,7 @@ PuzzleDefinition elementary_number_theory() {
     gridString: gridString.join('\n'),
     mappingIsKnown: true,
     addNotStatements: true,
-    puzzleConstraints: [elementary_number_theoryConstraint()],
+    puzzleConstraints: [ElementaryNumberTheoryConstraint()],
     // orderingConstraints: [OrderingConstraint(allClues: true)],
     entries: {
       'A1': Entry(id: 'A1', statements: 'C F J'),
@@ -255,7 +255,7 @@ void setAnswers(PuzzleDefinition puzzle) {
   puzzle.entries['D21']!.answer = 81;
 }
 
-class elementary_number_theoryConstraint extends PuzzleConstraint {
+class ElementaryNumberTheoryConstraint extends PuzzleConstraint {
   @override
   void initialise(PuzzleDefinition puzzle, {bool trace = false}) {}
 

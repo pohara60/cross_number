@@ -1,0 +1,283 @@
+Cross Number Solver v2 CLI
+Loading puzzle: triples
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported expression for inversion: PolyadicExpression
+Unsupported monadic for inversion: digitsum
+Unsupported monadic for inversion: digitsum
+Unsupported monadic for inversion: digitsum
+Unsupported monadic for inversion: numfactors
+Unsupported monadic for inversion: numfactors
+Unsupported monadic for inversion: numfactors
+Puzzle: Triples
+Grids: (main)
+Entries:{
+  a: VIIIa 810 {110..129,790 more,999}
+  A: Ia 729 {111..119,121..129,131,132,709 more,999}
+  b: (IXa*5) 900 {100..119,880 more,999}
+  c: IXa 810 {110..129,790 more,999}
+  B: (Iia-P) 729 {111..119,121..129,131,132,709 more,999}
+  d: VIIIb 810 {101..109,111..119,121,122,790 more,999}
+  e: VIc 900 {100..119,880 more,999}
+  f: VIIIc 810 {110..129,790 more,999}
+  C: (Iib+H), IIIa 810 {101..109,111..119,121,122,790 more,999}
+  g: Vb 810 {101..109,111..119,121,122,790 more,999}
+  h: (Xa-T) 900 {100..119,880 more,999}
+  D:  810 {110..129,790 more,999}
+  j: (Iic-u), Vc 810 {110..129,790 more,999}
+  E: Va 900 {100..119,880 more,999}
+  F: VIIa 900 {100..119,880 more,999}
+  G:  900 {100..119,880 more,999}
+  H: (C-Iib) 900 {100..119,880 more,999}
+  J: VIa 810 {110..129,790 more,999}
+  k:  900 {100..119,880 more,999}
+  K: Ic 810 {101..109,111..119,121,122,790 more,999}
+  m:  810 {101..109,111..119,121,122,790 more,999}
+  n:  900 {100..119,880 more,999}
+  M: Ib 729 {111..119,121..129,131,132,709 more,999}
+  p:  810 {101..109,111..119,121,122,790 more,999}
+  q:  810 {110..129,790 more,999}
+  r:  900 {100..119,880 more,999}
+  N: IIIb 810 {110..129,790 more,999}
+  s: (IXa*3) 810 {101..109,111..119,121,122,790 more,999}
+  t: (Xa/2) 810 {110..129,790 more,999}
+  u: (Iic-j) 900 {100..119,880 more,999}
+  P: (Iia-B), (VIIa-Q) 900 {100..119,880 more,999}
+  Q: (VIIa-P) 900 {100..119,880 more,999}
+  R: VIb 900 {100..119,880 more,999}
+  S: IIIc 900 {100..119,880 more,999}
+  T: (Xa-h) 900 {100..119,880 more,999}
+  U:  900 {100..119,880 more,999}
+}
+Clues:{
+  I: pandigital(A, M, K) null null
+  II: pandigital((B+P), (C-H), (j+u)) null null
+  III: pandigital(C, N, S) null null
+  IV: pandigital(D, G, U) null null
+  V: pandigital(E, g, j) null null
+  VI: pandigital(J, R, e) null null
+  VII: pandigital(P, Q, F) null null
+  VIII: pandigital(a, d, f) null null
+  IX: pandigital(c, s, b) null null
+  X: pandigital(h, t, T) null null
+  XI: pandigital(k, m, p) null null
+  XII: pandigital(q, r, n) null null
+  Ia: (A=multiple(29)) null null
+  Ib: (M=multiple(29)) null null
+  Ic: (K=multiple(29)) null null
+  Iia: isHarshad(((B+P))) null null
+  Iib: isHarshad(((C-H))) null null
+  Iic: isHarshad(((j+u))) null null
+  IIIa: isSquare(C) null null
+  IIIb: isSquare(N) null null
+  IIIc: isSquare(S) null null
+  IVa: (15=digitsum(D)) null null
+  IVb: (15=digitsum(G)) null null
+  IVc: (15=digitsum(U)) null null
+  Va: isHalfTriangular(E) null null
+  Vb: isHalfTriangular(g) null null
+  Vc: isHalfTriangular(j) null null
+  VIa: isLucky(isPrime(J)) null null
+  VIb: isLucky(isPrime(R)) null null
+  VIc: isLucky(isPrime(e)) null null
+  VIIa: ((P+Q)=F) null null
+  VIIIa: isPrime(a) null null
+  VIIIb: isPrime(d) null null
+  VIIIc: isPrime(f) null null
+  IXa: ((c=(s/3))=(b/5)) null null
+  Xa: ((T+h)=(2*t)) null null
+  XIa: (16=numfactors(k)) null null
+  XIb: (16=numfactors(m)) null null
+  XIc: (16=numfactors(p)) null null
+}
+Variables:{
+}
+
+Puzzle: Triples
+Grid:
++--+--+--+--+--+--+--+--+--+--+
+|  |        |        |        |
++  +--+  +  +  +  +  +  +--+  +
+|        |        |        |  |
++  +  +  +  +  +  +  +  +--+  +
+|  |        |        |        |
++--+  +--+--+--+--+--+--+  +--+
+|        |        |        |  |
++  +--+  +  +  +  +  +  +  +  +
+|  |        |        | 7  6  9|
++  +--+  +  +  +  +  +  +--+  +
+|        |        |        |  |
++--+--+--+--+--+--+--+--+--+--+
+Variables:
+Clues:
+I: 1  {1}
+II: uninitialised
+III: 1  {1}
+IV: 1  {1}
+V: 1  {1}
+VI: 1  {1}
+VII: uninitialised
+VIII: 1  {1}
+IX: uninitialised
+X: uninitialised
+XI: 1  {1}
+XII: uninitialised
+Ia: 3  {261,348,957}
+Ib: 3  {261,348,957}
+Ic: 2  {348,957}
+Iia: 328  {222,224,225,228,230,234,240,243,247,252,261,264,266,270,280,285,288,300,306,308,308 more,1950}
+Iib: 12  {24,30,42,45,48,50,222,224,228,230,465,645}
+Iic: 35  {460,506,510..513,555,558,605,612,660,711,756,810,910,912,954,960,1008,1010,15 more,1314}
+IIIa: 2  {361,784}
+IIIb: 3  {361,529,784}
+IIIc: 3  {361,529,784}
+IVa: 1  {15}
+IVb: 1  {15}
+IVc: 1  {15}
+Va: 2  {264,798}
+Vb: 2  {315,798}
+Vc: 2  {264,315}
+VIa: 2  {541,823}
+VIb: 1  {769}
+VIc: 2  {283,541}
+VIIa: uninitialised
+VIIIa: 48  {127,149,157,239,241,251,257,263,271,281,283,293,359,389,419,421,457,461,467,479,28 more,983}
+VIIIb: 13  {163,263,293,367,461,463,467,491,563,593,691,863,967}
+VIIIc: 48  {127,149,157,239,241,251,257,263,271,281,283,293,359,389,419,421,457,461,467,479,28 more,983}
+IXa: uninitialised
+Xa: uninitialised
+XIa: 1  {16}
+XIb: 1  {16}
+XIc: 1  {16}
+Entries:
+a: 48  {127,149,157,239,241,251,257,263,271,281,283,293,359,389,419,421,457,461,467,479,28 more,983}
+A: 3  {261,348,957}
+b: 299  {400..419,279 more,699}
+c: 60  {120..129,170..179,40 more,879}
+B: 143  {121..129,151..159,221,222,123 more,959}
+d: 13  {163,263,293,367,461,463,467,491,563,593,691,863,967}
+e: 2  {283,541}
+f: 48  {127,149,157,239,241,251,257,263,271,281,283,293,359,389,419,421,457,461,467,479,28 more,983}
+C: 2  {361,784}
+g: 2  {315,798}
+h: 40  {101,103,111,113,121,123,131,133,141,143,151,153,161,163,171,173,181,183,191,193,20 more,493}
+D: 36  {159,168,186,195,249,267,276,294,348,357,375,384,429,438,483,492,519,537,573,591,16 more,951}
+j: 2  {264,315}
+E: 2  {264,798}
+F: 178  {110..119,190..199,158 more,999}
+G: 36  {159,168,186,195,249,267,276,294,348,357,375,384,429,438,483,492,519,537,573,591,16 more,951}
+H: 10  {131,133,137,139,311,313,319,331,337,739}
+J: 2  {541,823}
+k: 4  {216,378,594,945}
+K: 2  {348,957}
+m: 4  {216,378,594,945}
+n: 893  {100..119,873 more,999}
+M: 3  {261,348,957}
+p: 4  {216,378,594,945}
+q: 803  {110..129,783 more,999}
+r: 893  {100..119,873 more,999}
+N: 3  {361,529,784}
+s: 264  {301..309,311..314,316..319,321..323,244 more,799}
+t: 30  {270..279,670..679,10 more,879}
+u: 30  {191,195..198,290,291,294,297,396,492,495,595,597,690,693,695..697,699,10 more,999}
+P: 893  {100..119,873 more,999}
+Q: 893  {100..119,873 more,999}
+R: 1  {769}
+S: 3  {361,529,784}
+T: 893  {100..119,873 more,999}
+U: 36  {159,168,186,195,249,267,276,294,348,357,375,384,429,438,483,492,519,537,573,591,16 more,951}
+Solve time: 22833ms
+Solution not complete, backtracking
+Solution:
++--+--+--+--+--+--+--+--+--+--+
+| 5| 2  6  1| 2  5  1| 7  8  4|
++  +--+  +  +  +  +  +  +--+  +
+| 8  3  4| 2  6  4| 4  9  5| 9|
++  +  +  +  +  +  +  +  +--+  +
+| 7| 1  5  9| 3  1  9| 8  2  3|
++--+  +--+--+--+--+--+--+  +--+
+| 9  5  7| 3  4  8| 3  6  1| 5|
++  +--+  +  +  +  +  +  +  +  +
+| 4| 1  2  7| 3  6  8| 7  6  9|
++  +--+  +  +  +  +  +  +--+  +
+| 5  2  9| 8  5  1| 7  2  6| 7|
++--+--+--+--+--+--+--+--+--+--+
+Clue values:
+I: 1
+II: 1
+III: 1
+IV: 1
+V: 1
+VI: 1
+VII: 1
+VIII: 1
+IX: 1
+X: 1
+XI: 1
+XII: 1
+Ia: 261
+Ib: 348
+Ic: 957
+Iia: 378
+Iib: 465
+Iic: 912
+IIIa: 784
+IIIb: 361
+IIIc: 529
+IVa: 15
+IVb: 15
+IVc: 15
+Va: 264
+Vb: 798
+Vc: 315
+VIa: 823
+VIb: 769
+VIc: 541
+VIIa: 495
+VIIIa: 587
+VIIIb: 263
+VIIIc: 149
+IXa: 129
+Xa: 1344
+XIa: 16
+XIb: 16
+XIc: 16
+
+Backtracking: 1 solutions found.
+Backtracking time: 29308ms

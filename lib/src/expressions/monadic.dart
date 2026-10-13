@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:crossnumber/src/expressions/generators.dart';
 import 'package:powers/powers.dart';
 
 import 'generators.dart';
@@ -43,9 +44,12 @@ class MonadicFunctionRegistry {
     _functions['isDescendingDigits'] = (values, {min, max}) => values.where((v) => _isDescendingDigits(v)).toList();
     _functions['isUniqueDigits'] = (values, {min, max}) => values.where((v) => _isUniqueDigits(v)).toList();
     _functions['isPrime'] = (values, {min, max}) => values.where((v) => _isPrime(v)).toList();
+    _functions['isHarshad'] = (values, {min, max}) => values.where((v) => _isHarshad(v)).toList();
     _functions['isFibonacci'] = (values, {min, max}) => values.where((v) => _isFibonacci(v)).toList();
     _functions['isTriangular'] = (values, {min, max}) => values.where((v) => _isTriangular(v)).toList();
+    _functions['isHalfTriangular'] = (values, {min, max}) => values.where((v) => _isHalfTriangular(v)).toList();
     _functions['isPalindrome'] = (values, {min, max}) => values.where((v) => _isPalindrome(v)).toList();
+    _functions['isLucky'] = (values, {min, max}) => values.where((v) => _isLucky(v)).toList();
     _functions['isSquare'] = (values, {min, max}) => values.where((v) => _isSquare(v)).toList();
     _functions['isCube'] = (values, {min, max}) => values.where((v) => _isCube(v)).toList();
     _functions['lte'] = (values, {min, max}) {
@@ -70,13 +74,16 @@ class MonadicFunctionRegistry {
     _functions['factor'] =
         (values, {min, max}) => values.expand((value) => factors(value, min: min, max: max)).toSet().toList()..sort();
     _maxOp['factor'] = MonadicMaxOp.square;
+    _functions['numfactors'] =
+        (values, {min, max}) => values.map((value) => numfactors(value, min: min, max: max)).toSet().toList()..sort();
+    _maxOp['numfactors'] = MonadicMaxOp.limit;
     _functions['square'] = (values, {min, max}) => values.map((v) => v * v).toList();
     _functions['cube'] = (values, {min, max}) => values.map((v) => v * v * v).toList();
     _functions['double'] = (values, {min, max}) => values.map((v) => v * 2).toList();
     _functions['reverse'] = (values, {min, max}) => values.map((v) => reverse(v)).toList();
     _maxOp['reverse'] = MonadicMaxOp.limit;
     _functions['half'] = (values, {min, max}) => values.where((v) => v >= 0 && v % 2 == 0).map((v) => v ~/ 2).toList();
-    _maxOp['factor'] = MonadicMaxOp.double;
+    _maxOp['half'] = MonadicMaxOp.double;
     _functions['multiple'] = (values, {min, max}) {
       if (values.isEmpty) return [];
       final base = values.first;
@@ -147,7 +154,7 @@ class MonadicFunctionRegistry {
     };
     _functions['digitsum'] = (values, {min, max}) =>
         values.map((v) => v.toString().split('').map(int.parse).reduce((a, b) => a + b)).toSet().toList()..sort();
-    _maxOp['digitsum'] = MonadicMaxOp.square;
+    _maxOp['digitsum'] = MonadicMaxOp.limit;
     _functions['digitproduct'] = (values, {min, max}) =>
         values.map((v) => v.toString().split('').map(int.parse).reduce((a, b) => a * b)).toSet().toList()..sort();
     _maxOp['digitproduct'] = MonadicMaxOp.square;
@@ -163,6 +170,13 @@ class MonadicFunctionRegistry {
         .toList()
       ..sort();
     _maxOp['derange'] = MonadicMaxOp.square;
+  }
+
+  int numfactors(int value, {int? min, int? max}) {
+    int result = factors(value, min: 1, max: value).length;
+    // Add 1 and value itself
+    result += 2;
+    return result;
   }
 
   MonadicFunction? get(String name) {
@@ -206,16 +220,33 @@ class MonadicFunctionRegistry {
     return primeGenerator!.contains(n);
   }
 
+  HarshadGenerator? harshadGenerator;
+  bool _isHarshad(int n) {
+    harshadGenerator ??= GeneratorRegistry().get('harshad') as HarshadGenerator;
+    return harshadGenerator!.contains(n);
+  }
+
   TriangularGenerator? triangularGenerator;
   bool _isTriangular(int n) {
     triangularGenerator ??= GeneratorRegistry().get('triangular') as TriangularGenerator;
     return triangularGenerator!.contains(n);
   }
 
+  bool _isHalfTriangular(int n) {
+    triangularGenerator ??= GeneratorRegistry().get('triangular') as TriangularGenerator;
+    return triangularGenerator!.contains(n * 2);
+  }
+
   PalindromeGenerator? palindromeGenerator;
   bool _isPalindrome(int n) {
     palindromeGenerator ??= GeneratorRegistry().get('palindrome') as PalindromeGenerator;
     return palindromeGenerator!.contains(n);
+  }
+
+  LuckyGenerator? luckyGenerator;
+  bool _isLucky(int n) {
+    luckyGenerator ??= GeneratorRegistry().get('lucky') as LuckyGenerator;
+    return luckyGenerator!.contains(n);
   }
 
   FibonacciGenerator? fibonacciGenerator;

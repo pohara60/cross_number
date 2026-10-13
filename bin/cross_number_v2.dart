@@ -33,6 +33,7 @@ import '../puzzles/yet_another_sudoku.dart';
 import '../puzzles/elementary_number_theory.dart';
 import '../puzzles/all_square.dart';
 import '../puzzles/containing_pi.dart';
+import '../puzzles/triples.dart';
 
 final puzzleMap = <String, PuzzleDefinition Function()>{
   'abcd': abcd,
@@ -61,6 +62,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'elementary_number_theory': elementary_number_theory,
   'all_square': all_square,
   'containing_pi': containing_pi,
+  'triples': triples,
 };
 
 void main(List<String> arguments) {
