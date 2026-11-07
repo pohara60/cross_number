@@ -2,8 +2,6 @@ import 'dart:math' as math;
 import 'package:crossnumber/src/expressions/generators.dart';
 import 'package:powers/powers.dart';
 
-import 'generators.dart';
-
 typedef MonadicFunction = List<int> Function(List<int> values, {int? min, int? max});
 
 enum MonadicMaxOp {

@@ -268,6 +268,8 @@ class Solver {
     }
 
     int iteration = 0;
+    var consistent = true;
+    var updated = false;
     do {
       iteration++;
       if (tracer.trace) tracer.logSolve('Iteration $iteration');
@@ -275,14 +277,14 @@ class Solver {
 
       // Solve groups
       for (var group in expressableGroups) {
-        if (solveExpressableGroup(group)) {
-          _updated = true;
-        }
+        (consistent, updated) = solveExpressableGroup(group);
+        if (!consistent) break;
+        if (updated) _updated = true;
       }
 
       // Solve expressables not in groups
       if (tracer.trace) tracer.logSolve('  Solving expressables...');
-      var (consistent, updated) = _solveExpressables(expressableGroups);
+      (consistent, updated) = _solveExpressables(expressableGroups);
       if (consistent) {
         if (updated) _updated = true;
         (consistent, updated) = _propagateConstraints(tracer.trace);
@@ -455,12 +457,12 @@ class Solver {
     return updated;
   }
 
-  bool solveClueGroup(ExpressableGroup group) {
+  (bool, bool) solveClueGroup(ExpressableGroup group) {
     var expressables = group.expressables.map((e) => puzzle.clues[e]!).toList();
     return solveExpressableGroup(expressables);
   }
 
-  bool solveExpressableGroup(List<Expressable> group) {
+  (bool, bool) solveExpressableGroup(List<Expressable> group) {
     if (tracer.trace) {
       tracer.logSolve('  Solving group with expressables: ${group.map((e) => e.id).join(', ')}');
     }
@@ -499,10 +501,11 @@ class Solver {
           tracer.printUpdatedExpressables(puzzle, updateVariables, originalCounts);
         }
       }
+      return (consistent, updated);
     } on EvaluatorNotPossibleException {
       // Message already printed where it occurred
+      return (false, updated);
     }
-    return updated;
   }
 
   bool _solveExpressableGroup(

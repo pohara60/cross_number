@@ -34,6 +34,7 @@ import '../puzzles/elementary_number_theory.dart';
 import '../puzzles/all_square.dart';
 import '../puzzles/containing_pi.dart';
 import '../puzzles/triples.dart';
+import '../puzzles/borderseries.dart';
 
 final puzzleMap = <String, PuzzleDefinition Function()>{
   'abcd': abcd,
@@ -63,6 +64,7 @@ final puzzleMap = <String, PuzzleDefinition Function()>{
   'all_square': all_square,
   'containing_pi': containing_pi,
   'triples': triples,
+  'borderseries': borderseries,
 };
 
 void main(List<String> arguments) {
@@ -122,7 +124,7 @@ void main(List<String> arguments) {
       traceBacktrace: results['backtrace'] as bool,
     );
 
-    var useTransitiveGrouping = puzzleName == 'asp';
+    var useTransitiveGrouping = ['asp', 'borderseries'].contains(puzzleName);
 
     final solver =
         Solver(puzzle, allowBacktracking: true, tracer: tracer, useTransitiveGrouping: useTransitiveGrouping);

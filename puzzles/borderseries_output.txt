@@ -1,0 +1,96 @@
+
+Exited (-15).
+Connecting to VM Service at ws://127.0.0.1:34131/o5tVOQBh8Yk=/ws
+Connected to the VM Service.
+Cross Number Solver v2 CLI
+Loading puzzle: borderseries
+Unsupported monadic for inversion: square
+Unsupported monadic for inversion: square
+Unsupported monadic for inversion: square
+Unsupported monadic for inversion: square
+Unsupported operator for inversion: %
+Unsupported operator for inversion: %
+Puzzle: BorderSeries
+Grids: (main)
+Entries:{
+  A1:  810 {101..109,111..119,121,122,790 more,999}
+  A3: (#square-D4) 810 {101..109,111..119,121,122,790 more,999}
+  A5: factor(D2) 81 {11..19,21..29,31,32,61 more,99}
+  A7: square(((((A1+A11)+D3)+D6))) 900 {100..119,880 more,999}
+  A8:  90 {10..29,70 more,99}
+  A9: multiple(D10) 810 {110..129,790 more,999}
+  A11:  900 {100..119,880 more,999}
+  D1: (D7%A8) 90 {10..29,70 more,99}
+  D2: multiple(A5) 810 {110..129,790 more,999}
+  D3: (#square-D4) 810 {101..109,111..119,121,122,790 more,999}
+  D4: (#square-D3) 810 {101..109,111..119,121,122,790 more,999}
+  D6:  900 {100..119,880 more,999}
+  D7:  810 {101..109,111..119,121,122,790 more,999}
+  D10: squareroot(A7) 90 {10..29,70 more,99}
+}
+Clues:{
+}
+Variables:{
+}
+
+Puzzle: BorderSeries
+Solving puzzle with known mapping...
+Found 2 expressable groups:
+  Group: A3, D4, D3, A7, D10, A9
+  Group: A5, D2
+Iteration 1
+  Solving group with expressables: A3, D4, D3, A7, D10, A9
+    Expression for A7 could not be evaluated: Too many combinations 656100000 for variables: A1, A11, D6
+  Solving group with expressables: A5, D2
+    Entry D2: 810 -> 512 {110..112,114..126,128..130,132,492 more,999}
+  Solving expressables...
+    Entry D1: 89 -> 89 {10..29,69 more,98}
+    Entry A8: 90 -> 89 {11..30,69 more,99}
+  Propagating constraints...
+    Expression for A7 could not be evaluated: Too many combinations 528492486600 for variables: A1, A11, D3, D6
+    Entry A9: 512 -> 512 {110..112,114..126,128..130,132,492 more,999}
+    Entry D10: 22 -> 22 {10..29,2 more,31}
+    Entry A7: 900 -> 22 {100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
+  Propagating constraints...
+    Entry D4: 810 -> 648 {101..109,121..129,141,142,628 more,999}
+    Entry D2: 512 -> 331 {110,111,114..116,119..121,124..126,129,130,134..136,140,141,144,145,311 more,999}
+    Entry A9: 512 -> 171 {110..112,114..126,128..130,132,151 more,938}
+    Expression for A7 could not be evaluated: Too many combinations 528492486600 for variables: A1, A11, D3, D6
+  Propagating constraints...
+    Expression for A7 could not be evaluated: Too many combinations 528492486600 for variables: A1, A11, D3, D6
+Iteration 2
+  Solving group with expressables: A3, D4, D3, A7, D10, A9
+    Expression for A7 could not be evaluated: Too many combinations 652459860 for variables: A1, A11, D6
+  Solving group with expressables: A5, D2
+  Solving expressables...
+  Propagating constraints...
+    Expression for A7 could not be evaluated: Too many combinations 528492486600 for variables: A1, A11, D3, D6
+Grid:
++--+--+--+--+--+
+|  |        |  |
++--+  +--+  +--+
+|        |     |
++  +--+  +  +  +
+|  |        |  |
++  +  +  +--+  +
+|     |        |
++--+  +--+  +--+
+|  |        |  |
++--+--+--+--+--+
+Variables:
+Clues:
+Entries:
+A1: 810  {101..109,111..119,121,122,790 more,999}
+A3: 810  {101..109,111..119,121,122,790 more,999}
+A5: 81  {11..19,21..29,31,32,61 more,99}
+A7: 22  {100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,2 more,961}
+A8: 89  {11..30,69 more,99}
+A9: 171  {110..112,114..126,128..130,132,151 more,938}
+A11: 897  {103..122,877 more,999}
+D1: 89  {10..29,69 more,98}
+D2: 331  {110,111,114..116,119..121,124..126,129,130,134..136,140,141,144,145,311 more,999}
+D3: 810  {101..109,111..119,121,122,790 more,999}
+D4: 648  {101..109,121..129,141,142,628 more,999}
+D6: 898  {102..121,878 more,999}
+D7: 810  {101..109,111..119,121,122,790 more,999}
+D10: 22  {10..29,2 more,31}
